@@ -1,0 +1,3621 @@
+[
+  {
+    "id": "surgery_appendix",
+    "name": "阑尾切除术",
+    "duration_minutes": 60,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "回盲部与阑尾位置已经显露。确认阑尾与周围组织的关系。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认阑尾与周围组织的关系，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认阑尾与周围组织的关系。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入处理阑尾根部前，最应该先确认什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "目标结构和邻近组织已经辨认清楚",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只看切口长度就继续",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "等器械护士主动决定",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "阑尾根部处理完成，腹腔检查无异常。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_breast_tumor",
+    "name": "乳腺肿瘤切除术",
+    "duration_minutes": 120,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "乳腺病灶区域已经显露。确认病灶边界与预定切除范围。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认病灶边界与预定切除范围，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认病灶边界与预定切除范围。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "切除病灶前，哪项确认最关键？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只依据表面颜色判断",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先扩大切口再辨认",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "病灶位置与预定边界一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "dignity_interaction",
+        "patient_cues": [
+          "exposure"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "标本已经完整取出，术野止血确认完成。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "breast"
+  },
+  {
+    "id": "surgery_hysterectomy",
+    "name": "子宫切除术",
+    "duration_minutes": 240,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "盆腔术野已经建立。确认子宫及双侧附件的解剖关系。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认子宫及双侧附件的解剖关系，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认子宫及双侧附件的解剖关系。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进行关键分离前，应该优先确认什么？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "让巡回护士选择分离方向",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "重要邻近结构的位置已经辨认",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认子宫大小",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "dignity_interaction",
+        "patient_cues": [
+          "exposure",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "子宫切除步骤完成，盆腔术野复核稳定。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "female_pelvic"
+  },
+  {
+    "id": "surgery_cabg",
+    "name": "心脏搭桥术",
+    "duration_minutes": 360,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "心脏与拟搭桥区域已经显露。核对目标血管与移植物准备状态。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，核对目标血管与移植物准备状态，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「核对目标血管与移植物准备状态。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "开始吻合前，哪项核对最关键？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "目标血管、移植物和吻合计划三者一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只核对手术灯亮度",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先吻合再讨论目标位置",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "fatigue"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "桥血管通路已经完成，团队正在复核循环状态。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "cardiac"
+  },
+  {
+    "id": "surgery_exploratory_laparotomy",
+    "name": "大开腹探查术",
+    "duration_minutes": 480,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "腹腔探查范围已经展开。按照既定顺序检查主要区域。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，按照既定顺序检查主要区域，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「按照既定顺序检查主要区域。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "发现可疑区域时，下一步最合理的团队确认是什么？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "立刻结束全部探查",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "跳过记录直接处理",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "先明确发现、位置和后续计划再继续",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "系统探查完成，所有发现均已向团队复述。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_cholecystectomy",
+    "name": "开腹胆囊切除术",
+    "duration_minutes": 120,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "胆囊与周围区域已经显露。确认胆囊周围关键结构关系。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认胆囊周围关键结构关系，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认胆囊周围关键结构关系。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "处理关键结构前，应当先完成哪项确认？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "让助手猜测结构名称",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "目标结构和周围解剖关系清楚",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "仅凭器械触感判断",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "胆囊已经移除，胆囊床与术野完成复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_inguinal_hernia",
+    "name": "开放式腹股沟疝修补术",
+    "duration_minutes": 90,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "腹股沟区已经显露。确认疝囊与周围结构关系。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认疝囊与周围结构关系，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认疝囊与周围结构关系。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "修补开始前，最需要确认什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "疝内容物状态和修补范围明确",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认皮肤切口方向",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先放置修补材料再观察",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "疝修补已经完成，张力与覆盖范围得到确认。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_ventral_hernia",
+    "name": "开放式腹壁疝修补术",
+    "duration_minutes": 150,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "腹壁缺损已经显露。评估缺损边缘与周围组织。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，评估缺损边缘与周围组织，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「评估缺损边缘与周围组织。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "重建腹壁前，哪项判断最重要？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只根据患者身高选择方案",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "忽略缺损边缘直接关闭",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "缺损范围与可用组织条件已经确认",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "腹壁重建完成，关闭范围与张力复核稳定。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_distal_gastrectomy",
+    "name": "开腹远端胃切除术",
+    "duration_minutes": 180,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "远端胃与周围区域已经显露。确认病变位置与计划切除范围。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认病变位置与计划切除范围，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认病变位置与计划切除范围。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入切除前，应优先核对哪一项？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "先切除再决定重建方式",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "病变位置、切缘计划与重建方案一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认胃的外观颜色",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "远端胃切除与消化道重建已经完成。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_total_gastrectomy",
+    "name": "开腹全胃切除术",
+    "duration_minutes": 240,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "全胃及周围区域已经显露。确认切除范围与重建计划。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认切除范围与重建计划，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认切除范围与重建计划。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "完成不可逆步骤前，团队必须共同确认什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "切除边界和后续重建路径均已明确",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只核对手术已经进行了多久",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "等缝合时再讨论重建",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "全胃切除与重建完成，吻合区域复核稳定。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_right_hemicolectomy",
+    "name": "开腹右半结肠切除术",
+    "duration_minutes": 180,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "右侧结肠区域已经显露。确认病变段、血供与预定切除范围。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认病变段、血供与预定切除范围，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认病变段、血供与预定切除范围。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "结肠离断前，哪项确认最关键？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只看肠管长度",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先离断再确认病变位置",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "病变范围与保留肠段计划一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "右半结肠切除与重建完成，肠管状态稳定。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_sigmoid_colectomy",
+    "name": "开腹乙状结肠切除术",
+    "duration_minutes": 180,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "乙状结肠区域已经显露。确认病变段与近远端计划。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认病变段与近远端计划，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认病变段与近远端计划。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进行肠段切除前，应该确认什么？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "由器械护士决定切除范围",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "病变范围和两端重建条件明确",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认患者体位",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "乙状结肠切除与重建完成，吻合区域已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_abdominoperineal_resection",
+    "name": "开放式腹会阴联合直肠切除术",
+    "duration_minutes": 300,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "腹部与会阴两处术野已经协调建立。核对两组操作的范围与进度。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，核对两组操作的范围与进度，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「核对两组操作的范围与进度。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "两处术野进入衔接阶段前，最重要的确认是什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "腹部组与会阴组对边界和方向理解一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认哪一组更快",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "各自继续无需沟通",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "联合切除步骤完成，两处术野进入关闭准备。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_whipple",
+    "name": "开放式胰十二指肠切除术",
+    "duration_minutes": 360,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "胰头十二指肠区域已经显露。确认病变范围与多处重建计划。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认病变范围与多处重建计划，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认病变范围与多处重建计划。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入关键切除阶段前，应优先确认哪项内容？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认一件器械是否在台上",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先完成切除再临时设计全部重建",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "切除边界、重要结构与重建顺序均已核对",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "切除与各项重建步骤完成，团队逐项复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_major_liver_resection",
+    "name": "开腹肝叶切除术",
+    "duration_minutes": 300,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "目标肝叶与周围结构已经显露。确认预定切除范围与剩余肝组织。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认预定切除范围与剩余肝组织，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认预定切除范围与剩余肝组织。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "开始肝实质处理前，哪项判断最关键？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "先开始再寻找边界",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "切除范围与保留侧结构关系已经明确",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只根据肝脏表面颜色决定",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "目标肝叶切除完成，切面与止血状态已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_splenectomy",
+    "name": "开腹脾切除术",
+    "duration_minutes": 120,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "脾脏与周围区域已经显露。确认脾脏活动度与邻近结构。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认脾脏活动度与邻近结构，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认脾脏活动度与邻近结构。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入关键分离前，应该先确认什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "脾脏与邻近结构关系清楚",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认脾脏大小",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "让巡回护士指定分离位置",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "脾脏已经取出，左上腹术野复核稳定。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "general_abdominal"
+  },
+  {
+    "id": "surgery_open_ovarian_cystectomy",
+    "name": "开腹卵巢囊肿切除术",
+    "duration_minutes": 120,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "卵巢囊肿与周围组织已经显露。确认囊肿边界与可保留组织。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认囊肿边界与可保留组织，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认囊肿边界与可保留组织。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "剥离囊肿前，哪项确认最重要？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只观察囊肿表面光泽",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先切开再确认边界",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "囊肿边界与正常卵巢组织已区分",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "dignity_interaction",
+        "patient_cues": [
+          "exposure",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "囊肿已经完整处理，保留组织与止血状态良好。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "female_pelvic"
+  },
+  {
+    "id": "surgery_open_abdominal_myomectomy",
+    "name": "开腹子宫肌瘤剔除术",
+    "duration_minutes": 150,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "子宫肌瘤区域已经显露。确认肌瘤位置与子宫切口计划。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认肌瘤位置与子宫切口计划，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认肌瘤位置与子宫切口计划。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "切入子宫肌层前，应该优先确认什么？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "等切开后再考虑修复",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "肌瘤位置、深度与修复计划一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只依据肌瘤表面形状",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "dignity_interaction",
+        "patient_cues": [
+          "exposure",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "肌瘤已经剔除，子宫修复与止血完成。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "female_pelvic"
+  },
+  {
+    "id": "surgery_total_mastectomy",
+    "name": "全乳房切除术",
+    "duration_minutes": 120,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "乳房切除范围已经标记并显露。确认皮瓣与预定切除边界。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认皮瓣与预定切除边界，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认皮瓣与预定切除边界。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "继续扩大分离范围前，最关键的确认是什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "切除边界与皮瓣保护计划一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只追求最快完成",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "忽略预定边界继续分离",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "dignity_interaction",
+        "patient_cues": [
+          "exposure"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "乳房组织切除完成，皮瓣与术野状态已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "breast"
+  },
+  {
+    "id": "surgery_open_lung_lobectomy",
+    "name": "开胸肺叶切除术",
+    "duration_minutes": 180,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "目标肺叶与肺门区域已经显露。确认目标肺叶及相关结构。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认目标肺叶及相关结构，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认目标肺叶及相关结构。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入肺叶切除关键步骤前，应确认什么？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认胸腔开口足够大",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先切除再确认是哪一肺叶",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "目标肺叶和需要处理的结构均已辨认",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "fatigue"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "目标肺叶已经切除，余肺与胸腔状态已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "thoracic"
+  },
+  {
+    "id": "surgery_open_pneumonectomy",
+    "name": "开胸全肺切除术",
+    "duration_minutes": 240,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "目标侧全肺与肺门已经显露。确认全肺切除计划与对侧通气状态。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认全肺切除计划与对侧通气状态，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认全肺切除计划与对侧通气状态。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入不可逆步骤前，团队必须确认什么？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "先处理肺门再核对侧别",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "目标侧、肺门结构与整体生理计划一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认患者姓名",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "fatigue"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "全肺切除完成，胸腔与循环呼吸状态已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "thoracic"
+  },
+  {
+    "id": "surgery_open_esophagectomy",
+    "name": "开放式食管切除术",
+    "duration_minutes": 360,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "食管与重建通道相关术野已经建立。确认切除范围与重建路径。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认切除范围与重建路径，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认切除范围与重建路径。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入切除和重建衔接前，最重要的确认是什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "切除边界与重建通道由团队共同核对",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认切口数量",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "切除完成后再决定是否重建",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "fatigue"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "食管切除与重建完成，连接区域复核稳定。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "thoracic"
+  },
+  {
+    "id": "surgery_open_radical_cystectomy",
+    "name": "开放式根治性膀胱切除术",
+    "duration_minutes": 300,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "膀胱与盆腔区域已经显露。确认切除范围与尿路重建计划。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认切除范围与尿路重建计划，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认切除范围与尿路重建计划。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入关键切除前，应优先核对什么？",
+        "options": [
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认膀胱充盈程度",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先切除再询问重建方案",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "切除边界与尿路重建方案一致",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "膀胱切除与尿路重建完成，盆腔术野已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "urologic"
+  },
+  {
+    "id": "surgery_open_nephrectomy",
+    "name": "开放式肾切除术",
+    "duration_minutes": 120,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "目标肾脏与肾门区域已经显露。确认患侧、肾门与周围结构。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认患侧、肾门与周围结构，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认患侧、肾门与周围结构。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "处理肾门前，哪项确认最关键？",
+        "options": [
+          {
+            "id": "delegate_decision",
+            "label": "根据助手站位判断患侧",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          },
+          {
+            "id": "confirm_anatomy",
+            "label": "患侧与目标结构已经由团队共同确认",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只核对切口长度",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "目标肾脏已经切除，肾窝与止血状态已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "urologic"
+  },
+  {
+    "id": "surgery_open_abdominal_aortic_aneurysm",
+    "name": "开放式腹主动脉瘤修复术",
+    "duration_minutes": 240,
+    "status": "ready",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "exposure",
+        "title": "术野确认",
+        "kind": "confirm",
+        "prompt": "腹主动脉瘤与近远端控制区域已经显露。确认血管控制与重建准备。",
+        "options": [
+          {
+            "id": "confirm_exposure",
+            "label": "确认术野，继续",
+            "response": "「术野清楚，确认血管控制与重建准备，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "operative_contact",
+        "patient_cues": [
+          "incision",
+          "exposure"
+        ]
+      },
+      {
+        "id": "team_exchange",
+        "title": "团队配合",
+        "kind": "flavor",
+        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "options": [
+          {
+            "id": "ask_assistant",
+            "label": "请助手复述当前进度",
+            "response": "「确认血管控制与重建准备。我会继续维持术野并提醒关键节点。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_instruments",
+            "label": "询问器械准备情况",
+            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_monitoring",
+            "label": "询问监护与记录",
+            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "key_decision",
+        "title": "关键判断",
+        "kind": "decision",
+        "prompt": "进入血管阻断前，团队必须确认什么？",
+        "options": [
+          {
+            "id": "confirm_anatomy",
+            "label": "近远端控制、替代血流与重建计划全部就绪",
+            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "rush_by_appearance",
+            "label": "只确认计时器已经开始",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+          },
+          {
+            "id": "delegate_decision",
+            "label": "先阻断再检查准备情况",
+            "response": "",
+            "response_role": "assistant_surgeon",
+            "correct": false,
+            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "fatigue",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "completion_check",
+        "title": "阶段完成",
+        "kind": "confirm",
+        "prompt": "血管重建完成，循环状态与吻合区域已复核。团队等待本多医生的最终确认。",
+        "options": [
+          {
+            "id": "confirm_completion",
+            "label": "确认关键步骤完成",
+            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "closure_interaction",
+        "patient_cues": [
+          "closure"
+        ]
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "vascular"
+  }
+]

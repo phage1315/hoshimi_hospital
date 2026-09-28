@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_miki",
+    "name": "奥寺 美纪",
+    "age": 24,
+    "case_id": "case_followup",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_miki_v1/patient_miki/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_miki_v1/patient_miki/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_miki_v1/patient_miki/ward/smile.png",
+        "ward/brave": "assets/characters/patient_miki_v1/patient_miki/ward/brave.png",
+        "ward/worried": "assets/characters/patient_miki_v1/patient_miki/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_miki_v1/patient_miki/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_miki_v1/patient_miki/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_miki_v1/patient_miki/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_miki_v1/patient_miki/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_miki_v1/patient_miki/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_miki_v1/patient_miki/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_miki/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_miki/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_miki/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_miki/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_miki/general.png",
+        "examination/shy": "assets/characters/examination_portraits_v1/patient_miki/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "gentle",
+    "personality": {
+      "primary": "calm_cooperative",
+      "secondary": "analytical",
+      "stress_response": "seeks_reassurance"
+    },
+    "traits": {
+      "baseline_anxiety": 43,
+      "pain_sensitivity": 48,
+      "privacy_sensitivity": 61,
+      "trust_baseline": 66,
+      "control_need": 50,
+      "expressiveness": 44,
+      "health_literacy": 70,
+      "compliance_tendency": 90
+    },
+    "fear_profile": {
+      "pain_fear": 52,
+      "procedure_fear": 56,
+      "diagnosis_fear": 64,
+      "loss_control_fear": 54
+    },
+    "reaction_lines": {
+      "procedure_mismatch": "「抱歉，请先停一下。现在说的术式似乎和之前确认的不一致。」（不会搞错病人了吧……开刀这种事，必须先确认清楚。）",
+      "explain_plan": "「谢谢，说明得很清楚。步骤和风险，可以再按顺序确认一次吗？」（我得先听清楚……脑子有点空，像在听别人的手术安排。）",
+      "brief_plan": "「好的，我会配合。如果可以，我想再确认每一步会发生什么。」（就这样躺着等开刀……有点不真实。再问一句，心里才踏实。）",
+      "last_reassure": "「我准备好了。请按你们的节奏来，开始前请再告诉我进行到哪一步。」（真的要开始了……先把呼吸放稳。这种时候乱掉的话，会给大家添麻烦。）",
+      "choose_general": "「明白了。药物起效前，请告诉我一声。」（要睡着了……最后想确认一下，不要突然失去意识。）",
+      "choose_epidural": "「保持清醒也没关系。请告诉我哪些感觉是正常的。」（下面如果突然没知觉，或者突然痛……我会担心是不是出了问题。）",
+      "choose_local": "「好的。局麻之后还会痛吗？会感觉到切开吗？请不要突然开始。」（针过来的时候请先说一声……我不太擅长打针。）",
+      "choose_none": "「没有麻醉……？请等一下，这样真的要开始吗？」（不麻醉就下刀……这个顺序让我很不安。）",
+      "induction_reassure": "「谢谢。听完你的说明，我好像没那么慌了。」（手还在就好……药一开始发沉，我会更需要有人在。医生的眼睛很稳，看着会安心一点。）",
+      "insist_without_anesthesia": "「对不起，请停下。请不要开刀——我还没有麻醉。」（再往下我会维持不住……我不要醒着挨这一刀。）",
+      "assistant_stabilize_epidural": "「我感觉到助手按住切入部位了。这种压力是正常的吗？」（掌心的温度很清楚……被按住的那一块突然比别处更醒。）",
+      "assistant_stabilize_local": "「那里被按住以后有些发紧。麻醉已经完全起效了吗？」（再压的话，我可能会出声……请当没听见。）",
+      "assistant_stabilize_none": "「请停一下，很痛——医生，请轻一点。」（一压就整片都痛起来了……有必要按这么用力吗。等下刀要下来了。）",
+      "incise_epidural": "「我感觉到压力了。这是正常的吗？请继续告诉我进度。」（和预想不太一样……是在被打开吗。知道进行到哪，我才不会去想别的。）",
+      "incise_local": "「有一点刺痛，还有牵拉感。麻醉是已经完全起效了吗？」（里面比表面更清楚……切皮还好，再往里真的不会痛吗。）",
+      "incise_none": "「啊——请停下，太痛了！医生，请停一下！！好痛，要撑不住了！！」（原来没有麻醉的刀是这种痛……呼吸都乱了。）",
+      "contact_pause": "「谢谢你停下来。刚才有些难受，现在缓过来一点了。」（心跳还很快……先把呼吸放平。不要让大家知道我刚才差点出声。）",
+      "contact_command": "「好的，我会保持不动。请告诉我这一段还要多久。」（每碰一下，肚子就会自己收紧……无影灯下这样被碰到，有些失礼的念头冒出来了。先装稳。）",
+      "contact_continue": "「我还在听。」（器械声比预想大。腿在细细地抖……身体好像也有点奇怪。手指把床单绞紧了。先不问，问出口就不像自己了。）",
+      "ongoing_narrate": "「明白进度以后，我就知道该怎样调整呼吸了。」（是还在表面，还是已经更深了……我好像感觉得到，只是还不想承认。）",
+      "ongoing_eye_contact": "「……好的，我看着。」（对上眼以后呼吸才回来一点。被看着的时候身体更热了……开刀原来是这样被看见。先把注意力放回呼吸。）",
+      "ongoing_silent": "「……。」（不说明的话，下一步要做什么……这是我的身体。有点想哭，但现在不该哭。）",
+      "closure_reassure": "「最困难的部分结束了吗？请再告诉我还剩最后哪一步。」（边缘还在轻轻跳……缝合的时候会痛吗。先把这句话问完。）",
+      "closure_coach": "「好的，我会继续保持不动。结束时请马上告诉我。」（被打开太久了……已经分不清是痛还是麻。先不要并腿，并了会很明显。）",
+      "closure_silent": "「……。」（器械声停了也不敢先问。腿还张着，内侧在细细地抽……真的快结束了吗。可别又要处理别的位置。）",
+      "hospitalization_question": "「看来还是需要住院手术，对吗？手术会安排在什么时候？」（怎么真的要住院开刀了……有些突然，也有点不真实。）",
+      "hospitalization_response": "「明白了，有些意外。麻烦把住院后的检查和手术安排再说明一次，我也需要联系家里。」（得先跟家里说一声……我还没完全把这件事当成真的。）"
+    },
+    "reaction_variants": {
+      "operative_positioning_awake": [
+        "「所以需要先固定，对吗？手臂保持这样就可以吗？」（真的被绑在台上了……呼吸有点浅。这个姿势比预想更受限制。）",
+        "「腿部也要维持这个角度吗？请先告诉我哪些地方不能动。」（这样躺着有些太敞了……先听说明，不要先乱想。）"
+      ],
+      "operative_positioning_none": [
+        "「请不要绑住我的手。请先说明。」（手被按住的话，下面就只能那样敞着……我有些怕接下来要做什么。）",
+        "「请等一下，腿不要再往外——这个角度不行，有些痛。」（这样太开了……中间完全暴露出来了。）"
+      ],
+      "urinary_catheterization_awake": [
+        "「现在要放置导尿管吗。会有些不舒服，对吧？请慢一点。」（原来要进到那里面去……还没开刀就要先做这个，之前好像没有说得这么清楚。）",
+        "「我明白手术需要监测尿量，我会配合。完成后请告诉我。」（有些难受……把注意力放回呼吸，不要一直去注意它。）"
+      ],
+      "urinary_catheterization_none": [
+        "「请停一下。现在这个很痛——医生。」（一进来又胀又烫……没有麻醉为什么要现在放。）",
+        "「那边太痛了。请先拿出来，可以吗。」（每进一点都更清楚……我有些撑不住了。）"
+      ],
+      "skin_disinfection_awake": [
+        "「消毒液有点凉。我会尽量保持不动。」（连那里也要抹到……棉球一过，褶皱里都在发紧。）",
+        "「很凉，还有一点刺。这是正常的吗？」（痛倒不重，只是很羞耻……全身都要被这样涂一遍。）"
+      ],
+      "skin_disinfection_none": [
+        "「好凉，也好刺。那边已经疼了，请不要再涂。」（一遍一遍地涂过胸口和下面……有些受不了。）",
+        "「请不要涂那么大一片。我有些无法继续忍受。」（连褶皱都被翻开涂到了……这比预想更超过。）"
+      ],
+      "incision_marking_awake": [
+        "「这条线比我预想得长。切口真的需要这么大吗？」（笔尖滑过的时候，皮肤自己在颤……）",
+        "「是在复核切口位置吗？看到标记还是有些不安。」（等下就要切这里吗……有点不真实。）"
+      ],
+      "incision_marking_none": [
+        "「这么长？请先停下。真的要切这么大吗？」（看着那条线，身体已经先发紧了……腿也在抖。）",
+        "「请不要再往下画。我还没有做好准备。」（现在是笔，接下来就是刀了……我开始怕了。）"
+      ],
+      "ward_enema": [
+        "「需要侧卧保持一会儿，对吗？……我会配合。」（医生亲手完成这样的准备，护士照常记录着。我知道是流程，身体却还是紧得发僵。）",
+        "「腹部已经有些胀了。还需要再保留几分钟吗？」（她们谈的是时间和剂量，我只能安静忍住那种难堪的感觉。）"
+      ],
+      "ward_skin_prep": [
+        "「备皮要覆盖到腹股沟，是吗？我明白了。」（机器沿着小腹往下移动，护士平静地核对边界，仿佛裸露并不值得特别说明。）",
+        "「有一点刺痒，不过没关系。请继续吧。」（越是被当作普通流程处理，越不知道该把视线放在哪里。）"
+      ],
+      "ward_surgical_cap": [
+        "「请帮我把头发都收好。耳后这一缕也麻烦你了。」（医生的手指隔着帽沿整理头发，护士已经开始检查担架车，流程没有为我的紧张停一下。）",
+        "「这样就准备完成了，是吗？……我会躺到担架车上。」（帽缘压住额头的那一刻，手术突然从安排变成了马上要发生的事。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「请等一下。这次手术不涉及腹部，灌肠还有其他必要吗？」（护士已经标注不适用，医生却仍要执行。我需要确认这不是准备单弄错了。）",
+        "「这项操作似乎和预定术式没有关系……可以再核对一次吗？」（我愿意配合必要的准备，但这种不明原因的不适让我很不安。）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「医生，预定的是乳房手术，为什么还要处理下腹和会阴？」（必须显露到这种程度，却和切口没有关系。越平静地进行越让人难堪。）",
+        "「胸部才是术野，对吗？这里的备皮是否弄错了？」（电动备皮器贴近腿根时，我终于没办法再把疑问咽下去。）"
+      ]
+    }
+  },
+  "fallback": {
+    "case_id": "case_followup",
+    "surgery_id": "surgery_breast_tumor"
+  },
+  "encounter": {
+    "full_undress": {
+      "prompt": "「抱歉，我想确认一下：基础查体需要完全脱去衣物，包括内衣吗？」（范围比预想大得多。她们似乎已经默认我会照做。）",
+      "responses": {
+        "abandon_full_undress": "「明白了，那这部分先不做。请在病历里如实记录。」（至少选择被接受了，只是这次查体会留下缺项。）",
+        "authoritative_full_undress": "「如果这是完整查体的统一要求，我会配合。」（规定被说得很清楚，拒绝反而显得不合理。只能解开衣物，站到检查灯下。）她依照要求整齐地脱去全部衣物，将衣物叠放在托盘里，随后完成基础查体。",
+        "gentle_full_undress": "「好的。请告诉我脱到哪一步、接下来检查什么，我会配合。」（说明很温和，羞耻并没有因此减少。内衣也脱下时，只能把视线移开。）她按你的逐步说明脱到一件不留，努力维持镇定，直到基础查体结束。",
+        "threaten_full_undress": "「请不要用治疗资格来要求我……我明白了，我会脱。」（这已经不是在征求意见。她还是一件件脱下，尽量维持平静。）她沉默片刻，还是脱去全部衣物，在明显僵硬的配合中完成了基础查体。"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_miki"
+    },
+    "title": "第四份病历"
+  },
+  "preop": {
+    "stage_prompts": {
+      "ward_visit": "「医生，麻烦本多医生了。手术的安排，可以再跟我说一遍吗？」",
+      "team": "本多医生担任主刀，选好与本多医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由本多医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「都准备好了。抱歉，我好像比自己以为的更紧张。」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生……看到本多医生进来，我就安心多了。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「等等，医生……这和本多医生之前告诉我的手术不一样吧？」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。本多医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我有一点紧张……如果需要配合呼吸，请慢慢告诉我。」",
+      "surgery_start_local": "「马上要开始了吧？请让我知道每一步，我会尽力配合。」",
+      "surgery_start_none": "「请等一下……我似乎还没有接受麻醉。现在开始会很痛吧？」",
+      "instrument_handoff": "本多医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待本多医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。本多医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，本多医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据本多医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。本多医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "title": "奥寺美纪 · 术前准备",
+    "initial_anxiety": 2,
+    "initial_interaction": {
+      "fear": 30,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 80
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。患者在全身麻醉下没有意识反应。",
+      "incise_epidural": "「我感觉到了一些压力……没关系，请继续提醒我呼吸。」",
+      "incise_local": "「有些刺痛……我还可以，请慢一点。」",
+      "incise_none": "「啊……好痛！请停下来，我真的撑不住了……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_miki",
+        "label": "奥寺美纪 · 基础查体脱衣",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_miki/full_undress_basic_exam.png"
+        ],
+        "caption": "奥寺美纪脱去全部衣物，准备接受基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_miki",
+        "label": "奥寺美纪 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_miki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_miki/enema.png"
+        ],
+        "caption": "本多医生依照病房准备流程，亲手为奥寺美纪完成灌肠。"
+      },
+      {
+        "id": "urinary_catheterization_patient_miki",
+        "label": "奥寺美纪 · 手术室准备 · 留置导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_miki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_miki/urinary_catheterization.png"
+        ],
+        "caption": "手术团队确认无菌操作，为奥寺美纪完成留置导尿。"
+      }
+    ]
+  }
+}

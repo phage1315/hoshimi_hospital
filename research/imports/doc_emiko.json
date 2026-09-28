@@ -1,0 +1,57 @@
+{
+  "character_id": "doc_emiko",
+  "display_name": "御堂 江美子",
+  "source": "User-provided original game artwork; AI-assisted high-resolution transparent portrait variants.",
+  "design": {
+    "role": "外科部医长／外科主任候选",
+    "default_outfit": "white_coat",
+    "expressions": [
+      "neutral",
+      "smile",
+      "serious",
+      "surprised",
+      "worried",
+      "warm"
+    ],
+    "surgical_outfits": [
+      "scrubs",
+      "sterile"
+    ]
+  },
+  "source_files": [
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_01.png",
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_02.png",
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_03.png",
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_04.png",
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_05.png",
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_06.png",
+    "assets/characters/portrait_pack_v14/doc_emiko/sources/source_07.png"
+  ],
+  "runtime_portraits": {
+    "white_coat/neutral": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/neutral.png",
+    "white_coat/smile": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/smile.png",
+    "white_coat/serious": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/serious.png",
+    "white_coat/surprised": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/surprised.png",
+    "white_coat/worried": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/worried.png",
+    "white_coat/warm": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/warm.png",
+    "scrubs/neutral": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/neutral.png",
+    "scrubs/focused": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/focused.png",
+    "scrubs/worried": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/worried.png",
+    "scrubs/warm": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/warm.png",
+    "sterile/neutral": "assets/characters/portrait_pack_v14/doc_emiko/sterile/neutral.png",
+    "sterile/focused": "assets/characters/portrait_pack_v14/doc_emiko/sterile/focused.png",
+    "sterile/worried": "assets/characters/portrait_pack_v14/doc_emiko/sterile/worried.png",
+    "sterile/warm": "assets/characters/portrait_pack_v14/doc_emiko/sterile/warm.png",
+    "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_emiko/operating_patient/nervous.png"
+  },
+  "relationship_event_source": "MIDO_EMIKO_RELATIONSHIP_EVENTS_LV0_LV2.md (user-provided design reference)",
+  "implemented_relationship_events": {
+    "office_refusal": "emiko_office_denied",
+    "lv0": "emiko_intro_rumored_hands",
+    "lv1": "emiko_lv1_first_operation",
+    "lv2": "emiko_lv2_follow_my_lead",
+    "intro_skill_minimum": 56,
+    "lv2_skill_minimum": 70,
+    "lv2_minimum_gap_days": 7
+  }
+}

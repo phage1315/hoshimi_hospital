@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_gigi",
+    "name": "琪琪·安达露西亚",
+    "age": 20,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_gigi_v1/patient_gigi/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_gigi_v1/patient_gigi/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_gigi_v1/patient_gigi/ward/smile.png",
+        "ward/brave": "assets/characters/patient_gigi_v1/patient_gigi/ward/brave.png",
+        "ward/worried": "assets/characters/patient_gigi_v1/patient_gigi/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_gigi_v1/patient_gigi/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_gigi_v1/patient_gigi/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_gigi_v1/patient_gigi/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_gigi_v1/patient_gigi/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_gigi_v1/patient_gigi/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_gigi_v1/patient_gigi/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_gigi/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_gigi/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_gigi/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_gigi/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_gigi_v1/patient_gigi/splash/general_anesthesia.png",
+        "examination/shy": "assets/characters/patient_gigi_v1/patient_gigi/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "enigmatic_observer",
+      "secondary": "self_possessed",
+      "stress_response": "asks_for_details"
+    },
+    "traits": {
+      "baseline_anxiety": 42,
+      "pain_sensitivity": 55,
+      "privacy_sensitivity": 58,
+      "trust_baseline": 38,
+      "control_need": 88,
+      "expressiveness": 62,
+      "health_literacy": 72,
+      "compliance_tendency": 68
+    },
+    "fear_profile": {
+      "pain_fear": 58,
+      "procedure_fear": 50,
+      "diagnosis_fear": 55,
+      "loss_control_fear": 90
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院和手术已经确定了吗？那么，请把接下来的安排完整告诉我。」（事情终于走到这里了……先听清楚，再决定要害怕多少。）",
+      "hospitalization_response": "「我明白了。请继续安排吧，我会配合。」（他们会怎样对待一个躺上手术台的人……我想亲眼看明白。）",
+      "procedure_mismatch": "「这不是刚才说明的术式。医生，你应该先停下来确认。」（果然只要稍微移开视线，流程就可能走向完全不同的地方。）",
+      "explain_plan": "「说得很清楚。每一步开始前，也请像现在这样告诉我。」（他的语气没有闪躲……至少目前值得信任。）",
+      "brief_plan": "「只有结论吗？我更想知道你准备怎样做到。」（越省略细节，越让人在意。）",
+      "last_reassure": "「好，我会看着你们怎么完成它。」（都到这里了，退缩反而显得无趣。）",
+      "choose_general": "「等我醒来，一切就结束了？听起来像把命运暂时交给别人。」（完全失去意识……这种体验比疼痛更陌生。）",
+      "choose_epidural": "「保持清醒也可以。告诉我哪些感觉属于正常范围。」（看不见正在发生什么，却能听见全部声音……很考验人呢。）",
+      "choose_local": "「局部麻醉的话，我仍会感觉到牵拉，对吗？请别含糊。」（他若能坦白说明，我也没必要故意为难。）",
+      "choose_none": "「没有麻醉？这个决定需要一个足够好的理由，否则我不会同意。」（疼痛不是用意志就能装作不存在的东西。）",
+      "induction_reassure": "「你的声音还在……很好。」（意识沉下去以前，最后记住的竟然是他的眼睛。）",
+      "insist_without_anesthesia": "「停下。我没有同意在无麻醉状态下接受手术。」（再镇定也不能让他们越过这条线。）",
+      "assistant_stabilize_none": "「别这样按住我……很痛。先停一下。」（身体比语言更早开始反抗了。）",
+      "assistant_stabilize_local": "「压力很清楚。麻醉范围真的足够吗？」（表面不痛，并不代表里面也会一样安静。）",
+      "assistant_stabilize_epidural": "「我能感觉到有人固定住了这里。可以继续，但请说明下一步。」（触感被拉远了，存在感却反而更强。）",
+      "incise_epidural": "「已经切开了吗？……比想象中安静。」（知道刀已经落下，身体深处还是本能地绷紧了。）",
+      "incise_local": "「有一点刺痛。医生，看着我回答：这在预期内吗？」（只要他避开视线，我就会立刻要求停止。）",
+      "incise_none": "「停——太痛了！立刻停下！」（什么从容都维持不住，身体像被一道火直接撕开。）",
+      "contact_pause": "「谢谢。让我把呼吸找回来，再继续。」（至少他说停就真的停了，这一点很重要。）",
+      "contact_command": "「我会保持不动。你只要准确告诉我还要多久。」（用命令掩饰紧张，看来我也会做这种事。）",
+      "contact_continue": "「……继续吧。」（器械的声音近得过分，但我不想先移开目光。）",
+      "ongoing_narrate": "「继续说。我听得懂，也需要知道进展。」（把未知变成步骤，恐惧就会有边界。）",
+      "ongoing_eye_contact": "「别移开视线。」（只要他还看着我，这间冰冷的手术室就没有完全把我吞掉。）",
+      "ongoing_silent": "「医生，你打算一直沉默吗？」（最令人不安的不是痛，而是所有人都知道发生什么，只有我不知道。）",
+      "closure_reassure": "「最关键的部分已经结束？那就把最后一步也做好。」（终于可以允许自己松一口气了。）",
+      "closure_coach": "「我会继续配合。结束的时候，请由你亲口告诉我。」（已经坚持到这里，不想在最后显得狼狈。）",
+      "closure_silent": "「……现在是在缝合吗？」（安静得让人无法判断，到底是结束了，还是又出了问题。）"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「我知道这是术前准备。请告诉我要保持多久。」（这种事也能被说得如此平常……医院真奇妙。）",
+        "「会有胀感，对吗？我准备好了。」（不舒服归不舒服，至少我想看清自己的反应。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「这个术式真的需要灌肠吗？请把医嘱给我看。」（流程清单似乎和病情对不上。）",
+        "「先暂停。和手术部位无关的准备，需要重新确认。」（顺从不等于放弃判断。）"
+      ],
+      "ward_skin_prep": [
+        "「范围比我想得更大。是为了保持无菌，对吗？」（被当成术野处理以后，身体忽然显得不像自己的。）",
+        "「请继续，我不会乱动。」（机器移动得很轻，羞耻感却异常清晰。）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「切口不在那里，为什么需要处理这片区域？」（这一步没有合理解释。）",
+        "「请护士重新核对医嘱。确认以前不要继续。」（他们是否会因为患者年轻就省略说明？）"
+      ],
+      "ward_surgical_cap": [
+        "「长发全部收进去会花一点时间，麻烦你了。」（他整理得比想象中仔细。）",
+        "「戴上以后，真的开始像一名手术患者了。」（镜子里的自己忽然变得有些陌生。）"
+      ],
+      "operative_positioning_awake": [
+        "「手臂固定在这里就可以？我会配合。」（姿势一旦固定，控制权也随之减少。）",
+        "「请先说明腿和身体需要保持的角度。」（我想知道自己会以什么样子被留在灯下。）"
+      ],
+      "operative_positioning_none": [
+        "「固定可以，但别突然用力。先告诉我。」（没有麻醉时，每个动作都像预告。）",
+        "「这个角度已经让我疼了，请调整。」（他们必须听见，而不是只顾着流程。）"
+      ],
+      "urinary_catheterization_awake": [
+        "「会有异物感，对吗？开始前告诉我。」（再镇定，身体也不可能对此毫无反应。）",
+        "「我会放松。完成后请立即说一声。」（看不到的操作尤其让人在意。）"
+      ],
+      "urinary_catheterization_none": [
+        "「很痛，先停一下！不要继续推进。」（灼热感一下刺进身体深处。）",
+        "「请拿出来重新评估，我无法这样配合。」（忍耐不是无限制的许可。）"
+      ],
+      "skin_disinfection_awake": [
+        "「很凉……消毒范围到这里为止吗？」（皮肤被一寸寸划入即将手术的区域。）",
+        "「我知道会冷，继续吧。」（越接近下刀，室内的每个声音越清楚。）"
+      ],
+      "skin_disinfection_none": [
+        "「那里在刺痛，请检查皮肤反应。」（不是单纯的凉，像细小的火在烧。）",
+        "「先别继续涂，我需要你确认为什么会这么痛。」（身体已经在本能躲避。）"
+      ],
+      "incision_marking_awake": [
+        "「这就是最终切口？让我再确认一次。」（一道线就把手术从概念变成了现实。）",
+        "「标记比想象中长，不过我会保持不动。」（笔尖经过时，皮肤还是轻轻颤了一下。）"
+      ],
+      "incision_marking_none": [
+        "「等等，这条线和说明的不一样。」（如果现在不问，下一次碰到这里的就是刀。）",
+        "「先停止标记。我需要重新听一次术式确认。」（不能因为躺在台上就放弃追问。）"
+      ]
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "full_undress": {
+      "prompt": "「抱歉，我想确认一下：基础查体需要完全脱去衣物，包括内衣吗？」（范围比预想大得多。她们似乎已经默认我会照做。）",
+      "responses": {
+        "abandon_full_undress": "「明白了，那这部分先不做。请在病历里如实记录。」（至少选择被接受了，只是这次查体会留下缺项。）",
+        "authoritative_full_undress": "「如果这是完整查体的统一要求，我会配合。」（规定被说得很清楚，拒绝反而显得不合理。只能解开衣物，站到检查灯下。）她依照要求整齐地脱去全部衣物，将衣物叠放在托盘里，随后完成基础查体。",
+        "gentle_full_undress": "「好的。请告诉我脱到哪一步、接下来检查什么，我会配合。」（说明很温和，羞耻并没有因此减少。内衣也脱下时，只能把视线移开。）她按你的逐步说明脱到一件不留，努力维持镇定，直到基础查体结束。",
+        "threaten_full_undress": "「请不要用治疗资格来要求我……我明白了，我会脱。」（这已经不是在征求意见。她还是一件件脱下，尽量维持平静。）她沉默片刻，还是脱去全部衣物，在明显僵硬的配合中完成了基础查体。"
+      },
+      "visual_pool_id": ""
+    },
+    "title": "琪琪·安达露西亚的病历"
+  },
+  "preop": {
+    "stage_prompts": {
+      "ward_visit": "「医生，麻烦本多医生了。手术的安排，可以再跟我说一遍吗？」",
+      "team": "本多医生担任主刀，选好与本多医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由本多医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「都准备好了。抱歉，我好像比自己以为的更紧张。」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生……看到本多医生进来，我就安心多了。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「等等，医生……这和本多医生之前告诉我的手术不一样吧？」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。本多医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我有一点紧张……如果需要配合呼吸，请慢慢告诉我。」",
+      "surgery_start_local": "「马上要开始了吧？请让我知道每一步，我会尽力配合。」",
+      "surgery_start_none": "「请等一下……我似乎还没有接受麻醉。现在开始会很痛吧？」",
+      "instrument_handoff": "本多医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待本多医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。本多医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，本多医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据本多医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。本多医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "title": "琪琪·安达露西亚 · 术前准备",
+    "initial_anxiety": 2,
+    "initial_interaction": {
+      "fear": 30,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 80
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。患者在全身麻醉下没有意识反应。",
+      "incise_epidural": "「我感觉到了一些压力……没关系，请继续提醒我呼吸。」",
+      "incise_local": "「有些刺痛……我还可以，请慢一点。」",
+      "incise_none": "「啊……好痛！请停下来，我真的撑不住了……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_gigi",
+        "label": "琪琪·安达露西亚 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_gigi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_gigi/enema.png"
+        ],
+        "caption": "本多医生依照病房准备流程，亲手为琪琪·安达露西亚完成灌肠。"
+      }
+    ]
+  }
+}

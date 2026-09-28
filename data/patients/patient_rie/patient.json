@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_rie",
+    "name": "柳原理惠",
+    "age": 26,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_rie_v1/patient_rie/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_rie_v1/patient_rie/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_rie_v1/patient_rie/ward/smile.png",
+        "ward/brave": "assets/characters/patient_rie_v1/patient_rie/ward/brave.png",
+        "ward/worried": "assets/characters/patient_rie_v1/patient_rie/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_rie_v1/patient_rie/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_rie_v1/patient_rie/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_rie_v1/patient_rie/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_rie_v1/patient_rie/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_rie_v1/patient_rie/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_rie_v1/patient_rie/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_rie/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_rie/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_rie/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_rie/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_rie_v1/patient_rie/splash/general_anesthesia.png",
+        "examination/shy": "assets/characters/patient_rie_v1/patient_rie/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "gentle",
+    "personality": {
+      "primary": "graceful_caretaker",
+      "secondary": "lonely_yearning",
+      "stress_response": "seeks_reassurance"
+    },
+    "traits": {
+      "baseline_anxiety": 48,
+      "pain_sensitivity": 62,
+      "privacy_sensitivity": 70,
+      "trust_baseline": 44,
+      "control_need": 54,
+      "expressiveness": 38,
+      "health_literacy": 60,
+      "compliance_tendency": 82
+    },
+    "fear_profile": {
+      "pain_fear": 68,
+      "procedure_fear": 57,
+      "diagnosis_fear": 52,
+      "loss_control_fear": 64
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「需要住院接受手术，是吗？请告诉我该准备些什么。」（家里大概还是会像平常一样安静……至少这里有人会回答我。）",
+      "hospitalization_response": "「我明白了。我会照安排配合，请不用担心我。」（明明是我需要被照顾，却还是习惯先让别人放心。）",
+      "procedure_mismatch": "「对不起，这和刚才说明的术式似乎不一样。可以再核对一次吗？」（不能因为怕添麻烦，就把疑问咽下去。）",
+      "explain_plan": "「谢谢你说明得这么仔细。知道接下来会发生什么，我安心多了。」（很久没有人这样耐心地只对我说话了。）",
+      "brief_plan": "「我会配合的……不过，如果可以，请再多告诉我一点。」（一句“没事”无法填满心里的空白。）",
+      "last_reassure": "「好，我相信你。结束以后，也请告诉我一声。」（把自己交给一个愿意回应的人，竟有一点温暖。）",
+      "choose_general": "「睡过去以后就不会感觉到了吧。那就拜托你守着我了。」（完全失去意识很可怕，可我想相信醒来时有人在。）",
+      "choose_epidural": "「我会保持清醒吗？请偶尔和我说句话，好吗？」（只要还能听见人的声音，就不会像独自被留下。）",
+      "choose_local": "「如果仍会有牵拉感，请提前告诉我。我会努力忍耐。」（又在说“忍耐”了……可除此之外还能怎么办呢。）",
+      "choose_none": "「没有麻醉……我恐怕做不到。请不要让我一个人硬撑。」（连求助都需要勇气，声音还是在发抖。）",
+      "induction_reassure": "「嗯……我听见你了。醒来以后，还会是你吗？」（意识变远以前，第一次希望某个人别离开。）",
+      "insist_without_anesthesia": "「请停下。我没有同意在没有麻醉的情况下继续。」（温顺不该被当作沉默的许可。）",
+      "assistant_stabilize_none": "「好痛……请别压得那么紧，先停一下。」（身体已经控制不住地想逃。）",
+      "assistant_stabilize_local": "「我感觉得到压力。这样属于正常吗？」（手掌的固定让人安心，又让人无处可退。）",
+      "assistant_stabilize_epidural": "「这里被扶住了……我会尽量不动。」（有人稳稳接住身体的感觉，陌生得令人鼻酸。）",
+      "incise_epidural": "「已经开始了吗？……我只感觉到很远的牵动。」（刀落下的事实仍让心口收紧。）",
+      "incise_local": "「有一点刺痛。请确认麻醉真的足够，好吗？」（我不想逞强到最后才被发现。）",
+      "incise_none": "「不行——太痛了！请停下、求你停下！」（礼貌和克制在这一刻全被疼痛撕碎了。）",
+      "contact_pause": "「谢谢……让我缓一缓。我会告诉你什么时候可以继续。」（他真的停下来了，我不是只能独自忍受。）",
+      "contact_command": "「我会照你说的呼吸。请一直告诉我下一步。」（抓住他的声音，就像抓住一只伸过来的手。）",
+      "contact_continue": "「……可以继续。我还撑得住。」（其实很想有人说，不必总是这样懂事。）",
+      "ongoing_narrate": "「请继续说明。我听着，心里会安稳一些。」（有人记得我还醒着，就已经足够重要。）",
+      "ongoing_eye_contact": "「医生……可以看着我吗？」（哪怕只是片刻，也不想在灯下变成无人注视的身体。）",
+      "ongoing_silent": "「是不是一切都顺利？太安静了，我有些害怕。」（熟悉的寂静又回来了，像家里那些漫长的夜晚。）",
+      "closure_reassure": "「已经快结束了吗？谢谢你一直没有把我丢下。」（这句话说出口，胸口竟比伤处更酸。）",
+      "closure_coach": "「好，我继续慢慢呼吸。最后一点也拜托你了。」（终于可以不必一个人把所有事情撑完。）",
+      "closure_silent": "「现在是在缝合吗？请告诉我，你们还在。」（只要有人回答，安静就不会变成遗弃。）"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「我知道是术前准备……请慢一点，我会配合。」（这种狼狈的时候，有人温和说明就好多了。）",
+        "「会有胀痛吧？没关系，请开始。」（又下意识说没关系，其实手心已经全是汗。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「这项准备和我的手术有关吗？可以替我再确认一下吗？」（提出疑问不等于给别人添麻烦。）",
+        "「请先核对医嘱。确认需要以后，我会配合的。」（温柔也可以有自己的界限。）"
+      ],
+      "ward_skin_prep": [
+        "「需要处理这么大的范围吗？我明白了，请继续。」（衣物被掀开的瞬间，还是本能地想遮住自己。）",
+        "「有一点凉……我不会乱动的。」（把羞怯压进平静的声音里，是早已习惯的事。）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「切口并不在这里吧？麻烦先确认准备范围。」（这一次不能只说“没关系”。）",
+        "「对不起，请暂时停一下。我想看一下医嘱。」（保护自己并不是任性。）"
+      ],
+      "ward_surgical_cap": [
+        "「我的头发比较长，全部收进去可能要麻烦你了。」（被人仔细照料头发，竟让心里微微发热。）",
+        "「这样就不会妨碍手术了吧？谢谢。」（帽子戴好以后，手术忽然变得真实。）"
+      ],
+      "operative_positioning_awake": [
+        "「这个姿势可以，我会保持不动。」（灯光下无处遮掩，只能把信任交出去。）",
+        "「手臂需要放在这里吗？请帮我调整一下。」（被稳稳托住的感觉，比想象中更令人安心。）"
+      ],
+      "operative_positioning_none": [
+        "「请慢一点，这个角度已经有些痛了。」（身体在发抖，不能再假装轻松。）",
+        "「固定之前请先告诉我，我怕自己会突然躲开。」（至少让恐惧被听见。）"
+      ],
+      "urinary_catheterization_awake": [
+        "「我会尽量放松。结束时请马上告诉我。」（最难堪的时刻，尤其害怕被当成一件物品。）",
+        "「会有刺痛吗？请慢一点……拜托了。」（声音轻得像在为自己的请求道歉。）"
+      ],
+      "urinary_catheterization_none": [
+        "「很痛……请停一下，不要再推进了。」（灼热沿着身体深处猛地扩散。）",
+        "「我真的承受不了，请先取出来。」（终于不再用微笑掩饰疼痛。）"
+      ],
+      "skin_disinfection_awake": [
+        "「好凉……不过没关系，请继续。」（冰冷液体划过皮肤，身体忍不住绷紧。）",
+        "「这就是要手术的范围吗？我知道了。」（每一寸凉意都在提醒我即将发生什么。）"
+      ],
+      "skin_disinfection_none": [
+        "「这里不只是凉，还有刺痛。请检查一下。」（疼痛正在把克制一点点磨掉。）",
+        "「请先擦掉一些，我的皮肤像在烧。」（我需要的不是忍耐，而是有人回应。）"
+      ],
+      "incision_marking_awake": [
+        "「这条线就是切口吗？比我想象中长一些。」（目光移不开，心也跟着那条线收紧。）",
+        "「请让我确认最后一次，然后就可以继续。」（记住它，像记住身体即将改变的位置。）"
+      ],
+      "incision_marking_none": [
+        "「这和刚才说明的位置不同，请先停下。」（躺在这里也仍然有权说不。）",
+        "「麻烦重新核对术式。确认以前不要落刀。」（温和的语气里第一次有了不容退让。）"
+      ]
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "full_undress": {
+      "prompt": "「抱歉，我想确认一下：基础查体需要完全脱去衣物，包括内衣吗？」（范围比预想大得多。她们似乎已经默认我会照做。）",
+      "responses": {
+        "abandon_full_undress": "「明白了，那这部分先不做。请在病历里如实记录。」（至少选择被接受了，只是这次查体会留下缺项。）",
+        "authoritative_full_undress": "「如果这是完整查体的统一要求，我会配合。」（规定被说得很清楚，拒绝反而显得不合理。只能解开衣物，站到检查灯下。）她依照要求整齐地脱去全部衣物，将衣物叠放在托盘里，随后完成基础查体。",
+        "gentle_full_undress": "「好的。请告诉我脱到哪一步、接下来检查什么，我会配合。」（说明很温和，羞耻并没有因此减少。内衣也脱下时，只能把视线移开。）她按你的逐步说明脱到一件不留，努力维持镇定，直到基础查体结束。",
+        "threaten_full_undress": "「请不要用治疗资格来要求我……我明白了，我会脱。」（这已经不是在征求意见。她还是一件件脱下，尽量维持平静。）她沉默片刻，还是脱去全部衣物，在明显僵硬的配合中完成了基础查体。"
+      },
+      "visual_pool_id": ""
+    },
+    "title": "柳原理惠的病历"
+  },
+  "preop": {
+    "stage_prompts": {
+      "ward_visit": "「医生，麻烦本多医生了。手术的安排，可以再跟我说一遍吗？」",
+      "team": "本多医生担任主刀，选好与本多医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由本多医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「都准备好了。抱歉，我好像比自己以为的更紧张。」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生……看到本多医生进来，我就安心多了。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「等等，医生……这和本多医生之前告诉我的手术不一样吧？」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。本多医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我有一点紧张……如果需要配合呼吸，请慢慢告诉我。」",
+      "surgery_start_local": "「马上要开始了吧？请让我知道每一步，我会尽力配合。」",
+      "surgery_start_none": "「请等一下……我似乎还没有接受麻醉。现在开始会很痛吧？」",
+      "instrument_handoff": "本多医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待本多医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。本多医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，本多医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据本多医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。本多医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "title": "柳原理惠 · 术前准备",
+    "initial_anxiety": 2,
+    "initial_interaction": {
+      "fear": 30,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 80
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。患者在全身麻醉下没有意识反应。",
+      "incise_epidural": "「我感觉到了一些压力……没关系，请继续提醒我呼吸。」",
+      "incise_local": "「有些刺痛……我还可以，请慢一点。」",
+      "incise_none": "「啊……好痛！请停下来，我真的撑不住了……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": []
+  }
+}

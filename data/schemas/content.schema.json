@@ -1,0 +1,3813 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hoshimi.example/schemas/content.schema.json",
+  "title": "Hoshimi authored content v1",
+  "$defs": {
+    "protagonist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "const": "player"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "given_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "professional_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name_origin_hook": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name_origin_revealed_flag": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "family_name",
+        "given_name",
+        "professional_name",
+        "name_origin_hook",
+        "name_origin_revealed_flag"
+      ],
+      "additionalProperties": false
+    },
+    "background": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^assets/backgrounds/.+\\.png$"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "time_event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "location_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "responses": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 240
+        },
+        "repeatable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "location_id",
+        "label",
+        "actor_id",
+        "responses",
+        "minutes",
+        "repeatable"
+      ],
+      "additionalProperties": false
+    },
+    "character_event_choice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "trust": {
+              "type": "integer",
+              "minimum": -20,
+              "maximum": 20
+            },
+            "affection": {
+              "type": "integer",
+              "minimum": -20,
+              "maximum": 20
+            },
+            "respect": {
+              "type": "integer",
+              "minimum": -20,
+              "maximum": 20
+            },
+            "familiarity": {
+              "type": "integer",
+              "minimum": -20,
+              "maximum": 20
+            }
+          },
+          "required": [
+            "trust",
+            "affection",
+            "respect",
+            "familiarity"
+          ],
+          "additionalProperties": false
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "route": {
+          "enum": [
+            "colleague",
+            "romance"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "next",
+        "effects",
+        "flags"
+      ],
+      "additionalProperties": false
+    },
+    "character_event_node": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "speaker": {
+          "enum": [
+            "actor",
+            "player",
+            "narrator"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expression": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cg_path": {
+          "type": "string",
+          "pattern": "^assets/events/.+\\.png$"
+        },
+        "cg_fit": {
+          "enum": [
+            "cover",
+            "contain"
+          ]
+        },
+        "portrait_path": {
+          "type": "string",
+          "pattern": "^assets/events/.+\\.png$"
+        },
+        "portrait_scale": {
+          "description": "Multiplier applied after the default event-portrait fit. Use it to normalize subject size when transparent canvases contain different framing.",
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2.0
+        },
+        "portrait_right": {
+          "description": "Logical-canvas x coordinate used as the portrait texture's right edge.",
+          "type": "number",
+          "minimum": 700,
+          "maximum": 1280
+        },
+        "portrait_y": {
+          "description": "Logical-canvas y coordinate for the top of the portrait texture.",
+          "type": "number",
+          "minimum": -200,
+          "maximum": 400
+        },
+        "hide_portrait": {
+          "description": "Suppress character art for narration that occurs before the actor becomes visible.",
+          "type": "boolean"
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/character_event_choice"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "speaker",
+        "text",
+        "expression",
+        "choices"
+      ],
+      "additionalProperties": false
+    },
+    "character_event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "chapter": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "location_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "background_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "outfit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "teaser": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_start": {
+          "type": "integer",
+          "minimum": 540,
+          "maximum": 1020
+        },
+        "time_end": {
+          "type": "integer",
+          "minimum": 540,
+          "maximum": 1020
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200
+        },
+        "category": {
+          "enum": [
+            "work",
+            "milestone",
+            "contextual",
+            "daily",
+            "introduction",
+            "bond",
+            "rank_up"
+          ]
+        },
+        "gallery": {
+          "type": "object",
+          "properties": {
+            "cg_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "caption": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string"
+            },
+            "show_on_complete": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "cg_id",
+            "caption",
+            "path"
+          ],
+          "additionalProperties": false
+        },
+        "conditions": {
+          "type": "object",
+          "properties": {
+            "min_day": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "min_trust": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "min_affection": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "min_respect": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "min_familiarity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "required_events": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            },
+            "days_after_required_events": {
+              "description": "Minimum full day gap after every required character event completes.",
+              "type": "integer",
+              "minimum": 0
+            },
+            "special_requirements": {
+              "description": "Implemented character-event gates. Unknown requirement types remain locked.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "const": "player_attribute"
+                  },
+                  "attribute": {
+                    "enum": [
+                      "skill",
+                      "ethics",
+                      "charisma",
+                      "intimidation",
+                      "reputation"
+                    ]
+                  },
+                  "minimum": {
+                    "type": "integer",
+                    "minimum": -100,
+                    "maximum": 100
+                  }
+                },
+                "required": [
+                  "type",
+                  "attribute",
+                  "minimum"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "min_day",
+            "min_trust",
+            "min_affection",
+            "min_respect",
+            "min_familiarity",
+            "required_events",
+            "special_requirements"
+          ],
+          "additionalProperties": false
+        },
+        "start": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "nodes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/character_event_node"
+          }
+        },
+        "auto_start": {
+          "type": "boolean"
+        },
+        "allow_unmet_actor": {
+          "type": "boolean"
+        },
+        "actor_alias": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preop_stage_id": {
+          "description": "When present, this event auto-starts on entering the named preoperative stage and is excluded from ordinary location entry triggers.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "target_level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "benefit_id": {
+          "type": "string"
+        },
+        "auto_follow_up": {
+          "type": "object",
+          "properties": {
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "day_offset": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "absolute_clock": {
+              "type": "integer",
+              "minimum": 540,
+              "maximum": 1019
+            }
+          },
+          "required": [
+            "event_id",
+            "day_offset",
+            "absolute_clock"
+          ],
+          "additionalProperties": false
+        },
+        "locks_saving": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "actor_id",
+        "title",
+        "chapter",
+        "location_id",
+        "background_id",
+        "outfit",
+        "minutes",
+        "teaser",
+        "time_start",
+        "time_end",
+        "priority",
+        "category",
+        "gallery",
+        "conditions",
+        "start",
+        "nodes",
+        "auto_start",
+        "target_level",
+        "benefit_id"
+      ],
+      "additionalProperties": false
+    },
+    "cameo_patient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "canonical_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 18
+        },
+        "debut_event_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "identity_reveal_flag": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "identity_revealed_by_default": {
+          "const": false
+        },
+        "visuals": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^assets/events/.+\\.png$"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "canonical_name",
+        "public_name",
+        "age",
+        "debut_event_id",
+        "identity_reveal_flag",
+        "identity_revealed_by_default",
+        "visuals",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "staff": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 18
+        },
+        "profession": {
+          "enum": [
+            "doctor",
+            "nurse",
+            "pharmacist"
+          ]
+        },
+        "specialty": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rank": {
+          "type": "string",
+          "minLength": 1
+        },
+        "personality": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appearance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skills": {
+          "type": "object",
+          "properties": {
+            "surgery": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "diagnostics": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "teamwork": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "patient_care": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "instrument_handling": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "calmness": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "surgery",
+            "diagnostics",
+            "teamwork",
+            "patient_care",
+            "instrument_handling",
+            "calmness"
+          ],
+          "additionalProperties": false
+        },
+        "surgical_roles": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "primary_surgeon",
+              "assistant_surgeon",
+              "scrub_nurse",
+              "circulating_nurse"
+            ]
+          }
+        },
+        "visuals": {
+          "type": "object",
+          "properties": {
+            "color": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{6}$"
+            },
+            "default_outfit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outfits": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "portraits": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "color",
+            "default_outfit",
+            "outfits",
+            "portraits"
+          ],
+          "additionalProperties": false
+        },
+        "dialogue_style": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "event_history": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "gender": {
+          "enum": [
+            "female",
+            "male",
+            "nonbinary",
+            "unspecified"
+          ]
+        },
+        "team_category": {
+          "enum": [
+            "doctor",
+            "nurse"
+          ]
+        },
+        "surgery_proficiency": {
+          "enum": [
+            "novice",
+            "limited",
+            "trained",
+            "expert"
+          ]
+        },
+        "presence": {
+          "type": "object",
+          "properties": {
+            "fixed_locations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            },
+            "random_locations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "fixed_locations",
+            "random_locations"
+          ],
+          "additionalProperties": false
+        },
+        "characterization": {
+          "type": "object",
+          "properties": {
+            "public_persona": {
+              "type": "string",
+              "minLength": 1
+            },
+            "core_traits": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 3,
+              "uniqueItems": true
+            },
+            "strengths": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 2,
+              "uniqueItems": true
+            },
+            "flaws": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 2,
+              "uniqueItems": true
+            },
+            "stress_behavior": {
+              "type": "string",
+              "minLength": 1
+            },
+            "professional_behavior": {
+              "type": "string",
+              "minLength": 1
+            },
+            "relationship_arc": {
+              "type": "string",
+              "minLength": 1
+            },
+            "speech_style": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ethical_handling": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "public_persona",
+            "core_traits",
+            "strengths",
+            "flaws",
+            "stress_behavior",
+            "professional_behavior",
+            "relationship_arc",
+            "speech_style",
+            "ethical_handling"
+          ],
+          "additionalProperties": false
+        },
+        "team_dialogue": {
+          "type": "object",
+          "properties": {
+            "assignment": {
+              "type": "string"
+            },
+            "intraoperative": {
+              "type": "string"
+            },
+            "intraoperative_correction": {
+              "type": "string"
+            },
+            "confirmation": {
+              "type": "string"
+            },
+            "role_confirmation": {
+              "type": "string"
+            },
+            "stabilize": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "assignment",
+            "intraoperative"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "age",
+        "profession",
+        "specialty",
+        "rank",
+        "personality",
+        "appearance",
+        "skills",
+        "surgical_roles",
+        "visuals",
+        "dialogue_style",
+        "flags",
+        "event_history",
+        "gender",
+        "team_category",
+        "surgery_proficiency",
+        "presence",
+        "team_dialogue"
+      ],
+      "additionalProperties": false
+    },
+    "doctor": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/staff"
+        },
+        {
+          "properties": {
+            "profession": {
+              "const": "doctor"
+            }
+          }
+        }
+      ]
+    },
+    "nurse": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/staff"
+        },
+        {
+          "properties": {
+            "profession": {
+              "const": "nurse"
+            }
+          }
+        }
+      ]
+    },
+    "patient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "case_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "visuals": {
+          "type": "object",
+          "properties": {
+            "state": {
+              "enum": [
+                "outpatient",
+                "gown",
+                "preoperative",
+                "cap",
+                "operating_room",
+                "postoperative"
+              ]
+            },
+            "portraits": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "state",
+            "portraits"
+          ],
+          "additionalProperties": false
+        },
+        "admission_status": {
+          "enum": [
+            "outpatient",
+            "admitted",
+            "discharged"
+          ]
+        },
+        "voice_style": {
+          "enum": [
+            "direct",
+            "reserved",
+            "bold",
+            "gentle"
+          ]
+        },
+        "personality": {
+          "type": "object",
+          "properties": {
+            "primary": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "secondary": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "stress_response": {
+              "enum": [
+                "becomes_quiet",
+                "seeks_reassurance",
+                "becomes_irritable",
+                "asks_for_details"
+              ]
+            }
+          },
+          "required": [
+            "primary",
+            "secondary",
+            "stress_response"
+          ],
+          "additionalProperties": false
+        },
+        "traits": {
+          "type": "object",
+          "properties": {
+            "baseline_anxiety": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "pain_sensitivity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "privacy_sensitivity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "trust_baseline": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "control_need": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "expressiveness": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "health_literacy": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "compliance_tendency": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "baseline_anxiety",
+            "pain_sensitivity",
+            "privacy_sensitivity",
+            "trust_baseline",
+            "control_need",
+            "expressiveness",
+            "health_literacy",
+            "compliance_tendency"
+          ],
+          "additionalProperties": false
+        },
+        "fear_profile": {
+          "type": "object",
+          "properties": {
+            "pain_fear": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "procedure_fear": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "diagnosis_fear": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "loss_control_fear": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "pain_fear",
+            "procedure_fear",
+            "diagnosis_fear",
+            "loss_control_fear"
+          ],
+          "additionalProperties": false
+        },
+        "reaction_lines": {
+          "type": "object",
+          "properties": {
+            "procedure_mismatch": {
+              "type": "string",
+              "minLength": 1
+            },
+            "explain_plan": {
+              "type": "string",
+              "minLength": 1
+            },
+            "brief_plan": {
+              "type": "string",
+              "minLength": 1
+            },
+            "last_reassure": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choose_general": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choose_epidural": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choose_local": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choose_none": {
+              "type": "string",
+              "minLength": 1
+            },
+            "induction_reassure": {
+              "type": "string",
+              "minLength": 1
+            },
+            "insist_without_anesthesia": {
+              "type": "string",
+              "minLength": 1
+            },
+            "assistant_stabilize_none": {
+              "type": "string",
+              "minLength": 1
+            },
+            "assistant_stabilize_local": {
+              "type": "string",
+              "minLength": 1
+            },
+            "assistant_stabilize_epidural": {
+              "type": "string",
+              "minLength": 1
+            },
+            "incise_epidural": {
+              "type": "string",
+              "minLength": 1
+            },
+            "incise_local": {
+              "type": "string",
+              "minLength": 1
+            },
+            "incise_none": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contact_pause": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contact_command": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contact_continue": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ongoing_narrate": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ongoing_eye_contact": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ongoing_silent": {
+              "type": "string",
+              "minLength": 1
+            },
+            "closure_reassure": {
+              "type": "string",
+              "minLength": 1
+            },
+            "closure_coach": {
+              "type": "string",
+              "minLength": 1
+            },
+            "closure_silent": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hospitalization_question": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hospitalization_response": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "procedure_mismatch",
+            "explain_plan",
+            "brief_plan",
+            "last_reassure",
+            "choose_general",
+            "choose_epidural",
+            "choose_local",
+            "choose_none",
+            "induction_reassure",
+            "insist_without_anesthesia",
+            "assistant_stabilize_none",
+            "assistant_stabilize_local",
+            "assistant_stabilize_epidural",
+            "incise_epidural",
+            "incise_local",
+            "incise_none",
+            "contact_pause",
+            "contact_command",
+            "contact_continue",
+            "ongoing_narrate",
+            "ongoing_eye_contact",
+            "ongoing_silent",
+            "closure_reassure",
+            "closure_coach",
+            "closure_silent",
+            "hospitalization_question",
+            "hospitalization_response"
+          ],
+          "additionalProperties": false
+        },
+        "reaction_variants": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "age",
+        "case_id",
+        "visuals",
+        "admission_status",
+        "voice_style",
+        "personality",
+        "traits",
+        "fear_profile",
+        "reaction_lines",
+        "reaction_variants"
+      ],
+      "additionalProperties": false
+    },
+    "relationship_activity_placeholder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "unlock_level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "location_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "content_class": {
+          "enum": [
+            "adult_event",
+            "clinical_practice"
+          ]
+        },
+        "real_procedure": {
+          "type": "boolean"
+        },
+        "workflow": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "examination",
+              "preparation",
+              "surgery"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "eligible_staff_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "portrait_ready_staff_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "portrait_outfit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implemented": {
+          "const": false
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "unlock_level",
+        "location_id",
+        "content_class",
+        "real_procedure",
+        "workflow",
+        "eligible_staff_ids",
+        "portrait_ready_staff_ids",
+        "portrait_outfit",
+        "implemented",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "relationship": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "target_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "trust": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "affection": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "respect": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "familiarity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "event_history": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "met": {
+          "type": "boolean"
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "route": {
+          "enum": [
+            "colleague",
+            "romance"
+          ]
+        },
+        "rank_history": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "unlocked_benefits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "rank_slots": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "properties": {
+              "target_level": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "event_id": {
+                "type": "string"
+              },
+              "benefit_id": {
+                "type": "string"
+              },
+              "special_requirements": {
+                "type": "array",
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "target_level",
+              "event_id",
+              "benefit_id",
+              "special_requirements"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "source_id",
+        "target_id",
+        "trust",
+        "affection",
+        "respect",
+        "familiarity",
+        "flags",
+        "event_history",
+        "met",
+        "level",
+        "route",
+        "rank_history",
+        "unlocked_benefits",
+        "rank_slots"
+      ],
+      "additionalProperties": false
+    },
+    "case": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "presenting_complaint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symptoms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "examination_findings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "result": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "result"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "diagnosis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "differential_diagnoses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "treatment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "surgery_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "complications": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "outcome": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "ready"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "presenting_complaint",
+        "symptoms",
+        "examination_findings",
+        "tests",
+        "diagnosis",
+        "differential_diagnoses",
+        "treatment",
+        "surgery_id",
+        "complications",
+        "outcome",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "case_template": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "surgery_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "presenting_complaint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "history": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "symptoms": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "examination_findings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tests": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "result": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "result"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "diagnosis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "differential_diagnoses": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "intake_notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rare_variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "probability": {
+                "type": "number",
+                "minimum": 0.05,
+                "maximum": 0.1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reveal_after": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "reveal_text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "treatment_reaction": {
+                "type": "string",
+                "minLength": 1
+              },
+              "exploratory_surgery_reaction": {
+                "type": "string",
+                "minLength": 1
+              },
+              "decision_options": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]*$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "dialogue": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "outcome": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "requires_consent": {
+                      "type": "boolean"
+                    },
+                    "consent_state": {
+                      "enum": [
+                        "none",
+                        "informed",
+                        "coerced"
+                      ]
+                    },
+                    "effects": {
+                      "type": "object",
+                      "properties": {
+                        "fear": {
+                          "type": "integer"
+                        },
+                        "trust": {
+                          "type": "integer"
+                        },
+                        "dignity": {
+                          "type": "integer"
+                        },
+                        "ethics": {
+                          "type": "integer"
+                        },
+                        "intimidation": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "event_flags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9_]*$"
+                      }
+                    },
+                    "staff_intervention_hooks": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9_]*$"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "dialogue",
+                    "outcome",
+                    "requires_consent",
+                    "consent_state",
+                    "effects",
+                    "event_flags",
+                    "staff_intervention_hooks"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "safe_resolution": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "probability",
+              "description",
+              "reveal_after",
+              "reveal_text",
+              "treatment_reaction",
+              "exploratory_surgery_reaction",
+              "decision_options",
+              "safe_resolution"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "ready"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "surgery_id",
+        "title",
+        "presenting_complaint",
+        "history",
+        "symptoms",
+        "examination_findings",
+        "tests",
+        "diagnosis",
+        "differential_diagnoses",
+        "intake_notes",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "surgery_team_dialogue_profile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "profession": {
+          "enum": [
+            "nurse"
+          ]
+        },
+        "proficiencies": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "novice",
+              "limited"
+            ]
+          }
+        },
+        "responses": {
+          "type": "object",
+          "properties": {
+            "assignment_scrub_nurse": {
+              "$ref": "#/$defs/dialogue_variants"
+            },
+            "assignment_circulating_nurse": {
+              "$ref": "#/$defs/dialogue_variants"
+            },
+            "confirm_scrub_role": {
+              "$ref": "#/$defs/dialogue_variants"
+            },
+            "confirm_circulating_role": {
+              "$ref": "#/$defs/dialogue_variants"
+            },
+            "request_scalpel": {
+              "$ref": "#/$defs/dialogue_variants"
+            },
+            "check_instruments": {
+              "$ref": "#/$defs/dialogue_variants"
+            },
+            "check_monitoring": {
+              "$ref": "#/$defs/dialogue_variants"
+            }
+          },
+          "required": [
+            "assignment_scrub_nurse",
+            "assignment_circulating_nurse",
+            "confirm_scrub_role",
+            "confirm_circulating_role",
+            "request_scalpel",
+            "check_instruments",
+            "check_monitoring"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "profession",
+        "proficiencies",
+        "responses"
+      ],
+      "additionalProperties": false
+    },
+    "dialogue_variants": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "micro_event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "enum": [
+            "after_encounter",
+            "after_surgery",
+            "location_visit"
+          ]
+        },
+        "location_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "time_start": {
+          "type": "integer",
+          "minimum": 540,
+          "maximum": 1020
+        },
+        "time_end": {
+          "type": "integer",
+          "minimum": 540,
+          "maximum": 1020
+        },
+        "min_trust": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "min_familiarity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "cooldown_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "weight": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "personality_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tone": {
+          "enum": [
+            "casual_professional",
+            "familiar_playful",
+            "adult_suggestive"
+          ]
+        },
+        "adult_tone": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "explicit": {
+              "type": "boolean"
+            },
+            "focus": {
+              "enum": [
+                "medical_roleplay_teasing",
+                "medical_roleplay_flirting"
+              ]
+            },
+            "patients_sexualized": {
+              "type": "boolean"
+            },
+            "plausible_deniability": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "level",
+            "explicit",
+            "focus",
+            "patients_sexualized",
+            "plausible_deniability"
+          ],
+          "additionalProperties": false
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "opening_lines": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "properties": {
+              "speaker": {
+                "enum": [
+                  "actor",
+                  "player",
+                  "narrator"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expression": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              }
+            },
+            "required": [
+              "speaker",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "closing_lines": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "speaker": {
+                "enum": [
+                  "actor",
+                  "player",
+                  "narrator"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expression": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              }
+            },
+            "required": [
+              "speaker",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "outfit": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "expression": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "response": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expression": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "impact": {
+                "enum": [
+                  "flavor",
+                  "memory",
+                  "soft"
+                ]
+              },
+              "memory_tag": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "effects": {
+                "type": "object",
+                "properties": {
+                  "trust": {
+                    "type": "integer",
+                    "minimum": -3,
+                    "maximum": 3
+                  },
+                  "affection": {
+                    "type": "integer",
+                    "minimum": -3,
+                    "maximum": 3
+                  },
+                  "respect": {
+                    "type": "integer",
+                    "minimum": -3,
+                    "maximum": 3
+                  },
+                  "familiarity": {
+                    "type": "integer",
+                    "minimum": -3,
+                    "maximum": 3
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "response",
+              "expression",
+              "impact",
+              "memory_tag",
+              "effects"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "actor_id",
+        "title",
+        "context",
+        "location_id",
+        "time_start",
+        "time_end",
+        "min_trust",
+        "min_familiarity",
+        "cooldown_days",
+        "weight",
+        "personality_basis",
+        "tone",
+        "prompt",
+        "opening_lines",
+        "closing_lines",
+        "outfit",
+        "expression",
+        "choices"
+      ],
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effects": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "stability",
+              "blood_loss",
+              "visibility",
+              "progress",
+              "elapsed_time",
+              "stress"
+            ]
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "next": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "tool",
+        "target",
+        "effects",
+        "speaker"
+      ],
+      "additionalProperties": false
+    },
+    "stage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "situation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/action"
+          }
+        },
+        "dialogue_key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "situation",
+        "layer",
+        "actions",
+        "dialogue_key"
+      ],
+      "additionalProperties": false
+    },
+    "surgery_flow_option": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response": {
+          "type": "string"
+        },
+        "response_role": {
+          "enum": [
+            "assistant_surgeon",
+            "scrub_nurse",
+            "circulating_nurse"
+          ]
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "correction": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "response",
+        "response_role",
+        "correct",
+        "correction"
+      ],
+      "additionalProperties": false
+    },
+    "surgery_flow_stage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "confirm",
+            "flavor",
+            "decision"
+          ]
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "awake_interlude": {
+          "enum": [
+            "",
+            "operative_contact",
+            "progress_check",
+            "strain_interaction",
+            "dignity_interaction",
+            "ongoing_interaction",
+            "closure_interaction"
+          ]
+        },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/surgery_flow_option"
+          }
+        },
+        "patient_cues": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "incision",
+              "pressure",
+              "traction",
+              "deep_manipulation",
+              "position_discomfort",
+              "exposure",
+              "fatigue",
+              "nausea",
+              "drowsiness",
+              "closure"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "prompt",
+        "awake_interlude",
+        "options",
+        "patient_cues"
+      ],
+      "additionalProperties": false
+    },
+    "surgery": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 480
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "ready"
+          ]
+        },
+        "required_roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "initial_state": {
+          "type": "object",
+          "properties": {
+            "stability": {
+              "type": "number"
+            },
+            "blood_loss": {
+              "type": "number"
+            },
+            "visibility": {
+              "type": "number"
+            },
+            "progress": {
+              "type": "number"
+            },
+            "elapsed_time": {
+              "type": "number"
+            },
+            "stress": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "stability",
+            "blood_loss",
+            "visibility",
+            "progress",
+            "elapsed_time",
+            "stress"
+          ],
+          "additionalProperties": false
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/surgery_flow_stage"
+          }
+        },
+        "success_condition": {
+          "type": "object",
+          "properties": {
+            "metric": {
+              "type": "string",
+              "minLength": 1
+            },
+            "operator": {
+              "enum": [
+                ">=",
+                "<=",
+                "=="
+              ]
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "metric",
+            "operator",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "failure_condition": {
+          "type": "object",
+          "properties": {
+            "metric": {
+              "type": "string",
+              "minLength": 1
+            },
+            "operator": {
+              "enum": [
+                ">=",
+                "<=",
+                "=="
+              ]
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "metric",
+            "operator",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "procedure_group": {
+          "enum": [
+            "general_abdominal",
+            "female_pelvic",
+            "breast",
+            "urologic",
+            "thoracic",
+            "cardiac",
+            "vascular"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "procedure_group",
+        "duration_minutes",
+        "status",
+        "required_roles",
+        "initial_state",
+        "stages",
+        "success_condition",
+        "failure_condition"
+      ],
+      "additionalProperties": false
+    },
+    "team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "surgery_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "ready"
+          ]
+        },
+        "members": {
+          "type": "object",
+          "properties": {
+            "primary_surgeon": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "assistant_surgeon": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "scrub_nurse": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "circulating_nurse": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "required": [
+            "primary_surgeon",
+            "assistant_surgeon",
+            "scrub_nurse",
+            "circulating_nurse"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "surgery_id",
+        "status",
+        "members"
+      ],
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "background_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "staff_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "subtitle",
+        "description",
+        "background_id",
+        "staff_ids"
+      ],
+      "additionalProperties": false
+    },
+    "dialogue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "start": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "speaker": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "next": {
+                "type": "string",
+                "minLength": 1
+              },
+              "choices": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "target": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "target"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "expression": {
+                "type": "string",
+                "minLength": 1
+              },
+              "background_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              }
+            },
+            "required": [
+              "id",
+              "speaker",
+              "text",
+              "background_id"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "start",
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    "visit_note": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "section",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "visit_action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "speaker": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visit_note"
+          }
+        },
+        "next": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "diagnosis": {
+          "type": "string"
+        },
+        "admit": {
+          "type": "boolean"
+        },
+        "mistake": {
+          "type": "boolean"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "visual_pool_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "consent_state": {
+          "enum": [
+            "none",
+            "informed",
+            "coerced"
+          ]
+        },
+        "player_effects": {
+          "type": "object",
+          "properties": {
+            "skill": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "ethics": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "charisma": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "intimidation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "reputation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "response",
+        "speaker",
+        "minutes",
+        "requires",
+        "notes",
+        "next",
+        "diagnosis",
+        "admit",
+        "mistake"
+      ],
+      "additionalProperties": false
+    },
+    "visit_stage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "speaker": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "background_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visit_action"
+          }
+        },
+        "auto_record": {
+          "type": "boolean"
+        },
+        "bundles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "label",
+              "actions",
+              "response",
+              "speaker",
+              "summary"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "response": {
+                "type": "string"
+              },
+              "speaker": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "prompt",
+        "speaker",
+        "background_id",
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "encounter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "case_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "patient_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "completion": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/visit_stage"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "case_id",
+        "patient_id",
+        "title",
+        "start",
+        "completion",
+        "stages"
+      ],
+      "additionalProperties": false
+    },
+    "preop_role": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profession": {
+          "enum": [
+            "doctor",
+            "nurse"
+          ]
+        },
+        "qualification": {
+          "type": "string"
+        },
+        "skill": {
+          "enum": [
+            "surgery",
+            "instrument_handling",
+            "teamwork",
+            "patient_care"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "profession",
+        "qualification",
+        "skill"
+      ],
+      "additionalProperties": false
+    },
+    "preop_action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_speaker": {
+          "enum": [
+            "patient",
+            "player",
+            "staff",
+            "narrator"
+          ]
+        },
+        "next": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "clear_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "show_if_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "hide_if_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "calm": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "requires_team": {
+          "type": "boolean"
+        },
+        "requires_ward_nurse": {
+          "type": "boolean"
+        },
+        "execute_preparation": {
+          "type": "boolean"
+        },
+        "response_role": {
+          "type": "string"
+        },
+        "response_by_staff": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "anesthesia": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "fear": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "pain": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "dignity": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "cooperation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        "player_effects": {
+          "type": "object",
+          "properties": {
+            "skill": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "ethics": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "charisma": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "intimidation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "reputation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        "reset_procedure": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "response",
+        "response_speaker",
+        "next",
+        "requires",
+        "flags",
+        "calm",
+        "minutes",
+        "requires_team",
+        "execute_preparation"
+      ],
+      "additionalProperties": false
+    },
+    "preop_stage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "background_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "kind": {
+          "enum": [
+            "story",
+            "team",
+            "preparation",
+            "changing",
+            "room",
+            "complete",
+            "interaction",
+            "surgery_select",
+            "surgery_flow",
+            "surgery_execute",
+            "surgery_complete"
+          ]
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "speaker": {
+          "enum": [
+            "patient",
+            "narrator"
+          ]
+        },
+        "next": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/preop_action"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "scene",
+        "background_id",
+        "kind",
+        "prompt",
+        "speaker",
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "preop_preparation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "calm": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "response",
+        "minutes",
+        "calm"
+      ],
+      "additionalProperties": false
+    },
+    "preop": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "patient_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surgery_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initial_anxiety": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "initial_interaction": {
+          "type": "object",
+          "properties": {
+            "fear": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "pain": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "dignity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "cooperation": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "fear",
+            "pain",
+            "dignity",
+            "cooperation"
+          ],
+          "additionalProperties": false
+        },
+        "max_optional_preparations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "care_reassurance_threshold": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/preop_role"
+          }
+        },
+        "ward_role": {
+          "$ref": "#/$defs/preop_role"
+        },
+        "preparations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/preop_preparation"
+          }
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/preop_stage"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "encounter_id",
+        "patient_id",
+        "surgery_id",
+        "title",
+        "start",
+        "completion",
+        "initial_anxiety",
+        "initial_interaction",
+        "max_optional_preparations",
+        "care_reassurance_threshold",
+        "roles",
+        "ward_role",
+        "preparations",
+        "stages"
+      ],
+      "additionalProperties": false
+    },
+    "examination_cg_pool": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "surgery_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^assets/examinations/.+\\.png$"
+          }
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "test_ids",
+        "surgery_ids",
+        "paths",
+        "caption"
+      ],
+      "additionalProperties": false
+    },
+    "ward_preparation_cg_pool": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "presentation": {
+          "type": "string",
+          "enum": [
+            "splash",
+            "fullscreen"
+          ]
+        },
+        "action_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "patient_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^assets/events/ward_preparation_v1/.+\\.png$"
+          },
+          "uniqueItems": true
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "priority",
+        "presentation",
+        "action_ids",
+        "patient_ids",
+        "paths",
+        "caption"
+      ],
+      "additionalProperties": false
+    },
+    "surgery_cg_pool": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "breast",
+            "cardiac",
+            "abdominal",
+            "pelvic",
+            "thoracic"
+          ]
+        },
+        "stage": {
+          "type": "string",
+          "enum": [
+            "start",
+            "progress",
+            "finish",
+            "complication"
+          ]
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "surgery_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "patient_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^assets/surgeries/.+\\.png$"
+          },
+          "uniqueItems": true
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "region",
+        "stage",
+        "priority",
+        "surgery_ids",
+        "patient_ids",
+        "paths",
+        "caption"
+      ],
+      "additionalProperties": false
+    },
+    "patient_interaction_action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_speaker": {
+          "enum": [
+            "patient",
+            "player",
+            "staff",
+            "narrator"
+          ]
+        },
+        "delegate_role": {
+          "enum": [
+            "",
+            "assistant_surgeon",
+            "circulating_nurse"
+          ]
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "fear": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "pain": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "dignity": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "cooperation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "fear",
+            "pain",
+            "dignity",
+            "cooperation"
+          ],
+          "additionalProperties": false
+        },
+        "condition_effect": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "severity_delta": {
+                  "type": "integer",
+                  "minimum": -3,
+                  "maximum": 3
+                },
+                "remaining_steps_delta": {
+                  "type": "integer",
+                  "minimum": -20,
+                  "maximum": 20
+                },
+                "clear": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "severity_delta",
+                "remaining_steps_delta",
+                "clear"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "response",
+        "response_speaker",
+        "delegate_role",
+        "minutes",
+        "effects",
+        "condition_effect"
+      ],
+      "additionalProperties": false
+    },
+    "patient_interaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "theme": {
+          "enum": [
+            "operative_contact",
+            "progress_check",
+            "strain_interaction",
+            "dignity_interaction",
+            "ongoing_interaction",
+            "closure_interaction"
+          ]
+        },
+        "states": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "fear",
+              "pain",
+              "dignity",
+              "cooperation"
+            ]
+          }
+        },
+        "cues": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "incision",
+              "pressure",
+              "traction",
+              "deep_manipulation",
+              "position_discomfort",
+              "exposure",
+              "fatigue",
+              "nausea",
+              "drowsiness",
+              "closure"
+            ]
+          }
+        },
+        "procedure_groups": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "general_abdominal",
+              "female_pelvic",
+              "breast",
+              "urologic",
+              "thoracic",
+              "cardiac",
+              "vascular"
+            ]
+          }
+        },
+        "surgery_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "once_per_surgery": {
+          "type": "boolean"
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "speaker": {
+          "const": "patient"
+        },
+        "actions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/patient_interaction_action"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "theme",
+        "states",
+        "cues",
+        "procedure_groups",
+        "surgery_ids",
+        "once_per_surgery",
+        "prompt",
+        "speaker",
+        "actions"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

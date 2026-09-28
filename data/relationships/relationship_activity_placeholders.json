@@ -1,0 +1,72 @@
+[
+  {
+    "id": "operating_room_patient_play",
+    "unlock_level": 4,
+    "location_id": "or",
+    "content_class": "adult_event",
+    "real_procedure": false,
+    "workflow": [],
+    "eligible_staff_ids": [
+      "doc_aoi",
+      "doc_rei",
+      "nurse_haru",
+      "nurse_rin",
+      "nurse_yui",
+      "pharmacist_manami",
+      "nurse_ange",
+      "nurse_hiroko",
+      "nurse_moe",
+      "doc_emiko"
+    ],
+    "portrait_ready_staff_ids": [
+      "nurse_hiroko",
+      "nurse_yui",
+      "doc_rei",
+      "pharmacist_manami",
+      "doc_aoi",
+      "nurse_haru",
+      "nurse_moe",
+      "doc_emiko"
+    ],
+    "portrait_outfit": "operating_patient",
+    "implemented": false,
+    "description": "每名医护在达到 Lv4 后，可依人物专属剧情解锁 H 事件及手术室患者扮演；恋爱与肉体关系并非互斥路线，患者扮演不执行真实检查、准备或手术。"
+  },
+  {
+    "id": "clinical_practice_patient",
+    "unlock_level": 5,
+    "location_id": "or",
+    "content_class": "clinical_practice",
+    "real_procedure": true,
+    "workflow": [
+      "examination",
+      "preparation",
+      "surgery"
+    ],
+    "eligible_staff_ids": [
+      "doc_aoi",
+      "doc_rei",
+      "nurse_haru",
+      "nurse_rin",
+      "nurse_yui",
+      "pharmacist_manami",
+      "nurse_ange",
+      "nurse_hiroko",
+      "nurse_moe",
+      "doc_emiko"
+    ],
+    "portrait_ready_staff_ids": [
+      "nurse_hiroko",
+      "nurse_yui",
+      "doc_rei",
+      "pharmacist_manami",
+      "doc_aoi",
+      "nurse_haru",
+      "nurse_moe",
+      "doc_emiko"
+    ],
+    "portrait_outfit": "operating_patient",
+    "implemented": false,
+    "description": "每名医护在达到 Lv5 后，可依人物专属剧情真正作为患者进入检查、术前准备与手术流程；具体术式、同意过程、分支和结局留待后续设计。"
+  }
+]

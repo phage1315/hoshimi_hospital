@@ -1,0 +1,66 @@
+{
+  "event_ids": [
+    "hiroko_patient_escape",
+    "intro_nurse_hiroko"
+  ],
+  "staff_id": "nurse_hiroko",
+  "cameo_patient_id": "patient_chihaya",
+  "canonical_patient_name": "仓本千早",
+  "public_patient_name": "女患者",
+  "identity_reveal_flag": "chihaya_identity_revealed",
+  "identity_revealed_by_default": false,
+  "source": "three user-provided local images",
+  "usage": "Private local prototype assets supplied by the user; no redistribution authorization claimed.",
+  "assets": [
+    {
+      "path": "assets/events/character_events/hiroko/chihaya_escape_corridor.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0c1c7677111fda7ccf8d6b8bfceb062931046dbdff3309d71c871e86677f0cec",
+      "presentation": "fullscreen_cg",
+      "event_use": "corridor escape and pursuit"
+    },
+    {
+      "path": "assets/events/character_events/hiroko/chihaya_shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b371ef78cfa552e02dd84ad9f98a6b7b646aad14bdac47b646eea6ff22540d4d",
+      "presentation": "transparent_portrait",
+      "event_use": "collision and shy frightened patient portrait"
+    },
+    {
+      "path": "assets/events/character_events/hiroko/chihaya_restrained_portrait.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "58a65ba84b3552d8a4f3875b2eec7caf04e806864f52ffc1f0d6f338d8bbba98",
+      "presentation": "transparent_portrait",
+      "event_use": "patient held by two operating-room nurses"
+    }
+  ],
+  "superseded_opaque_sources": [
+    {
+      "path": "assets/events/character_events/hiroko/sources/chihaya_escape_closeup_nontransparent.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5f62ac0ac02a4e57403c461a7773ab2564ba6dadd082ab442c9576925a157d1a",
+      "reason": "Originally treated as a node splash; retained only as source history."
+    },
+    {
+      "path": "assets/events/character_events/hiroko/sources/chihaya_restrained_nontransparent.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8da73070e1b2eb006974fda9fc674497e83286e700a2fb1d3b24ac2c1efe62f8",
+      "reason": "Originally treated as a node splash; retained only as source history."
+    }
+  ]
+}

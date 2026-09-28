@@ -1,0 +1,96 @@
+[
+  {
+    "id": "blood_draw",
+    "label": "采血检查",
+    "test_ids": [
+      "blood_count",
+      "cbc",
+      "liver_panel",
+      "lactate",
+      "renal_function",
+      "tumor_marker",
+      "tumor_markers"
+    ],
+    "surgery_ids": [],
+    "paths": [
+      "assets/examinations/generic_v1/blood_draw.png"
+    ],
+    "caption": "护士完成采血，样本被送往检验室。"
+  },
+  {
+    "id": "abdominal_ultrasound",
+    "label": "腹部超声",
+    "test_ids": [
+      "abdominal_ultrasound"
+    ],
+    "surgery_ids": [],
+    "paths": [
+      "assets/examinations/generic_v1/abdominal_ultrasound.png"
+    ],
+    "caption": "探头缓慢移动，屏幕上的影像随之变化。"
+  },
+  {
+    "id": "ct_scan",
+    "label": "CT检查",
+    "test_ids": [
+      "abdominal_ct",
+      "chest_abdomen_ct",
+      "chest_ct",
+      "cta",
+      "pancreas_ct",
+      "renal_ct",
+      "staging_ct",
+      "pet_ct"
+    ],
+    "surgery_ids": [],
+    "paths": [
+      "assets/examinations/generic_v1/ct_scan.png"
+    ],
+    "caption": "检查床缓缓进入扫描架，影像采集开始。"
+  },
+  {
+    "id": "mri_scan",
+    "label": "MRI检查",
+    "test_ids": [
+      "breast_mri",
+      "liver_mri",
+      "pelvic_mri"
+    ],
+    "surgery_ids": [],
+    "paths": [
+      "assets/examinations/generic_v1/mri_scan.png"
+    ],
+    "caption": "确认耳部防护与姿势后，MRI扫描即将开始。"
+  },
+  {
+    "id": "endoscopy_preparation",
+    "label": "内镜检查准备",
+    "test_ids": [
+      "gastroscopy",
+      "colonoscopy",
+      "bronchoscopy_biopsy",
+      "cystoscopy",
+      "rectoscopy",
+      "endoscopic_ultrasound"
+    ],
+    "surgery_ids": [],
+    "paths": [
+      "assets/examinations/generic_v1/endoscopy_preparation.png"
+    ],
+    "caption": "医护再次说明流程，并协助患者摆好检查姿势。"
+  },
+  {
+    "id": "gynecology_preparation",
+    "label": "妇科检查准备",
+    "test_ids": [],
+    "surgery_ids": [
+      "surgery_hysterectomy",
+      "surgery_open_ovarian_cystectomy",
+      "surgery_open_abdominal_myomectomy"
+    ],
+    "paths": [
+      "assets/examinations/generic_v1/gynecology_preparation.png"
+    ],
+    "caption": "检查开始前，医生先向患者说明步骤并确认她已准备好。"
+  }
+]

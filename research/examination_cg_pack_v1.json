@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "generator": "built-in image_gen",
+  "mode": "generation plus precise-object-edit",
+  "output_size": [1672, 941],
+  "shared_constraints": [
+    "adult female characters only",
+    "SFW clinical examination",
+    "polished Japanese visual novel illustration",
+    "nurse wears a solid pale-pink short-sleeved knee-length one-piece nurse dress and matching traditional nurse cap",
+    "no scrubs, V-neck scrub tops, trousers, patterned fabric, apron, text, logo or watermark"
+  ],
+  "assets": [
+    {
+      "id": "blood_draw",
+      "path": "assets/examinations/generic_v1/blood_draw.png",
+      "sha256": "fcfc98fde7732160bf1a21a11abaa111978e0d582fe6df5ed60393ee9ef5ad67",
+      "prompt_summary": "Adult patient receives a blood draw; preserve composition and replace only the nurse attire with the project nurse dress and cap."
+    },
+    {
+      "id": "abdominal_ultrasound",
+      "path": "assets/examinations/generic_v1/abdominal_ultrasound.png",
+      "sha256": "1877f12fb6968c1dc2c1b3ec2ff3c4c52f72c5914eee1c86f1de796b66ec37f7",
+      "prompt_summary": "Adult patient receives abdominal ultrasound; preserve probe, equipment and pose; replace only nurse attire."
+    },
+    {
+      "id": "ct_scan",
+      "path": "assets/examinations/generic_v1/ct_scan.png",
+      "sha256": "6c9271ad25e7dfa1f99a4bcbca21e654af79fdd0a4bc3d4b3ade366696c2d489",
+      "prompt_summary": "Adult patient prepared for CT; preserve scanner and framing; replace only technologist attire with the nurse dress and cap."
+    },
+    {
+      "id": "mri_scan",
+      "path": "assets/examinations/generic_v1/mri_scan.png",
+      "sha256": "dab2beef385a4c895ada6d8c472b250e526206df95a64ec6b587a074aeaef1ed",
+      "prompt_summary": "Adult patient prepared for MRI with headphones and head coil; preserve equipment; replace only nurse attire."
+    },
+    {
+      "id": "endoscopy_preparation",
+      "path": "assets/examinations/generic_v1/endoscopy_preparation.png",
+      "sha256": "86f1407739329f31e470cfe0fb5d4ac142ac0311e933ef8e086bfebaa1d7691a",
+      "prompt_summary": "Adult patient prepared for endoscopy; replace only the left nurse attire while preserving the right doctor's white coat."
+    },
+    {
+      "id": "gynecology_preparation",
+      "path": "assets/examinations/generic_v1/gynecology_preparation.png",
+      "sha256": "2048a6620f3cc804d32ed39af078b9b57fba2f92fa4675ed4819efed33182c1a",
+      "prompt_summary": "Adult patient and female clinician during a neutral, non-graphic gynecology examination preparation scene; retained without redraw."
+    }
+  ]
+}

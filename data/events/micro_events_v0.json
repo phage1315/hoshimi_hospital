@@ -1,0 +1,1468 @@
+[
+  {
+    "id": "haru_micro_patient_hands",
+    "actor_id": "nurse_haru",
+    "title": "一直攥着的手",
+    "context": "after_encounter",
+    "location_id": "clinic",
+    "time_start": 540,
+    "time_end": 960,
+    "min_trust": 10,
+    "min_familiarity": 0,
+    "cooldown_days": 2,
+    "weight": 70,
+    "personality_basis": "七瀬恋会从患者没有说出口的动作中察觉不安，并温和确认医生是否也注意到了。",
+    "prompt": "患者离开后，七瀬恋收起检查单，忽然问：\n「医生，刚才她回答‘没问题’的时候，手一直攥得很紧。你也看见了吗？」",
+    "outfit": "uniform",
+    "expression": "worried",
+    "choices": [
+      {
+        "id": "noticed_and_waited",
+        "label": "看见了，只是想给她一点时间",
+        "response": "「原来是这样。」她点点头，把那一瞬的迟疑认真记了下来。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_player_waits_for_patient",
+        "effects": {}
+      },
+      {
+        "id": "ask_her_to_signal",
+        "label": "下次你直接提醒我",
+        "response": "「好。我会提醒，但最后开口的人还是医生。」她答得温柔，也很认真。",
+        "expression": "serious",
+        "impact": "soft",
+        "memory_tag": "haru_invited_to_signal",
+        "effects": {
+          "trust": 1,
+          "familiarity": 1
+        }
+      },
+      {
+        "id": "admit_missing_it",
+        "label": "没有，我漏掉了",
+        "response": "她没有责备，只把声音放轻了一点。\n「那我们下次一起看。」",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_player_admits_missing_cue",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "患者离开后，七瀬恋收起检查单，却仍望着已经关上的门。"
+      },
+      {
+        "speaker": "player",
+        "text": "你一直看着门口。刚才那位患者有什么不对吗？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「医生，刚才她回答‘没问题’的时候，手一直攥得很紧。你也看见了吗？」",
+        "expression": "worried"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "看来病历之外，也有很多需要一起记住的东西。"
+      },
+      {
+        "speaker": "actor",
+        "text": "嗯。患者没说出口的部分，也值得我们多等一会儿。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_name_timing",
+    "actor_id": "nurse_haru",
+    "title": "叫名字的时机",
+    "context": "after_encounter",
+    "location_id": "clinic",
+    "time_start": 540,
+    "time_end": 960,
+    "min_trust": 15,
+    "min_familiarity": 4,
+    "cooldown_days": 3,
+    "weight": 55,
+    "personality_basis": "她重视患者在细节中感到被尊重，也会留意医生说话的距离感。",
+    "prompt": "七瀬恋把门轻轻带上。\n「医生问重要问题时，会特意叫患者的名字。那是习惯，还是有意的？」",
+    "outfit": "uniform",
+    "expression": "neutral",
+    "choices": [
+      {
+        "id": "make_sure_heard",
+        "label": "想确认她知道我在对她说话",
+        "response": "「嗯，那一瞬她确实抬头了。」七瀬恋像是验证了自己的观察。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_values_direct_address",
+        "effects": {}
+      },
+      {
+        "id": "habit_only",
+        "label": "只是习惯，没有特别想过",
+        "response": "「好习惯也可以先保留。」她笑了笑，没有把问题变成考试。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "ask_her_preference",
+        "label": "你觉得什么时候最合适？",
+        "response": "她想了一会儿。\n「患者快要把真正担心的事咽回去的时候。」",
+        "expression": "serious",
+        "impact": "soft",
+        "memory_tag": "haru_shared_address_method",
+        "effects": {
+          "respect": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "七瀬恋把门轻轻带上，又回想了一遍刚才的问诊。"
+      },
+      {
+        "speaker": "player",
+        "text": "怎么了？你刚才好像一直在留意我说话。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「医生问重要问题时，会特意叫患者的名字。那是习惯，还是有意的？」",
+        "expression": "neutral"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "下次你再听见我叫名字，也告诉我患者的反应。"
+      },
+      {
+        "speaker": "actor",
+        "text": "好。这样就不是一个人的习惯，而是两个人的观察。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_after_gloves",
+    "actor_id": "nurse_haru",
+    "title": "摘下手套以后",
+    "context": "after_surgery",
+    "location_id": "or",
+    "time_start": 540,
+    "time_end": 1020,
+    "min_trust": 15,
+    "min_familiarity": 3,
+    "cooldown_days": 2,
+    "weight": 65,
+    "personality_basis": "她在手术后仍先确认团队和患者状态，私人情绪通常排在最后。",
+    "prompt": "最后一副手套丢进回收桶后，七瀬恋没有立刻离开。\n「手术结束的第一秒，医生通常先想到什么？」",
+    "outfit": "scrubs",
+    "expression": "warm",
+    "choices": [
+      {
+        "id": "patient_waking",
+        "label": "患者醒来后会不会害怕",
+        "response": "她眼里的疲惫柔和下来。\n「那我去恢复室时，替你多看她一会儿。」",
+        "expression": "warm",
+        "impact": "soft",
+        "memory_tag": "haru_shared_recovery_concern",
+        "effects": {
+          "trust": 1
+        }
+      },
+      {
+        "id": "review_steps",
+        "label": "刚才有没有哪一步能做得更好",
+        "response": "「我就知道。」她把器械清点表递过来，显然也已经想好了两处。",
+        "expression": "focused",
+        "impact": "memory",
+        "memory_tag": "haru_player_reviews_surgery",
+        "effects": {}
+      },
+      {
+        "id": "want_to_sit",
+        "label": "想找地方坐两分钟",
+        "response": "她怔了一下，随后笑出很轻的一声。\n「这个答案意外地让人安心。」",
+        "expression": "warm",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "最后一副手套丢进回收桶后，七瀬恋没有立刻离开。"
+      },
+      {
+        "speaker": "player",
+        "text": "还不走吗？刚才有哪里需要复盘？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「手术结束的第一秒，医生通常先想到什么？」",
+        "expression": "warm"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "你呢？结束后的第一秒在想什么？"
+      },
+      {
+        "speaker": "actor",
+        "text": "先确认大家都平安，然后才想起自己也累了。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_missing_sound",
+    "actor_id": "nurse_haru",
+    "title": "器械台少了一声",
+    "context": "after_surgery",
+    "location_id": "or",
+    "time_start": 540,
+    "time_end": 1020,
+    "min_trust": 18,
+    "min_familiarity": 5,
+    "cooldown_days": 4,
+    "weight": 45,
+    "personality_basis": "作为手术护士，她熟悉团队节奏，能从沉默和动作变化判断压力。",
+    "prompt": "七瀬恋完成清点后看向本多。\n「刚才有一段，医生突然一句话也没说。你是在集中，还是在犹豫？」",
+    "outfit": "scrubs",
+    "expression": "focused",
+    "choices": [
+      {
+        "id": "concentrating",
+        "label": "只是在集中注意力",
+        "response": "「那就好。下次给我一个手势，我就不会猜了。」",
+        "expression": "warm",
+        "impact": "memory",
+        "memory_tag": "haru_requests_or_signal",
+        "effects": {}
+      },
+      {
+        "id": "was_uncertain",
+        "label": "确实犹豫了一瞬",
+        "response": "她没有追问本多的判断，只说：\n「愿意说出来，团队才有机会接住。」",
+        "expression": "warm",
+        "impact": "soft",
+        "memory_tag": "haru_player_admitted_or_doubt",
+        "effects": {
+          "trust": 1,
+          "respect": 1
+        }
+      },
+      {
+        "id": "ask_if_she_worried",
+        "label": "你当时担心了吗？",
+        "response": "「担心。」她坦然回答，随后又补了一句，「但没有慌。」",
+        "expression": "worried",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "七瀬恋完成清点后，在其中一项记录上停了片刻。"
+      },
+      {
+        "speaker": "player",
+        "text": "清点有问题吗？你在这一项上停了很久。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「刚才有一段，医生突然一句话也没说。你是在集中，还是在犹豫？」",
+        "expression": "focused"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "以后我沉默太久，你可以直接确认。"
+      },
+      {
+        "speaker": "actor",
+        "text": "那我会问。安静可以，但团队之间不能失去信号。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_drink_temperature",
+    "actor_id": "nurse_haru",
+    "title": "刚好的温度",
+    "context": "location_visit",
+    "location_id": "lounge",
+    "time_start": 600,
+    "time_end": 870,
+    "min_trust": 10,
+    "min_familiarity": 1,
+    "cooldown_days": 3,
+    "weight": 60,
+    "personality_basis": "她习惯照顾别人，会用饮料这种小问题确认对方是否愿意被照顾。",
+    "prompt": "七瀬恋在饮水机前停住。\n「热一点、温一点，还是冰的？今天不许回答‘都可以’。」",
+    "outfit": "uniform",
+    "expression": "smile",
+    "choices": [
+      {
+        "id": "hot",
+        "label": "热一点",
+        "response": "「记住了。」她把杯子递给你，杯壁暖得恰到好处。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_knows_hot_drink",
+        "effects": {}
+      },
+      {
+        "id": "lukewarm",
+        "label": "温一点",
+        "response": "「果然。」她像是早就猜到，语气里带着一点小小的得意。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_knows_warm_drink",
+        "effects": {}
+      },
+      {
+        "id": "cold",
+        "label": "冰的",
+        "response": "她看了眼天气，又看了看本多。\n「好，但胃不舒服时不算。」",
+        "expression": "serious",
+        "impact": "memory",
+        "memory_tag": "haru_knows_cold_drink",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "七瀬恋站在饮水机前，手里拿着两个空杯子。"
+      },
+      {
+        "speaker": "player",
+        "text": "你拿着两个杯子，是准备替谁选？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「热一点、温一点，还是冰的？今天不许回答‘都可以’。」",
+        "expression": "smile"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "你是不是早就猜过我的答案？"
+      },
+      {
+        "speaker": "actor",
+        "text": "猜过，不过亲口问到的答案更可靠。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_pocket_candy",
+    "actor_id": "nurse_haru",
+    "title": "值班口袋里的糖",
+    "context": "location_visit",
+    "location_id": "lounge",
+    "time_start": 660,
+    "time_end": 960,
+    "min_trust": 18,
+    "min_familiarity": 5,
+    "cooldown_days": 4,
+    "weight": 50,
+    "personality_basis": "她准备周全，却不太愿意承认自己也需要补充能量。",
+    "prompt": "七瀬恋从口袋里摸出两颗糖，一颗柠檬味，一颗薄荷味。\n「只能拿一颗。另一颗留给下午的我。」",
+    "outfit": "uniform",
+    "expression": "tired",
+    "choices": [
+      {
+        "id": "take_lemon",
+        "label": "拿走柠檬味",
+        "response": "「选择很安全。」她收起薄荷糖，像完成了一项小小的分配。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "take_mint",
+        "label": "拿走薄荷味",
+        "response": "「那下午的我会比较开心。」她把柠檬糖放回口袋。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "leave_both",
+        "label": "两颗都留给下午的你",
+        "response": "她安静了一秒。\n「这种照顾人的方式，有一点犯规。」",
+        "expression": "surprised",
+        "impact": "soft",
+        "memory_tag": "haru_player_left_both_candies",
+        "effects": {
+          "affection": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "七瀬恋从口袋里摸出两颗糖，一颗柠檬味，一颗薄荷味。"
+      },
+      {
+        "speaker": "player",
+        "text": "原来你值班时还会随身准备糖。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「只能拿一颗。另一颗留给下午的我。」",
+        "expression": "tired"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "下午如果真的很累，记得把剩下那颗吃掉。"
+      },
+      {
+        "speaker": "actor",
+        "text": "知道了。医生也别把自己的那份照顾总往后放。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_stairs_or_elevator",
+    "actor_id": "nurse_haru",
+    "title": "电梯还是楼梯",
+    "context": "location_visit",
+    "location_id": "rooftop",
+    "time_start": 660,
+    "time_end": 960,
+    "min_trust": 15,
+    "min_familiarity": 4,
+    "cooldown_days": 5,
+    "weight": 45,
+    "personality_basis": "她用日常习惯谈论压力，不会直接逼问私人情绪。",
+    "prompt": "风把天台门吹得轻响。七瀬恋问：\n「没人催的时候，医生会坐电梯，还是走楼梯？」",
+    "outfit": "uniform",
+    "expression": "neutral",
+    "choices": [
+      {
+        "id": "elevator",
+        "label": "电梯，能省一点力气",
+        "response": "「合理。」她靠着栏杆，像是允许你今天少坚持一点。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "stairs",
+        "label": "楼梯，途中可以整理思路",
+        "response": "「难怪你有时到门口才突然改变决定。」她把你的习惯和工作联系起来。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_knows_player_uses_stairs",
+        "effects": {}
+      },
+      {
+        "id": "depends_companion",
+        "label": "看和谁一起",
+        "response": "她转头看了本多一眼。\n「那今天的答案呢？」",
+        "expression": "surprised",
+        "impact": "soft",
+        "memory_tag": "haru_heard_companion_answer",
+        "effects": {
+          "affection": 1,
+          "familiarity": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "风把天台门吹得轻响，七瀬恋望了一眼楼梯间。"
+      },
+      {
+        "speaker": "player",
+        "text": "在看楼梯？这里的电梯今天又坏了吗？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「没人催的时候，医生会坐电梯，还是走楼梯？」",
+        "expression": "neutral"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "那么今天，我们怎么下去？"
+      },
+      {
+        "speaker": "actor",
+        "text": "一起走楼梯吧。慢一点，也不需要整理什么结论。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_day_off_alarm",
+    "actor_id": "nurse_haru",
+    "title": "休息日的闹钟",
+    "context": "location_visit",
+    "location_id": "rooftop",
+    "time_start": 720,
+    "time_end": 1020,
+    "min_trust": 20,
+    "min_familiarity": 7,
+    "cooldown_days": 6,
+    "weight": 35,
+    "personality_basis": "关系稍近后，她会以克制的方式询问工作以外的生活。",
+    "prompt": "七瀬恋望着远处的住宅区。\n「如果明天不用上班，医生还会设闹钟吗？」",
+    "outfit": "uniform",
+    "expression": "neutral",
+    "choices": [
+      {
+        "id": "still_set_alarm",
+        "label": "会，醒来后再决定要不要起床",
+        "response": "「很像医生会给出的答案。」她笑着接受了这种保留余地。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_knows_player_sets_alarm",
+        "effects": {}
+      },
+      {
+        "id": "sleep_naturally",
+        "label": "不会，睡到自然醒",
+        "response": "「那很好。」她的语气像是在替一个尚未到来的休息日放心。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "ask_about_her",
+        "label": "你呢？",
+        "response": "「会设。」她顿了顿，「然后在响之前醒来。很没意思吧？」",
+        "expression": "tired",
+        "impact": "memory",
+        "memory_tag": "haru_shared_sleep_habit",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "七瀬恋望着远处的住宅区，像是忽然想起了明天。"
+      },
+      {
+        "speaker": "player",
+        "text": "你在想明天的排班？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「如果明天不用上班，医生还会设闹钟吗？」",
+        "expression": "neutral"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "看来我们都不太擅长彻底休息。"
+      },
+      {
+        "speaker": "actor",
+        "text": "所以才要互相提醒。休息日不需要证明自己很有效率。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_thank_whom",
+    "actor_id": "nurse_haru",
+    "title": "一句谢谢说给谁",
+    "context": "location_visit",
+    "location_id": "station",
+    "time_start": 780,
+    "time_end": 1020,
+    "min_trust": 18,
+    "min_familiarity": 5,
+    "cooldown_days": 4,
+    "weight": 50,
+    "personality_basis": "她在意团队劳动是否被看见，但很少替自己索取感谢。",
+    "prompt": "交接告一段落，七瀬恋合上记录本。\n「今天只能认真谢谢一个人，医生会选谁？」",
+    "outfit": "uniform",
+    "expression": "neutral",
+    "choices": [
+      {
+        "id": "whole_team",
+        "label": "很难只选一个",
+        "response": "「这是正确但有点狡猾的回答。」她没有反对。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "patient",
+        "label": "愿意相信我们的患者",
+        "response": "她的神情认真起来。\n「那句话，最好有机会亲口告诉她。」",
+        "expression": "serious",
+        "impact": "memory",
+        "memory_tag": "haru_player_thanks_patient",
+        "effects": {}
+      },
+      {
+        "id": "thank_haru",
+        "label": "现在站在我面前的人",
+        "response": "她明显没有准备好这个答案，只好低头重新整理已经整齐的纸张。",
+        "expression": "surprised",
+        "impact": "soft",
+        "memory_tag": "haru_received_direct_thanks",
+        "effects": {
+          "affection": 1,
+          "trust": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "交接告一段落，七瀬恋合上记录本，却没有马上起身。"
+      },
+      {
+        "speaker": "player",
+        "text": "还有哪一项没有交接完？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「今天只能认真谢谢一个人，医生会选谁？」",
+        "expression": "neutral"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "好吧，明天允许多谢几个人。"
+      },
+      {
+        "speaker": "actor",
+        "text": "那今天这句我先收下，也替没被选到的人保管一点。"
+      }
+    ]
+  },
+  {
+    "id": "haru_micro_one_quiet_minute",
+    "actor_id": "nurse_haru",
+    "title": "安静一分钟",
+    "context": "location_visit",
+    "location_id": "station",
+    "time_start": 840,
+    "time_end": 1020,
+    "min_trust": 20,
+    "min_familiarity": 8,
+    "cooldown_days": 5,
+    "weight": 40,
+    "personality_basis": "她会察觉医生疲惫，但尊重对方选择沉默或倾诉。",
+    "prompt": "护士站难得安静。七瀬恋把声音放得很轻。\n「要说一会儿话，还是一起安静一分钟？」",
+    "outfit": "uniform",
+    "expression": "tired",
+    "choices": [
+      {
+        "id": "talk",
+        "label": "说说今天最累的事",
+        "response": "她没有急着安慰，只在本多停顿时点头，让话慢慢说完。",
+        "expression": "worried",
+        "impact": "memory",
+        "memory_tag": "haru_listened_after_shift",
+        "effects": {}
+      },
+      {
+        "id": "quiet",
+        "label": "一起安静一分钟",
+        "response": "一分钟里没有人解释什么。呼吸声和远处的脚步已经足够。",
+        "expression": "neutral",
+        "impact": "soft",
+        "memory_tag": "haru_shared_quiet_minute",
+        "effects": {
+          "affection": 1,
+          "familiarity": 1
+        }
+      },
+      {
+        "id": "send_her_to_rest",
+        "label": "你先去休息，我来守一会儿",
+        "response": "「那我真的会去。」她认真看你一眼，像是在确认这不是客套。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "haru_accepted_player_cover",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "护士站难得安静，七瀬恋也把整理纸张的动作放轻了。"
+      },
+      {
+        "speaker": "player",
+        "text": "忽然安静下来，反而有点不习惯。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「要说一会儿话，还是一起安静一分钟？」",
+        "expression": "tired"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "这一分钟好像比想象中长。"
+      },
+      {
+        "speaker": "actor",
+        "text": "但没有被浪费。能安心沉默，也是一种休息。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_notebook_question",
+    "actor_id": "nurse_yui",
+    "title": "写在小本子上的问题",
+    "context": "after_encounter",
+    "location_id": "clinic",
+    "time_start": 540,
+    "time_end": 960,
+    "min_trust": 10,
+    "min_familiarity": 0,
+    "cooldown_days": 2,
+    "weight": 75,
+    "personality_basis": "朝倉美幸认真好学，遇到疑问会兴奋地记录，也担心占用医生时间。",
+    "prompt": "患者刚离开，朝倉美幸已经翻开小本子。\n「医生，我只问一个问题。为什么刚才先问疼痛变化，不先问疼痛有多重？」",
+    "outfit": "uniform",
+    "expression": "serious",
+    "choices": [
+      {
+        "id": "explain_reasoning",
+        "label": "解释变化过程更能提示病因",
+        "response": "她飞快写下两行，又抬头确认：\n「也就是说，顺序本身就是判断的一部分？」",
+        "expression": "smile",
+        "impact": "soft",
+        "memory_tag": "yui_learned_history_sequence",
+        "effects": {
+          "respect": 1
+        }
+      },
+      {
+        "id": "ask_her_guess",
+        "label": "你先猜猜看",
+        "response": "「诶，又是反问！」她嘴上抱怨，眼睛却已经亮起来。",
+        "expression": "surprised",
+        "impact": "memory",
+        "memory_tag": "yui_likes_teaching_questions",
+        "effects": {}
+      },
+      {
+        "id": "promise_later",
+        "label": "先记着，午休时再讲",
+        "response": "她在问题旁边画了一个醒目的星号。\n「说好了，不能赖账。」",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_waiting_for_lunch_explanation",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "患者刚离开，朝倉美幸已经翻开小本子，笔尖悬在新的一页上。"
+      },
+      {
+        "speaker": "player",
+        "text": "你已经翻到新的一页了。又发现了什么？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「医生，我只问一个问题。为什么刚才先问疼痛变化，不先问疼痛有多重？」",
+        "expression": "serious"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "一个问题已经结束了，别偷偷接第二个。"
+      },
+      {
+        "speaker": "actor",
+        "text": "我知道。剩下的先记着，等下次医生自己问我要不要听。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_red_keychain",
+    "actor_id": "nurse_yui",
+    "title": "红色钥匙扣",
+    "context": "after_encounter",
+    "location_id": "clinic",
+    "time_start": 540,
+    "time_end": 960,
+    "min_trust": 12,
+    "min_familiarity": 3,
+    "cooldown_days": 3,
+    "weight": 60,
+    "personality_basis": "她观察力正在成长，会为自己记住患者的小细节而高兴。",
+    "prompt": "朝倉美幸整理桌面时忽然说：\n「刚才那位患者的包上有一个红色钥匙扣。医生猜，那是什么形状？」",
+    "outfit": "uniform",
+    "expression": "smile",
+    "choices": [
+      {
+        "id": "say_rabbit",
+        "label": "兔子？",
+        "response": "「答对了！」她像替你保住了某种观察力评价。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "did_not_notice",
+        "label": "完全没注意到",
+        "response": "「那这次是我赢。」她在本子角落画了一只很小的兔子。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_won_observation_game",
+        "effects": {}
+      },
+      {
+        "id": "ask_why_matters",
+        "label": "你为什么会记得？",
+        "response": "「她提到女儿时摸了摸它。」朝倉美幸的笑意收敛了一点，「所以我觉得重要。」",
+        "expression": "serious",
+        "impact": "soft",
+        "memory_tag": "yui_shared_patient_detail",
+        "effects": {
+          "trust": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸整理桌面时，忽然对着病历旁的空位笑了一下。"
+      },
+      {
+        "speaker": "player",
+        "text": "你刚才在笑什么？桌上已经什么都没有了。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「刚才那位患者的包上有一个红色钥匙扣。医生猜，那是什么形状？」",
+        "expression": "smile"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "你观察患者时，已经不只是在记症状了。"
+      },
+      {
+        "speaker": "actor",
+        "text": "因为她们带进诊室里的东西，也可能在替她们说话。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_steady_hands",
+    "actor_id": "nurse_yui",
+    "title": "第一次没有发抖",
+    "context": "after_surgery",
+    "location_id": "or",
+    "time_start": 540,
+    "time_end": 1020,
+    "min_trust": 12,
+    "min_familiarity": 2,
+    "cooldown_days": 3,
+    "weight": 65,
+    "personality_basis": "经验较少的她会在意自己的进步，也渴望得到具体而诚实的反馈。",
+    "prompt": "离开手术台后，朝倉美幸看了看自己的手。\n「我今天是不是……没有像上次那样发抖？」",
+    "outfit": "scrubs",
+    "expression": "worried",
+    "choices": [
+      {
+        "id": "noticed_progress",
+        "label": "注意到了，你稳定了很多",
+        "response": "口罩遮住了她的笑，但眼睛已经把答案全说出来了。",
+        "expression": "warm",
+        "impact": "soft",
+        "memory_tag": "yui_progress_was_seen",
+        "effects": {
+          "trust": 1,
+          "respect": 1
+        }
+      },
+      {
+        "id": "give_specific_note",
+        "label": "传递器械时很稳，清点时还可以更慢",
+        "response": "「具体到让我没法只顾着高兴。」她认真记住了后半句。",
+        "expression": "focused",
+        "impact": "memory",
+        "memory_tag": "yui_received_specific_feedback",
+        "effects": {}
+      },
+      {
+        "id": "ask_how_she_felt",
+        "label": "你自己觉得呢？",
+        "response": "她想了很久。\n「不是不怕了，是知道下一步该做什么了。」",
+        "expression": "warm",
+        "impact": "memory",
+        "memory_tag": "yui_named_her_progress",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "离开手术台后，朝倉美幸摊开双手，反复看了两遍。"
+      },
+      {
+        "speaker": "player",
+        "text": "手不舒服吗？让我看看。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「我今天是不是……没有像上次那样发抖？」",
+        "expression": "worried"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "今天的感觉也记下来吧，免得以后只记得紧张。"
+      },
+      {
+        "speaker": "actor",
+        "text": "要写，而且要写得很大。下次害怕时，我就翻回来看看。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_long_procedure_name",
+    "actor_id": "nurse_yui",
+    "title": "太长的术式名字",
+    "context": "after_surgery",
+    "location_id": "or",
+    "time_start": 540,
+    "time_end": 1020,
+    "min_trust": 12,
+    "min_familiarity": 3,
+    "cooldown_days": 4,
+    "weight": 50,
+    "personality_basis": "她会用轻松方法消化专业压力，也乐于和玩家建立专属的小习惯。",
+    "prompt": "朝倉美幸摘下口罩，小声重复了一遍刚才的术式名称，然后认输般叹气。\n「这么长的名字，医生到底怎么记住的？」",
+    "outfit": "scrubs",
+    "expression": "neutral",
+    "choices": [
+      {
+        "id": "break_into_steps",
+        "label": "拆成部位、动作和目的",
+        "response": "「像拆句子一样！」她立刻在空中比划出三个部分。",
+        "expression": "warm",
+        "impact": "memory",
+        "memory_tag": "yui_learned_name_method",
+        "effects": {}
+      },
+      {
+        "id": "invent_nickname",
+        "label": "给它起一个只有我们知道的简称",
+        "response": "她想出的第一个简称糟糕得让两人同时笑了出来。",
+        "expression": "warm",
+        "impact": "soft",
+        "memory_tag": "yui_shared_procedure_nickname",
+        "effects": {
+          "affection": 1,
+          "familiarity": 1
+        }
+      },
+      {
+        "id": "admit_checking",
+        "label": "其实我也会确认两遍",
+        "response": "「太好了。」她明显松了口气，「原来熟练不是从来不用确认。」",
+        "expression": "warm",
+        "impact": "memory",
+        "memory_tag": "yui_knows_player_double_checks",
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸摘下口罩，小声重复了一遍刚才的术式名称，最后还是叹了口气。"
+      },
+      {
+        "speaker": "player",
+        "text": "刚才已经念对了前半段，怎么先叹气了？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「这么长的名字，医生到底怎么记住的？」",
+        "expression": "neutral"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "记住名字只是开始，别忘了它为什么这样做。"
+      },
+      {
+        "speaker": "actor",
+        "text": "明白。名称拆开以后，每一段都应该能对应一个目的。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_cafeteria_score",
+    "actor_id": "nurse_yui",
+    "title": "食堂新菜单评分",
+    "context": "location_visit",
+    "location_id": "lounge",
+    "time_start": 660,
+    "time_end": 840,
+    "min_trust": 10,
+    "min_familiarity": 1,
+    "cooldown_days": 3,
+    "weight": 70,
+    "personality_basis": "她开朗，愿意用无关紧要的小问题拉近距离。",
+    "prompt": "朝倉美幸把食堂的新菜照片推到本多面前。\n「满分十分。医生只看照片给几分？」",
+    "outfit": "uniform",
+    "expression": "smile",
+    "choices": [
+      {
+        "id": "score_eight",
+        "label": "八分，看起来很可靠",
+        "response": "「可靠是形容食物的吗？」她笑着给你的评分旁画了圈。",
+        "expression": "smile",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "score_three",
+        "label": "三分，摆盘太可疑",
+        "response": "「严格！」她决定亲自替这道菜争取复审。",
+        "expression": "surprised",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "eat_together_first",
+        "label": "一起吃过再评分",
+        "response": "她把照片收回来，努力装作这只是严谨的评分流程。",
+        "expression": "smile",
+        "impact": "soft",
+        "memory_tag": "yui_cafeteria_invitation",
+        "effects": {
+          "affection": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸把食堂的新菜照片推到本多面前，旁边已经画好了十分制的格子。"
+      },
+      {
+        "speaker": "player",
+        "text": "还没吃就开始评分，会不会太早了？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「满分十分。医生只看照片给几分？」",
+        "expression": "smile"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "结论先保留，实际吃过再修正。"
+      },
+      {
+        "speaker": "actor",
+        "text": "收到。这是一次需要重复验证的严谨研究。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_dessert_bargain",
+    "actor_id": "nurse_yui",
+    "title": "甜点交换条件",
+    "context": "location_visit",
+    "location_id": "lounge",
+    "time_start": 660,
+    "time_end": 900,
+    "min_trust": 15,
+    "min_familiarity": 5,
+    "cooldown_days": 5,
+    "weight": 45,
+    "personality_basis": "她把学习和兴趣混在一起，容易用玩笑提出亲近请求。",
+    "prompt": "朝倉美幸把最后一块小蛋糕护在盘子边。\n「交换条件：医生回答我一个问题，我分你一半。」",
+    "outfit": "uniform",
+    "expression": "smile",
+    "choices": [
+      {
+        "id": "accept_bargain",
+        "label": "成交，问题不能太简单",
+        "response": "「第一次听说还要求提高难度的。」她高兴得立刻开始翻本子。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_dessert_study_bargain",
+        "effects": {}
+      },
+      {
+        "id": "give_answer_free",
+        "label": "问题可以免费回答，蛋糕你留着",
+        "response": "「这样显得我的交易很小气。」她最终还是把蛋糕切成了两半。",
+        "expression": "worried",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "offer_coffee",
+        "label": "我用咖啡交换另一半",
+        "response": "「升级成交。」她伸出手，郑重得像在确认重要医嘱。",
+        "expression": "smile",
+        "impact": "soft",
+        "memory_tag": "yui_shared_dessert_and_coffee",
+        "effects": {
+          "affection": 1,
+          "familiarity": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸把最后一块小蛋糕护在盘子边，又把小本子摆到了旁边。"
+      },
+      {
+        "speaker": "player",
+        "text": "蛋糕旁边为什么还要放一本问题集？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「交换条件：医生回答我一个问题，我分你一半。」",
+        "expression": "smile"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "下次别拿午休甜点当谈判筹码。"
+      },
+      {
+        "speaker": "actor",
+        "text": "那我改用咖啡。等等，医生刚才是不是已经教坏我了？"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_last_train_stop",
+    "actor_id": "nurse_yui",
+    "title": "电车的终点",
+    "context": "location_visit",
+    "location_id": "rooftop",
+    "time_start": 660,
+    "time_end": 960,
+    "min_trust": 15,
+    "min_familiarity": 4,
+    "cooldown_days": 5,
+    "weight": 45,
+    "personality_basis": "她富有好奇心，会把对未来的想象藏在轻快的问题里。",
+    "prompt": "朝倉美幸指着远处缓慢驶过的电车。\n「如果今天不用回医院，坐到终点以后，医生会做什么？」",
+    "outfit": "uniform",
+    "expression": "smile",
+    "choices": [
+      {
+        "id": "find_local_food",
+        "label": "找一家当地人常去的小店",
+        "response": "「很好，我负责看评价，医生负责假装没有计划。」",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_imagined_food_trip",
+        "effects": {}
+      },
+      {
+        "id": "walk_without_map",
+        "label": "不用地图，随便走走",
+        "response": "「那必须在天黑前让我来带路。」她完全没意识到这句话缺乏说服力。",
+        "expression": "surprised",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      },
+      {
+        "id": "ask_her_to_join",
+        "label": "先问你要不要一起",
+        "response": "她望着电车愣了两秒。\n「这个问题……应该提前一点问。」",
+        "expression": "surprised",
+        "impact": "soft",
+        "memory_tag": "yui_received_trip_invitation",
+        "effects": {
+          "affection": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸指着远处缓慢驶过的电车，目光一直跟到它消失。"
+      },
+      {
+        "speaker": "player",
+        "text": "已经看不见了。你在想那班车会开到哪里？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「如果今天不用回医院，坐到终点以后，医生会做什么？」",
+        "expression": "smile"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "真到了陌生地方，可别又走错路。"
+      },
+      {
+        "speaker": "actor",
+        "text": "所以才需要同行的人。迷路两个人，就可以叫临时改道。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_no_work_ten_minutes",
+    "actor_id": "nurse_yui",
+    "title": "十分钟不谈工作",
+    "context": "location_visit",
+    "location_id": "rooftop",
+    "time_start": 720,
+    "time_end": 1020,
+    "min_trust": 18,
+    "min_familiarity": 6,
+    "cooldown_days": 5,
+    "weight": 40,
+    "personality_basis": "她明明喜欢学习，却也开始察觉两人的关系不必永远围绕教学。",
+    "prompt": "朝倉美幸刚开口说“我有个问题”，又自己摇头。\n「算了。今天十分钟不许谈工作。那要谈什么？」",
+    "outfit": "uniform",
+    "expression": "smile",
+    "choices": [
+      {
+        "id": "favorite_music",
+        "label": "最近反复听的歌",
+        "response": "话题从一首歌绕到耳机，再绕到她通勤时总会坐过站。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_shared_music_taste",
+        "effects": {}
+      },
+      {
+        "id": "childhood_dream",
+        "label": "小时候想做什么",
+        "response": "「这个问题比临床题难。」她想了很久，才说自己曾想当电车司机。",
+        "expression": "surprised",
+        "impact": "memory",
+        "memory_tag": "yui_shared_childhood_dream",
+        "effects": {}
+      },
+      {
+        "id": "comfortable_silence",
+        "label": "也可以什么都不谈",
+        "response": "她本来想反驳，最后却安静站到本多身边。十分钟过得比预想中快。",
+        "expression": "neutral",
+        "impact": "soft",
+        "memory_tag": "yui_shared_rooftop_silence",
+        "effects": {
+          "affection": 1,
+          "familiarity": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸刚开口说“我有个问题”，又硬生生把后半句咽了回去。"
+      },
+      {
+        "speaker": "player",
+        "text": "难得。那个问题不写下来吗？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「算了。今天十分钟不许谈工作。那要谈什么？」",
+        "expression": "smile"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "十分钟到了以后，你是不是又要打开小本子？"
+      },
+      {
+        "speaker": "actor",
+        "text": "可能会。不过现在先把这十分钟好好用完。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_handoff_code",
+    "actor_id": "nurse_yui",
+    "title": "交接暗号",
+    "context": "location_visit",
+    "location_id": "station",
+    "time_start": 720,
+    "time_end": 1020,
+    "min_trust": 12,
+    "min_familiarity": 3,
+    "cooldown_days": 4,
+    "weight": 55,
+    "personality_basis": "她会用自创口诀减少紧张，同时愿意让玩家进入自己的小世界。",
+    "prompt": "朝倉美幸把交接项目编成了一句古怪口诀，念到一半自己先笑了。\n「虽然很怪，但真的记得住。医生要听完整版吗？」",
+    "outfit": "uniform",
+    "expression": "surprised",
+    "choices": [
+      {
+        "id": "hear_full_version",
+        "label": "当然，要完整版",
+        "response": "口诀比预想中更怪，也确实让人一次就记住了。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_shared_handoff_code",
+        "effects": {}
+      },
+      {
+        "id": "make_new_line",
+        "label": "再给它补一句",
+        "response": "本多补的那句破坏了节奏，却被她坚持保留下来。",
+        "expression": "smile",
+        "impact": "soft",
+        "memory_tag": "yui_coauthored_handoff_code",
+        "effects": {
+          "familiarity": 1
+        }
+      },
+      {
+        "id": "prefer_checklist",
+        "label": "我还是更相信检查表",
+        "response": "「我也相信。」她把口诀写在检查表背面，「这是双重保险。」",
+        "expression": "serious",
+        "impact": "flavor",
+        "memory_tag": null,
+        "effects": {}
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "朝倉美幸把交接项目编成一句古怪口诀，念到一半自己先笑了。"
+      },
+      {
+        "speaker": "player",
+        "text": "笑成这样，我反而更想知道完整版了。"
+      },
+      {
+        "speaker": "actor",
+        "text": "「虽然很怪，但真的记得住。医生要听完整版吗？」",
+        "expression": "surprised"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "口诀可以留下，但正式交接还是逐项确认。"
+      },
+      {
+        "speaker": "actor",
+        "text": "当然。好记负责提醒，检查表负责不让任何一项溜走。"
+      }
+    ]
+  },
+  {
+    "id": "yui_micro_if_i_were_patient",
+    "actor_id": "nurse_yui",
+    "title": "如果我是患者",
+    "context": "location_visit",
+    "location_id": "clinic",
+    "time_start": 540,
+    "time_end": 960,
+    "min_trust": 18,
+    "min_familiarity": 7,
+    "cooldown_days": 6,
+    "weight": 35,
+    "personality_basis": "关系深入后，她会借假设问题确认玩家如何看待脆弱状态下的自己。",
+    "prompt": "诊室空下来后，朝倉美幸坐到患者刚才的位置。\n「假设我是患者，医生会先解释检查，还是先问我害不害怕？」",
+    "outfit": "uniform",
+    "expression": "neutral",
+    "choices": [
+      {
+        "id": "ask_fear_first",
+        "label": "先问你在害怕什么",
+        "response": "她低头看着自己的手。\n「那我大概会说‘没什么’，然后等你再问一次。」",
+        "expression": "worried",
+        "impact": "memory",
+        "memory_tag": "yui_wants_second_question",
+        "effects": {}
+      },
+      {
+        "id": "explain_first",
+        "label": "先把未知的部分解释清楚",
+        "response": "「嗯，我可能会因为听懂了而没那么怕。」她认真地点头。",
+        "expression": "smile",
+        "impact": "memory",
+        "memory_tag": "yui_prefers_explanation_first",
+        "effects": {}
+      },
+      {
+        "id": "sit_beside_not_across",
+        "label": "先坐到你旁边再说",
+        "response": "她愣住，随后从患者椅上站起来。\n「这个答案不在选项里……但好像最好。」",
+        "expression": "surprised",
+        "impact": "soft",
+        "memory_tag": "yui_remembers_sitting_beside",
+        "effects": {
+          "affection": 1,
+          "trust": 1
+        }
+      }
+    ],
+    "opening_lines": [
+      {
+        "speaker": "narrator",
+        "text": "诊室空下来后，朝倉美幸坐到患者刚才的位置，认真调整了一下坐姿。"
+      },
+      {
+        "speaker": "player",
+        "text": "坐在那里感觉怎么样？"
+      },
+      {
+        "speaker": "actor",
+        "text": "「假设我是患者，医生会先解释检查，还是先问我害不害怕？」",
+        "expression": "neutral"
+      }
+    ],
+    "closing_lines": [
+      {
+        "speaker": "player",
+        "text": "假设结束。坐在这里是什么感觉？"
+      },
+      {
+        "speaker": "actor",
+        "text": "比站在旁边更容易明白，患者为什么会把准备好的话忘掉。"
+      }
+    ]
+  }
+]

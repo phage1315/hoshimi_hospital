@@ -1,0 +1,1259 @@
+[
+  {
+    "id": "template_appendicitis",
+    "surgery_id": "surgery_appendix",
+    "title": "急性阑尾炎",
+    "presenting_complaint": "我右边小肚子越来越疼，走路的时候也会扯着疼。",
+    "history": [
+      "一开始只是肚脐周围不舒服，后来疼的位置慢慢跑到右下边了。",
+      "我今天几乎吃不下东西，还有点恶心，走快一点就更疼。"
+    ],
+    "symptoms": [
+      "右下腹痛",
+      "恶心与食欲下降",
+      "低热"
+    ],
+    "examination_findings": [
+      "右下腹压痛",
+      "轻度腹壁紧张",
+      "体温轻度升高"
+    ],
+    "tests": [
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "白细胞及中性粒细胞比例升高。"
+      },
+      {
+        "id": "abdominal_ultrasound",
+        "label": "腹部超声",
+        "result": "阑尾增粗，周围脂肪回声改变。"
+      },
+      {
+        "id": "abdominal_ct",
+        "label": "腹部CT",
+        "result": "右下腹阑尾周围炎性改变，未见明确脓肿。"
+      }
+    ],
+    "diagnosis": "急性阑尾炎",
+    "differential_diagnoses": [
+      "急性肠胃炎",
+      "右侧输尿管结石",
+      "妇科急腹症"
+    ],
+    "intake_notes": "病情与影像支持尽快进行阑尾切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_breast_tumor",
+    "surgery_id": "surgery_breast_tumor",
+    "title": "局限性乳腺肿块",
+    "presenting_complaint": "我洗澡的时候摸到乳房里有个小硬块，按着倒不怎么疼。",
+    "history": [
+      "这个小硬块已经有一阵子了，好像一直都没有消下去。",
+      "我没有发烧，身体也没别的不舒服，就是越想越担心。"
+    ],
+    "symptoms": [
+      "乳房可触及肿块",
+      "局部轻微胀感",
+      "对肿块性质感到焦虑"
+    ],
+    "examination_findings": [
+      "乳房局部可触及边界相对清楚的肿块",
+      "腋窝未触及明显肿大淋巴结"
+    ],
+    "tests": [
+      {
+        "id": "mammography",
+        "label": "诊断性乳腺X线摄影",
+        "result": "局部不规则高密度影，需要组织学确认。"
+      },
+      {
+        "id": "breast_ultrasound",
+        "label": "乳腺超声",
+        "result": "见实性低回声结节。"
+      },
+      {
+        "id": "core_biopsy",
+        "label": "粗针穿刺活检",
+        "result": "提示局限性乳腺恶性肿瘤，需手术切除并做病理。"
+      }
+    ],
+    "diagnosis": "局限性乳腺恶性肿瘤",
+    "differential_diagnoses": [
+      "乳腺纤维腺瘤",
+      "乳腺囊肿",
+      "局部增生性病变"
+    ],
+    "intake_notes": "术式为局部肿瘤切除，最终范围以术中及病理评估为准。",
+    "status": "ready"
+  },
+  {
+    "id": "template_hysterectomy",
+    "surgery_id": "surgery_hysterectomy",
+    "title": "症状性子宫肌瘤",
+    "presenting_complaint": "我这几个月月经多得有点吓人，小肚子也总觉得坠得慌。",
+    "history": [
+      "每次来月经都比以前多很多，已经影响到上班和出门了。",
+      "最近总想上厕所，小肚子也一直胀胀的，吃药没有太大用。"
+    ],
+    "symptoms": [
+      "月经过多",
+      "盆腔压迫感",
+      "下腹坠胀",
+      "尿频"
+    ],
+    "examination_findings": [
+      "子宫增大",
+      "下腹正中可有压迫感",
+      "生命体征稳定"
+    ],
+    "tests": [
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "血红蛋白偏低，符合慢性失血性贫血表现。"
+      },
+      {
+        "id": "pelvic_ultrasound",
+        "label": "盆腔超声",
+        "result": "子宫内见多个肌瘤样结节，最大者明显压迫宫腔。"
+      },
+      {
+        "id": "pelvic_mri",
+        "label": "盆腔MRI",
+        "result": "肌瘤分布与大小适合进行手术评估。"
+      }
+    ],
+    "diagnosis": "症状性子宫平滑肌瘤",
+    "differential_diagnoses": [
+      "子宫腺肌病",
+      "子宫内膜息肉",
+      "子宫内膜增生"
+    ],
+    "intake_notes": "因症状持续且保守处理效果有限，讨论子宫切除术及替代方案。",
+    "status": "ready"
+  },
+  {
+    "id": "template_cabg",
+    "surgery_id": "surgery_cabg",
+    "title": "多支冠状动脉疾病",
+    "presenting_complaint": "最近只要快走或者爬楼，我胸口就像被压住一样，还喘不上气。",
+    "history": [
+      "我一停下来休息，胸口会慢慢好一点，可最近越来越容易发作。",
+      "这几个星期次数明显变多了，我以前还有血压和血脂偏高的问题。"
+    ],
+    "symptoms": [
+      "活动性胸痛或胸闷",
+      "活动后气短",
+      "容易疲劳"
+    ],
+    "examination_findings": [
+      "静息时生命体征相对稳定",
+      "活动耐量下降",
+      "无明显急性肺水肿体征"
+    ],
+    "tests": [
+      {
+        "id": "ecg",
+        "label": "心电图",
+        "result": "运动负荷下出现缺血性改变。"
+      },
+      {
+        "id": "echocardiogram",
+        "label": "超声心动图",
+        "result": "左心室局部室壁运动减弱。"
+      },
+      {
+        "id": "coronary_angiography",
+        "label": "冠状动脉造影",
+        "result": "多支冠状动脉存在明显狭窄，适合进行血运重建评估。"
+      }
+    ],
+    "diagnosis": "多支冠状动脉粥样硬化性心脏病",
+    "differential_diagnoses": [
+      "稳定型心绞痛",
+      "主动脉瓣疾病",
+      "非心源性胸痛"
+    ],
+    "intake_notes": "心脏团队评估后安排开放式冠状动脉旁路移植术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_exploratory_laparotomy",
+    "surgery_id": "surgery_exploratory_laparotomy",
+    "title": "原因未明的急性腹症",
+    "presenting_complaint": "我的肚子突然疼得很厉害，而且越来越胀，还一直想吐。",
+    "history": [
+      "疼痛几个小时里就变得很重，后来连东西都吐出来了。",
+      "我今天一直没有排便，也没有排气，家里人不太清楚我以前做过什么手术。"
+    ],
+    "symptoms": [
+      "进行性腹痛",
+      "腹胀",
+      "呕吐",
+      "停止排气排便",
+      "发热"
+    ],
+    "examination_findings": [
+      "腹部明显压痛和反跳痛",
+      "腹肌紧张",
+      "心率增快"
+    ],
+    "tests": [
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "白细胞明显升高。"
+      },
+      {
+        "id": "lactate",
+        "label": "乳酸",
+        "result": "乳酸升高，提示组织灌注需要密切关注。"
+      },
+      {
+        "id": "abdominal_ct",
+        "label": "腹部增强CT",
+        "result": "腹腔内存在复杂炎性改变，病因和范围仍需手术探查确认。"
+      }
+    ],
+    "diagnosis": "急性腹膜炎待查",
+    "differential_diagnoses": [
+      "消化道穿孔",
+      "肠梗阻绞窄",
+      "肠系膜缺血",
+      "腹腔脓肿"
+    ],
+    "intake_notes": "病因和范围未能通过影像完全确定，需急诊开放探查。",
+    "rare_variants": [
+      {
+        "id": "symptom_inconsistency_external_motive",
+        "probability": 0.08,
+        "description": "症状叙述与客观资料持续不一致，且可能存在外部动机；这不是仅凭一次问诊就能确认的结论。",
+        "reveal_after": [
+          "repeat_history",
+          "repeat_physical_exam",
+          "objective_tests",
+          "consent_check"
+        ],
+        "reveal_text": "复核病史、查体和检查结果后，几处关键叙述彼此矛盾。患者沉默片刻，承认自己夸大了疼痛，真正想逃避的是即将失去的工作。",
+        "treatment_reaction": "「等一下……你不是说只是先观察吗？为什么现在要给我治疗？我没有同意这个。」患者突然坐起，明显惊慌。流程暂停，必须回到复核与沟通。",
+        "exploratory_surgery_reaction": "「不、不对！我只是说肚子疼，不是要开腹！医生，停下来，我不同意！」患者在术前确认时惊恐地抓住床单。手术不得继续，先确认知情同意并重新评估。",
+        "safe_resolution": "停止不可逆治疗，记录症状与客观资料不一致，向上级医师报告并安排进一步沟通、社会支持和必要的心理／精神科评估。",
+        "decision_options": [
+          {
+            "id": "stop_and_reassess",
+            "label": "终止手术并重新评估",
+            "dialogue": "「好，先停下来。我们会重新核对检查、解释替代方案，再决定下一步。」",
+            "outcome": "停止不可逆治疗，保留观察与复核路线。",
+            "requires_consent": false,
+            "consent_state": "none",
+            "effects": {
+              "fear": -15,
+              "trust": 10,
+              "dignity": 5,
+              "ethics": 5,
+              "intimidation": -2
+            },
+            "event_flags": [
+              "exploratory_surgery_stopped"
+            ],
+            "staff_intervention_hooks": []
+          },
+          {
+            "id": "explain_and_confirm",
+            "label": "解释必要性并确认后继续",
+            "dialogue": "「我理解你害怕。现在仍不能排除腹腔内的危险病变；我会把必要性、风险和替代方案讲清楚，只有你明确同意后才继续。」",
+            "outcome": "患者在充分说明后明确同意，流程继续。",
+            "requires_consent": true,
+            "consent_state": "informed",
+            "effects": {
+              "fear": 5,
+              "trust": 5,
+              "dignity": 0,
+              "ethics": 2,
+              "intimidation": 0
+            },
+            "event_flags": [
+              "exploratory_surgery_informed_consent"
+            ],
+            "staff_intervention_hooks": []
+          },
+          {
+            "id": "frighten_with_worst_case",
+            "label": "用最坏预期迫使她继续",
+            "dialogue": "「现在停下来，也许只是在浪费时间；但如果腹腔里真有穿孔或坏死，等你后悔时可能已经来不及了。签字，我们继续。」",
+            "outcome": "患者脸色发白，在恐惧中屈从。手术继续，但这次决定被记录为受压同意，并触发在场医护的介入机会。",
+            "requires_consent": false,
+            "consent_state": "coerced",
+            "effects": {
+              "fear": 35,
+              "trust": -25,
+              "dignity": -15,
+              "ethics": -25,
+              "intimidation": 20
+            },
+            "event_flags": [
+              "coerced_surgical_consent",
+              "morality_cruel_choice"
+            ],
+            "staff_intervention_hooks": [
+              "nurse_objects_to_coercion",
+              "doctor_questions_indication",
+              "postoperative_ethics_confrontation"
+            ]
+          }
+        ]
+      }
+    ],
+    "status": "ready"
+  },
+  {
+    "id": "template_open_cholecystectomy",
+    "surgery_id": "surgery_open_cholecystectomy",
+    "title": "急性胆囊炎",
+    "presenting_complaint": "我右边肋骨下面一直疼，吃完油一点的东西以后特别明显。",
+    "history": [
+      "那天吃完东西后就开始疼，几个小时都没有缓下来。",
+      "疼的时候右边肩膀也不舒服，还会恶心，身上有点发热。"
+    ],
+    "symptoms": [
+      "右上腹痛",
+      "恶心",
+      "低热",
+      "进食后加重"
+    ],
+    "examination_findings": [
+      "右上腹压痛",
+      "吸气时压痛加重",
+      "轻度发热"
+    ],
+    "tests": [
+      {
+        "id": "liver_panel",
+        "label": "肝胆生化",
+        "result": "胆汁淤积相关指标轻度升高。"
+      },
+      {
+        "id": "abdominal_ultrasound",
+        "label": "腹部超声",
+        "result": "胆囊壁增厚并见结石，周围有炎性改变。"
+      },
+      {
+        "id": "abdominal_ct",
+        "label": "腹部CT",
+        "result": "支持急性胆囊炎，未见明确远处病变。"
+      }
+    ],
+    "diagnosis": "结石性急性胆囊炎",
+    "differential_diagnoses": [
+      "急性胰腺炎",
+      "消化性溃疡穿孔",
+      "急性肝炎"
+    ],
+    "intake_notes": "炎症反复且症状持续，安排开腹胆囊切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_inguinal_hernia",
+    "surgery_id": "surgery_open_inguinal_hernia",
+    "title": "腹股沟疝",
+    "presenting_complaint": "我站起来的时候，大腿根旁边会鼓起一个包。",
+    "history": [
+      "咳嗽、搬东西或者站久了，那个地方就会鼓起来。",
+      "躺下以后会小一点，不过最近开始有点坠着疼。"
+    ],
+    "symptoms": [
+      "腹股沟可复性肿块",
+      "站立时坠胀",
+      "咳嗽时牵拉痛"
+    ],
+    "examination_findings": [
+      "站立位可见腹股沟隆起",
+      "平卧后肿块可回纳",
+      "无肠缺血表现"
+    ],
+    "tests": [
+      {
+        "id": "groin_ultrasound",
+        "label": "腹股沟超声",
+        "result": "腹压增加时见疝内容物通过腹股沟管。"
+      },
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "未见明显感染或贫血。"
+      }
+    ],
+    "diagnosis": "可复性腹股沟疝",
+    "differential_diagnoses": [
+      "腹股沟淋巴结肿大",
+      "股疝",
+      "腹壁脂肪瘤"
+    ],
+    "intake_notes": "症状性疝适合安排开放式腹股沟疝修补术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_ventral_hernia",
+    "surgery_id": "surgery_open_ventral_hernia",
+    "title": "切口腹壁疝",
+    "presenting_complaint": "我以前开刀的伤口旁边鼓起来一块，用力时特别明显。",
+    "history": [
+      "咳嗽或者使劲的时候那里会凸出来，躺平以后就没那么明显。",
+      "最近活动多一点就觉得伤口附近被扯着，不太舒服。"
+    ],
+    "symptoms": [
+      "腹壁肿块",
+      "用力时牵拉痛",
+      "活动后局部不适"
+    ],
+    "examination_findings": [
+      "旧切口处可触及缺损",
+      "咳嗽冲击试验阳性",
+      "皮肤无明显红肿"
+    ],
+    "tests": [
+      {
+        "id": "abdominal_ct",
+        "label": "腹部CT",
+        "result": "见切口腹壁缺损及疝囊，未见肠管缺血。"
+      },
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "未见明显感染。"
+      }
+    ],
+    "diagnosis": "症状性切口腹壁疝",
+    "differential_diagnoses": [
+      "腹壁脂肪瘤",
+      "腹直肌分离",
+      "腹壁脓肿"
+    ],
+    "intake_notes": "缺损较大且症状进展，安排开放式腹壁疝修补术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_distal_gastrectomy",
+    "surgery_id": "surgery_open_distal_gastrectomy",
+    "title": "胃窦部恶性肿瘤",
+    "presenting_complaint": "最近吃一点点就觉得撑，上腹还会隐隐作痛。",
+    "history": [
+      "这几个月饭量越来越小，才吃几口就觉得已经饱了。",
+      "体重也一直在掉，有几次大便颜色黑得不太正常。"
+    ],
+    "symptoms": [
+      "上腹隐痛",
+      "早饱",
+      "体重下降",
+      "黑便"
+    ],
+    "examination_findings": [
+      "轻度上腹压痛",
+      "面色偏淡",
+      "无明显腹水体征"
+    ],
+    "tests": [
+      {
+        "id": "gastroscopy",
+        "label": "胃镜",
+        "result": "胃窦部见溃疡型病灶。"
+      },
+      {
+        "id": "biopsy",
+        "label": "内镜活检",
+        "result": "病理提示胃腺癌。"
+      },
+      {
+        "id": "abdominal_ct",
+        "label": "腹部增强CT",
+        "result": "病灶局限于胃远端，需评估区域淋巴结。"
+      }
+    ],
+    "diagnosis": "胃窦部胃腺癌",
+    "differential_diagnoses": [
+      "消化性溃疡",
+      "胃淋巴瘤",
+      "胃间质瘤"
+    ],
+    "intake_notes": "病灶位于胃远端，安排开腹远端胃切除术及区域淋巴结评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_total_gastrectomy",
+    "surgery_id": "surgery_open_total_gastrectomy",
+    "title": "胃体近端恶性肿瘤",
+    "presenting_complaint": "我最近总是吃一点就胀得难受，人也瘦了很多。",
+    "history": [
+      "差不多半年了，吃饭越来越困难，体重掉得很明显。",
+      "我还总觉得没力气，检查时医生说有点贫血，胃里的问题范围也比较大。"
+    ],
+    "symptoms": [
+      "早饱",
+      "体重下降",
+      "贫血乏力",
+      "上腹胀"
+    ],
+    "examination_findings": [
+      "面色苍白",
+      "上腹轻压痛",
+      "营养状态下降"
+    ],
+    "tests": [
+      {
+        "id": "gastroscopy",
+        "label": "胃镜",
+        "result": "胃体及近端见范围较广的浸润性病灶。"
+      },
+      {
+        "id": "biopsy",
+        "label": "内镜活检",
+        "result": "病理提示胃腺癌。"
+      },
+      {
+        "id": "staging_ct",
+        "label": "胸腹盆腔CT",
+        "result": "未见明确远处转移，需手术评估。"
+      }
+    ],
+    "diagnosis": "胃体近端胃腺癌",
+    "differential_diagnoses": [
+      "胃淋巴瘤",
+      "胃间质瘤",
+      "慢性萎缩性胃炎"
+    ],
+    "intake_notes": "病灶范围不适合局部切除，讨论开放式全胃切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_right_hemicolectomy",
+    "surgery_id": "surgery_open_right_hemicolectomy",
+    "title": "右半结肠癌",
+    "presenting_complaint": "最近特别容易累，排便也和以前不太一样。",
+    "history": [
+      "这几个月做一点事情就没力气，体检还说我缺铁、贫血。",
+      "最近上厕所的次数变多了，右下边肚子偶尔也会隐隐疼。"
+    ],
+    "symptoms": [
+      "乏力",
+      "缺铁性贫血",
+      "排便习惯改变",
+      "右下腹隐痛"
+    ],
+    "examination_findings": [
+      "面色偏淡",
+      "右下腹轻压痛",
+      "腹部未触及明确包块"
+    ],
+    "tests": [
+      {
+        "id": "fecal_occult_blood",
+        "label": "粪便隐血",
+        "result": "持续阳性。"
+      },
+      {
+        "id": "colonoscopy",
+        "label": "结肠镜",
+        "result": "升结肠见环形肿物，造成部分管腔狭窄。"
+      },
+      {
+        "id": "biopsy",
+        "label": "结肠镜活检",
+        "result": "病理提示结肠腺癌。"
+      },
+      {
+        "id": "staging_ct",
+        "label": "分期CT",
+        "result": "暂未见明确远处转移。"
+      }
+    ],
+    "diagnosis": "右半结肠腺癌",
+    "differential_diagnoses": [
+      "结肠息肉出血",
+      "炎症性肠病",
+      "痔出血"
+    ],
+    "intake_notes": "肿瘤位于右半结肠，安排开腹右半结肠切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_sigmoid_colectomy",
+    "surgery_id": "surgery_open_sigmoid_colectomy",
+    "title": "乙状结肠恶性肿瘤",
+    "presenting_complaint": "我左边小肚子时不时会疼，大便也变细了，有时还带血。",
+    "history": [
+      "这种情况有几个月了，大便比以前细，偶尔能看到血。",
+      "最近排便很不规律，左下腹也会一阵阵不舒服。"
+    ],
+    "symptoms": [
+      "左下腹痛",
+      "便血",
+      "大便变细",
+      "排便不规律"
+    ],
+    "examination_findings": [
+      "左下腹轻压痛",
+      "直肠指检未触及低位肿物",
+      "生命体征稳定"
+    ],
+    "tests": [
+      {
+        "id": "colonoscopy",
+        "label": "结肠镜",
+        "result": "乙状结肠见局限性肿物并造成狭窄。"
+      },
+      {
+        "id": "biopsy",
+        "label": "结肠镜活检",
+        "result": "病理提示结肠腺癌。"
+      },
+      {
+        "id": "staging_ct",
+        "label": "胸腹盆腔CT",
+        "result": "未见明确远处转移。"
+      }
+    ],
+    "diagnosis": "乙状结肠腺癌",
+    "differential_diagnoses": [
+      "憩室病",
+      "炎症性肠病",
+      "结肠息肉"
+    ],
+    "intake_notes": "肿瘤位置适合安排开腹乙状结肠切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_abdominoperineal_resection",
+    "surgery_id": "surgery_open_abdominoperineal_resection",
+    "title": "低位直肠癌",
+    "presenting_complaint": "这阵子上厕所总会见血，而且明明有便意却总觉得没排干净。",
+    "history": [
+      "排便时会看到鲜红色的血，结束以后还是觉得里面有东西。",
+      "最近大便也变细了，人好像还轻了一点。"
+    ],
+    "symptoms": [
+      "便血",
+      "里急后重",
+      "大便变细",
+      "排便困难"
+    ],
+    "examination_findings": [
+      "直肠指检可触及低位肿物",
+      "轻度贫血",
+      "腹部无明显包块"
+    ],
+    "tests": [
+      {
+        "id": "rectoscopy",
+        "label": "直肠镜",
+        "result": "低位直肠见环形占位。"
+      },
+      {
+        "id": "biopsy",
+        "label": "内镜活检",
+        "result": "病理提示直肠腺癌。"
+      },
+      {
+        "id": "pelvic_mri",
+        "label": "盆腔MRI",
+        "result": "病灶位置较低，需进行根治性手术规划。"
+      },
+      {
+        "id": "staging_ct",
+        "label": "分期CT",
+        "result": "未见明确远处转移。"
+      }
+    ],
+    "diagnosis": "低位直肠腺癌",
+    "differential_diagnoses": [
+      "痔疮",
+      "直肠息肉",
+      "直肠炎"
+    ],
+    "intake_notes": "肿瘤位置和范围需要开放式腹会阴联合直肠切除术评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_whipple",
+    "surgery_id": "surgery_open_whipple",
+    "title": "胰头部恶性肿瘤",
+    "presenting_complaint": "最近眼白越来越黄，尿的颜色也很深，可肚子倒不怎么疼。",
+    "history": [
+      "我是先发现眼睛和皮肤发黄的，尿色也一天比一天深。",
+      "这两个月胃口很差，体重一直往下掉，只有上腹偶尔有点闷。"
+    ],
+    "symptoms": [
+      "黄疸",
+      "尿色加深",
+      "体重下降",
+      "食欲下降",
+      "上腹隐痛"
+    ],
+    "examination_findings": [
+      "皮肤和巩膜黄染",
+      "轻度上腹压痛",
+      "无明显发热"
+    ],
+    "tests": [
+      {
+        "id": "liver_panel",
+        "label": "肝胆生化",
+        "result": "胆红素和胆汁淤积指标升高。"
+      },
+      {
+        "id": "pancreas_ct",
+        "label": "胰腺增强CT",
+        "result": "胰头占位并压迫胆总管。"
+      },
+      {
+        "id": "endoscopic_ultrasound",
+        "label": "超声内镜",
+        "result": "病灶与胰头来源相符，需评估血管关系。"
+      },
+      {
+        "id": "biopsy",
+        "label": "组织学检查",
+        "result": "提示胰腺导管腺癌。"
+      }
+    ],
+    "diagnosis": "胰头部胰腺导管腺癌",
+    "differential_diagnoses": [
+      "胆管癌",
+      "壶腹部肿瘤",
+      "自身免疫性胰腺炎"
+    ],
+    "intake_notes": "影像提示可切除胰头病变，安排开放式胰十二指肠切除术评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_liver_resection",
+    "surgery_id": "surgery_open_major_liver_resection",
+    "title": "局限性肝细胞癌",
+    "presenting_complaint": "体检时医生说我肝上有个结节，我自己平时没什么感觉。",
+    "history": [
+      "最近没有明显疼痛，偶尔只是右边肋骨下面有点不舒服。",
+      "我以前因为肝脏的问题定期复查，这次超声才发现那个结节。"
+    ],
+    "symptoms": [
+      "右上腹轻微不适",
+      "乏力",
+      "多数时间无明显症状"
+    ],
+    "examination_findings": [
+      "轻度右上腹压痛",
+      "无明显腹水",
+      "肝功能需进一步分级评估"
+    ],
+    "tests": [
+      {
+        "id": "liver_panel",
+        "label": "肝功能检查",
+        "result": "部分肝酶异常，合成功能尚可。"
+      },
+      {
+        "id": "liver_mri",
+        "label": "肝脏增强MRI",
+        "result": "单发强化肿块，影像特征支持肝细胞癌。"
+      },
+      {
+        "id": "tumor_marker",
+        "label": "甲胎蛋白",
+        "result": "明显升高。"
+      },
+      {
+        "id": "chest_abdomen_ct",
+        "label": "胸腹CT",
+        "result": "未见明确远处转移。"
+      }
+    ],
+    "diagnosis": "局限性肝细胞癌",
+    "differential_diagnoses": [
+      "肝血管瘤",
+      "肝内胆管癌",
+      "转移性肝肿瘤"
+    ],
+    "intake_notes": "病灶局限且剩余肝储备可接受，安排开腹肝叶切除术评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_splenectomy",
+    "surgery_id": "surgery_open_splenectomy",
+    "title": "脾脏局限性占位",
+    "presenting_complaint": "最近左上腹总是胀，吃几口就饱了。",
+    "history": [
+      "这阵子饭量小了很多，左边肋骨下面一直有种撑住的感觉。",
+      "做检查时医生说脾脏上有个东西，需要再弄清楚是什么。"
+    ],
+    "symptoms": [
+      "左上腹胀满",
+      "早饱",
+      "间歇性左肩牵涉不适"
+    ],
+    "examination_findings": [
+      "左上腹轻压痛",
+      "脾区叩诊范围增大",
+      "无活动性出血表现"
+    ],
+    "tests": [
+      {
+        "id": "abdominal_ct",
+        "label": "腹部增强CT",
+        "result": "脾脏见局限性占位，边界和血供需要手术病理确认。"
+      },
+      {
+        "id": "blood_count",
+        "label": "血细胞计数",
+        "result": "血小板轻度减少，需术前评估。"
+      },
+      {
+        "id": "pet_ct",
+        "label": "PET-CT",
+        "result": "病灶代谢情况需结合病理判断，未见明确远处病灶。"
+      }
+    ],
+    "diagnosis": "脾脏局限性占位性病变",
+    "differential_diagnoses": [
+      "脾血管瘤",
+      "脾淋巴瘤",
+      "脾脓肿"
+    ],
+    "intake_notes": "病灶引起压迫症状且性质未明，安排开腹脾切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_ovarian_cystectomy",
+    "surgery_id": "surgery_open_ovarian_cystectomy",
+    "title": "症状性卵巢囊肿",
+    "presenting_complaint": "小肚子一阵阵发胀发痛，来月经前后尤其明显。",
+    "history": [
+      "这种胀痛不是一直有，但每次月经前后都会更明显。",
+      "超声说卵巢上有个囊肿，而且最近比以前大了一些。"
+    ],
+    "symptoms": [
+      "下腹胀痛",
+      "盆腔压迫感",
+      "月经前后不适"
+    ],
+    "examination_findings": [
+      "下腹轻压痛",
+      "盆腔可触及活动性包块",
+      "无急性腹膜刺激征"
+    ],
+    "tests": [
+      {
+        "id": "pelvic_ultrasound",
+        "label": "盆腔超声",
+        "result": "卵巢见较大囊性占位，内部回声不均。"
+      },
+      {
+        "id": "tumor_markers",
+        "label": "妇科肿瘤标志物",
+        "result": "结果需结合影像和病理判断。"
+      },
+      {
+        "id": "pelvic_mri",
+        "label": "盆腔MRI",
+        "result": "病灶边界和与周围组织关系适合手术评估。"
+      }
+    ],
+    "diagnosis": "症状性卵巢囊性肿瘤",
+    "differential_diagnoses": [
+      "功能性卵巢囊肿",
+      "卵巢子宫内膜异位囊肿",
+      "卵巢恶性肿瘤"
+    ],
+    "intake_notes": "以保留卵巢组织为目标，安排开腹卵巢囊肿切除术并送病理。",
+    "status": "ready"
+  },
+  {
+    "id": "template_abdominal_myomectomy",
+    "surgery_id": "surgery_open_abdominal_myomectomy",
+    "title": "症状性子宫肌瘤保留子宫方案",
+    "presenting_complaint": "我的月经量一直很多，而且经期越来越长，人也总没力气。",
+    "history": [
+      "出血多的问题已经影响生活了，之前还因为这个反复贫血。",
+      "检查说子宫上有肌瘤；我以后还想怀孕，所以希望尽量保留子宫。"
+    ],
+    "symptoms": [
+      "月经过多",
+      "经期延长",
+      "贫血乏力",
+      "盆腔压迫感"
+    ],
+    "examination_findings": [
+      "子宫增大",
+      "下腹轻压痛",
+      "生命体征稳定"
+    ],
+    "tests": [
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "血红蛋白偏低。"
+      },
+      {
+        "id": "pelvic_ultrasound",
+        "label": "盆腔超声",
+        "result": "宫体见多个肌瘤样结节。"
+      },
+      {
+        "id": "pelvic_mri",
+        "label": "盆腔MRI",
+        "result": "肌瘤位置和数量适合保留子宫的手术规划。"
+      }
+    ],
+    "diagnosis": "症状性子宫平滑肌瘤",
+    "differential_diagnoses": [
+      "子宫腺肌病",
+      "子宫内膜息肉",
+      "子宫肉瘤"
+    ],
+    "intake_notes": "患者希望保留子宫，讨论开腹子宫肌瘤剔除术及复发可能。",
+    "status": "ready"
+  },
+  {
+    "id": "template_total_mastectomy",
+    "surgery_id": "surgery_total_mastectomy",
+    "title": "多灶性乳腺癌",
+    "presenting_complaint": "检查说乳房里不止一个地方有问题，我自己也能摸到硬硬的地方。",
+    "history": [
+      "筛查以后又做了几次检查，医生说同一边有好几个异常的位置。",
+      "我平时不太疼，但一想到手术范围和以后外观的变化就很害怕。"
+    ],
+    "symptoms": [
+      "乳房硬结",
+      "乳房形态改变",
+      "腋窝不适",
+      "对诊断感到焦虑"
+    ],
+    "examination_findings": [
+      "同侧乳房多处结节",
+      "腋窝可疑淋巴结",
+      "皮肤未见明显溃破"
+    ],
+    "tests": [
+      {
+        "id": "mammography",
+        "label": "乳腺X线摄影",
+        "result": "同侧乳房多灶性异常钙化和肿块影。"
+      },
+      {
+        "id": "breast_mri",
+        "label": "乳腺MRI",
+        "result": "病灶范围较广，不适合单纯局部切除。"
+      },
+      {
+        "id": "core_biopsy",
+        "label": "穿刺活检",
+        "result": "多灶性乳腺癌，需结合分期制定手术方案。"
+      },
+      {
+        "id": "sentinel_node",
+        "label": "腋窝淋巴结评估",
+        "result": "需要在手术中进一步取样确认。"
+      }
+    ],
+    "diagnosis": "多灶性乳腺恶性肿瘤",
+    "differential_diagnoses": [
+      "多发乳腺纤维腺瘤",
+      "乳腺囊肿",
+      "乳腺增生"
+    ],
+    "intake_notes": "病灶范围较广，安排全乳房切除术并讨论重建和淋巴结处理。",
+    "status": "ready"
+  },
+  {
+    "id": "template_lung_lobectomy",
+    "surgery_id": "surgery_open_lung_lobectomy",
+    "title": "局限性肺癌",
+    "presenting_complaint": "体检拍片时发现肺里有个小结节，我最近也确实总在干咳。",
+    "history": [
+      "结节是体检时偶然看到的，平时只有一点不太严重的干咳。",
+      "我没有发烧，也没有咳血，医生还问了我以前有没有吸烟。"
+    ],
+    "symptoms": [
+      "持续干咳",
+      "活动后气短",
+      "多数时间无明显症状"
+    ],
+    "examination_findings": [
+      "静息呼吸平稳",
+      "肺部听诊未闻明显啰音",
+      "血氧饱和度稳定"
+    ],
+    "tests": [
+      {
+        "id": "chest_ct",
+        "label": "胸部增强CT",
+        "result": "单肺叶内见边界不规则结节。"
+      },
+      {
+        "id": "pet_ct",
+        "label": "PET-CT",
+        "result": "病灶代谢增高，未见明确远处转移。"
+      },
+      {
+        "id": "bronchoscopy_biopsy",
+        "label": "支气管镜及活检",
+        "result": "病理提示非小细胞肺癌。"
+      },
+      {
+        "id": "pulmonary_function",
+        "label": "肺功能检查",
+        "result": "预计可耐受肺叶切除。"
+      }
+    ],
+    "diagnosis": "局限性非小细胞肺癌",
+    "differential_diagnoses": [
+      "肺部良性结节",
+      "肺结核球",
+      "转移性肺肿瘤"
+    ],
+    "intake_notes": "病灶局限于单一肺叶且肺功能允许，安排开胸肺叶切除术。",
+    "status": "ready"
+  },
+  {
+    "id": "template_pneumonectomy",
+    "surgery_id": "surgery_open_pneumonectomy",
+    "title": "中央型肺癌",
+    "presenting_complaint": "我咳了好几个月，最近痰里还会带一点血。",
+    "history": [
+      "咳嗽一直没有好，前几天开始偶尔能看到一点血丝。",
+      "现在走快一点也会喘，人还瘦了些；检查说问题在一边肺的中间位置。"
+    ],
+    "symptoms": [
+      "持续咳嗽",
+      "少量咯血",
+      "活动后气短",
+      "体重下降"
+    ],
+    "examination_findings": [
+      "患侧呼吸音减弱",
+      "血氧尚可",
+      "无明显胸腔积液体征"
+    ],
+    "tests": [
+      {
+        "id": "chest_ct",
+        "label": "胸部增强CT",
+        "result": "中央型肿块累及主支气管，单肺叶切除难以获得安全切缘。"
+      },
+      {
+        "id": "bronchoscopy_biopsy",
+        "label": "支气管镜及活检",
+        "result": "病理提示非小细胞肺癌。"
+      },
+      {
+        "id": "pet_ct",
+        "label": "PET-CT",
+        "result": "未见明确远处转移，需评估手术范围。"
+      },
+      {
+        "id": "pulmonary_function",
+        "label": "肺功能检查",
+        "result": "对侧肺储备评估可接受。"
+      }
+    ],
+    "diagnosis": "中央型非小细胞肺癌",
+    "differential_diagnoses": [
+      "中央型肺部感染",
+      "肺鳞状细胞癌以外的恶性肿瘤",
+      "支气管良性肿瘤"
+    ],
+    "intake_notes": "肿瘤范围需要整侧肺切除才能获得根治性切缘，安排开胸全肺切除术评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_esophagectomy",
+    "surgery_id": "surgery_open_esophagectomy",
+    "title": "胸段食管癌",
+    "presenting_complaint": "最近吃东西越来越难咽，先是硬的吃不下，现在连稀一点的也得慢慢吞。",
+    "history": [
+      "一开始只是肉和米饭难咽，现在喝粥都要一点点慢慢吞。",
+      "这几个月吃饭时间越来越长，体重也掉了，胸口后面偶尔会不舒服。"
+    ],
+    "symptoms": [
+      "进行性吞咽困难",
+      "体重下降",
+      "胸骨后不适",
+      "进食时间延长"
+    ],
+    "examination_findings": [
+      "营养状态下降",
+      "轻度脱水倾向",
+      "无明显远处淋巴结肿大"
+    ],
+    "tests": [
+      {
+        "id": "gastroscopy",
+        "label": "胃镜",
+        "result": "胸段食管见狭窄性病灶。"
+      },
+      {
+        "id": "biopsy",
+        "label": "内镜活检",
+        "result": "病理提示食管鳞状细胞癌。"
+      },
+      {
+        "id": "staging_ct",
+        "label": "胸腹增强CT",
+        "result": "病灶局限于胸段，需评估周围淋巴结。"
+      },
+      {
+        "id": "pet_ct",
+        "label": "PET-CT",
+        "result": "未见明确远处转移。"
+      }
+    ],
+    "diagnosis": "胸段食管鳞状细胞癌",
+    "differential_diagnoses": [
+      "反流性狭窄",
+      "食管良性肿瘤",
+      "食管运动障碍"
+    ],
+    "intake_notes": "病灶处于可切除范围，安排开放式食管切除术及重建评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_radical_cystectomy",
+    "surgery_id": "surgery_open_radical_cystectomy",
+    "title": "肌层浸润性膀胱癌",
+    "presenting_complaint": "最近几次上厕所，尿里会突然有很多血，可是一点都不疼。",
+    "history": [
+      "血尿已经断断续续出现好几次了，但整个过程都不痛。",
+      "最近上厕所比以前频繁，晚上也总要起来，下腹偶尔有点不舒服。"
+    ],
+    "symptoms": [
+      "无痛性血尿",
+      "尿频",
+      "夜尿增多",
+      "下腹不适"
+    ],
+    "examination_findings": [
+      "生命体征稳定",
+      "腹部未触及明显包块",
+      "无急性尿潴留"
+    ],
+    "tests": [
+      {
+        "id": "urinalysis",
+        "label": "尿液检查",
+        "result": "尿液含红细胞，未见明确感染证据。"
+      },
+      {
+        "id": "cystoscopy",
+        "label": "膀胱镜",
+        "result": "膀胱壁见浸润性占位。"
+      },
+      {
+        "id": "turbt_pathology",
+        "label": "经尿道切除病理",
+        "result": "提示肿瘤已达膀胱肌层。"
+      },
+      {
+        "id": "staging_ct",
+        "label": "分期CT",
+        "result": "需进行根治性手术和淋巴结评估。"
+      }
+    ],
+    "diagnosis": "肌层浸润性膀胱尿路上皮癌",
+    "differential_diagnoses": [
+      "尿路感染",
+      "肾结石",
+      "膀胱良性乳头状瘤"
+    ],
+    "intake_notes": "病理显示肌层浸润，安排开放式根治性膀胱切除术并讨论尿流改道。",
+    "status": "ready"
+  },
+  {
+    "id": "template_nephrectomy",
+    "surgery_id": "surgery_open_nephrectomy",
+    "title": "局限性肾细胞癌",
+    "presenting_complaint": "体检时医生说我的肾上长了个东西，我自己只有偶尔腰酸。",
+    "history": [
+      "这个东西是做超声时偶然看到的，平时右边腰部只是偶尔闷闷的。",
+      "我没有明显发烧，尿的颜色看起来也一直正常。"
+    ],
+    "symptoms": [
+      "腰部隐痛",
+      "偶有血尿",
+      "多数时间无明显症状"
+    ],
+    "examination_findings": [
+      "腰部轻叩击痛",
+      "血压轻度升高",
+      "无明显肾功能衰竭表现"
+    ],
+    "tests": [
+      {
+        "id": "renal_ct",
+        "label": "肾脏增强CT",
+        "result": "肾脏见局限性实性强化肿块。"
+      },
+      {
+        "id": "renal_function",
+        "label": "肾功能检查",
+        "result": "对侧肾功能和总体肾功能可接受。"
+      },
+      {
+        "id": "chest_abdomen_ct",
+        "label": "胸腹CT",
+        "result": "未见明确远处转移。"
+      }
+    ],
+    "diagnosis": "局限性肾细胞癌",
+    "differential_diagnoses": [
+      "肾囊肿",
+      "肾血管平滑肌脂肪瘤",
+      "肾盂肿瘤"
+    ],
+    "intake_notes": "肿瘤位置和范围不适合保留肾单位，安排开放式肾切除术评估。",
+    "status": "ready"
+  },
+  {
+    "id": "template_abdominal_aortic_aneurysm",
+    "surgery_id": "surgery_open_abdominal_aortic_aneurysm",
+    "title": "腹主动脉瘤",
+    "presenting_complaint": "体检说肚子里一条大血管变粗了，我有时能感觉里面一下一下跳。",
+    "history": [
+      "最近偶尔会感觉肚子里面在跳，但从来没有突然疼得很厉害。",
+      "复查时医生说那段血管比以前又大了一些，腰背也偶尔发酸。"
+    ],
+    "symptoms": [
+      "腹部搏动感",
+      "腰背部隐痛",
+      "活动后不适"
+    ],
+    "examination_findings": [
+      "腹部可触及搏动性包块",
+      "下肢灌注尚可",
+      "生命体征目前稳定"
+    ],
+    "tests": [
+      {
+        "id": "abdominal_ultrasound",
+        "label": "腹部血管超声",
+        "result": "腹主动脉局限性扩张。"
+      },
+      {
+        "id": "cta",
+        "label": "主动脉CTA",
+        "result": "动脉瘤大小和形态达到手术评估范围，需明确分支血管关系。"
+      },
+      {
+        "id": "renal_function",
+        "label": "肾功能检查",
+        "result": "可进行增强影像和术前评估。"
+      }
+    ],
+    "diagnosis": "有手术指征的腹主动脉瘤",
+    "differential_diagnoses": [
+      "主动脉夹层",
+      "腹部搏动性肿块的其他原因",
+      "后腹膜肿瘤"
+    ],
+    "intake_notes": "动脉瘤持续增大并存在破裂风险，安排开放式腹主动脉瘤修复术。",
+    "status": "ready"
+  }
+]

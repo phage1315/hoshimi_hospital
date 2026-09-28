@@ -1,0 +1,167 @@
+{
+  "id": "introduction",
+  "start": "arrival",
+  "nodes": [
+    {
+      "id": "arrival",
+      "speaker": "narrator",
+      "text": "四月的晨光穿过星见医院的玻璃长廊。消毒水的气味很淡，推车轮声从转角一闪而过。白衣口袋里的新名牌贴着胸口——今天，是本多繁邦作为外科医生在这里工作的第一天。",
+      "next": "aoi_first_impression",
+      "background_id": "hallway"
+    },
+    {
+      "id": "aoi_first_impression",
+      "speaker": "narrator",
+      "text": "约定来接本多繁邦的人已经等在窗边。她将病历夹抱在身前，白大褂一丝不乱；看到他时，视线先落在名牌上，随后才露出一个很浅的笑。那不是刻意摆出的亲切，更像一位习惯先观察、再开口的前辈。",
+      "next": "aoi_welcome",
+      "background_id": "hallway"
+    },
+    {
+      "id": "aoi_welcome",
+      "speaker": "doc_aoi",
+      "text": "早上好。本多医生，对吧？我是神宮寺成美，普通外科。今天先由我带本多医生熟悉这里。",
+      "next": "aoi_advice",
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "aoi_advice",
+      "speaker": "doc_aoi",
+      "text": "本多医生的履历我看过了。不过，履历只说明过去做过什么；从今天起，我们会一起看你在患者面前怎么判断、怎么说话。遇到拿不准的事就问我，不必为了像个“老练的医生”而逞强。",
+      "next": "aoi_question",
+      "expression": "serious",
+      "background_id": "hallway"
+    },
+    {
+      "id": "aoi_question",
+      "speaker": "doc_aoi",
+      "text": "第一天站在陌生医院里——紧张吗？",
+      "choices": [
+        {
+          "label": "坦白说，确实有一点",
+          "target": "aoi_honest"
+        },
+        {
+          "label": "我会尽快跟上节奏",
+          "target": "aoi_composed"
+        }
+      ],
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "aoi_honest",
+      "speaker": "doc_aoi",
+      "text": "会紧张很正常。真正危险的是已经紧张得听不见别人说话，却还假装自己什么都知道。保持现在这样就好。",
+      "next": "haru_arrival",
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "aoi_composed",
+      "speaker": "doc_aoi",
+      "text": "很好。不过这里的节奏偶尔会突然加快。跟得上时不必逞强，跟不上时也别沉默——及时开口，同样是医生的判断。",
+      "next": "haru_arrival",
+      "expression": "serious",
+      "background_id": "hallway"
+    },
+    {
+      "id": "haru_arrival",
+      "speaker": "narrator",
+      "text": "她的话音刚落，走廊另一端便传来轻快而克制的脚步声。一名护士抱着整理好的门诊资料停在两人面前，先向神宮寺医生点头，才转向本多。",
+      "next": "haru_intro",
+      "background_id": "hallway"
+    },
+    {
+      "id": "haru_intro",
+      "speaker": "nurse_haru",
+      "text": "初次见面，我是七瀬恋，主要负责手术护理和今天的协调。本多医生的门诊资料已经准备好了。以后如果一时找不到人，先到护士站来，通常总能在那里找到我。",
+      "next": "haru_first_impression",
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "haru_first_impression",
+      "speaker": "narrator",
+      "text": "她说话时始终直视着本多，声音柔和，递来资料的动作却干净利落。资料边缘贴着不同颜色的索引，连本多还没来得及问的病房与手术室位置，也已经用笔做了简短标记。",
+      "next": "haru_invite",
+      "background_id": "hallway"
+    },
+    {
+      "id": "haru_invite",
+      "speaker": "nurse_haru",
+      "text": "离第一位患者的预约还有一点时间。我们先去护士站，跟今天值班的护士们打个招呼。之后我再带你去诊室。",
+      "next": "station_walk",
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "station_walk",
+      "speaker": "narrator",
+      "text": "本多跟上七瀬恋。她放慢半步走在前面，沿路指出药品间、病房通道和通往手术区的门。护士站的电话声与键盘声渐渐清晰起来。",
+      "next": "station_haru",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "station_haru",
+      "speaker": "nurse_haru",
+      "text": "这里就是护士站。今天早班的人不多，所以名字应该很好记——中井前辈，还有朝倉。",
+      "next": "rin_intro",
+      "expression": "neutral",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "rin_intro",
+      "speaker": "nurse_rin",
+      "text": "中井美佳，主要负责病房护理。住院患者的准备、交接和术后观察，我会再跟本多医生核对。需要病房配合时直接说清楚，不用绕圈子。",
+      "next": "rin_impression",
+      "expression": "serious",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "rin_impression",
+      "speaker": "narrator",
+      "text": "中井护士把手里的交接表翻到下一页，语气简洁得近乎严厉，却已经在本多的名字旁补上了内线号码。她似乎属于会把所有事情提前一步准备好的人。",
+      "next": "yui_intro",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "yui_intro",
+      "speaker": "nurse_yui",
+      "text": "我是朝倉美幸，今天负责门诊！我还在熟悉一些流程，不过抽血、检查安排和带患者过去都可以交给我。啊——如果我跑得太快，记得叫住我。",
+      "next": "yui_impression",
+      "expression": "smile",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "yui_impression",
+      "speaker": "narrator",
+      "text": "朝倉护士说到最后自己先笑了起来。她的名牌还很新，口袋里的便笺却写得密密麻麻；那份活力让忙碌的护士站短暂地轻松了一点。",
+      "next": "station_close",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "station_close",
+      "speaker": "nurse_haru",
+      "text": "第一天先记住我们三个人就够了。以后排班和人员会更多，但今天门诊与病房需要谁，你已经都见过了。走吧，我带你去诊室。",
+      "next": "clinic_walk",
+      "expression": "smile",
+      "background_id": "nurses_station"
+    },
+    {
+      "id": "clinic_walk",
+      "speaker": "narrator",
+      "text": "七瀬恋推开走廊尽头的门。桌上的病历、听诊器和刚送来的检查单已经摆放整齐；门外传来候诊患者压低的交谈声。直到这一刻，“第一天”才真正有了即将开始的实感。",
+      "next": "clinic_handover",
+      "background_id": "clinic"
+    },
+    {
+      "id": "clinic_handover",
+      "speaker": "nurse_haru",
+      "text": "这里就是本多医生的诊室。第一位患者已经到了，我会在附近配合。准备好以后，我们就开始吧。",
+      "next": "@location:clinic",
+      "expression": "smile",
+      "background_id": "clinic"
+    }
+  ]
+}

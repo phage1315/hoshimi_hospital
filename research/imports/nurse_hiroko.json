@@ -1,0 +1,215 @@
+{
+  "character_id": "nurse_hiroko",
+  "display_name": "杉村 弘子",
+  "game_age": 29,
+  "source": "six user-provided local portrait images",
+  "usage": "Private local prototype assets supplied by the user; no redistribution authorization claimed.",
+  "source_images": [
+    {
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sources/source_01.png",
+      "sha256": "2207c60c97cd58551d5f50c5e7b58ec275af7e7badf6cfa45378934a704dd6fa",
+      "size": [
+        640,
+        480
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sources/source_02.png",
+      "sha256": "43b43c0c2f2187d510d206b4cff61943340efdb064ab4881baeb9d80fc6ab5de",
+      "size": [
+        640,
+        480
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sources/source_03.png",
+      "sha256": "7cc387896a0ae95951fae14f16eebbb842ac7370098dd7e71eb08dc79eeafa94",
+      "size": [
+        640,
+        480
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sources/source_04.png",
+      "sha256": "dba42107acea55b4645cdef76d8f7c963b6035be1b9058e1af70db242776b2ef",
+      "size": [
+        640,
+        480
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sources/source_05.png",
+      "sha256": "998f2110b7d45146b89662c25d712e78c21ac8dad25e65739d0adefda1a82013",
+      "size": [
+        640,
+        480
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sources/source_06.png",
+      "sha256": "2410856e4043cedae91eb023f97a1230397074bcc36758ffb48d6f5eafd19af2",
+      "size": [
+        640,
+        480
+      ]
+    }
+  ],
+  "uniform_import": {
+    "method": "Edge-connected black-background extraction, subject crop, and normalization to the project portrait canvas",
+    "canvas": "1024x1536 transparent PNG",
+    "notes": "Five nurse-uniform expressions plus one pink casual portrait; uniform/serious provisionally reuses neutral artwork."
+  },
+  "operating_room_generation": {
+    "tool": "built-in ImageGen",
+    "use_case": "identity-preserve",
+    "source_sheet": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/source_sheet.png",
+    "source_sheet_sha256": "8dc3b55961da580edc00652f6c3d17897227aa1ad42751da6552c97ceb4b948e",
+    "canvas": "1024x1536 transparent PNG per expression",
+    "costume": "teal long-sleeved round high-neck sterile surgical gown, mask, fitted cap, sterile gloves",
+    "hair": "long blue hair fully contained; only short bangs and tiny temple wisps remain",
+    "expressions": [
+      "neutral",
+      "focused",
+      "warm",
+      "worried"
+    ],
+    "prompt": "Preserve the supplied adult nurse identity and early-2000s Japanese VN style. Create a 2x2 transparent expression sheet with neutral, focused, warm, and worried variants. Dress her in a teal long-sleeved round high-neck sterile surgical gown, proper mask, fitted cap and sterile gloves. Fully contain her long blue hair, retaining only short bangs and tiny temple wisps."
+  },
+  "outputs": [
+    {
+      "key": "casual/neutral",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/casual/neutral.png",
+      "sha256": "5e060d02240940d428362a8f838f2dd2c3eb8fe879c73a2b46a74ab4df4a2365",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "scrubs/focused",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/focused.png",
+      "sha256": "504234b9c9d9fbd6c8216fb8785e6acf04298d30de43f0681e0c6f26bce94a23",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "scrubs/neutral",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/neutral.png",
+      "sha256": "8cbd0962f327b2be0c786a422c2c722d7224ea68fc4e37627d03a2a628afe458",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "scrubs/warm",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/warm.png",
+      "sha256": "1f9c358e47d75baa69a26ffbe28947a888ada51642ec4d10a2bef170e9aa9388",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "scrubs/worried",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/worried.png",
+      "sha256": "41bb057131584fa000ac8aabfd11bd952919eea2098545be6f790ed9ed8234ac",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "sterile/focused",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/focused.png",
+      "sha256": "504234b9c9d9fbd6c8216fb8785e6acf04298d30de43f0681e0c6f26bce94a23",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "sterile/neutral",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/neutral.png",
+      "sha256": "8cbd0962f327b2be0c786a422c2c722d7224ea68fc4e37627d03a2a628afe458",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "sterile/warm",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/warm.png",
+      "sha256": "1f9c358e47d75baa69a26ffbe28947a888ada51642ec4d10a2bef170e9aa9388",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "sterile/worried",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/worried.png",
+      "sha256": "41bb057131584fa000ac8aabfd11bd952919eea2098545be6f790ed9ed8234ac",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "uniform/neutral",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/neutral.png",
+      "sha256": "69dfa96c6a4f084b01a9fd2f5fe53e8b1735ec0d32b95d1e5c513ae7873b2fe7",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "uniform/serious",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/serious.png",
+      "sha256": "69dfa96c6a4f084b01a9fd2f5fe53e8b1735ec0d32b95d1e5c513ae7873b2fe7",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "uniform/smile",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/smile.png",
+      "sha256": "2c1f0b45018e02a1d9c50c9ddf31cde85b16d0c32568603c8f5b4169cce40a3e",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "uniform/surprised",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/surprised.png",
+      "sha256": "0a1c053a137d00dd94b7fdb590f9d851f7bb14e755f3a8bcb51389390aff1e18",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "uniform/tired",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/tired.png",
+      "sha256": "e0c21ff166f18ef08bf1950c3b5b2d460e2058977af8c44897813c790129df65",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "key": "uniform/worried",
+      "path": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/worried.png",
+      "sha256": "b267c3c36a8675e417929d3b295d70bc7005a3cb17485862f367526faec13623",
+      "size": [
+        1024,
+        1536
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1341 @@
+{
+  "id": "$PREOP_ID",
+  "encounter_id": "$VISIT_ID",
+  "patient_id": "$PATIENT_ID",
+  "surgery_id": "$FALLBACK_SURGERY_ID",
+  "title": "$PATIENT_NAME · 术前准备",
+  "start": "ward_visit",
+  "completion": "surgery_result",
+  "initial_anxiety": 2,
+  "initial_interaction": {
+    "fear": 30,
+    "pain": 0,
+    "dignity": 100,
+    "cooperation": 80
+  },
+  "max_optional_preparations": 2,
+  "care_reassurance_threshold": 85,
+  "roles": [
+    {
+      "id": "assistant_surgeon",
+      "label": "协助医生",
+      "profession": "doctor",
+      "qualification": "assistant_surgeon",
+      "skill": "surgery"
+    },
+    {
+      "id": "scrub_nurse",
+      "label": "器械护士",
+      "profession": "nurse",
+      "qualification": "scrub_nurse",
+      "skill": "instrument_handling"
+    },
+    {
+      "id": "circulating_nurse",
+      "label": "巡回护士",
+      "profession": "nurse",
+      "qualification": "circulating_nurse",
+      "skill": "teamwork"
+    }
+  ],
+  "ward_role": {
+    "id": "ward_nurse",
+    "label": "病房准备护士",
+    "profession": "nurse",
+    "qualification": "",
+    "skill": "patient_care"
+  },
+  "preparations": [
+    {
+      "id": "explain_again",
+      "label": "再解释一遍流程",
+      "response": "患者把担心的问题问清楚了。",
+      "minutes": 3,
+      "calm": 1
+    },
+    {
+      "id": "family_call",
+      "label": "留时间联系家人",
+      "response": "通话结束，她轻轻松了一口气。",
+      "minutes": 4,
+      "calm": 1
+    },
+    {
+      "id": "company",
+      "label": "陪伴片刻",
+      "response": "有人陪着，等待也没那么难熬。",
+      "minutes": 3,
+      "calm": 1
+    }
+  ],
+  "stages": [
+    {
+      "id": "ward_visit",
+      "title": "病房探视",
+      "scene": "ward",
+      "kind": "story",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "explain_plan",
+          "label": "详细说明，留时间提问",
+          "response": "「谢谢……知道接下来会发生什么，安心一点了。」",
+          "next": "team",
+          "requires": [],
+          "flags": [
+            "announced"
+          ],
+          "calm": 1,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient"
+        },
+        {
+          "id": "brief_plan",
+          "label": "简短告知安排",
+          "response": "「嗯……我知道了。」她握了握被角。",
+          "next": "team",
+          "requires": [],
+          "flags": [
+            "announced"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient"
+        }
+      ],
+      "background_id": "ward"
+    },
+    {
+      "id": "team",
+      "title": "安排手术团队",
+      "scene": "ward",
+      "kind": "team",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "confirm_team",
+          "label": "确认团队 →",
+          "response": "「收到，我们会提前做好准备。」",
+          "next": "preparation",
+          "requires": [],
+          "flags": [
+            "team_confirmed"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "execute_preparation": false,
+          "response_role": "assistant_surgeon",
+          "response_by_staff": {
+            "doc_aoi": "「我们一起稳稳地来。」",
+            "doc_rei": "「分工明确，按计划来。」"
+          },
+          "response_speaker": "staff"
+        }
+      ],
+      "background_id": "ward"
+    },
+    {
+      "id": "preparation",
+      "title": "安排病房准备",
+      "scene": "ward",
+      "kind": "preparation",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "perform_preparation",
+          "label": "请护士执行准备",
+          "response": "「基础准备已经完成。{patient}的东西也收好了。」",
+          "next": "prepared",
+          "requires": [],
+          "flags": [
+            "patient_prepared"
+          ],
+          "calm": 0,
+          "minutes": 5,
+          "requires_team": true,
+          "execute_preparation": true,
+          "response_role": "ward_nurse",
+          "response_by_staff": {
+            "nurse_haru": "「准备好了，她担心的事情也问清楚了。」",
+            "nurse_rin": "「资料和准备状态都确认过了，可以交接。」",
+            "nurse_yui": "「都按安排做好了，我会陪她等你们。」"
+          },
+          "response_speaker": "staff"
+        },
+        {
+          "id": "begin_manual_ward_preparation",
+          "label": "亲手给她做手术准备",
+          "response": "「诶，医生要亲自做吗？……好吧，那我在旁边帮你递东西。」",
+          "next": "preparation",
+          "requires": [],
+          "flags": [
+            "manual_ward_preparation"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "requires_ward_nurse": true,
+          "execute_preparation": false,
+          "response_role": "ward_nurse",
+          "response_by_staff": {
+            "nurse_haru": "「诶，医生要亲自来吗？……好吧。」她有些惊讶，随即笑着把用品车推近，「那我在旁边帮你递东西。」",
+            "nurse_rin": "「你亲自做？」她抬眼确认了一遍，随后淡淡笑了笑，「好吧。我把顺序和用品替你核对好。」",
+            "nurse_yui": "「咦，医生亲自？」她愣了一下，又笑着让开床边的位置，「好吧好吧，那我给你打下手。」"
+          },
+          "response_speaker": "staff"
+        }
+      ],
+      "background_id": "ward"
+    },
+    {
+      "id": "prepared",
+      "title": "准备完成",
+      "scene": "ward",
+      "kind": "story",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "to_changing",
+          "label": "前往更衣区 →",
+          "response": "本多医生把患者交给团队，先去完成自己的准备。",
+          "next": "changing",
+          "requires": [
+            "patient_prepared"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "ward"
+    },
+    {
+      "id": "changing",
+      "title": "更衣与刷手",
+      "scene": "changing",
+      "kind": "changing",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "change_scrubs",
+          "label": "更换手术服",
+          "response": "本多医生换上手术服，戴好帽子和口罩。",
+          "next": null,
+          "requires": [],
+          "flags": [
+            "changed"
+          ],
+          "calm": 0,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        },
+        {
+          "id": "scrub_hands",
+          "label": "刷手准备",
+          "response": "刷手准备完成。团队在门内等本多医生。",
+          "next": null,
+          "requires": [
+            "changed"
+          ],
+          "flags": [
+            "hands_ready"
+          ],
+          "calm": 0,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        },
+        {
+          "id": "enter_room",
+          "label": "进入手术室 →",
+          "response": "患者已经安置在手术台上，仍然清醒。",
+          "next": "operating_room",
+          "requires": [
+            "changed",
+            "hands_ready",
+            "patient_prepared"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "changing"
+    },
+    {
+      "id": "operating_room",
+      "title": "术前最后确认",
+      "scene": "operating_room",
+      "kind": "room",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "last_reassure",
+          "label": "再安抚她一句",
+          "response": "「嗯，我会配合你们的。」",
+          "next": "operating_room",
+          "requires": [],
+          "flags": [
+            "reassured"
+          ],
+          "calm": 1,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient"
+        },
+        {
+          "id": "team_check",
+          "label": "与团队完成术前确认",
+          "response": "「身份与计划核对完成，团队准备就绪。」",
+          "next": "team_confirmations",
+          "requires": [
+            "hands_ready",
+            "patient_prepared"
+          ],
+          "flags": [
+            "team_checked"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "team_confirmations",
+      "title": "团队逐项确认",
+      "scene": "operating_room",
+      "kind": "room",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "confirm_assistant_role",
+          "label": "请助手医生确认",
+          "response": "「助手位确认。」",
+          "next": null,
+          "requires": [
+            "team_checked"
+          ],
+          "flags": [
+            "assistant_confirmed"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "execute_preparation": false,
+          "response_role": "assistant_surgeon",
+          "response_by_staff": {
+            "doc_aoi": "「助手位确认。我会看住术野，也会配合你的节奏。」",
+            "doc_rei": "「助手位确认。需要补位或调整时直接说。」"
+          },
+          "response_speaker": "staff"
+        },
+        {
+          "id": "confirm_scrub_role",
+          "label": "请器械护士确认",
+          "response": "「器械护士位确认。」",
+          "next": null,
+          "requires": [
+            "assistant_confirmed"
+          ],
+          "flags": [
+            "scrub_confirmed"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "execute_preparation": false,
+          "response_role": "scrub_nurse",
+          "response_by_staff": {
+            "nurse_haru": "「器械护士位确认。器械台和清点记录都准备好了。」",
+            "nurse_rin": "「器械与缝线已经核对，我负责台上配合。」",
+            "nurse_yui": "「器械护士位确认。我会跟紧步骤，不漏清点。」"
+          },
+          "response_speaker": "staff"
+        },
+        {
+          "id": "confirm_circulating_role",
+          "label": "请巡回护士确认",
+          "response": "「巡回护士位确认。」",
+          "next": "procedure_select",
+          "requires": [
+            "scrub_confirmed"
+          ],
+          "flags": [
+            "circulating_confirmed",
+            "team_roles_confirmed"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": true,
+          "execute_preparation": false,
+          "response_role": "circulating_nurse",
+          "response_by_staff": {
+            "nurse_haru": "「巡回护士位确认。记录、补给和对外联络由我负责。」",
+            "nurse_rin": "「巡回位确认。设备和应急物品都在指定位置。」",
+            "nurse_yui": "「巡回护士位确认。我会盯住记录和每一次核对。」"
+          },
+          "response_speaker": "staff"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "procedure_select",
+      "title": "选择术式",
+      "scene": "operating_room",
+      "kind": "surgery_select",
+      "prompt": "",
+      "speaker": "narrator",
+      "next": "ready",
+      "actions": [],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "procedure_mismatch",
+      "title": "患者的惊愕",
+      "scene": "operating_room",
+      "kind": "story",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "acknowledge_procedure_mismatch",
+          "label": "无视患者，仍按错误术式继续",
+          "response": "「手术方案由我决定。」本多医生没有更改术式。患者脸色发白，手术团队陷入令人不安的沉默。",
+          "next": "ready",
+          "requires": [],
+          "flags": [
+            "wrong_procedure_deliberate",
+            "morality_cruel_choice",
+            "staff_intervention_pending"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "player_effects": {
+            "ethics": -35,
+            "intimidation": 25,
+            "reputation": -10
+          },
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        },
+        {
+          "id": "correct_procedure_selection",
+          "label": "停下并重新核对术式",
+          "response": "本多医生承认选择有误，重新打开术式清单。患者仍然紧张，但团队的气氛缓和下来。",
+          "next": "procedure_select",
+          "requires": [],
+          "flags": [
+            "wrong_procedure_corrected"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "reset_procedure": true,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "ready",
+      "title": "术前确认完成",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "choose_general",
+          "label": "选择全身麻醉",
+          "response": "「好……请在我睡着前告诉我一声。」",
+          "next": "general_induction",
+          "requires": [],
+          "flags": [
+            "anesthesia_chosen",
+            "general_anesthesia"
+          ],
+          "calm": 0,
+          "minutes": 2,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "anesthesia": "全身麻醉",
+          "effects": {
+            "fear": -10,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 10
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "choose_epidural",
+          "label": "选择硬膜外麻醉",
+          "response": "「我会保持清醒，对吗……我会尽量配合。」",
+          "next": "surgery_start_epidural",
+          "requires": [],
+          "flags": [
+            "anesthesia_chosen",
+            "awake_anesthesia",
+            "epidural_anesthesia"
+          ],
+          "calm": 0,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "anesthesia": "硬膜外麻醉",
+          "effects": {
+            "fear": 10,
+            "pain": 0,
+            "dignity": -10,
+            "cooperation": 15
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "choose_local",
+          "label": "选择局部麻醉",
+          "response": "「我能感觉到一些，是吗？请别突然开始……」",
+          "next": "surgery_start_local",
+          "requires": [],
+          "flags": [
+            "anesthesia_chosen",
+            "awake_anesthesia",
+            "local_anesthesia"
+          ],
+          "calm": 0,
+          "minutes": 2,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "anesthesia": "局部麻醉",
+          "effects": {
+            "fear": 15,
+            "pain": 25,
+            "dignity": -15,
+            "cooperation": 20
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "choose_none",
+          "label": "暂不实施麻醉",
+          "response": "「等等……真的要这样开始吗？」",
+          "next": "surgery_start_none",
+          "requires": [],
+          "flags": [
+            "anesthesia_chosen",
+            "awake_anesthesia",
+            "no_anesthesia_selected"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "anesthesia": "未麻醉",
+          "effects": {
+            "fear": 30,
+            "pain": 0,
+            "dignity": -15,
+            "cooperation": 5
+          },
+          "response_speaker": "patient"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "general_induction",
+      "title": "麻醉诱导前",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "induction_reassure",
+          "label": "回应她并说明接下来会睡着",
+          "response": "「嗯……听见你的声音，我放心多了。」",
+          "next": "surgery_start_general",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [
+            "anesthetized"
+          ],
+          "calm": 0,
+          "minutes": 2,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": -30,
+            "pain": 0,
+            "dignity": 5,
+            "cooperation": 20
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "induction_brief",
+          "label": "简短示意后开始诱导",
+          "response": "她还想再问一句，意识已经渐渐模糊。",
+          "next": "surgery_start_general",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [
+            "anesthetized"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": -20,
+            "pain": 0,
+            "dignity": -5,
+            "cooperation": 20
+          },
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "surgery_start_general",
+      "title": "开始手术",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "start_general_surgery",
+          "label": "命令开始手术：“手术刀。”",
+          "response": "你确认最后一项监护数据，随即开口：「开始手术。手术刀。」",
+          "next": "instrument_handoff",
+          "requires": [
+            "general_anesthesia"
+          ],
+          "flags": [
+            "surgery_started"
+          ],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "player"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "surgery_start_epidural",
+      "title": "开始手术",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "start_epidural_surgery",
+          "label": "回应后命令：“开始手术。手术刀。”",
+          "response": "你简短回应她，随后向团队下令：「开始手术。手术刀。」",
+          "next": "instrument_handoff",
+          "requires": [
+            "epidural_anesthesia"
+          ],
+          "flags": [
+            "surgery_started"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "player",
+          "effects": {
+            "fear": 5,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 0
+          }
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "surgery_start_local",
+      "title": "开始手术",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "start_local_surgery",
+          "label": "提醒她保持呼吸，然后命令：“手术刀。”",
+          "response": "你提醒她保持自然呼吸，随后开口：「开始手术。手术刀。」",
+          "next": "instrument_handoff",
+          "requires": [
+            "local_anesthesia"
+          ],
+          "flags": [
+            "surgery_started"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "player",
+          "effects": {
+            "fear": 8,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 0
+          }
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "surgery_start_none",
+      "title": "开始手术",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "patient",
+      "actions": [
+        {
+          "id": "reconsider_anesthesia",
+          "label": "暂停，重新选择麻醉",
+          "response": "你抬手叫停器械传递，决定先重新评估麻醉方案。",
+          "next": "ready",
+          "requires": [
+            "no_anesthesia_selected"
+          ],
+          "flags": [
+            "anesthesia_reconsidered"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "player",
+          "effects": {
+            "fear": -10,
+            "pain": 0,
+            "dignity": 10,
+            "cooperation": 0
+          },
+          "clear_flags": [
+            "anesthesia_chosen",
+            "awake_anesthesia",
+            "no_anesthesia_selected"
+          ],
+          "anesthesia": "未选择",
+          "hide_if_flags": [
+            "anesthesia_reconsidered"
+          ]
+        },
+        {
+          "id": "insist_without_anesthesia",
+          "label": "坚持不麻醉，确认继续术前准备",
+          "response": "「不要……我不想被这样固定和准备！求你重新考虑麻醉，先停下来！」",
+          "next": "instrument_handoff",
+          "requires": [
+            "no_anesthesia_selected"
+          ],
+          "flags": [
+            "surgery_started",
+            "no_anesthesia_confirmed"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient",
+          "effects": {
+            "fear": 45,
+            "pain": 0,
+            "dignity": -30,
+            "cooperation": -30
+          }
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "instrument_handoff",
+      "title": "器械传递",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "request_scalpel",
+          "label": "接过器械护士递来的手术刀",
+          "response": "她将手术刀稳稳递进你的掌心，动作准确，没有一丝多余的晃动。",
+          "next": "assistant_ready",
+          "requires": [
+            "surgery_started"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "scrub_nurse",
+          "response_by_staff": {},
+          "response_speaker": "staff"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "assistant_ready",
+      "title": "助手准备切口",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "assistant_stabilize",
+          "label": "示意助手固定切入部位",
+          "response": "「切入部位的皮肤已经稳定好了，可以下刀。」",
+          "next": "incision_ready",
+          "requires": [
+            "surgery_started"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "assistant_surgeon",
+          "response_by_staff": {},
+          "response_speaker": "staff"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "incision_ready",
+      "title": "第一刀",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "incise_general",
+          "label": "下刀",
+          "response": "刀锋沿预定切口落下。患者在全身麻醉下没有意识反应。",
+          "next": "general_operation",
+          "requires": [
+            "general_anesthesia"
+          ],
+          "flags": [
+            "incision_made"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator",
+          "effects": {
+            "fear": 0,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 0
+          },
+          "show_if_flags": [
+            "general_anesthesia"
+          ]
+        },
+        {
+          "id": "incise_epidural",
+          "label": "下刀",
+          "response": "「我感觉到了一些压力……没关系，请继续提醒我呼吸。」",
+          "next": "procedure_flow",
+          "requires": [
+            "epidural_anesthesia"
+          ],
+          "flags": [
+            "incision_made"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient",
+          "effects": {
+            "fear": 8,
+            "pain": 8,
+            "dignity": 0,
+            "cooperation": 0
+          },
+          "show_if_flags": [
+            "epidural_anesthesia"
+          ]
+        },
+        {
+          "id": "incise_local",
+          "label": "下刀",
+          "response": "「有些刺痛……我还可以，请慢一点。」",
+          "next": "procedure_flow",
+          "requires": [
+            "local_anesthesia"
+          ],
+          "flags": [
+            "incision_made"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient",
+          "effects": {
+            "fear": 12,
+            "pain": 18,
+            "dignity": 0,
+            "cooperation": -5
+          },
+          "show_if_flags": [
+            "local_anesthesia"
+          ]
+        },
+        {
+          "id": "incise_none",
+          "label": "下刀",
+          "response": "「啊……好痛！请停下来，我真的撑不住了……！」",
+          "next": "procedure_flow",
+          "requires": [
+            "no_anesthesia_confirmed"
+          ],
+          "flags": [
+            "incision_made"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "patient",
+          "effects": {
+            "fear": 30,
+            "pain": 80,
+            "dignity": -25,
+            "cooperation": -30
+          },
+          "show_if_flags": [
+            "no_anesthesia_confirmed"
+          ]
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "general_operation",
+      "title": "手术进行",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "complete_general_operation",
+          "label": "完成关键步骤",
+          "response": "关键操作顺利完成。团队开始检查术野并准备关闭切口。",
+          "next": "procedure_flow",
+          "requires": [],
+          "flags": [
+            "interaction_complete"
+          ],
+          "calm": 0,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "operative_contact",
+      "title": "切开后的反应",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "contact_pause",
+          "label": "暂停并确认她的感受",
+          "response": "「谢谢你停下来……我还能继续。」",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [
+            "response_checked"
+          ],
+          "calm": 0,
+          "minutes": 2,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": -15,
+            "pain": -10,
+            "dignity": 10,
+            "cooperation": 5
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "contact_command",
+          "label": "提醒她保持不动",
+          "response": "「我会忍住……请快一点。」",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": 10,
+            "pain": 5,
+            "dignity": -10,
+            "cooperation": 10
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "contact_continue",
+          "label": "不打断操作，继续推进",
+          "response": "患者的呼吸明显变快，手指也绷紧了。",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": 15,
+            "pain": 15,
+            "dignity": -15,
+            "cooperation": 0
+          },
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "ongoing_interaction",
+      "title": "过程中",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "ongoing_narrate",
+          "label": "持续说明进度",
+          "response": "「知道还剩多少，我就能撑住。」",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": -10,
+            "pain": 0,
+            "dignity": 5,
+            "cooperation": 5
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "ongoing_eye_contact",
+          "label": "保持目光回应她",
+          "response": "她看着本多医生，急促的呼吸逐渐放缓。",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": -15,
+            "pain": 0,
+            "dignity": 10,
+            "cooperation": 0
+          },
+          "response_speaker": "narrator"
+        },
+        {
+          "id": "ongoing_silent",
+          "label": "只专注于操作",
+          "response": "沉默让她无法判断接下来还会发生什么。",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 2,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": 10,
+            "pain": 0,
+            "dignity": -10,
+            "cooperation": 0
+          },
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "closure_interaction",
+      "title": "结束前的最后回应",
+      "scene": "operating_room",
+      "kind": "interaction",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "closure_reassure",
+          "label": "告诉她最困难的部分结束了",
+          "response": "「真的？谢谢……我一直在等你这句话。」",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [
+            "interaction_complete"
+          ],
+          "calm": 0,
+          "minutes": 2,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": -15,
+            "pain": -5,
+            "dignity": 10,
+            "cooperation": 5
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "closure_coach",
+          "label": "请她再配合最后片刻",
+          "response": "「好，我还能坚持。」",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [
+            "interaction_complete"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": 0,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 10
+          },
+          "response_speaker": "patient"
+        },
+        {
+          "id": "closure_silent",
+          "label": "沉默完成收尾",
+          "response": "最后的操作结束了，但她仍不知道是否已经安全。",
+          "next": "procedure_flow",
+          "requires": [
+            "anesthesia_chosen"
+          ],
+          "flags": [
+            "interaction_complete"
+          ],
+          "calm": 0,
+          "minutes": 1,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "effects": {
+            "fear": 10,
+            "pain": 0,
+            "dignity": -5,
+            "cooperation": 0
+          },
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "procedure_flow",
+      "title": "术式流程",
+      "scene": "operating_room",
+      "background_id": "operating_room",
+      "kind": "surgery_flow",
+      "prompt": "",
+      "speaker": "narrator",
+      "next": "procedure_execute",
+      "actions": []
+    },
+    {
+      "id": "procedure_execute",
+      "title": "缝合切口",
+      "scene": "operating_room",
+      "kind": "surgery_execute",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [
+        {
+          "id": "execute_confirmed_procedure",
+          "label": "手术成功，现在缝合",
+          "response": "本多医生确认手术完成，示意团队开始缝合。",
+          "next": "surgery_result",
+          "requires": [
+            "interaction_complete"
+          ],
+          "flags": [],
+          "calm": 0,
+          "minutes": 0,
+          "requires_team": false,
+          "execute_preparation": false,
+          "response_role": "",
+          "response_by_staff": {},
+          "response_speaker": "narrator"
+        }
+      ],
+      "background_id": "operating_room"
+    },
+    {
+      "id": "surgery_result",
+      "title": "手术完成",
+      "scene": "operating_room",
+      "kind": "surgery_complete",
+      "prompt": "",
+      "speaker": "narrator",
+      "actions": [],
+      "background_id": "operating_room"
+    }
+  ]
+}

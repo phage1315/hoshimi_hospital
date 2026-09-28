@@ -1,0 +1,52 @@
+[
+  {
+    "id": "case_abdomen",
+    "title": "第一份病历：腹痛",
+    "presenting_complaint": "腹部不适",
+    "symptoms": [
+      "腹痛"
+    ],
+    "examination_findings": [],
+    "tests": [],
+    "diagnosis": null,
+    "differential_diagnoses": [],
+    "treatment": null,
+    "surgery_id": "surgery_appendix",
+    "complications": [],
+    "outcome": null,
+    "status": "ready"
+  },
+  {
+    "id": "case_followup",
+    "title": "第二份病历：乳房肿块",
+    "presenting_complaint": "左侧乳房肿块",
+    "symptoms": [
+      "可触及肿块",
+      "轻微胀痛"
+    ],
+    "examination_findings": [
+      "左侧乳房外上象限可触及边界清楚的活动性肿块"
+    ],
+    "tests": [
+      {
+        "id": "breast_ultrasound",
+        "result": "左侧见边界清楚的实性肿块，影像倾向良性。"
+      },
+      {
+        "id": "core_biopsy",
+        "result": "穿刺病理支持良性纤维上皮性病变。"
+      }
+    ],
+    "diagnosis": "乳腺良性肿瘤",
+    "differential_diagnoses": [
+      "乳腺囊肿",
+      "纤维腺瘤",
+      "恶性肿瘤"
+    ],
+    "treatment": "住院行乳腺肿瘤切除术",
+    "surgery_id": "surgery_breast_tumor",
+    "complications": [],
+    "outcome": null,
+    "status": "ready"
+  }
+]

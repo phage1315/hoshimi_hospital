@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_ann",
+    "name": "高卷 杏",
+    "age": 21,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_ann_v1/patient_ann/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_ann_v1/patient_ann/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_ann_v1/patient_ann/ward/smile.png",
+        "ward/brave": "assets/characters/patient_ann_v1/patient_ann/ward/brave.png",
+        "ward/worried": "assets/characters/patient_ann_v1/patient_ann/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_ann_v1/patient_ann/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_ann_v1/patient_ann/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_ann_v1/patient_ann/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_ann_v1/patient_ann/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_ann_v1/patient_ann/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_ann_v1/patient_ann/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_ann/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_ann/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_ann/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_ann/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_ann/general.png",
+        "examination/shy": "assets/characters/examination_portraits_v1/patient_ann/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "strong_front",
+      "secondary": "emotionally_expressive",
+      "stress_response": "becomes_irritable"
+    },
+    "traits": {
+      "baseline_anxiety": 54,
+      "pain_sensitivity": 68,
+      "privacy_sensitivity": 43,
+      "trust_baseline": 40,
+      "control_need": 76,
+      "expressiveness": 85,
+      "health_literacy": 55,
+      "compliance_tendency": 62
+    },
+    "fear_profile": {
+      "pain_fear": 72,
+      "procedure_fear": 58,
+      "diagnosis_fear": 48,
+      "loss_control_fear": 84
+    },
+    "reaction_lines": {
+      "procedure_mismatch": "「等一下，这根本不是说好的手术吧！先把事情讲清楚！」（搞什么，不会认错人了吧？开刀这种事也能搞错？）",
+      "explain_plan": "「行，至少你把话说明白了。到时候别瞒着我进度就好。」（原来真的要做啊……听的时候还好，一停下来心就往下沉。）",
+      "brief_plan": "「就这么一句？我都躺上了，至少让我知道接下来会怎样吧。」（就这？脱光躺这儿等开刀，结果说明就一句？有点不真实。）",
+      "last_reassure": "「我没问题。你们照计划来。开始前记得喊我一声。」（真的要开始了……别等东西已经贴上来了才出声。我才不会先乱掉。）",
+      "choose_general": "「好吧，睡过去总比硬撑强。药起效前别突然丢下我。」（要睡着了……最后别搞突然袭击，我最讨厌那种。）",
+      "choose_epidural": "「清醒着也行。我能撑住，但每一步先告诉我。」（下面要是突然没知觉或者突然痛……我会以为自己出问题了。）",
+      "choose_local": "「只是局麻？好，我会忍。还会感到刀子切下去吗？疼了我可会直接说。」（针过来先喊一声……我最烦突然扎过来。）",
+      "choose_none": "「没麻醉？？你认真的？先等一下，这样真的要开始？」（不麻醉就下刀……这跟杀猪有什么两样啊！）",
+      "induction_reassure": "「嗯，我听见了。别笑，我只是想确认你还在。」（药一开始发沉，我会更烦没人应。口罩上面那双眼睛倒是挺稳……想什么呢。）",
+      "insist_without_anesthesia": "「停手！不要开刀！我还没麻醉啊，先给我麻！」（救命……我才不要醒着挨这一刀。）",
+      "assistant_stabilize_epidural": "「我感觉到有人按住那里了。这种压力是正常的吗？」（掌心也太热了……被按住的那块突然比别处更清楚，少在那儿按。）",
+      "assistant_stabilize_local": "「按住以后还是有点紧。麻醉已经完全起效了吗？」（再压的话我会叫出来……别让我叫出来。）",
+      "assistant_stabilize_none": "「等一下，别按！太痛了！轻一点啊！」（一压整片都痛起来了……有必要按这么死吗，等下刀真要下来了。）",
+      "incise_epidural": "「感觉到压力了。这是正常的吗？下一步也先说一声。」（和想的不太一样……是在被剖开吗。知道进行到哪，我才不会自己吓自己。）",
+      "incise_local": "「疼了一下，还有被拉开的感觉。麻醉是已经完全起效了吗？」（里面比表面更清楚……切皮还好，等下往里真不会痛吧？）",
+      "incise_none": "「啊——停手！太痛了！救命啊，你是不是疯了！！要死了啊！！」（靠，原来真刀是这种痛……我才不要叫成这样。）",
+      "contact_pause": "「……谢谢。刚才真的有点难受，现在缓了。」（心还跳得要死……把呼吸咬住。刚才差点叫出来，别让她们当笑话看。）",
+      "contact_command": "「知道了，我尽量不动。这一段还要多久，说一声。」（每碰一下肚子就自己收紧……无影灯下这样被摸，好烦又好丢人。不准乱想，装稳就行。）",
+      "contact_continue": "「……继续。」（器械声也太大了。腿根在抖，下面怎么有点湿……手指快把床单抠破了。少问，问出口就输了。）",
+      "ongoing_narrate": "「对，就是这样告诉我。知道进度我才能把呼吸稳住。」（是还在表面，还是已经更深了……我感觉得到，才不要承认。）",
+      "ongoing_eye_contact": "「我看着你。」（对上眼呼吸才回来一点。被看着的时候身体更热了……脱光被一群人盯着开刀，谁受得了。看什么看，我才没有……）",
+      "ongoing_silent": "「……。」（不说明？下一步要干什么？这可是我的身体啊……烦死了，怎么有点想哭。）",
+      "closure_reassure": "「真的过了最难的一段？行，这句话我等很久了。还剩最后哪一步？」（边缘还在跳……缝的时候会痛吗。先把这句问完。）",
+      "closure_coach": "「最后一点是吧。行，我会撑到底。结束了马上说。」（被打开太久了……痛和麻已经分不清。先别并腿，并了更明显。）",
+      "closure_silent": "「……。」（器械声停了也不先问。腿还张着，内侧在抽……真结束了？可别又要开别处。）",
+      "hospitalization_question": "「要住院、还要手术？我不是说不做，只是这也太突然了吧。」（怎么一下子就变成要开刀了……有点慌，也有点不真实。）",
+      "hospitalization_response": "「好，我住院。时间、麻醉和要做什么，我都想知道。我也得先联系家里。」（得先跟家里说一声……我还没准备好就被推进来了。）"
+    },
+    "reaction_variants": {
+      "operative_positioning_awake": [
+        "「固定就固定，别突然勒紧。手臂放这里就行？」（真被绑上了……这下是一点都动不了了。这姿势也太奇怪了。）",
+        "「腿也要维持这个角度？行，先告诉我哪些地方不能动。」（这样躺着也太敞了……先听她们说，别先乱想。）"
+      ],
+      "operative_positioning_none": [
+        "「喂，别绑我的手！先说清楚啊！」（手一被按住，下面就只能那样敞着……她们想干什么。）",
+        "「等一下，腿不要再往外扳！这个角度不行，痛！」（太开了吧……中间全露出来了啊！）"
+      ],
+      "urinary_catheterization_awake": [
+        "「要插尿管？会不舒服吧。慢一点。」（这个居然要进到那里面去……还没开刀就先来这出，怎么没人早说。）",
+        "「要导尿就直说，我能配合。完了告诉我一声。」（有点难受……别一直去注意它，想点别的。）"
+      ],
+      "urinary_catheterization_none": [
+        "「啊、停下！现在这个好痛——医生！」（一进来又胀又烫……痛死了，没麻醉为什么要放这个。）",
+        "「那里太痛了！先拿出来，听见没有！」（每进一点都更清楚……真的受不了了。）"
+      ],
+      "skin_disinfection_awake": [
+        "「消毒液好凉。行，我忍着不动。」（连那种地方也要抹到……棉球一过，褶皱里都在发紧。）",
+        "「好凉！还有点刺。这正常吗？」（倒是不怎么痛，就是羞耻得要死……全身都要被涂一遍。）"
+      ],
+      "skin_disinfection_none": [
+        "「又冷又刺，那边疼了，别再涂了！」（一遍一遍地涂，胸口也好下面也好……搞什么啊。）",
+        "「不要涂那么大一片，我受不了！」（连那边都被翻开涂……你们下手也太理所当然了吧。）"
+      ],
+      "incision_marking_awake": [
+        "「这么长一条线？切口真的要这么大？」（笔尖滑过的时候皮肤自己在颤……）",
+        "「是在复核位置？看着还是有点吓人。」（等下就要切这里？有点不真实……）"
+      ],
+      "incision_marking_none": [
+        "「这么长？先停下！真的要切这么大？」（看着那条线，下面已经在发紧了……腿也在抖，烦。）",
+        "「别再往下画了，我还没同意！」（现在是笔，等下就是刀……完蛋，我开始怕了。）"
+      ],
+      "ward_enema": [
+        "「灌肠还要你亲自做？……行，告诉我要忍多久。」（护士居然就在旁边递东西，完全没人觉得这场面哪里奇怪。）",
+        "「等等，已经很胀了。这个也必须做完对吧？」（我可不想在医生面前求她停，可这种感觉也太难忽略了。）"
+      ],
+      "ward_skin_prep": [
+        "「备皮要到这么下面？你们倒是早点说啊。」（医生照着术野一路处理，护士只顾着核对范围。好像脸红就算我输。）",
+        "「行，我不动。别在同一个地方来回弄。」（机器贴着腿根嗡嗡响，这么近被盯着看，比我想的还难堪。）"
+      ],
+      "ward_surgical_cap": [
+        "「喂，耳边那缕也要塞进去？别扯到头发。」（医生站在背后把头发全收走，动作熟练得根本不给我别扭的时间。）",
+        "「好了？……戴上这个以后还真有要被推去开刀的感觉。」（担架车已经停在旁边。刚才还能逞强，现在心跳突然快了。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「等等，这次又不是开肚子。为什么还要灌肠？」（清单都写着不需要，医生还坚持做，这怎么想都不对吧。）",
+        "「这个和乳房手术有什么关系？先给我说明白。」（用品已经摆到床边了。别想用一句都是流程就糊弄过去。）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「医生，明明是开乳房，为什么要剃光下面？这里根本不是术野吧？」（护士都说不用了还要继续，太离谱了。）",
+        "「手术在胸口，你现在处理下腹和会阴是什么意思？」（机器一响我就更火大了。这次不能装作只是普通流程。）"
+      ]
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "full_undress": {
+      "prompt": "「等一下，基础查体为什么要全脱？连内衣都不许留？」（她们说得也太理所当然了吧。诊室不是更衣室啊。）",
+      "responses": {
+        "abandon_full_undress": "「这还差不多。要检查哪里就先说清楚，别一句话让我全脱。」（病历上大概会写我不配合。随她们吧。）",
+        "authoritative_full_undress": "「行，你说这是完整查体的要求，我配合。看够了就赶紧检查。」（嘴上硬一点，手伸到背后的时候还是僵住了。她们居然谁也没回避。）她嘴上仍不服气，动作却很快，脱去全部衣物后站到你指定的位置，完成了基础查体。",
+        "gentle_full_undress": "「……好吧。你既然说会按顺序来，我配合就是了。」（真要一件不留啊。说得再温柔，站在她们面前脱光还是一样丢人。）她别开脸脱到一件不留；医护仍按原来的节奏准备记录，你随后完成基础查体。",
+        "threaten_full_undress": "「你还要拿拒绝治疗压我？行，我脱，别再说了。」（太卑鄙了。可她们已经等着，最后还是只能把衣服全放进托盘。）她咬着牙把衣物全部脱下，任由护士收走，带着怒意完成了基础查体。"
+      },
+      "visual_pool_id": "full_undress_basic_exam"
+    },
+    "title": "第三份病历"
+  },
+  "preop": {
+    "stage_prompts": {
+      "ward_visit": "「已经决定要做手术了？……我没在紧张，只是想再确认一下。」",
+      "team": "本多医生担任主刀，选好与本多医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由本多医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「好，我准备好了。别露出那种担心我的表情啦。」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生，本多医生总算来了。我当然没怕……只是这里比想象中冷。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「等等！不是吧，医生？我根本不是要做那里！」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「等一下，睡着以前……本多医生还会在旁边吧？」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。本多医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我现在超紧张的……等下要屏住呼吸就直接告诉我，别让我猜。」",
+      "surgery_start_local": "「真的要下刀了？好吧……我会努力不动，但本多医生得先提醒我。」",
+      "surgery_start_none": "「喂，等一下！麻醉呢？本多医生不会打算就这样开始吧？」",
+      "instrument_handoff": "本多医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待本多医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。本多医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，本多医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据本多医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。本多医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "title": "高卷杏 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。患者在全身麻醉下没有意识反应。",
+      "incise_epidural": "「唔……感觉到了，但还能忍。继续之前先跟我说一声。」",
+      "incise_local": "「嘶，好疼一下……我没动吧？我会继续撑住。」",
+      "incise_none": "「啊！太痛了！停手，快停手——！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_ann",
+        "label": "高卷杏 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_ann"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_ann/enema.png"
+        ],
+        "caption": "本多医生依照病房准备流程，亲手为高卷杏完成灌肠。"
+      },
+      {
+        "id": "skin_disinfection_patient_ann",
+        "label": "高卷杏 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_ann"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_ann/skin_disinfection.png"
+        ],
+        "caption": "手术团队由中心向外完成术野消毒，并等待消毒液干燥。"
+      },
+      {
+        "id": "scalpel_ready_patient_ann",
+        "label": "高卷杏 · 手术刀准备下刀",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_ann"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_ann/scalpel_ready.png"
+        ],
+        "caption": "本多医生接过器械护士递来的手术刀，刀锋停在预定切口上方。高卷杏看见闪亮的刀刃，吓得浑身发抖。‘医，医生，真的要切我了啊？？’"
+      }
+    ]
+  }
+}

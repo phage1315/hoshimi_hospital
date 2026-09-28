@@ -1,0 +1,524 @@
+{
+  "id": "$VISIT_ID",
+  "case_id": "$FALLBACK_CASE_ID",
+  "patient_id": "$PATIENT_ID",
+  "title": "$PATIENT_NAME · 病历",
+  "start": "reception",
+  "completion": "complete",
+  "stages": [
+    {
+      "id": "reception",
+      "title": "接诊",
+      "prompt": "「洗澡时摸到左边胸口有个小硬块……两周了还没有消下去。」",
+      "speaker": "$PATIENT_ID",
+      "actions": [
+        {
+          "id": "greet",
+          "label": "开始问诊",
+          "response": "「大概两周前第一次注意到的。」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 2,
+          "requires": [],
+          "notes": [],
+          "next": "history",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": ""
+        },
+        {
+          "id": "comfort",
+          "label": "先安抚她",
+          "response": "「我一直不敢告诉家里……会很严重吗？」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 3,
+          "requires": [],
+          "notes": [
+            {
+              "id": "concern",
+              "section": "沟通",
+              "text": "患者担心肿块性质，尚未向家人说明。"
+            }
+          ],
+          "next": "history",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "患者的担心已记下"
+        }
+      ],
+      "auto_record": false,
+      "background_id": "clinic"
+    },
+    {
+      "id": "history",
+      "title": "询问病史",
+      "prompt": "「先把发现肿块后的变化说清楚吧。」",
+      "speaker": "doc_aoi",
+      "actions": [
+        {
+          "id": "pain",
+          "label": "肿块变化",
+          "response": "「月经结束后也没有消下去，碰到时有一点胀。」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 3,
+          "requires": [],
+          "notes": [
+            {
+              "id": "pain",
+              "section": "病史",
+              "text": "左侧乳房肿块发现约两周，月经后未消退，伴轻微触痛。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "右下腹疼痛"
+        },
+        {
+          "id": "associated",
+          "label": "伴随症状",
+          "response": "「没有发热，也没有流出东西，皮肤看起来和平时一样。」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 3,
+          "requires": [],
+          "notes": [
+            {
+              "id": "associated",
+              "section": "病史",
+              "text": "无发热、乳头溢液或明显皮肤改变。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "恶心 · 食欲下降"
+        },
+        {
+          "id": "background",
+          "label": "既往与家族史",
+          "response": "「以前没有做过乳房手术，家里也没人得过乳腺癌。」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 3,
+          "requires": [],
+          "notes": [
+            {
+              "id": "background",
+              "section": "病史",
+              "text": "无乳房手术史；自述无乳腺癌家族史及已知药物过敏。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "既往情况已记录"
+        },
+        {
+          "id": "to_exam",
+          "label": "开始查体",
+          "response": "「接下来检查一下。」",
+          "speaker": "doc_aoi",
+          "minutes": 0,
+          "requires": [
+            "pain",
+            "associated",
+            "background"
+          ],
+          "notes": [],
+          "next": "exam",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": ""
+        }
+      ],
+      "auto_record": false,
+      "bundles": [
+        {
+          "id": "basic_history",
+          "label": "基础问诊",
+          "actions": [
+            "pain",
+            "associated",
+            "background"
+          ],
+          "response": "「肿块两周没有消退，碰到时有一点胀。」",
+          "speaker": "$PATIENT_ID",
+          "summary": "病史已整理 · 3 条线索"
+        }
+      ],
+      "background_id": "clinic"
+    },
+    {
+      "id": "exam",
+      "title": "基础检查",
+      "prompt": "「先记录生命体征。之后，我需要你脱掉所有衣服完成基础查体。」",
+      "speaker": "doc_aoi",
+      "actions": [
+        {
+          "id": "vitals",
+          "label": "生命体征",
+          "response": "「生命体征正常，没有发热。」",
+          "speaker": "nurse_yui",
+          "minutes": 3,
+          "requires": [],
+          "notes": [
+            {
+              "id": "vitals",
+              "section": "查体",
+              "text": "基础生命体征平稳，无发热。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "生命体征平稳 · 轻度发热"
+        },
+        {
+          "id": "request_full_undress",
+          "label": "要求患者脱掉所有衣服",
+          "response": "「抱歉，我想确认一下：基础查体需要完全脱去衣物，包括内衣吗？」（范围比预想大得多。她们似乎已经默认我会照做。）",
+          "speaker": "$PATIENT_ID",
+          "minutes": 1,
+          "requires": [
+            "vitals"
+          ],
+          "notes": [],
+          "next": "exam_undress_decision",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "患者对完全脱衣提出异议"
+        }
+      ],
+      "auto_record": false,
+      "bundles": [],
+      "background_id": "clinic"
+    },
+    {
+      "id": "exam_undress_decision",
+      "title": "基础查体 · 完全脱衣要求",
+      "prompt": "",
+      "speaker": "$PATIENT_ID",
+      "actions": [
+        {
+          "id": "abandon_full_undress",
+          "label": "放弃完全脱衣查体",
+          "response": "",
+          "speaker": "$PATIENT_ID",
+          "minutes": 0,
+          "requires": [],
+          "notes": [
+            {
+              "id": "exam_abandoned",
+              "section": "查体",
+              "text": "患者拒绝为基础查体完全脱衣；本次直接查体未完成，未取得针对性查体发现。"
+            }
+          ],
+          "next": "tests",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "尊重拒绝 · 查体未完成",
+          "player_effects": {
+            "ethics": 1
+          },
+          "consent_state": "none"
+        },
+        {
+          "id": "authoritative_full_undress",
+          "label": "权威说服",
+          "response": "",
+          "speaker": "$PATIENT_ID",
+          "minutes": 4,
+          "requires": [],
+          "notes": [
+            {
+              "id": "exam_authoritative",
+              "section": "查体",
+              "text": "左侧乳房外上象限可触及边界清楚、活动度尚可的肿块。"
+            }
+          ],
+          "next": "tests",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "患者配合脱衣 · 查体完成",
+          "player_effects": {
+            "charisma": 1
+          },
+          "consent_state": "informed"
+        },
+        {
+          "id": "gentle_full_undress",
+          "label": "温柔说服",
+          "response": "",
+          "speaker": "$PATIENT_ID",
+          "minutes": 4,
+          "requires": [],
+          "notes": [
+            {
+              "id": "exam_gentle",
+              "section": "查体",
+              "text": "左侧乳房外上象限可触及边界清楚、活动度尚可的肿块。"
+            }
+          ],
+          "next": "tests",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "患者自愿配合 · 查体完成",
+          "player_effects": {
+            "ethics": 1,
+            "charisma": 2
+          },
+          "consent_state": "informed"
+        },
+        {
+          "id": "threaten_full_undress",
+          "label": "威胁",
+          "response": "",
+          "speaker": "$PATIENT_ID",
+          "minutes": 4,
+          "requires": [],
+          "notes": [
+            {
+              "id": "exam_coerced",
+              "section": "查体",
+              "text": "左侧乳房外上象限可触及边界清楚、活动度尚可的肿块。"
+            }
+          ],
+          "next": "tests",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "患者被迫配合 · 查体完成",
+          "player_effects": {
+            "ethics": -2,
+            "intimidation": 2
+          },
+          "consent_state": "coerced"
+        }
+      ],
+      "auto_record": false,
+      "bundles": [],
+      "background_id": "clinic"
+    },
+    {
+      "id": "tests",
+      "title": "选择检查",
+      "prompt": "「先确认肿块的形态，再取得病理依据。」",
+      "speaker": "doc_aoi",
+      "actions": [
+        {
+          "id": "blood",
+          "label": "乳腺超声",
+          "response": "「影像显示肿块边界清楚，但仍需要病理确认。」",
+          "speaker": "doc_aoi",
+          "minutes": 20,
+          "requires": [],
+          "notes": [
+            {
+              "id": "blood",
+              "section": "检查",
+              "text": "乳腺超声：左侧见边界清楚的实性肿块，倾向良性。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "边界清楚的实性肿块"
+        },
+        {
+          "id": "imaging",
+          "label": "穿刺取样",
+          "response": "「取样结果支持良性纤维上皮性病变。」",
+          "speaker": "doc_aoi",
+          "minutes": 25,
+          "requires": [],
+          "notes": [
+            {
+              "id": "imaging",
+              "section": "检查",
+              "text": "穿刺病理：支持良性纤维上皮性病变。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "病理倾向良性"
+        },
+        {
+          "id": "extra",
+          "label": "追加乳腺 MRI",
+          "response": "「这次追加检查没有改变现有判断。」",
+          "speaker": "doc_aoi",
+          "minutes": 15,
+          "requires": [],
+          "notes": [
+            {
+              "id": "extra",
+              "section": "检查",
+              "text": "追加影像未提供改变当前判断的新线索。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "无新发现 · 多等待 15 分钟"
+        },
+        {
+          "id": "to_diagnosis",
+          "label": "作出判断",
+          "response": "「结合触诊、超声和病理，说说你的判断。」",
+          "speaker": "doc_aoi",
+          "minutes": 0,
+          "requires": [
+            "blood",
+            "imaging"
+          ],
+          "notes": [],
+          "next": "diagnosis",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": ""
+        }
+      ],
+      "auto_record": false,
+      "background_id": "clinic"
+    },
+    {
+      "id": "diagnosis",
+      "title": "初步诊断",
+      "prompt": "「这些线索，你怎么看？」",
+      "speaker": "doc_aoi",
+      "actions": [
+        {
+          "id": "diagnose_gastro",
+          "label": "单纯周期性胀痛",
+          "response": "「持续存在的实性肿块不能只用周期性疼痛解释。」",
+          "speaker": "doc_aoi",
+          "minutes": 2,
+          "requires": [],
+          "notes": [],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": true,
+          "summary": "需要重新判断"
+        },
+        {
+          "id": "diagnose_appendix",
+          "label": "乳腺良性肿瘤",
+          "response": "「与现有线索吻合。和患者谈谈切除与病理复核吧。」",
+          "speaker": "doc_aoi",
+          "minutes": 2,
+          "requires": [
+            "pain",
+            "associated",
+            "blood",
+            "imaging"
+          ],
+          "notes": [
+            {
+              "id": "diagnosis",
+              "section": "判断",
+              "text": "初步判断：乳腺良性肿瘤，拟收住院行肿瘤切除并完成病理复核。"
+            }
+          ],
+          "next": "plan",
+          "diagnosis": "breast_fibroadenoma",
+          "admit": false,
+          "mistake": false,
+          "summary": "初步判断：乳腺良性肿瘤"
+        },
+        {
+          "id": "diagnose_observe",
+          "label": "无需处理直接离院",
+          "response": "「持续存在的肿块仍需要明确处理和病理复核。」",
+          "speaker": "doc_aoi",
+          "minutes": 2,
+          "requires": [],
+          "notes": [],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": true,
+          "summary": "需要重新判断"
+        }
+      ],
+      "auto_record": true,
+      "background_id": "clinic"
+    },
+    {
+      "id": "plan",
+      "title": "沟通与收住院",
+      "prompt": "「虽然倾向良性，还是要住院手术吗？」",
+      "speaker": "$PATIENT_ID",
+      "actions": [
+        {
+          "id": "explain",
+          "label": "解释住院安排",
+          "response": "「明白了……切除后还会再做一次完整检查，对吗？」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 5,
+          "requires": [],
+          "notes": [
+            {
+              "id": "explained",
+              "section": "沟通",
+              "text": "已向患者解释良性倾向、切除安排与术后完整病理复核。"
+            }
+          ],
+          "next": null,
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "已说明切除与病理复核安排"
+        },
+        {
+          "id": "admit",
+          "label": "收住院",
+          "response": "「病历收到了，我会照看好她。」",
+          "speaker": "nurse_rin",
+          "minutes": 5,
+          "requires": [
+            "diagnosis",
+            "explained"
+          ],
+          "notes": [
+            {
+              "id": "admission",
+              "section": "交接",
+              "text": "已收住院，转病房准备乳腺肿瘤切除术。"
+            }
+          ],
+          "next": "complete",
+          "diagnosis": "",
+          "admit": true,
+          "mistake": false,
+          "summary": "已收住院 · 交接完成"
+        }
+      ],
+      "auto_record": false,
+      "background_id": "clinic"
+    },
+    {
+      "id": "complete",
+      "title": "门诊流程完成",
+      "prompt": "「交接完成了。病房已经准备好。」",
+      "speaker": "doc_aoi",
+      "actions": [],
+      "auto_record": false,
+      "background_id": "clinic"
+    }
+  ]
+}
