@@ -55,7 +55,9 @@ static func render(app: Control, visit: RefCounted) -> void:
 				app.label_at(app.tx("ui.common.minutes", "%s 分钟") % action.minutes, Vector2(590, 266 + i * 67), 16, Color("b9cecb"), 110)
 	panel(app, Vector2(55, 558), Vector2(1170, 142))
 	app.label_at(speaker_name, Vector2(82, 576), 22, Color("e8cfaa"), 1100)
-	app.scrollable_text_at(line.text, Vector2(82, 612), Vector2(1100, 78), 23, Color("f4f0e6"), "ClinicDialogue")
+	var dialogue_text := str(line.text)
+	var dialogue_font_size := 19 if dialogue_text.length() > 180 else 21 if dialogue_text.length() > 100 else 23
+	app.scrollable_text_at(dialogue_text, Vector2(82, 612), Vector2(1100, 78), dialogue_font_size, Color("f4f0e6"), "ClinicDialogue")
 	app.button_at(app.tx("ui.common.save", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
 	app.button_at(app.tx("ui.common.load", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
 	if app.game.personal_nurse_system_unlocked:

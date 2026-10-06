@@ -447,17 +447,11 @@ func patient_reaction_line(patient_id: String, reaction_id: String, fallback: St
 	return fallback
 
 func patient_voice_line(patient_id: String, line: String, beat: String) -> String:
+	var patient := patient_definition(patient_id)
+	var owned_lines: Dictionary = patient.get("outpatient_lines", {})
+	if owned_lines.has(beat):
+		return str(owned_lines[beat]).replace("{line}", line)
 	var style := patient_voice_style(patient_id)
-	if beat == "background":
-		match style:
-			"reserved":
-				return "应该没有别的了……药物过敏我也没听说过。"
-			"bold":
-				return "其他应该没什么，我也没有药物过敏。"
-			"gentle":
-				return "其他病史我想不起来了，也没有已知的药物过敏。"
-			_:
-				return "我以前没得过什么大病，也没有药物过敏。"
 	var prefixes := {
 		"direct": {"complaint": "", "primary": "", "secondary": "还有，"},
 		"reserved": {"complaint": "那个……", "primary": "我想想……", "secondary": "还有就是……"},
@@ -465,7 +459,13 @@ func patient_voice_line(patient_id: String, line: String, beat: String) -> Strin
 		"gentle": {"complaint": "不好意思，", "primary": "", "secondary": "另外，"}
 	}
 	var style_prefixes: Dictionary = prefixes.get(style, prefixes["direct"])
+	if beat == "background":
+		return "我以前没得过什么大病，也没有药物过敏。"
 	return str(style_prefixes.get(beat, "")) + line
+
+func patient_spoken_line(patient_id: String, line: String, beat: String, english: bool) -> String:
+	var voiced := patient_voice_line(patient_id, line, beat)
+	return "“%s”" % voiced if english else "「%s」" % voiced
 
 func patient_definition(patient_id: String) -> Dictionary:
 	for patient in patient_definitions:
@@ -492,11 +492,15 @@ func first_surgery_diagnosis_reaction(patient_id: String, surgery_id: String, di
 	var site_group := str(surgery.get("diagnosis_reaction_site_group", "generic"))
 	var candidates: Array[Dictionary] = []
 	for reaction in diagnosis_shock_definitions.values():
-		if str(reaction.get("site_group", "generic")) == site_group:
+		if str(reaction.get("patient_id", "")) == patient_id and str(reaction.get("site_group", "generic")) == site_group:
 			candidates.append(reaction)
+	if candidates.is_empty():
+		for reaction in diagnosis_shock_definitions.values():
+			if str(reaction.get("patient_id", "")).is_empty() and str(reaction.get("site_group", "generic")) == site_group:
+				candidates.append(reaction)
 	if candidates.is_empty() and site_group != "generic":
 		for reaction in diagnosis_shock_definitions.values():
-			if str(reaction.get("site_group", "")) == "generic":
+			if str(reaction.get("patient_id", "")).is_empty() and str(reaction.get("site_group", "")) == "generic":
 				candidates.append(reaction)
 	if candidates.is_empty():
 		return {}
@@ -516,8 +520,14 @@ func first_surgery_diagnosis_reaction(patient_id: String, surgery_id: String, di
 func diagnosis_shock_text(reaction: Dictionary) -> String:
 	var lines: Array[String] = []
 	for line in reaction.get("lines", []):
-		lines.append(str(line))
-	return "\n\n".join(lines)
+		var fragments: Array[String] = []
+		for fragment in str(line).replace("\r", "").split("\n", false):
+			var trimmed := str(fragment).strip_edges()
+			if not trimmed.is_empty():
+				fragments.append(trimmed)
+		if not fragments.is_empty():
+			lines.append(" ".join(fragments))
+	return " ".join(lines)
 
 func encounter_for_case(blueprint: Dictionary, template: Dictionary, diagnosis_shock_state: Dictionary = {}, include_seen_diagnosis_shocks: bool = false) -> Dictionary:
 	var result: Dictionary = blueprint.duplicate(true)
@@ -537,22 +547,22 @@ func encounter_for_case(blueprint: Dictionary, template: Dictionary, diagnosis_s
 	var tests: Array = template.tests
 	var differentials: Array = ["Alternative diagnosis", "Observation only"] if english else template.differential_diagnoses
 	var patient_id: String = str(result.patient_id)
-	stages.reception.prompt = "“%s”" % str(template.presenting_complaint) if english else "「%s」" % patient_voice_line(patient_id, str(template.presenting_complaint), "complaint")
-	actions.reception.greet.response = "“%s”" % str(history[0]) if english else "「%s」" % patient_voice_line(patient_id, str(history[0]), "primary")
-	actions.reception.comfort.response = "“%s”" % str(history[1]) if english else "「%s」" % patient_voice_line(patient_id, str(history[1]), "secondary")
+	stages.reception.prompt = patient_spoken_line(patient_id, str(template.presenting_complaint), "complaint", english)
+	actions.reception.greet.response = patient_spoken_line(patient_id, str(history[0]), "primary", english)
+	actions.reception.comfort.response = patient_spoken_line(patient_id, str(history[1]), "secondary", english)
 	actions.reception.comfort.notes[0].text = "The patient is worried about the symptoms and what will happen next." if english else "患者对本次症状和后续安排感到担心。"
 	stages.history.prompt = "“Please describe the course of these symptoms in detail.”" if english else "「把这次不舒服的经过详细说说吧。」"
 	actions.history.pain.label = str(symptoms[0])
-	actions.history.pain.response = "“%s”" % str(history[0]) if english else "「%s」" % patient_voice_line(patient_id, str(history[0]), "primary")
+	actions.history.pain.response = patient_spoken_line(patient_id, str(history[0]), "primary", english)
 	actions.history.pain.notes[0].text = ("Primary symptom: %s." if english else "主要症状：%s。") % symptoms[0]
 	actions.history.associated.label = "Other symptoms" if english else "其他症状"
-	actions.history.associated.response = "“%s”" % str(history[1]) if english else "「%s」" % patient_voice_line(patient_id, str(history[1]), "secondary")
+	actions.history.associated.response = patient_spoken_line(patient_id, str(history[1]), "secondary", english)
 	actions.history.associated.notes[0].text = ("Associated symptoms: %s." % ", ".join(symptoms.slice(1))) if english else ("伴随症状：%s。" % "、".join(symptoms.slice(1)))
-	actions.history.background.response = "“I have no other major medical history and no known drug allergies.”" if english else "「%s」" % patient_voice_line(patient_id, "", "background")
+	actions.history.background.response = patient_spoken_line(patient_id, "", "background", english)
 	actions.history.background.notes[0].text = "Past history and allergies recorded." if english else "既往情况与过敏史已记录。"
 	var voiced_history: Array[String] = []
 	for index in range(history.size()):
-		voiced_history.append(str(history[index]) if english else patient_voice_line(patient_id, str(history[index]), "primary" if index == 0 else "secondary"))
+		voiced_history.append(patient_voice_line(patient_id, str(history[index]), "primary" if index == 0 else "secondary"))
 	stages.history.bundles[0].response = "“%s”" % " ".join(voiced_history) if english else "「%s」" % "".join(voiced_history)
 	stages.history.bundles[0].summary = ("History organized · %s symptoms" if english else "病史已整理 · %s 种症状") % symptoms.size()
 	actions.exam.vitals.response = "“Vital signs recorded.”" if english else "「生命体征已经记录。」"
@@ -589,8 +599,8 @@ func encounter_for_case(blueprint: Dictionary, template: Dictionary, diagnosis_s
 	actions.diagnosis.diagnose_appendix.summary = ("Diagnosis: %s" if english else "诊断：%s") % diagnosis_label
 	actions.diagnosis.diagnose_observe.label = str(differentials[1]) if differentials.size() > 1 else ("No further treatment" if english else "无需进一步处理")
 	actions.diagnosis.diagnose_observe.response = "“That conclusion does not explain all of the test results.”" if english else "「这个判断无法解释全部检查结果。」"
-	stages.plan.prompt = "“So I need to be admitted for surgery?”" if english else patient_reaction_line(patient_id, "hospitalization_question", "「所以，我需要住院接受手术吗？」")
-	actions.plan.explain.response = "“I understand. Please tell me what I need to prepare next.”" if english else patient_reaction_line(patient_id, "hospitalization_response", "「明白了，请告诉我接下来要准备什么。」")
+	stages.plan.prompt = patient_reaction_line(patient_id, "hospitalization_question", "“So I need to be admitted for surgery?”" if english else "「所以，我需要住院接受手术吗？」")
+	actions.plan.explain.response = patient_reaction_line(patient_id, "hospitalization_response", "“I understand. Please tell me what I need to prepare next.”" if english else "「明白了，请告诉我接下来要准备什么。」")
 	var shock_reaction := first_surgery_diagnosis_reaction(patient_id, str(template.get("surgery_id", "")), diagnosis_shock_state, include_seen_diagnosis_shocks)
 	if not shock_reaction.is_empty():
 		actions.plan.explain.response = diagnosis_shock_text(shock_reaction)

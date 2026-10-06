@@ -34,6 +34,8 @@ func run() -> void:
 	expect(english.find_record("patient_interactions", "contact_default_01").prompt.begins_with("“Doctor"), "Localized awake-surgery interaction was not resolved")
 	expect(english.find_record("character_events", "intro_doc_rei").title.begins_with("Meet Kaori"), "Localized day-one character introduction was not resolved")
 	expect(english.find_record("character_events", "sayaka_lv1_first_date").title == "So, Does This Count as a Date?", "Localized Sayaka Lv.1 event was not resolved")
+	expect(english.find_record("first_surgery_diagnosis_reactions", "diagnosis_generic_real_01").lines[3] == "\u201cYou really are going to operate on me.\u201d", "Localized first-surgery diagnosis reaction was not resolved")
+	expect(english.find_record("patients", "patient_ann").outpatient_lines.complaint == "Well, {line}", "Localized patient-owned outpatient voice was not resolved")
 	expect(english.text("ui.title.start", "开始游戏") == "Start Game    →", "Localized hard-coded UI string was not resolved")
 	expect(english.text("ui.map.title", "医院导览") == "Hospital Directory", "Localized public map UI was not resolved")
 	expect(english.text("ui.save.slot", "位置 %02d") % 3 == "Slot 03", "Localized formatted save-slot UI was not resolved")

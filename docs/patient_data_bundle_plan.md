@@ -107,6 +107,8 @@ assets/patients/
   },
   "reaction_lines": {},
   "reaction_variants": {},
+  "outpatient_lines": {},
+  "diagnosis_reactions": [],
   "exclusive_cg_pools": []
 }
 ```
@@ -137,7 +139,7 @@ loader 读取一名患者后，应从两个模板生成现有系统需要的定�
 - 所有 speaker、patient_id 和 encounter_id 自动替换；
 - 显示名和标题自动由患者资料生成；
 - 随机病例继续在 `GameState.rebuild_patient_content()` 中覆盖症状、检查和术式；
-- 患者说话方式继续使用 `voice_style`、`reaction_lines` 和 `reaction_variants`。
+- 患者专属门诊口吻、首次手术反应、病房和术中对白分别使用 `outpatient_lines`、`diagnosis_reactions`、`reaction_lines` 和 `reaction_variants`，全部保存在同一个 `patient.json`。
 
 这样不会再复制约 60 KB 的 encounter/preop 内容来增加一名患者。
 

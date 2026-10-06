@@ -138,6 +138,12 @@
         "「等等，这条线和说明的不一样。」（如果现在不问，下一次碰到这里的就是刀。）",
         "「先停止标记。我需要重新听一次术式确认。」（不能因为躺在台上就放弃追问。）"
       ]
+    },
+    "outpatient_lines": {
+      "complaint": "其实吧，{line}",
+      "primary": "就是，{line}",
+      "secondary": "而且，{line}",
+      "background": "其他应该没什么，我也没有药物过敏。"
     }
   },
   "fallback": {
@@ -221,5 +227,96 @@
         "caption": "坂口医生依照病房准备流程，亲手为琪琪·安达露西亚完成灌肠。"
       }
     ]
-  }
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_gigi_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "light_h",
+        "grotesque_imagination"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她先点头，随后像突然想起了什么。",
+        "「等一下。」",
+        "「……你们从哪里进去？」",
+        "「不会从乳头进去吧……」",
+        "她明显被自己脑内的画面吓到了。"
+      ]
+    },
+    {
+      "id": "diagnosis_gigi_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "grotesque_imagination",
+        "body_awareness"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她整个人停住。",
+        "「开腹……」",
+        "她低头看着自己的肚子，手指从上腹一路比到下腹。",
+        "「到底……要开多长？」",
+        "「不会整个肚子都打开吧……」"
+      ]
+    },
+    {
+      "id": "diagnosis_gigi_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "fear",
+        "embarrassment",
+        "light_h",
+        "body_awareness"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她身体明显僵了一下。",
+        "「盆腔……」",
+        "她声音慢慢变小。",
+        "「是不是……从下面进去？」",
+        "听说这次需要开腹，她仍然没有明显放松。\n「……为什么两个都这么可怕。」"
+      ]
+    },
+    {
+      "id": "diagnosis_gigi_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "grotesque_imagination"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她原本还在努力点头，突然停住。",
+        "「……开胸。」",
+        "她摸了一下自己的胸骨。",
+        "「你说的这个『开』……」",
+        "「是真的打开那个意思吗？」"
+      ]
+    },
+    {
+      "id": "diagnosis_gigi_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "shock"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「对不起。」",
+        "「我知道你刚才已经解释得很清楚了。」",
+        "她停了一下。",
+        "「但我现在脑子里好像一句都没剩下。」",
+        "「只剩『我要被开刀』这件事。」"
+      ]
+    }
+  ]
 }

@@ -2183,6 +2183,17 @@
               "minLength": 1
             }
           }
+        },
+        "outpatient_lines": {
+          "type": "object",
+          "properties": {
+            "complaint": {"type": "string", "minLength": 1},
+            "primary": {"type": "string", "minLength": 1},
+            "secondary": {"type": "string", "minLength": 1},
+            "background": {"type": "string", "minLength": 1}
+          },
+          "required": ["complaint", "primary", "secondary", "background"],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -2197,7 +2208,8 @@
         "traits",
         "fear_profile",
         "reaction_lines",
-        "reaction_variants"
+        "reaction_variants",
+        "outpatient_lines"
       ],
       "additionalProperties": false
     },
@@ -3453,6 +3465,10 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "patient_id": {
+          "type": "string",
+          "pattern": "^patient_[a-z0-9_]+$"
         }
       },
       "required": [

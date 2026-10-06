@@ -138,6 +138,12 @@
         "「位置和刚才的说明不同，请停下。」（躺在这里也不能失去判断。）",
         "「请重新核对术式。确认以前不要下刀。」（这句话必须说得足够清楚。）"
       ]
+    },
+    "outpatient_lines": {
+      "complaint": "那个……{line}",
+      "primary": "我想想……{line}",
+      "secondary": "还有就是……{line}",
+      "background": "应该没有别的了……药物过敏我也没听说过。"
     }
   },
   "fallback": {
@@ -214,5 +220,97 @@
       }
     ],
     "ward_preparation": []
-  }
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_emi_higashikawa_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "embarrassment",
+        "light_h",
+        "self_deprecating"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她脸色发白，第一句话却是：",
+        "「早知道今天就不穿这件内衣了……」",
+        "她说完以后自己僵住。",
+        "「……不对。这两件事根本没有关系。」",
+        "「完了，我是真的吓傻了。」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_higashikawa_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "grotesque_imagination"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她脸色迅速变白。",
+        "「我以前在电影里看过……」",
+        "她似乎正在努力阻止自己继续想。",
+        "「肠子什么的……真的会被看到吧？」",
+        "「不行。我现在脑子里已经出现画面了。」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_higashikawa_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "fear",
+        "body_privacy",
+        "embarrassment",
+        "soft_erotic"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她把手放在下腹。",
+        "「子宫这种东西……平时自己完全感觉不到。」",
+        "「结果突然有人告诉我，要把肚子打开去碰它。」",
+        "她安静了一会儿。",
+        "「不知道为什么。突然觉得它好私密。」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_higashikawa_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "body_image",
+        "self_deprecating"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她明显已经被吓到了。",
+        "过了一会儿，她忽然低头看着自己胸口。",
+        "「以后穿低领衣服会很明显吧……」",
+        "「都什么时候了。」",
+        "「我居然还在想衣服。」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_higashikawa_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "first_surgery_realization"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她沉默了很久。",
+        "「所以……」",
+        "「不是比喻。」",
+        "「是真的要开刀。」",
+        "她看着医生，像是直到这一刻才终于理解刚才所有说明的含义。"
+      ]
+    }
+  ]
 }

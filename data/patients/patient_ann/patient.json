@@ -138,6 +138,12 @@
         "「医生，明明是开乳房，为什么要剃光下面？这里根本不是术野吧？」（护士都说不用了还要继续，太离谱了。）",
         "「手术在胸口，你现在处理下腹和会阴是什么意思？」（机器一响我就更火大了。这次不能装作只是普通流程。）"
       ]
+    },
+    "outpatient_lines": {
+      "complaint": "其实吧，{line}",
+      "primary": "就是，{line}",
+      "secondary": "而且，{line}",
+      "background": "其他应该没什么，我也没有药物过敏。"
     }
   },
   "fallback": {
@@ -253,5 +259,100 @@
         "caption": "坂口医生接过器械护士递来的手术刀，刀锋停在预定切口上方。高卷杏看见闪亮的刀刃，吓得浑身发抖。‘医，医生，真的要切我了啊？？’"
       }
     ]
-  }
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_ann_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "light_h",
+        "body_awareness",
+        "grotesque_imagination",
+        "self_deprecating"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「……要切我的胸？」",
+        "她低头看了一眼自己。",
+        "「不会像切西瓜一样，从中间一刀下去吧……」",
+        "「……不对，我这个大小应该比较像桃子。」",
+        "她把脸捂住。\n「我现在脑子到底在想什么啊……」"
+      ]
+    },
+    {
+      "id": "diagnosis_ann_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "body_image",
+        "black_comedy",
+        "self_deprecating"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她沉默很久，然后摸了摸自己的小腹。",
+        "「既然都已经要打开了……」",
+        "「能不能顺便弄掉一点这里的赘肉？」",
+        "她自己又沉默两秒。",
+        "「……算了。当我没说。」"
+      ]
+    },
+    {
+      "id": "diagnosis_ann_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "embarrassment",
+        "light_h",
+        "body_privacy",
+        "fear"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她的脸慢慢红起来。",
+        "「也就是说……你们会看到我里面很深的地方。」",
+        "她沉默了一会儿。",
+        "「平时连男朋友都不可能看到那么里面……」",
+        "话刚出口，她整个人僵住。\n「……我刚才是不是说了很奇怪的话。」"
+      ]
+    },
+    {
+      "id": "diagnosis_ann_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "forced_composure",
+        "black_comedy"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她努力坐直。",
+        "「没关系。」",
+        "「我不怕。」",
+        "她非常认真地点头。",
+        "三秒以后，她问：「……胸骨真的要锯开吗？」"
+      ]
+    },
+    {
+      "id": "diagnosis_ann_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "first_surgery_realization"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她沉默了很久。",
+        "「所以……」",
+        "「不是比喻。」",
+        "「是真的要开刀。」",
+        "她看着医生，像是直到这一刻才终于理解刚才所有说明的含义。"
+      ]
+    }
+  ]
 }

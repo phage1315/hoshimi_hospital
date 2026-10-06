@@ -139,6 +139,12 @@
         "「这和刚才说明的位置不同，请先停下。」（躺在这里也仍然有权说不。）",
         "「麻烦重新核对术式。确认以前不要落刀。」（温和的语气里第一次有了不容退让。）"
       ]
+    },
+    "outpatient_lines": {
+      "complaint": "不好意思，{line}",
+      "primary": "{line}",
+      "secondary": "另外，{line}",
+      "background": "其他病史我想不起来了，也没有已知的药物过敏。"
     }
   },
   "fallback": {
@@ -302,5 +308,99 @@
         "caption": "坂口医生接过器械护士递来的手术刀，刀锋停在预定切口上方。仍然清醒的柳原理惠努力保持平静，轻声确认下一步。『请告诉我什么时候开始……我会尽量不动。』"
       }
     ]
-  }
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_rie_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "body_image",
+        "fear",
+        "light_h",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她低头盯着自己胸前很久。",
+        "「……那以后两边还会一样大吗？」",
+        "她下意识托了一下自己的胸。",
+        "「我以前怎么从来没认真比较过。」",
+        "「偏偏要开刀了才开始在意这个……」"
+      ]
+    },
+    {
+      "id": "diagnosis_rie_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "body_image",
+        "black_comedy",
+        "self_deprecating"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她沉默很久，然后摸了摸自己的小腹。",
+        "「既然都已经要打开了……」",
+        "「能不能顺便弄掉一点这里的赘肉？」",
+        "她自己又沉默两秒。",
+        "「……算了。当我没说。」"
+      ]
+    },
+    {
+      "id": "diagnosis_rie_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "light_h",
+        "fear",
+        "body_future",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她一直很认真地点头。",
+        "「嗯，我明白。」",
+        "沉默几秒以后，她小声开口。",
+        "「以后那个的时候……不会感觉里面哪里以前被动过吧？」",
+        "她立刻把脸捂住。\n「我为什么第一时间想到这个啊……」"
+      ]
+    },
+    {
+      "id": "diagnosis_rie_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "forced_composure",
+        "black_comedy"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她努力坐直。",
+        "「没关系。」",
+        "「我不怕。」",
+        "她非常认真地点头。",
+        "三秒以后，她问：「……胸骨真的要锯开吗？」"
+      ]
+    },
+    {
+      "id": "diagnosis_rie_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "shock"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「对不起。」",
+        "「我知道你刚才已经解释得很清楚了。」",
+        "她停了一下。",
+        "「但我现在脑子里好像一句都没剩下。」",
+        "「只剩『我要被开刀』这件事。」"
+      ]
+    }
+  ]
 }

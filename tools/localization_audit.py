@@ -21,7 +21,7 @@ TX_CALL = re.compile(r'(?:app\.)?tx\("(?P<key>[^"]+)",\s*"(?P<fallback>(?:\\.|[^
 CHINESE_LITERAL = re.compile(r'"(?:\\.|[^"\\])*[\u3400-\u9fff](?:\\.|[^"\\])*"')
 TRANSLATABLE_FIELDS = {
     "name", "family_name", "given_name", "professional_name", "title", "subtitle", "description",
-    "label", "text", "prompt", "response", "teaser", "caption",
+    "label", "text", "prompt", "response", "teaser", "caption", "lines",
     "announcement", "completion_hint", "location_label", "speaker_label", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "correction",
 }
@@ -42,7 +42,7 @@ def collect_keys(value: object, path: str, result: set[str]) -> None:
     if isinstance(value, dict):
         for field, child in value.items():
             child_path = f"{path}.{field}"
-            if isinstance(child, str) and child.strip() and field in TRANSLATABLE_FIELDS:
+            if isinstance(child, str) and child.strip() and (field in TRANSLATABLE_FIELDS or path.endswith(".outpatient_lines")):
                 result.add(child_path)
             collect_keys(child, child_path, result)
     elif isinstance(value, list):
@@ -50,7 +50,10 @@ def collect_keys(value: object, path: str, result: set[str]) -> None:
             identity = str(index)
             if isinstance(child, dict) and child.get("id"):
                 identity = str(child["id"])
-            collect_keys(child, f"{path}.{identity}", result)
+            child_path = f"{path}.{identity}"
+            if isinstance(child, str) and child.strip() and path.rsplit(".", 1)[-1] in TRANSLATABLE_FIELDS:
+                result.add(child_path)
+            collect_keys(child, child_path, result)
 
 
 def collect_han_leaf_keys(value: object, path: str, result: set[str]) -> None:

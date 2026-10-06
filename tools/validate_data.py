@@ -114,6 +114,7 @@ for relative_path, bundle in patient_bundles:
         'gentle_full_undress', 'threaten_full_undress'},
         prefix + 'full-undress responses are incomplete')
     check(isinstance(bundle.get('preop', {}).get('stage_prompts'), dict), prefix + 'missing preop prompts')
+    check(isinstance(bundle.get('diagnosis_reactions'), list), prefix + 'missing patient-owned diagnosis reactions')
 for key in ['patients', 'encounters', 'preops']:
     rows = patient_collections[key]
     collections[key] = rows
@@ -129,14 +130,21 @@ for key in ['examination_cg_pools', 'ward_preparation_cg_pools']:
     validator = Draft202012Validator({'$ref': '#/$defs/' + kind[key], '$defs': schema['$defs']})
     for index, row in enumerate(patient_collections[key]):
         errors.extend(f'{key} patient bundle [{index}] {e.json_path}: {e.message}' for e in validator.iter_errors(row))
+collections['first_surgery_diagnosis_reactions'].extend(patient_collections['first_surgery_diagnosis_reactions'])
+diagnosis_validator = Draft202012Validator({'$ref': '#/$defs/first_surgery_diagnosis_reaction', '$defs': schema['$defs']})
+for index, row in enumerate(patient_collections['first_surgery_diagnosis_reactions']):
+    errors.extend(f'first_surgery_diagnosis_reactions patient bundle [{index}] {e.json_path}: {e.message}' for e in diagnosis_validator.iter_errors(row))
+diagnosis_ids = [row.get('id') for row in collections['first_surgery_diagnosis_reactions']]
+check(len(diagnosis_ids) == len(set(diagnosis_ids)), 'Duplicate id after merging patient-owned diagnosis reactions')
 by = {key: {r['id']: r for r in rows} for key, rows in collections.items() if key != 'relationships'}
 
 diagnosis_reaction_counts = {}
 for reaction in collections['first_surgery_diagnosis_reactions']:
     check(reaction['event_type'] == 'first_surgery_diagnosis_shock',
           reaction['id'] + ': wrong diagnosis reaction event type')
-    group = reaction['site_group']
-    diagnosis_reaction_counts[group] = diagnosis_reaction_counts.get(group, 0) + 1
+    if not reaction.get('patient_id'):
+        group = reaction['site_group']
+        diagnosis_reaction_counts[group] = diagnosis_reaction_counts.get(group, 0) + 1
 check(diagnosis_reaction_counts == {
     'breast': 4,
     'abdominal': 5,
@@ -144,6 +152,14 @@ check(diagnosis_reaction_counts == {
     'thoracic_cardiac': 5,
     'generic': 2,
 }, 'First-surgery diagnosis reaction pool must contain the authored 22 variants')
+owned_diagnosis_groups = {}
+for reaction in collections['first_surgery_diagnosis_reactions']:
+    if reaction.get('patient_id'):
+        owned_diagnosis_groups.setdefault(reaction['patient_id'], set()).add(reaction['site_group'])
+required_diagnosis_groups = {'breast', 'abdominal', 'gynecology_pelvic', 'thoracic_cardiac', 'generic'}
+for patient in patient_collections['patients']:
+    check(owned_diagnosis_groups.get(patient['id'], set()) == required_diagnosis_groups,
+          patient['id'] + ': patient bundle must own one first-surgery reaction for every site group')
 
 date_location_ids = set(by['date_locations'])
 for profile in collections['date_profiles']:

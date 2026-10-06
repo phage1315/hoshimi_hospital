@@ -41,7 +41,7 @@
 
 普通随机患者从资料、美术到门诊／术前蓝图的完整接入步骤见 `docs/adding_random_patient.md`。
 
-普通患者采用索引式数据包：`data/patients/index.json` 列出启用的 `patient_<id>/patient.json`。每个数据包保存患者记录、完全脱衣查体对白、术前阶段提示、回退病例／术式和专属 CG 池。`ContentLoader` 使用 `data/patients/templates/encounter.json` 与 `preop.json` 为每名患者生成运行时 `encounters` 和 `preops` 集合，再将专属 CG 池合并到全局通用池。游戏系统仍只读取原有集合接口。
+普通患者采用索引式数据包：`data/patients/index.json` 列出启用的 `patient_<id>/patient.json`。每个数据包保存患者记录、门诊口吻、首次得知手术的反应、完全脱衣查体对白、病房及术中反应、术前阶段提示、回退病例／术式和专属 CG 池。`ContentLoader` 使用 `data/patients/templates/encounter.json` 与 `preop.json` 为每名患者生成运行时 `encounters` 和 `preops` 集合，再把患者专属的首次手术反应与 CG 池合并到相应运行时集合。游戏系统仍只读取原有集合接口。
 
 现有 25 种手术均包含四个广义叙事步骤：术野确认、团队配合、关键判断和完成复核。内容用于 VN 对话与选择，不是医疗教学流程。`confirm` 固定推进；`flavor` 的三个团队选项均不影响结果；`decision` 的错误选项必须提供助手纠正文案。运行时按事件记录所选 option ID、是否正确及累计纠正次数。清醒患者事件在 `surgery_flow` 内作为子状态呈现，不再跳往一次性的 preop 互动节点；全麻直接跳过。
 
@@ -67,7 +67,7 @@ preops 集合定义 encounter_id、patient_id、surgery_id、roles、ward_role�
 
 `ward_preparation_cg_pools` 按术前行动 ID 映射准备 CG，目前覆盖病房灌肠、备皮、戴帽，以及患者专属的手术室留置导尿、术野消毒、无菌单覆盖和递刀后准备下刀。通用池的 `patient_ids` 为空并使用 `presentation: splash`；患者专属池填写患者 ID、提高 priority，并可使用 `presentation: fullscreen`。可选 `procedure_groups` 会把 CG 限制在指定术式类别。运行时优先选择同时匹配患者及术式类别的专属池，否则回退到通用池；同一池随机取图并避免连续重复。跳过准备的行动不进入任何 CG 池。
 
-患者 `personality` 保存主性格、副性格和压力反应的稳定规则 ID；`traits` 保存焦虑基线、疼痛敏感、隐私敏感、初始信任、控制需求、情绪外露、医疗理解和配合倾向八项 0–100 资料；`fear_profile` 区分怕疼、怕操作、怕诊断和怕失控。当前版本不把这些数值用于手术成败或选项效果。`reaction_lines` 按稳定 action ID 覆盖共用反应，覆盖宣布住院手术、病房说明、麻醉选择、下刀、三段术中互动和术式不符。`reaction_variants` 另为病房亲手准备的必要／多余灌肠、必要／多余下腹及会阴备皮、戴手术帽，以及手术室固定、导尿、消毒、划线提供每名患者 2–3 条独立反应。未配置的动作仍回退至 preop 共用文案。
+患者 `personality` 保存主性格、副性格和压力反应的稳定规则 ID；`traits` 保存焦虑基线、疼痛敏感、隐私敏感、初始信任、控制需求、情绪外露、医疗理解和配合倾向八项 0–100 资料；`fear_profile` 区分怕疼、怕操作、怕诊断和怕失控。当前版本不把这些数值用于手术成败或选项效果。`outpatient_lines` 保存四种门诊口吻模板，使用 `{line}` 接入随机病例的医学内容。`diagnosis_reactions` 按五种术区保存首次得知需要手术时的专属反应。`reaction_lines` 按稳定 action ID 覆盖宣布住院手术、病房说明、麻醉选择、下刀、三段术中互动和术式不符。`reaction_variants` 为病房及手术室准备动作提供每名患者 2–3 条独立反应。公共首次手术反应池和 preop 文案只在患者包缺项时回退。
 
 当前立绘表达只读取 `expressiveness`：情绪外露高的患者会更早显示害怕，克制者会较久保持紧张表情。恐惧、痛苦、尊严和配合的实际数值仍完全由共用 action effects 决定，因此同一个玩家选项对各患者的流程结果相同。
 

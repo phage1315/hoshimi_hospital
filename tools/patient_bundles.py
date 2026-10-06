@@ -63,6 +63,7 @@ def load_patient_bundles(data_root: Path, config: dict):
         'preops': [],
         'examination_cg_pools': [],
         'ward_preparation_cg_pools': [],
+        'first_surgery_diagnosis_reactions': [],
     }
     bundles = []
     for relative_path in index:
@@ -86,6 +87,11 @@ def load_patient_bundles(data_root: Path, config: dict):
         result['patients'].append(patient)
         result['encounters'].append(encounter)
         result['preops'].append(preop)
+        # Patient-owned diagnosis reactions remain authored in the same bundle as
+        # outpatient, ward, and intraoperative dialogue.
+        for reaction in deepcopy(bundle.get('diagnosis_reactions', [])):
+            reaction['patient_id'] = patient_id
+            result['first_surgery_diagnosis_reactions'].append(reaction)
         exclusive = bundle.get('exclusive_cg_pools', {})
         result['examination_cg_pools'].extend(deepcopy(exclusive.get('examination', [])))
         result['ward_preparation_cg_pools'].extend(deepcopy(exclusive.get('ward_preparation', [])))

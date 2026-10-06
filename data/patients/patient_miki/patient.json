@@ -138,6 +138,12 @@
         "「医生，预定的是乳房手术，为什么还要处理下腹和会阴？」（必须显露到这种程度，却和切口没有关系。越平静地进行越让人难堪。）",
         "「胸部才是术野，对吗？这里的备皮是否弄错了？」（电动备皮器贴近腿根时，我终于没办法再把疑问咽下去。）"
       ]
+    },
+    "outpatient_lines": {
+      "complaint": "不好意思，{line}",
+      "primary": "{line}",
+      "secondary": "另外，{line}",
+      "background": "其他病史我想不起来了，也没有已知的药物过敏。"
     }
   },
   "fallback": {
@@ -264,5 +270,100 @@
         "caption": "坂口医生接过器械护士递来的手术刀，刀锋停在预定切口上方。仍然清醒的奥寺美纪被团队固定在手术台上，惊恐地望着即将落下的刀刃。『请等一下……我还没有准备好……！』"
       }
     ]
-  }
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_miki_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "light_h",
+        "body_awareness",
+        "grotesque_imagination",
+        "self_deprecating"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「……要切我的胸？」",
+        "她低头看了一眼自己。",
+        "「不会像切西瓜一样，从中间一刀下去吧……」",
+        "「……不对，我这个大小应该比较像桃子。」",
+        "她把脸捂住。\n「我现在脑子到底在想什么啊……」"
+      ]
+    },
+    {
+      "id": "diagnosis_miki_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "embarrassment",
+        "body_image",
+        "light_h",
+        "fear"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她低头看自己的腹部。",
+        "「完了……我最近吃太多了。」",
+        "她捏了一下小腹。",
+        "「有一点小肚子。」",
+        "「偏偏现在要给别人开刀看到……好丢人。」"
+      ]
+    },
+    {
+      "id": "diagnosis_miki_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "fear",
+        "grotesque_imagination",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她努力点头，随后像突然意识到了什么。",
+        "「开进去以后……你们真的能看到子宫吧？」",
+        "「那会不会……把它拿出来看？」",
+        "她自己马上脸红。",
+        "「我不是说拿出来参观！」"
+      ]
+    },
+    {
+      "id": "diagnosis_miki_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "body_privacy",
+        "grotesque_imagination",
+        "soft_erotic"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她下意识按住胸口。",
+        "「所以……你们真的会看到我的心脏？」",
+        "「它会在你们面前跳吧……」",
+        "她脸色很复杂。",
+        "「好奇怪。光想象就觉得有点羞耻。」"
+      ]
+    },
+    {
+      "id": "diagnosis_miki_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "first_surgery_realization"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她沉默了很久。",
+        "「所以……」",
+        "「不是比喻。」",
+        "「是真的要开刀。」",
+        "她看着医生，像是直到这一刻才终于理解刚才所有说明的含义。"
+      ]
+    }
+  ]
 }

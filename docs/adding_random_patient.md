@@ -236,6 +236,7 @@ fallback
 encounter.full_undress
 preop.stage_prompts
 preop.incision_responses
+diagnosis_reactions
 exclusive_cg_pools
 ```
 
@@ -254,6 +255,7 @@ traits
 fear_profile
 reaction_lines
 reaction_variants
+outpatient_lines
 ```
 
 关键规则：
@@ -263,6 +265,7 @@ reaction_variants
 - `fallback.surgery_id` 只在随机病例系统不可用时使用。
 - 实际新游戏会从 `case_templates` 为每名患者随机分配病例；`encounter_for_case()` 重写问诊内容，`preop_definitions_for()` 再把病例的 `surgery_id` 绑定到术前手术。
 - `voice_style` 只能是 `direct`、`reserved`、`bold`、`gentle`。
+- `outpatient_lines` 必须包含 `complaint`、`primary`、`secondary`、`background`；前三项可用 `{line}` 插入随机病例提供的医学内容。这样患者口吻留在本人的文件内，疾病资料仍由病例模板提供。
 - `personality.primary + secondary` 的组合必须在患者池中唯一。
 - `stress_response` 使用现有枚举：`becomes_quiet`、`seeks_reassurance`、`becomes_irritable`、`asks_for_details`。
 - `traits` 和 `fear_profile` 数值范围均为0—100。
@@ -271,6 +274,8 @@ reaction_variants
 loader 会从 `data/patients/templates/encounter.json` 与 `preop.json` 自动生成 `visit_<short_id>` 和 `preop_<short_id>`。患者专属的完全脱衣查体对白、术前阶段提示和旧下刀回应保存在数据包中，并覆盖共用模板。
 
 ## 七、患者专属反应文案
+
+`diagnosis_reactions` 必须为乳腺、腹部、妇科盆腔、胸心和通用五个 `site_group` 各写一组首次得知需要手术时的反应。运行时优先使用本患者的数据；`data/patients/first_surgery_diagnosis_reactions.json` 只为旧数据或缺项提供通用回退。
 
 `reaction_lines` 必须完整包含以下27个键，不能缺少、重复或只复制另一名患者的内容：
 
@@ -440,6 +445,8 @@ docs/<patient_id>_asset_record.md
 - [ ] `patient.json` 数据包字段和17个图片键完整，并已加入 `patients/index.json`。
 - [ ] 27条 `reaction_lines` 齐全且互不重复。
 - [ ] 13组 `reaction_variants` 齐全，每组2—3条。
+- [ ] 4条 `outpatient_lines` 齐全，且保留需要的 `{line}` 占位符。
+- [ ] `diagnosis_reactions` 覆盖五种 `site_group`。
 - [ ] 完全脱衣查体对白、术前阶段提示和回退数据完整。
 - [ ] `patient_bundle_test.gd` 能生成对应 encounter 与 preop。
 - [ ] `validate_data.py` 通过。

@@ -114,6 +114,8 @@ func load_patient_bundles(config: Dictionary) -> void:
 		collections["examination_cg_pools"] = []
 	if not collections.has("ward_preparation_cg_pools"):
 		collections["ward_preparation_cg_pools"] = []
+	if not collections.has("first_surgery_diagnosis_reactions"):
+		collections["first_surgery_diagnosis_reactions"] = []
 	var patient_ids: Dictionary = {}
 	var generated_ids: Dictionary = {}
 	for bundle_path in index:
@@ -153,6 +155,14 @@ func load_patient_bundles(config: Dictionary) -> void:
 		collections.patients.append(patient)
 		collections.encounters.append(encounter)
 		collections.preops.append(preop)
+		for diagnosis_reaction in bundle.get("diagnosis_reactions", []):
+			var owned_reaction: Dictionary = diagnosis_reaction.duplicate(true)
+			owned_reaction["patient_id"] = patient_id
+			var reaction_id: String = str(owned_reaction.get("id", ""))
+			if not reaction_id.is_empty() and find_record("first_surgery_diagnosis_reactions", reaction_id).is_empty():
+				collections.first_surgery_diagnosis_reactions.append(owned_reaction)
+			else:
+				errors.append("患者专属首次手术反应 ID 重复：" + reaction_id)
 		var exclusive_pools: Dictionary = bundle.get("exclusive_cg_pools", {})
 		for pool in exclusive_pools.get("examination", []):
 			var pool_id: String = str(pool.get("id", ""))

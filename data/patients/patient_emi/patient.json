@@ -139,6 +139,12 @@
         "「医生……明明是乳房手术，为什么要把下面也剃光……？」（下腹和会阴全都露着，羞耻得想并腿，可她们还在按着流程做。）",
         "「切口不是在胸部吗……这里也要处理？」（电动备皮器已经到了腿根。护士没有制止，我是不是只能继续躺着。）"
       ]
+    },
+    "outpatient_lines": {
+      "complaint": "那个……{line}",
+      "primary": "我想想……{line}",
+      "secondary": "还有就是……{line}",
+      "background": "应该没有别的了……药物过敏我也没听说过。"
     }
   },
   "fallback": {
@@ -287,5 +293,97 @@
         "caption": "坂口医生接过器械护士递来的手术刀，刀锋停在预定切口上方。仍然清醒的二ノ宮紗智子看见刀刃，含着泪竭力保持不动。『请、请先告诉我什么时候下刀……』"
       }
     ]
-  }
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_emi_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "body_image",
+        "fear",
+        "light_h",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她低头盯着自己胸前很久。",
+        "「……那以后两边还会一样大吗？」",
+        "她下意识托了一下自己的胸。",
+        "「我以前怎么从来没认真比较过。」",
+        "「偏偏要开刀了才开始在意这个……」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "body_awareness",
+        "black_comedy"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她突然把腹部收得很紧。",
+        "几秒以后，她自己意识到不对。",
+        "「……这样会不会比较好开？」",
+        "她慢慢把气吐出来。",
+        "「我到底在配合什么啊……」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "fear",
+        "grotesque_imagination",
+        "medical_memory",
+        "black_comedy"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她愣了一会儿。",
+        "「卵巢也会被看到啊……」",
+        "「它们到底长什么样来着？」",
+        "「不会真的像两颗葡萄吧……」",
+        "她低声自言自语：「为什么我要在现在想这个。」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "grotesque_imagination",
+        "black_comedy"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她下意识抬起双手，在自己胸前做了一个向两侧分开的动作。",
+        "「不会真的这样吧……」",
+        "看着自己的手势，她脸色反而更白了。",
+        "「我为什么还要自己演示给自己看。」"
+      ]
+    },
+    {
+      "id": "diagnosis_emi_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "shock"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「对不起。」",
+        "「我知道你刚才已经解释得很清楚了。」",
+        "她停了一下。",
+        "「但我现在脑子里好像一句都没剩下。」",
+        "「只剩『我要被开刀』这件事。」"
+      ]
+    }
+  ]
 }
