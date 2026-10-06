@@ -217,10 +217,13 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 	page.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(page)
 	var authored_background := background_path(background_id)
+	var authored_texture: Texture2D = null
 	if not authored_background.is_empty():
+		authored_texture = load("res://" + authored_background) as Texture2D
+	if authored_texture != null:
 		var image := TextureRect.new()
 		image.name = "SceneBackground"
-		image.texture = load("res://" + authored_background)
+		image.texture = authored_texture
 		image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		image.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -238,7 +241,7 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 	var wash := ColorRect.new()
 	# Finished background art should remain visible. Pages without art keep the
 	# stronger geometric-placeholder wash used by the original prototype.
-	var wash_alpha := 0.14 if not authored_background.is_empty() else (0.46 if background_id.begins_with("operating_team_") else 0.83 if screen not in ["dialogue", "encounter", "preop"] else 0.30)
+	var wash_alpha := 0.14 if authored_texture == null else (0.46 if background_id.begins_with("operating_team_") else 0.83 if screen not in ["dialogue", "encounter", "preop"] else 0.30)
 	wash.color = Color(0.025, 0.075, 0.09, wash_alpha)
 	wash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -1140,6 +1143,10 @@ func continue_micro_event() -> void:
 func show_location(id: String, preserve_random: bool = false, allow_micro_event: bool = true) -> void:
 	if game.special_event_in_progress():
 		show_special_event()
+		return
+	var location_special_event: Dictionary = game.next_special_event_at(id)
+	if not location_special_event.is_empty():
+		confirm_special_event(str(location_special_event.id))
 		return
 	var natural_event: Dictionary = game.next_character_event_at(id)
 	if not natural_event.is_empty():

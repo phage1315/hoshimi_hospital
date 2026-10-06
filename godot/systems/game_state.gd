@@ -2026,11 +2026,27 @@ func available_special_events(include_developer: bool = false) -> Array:
 	result.sort_custom(func(a: Dictionary, b: Dictionary): return str(a.id) < str(b.id))
 	return result
 
+func special_event_trigger_mode(definition: Dictionary) -> String:
+	return str(definition.get("trigger_mode", "day_start"))
+
 func next_auto_special_event() -> Dictionary:
 	if not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
 		return {}
 	var candidates: Array = available_special_events()
-	candidates = candidates.filter(func(definition: Dictionary): return bool(definition.get("auto_schedule", false)))
+	candidates = candidates.filter(func(definition: Dictionary): return bool(definition.get("auto_schedule", false)) and special_event_trigger_mode(definition) == "day_start")
+	candidates.sort_custom(func(a: Dictionary, b: Dictionary):
+		var a_priority := int(a.get("timing", {}).get("priority", 0))
+		var b_priority := int(b.get("timing", {}).get("priority", 0))
+		if a_priority != b_priority:
+			return a_priority > b_priority
+		return str(a.id) < str(b.id))
+	return {} if candidates.is_empty() else candidates[0]
+
+func next_special_event_at(location_id: String) -> Dictionary:
+	if location_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
+		return {}
+	var candidates: Array = available_special_events()
+	candidates = candidates.filter(func(definition: Dictionary): return special_event_trigger_mode(definition) == "location" and str(definition.get("location_id", "")) == location_id)
 	candidates.sort_custom(func(a: Dictionary, b: Dictionary):
 		var a_priority := int(a.get("timing", {}).get("priority", 0))
 		var b_priority := int(b.get("timing", {}).get("priority", 0))

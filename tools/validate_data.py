@@ -442,6 +442,12 @@ for event in collections['special_events']:
     prefix = event['id'] + ': '
     check(event['duration_days'] == len(event['event_chain']), prefix + 'duration_days must match event_chain length')
     check(event['consumes_full_day'] is True, prefix + 'special events must consume full days')
+    trigger_mode = event.get('trigger_mode', 'day_start')
+    check(trigger_mode in {'day_start', 'location'}, prefix + 'invalid trigger_mode')
+    if trigger_mode == 'location':
+        check(event.get('location_id') in by['locations'], prefix + 'unknown location trigger')
+    else:
+        check(not event.get('location_id'), prefix + 'day_start event must not define location_id')
     timing = event.get('timing', {'trigger_day': 1, 'priority': 0, 'final_week_allowed': False})
     trigger_day = timing.get('trigger_day', game_day_for_iso(timing.get('trigger_date')))
     check(trigger_day >= 1, prefix + 'trigger_date is outside the playable year')

@@ -5981,8 +5981,19 @@
           "type": "boolean"
         },
         "auto_schedule": {
-          "description": "Automatically starts at the 09:00 day boundary once the event becomes due on a conflict-free day; the player cannot postpone or refuse it.",
+          "description": "Automatically starts once its configured trigger mode is reached and the event is due.",
           "type": "boolean"
+        },
+        "trigger_mode": {
+          "description": "day_start starts during workday scheduling; location starts when the player enters location_id.",
+          "enum": [
+            "day_start",
+            "location"
+          ]
+        },
+        "location_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
         },
         "announcement": {
           "description": "Short scheduling notice shown before an automatically scheduled event begins.",

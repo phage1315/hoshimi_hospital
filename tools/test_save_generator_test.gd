@@ -27,6 +27,9 @@ func run() -> void:
 	expect(game.prepare_special_event_test_save(definition.id, false), "Ready-now test save could not be prepared")
 	expect(game.special_event_base_requirements_met(definition), "Ready-now preset did not satisfy authored gates")
 	expect(game.special_event_available(definition), "Ready-now preset was not immediately available")
+	expect(game.next_auto_special_event().is_empty(), "Location-triggered Satsuki Lv1 incorrectly auto-started from the hospital map")
+	expect(game.next_special_event_at("station").is_empty(), "Satsuki Lv1 appeared at the wrong hospital location")
+	expect(game.next_special_event_at("gynecology_exam").get("id", "") == definition.id, "Satsuki Lv1 did not wait at the gynecology examination room")
 	expect(game.can_save_progress(), "Prepared test state is not saveable")
 
 	var delayed = GameState.new()
