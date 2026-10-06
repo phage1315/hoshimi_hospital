@@ -97,6 +97,7 @@ godot --headless --path . --script res://tools/adult_intimacy_system_test.gd
 godot --headless --path . --script res://tools/maya_character_test.gd
 godot --headless --path . --script res://tools/futaba_character_test.gd
 godot --headless --path . --script res://tools/text_overflow_test.gd
+godot --headless --path . --script res://tools/dialogue_playback_test.gd
 ```
 
 内容校验使用独立 Python 工具；玩家运行游戏不需要 Python。

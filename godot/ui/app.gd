@@ -105,6 +105,12 @@ var active_save_slot := 0
 var save_slot_mode := "load"
 var dialogue_page_key := ""
 var dialogue_page_index := 0
+var dialogue_default_button: Button
+var dialogue_auto_enabled := false
+var dialogue_auto_speed_index := 1
+var dialogue_auto_generation := 0
+var dialogue_auto_toggle_button: Button
+var dialogue_auto_speed_button: Button
 var or_table_palpation_intensity := "standard"
 var or_table_palpation_tool := "palpation"
 var or_table_scalpel_cursor: Texture2D
@@ -161,6 +167,7 @@ func configure_game_content() -> void:
 	if DisplayServer.get_name() != "headless":
 		game.set_intraoperative_crisis_enabled(content.localizer.preferred_intraoperative_crisis_enabled())
 		operative_field_hud_enabled = content.localizer.preferred_operative_field_hud_enabled()
+		dialogue_auto_speed_index = content.localizer.preferred_dialogue_auto_speed()
 
 func switch_locale() -> void:
 	var next_locale: String = "en" if str(content.localizer.locale) == "zh_CN" else "zh_CN"
@@ -209,6 +216,7 @@ func panel_style(color: Color, border: Color = Color("718f92")) -> StyleBoxFlat:
 	return style
 
 func base(title: String, subtitle: String, portrait: bool = false, background_id: String = "") -> void:
+	invalidate_dialogue_action()
 	if screen != "or_table_palpation":
 		clear_or_table_scalpel_cursor()
 	if is_instance_valid(page):
@@ -501,6 +509,125 @@ func button_at(text: String, pos: Vector2, dimensions: Vector2, action: Callable
 	page.add_child(button)
 	return button
 
+func invalidate_dialogue_action() -> void:
+	dialogue_auto_generation += 1
+	dialogue_default_button = null
+	dialogue_auto_toggle_button = null
+	dialogue_auto_speed_button = null
+
+func dialogue_speed_name() -> String:
+	var names: Array[String] = [
+		tx("ui.dialogue.speed.slow", "慢速"),
+		tx("ui.dialogue.speed.normal", "标准"),
+		tx("ui.dialogue.speed.fast", "快速"),
+		tx("ui.dialogue.speed.very_fast", "极速"),
+	]
+	return names[clampi(dialogue_auto_speed_index, 0, 3)]
+
+func dialogue_auto_delay(text: String, extra_delay: float = 0.0) -> float:
+	var speed_characters: Array[float] = [8.0, 14.0, 24.0, 40.0]
+	var base_delays: Array[float] = [1.45, 0.95, 0.52, 0.25]
+	var maximum_delays: Array[float] = [12.0, 8.0, 5.0, 3.2]
+	var speed_index := clampi(dialogue_auto_speed_index, 0, 3)
+	var punctuation_delay := 0.0
+	for character in text:
+		if character in ["。", "！", "？", "!", "?", "…"]:
+			punctuation_delay += 0.16
+		elif character in ["，", "、", "；", ",", ";"]:
+			punctuation_delay += 0.07
+	var reading_time := dialogue_visual_units(text) / speed_characters[speed_index]
+	var delay := base_delays[speed_index] + reading_time + punctuation_delay + extra_delay
+	if text.strip_edges().begins_with("【"):
+		delay += 0.8
+	return clampf(delay, 0.45, maximum_delays[speed_index] + extra_delay)
+
+func register_dialogue_continue(button: Button, text: String, extra_delay: float = 0.0) -> void:
+	dialogue_default_button = button
+	dialogue_auto_generation += 1
+	var expected_generation := dialogue_auto_generation
+	if get_viewport().gui_get_focus_owner() == null:
+		button.grab_focus()
+	if dialogue_auto_enabled:
+		run_dialogue_auto_timer(expected_generation, dialogue_auto_delay(text, extra_delay))
+
+func pause_dialogue_for_choice() -> void:
+	dialogue_default_button = null
+	dialogue_auto_generation += 1
+
+func run_dialogue_auto_timer(expected_generation: int, delay_seconds: float) -> void:
+	await get_tree().create_timer(delay_seconds).timeout
+	while dialogue_auto_enabled and expected_generation == dialogue_auto_generation:
+		if dialogue_button_can_activate(dialogue_default_button) and activate_dialogue_default():
+			return
+		await get_tree().create_timer(0.2).timeout
+
+func dialogue_button_can_activate(button: Button) -> bool:
+	return is_instance_valid(button) and not button.disabled and button.is_visible_in_tree()
+
+func dialogue_text_input_focused() -> bool:
+	var focus_owner := get_viewport().gui_get_focus_owner()
+	return focus_owner is LineEdit or focus_owner is TextEdit
+
+func dialogue_modal_open() -> bool:
+	for child in get_children():
+		if child is Window and child.visible:
+			return true
+	return false
+
+func activate_dialogue_default() -> bool:
+	if dialogue_text_input_focused() or dialogue_modal_open() or not dialogue_button_can_activate(dialogue_default_button):
+		return false
+	var button := dialogue_default_button
+	# Invalidate before emitting: the action normally redraws the page and may
+	# register the next line immediately.
+	dialogue_auto_generation += 1
+	button.emit_signal("pressed")
+	return true
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not event is InputEventKey or not event.pressed or event.echo:
+		return
+	if event.keycode not in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
+		return
+	if activate_dialogue_default():
+		get_viewport().set_input_as_handled()
+
+func dialogue_auto_toggle_text() -> String:
+	return tx("ui.dialogue.auto_on", "自动播放：开") if dialogue_auto_enabled else tx("ui.dialogue.auto_off", "自动播放：关")
+
+func refresh_dialogue_playback_controls() -> void:
+	if is_instance_valid(dialogue_auto_toggle_button):
+		dialogue_auto_toggle_button.text = dialogue_auto_toggle_text()
+	if is_instance_valid(dialogue_auto_speed_button):
+		dialogue_auto_speed_button.text = tx("ui.dialogue.speed", "速度：{speed}", {"speed": dialogue_speed_name()})
+
+func toggle_dialogue_auto() -> void:
+	dialogue_auto_enabled = not dialogue_auto_enabled
+	dialogue_auto_generation += 1
+	refresh_dialogue_playback_controls()
+	if dialogue_auto_enabled and dialogue_button_can_activate(dialogue_default_button):
+		run_dialogue_auto_timer(dialogue_auto_generation, dialogue_auto_delay(current_dialogue_text(), 0.25))
+
+func cycle_dialogue_auto_speed() -> void:
+	dialogue_auto_speed_index = (dialogue_auto_speed_index + 1) % 4
+	content.localizer.save_dialogue_auto_speed(dialogue_auto_speed_index)
+	dialogue_auto_generation += 1
+	refresh_dialogue_playback_controls()
+	if dialogue_auto_enabled and dialogue_button_can_activate(dialogue_default_button):
+		run_dialogue_auto_timer(dialogue_auto_generation, dialogue_auto_delay(current_dialogue_text()))
+
+func current_dialogue_text() -> String:
+	for child in page.get_children():
+		if child is RichTextLabel and (child.name.contains("Dialogue") or child.name == "PrologueText"):
+			return child.text
+	return ""
+
+func add_dialogue_playback_controls() -> void:
+	dialogue_auto_toggle_button = button_at(dialogue_auto_toggle_text(), Vector2(590, 713), Vector2(155, 40), toggle_dialogue_auto)
+	dialogue_auto_toggle_button.name = "DialogueAutoToggle"
+	dialogue_auto_speed_button = button_at(tx("ui.dialogue.speed", "速度：{speed}", {"speed": dialogue_speed_name()}), Vector2(755, 713), Vector2(220, 40), cycle_dialogue_auto_speed)
+	dialogue_auto_speed_button.name = "DialogueAutoSpeed"
+
 func vn_dialogue_box(speaker: String, text: String, dialogue_name: String = "EventDialogue", allow_scroll: bool = false) -> Array:
 	var box := Panel.new()
 	box.name = dialogue_name + "Box"
@@ -790,12 +917,18 @@ func show_dialogue() -> void:
 	var prologue_text := scrollable_text_at(str(dialogue.text), Vector2(82, 553), Vector2(1100, 110), 21, Color("f4f0e6"), "PrologueText")
 	prologue_text.scroll_active = bool(dialogue.allow_scroll)
 	if bool(dialogue.has_more):
-		button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 676), Vector2(160, 46), advance_dialogue_page.bind(show_dialogue)).grab_focus()
+		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 676), Vector2(160, 46), advance_dialogue_page.bind(show_dialogue))
+		continue_button.name = "PrologueDialogueContinue"
+		register_dialogue_continue(continue_button, str(dialogue.text))
 	elif node.has("choices"):
+		pause_dialogue_for_choice()
 		for i in range(node.choices.size()):
 			button_at(node.choices[i].label, Vector2(75 + i * 365, 676), Vector2(345, 46), advance.bind(i))
 	else:
-		button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 676), Vector2(160, 46), advance.bind(-1)).grab_focus()
+		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 676), Vector2(160, 46), advance.bind(-1))
+		continue_button.name = "PrologueDialogueContinue"
+		register_dialogue_continue(continue_button, str(dialogue.text), 0.5)
+	add_dialogue_playback_controls()
 	button_at(tx("ui.common.return_title", "返回标题"), Vector2(1070, 88), Vector2(150, 44), title_screen)
 
 func advance(choice: int) -> void:
@@ -1086,8 +1219,10 @@ func show_micro_event() -> void:
 	if bool(dialogue.has_more):
 		var page_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_micro_event))
 		page_button.name = "MicroEventPageContinue"
+		register_dialogue_continue(page_button, str(presentation.text))
 		button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 		button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
+		add_dialogue_playback_controls()
 		return
 	if event.completed:
 		if event.response_finished():
@@ -1096,8 +1231,10 @@ func show_micro_event() -> void:
 		var continue_label := tx("ui.micro_event.finish", "结束片段  ▷") if event.response_finished() else tx("ui.common.continue", "继续  ▷")
 		var continue_button := button_at(continue_label, Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), continue_micro_event)
 		continue_button.name = "MicroEventContinue"
+		register_dialogue_continue(continue_button, str(presentation.text), 0.45 if event.response_finished() else 0.0)
 	else:
 		if event.at_choice():
+			pause_dialogue_for_choice()
 			for i in range(definition.choices.size()):
 				var choice: Dictionary = definition.choices[i]
 				var choice_button := button_at(vn_choice_label(str(choice.label), definition.choices.size()), Vector2(60, vn_choice_y(definition.choices.size(), i)), Vector2(655, 54), choose_micro_event.bind(choice.id))
@@ -1105,8 +1242,10 @@ func show_micro_event() -> void:
 		else:
 			var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_micro_event_opening)
 			continue_button.name = "MicroEventContinue"
+			register_dialogue_continue(continue_button, str(presentation.text))
 	button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
+	add_dialogue_playback_controls()
 
 func choose_micro_event(choice_id: String) -> void:
 	var event = game.micro_events.get(game.active_micro_event_id)
@@ -1518,9 +1657,14 @@ func show_time_event_result(event_id: String, location_id: String, crossed_day: 
 	vn_dialogue_box(actor.name, str(dialogue.text), "TimeEventDialogue")
 	label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [definition.minutes, game.clock_text()], Vector2(65, 205), 19, Color("c2d2cc"), 620)
 	if bool(dialogue.has_more):
-		button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1015, 713), Vector2(210, 40), advance_dialogue_page.bind(show_time_event_result.bind(event_id, location_id, crossed_day)))
+		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1015, 713), Vector2(210, 40), advance_dialogue_page.bind(show_time_event_result.bind(event_id, location_id, crossed_day)))
+		continue_button.name = "TimeEventDialogueContinue"
+		register_dialogue_continue(continue_button, str(dialogue.text))
 	else:
-		button_at(tx("ui.auto.e7a9c67f35b7", "结束闲谈  →"), Vector2(1015, 713), Vector2(210, 40), finish_time_event_result.bind(location_id, crossed_day))
+		var finish_button := button_at(tx("ui.auto.e7a9c67f35b7", "结束闲谈  →"), Vector2(1015, 713), Vector2(210, 40), finish_time_event_result.bind(location_id, crossed_day))
+		finish_button.name = "TimeEventDialogueFinish"
+		register_dialogue_continue(finish_button, str(dialogue.text), 0.45)
+	add_dialogue_playback_controls()
 
 func finish_time_event_result(location_id: String, crossed_day: bool) -> void:
 	var next_view := show_location.bind(location_id, true)
@@ -1646,15 +1790,24 @@ func show_character_event() -> void:
 	if bool(dialogue.has_more):
 		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_character_event))
 		continue_button.name = "EventDialogueContinue"
+		register_dialogue_continue(continue_button, str(presentation.text))
 		button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 		button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
+		add_dialogue_playback_controls()
 		return
+	var only_choice_button: Button
 	for i in range(node.choices.size()):
 		var choice: Dictionary = node.choices[i]
 		var choice_button := button_at(vn_choice_label(str(choice.label), node.choices.size()), Vector2(60, vn_choice_y(node.choices.size(), i)), Vector2(655, 54), choose_character_event.bind(choice.id))
 		choice_button.name = "EventChoice_" + choice.id
+		only_choice_button = choice_button
+	if node.choices.size() == 1:
+		register_dialogue_continue(only_choice_button, str(presentation.text), 0.2)
+	else:
+		pause_dialogue_for_choice()
 	button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
+	add_dialogue_playback_controls()
 
 func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: String) -> void:
 	var cg_path := str(node.get("cg_path", ""))
@@ -2004,11 +2157,13 @@ func show_special_event() -> void:
 		var page_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_special_event))
 		page_button.name = "SpecialEventDialogueContinue"
 		action_buttons.append(page_button)
+		register_dialogue_continue(page_button, str(presentation.text), 0.7 if is_new_cg else 0.0)
 		var page_save_button := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 		var page_load_button := button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 		action_buttons.append(page_save_button)
 		action_buttons.append(page_load_button)
 		delay_special_event_content_for_cg(node, definition, dialogue_items, action_buttons, "special_event", is_new_cg)
+		add_dialogue_playback_controls()
 		return
 	var visible_choices: Array = []
 	for choice in node.get("choices", []):
@@ -2020,11 +2175,16 @@ func show_special_event() -> void:
 		var choice_button := button_at(vn_choice_label(str(choice.label), visible_choices.size()), Vector2(60, vn_choice_y(visible_choices.size(), visible_index)), Vector2(655, 54), choose_special_event.bind(str(choice.id)))
 		choice_button.name = "SpecialEventChoice_" + str(choice.id)
 		action_buttons.append(choice_button)
+	if visible_choices.size() == 1:
+		register_dialogue_continue(action_buttons[0], str(presentation.text), 0.7 if is_new_cg else 0.2)
+	else:
+		pause_dialogue_for_choice()
 	var save_button := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 	var load_button := button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 	action_buttons.append(save_button)
 	action_buttons.append(load_button)
 	delay_special_event_content_for_cg(node, definition, dialogue_items, action_buttons, "special_event", is_new_cg)
+	add_dialogue_playback_controls()
 
 func show_advanced_referral_node(event: RefCounted, step: Dictionary, node: Dictionary) -> void:
 	screen = "special_event"
@@ -2033,6 +2193,7 @@ func show_advanced_referral_node(event: RefCounted, step: Dictionary, node: Dict
 	if presentation == "advanced_surgery":
 		heading = tx("ui.advanced_referral.surgery", "ADVANCED SURGERY")
 	base(heading, str(step.title), true, node.get("background_id", step.background_id))
+	pause_dialogue_for_choice()
 	var procedure := game.surgery_definition(str(node.get("procedure_id", "")))
 	var procedure_name := str(procedure.get("name", tx("ui.advanced_referral.procedure", "开胸人工心脏系统置换")))
 	var procedure_label := label_at(procedure_name, Vector2(60, 176), 26, Color("f4f0e6"), 1160)
@@ -2266,18 +2427,27 @@ func show_special_gallery_replay() -> void:
 		var page_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_special_gallery_replay))
 		page_button.name = "SpecialReplayDialogueContinue"
 		action_buttons.append(page_button)
+		register_dialogue_continue(page_button, str(presentation.text), 0.7 if is_new_cg else 0.0)
 		var early_exit_button := button_at(tx("ui.gallery.exit_replay", "退出回想"), Vector2(60, 713), Vector2(180, 40), show_special_gallery_entry.bind(str(event.definition.id)))
 		action_buttons.append(early_exit_button)
 		delay_special_event_content_for_cg(node, event.definition, dialogue_items, action_buttons, "special_gallery_replay", is_new_cg)
+		add_dialogue_playback_controls()
 		return
+	var only_choice_button: Button
 	for i in range(node.get("choices", []).size()):
 		var choice: Dictionary = node.choices[i]
 		var button := button_at(vn_choice_label(str(choice.label), node.choices.size()), Vector2(60, vn_choice_y(node.choices.size(), i)), Vector2(655, 54), choose_special_gallery_replay.bind(str(choice.id)))
 		button.name = "SpecialReplayChoice_" + str(choice.id)
 		action_buttons.append(button)
+		only_choice_button = button
+	if node.get("choices", []).size() == 1:
+		register_dialogue_continue(only_choice_button, str(presentation.text), 0.7 if is_new_cg else 0.2)
+	else:
+		pause_dialogue_for_choice()
 	var exit_button := button_at(tx("ui.gallery.exit_replay", "退出回想"), Vector2(60, 713), Vector2(180, 40), show_special_gallery_entry.bind(str(event.definition.id)))
 	action_buttons.append(exit_button)
 	delay_special_event_content_for_cg(node, event.definition, dialogue_items, action_buttons, "special_gallery_replay", is_new_cg)
+	add_dialogue_playback_controls()
 
 func choose_special_gallery_replay(choice_id: String) -> void:
 	if special_event_gallery_replay == null or not special_event_gallery_replay.apply(choice_id):
@@ -2356,13 +2526,22 @@ func show_gallery_replay() -> void:
 	if bool(dialogue.has_more):
 		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, 445), Vector2(655, 54), advance_dialogue_page.bind(show_gallery_replay))
 		continue_button.name = "ReplayDialogueContinue"
+		register_dialogue_continue(continue_button, str(presentation.text))
 		button_at(tx("ui.gallery.exit_test", "退出测试") if gallery_replay_is_test else tx("ui.gallery.exit_replay", "退出回想"), Vector2(60, 713), Vector2(180, 40), exit_action)
+		add_dialogue_playback_controls()
 		return
+	var only_choice_button: Button
 	for i in range(node.choices.size()):
 		var choice: Dictionary = node.choices[i]
 		var choice_button := button_at(choice.label, Vector2(60, 445 + i * 66), Vector2(655, 54), choose_gallery_replay.bind(choice.id))
 		choice_button.name = "ReplayChoice_" + choice.id
+		only_choice_button = choice_button
+	if node.choices.size() == 1:
+		register_dialogue_continue(only_choice_button, str(presentation.text), 0.2)
+	else:
+		pause_dialogue_for_choice()
 	button_at(tx("ui.gallery.exit_test", "退出测试") if gallery_replay_is_test else tx("ui.gallery.exit_replay", "退出回想"), Vector2(60, 713), Vector2(180, 40), exit_action)
+	add_dialogue_playback_controls()
 
 func choose_gallery_replay(choice_id: String) -> void:
 	if gallery_replay_event == null or not gallery_replay_event.apply(choice_id):
@@ -3387,6 +3566,7 @@ func show_after_work_walk() -> void:
 		invite.name = "AfterWorkInvite"
 		var skip := button_at(tx("ui.after_work.skip", "打个招呼，各自回去"), Vector2(60, 537), Vector2(655, 54), choose_after_work_walk.bind(false))
 		skip.name = "AfterWorkSkip"
+		pause_dialogue_for_choice()
 	else:
 		var outcome := str(walk.get("outcome", "skipped"))
 		var text_value := ""
@@ -3402,6 +3582,8 @@ func show_after_work_walk() -> void:
 			label_at(tx("ui.after_work.reward", "同行结束 · %s熟悉度 +%s") % [actor.name, reward], Vector2(65, 430), 20, Color("9ee2c8"), 650)
 		var finish := button_at(tx("ui.after_work.finish", "结束同行，回家  →"), Vector2(60, 520), Vector2(655, 56), complete_after_work_walk)
 		finish.name = "AfterWorkFinish"
+		register_dialogue_continue(finish, text_value, 0.5)
+	add_dialogue_playback_controls()
 
 func choose_after_work_walk(invite: bool) -> void:
 	if game.choose_after_work_walk(invite).is_empty():

@@ -55,6 +55,18 @@ func save_operative_field_hud_preference(enabled: bool) -> bool:
 	config.set_value("gameplay", "operative_field_hud_enabled", enabled)
 	return config.save(SETTINGS_PATH) == OK
 
+func preferred_dialogue_auto_speed() -> int:
+	var config: ConfigFile = ConfigFile.new()
+	if config.load(SETTINGS_PATH) != OK:
+		return 1
+	return clampi(int(config.get_value("dialogue", "auto_speed", 1)), 0, 3)
+
+func save_dialogue_auto_speed(speed_index: int) -> bool:
+	var config: ConfigFile = ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	config.set_value("dialogue", "auto_speed", clampi(speed_index, 0, 3))
+	return config.save(SETTINGS_PATH) == OK
+
 func load_locale(requested_locale: String = DEFAULT_LOCALE) -> bool:
 	errors.clear()
 	strings.clear()
