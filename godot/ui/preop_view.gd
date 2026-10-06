@@ -716,7 +716,6 @@ static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int
 	picker.position = Vector2(250, y)
 	picker.size = Vector2(464, 50)
 	picker.add_item(app.tx("ui.auto.3d372174482a", "请选择（尚未指派）"))
-	picker.set_item_disabled(0, true)
 	var people: Array = prep.candidates(role.id)
 	var selected_index := 0
 	for i in range(people.size()):
@@ -729,9 +728,13 @@ static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int
 			selected_index = i + 1
 		elif prep.team.values().has(person.id):
 			picker.set_item_disabled(i + 1, true)
-	# Adding an enabled item auto-selects it in Godot, even with a disabled placeholder.
-	# Restore the actual assignment only after the whole list has been populated.
+	# Keep the placeholder enabled while the list is populated. If it is disabled
+	# first, Godot auto-selects the first enabled staff member; clicking that same
+	# member for the first assignment then emits no selection change and skips the
+	# role-CG unlock path. Once a real assignment exists, disable the placeholder.
 	picker.select(selected_index)
+	if selected_index > 0:
+		picker.set_item_disabled(0, true)
 	picker.item_selected.connect(func(index: int):
 		if index > 0:
 			app.preop_event({"kind": "assign", "role": role.id, "staff_id": people[index - 1].id}))

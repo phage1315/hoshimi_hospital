@@ -27,5 +27,39 @@ func run() -> void:
 		expect(str(unlocked.get("id", "")) == str(reward.id), staff_id + ": first assignment did not unlock the configured CG")
 		expect(app.game.staff_role_cg_unlocked(str(reward.id)), staff_id + ": unlocked CG was not added to the gallery state")
 		expect(app.game.unlock_staff_role_cg(staff_id, "assistant_surgeon").is_empty(), staff_id + ": repeat assignment unlocked the CG twice")
+	# Exercise the actual English role pickers. A disabled placeholder used to
+	# make Godot preselect the first candidate, so the first click never reached
+	# preop_event() and neither assistant nor nurse reward art appeared.
+	expect(app.content.load_all("en"), "English content failed to load")
+	app.configure_game_content()
+	for person in app.content.collections.staff:
+		app.game.meet_staff(person.id)
+	for surgery in app.content.collections.surgeries:
+		if str(surgery.get("status", "ready")) != "placeholder":
+			app.game.unlock_procedure(str(surgery.id))
+	var visit = app.game.open_visit("visit_sora")
+	for action_id in ["greet", "basic_history", "to_exam", "vitals", "limited_clothed_exam", "blood", "imaging", "to_diagnosis", "diagnose_appendix", "explain", "admit"]:
+		expect(visit != null and visit.apply(action_id), "English fixture failed during clinic action " + action_id)
+	var prep = app.game.open_preop("preop_sora")
+	expect(prep != null, "English fixture could not open preoperative flow")
+	app.show_preop("preop_sora")
+	var explain: Button = app.page.get_node_or_null("PreopAction_explain_plan")
+	expect(explain != null, "English preoperative plan control is missing")
+	if explain != null:
+		explain.pressed.emit()
+	await process_frame
+	for role_id in ["assistant_surgeon", "scrub_nurse"]:
+		var picker: OptionButton = app.page.get_node_or_null("Role_" + role_id)
+		expect(picker != null and picker.selected == 0, "English " + role_id + " picker preselected staff before the first assignment")
+		if picker == null:
+			continue
+		picker.select(1)
+		picker.item_selected.emit(1)
+		expect(app.screen == "staff_role_reward", "English first " + role_id + " assignment did not display its CG")
+		var continue_button: Button = app.page.get_node_or_null("StaffRoleRewardContinue")
+		expect(continue_button != null, "English role CG has no continue control")
+		if continue_button != null:
+			continue_button.pressed.emit()
+		await process_frame
 	print("role_cg_asset_test: %s checks, %s failures" % [checks, failures])
 	quit(1 if failures else 0)
