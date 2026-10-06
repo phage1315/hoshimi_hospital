@@ -51,6 +51,7 @@ tx("ui.example.key", "中文回退")
 
 ```bash
 python3 tools/localization_audit.py
+python3 tools/staff_localization_test.py
 ```
 
 审计会分别报告：
@@ -74,7 +75,9 @@ godot --headless --path . --script tools/localization_runtime_scan.gd
 
 该检查会用英文内容实际构建全部患者问诊与术前会话，并递归检查最终显示数据。检查结果必须为 `RUNTIME ENGLISH SCAN: 0 Chinese leak(s)`。
 
-目前英文文件包含 5,055 条译文，完整覆盖 4,524 个已登记正文／数据字段及 Godot UI 脚本中的 442 个界面键，并覆盖序章、地点说明、普通病例池、问诊主流程、检查名称、病房准备、换装与刷手、麻醉选择、全部术式流程、清醒手术患者互动、临时状况、岗位首次担当奖励、术前／术中 CG 说明及开发验证事件。17 名现有医护的姓名、专科和人物简介也已有英文。
+目前英文文件包含 10,362 条译文，完整覆盖 9,665 个已登记正文／数据字段及 Godot UI 脚本中的 602 个界面键，并覆盖序章、地点说明、普通病例池、问诊主流程、检查名称、病房准备、换装与刷手、麻醉选择、全部术式流程、清醒手术患者互动、临时状况、岗位首次担当奖励、术前／术中 CG 说明及开发验证事件。20 名现有医护的姓名、专科、人物简介和角色包台词也已有英文。
+
+角色包中有些台词以 `team_dialogue`、`procedure_group_team_dialogue`、`personal_nurse.dialogue` 和地点闲谈 `responses` 的语义键保存，普通字段审计无法自然识别。`tools/staff_localization_test.py` 会递归检查这些台词，要求每句中文原文都有非空、无中文残留且占位符一致的英文译文；当前检查覆盖 176 句。
 
 31 个人物专属事件、20 个日常 micro event，以及《新手术室启用日》《取材过头了》两项大型特殊活动的长篇对白均已有英文。`tools/narrative_localization_test.py` 会强制检查这三类内容中的全部中文正文、标题、提示和选项；任何新增但未翻译的字段都会令测试失败。
 

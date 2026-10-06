@@ -73,6 +73,7 @@ research/vndb/       研究资料预留，与游戏内容分离
 
 ```sh
 python3 tools/localization_audit.py
+python3 tools/staff_localization_test.py
 python3 tools/dialogue_layout_audit.py
 python3 -m venv .venv
 .venv/bin/pip install -r tools/requirements.txt

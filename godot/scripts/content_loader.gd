@@ -304,43 +304,14 @@ func load_all(requested_locale: String = "") -> bool:
 	for key in collections.keys():
 		collections[key] = localizer.localize_tree(collections[key], "collections." + str(key))
 	if localizer.locale == "en":
-		normalize_english_staff_runtime_text()
-		normalize_english_time_event_runtime_text()
+		normalize_english_staff_metadata()
 	dialogue = localizer.localize_tree(dialogue, "dialogue")
 	return errors.is_empty()
 
-func normalize_english_staff_runtime_text() -> void:
+func normalize_english_staff_metadata() -> void:
 	for person in collections.get("staff", []):
 		var profession: String = str(person.get("profession", ""))
 		person["rank"] = "Head of Nursing" if str(person.get("id", "")) == "nurse_ishigami" else {"doctor": "Physician", "nurse": "Nurse", "pharmacist": "Pharmacist", "researcher": "Visiting Researcher"}.get(profession, "Hospital Staff")
-		var team_dialogue: Dictionary = person.get("team_dialogue", {})
-		var defaults := {
-			"assignment": "“Assignment confirmed. I will review the plan and be ready.”",
-			"intraoperative": "“This step is complete. Confirm the field, then continue.”",
-			"intraoperative_correction": "“Pause. That does not match the plan; verify it before continuing.”",
-			"confirmation": "“Patient, procedure, equipment, and contingency plan confirmed.”",
-			"role_confirmation": "“My role is confirmed. I will report any change immediately.”",
-			"stabilize": "“Keep the team in position. Address the immediate problem in order.”",
-		}
-		for dialogue_key in team_dialogue:
-			if defaults.has(dialogue_key):
-				team_dialogue[dialogue_key] = defaults[dialogue_key]
-		person["team_dialogue"] = team_dialogue
-		var group_dialogue: Dictionary = person.get("procedure_group_team_dialogue", {})
-		for group_id in group_dialogue:
-			var group: Dictionary = group_dialogue[group_id]
-			for dialogue_key in group:
-				if defaults.has(dialogue_key):
-					group[dialogue_key] = defaults[dialogue_key]
-			group_dialogue[group_id] = group
-		person["procedure_group_team_dialogue"] = group_dialogue
-
-func normalize_english_time_event_runtime_text() -> void:
-	for event in collections.get("time_events", []):
-		var responses: Array = event.get("responses", [])
-		for index in range(responses.size()):
-			responses[index] = "You spend a few quiet minutes together, discussing the day's work and getting to know each other a little better."
-		event["responses"] = responses
 
 func find_record(collection: String, id: String) -> Dictionary:
 	for record in collections.get(collection, []):

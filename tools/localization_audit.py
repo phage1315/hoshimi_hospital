@@ -70,6 +70,32 @@ def collect_han_leaf_keys(value: object, path: str, result: set[str]) -> None:
         result.add(path)
 
 
+def collect_staff_dialogue_keys(value: object, path: str, result: set[str]) -> None:
+    """Collect dialogue stored below semantic map keys in staff bundles."""
+    for key, source in walk_scalar_strings(value, path):
+        if not re.search(r"[\u3400-\u9fff]", source):
+            continue
+        if (
+            ".team_dialogue." in key
+            or ".procedure_group_team_dialogue." in key
+            or ".personal_nurse.dialogue." in key
+            or (key.startswith("collections.time_events.") and ".responses." in key)
+        ):
+            result.add(key)
+
+
+def walk_scalar_strings(value: object, path: str):
+    if isinstance(value, dict):
+        for field, child in value.items():
+            yield from walk_scalar_strings(child, f"{path}.{field}")
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            identity = str(child.get("id", index)) if isinstance(child, dict) else str(index)
+            yield from walk_scalar_strings(child, f"{path}.{identity}")
+    elif isinstance(value, str):
+        yield path, value
+
+
 def authored_keys() -> set[str]:
     manifest = json.loads((ROOT / "data" / "manifest.json").read_text(encoding="utf-8"))
     result: set[str] = set()
@@ -83,6 +109,7 @@ def authored_keys() -> set[str]:
     staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     for collection, rows in staff_collections.items():
         collect_keys(rows, f"collections.{collection}", result)
+        collect_staff_dialogue_keys(rows, f"collections.{collection}", result)
     patient_config = manifest.get("patient_bundles", {})
     encounter_template = json.loads((ROOT / "data" / patient_config["encounter_template"]).read_text(encoding="utf-8"))
     preop_template = json.loads((ROOT / "data" / patient_config["preop_template"]).read_text(encoding="utf-8"))

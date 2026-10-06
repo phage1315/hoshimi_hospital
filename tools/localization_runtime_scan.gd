@@ -17,7 +17,11 @@ func _initialize() -> void:
 	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases)
 	# Case-template history arrays are source material consumed by GameState. The
 	# generated encounters below are what players actually see.
-	for collection_name in ["staff", "patients", "encounters", "preops", "surgeries", "locations", "backgrounds", "time_events"]:
+	for collection_name in [
+		"staff", "patients", "encounters", "preops", "surgeries", "locations",
+		"backgrounds", "time_events", "character_events", "special_events",
+		"special_event_steps", "date_profiles", "staff_role_cg_rewards", "micro_events",
+	]:
 		scan(content.collections.get(collection_name, []), "content." + collection_name)
 	scan(game.definitions, "game.encounters")
 	scan(game.preop_definitions, "game.preops")
