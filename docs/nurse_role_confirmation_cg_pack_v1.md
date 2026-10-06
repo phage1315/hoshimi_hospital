@@ -13,6 +13,6 @@
 
 病房术前介护三组画面均明确保持患者不入镜，只表现护士与空病床、衣物、转运床及准备物品。
 
-运行时通过 `data/events/staff_role_cg_rewards.json` 登记。角色第一次成功被选择为对应岗位后，CG 立即播放一次并永久收入“事件鉴赏”；以后再次担任同一岗位不会重复打断术前流程。解锁 ID 写入该角色关系状态的 `unlocked_benefits`，沿用现有存档结构。
+运行时通过各角色目录的 `role_rewards.json` 登记。角色第一次成功被选择为对应岗位后，CG 立即播放一次并永久收入“事件鉴赏”；以后再次担任同一岗位不会重复打断术前流程。解锁 ID 写入该角色关系状态的 `unlocked_benefits`，沿用现有存档结构。
 
 完整生成来源、提示摘要、尺寸和 SHA-256 见 `research/imports/nurse_role_confirmation_cgs_2026-09-27.json`。

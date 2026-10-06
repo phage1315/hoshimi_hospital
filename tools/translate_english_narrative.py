@@ -17,6 +17,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 from collection_io import load_collection
+from staff_bundles import load_staff_bundles
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCALE = ROOT / "data/localization/en.json"
@@ -184,8 +185,10 @@ def main() -> int:
     locale = json.loads(LOCALE.read_text(encoding="utf-8"))
     strings: dict[str, str] = locale["strings"]
     pending: list[tuple[str, str]] = []
+    manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
+    staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     for collection, path in TARGETS.items():
-        authored = load_collection(path)
+        authored = load_collection(path) + staff_collections.get(collection, [])
         rows: list[tuple[str, str]] = []
         walk(authored, f"collections.{collection}", rows)
         pending.extend((key, value) for key, value in rows if args.force or key not in strings)

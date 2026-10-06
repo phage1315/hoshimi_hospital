@@ -90,7 +90,7 @@
 
 ### 必需的岗位 CG 资源
 
-凡是能够进入手术团队的女性医生，必须在角色进入可玩状态前完成一张 `assistant_surgeon` 首次担当 CG，并登记到 `data/events/staff_role_cg_rewards.json`。这不是可选的后续素材。CG 必须使用完整无菌手术衣、口罩、手套和手术帽，长发全部收入帽内；动作应体现助手医职责，不得误画成器械护士递送器械的固定构图。文件统一放在：
+凡是能够进入手术团队的女性医生，必须在角色进入可玩状态前完成一张 `assistant_surgeon` 首次担当 CG，并登记到该角色目录的 `role_rewards.json`。这不是可选的后续素材。CG 必须使用完整无菌手术衣、口罩、手套和手术帽，长发全部收入帽内；动作应体现助手医职责，不得误画成器械护士递送器械的固定构图。文件统一放在：
 
 `assets/events/staff_surgery_v1/<staff_id>/assistant_confirmation.png`
 

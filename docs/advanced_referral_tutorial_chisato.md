@@ -16,7 +16,7 @@ Day 1 明确外科、麻醉、器械、巡回和护理监督的边界，并以�
 - `data/cases/advanced_referral_cases.json`：首次高级病例。
 - `data/surgeries/surgeries.json`：开胸人工心脏系统置换。
 - `data/patients/cameo_patients.json`：成年 AU 千束与事件素材引用。
-- `data/characters/staff.json`：独立麻醉科角色樱花。
+- `data/staff/doc_sakura_anesthesiology/profile.json`：独立麻醉科角色樱花。
 
 ## 美术使用
 

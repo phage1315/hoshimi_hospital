@@ -1,0 +1,90 @@
+{
+  "id": "nurse_yui",
+  "name": "朝倉 美幸",
+  "age": 24,
+  "profession": "nurse",
+  "specialty": "门诊护理／手术室支援",
+  "rank": "正式护士",
+  "personality": "开朗认真，勤于确认新环境的流程；专业谦逊，实际操作稳健",
+  "appearance": "VNDB参考图AI补绘 · 本地占位",
+  "skills": {
+    "surgery": 76,
+    "diagnostics": 80,
+    "teamwork": 88,
+    "patient_care": 87,
+    "instrument_handling": 86,
+    "calmness": 84
+  },
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "visuals": {
+    "color": "a9bbab",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v2/nurse_yui/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v3/nurse_yui/scrubs/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v4/nurse_yui/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v4/nurse_yui/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v4/nurse_yui/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v4/nurse_yui/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v4/nurse_yui/uniform/tired.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v4/nurse_yui/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v4/nurse_yui/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v4/nurse_yui/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/nurse_yui/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/nurse_yui/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/nurse_yui/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/nurse_yui/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/nurse_yui/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_yui/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_yui/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "开朗有礼，问题具体而有准备；会坦率承认不熟悉星见的型号或流程，但不为自己的护理经验辩解",
+  "flags": [],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "trained",
+  "presence": {
+    "fixed_locations": [
+      "station",
+      "clinic"
+    ],
+    "random_locations": [
+      "ward",
+      "or",
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「岗位确认。这个型号的流程我会再核对一次；患者转运和无菌准备交给我。」",
+    "intraoperative": "「操作没有问题。我确认的是星见的记录顺序，不是基本步骤。」"
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  }
+}

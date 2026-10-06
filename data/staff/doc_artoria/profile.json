@@ -1,0 +1,109 @@
+{
+  "id": "doc_artoria",
+  "name": "阿尔托莉雅·潘德拉贡",
+  "age": 28,
+  "profession": "doctor",
+  "specialty": "普通外科／复杂腹部外科",
+  "rank": "外科副部长／外科主任候选",
+  "personality": "极度自律、公平坚定的骑士型领导者；善于让每个人站到最合适的位置并承担最终责任",
+  "appearance": "用户提供原作参考图 · AI高清补绘为半身透明立绘与手术服版本",
+  "skills": {
+    "surgery": 91,
+    "diagnostics": 88,
+    "teamwork": 98,
+    "patient_care": 84,
+    "instrument_handling": 90,
+    "calmness": 96
+  },
+  "surgical_roles": [
+    "primary_surgeon",
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "233B63",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "casual",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v16/doc_artoria/white_coat/neutral.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v16/doc_artoria/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v16/doc_artoria/white_coat/neutral.png",
+      "casual/neutral": "assets/characters/portrait_pack_v16/doc_artoria/casual/neutral.png",
+      "casual/smile": "assets/characters/portrait_pack_v16/doc_artoria/casual/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v16/doc_artoria/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v16/doc_artoria/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v16/doc_artoria/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v16/doc_artoria/sterile/neutral.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_artoria/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_artoria/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "正式、直接、少用讽刺；先完整听取意见，再清楚作出最终决定，压力越大句子越短",
+  "flags": [
+    "deputy_chief_of_surgery",
+    "surgery_director_candidate",
+    "elite_surgeon",
+    "team_leadership_specialist",
+    "team_unlock_requires_lv1"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [
+      "or",
+      "artoria_office"
+    ],
+    "random_locations": [
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "阿尔托莉雅先确认每个人的岗位与备选方案，随后点头接受安排。",
+    "intraoperative": "阿尔托莉雅一面配合术野，一面用最短的指令维持全队节奏。",
+    "intraoperative_correction": "阿尔托莉雅没有提高声音，只指出最需要调整的位置：“先改这里。其他人保持。”",
+    "confirmation": "阿尔托莉雅逐项复述人员、器械与备用方案，确认没有空缺。",
+    "role_confirmation": "“我会站在助手位。最终判断由你作出，团队节奏交给我。”",
+    "stabilize": "“所有人留在自己的位置。坂口医生，继续处理术野，外面交给我。”"
+  },
+  "characterization": {
+    "public_persona": "二十八岁的外科副部长与主任候选。她以严谨、公平和团队配置能力建立权威，不依靠年龄或资历压人。",
+    "core_traits": [
+      "自律",
+      "公平",
+      "坚定",
+      "认真",
+      "竞争心强"
+    ],
+    "strengths": [
+      "能迅速判断人员与术式的最佳匹配",
+      "会公开承认同事在具体技术上的优势",
+      "压力下仍能承担最终决定",
+      "擅长让高水平成员愿意协作"
+    ],
+    "flaws": [
+      "对自己和他人的标准都过高",
+      "几乎不会没有目的地休息",
+      "容易把能独自承担的责任全部揽下",
+      "竞争心被触发时会过分认真"
+    ],
+    "stress_behavior": "压力越大越简短、越专注于排序和责任；她会先稳定团队，再独自消化自己的不安。",
+    "professional_behavior": "术前要求主方案、失败后的第二方案和明确分工；术中尊重主刀最终判断，同时主动接管团队协调与外部干扰。",
+    "relationship_arc": "最初把坂口当作需要评估领导力的优秀术者；在共同承担复杂手术后，她逐渐允许对方分担责任，并学习不以工作目的定义全部相处。",
+    "speech_style": "高正式度、高直接度、低讽刺。先让对方说完，再以“我明白了”“决定如下”给出结论。",
+    "ethical_handling": "她与御堂的竞争必须围绕用人理念、术式判断与责任承担展开，绝不能以患者安全或同事尊严作为胜负工具。"
+  }
+}

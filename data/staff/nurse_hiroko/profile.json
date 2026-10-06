@@ -1,0 +1,117 @@
+{
+  "id": "nurse_hiroko",
+  "name": "杉村 弘子",
+  "age": 29,
+  "profession": "nurse",
+  "specialty": "病房护理／综合手术护理",
+  "rank": "资深护士",
+  "personality": "温柔亲切、外柔内刚，是照顾大家的姐姐型护士",
+  "appearance": "用户提供原作立绘 · 手术室差分由内置 ImageGen 制作",
+  "skills": {
+    "surgery": 78,
+    "diagnostics": 76,
+    "teamwork": 92,
+    "patient_care": 94,
+    "instrument_handling": 82,
+    "calmness": 88
+  },
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "visuals": {
+    "color": "315b9b",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/neutral.png",
+      "uniform/serious": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/serious.png",
+      "uniform/smile": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/smile.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/tired.png",
+      "uniform/worried": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/worried.png",
+      "casual/neutral": "assets/characters/portrait_pack_v12/nurse_hiroko/casual/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/focused.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/neutral.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v12/nurse_hiroko/scrubs/worried.png",
+      "sterile/focused": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/focused.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/neutral.png",
+      "sterile/warm": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/warm.png",
+      "sterile/worried": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/worried.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_hiroko/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_hiroko/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "语气温和、善于照顾场面；真正需要坚持时措辞仍柔和，却不会退让",
+  "flags": [
+    "best_friend_pharmacist_manami"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "trained",
+  "presence": {
+    "fixed_locations": [
+      "ward"
+    ],
+    "random_locations": [
+      "clinic",
+      "ward"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "characterization": {
+    "public_persona": "待人亲切、可靠周到，是病房里自然照顾所有人的姐姐型护士；与药剂师飯村真奈美是彼此信赖的挚友。",
+    "core_traits": [
+      "温柔",
+      "体贴",
+      "成熟",
+      "坚韧",
+      "责任感强",
+      "外柔内刚"
+    ],
+    "strengths": [
+      "能从细小变化察觉患者状态",
+      "擅长安抚患者并协调医护关系",
+      "病房与手术护理都能稳定胜任",
+      "面对原则问题能够温和而坚定地拒绝"
+    ],
+    "flaws": [
+      "习惯先照顾别人而隐藏自己的负担",
+      "不愿轻易向同事求助",
+      "容易把责任揽到自己身上"
+    ],
+    "stress_behavior": "越是紧迫越会先稳住身边的人，很少当场失控；真正的疲惫和痛苦往往被她留到独处时承受。",
+    "professional_behavior": "以病房护理为主，观察细致、交接完整；接受过成熟的手术护理训练，可胜任器械护士和巡回护士，但不会以手术室专家自居。",
+    "relationship_arc": "她与坂口隆司的具体相识和羁绊路线尚待设计；核心方向是从可靠的前辈式照顾，逐渐发展为愿意让坂口看见她脆弱与沉重的一面。",
+    "speech_style": "常用温和的确认和劝慰照顾对方感受；遇到原则问题不会提高音量，而会放慢语速、明确重申底线。",
+    "ethical_handling": "悲剧性应来自她长期承担责任与隐藏痛苦的代价，不能把她写成被动等待拯救的人；她的判断、选择和坚韧必须保有主体性。"
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  }
+}

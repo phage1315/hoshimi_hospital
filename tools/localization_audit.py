@@ -12,6 +12,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from staff_bundles import load_staff_bundles
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCALE_DIR = ROOT / "data" / "localization"
@@ -78,6 +79,9 @@ def authored_keys() -> set[str]:
     collect_keys(dialogue, "dialogue", result)
     for collection, relative_path in manifest["collections"].items():
         rows = read_collection(relative_path)
+        collect_keys(rows, f"collections.{collection}", result)
+    staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
+    for collection, rows in staff_collections.items():
         collect_keys(rows, f"collections.{collection}", result)
     patient_config = manifest.get("patient_bundles", {})
     encounter_template = json.loads((ROOT / "data" / patient_config["encounter_template"]).read_text(encoding="utf-8"))

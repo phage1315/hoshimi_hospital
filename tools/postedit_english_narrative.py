@@ -7,6 +7,7 @@ import json
 import re
 from pathlib import Path
 from collection_io import load_collection
+from staff_bundles import load_staff_bundles
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCALE = ROOT / "data/localization/en.json"
@@ -60,8 +61,11 @@ def main() -> int:
     locale = json.loads(LOCALE.read_text(encoding="utf-8"))
     strings: dict[str, str] = locale["strings"]
     authored: dict[str, str] = {}
+    manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
+    staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     for collection, path in TARGETS.items():
-        walk(load_collection(path), f"collections.{collection}", authored)
+        rows = load_collection(path) + staff_collections.get(collection, [])
+        walk(rows, f"collections.{collection}", authored)
 
     for key, source in authored.items():
         if key not in strings:

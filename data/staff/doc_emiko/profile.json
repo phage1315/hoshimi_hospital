@@ -1,0 +1,111 @@
+{
+  "id": "doc_emiko",
+  "name": "御堂 江美子",
+  "age": 36,
+  "profession": "doctor",
+  "specialty": "普通外科／外科管理",
+  "rank": "外科部医长／外科主任候选",
+  "personality": "高冷自信、判断强势，习惯掌控局面；一旦真正爱上一个人便极其专一而投入",
+  "appearance": "用户提供原作参考图 · AI高清补绘与透明化差分",
+  "skills": {
+    "surgery": 94,
+    "diagnostics": 88,
+    "teamwork": 82,
+    "patient_care": 66,
+    "instrument_handling": 93,
+    "calmness": 95
+  },
+  "surgical_roles": [
+    "primary_surgeon",
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "c85b6f",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/smile.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/serious.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/surprised.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/worried.png",
+      "white_coat/warm": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/warm.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v14/doc_emiko/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v14/doc_emiko/sterile/focused.png",
+      "sterile/worried": "assets/characters/portrait_pack_v14/doc_emiko/sterile/worried.png",
+      "sterile/warm": "assets/characters/portrait_pack_v14/doc_emiko/sterile/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_emiko/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_emiko/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_emiko/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "措辞简洁、语调冷静，常以结论和要求结束谈话；认可他人时很少直接夸奖，动情后反而会表现出异常坦率而持久的关心",
+  "flags": [
+    "surgery_department_chief",
+    "surgery_director_candidate",
+    "elite_surgeon"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [
+      "emiko_office",
+      "or"
+    ],
+    "random_locations": [
+      "clinic",
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "御堂江美子扫了一眼术前资料，平静地说她已经掌握重点。",
+    "intraoperative": "御堂江美子用简短明确的指令接过任务，动作没有一丝迟疑。"
+  },
+  "characterization": {
+    "public_persona": "外科部医长，也是下一任外科主任的有力候选人。她能力出众、要求严格，从不掩饰自己对职位与专业成就的野心。",
+    "core_traits": [
+      "高冷",
+      "自信",
+      "强势",
+      "专业",
+      "专情"
+    ],
+    "strengths": [
+      "手术技术与临场判断极强",
+      "在压力下仍能迅速做出明确决策",
+      "敢于承担高风险决策的责任",
+      "对认可的人会长期给予实际支持"
+    ],
+    "flaws": [
+      "习惯以自己的高标准衡量所有人",
+      "不擅长表达脆弱和请求帮助",
+      "竞争心会让她显得咄咄逼人",
+      "感情投入后容易把责任全部揽到自己身上"
+    ],
+    "stress_behavior": "压力越大越冷静强硬，会收紧控制并减少解释；只有在独处或面对最信任的人时才承认动摇。",
+    "professional_behavior": "以外科部整体效率和手术质量为优先，术前要求信息完整，术中指令精确，术后会直接追究流程漏洞；她尊重真正有能力并敢于承担责任的同事。",
+    "relationship_arc": "最初把坂口隆司视为需要评估的年轻医生，随后在共同承担复杂手术与科室压力时建立尊重。恋爱路线中，她会从克制和试探转为异常坚定、坦率而长久的投入。",
+    "speech_style": "短句、低起伏、少用感叹；常说“结论呢”“继续”“让我看看你的判断”。私下动情后依旧不甜腻，但会直接说出承诺并付诸行动。",
+    "ethical_handling": "她的野心应表现为对能力、责任与科室方向的竞争，不能靠伤害患者或恶意陷害同事推进；感情深化也不能削弱其专业判断和领导主体性。"
+  },
+  "familiarity_gain_multiplier": 0.5
+}

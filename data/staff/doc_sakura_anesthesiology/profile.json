@@ -1,0 +1,101 @@
+{
+  "id": "doc_sakura_anesthesiology",
+  "name": "樱花",
+  "age": 29,
+  "profession": "doctor",
+  "specialty": "麻醉科／高级手术围术期管理",
+  "rank": "麻醉科医师",
+  "personality": "冷静、严格、判断直接；不把麻醉当作外科医生随意选择的菜单",
+  "appearance": "用户提供参考图 · 已生成白大褂与Grand OR纯刷手服透明半身立绘；手术装扮不加任何外套",
+  "skills": {
+    "surgery": 22,
+    "diagnostics": 92,
+    "teamwork": 91,
+    "patient_care": 78,
+    "instrument_handling": 90,
+    "calmness": 96
+  },
+  "surgical_roles": [
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "2F315D",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "white_coat/dry_smile": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/scrubs/neutral_v2.png",
+      "scrubs/serious": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/scrubs/neutral_v2.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_sakura_anesthesiology/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_sakura_anesthesiology/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "短句、低起伏、专业边界清楚；偶尔用毫无表情的干涩回应化解紧张。",
+  "flags": [
+    "anesthesiologist",
+    "advanced_referral_staff",
+    "relationship_progression_locked",
+    "relationship_route_none",
+    "no_romance_route",
+    "no_adult_route"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "novice",
+  "presence": {
+    "fixed_locations": [
+      "or"
+    ],
+    "random_locations": [
+      "lounge"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「麻醉计划由我负责。需要外科暂停时，我会直接说。」",
+    "intraoperative": "「循环变化仍在可控范围。继续，但保持现在的节奏。」",
+    "intraoperative_correction": "「先停手。等循环重新稳定，再继续不可逆步骤。」",
+    "confirmation": "「全麻方案、监护和备用通路确认完成。」",
+    "role_confirmation": "「麻醉位确认。从诱导开始，患者归我。」",
+    "stabilize": "「停止推进。先把循环稳定下来。」"
+  },
+  "procedure_group_team_dialogue": {},
+  "characterization": {
+    "public_persona": "星见医院的麻醉科医师，在复杂手术里负责把外科动作与患者循环状态连接起来。",
+    "core_traits": [
+      "冷静",
+      "严格",
+      "专业",
+      "边界清晰",
+      "干涩幽默"
+    ],
+    "strengths": [
+      "复杂全麻管理",
+      "循环变化判断",
+      "明确叫停高风险步骤",
+      "高压团队沟通"
+    ],
+    "flaws": [
+      "解释很少",
+      "语气容易显得冷淡",
+      "不喜欢重复已经确认的决定"
+    ],
+    "stress_behavior": "压力越高，语言越短，指令越明确。",
+    "professional_behavior": "麻醉方案由麻醉科负责；外科主刀必须回应她提供的循环与生命体征信息。",
+    "relationship_arc": "当前只开放相识与专业合作，不进入关系升级路线。",
+    "speech_style": "短句、陈述句、几乎不提高音量。",
+    "ethical_handling": "不得写成供玩家随意选择麻醉方式的菜单角色，也不得削弱其独立专业判断。"
+  }
+}

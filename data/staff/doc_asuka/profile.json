@@ -1,0 +1,110 @@
+{
+  "id": "doc_asuka",
+  "name": "城宮 明日香",
+  "age": 23,
+  "profession": "doctor",
+  "specialty": "普通外科／医院管理",
+  "rank": "医院院长／外科医生",
+  "personality": "亲切聪慧、好学而坚定；说话柔和，但正式决定不容含混",
+  "appearance": "用户提供原作差分 · AI高清透明化与手术服补绘",
+  "skills": {
+    "surgery": 66,
+    "diagnostics": 92,
+    "teamwork": 88,
+    "patient_care": 82,
+    "instrument_handling": 85,
+    "calmness": 80
+  },
+  "surgical_roles": [
+    "primary_surgeon",
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "b66f59",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "director_suit",
+      "casual",
+      "scrubs",
+      "sterile",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v15/doc_asuka/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v15/doc_asuka/white_coat/neutral.png",
+      "white_coat/warm": "assets/characters/portrait_pack_v15/doc_asuka/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v15/doc_asuka/white_coat/worried.png",
+      "director_suit/neutral": "assets/characters/portrait_pack_v15/doc_asuka/director_suit/neutral.png",
+      "director_suit/smile": "assets/characters/portrait_pack_v15/doc_asuka/director_suit/neutral.png",
+      "director_suit/surprised": "assets/characters/portrait_pack_v15/doc_asuka/director_suit/surprised.png",
+      "casual/neutral": "assets/characters/portrait_pack_v15/doc_asuka/casual/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v15/doc_asuka/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v15/doc_asuka/scrubs/focused.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v15/doc_asuka/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v15/doc_asuka/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v15/doc_asuka/sterile/focused.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_asuka/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_asuka/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_asuka/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "语调轻柔、礼貌而带一点少女感；讨论医学时准确敏锐，作出正式决定时会放慢语速并明确重申边界",
+  "flags": [
+    "hospital_director",
+    "hospital_heir",
+    "young_surgeon",
+    "identity_secret"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "trained",
+  "presence": {
+    "fixed_locations": [
+      "director_office",
+      "or"
+    ],
+    "random_locations": [
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "城宮明日香认真看完术式计划，轻声确认自己会守住助手的位置。",
+    "intraoperative": "城宮明日香对手术室流程极熟，回应简洁，配合几乎没有多余停顿。"
+  },
+  "characterization": {
+    "public_persona": "身份公开后，她是星见医院年轻的现任院长，也是刚开始独立承担主刀责任的外科医生。她亲切好学，不靠架子建立权威。",
+    "core_traits": [
+      "年轻",
+      "聪慧",
+      "亲切",
+      "好学",
+      "坚定"
+    ],
+    "strengths": [
+      "医学理论和手术室流程基础极强",
+      "助手配合与团队沟通成熟",
+      "行政判断清楚并愿意承担决定责任",
+      "重视年轻女性医护的真实培养机会"
+    ],
+    "flaws": [
+      "独立主刀经验仍少于她的理论与助手经验",
+      "习惯把继承医院带来的压力藏在轻松语气后面",
+      "容易因职位与年龄被同时质疑"
+    ],
+    "stress_behavior": "压力增大时仍保持轻声和礼貌，但句子会更短；一旦决定完成，她会平静地重复结论而不再让步。",
+    "professional_behavior": "熟悉无菌流程、团队协作和医院管理，作为助手表现突出；面对独立主刀责任时会明确承认经验差距并认真复盘。",
+    "relationship_arc": "坂口先在刷手池把她当作年轻的手术室同事，随后才发现她是院长。关系线将从共同手术与医院理念的互相评估，发展到彼此托付医院未来。",
+    "speech_style": "常用柔和问句和轻松玩笑拉近距离；涉及患者安全、用人和管理决定时会说“我明白你的意见了。不过这件事已经决定了”。",
+    "ethical_handling": "她的年轻和继承身份不能削弱专业主体性；成长重点是把高水平理论与助手经验转化为独立主刀责任，而非等待玩家替她决定。"
+  }
+}

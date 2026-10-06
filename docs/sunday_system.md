@@ -29,6 +29,6 @@
 
 ## 内容接口
 
-`data/events/date_profiles.json` 控制可约会角色。南条小夜香已作为第一条预设写入，`can_date` 暂为 `false`；完成至少一个地点的背景和基础对白后可直接启用。后续角色同样在常服与最低限度对白完成后加入。
+每位角色目录中的 `date_profiles.json` 控制其约会配置，例如 `data/staff/doc_sayaka/date_profiles.json`。完成至少一个地点的背景和基础对白后可直接启用；后续角色同样在常服与最低限度对白完成后加入。
 
 `data/events/date_locations.json` 已建立咖啡店、商店街、书店、水族馆、餐厅／小酒馆、河边公园和酒店条目。每个地点预留 `background_id` 与 `preview_path`；素材状态改为 `ready` 后才会开放按钮。

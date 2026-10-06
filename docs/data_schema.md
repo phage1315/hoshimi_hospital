@@ -35,7 +35,7 @@
 
 角色 `visuals.portraits` 使用 `outfit/expression` 键，值为资源根相对文件路径。默认衣着必须在 outfits 中。医护另有 `visuals.intraoperative_avatar` 机器可读素材清单：统一使用 `intraoperative_avatar/neutral`，记录 `needed`／`ready` 状态、目标路径与用途；完整制作规格和全员进度见 `docs/intraoperative_staff_avatar_checklist.md`。
 
-新增员工：向 staff.json 添加对象（也可以未来通过 manifest 扩展集合拆分），分配唯一 ID，添加初始关系；地点通过 staff_ids 引用。人数不写死在界面中。
+新增员工：在 `data/staff/<角色ID>/` 创建隔离角色包，至少包含 `profile.json`、`relationship.json` 与 `bundle.json`，并将 bundle 路径加入 `data/staff/index.json`。个人事件、特殊事件、约会配置、地点闲谈、日常微事件与岗位 CG 也放在同一角色目录，由 `bundle.json` 的可选字段登记；地点仍通过 `staff_ids` 引用。人数不写死在界面中。
 
 新增内容后运行 `tools/validate_data.py`。目前标准校验器校验字段、枚举、范围，额外逻辑校验引用、重复 ID、团队兼容性、对话可达性。Schema 不执行游戏规则。
 
@@ -83,7 +83,7 @@ preops 集合定义 encounter_id、patient_id、surgery_id、roles、ward_role�
 
 ## character_event / 医护人物事件
 
-`data/events/character_events/index.json` 是长期医护角色章节事件的索引。每名角色使用 `data/events/character_events/<actor_id>.json` 独立保存自己的全部事件；索引顺序决定合并顺序，运行时仍得到统一的 `character_events` 集合。新增角色事件时应编辑对应角色分片并把新文件加入索引，禁止重新建立单体总文件。conditions 可按工作日、隐藏好感、熟悉度及前置事件解锁；time_start / time_end 使用当天绝对分钟（09:00 = 540），priority 决定同类候选事件的先后。category 区分工作、里程碑、情境与日常事件。nodes 提供角色、玩家与旁白文本，choice 的 effects 修改好感和熟悉度，flags 记录可供后续事件引用的选择语义。事件时间只在抵达 `@end` 后结算。
+长期医护角色章节保存在该角色目录的 `events.json`，并由同目录 `bundle.json` 的 `character_events` 字段登记。运行时仍合并成统一的 `character_events` 集合。`data/events/character_events/index.json` 只保留无明确角色所有者的共享事件。conditions 可按工作日、隐藏好感、熟悉度及前置事件解锁；time_start / time_end 使用当天绝对分钟（09:00 = 540），priority 决定同类候选事件的先后。category 区分工作、里程碑、情境与日常事件。nodes 提供角色、玩家与旁白文本，choice 的 effects 修改好感和熟悉度，flags 记录可供后续事件引用的选择语义。事件时间只在抵达 `@end` 后结算。
 
 `trigger_mode` 明确事件入口：`day_start` 在上班第一刻统一判定，每天最多启动一个，剩余候选留到后续工作日；`location` 在条件满足后于玩家进入 `location_id` 时自动启动；`preop_stage` 在 `preop_stage_id` 对应的术前阶段自动启动；`sunday` 只从星期日邀请与安排界面进入。普通地点和办公室不再显示剧情按钮。日程事件当天一经启动就写入持久化日程槽标记，读档或反复返回地图都不会在同一天启动第二个日程事件。
 
@@ -98,6 +98,6 @@ preops 集合定义 encounter_id、patient_id、surgery_id、roles、ward_role�
 资格字段沿用员工的 surgical_roles；病房准备护士要求 nurse 职业且不能和团队重复。主刀玩家是固定会话角色，不伪造员工记录。现有 data/teams/teams.json 仍为旧数据契约样例，实际术前阵容由 PreopSession.team 保存。
 ### Special-event sharding
 
-Large special events use the same owner-based layout as character events. `data/events/special_events/index.json` and `data/events/special_event_steps/index.json` enumerate shard files; character-specific chains belong in the matching owner file (for example `nurse_satsuki.json`). Do not recreate the former monolithic JSON files. The content loader and collection tooling resolve either arrays or indexed shard collections.
+Large special events use the same owner-based layout as character events. Character-specific chains belong in the owner directory as `special_events.json` and `special_event_steps.json`; for example `data/staff/nurse_satsuki/`. The shared indexes under `data/events/` are reserved for framework or multi-character system events. Do not recreate monolithic JSON files.
 
 All narrative sessions are atomic save units. Character events, micro events, special events, and adult relationship events lock user saves until the runtime session is finished and dismissed.

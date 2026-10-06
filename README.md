@@ -54,7 +54,8 @@
 project.godot          Godot 工程入口（资源根目录）
 data/                 与引擎独立的 JSON 内容
   schemas/            JSON Schema Draft 2020-12
-  characters/ patients/ relationships/ cases/
+  staff/              每位医护一个隔离目录（资料、关系、事件、约会、岗位CG）
+  characters/ patients/ cases/
   surgeries/ teams/ dialogue/ encounters/ preop/ events/
 assets/               后续美术、音频、动画
 godot/               引擎代码（见下方，不含内容定义）
@@ -101,6 +102,10 @@ godot --headless --path . --script res://tools/dialogue_playback_test.gd
 ```
 
 内容校验使用独立 Python 工具；玩家运行游戏不需要 Python。
+
+## 新增医护角色
+
+医护内容采用 `data/staff/<角色ID>/` 隔离目录。新增人物时复制一个相近角色目录，至少提供 `profile.json`、`relationship.json` 和引用它们的 `bundle.json`，再把该 `bundle.json` 加入 `data/staff/index.json`。个人事件、特殊事件、约会配置、地点闲谈、日常微事件和首次岗位 CG 分别使用可选的 `events.json`、`special_events.json`、`special_event_steps.json`、`date_profiles.json`、`time_events.json`、`micro_events.json` 与 `role_rewards.json`，并在角色自己的 `bundle.json` 登记。运行时会将角色包合并为原有集合，角色 ID、事件 ID 和存档结构不变。
 
 ## 限制与下一步
 

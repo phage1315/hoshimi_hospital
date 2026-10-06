@@ -143,7 +143,9 @@ for surgery in surgeries:
 # First-role CG rewards: exact role titles plus concise character-specific captions.
 role_titles={'assistant_surgeon':'Assistant Surgeon · First Assignment','scrub_nurse':'Scrub Nurse · First Assignment','circulating_nurse':'Circulating Nurse · First Assignment','ward_nurse':'Preoperative Ward Care · First Assignment'}
 role_captions={'assistant_surgeon':'She confirms her position and enters the assistant’s side of the field, ready to match the lead surgeon’s rhythm.','scrub_nurse':'She completes the count, arranges the instruments, and takes her place at the sterile table.','circulating_nurse':'She checks monitoring, records, and supplies, keeping firm control of everything beyond the sterile field.','ward_nurse':'She prepares the bed, clothing, and transport supplies, then waits for the patient to arrive.'}
-rows=json.loads((ROOT/'data/events/staff_role_cg_rewards.json').read_text(encoding='utf-8'))
+rows=[]
+for reward_path in sorted((ROOT/'data/staff').glob('*/role_rewards.json')):
+ rows.extend(json.loads(reward_path.read_text(encoding='utf-8')))
 for row in rows:
  rid=row['id']; role=row['role_id']; put(f'collections.staff_role_cg_rewards.{rid}.title',role_titles[role]); put(f'collections.staff_role_cg_rewards.{rid}.caption',role_captions[role])
 

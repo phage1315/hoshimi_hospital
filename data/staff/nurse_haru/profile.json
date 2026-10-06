@@ -1,0 +1,100 @@
+{
+  "id": "nurse_haru",
+  "name": "七瀬 恋",
+  "age": 26,
+  "profession": "nurse",
+  "specialty": "病房护理／围术期护理",
+  "rank": "资深护士",
+  "personality": "敏锐、务实，重视普通生活；平时克制，在患者安全问题上非常坚定",
+  "appearance": "原创占位剪影",
+  "skills": {
+    "surgery": 83,
+    "diagnostics": 82,
+    "teamwork": 92,
+    "patient_care": 94,
+    "instrument_handling": 85,
+    "calmness": 86
+  },
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "visuals": {
+    "color": "d8afb4",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/third_party_preview/c1053-neutral-ai.png",
+      "uniform/smile": "assets/characters/portrait_pack_v1/nurse_haru/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v1/nurse_haru/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v1/nurse_haru/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v1/nurse_haru/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v1/nurse_haru/uniform/tired.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/warm.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/nurse_haru/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/nurse_haru/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/nurse_haru/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/nurse_haru/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/nurse_haru/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_haru/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_haru/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "说话自然简洁，偶尔吐槽；善于察觉患者言行不一致，必要时会直接而坚定地纠正团队",
+  "flags": [],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [
+      "station",
+      "ward"
+    ],
+    "random_locations": [
+      "or",
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「巡回和器械都可以。交接里有不清楚的地方，我会当场问。」",
+    "intraoperative": "「患者刚才说的是“可以继续”，不是“完全没事”。请按她真正说的判断。」"
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [
+        "坂口医生，我觉得再确认一项会比较安心。",
+        "如果是我的话，会想再看看这个结果。"
+      ],
+      "insufficient_evidence": [
+        "现在下结论好像还早。我们再确认一项吧。"
+      ],
+      "sufficient_evidence": [
+        "嗯……我觉得现在已经可以判断了。"
+      ],
+      "chatter": [
+        "今天好像比昨天忙一点。坂口医生，别忘了喝水。",
+        "下一位患者已经到了。准备好后叫我就好。",
+        "这个门诊室，我也越来越熟悉了。"
+      ]
+    }
+  }
+}

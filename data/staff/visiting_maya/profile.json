@@ -1,0 +1,125 @@
+{
+  "id": "visiting_maya",
+  "name": "伊吹 摩耶",
+  "age": 29,
+  "profession": "doctor",
+  "specialty": "访问研究医／生物医学·医疗仪器与生理监测",
+  "rank": "访问研究医／研究协力",
+  "personality": "认真、谦逊、可靠而略显拘谨的成年研究医；工作时极重视数据与设备可靠性，强烈情绪常先从眼神里泄露",
+  "appearance": "用户提供成年角色设定图 · AI补绘为白大褂、刷手服及完整无菌半身透明立绘",
+  "skills": {
+    "surgery": 28,
+    "diagnostics": 62,
+    "teamwork": 82,
+    "patient_care": 58,
+    "instrument_handling": 91,
+    "calmness": 76
+  },
+  "surgical_roles": [
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "4D4A78",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "white_coat/focused": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/visiting_maya/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/visiting_maya/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "礼貌克制、逻辑清楚，不主动抢话；工作时技术语言精确，紧张时语速加快并反复核对，害羞或犹豫会先从眼神表现出来。",
+  "flags": [
+    "visiting_research_physician",
+    "temporary_visiting",
+    "non_core_roster",
+    "no_romance_route",
+    "no_adult_route",
+    "medical_instrumentation_specialist",
+    "physiological_monitoring_specialist",
+    "or_technical_support",
+    "nerv_crossover",
+    "relationship_progression_locked",
+    "relationship_route_none"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "novice",
+  "presence": {
+    "fixed_locations": [
+      "imaging",
+      "or"
+    ],
+    "random_locations": [
+      "lounge",
+      "exam"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「我不是外科医生，但监护、设备和生理信号可以交给我。需要操作术野时，请把范围和目的说清楚。」",
+    "intraoperative": "「原始波形与患者状态一致，设备目前可信。术野操作我会按你的指示配合。」",
+    "intraoperative_correction": "「明白，是我把设备判断带进术野太快了。我重新确认位置。」",
+    "confirmation": "伊吹先核对监护设备、传感器和数据同步状态，又确认自己只承担技术支持与有限助手工作，才在助手栏签名。",
+    "role_confirmation": "「特殊助手位确认。我会盯住机器，也会提醒你机器什么时候可能在撒谎。」",
+    "stabilize": "「先对照患者、原始波形和备用监测。别让一条异常曲线替我们做决定。」"
+  },
+  "procedure_group_team_dialogue": {
+    "general_abdominal": {
+      "assignment": "「腹部手术……我可以负责监护和设备。术野操作请明确告诉我。」",
+      "intraoperative": "「生命体征稳定。腹腔影像会让我想起一些旧工作，但不影响判断。」",
+      "intraoperative_correction": "「收到。我把旧经验和这次手术混在一起了，重新按临床步骤确认。」"
+    }
+  },
+  "characterization": {
+    "public_persona": "很能干却不爱抢话的访问研究医；文件完整、流程规范，对监护设备与生理信号的可靠性近乎执着。",
+    "core_traits": [
+      "认真",
+      "聪明",
+      "谦逊",
+      "可靠",
+      "拘谨",
+      "害羞",
+      "情绪透明"
+    ],
+    "strengths": [
+      "能从原始信号识别传感器漂移与校准异常",
+      "熟悉手术室和重症监护设备",
+      "团队协作可靠且尊重临床分工",
+      "会在数据与患者表现冲突时坚持复核"
+    ],
+    "flaws": [
+      "不是外科专科医生，术野操作经验有限",
+      "容易因为责任感反复确认",
+      "遭遇强烈道德或生物学刺激时情绪会明显动摇",
+      "不擅长主动表达私人需要"
+    ],
+    "stress_behavior": "压力升高时语速变快、反复比对数据，表情会先失去平静；仍会努力保持专业，但无法长期隐藏强烈情绪。",
+    "professional_behavior": "从身体、生理信号、传感器与设备链路理解患者；机器不能替代临床医生，但错误的机器足以误导临床判断。",
+    "relationship_arc": "与坂口维持访问研究同事关系；当前只开放相识和专业合作，不触发 Lv1 以上关系增进。未来可由新事件解除锁定。",
+    "speech_style": "正式、克制、技术性强；私下谈到零食、猫咪物件或赤木律子的影响时会明显害羞。",
+    "ethical_handling": "不得写成外科高手、高冷御姐或泛用电脑研究员；不得把患者裸体和医疗照护称作“不洁”，该吐槽只用于成年人明确调情。"
+  }
+}

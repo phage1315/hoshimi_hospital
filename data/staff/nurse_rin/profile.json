@@ -1,0 +1,124 @@
+{
+  "id": "nurse_rin",
+  "name": "中井 美佳",
+  "age": 26,
+  "profession": "nurse",
+  "specialty": "病房护理／围术期交接",
+  "rank": "资深病房护士",
+  "personality": "成熟随和、可靠克制；善于看穿患者隐瞒，却极少谈自己的过去",
+  "appearance": "VNDB参考图AI补绘 · 本地占位",
+  "skills": {
+    "surgery": 78,
+    "diagnostics": 89,
+    "teamwork": 86,
+    "patient_care": 86,
+    "instrument_handling": 78,
+    "calmness": 89
+  },
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "visuals": {
+    "color": "c2b18e",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v2/nurse_rin/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v3/nurse_rin/scrubs/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v4/nurse_rin/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v4/nurse_rin/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v4/nurse_rin/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v4/nurse_rin/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v4/nurse_rin/uniform/tired.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v4/nurse_rin/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v4/nurse_rin/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v4/nurse_rin/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/nurse_rin/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/nurse_rin/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/nurse_rin/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/nurse_rin/warm.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_rin/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_rin/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "语气自然成熟，工作时直接而不强硬，熟悉后会说含蓄的成年人玩笑；不愿回答私人问题时不会变脸，而会用一句看似完整的真话或轻松反问自然换题。",
+  "flags": [
+    "hidden_past_suspicious",
+    "past_truth_never_confirmed",
+    "past_disclosure_locked_at_lv5",
+    "current_hoshimi_patient_safe",
+    "normal_group_participation"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "trained",
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「病房交接和转运资料我来核对。坂口医生只要保证，别等患者已经躺上台才第一次看见她整个人。」",
+    "intraoperative": "「台面这边稳定。生命体征和管路都没有被术野挡住，继续吧。」",
+    "intraoperative_correction": "「明白。刚才那一步我按旧习惯判断了，已经修正；你继续，我会把记录补完整。」",
+    "confirmation": "「交接、身份、体位和保暖都确认过了。患者不是从切皮才开始接受手术。」",
+    "role_confirmation": "「巡回位确认。我负责设备、记录和台外动线；哪一步信息断了，我会当场叫停。」",
+    "stabilize": "「先按顺序来。谁处理患者，谁联系支援，谁把刚才发生的事记清楚——别让所有人同时做同一件事。」"
+  },
+  "characterization": {
+    "public_persona": "很好相处、能干可靠、会照顾气氛的资深病房护士。她正常参加聚餐和院内活动，也真心照顾患者与同事；多数人共事很久后才发现，自己几乎不知道她来到星见医院以前的人生。",
+    "core_traits": [
+      "成熟",
+      "友善",
+      "可靠",
+      "克制",
+      "善于观察",
+      "高度私密",
+      "难以读透"
+    ],
+    "strengths": [
+      "能从语气、动作和交接细节识别患者隐瞒的疼痛或不安",
+      "病房交接、长期住院管理和围术期转运经验扎实",
+      "压力下仍能控制信息、稳定团队并迅速找到流程漏洞",
+      "合群而不抢风头，能够包容和带领年轻护士"
+    ],
+    "flaws": [
+      "把个人边界控制得近乎密不透风，很难主动求助",
+      "即使建立最大信任也拒绝完整解释过去",
+      "习惯只回答愿意回答的部分，容易让亲近者感到被隔在门外",
+      "对记录、权限和医院动线的敏感偶尔精确得令人不安"
+    ],
+    "stress_behavior": "越紧迫越平静，会迅速确认人员、出口、记录和谁掌握了哪些信息；她很少公开失态，也不会见到警察或旧事就明显恐慌。真正触及过去时，她通常自然结束话题，而不是威胁或露出异常表情。",
+    "professional_behavior": "病房护理、患者状态观察、复杂交接和围术期支持能力突出。她尤其擅长发现患者嘴上说“没事”时没有说出的部分；当前时间线始终把患者安全放在首位，不参与药物滥用、破坏、勒索或任何伤害星见医院患者与同事的行为。",
+    "relationship_arc": "坂口会越来越了解现在真实、友善而有欲望和疲惫的中井，也越来越确定她刻意封闭着一段严重过去。Lv5代表最大信任，却不购买完整坦白：她会承认那扇门存在，并明确拒绝交出钥匙；游戏默认保持高度怀疑而没有法律实锤。",
+    "speech_style": "工作中用简洁的确认句，私下自然、有分寸，偶尔故意逗人。被问过去时极少说可被查证的假话，更常给出范围很窄的真话，例如“待过几家”“工作环境不合适”，随后用“这是病史采集吗？”之类的轻松反问换题。",
+    "ethical_handling": "她现在的善意必须是真实的，不能反转成长期伪装；过去可能存在严重罪责，也不能被恋爱、身体亲密或医疗信任自动洗白。不得给出完整案卷、明确通缉匹配或最终无罪证明，也不得让调查过去成为她的关系主线。"
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  }
+}

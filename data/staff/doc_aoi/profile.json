@@ -1,0 +1,79 @@
+{
+  "id": "doc_aoi",
+  "name": "神宮寺 成美",
+  "age": 27,
+  "profession": "doctor",
+  "specialty": "普通外科／患者沟通",
+  "rank": "外科医师",
+  "personality": "成熟克制，先听患者，再看数字；温和但有主见，偶尔带不动声色的讽刺",
+  "appearance": "原创占位剪影",
+  "skills": {
+    "surgery": 88,
+    "diagnostics": 89,
+    "teamwork": 86,
+    "patient_care": 94,
+    "instrument_handling": 88,
+    "calmness": 90
+  },
+  "surgical_roles": [
+    "primary_surgeon",
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "81b4b4",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/third_party_preview/c1058-neutral-ai.png",
+      "white_coat/smile": "assets/characters/third_party_preview/c1058-smile-ai.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/worried.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/surprised.png",
+      "white_coat/tired": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/tired.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/doc_aoi/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/doc_aoi/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/doc_aoi/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/doc_aoi/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_aoi/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_aoi/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_aoi/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "成熟、直接而克制；善于追问患者没有说出口的部分，反对空泛安慰，偶尔使用干涩幽默",
+  "flags": [],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [
+      "clinic",
+      "ward"
+    ],
+    "random_locations": [
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「助手位确认。术野我会盯，但患者说过什么，你也别忘了。」",
+    "intraoperative": "「目前可以继续。不过先听完患者的反应，再决定下一步。」"
+  }
+}

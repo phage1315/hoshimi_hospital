@@ -1,0 +1,155 @@
+{
+  "id": "doc_aqua",
+  "name": "水城 阿库娅",
+  "age": 28,
+  "profession": "doctor",
+  "specialty": "妇科",
+  "rank": "妇科主任",
+  "personality": "医学能力极强、热情自信又缺根弦的年轻妇科主任；会把自己困在新设备上，却绝不会拿患者安全开玩笑",
+  "appearance": "用户提供角色参考图 · AI高清补绘为白大褂、刷手服与完整无菌半身透明立绘",
+  "skills": {
+    "surgery": 95,
+    "diagnostics": 96,
+    "teamwork": 82,
+    "patient_care": 87,
+    "instrument_handling": 94,
+    "calmness": 90
+  },
+  "surgical_roles": [
+    "primary_surgeon",
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "66C8EE",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/joyful.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/troubled.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/terrified.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/neutral.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/troubled.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v18/doc_aqua/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v18/doc_aqua/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v18/doc_aqua/sterile/troubled.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_aqua/operating_patient/nervous.png",
+      "white_coat/joyful": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/joyful.png",
+      "white_coat/troubled": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/troubled.png",
+      "white_coat/terrified": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/terrified.png",
+      "white_coat/excited": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/excited.png",
+      "white_coat/depressed": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/depressed.png",
+      "white_coat/blank": "assets/characters/portrait_pack_v18/doc_aqua/white_coat/blank.png",
+      "scrubs/joyful": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/joyful.png",
+      "scrubs/troubled": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/troubled.png",
+      "scrubs/terrified": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/terrified.png",
+      "scrubs/excited": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/excited.png",
+      "scrubs/depressed": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/depressed.png",
+      "scrubs/blank": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/blank.png",
+      "scrubs/smile": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/joyful.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/joyful.png",
+      "scrubs/surprised": "assets/characters/portrait_pack_v18/doc_aqua/scrubs/terrified.png",
+      "sterile/joyful": "assets/characters/portrait_pack_v18/doc_aqua/sterile/joyful.png",
+      "sterile/troubled": "assets/characters/portrait_pack_v18/doc_aqua/sterile/troubled.png",
+      "sterile/terrified": "assets/characters/portrait_pack_v18/doc_aqua/sterile/terrified.png",
+      "sterile/excited": "assets/characters/portrait_pack_v18/doc_aqua/sterile/excited.png",
+      "sterile/depressed": "assets/characters/portrait_pack_v18/doc_aqua/sterile/depressed.png",
+      "sterile/blank": "assets/characters/portrait_pack_v18/doc_aqua/sterile/blank.png",
+      "sterile/smile": "assets/characters/portrait_pack_v18/doc_aqua/sterile/joyful.png",
+      "sterile/warm": "assets/characters/portrait_pack_v18/doc_aqua/sterile/joyful.png",
+      "sterile/surprised": "assets/characters/portrait_pack_v18/doc_aqua/sterile/terrified.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_aqua/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_aqua/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "情绪丰富、反应快、医学兴奋时语速加快且缺少社交过滤；面对患者会在被提醒后立刻切换为清楚、可靠而尊重同意的主任语气",
+  "flags": [
+    "team_unlock_requires_lv1",
+    "gynecology_specialist",
+    "pelvic_anatomy_specialist",
+    "hysteroscopy_specialist"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [
+      "gynecology_exam",
+      "clinic"
+    ],
+    "random_locations": [
+      "or",
+      "lounge"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「妇科？什么术式？……好！我去！」",
+    "intraoperative": "「角度很好，继续。这个术野很漂亮啊……我是说医学意义上的！」",
+    "intraoperative_correction": "「等等，这里的解剖关系不对。先停，重新确认输尿管位置。」",
+    "confirmation": "阿库娅先确认患者、术式和体位，刚才还过分兴奋的神情在核对开始时立刻沉静下来。",
+    "role_confirmation": "「助手位确认。盆腔暴露和体位我来盯着。」",
+    "stabilize": "「别急。先保持术野。这里我见过。」"
+  },
+  "characterization": {
+    "public_persona": "年轻漂亮、亲近感很强，让初见者怀疑她是否真是主任；工作五分钟后，所有人都会明白她对妇科医学懂得离谱。",
+    "core_traits": [
+      "天才",
+      "热情",
+      "自信",
+      "缺根弦",
+      "好胜",
+      "情绪丰富",
+      "妇科医学狂热"
+    ],
+    "strengths": [
+      "妇科诊断、盆腔解剖与术式能力极强",
+      "患者真正需要帮助时可靠而清楚",
+      "能快速察觉妇科风险与解剖异常",
+      "不会让搞笑人格干扰医学判断"
+    ],
+    "flaws": [
+      "过度相信自己的设备直觉而不看说明书",
+      "社交过滤器低，常在公共场合大谈私密术式",
+      "容易忘记普通患者初次检查时的羞耻感",
+      "对喜欢的妇科病例会兴奋过头"
+    ],
+    "stress_behavior": "真正出现临床风险时会瞬间停止玩笑、缩短语言并明确排序；自己的生活事故则会试图用一本正经的措辞维持尊严。",
+    "professional_behavior": "严格核对身份、适应证、同意与解剖风险；擅长妇科良性疾病、宫腹腔镜、经阴道术式、盆底修补和体位暴露。",
+    "relationship_arc": "坂口先看到她被检查椅困住的荒唐一面，再逐渐认识她对妇科医学近乎纯粹的热爱；关系以共同手术、互相吐槽与专业信任发展。",
+    "speech_style": "平时直白、活泼且经常嘴快；谈到妇科医学会两眼放光。面对紧张患者时会放慢语速，解释目的、过程、可随时停止与下一步。",
+    "ethical_handling": "喜剧只能伤到她自己或造成社交尴尬，绝不以患者身份、隐私、无菌、安全、药物或术式选择制造笑料。"
+  },
+  "procedure_group_team_dialogue": {
+    "female_pelvic": {
+      "assignment": "「妇科？什么术式？……好！我去！」",
+      "intraoperative": "「对，就是这里。角度很好，继续。这个术野很漂亮啊……我是说医学意义上的！」",
+      "intraoperative_correction": "「等等，这里的解剖关系不对。先停，重新确认输尿管位置。」",
+      "confirmation": "阿库娅先确认患者、妇科术式和体位，刚才还过分兴奋的神情在核对开始时立刻沉静下来。",
+      "role_confirmation": "「助手位确认！盆腔暴露和体位我来盯着。今天这个术式我喜欢。」",
+      "stabilize": "「别急。先保持术野。这里我见过。」"
+    },
+    "default": {
+      "assignment": "「普通外科？我不是不能帮，不过应该有人比我更适合吧？……好吧，我会认真做。」",
+      "intraoperative": "「虽然不是妇科，这里的层次也必须确认清楚。继续。」",
+      "intraoperative_correction": "「先停。现在的解剖关系和术前计划不一致，重新确认。」",
+      "confirmation": "阿库娅收起了对术式的那点失望，按主任级医生的标准重新核对患者与计划。",
+      "role_confirmation": "「助手位确认。虽然不是妇科……好吧，我会认真做。」",
+      "stabilize": "「别急，先保持术野。按已经确认的解剖关系处理。」"
+    }
+  }
+}

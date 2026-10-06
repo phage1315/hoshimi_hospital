@@ -37,6 +37,79 @@ func read_collection(path: String) -> Variant:
 		rows.append_array(part)
 	return rows
 
+func load_staff_bundles(config: Dictionary) -> void:
+	var index_path := "res://data/" + str(config.get("index", ""))
+	var index: Variant = read_json(index_path)
+	if not index is Array:
+		errors.append("医护数据包索引无效：" + index_path)
+		return
+	var collection_keys := [
+		"staff", "relationships", "character_events", "special_events",
+		"special_event_steps", "date_profiles", "staff_role_cg_rewards",
+		"time_events", "micro_events",
+	]
+	for key in collection_keys:
+		if not collections.has(key):
+			collections[key] = []
+	var bundle_ids: Dictionary = {}
+	var staff_ids: Dictionary = {}
+	var relationship_ids: Dictionary = {}
+	var array_parts := {
+		"character_events": "character_events",
+		"special_events": "special_events",
+		"special_event_steps": "special_event_steps",
+		"date_profiles": "date_profiles",
+		"role_rewards": "staff_role_cg_rewards",
+		"time_events": "time_events",
+		"micro_events": "micro_events",
+	}
+	var index_dir := index_path.get_base_dir()
+	for relative_bundle_path in index:
+		var bundle_path := index_dir.path_join(str(relative_bundle_path))
+		var bundle: Variant = read_json(bundle_path)
+		if not bundle is Dictionary or int(bundle.get("schema_version", 0)) != 1:
+			errors.append("医护数据包无效：" + bundle_path)
+			continue
+		var bundle_id := str(bundle.get("id", ""))
+		if bundle_id.is_empty() or bundle_ids.has(bundle_id):
+			errors.append("医护数据包 ID 缺失或重复：" + bundle_id)
+			continue
+		bundle_ids[bundle_id] = true
+		var bundle_dir := bundle_path.get_base_dir()
+		var profile: Variant = read_json(bundle_dir.path_join(str(bundle.get("profile", ""))))
+		var relationship: Variant = read_json(bundle_dir.path_join(str(bundle.get("relationship", ""))))
+		if not profile is Dictionary or str(profile.get("id", "")) != bundle_id:
+			errors.append("医护资料与数据包 ID 不一致：" + bundle_id)
+		else:
+			if staff_ids.has(bundle_id):
+				errors.append("医护 ID 重复：" + bundle_id)
+			else:
+				staff_ids[bundle_id] = true
+				collections.staff.append(profile)
+		if not relationship is Dictionary or str(relationship.get("target_id", "")) != bundle_id:
+			errors.append("医护关系资料与数据包 ID 不一致：" + bundle_id)
+		else:
+			if relationship_ids.has(bundle_id):
+				errors.append("医护关系记录重复：" + bundle_id)
+			else:
+				relationship_ids[bundle_id] = true
+				collections.relationships.append(relationship)
+		for part_key in array_parts:
+			if not bundle.has(part_key):
+				continue
+			var part_path := bundle_dir.path_join(str(bundle[part_key]))
+			var rows: Variant = read_json(part_path)
+			if not rows is Array:
+				errors.append("医护数据包分片必须是数组：" + part_path)
+				continue
+			var collection_key: String = str(array_parts[part_key])
+			for row in rows:
+				var row_id := str(row.get("id", "")) if row is Dictionary else ""
+				if row_id.is_empty() or not find_record(collection_key, row_id).is_empty():
+					errors.append("医护数据包分片 ID 缺失或重复：%s/%s" % [collection_key, row_id])
+					continue
+				collections[collection_key].append(row)
+
 func replace_patient_tokens(value: Variant, tokens: Dictionary) -> Variant:
 	if value is Dictionary:
 		var result: Dictionary = {}
@@ -210,8 +283,13 @@ func load_all(requested_locale: String = "") -> bool:
 				continue
 			var id: String = str(row.get("id", ""))
 			if id.is_empty() or ids.has(id):
-				errors.append("ID 缺失或重复：" + str(key) + "/" + id)
+					errors.append("ID 缺失或重复：" + str(key) + "/" + id)
 			ids[id] = true
+	var staff_bundle_config: Variant = manifest.get("staff_bundles", {})
+	if not staff_bundle_config is Dictionary:
+		errors.append("医护数据包配置无效")
+	else:
+		load_staff_bundles(staff_bundle_config)
 	var patient_bundle_config: Variant = manifest.get("patient_bundles", {})
 	if not patient_bundle_config is Dictionary:
 		errors.append("患者数据包配置无效")

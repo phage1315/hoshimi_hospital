@@ -211,8 +211,8 @@ Lv4 只定义关系深度，不强制所有人物采用相同关系形式。恋�
 
 建议将人物系统拆成以下数据集合：
 
-- `relationships.json`：认识状态、等级、熟悉度、路线和已解锁帮助；
-- `staff.json`：活动场所、组队类别与手术熟练度；
+- `data/staff/<角色ID>/relationship.json`：认识状态、等级、熟悉度、路线和已解锁帮助；
+- `data/staff/<角色ID>/profile.json`：活动场所、组队类别与手术熟练度；
 - `acquaintance_events.json`：认识事件；
 - `rank_events.json`：每人一段 Lv1 羁绊事件与四段升级事件；
 - `micro_events.json`：关系积累与日常记忆；

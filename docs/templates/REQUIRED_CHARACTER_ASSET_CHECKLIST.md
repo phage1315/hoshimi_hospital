@@ -6,7 +6,7 @@
 
 - 必须提供 `assistant_surgeon` 首次担当 CG。
 - 路径：`assets/events/staff_surgery_v1/<staff_id>/assistant_confirmation.png`
-- 必须在 `data/events/staff_role_cg_rewards.json` 登记。
+- 必须在该角色目录的 `role_rewards.json` 登记。
 - 构图要体现助手医的实际工作，可以协助暴露术野、吸引、缝合、核对用药或完成主刀要求的操作；避免统一画成器械护士递器械。
 
 ## 女性护士
@@ -23,7 +23,7 @@
 - `assets/events/staff_surgery_v1/<staff_id>/circulating_nurse_confirmation.png`
 - `assets/events/staff_surgery_v1/<staff_id>/preop_care_confirmation.png`
 
-三张图都必须在 `data/events/staff_role_cg_rewards.json` 登记后，角色资源才算完整。CG 应表现岗位差异，不能只更换标题复用同一构图。
+三张图都必须在该角色目录的 `role_rewards.json` 登记后，角色资源才算完整。CG 应表现岗位差异，不能只更换标题复用同一构图。
 
 ## 验收
 

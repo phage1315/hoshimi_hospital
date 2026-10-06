@@ -45,17 +45,17 @@ func audit_authored_dialogue(app: Control) -> void:
 	var introduction: Dictionary = load_json("res://data/dialogue/introduction.json")
 	for node in introduction.get("nodes", []):
 		audit_node(app, "introduction/%s" % str(node.get("id", "?")), node)
-	for file_spec in [
-		["res://data/events/character_events/index.json", "character_events", false],
-		["res://data/events/special_event_steps/index.json", "special_event_steps", true],
+	for collection_spec in [
+		["character_events", false],
+		["special_event_steps", true],
 	]:
-		var records: Array = load_records(str(file_spec[0]))
+		var records: Array = app.content.collections.get(str(collection_spec[0]), [])
 		for record in records:
 			for node in record.get("nodes", []):
-				if bool(file_spec[2]) and str(node.get("presentation", "narrative")) != "narrative":
+				if bool(collection_spec[1]) and str(node.get("presentation", "narrative")) != "narrative":
 					continue
-				audit_node(app, "%s/%s/%s" % [str(file_spec[1]), str(record.get("id", "?")), str(node.get("id", "?"))], node)
-	var micro_events: Array = load_json("res://data/events/micro_events.json")
+				audit_node(app, "%s/%s/%s" % [str(collection_spec[0]), str(record.get("id", "?")), str(node.get("id", "?"))], node)
+	var micro_events: Array = app.content.collections.get("micro_events", [])
 	for event in micro_events:
 		for section in ["opening_lines", "closing_lines"]:
 			for index in range(event.get(section, []).size()):

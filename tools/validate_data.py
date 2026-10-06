@@ -5,6 +5,7 @@ from datetime import date
 from pathlib import Path
 from jsonschema import Draft202012Validator
 from patient_bundles import load_patient_bundles
+from staff_bundles import load_staff_bundles
 ROOT = Path(__file__).resolve().parents[1]
 def read(path):
     return json.loads((ROOT / 'data' / path).read_text())
@@ -83,6 +84,23 @@ for key, path in manifest['collections'].items():
     if key != 'relationships':
         ids = [r.get('id') for r in rows]
         check(len(ids) == len(set(ids)), f'Duplicate id in {key}')
+
+staff_collections, staff_bundles = load_staff_bundles(ROOT / 'data', manifest['staff_bundles'])
+for relative_path, bundle in staff_bundles:
+    prefix = relative_path + ': '
+    check(bundle.get('schema_version') == 1, prefix + 'unsupported staff bundle schema')
+    check(bool(bundle.get('profile')), prefix + 'missing profile file')
+    check(bool(bundle.get('relationship')), prefix + 'missing relationship file')
+for key, rows in staff_collections.items():
+    collections.setdefault(key, []).extend(rows)
+    validator = Draft202012Validator({'$ref': '#/$defs/' + kind[key], '$defs': schema['$defs']})
+    for index, row in enumerate(rows):
+        errors.extend(f'{key} staff bundle [{index}] {e.json_path}: {e.message}' for e in validator.iter_errors(row))
+    if key != 'relationships':
+        ids = [row.get('id') for row in collections[key]]
+        check(len(ids) == len(set(ids)), f'Duplicate id after merging staff-owned {key}')
+relationship_targets = [row.get('target_id') for row in collections['relationships']]
+check(len(relationship_targets) == len(set(relationship_targets)), 'Duplicate relationship target after merging staff bundles')
 
 required_palpation_profiles = {'generic', 'abdominal', 'breast', 'gynecology_pelvic', 'thoracic_cardiac'}
 palpation_profile_ids = {row.get('id') for row in collections.get('palpation_profiles', [])}

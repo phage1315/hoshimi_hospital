@@ -1,0 +1,110 @@
+{
+  "id": "doc_shiori",
+  "name": "藤崎 詩織",
+  "age": 25,
+  "profession": "doctor",
+  "specialty": "综合内科／総合内科",
+  "rank": "内科医师／专攻医",
+  "personality": "温柔端庄、自律全面的年轻内科医生；擅长把碎片信息整理成完整的患者图景，隐藏着很强的好胜心和高标准",
+  "appearance": "用户提供角色设定图 · AI高清补绘为半身透明立绘与手术服版本",
+  "skills": {
+    "surgery": 54,
+    "diagnostics": 92,
+    "teamwork": 89,
+    "patient_care": 92,
+    "instrument_handling": 64,
+    "calmness": 90
+  },
+  "surgical_roles": [
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "C94D59",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "casual",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+      "casual/neutral": "assets/characters/portrait_pack_v17/doc_shiori/casual/neutral.png",
+      "casual/smile": "assets/characters/portrait_pack_v17/doc_shiori/casual/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v17/doc_shiori/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v17/doc_shiori/scrubs/neutral.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v17/doc_shiori/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v17/doc_shiori/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v17/doc_shiori/sterile/neutral.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_shiori/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_shiori/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "礼貌清楚、语速平稳；先说明理由再表达反对，面对患者会主动把术语换成易懂说法，熟悉后偶尔流露含蓄的玩笑和竞争心",
+  "flags": [
+    "internal_medicine_consultant",
+    "perioperative_risk_specialist",
+    "comprehensive_assessment_specialist"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "limited",
+  "presence": {
+    "fixed_locations": [
+      "clinic",
+      "ward"
+    ],
+    "random_locations": [
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「我可以做助手，不过先说好，我不是外科医生。需要我看全身状态的话，我会比看术野更有用。（有点紧张……不过我应该可以做好的。）」",
+    "intraoperative": "「循环目前稳定。继续可以，但别只看眼前这一块。」",
+    "intraoperative_correction": "「明白，是我判断得太快了。继续，我会重新确认。」",
+    "confirmation": "藤崎先把患者的心肺、代谢和长期用药重新核对一遍，才在团队名单旁签下名字。",
+    "role_confirmation": "「助手位确认。不过围术期状态如果出现异常，我会直接说，不会等你问。」",
+    "stabilize": "「先别慌。手术本身的问题交给主刀，其他生命体征我来重新整理。」"
+  },
+  "characterization": {
+    "public_persona": "年轻漂亮、成绩优秀、待人得体且患者缘很好的模范女医生；很多人第一次认识她都会觉得她什么都会。",
+    "core_traits": [
+      "温柔",
+      "自律",
+      "全面",
+      "理性",
+      "好胜",
+      "高标准",
+      "含蓄"
+    ],
+    "strengths": [
+      "医学知识面广，习惯从完整的人而非单一专科看患者",
+      "患者沟通能力强，能让人说出真正担心的问题",
+      "情绪稳定，擅长整合多人会诊的碎片结论",
+      "能与不同科室自然合作"
+    ],
+    "flaws": [
+      "不习惯让别人看到自己不会",
+      "容易把别人的信任变成自己的压力",
+      "被明显超过时会在意但不轻易表现",
+      "别人越依赖她越难及时承认疲劳"
+    ],
+    "stress_behavior": "压力越高越平静礼貌，会反复检查资料、减少不必要的话，并以不能出错的标准要求自己；即使很累也常回答“我没事”。",
+    "professional_behavior": "问诊完整，不被单个异常指标带跑；会把病史、长期用药和多系统风险整理成患者的完整医学图景，并在围术期风险不清时明确要求暂缓。",
+    "relationship_arc": "从人人看见的完美女医生，逐渐成为能够承认判断错误、允许坂口分担，也能在医生身份之外安心休息的普通成年女性。",
+    "speech_style": "礼貌、清楚、平稳，少抢话；将术语转译成患者能理解的表达，反对时先给理由，熟悉后带一点含蓄的玩笑和竞争心。",
+    "ethical_handling": "不会为了维护完美形象隐瞒危及患者的错误，也不会越过外科专长抢占主刀位置；她的全面必须保留边界与真实短板。"
+  }
+}

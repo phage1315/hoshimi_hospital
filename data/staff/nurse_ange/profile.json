@@ -1,0 +1,114 @@
+{
+  "id": "nurse_ange",
+  "name": "利根川 安琪",
+  "age": 25,
+  "profession": "nurse",
+  "specialty": "门诊护理／手术护理",
+  "rank": "正式职员",
+  "personality": "聪明勤奋、专业强势；情绪起伏明显，偶尔任性冲动",
+  "appearance": "用户提供立绘 · 手术室差分由内置 ImageGen 制作",
+  "skills": {
+    "surgery": 88,
+    "diagnostics": 78,
+    "teamwork": 84,
+    "patient_care": 74,
+    "instrument_handling": 92,
+    "calmness": 66
+  },
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "visuals": {
+    "color": "d8c47e",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v11/nurse_ange/uniform/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v11/nurse_ange/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v11/nurse_ange/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v11/nurse_ange/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v11/nurse_ange/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v11/nurse_ange/uniform/tired.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v11/nurse_ange/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v11/nurse_ange/sterile/focused.png",
+      "sterile/worried": "assets/characters/portrait_pack_v11/nurse_ange/sterile/worried.png",
+      "sterile/warm": "assets/characters/portrait_pack_v11/nurse_ange/sterile/warm.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ange/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_ange/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "工作时简洁强势、习惯纠正他人；情绪升高时会抢话或说出过重的话，高压下可能先慌乱，再靠明确指令恢复节奏",
+  "flags": [
+    "professional_trust_route_only",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [
+      "or"
+    ],
+    "random_locations": []
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "characterization": {
+    "public_persona": "聪明勤奋、效率很高的门诊／手术室护士，对医生要求严格，敢于当面纠正她认为不负责任的做法。",
+    "core_traits": [
+      "聪明",
+      "勤奋",
+      "专业",
+      "强势",
+      "情绪外露",
+      "偶尔孩子气"
+    ],
+    "strengths": [
+      "能够预判术者需要并准确传递器械",
+      "会主动核对流程并指出疏漏",
+      "工作投入且愿意为患者据理力争"
+    ],
+    "flaws": [
+      "容易把担忧表现为命令和质疑",
+      "受挫时会赌气或抢话",
+      "失控时可能说出严重伤人的话",
+      "危急状况下可能先出现短暂恐慌"
+    ],
+    "stress_behavior": "面对突发恶化时可能先语速加快、惊慌或爆发；一旦得到明确且具体的任务，通常能迅速恢复专业节奏。",
+    "professional_behavior": "常规手术中配合敏锐、器械熟练、确认指令简洁；遇到含糊医嘱或疑似忽视患者的行为会立即质疑。",
+    "relationship_arc": "起初严格审视并频繁质疑坂口隆司；随着他证明技术、责任感与临场判断，她逐渐把控制权交给他并形成互补搭档，但专业强势与情绪化不会消失。",
+    "speech_style": "工作时多用短促的确认句和祈使句；情绪升高时抢话、重复关键词；冷静后不善于直接道歉，更常用补做工作和实际行动修复关系。",
+    "ethical_handling": "她对脆弱患者的残酷失言必须被视为严重职业失范；相关剧情需要呈现制止、患者保护、后果、反省和修复，不能作为正确判断或喜剧奖励。"
+  },
+  "familiarity_gain_multiplier": 1.0,
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  }
+}

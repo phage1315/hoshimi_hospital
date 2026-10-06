@@ -1,0 +1,122 @@
+{
+  "id": "nurse_ishigami",
+  "name": "石神 千鹤",
+  "age": 32,
+  "profession": "nurse",
+  "specialty": "全院护理管理／护理安全·资源协调",
+  "rank": "看護部長",
+  "personality": "冷艳寡言、观察敏锐、纪律严明的全院护理负责人；极少提高音量，却能用最平静的语气让整个护理系统重新归位",
+  "appearance": "用户提供原作肖像参考 · AI补绘为护士帽裙式护士长制服及手术室监视用刷手服半身透明立绘；日常制服佩戴黑色细项圈与银色小垂饰，进入手术部时取下全部颈饰",
+  "skills": {
+    "surgery": 86,
+    "diagnostics": 84,
+    "teamwork": 97,
+    "patient_care": 86,
+    "instrument_handling": 88,
+    "calmness": 97
+  },
+  "surgical_roles": [],
+  "visuals": {
+    "color": "303746",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "uniform/serious": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "uniform/observing": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "scrubs/observing": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ishigami/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_ishigami/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "75%简短、冷静、职业化，15%干燥而克制的幽默，10%极少显露的私人温度；很少提高音量，不长篇训话，也不替错误找好听的说法。",
+  "flags": [
+    "head_of_nursing",
+    "nursing_management",
+    "nursing_command",
+    "management_override",
+    "non_frontline_default",
+    "or_selectable_default_false",
+    "advanced_referral_support",
+    "public_teaching_support",
+    "large_event_presence_high",
+    "ambient_encounter_weight_low",
+    "professional_trust_route",
+    "introduction_pending",
+    "romance_disabled",
+    "sunday_date_disabled",
+    "hotel_disabled",
+    "staff_as_patient_disabled",
+    "persona_2_crossover",
+    "hoshimi_au",
+    "relationship_progression_locked"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "expert",
+  "presence": {
+    "fixed_locations": [],
+    "random_locations": []
+  },
+  "team_dialogue": {
+    "assignment": "「我不占普通岗位。护理侧的人力、轮换和物资由我看着，你继续做主刀该做的事。」",
+    "intraoperative": "「护理侧稳定。继续，但别只看眼前这一块。」",
+    "intraoperative_correction": "「先处理。原因和责任留到患者安全以后。」",
+    "confirmation": "石神逐项核对护理配置、轮换时间和备用物资，确认没有任何岗位依赖临时硬撑。",
+    "role_confirmation": "「护理监督位确认。我不替你做医学判断，也不会允许护理侧靠过劳维持。」",
+    "stabilize": "「谁处理患者，谁联系支援，谁记录。说清楚，然后继续。」"
+  },
+  "characterization": {
+    "public_persona": "明显年轻却拥有完整实权的全院看護部長。冷艳、寡言、极有压迫感，平时很少亲自做一线护理，但整个护理系统都知道她在看。",
+    "core_traits": [
+      "冷静",
+      "观察敏锐",
+      "纪律严明",
+      "务实",
+      "责任感强",
+      "保护护理人员",
+      "情感私密",
+      "干燥幽默"
+    ],
+    "strengths": [
+      "全院护理人力与资源调配",
+      "危机处理和护理安全判断",
+      "感染控制与质量改进",
+      "跨科室护理协调",
+      "在大型手术中组织轮换、补给和记录"
+    ],
+    "flaws": [
+      "不习惯解释自己的关心",
+      "低温表达容易让新人过度紧张",
+      "对含糊职责和侥幸流程几乎没有耐心",
+      "很少让别人看见自己的疲惫"
+    ],
+    "stress_behavior": "压力越高语气越平，先保护患者、换下过劳人员、补齐职责和流程；事情结束后才要求当事人解释判断。",
+    "professional_behavior": "普通手术中只巡视和监督，不占标准护士岗位；高级转诊、公开教学手术和大型活动中负责护理侧指挥，必要时才以极熟练的一线技术临时补位。",
+    "relationship_arc": "从审查坂口是否尊重护理判断与人力边界，逐步发展为代表整个护理系统的职业信任；最高等级是机构归属与领导力认可，不转化为恋爱。",
+    "speech_style": "句子短、理由明确、极少重复。最有压迫感时往往语气最平；偶尔用一句干燥的事实结束争论。",
+    "ethical_handling": "她的权威来自让团队更稳定，不能通过羞辱年轻护士、削弱其他护士或越权替代医生的医学判断来证明。"
+  },
+  "personal_nurse": {
+    "eligible": false,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  }
+}

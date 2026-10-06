@@ -1,0 +1,72 @@
+{
+  "id": "pharmacist_manami",
+  "name": "飯村 真奈美",
+  "age": 25,
+  "profession": "pharmacist",
+  "specialty": "医院药剂部",
+  "rank": "正式职员",
+  "personality": "温和谨慎，富有正义感",
+  "appearance": "VNDB参考图AI补绘 · 本地占位",
+  "skills": {
+    "surgery": 5,
+    "diagnostics": 68,
+    "teamwork": 84,
+    "patient_care": 82,
+    "instrument_handling": 35,
+    "calmness": 80
+  },
+  "surgical_roles": [],
+  "visuals": {
+    "color": "c75b62",
+    "default_outfit": "pharmacist",
+    "outfits": [
+      "pharmacist",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "pharmacist/neutral": "assets/characters/portrait_pack_v10/pharmacist_manami/pharmacist/neutral.png",
+      "pharmacist/worried": "assets/characters/portrait_pack_v10/pharmacist_manami/pharmacist/worried.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v10/pharmacist_manami/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v10/pharmacist_manami/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/worried.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/pharmacist_manami/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/pharmacist_manami/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/pharmacist_manami/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "温和、谨慎；涉及用药安全与不公时态度坚定",
+  "flags": [],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "novice",
+  "presence": {
+    "fixed_locations": [
+      "pharmacy"
+    ],
+    "random_locations": [
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「我、我几乎没有进过术野……既然你坚持，我会只做明确交代给我的事，请随时纠正我。」\n（我只是配药的，居然真的被调进手术团队了。先别慌，药品和剂量至少还是我熟悉的。）",
+    "confirmation": "「团队安排……收到。我会提前把步骤再看一遍。」\n（现在反悔也来不及了。至少不要因为我让大家多分心。）",
+    "role_confirmation": "「助手位确认。每一步请直接告诉我，不确定的地方我会马上问。」\n（助手医生？我只是药剂师啊……先把术式名称和解剖位置重新记一遍。）",
+    "stabilize": "「我按你说的位置固定了，可是这个角度对吗？请你再看一下。」\n（这是什么结构……医学院解剖课以后就没再见过，我几乎全忘了。不能装懂，先问主刀。）",
+    "intraoperative": "「这一步我已经照你的指示完成了，但我不敢判断是否足够。请你确认一下。」\n（屏幕上的组织我只能勉强对上名称。冷静，先把自己看到的说清楚。）",
+    "intraoperative_correction": "「等一下，刚才的步骤和术前计划好像不一样……是我记错了吗？」\n（我连结构名称都快对不上了，可这里真的不对。问错总比默不作声好。）"
+  }
+}

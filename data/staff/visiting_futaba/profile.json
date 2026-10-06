@@ -1,0 +1,128 @@
+{
+  "id": "visiting_futaba",
+  "name": "佐仓 双叶",
+  "age": 26,
+  "profession": "doctor",
+  "specialty": "访问医师科学家／心身相互作用·心理动力研究",
+  "rank": "访问研究医／医学·心理学双博士",
+  "personality": "超高智商、好奇、直接而略显古怪的成年医师科学家；已经明显成熟和社会化，仍保留宅味、跳脱与极端专注，也学会与过去的创伤和自责共处",
+  "appearance": "用户提供成年角色设定图 · AI补绘为白大褂、刷手服及完整无菌半身透明立绘",
+  "skills": {
+    "surgery": 34,
+    "diagnostics": 91,
+    "teamwork": 76,
+    "patient_care": 74,
+    "instrument_handling": 70,
+    "calmness": 68
+  },
+  "surgical_roles": [
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "D96F21",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/focused": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/visiting_futaba/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/visiting_futaba/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "平时简洁、直接，偶尔带宅式比喻和轻微讽刺；遇到感兴趣的异常会突然加快语速并使用高密度技术语言，熟人面前会流露得意和顽皮。",
+  "flags": [
+    "visiting_physician_scientist",
+    "temporary_visiting",
+    "non_core_roster",
+    "visiting_researchers",
+    "arrived_with_maya",
+    "medicine_psychology_dual_doctorate",
+    "mind_body_researcher",
+    "trauma_informed",
+    "relationship_progression_locked",
+    "relationship_route_none",
+    "no_romance_route",
+    "no_adult_route"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "novice",
+  "presence": {
+    "fixed_locations": [
+      "imaging"
+    ],
+    "random_locations": [
+      "lounge",
+      "exam"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "「助手位可以。外科主动判断别期待太高，但患者的恐惧、疼痛预期和配合变化，我会盯着。」",
+    "intraoperative": "「心率变化是真的，但时点不对。她是在听见‘下一步’以后才开始紧张，不完全是疼痛。」",
+    "intraoperative_correction": "「收到。刚才我太执着于解释原因，术野操作按你的判断重新来。」",
+    "confirmation": "双叶快速扫过患者的恐惧、疼痛与配合记录，又确认自己只承担有限助手和心理生理观察，才在助手栏签名。",
+    "role_confirmation": "「助手位确认。脑子也是器官，别老假装它不参与手术。」",
+    "stabilize": "「先别把每个数字都解释成损伤。问她刚才听见了什么，再看变化从哪一秒开始。」"
+  },
+  "procedure_group_team_dialogue": {
+    "default": {
+      "assignment": "「可以当助手。刀怎么走你决定，我负责看她为什么在这个时点发生变化。」",
+      "intraoperative": "「变化不是随机的。她刚听到下一步的说明，呼吸和心率才一起上去。」",
+      "intraoperative_correction": "「明白。先服从术野事实，我的解释退后重新验证。」",
+      "role_confirmation": "「助手位确认。Fear、Pain 和 Cooperation 不只是数字，我会看它们为什么变化。」",
+      "stabilize": "「信号先交给摩耶核对；如果信号是真的，我来追它和心理刺激的时间关系。」"
+    }
+  },
+  "characterization": {
+    "public_persona": "非常年轻、安静而专业的访问医师科学家；社会化程度明显提高，但在感兴趣的问题前仍会突然进入双叶式高速专注。",
+    "core_traits": [
+      "超高智商",
+      "好奇",
+      "分析型",
+      "内向",
+      "直接",
+      "社交方式独特",
+      "熟人前顽皮",
+      "创伤知情"
+    ],
+    "strengths": [
+      "能解释恐惧、疼痛预期和配合变化之间的联系",
+      "对创伤、自责、依恋和抑郁性认知非常敏锐",
+      "能把生理变化与此前的语言或心理刺激按时间顺序对应",
+      "跨医学与心理学理解患者"
+    ],
+    "flaws": [
+      "不是外科专科医生，主动术野判断偏弱",
+      "对原因异常执着，容易延长分析",
+      "别人出问题时会先怀疑自己漏掉了什么",
+      "对亲近者的失去和无能为力仍然敏感"
+    ],
+    "stress_behavior": "压力升高时会快速回查自己遗漏的线索，语速和信息密度上升；触及失去、自责或错误归因时会短暂沉默，再强迫自己回到工作。",
+    "professional_behavior": "研究精神如何改变身体，以及身体状态如何反向塑造精神；尤其关注围术期恐惧、疼痛预期、睡眠、压力和配合变化。",
+    "relationship_arc": "当前只开放相识和专业合作，不建立 Lv1 以上关系路线；未来若追加事件，可由显式解锁移除限制。",
+    "speech_style": "直接、聪明、偶尔古怪；对异常数据会说“漂亮”，也会提醒临床人员患者仍在场。",
+    "ethical_handling": "不得写成普通心理咨询师、泛用黑客少女、外科高手或成熟御姐；保留原作创伤，但不把她写成始终阴郁或已经彻底痊愈。"
+  }
+}

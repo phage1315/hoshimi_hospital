@@ -8,6 +8,7 @@ import math
 import unicodedata
 from pathlib import Path
 from collection_io import load_collection
+from staff_bundles import load_staff_bundles
 
 ROOT = Path(__file__).resolve().parents[1]
 COLUMNS = 44.0
@@ -127,18 +128,23 @@ def dialogue_pages(text: str, allow_scroll: bool = False) -> list[str]:
 
 def authored_nodes() -> list[tuple[str, dict]]:
     rows: list[tuple[str, dict]] = []
+    manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
+    staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     introduction = json.loads((ROOT / "data/dialogue/introduction.json").read_text(encoding="utf-8"))
     rows.extend((f"introduction/{node['id']}", node) for node in introduction["nodes"])
     for relative, collection, skip_presentations in (
         ("data/events/character_events/index.json", "character_events", False),
         ("data/events/special_event_steps/index.json", "special_event_steps", True),
     ):
-        for record in load_collection(ROOT / relative):
+        records = load_collection(ROOT / relative) + staff_collections.get(collection, [])
+        for record in records:
             for node in record["nodes"]:
                 if skip_presentations and node.get("presentation", "narrative") != "narrative":
                     continue
                 rows.append((f"{collection}/{record['id']}/{node['id']}", node))
-    for event in json.loads((ROOT / "data/events/micro_events.json").read_text(encoding="utf-8")):
+    micro_events = json.loads((ROOT / "data/events/micro_events.json").read_text(encoding="utf-8"))
+    micro_events += staff_collections.get("micro_events", [])
+    for event in micro_events:
         for section in ("opening_lines", "closing_lines"):
             for index, node in enumerate(event.get(section, [])):
                 rows.append((f"micro_events/{event['id']}/{section}/{index}", node))

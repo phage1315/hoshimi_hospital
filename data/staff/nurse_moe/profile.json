@@ -1,0 +1,118 @@
+{
+  "id": "nurse_moe",
+  "name": "本庄 萌惠",
+  "age": 23,
+  "profession": "nurse",
+  "specialty": "门诊护理／手术室支援",
+  "rank": "新任护士",
+  "personality": "呆萌认真却粗线条，重度近视；越想做好越容易在意外的地方出错",
+  "appearance": "用户提供原作表情差分 · 黑底去除并统一高清透明画布",
+  "skills": {
+    "surgery": 38,
+    "diagnostics": 68,
+    "teamwork": 76,
+    "patient_care": 82,
+    "instrument_handling": 42,
+    "calmness": 52
+  },
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "visuals": {
+    "color": "55a978",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "changing",
+      "scrubs",
+      "sterile",
+      "operating_patient"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v13/nurse_moe/uniform/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v13/nurse_moe/uniform/smile.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v13/nurse_moe/uniform/surprised.png",
+      "uniform/worried": "assets/characters/portrait_pack_v13/nurse_moe/uniform/worried.png",
+      "uniform/shy": "assets/characters/portrait_pack_v13/nurse_moe/uniform/shy.png",
+      "uniform/startled": "assets/characters/portrait_pack_v13/nurse_moe/uniform/startled.png",
+      "uniform/laugh": "assets/characters/portrait_pack_v13/nurse_moe/uniform/laugh.png",
+      "uniform/embarrassed": "assets/characters/portrait_pack_v13/nurse_moe/uniform/embarrassed.png",
+      "uniform/warm": "assets/characters/portrait_pack_v13/nurse_moe/uniform/warm.png",
+      "uniform/cheerful": "assets/characters/portrait_pack_v13/nurse_moe/uniform/cheerful.png",
+      "changing/shy": "assets/characters/portrait_pack_v13/nurse_moe/changing/shy.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
+      "operating_patient/nervous": "assets/characters/portrait_pack_v13/nurse_moe/changing/shy.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_moe/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_moe/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "礼貌认真，紧张时会结巴并连续道歉；常把小事当成重大指示认真记下，犯迷糊后才迟一步意识到问题",
+  "flags": [
+    "severe_myopia",
+    "outpatient_nurse",
+    "first_or_assignment"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "nurse",
+  "surgery_proficiency": "novice",
+  "presence": {
+    "fixed_locations": [
+      "clinic"
+    ],
+    "random_locations": [
+      "or",
+      "station",
+      "lounge",
+      "rooftop"
+    ]
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "characterization": {
+    "public_persona": "态度认真、待人礼貌的新任门诊护士，做每件事都会用力确认，却常因粗线条和重度近视在意外的地方犯错。",
+    "core_traits": [
+      "呆萌",
+      "认真",
+      "粗线条",
+      "重度近视",
+      "善良"
+    ],
+    "strengths": [
+      "对患者耐心且愿意反复确认",
+      "被明确交代任务后会努力执行到底",
+      "犯错后会认真复盘并想办法避免重演"
+    ],
+    "flaws": [
+      "摘下眼镜后几乎无法辨认标识",
+      "紧张时手忙脚乱",
+      "过度认真反而容易忽略最直观的问题"
+    ],
+    "stress_behavior": "先惊叫、结巴并连续道歉；确认具体任务后会迅速站直，用近乎过度认真的态度照做。",
+    "professional_behavior": "门诊护理基础扎实，患者照护温和；手术室经验很少，需要清楚指令与复核，但会主动学习并记录路线和步骤。",
+    "relationship_arc": "从令人哭笑不得的更衣室误会开始，在一次次认真弥补小失误的过程中建立可靠感，并逐渐敢在坂口面前承认自己的笨拙。",
+    "speech_style": "常用敬语，慌张时重复“诶”“对不起”和否定句；恢复镇定后会像接受重大医嘱一样郑重点头。",
+    "ethical_handling": "她的近视和粗心应成为可改善的工作习惯与轻喜剧来源；涉及患者安全时必须通过复核、带教和明确流程控制风险。"
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  }
+}
