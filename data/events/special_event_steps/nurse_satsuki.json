@@ -5058,9 +5058,129 @@
       {
         "id": "s174",
         "speaker": "narrator",
-        "text": "弘子重新走进手术室。\n折川皐月 Relationship Lv2\n她已经证明：即使紧张，也能在坂口身边把工作做好。",
+        "text": "弘子重新走进手术室。",
         "expression": "neutral",
         "background_id": "or_entrance",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "s174_next",
+            "label": "继续",
+            "next": "s175_practice_transition",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "s175_practice_transition",
+        "speaker": "narrator",
+        "text": "【当天下午 · 手术室刷手区】\n轮转结束后，皐月还留了一会儿。训练台上放着一把未投入临床使用的练习镊。",
+        "expression": "neutral",
+        "background_id": "scrub_area",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "s175_next",
+            "label": "继续",
+            "next": "s176_practice_cg",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "s176_practice_cg",
+        "speaker": "actor",
+        "text": "练习结束，她离开无菌操作区，把口罩拉到胸前。看见坂口还没走，她握着练习镊，故意摆出一个十分神气、又只维持了半秒的表情。\n「怎么样？现在看起来……稍微像个手术室护士了吗？」",
+        "expression": "smile",
+        "background_id": "scrub_area",
+        "actor_id": "nurse_satsuki",
+        "outfit": "scrubs",
+        "speaker_label": "折川皐月",
+        "cg_path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+        "choices": [
+          {
+            "id": "s176_like",
+            "label": "很像。",
+            "next": "s177_like",
+            "requirements": []
+          },
+          {
+            "id": "s176_expression",
+            "label": "动作很像，表情不太像。",
+            "next": "s177_expression",
+            "requirements": []
+          },
+          {
+            "id": "s176_again",
+            "label": "再练一次给我看。",
+            "next": "s177_again",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "s177_like",
+        "speaker": "actor",
+        "text": "她眨了眨眼，立刻把舌尖收了回去，嘴角却怎么也压不住。\n「那、那当然。我今天可是完整做完了第一次轮转。」",
+        "expression": "smile",
+        "background_id": "scrub_area",
+        "actor_id": "nurse_satsuki",
+        "outfit": "scrubs",
+        "speaker_label": "折川皐月",
+        "cg_path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+        "choices": [
+          {
+            "id": "s177_like_next",
+            "label": "继续",
+            "next": "s178_lv2_complete",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "s177_expression",
+        "speaker": "actor",
+        "text": "「诶？」她下意识摸了摸自己的脸，随即反应过来。\n「这叫余裕。优秀的手术室护士也可以有一点余裕吧？」",
+        "expression": "surprised",
+        "background_id": "scrub_area",
+        "actor_id": "nurse_satsuki",
+        "outfit": "scrubs",
+        "speaker_label": "折川皐月",
+        "cg_path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+        "choices": [
+          {
+            "id": "s177_expression_next",
+            "label": "继续",
+            "next": "s178_lv2_complete",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "s177_again",
+        "speaker": "actor",
+        "text": "「再、再来一次？」她低头看了看练习镊，又认真地站直。\n「可以。不过这次不许在旁边故意盯着我笑。」",
+        "expression": "worried",
+        "background_id": "scrub_area",
+        "actor_id": "nurse_satsuki",
+        "outfit": "scrubs",
+        "speaker_label": "折川皐月",
+        "cg_path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+        "choices": [
+          {
+            "id": "s177_again_next",
+            "label": "继续",
+            "next": "s178_lv2_complete",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "s178_lv2_complete",
+        "speaker": "narrator",
+        "text": "折川皐月 Relationship Lv2\n她已经证明：即使紧张，也能在坂口身边把工作做好。",
+        "expression": "neutral",
+        "background_id": "scrub_area",
         "hide_portrait": true,
         "choices": [
           {

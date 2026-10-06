@@ -1,0 +1,28 @@
+{
+  "id": "nurse_satsuki_lv2_instrument_practice_cg_2026-10-05",
+  "date": "2026-10-05",
+  "character": "nurse_satsuki",
+  "adult": true,
+  "source_attachment": "codex-clipboard-55758099-e872-46e8-9c36-59b35347b920.png",
+  "assets": [
+    {
+      "path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+      "sha256": "0e10b93f8162c2f1c734978a9628112b116c838bd4f6ab8a200b6a67d28da3e0",
+      "dimensions": "1584x1056",
+      "format": "PNG RGB"
+    }
+  ],
+  "runtime_nodes": {
+    "s176_practice_cg": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+    "s177_like": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+    "s177_expression": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png",
+    "s177_again": "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png"
+  },
+  "integration": {
+    "event": "satsuki_lv2_patient_transport_main",
+    "placement": "Post-rotation coda after Hiroko's evaluation and before the Lv2 completion card",
+    "clinical_context": "The instrument is an unused practice forceps on a training table. Satsuki lowers her mask only after practice and after leaving the sterile work area.",
+    "branching": "Three protagonist replies change only the coda dialogue and converge on the same Lv2 completion node."
+  },
+  "protagonist_camera_rule": "The CG contains no visible protagonist body, face, hair, clothing, reflection, shadow, height cue, or other appearance implication."
+}

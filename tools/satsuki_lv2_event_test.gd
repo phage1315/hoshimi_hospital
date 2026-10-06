@@ -49,6 +49,18 @@ func validate_yoriko_assets(step: Dictionary) -> void:
 	expect(str(nodes_by_id.get("s074", {}).get("text", "")).contains("患者想说话都找不到空隙"), "Yoriko OR-rumor line is missing")
 	expect(str(nodes_by_id.get("s114", {}).get("text", "")).contains("留一道防线"), "Yoriko defensive insurance line is missing")
 
+func validate_practice_coda(step: Dictionary) -> void:
+	var nodes_by_id := {}
+	for node in step.get("nodes", []):
+		nodes_by_id[str(node.get("id", ""))] = node
+	var cg_path := "assets/events/character_events/satsuki/cg/cg_satsuki_lv2_instrument_practice_playful_v1.png"
+	expect(FileAccess.file_exists("res://" + cg_path), "Satsuki Lv2 instrument-practice CG is missing")
+	expect(str(nodes_by_id.get("s176_practice_cg", {}).get("cg_path", "")) == cg_path, "Satsuki Lv2 practice coda does not show its CG")
+	expect(nodes_by_id.get("s176_practice_cg", {}).get("choices", []).size() == 3, "Satsuki Lv2 practice coda lost its three player responses")
+	for node_id in ["s177_like", "s177_expression", "s177_again"]:
+		expect(str(nodes_by_id.get(node_id, {}).get("choices", [{}])[0].get("next", "")) == "s178_lv2_complete", "Satsuki Lv2 practice response does not converge at " + node_id)
+	expect(str(nodes_by_id.get("s178_lv2_complete", {}).get("choices", [{}])[0].get("next", "")) == "@day_end", "Satsuki Lv2 practice coda does not end the day")
+
 func configure_game(game) -> void:
 	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases, content.collections.first_surgery_diagnosis_reactions, content.collections.palpation_profiles)
 
@@ -76,9 +88,10 @@ func run() -> void:
 	var definition: Dictionary = content.find_record("special_events", "satsuki_lv2_patient_transport")
 	var step: Dictionary = content.find_record("special_event_steps", "satsuki_lv2_patient_transport_main")
 	expect(not definition.is_empty() and not step.is_empty(), "Satsuki Lv2 event data is missing")
-	expect(step.get("nodes", []).size() == 174, "Satsuki Lv2 script lost authored storyboard beats")
+	expect(step.get("nodes", []).size() == 180, "Satsuki Lv2 script lost authored storyboard beats or its practice coda")
 	validate_satsuki_portraits(step)
 	validate_yoriko_assets(step)
+	validate_practice_coda(step)
 	for node in step.get("nodes", []):
 		var node_id := str(node.get("id", ""))
 		if str(node.get("actor_id", "")) == "nurse_satsuki" and node_id in ["s049", "s086", "s125", "s161"]:
@@ -104,13 +117,14 @@ func run() -> void:
 		var node: Dictionary = game.active_special_event.current()
 		visited.append(str(node.get("id", "")))
 		var choices: Array = node.get("choices", [])
-		expect(choices.size() == 1, "Satsuki Lv2 reached a node without its authored continuation")
+		var expected_choice_count := 3 if str(node.get("id", "")) == "s176_practice_cg" else 1
+		expect(choices.size() == expected_choice_count, "Satsuki Lv2 reached a node without its authored continuation")
 		if choices.is_empty():
 			break
 		expect(game.choose_special_event(str(choices[0].id)).accepted, "Satsuki Lv2 continuation failed at " + str(node.get("id", "")))
 		safety += 1
 	expect(game.active_special_event.completed and safety < 220, "Satsuki Lv2 did not reach its ending")
-	for required_node in ["s021", "s036", "s079", "s086", "s099", "s110", "s123", "s125", "s141", "s161", "s173"]:
+	for required_node in ["s021", "s036", "s079", "s086", "s099", "s110", "s123", "s125", "s141", "s161", "s173", "s175_practice_transition", "s176_practice_cg", "s177_like", "s178_lv2_complete"]:
 		expect(required_node in visited, "Satsuki Lv2 skipped storyboard beat " + required_node)
 	for flag in ["satsuki_or_rotation_unlocked", "satsuki_successful_patient_transport", "satsuki_lv2_patient_transport_complete"]:
 		expect(game.story_flag(flag), "Satsuki Lv2 did not set " + flag)
