@@ -1,4 +1,5 @@
 extends RefCounted
+const Progression = preload("res://godot/systems/progression_config.gd")
 ## Deterministic, data-driven visit state. No UI or medical rules live here.
 var definition: Dictionary
 var stages: Dictionary = {}
@@ -11,8 +12,9 @@ var diagnosis := ""
 var admitted := false
 var feedback := ""
 var speaker := ""
-var player_effects: Dictionary = {"skill": 0, "ethics": 0, "charisma": 0, "intimidation": 0, "reputation": 0}
+var player_effects: Dictionary = {"charm": 0, "presence": 0, "reputation": 0}
 var player_effect_history: Array[Dictionary] = []
+var presence_raw := 0
 
 func _init(data: Dictionary) -> void:
 	definition = data
@@ -59,8 +61,22 @@ func apply_single(id: String) -> bool:
 	var effects: Dictionary = action.get("player_effects", {})
 	if not effects.is_empty():
 		for metric in effects:
+			if metric == "presence":
+				continue
 			player_effects[metric] = int(player_effects.get(metric, 0)) + int(effects[metric])
-		player_effect_history.append({"id": action.id, "label": action.label, "effects": effects.duplicate(true)})
+		var recorded_effects := effects.duplicate(true)
+		recorded_effects.erase("presence")
+		if not recorded_effects.is_empty():
+			player_effect_history.append({"id": action.id, "label": action.label, "effects": recorded_effects})
+	var presence_delta := int(effects.get("presence", 0)) + int(action.get("presence_delta", 0))
+	if presence_delta != 0:
+		var before := clampi(presence_raw, -int(Progression.PRESENCE_PHASE_CLAMPS.encounter), int(Progression.PRESENCE_PHASE_CLAMPS.encounter))
+		presence_raw += presence_delta
+		var after := clampi(presence_raw, -int(Progression.PRESENCE_PHASE_CLAMPS.encounter), int(Progression.PRESENCE_PHASE_CLAMPS.encounter))
+		var applied := after - before
+		player_effects.presence = int(player_effects.get("presence", 0)) + applied
+		if applied != 0:
+			player_effect_history.append({"id": action.id, "label": action.label, "effects": {"presence": applied}})
 	if not action.diagnosis.is_empty():
 		diagnosis = action.diagnosis
 	admitted = admitted or action.admit

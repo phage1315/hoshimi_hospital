@@ -1,0 +1,1004 @@
+[
+  {
+    "id": "sayaka_week1_phone_exchange",
+    "actor_id": "doc_sayaka",
+    "title": "号码给我",
+    "chapter": 0,
+    "location_id": "player_office",
+    "trigger_mode": "day_start",
+    "background_id": "player_office",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "小夜香送完资料，转身走了两步，却又停下来。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 200,
+    "category": "contextual",
+    "gallery": {
+      "cg_id": "cg_sayaka_week1_phone_exchange",
+      "caption": "号码给我",
+      "path": "assets/events/character_events/sayaka/phone_contact_closeup.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 2,
+      "max_day": 5,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "work_done",
+    "nodes": [
+      {
+        "id": "work_done",
+        "speaker": "narrator",
+        "text": "小夜香拿着会诊单走到办公室门口。\n\n「喏，你要的。」\n\n坂口接过：「谢了。」\n\n她用笔点点最后一页。\n\n「先别谢。这里，签。」\n\n坂口：「你现在很像来催债的。」\n\n她笑了：「那你快点还。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "phone_turn",
+            "label": "签完交还给她",
+            "next": "does_not_leave",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "does_not_leave",
+        "speaker": "narrator",
+        "text": "坂口签完，她确认一眼，转身走了两步，又折回来。\n\n「对了，手机给我。」\n\n坂口：「手机？」\n\n她伸出手。\n\n「号码。」\n\n「你手机给我，我也用不上。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "phone_direct",
+            "label": "工作联系？",
+            "next": "direct_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "direct_reply",
+        "speaker": "actor",
+        "text": "她低头点开联系人。\n\n「一半吧。」\n\n坂口：「另一半？」\n\n她抬眼看他。\n\n「以后再说。」\n\n坂口把号码报给她。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "exchange_number",
+            "label": "等她输入号码",
+            "next": "saved_name",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saved_name",
+        "speaker": "narrator",
+        "text": "几秒后，坂口的手机震了一下。\n\n南条小夜香：我是南条。\n\n坂口：「我知道。」\n\n「通讯录不知道。」\n\n她凑过来看他保存联系人。\n\n「诶，等等。你不会真存‘南条医生’吧？」\n\n「看起来像医院群发名单。」\n\n坂口：「那存什么？」\n\n她脱口而出：「小夜香。」\n\n两个人对视。她先移开一点视线，自己笑了。\n\n「……先别真改。还没熟到那儿。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "phone_tail_a",
+            "label": "你也会不好意思？",
+            "next": "tail_a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "phone_tail_b",
+            "label": "所以只能工作联系？",
+            "next": "tail_b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "phone_tail_c",
+            "label": "半夜两点能发消息吗？",
+            "next": "tail_c",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "tail_a",
+        "speaker": "actor",
+        "text": "她立刻看回来。\n\n「少来。」\n\n她把手机塞回白大褂口袋。\n\n「半夜别发奇怪东西。」\n\n坂口：「什么算奇怪？」\n\n她走出去前回头。\n\n「你先发。我负责鉴定。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "phone_end_a",
+            "label": "记下她的号码",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_phone_exchanged",
+              "sayaka_sunday_invite_available",
+              "sayaka_private_contact_open"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tail_b",
+        "speaker": "actor",
+        "text": "她眨了一下眼。\n\n「我可没这么说。」\n\n「工作以外能不能联系——你先试试不就知道了？」\n\n说完，她自己先笑了。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "phone_end_b",
+            "label": "保存联系人",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_phone_exchanged",
+              "sayaka_sunday_invite_available",
+              "sayaka_private_contact_open"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tail_c",
+        "speaker": "actor",
+        "text": "「半夜两点别发无聊消息。」\n\n坂口：「什么算无聊？」\n\n她看他一眼。\n\n「你先发。我收到以后再判断。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "phone_end_c",
+            "label": "收起手机",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_phone_exchanged",
+              "sayaka_sunday_invite_available",
+              "sayaka_private_contact_open"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "mandatory": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "locks_saving": false
+  },
+  {
+    "id": "sayaka_lv1_first_date",
+    "actor_id": "doc_sayaka",
+    "title": "所以这算约会吗？",
+    "chapter": 1,
+    "location_id": "player_office",
+    "trigger_mode": "sunday",
+    "background_id": "italian_trattoria",
+    "outfit": "casual",
+    "minutes": 120,
+    "teaser": "第一个星期日，坂口主动给小夜香发了消息。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 200,
+    "category": "bond",
+    "gallery": {
+      "cg_id": "cg_sayaka_lv1_first_date",
+      "caption": "所以这算约会吗？",
+      "path": "assets/events/character_events/sayaka/lv1_split_bill.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "sayaka_week1_phone_exchange"
+      ],
+      "special_requirements": []
+    },
+    "start": "invite",
+    "nodes": [
+      {
+        "id": "invite",
+        "speaker": "narrator",
+        "text": "星期日。\n\n坂口：今天有空？一起吃饭？\n\n她很快回复。\n\n小夜香：有啊。\n\n隔了几秒，又来一条。\n\n小夜香：诶，你第一个星期天就点我？\n\n坂口：只是吃饭。\n\n小夜香：“只是”两个字听起来最可疑。\n\n小夜香：行，地址发我。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "go_trattoria",
+            "label": "去约好的意大利小餐馆",
+            "next": "arrival",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "arrival",
+        "speaker": "narrator",
+        "text": "坂口到的时候，小夜香已经站在餐厅门口。\n\n坂口：「你比我早。」\n\n她看了一眼手机。\n\n「两分钟。别讲得像我在门口望夫石一样。」\n\n她也看向暖灯和小双人桌。\n\n「你还挺会挑。」\n\n坂口：「怎么？」\n\n她指了指里面。\n\n「这个地方很容易让人误会诶。」\n\n「误会什么？」\n\n她笑得很自然。\n\n「误会你在约我啊。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "sit_down",
+            "label": "进去坐下",
+            "next": "outside_coat",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "outside_coat",
+        "speaker": "actor",
+        "text": "她翻开菜单。\n\n「医院外面看你还挺新鲜的。」\n\n坂口：「哪里不一样？」\n\n她抬眼认真看了两秒。\n\n「没白大褂。」\n\n坂口：「你也没。」\n\n她低头看看自己的衣服。\n\n「怎么，失望？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "outfit_miss_coat",
+            "label": "有一点",
+            "next": "coat_reply",
+            "effects": {
+              "affection": 1,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "outfit_pretty",
+            "label": "这样也很好看",
+            "next": "pretty_reply",
+            "effects": {
+              "affection": 2,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "outfit_same",
+            "label": "我还在适应",
+            "next": "same_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "coat_reply",
+        "speaker": "actor",
+        "text": "她扬眉。\n\n「哦？」\n\n坂口：「白大褂挺适合你。」\n\n她嘴角翘起来。\n\n「现在才发现？」\n\n「观察力不太行啊，坂口医生。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "coat_continue",
+            "label": "聊聊周末",
+            "next": "men_too_few",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "pretty_reply",
+        "speaker": "actor",
+        "text": "她原本准备继续看菜单，动作停了一下。\n\n「……你今天嘴怎么这么甜。」\n\n坂口：「实话。」\n\n她看他一眼，又低下头。\n\n「行。算你赢一次。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "pretty_continue",
+            "label": "聊聊周末",
+            "next": "men_too_few",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "same_reply",
+        "speaker": "actor",
+        "text": "她笑起来。\n\n「慢慢适应。以后还有机会。」\n\n说完，她自己先意识到这句话有点暧昧，抿了一下嘴。\n\n「……我是说周日。」\n\n坂口：「我什么都没说。」\n\n她瞪过来。\n\n「你闭嘴。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "same_continue",
+            "label": "聊聊周末",
+            "next": "men_too_few",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "men_too_few",
+        "speaker": "narrator",
+        "text": "坂口：「你周末平时都这么过？」\n\n「吃饭、逛街、喝点东西。」\n\n她叉起一小块食物。\n\n「有男人约的话，看人。」\n\n坂口：「这么直接？」\n\n「喜欢男人有什么好装的。」\n\n她看他一眼。\n\n「不过我也不是谁约都来。」\n\n坂口：「所以今天算通过筛选？」\n\n她笑了。\n\n「目前。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "like_men",
+            "label": "所以今天算通过筛选？",
+            "next": "added_value",
+            "effects": {
+              "affection": 1,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "added_value",
+        "speaker": "actor",
+        "text": "她笑了。\n\n「目前。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "meal_nearly_done",
+            "label": "继续吃完晚餐",
+            "next": "what_is_this",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "what_is_this",
+        "speaker": "actor",
+        "text": "饭快结束时，她用指尖转了一下杯子，忽然抬眼。\n\n「我问你个事。」\n\n坂口：「嗯。」\n\n她没有绕。\n\n「今天这个——」\n\n「算约会吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "date_direct",
+            "label": "当然算",
+            "next": "direct_date_reply",
+            "effects": {
+              "affection": 3,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_mutual_attraction",
+              "sayaka_lv1_path_direct"
+            ],
+            "clear_flags": [
+              "sayaka_first_date_retry_pending"
+            ]
+          },
+          {
+            "id": "date_tease",
+            "label": "你希望它算吗？",
+            "next": "teasing_date_reply",
+            "effects": {
+              "affection": 3,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_mutual_attraction",
+              "sayaka_lv1_path_teasing"
+            ],
+            "clear_flags": [
+              "sayaka_first_date_retry_pending"
+            ]
+          },
+          {
+            "id": "date_only_meal",
+            "label": "只是出来吃顿饭",
+            "next": "only_meal_reply",
+            "effects": {
+              "affection": 1,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_romantic_interest_visible",
+              "sayaka_first_date_retry_pending"
+            ],
+            "clear_flags": [
+              "sayaka_mutual_attraction"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "direct_date_reply",
+        "speaker": "actor",
+        "text": "她明显愣了半拍。\n\n「……这么干脆？」\n\n坂口：「不然呢？」\n\n她笑起来。\n\n「行。这个答案我喜欢。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "direct_to_bill",
+            "label": "等账单送来",
+            "next": "bill",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "teasing_date_reply",
+        "speaker": "actor",
+        "text": "她几乎没有犹豫。\n\n「希望啊。」\n\n说完，反而被坂口看得有点不自在。\n\n「干嘛？」\n\n坂口：「你答得挺快。」\n\n她轻咳一声。\n\n「我都出来了，还装什么。」\n\n「所以你呢？」\n\n坂口：「那今天算。」\n\n她点头。\n\n「好。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "tease_to_bill",
+            "label": "等账单送来",
+            "next": "bill",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "only_meal_reply",
+        "speaker": "actor",
+        "text": "「哦。」\n\n她若无其事地吃掉最后一口，然后抬眼。\n\n「那我下次努力一点。」\n\n坂口：「努力什么？」\n\n她笑了。\n\n「让它更像约会。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "only_meal_end",
+            "label": "结束这顿饭",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_romantic_interest_visible",
+              "sayaka_first_date_retry_pending"
+            ],
+            "clear_flags": [
+              "sayaka_mutual_attraction"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "bill",
+        "speaker": "narrator",
+        "text": "服务员放下账单。坂口刚伸手，小夜香已经把卡拿出来。\n\n「AA。」\n\n坂口：「我请吧。」\n\n她摇头。\n\n「不要。」\n\n坂口刚准备说话，她先抬手。\n\n「诶，先别自己脑补。」\n\n「我不是跟你划线，也不是在说‘我们只是朋友’。」\n\n她把自己的卡放到桌上。\n\n「我约会就这样。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_aa",
+            "label": "原则？",
+            "next": "aa_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "aa_reply",
+        "speaker": "actor",
+        "text": "她点头。\n\n「嗯。」\n\n停了一下，她冲坂口眨眼。\n\n「钱各付各的。」\n\n「别的嘛……以后再说。」\n\n坂口：「你故意的？」\n\n她笑得很开心。\n\n「当然。」",
+        "expression": "happy",
+        "choices": [
+          {
+            "id": "leave_restaurant",
+            "label": "饭后一起走一段",
+            "next": "walk_home",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "walk_home",
+        "speaker": "narrator",
+        "text": "饭后，两个人沿街走了一小段。分别前，小夜香停下来。\n\n「今天不错。」\n\n坂口：「只是不错？」\n\n她看他：「你还想要几分？」\n\n「至少有下次？」\n\n她终于笑得有点可爱。\n\n「有啊。不然我刚才跟你说‘以后再说’干嘛。」\n\n走出两步，她又回头。\n\n「下次还是你约。」\n\n坂口：「为什么？」\n\n她想了想。\n\n「因为被喜欢的人主动约，感觉还不错。」\n\n说完，她自己先有一点不好意思，马上补了一句：\n\n「行了，别得意。」",
+        "expression": "happy",
+        "choices": [
+          {
+            "id": "date_success_end",
+            "label": "和她道别",
+            "next": "@end",
+            "effects": {
+              "affection": 2,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_first_date_completed",
+              "sayaka_mutual_attraction",
+              "sayaka_romantic_interest_confirmed",
+              "sayaka_lv2_eligible_base"
+            ],
+            "clear_flags": [
+              "sayaka_first_date_retry_pending"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": false,
+    "target_level": 1,
+    "benefit_id": "unlock_sayaka_lv1_flirt",
+    "locks_saving": false,
+    "consumes_sunday": true,
+    "date_location_id": "restaurant_bar",
+    "rank_up_required_flags": [
+      "sayaka_mutual_attraction"
+    ],
+    "retry_if_flags": [
+      "sayaka_first_date_retry_pending"
+    ],
+    "location_label": "意大利小餐馆"
+  },
+  {
+    "id": "sayaka_lv1_monday_callback",
+    "actor_id": "doc_sayaka",
+    "title": "白大褂以后",
+    "chapter": 1,
+    "location_id": "clinic",
+    "trigger_mode": "location",
+    "background_id": "hallway",
+    "outfit": "white_coat",
+    "minutes": 5,
+    "teaser": "约会后的第一个工作日，小夜香在走廊里叫住了坂口。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 195,
+    "category": "contextual",
+    "gallery": {
+      "cg_id": "cg_sayaka_lv1_monday_callback",
+      "caption": "白大褂以后",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "sayaka_lv1_first_date"
+      ],
+      "days_after_required_events": 1,
+      "special_requirements": []
+    },
+    "start": "morning",
+    "nodes": [
+      {
+        "id": "morning",
+        "speaker": "narrator",
+        "text": "约会后的第一个工作日。\n\n走廊里，两个人像平常一样打招呼。\n\n「早。」\n\n「早。」\n\n擦肩以后，小夜香忽然又退回来半步。\n\n「诶。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "callback_ask",
+            "label": "怎么？",
+            "next": "callback_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "callback_reply",
+        "speaker": "actor",
+        "text": "她打量坂口。\n\n「还敢看我。」\n\n坂口：「为什么不敢？」\n\n她笑了。\n\n「没什么。有些男人周末挺会，周一一穿白大褂就开始装不认识。」\n\n坂口：「那我合格？」\n\n她点了一下头。\n\n「目前。」\n\n说完便转身去工作。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "callback_end",
+            "label": "开始今天的工作",
+            "next": "@end",
+            "effects": {
+              "affection": 1,
+              "familiarity": 3
+            },
+            "flags": [
+              "sayaka_monday_callback_complete"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "locks_saving": false
+  },
+  {
+    "id": "sayaka_lv2_working_hours",
+    "actor_id": "doc_sayaka",
+    "title": "工作时间",
+    "chapter": 2,
+    "location_id": "player_office",
+    "trigger_mode": "day_start",
+    "background_id": "player_office",
+    "outfit": "white_coat",
+    "minutes": 35,
+    "teaser": "小夜香抱着一份病历敲了敲门。正事办完以后，她却没有立刻离开。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 190,
+    "category": "rank_up",
+    "gallery": {
+      "cg_id": "cg_sayaka_lv2_working_hours",
+      "caption": "工作时间",
+      "path": "assets/events/character_events/sayaka/lv2_office_doorway.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [
+        "sayaka_lv1_monday_callback"
+      ],
+      "special_requirements": []
+    },
+    "start": "work_arrival",
+    "nodes": [
+      {
+        "id": "work_arrival",
+        "speaker": "narrator",
+        "text": "敲门声响了两下。\n\n「有空？」\n\n坂口抬头，看向她手里的病历夹。\n\n「看你手里那个是什么。」\n\n她把病历往桌上一放。\n\n「工作。」\n\n停了一下。\n\n「放心，不是来骚扰你的。」\n\n坂口：「听起来反而更可疑。」\n\n她笑了。\n\n「那你先把病历看完再怀疑。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "review_chart",
+            "label": "一起核对病历",
+            "next": "clinical_review",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "clinical_review",
+        "speaker": "actor",
+        "text": "她指着记录。\n\n「药物史我重新问过了。这个数值没问题。」\n\n坂口：「影像？」\n\n「下午。没变化的话原计划。」\n\n她把笔递过来。\n\n「这里签。」\n\n坂口签完，她拿回病历。\n\n「好。正事没了。」\n\n却没有走。",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "ask_staying",
+            "label": "你怎么还在？",
+            "next": "two_minutes",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "two_minutes",
+        "speaker": "actor",
+        "text": "她靠在桌边。\n\n「我不能赖两分钟？」\n\n坂口：「可以。」\n\n她笑了一下。\n\n「这还差不多。」\n\n她打量坂口。\n\n「你今天挺正常的嘛。」\n\n「我应该怎么样？」\n\n她耸肩。\n\n「不知道。有些男人周末挺会说，周一就开始装公事公办。」\n\n坂口：「你希望我不公事公办？」\n\n「工作当然要办。」\n\n停一下，她嘴角一翘。\n\n「人不用装那么正经。」",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "notice_coat",
+            "label": "视线在她身上停了一下",
+            "next": "white_coat",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "white_coat",
+        "speaker": "actor",
+        "text": "她马上抓到坂口的视线。\n\n「又看？」\n\n坂口：「白大褂。」\n\n她低头看看自己。\n\n「第一天没看够？」\n\n「第一天不熟。现在熟一点了。」\n\n她扬眉。\n\n「才吃过一次饭，就敢了？」\n\n坂口：「你介意？」\n\n「不介意啊。」\n\n她指了一下自己的脸。\n\n「不过看归看。眼睛往上放一点。」\n\n说完，她自己先笑了。",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "lv2_coat",
+            "label": "白大褂很适合你",
+            "next": "coat_compliment",
+            "effects": {
+              "affection": 1,
+              "familiarity": 1
+            },
+            "flags": [
+              "sayaka_lv2_flavor_white_coat"
+            ]
+          },
+          {
+            "id": "lv2_sexy",
+            "label": "你这样穿真的很性感",
+            "next": "sexy_compliment",
+            "effects": {
+              "affection": 2,
+              "familiarity": 1
+            },
+            "flags": [
+              "sayaka_lv2_flavor_sexy"
+            ]
+          },
+          {
+            "id": "lv2_scrubs",
+            "label": "其实手术服也很好看",
+            "next": "scrubs_compliment",
+            "effects": {
+              "affection": 1,
+              "familiarity": 1
+            },
+            "flags": [
+              "sayaka_lv2_flavor_scrubs"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "coat_compliment",
+        "speaker": "actor",
+        "text": "坂口：「白大褂很适合你。」\n\n「现在才发现？」\n\n坂口：「以前没敢说。」\n\n她眯起眼。\n\n「哦？那你现在胆子长得挺快。」",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "coat_to_past",
+            "label": "问起她以前的工作",
+            "next": "school_nurse",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sexy_compliment",
+        "speaker": "actor",
+        "text": "坂口：「你这样穿真的很性感。」\n\n她原本神情自然，反而被“真的”两个字打得停了一下。\n\n「……你今天怎么回事。」\n\n坂口：「实话。」\n\n她移开视线半秒。\n\n「行。这句我收下。」\n\n随即又恢复过来。\n\n「别以为说一句好听的，病历就不用写。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "sexy_to_past",
+            "label": "问起她以前的工作",
+            "next": "school_nurse",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "scrubs_compliment",
+        "speaker": "actor",
+        "text": "她是真的愣了一下。\n\n「……手术服？帽子也戴了，口罩也戴了？」\n\n坂口：「嗯。」\n\n「脸遮一半还看得出来？」\n\n「看得出来。」\n\n她盯着他两秒，眼睛终于弯起来。\n\n「那当然。」\n\n又小声补了一句：\n\n「还算你有眼光。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "scrubs_to_past",
+            "label": "问起她以前的工作",
+            "next": "school_nurse",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "school_nurse",
+        "speaker": "narrator",
+        "text": "坂口：「你以前在女校保健室也这么穿？」\n\n她直接笑了。\n\n「怎么可能。我要那样上班，家长会先来找我，不是学生。」\n\n「以前很老实？」\n\n她想了想。\n\n「比现在老实一点。」\n\n坂口：「一点？」\n\n她瞪了他一眼。\n\n「你意见很多诶。」\n\n她说，保健室里有体育课扭到脚的，有经期痛得脸色发白还说没事的，也有装肚子痛躲数学课的。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "ask_faking",
+            "label": "装的也收？",
+            "next": "school_nurse_care",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "school_nurse_care",
+        "speaker": "actor",
+        "text": "「第三次就看出来了。不过有时候还是让她躺。」\n\n坂口：「为什么？」\n\n她语气很自然。\n\n「因为有时候不是肚子痛。」\n\n「就是今天真的不想回教室。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "ask_other_students",
+            "label": "还有呢？",
+            "next": "heartbreak",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "heartbreak",
+        "speaker": "actor",
+        "text": "她笑着说：「还有失恋以后来哭的。」\n\n坂口：「保健室还管这个？」\n\n「不然把她赶出去？」\n\n她模仿学生的声音。\n\n「‘老师，他昨天还说最喜欢我。今天怎么就跟隔壁班的走了？’」\n\n坂口：「你怎么回？」\n\n她脱口而出：「男人很多。」\n\n坂口看着她。\n\n她自己先笑起来。\n\n「当然没真这么讲。我那时候还是很正经的老师，好吗。」\n\n「现在不正经？」\n\n她指指白大褂。\n\n「现在是很正经的医生。」\n\n然后冲他眨眼。\n\n「下班以后另算。」",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "ask_return",
+            "label": "你其实挺喜欢保健室，为什么回来？",
+            "next": "why_medicine",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "why_medicine",
+        "speaker": "actor",
+        "text": "她点头。\n\n「喜欢啊。有些学生在那儿反而比较肯说真话。」\n\n她沉默了两秒。\n\n「有几次吧，我知道她需要的已经不是睡一节课、喝杯热水就能解决的。」\n\n「我能做的是联系家长、叫救护车。然后人送走，我就只能等。」\n\n坂口：「不喜欢等？」\n\n她摇头。\n\n「不喜欢那种‘到这里就不是我的事了’的感觉。」\n\n「所以回来把剩下的念完。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "ask_other_reason",
+            "label": "还有别的原因？",
+            "next": "women_too_many",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "women_too_many",
+        "speaker": "actor",
+        "text": "她很认真地说：「全是女的。」\n\n坂口：「……你也是女的。」\n\n她白他一眼。\n\n「我知道啊。我自己是女的，跟我喜欢男人又不冲突。」\n\n「所以你想去男人多的地方？」\n\n「对啊。结果呢？」\n\n她朝门外一指。\n\n「这个医院怎么又一屋子女人。」\n\n坂口：「现在辞职还来得及。」\n\n她看他一眼。\n\n「嗯……暂时不了。」\n\n「为什么？」\n\n她笑了。\n\n「现在不是多了一个吗。」\n\n坂口：「我？」\n\n她故意上下看了看他。\n\n「目前算优质增量。」",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "statistics",
+            "label": "听起来像统计报告",
+            "next": "added_value",
+            "effects": {
+              "affection": 1,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "added_value",
+        "speaker": "actor",
+        "text": "她笑得停不下来。\n\n「职业病。」\n\n坂口：「所以你回来学医，是为了男人？」\n\n她马上摇头。\n\n「当然不是。医学是正事。」\n\n停一下。\n\n「男人嘛——附加价值。」\n\n坂口：「那星见的附加价值怎么样？」\n\n她看了他两秒。\n\n「最近还行。」\n\n坂口：「只有还行？」\n\n她笑。\n\n「你还挺贪心。」",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "ask_boundary",
+            "label": "你在医院里都这么说话？",
+            "next": "work_boundary",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "work_boundary",
+        "speaker": "actor",
+        "text": "「看人。」\n\n坂口：「所以我是什么人？」\n\n她想了一下。\n\n「约过一次。长得不错。工作也靠谱。」\n\n停一下。\n\n「可以继续观察。」\n\n坂口：「评价这么谨慎？」\n\n她举起病历。\n\n「这可是医院。」\n\n「撩你归撩你。这个要是漏了，我照样骂你。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "walk_to_door",
+            "label": "看她拿起病历",
+            "next": "ending",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ending",
+        "speaker": "narrator",
+        "text": "她走到门口。\n\n坂口：「南条。」\n\n她回头。\n\n「嗯？」\n\n「刚才那些都是真的。手术服也很好看。」\n\n她停了一下，这次没有立刻接梗。\n\n「……你今天很会嘛。」\n\n坂口：「所以？」\n\n她终于笑起来，抛了个很轻的媚眼。\n\n「那当然。」\n\n手碰到门把，她又回头。\n\n「下次上刀看术野。」\n\n坂口：「不能看你？」\n\n「有余力就偷看。出错我可不负责哄你。」",
+        "expression": "teasing",
+        "choices": [
+          {
+            "id": "lv2_complete",
+            "label": "回到工作",
+            "next": "@end",
+            "effects": {
+              "affection": 2,
+              "familiarity": 2
+            },
+            "flags": [
+              "sayaka_workplace_flirt_established",
+              "sayaka_school_nurse_background_shared",
+              "sayaka_medicine_return_motivation_known",
+              "sayaka_surgical_outfit_compliment_seen",
+              "sayaka_lv3_pre_event_eligible"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "target_level": 2,
+    "benefit_id": "unlock_sayaka_lv2_workplace_flirt",
+    "locks_saving": false
+  }
+]

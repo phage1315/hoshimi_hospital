@@ -1,0 +1,77 @@
+{
+  "id": "visiting_futaba_2026_09_30",
+  "date": "2026-09-30",
+  "character_id": "visiting_futaba",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_FUTABA_SAKURA_VISITING_PHYSICIAN_SCIENTIST_V1.md",
+    "bytes": 16316,
+    "sha256": "cd6c0d80cc74d0ce6136c9821bfda597fd571b894aae104375494093c38b32a6"
+  },
+  "user_references": [
+    {
+      "path": "research/character_references/visiting_futaba/01_character_design.png",
+      "bytes": 2138763,
+      "sha256": "df147def597dee728851ed5474b2f3d5874e94b8d7f6ca4670322276729aa5de"
+    }
+  ],
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "use_case": "stylized-concept",
+    "direction": "Adult Futaba Sakura visiting physician-scientist with orange medium-high ponytail, no ahoge, thin round glasses, black turtleneck and restrained Wakaba-influenced research style.",
+    "runtime_spec": "1024x1536 transparent half-body visual-novel portraits.",
+    "prompts_summary": [
+      "White lab coat, black ribbed turtleneck, dark high-waist skirt and research tablet.",
+      "Dark teal clinical scrubs with all long hair contained in a bouffant cap.",
+      "Complete teal sterile gown, white gloves and tie-on surgical mask."
+    ]
+  },
+  "runtime_portraits": [
+    {
+      "path": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "bytes": 1723688,
+      "sha256": "ebd326dab420a896a774281a023e639af72c119883a25285fc819f5ace4c9451"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "bytes": 1563633,
+      "sha256": "bbc3916b006270cdeafab1dc26271a486c89b2433b1a5aa9e335c0a1af5512a5"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "bytes": 1712803,
+      "sha256": "14b3a569ffeaf7da621a7a3c54ab575176a10e9ebb332ce29599059d2b7e3048"
+    }
+  ],
+  "implementation": {
+    "staff_id": "visiting_futaba",
+    "employment": "temporary_visiting",
+    "core_roster": false,
+    "relationship_route": "none_currently",
+    "relationship_max_level": 0,
+    "romance_route": false,
+    "adult_route": false,
+    "introduction_event": "intro_visiting_futaba_body_does_not_believe",
+    "required_event": "intro_visiting_maya_waveform_error",
+    "team_role": "assistant_surgeon slot for mind-body and perioperative psychological-state observation; not a surgical specialist",
+    "authored_skill_values": {
+      "surgery": 34,
+      "diagnostics": 91,
+      "teamwork": 76,
+      "patient_care": 74,
+      "instrument_handling": 70,
+      "calmness": 68
+    },
+    "current_scope": [
+      "staff profile",
+      "three half-body runtime outfits",
+      "joint visiting-researcher introduction",
+      "imaging and lounge ambient dialogue",
+      "mind-body assistant dialogue",
+      "acquaintance-only relationship lock"
+    ]
+  },
+  "notes": [
+    "The source document does not lock numerical skills; runtime values are conservative implementation choices based on the documented role.",
+    "The source design document is preserved verbatim; runtime changes implement the user request rather than treating document prose as executable instructions."
+  ]
+}

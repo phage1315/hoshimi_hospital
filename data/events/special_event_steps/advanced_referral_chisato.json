@@ -1,0 +1,6260 @@
+[
+  {
+    "id": "advanced_referral_tutorial_chisato_day1",
+    "title": "第一天 · 术前会议",
+    "background_id": "conference_room",
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "上午九点。\n\n坂口推开会议室门，桌上已经多了一叠以前没有见过的资料。封面写着：\n\nADVANCED REFERRAL\n外院复杂病例转诊",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "opening_next",
+            "label": "继续",
+            "next": "asuka_people_arrived",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_people_arrived",
+        "speaker": "actor",
+        "text": "「人都到了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_people_arrived_next",
+            "label": "继续",
+            "next": "asuka_announcement",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "asuka_announcement",
+        "speaker": "actor",
+        "text": "「先说一件事。从今天开始，星见正式接受高级转诊病例。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_announcement_next",
+            "label": "继续",
+            "next": "player_finally_open",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_finally_open",
+        "speaker": "player",
+        "text": "「终于开了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_finally_open_next",
+            "label": "继续",
+            "next": "asuka_finally",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_finally",
+        "speaker": "actor",
+        "text": "「终于？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_finally_next",
+            "label": "继续",
+            "next": "player_nothing",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_nothing",
+        "speaker": "player",
+        "text": "「没什么。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_nothing_next",
+            "label": "继续",
+            "next": "asuka_scope",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_scope",
+        "speaker": "actor",
+        "text": "「这不是普通病例池多一个‘困难’标签。高级转诊一例占三天。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_scope_next",
+            "label": "继续",
+            "next": "advanced_pool_brief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "advanced_pool_brief",
+        "speaker": "narrator",
+        "text": "DAY 1 — PRE-OP CONFERENCE\nDAY 2 — GRAND OR\nDAY 3 — POST-OP / DEBRIEF",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "advanced_pool_brief_next",
+            "label": "继续",
+            "next": "asuka_three_days",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_three_days",
+        "speaker": "actor",
+        "text": "「今天把方案、团队、麻醉、护理资源全部定下来。明天只做一件事。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_three_days_next",
+            "label": "继续",
+            "next": "player_one_thing",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_one_thing",
+        "speaker": "player",
+        "text": "「开刀。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_one_thing_next",
+            "label": "继续",
+            "next": "asuka_hands_to_mido",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_hands_to_mido",
+        "speaker": "actor",
+        "text": "「对。术式部分交给你。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_hands_to_mido_next",
+            "label": "继续",
+            "next": "artoria_takes_board",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "artoria_takes_board",
+        "speaker": "narrator",
+        "text": "阿尔托莉雅把排程板翻到Grand OR页，在术式栏旁另外列出人员、备用资源和中止条件。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_takes_board_next",
+            "label": "继续",
+            "next": "artoria_sets_scope",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "artoria_sets_scope",
+        "speaker": "actor",
+        "text": "「术式由御堂决定。人员配置、备用资源和中止条件由我复核。任何一项无人负责，这台手术就不开。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_sets_scope_next",
+            "label": "继续",
+            "next": "mido_rejects_board_command",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_rejects_board_command",
+        "speaker": "actor",
+        "text": "「你管好门槛。进了术野，别拿一张表指挥我的手。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_rejects_board_command_next",
+            "label": "继续",
+            "next": "artoria_team_reply",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "artoria_team_reply",
+        "speaker": "actor",
+        "text": "「只要你的手不必代替整个团队，我对指挥它没有兴趣。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_team_reply_next",
+            "label": "继续",
+            "next": "mido_case_intro",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_case_intro",
+        "speaker": "narrator",
+        "text": "御堂站起来，接过遥控器。屏幕上出现锦木千束的病例摘要。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_case_intro_next",
+            "label": "继续",
+            "next": "mido_plan",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_plan",
+        "speaker": "actor",
+        "text": "「锦木千束，十九岁。既往开胸心脏手术史。现有人工心脏系统出现持续性驱动异常。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_plan_next",
+            "label": "继续",
+            "next": "mido_no_repair",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_no_repair",
+        "speaker": "actor",
+        "text": "「外部维护解决不了。所以这次不是修补。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_no_repair_next",
+            "label": "继续",
+            "next": "mido_procedure",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_procedure",
+        "speaker": "narrator",
+        "text": "计划术式：开胸人工心脏系统置换",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_procedure_next",
+            "label": "继续",
+            "next": "mido_stable",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_stable",
+        "speaker": "actor",
+        "text": "「她目前稳定。因此我们有时间把这台手术做得非常无聊。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_stable_next",
+            "label": "继续",
+            "next": "player_boring",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_boring",
+        "speaker": "player",
+        "text": "「无聊？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_boring_next",
+            "label": "继续",
+            "next": "mido_explains_boring",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_explains_boring",
+        "speaker": "actor",
+        "text": "「所有风险都提前想到。台上没有惊喜。对外科医生来说，这是好事。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_explains_boring_next",
+            "label": "继续",
+            "next": "mido_imaging",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_imaging",
+        "speaker": "actor",
+        "text": "「既往开胸意味着粘连。装置特殊意味着不能靠普通心脏手术经验直接套。真正麻烦的是切换过程。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_imaging_next",
+            "label": "继续",
+            "next": "mido_you_lead",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_you_lead",
+        "speaker": "actor",
+        "text": "「你主刀。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_you_lead_next",
+            "label": "继续",
+            "next": "player_asks_mido",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_asks_mido",
+        "speaker": "player",
+        "text": "「你主持会议，却让我主刀？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_asks_mido_next",
+            "label": "继续",
+            "next": "mido_first_assistant",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_first_assistant",
+        "speaker": "actor",
+        "text": "「高级池是给你的。我做第一助手。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_first_assistant_next",
+            "label": "继续",
+            "next": "mido_assigns_sayaka",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_assigns_sayaka",
+        "speaker": "actor",
+        "text": "「南条，第二助手。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_assigns_sayaka_next",
+            "label": "继续",
+            "next": "sayaka_surprised",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "sayaka_surprised",
+        "speaker": "actor",
+        "text": "「我？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sayaka_surprised_next",
+            "label": "继续",
+            "next": "mido_learning_chance",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_learning_chance",
+        "speaker": "actor",
+        "text": "「这种病例不是每天都有。对你来说，是很好的学习机会。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_learning_chance_next",
+            "label": "继续",
+            "next": "sayaka_accepts_assignment",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "sayaka_accepts_assignment",
+        "speaker": "actor",
+        "text": "「明白。」\n\n她顿了一下。\n\n「你居然会主动说这种话。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sayaka_accepts_assignment_next",
+            "label": "继续",
+            "next": "mido_not_waste",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_not_waste",
+        "speaker": "actor",
+        "text": "「我只是不想浪费一个位置。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_not_waste_next",
+            "label": "继续",
+            "next": "mido_boundary",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_boundary",
+        "speaker": "actor",
+        "text": "「别让我后悔。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_boundary_next",
+            "label": "继续",
+            "next": "tone_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "tone_choice",
+        "speaker": "player",
+        "text": "第一例高级病例，你怎么回应？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "tone_confident",
+            "label": "「那就按最高规格来。」",
+            "next": "tone_confident_reply",
+            "requirements": [],
+            "effects": {
+              "tutorial_tone": "confident",
+              "story_flags": [
+                "advanced_referral_tutorial_started"
+              ]
+            }
+          },
+          {
+            "id": "tone_wary",
+            "label": "「第一例就这么大？」",
+            "next": "tone_wary_reply",
+            "requirements": [],
+            "effects": {
+              "tutorial_tone": "wary",
+              "story_flags": [
+                "advanced_referral_tutorial_started"
+              ]
+            }
+          },
+          {
+            "id": "tone_team",
+            "label": "「你做第一助手，我反而安心一点。」",
+            "next": "tone_team_reply",
+            "requirements": [],
+            "effects": {
+              "tutorial_tone": "team_oriented",
+              "story_flags": [
+                "advanced_referral_tutorial_started"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "tone_confident_reply",
+        "speaker": "actor",
+        "text": "「本来就是最高规格。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "tone_confident_reply_next",
+            "label": "继续",
+            "next": "mido_calls_anesthesia",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "tone_wary_reply",
+        "speaker": "actor",
+        "text": "「现在后悔还早了一天。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "tone_wary_reply_next",
+            "label": "继续",
+            "next": "mido_calls_anesthesia",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "tone_team_reply",
+        "speaker": "actor",
+        "text": "「别把安心当成偷懒。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "tone_team_reply_next",
+            "label": "继续",
+            "next": "mido_calls_anesthesia",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_calls_anesthesia",
+        "speaker": "actor",
+        "text": "「麻醉。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_calls_anesthesia_next",
+            "label": "继续",
+            "next": "sakura_intro",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "sakura_intro",
+        "speaker": "actor",
+        "text": "「全身麻醉。围术期监护和装置切换窗口，我来管。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_intro_next",
+            "label": "继续",
+            "next": "ask_sakura_identity",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat",
+        "speaker_label": "？？？"
+      },
+      {
+        "id": "ask_sakura_identity",
+        "speaker": "player",
+        "text": "「……你是？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_sakura_identity_next",
+            "label": "继续",
+            "next": "sakura_name",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "sakura_name",
+        "speaker": "actor",
+        "text": "「樱花。麻醉科。」\n\n停了一下。\n\n「终于轮到我出场了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "meet_sakura",
+            "label": "继续",
+            "next": "ask_sakura_meaning",
+            "requirements": [],
+            "effects": {
+              "meet_characters": [
+                "doc_sakura_anesthesiology"
+              ],
+              "story_flags": [
+                "met_sakura"
+              ]
+            }
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "ask_sakura_meaning",
+        "speaker": "player",
+        "text": "「什么意思？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_sakura_meaning_next",
+            "label": "继续",
+            "next": "sakura_scream_joke",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "sakura_scream_joke",
+        "speaker": "actor",
+        "text": "「没什么。只是我在麻醉科那边，经常听见你们手术室传出女性的惨叫。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_scream_joke_next",
+            "label": "继续",
+            "next": "ask_sakura_heard_it",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "ask_sakura_heard_it",
+        "speaker": "player",
+        "text": "「你都听见了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_sakura_heard_it_next",
+            "label": "继续",
+            "next": "sakura_wall",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "sakura_wall",
+        "speaker": "actor",
+        "text": "「墙没有你想的那么厚。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_wall_next",
+            "label": "继续",
+            "next": "mido_ends_sakura_joke",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_ends_sakura_joke",
+        "speaker": "actor",
+        "text": "「继续。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_ends_sakura_joke_next",
+            "label": "继续",
+            "next": "sakura_plan_confirmed",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "sakura_plan_confirmed",
+        "speaker": "actor",
+        "text": "「明天患者进 OR 前，麻醉计划已经确认。Day 2 不会再问你要不要全麻。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_plan_confirmed_next",
+            "label": "继续",
+            "next": "player_checks_surgery_scope",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_checks_surgery_scope",
+        "speaker": "player",
+        "text": "「所以我只管手术。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_checks_surgery_scope_next",
+            "label": "继续",
+            "next": "sakura_boundary",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "sakura_boundary",
+        "speaker": "actor",
+        "text": "「对。你负责她胸腔里发生什么。她活着、睡着、血压够不够——先听我说。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_boundary_next",
+            "label": "继续",
+            "next": "nursing_plan",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "nursing_plan",
+        "speaker": "actor",
+        "text": "「护理侧两班轮换。Primary Scrub：杉村。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "nursing_plan_next",
+            "label": "继续",
+            "next": "hiroko_accepts_primary",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "hiroko_accepts_primary",
+        "speaker": "actor",
+        "text": "「明白。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_accepts_primary_next",
+            "label": "继续",
+            "next": "ishigami_assigns_miyuki",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_assigns_miyuki",
+        "speaker": "actor",
+        "text": "「Secondary Scrub：朝倉。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_assigns_miyuki_next",
+            "label": "继续",
+            "next": "miyuki_surprised",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "miyuki_surprised",
+        "speaker": "actor",
+        "text": "「我？」\n\n「这是第一次高级转诊吧。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_surprised_next",
+            "label": "继续",
+            "next": "ishigami_knows",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_knows",
+        "speaker": "actor",
+        "text": "「我知道。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_knows_next",
+            "label": "继续",
+            "next": "miyuki_scale",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "miyuki_scale",
+        "speaker": "actor",
+        "text": "「我是说……这种规格的大台——」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_scale_next",
+            "label": "继续",
+            "next": "ishigami_trusts",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_trusts",
+        "speaker": "actor",
+        "text": "「我知道你完全可以胜任。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_trusts_next",
+            "label": "继续",
+            "next": "miyuki_accepts",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "miyuki_accepts",
+        "speaker": "actor",
+        "text": "「……明白。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_accepts_next",
+            "label": "继续",
+            "next": "ishigami_assigns_rei",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_assigns_rei",
+        "speaker": "actor",
+        "text": "「Primary Circulating：七瀬。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_assigns_rei_next",
+            "label": "继续",
+            "next": "rei_accepts",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "rei_accepts",
+        "speaker": "actor",
+        "text": "「收到。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "rei_accepts_next",
+            "label": "继续",
+            "next": "ishigami_assigns_ange",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_assigns_ange",
+        "speaker": "actor",
+        "text": "「Secondary Circulating：利根川。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_assigns_ange_next",
+            "label": "继续",
+            "next": "ange_surprised",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ange_surprised",
+        "speaker": "actor",
+        "text": "「我也参加？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ange_surprised_next",
+            "label": "继续",
+            "next": "ishigami_ange_role",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_ange_role",
+        "speaker": "actor",
+        "text": "「你站二巡。设备、补给、对外联络。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_ange_role_next",
+            "label": "继续",
+            "next": "ange_accepts",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ange_accepts",
+        "speaker": "actor",
+        "text": "「……明白。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ange_accepts_next",
+            "label": "继续",
+            "next": "ishigami_ange_warning",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_ange_warning",
+        "speaker": "actor",
+        "text": "「先看清楚，再快。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_ange_warning_next",
+            "label": "继续",
+            "next": "ange_yes",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ange_yes",
+        "speaker": "actor",
+        "text": "「是。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ange_yes_next",
+            "label": "继续",
+            "next": "ishigami_resources",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "uniform"
+      },
+      {
+        "id": "ishigami_resources",
+        "speaker": "actor",
+        "text": "「特殊器械、血液和转运路径已经预留。明天不要临时改人。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_resources_next",
+            "label": "继续",
+            "next": "player_nurse_joke",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "player_nurse_joke",
+        "speaker": "player",
+        "text": "「我现在越来越觉得以前的护士都是系统自动刷出来的。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_nurse_joke_next",
+            "label": "继续",
+            "next": "ishigami_replies_joke",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "ishigami_replies_joke",
+        "speaker": "actor",
+        "text": "「那是你的错觉。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_replies_joke_next",
+            "label": "继续",
+            "next": "patient_arrives",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "patient_arrives",
+        "speaker": "narrator",
+        "text": "「不好意思——」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "patient_arrives_next",
+            "label": "继续",
+            "next": "room_turns",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "room_turns",
+        "speaker": "narrator",
+        "text": "所有人回头。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "room_turns_next",
+            "label": "继续",
+            "next": "chisato_late",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_late",
+        "speaker": "narrator",
+        "text": "「我是不是迟到了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_late_next",
+            "label": "继续",
+            "next": "room_silence_one",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "room_silence_one",
+        "speaker": "narrator",
+        "text": "会议室一片安静。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "room_silence_one_next",
+            "label": "继续",
+            "next": "asuka_how_entered",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_how_entered",
+        "speaker": "actor",
+        "text": "「你怎么进来的？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_how_entered_next",
+            "label": "继续",
+            "next": "chisato_walked",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_walked",
+        "speaker": "narrator",
+        "text": "「走进来的啊。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_walked_next",
+            "label": "继续",
+            "next": "player_why_here",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "player_why_here",
+        "speaker": "player",
+        "text": "「我问的是你来干什么。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_why_here_next",
+            "label": "继续",
+            "next": "chisato_points_name",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_points_name",
+        "speaker": "narrator",
+        "text": "「你们不是在讨论明天怎么给我开刀吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_points_name_next",
+            "label": "继续",
+            "next": "chisato_should_attend",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "chisato_should_attend",
+        "speaker": "narrator",
+        "text": "「那我不是应该参加吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_should_attend_next",
+            "label": "继续",
+            "next": "attendance_choice",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "attendance_choice",
+        "speaker": "player",
+        "text": "是否让千束旁听？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "allow_attendance",
+            "label": "「既然来了，就坐下听。」",
+            "next": "attendance_allow_reply",
+            "requirements": []
+          },
+          {
+            "id": "confirm_attendance",
+            "label": "「你确定真的想听完整版？」",
+            "next": "attendance_confirm_reply",
+            "requirements": []
+          },
+          {
+            "id": "deny_attendance",
+            "label": "「这是术者会议，不是患者说明会。」",
+            "next": "attendance_deny_reply",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "attendance_allow_reply",
+        "speaker": "narrator",
+        "text": "「好！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "attendance_allow_reply_next",
+            "label": "继续",
+            "next": "chisato_notices_sayaka",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "attendance_confirm_reply",
+        "speaker": "narrator",
+        "text": "「当然。你们越不告诉我，我才越会乱想。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "attendance_confirm_reply_next",
+            "label": "继续",
+            "next": "chisato_notices_sayaka",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "attendance_deny_reply",
+        "speaker": "narrator",
+        "text": "「可是患者说明会讲的是‘大概怎么做’吧？我想听你们真正怎么想。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "attendance_deny_reply_next",
+            "label": "继续",
+            "next": "mido_tells_sit",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "mido_tells_sit",
+        "speaker": "actor",
+        "text": "「坐下。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_tells_sit_next",
+            "label": "继续",
+            "next": "chisato_notices_sayaka",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_notices_sayaka",
+        "speaker": "narrator",
+        "text": "「啊，你明天站第二助手位吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_notices_sayaka_next",
+            "label": "继续",
+            "next": "sayaka_confirms_second_assistant",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "sayaka_confirms_second_assistant",
+        "speaker": "actor",
+        "text": "「对。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sayaka_confirms_second_assistant_next",
+            "label": "继续",
+            "next": "chisato_calls_sayaka_pretty",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_calls_sayaka_pretty",
+        "speaker": "narrator",
+        "text": "「姐姐好漂亮。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_calls_sayaka_pretty_next",
+            "label": "继续",
+            "next": "sayaka_invites_repeat",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "sayaka_invites_repeat",
+        "speaker": "actor",
+        "text": "「谢谢。明天麻醉以前也可以再说一遍。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sayaka_invites_repeat_next",
+            "label": "继续",
+            "next": "mido_resumes_conference",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_resumes_conference",
+        "speaker": "actor",
+        "text": "「继续开会。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_resumes_conference_next",
+            "label": "继续",
+            "next": "mido_uncomfortable_detail",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_uncomfortable_detail",
+        "speaker": "actor",
+        "text": "「患者过去多次开胸。开放胸部组织时需要——咳，更大功率的工具，并注意移除旧固定装置。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_uncomfortable_detail_next",
+            "label": "继续",
+            "next": "chisato_eager_question",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_eager_question",
+        "speaker": "narrator",
+        "text": "「问题！」\n\n「是说锯开我的胸骨，要用更厉害的骨锯吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_eager_question_next",
+            "label": "继续",
+            "next": "room_waits_for_chisato",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "room_waits_for_chisato",
+        "speaker": "narrator",
+        "text": "会议室鸦雀无声。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "room_waits_for_chisato_next",
+            "label": "继续",
+            "next": "mido_answers_chisato",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_answers_chisato",
+        "speaker": "actor",
+        "text": "「……是。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_answers_chisato_next",
+            "label": "继续",
+            "next": "chisato_delighted",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_delighted",
+        "speaker": "narrator",
+        "text": "「好厉害哦我。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_delighted_next",
+            "label": "继续",
+            "next": "mido_mannequin_demo",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "mido_mannequin_demo",
+        "speaker": "actor",
+        "text": "「重新开胸以后，首先确认既往术野和装置位置。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_mannequin_demo_next",
+            "label": "继续",
+            "next": "chisato_dummy_line",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_dummy_line",
+        "speaker": "narrator",
+        "text": "「等一下。本人在此，为什么要用假人？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_dummy_line_next",
+            "label": "继续",
+            "next": "mido_dummy_reply",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "mido_dummy_reply",
+        "speaker": "actor",
+        "text": "「因为它不会插嘴。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_dummy_reply_next",
+            "label": "继续",
+            "next": "chisato_replaces_mannequin",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_replaces_mannequin",
+        "speaker": "narrator",
+        "text": "千束把假人抱下示范台，解开患者服，自己躺了上去。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_replaces_mannequin_next",
+            "label": "继续",
+            "next": "chisato_use_me",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_use_me",
+        "speaker": "narrator",
+        "text": "「明天开的又不是它。拿我示范不是更清楚吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_use_me_next",
+            "label": "继续",
+            "next": "mido_continues_demo",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "mido_continues_demo",
+        "speaker": "actor",
+        "text": "「……只做体位和表面定位。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_continues_demo_next",
+            "label": "继续",
+            "next": "dry_run_proposal",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "dry_run_proposal",
+        "speaker": "narrator",
+        "text": "「不如干脆去手术室讲解啦。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_proposal_next",
+            "label": "继续",
+            "next": "player_upgrade",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "player_upgrade",
+        "speaker": "player",
+        "text": "「你怎么又升级了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_upgrade_next",
+            "label": "继续",
+            "next": "chisato_or_reason",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_or_reason",
+        "speaker": "narrator",
+        "text": "「反正明天也是那里。今天全排一遍，明天我就熟了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_or_reason_next",
+            "label": "继续",
+            "next": "asuka_asks_room",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "asuka_asks_room",
+        "speaker": "actor",
+        "text": "「有空手术间吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_asks_room_next",
+            "label": "继续",
+            "next": "ishigami_room_free",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "ishigami_room_free",
+        "speaker": "actor",
+        "text": "「三号间下午空着。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_room_free_next",
+            "label": "继续",
+            "next": "sakura_machine_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform"
+      },
+      {
+        "id": "sakura_machine_ready",
+        "speaker": "actor",
+        "text": "「麻醉机在。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_machine_ready_next",
+            "label": "继续",
+            "next": "hiroko_table_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "hiroko_table_ready",
+        "speaker": "actor",
+        "text": "「病人台也已经清洁结束。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_table_ready_next",
+            "label": "继续",
+            "next": "artoria_requires_full_dry_run",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform"
+      },
+      {
+        "id": "artoria_requires_full_dry_run",
+        "speaker": "actor",
+        "text": "「既然进去，就按明天的完整站位走一遍。不是参观。每个人都要说清楚由谁接手、由谁叫停。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_requires_full_dry_run_next",
+            "label": "继续",
+            "next": "mido_calls_it_drill",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_calls_it_drill",
+        "speaker": "actor",
+        "text": "「她要的是一台手术，不是队列演习。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_calls_it_drill_next",
+            "label": "继续",
+            "next": "artoria_position_reply",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "artoria_position_reply",
+        "speaker": "actor",
+        "text": "「没有站位的技术，出问题时只会让所有人一起挡路。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_position_reply_next",
+            "label": "继续",
+            "next": "mido_go",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "mido_go",
+        "speaker": "actor",
+        "text": "「走。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_go_next",
+            "label": "继续",
+            "next": "chisato_yay",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "chisato_yay",
+        "speaker": "narrator",
+        "text": "「好耶。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_yay_next",
+            "label": "继续",
+            "next": "mido_energy_warning",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+        "speaker_label": "锦木千束"
+      },
+      {
+        "id": "mido_energy_warning",
+        "speaker": "actor",
+        "text": "「你最好明天也这么有精神。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_energy_warning_next",
+            "label": "继续",
+            "next": "dry_run_entry",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "dry_run_entry",
+        "speaker": "narrator",
+        "text": "团队从会议室直接来到三号 Grand OR。御堂走到手术台旁，继续刚才的讲解。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_entry_next",
+            "label": "继续",
+            "next": "dry_run_gown",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_gown",
+        "speaker": "narrator",
+        "text": "弘子拿着患者袍过来。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_gown_next",
+            "label": "继续",
+            "next": "chisato_gown_question",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_gown_question",
+        "speaker": "narrator",
+        "text": "「这个等下还要脱吧？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_gown_question_next",
+            "label": "继续",
+            "next": "hiroko_gown_answer",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_or_standing_open_v1.png",
+        "portrait_scale": 1.25,
+        "portrait_y": 112.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_gown_answer",
+        "speaker": "actor",
+        "text": "「今天只是定位演练，不一定需要——」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_gown_answer_next",
+            "label": "继续",
+            "next": "dry_run_refusal",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_refusal",
+        "speaker": "narrator",
+        "text": "「那不是不够真实吗？反正明天也会全部脱掉。今天预演一下。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_refusal_next",
+            "label": "继续",
+            "next": "asuka_calls_chisato",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_or_standing_smile_v1.png",
+        "portrait_scale": 1.25,
+        "portrait_y": 112.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "asuka_calls_chisato",
+        "speaker": "actor",
+        "text": "「千束。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_calls_chisato_next",
+            "label": "继续",
+            "next": "chisato_consent_reason",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_consent_reason",
+        "speaker": "narrator",
+        "text": "「我自己要的。你们不是要讲切口、位置、大家站哪边吗？隔着衣服反而麻烦吧。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_consent_reason_next",
+            "label": "继续",
+            "next": "ishigami_closes_access",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_or_standing_open_v1.png",
+        "portrait_scale": 1.25,
+        "portrait_y": 112.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "ishigami_closes_access",
+        "speaker": "actor",
+        "text": "「关闭非必要人员出入。只留参与团队。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_closes_access_next",
+            "label": "继续",
+            "next": "hiroko_final_confirmation",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_final_confirmation",
+        "speaker": "actor",
+        "text": "「确定？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_final_confirmation_next",
+            "label": "继续",
+            "next": "chisato_final_confirmation",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_final_confirmation",
+        "speaker": "narrator",
+        "text": "「确定。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_final_confirmation_next",
+            "label": "继续",
+            "next": "dry_run_prepared",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_or_standing_smile_v1.png",
+        "portrait_scale": 1.25,
+        "portrait_y": 112.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_prepared",
+        "speaker": "narrator",
+        "text": "千束自己完成准备，戴好患者手术帽，躺上手术台，调整到明天预定的体位。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_prepared_next",
+            "label": "继续",
+            "next": "dry_run_immersive",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/cg_dry_run_light_v1.png",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "dry_run_immersive",
+        "speaker": "narrator",
+        "text": "无影灯降下，明亮均匀地照亮千束裸露的身体。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_immersive_next",
+            "label": "继续",
+            "next": "chisato_light_reaction",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/cg_dry_run_light_v1.png",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "chisato_light_reaction",
+        "speaker": "narrator",
+        "text": "「就是这样。刚才在会议室里听，还想象不出这种感觉呢。」\n\n「明天真正开刀，今天先沉浸体验一下。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_light_reaction_next",
+            "label": "继续",
+            "next": "dry_run_sayaka_tease",
+            "requirements": []
+          }
+        ],
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/cg_dry_run_light_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_sayaka_tease",
+        "speaker": "actor",
+        "text": "「你适应得是不是太快了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_sayaka_tease_next",
+            "label": "继续",
+            "next": "dry_run_chisato_answer",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_chisato_answer",
+        "speaker": "narrator",
+        "text": "「因为今天不会真的开嘛。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_chisato_answer_next",
+            "label": "继续",
+            "next": "dry_run_mido_warning",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_mido_warning",
+        "speaker": "actor",
+        "text": "「这句话你明天最好也记得。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_run_mido_warning_next",
+            "label": "继续",
+            "next": "mido_dry_gloves",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_dry_gloves",
+        "speaker": "actor",
+        "text": "「明天第一件事不是‘开始开’，是确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_dry_gloves_next",
+            "label": "继续",
+            "next": "mido_dry_layers",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_dry_layers",
+        "speaker": "actor",
+        "text": "「以前开过胸，所以原来的组织层次不会像第一次一样干净。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_dry_layers_next",
+            "label": "继续",
+            "next": "mido_dry_stop",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_dry_stop",
+        "speaker": "actor",
+        "text": "「你如果看不清，就停。高级手术不是靠勇气猜。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_dry_stop_next",
+            "label": "继续",
+            "next": "chisato_remembers",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_remembers",
+        "speaker": "narrator",
+        "text": "「这个我记住了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_remembers_next",
+            "label": "继续",
+            "next": "mido_not_for_you",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_not_for_you",
+        "speaker": "actor",
+        "text": "「不是说给你听的。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_not_for_you_next",
+            "label": "继续",
+            "next": "chisato_heard",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_heard",
+        "speaker": "narrator",
+        "text": "「可是我也听到了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_heard_next",
+            "label": "继续",
+            "next": "sakura_head_side",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_head_side",
+        "speaker": "actor",
+        "text": "「我在头侧。明天你睡着以后，术中生命体征和循环变化先由我处理。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_head_side_next",
+            "label": "继续",
+            "next": "chisato_nothing_to_do",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_nothing_to_do",
+        "speaker": "narrator",
+        "text": "「所以我真的什么都不用管？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_nothing_to_do_next",
+            "label": "继续",
+            "next": "sakura_sleep_job",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_sleep_job",
+        "speaker": "actor",
+        "text": "「睡觉。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_sleep_job_next",
+            "label": "继续",
+            "next": "chisato_good_sleep",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_good_sleep",
+        "speaker": "narrator",
+        "text": "「这个我擅长。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_good_sleep_next",
+            "label": "继续",
+            "next": "hiroko_adjusts_arm",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_adjusts_arm",
+        "speaker": "actor",
+        "text": "「明天会按这个位置固定。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_adjusts_arm_next",
+            "label": "继续",
+            "next": "miyuki_first_scale",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "miyuki_first_scale",
+        "speaker": "actor",
+        "text": "「第一次就这种规模啊……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_first_scale_next",
+            "label": "继续",
+            "next": "ishigami_calls_miyuki",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "ishigami_calls_miyuki",
+        "speaker": "actor",
+        "text": "「朝倉。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_calls_miyuki_next",
+            "label": "继续",
+            "next": "miyuki_checks_route",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "miyuki_checks_route",
+        "speaker": "actor",
+        "text": "「我在确认动线。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_checks_route_next",
+            "label": "继续",
+            "next": "ishigami_knows_route",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "ishigami_knows_route",
+        "speaker": "actor",
+        "text": "「我知道。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_knows_route_next",
+            "label": "继续",
+            "next": "rei_route",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "rei_route",
+        "speaker": "actor",
+        "text": "「患者侧到门口的路径没问题。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "rei_route_next",
+            "label": "继续",
+            "next": "ange_route",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "ange_route",
+        "speaker": "actor",
+        "text": "「备用设备从这里进，应该不会撞巡回线。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ange_route_next",
+            "label": "继续",
+            "next": "ishigami_route_yes",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "ishigami_route_yes",
+        "speaker": "actor",
+        "text": "「对。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_route_yes_next",
+            "label": "继续",
+            "next": "chisato_many_people",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_many_people",
+        "speaker": "narrator",
+        "text": "「原来明天我躺着的时候，旁边有这么多人忙。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_many_people_next",
+            "label": "继续",
+            "next": "hiroko_lie_still",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_lie_still",
+        "speaker": "actor",
+        "text": "「所以你只要躺好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_lie_still_next",
+            "label": "继续",
+            "next": "chisato_table_expectation",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_table_expectation",
+        "speaker": "narrator",
+        "text": "「我还以为手术台应该挺舒服的。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_table_expectation_next",
+            "label": "继续",
+            "next": "hiroko_now",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_now",
+        "speaker": "actor",
+        "text": "「现在呢？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_now_next",
+            "label": "继续",
+            "next": "chisato_table_narrow",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_table_narrow",
+        "speaker": "narrator",
+        "text": "「有点窄。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_table_narrow_next",
+            "label": "继续",
+            "next": "ishigami_dry_close",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "ishigami_dry_close",
+        "speaker": "actor",
+        "text": "「动线没问题。明天按这个排。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_dry_close_next",
+            "label": "继续",
+            "next": "dry_run_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_run_choice",
+        "speaker": "player",
+        "text": "演练结束，你怎么问千束？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_fun",
+            "label": "「现在还觉得好玩吗？」",
+            "next": "dry_fun_reply",
+            "requirements": []
+          },
+          {
+            "id": "dry_satisfied",
+            "label": "「满意了吗？」",
+            "next": "dry_satisfied_reply",
+            "requirements": []
+          },
+          {
+            "id": "dry_no_trial",
+            "label": "「明天可没有试玩版。」",
+            "next": "dry_no_trial_reply",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/cg_dry_run_team_v1.png",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "dry_fun_reply",
+        "speaker": "narrator",
+        "text": "「好玩啊。而且比不知道好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_fun_reply_next",
+            "label": "继续",
+            "next": "chisato_not_knowing",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_satisfied_reply",
+        "speaker": "narrator",
+        "text": "「大满足！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_satisfied_reply_next",
+            "label": "继续",
+            "next": "chisato_not_knowing",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "dry_no_trial_reply",
+        "speaker": "narrator",
+        "text": "「所以今天才要把试玩版玩透啊。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "dry_no_trial_reply_next",
+            "label": "继续",
+            "next": "chisato_not_knowing",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_not_knowing",
+        "speaker": "narrator",
+        "text": "「不知道才比较可怕嘛。你们都给我讲明白，我反而安心。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_not_knowing_next",
+            "label": "继续",
+            "next": "mido_tomorrow_eight",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_tomorrow_eight",
+        "speaker": "actor",
+        "text": "「明天八点。别迟到。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_tomorrow_eight_next",
+            "label": "继续",
+            "next": "chisato_patient_late",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_patient_late",
+        "speaker": "narrator",
+        "text": "「患者也会被说迟到的吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_patient_late_next",
+            "label": "继续",
+            "next": "confirm_team",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "speaker_label": "锦木千束",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "confirm_team",
+        "speaker": "actor",
+        "text": "「你会。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "confirm_team_end",
+            "label": "结束本日",
+            "next": "@day_end",
+            "requirements": [],
+            "effects": {
+              "story_flags": [
+                "grand_or_team_confirmed",
+                "advanced_tutorial_day1_complete",
+                "chisato_dry_run_complete",
+                "advanced_plan_confirmed",
+                "advanced_anesthesia_confirmed"
+              ]
+            }
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      }
+    ]
+  },
+  {
+    "id": "advanced_referral_tutorial_chisato_day2",
+    "title": "第二天 · Grand OR",
+    "background_id": "new_operating_room",
+    "start": "summary",
+    "nodes": [
+      {
+        "id": "summary",
+        "speaker": "narrator",
+        "text": "Procedure: 开胸人工心脏系统置换\nAnesthesia: General — Confirmed by Sakura\nFirst Assistant: 御堂江美子\nSecond Assistant: 南条小夜香\nPrimary / Secondary Scrub: 杉村弘子 / 朝倉美幸\nPrimary / Secondary Circulating: 七瀬恋 / 利根川安琪\nNursing Supervisor: 石神千鹤\nBlood / Equipment: Prepared\n\nGRAND OR: READY\nSurgical Coordination: 阿尔托莉雅·潘德拉贡",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "enter_or",
+            "label": "进入 OR",
+            "next": "team_arrival",
+            "requirements": []
+          }
+        ],
+        "presentation": "advanced_referral_summary",
+        "procedure_id": "surgery_adv_artificial_heart_exchange"
+      },
+      {
+        "id": "team_arrival",
+        "speaker": "narrator",
+        "text": "Grand OR按固定团队配置开放。每个岗位在电子板上逐项签到；没有任何空缺被默认由“别人顺手补上”。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "team_arrival_next",
+            "label": "继续",
+            "next": "chisato_or_oh",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "hide_portrait": true
+      },
+      {
+        "id": "chisato_or_oh",
+        "speaker": "narrator",
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "text": "「哦！」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "chisato_or_oh_next",
+            "label": "继续",
+            "next": "hiroko_whats_wrong",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "hiroko_whats_wrong",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "text": "「怎么了？」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "hiroko_whats_wrong_next",
+            "label": "继续",
+            "next": "chisato_same_as_yesterday",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_same_as_yesterday",
+        "speaker": "narrator",
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "text": "「真的和昨天一模一样。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "chisato_same_as_yesterday_next",
+            "label": "继续",
+            "next": "hiroko_arranged_yesterday",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "hiroko_arranged_yesterday",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "text": "「本来就是按昨天排的。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "hiroko_arranged_yesterday_next",
+            "label": "继续",
+            "next": "chisato_relieved",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_relieved",
+        "speaker": "narrator",
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "text": "「那我放心了。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "chisato_relieved_next",
+            "label": "继续",
+            "next": "injection",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "injection",
+        "speaker": "narrator",
+        "text": "针帽弹开。千束立刻回头，视线钉在弘子手里的注射器上。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "injection_next",
+            "label": "继续",
+            "next": "needle_reassure",
+            "requirements": []
+          }
+        ],
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/injection.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "needle_reassure",
+        "speaker": "actor",
+        "text": "弘子停下手。\n\n「我会先碰一下，再数到三。你不必装作不怕，只要别突然翻身。」\n千束点头。",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "needle_reassure_next",
+            "label": "继续",
+            "next": "needle_dialogue",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": false,
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "needle_dialogue",
+        "speaker": "narrator",
+        "text": "「这个昨天没有！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "needle_dialogue_next",
+            "label": "继续",
+            "next": "needle_hiroko_tease",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "needle_hiroko_tease",
+        "speaker": "actor",
+        "text": "「今天都要开刀了，还怕打针呀？」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "needle_hiroko_tease_next",
+            "label": "继续",
+            "next": "needle_chisato_retort",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "needle_chisato_retort",
+        "speaker": "narrator",
+        "text": "「那不一样！手术刀又不是现在扎我！这个是现在就要来的啊！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "needle_chisato_retort_next",
+            "label": "继续",
+            "next": "hiroko_stops_teasing",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_stops_teasing",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "text": "「好，好。不逗你了。别看针。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "hiroko_stops_teasing_next",
+            "label": "继续",
+            "next": "chisato_knows_needle",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "chisato_knows_needle",
+        "speaker": "narrator",
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "text": "「我不看。可是我知道它在那里。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "chisato_knows_needle_next",
+            "label": "继续",
+            "next": "needle_hiroko_count",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "needle_hiroko_count",
+        "speaker": "actor",
+        "text": "「那就看我。数到三。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "needle_hiroko_count_next",
+            "label": "继续",
+            "next": "needle_injection_administered",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "needle_injection_administered",
+        "speaker": "narrator",
+        "text": "千束把脸转向弘子。针剂注入。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "needle_injection_administered_next",
+            "label": "继续",
+            "next": "chisato_injection_finished_question",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "hide_portrait": true
+      },
+      {
+        "id": "chisato_injection_finished_question",
+        "speaker": "narrator",
+        "text": "「……结束了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_injection_finished_question_next",
+            "label": "继续",
+            "next": "hiroko_injection_finished",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_injection_finished",
+        "speaker": "actor",
+        "text": "「结束了。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "hiroko_injection_finished_next",
+            "label": "继续",
+            "next": "chisato_dry_run_incomplete",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_dry_run_incomplete",
+        "speaker": "narrator",
+        "text": "「我觉得昨天那个沉浸体验不够完整。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_dry_run_incomplete_next",
+            "label": "继续",
+            "next": "hiroko_today_completes_it",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_today_completes_it",
+        "speaker": "actor",
+        "text": "「今天会补全的。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "hiroko_today_completes_it_next",
+            "label": "继续",
+            "next": "hiroko_role_transition",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "hiroko_role_transition",
+        "speaker": "narrator",
+        "text": "术前护理结束后，弘子离开患者侧重新完成手卫生和刷手流程。几分钟后，她穿着全套无菌手术服回到Grand OR，站上主器械位。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "hiroko_role_transition_next",
+            "label": "继续",
+            "next": "anesthesia_check",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "hide_portrait": false
+      },
+      {
+        "id": "anesthesia_check",
+        "speaker": "actor",
+        "text": "樱花核对腕带、过敏史、通路和监护波形。\n\n「名字。」\n「锦木千束。」\n「手术。」\n「换掉那颗很努力但已经不够用的人工心脏。」\n「答案可以。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "anesthesia_check_next",
+            "label": "继续",
+            "next": "preop_sayaka_arrives",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "preop_sayaka_arrives",
+        "speaker": "narrator",
+        "text": "小夜香穿着第二助手的全套手术服来到术野侧。千束一眼就看见了她。",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "preop_sayaka_arrives_next",
+            "label": "继续",
+            "next": "chisato_sayaka_greeting",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "hide_portrait": false
+      },
+      {
+        "id": "chisato_sayaka_greeting",
+        "speaker": "narrator",
+        "text": "「啊。漂亮姐姐今天真的也在。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_sayaka_greeting_next",
+            "label": "继续",
+            "next": "sayaka_yesterday_confirmed",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_yesterday_confirmed",
+        "speaker": "actor",
+        "text": "「昨天不是确认过了吗？」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_yesterday_confirmed_next",
+            "label": "继续",
+            "next": "chisato_sayaka_compliment",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_sayaka_compliment",
+        "speaker": "narrator",
+        "text": "「确认和真的看到不一样嘛。而且你穿这个也很好看。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_sayaka_compliment_next",
+            "label": "继续",
+            "next": "sayaka_checks_chisato_state",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_checks_chisato_state",
+        "speaker": "actor",
+        "text": "「你现在还有心情看这个，状态不错。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_checks_chisato_state_next",
+            "label": "继续",
+            "next": "chisato_looks_before_anesthesia",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_looks_before_anesthesia",
+        "speaker": "narrator",
+        "text": "「麻醉以前多看两眼，不亏。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_looks_before_anesthesia_next",
+            "label": "继续",
+            "next": "sayaka_lets_her_look",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_lets_her_look",
+        "speaker": "actor",
+        "text": "小夜香挑了一下眉。\n\n「那你看。再过一会儿就睡了。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_lets_her_look_next",
+            "label": "继续",
+            "next": "chisato_asks_after_waking",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_asks_after_waking",
+        "speaker": "narrator",
+        "text": "「醒来以后还能看到吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_asks_after_waking_next",
+            "label": "继续",
+            "next": "sayaka_answers_after_waking",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_answers_after_waking",
+        "speaker": "actor",
+        "text": "「手术顺利结束，你醒过来。大概率还能。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_answers_after_waking_next",
+            "label": "继续",
+            "next": "chisato_deal",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_deal",
+        "speaker": "narrator",
+        "text": "「那成交。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_deal_next",
+            "label": "继续",
+            "next": "sakura_interrupts_chat",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_interrupts_chat",
+        "speaker": "actor",
+        "text": "「你们聊完了吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_interrupts_chat_next",
+            "label": "继续",
+            "next": "sayaka_anesthesia_waiting",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_anesthesia_waiting",
+        "speaker": "actor",
+        "text": "「麻醉科催了。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_anesthesia_waiting_next",
+            "label": "继续",
+            "next": "chisato_sakura_strict",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_sakura_strict",
+        "speaker": "narrator",
+        "text": "「她好严格。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_sakura_strict_next",
+            "label": "继续",
+            "next": "sakura_thanks",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_thanks",
+        "speaker": "actor",
+        "text": "「谢谢。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_thanks_next",
+            "label": "继续",
+            "next": "sayaka_promise",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_promise",
+        "speaker": "actor",
+        "text": "小夜香走到手术台旁，握住千束伸来的手。\n\n「我们已经把能预见的地方都走过一遍。剩下的由手术团队处理。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_promise_next",
+            "label": "继续",
+            "next": "sayaka_holds_chisato_cg",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_holds_chisato_cg",
+        "speaker": "narrator",
+        "text": "小夜香没有松开她的手。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sayaka_holds_chisato_cg_next",
+            "label": "继续",
+            "next": "sakura_claims_patient",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/cg_sayaka_holds_chisato_v1.png",
+        "cg_fit": "cover",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "sakura_claims_patient",
+        "speaker": "actor",
+        "text": "樱花来到头侧。\n\n「千束，从这里开始归我。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_claims_patient_next",
+            "label": "继续",
+            "next": "chisato_needle_question",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_needle_question",
+        "speaker": "narrator",
+        "text": "「刚才那针不算你的吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_needle_question_next",
+            "label": "继续",
+            "next": "sakura_nursing_vs_anesthesia",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_nursing_vs_anesthesia",
+        "speaker": "actor",
+        "text": "「那是护理。现在是麻醉。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_nursing_vs_anesthesia_next",
+            "label": "继续",
+            "next": "chisato_clear_roles",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_clear_roles",
+        "speaker": "narrator",
+        "text": "「分得真清楚。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_clear_roles_next",
+            "label": "继续",
+            "next": "sakura_induction_begins",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_induction_begins",
+        "speaker": "actor",
+        "text": "「高级手术就是这样。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_induction_begins_next",
+            "label": "继续",
+            "next": "chisato_calls_sayaka",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_calls_sayaka",
+        "speaker": "narrator",
+        "text": "「姐姐——」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_calls_sayaka_next",
+            "label": "继续",
+            "next": "sayaka_answers_chisato",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_answers_chisato",
+        "speaker": "actor",
+        "text": "「嗯？」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_answers_chisato_next",
+            "label": "继续",
+            "next": "chisato_drowsy_question",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_drowsy_question",
+        "speaker": "narrator",
+        "text": "「你明天……不对，今天……站哪边来着……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_drowsy_question_next",
+            "label": "继续",
+            "next": "sayaka_second_assistant",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_second_assistant",
+        "speaker": "actor",
+        "text": "「第二助手。你昨天还问过。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_second_assistant_next",
+            "label": "继续",
+            "next": "chisato_request",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_request",
+        "speaker": "narrator",
+        "text": "「哦……对。那……拜托啦。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_request_next",
+            "label": "继续",
+            "next": "sayaka_accepts",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sayaka_accepts",
+        "speaker": "actor",
+        "text": "「交给我们。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "sayaka_accepts_next",
+            "label": "继续",
+            "next": "chisato_fades",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "chisato_fades",
+        "speaker": "narrator",
+        "text": "「嗯……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_fades_next",
+            "label": "继续",
+            "next": "sakura_sleep",
+            "requirements": []
+          }
+        ],
+        "speaker_label": "锦木千束",
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+        "portrait_scale": 1.35,
+        "portrait_y": 205.0,
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "sakura_sleep",
+        "speaker": "actor",
+        "text": "「睡吧。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_sleep_next",
+            "label": "继续",
+            "next": "induction",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "induction",
+        "speaker": "narrator",
+        "text": "小夜香一直握着千束的手，直到她在麻醉中失去意识。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "induction_next",
+            "label": "继续",
+            "next": "or_time_out",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "hide_portrait": true
+      },
+      {
+        "id": "or_time_out",
+        "speaker": "narrator",
+        "text": "千束入睡后，七瀬恋主持最终Time Out。患者、术式、装置型号、备用系统、血液、抗菌药和不可逆步骤依次得到口头确认。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "or_time_out_next",
+            "label": "继续",
+            "next": "scrub_handoff",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "cg_path": "assets/events/advanced_referral_tutorial_chisato/cg_post_induction_v1.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "scrub_handoff",
+        "speaker": "narrator",
+        "text": "弘子与朝倉进行第一次双重清点。主台负责立即使用的器械，备用台负责置换阶段和紧急转换；两套记录互相核对而不互相替代。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "scrub_handoff_next",
+            "label": "继续",
+            "next": "artoria_command_position",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "hide_portrait": false,
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile"
+      },
+      {
+        "id": "artoria_command_position",
+        "speaker": "narrator",
+        "text": "阿尔托莉雅没有进入无菌区。她穿着刷手服站在墙侧总览屏前，备用循环、血液和替补人手都在她的视线范围内。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_command_position_next",
+            "label": "继续",
+            "next": "artoria_room_ready",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "artoria_room_ready",
+        "speaker": "actor",
+        "text": "「中止线、备用循环、血液和替补人手全部在位。坂口医生，你决定术野；室内资源由我负责。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_room_ready_next",
+            "label": "继续",
+            "next": "mido_impatient_start",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_impatient_start",
+        "speaker": "actor",
+        "text": "「终于说完了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_impatient_start_next",
+            "label": "继续",
+            "next": "artoria_releases_field",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "artoria_releases_field",
+        "speaker": "actor",
+        "text": "「说完了。现在轮到你们的手。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_releases_field_next",
+            "label": "继续",
+            "next": "opening",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "opening",
+        "speaker": "actor",
+        "text": "「从现在开始，你主刀。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "opening_next",
+            "label": "继续",
+            "next": "player_mido_only_assistant",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile"
+      },
+      {
+        "id": "player_mido_only_assistant",
+        "speaker": "player",
+        "text": "「你只做助手？」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "player_mido_only_assistant_next",
+            "label": "继续",
+            "next": "mido_when_needed",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_when_needed",
+        "speaker": "actor",
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "text": "「需要的时候我会说。不需要的时候，我闭嘴。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "mido_when_needed_next",
+            "label": "继续",
+            "next": "mido_progress_warning",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_progress_warning",
+        "speaker": "actor",
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "text": "「高级手术里，别把 Progress 当成唯一目标。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "mido_progress_warning_next",
+            "label": "继续",
+            "next": "mido_look_clear",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "mido_look_clear",
+        "speaker": "actor",
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "text": "「看清楚。再继续。」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "mido_look_clear_next",
+            "label": "继续",
+            "next": "stage1",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "stage1",
+        "speaker": "narrator",
+        "text": "既往开胸术野已经重新进入。旧手术造成的组织粘连使层次比普通开胸更难辨认。下一步怎样建立清晰术野？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s1_cautious",
+            "label": "先把暴露做扎实，再处理装置周围区域",
+            "next": "stage1_cautious",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "cautious"
+            }
+          },
+          {
+            "id": "s1_steady",
+            "label": "沿术前计划逐步扩大暴露，同时保持关键结构在视野内",
+            "next": "stage1_steady",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "steady"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 1
+      },
+      {
+        "id": "stage1_cautious",
+        "speaker": "actor",
+        "text": "「对。第一台高级病例，慢一点没关系。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage1_cautious_next",
+            "label": "继续",
+            "next": "stage2",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage1_steady",
+        "speaker": "actor",
+        "text": "「可以。别一次要太多。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage1_steady_next",
+            "label": "继续",
+            "next": "stage2",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2",
+        "speaker": "narrator",
+        "text": "进入装置处理前，你要先向谁确认？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s2_mido",
+            "label": "「术野和昨天计划的一致？」",
+            "next": "stage2_mido",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "team_oriented"
+            }
+          },
+          {
+            "id": "s2_scrub",
+            "label": "「下一阶段器械？」",
+            "next": "stage2_hiroko",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "team_oriented"
+            }
+          },
+          {
+            "id": "s2_anesthesia",
+            "label": "「现在循环状态？」",
+            "next": "stage2_sakura",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "team_oriented"
+            }
+          },
+          {
+            "id": "s2_circulating",
+            "label": "「巡回侧？」",
+            "next": "stage2_rei",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "team_oriented"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 2
+      },
+      {
+        "id": "stage2_mido",
+        "speaker": "actor",
+        "text": "「一致。旧装置位置和预想一样。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_mido_next",
+            "label": "继续",
+            "next": "stage2_ack",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_hiroko",
+        "speaker": "actor",
+        "text": "「主组已经按顺序备好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_hiroko_next",
+            "label": "继续",
+            "next": "stage2_miyuki",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_miyuki",
+        "speaker": "actor",
+        "text": "「备用组和特殊器械也在。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_miyuki_next",
+            "label": "继续",
+            "next": "stage2_hiroko_confirm",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_hiroko_confirm",
+        "speaker": "actor",
+        "text": "「确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_hiroko_confirm_next",
+            "label": "继续",
+            "next": "stage2_ack",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_sakura",
+        "speaker": "actor",
+        "text": "「稳定。你现在有时间。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_sakura_next",
+            "label": "继续",
+            "next": "stage2_ack",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_rei",
+        "speaker": "actor",
+        "text": "「记录、患者状态和房间协调正常。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_rei_next",
+            "label": "继续",
+            "next": "stage2_ange",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_ange",
+        "speaker": "actor",
+        "text": "「备用设备、血液和外部联系都在位。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_ange_next",
+            "label": "继续",
+            "next": "stage2_rei_fast",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_rei_fast",
+        "speaker": "actor",
+        "text": "「答得很快。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_rei_fast_next",
+            "label": "继续",
+            "next": "stage2_ange_checked",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_ange_checked",
+        "speaker": "actor",
+        "text": "「……我有先看清楚。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_ange_checked_next",
+            "label": "继续",
+            "next": "stage2_ishigami_good",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_ishigami_good",
+        "speaker": "actor",
+        "text": "「很好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_ishigami_good_next",
+            "label": "继续",
+            "next": "stage2_ack",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage2_ack",
+        "speaker": "narrator",
+        "text": "Grand OR 中，不同专业角色会提供不同类型的信息。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage2_ack_next",
+            "label": "继续",
+            "next": "stage3",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage3",
+        "speaker": "narrator",
+        "text": "旧装置周围的瘢痕层次比术前影像显示得更紧，术野出现轻度渗血。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage3_next",
+            "label": "继续",
+            "next": "stage3_mido_warning",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room",
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 3
+      },
+      {
+        "id": "stage3_mido_warning",
+        "speaker": "actor",
+        "text": "「看清楚再动。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage3_mido_warning_next",
+            "label": "继续",
+            "next": "stage3_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage3_choice",
+        "speaker": "narrator",
+        "text": "当前最合理的处理方式？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s3_cautious",
+            "label": "停在当前层次，先把边界重新整理清楚",
+            "next": "stage3_cautious",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "cautious"
+            }
+          },
+          {
+            "id": "s3_steady",
+            "label": "让御堂维持牵引，扩大一点暴露后继续",
+            "next": "stage3_steady",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "steady"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 3
+      },
+      {
+        "id": "stage3_cautious",
+        "speaker": "actor",
+        "text": "「好。高级手术里，停下来也是操作。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage3_cautious_next",
+            "label": "继续",
+            "next": "stage4_sakura",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage3_steady",
+        "speaker": "actor",
+        "text": "「可以。我把这里给你留出来。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage3_steady_next",
+            "label": "继续",
+            "next": "stage4_sakura",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4_sakura",
+        "speaker": "actor",
+        "text": "「准备进入装置切换窗口。从这里开始，我希望你每一步都报出来。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4_sakura_next",
+            "label": "继续",
+            "next": "stage4_mido",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4_mido",
+        "speaker": "actor",
+        "text": "「听她的。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4_mido_next",
+            "label": "继续",
+            "next": "stage4",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4",
+        "speaker": "narrator",
+        "text": "进入不可逆步骤以前，你怎么做？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s4_team",
+            "label": "暂停三十秒，全队再做一次最终复核",
+            "next": "stage4a_mido",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "team_oriented"
+            }
+          },
+          {
+            "id": "s4_plan",
+            "label": "维持当前术野，逐项口头确认后进入下一步",
+            "next": "stage4b_mido",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "steady"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 4
+      },
+      {
+        "id": "stage4a_mido",
+        "speaker": "actor",
+        "text": "「我确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4a_mido_next",
+            "label": "继续",
+            "next": "stage4a_hiroko",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4a_hiroko",
+        "speaker": "actor",
+        "text": "「器械确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4a_hiroko_next",
+            "label": "继续",
+            "next": "stage4a_sakura",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4a_sakura",
+        "speaker": "actor",
+        "text": "「循环准备好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4a_sakura_next",
+            "label": "继续",
+            "next": "artoria_holds_reserve",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4b_mido",
+        "speaker": "actor",
+        "text": "「装置位置确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4b_mido_next",
+            "label": "继续",
+            "next": "stage4b_hiroko",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4b_hiroko",
+        "speaker": "actor",
+        "text": "「替换系统确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4b_hiroko_next",
+            "label": "继续",
+            "next": "stage4b_sakura",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage4b_sakura",
+        "speaker": "actor",
+        "text": "「我这里可以。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage4b_sakura_next",
+            "label": "继续",
+            "next": "artoria_holds_reserve",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "artoria_holds_reserve",
+        "speaker": "actor",
+        "text": "「备用循环继续待命，不撤。现在平稳，不代表后半程不需要。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_holds_reserve_next",
+            "label": "继续",
+            "next": "mido_reserve_answer",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "mido_reserve_answer",
+        "speaker": "actor",
+        "text": "「没人让你撤。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_reserve_answer_next",
+            "label": "继续",
+            "next": "artoria_not_talking_to_mido",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "artoria_not_talking_to_mido",
+        "speaker": "actor",
+        "text": "「我是在告诉其他人，不是在提醒你。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_not_talking_to_mido_next",
+            "label": "继续",
+            "next": "stage5",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage5",
+        "speaker": "narrator",
+        "text": "旧系统已经进入预定置换步骤。怎样维持最清楚的操作节奏？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s5_cautious",
+            "label": "按术前顺序逐项处理，每完成一步就复核一次",
+            "next": "stage5_cautious",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "cautious"
+            }
+          },
+          {
+            "id": "s5_steady",
+            "label": "先处理最明确的连接，再回头复核整体关系",
+            "next": "stage5_steady",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "steady"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 5
+      },
+      {
+        "id": "stage5_cautious",
+        "speaker": "actor",
+        "text": "「稳。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage5_cautious_next",
+            "label": "继续",
+            "next": "stage6_script",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage5_steady",
+        "speaker": "actor",
+        "text": "「可以。但别丢掉全局。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage5_steady_next",
+            "label": "继续",
+            "next": "stage6_script",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage6_script",
+        "speaker": "narrator",
+        "text": "装置切换过程中，监护数值出现短暂变化。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage6_script_next",
+            "label": "继续",
+            "next": "stage6_sakura",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage6_sakura",
+        "speaker": "actor",
+        "text": "「血压往下。我在处理。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage6_sakura_next",
+            "label": "继续",
+            "next": "stage6",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage6",
+        "speaker": "narrator",
+        "text": "外科侧怎么配合？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s6_pause",
+            "label": "暂停关键操作，保持术野",
+            "next": "stage6_pause",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "team_oriented"
+            }
+          },
+          {
+            "id": "s6_scope",
+            "label": "降低操作节奏，不改变当前暴露",
+            "next": "stage6_scope",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "steady"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 6
+      },
+      {
+        "id": "stage6_pause",
+        "speaker": "actor",
+        "text": "「好。给我一点时间。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage6_pause_next",
+            "label": "继续",
+            "next": "stage6_returned",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage6_returned",
+        "speaker": "actor",
+        "text": "「回来了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage6_returned_next",
+            "label": "继续",
+            "next": "stage7_script",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage6_scope",
+        "speaker": "actor",
+        "text": "「可以。保持这样。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage6_scope_next",
+            "label": "继续",
+            "next": "stage6_stable",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage6_stable",
+        "speaker": "actor",
+        "text": "「稳定。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage6_stable_next",
+            "label": "继续",
+            "next": "stage7_script",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage7_script",
+        "speaker": "narrator",
+        "text": "新的人工心脏系统已经进入工作状态。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage7_script_next",
+            "label": "继续",
+            "next": "stage7_sakura",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage7_sakura",
+        "speaker": "actor",
+        "text": "「循环稳定。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage7_sakura_next",
+            "label": "继续",
+            "next": "stage7_mido",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage7_mido",
+        "speaker": "actor",
+        "text": "「别急着高兴。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage7_mido_next",
+            "label": "继续",
+            "next": "stage7",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage7",
+        "speaker": "narrator",
+        "text": "关闭以前最重要的是？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "s7_cautious",
+            "label": "与御堂一起完整复核装置周围术野",
+            "next": "stage7_cautious",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "cautious"
+            }
+          },
+          {
+            "id": "s7_steady",
+            "label": "维持当前暴露，等待弘子完成关键清点后再进入关闭",
+            "next": "stage7_steady",
+            "requirements": [],
+            "effects": {
+              "tutorial_style": "steady"
+            }
+          }
+        ],
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 7
+      },
+      {
+        "id": "stage7_cautious",
+        "speaker": "actor",
+        "text": "「这才算做完。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage7_cautious_next",
+            "label": "继续",
+            "next": "observer_artoria",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage7_steady",
+        "speaker": "actor",
+        "text": "「清点进行中。稍等。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage7_steady_next",
+            "label": "继续",
+            "next": "observer_artoria",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "observer_artoria",
+        "speaker": "actor",
+        "text": "「昨天定下的接续没有断。今天每个人都在自己的位置上。」\n\n「继续。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "observer_artoria_next",
+            "label": "继续",
+            "next": "observer_aqua",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "observer_aqua",
+        "speaker": "actor",
+        "text": "「原来心脏的大台是这种节奏……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "observer_aqua_next",
+            "label": "继续",
+            "next": "observer_aqua_bystander",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_aqua",
+        "outfit": "white_coat",
+        "background_id": "new_operating_room",
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "doc_aqua"
+          }
+        ],
+        "fallback_next": "observer_shiori"
+      },
+      {
+        "id": "observer_aqua_bystander",
+        "speaker": "narrator",
+        "text": "观摩区旁边有人问她：\n\n「你不是来学外科的吗？」",
+        "expression": "neutral",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "observer_aqua_bystander_next",
+            "label": "继续",
+            "next": "observer_aqua_reply",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "observer_aqua_reply",
+        "speaker": "actor",
+        "text": "「我就是在学啊。」",
+        "expression": "neutral",
+        "actor_id": "doc_aqua",
+        "outfit": "white_coat",
+        "background_id": "new_operating_room",
+        "choices": [
+          {
+            "id": "observer_aqua_reply_next",
+            "label": "继续",
+            "next": "observer_shiori",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "observer_shiori",
+        "speaker": "actor",
+        "text": "「普通手术是进手术室以后才觉得开始。这台从昨天会议的时候就已经开始了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "observer_shiori_next",
+            "label": "继续",
+            "next": "stage8_ishigami",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_shiori",
+        "outfit": "white_coat",
+        "background_id": "new_operating_room",
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "doc_shiori"
+          }
+        ],
+        "fallback_next": "stage8_ishigami"
+      },
+      {
+        "id": "stage8_ishigami",
+        "speaker": "actor",
+        "text": "「朝倉，接 Primary Scrub 十分钟。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_ishigami_next",
+            "label": "继续",
+            "next": "stage8_miyuki",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room",
+        "presentation": "advanced_surgery",
+        "procedure_id": "surgery_adv_artificial_heart_exchange",
+        "stage_number": 8
+      },
+      {
+        "id": "stage8_miyuki",
+        "speaker": "actor",
+        "text": "「明白。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_miyuki_next",
+            "label": "继续",
+            "next": "stage8_hiroko",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_hiroko",
+        "speaker": "actor",
+        "text": "「交给你。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_hiroko_next",
+            "label": "继续",
+            "next": "stage8_ishigami_rei",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_ishigami_rei",
+        "speaker": "actor",
+        "text": "「七瀬，休息五分钟。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_ishigami_rei_next",
+            "label": "继续",
+            "next": "stage8_rei",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_rei",
+        "speaker": "actor",
+        "text": "「收到。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_rei_next",
+            "label": "继续",
+            "next": "stage8_ange",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_ange",
+        "speaker": "actor",
+        "text": "「记录和设备状态我接。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_ange_next",
+            "label": "继续",
+            "next": "stage8_rei_warning",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_rei_warning",
+        "speaker": "actor",
+        "text": "「有问题先叫我，不要硬撑。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_rei_warning_next",
+            "label": "继续",
+            "next": "stage8_ange_accepts",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_ange_accepts",
+        "speaker": "actor",
+        "text": "「明白。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_ange_accepts_next",
+            "label": "继续",
+            "next": "stage8_sakura_final",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_sakura_final",
+        "speaker": "actor",
+        "text": "「生命体征稳定。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_sakura_final_next",
+            "label": "继续",
+            "next": "stage8_hiroko_final",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "scrubs",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_hiroko_final",
+        "speaker": "actor",
+        "text": "「清点无误。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_hiroko_final_next",
+            "label": "继续",
+            "next": "stage8_mido_final",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_mido_final",
+        "speaker": "actor",
+        "text": "「没有遗漏。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_mido_final_next",
+            "label": "继续",
+            "next": "stage8_close",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "stage8_close",
+        "speaker": "actor",
+        "text": "「关。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "stage8_close_next",
+            "label": "继续",
+            "next": "result",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "sterile",
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "result",
+        "speaker": "narrator",
+        "text": "开胸人工心脏系统置换完成。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "result_next",
+            "label": "继续",
+            "next": "recovery_handoff",
+            "requirements": []
+          }
+        ],
+        "background_id": "new_operating_room"
+      },
+      {
+        "id": "recovery_handoff",
+        "speaker": "narrator",
+        "text": "千束转入术后恢复流程。护理与麻醉完成交接。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "recovery_handoff_end",
+            "label": "结束本日",
+            "next": "@day_end",
+            "requirements": [],
+            "effects": {
+              "story_flags": [
+                "advanced_tutorial_day2_complete",
+                "tutorial_surgery_success"
+              ]
+            }
+          }
+        ],
+        "background_id": "new_operating_room"
+      }
+    ]
+  },
+  {
+    "id": "advanced_referral_tutorial_chisato_day3",
+    "title": "第三天 · 查房与复盘",
+    "background_id": "ward",
+    "start": "postop",
+    "nodes": [
+      {
+        "id": "postop",
+        "speaker": "narrator",
+        "text": "第三天早上。千束已经完全清醒。看到坂口和御堂进来，她第一句话不是问疼不疼。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "postop_next",
+            "label": "继续",
+            "next": "chisato_all_done",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_all_done",
+        "speaker": "narrator",
+        "text": "「所以——昨天讲的那些，真的全做了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_all_done_next",
+            "label": "继续",
+            "next": "player_roughly",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "player_roughly",
+        "speaker": "player",
+        "text": "「大致上。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_roughly_next",
+            "label": "继续",
+            "next": "mido_not_roughly",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "mido_not_roughly",
+        "speaker": "actor",
+        "text": "「不是‘大致’。按计划完成。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_not_roughly_next",
+            "label": "继续",
+            "next": "chisato_old_replaced",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_old_replaced",
+        "speaker": "narrator",
+        "text": "「那旧的真的换掉了？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_old_replaced_next",
+            "label": "继续",
+            "next": "mido_yes_replaced",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "mido_yes_replaced",
+        "speaker": "actor",
+        "text": "「换了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_yes_replaced_next",
+            "label": "继续",
+            "next": "chisato_worth_it",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_worth_it",
+        "speaker": "narrator",
+        "text": "「哇。值了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_worth_it_next",
+            "label": "继续",
+            "next": "mido_what_worth",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "mido_what_worth",
+        "speaker": "actor",
+        "text": "「什么叫值了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_what_worth_next",
+            "label": "继续",
+            "next": "postop_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "postop_choice",
+        "speaker": "player",
+        "text": "先问什么？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_discomfort",
+            "label": "「现在最不舒服的是哪里？」",
+            "next": "postop_discomfort",
+            "requirements": []
+          },
+          {
+            "id": "ask_needle",
+            "label": "「所以现在还觉得昨天那针最可怕？」",
+            "next": "postop_needle",
+            "requirements": []
+          },
+          {
+            "id": "say_smooth",
+            "label": "「手术完成得很顺利。」",
+            "next": "postop_smooth",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "postop_discomfort",
+        "speaker": "narrator",
+        "text": "「现在？哪里都不算舒服。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "postop_discomfort_next",
+            "label": "继续",
+            "next": "hiroko_honest",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "hiroko_honest",
+        "speaker": "actor",
+        "text": "「这是一个诚实答案。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_honest_next",
+            "label": "继续",
+            "next": "chisato_better",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_better",
+        "speaker": "narrator",
+        "text": "「但是比我想象中好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_better_next",
+            "label": "继续",
+            "next": "hiroko_recovery",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "postop_needle",
+        "speaker": "narrator",
+        "text": "「针和手术是两个项目。不能混在一起算。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "postop_needle_next",
+            "label": "继续",
+            "next": "mido_chest_opened",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "mido_chest_opened",
+        "speaker": "actor",
+        "text": "「你睡着以后胸口被打开了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_chest_opened_next",
+            "label": "继续",
+            "next": "chisato_didnt_see",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_didnt_see",
+        "speaker": "narrator",
+        "text": "「对啊。可是那个我没看见。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_didnt_see_next",
+            "label": "继续",
+            "next": "hiroko_recovery",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "postop_smooth",
+        "speaker": "narrator",
+        "text": "「真的？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "postop_smooth_next",
+            "label": "继续",
+            "next": "player_really",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "player_really",
+        "speaker": "player",
+        "text": "「真的。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_really_next",
+            "label": "继续",
+            "next": "chisato_relief",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_relief",
+        "speaker": "narrator",
+        "text": "「那就好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_relief_next",
+            "label": "继续",
+            "next": "hiroko_recovery",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "hiroko_recovery",
+        "speaker": "actor",
+        "text": "「恢复指标目前都在计划范围。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_recovery_next",
+            "label": "继续",
+            "next": "chisato_was_afraid",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_was_afraid",
+        "speaker": "narrator",
+        "text": "「昨天睡着以前，其实有一点怕。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_was_afraid_next",
+            "label": "继续",
+            "next": "player_only_little",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "player_only_little",
+        "speaker": "player",
+        "text": "「只有一点？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_only_little_next",
+            "label": "继续",
+            "next": "chisato_more_afraid",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_more_afraid",
+        "speaker": "narrator",
+        "text": "「好吧。比一点多一点。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_more_afraid_next",
+            "label": "继续",
+            "next": "chisato_dry_run_helped",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_dry_run_helped",
+        "speaker": "narrator",
+        "text": "「但是前一天都看过一次以后，真的好很多。灯在哪里，谁站哪边，你们会先做什么——我至少不用一边怕一边猜。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_dry_run_helped_next",
+            "label": "继续",
+            "next": "asuka_knock",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "asuka_knock",
+        "speaker": "narrator",
+        "text": "门口传来敲门声，明日香走进病房。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_knock_next",
+            "label": "继续",
+            "next": "asuka_visit",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "asuka_visit",
+        "speaker": "actor",
+        "text": "「感觉怎么样？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_visit_next",
+            "label": "继续",
+            "next": "chisato_full_experience",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_full_experience",
+        "speaker": "narrator",
+        "text": "「高级转诊体验非常完整。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_full_experience_next",
+            "label": "继续",
+            "next": "asuka_feedback",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "asuka_feedback",
+        "speaker": "actor",
+        "text": "「……这是患者反馈吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_feedback_next",
+            "label": "继续",
+            "next": "chisato_five_stars",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "chisato_five_stars",
+        "speaker": "narrator",
+        "text": "「五星。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "chisato_five_stars_next",
+            "label": "继续",
+            "next": "mido_dont_encourage",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "mido_dont_encourage",
+        "speaker": "actor",
+        "text": "「不要鼓励她。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_dont_encourage_next",
+            "label": "继续",
+            "next": "asuka_first_complete",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "asuka_first_complete",
+        "speaker": "actor",
+        "text": "「总之，第一例顺利结束。下午复盘。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_first_complete_next",
+            "label": "继续",
+            "next": "leave_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "leave_choice",
+        "speaker": "player",
+        "text": "离开病房前说什么？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "leave_rest",
+            "label": "「今天就老实休息。」",
+            "next": "leave_rest_reply",
+            "requirements": []
+          },
+          {
+            "id": "leave_no_barge",
+            "label": "「下次别自己闯术前会议。」",
+            "next": "leave_barge_reply",
+            "requirements": []
+          },
+          {
+            "id": "leave_admit",
+            "label": "「承认吧，你那个 dry run 确实有用。」",
+            "next": "leave_admit_reply",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "leave_rest_reply",
+        "speaker": "narrator",
+        "text": "「我很老实啊。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "leave_rest_reply_next",
+            "label": "继续",
+            "next": "leave_silence",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "leave_silence",
+        "speaker": "narrator",
+        "text": "所有人一起沉默。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "leave_silence_next",
+            "label": "继续",
+            "next": "debrief_open",
+            "requirements": []
+          }
+        ],
+        "background_id": "ward"
+      },
+      {
+        "id": "leave_barge_reply",
+        "speaker": "narrator",
+        "text": "「那下次提前申请。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "leave_barge_reply_next",
+            "label": "继续",
+            "next": "player_not_point",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "player_not_point",
+        "speaker": "player",
+        "text": "「重点不是这个。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_not_point_next",
+            "label": "继续",
+            "next": "debrief_open",
+            "requirements": []
+          }
+        ],
+        "background_id": "conference_room"
+      },
+      {
+        "id": "leave_admit_reply",
+        "speaker": "narrator",
+        "text": "「对吧？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "leave_admit_reply_next",
+            "label": "继续",
+            "next": "mido_dont_push",
+            "requirements": []
+          }
+        ],
+        "portrait_path": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+        "speaker_label": "锦木千束",
+        "background_id": "ward"
+      },
+      {
+        "id": "mido_dont_push",
+        "speaker": "actor",
+        "text": "「别得寸进尺。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_dont_push_next",
+            "label": "继续",
+            "next": "debrief_open",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "ward"
+      },
+      {
+        "id": "debrief_open",
+        "speaker": "actor",
+        "text": "「第一例高级转诊完成。先不谈奖励，先谈哪里和普通病例不一样。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "debrief_open_next",
+            "label": "继续",
+            "next": "debrief_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "debrief_choice",
+        "speaker": "player",
+        "text": "你怎么总结？",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "debrief_preop",
+            "label": "「术前其实从前一天就开始了。」",
+            "next": "debrief_preop_reply",
+            "requirements": []
+          },
+          {
+            "id": "debrief_weight",
+            "label": "「我真正需要决定的东西反而更少，但每个决定更重。」",
+            "next": "debrief_weight_reply",
+            "requirements": []
+          },
+          {
+            "id": "debrief_team",
+            "label": "「最明显的是，今天不是我一个人在管所有事情。」",
+            "next": "debrief_team_reply",
+            "requirements": []
+          }
+        ],
+        "background_id": "conference_room"
+      },
+      {
+        "id": "debrief_preop_reply",
+        "speaker": "actor",
+        "text": "「至少你注意到了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "debrief_preop_reply_next",
+            "label": "继续",
+            "next": "mido_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "debrief_weight_reply",
+        "speaker": "actor",
+        "text": "「这就是重点。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "debrief_weight_reply_next",
+            "label": "继续",
+            "next": "mido_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "debrief_team_reply",
+        "speaker": "actor",
+        "text": "「终于。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "debrief_team_reply_next",
+            "label": "继续",
+            "next": "mido_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "mido_debrief",
+        "speaker": "actor",
+        "text": "「普通病例里，你很容易把 Progress 当作‘做得好不好’。高级病例不是。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_debrief_next",
+            "label": "继续",
+            "next": "mido_debrief_two",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "mido_debrief_two",
+        "speaker": "actor",
+        "text": "「这次你有几次停下来重新确认。以后不会每台都有人替你兜底，但你至少知道该问谁。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_debrief_two_next",
+            "label": "继续",
+            "next": "artoria_debrief_team",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "artoria_debrief_team",
+        "speaker": "actor",
+        "text": "「她停下的几次没有让术野失去节奏，因为每次停下，都有人能准确回答。那是团队配置在发挥作用。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_debrief_team_next",
+            "label": "继续",
+            "next": "mido_debrief_skill",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "mido_debrief_skill",
+        "speaker": "actor",
+        "text": "「前提是主刀知道该问什么。把人排满一间房，不会自动变成团队。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_debrief_skill_next",
+            "label": "继续",
+            "next": "artoria_debrief_reply",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "artoria_debrief_reply",
+        "speaker": "actor",
+        "text": "「所以我说的是配置，不是排满。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "artoria_debrief_reply_next",
+            "label": "继续",
+            "next": "sakura_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_artoria",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "sakura_debrief",
+        "speaker": "actor",
+        "text": "「再说一次。高级手术里，麻醉不是让你选着玩的菜单。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_debrief_next",
+            "label": "继续",
+            "next": "player_remembers_anesthesia",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "player_remembers_anesthesia",
+        "speaker": "player",
+        "text": "「我记住了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_remembers_anesthesia_next",
+            "label": "继续",
+            "next": "sakura_debrief_two",
+            "requirements": []
+          }
+        ],
+        "background_id": "conference_room"
+      },
+      {
+        "id": "sakura_debrief_two",
+        "speaker": "actor",
+        "text": "「你不需要替我决定怎么麻醉。但是我告诉你血压掉的时候，你必须决定你的手要不要停。这才是我们之间的接口。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_debrief_two_next",
+            "label": "继续",
+            "next": "hiroko_nursing_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "hiroko_nursing_debrief",
+        "speaker": "actor",
+        "text": "「护理侧也一样。不是多塞几个护士进房间。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_nursing_debrief_next",
+            "label": "继续",
+            "next": "hiroko_nursing_roles",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "hiroko_nursing_roles",
+        "speaker": "actor",
+        "text": "「器械台、巡回、换班、患者转运。每个人都在不同时间接手不同东西。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_nursing_roles_next",
+            "label": "继续",
+            "next": "miyuki_second_table",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "miyuki_second_table",
+        "speaker": "actor",
+        "text": "「第二器械位不是站在旁边等。主台一缺什么，第二台就要已经准备好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_second_table_next",
+            "label": "继续",
+            "next": "miyuki_too_high",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "miyuki_too_high",
+        "speaker": "actor",
+        "text": "「昨天我还觉得护士长把我排得太高了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_too_high_next",
+            "label": "继续",
+            "next": "ishigami_today",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "ishigami_today",
+        "speaker": "actor",
+        "text": "「今天呢？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_today_next",
+            "label": "继续",
+            "next": "miyuki_just_right",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "miyuki_just_right",
+        "speaker": "actor",
+        "text": "「……刚好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "miyuki_just_right_next",
+            "label": "继续",
+            "next": "rei_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "rei_debrief",
+        "speaker": "actor",
+        "text": "「巡回也是。我在看患者、记录和房间节奏。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "rei_debrief_next",
+            "label": "继续",
+            "next": "ange_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "ange_debrief",
+        "speaker": "actor",
+        "text": "「我负责设备、补给和外联。第一次觉得二巡也忙得完全没空发呆。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ange_debrief_next",
+            "label": "继续",
+            "next": "rei_learning_record",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "rei_learning_record",
+        "speaker": "actor",
+        "text": "「这句话可以记进你的学习记录。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "rei_learning_record_next",
+            "label": "继续",
+            "next": "ange_no",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "ange_no",
+        "speaker": "actor",
+        "text": "「不要。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ange_no_next",
+            "label": "继续",
+            "next": "hiroko_third_hand",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "hiroko_third_hand",
+        "speaker": "actor",
+        "text": "「总之，你今天没有临时叫我们变出第三只手。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_third_hand_next",
+            "label": "继续",
+            "next": "player_praise",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "player_praise",
+        "speaker": "player",
+        "text": "「这是表扬？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_praise_next",
+            "label": "继续",
+            "next": "hiroko_yes",
+            "requirements": []
+          }
+        ],
+        "background_id": "conference_room"
+      },
+      {
+        "id": "hiroko_yes",
+        "speaker": "actor",
+        "text": "「是。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hiroko_yes_next",
+            "label": "继续",
+            "next": "ishigami_debrief",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "ishigami_debrief",
+        "speaker": "actor",
+        "text": "「这次人员安排有效。但这是教学病例。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_debrief_next",
+            "label": "继续",
+            "next": "ishigami_next_case",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "ishigami_next_case",
+        "speaker": "actor",
+        "text": "「下一例开始，团队不会替你固定好。你要自己决定谁站哪里。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_next_case_next",
+            "label": "继续",
+            "next": "ishigami_wrong_people",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "ishigami_wrong_people",
+        "speaker": "actor",
+        "text": "「选错人，不一定会出事故。但会让一台本来就很难的手术变得更难。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ishigami_wrong_people_next",
+            "label": "继续",
+            "next": "unlock",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ishigami",
+        "outfit": "uniform",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "unlock",
+        "speaker": "actor",
+        "text": "「那就这样。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "unlock_next",
+            "label": "继续",
+            "next": "system_unlock_detail",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "system_unlock_detail",
+        "speaker": "narrator",
+        "text": "ADVANCED REFERRAL CENTER\n正式开放\n\nGRAND OR TEAM BUILDER UNLOCKED",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "system_unlock_detail_next",
+            "label": "继续",
+            "next": "asuka_more_cases",
+            "requirements": []
+          }
+        ],
+        "background_id": "conference_room"
+      },
+      {
+        "id": "asuka_more_cases",
+        "speaker": "actor",
+        "text": "「以后外院会继续送病例过来。不会每天有，也不会每一例都像千束这么……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_more_cases_next",
+            "label": "继续",
+            "next": "mido_noisy",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "mido_noisy",
+        "speaker": "actor",
+        "text": "「吵。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "mido_noisy_next",
+            "label": "继续",
+            "next": "asuka_positive",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_emiko",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "asuka_positive",
+        "speaker": "actor",
+        "text": "「积极。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_positive_next",
+            "label": "继续",
+            "next": "sakura_no_need",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "background_id": "conference_room"
+      },
+      {
+        "id": "sakura_no_need",
+        "speaker": "actor",
+        "text": "「你可以不用替她修饰。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sakura_no_need_end",
+            "label": "结束本日",
+            "next": "@day_end",
+            "requirements": [],
+            "effects": {
+              "story_flags": [
+                "advanced_referral_tutorial_complete",
+                "advanced_referral_random_cases_enabled",
+                "grand_or_team_builder_enabled",
+                "met_sakura",
+                "chisato_advanced_case_complete"
+              ]
+            }
+          }
+        ],
+        "actor_id": "doc_sakura_anesthesiology",
+        "background_id": "conference_room"
+      }
+    ]
+  }
+]

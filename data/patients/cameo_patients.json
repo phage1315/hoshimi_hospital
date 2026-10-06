@@ -13,5 +13,113 @@
       "restrained": "assets/events/character_events/hiroko/chihaya_restrained_portrait.png"
     },
     "notes": "本阶段只以‘女患者’身份登场；仓本千早这一姓名必须由未来的专属事件通过 identity_reveal_flag 解锁。"
+  },
+  {
+    "id": "guest_ayako",
+    "canonical_name": "片桐彩子",
+    "public_name": "来院漫画家",
+    "age": 25,
+    "debut_event_id": "miyama_02_manga_artist_wrong_patient",
+    "identity_reveal_flag": "ayako_identity_revealed",
+    "identity_revealed_by_default": false,
+    "visuals": {
+      "casual_neutral": "assets/events/character_events/rei/ayako/casual_neutral.png",
+      "casual_shocked": "assets/events/character_events/rei/ayako/casual_shocked.png",
+      "patient_gown_neutral": "assets/events/character_events/rei/ayako/patient_gown_neutral.png",
+      "patient_gown_puzzled": "assets/events/character_events/rei/ayako/patient_gown_puzzled.png",
+      "patient_gown_happy": "assets/events/character_events/rei/ayako/patient_gown_happy.png",
+      "operating_table_nervous": "assets/events/character_events/rei/ayako/operating_table_nervous.png",
+      "operating_table_drowsy": "assets/events/character_events/rei/ayako/operating_table_drowsy.png",
+      "operating_table_composed": "assets/events/character_events/rei/ayako/operating_table_composed.png",
+      "operating_table_happy": "assets/events/character_events/rei/ayako/operating_table_happy.png",
+      "operating_table_annoyed": "assets/events/character_events/rei/ayako/operating_table_annoyed.png",
+      "ward_postop": "assets/events/character_events/rei/ayako/ward_postop.png",
+      "nurse_visit": "assets/events/character_events/rei/ayako/nurse_visit.png"
+    },
+    "notes": "医院外部来访的成年漫画家／插画家；不可攻略、不可加入手术团队。深山佳織 Lv2《取材过头了》的核心当事人，后续以医院题材漫画、护士服纪念与庆祝返场持续登场。V8 事件正文已作为单日特殊事件接入。"
+  },
+  {
+    "id": "patient_ayako_lookalike",
+    "canonical_name": "姓名待定的预定患者",
+    "public_name": "逃跑女患者",
+    "age": 25,
+    "debut_event_id": "miyama_02_manga_artist_wrong_patient",
+    "identity_reveal_flag": "ayako_lookalike_identity_revealed",
+    "identity_revealed_by_default": false,
+    "visuals": {
+      "patient_gown_fleeing": "assets/events/character_events/rei/ayako/lookalike_patient_fleeing.png"
+    },
+    "notes": "真正排定手术的成年女患者。银紫发、脸型和手术区患者装束与片桐彩子相近，但眼形较窄、瞳色灰绿、鼻梁与下颌细节不同；不熟悉双方的医护在匆忙交接中难以辨认。她因术前情绪激昂逃出手术室并从彩子身边跑过，成为误认链条的直接起点。姓名与长期设定待后续事件设计决定。"
+  },
+  {
+    "id": "guest_chisato",
+    "canonical_name": "锦木千束",
+    "public_name": "高级转诊患者",
+    "age": 19,
+    "debut_event_id": "advanced_referral_tutorial_chisato",
+    "identity_reveal_flag": "chisato_identity_revealed",
+    "identity_revealed_by_default": true,
+    "visuals": {
+      "conference": "assets/events/advanced_referral_tutorial_chisato/chisato_conference_v1.png",
+      "injection": "assets/events/advanced_referral_tutorial_chisato/injection.png",
+      "patient_gown": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+      "operating_table_preanesthesia": "assets/events/advanced_referral_tutorial_chisato/chisato_operating_table_preanesthesia_v1.png",
+      "induction": "assets/events/advanced_referral_tutorial_chisato/chisato_induction_v1.png",
+      "postop": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png"
+    },
+    "notes": "成年AU角色；首次高级转诊教学病例患者，接受开胸人工心脏系统置换。不可攻略，不加入医院职员队伍。"
+  },
+  {
+    "id": "guest_yurika_mito",
+    "canonical_name": "御统百合香",
+    "public_name": "御统百合香",
+    "age": 22,
+    "debut_event_id": "satsuki_lv3_wrong_patient_appendectomy",
+    "identity_reveal_flag": "yurika_mito_identity_revealed",
+    "identity_revealed_by_default": true,
+    "visuals": {
+      "ward/bored": "assets/events/character_events/satsuki/yurika/ward/bored.png",
+      "ward/cheerful": "assets/events/character_events/satsuki/yurika/ward/cheerful.png",
+      "ward/joking": "assets/events/character_events/satsuki/yurika/ward/joking.png",
+      "ward/confused": "assets/events/character_events/satsuki/yurika/ward/confused.png",
+      "ward/embarrassed": "assets/events/character_events/satsuki/yurika/ward/embarrassed.png",
+      "ward/uncomfortable": "assets/events/character_events/satsuki/yurika/ward/uncomfortable.png",
+      "ward/angry": "assets/events/character_events/satsuki/yurika/ward/angry.png",
+      "ward/hurt": "assets/events/character_events/satsuki/yurika/ward/hurt.png",
+      "ward/serious_soft": "assets/events/character_events/satsuki/yurika/ward/serious_soft.png",
+      "preop/confused": "assets/events/character_events/satsuki/yurika/preop/confused.png",
+      "preop/embarrassed": "assets/events/character_events/satsuki/yurika/preop/embarrassed.png",
+      "preop/realization": "assets/events/character_events/satsuki/yurika/preop/realization.png",
+      "preop/sleepy": "assets/events/character_events/satsuki/yurika/preop/sleepy.png",
+      "preop/drugged": "assets/events/character_events/satsuki/yurika/preop/drugged.png",
+      "preop/afraid": "assets/events/character_events/satsuki/yurika/preop/afraid.png",
+      "or_table/sedated": "assets/events/character_events/satsuki/yurika/or_table/sedated.png",
+      "or_table/mask_induction": "assets/events/character_events/satsuki/yurika/or_table/mask_induction.png",
+      "or_table/unconscious": "assets/events/character_events/satsuki/yurika/or_table/unconscious.png",
+      "recovery/confused": "assets/events/character_events/satsuki/yurika/recovery/confused.png",
+      "recovery/hurt": "assets/events/character_events/satsuki/yurika/recovery/hurt.png",
+      "recovery/angry": "assets/events/character_events/satsuki/yurika/recovery/angry.png",
+      "observer/neutral_mask_down": "assets/events/character_events/satsuki/yurika/observer/neutral_mask_down.png",
+      "observer/teasing_mask_down": "assets/events/character_events/satsuki/yurika/observer/teasing_mask_down.png",
+      "observer/serious_mask_on": "assets/events/character_events/satsuki/yurika/observer/serious_mask_on.png",
+      "observer/soft_mask_on": "assets/events/character_events/satsuki/yurika/observer/soft_mask_on.png"
+    },
+    "notes": "22 岁成年女性，保留原作深蓝紫长发、蓝绿色大眼，以及极为活泼元气、表情丰富、神经大条、善于调侃的性格。她的情绪通过夸张而清晰的眉眼、嘴形和头部动作表达；只有真正疼痛、害怕或意识到事故严重性时才明显收敛。因反复发作的胃十二指肠疾病长期在内科治疗。折川皐月 Lv3 的同名错人手术事件患者；专属病房、术前担架、麻醉诱导、恢复室与刷手服观察者素材已经完成并接入 Lv3 事件。"
+  },
+  {
+    "id": "guest_yoriko_nikaido",
+    "canonical_name": "二阶堂赖子",
+    "public_name": "二阶堂赖子",
+    "age": 24,
+    "debut_event_id": "satsuki_lv2_patient_transport",
+    "identity_reveal_flag": "yoriko_nikaido_identity_revealed",
+    "identity_revealed_by_default": true,
+    "visuals": {
+      "composed": "assets/events/character_events/satsuki/yoriko/preop/composed.png",
+      "panic": "assets/events/character_events/satsuki/yoriko/preop/panic.png",
+      "stubborn": "assets/events/character_events/satsuki/yoriko/preop/stubborn.png",
+      "relieved": "assets/events/character_events/satsuki/yoriko/preop/relieved.png"
+    },
+    "notes": "24 岁成年女性。保留原作长深棕发、红棕眼、圆框眼镜与认真但容易慌张的气质；本事件中她在进入手术部前已取下眼镜，长发收入手术帽。门口身体性抵抗发生后仍努力保持体面，并以“保险”“防线”等女警式措辞为自己壮胆。"
   }
 ]

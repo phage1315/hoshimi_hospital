@@ -1,0 +1,95 @@
+[
+  {
+    "id": "probation_completion_personal_nurse_main",
+    "title": "试用期结束",
+    "background_id": "director_office",
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "院长室的门关上后，明日香把一份已经签好的转正文件推到桌面中央。成美站在窗边，七瀬恋则抱着门诊排班表。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [{"id": "opening_next", "label": "继续", "next": "asuka_announcement", "requirements": []}]
+      },
+      {
+        "id": "asuka_announcement",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "expression": "smile",
+        "text": "「从今天起，你不再列在试用期医生那一栏。」\n明日香点了点文件。\n「普通门诊由你独立负责。医院也希望你开始形成自己的固定工作搭档。」",
+        "choices": [{"id": "asuka_next", "label": "继续", "next": "player_graduate", "requirements": []}]
+      },
+      {
+        "id": "player_graduate",
+        "speaker": "player",
+        "text": "「算是毕业了？」",
+        "expression": "neutral",
+        "choices": [{"id": "player_next", "label": "继续", "next": "aoi_independent", "requirements": []}]
+      },
+      {
+        "id": "aoi_independent",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "outfit": "white_coat",
+        "expression": "smile",
+        "text": "「可以这么理解。」成美答得很干脆。\n「以后普通门诊你自己看。我不会每个患者都站在旁边替你确认。」",
+        "choices": [{"id": "aoi_next", "label": "继续", "next": "aoi_support", "requirements": []}]
+      },
+      {
+        "id": "aoi_support",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "outfit": "white_coat",
+        "expression": "serious",
+        "text": "「真正碰到看不懂的、拿不准的，还是来找我。」\n「独立看诊不是让你一个人硬撑。」",
+        "choices": [{"id": "aoi_support_next", "label": "继续", "next": "ren_assignment", "requirements": []}]
+      },
+      {
+        "id": "ren_assignment",
+        "speaker": "actor",
+        "actor_id": "nurse_haru",
+        "outfit": "uniform",
+        "expression": "smile",
+        "text": "恋把排班表翻到门诊页。\n「那从今天开始，我就是坂口医生的专属护士了。」\n「明明第一天就认识，也一起工作过很多次……正式这样说，还是有点不一样呢。」",
+        "choices": [{"id": "ren_next", "label": "继续", "next": "ren_scope", "requirements": []}]
+      },
+      {
+        "id": "ren_scope",
+        "speaker": "actor",
+        "actor_id": "nurse_haru",
+        "outfit": "uniform",
+        "expression": "neutral",
+        "text": "「普通门诊我会一直在。检查顺序和现有资料够不够，我也会帮你一起确认。」\n「手术需要护士的时候也可以叫我，不过手术组队还是由坂口医生自己安排。」",
+        "choices": [{"id": "ren_scope_next", "label": "继续", "next": "ren_tease", "requirements": []}]
+      },
+      {
+        "id": "ren_tease",
+        "speaker": "actor",
+        "actor_id": "nurse_haru",
+        "outfit": "uniform",
+        "expression": "smile",
+        "text": "恋合上排班表，又补了一句：\n「至于其他的事情——现在暂时不可以哦。」",
+        "choices": [{"id": "ren_tease_next", "label": "继续", "next": "player_tease", "requirements": []}]
+      },
+      {
+        "id": "player_tease",
+        "speaker": "player",
+        "text": "「我什么都还没问。」",
+        "expression": "neutral",
+        "choices": [{"id": "player_tease_next", "label": "继续", "next": "ren_finish", "requirements": []}]
+      },
+      {
+        "id": "ren_finish",
+        "speaker": "actor",
+        "actor_id": "nurse_haru",
+        "outfit": "uniform",
+        "expression": "smile",
+        "text": "「所以我才提前说。」\n她把门诊排班表递到坂口手里。\n「以后请多关照，坂口医生。」",
+        "choices": [{"id": "finish", "label": "接受新的门诊安排", "next": "@day_end", "requirements": []}]
+      }
+    ]
+  }
+]

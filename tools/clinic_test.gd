@@ -107,6 +107,8 @@ func run() -> void:
 	referral_game.patient_queue.assign(patient_queue_with_sora_first(content))
 	referral_game.open_visit("visit_sora").apply("greet")
 	expect(not referral_game.refer_current_patient("nurse_haru"), "Nurse accepted as referral doctor")
+	expect(not referral_game.refer_current_patient("doc_rei"), "Unknown doctor accepted a referral")
+	referral_game.meet_staff("doc_rei")
 	expect(referral_game.refer_current_patient("doc_rei"), "Valid referral failed")
 	expect(referral_game.referral_doctor("patient_sora") == "doc_rei" and referral_game.current_patient_id() != "patient_sora" and referral_game.recent_patient_ids == ["patient_sora"], "Referral did not randomly advance the patient queue")
 	expect(referral_game.open_visit("visit_sora") == null, "Referred patient could be reopened")
@@ -116,6 +118,7 @@ func run() -> void:
 	var cycling = GameState.new()
 	cycling.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates)
 	cycling.patient_queue.assign(patient_queue_with_sora_first(content))
+	cycling.meet_staff("doc_rei")
 	var appearance_history: Array[String] = []
 	var first_cases: Dictionary = cycling.patient_cases.duplicate(true)
 	var repeated_patient := ""
@@ -154,7 +157,7 @@ func run() -> void:
 	var legacy_v2: Dictionary = timeline.snapshot()
 	legacy_v2.version = 2
 	legacy_v2.erase("time_log")
-	expect(timeline_clone.restore(legacy_v2) and timeline_clone.time_log.is_empty(), "v2 time-log migration failed")
+	expect(not timeline_clone.restore(legacy_v2), "Retired v2 save was accepted")
 	var invalid_timeline: Dictionary = timeline.snapshot()
 	invalid_timeline.time_log[1].start = 999
 	expect(not timeline_clone.restore(invalid_timeline), "Impossible time-event timestamp accepted")
@@ -186,7 +189,7 @@ func run() -> void:
 	apply_all(visit, ["associated", "background", "to_exam"])
 	expect(not visit.apply("authoritative_full_undress"), "Undress response was available before the patient protested")
 	apply_all(visit, EXAM)
-	expect(visit.player_effects.charisma == 1 and visit.notes.has("exam_authoritative"), "Authoritative persuasion did not complete the exam or apply its effect")
+	expect(visit.player_effects == {"charm": 0, "presence": 0, "reputation": 0} and visit.notes.has("exam_authoritative"), "Authoritative persuasion changed a canonical attribute without an authored effect")
 	expect(not visit.apply("to_diagnosis"), "Tests gate bypassed")
 	apply_all(visit, ["blood"])
 	var snapshot: Dictionary = game.snapshot()
@@ -199,8 +202,7 @@ func run() -> void:
 	var legacy_exam: Dictionary = snapshot.duplicate(true)
 	legacy_exam.version = 16
 	legacy_exam.progress.visit_sora = ["greet", "pain", "associated", "background", "to_exam", "vitals", "abdomen", "to_tests", "blood"]
-	expect(clone.restore(legacy_exam), "v16 direct-exam save did not migrate")
-	expect(clone.visits.visit_sora.stage_id == "tests" and clone.visits.visit_sora.notes.has("exam_authoritative"), "Migrated exam save lost its completed finding")
+	expect(not clone.restore(legacy_exam), "Retired v16 save was accepted")
 	expect(clone.restore(snapshot), "Current mid-case snapshot could not be restored after migration check")
 	var invalid: Dictionary = snapshot.duplicate(true)
 	invalid.version = 999
@@ -231,13 +233,19 @@ func run() -> void:
 	var refusal = refusal_game.open_visit("visit_emi")
 	apply_all(refusal, ["greet"] + HISTORY + ["vitals", "request_full_undress", "abandon_full_undress"])
 	expect(refusal.stage_id == "tests" and refusal.notes.exam_abandoned.text.contains("未完成"), "Respecting refusal did not preserve a usable incomplete-exam record")
-	expect(refusal.player_effects.ethics == 1, "Respecting refusal did not apply its ethics effect")
+	expect(refusal.player_effects == {"charm": 0, "presence": 0, "reputation": 0}, "Respecting refusal changed a retired attribute")
+	var limited_game = GameState.new()
+	limited_game.configure(content.collections.encounters)
+	var limited = limited_game.open_visit("visit_emi")
+	apply_all(limited, ["greet"] + HISTORY + ["vitals", "limited_clothed_exam"])
+	expect(limited.stage_id == "tests" and limited.notes.exam_limited.text.contains("未取得针对性查体发现"), "Limited clothed exam did not preserve the no-undress medical result")
+	expect(not limited.action_log.has("request_full_undress") and not limited.action_log.has("authoritative_full_undress") and limited.player_effects == {"charm": 0, "presence": 0, "reputation": 0}, "Limited clothed exam triggered a full-undress branch or player effect")
 	var coercion_game = GameState.new()
 	coercion_game.configure(content.collections.encounters)
 	var coerced = coercion_game.open_visit("visit_ann")
 	apply_all(coerced, ["greet"] + HISTORY + ["vitals", "request_full_undress", "threaten_full_undress"])
-	expect(coerced.player_effects.ethics == -2 and coerced.player_effects.intimidation == 2, "Threat branch did not record coercion effects")
-	expect(coercion_game.player_attributes().ethics == -2 and coercion_game.player_attributes().intimidation == 2, "Clinic effects were omitted from player attributes")
+	expect(coerced.player_effects.presence == 1, "Threat branch did not record its phase-bounded presence effect")
+	expect(coercion_game.player_attributes().presence == 1, "Clinic presence effect was omitted from player attributes")
 	var baseline = GameState.new()
 	baseline.configure(content.collections.encounters)
 	var quick = baseline.open_visit("visit_sora")
@@ -287,13 +295,34 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	app.game.patient_queue.assign(patient_queue_with_sora_first(content))
+	app.game.meet_staff("doc_rei")
 	app.show_location("clinic")
+	var staff_toggle: Button = app.page.get_node_or_null("LocationStaffToggle")
+	expect(staff_toggle != null and app.page.get_node_or_null("LocationStaffDrawer") == null, "Clinic staff drawer should start collapsed")
+	var patient_portrait_before: Button = app.page.get_node_or_null("PatientPortrait")
+	var patient_y_before := patient_portrait_before.position.y if patient_portrait_before != null else -1.0
+	if staff_toggle != null:
+		staff_toggle.pressed.emit()
+		var drawer: Panel = app.page.get_node_or_null("LocationStaffDrawer")
+		expect(drawer != null and drawer.get_node_or_null("LocationStaffScroll/LocationStaffList") != null, "Clinic staff drawer did not open as a scrollable list")
+		var expanded_patient_portrait: Button = app.page.get_node_or_null("PatientPortrait")
+		expect(expanded_patient_portrait != null and expanded_patient_portrait.position.y == patient_y_before, "Opening the staff drawer displaced patient controls")
+		app.page.get_node("LocationStaffToggle").pressed.emit()
+		expect(app.page.get_node_or_null("LocationStaffDrawer") == null and app.page.get_node_or_null("PatientPortrait") != null, "Clinic staff drawer did not collapse cleanly")
 	var refer_button = app.page.get_node_or_null("ReferPatient")
 	expect(refer_button != null, "Clinic referral button missing")
 	if refer_button != null:
 		refer_button.pressed.emit()
-		expect(app.screen == "referral" and app.page.get_node_or_null("ReferralDoctor_doc_rei") != null, "Referral doctor selection did not open")
-		app.page.get_node("ReferralDoctor_doc_rei").pressed.emit()
+		var referral_picker := app.page.get_node_or_null("ReferralDoctorPicker") as OptionButton
+		var referral_confirm := app.page.get_node_or_null("ReferralConfirm") as Button
+		expect(app.screen == "referral" and referral_picker != null and referral_confirm != null, "Referral doctor dropdown did not open")
+		if referral_picker != null and referral_confirm != null:
+			expect(referral_picker.item_count == 2 and str(referral_picker.get_item_metadata(1)) == "doc_rei", "Referral dropdown included an unknown doctor or omitted the known doctor")
+			expect(referral_confirm.disabled, "Referral confirmation started enabled without a doctor selection")
+			referral_picker.select(1)
+			referral_picker.item_selected.emit(1)
+			expect(not referral_confirm.disabled, "Referral confirmation did not enable after selecting a doctor")
+			referral_confirm.pressed.emit()
 		expect(app.game.referral_doctor("patient_sora") == "doc_rei" and app.game.current_patient_id() != "patient_sora" and app.game.recent_patient_ids == ["patient_sora"], "Referral UI did not advance to an eligible patient")
 	app.game.reset()
 	app.game.patient_queue.assign(patient_queue_with_sora_first(content))

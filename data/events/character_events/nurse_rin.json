@@ -1,0 +1,104 @@
+[
+  {
+    "id": "intro_nurse_rin",
+    "actor_id": "nurse_rin",
+    "title": "在护士站认识中井美佳",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 10,
+    "teaser": "中井美佳放下交班表，向坂口点了点头。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "introduction",
+    "auto_start": false,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "cg_intro_nurse_rin",
+      "caption": "在护士站认识中井美佳",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "actor",
+        "text": "中井美佳放下交班表，上下打量坂口一眼。\n「新医生？」\n她笑得很职业。\n「希望你属于会看交接的人，不是只会看检验值的那种。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ward",
+            "label": "询问病房工作",
+            "next": "reply_0",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_nurse_rin"
+            ]
+          },
+          {
+            "id": "greet",
+            "label": "先记住她的名字",
+            "next": "reply_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_nurse_rin"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reply_0",
+        "speaker": "actor",
+        "text": "「病房最先看到的通常不是‘大问题’，是那些让人觉得哪里不对的小东西。」\n她把交班表拍了拍。\n「你肯听，我就肯告诉你。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "end_0",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "reply_1",
+        "speaker": "actor",
+        "text": "「记名字很重要。」\n她笑了一下。\n「不过过两天还只会叫我‘中井护士’，我会开始怀疑你是不是故意装生疏。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_1",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

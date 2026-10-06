@@ -1,0 +1,358 @@
+[
+  {
+    "id": "intro_doc_artoria_deputy_office",
+    "actor_id": "doc_artoria",
+    "title": "外科副部长的办公室",
+    "chapter": 0,
+    "location_id": "artoria_office",
+    "trigger_mode": "location",
+    "background_id": "artoria_office",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "新任外科副部长请坂口到她的办公室报到。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 180,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "cg_artoria_deputy_office_intro",
+      "caption": "坂口在外科副部长办公室与阿尔托莉雅正式相识。",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "asuka_mentions_artoria_rival"
+      ],
+      "special_requirements": []
+    },
+    "start": "arrival",
+    "nodes": [
+      {
+        "id": "arrival",
+        "speaker": "narrator",
+        "text": "外科副部长办公室比想象中朴素。桌上分开放着今天的病例、人员表和三份备用方案，墙边的手术排程板已经写满。\n\n站在桌后的金发医生看起来很年轻，姿态却没有一丝犹疑。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "enter_office",
+            "label": "敲门后走进办公室",
+            "next": "formal_greeting",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "formal_greeting",
+        "speaker": "actor",
+        "text": "“坂口隆司医生。欢迎来到星见医院。”\n\n“我是阿尔托莉雅·潘德拉贡，外科副部长。你的海外履历和推荐信我都看过，但我不会只凭纸面决定一个人应该站在哪个位置。”",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "ask_expectation",
+            "label": "“您希望亲自确认什么？”",
+            "next": "expectation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "artoria_intro_asked_expectation"
+            ]
+          },
+          {
+            "id": "accept_assessment",
+            "label": "“实际表现比履历可靠。”",
+            "next": "expectation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "artoria_intro_accepted_assessment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "expectation",
+        "speaker": "actor",
+        "text": "“技术当然重要。但外科不是一个人完成的工作。”\n\n她将一张尚未填写姓名的手术人员表推到桌边。\n“我会看你怎样判断，也会看别人是否愿意把自己的位置交给你。你不需要现在回答。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_rivalry",
+            "label": "看向并列的两份主任候选资料",
+            "next": "rivalry",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rivalry",
+        "speaker": "actor",
+        "text": "其中一份资料属于御堂江美子。阿尔托莉雅没有避开坂口的视线。\n\n“御堂医生在某些技术上比我更强。这是事实，不是让步。”\n“主任应该让医院最强的医生发挥长处，而不是证明自己每一项都最强。”",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "formal_meeting",
+            "label": "正式向外科副部长报到",
+            "next": "welcome",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "welcome",
+        "speaker": "actor",
+        "text": "“很好。今天先到这里。”\n\n她伸出手，动作郑重得像在确认一项长期合作。\n“我们还会讨论手术和人员安排。到那时，请直接告诉我你的判断，坂口医生。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "meet_artoria",
+            "label": "与阿尔托莉雅正式相识",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_artoria"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "artoria_lv1_right_position",
+    "actor_id": "doc_artoria",
+    "title": "谁站在哪个位置",
+    "chapter": 1,
+    "location_id": "artoria_office",
+    "trigger_mode": "location",
+    "background_id": "artoria_office",
+    "outfit": "white_coat",
+    "minutes": 20,
+    "teaser": "阿尔托莉雅请坂口一起检查今天三台手术的人员安排。",
+    "time_start": 540,
+    "time_end": 720,
+    "priority": 70,
+    "category": "bond",
+    "auto_start": false,
+    "target_level": 1,
+    "benefit_id": "unlock_artoria_surgical_team",
+    "gallery": {
+      "cg_id": "cg_artoria_right_position",
+      "caption": "阿尔托莉雅在排程板前重新安排三间手术室的人员。",
+      "path": "assets/events/character_events/artoria/right_position.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "intro_doc_artoria_deputy_office"
+      ],
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "工作日上午，坂口被叫到外科主任办公室。墙上的排程板列着今天三间手术室的安排。一名身形娇小的金发医生站在正中央，手里的笔停在四号室旁。\n\n她没有先寒暄。\n“坂口医生，如果四号室突然延长两小时，你会从哪一台手术抽人？”",
+        "expression": "serious",
+        "cg_path": "assets/events/character_events/artoria/right_position.png",
+        "cg_fit": "cover",
+        "choices": [
+          {
+            "id": "review_board",
+            "label": "先看三台手术的人员配置",
+            "next": "conflict",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "conflict",
+        "speaker": "actor",
+        "text": "“原定助手临时无法上台。御堂医生的病例和另一台高风险手术发生了人员冲突。”\n\n门边的御堂江美子冷冷地说，她的台不能换人。\n\n阿尔托莉雅没有反驳那项技术判断：“我同意。那一步由你和现在的器械护士完成，成功率最高。”",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "watch_reassignment",
+            "label": "看她如何重新安排",
+            "next": "reassignment",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "reassignment",
+        "speaker": "actor",
+        "text": "她把另一名医生移到四号室，又交换两台手术的器械护士，最后把一台低风险手术推迟十分钟。\n\n“这台可以等十分钟。四号室不能停，御堂医生的关键步骤也不能换人。”\n\n御堂盯着排程板看了几秒，最终只说：“安排合理。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "answer_question",
+            "label": "回答她最初的问题",
+            "next": "leadership_question",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "leadership_question",
+        "speaker": "actor",
+        "text": "阿尔托莉雅重新看向坂口。\n\n“技术好的医生很多。”\n“我更想知道，你会不会让技术好的人愿意跟你一起工作。”",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "strongest_to_hardest",
+            "label": "“最强的人应该去最难的台。”",
+            "next": "strongest_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "artoria_values_raw_strength"
+            ]
+          },
+          {
+            "id": "fit_each_stage",
+            "label": "“先看每个人最适合哪一段。”",
+            "next": "fit_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "artoria_noticed_leadership_thinking"
+            ]
+          },
+          {
+            "id": "let_primary_decide",
+            "label": "“让主刀自己决定。”",
+            "next": "primary_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "artoria_questioned_delegation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "strongest_reply",
+        "speaker": "actor",
+        "text": "“那第二难的怎么办？”\n她用笔轻点剩下两列安排。“强弱是排序的一部分，但不是全部。”",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "meet_after_strongest",
+            "label": "记住她的追问",
+            "next": "introduction",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "fit_reply",
+        "speaker": "actor",
+        "text": "她第一次露出很淡的认可。\n“对。还要看谁能接住前后两段，以及谁愿意听谁的指令。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "meet_after_fit",
+            "label": "继续听她说明",
+            "next": "introduction",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "primary_reply",
+        "speaker": "actor",
+        "text": "“那我们还需要副部长做什么？”\n她语气平静，问题却没有给含混留下余地。",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "meet_after_primary",
+            "label": "接受她的反问",
+            "next": "introduction",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "introduction",
+        "speaker": "actor",
+        "text": "她盖上笔帽，正式伸出手。\n\n“阿尔托莉雅·潘德拉贡，外科副部长。”\n“我会尊重真正擅长一件事的人，也会要求负责安排的人承担最后的结果。坂口医生，今后请让我看到你的判断。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "accept_artoria_evaluation",
+            "label": "接受她对领导能力的长期评估",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "artoria_director_rival_established",
+              "artoria_lv1_complete"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

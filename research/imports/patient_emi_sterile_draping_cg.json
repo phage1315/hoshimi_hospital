@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-27",
+  "patient_id": "patient_emi",
+  "purpose": "Patient-specific fullscreen sterile-draping CG shown after skin-disinfection acknowledgement and before incision marking.",
+  "source_file": "codex-clipboard-5d981bda-6fd4-4c90-b4f5-2e00081bfd0e.png",
+  "reference_copy": "research/character_references/patient_emi/07_sterile_draping_reference.png",
+  "runtime_target": "assets/events/ward_preparation_v1/patient_emi/sterile_draping.png",
+  "width": 1536,
+  "height": 1024,
+  "mode": "RGB",
+  "sha256": "145e4daefc2d80d6a4bce755cc6e8ca7f234ca1b59f55a2dc5e8789e27b6182d",
+  "pool_id": "sterile_draping_patient_emi",
+  "action_ids": [
+    "ack_disinfection"
+  ],
+  "procedure_groups": [
+    "general_abdominal",
+    "female_pelvic",
+    "vascular"
+  ],
+  "anesthesia_routes": [
+    "epidural",
+    "local",
+    "none"
+  ],
+  "excluded_anesthesia_routes": [
+    "general"
+  ],
+  "next_stage": "incision_marking"
+}

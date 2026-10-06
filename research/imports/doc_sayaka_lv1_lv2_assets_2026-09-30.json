@@ -1,0 +1,72 @@
+{
+  "id": "doc_sayaka_lv1_lv2_assets_2026_09_30",
+  "date": "2026-09-30",
+  "character_id": "doc_sayaka",
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "portrait_use_case": "identity-preserve followed by background-extraction",
+    "cg_use_case": "illustration-story",
+    "portrait_spec": "1024x1536 PNG with genuine alpha transparency; fixed pose/outfit/canvas per base portrait.",
+    "cg_spec": "16:9 SFW visual-novel event illustrations without embedded dialogue text.",
+    "prompts_summary": [
+      "Casual shy and genuinely happy expression variants for Lv1.",
+      "White-coat shy, teasing and serious professional expression variants for Lv2.",
+      "Warm trattoria split-bill scene and hospital-office doorway look-back scene.",
+      "First-person hospital-office phone contact close-up for the Week 1 phone exchange."
+    ]
+  },
+  "assets": [
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/casual/shy.png",
+      "bytes": 1765411,
+      "sha256": "6dbcb564ceb64d88a1f76532805cc22b1c9ed39daeebd8a76ef5712f7aaa59e6"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/casual/happy.png",
+      "bytes": 1766175,
+      "sha256": "4e75730a64dccb991fca583ac2839c39424a3e0cc667fa3aff86988be96b9930"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/shy.png",
+      "bytes": 1821480,
+      "sha256": "f8b0a1234ec0be68b3f4ffb110b43eda979a16ccbb8981216cf01c84c05ce1a8"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/teasing.png",
+      "bytes": 1832713,
+      "sha256": "96105b9a33c614e232200dae865d8528dda18358643c4660c9ee6966494dab4a"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+      "bytes": 1848687,
+      "sha256": "3df42af93ae57ade033242a8dcba9dd4cb0fd0c9dc6a6ef7b522813d958562b9"
+    },
+    {
+      "path": "assets/events/character_events/sayaka/lv1_split_bill.png",
+      "bytes": 2062382,
+      "sha256": "e1ea17a50081ca16db86715fd0a757c6f7268fd5c0bedcc225639e1f389be1b4"
+    },
+    {
+      "path": "assets/events/character_events/sayaka/lv2_office_doorway.png",
+      "bytes": 1823791,
+      "sha256": "a63b1b24ede4e5ecd19c73a80701af6b2b994b34a5e6f306738ce2f10cac2232"
+    },
+    {
+      "path": "assets/events/character_events/sayaka/phone_contact_closeup.png",
+      "bytes": 1959223,
+      "sha256": "9a64e3fdcf47cd783d78f71ab9220cb5a67ab093ecd7f1d02b05cc9cac8a2c1b"
+    }
+  ],
+  "implementation": {
+    "portrait_map": "data/characters/staff.json -> doc_sayaka.visuals.portraits",
+    "event_map": [
+      "sayaka_week1_phone_exchange",
+      "sayaka_lv1_first_date",
+      "sayaka_lv2_working_hours"
+    ],
+    "gallery_enabled": true
+  },
+  "notes": [
+    "Portrait chat previews may render transparent pixels against black; PNG alpha channels were verified after generation."
+  ]
+}

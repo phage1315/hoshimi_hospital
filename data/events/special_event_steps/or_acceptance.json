@@ -1,0 +1,954 @@
+[
+  {
+    "id": "or_acceptance_training_01_main",
+    "title": "新手术室验收与训练",
+    "background_id": "new_operating_room",
+    "start": "act1_open",
+    "nodes": [
+      {
+        "id": "act1_open",
+        "speaker": "narrator",
+        "text": "【第一幕：启用前】\n新手术室还没有安排患者。无影灯、麻醉机和监护设备全部亮着待机灯，空气里只有新设备、消毒剂和塑封材料的气味。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "act1_open_next",
+            "label": "继续",
+            "next": "asuka_open",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "asuka_open",
+        "speaker": "actor",
+        "text": "「今天普通手术停排。不是因为出了事故——是好事。」\n明日香站在门口，白大褂外套着一次性隔离衣，语气仍然温和。\n「新手术室正式交付。今天从患者被送到门外开始，一直走到手术结束后的转运。每个人都要知道自己什么时候开口、什么时候复核。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_open_next",
+            "label": "继续",
+            "next": "player_reply",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_reply",
+        "speaker": "player",
+        "text": "「换句话说，今天要尽量把问题都暴露出来。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_reply_next",
+            "label": "继续",
+            "next": "asuka_reply",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "asuka_reply",
+        "speaker": "actor",
+        "text": "「对。今天发现一个问题，只需要改流程。正式启用后才发现，就可能由患者替我们付代价。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "asuka_reply_next",
+            "label": "继续",
+            "next": "koi_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "koi_ready",
+        "speaker": "actor",
+        "text": "七瀬恋已经换好刷手服，逐项核对墙上的接口。\n「手术护理组到齐。记录从开门时间开始，谁说‘差不多’我就记谁的名字。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "koi_ready_next",
+            "label": "继续",
+            "next": "miyuki_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "miyuki_ready",
+        "speaker": "actor",
+        "text": "朝倉美幸抱紧记录板。\n「我负责记录！如果写得太慢——不，今天不会写得太慢。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "miyuki_ready_next",
+            "label": "继续",
+            "next": "mika_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "mika_ready",
+        "speaker": "actor",
+        "text": "中井美佳推着空转运床停在黄线外。\n「转运、固定、交接。我会从患者的视角重新走一遍。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "mika_ready_next",
+            "label": "继续",
+            "next": "sayaka_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_rin",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "sayaka_ready",
+        "speaker": "actor",
+        "text": "明日香还在说明控制面板，南条小夜香的手指已经停在升降键上方。\n「这组按键我可以先试——」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "sayaka_ready_next",
+            "label": "继续",
+            "next": "asuka_stops_sayaka",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "asuka_stops_sayaka",
+        "speaker": "actor",
+        "text": "「南条医生。我还没有说可以触碰。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_stops_sayaka_next",
+            "label": "继续",
+            "next": "sayaka_asks_permission",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "sayaka_asks_permission",
+        "speaker": "actor",
+        "text": "南条的手立刻停住，离按钮还有一指距离。\n「好。那么现在，我可以问什么时候能碰了吗？」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "sayaka_asks_permission_next",
+            "label": "继续",
+            "next": "narumi_ready",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "narumi_ready",
+        "speaker": "actor",
+        "text": "神宮寺成美按下门控按钮，看着气密门完整闭合。\n「那就别把它当空房间。只要流程开始，台上就已经有一个会害怕、会疼、也可能突然恶化的人。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "narumi_ready_next",
+            "label": "继续",
+            "next": "act2_open",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_aoi",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "act2_open",
+        "speaker": "narrator",
+        "text": "【第二幕：设备与无菌区】\n团队从气源、电源、负压吸引、备用照明和麻醉机自检开始，沿着墙面逐项移动。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "act2_open_next",
+            "label": "继续",
+            "next": "asuka_manual",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "asuka_manual",
+        "speaker": "actor",
+        "text": "明日香合上设备手册。\n「手册写着‘已安装’，验收单写着‘已测试’。现在我要听真正使用它的人说：出了问题，第一步找哪里？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_manual_next",
+            "label": "继续",
+            "next": "equipment_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "equipment_choice",
+        "speaker": "player",
+        "text": "坂口沿着电源与气源接口看了一遍。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "equipment_trace",
+            "label": "先追踪患者生命支持链",
+            "next": "narumi_check",
+            "requirements": []
+          },
+          {
+            "id": "equipment_failure",
+            "label": "先假设主电源失效",
+            "next": "narumi_check",
+            "requirements": []
+          },
+          {
+            "id": "equipment_handoff",
+            "label": "让每个岗位说出自己的备用方案",
+            "next": "narumi_check",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "narumi_check",
+        "speaker": "actor",
+        "text": "成美把麻醉回路接到测试肺。\n「氧源、通气、监护，顺序不能乱。设备报警不是让人安静下来的声音，是让团队重新分工的信号。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "narumi_check_next",
+            "label": "继续",
+            "next": "koi_count",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_aoi",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "koi_count",
+        "speaker": "actor",
+        "text": "七瀬恋打开器械包，只检查封口、指示卡与数量，没有触碰无菌区。\n「未启用的房间也按启用标准走。否则坏习惯会比患者先住进来。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "koi_count_next",
+            "label": "继续",
+            "next": "manami_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "manami_slot",
+        "speaker": "narrator",
+        "text": "药品柜与急救药车进入验收环节。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_manami",
+            "label": "请真奈美复核药品安全",
+            "next": "manami_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "pharmacist_manami"
+          }
+        ],
+        "fallback_next": "act3_open"
+      },
+      {
+        "id": "manami_line",
+        "speaker": "actor",
+        "text": "飯村真奈美没有先看药名，而是先看储存温度和封签编号。\n「同一种药放在不同位置，就会制造两套记忆。急救时最危险的不是找不到，是以为自己知道它在哪里。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "manami_line_next",
+            "label": "继续",
+            "next": "act3_open",
+            "requirements": []
+          }
+        ],
+        "actor_id": "pharmacist_manami",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "act3_open",
+        "speaker": "narrator",
+        "text": "【第三幕：手术台与体位训练】\n设备验收完成后，明日香把手术台降到转运高度。今天没有模型，她要求用真人把每一步重新做实。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "act3_open_next",
+            "label": "继续",
+            "next": "asuka_volunteer",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "asuka_volunteer",
+        "speaker": "actor",
+        "text": "「需要一名自愿者。不会进行侵入操作，任何不舒服都可以立刻停止。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_volunteer_next",
+            "label": "继续",
+            "next": "koi_volunteer",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "koi_volunteer",
+        "speaker": "actor",
+        "text": "七瀬恋已经把记录板递给美幸。\n「我来。总得有人告诉你们，写在流程里的‘舒适体位’到底舒不舒服。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "koi_volunteer_next",
+            "label": "继续",
+            "next": "mika_transfer",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "mika_transfer",
+        "speaker": "actor",
+        "text": "美佳把转运床与手术台锁定，先报高度，再报缝隙。\n「三、二、一。移动。」\n每个人只在口令对应的时点发力，七瀬恋平稳落到台面中央。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "mika_transfer_next",
+            "label": "继续",
+            "next": "player_position",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_rin",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "player_position",
+        "speaker": "player",
+        "text": "坂口检查头颈、肩部、上肢和骶尾部受压点，又确认安全带没有压迫呼吸。\n「体位不是把人摆得像术式图。要让她在无法自己调整的时候仍然安全。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_position_next",
+            "label": "继续",
+            "next": "koi_feedback",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "koi_feedback",
+        "speaker": "actor",
+        "text": "七瀬恋抬了抬右手。\n「右肩有一点悬空。还有，安全带再低两指会更舒服。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "koi_feedback_next",
+            "label": "继续",
+            "next": "miyuki_note",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "miyuki_note",
+        "speaker": "actor",
+        "text": "安全带略微偏高。美幸几乎没有思考便松开卡扣，垫住患者皮肤，把固定点重新移到既不限制呼吸、又不会滑脱的位置。\n七瀬恋侧过脸：「朝倉，你不是第一次碰这种台子吗？」\n「这个型号是第一次。」\n「……型号？」\n美幸眨眨眼，低头在记录板上补了一行，像是什么也没发生。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "miyuki_note_next",
+            "label": "继续",
+            "next": "aqua_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_yui",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "aqua_slot",
+        "speaker": "narrator",
+        "text": "接下来要验证截石位附件和防压伤垫。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_aqua",
+            "label": "请妇科主任确认截石位",
+            "next": "aqua_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "doc_aqua"
+          }
+        ],
+        "fallback_next": "hiroko_slot"
+      },
+      {
+        "id": "aqua_line",
+        "speaker": "actor",
+        "text": "阿库娅一看见两侧腿架就精神起来。\n「终于到我的专业领域了！腿不能一边先抬、一边后放，放下时也一样。腰骶、腓总神经、髋关节——一个都不许拿来换‘摆得快’！」\n她停顿一下，小声补充：「还有，先告诉志愿者要做什么。突然把人架起来真的很吓人。」",
+        "expression": "excited",
+        "choices": [
+          {
+            "id": "aqua_line_next",
+            "label": "继续",
+            "next": "hiroko_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_aqua",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "hiroko_slot",
+        "speaker": "narrator",
+        "text": "团队重新检查防压伤垫、约束带和皮肤观察点。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_hiroko",
+            "label": "请弘子从巡回护士角度复核",
+            "next": "hiroko_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "nurse_hiroko"
+          }
+        ],
+        "fallback_next": "act4_open"
+      },
+      {
+        "id": "hiroko_line",
+        "speaker": "actor",
+        "text": "杉村弘子绕手术台走了一圈，伸手比了比术中还能接触到的位置。\n「铺巾以后看不见的地方，现在就要确认。皮肤、管路、回路都一样。看不见不等于不会出事。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "hiroko_line_next",
+            "label": "继续",
+            "next": "act4_open",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_hiroko",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "act4_open",
+        "speaker": "narrator",
+        "text": "【第四幕：模拟接台】\n七瀬恋继续担任模拟患者。团队从门外的转运床重新开始，在她完整知情并配合的前提下，把“患者”送入手术间；所有信息都必须被说出来、听见并复述。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "act4_open_next",
+            "label": "继续",
+            "next": "mika_handoff",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "mika_handoff",
+        "speaker": "actor",
+        "text": "「模拟患者，腕带与手术同意书一致。过敏史已确认。术式、部位、麻醉计划待团队共同复核。」\n中井美佳没有因为这是演练就省略任何一句。\n「医生通常看到患者时，她已经躺好了。可对患者来说，手术从病房推走的那一刻就已经开始了。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "mika_handoff_next",
+            "label": "继续",
+            "next": "narumi_timeout",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_rin",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "narumi_timeout",
+        "speaker": "actor",
+        "text": "成美抬手让所有人停下。\n「现在开始安全核查。说话的人看着团队，听的人停止手上的动作。核查不是背景音。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "narumi_timeout_next",
+            "label": "继续",
+            "next": "shiori_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_aoi",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "shiori_slot",
+        "speaker": "narrator",
+        "text": "模拟病例还包括高血压、糖代谢异常与近期呼吸道症状。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_shiori",
+            "label": "请詩織作围术期评估",
+            "next": "shiori_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "doc_shiori"
+          }
+        ],
+        "fallback_next": "kaori_slot"
+      },
+      {
+        "id": "shiori_line",
+        "speaker": "actor",
+        "text": "藤崎詩織把几项数据排到一起。\n「单看每一项都不到取消手术的程度，但合起来会改变麻醉风险。先确认症状趋势和功能状态，再决定今天是否继续。」\n她看向术野方向。\n「别只看眼前这一块。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "shiori_line_next",
+            "label": "继续",
+            "next": "kaori_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_shiori",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "kaori_slot",
+        "speaker": "narrator",
+        "text": "模拟进入麻醉诱导后的监护与记录。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_kaori",
+            "label": "请佳織检查监护与记录",
+            "next": "kaori_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "doc_rei"
+          }
+        ],
+        "fallback_next": "ange_slot"
+      },
+      {
+        "id": "kaori_line",
+        "speaker": "actor",
+        "text": "深山佳織把监护趋势拉长到十分钟。\n「单个数字正常，不代表趋势正常。记录里必须看得出什么时候变化、当时做了什么、患者如何回应。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "kaori_line_next",
+            "label": "继续",
+            "next": "ange_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_rei",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "ange_slot",
+        "speaker": "narrator",
+        "text": "器械台开始模拟建立无菌区。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_ange",
+            "label": "让安琪报告器械准备",
+            "next": "ange_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "nurse_ange"
+          }
+        ],
+        "fallback_next": "moe_slot"
+      },
+      {
+        "id": "ange_line",
+        "speaker": "actor",
+        "text": "利根川安琪将器械按使用顺序排列，报数时快得像背熟的台词，却在最后主动慢下来。\n「数量一致，锐器区已标记。快不等于省略，我会让每个人都听清。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "ange_line_next",
+            "label": "继续",
+            "next": "moe_slot",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_ange",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "moe_slot",
+        "speaker": "narrator",
+        "text": "铺单与管路固定进入最后复核。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "hear_moe",
+            "label": "让萌惠说明她发现的问题",
+            "next": "moe_line",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true,
+        "requirements": [
+          {
+            "type": "staff_unlocked",
+            "actor_id": "nurse_moe"
+          }
+        ],
+        "fallback_next": "act5_open"
+      },
+      {
+        "id": "moe_line",
+        "speaker": "actor",
+        "text": "本庄萌惠指着模拟吸引管的走向，小心地开口。\n「这里现在没打折，可是台面一升高就可能被压住……我、我可以先重新固定吗？」\n七瀬恋点头后，她明显松了口气，却把胶带贴得非常稳。",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "moe_line_next",
+            "label": "继续",
+            "next": "act5_open",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_moe",
+        "outfit": "uniform"
+      },
+      {
+        "id": "act5_open",
+        "speaker": "narrator",
+        "text": "【第五幕：最终验收】\n模拟流程走到切皮前暂停。明日香要求所有设备按正式手术状态运行三分钟，作为最后一轮联合检查。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "act5_open_next",
+            "label": "继续",
+            "next": "lamp_fail",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "lamp_fail",
+        "speaker": "narrator",
+        "text": "七瀬恋握住无影灯手柄，把灯头移到模拟切口上方。\n灯没有亮。\n整个手术间安静了一秒。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "lamp_fail_next",
+            "label": "继续",
+            "next": "koi_alarm",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "koi_alarm",
+        "speaker": "actor",
+        "text": "「先别动患者！」\n七瀬恋瞬间坐起，视线已经扫向备用照明和控制面板。\n「主灯故障，启用备用方案——」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "koi_alarm_next",
+            "label": "继续",
+            "next": "asuka_calm",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "asuka_calm",
+        "speaker": "actor",
+        "text": "明日香没有笑。\n「按故障流程来。成美确认患者安全，恋负责照明，美佳联系设备科，美幸记录时间。坂口，你来决定是否中止模拟手术。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "asuka_calm_next",
+            "label": "继续",
+            "next": "player_stop",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "player_stop",
+        "speaker": "player",
+        "text": "「中止切皮。维持监护，保护无菌区，查明原因前不继续。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "player_stop_next",
+            "label": "继续",
+            "next": "plug_reveal",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "plug_reveal",
+        "speaker": "actor",
+        "text": "成美沿着电源线看向墙边，然后弯腰捡起一只孤零零的插头。\n「原因找到了。」\n她把插头举起来。\n「验收前有人为了接清洁设备，把无影灯电源拔了。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "plug_reveal_next",
+            "label": "继续",
+            "next": "koi_embarrassed",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_aoi",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "koi_embarrassed",
+        "speaker": "actor",
+        "text": "七瀬恋慢慢放下已经拿在手里的备用灯。\n「……把‘确认插头确实插着’加进清单。」\n她停了停。\n「谁也不许笑。尤其不许现在笑。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "koi_embarrassed_next",
+            "label": "继续",
+            "next": "lesson",
+            "requirements": []
+          }
+        ],
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "lesson",
+        "speaker": "actor",
+        "text": "明日香这才轻轻呼出一口气。\n「很好。问题很小，反应必须认真。真正的安全文化，不是保证没人犯低级错误，而是低级错误发生时，团队也不会靠运气继续。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "lesson_next",
+            "label": "继续",
+            "next": "final_choice",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "final_choice",
+        "speaker": "player",
+        "text": "验收表只剩最后一栏：是否同意新手术室启用。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "accept_with_condition",
+            "label": "签字，但要求修订检查清单",
+            "next": "final_asuka",
+            "requirements": []
+          },
+          {
+            "id": "accept_team",
+            "label": "签字，并把团队复核写入启用条件",
+            "next": "final_asuka",
+            "requirements": []
+          },
+          {
+            "id": "accept_after_retest",
+            "label": "要求重新通电测试后再签字",
+            "next": "final_asuka",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "final_asuka",
+        "speaker": "actor",
+        "text": "重新通电测试完成，所有指标正常。明日香在院方一栏签下名字。\n「新手术室通过验收。」\n她看向在场众人。\n「不是因为房间够新，而是因为今天有人愿意指出不对、有人愿意停下来，也有人愿意重新检查。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "final_asuka_next",
+            "label": "继续",
+            "next": "koi_release",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "koi_release",
+        "speaker": "actor",
+        "actor_id": "nurse_haru",
+        "outfit": "scrubs",
+        "expression": "worried",
+        "text": "短暂的安静里，七瀬恋从仍处于轻度倾斜的手术台上抬起一只手。\n「道理我都同意。」\n她看了看围在台边的同事。\n「在迎接真正患者之前，能不能先把今天的模拟患者放下来？」",
+        "choices": [
+          {
+            "id": "release_koi",
+            "label": "把手术台恢复水平",
+            "next": "sayaka_final_volunteer",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "sayaka_final_volunteer",
+        "speaker": "actor",
+        "text": "七瀬恋刚从台上坐起，南条已经走到手术台边。\n「下一项需要真人验证的话，我可以。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "sayaka_final_volunteer_next",
+            "label": "继续",
+            "next": "asuka_questions_sayaka",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "asuka_questions_sayaka",
+        "speaker": "actor",
+        "text": "明日香看向她。\n「南条医生，我还没有说下一项是什么。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "asuka_questions_sayaka_next",
+            "label": "继续",
+            "next": "sayaka_answer_volunteer",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "sayaka_answer_volunteer",
+        "speaker": "actor",
+        "text": "「那你先说。」\n南条答得很快，随后自己笑了。\n「我可以主动，但同意之前，至少得知道要做什么。这个答案合格吗？」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "sayaka_answer_volunteer_next",
+            "label": "继续",
+            "next": "sayaka_safety_belt",
+            "requirements": []
+          }
+        ],
+        "actor_id": "doc_sayaka",
+        "outfit": "scrubs"
+      },
+      {
+        "id": "sayaka_safety_belt",
+        "speaker": "narrator",
+        "text": "最后一轮只验证平卧位、护栏与安全带。南条换好刷手服躺上手术台，七瀬恋将安全带固定在她腰上。\n南条低头看了看：“哦……这个感觉——”\n坂口叫了她的名字。\n她立刻无辜地眨眼：“我什么都没说。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sayaka_safety_belt_next",
+            "label": "完成最后核对",
+            "next": "closing",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "closing",
+        "speaker": "narrator",
+        "text": "无影灯再次亮起，白色光束稳稳落在空手术台中央。明天开始，这里会迎来真正的患者。\n今天暴露出的每一个小问题，都已经变成流程中的一道保护。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "finish_acceptance",
+            "label": "结束验收日",
+            "next": "@day_end",
+            "requirements": []
+          }
+        ],
+        "hide_portrait": true
+      }
+    ]
+  }
+]

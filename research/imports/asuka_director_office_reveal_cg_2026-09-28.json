@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-28",
+  "generator": "OpenAI built-in imagegen",
+  "character_id": "doc_asuka",
+  "event_id": "intro_doc_asuka_director_office",
+  "purpose": "Fullscreen opening and gallery CG for the second-day hospital-director identity reveal.",
+  "identity_reference": "assets/characters/portrait_pack_v15/doc_asuka/white_coat/neutral.png",
+  "environment_reference": "assets/backgrounds/v5/director_office.png",
+  "source_output": "research/character_references/doc_asuka/10_director_office_reveal_white_coat_source.png",
+  "source_dimensions": [
+    1586,
+    992
+  ],
+  "source_sha256": "981a1ac4fb3ec0cd219fd8108be82f4e29c115b90991319eef132674a12b1ec1",
+  "runtime_target": "assets/events/character_events/asuka/director_office_reveal.png",
+  "runtime_dimensions": [
+    1536,
+    960
+  ],
+  "runtime_sha256": "ade2fdeaea018fe9c216d88e4e48595673f237994a74abbff5f2410b43c28dc0",
+  "processing": "Edited the office composition to use Asuka’s established white-coat physician outfit, then centered-cropped the near-16:10 output to 1536x960.",
+  "uses": [
+    "event opening node door_opens",
+    "once-only event completion reward",
+    "event gallery entry and replay"
+  ],
+  "prompt_summary": "Identity-faithful 23-year-old adult Shiroimiya Asuka in her established white physician coat over a pale-pink blouse, black ribbon and green brooch, seated behind an exceptionally broad hospital director desk. The oversized desk, high-backed chair, orderly medical files, bookshelves and city view establish institutional authority while her petite youthful appearance creates the intended contrast. Bright morning lighting, polished Japanese visual-novel rendering, SFW, one character, no readable text."
+}

@@ -38,7 +38,7 @@ JSON 中 relationships、teams 为初始草稿，不能直接修改文件来保�
 - `EncounterSession` 只解释通用规则：检查前置线索和重复操作、累加时间、添加记录、切换阶段、写入诊断及住院状态。
 - `GameState` 管理按 encounter ID 索引的会话，以及当前病例和汇总时钟。原始患者 JSON 保持只读；病房按运行状态展示住院信息。
 - `ClinicView` 负责左侧对话 / 行动、右侧滚动病历，通过主界面调用会话。原有 VN 页面保持独立。
-- `SaveStore` 将 GameState 快照写入 `user://clinic_slot_1.json`，先写同目录临时文件、检查错误，再原子替换。测试仅写入调用者提供的独立临时路径。
+- `SaveStore` 将 GameState 快照写入 `user://clinic_slot_1.json` 至 `user://clinic_slot_8.json`，先写同目录临时文件、检查错误，再原子替换。位置 1 沿用旧文件名，因此旧版单槽存档无需转换；测试仅写入调用者提供的独立临时路径。
 
 存档 v1 包含 `version`、`content_version`、`active_id` 与各病例的有序 action ID 日志。读取时在临时会话中逐步重放；未知 ID、越阶段操作、重复操作和不满足前置条件的日志会被拒绝，失败不会替换当前状态。记录文本、分钟、诊断与住院状态由定义重建。
 
@@ -78,7 +78,7 @@ GameState 将门诊分钟、术前／手术室分钟和自由时间事件统一�
 
 ## 0.7 / 医护人物事件
 
-CharacterEventSession 是通用的短篇选择树运行器，只认识节点、选项和稳定 ID。GameState 负责解锁条件、关系效果、完成历史、耗时与存档重放；界面只显示当前文本和选择。第一批内容为神宮寺成美与七瀬恋各四章，共八个事件，每章有三个首选分支与对应回应。
+CharacterEventSession 是通用的短篇选择树运行器，只认识节点、选项和稳定 ID。GameState 负责解锁条件、关系效果、完成历史、耗时与存档重放；界面只显示当前文本和选择。早期曾为神宮寺成美与七瀬恋各制作四章 Lv1 事件；这八个事件已在人物世界观重构时整体退役，稳定角色 ID 与关系槽位保留，等待新事件写入。
 
 存档 v6 增加 character_events 和 active_character_event_id。进行中的事件、已走分支、关系数值与完成历史均由选择日志重建；v1–v5 存档以初始关系和空事件记录迁移。人物事件跨过 17:00 时沿用工作日结算规则。
 
@@ -87,3 +87,9 @@ CharacterEventSession 是通用的短篇选择树运行器，只认识节点、�
 正式入口由 GameState.character_events_at 按地点、医院时钟、关系与前置事件筛选，再按 priority 和稳定 ID 排序；地点页只展示第一项候选，以情境句而非章节名邀请玩家进入。时段每天重新开放，未完成事件不会因为某天错过而永久消失。
 
 人物档案的「事件测试」使用独立 CharacterEventSession，不写入 GameState，因此不计时、不改变关系、不解锁鉴赏。事件鉴赏从正式完成记录推导解锁状态；回想同样使用独立会话。gallery.path 为空时显示当前立绘差分构图和 CG 槽位，填入合法图片路径后自动显示专属CG。
+
+### Debug test-save generator
+
+Debug builds expose **Test Save Generator** on the title screen. It writes only to an empty one of the eight normal save slots and uses the same `GameState.snapshot()` / `SaveStore.write_slot()` format as player saves. Special-event and character-event presets can satisfy their authored character, relationship, attribute, flag, prerequisite, cooldown, location-time, and timing gates either immediately or after exactly one additional completed surgery. Optional JSON overrides support `player_attributes`, per-character `relationships`, boolean `story_flags`, surgery `progress`, and prior `special_events`. Generated states remain idle and saveable; the generator never starts an event in progress and never overwrites an occupied slot.
+
+Field reference and override examples: [`docs/test_save_generator.md`](test_save_generator.md).

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "intro_pharmacist_manami",
+    "actor_id": "pharmacist_manami",
+    "title": "第一次走进药房",
+    "chapter": 0,
+    "location_id": "pharmacy",
+    "trigger_mode": "location",
+    "background_id": "pharmacy",
+    "outfit": "pharmacist",
+    "minutes": 10,
+    "teaser": "药房窗口后的女性合上药品登记册。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "cg_intro_pharmacist_manami",
+      "caption": "第一次走进药房",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "actor",
+        "text": "药房窗口后的女性合上登记册，隔着窗口看了坂口两秒。\n「新医生？」\n她指了指自己胸牌。\n「飯村真奈美。药剂师。你负责开，我负责在你开得太离谱时拦住你。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "meds",
+            "label": "询问取药流程",
+            "next": "reply_0",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_pharmacist_manami"
+            ]
+          },
+          {
+            "id": "hello",
+            "label": "先做自我介绍",
+            "next": "reply_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_pharmacist_manami"
+            ]
+          },
+          {
+            "id": "quiet",
+            "label": "只礼貌点头",
+            "next": "reply_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_pharmacist_manami"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reply_0",
+        "speaker": "actor",
+        "text": "「普通处方走这里。紧急用药先打电话。」\n她顿了一下。\n「如果凌晨三点把我叫醒，最好真的是紧急用药。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_0",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "reply_1",
+        "speaker": "actor",
+        "text": "「记住了。」\n她把登记册重新打开。\n「以后用药拿不准就来问。早点问不丢脸，出事以后才来问比较丢脸。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_1",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "reply_2",
+        "speaker": "actor",
+        "text": "「这么拘谨？」\n她笑了一下。\n「放心，药房不咬人。最多把开错剂量的医生退回去重写。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_2",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

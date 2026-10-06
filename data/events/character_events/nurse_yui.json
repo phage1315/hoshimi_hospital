@@ -1,0 +1,104 @@
+[
+  {
+    "id": "intro_nurse_yui",
+    "actor_id": "nurse_yui",
+    "title": "在护士站认识朝倉美幸",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 10,
+    "teaser": "新到星见的朝倉美幸带着整理好的流程笔记来到护士站。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "introduction",
+    "auto_start": false,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "cg_intro_nurse_yui",
+      "caption": "在护士站认识朝倉美幸",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "actor",
+        "text": "朝倉美幸抱着记录板快步走来，在坂口面前稳稳停下。\n「您好，我是朝倉美幸。今天起主要负责门诊支援。」\n她把胸牌转正，笑了一下。\n「护理工作并不是第一天，不过在星见是。这里的流程，我会从头确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "friendly",
+            "label": "友好地回应",
+            "next": "reply_0",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_nurse_yui"
+            ]
+          },
+          {
+            "id": "work",
+            "label": "询问门诊安排",
+            "next": "reply_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_nurse_yui"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reply_0",
+        "speaker": "actor",
+        "text": "「谢谢。先提前说一声，我可能会问得很细——设备型号、交接顺序、科室习惯。」\n她轻轻敲了敲记录板。\n「不是不会做，是不想拿以前医院的习惯替星见做决定。毕竟，我是这里的新人啊。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "end_0",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "reply_1",
+        "speaker": "actor",
+        "text": "她立即把记录板翻到已经贴好标签的一页。\n「今日名单、临时变更和紧急联络顺序都在这里。我还有两处想确认星见的写法。」\n她指尖停在交接栏上。\n「基础护理和患者转运不用担心；我需要学的是这里怎样把工作接起来。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_1",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

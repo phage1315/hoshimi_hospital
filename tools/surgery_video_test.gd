@@ -1,9 +1,15 @@
 extends SceneTree
 
 const App = preload("res://godot/ui/app.gd")
+const PreopView = preload("res://godot/ui/preop_view.gd")
+var checks := 0
 var failures := 0
 
+class MockPreparation extends RefCounted:
+	var flags: Array[String] = []
+
 func expect(condition: bool, message: String) -> void:
+	checks += 1
 	if not condition:
 		failures += 1
 		push_error(message)
@@ -99,12 +105,41 @@ func run() -> void:
 	expect(first_thoracic_video in thoracic_video_pool and second_thoracic_video in thoracic_video_pool, "Thoracic or cardiac surgery returned an unknown video")
 	expect(first_thoracic_video != second_thoracic_video, "Shared thoracic/cardiac pool repeated the previous video")
 	expect(app.incision_video_path("incise_none", "unknown", false).is_empty(), "Unknown surgery group selected an incision video")
+	var awake_preparation := MockPreparation.new()
+	awake_preparation.flags.append("no_anesthesia_confirmed")
+	expect(not app.incision_video_should_mute(awake_preparation), "No-anesthesia incision animation was muted")
+	var anesthetized_preparation := MockPreparation.new()
+	anesthetized_preparation.flags.append("anesthetized")
+	expect(app.incision_video_should_mute(anesthetized_preparation), "Anesthetized incision animation retained live audio")
+	expect(ResourceLoader.exists(app.CHANGE_SCRUBS_VIDEO), "Change-scrubs transition OGV is missing")
+	expect(load(app.CHANGE_SCRUBS_VIDEO) is VideoStream, "Change-scrubs transition OGV did not load as a VideoStream")
+	expect(ResourceLoader.exists(app.SCRUB_HANDS_VIDEO), "Scrub-hands transition OGV is missing")
+	expect(load(app.SCRUB_HANDS_VIDEO) is VideoStream, "Scrub-hands transition OGV did not load as a VideoStream")
+	expect(ResourceLoader.exists(app.ENTER_OPERATING_ROOM_VIDEO), "Enter-room transition OGV is missing")
+	expect(load(app.ENTER_OPERATING_ROOM_VIDEO) is VideoStream, "Enter-room transition OGV did not load as a VideoStream")
+	var change_scrubs_video: Dictionary = app.preop_transition_video_for("change_scrubs")
+	expect(change_scrubs_video.get("path", "") == app.CHANGE_SCRUBS_VIDEO and is_equal_approx(float(change_scrubs_video.get("speed", 0.0)), 2.0), "Change-scrubs action did not resolve its 2x transition video")
+	var scrub_hands_video: Dictionary = app.preop_transition_video_for("scrub_hands")
+	expect(scrub_hands_video.get("path", "") == app.SCRUB_HANDS_VIDEO and is_equal_approx(float(scrub_hands_video.get("speed", 0.0)), 2.0), "Scrub-hands action did not resolve its 2x transition video")
+	var enter_room_video: Dictionary = app.preop_transition_video_for("enter_room")
+	expect(enter_room_video.get("path", "") == app.ENTER_OPERATING_ROOM_VIDEO and is_equal_approx(float(enter_room_video.get("speed", 0.0)), 2.0), "Enter-room action did not resolve its 2x transition video")
+	expect(PreopView.background_id_for({"kind": "changing", "background_id": "changing"}, ["changed"], false, "") == "scrub_area", "Changed preop state did not resolve to the dedicated scrub-area background")
+	app.show_preop_transition_video(change_scrubs_video, app.show_map)
+	await process_frame
+	var transition_player: VideoStreamPlayer = app.page.get_node_or_null("PreopTransitionVideoPlayer")
+	expect(app.screen == "preop_transition_video" and transition_player != null and transition_player.is_playing(), "Preop transition video did not open and begin playback")
+	expect(transition_player != null and is_equal_approx(transition_player.speed_scale, 2.0) and transition_player.volume_db <= -79.0, "Preop transition video did not play silently at 2x speed")
+	expect(transition_player != null and transition_player.position == Vector2(264, 192) and transition_player.size == Vector2(752, 416), "Preop transition video was not centered at its native borderless presentation size")
+	expect(app.page.get_node_or_null("PreopTransitionVideoFrame") == null, "One-second preop transition unexpectedly added a decorative frame")
+	expect(app.page.get_node_or_null("PreopTransitionVideoSkip") == null, "One-second preop transition unexpectedly added a skip control")
+	await create_timer(1.4).timeout
+	expect(app.screen == "map" and not app.preop_transition_video_next.is_valid(), "Preop transition video did not continue automatically or retained a stale callback")
 	app.show_surgery_video(app.ABDOMINAL_INCISION_VIDEO, app.show_map)
 	await process_frame
 	var player: VideoStreamPlayer = app.page.get_node_or_null("SurgeryVideoPlayer")
 	expect(app.screen == "surgery_video" and player != null, "Surgery video overlay did not open")
 	expect(player != null and player.is_playing(), "Surgery video did not begin playback")
-	expect(player != null and is_equal_approx(player.speed_scale, 2.5), "Surgery video did not play at 2.5x speed")
+	expect(player != null and is_equal_approx(player.speed_scale, 1.25), "Surgery video did not play at 1.25x speed")
 	expect(player != null and is_equal_approx(player.volume_db, 0.0), "No-anesthesia surgery video did not preserve its audio")
 	expect(app.page.get_node_or_null("SurgeryVideoSkip") != null, "Surgery video has no skip control")
 	app.complete_surgery_video()
@@ -114,8 +149,9 @@ func run() -> void:
 	await process_frame
 	var muted_player: VideoStreamPlayer = app.page.get_node_or_null("SurgeryVideoPlayer")
 	expect(muted_player != null and muted_player.volume_db <= -79.0, "Anesthetized surgery video was not muted")
-	await create_timer(2.8).timeout
+	# The 6.04-second source takes about 4.83 seconds at the configured 1.25x.
+	await create_timer(5.3).timeout
 	expect(app.screen == "map", "Surgery video did not continue automatically after playback")
 	expect(not app.surgery_video_next.is_valid(), "Finished video retained a stale continuation callback")
-	print("Surgery video checks: %s, failures: %s" % [81, failures])
+	print("Surgery video checks: %s, failures: %s" % [checks, failures])
 	quit(1 if failures > 0 else 0)

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "intro_doc_rei",
+    "actor_id": "doc_rei",
+    "title": "在检查室认识深山佳織",
+    "chapter": 0,
+    "location_id": "exam",
+    "trigger_mode": "location",
+    "background_id": "exam_room",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "深山佳織从检查结果上抬起头。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "cg_intro_doc_rei",
+      "caption": "在检查室认识深山佳織",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "actor",
+        "text": "深山佳織从检查结果上抬头，把坂口从胸牌一路看到脸。\n「新来的？」\n她把报告往桌上一放。\n「先说好，急诊没空陪你慢慢组织语言。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "formal",
+            "label": "正式自我介绍",
+            "next": "reply_0",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_doc_rei"
+            ]
+          },
+          {
+            "id": "plain",
+            "label": "简单说明来意",
+            "next": "reply_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_doc_rei"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reply_0",
+        "speaker": "actor",
+        "text": "「深山佳織，急诊。」\n她握手很快，松手也很快。\n「以后判断不清，先把事实说全。别拿‘我觉得’来考验我的耐心。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "end_0",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "reply_1",
+        "speaker": "actor",
+        "text": "「行，至少会挑重点。」\n她重新拿起报告。\n「这里节奏快。真出事的时候直接叫我，别站门口客气三遍。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_1",
+            "label": "结束交谈",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

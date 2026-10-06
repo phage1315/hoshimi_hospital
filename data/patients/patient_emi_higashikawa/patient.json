@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_emi_higashikawa",
+    "name": "东川映見",
+    "age": 23,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/ward/smile.png",
+        "ward/brave": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/ward/brave.png",
+        "ward/worried": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_emi_higashikawa/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_emi_higashikawa/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_emi_higashikawa/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_emi_higashikawa/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_emi_higashikawa_v1/patient_emi_higashikawa/splash/general_anesthesia.png",
+        "examination/shy": "assets/examinations/patient_emi_higashikawa/full_undress_basic_exam.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "reserved",
+    "personality": {
+      "primary": "socially_anxious",
+      "secondary": "formal_elegant",
+      "stress_response": "becomes_quiet"
+    },
+    "traits": {
+      "baseline_anxiety": 88,
+      "pain_sensitivity": 61,
+      "privacy_sensitivity": 91,
+      "trust_baseline": 44,
+      "control_need": 79,
+      "expressiveness": 38,
+      "health_literacy": 48,
+      "compliance_tendency": 84
+    },
+    "fear_profile": {
+      "pain_fear": 66,
+      "procedure_fear": 78,
+      "diagnosis_fear": 72,
+      "loss_control_fear": 92
+    },
+    "reaction_lines": {
+      "procedure_mismatch": "「请等一下……这和刚才说明的术式不一样吧？能先替我再确认一次吗？」（如果我在这里失态，会不会连百货公司的名声也受影响。）",
+      "explain_plan": "「谢谢您说明得这么清楚。我会照指示配合。」（必须表现得端庄一点，不能再像电梯里晕倒时那样。）",
+      "brief_plan": "「明白了。请直接告诉我需要做什么。」（话越短，越不容易暴露声音里的颤抖。）",
+      "last_reassure": "「医生……开始以前，可以再告诉我一次，您会一直在这里吗？」（手套里的手心已经全是汗。）",
+      "choose_general": "「全身麻醉吗？好的。睡着以前请告诉我一声。」（至少不必让别人看见自己失控。）",
+      "choose_epidural": "「我会保持不动。若我发抖，麻烦您提醒我呼吸。」（绝不能给大家添麻烦。）",
+      "choose_local": "「局部麻醉……我会清醒着，对吗？请把每一步告诉我。」（看不见发生什么，反而更害怕。）",
+      "choose_none": "「不麻醉也可以吗？对不起，我恐怕无法保持仪态。」（光是想象，膝盖就已经发软。）",
+      "induction_reassure": "「我明白了……那就拜托您了。」（视野模糊以前，终于允许自己抓紧床单。）",
+      "insist_without_anesthesia": "「请不要这样。我会配合，但我不能接受没有麻醉。」（礼貌不是放弃拒绝的权利。）",
+      "assistant_stabilize_epidural": "「谢谢，我会按照你们的节奏呼吸。」（有人明确地扶住自己，颤抖才稍微停下。）",
+      "assistant_stabilize_local": "「我听得到。请继续告诉我下一步。」（把注意力放在声音上，就不会去想刀口。）",
+      "assistant_stabilize_none": "「请停一下……我真的做不到。」（再正式的措辞也遮不住哭腔。）",
+      "incise_epidural": "「有压力感……没有尖锐的痛。我还可以。」（声音必须稳住。）",
+      "incise_local": "「有一点刺痛，但还能忍受。请慢一点。」（额角的汗已经流下来。）",
+      "incise_none": "「啊——请停下！太痛了，我没办法不动！」（所有训练出来的礼仪在一瞬间崩塌。）",
+      "contact_pause": "「谢谢您停下来。我需要几秒钟调整呼吸。」（被允许承认害怕，反而没有那么难堪。）",
+      "contact_command": "「明白。我不会动。」（命令清楚，却让肩膀绷得更紧。）",
+      "contact_continue": "「请继续……我会尽量配合。」（不能让整间手术室都等自己。）",
+      "ongoing_narrate": "「听见您的说明会好很多。请继续说。」（知道下一步是什么，就不至于失去控制。）",
+      "ongoing_eye_contact": "「医生，我在看着您。」（只要视线没有被移开，自己就仍然是患者，而不是麻烦。）",
+      "ongoing_silent": "「现在进行到哪里了？请给我一点回应。」（沉默比疼痛更容易让人想起那次晕倒。）",
+      "closure_reassure": "「已经快结束了吗？谢谢……我没有给大家添太多麻烦吧？」（第一反应仍是担心别人如何看待自己。）",
+      "closure_coach": "「好，我继续慢慢呼吸。最后也拜托您了。」（终于可以稍微松开攥紧的手。）",
+      "closure_silent": "「是在缝合了吗？请告诉我一声。」（看不见的安静让人无法维持镇定。）",
+      "hospitalization_question": "「住院期间会有人来百货公司询问吗？我不希望这件事影响店里的形象。」（自己的身体问题，还是很难启齿。）",
+      "hospitalization_response": "「明白了，谢谢您替我保密。我会认真配合治疗。」（胸口终于松了一点。）"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「我知道是术前准备……请先把门帘拉好。」（即使只有医护在场，也觉得无处躲藏。）",
+        "「我会配合。可以尽量快一点吗？」（声音还算正式，指尖却在发抖。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「这项准备和我的术式有关吗？请先替我确认。」（礼貌地提出疑问，不代表不配合。）",
+        "「若医嘱没有要求，我希望先暂停。」（终于把拒绝说完整了。）"
+      ],
+      "ward_skin_prep": [
+        "「范围这么大吗？我明白了，请继续。」（暴露皮肤时只能盯着天花板。）",
+        "「有点凉……我不会乱动的。」（连颤抖都像是不合礼仪。）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「切口不在这里吧？麻烦重新核对范围。」（不能因为难为情就保持沉默。）",
+        "「对不起，请先停一下。我想确认医嘱。」（说出口以后，心跳反而慢了一点。）"
+      ],
+      "ward_surgical_cap": [
+        "「头发很长，收起来可能要麻烦您了。」（职业习惯让她本能地在意外观是否整齐。）",
+        "「这样合格了吗？谢谢。」（帽子戴好的瞬间，手术忽然变得真实。）"
+      ],
+      "operative_positioning_awake": [
+        "「这个姿势可以。我会保持不动。」（灯光让每一点紧张都无所遁形。）",
+        "「手臂放在这里吗？请帮我调整。」（被明确告知位置，才稍微安心。）"
+      ],
+      "operative_positioning_none": [
+        "「请慢一点，这个角度已经很痛了。」（再强撑就会像那天在电梯里一样倒下。）",
+        "「固定以前请先告诉我，我怕自己会躲开。」（承认害怕已经用尽力气。）"
+      ],
+      "urinary_catheterization_awake": [
+        "「我会尽量放松。结束时请马上告诉我。」（最难启齿的部位让声音越来越轻。）",
+        "「会很痛吗？请慢一点……拜托了。」（脸颊发烫，手心也全是汗。）"
+      ],
+      "urinary_catheterization_none": [
+        "「很痛，请停一下，不要再推进了。」（正式语气终于被疼痛撕开。）",
+        "「我承受不了，请先取出来。」（这次不能为了体面继续忍耐。）"
+      ],
+      "skin_disinfection_awake": [
+        "「好凉……我知道了，请继续。」（冰冷液体划过皮肤，身体立即绷紧。）",
+        "「这就是手术范围吗？谢谢您先说明。」（知道边界，恐惧就有了形状。）"
+      ],
+      "skin_disinfection_none": [
+        "「这里不只是凉，还有刺痛。请检查一下。」（声音已经控制不住地发抖。）",
+        "「请先擦掉一些，我的皮肤像在烧。」（额头的汗和消毒液一样冰冷。）"
+      ],
+      "incision_marking_awake": [
+        "「这条线就是切口吗？我想再确认一次。」（目光无法从标记上移开。）",
+        "「明白了。请按照说明过的范围进行。」（用工作时的正式口吻压住恐慌。）"
+      ],
+      "incision_marking_none": [
+        "「位置和刚才的说明不同，请停下。」（躺在这里也不能失去判断。）",
+        "「请重新核对术式。确认以前不要下刀。」（这句话必须说得足够清楚。）"
+      ]
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "full_undress": {
+      "prompt": "「基础查体需要把内衣也脱掉吗？对不起，我只是想先确认范围。」（在陌生人面前谈自己的身体，已经让手心冒汗。）",
+      "responses": {
+        "abandon_full_undress": "「明白了，那这部分先不做。谢谢您尊重我的选择。」（终于能把攥紧衣角的手松开。）",
+        "authoritative_full_undress": "「如果这是统一规定……我会配合。」（正式的要求让人找不到退路。她整齐地叠好衣物，羞怯地站到检查灯下。）",
+        "gentle_full_undress": "「好的。请一步一步告诉我需要怎么做。」（解释很温和，脸上的热度却没有退下。她依照说明脱去衣物，抱住手臂等待检查。）",
+        "threaten_full_undress": "「请不要用治疗资格逼我……我明白了。」（这已经不是询问。她沉默地脱去衣物，在明显僵硬的状态下完成检查。）"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_emi_higashikawa"
+    },
+    "title": "东川映見的病历"
+  },
+  "preop": {
+    "stage_prompts": {
+      "ward_visit": "「医生，麻烦您了。手术安排可以再跟我说一遍吗？」",
+      "team": "坂口医生担任主刀，选好与坂口医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由坂口医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「都准备好了。对不起，我的手一直在抖。」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生……看到您进来，我就安心一点了。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「等等，医生……这和坂口医生之前告诉我的手术不一样吧？」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。坂口医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我会尽量保持端正……如果发抖，请提醒我呼吸。」",
+      "surgery_start_local": "「马上要开始了吧？请告诉我每一步。」",
+      "surgery_start_none": "「请等一下，我还没有接受麻醉。现在开始我会无法保持不动。」",
+      "instrument_handoff": "坂口医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待坂口医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。坂口医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，坂口医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据坂口医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。坂口医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "title": "东川映見 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 62,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 80
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。东川映見在全身麻醉下没有意识反应。",
+      "incise_epidural": "「感觉到压力了……没有尖锐的痛。我还可以。」",
+      "incise_local": "「有一点刺痛……请慢一点，我会配合。」",
+      "incise_none": "「啊——请停下！太痛了，我没办法保持不动！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_emi_higashikawa",
+        "label": "东川映見 · 基础查体脱衣",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_emi_higashikawa/full_undress_basic_exam.png"
+        ],
+        "caption": "东川映見脱去全部衣物，抱住双臂，羞怯而紧张地等待基础查体。"
+      }
+    ],
+    "ward_preparation": []
+  }
+}

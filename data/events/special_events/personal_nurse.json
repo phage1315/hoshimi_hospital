@@ -1,0 +1,32 @@
+[
+  {
+    "id": "probation_completion_personal_nurse",
+    "title": "从今天起，独立看诊",
+    "category": "career_milestone",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "城宮明日香请坂口、神宮寺成美和七瀬恋到院长室，正式确认试用期结束后的门诊安排。",
+    "unlock_requirements": [
+      {
+        "type": "career_progress_any",
+        "minimum_day": 30,
+        "minimum_reputation": 50
+      }
+    ],
+    "required_characters": ["PLAYER"],
+    "prerequisite_events": [],
+    "event_chain": ["probation_completion_personal_nurse_main"],
+    "completion_flags": ["probation_complete", "personal_nurse_system_unlocked"],
+    "completion_effects": {"personal_nurse_id": "nurse_haru"},
+    "gallery_unlock": false,
+    "timing": {
+      "trigger_day": 1,
+      "priority": 175,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  }
+]

@@ -4,6 +4,8 @@
     "id": "patient_emi",
     "name": "二ノ宮 紗智子",
     "age": 25,
+    "medical_background": false,
+    "has_prior_surgery": false,
     "case_id": "case_followup",
     "visuals": {
       "state": "outpatient",
@@ -24,7 +26,12 @@
         "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_emi/near_collapse.png",
         "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_emi/anesthetized.png",
         "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_emi/general.png",
-        "examination/shy": "assets/characters/examination_portraits_v1/patient_emi/shy.png"
+        "splash/epidural_anesthesia": "assets/events/anesthesia_v1/patient_emi/epidural.png",
+        "examination/shy": "assets/characters/examination_portraits_v1/patient_emi/shy.png",
+        "operating_table_lithotomy/awake": "assets/characters/portrait_pack_v7/patient_emi/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/portrait_pack_v7/patient_emi/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/portrait_pack_v7/patient_emi/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/portrait_pack_v7/patient_emi/operating_table_lithotomy/anesthetized.png"
       }
     },
     "admission_status": "outpatient",
@@ -147,34 +154,34 @@
         "gentle_full_undress": "「好……请慢一点告诉我该怎么做。我会配合。」（声音很温和，可要脱掉的还是全部。手指碰到内衣扣时，脸一下热了。）她跟着你的指示一件件脱下衣物，双手无处安放地站到诊察灯下，直到基础查体结束。",
         "threaten_full_undress": "「不要这样……我脱，我会配合的。」（不能被写成拒绝检查。只好低着头，把最后一件也交到护士手里。）她急忙脱去全部衣物，把最后一件也放进托盘，忍着眼泪完成了基础查体。"
       },
-      "visual_pool_id": "full_undress_basic_exam"
+      "visual_pool_id": "full_undress_basic_exam_patient_emi"
     },
     "title": "第二份病历"
   },
   "preop": {
     "stage_prompts": {
       "ward_visit": "「医生，是准备安排手术了吗？」",
-      "team": "本多医生担任主刀，选好与本多医生配合的三位同事。",
-      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由本多医生亲手执行。额外照顾最多选两项。",
+      "team": "坂口医生担任主刀，选好与坂口医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由坂口医生亲手执行。额外照顾最多选两项。",
       "prepared": "「我准备好了……我们什么时候过去？」",
       "changing": "先换上手术服，再完成刷手准备。",
-      "operating_room": "「医生，本多医生来了……」",
+      "operating_room": "「医生，坂口医生来了……」",
       "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
       "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
       "procedure_mismatch": "「不、不是吧，医生？我不是要做那里……！」",
       "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
-      "general_induction": "「医生，本多医生还在旁边吗？」",
-      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。本多医生抬眼确认团队已经就位。",
+      "general_induction": "「医生，坂口医生还在旁边吗？」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。坂口医生抬眼确认团队已经就位。",
       "surgery_start_epidural": "「我、我会保持不动的……需要屏住呼吸的时候，请提前告诉我。」",
       "surgery_start_local": "「要开始了吗……？我有点紧张，请不要突然下刀。」",
       "surgery_start_none": "「医生……是不是漏掉麻醉了？请先确认一下，好吗？」",
-      "instrument_handoff": "本多医生的命令落下，器械护士已经准备好第一把器械。",
-      "assistant_ready": "器械已经到手。助手女医正等待本多医生的下一项指令。",
+      "instrument_handoff": "坂口医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待坂口医生的下一项指令。",
       "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
-      "general_operation": "患者在全身麻醉下没有语言反应。本多医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
-      "operative_contact": "切口已经建立。患者的反应变得明显，本多医生需要决定如何回应。",
-      "ongoing_interaction": "操作仍在继续。患者正在根据本多医生的态度调整自己的反应。",
-      "closure_interaction": "最紧张的一段已经过去。本多医生准备如何结束这次互动？",
+      "general_operation": "患者在全身麻醉下没有语言反应。坂口医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，坂口医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据坂口医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。坂口医生准备如何结束这次互动？",
       "procedure_flow": "团队进入术式特有的关键步骤。",
       "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
       "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
@@ -195,7 +202,90 @@
     }
   },
   "exclusive_cg_pools": {
-    "examination": [],
-    "ward_preparation": []
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_emi",
+        "label": "二ノ宮紗智子 · 基础查体脱衣",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_emi/full_undress_basic_exam.png"
+        ],
+        "caption": "二ノ宮紗智子脱去全部衣物，准备接受基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_emi",
+        "label": "二ノ宮紗智子 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_emi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi/enema.png"
+        ],
+        "caption": "坂口医生依照病房准备流程，亲手为二ノ宮紗智子完成灌肠。"
+      },
+      {
+        "id": "ward_skin_prep_patient_emi",
+        "label": "二ノ宮紗智子 · 病房准备 · 备皮",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_emi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi/skin_prep.png"
+        ],
+        "caption": "坂口医生依照术前准备范围，亲手为二ノ宮紗智子完成备皮。"
+      },
+      {
+        "id": "sterile_draping_patient_emi",
+        "label": "二ノ宮紗智子 · 手术室准备 · 铺设无菌单",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_emi"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic",
+          "vascular"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi/sterile_draping.png"
+        ],
+        "caption": "术野消毒完成后，护士从两侧展开开孔无菌单，只留下预定的腹部术野。仍然清醒的二ノ宮紗智子望着逐渐缩小的视野，等待切口划线。"
+      },
+      {
+        "id": "scalpel_ready_patient_emi",
+        "label": "二ノ宮紗智子 · 手术刀准备下刀",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_emi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi/scalpel_ready.png"
+        ],
+        "caption": "坂口医生接过器械护士递来的手术刀，刀锋停在预定切口上方。仍然清醒的二ノ宮紗智子看见刀刃，含着泪竭力保持不动。『请、请先告诉我什么时候下刀……』"
+      }
+    ]
   }
 }

@@ -1,18 +1,45 @@
 """Schema + cross-reference checks. Run from any directory."""
 import json
 import re
+from datetime import date
 from pathlib import Path
 from jsonschema import Draft202012Validator
 from patient_bundles import load_patient_bundles
 ROOT = Path(__file__).resolve().parents[1]
 def read(path):
     return json.loads((ROOT / 'data' / path).read_text())
+def read_collection(path):
+    source = read(path)
+    if isinstance(source, list):
+        return source
+    if not isinstance(source, dict) or not isinstance(source.get('files'), list):
+        raise ValueError(f'Invalid collection or collection index: {path}')
+    base = Path(path).parent
+    rows = []
+    for relative in source['files']:
+        part = read(str(base / relative))
+        if not isinstance(part, list):
+            raise ValueError(f'Collection shard must be an array: {base / relative}')
+        rows.extend(part)
+    return rows
 schema = read('schemas/content.schema.json')
 manifest = read('manifest.json')
 errors = []
 collections = {}
 def check(condition, message):
     if not condition: errors.append(message)
+
+GAME_START_DATE = date(2025, 4, 1)
+GAME_END_DATE = date(2026, 3, 31)
+
+def game_day_for_iso(value):
+    try:
+        parsed = date.fromisoformat(value)
+    except (TypeError, ValueError):
+        return -1
+    if parsed < GAME_START_DATE or parsed > GAME_END_DATE:
+        return -1
+    return (parsed - GAME_START_DATE).days + 1
 
 def png_has_alpha_channel(path):
     """Detect RGBA/gray-alpha PNGs without adding an image-library dependency."""
@@ -25,10 +52,30 @@ check(manifest['schema_version'] == 1, 'Unsupported manifest version')
 protagonist = read(manifest['protagonist'])
 protagonist_validator = Draft202012Validator({'$ref': '#/$defs/protagonist', '$defs': schema['$defs']})
 errors.extend(f'protagonist {e.json_path}: {e.message}' for e in protagonist_validator.iter_errors(protagonist))
-check(protagonist.get('name') == '本多繁邦', 'Canonical protagonist name must be 本多繁邦')
-kind = dict(staff='staff', patients='patient', cameo_patients='cameo_patient', relationships='relationship', relationship_activity_placeholders='relationship_activity_placeholder', cases='case', case_templates='case_template', surgeries='surgery', patient_interactions='patient_interaction', teams='team', backgrounds='background', time_events='time_event', character_events='character_event', micro_events='micro_event', surgery_team_dialogue_profiles='surgery_team_dialogue_profile', examination_cg_pools='examination_cg_pool', surgery_cg_pools='surgery_cg_pool', ward_preparation_cg_pools='ward_preparation_cg_pool', locations='location', encounters='encounter', preops='preop')
+check(protagonist.get('name') == '坂口隆司', 'Canonical protagonist name must be 坂口隆司')
+check(protagonist.get('family_name') == '坂口', 'Canonical protagonist family name must be 坂口')
+check(protagonist.get('given_name') == '隆司', 'Canonical protagonist given name must be 隆司')
+check(protagonist.get('professional_name') == '坂口医生', 'Canonical professional address must be 坂口医生')
+career_background = protagonist.get('career_background', {})
+check(career_background.get('overseas_training_completed') is True,
+      'Protagonist background must record completed overseas training')
+check(career_background.get('distinguished_resume') is True,
+      'Protagonist background must record the distinguished resume')
+check(career_background.get('arrival_reason') == 'mentor_recommendation',
+      'Protagonist must arrive through the former mentor recommendation')
+check(career_background.get('contract_months') == 12,
+      'Protagonist initial contract must be exactly one year')
+check(career_background.get('initial_intent') == 'temporary_return_base',
+      'Protagonist must initially regard Hoshimi as a temporary return base')
+office_items = {item.get('id'): item for item in protagonist.get('office_items', [])}
+mentor_letter = office_items.get('mentor_recommendation_letter', {})
+check('office_has_mentor_letter' in protagonist.get('office_flags', []),
+      'Initial office must contain the mentor-letter flag')
+check(mentor_letter.get('flag') == 'office_has_mentor_letter',
+      'Mentor recommendation letter must use its reserved office flag')
+kind = dict(staff='staff', patients='patient', cameo_patients='cameo_patient', first_surgery_diagnosis_reactions='first_surgery_diagnosis_reaction', relationships='relationship', relationship_activity_placeholders='relationship_activity_placeholder', cases='case', case_templates='case_template', advanced_referral_cases='advanced_referral_case', surgeries='surgery', patient_interactions='patient_interaction', temporary_conditions='temporary_condition', palpation_profiles='palpation_profile', teams='team', backgrounds='background', time_events='time_event', character_events='character_event', special_events='special_event', special_event_steps='special_event_step', date_profiles='date_profile', date_locations='date_location', staff_role_cg_rewards='staff_role_cg_reward', micro_events='micro_event', surgery_team_dialogue_profiles='surgery_team_dialogue_profile', examination_cg_pools='examination_cg_pool', surgery_cg_pools='surgery_cg_pool', ward_preparation_cg_pools='ward_preparation_cg_pool', locations='location', encounters='encounter', preops='preop')
 for key, path in manifest['collections'].items():
-    rows = read(path)
+    rows = read_collection(path)
     collections[key] = rows
     validator = Draft202012Validator({'$ref': '#/$defs/' + kind[key], '$defs': schema['$defs']})
     for index, row in enumerate(rows):
@@ -36,6 +83,23 @@ for key, path in manifest['collections'].items():
     if key != 'relationships':
         ids = [r.get('id') for r in rows]
         check(len(ids) == len(set(ids)), f'Duplicate id in {key}')
+
+required_palpation_profiles = {'generic', 'abdominal', 'breast', 'gynecology_pelvic', 'thoracic_cardiac'}
+palpation_profile_ids = {row.get('id') for row in collections.get('palpation_profiles', [])}
+check(required_palpation_profiles.issubset(palpation_profile_ids),
+      'Palpation profiles must define generic, abdominal, breast, gynecology_pelvic and thoracic_cardiac')
+for surgery in collections.get('surgeries', []):
+    check(surgery.get('palpation_profile') in palpation_profile_ids,
+          f"Surgery {surgery.get('id')} references an unknown palpation profile")
+    expected_anesthesia_targets = {
+        'abdominal': ['abdomen'],
+        'thoracic_cardiac': ['chest'],
+        'breast': ['breast'],
+        'gynecology_pelvic': ['genital'],
+    }.get(surgery.get('palpation_profile'))
+    if expected_anesthesia_targets is not None:
+        check(surgery.get('anesthesia_target_regions') == expected_anesthesia_targets,
+              f"Surgery {surgery.get('id')} has the wrong anesthesia target regions")
 
 patient_collections, patient_bundles = load_patient_bundles(ROOT / 'data', manifest['patient_bundles'])
 for relative_path, bundle in patient_bundles:
@@ -67,6 +131,74 @@ for key in ['examination_cg_pools', 'ward_preparation_cg_pools']:
         errors.extend(f'{key} patient bundle [{index}] {e.json_path}: {e.message}' for e in validator.iter_errors(row))
 by = {key: {r['id']: r for r in rows} for key, rows in collections.items() if key != 'relationships'}
 
+diagnosis_reaction_counts = {}
+for reaction in collections['first_surgery_diagnosis_reactions']:
+    check(reaction['event_type'] == 'first_surgery_diagnosis_shock',
+          reaction['id'] + ': wrong diagnosis reaction event type')
+    group = reaction['site_group']
+    diagnosis_reaction_counts[group] = diagnosis_reaction_counts.get(group, 0) + 1
+check(diagnosis_reaction_counts == {
+    'breast': 4,
+    'abdominal': 5,
+    'gynecology_pelvic': 6,
+    'thoracic_cardiac': 5,
+    'generic': 2,
+}, 'First-surgery diagnosis reaction pool must contain the authored 22 variants')
+
+date_location_ids = set(by['date_locations'])
+for profile in collections['date_profiles']:
+    prefix = profile['id'] + ': '
+    check(profile['staff_id'] in by['staff'], prefix + 'unknown date-profile staff member')
+    check(set(profile['preferred_locations']) <= date_location_ids, prefix + 'unknown preferred date location')
+    check(set(profile['disliked_locations']) <= date_location_ids, prefix + 'unknown disliked date location')
+    if profile.get('first_date_event_id'):
+        check(profile['first_date_event_id'] in by['character_events'], prefix + 'unknown first-date character event')
+for location in collections['date_locations']:
+    if location['asset_status'] == 'ready':
+        check(bool(location['background_id']) and location['background_id'] in by['backgrounds'],
+              location['id'] + ': ready date location needs a known background')
+        check(bool(location['preview_path']) and (ROOT / location['preview_path']).is_file(),
+              location['id'] + ': ready date location preview is missing')
+
+role_reward_pairs = set()
+role_reward_categories = {
+    'assistant_surgeon': 'doctor',
+    'scrub_nurse': 'nurse',
+    'circulating_nurse': 'nurse',
+    'ward_nurse': 'nurse',
+}
+for reward in collections['staff_role_cg_rewards']:
+    prefix = reward['id'] + ': '
+    actor = by['staff'].get(reward['staff_id'])
+    check(bool(actor), prefix + 'unknown staff member')
+    if actor:
+        check(actor.get('team_category', actor.get('profession')) == role_reward_categories[reward['role_id']],
+              prefix + 'staff member is not qualified for the rewarded role')
+    pair = (reward['staff_id'], reward['role_id'])
+    check(pair not in role_reward_pairs, prefix + 'duplicate staff/role reward')
+    role_reward_pairs.add(pair)
+    check((ROOT / reward['path']).is_file(), prefix + 'CG file missing')
+
+# Older characters can remain on the explicit backlog while their missing art is
+# produced. Every newly added female doctor/nurse is rejected by validation if
+# her complete mandatory role-CG set is absent.
+legacy_role_cg_backlog = {
+    'doc_asuka', 'doc_artoria', 'visiting_maya',
+    'visiting_futaba', 'doc_sakura_anesthesiology',
+    'nurse_ishigami', 'nurse_satsuki',
+}
+for actor in collections['staff']:
+    if actor.get('gender') != 'female' or actor['id'] in legacy_role_cg_backlog:
+        continue
+    category = actor.get('team_category', actor.get('profession'))
+    if category == 'doctor' and 'assistant_surgeon' in actor.get('surgical_roles', []):
+        check((actor['id'], 'assistant_surgeon') in role_reward_pairs,
+              actor['id'] + ': female doctor is missing mandatory assistant-surgeon CG')
+    if category == 'nurse':
+        for role_id in ('scrub_nurse', 'circulating_nurse', 'ward_nurse'):
+            check((actor['id'], role_id) in role_reward_pairs,
+                  actor['id'] + ': female nurse is missing mandatory ' + role_id + ' CG')
+
 for relation in collections['relationships']:
     prefix = relation['target_id'] + ': '
     slots = relation['rank_slots']
@@ -77,11 +209,18 @@ for relation in collections['relationships']:
         if not event_id:
             continue
         event = by['character_events'].get(event_id, {})
-        check(bool(event), prefix + 'unknown bond/rank event ' + event_id)
-        check(event.get('actor_id') == relation['target_id'], prefix + event_id + ': event actor mismatch')
-        expected_category = 'bond' if slot['target_level'] == 1 else 'rank_up'
-        check(event.get('category') == expected_category, prefix + event_id + ': wrong event category')
-        check(event.get('target_level') == slot['target_level'], prefix + event_id + ': target level mismatch')
+        special_event = by['special_events'].get(event_id, {})
+        check(bool(event) or bool(special_event), prefix + 'unknown bond/rank event ' + event_id)
+        if event:
+            check(event.get('actor_id') == relation['target_id'], prefix + event_id + ': event actor mismatch')
+            expected_category = 'bond' if slot['target_level'] == 1 else 'rank_up'
+            check(event.get('category') == expected_category, prefix + event_id + ': wrong event category')
+            check(event.get('target_level') == slot['target_level'], prefix + event_id + ': target level mismatch')
+        elif special_event:
+            reward = next((entry for entry in special_event.get('relationship_rewards', [])
+                           if entry.get('actor_id') == relation['target_id']), {})
+            check(reward.get('target_level') == slot['target_level'],
+                  prefix + event_id + ': special-event relationship reward mismatch')
 
 activity_placeholders = by['relationship_activity_placeholders']
 patient_play = activity_placeholders.get('operating_room_patient_play', {})
@@ -96,8 +235,13 @@ check(clinical_practice.get('unlock_level') == 5 and
 for placeholder in collections['relationship_activity_placeholders']:
     prefix = placeholder['id'] + ': '
     check(placeholder['location_id'] in by['locations'], prefix + 'unknown location')
-    check(set(placeholder['eligible_staff_ids']) == set(by['staff']),
-          prefix + 'must apply to every medical staff member')
+    exclusion_flag = ('exclude_adult_intimacy' if placeholder['id'] == 'operating_room_patient_play'
+                      else 'exclude_clinical_practice_patient')
+    adult_route_staff = {actor_id for actor_id, actor in by['staff'].items()
+                         if not ({'professional_friendship_only', 'relationship_progression_locked', exclusion_flag}
+                                 & set(actor.get('flags', [])))}
+    check(set(placeholder['eligible_staff_ids']) == adult_route_staff,
+          prefix + 'must apply to every eligible medical staff member')
     check(set(placeholder['portrait_ready_staff_ids']) <= set(placeholder['eligible_staff_ids']),
           prefix + 'portrait-ready staff must be eligible')
     check(placeholder['implemented'] is False, prefix + 'placeholder must not be active yet')
@@ -113,10 +257,19 @@ for placeholder in collections['relationship_activity_placeholders']:
 
 for relation in collections['relationships']:
     slots = {slot['target_level']: slot for slot in relation['rank_slots']}
-    check(slots[4]['benefit_id'] == 'unlock_intimacy_events',
-          relation['target_id'] + ': Lv4 intimacy-event benefit placeholder missing')
-    check(slots[5]['benefit_id'] == 'unlock_clinical_practice_patient',
-          relation['target_id'] + ': Lv5 clinical-practice benefit placeholder missing')
+    actor = by['staff'][relation['target_id']]
+    if {'professional_friendship_only', 'relationship_progression_locked'} & set(actor.get('flags', [])):
+        check(not slots[4]['event_id'] and not slots[4]['benefit_id'] and
+              not slots[5]['event_id'] and not slots[5]['benefit_id'],
+              relation['target_id'] + ': professional friendship must end at Lv3')
+    elif 'exclude_adult_intimacy' in actor.get('flags', []) or 'exclude_clinical_practice_patient' in actor.get('flags', []):
+        check(not slots[4]['benefit_id'] and not slots[5]['benefit_id'],
+              relation['target_id'] + ': excluded route must not grant generic Lv4/Lv5 benefits')
+    else:
+        check(slots[4]['benefit_id'] == 'unlock_intimacy_events',
+              relation['target_id'] + ': Lv4 intimacy-event benefit placeholder missing')
+        check(slots[5]['benefit_id'] == 'unlock_clinical_practice_patient',
+              relation['target_id'] + ': Lv5 clinical-practice benefit placeholder missing')
 
 # Display names deliberately follow the VNDB source characters while stable IDs
 # keep saves, event references, and code links compatible.
@@ -124,6 +277,13 @@ source_names = {
     'doc_aoi': '神宮寺 成美',
     'doc_rei': '深山 佳織',
     'doc_emiko': '御堂 江美子',
+    'doc_asuka': '城宮 明日香',
+    'doc_artoria': '阿尔托莉雅·潘德拉贡',
+    'doc_shiori': '藤崎 詩織',
+    'doc_aqua': '水城 阿库娅',
+    'doc_sayaka': '南条 小夜香',
+    'visiting_maya': '伊吹 摩耶',
+    'visiting_futaba': '佐仓 双叶',
     'nurse_haru': '七瀬 恋',
     'nurse_rin': '中井 美佳',
     'nurse_yui': '朝倉 美幸',
@@ -136,6 +296,79 @@ for person_id, source_name in source_names.items():
     group = 'staff' if person_id in by['staff'] else 'patients'
     check(by[group].get(person_id, {}).get('name') == source_name,
           f'{person_id}: display name must match source character {source_name}')
+
+nakai = by['staff'].get('nurse_rin', {})
+nakai_flags = set(nakai.get('flags', []))
+check({'hidden_past_suspicious', 'past_truth_never_confirmed', 'past_disclosure_locked_at_lv5',
+       'current_hoshimi_patient_safe', 'normal_group_participation'} <= nakai_flags,
+      'nurse_rin: canonical hidden-past boundaries are incomplete')
+check(nakai.get('rank') == '资深病房护士' and '围术期交接' in nakai.get('specialty', ''),
+      'nurse_rin: senior ward/handoff role is missing')
+check(bool(nakai.get('characterization', {}).get('relationship_arc')) and
+      bool(nakai.get('team_dialogue', {}).get('stabilize')),
+      'nurse_rin: characterization or professional team dialogue is incomplete')
+
+maya = by['staff'].get('visiting_maya', {})
+maya_relation = next((relation for relation in collections['relationships']
+                      if relation['target_id'] == 'visiting_maya'), {})
+maya_intro = by['character_events'].get('intro_visiting_maya_waveform_error', {})
+check(maya.get('age') == 29 and maya.get('profession') == 'doctor' and
+      maya.get('skills') == {'surgery': 28, 'diagnostics': 62, 'teamwork': 82,
+                             'patient_care': 58, 'instrument_handling': 91, 'calmness': 76},
+      'visiting_maya: visiting-research profile or authored skills changed')
+check(maya.get('surgical_roles') == ['assistant_surgeon'] and
+      maya.get('surgery_proficiency') == 'novice' and
+      {'visiting_research_physician', 'non_core_roster', 'relationship_progression_locked',
+       'no_romance_route', 'no_adult_route'} <= set(maya.get('flags', [])),
+      'visiting_maya: special-assistant or route boundaries are incomplete')
+check(maya.get('presence') == {'fixed_locations': ['imaging', 'or'],
+                               'random_locations': ['lounge', 'exam']},
+      'visiting_maya: hospital presence changed')
+check(not maya_relation.get('met', True) and maya_relation.get('level') == 0 and
+      maya_relation.get('route') == 'colleague' and
+      'relationship_progression_locked' in maya_relation.get('flags', []),
+      'visiting_maya: acquaintance-only relationship state is invalid')
+check(maya_intro.get('category') == 'introduction' and maya_intro.get('location_id') == 'imaging' and
+      maya_intro.get('conditions', {}).get('min_day') == 60 and
+      maya_intro.get('conditions', {}).get('special_requirements') == [{
+          'type': 'career_progress_any', 'minimum_completed_surgeries': 8, 'minimum_reputation': 20}],
+      'visiting_maya: midgame waveform introduction gate is invalid')
+for portrait_key in ['white_coat/neutral', 'scrubs/neutral', 'sterile/neutral']:
+    portrait_path = maya.get('visuals', {}).get('portraits', {}).get(portrait_key, '')
+    check(bool(portrait_path) and (ROOT / portrait_path).is_file() and
+          png_has_alpha_channel(ROOT / portrait_path),
+          'visiting_maya: missing transparent half-body portrait ' + portrait_key)
+
+futaba = by['staff'].get('visiting_futaba', {})
+futaba_relation = next((relation for relation in collections['relationships']
+                        if relation['target_id'] == 'visiting_futaba'), {})
+futaba_intro = by['character_events'].get('intro_visiting_futaba_body_does_not_believe', {})
+check(futaba.get('age') == 26 and futaba.get('profession') == 'doctor' and
+      futaba.get('skills') == {'surgery': 34, 'diagnostics': 91, 'teamwork': 76,
+                               'patient_care': 74, 'instrument_handling': 70, 'calmness': 68},
+      'visiting_futaba: visiting physician-scientist profile or authored skills changed')
+check(futaba.get('surgical_roles') == ['assistant_surgeon'] and
+      futaba.get('surgery_proficiency') == 'novice' and
+      {'visiting_physician_scientist', 'visiting_researchers', 'arrived_with_maya',
+       'relationship_progression_locked', 'no_romance_route', 'no_adult_route'} <= set(futaba.get('flags', [])),
+      'visiting_futaba: assistant or guest-route boundaries are incomplete')
+check(futaba.get('presence') == {'fixed_locations': ['imaging'],
+                                 'random_locations': ['lounge', 'exam']},
+      'visiting_futaba: hospital presence changed')
+check(not futaba_relation.get('met', True) and futaba_relation.get('level') == 0 and
+      futaba_relation.get('route') == 'colleague' and
+      'relationship_progression_locked' in futaba_relation.get('flags', []),
+      'visiting_futaba: acquaintance-only relationship state is invalid')
+check(futaba_intro.get('category') == 'introduction' and
+      futaba_intro.get('location_id') == 'imaging' and
+      futaba_intro.get('conditions', {}).get('min_day') == 60 and
+      futaba_intro.get('conditions', {}).get('required_events') == ['intro_visiting_maya_waveform_error'],
+      'visiting_futaba: joint-researcher introduction gate is invalid')
+for portrait_key in ['white_coat/neutral', 'scrubs/neutral', 'sterile/neutral']:
+    portrait_path = futaba.get('visuals', {}).get('portraits', {}).get(portrait_key, '')
+    check(bool(portrait_path) and (ROOT / portrait_path).is_file() and
+          png_has_alpha_channel(ROOT / portrait_path),
+          'visiting_futaba: missing transparent half-body portrait ' + portrait_key)
 
 def text_values(value):
     if isinstance(value, dict):
@@ -178,12 +411,123 @@ for event in collections['character_events']:
     requirements = event.get('conditions', {}).get('special_requirements')
     check(isinstance(requirements, list), event['id'] + ': special requirement placeholder missing')
     for requirement in requirements or []:
-        check(requirement.get('type') == 'player_attribute', event['id'] + ': unknown special requirement type')
-        check(requirement.get('attribute') in {'skill', 'ethics', 'charisma', 'intimidation', 'reputation'},
-              event['id'] + ': unknown player attribute requirement')
+        requirement_type = requirement.get('type')
+        check(requirement_type in {'player_attribute', 'career_progress_any', 'completed_surgeries', 'completed_surgeries_in_group', 'story_flag', 'special_event_completed', 'relationship_level'},
+              event['id'] + ': unknown special requirement type')
+        if requirement_type == 'player_attribute':
+            check(requirement.get('attribute') in {'skill', 'leadership', 'charm', 'reputation', 'presence'},
+                  event['id'] + ': unknown player attribute requirement')
+        elif requirement_type == 'career_progress_any':
+            check(isinstance(requirement.get('minimum_completed_surgeries'), int) and
+                  isinstance(requirement.get('minimum_reputation'), int),
+                  event['id'] + ': invalid career progress requirement')
+        elif requirement_type == 'completed_surgeries':
+            check(isinstance(requirement.get('minimum'), int) and requirement.get('minimum') >= 0,
+                  event['id'] + ': invalid completed-surgeries requirement')
+        elif requirement_type == 'completed_surgeries_in_group':
+            check(requirement.get('procedure_group') in {surgery['procedure_group'] for surgery in collections['surgeries']} and
+                  isinstance(requirement.get('minimum'), int) and requirement.get('minimum') >= 0,
+                  event['id'] + ': invalid procedure-group surgery requirement')
+        elif requirement_type == 'relationship_level':
+            check(isinstance(requirement.get('level'), int) and 0 <= requirement.get('level') <= 5,
+                  event['id'] + ': invalid relationship-level requirement')
+        elif requirement_type == 'special_event_completed':
+            check(requirement.get('event_id') in by['special_events'],
+                  event['id'] + ': unknown special-event requirement')
     follow_up = event.get('auto_follow_up')
     if follow_up:
         check(follow_up['event_id'] in by['character_events'], event['id'] + ': unknown automatic follow-up event')
+special_event_flags = set()
+for event in collections['special_events']:
+    prefix = event['id'] + ': '
+    check(event['duration_days'] == len(event['event_chain']), prefix + 'duration_days must match event_chain length')
+    check(event['consumes_full_day'] is True, prefix + 'special events must consume full days')
+    timing = event.get('timing', {'trigger_day': 1, 'priority': 0, 'final_week_allowed': False})
+    trigger_day = timing.get('trigger_day', game_day_for_iso(timing.get('trigger_date')))
+    check(trigger_day >= 1, prefix + 'trigger_date is outside the playable year')
+    scheduled_end = trigger_day + event['duration_days'] - 1
+    check(scheduled_end <= 365, prefix + 'scheduled duration exceeds the one-year game limit')
+    if not timing['final_week_allowed']:
+        check(scheduled_end < 359, prefix + 'ordinary event occupies the reserved final week')
+    gallery_entry = event.get('gallery_entry')
+    if event['gallery_unlock']:
+        check(isinstance(gallery_entry, dict), prefix + 'gallery-enabled event needs gallery_entry')
+        if isinstance(gallery_entry, dict):
+            check(gallery_entry['id'] == event['id'], prefix + 'gallery entry id mismatch')
+            check(len(gallery_entry['chapters']) == len(event['event_chain']), prefix + 'gallery chapters must match event chain')
+    check(set(event['event_chain']) <= set(by['special_event_steps']), prefix + 'unknown special-event step')
+    for actor_id in event['required_characters']:
+        check(actor_id == 'PLAYER' or actor_id in by['staff'], prefix + 'unknown required character ' + actor_id)
+    for reward in event.get('relationship_rewards', []):
+        check(reward['actor_id'] in by['staff'], prefix + 'unknown relationship reward actor')
+        check(1 <= reward['target_level'] <= 5, prefix + 'invalid relationship reward level')
+    for prerequisite in event['prerequisite_events']:
+        check(prerequisite in by['character_events'] or prerequisite in by['special_events'], prefix + 'unknown prerequisite event ' + prerequisite)
+    for flag in event['completion_flags']:
+        check(flag not in special_event_flags, prefix + 'completion flag reused by another special event')
+        special_event_flags.add(flag)
+    for requirement in event['unlock_requirements']:
+        kind_name = requirement['type']
+        if 'actor_id' in requirement:
+            check(requirement['actor_id'] in by['staff'], prefix + 'unknown requirement actor')
+        if kind_name in {'character_event_completed', 'days_after_character_event'}:
+            check(requirement['event_id'] in by['character_events'], prefix + 'unknown character-event requirement')
+        if kind_name == 'days_after_character_event':
+            check(isinstance(requirement.get('days'), int) and requirement['days'] >= 0,
+                  prefix + 'invalid character-event delay')
+        if kind_name == 'special_event_completed':
+            check(requirement['event_id'] in by['special_events'], prefix + 'unknown special-event requirement')
+        if kind_name == 'completed_surgeries_in_group':
+            check(requirement['procedure_group'] in {s['procedure_group'] for s in collections['surgeries']}, prefix + 'unknown procedure group')
+        if kind_name in {'day_number', 'month_number'} and 'maximum' in requirement:
+            check(requirement.get('minimum', 1) <= requirement['maximum'], prefix + 'invalid calendar range')
+        if kind_name == 'calendar_date':
+            check(game_day_for_iso(requirement['date']) >= 1, prefix + 'calendar_date is outside the playable year')
+        if kind_name == 'calendar_range':
+            first = game_day_for_iso(requirement['start_date'])
+            last = game_day_for_iso(requirement['end_date'])
+            check(first >= 1 and last >= first, prefix + 'invalid fixed calendar range')
+
+for step in collections['special_event_steps']:
+    prefix = step['id'] + ': '
+    check(step['background_id'] in by['backgrounds'], prefix + 'unknown background')
+    nodes = {node['id']: node for node in step['nodes']}
+    check(len(nodes) == len(step['nodes']) and step['start'] in nodes, prefix + 'invalid node graph')
+    reachable, pending = set(), [step['start']]
+    while pending:
+        node_id = pending.pop()
+        if node_id in reachable or node_id not in nodes:
+            continue
+        reachable.add(node_id)
+        for choice in nodes[node_id]['choices']:
+            destination = choice['next']
+            check(destination == '@day_end' or destination in nodes, prefix + node_id + ': unknown destination ' + destination)
+            if destination != '@day_end':
+                pending.append(destination)
+        fallback = nodes[node_id].get('fallback_next')
+        if fallback:
+            check(fallback in nodes, prefix + node_id + ': unknown conditional fallback ' + fallback)
+            pending.append(fallback)
+    check(reachable == set(nodes), prefix + 'unreachable nodes')
+    check(any(choice['next'] == '@day_end' for node in step['nodes'] for choice in node['choices']), prefix + 'no day ending')
+    for node in step['nodes']:
+        if node.get('background_id'):
+            check(node['background_id'] in by['backgrounds'], prefix + node['id'] + ': unknown node background')
+        check(not node.get('requirements') or bool(node.get('fallback_next')),
+              prefix + node['id'] + ': conditional node needs fallback_next')
+        actor_id = node.get('actor_id', '')
+        if node['speaker'] == 'actor':
+            check(actor_id in by['staff'], prefix + node['id'] + ': actor speaker needs a known actor_id')
+        if actor_id:
+            check(actor_id in by['staff'], prefix + node['id'] + ': unknown visual actor')
+            actor = by['staff'].get(actor_id, {})
+            outfit = node.get('outfit', actor.get('visuals', {}).get('default_outfit', ''))
+            if not node.get('hide_portrait') and not node.get('cg_path') and not node.get('portrait_path'):
+                check(outfit + '/' + node['expression'] in actor.get('visuals', {}).get('portraits', {}), prefix + node['id'] + ': missing actor portrait')
+        if node.get('cg_path') or node.get('portrait_path'):
+            path = node.get('cg_path') or node.get('portrait_path')
+            check((ROOT / path).is_file(), prefix + node['id'] + ': visual asset missing')
+
 for background in collections['backgrounds']:
     check((ROOT / background['path']).is_file(), 'Background asset missing: ' + background['path'])
 known_test_ids = {test['id'] for template in collections['case_templates'] for test in template['tests']}
@@ -208,19 +552,23 @@ for pool in collections['surgery_cg_pools']:
         continue
     for surgery_id in pool['surgery_ids']:
         generic_progress_counts[surgery_id] = generic_progress_counts.get(surgery_id, 0) + 1
-for surgery_id in by['surgeries']:
+for surgery_id, surgery in by['surgeries'].items():
+    if surgery.get('status') == 'placeholder' or surgery.get('catalog_visibility') == 'advanced_referral':
+        continue
     check(generic_progress_counts.get(surgery_id, 0) == 1,
           f'{surgery_id}: expected exactly one generic progress surgery CG pool')
 known_preparation_cg_actions = {
     'ward_enema', 'ward_enema_unnecessary',
     'ward_skin_prep', 'ward_skin_prep_unnecessary',
     'ward_surgical_cap',
-    'urinary_catheterization', 'skin_disinfection', 'request_scalpel',
+    'urinary_catheterization', 'skin_disinfection', 'ack_disinfection', 'request_scalpel',
 }
 for pool in collections['ward_preparation_cg_pools']:
     prefix = pool['id'] + ': '
     check(set(pool['action_ids']) <= known_preparation_cg_actions, prefix + 'unknown preparation CG action id')
     check(set(pool['patient_ids']) <= set(by['patients']), prefix + 'unknown patient id')
+    check(set(pool.get('procedure_groups', [])) <= {surgery['procedure_group'] for surgery in collections['surgeries']},
+          prefix + 'unknown procedure group')
     for path in pool['paths']:
         check((ROOT / path).is_file(), prefix + 'preparation CG asset missing: ' + path)
 required_patient_reactions = {
@@ -246,6 +594,10 @@ required_preparation_reaction_variants = {
 personality_pairs = set()
 for patient in collections['patients']:
     prefix = patient['id'] + ': '
+    check(patient['age'] >= 18, prefix + 'ordinary surgery-pool patients must be adults')
+    override_id = patient.get('first_surgery_diagnosis_shock_override_id', '')
+    check(not override_id or override_id in by['first_surgery_diagnosis_reactions'],
+          prefix + 'unknown first-surgery diagnosis shock override')
     check(patient['case_id'] in by['cases'], prefix + 'unknown patient case')
     portraits = patient['visuals']['portraits']
     for expression in ('tense', 'pain', 'near_collapse', 'anesthetized'):
@@ -284,14 +636,32 @@ for template in collections['case_templates']:
         check(any(option.get('requires_consent') for option in variant.get('decision_options', [])), prefix + variant['id'] + ': continuation must require consent')
         coerced_options = [option for option in variant.get('decision_options', []) if option.get('consent_state') == 'coerced']
         for option in coerced_options:
-            check(option.get('effects', {}).get('ethics', 0) < 0, prefix + option['id'] + ': coerced option must reduce ethics')
-            check(option.get('effects', {}).get('intimidation', 0) > 0, prefix + option['id'] + ': coerced option must raise intimidation')
+            check(option.get('effects', {}).get('presence', 0) > 0, prefix + option['id'] + ': coerced option must raise clinical presence')
             check(len(option.get('staff_intervention_hooks', [])) > 0, prefix + option['id'] + ': coerced option needs staff intervention hooks')
-check(template_surgeries == set(by['surgeries']), 'Surgery template coverage is incomplete')
+selectable_surgeries = {surgery['id'] for surgery in collections['surgeries']
+                        if surgery.get('status') != 'placeholder' and surgery.get('catalog_visibility', 'standard') != 'advanced_referral'}
+check(template_surgeries == selectable_surgeries, 'Selectable surgery template coverage is incomplete')
 for person in collections['staff']:
     check(person['visuals']['default_outfit'] in person['visuals']['outfits'], 'Unknown default outfit')
     for key, path in person['visuals']['portraits'].items():
         check((ROOT / path).is_file(), 'Portrait asset missing: ' + path)
+    avatar = person['visuals'].get('intraoperative_avatar', {})
+    avatar_prefix = person['id'] + ': intraoperative HUD avatar '
+    check(avatar.get('portrait_key') == 'intraoperative_avatar/neutral',
+          avatar_prefix + 'must use the shared portrait key')
+    expected_avatar_path = f"assets/characters/intraoperative_staff_avatars_v1/{person['id']}/neutral.png"
+    check(avatar.get('target_path') == expected_avatar_path,
+          avatar_prefix + 'target path does not match the staff ID')
+    check(avatar.get('required_for') == ['operative_field_hud'],
+          avatar_prefix + 'must remain assigned to the operative-field HUD')
+    if avatar.get('status') == 'ready':
+        registered_path = person['visuals']['portraits'].get('intraoperative_avatar/neutral', '')
+        check(registered_path == expected_avatar_path,
+              avatar_prefix + 'ready status requires the target path in visuals.portraits')
+        check((ROOT / registered_path).is_file() and png_has_alpha_channel(ROOT / registered_path),
+              avatar_prefix + 'ready asset must be an RGBA/gray-alpha PNG')
+    else:
+        check(avatar.get('status') == 'needed', avatar_prefix + 'has an unknown production status')
     if person['surgery_proficiency'] in {'novice', 'limited'} and person['team_category'] == 'doctor':
         authored = person.get('team_dialogue', {})
         for dialogue_key in {'assignment', 'intraoperative', 'intraoperative_correction'}:
@@ -434,12 +804,174 @@ check(emiko_lv2.get('conditions', {}).get('days_after_required_events') == 7 and
       [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 70}],
       'doc_emiko: Lv2 must require skill 70 and a seven-day gap')
 
+asuka = by['staff'].get('doc_asuka', {})
+asuka_relation = next((relation for relation in collections['relationships']
+                       if relation['target_id'] == 'doc_asuka'), {})
+check(asuka.get('rank') == '医院院长／外科医生' and not asuka_relation.get('met', True),
+      'doc_asuka: must be the hidden hospital director until her introduction')
+check(asuka.get('skills', {}).get('diagnostics', 0) > asuka.get('skills', {}).get('surgery', 100) and
+      asuka.get('skills', {}).get('teamwork', 0) > asuka.get('skills', {}).get('surgery', 100),
+      'doc_asuka: theory and teamwork must exceed independent-surgery experience')
+for portrait_key in ['white_coat/neutral', 'director_suit/neutral', 'casual/neutral',
+                     'scrubs/neutral', 'sterile/neutral', 'operating_patient/nervous']:
+    check(portrait_key in asuka.get('visuals', {}).get('portraits', {}),
+          'doc_asuka: missing portrait ' + portrait_key)
+asuka_scrub = by['character_events'].get('asuka_scrub_sink_encounter', {})
+asuka_hint = by['character_events'].get('asuka_adjacent_operation_reveal', {})
+asuka_intro = by['character_events'].get('intro_doc_asuka_director_office', {})
+check(asuka_scrub.get('preop_stage_id') == 'changing' and
+      asuka_scrub.get('preop_required_flags') == ['hands_ready'],
+      'doc_asuka: first encounter must start only after hand scrubbing')
+check(asuka_scrub.get('conditions', {}).get('special_requirements') == [{
+          'type': 'career_progress_any', 'minimum_completed_surgeries': 2, 'minimum_reputation': 5}],
+      'doc_asuka: first encounter needs two surgeries or reputation 5')
+check(asuka_hint.get('preop_stage_id') == 'surgery_result' and
+      asuka_hint.get('conditions', {}).get('required_events') == ['asuka_scrub_sink_encounter'],
+      'doc_asuka: identity hint must follow a completed surgery')
+check(asuka_intro.get('location_id') == 'director_office' and
+      asuka_intro.get('conditions', {}).get('required_events') == ['asuka_adjacent_operation_reveal'] and
+      asuka_intro.get('conditions', {}).get('days_after_required_events') == 1,
+      'doc_asuka: identity reveal must occur in the director office on the next day')
+
+artoria = by['staff'].get('doc_artoria', {})
+artoria_relation = next((relation for relation in collections['relationships']
+                         if relation['target_id'] == 'doc_artoria'), {})
+check(artoria.get('rank') == '外科副部长／外科主任候选' and
+      artoria.get('surgery_proficiency') == 'expert' and not artoria_relation.get('met', True),
+      'doc_artoria: must begin as the unknown expert deputy surgery chief')
+check(artoria.get('skills', {}).get('teamwork') == 98 and
+      artoria.get('skills', {}).get('surgery') == 91 and
+      artoria.get('skills', {}).get('calmness') == 96,
+      'doc_artoria: authored surgery, teamwork and composure values changed')
+check({'deputy_chief_of_surgery', 'surgery_director_candidate', 'team_leadership_specialist'} <=
+      set(artoria.get('flags', [])),
+      'doc_artoria: leadership and director-candidate flags are required')
+check('team_unlock_requires_lv1' in artoria.get('flags', []),
+      'doc_artoria: routine surgical-team eligibility must wait for Lv1')
+for portrait_key in ['white_coat/neutral', 'casual/neutral', 'scrubs/neutral', 'sterile/neutral']:
+    portrait_path = artoria.get('visuals', {}).get('portraits', {}).get(portrait_key, '')
+    check(bool(portrait_path) and (ROOT / portrait_path).is_file(),
+          'doc_artoria: missing half-body portrait ' + portrait_key)
+artoria_intro = by['character_events'].get('intro_doc_artoria_deputy_office', {})
+artoria_lv1 = by['character_events'].get('artoria_lv1_right_position', {})
+artoria_referral = by['character_events'].get('asuka_mentions_artoria_rival', {})
+artoria_slots = {slot['target_level']: slot for slot in artoria_relation.get('rank_slots', [])}
+check('artoria_office' in by['locations'] and 'artoria_office' in by['backgrounds'] and
+      artoria.get('presence', {}).get('fixed_locations') == ['or', 'artoria_office'],
+      'doc_artoria: dedicated deputy-chief office or fixed presence is missing')
+check(by['locations'].get('artoria_office', {}).get('name') == '副部长办公室',
+      'doc_artoria: office map label must remain compact')
+check(artoria_referral.get('actor_id') == 'doc_asuka' and
+      artoria_referral.get('location_id') == 'director_office' and
+      artoria_referral.get('conditions', {}).get('required_events') ==
+      ['intro_doc_asuka_director_office', 'emiko_intro_rumored_hands'],
+      'doc_artoria: Asuka referral must wait until both Asuka and Emiko are known')
+check(artoria_intro.get('location_id') == 'artoria_office' and
+      artoria_intro.get('category') == 'introduction' and
+      artoria_intro.get('conditions', {}).get('required_events') == ['asuka_mentions_artoria_rival'] and
+      artoria_intro.get('conditions', {}).get('special_requirements') == [],
+      'doc_artoria: office introduction must follow Asuka naming Emiko\'s rival')
+check(artoria_lv1.get('location_id') == 'artoria_office' and
+      artoria_lv1.get('category') == 'bond' and
+      artoria_lv1.get('conditions', {}).get('required_events') == ['intro_doc_artoria_deputy_office'] and
+      artoria_slots.get(1, {}).get('event_id') == 'artoria_lv1_right_position' and
+      artoria_slots.get(1, {}).get('benefit_id') == 'unlock_artoria_surgical_team',
+      'doc_artoria: former allocation introduction must be the linked Lv1 team-unlock event')
+check(artoria_lv1.get('gallery', {}).get('path') ==
+      'assets/events/character_events/artoria/right_position.png' and
+      artoria_lv1.get('gallery', {}).get('show_on_complete') is True,
+      'doc_artoria: Lv1 allocation reward CG is not configured')
+
+shiori = by['staff'].get('doc_shiori', {})
+shiori_relation = next((relation for relation in collections['relationships']
+                        if relation['target_id'] == 'doc_shiori'), {})
+shiori_intro = by['character_events'].get('intro_doc_shiori_whole_patient', {})
+shiori_ward_intro = by['character_events'].get('intro_doc_shiori_whole_patient_ward', {})
+check(shiori.get('age') == 25 and shiori.get('profession') == 'doctor' and
+      shiori.get('specialty') == '综合内科／総合内科' and
+      shiori.get('surgery_proficiency') == 'limited' and
+      shiori.get('surgical_roles') == ['assistant_surgeon'],
+      'doc_shiori: must remain a limited internal-medicine assistant, not a primary surgeon')
+check(shiori.get('skills') == {
+          'surgery': 54, 'diagnostics': 92, 'teamwork': 89,
+          'patient_care': 92, 'instrument_handling': 64, 'calmness': 90},
+      'doc_shiori: authored skill values changed')
+check(shiori.get('presence', {}).get('fixed_locations') == ['clinic', 'ward'] and
+      shiori.get('presence', {}).get('random_locations') == ['lounge', 'rooftop'],
+      'doc_shiori: clinic, ward and lunch presence are not configured')
+check(not shiori_relation.get('met', True) and
+      {key: shiori_relation.get(key) for key in ['affection', 'familiarity']} ==
+      {'affection': 2, 'familiarity': 0} and
+      'trust' not in shiori_relation and 'respect' not in shiori_relation,
+      'doc_shiori: initial unknown Lv0 relationship values changed')
+for portrait_key in ['white_coat/neutral', 'casual/neutral', 'scrubs/neutral', 'sterile/neutral']:
+    portrait_path = shiori.get('visuals', {}).get('portraits', {}).get(portrait_key, '')
+    check(bool(portrait_path) and (ROOT / portrait_path).is_file(),
+          'doc_shiori: missing half-body portrait ' + portrait_key)
+check(shiori_intro.get('category') == 'introduction' and
+      shiori_intro.get('location_id') == 'clinic' and
+      shiori_intro.get('conditions', {}).get('min_day') == 1 and
+      shiori_intro.get('conditions', {}).get('required_events') == [] and
+      shiori_intro.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'completed_surgeries', 'minimum': 3}],
+      'doc_shiori: three-surgery clinic introduction gate is not configured')
+check(shiori_ward_intro.get('category') == 'introduction' and
+      shiori_ward_intro.get('location_id') == 'ward' and
+      shiori_ward_intro.get('conditions', {}).get('min_day') == 1 and
+      shiori_ward_intro.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'completed_surgeries', 'minimum': 3}],
+      'doc_shiori: three-surgery ward introduction gate is not configured')
+
+aqua = by['staff'].get('doc_aqua', {})
+aqua_relation = next((relation for relation in collections['relationships']
+                      if relation['target_id'] == 'doc_aqua'), {})
+aqua_intro = by['character_events'].get('aqua_intro_exam_chair', {})
+aqua_lv1 = by['character_events'].get('aqua_lv1_gyne_obsession', {})
+aqua_slots = {slot['target_level']: slot for slot in aqua_relation.get('rank_slots', [])}
+check(aqua.get('profession') == 'doctor' and
+      aqua.get('specialty') == '妇科' and
+      aqua.get('rank') == '妇科主任' and
+      aqua.get('surgery_proficiency') == 'expert' and
+      aqua.get('surgical_roles') == ['primary_surgeon', 'assistant_surgeon'],
+      'doc_aqua: gynecology-director surgical profile changed')
+check(aqua.get('skills') == {
+          'surgery': 95, 'diagnostics': 96, 'teamwork': 82,
+          'patient_care': 87, 'instrument_handling': 94, 'calmness': 90},
+      'doc_aqua: authored skill values changed')
+check(aqua.get('presence', {}).get('fixed_locations') == ['gynecology_exam', 'clinic'] and
+      aqua.get('presence', {}).get('random_locations') == ['or', 'lounge'],
+      'doc_aqua: clinic and gynecology presence are not configured')
+check(not aqua_relation.get('met', True) and aqua_relation.get('level') == 0,
+      'doc_aqua: must begin unknown at Lv0')
+for portrait_key in ([f'{outfit}/{expression}'
+                      for outfit in ['white_coat', 'scrubs', 'sterile']
+                      for expression in ['neutral', 'joyful', 'troubled', 'terrified',
+                                         'excited', 'depressed', 'blank']] +
+                     ['operating_patient/nervous']):
+    portrait_path = aqua.get('visuals', {}).get('portraits', {}).get(portrait_key, '')
+    check(bool(portrait_path) and (ROOT / portrait_path).is_file(),
+          'doc_aqua: missing portrait ' + portrait_key)
+check(aqua_intro.get('category') == 'introduction' and
+      aqua_intro.get('location_id') == 'gynecology_exam' and
+      aqua_intro.get('conditions', {}).get('special_requirements') == [
+          {'type': 'completed_surgeries_in_group', 'procedure_group': 'female_pelvic', 'minimum': 1}],
+      'doc_aqua: introduction must require one completed gynecology surgery')
+check(aqua_lv1.get('category') == 'bond' and
+      aqua_lv1.get('conditions', {}).get('required_events') == ['aqua_intro_exam_chair'] and
+      aqua_lv1.get('conditions', {}).get('special_requirements') == [
+          {'type': 'completed_surgeries_in_group', 'procedure_group': 'female_pelvic', 'minimum': 5}] and
+      aqua_slots.get(1, {}).get('event_id') == 'aqua_lv1_gyne_obsession' and
+      aqua_slots.get(1, {}).get('benefit_id') == 'unlock_aqua_surgical_team',
+      'doc_aqua: Lv1 gate or team-unlock link is not configured')
+
 inexperienced_nurse_response_ids = {'assignment_scrub_nurse', 'assignment_circulating_nurse'}
 for prep in collections['preops']:
     inexperienced_nurse_response_ids.update(
         action['id'] for stage in prep['stages'] for action in stage['actions']
         if action.get('response_role') in {'scrub_nurse', 'circulating_nurse'})
 for surgery in collections['surgeries']:
+    if surgery.get('catalog_visibility') == 'advanced_referral':
+        continue
     inexperienced_nurse_response_ids.update(
         option['id'] for stage in surgery['stages'] for option in stage['options']
         if option.get('response_role') in {'scrub_nurse', 'circulating_nurse'})
@@ -474,11 +1006,20 @@ for event in collections['character_events']:
     check(event['location_id'] in by['locations'], prefix + 'unknown location')
     check(event['background_id'] in by['backgrounds'], prefix + 'unknown background')
     check(event['outfit'] in by['staff'].get(event['actor_id'], {}).get('visuals', {}).get('outfits', []), prefix + 'unknown outfit')
+    trigger_mode = event['trigger_mode']
     preop_stage_id = event.get('preop_stage_id', '')
     if preop_stage_id:
         check(any(any(stage['id'] == preop_stage_id for stage in prep['stages']) for prep in collections['preops']),
               prefix + 'unknown preoperative stage trigger')
+    check(trigger_mode != 'preop_stage' or bool(preop_stage_id), prefix + 'preop-stage trigger needs preop_stage_id')
+    check(trigger_mode != 'sunday' or event.get('consumes_sunday') is True, prefix + 'Sunday trigger must consume Sunday')
+    check(not event.get('consumes_sunday') or trigger_mode == 'sunday', prefix + 'consumes_sunday requires Sunday trigger mode')
     check(event['time_start'] < event['time_end'], prefix + 'invalid time window')
+    if event.get('mandatory'):
+        check('max_day' in event['conditions'] and event['conditions']['max_day'] >= event['conditions']['min_day'],
+              prefix + 'mandatory event needs a valid day window')
+    if event.get('consumes_sunday'):
+        check(event.get('date_location_id') in date_location_ids, prefix + 'Sunday event needs a known date location')
     if event['gallery']['path']:
         check((ROOT / event['gallery']['path']).is_file(), prefix + 'gallery CG missing')
     portraits = by['staff'].get(event['actor_id'], {}).get('visuals', {}).get('portraits', {})
@@ -512,6 +1053,8 @@ for event in collections['character_events']:
             check(choice['id'] not in choice_ids, prefix + 'duplicate choice id')
             choice_ids.add(choice['id'])
             check(choice['next'] == '@end' or choice['next'] in nodes, prefix + 'unknown choice target')
+            for related in choice.get('related_effects', []):
+                check(related.get('actor_id') in by['staff'], prefix + 'unknown related-effect actor')
             if choice['next'] != '@end': pending.append(choice['next'])
     check(reachable == set(nodes), prefix + 'unreachable node')
     check(any(choice['next'] == '@end' for node in event['nodes'] for choice in node['choices']), prefix + 'missing ending')
@@ -535,6 +1078,106 @@ for key in {'shy', 'restrained'}:
     check(png_has_alpha_channel(path), 'patient_chihaya: ' + key + ' must be a transparent portrait')
 check('仓本千早' not in '\n'.join(text_values(by['character_events'].get('hiroko_patient_escape', {}))),
       'patient_chihaya: debut event must not reveal her name')
+ayako = by['cameo_patients'].get('guest_ayako', {})
+check(ayako.get('canonical_name') == '片桐彩子' and
+      ayako.get('public_name') == '来院漫画家' and ayako.get('age') == 25,
+      'guest_ayako: canonical external-visitor identity is incomplete')
+check(ayako.get('debut_event_id') == 'miyama_02_manga_artist_wrong_patient' and
+      ayako.get('identity_revealed_by_default') is False,
+      'guest_ayako: planned Rei Lv2 debut interface changed')
+for key in {
+    'casual_neutral',
+    'casual_shocked',
+    'patient_gown_neutral',
+    'patient_gown_puzzled',
+    'patient_gown_happy',
+    'operating_table_nervous',
+    'operating_table_drowsy',
+    'operating_table_composed',
+    'operating_table_happy',
+    'operating_table_annoyed',
+    'ward_postop',
+    'nurse_visit',
+}:
+    path = ROOT / ayako.get('visuals', {}).get(key, '')
+    check(path.is_file(), 'guest_ayako: missing visual ' + key)
+    check(png_has_alpha_channel(path), 'guest_ayako: ' + key + ' must be a transparent portrait')
+ayako_lookalike = by['cameo_patients'].get('patient_ayako_lookalike', {})
+check(ayako_lookalike.get('public_name') == '逃跑女患者' and
+      ayako_lookalike.get('debut_event_id') == 'miyama_02_manga_artist_wrong_patient' and
+      ayako_lookalike.get('identity_revealed_by_default') is False,
+      'patient_ayako_lookalike: mistaken-surgery interface is incomplete')
+lookalike_path = ROOT / ayako_lookalike.get('visuals', {}).get('patient_gown_fleeing', '')
+check(lookalike_path.is_file(), 'patient_ayako_lookalike: fleeing portrait missing')
+check(png_has_alpha_channel(lookalike_path),
+      'patient_ayako_lookalike: fleeing portrait must be transparent')
+miyama_ayako = by['special_events'].get('miyama_02_manga_artist_wrong_patient', {})
+check(miyama_ayako.get('required_characters') == ['PLAYER', 'doc_rei', 'doc_shiori', 'doc_asuka'] and
+      miyama_ayako.get('unlock_requirements') == [
+          {'type': 'day_number', 'minimum': 5},
+          {'type': 'relationship_level', 'actor_id': 'doc_rei', 'minimum': 1},
+          {'type': 'relationship_level', 'actor_id': 'doc_shiori', 'minimum': 1}] and
+      miyama_ayako.get('prerequisite_events') == ['miyama_01_safety_pin'],
+      'miyama_02: formal Lv1 prerequisites are incomplete')
+check(miyama_ayako.get('auto_schedule') is True and
+      miyama_ayako.get('duration_days') == 1 and
+      miyama_ayako.get('timing', {}).get('sunday_start_allowed') is False,
+      'miyama_02: must be a mandatory 09:00 one-day event that defers on Sunday')
+check(miyama_ayako.get('relationship_rewards') == [{
+          'actor_id': 'doc_rei', 'target_level': 2,
+          'benefit_id': '', 'allow_level_skip': False}],
+      'miyama_02: formal sequential promotion to Miyama Lv2 is missing')
+required_miyama_flags = {
+    'miyama_02_manga_artist_wrong_patient_completed', 'relationship_doc_rei_lv2',
+    'guest_ayako_met', 'ayako_wrong_surgery_survived', 'ayako_appendectomy_completed',
+    'ayako_surgical_field_photo_owned', 'true_gastric_patient_fled_or',
+    'true_gastric_patient_found_safe', 'true_gastric_patient_surgery_rescheduled',
+    'patient_id_protocol_reviewed', 'origin_of_patient_disguise_unresolved',
+    'shiori_knows_ayako_incident', 'ayako_shiori_reconnected'}
+check(required_miyama_flags <= set(miyama_ayako.get('completion_flags', [])),
+      'miyama_02: authored completion flags are incomplete')
+miyama_step = by['special_event_steps'].get('miyama_02_manga_artist_wrong_patient_main', {})
+check(len(miyama_step.get('nodes', [])) >= 500 and
+      miyama_step.get('start') == 'lv1_callback' and
+      all(any(node.get('id') == node_id for node in miyama_step.get('nodes', []))
+          for node_id in ['s01_001', 's34_001', 'lv2_asuka_private', 'lv2_doctor']),
+      'miyama_02: complete V8 sequence or new relationship bridges are missing')
+
+miyama_lv1 = by['special_events'].get('miyama_01_safety_pin', {})
+miyama_lv1_step = by['special_event_steps'].get('miyama_01_safety_pin_main', {})
+check(miyama_lv1.get('prerequisite_events') == ['intro_doc_rei'] and
+      miyama_lv1.get('relationship_rewards') == [{
+          'actor_id': 'doc_rei', 'target_level': 1,
+          'benefit_id': '', 'allow_level_skip': False}],
+      'miyama_01: introduction prerequisite or Lv1 reward is incomplete')
+check(any(node.get('id') == 'palpation_placeholder' and len(node.get('choices', [])) == 1
+          for node in miyama_lv1_step.get('nodes', [])),
+      'miyama_01: one-click OR-table palpation placeholder is missing')
+
+miyama_lv3 = by['special_events'].get('miyama_03_or_god', {})
+miyama_lv3_step = by['special_event_steps'].get('miyama_03_or_god_main', {})
+check(miyama_lv3.get('prerequisite_events') == ['miyama_02_manga_artist_wrong_patient'] and
+      miyama_lv3.get('relationship_rewards') == [{
+          'actor_id': 'doc_rei', 'target_level': 3,
+          'benefit_id': '', 'allow_level_skip': False}],
+      'miyama_03: Lv2 prerequisite or sequential Lv3 reward is incomplete')
+check(all(any(node.get('id') == node_id for node in miyama_lv3_step.get('nodes', []))
+          for node_id in ['moe', 'ange', 'release', 'gown', 'cg', 'rank3']),
+      'miyama_03: Honjo restraint, Tonegawa report, or surgery transition is missing')
+for path in [
+        'assets/events/character_events/rei/ayako/cg_01_lucky.png',
+        'assets/events/character_events/rei/ayako/cg_02_patient_disguise.png',
+        'assets/events/character_events/rei/ayako/cg_03_or_table.png',
+        'assets/events/character_events/rei/ayako/cg_05_firsthand_notes.png',
+        'assets/events/character_events/rei/ayako/cg_03a_first_incision_pre.png',
+        'assets/events/character_events/rei/ayako/cg_03b_first_incision_after.png',
+        'assets/events/character_events/rei/ayako/cg_04_lesion_missing.png']:
+    check((ROOT / path).is_file(), 'miyama_02: missing CG asset ' + path)
+rei_slots = {slot['target_level']: slot for slot in
+             next(relation for relation in collections['relationships']
+                  if relation['target_id'] == 'doc_rei').get('rank_slots', [])}
+check(rei_slots.get(2, {}).get('event_id') == 'miyama_02_manga_artist_wrong_patient',
+      'doc_rei: Lv2 slot must link to the Ayako special event')
 relations = set()
 for relation in collections['relationships']:
     pair = (relation['source_id'], relation['target_id'])
@@ -551,26 +1194,62 @@ for team in collections['teams']:
     check(set(surgery.get('required_roles', [])) <= set(members), 'Missing required role')
 for surgery in collections['surgeries']:
     prefix = surgery['id'] + ': '
+    expected_diagnosis_group = {
+        'breast': 'breast',
+        'general_abdominal': 'abdominal',
+        'urologic': 'abdominal',
+        'vascular': 'abdominal',
+        'female_pelvic': 'gynecology_pelvic',
+        'thoracic': 'thoracic_cardiac',
+        'cardiac': 'thoracic_cardiac',
+    }.get(surgery['procedure_group'], 'generic')
+    check(surgery['diagnosis_reaction_site_group'] == expected_diagnosis_group,
+          prefix + 'diagnosis reaction site group does not match procedure group')
     ids = [s['id'] for s in surgery['stages']]
     check(len(ids) == len(set(ids)), prefix + 'duplicate surgery-flow stage id')
-    check(bool(ids), prefix + 'surgery requires narrative stages')
+    check(bool(ids) or surgery.get('status') == 'placeholder', prefix + 'selectable surgery requires narrative stages')
+    check(0 <= surgery['recommended_surgery'] <= surgery['base_difficulty'] <= 100,
+          prefix + 'invalid difficulty or recommendation')
+    check(surgery['training_ceiling'] >= surgery['recommended_surgery'], prefix + 'training ceiling below recommendation')
     option_ids = set()
     for stage in surgery['stages']:
         options = stage['options']
-        check(len(options) == (1 if stage['kind'] == 'confirm' else 3), prefix + stage['id'] + ': wrong option count')
+        tutorial_safe = surgery.get('catalog_visibility') == 'advanced_referral'
+        check((1 <= len(options) <= 4) if tutorial_safe else len(options) == (1 if stage['kind'] == 'confirm' else 3),
+              prefix + stage['id'] + ': wrong option count')
         for option in options:
             check(option['id'] not in option_ids, prefix + 'duplicate surgery-flow option id')
             option_ids.add(option['id'])
-        if stage['kind'] == 'decision':
+        strategic_stage = any('strategic_effects' in option or 'conditional_effects' in option for option in options)
+        if strategic_stage:
+            check(all(option['correct'] for option in options), prefix + stage['id'] + ': strategic options must all be valid choices')
+            check(all('strategic_effects' in option for option in options), prefix + stage['id'] + ': strategic choice is missing its base effects')
+        elif stage['kind'] == 'decision' and not tutorial_safe:
             check(sum(bool(option['correct']) for option in options) == 1, prefix + stage['id'] + ': decision requires exactly one correct option')
             check(all(option['correct'] or bool(option['correction']) for option in options), prefix + stage['id'] + ': wrong option requires assistant correction')
         else:
             check(all(option['correct'] for option in options), prefix + stage['id'] + ': non-decision options must be consequence-free')
+expected_starting_procedures = {
+    'surgery_appendix', 'surgery_open_cholecystectomy', 'surgery_open_inguinal_hernia',
+    'surgery_open_ventral_hernia', 'surgery_breast_tumor', 'surgery_open_distal_gastrectomy',
+    'surgery_open_splenectomy', 'surgery_open_ovarian_cystectomy', 'surgery_open_abdominal_myomectomy',
+}
+check({s['id'] for s in collections['surgeries'] if s['unlocked_at_start']} == expected_starting_procedures,
+      'Starting procedure set must contain the authored nine operations')
+vaginal_hysterectomy = by['surgeries'].get('surgery_vaginal_hysterectomy', {})
+check(vaginal_hysterectomy.get('name') == '经阴道子宫全切除' and
+      vaginal_hysterectomy.get('status') == 'placeholder' and
+      not vaginal_hysterectomy.get('unlocked_at_start') and
+      not vaginal_hysterectomy.get('stages'),
+      'Vaginal hysterectomy must remain a locked non-selectable placeholder')
 interaction_themes = {
     'operative_contact', 'progress_check', 'strain_interaction',
     'dignity_interaction', 'ongoing_interaction', 'closure_interaction',
 }
 generic_fallback_themes = set()
+interaction_group_scopes = set()
+interaction_surgery_scopes = set()
+interaction_cues = set()
 for interaction in collections['patient_interactions']:
     prefix = interaction['id'] + ': '
     check(not (interaction['procedure_groups'] and interaction['surgery_ids']),
@@ -578,12 +1257,85 @@ for interaction in collections['patient_interactions']:
     check(set(interaction['surgery_ids']) <= set(by['surgeries']), prefix + 'unknown surgery id')
     action_ids = [action['id'] for action in interaction['actions']]
     check(len(action_ids) == len(set(action_ids)), prefix + 'duplicate patient interaction action id')
-    check(all(not action['delegate_role'] for action in interaction['actions']),
-          prefix + 'delegated actions belong to milestone 1B')
+    check(all(action['condition_effect'] is None for action in interaction['actions']),
+          prefix + 'ordinary patient interactions cannot modify temporary conditions')
+    interaction_group_scopes.update(interaction['procedure_groups'])
+    interaction_surgery_scopes.update(interaction['surgery_ids'])
+    interaction_cues.update(interaction['cues'])
+    for action in interaction['actions']:
+        if action['delegate_role']:
+            check(action['response_speaker'] == 'staff',
+                  prefix + action['id'] + ': delegated response must be spoken by staff')
     if not interaction['procedure_groups'] and not interaction['surgery_ids'] and not interaction['states'] and not interaction['cues']:
         generic_fallback_themes.add(interaction['theme'])
 check(generic_fallback_themes == interaction_themes,
       'Patient interaction generic fallbacks must cover every awake theme')
+procedure_groups = {surgery['procedure_group'] for surgery in collections['surgeries']}
+check(interaction_group_scopes == procedure_groups,
+      'Patient interaction procedure-group pools must cover every procedure group')
+required_signature_surgeries = {
+    'surgery_hysterectomy', 'surgery_open_ovarian_cystectomy',
+    'surgery_open_abdominal_myomectomy', 'surgery_breast_tumor',
+    'surgery_total_mastectomy', 'surgery_cabg',
+}
+check(required_signature_surgeries <= interaction_surgery_scopes,
+      'Phase 1C signature interactions are missing required representative surgeries')
+important_interaction_combinations = {
+    ('operative_contact', 'pain', 'incision'),
+    ('progress_check', 'fear', 'fatigue'),
+    ('strain_interaction', 'pain', 'traction'),
+    ('dignity_interaction', 'dignity', 'exposure'),
+    ('ongoing_interaction', 'fear', 'fatigue'),
+    ('closure_interaction', 'fear', 'closure'),
+}
+for theme, state, cue in important_interaction_combinations:
+    variant_count = sum(
+        interaction['theme'] == theme and state in interaction['states'] and cue in interaction['cues']
+        for interaction in collections['patient_interactions']
+    )
+    check(variant_count >= 2,
+          f'Phase 1C requires at least two variants for {theme} + {state} + {cue}')
+used_patient_cues = {
+    cue for surgery in collections['surgeries'] for stage in surgery['stages']
+    for cue in stage.get('patient_cues', [])
+}
+check(interaction_cues <= used_patient_cues,
+      'Patient interaction cues must be exercised by at least one surgery stage')
+long_surgery_ongoing_ids = {
+    'surgery_hysterectomy', 'surgery_cabg', 'surgery_exploratory_laparotomy',
+    'surgery_open_total_gastrectomy', 'surgery_open_abdominoperineal_resection',
+    'surgery_open_whipple', 'surgery_open_major_liver_resection',
+    'surgery_open_pneumonectomy', 'surgery_open_esophagectomy',
+    'surgery_open_radical_cystectomy', 'surgery_open_abdominal_aortic_aneurysm',
+}
+for surgery_id in long_surgery_ongoing_ids:
+    surgery = by['surgeries'].get(surgery_id, {})
+    check(any(stage.get('awake_interlude') == 'ongoing_interaction' for stage in surgery.get('stages', [])),
+          surgery_id + ': long surgery requires an ongoing patient interaction marker')
+condition_cues = set()
+for condition in collections['temporary_conditions']:
+    prefix = condition['id'] + ': '
+    condition_cues.add(condition['trigger_cue'])
+    action_ids = [action['id'] for action in condition['actions']]
+    check(len(action_ids) == len(set(action_ids)), prefix + 'duplicate temporary-condition action id')
+    check({action['delegate_role'] for action in condition['actions']} == {'', 'assistant_surgeon', 'circulating_nurse'},
+          prefix + 'actions must include player, assistant-surgeon and circulating-nurse handling')
+    check(sum(not action['delegate_role'] for action in condition['actions']) == 2,
+          prefix + 'actions must include one personal response and one ignore response')
+    for action in condition['actions']:
+        check(action['condition_effect'] is not None,
+              prefix + action['id'] + ': temporary-condition action requires a condition effect')
+        if action['delegate_role']:
+            check(action['response_speaker'] == 'staff',
+                  prefix + action['id'] + ': delegated response must be spoken by staff')
+check(condition_cues == {'nausea', 'drowsiness'},
+      'Temporary conditions must define nausea and drowsiness exactly once')
+used_condition_cues = {
+    cue for surgery in collections['surgeries'] for stage in surgery['stages']
+    for cue in stage.get('patient_cues', []) if cue in condition_cues
+}
+check(used_condition_cues == condition_cues,
+      'Every temporary-condition cue must be used by at least one surgery stage')
 story = read(manifest['dialogue'])
 validator = Draft202012Validator({'$ref':'#/$defs/dialogue', '$defs':schema['$defs']})
 errors.extend(e.message for e in validator.iter_errors(story))
@@ -591,7 +1343,7 @@ nodes = {n['id']:n for n in story['nodes']}
 check(len(nodes) == len(story['nodes']), 'Duplicate dialogue node')
 check(story['start'] in nodes, 'Unknown dialogue start')
 for node in nodes.values():
-    check(node['speaker'] == 'narrator' or node['speaker'] in by['staff'], 'Unknown speaker')
+    check(node['speaker'] in {'narrator', 'player'} or node['speaker'] in by['staff'], 'Unknown speaker')
     check(node['background_id'] in by['backgrounds'], 'Unknown dialogue background')
     if node['speaker'] in by['staff']:
         actor = by['staff'][node['speaker']]
@@ -626,17 +1378,16 @@ for encounter in collections['encounters']:
     check(encounter['start'] in stages and encounter['completion'] in stages, prefix + 'invalid endpoints')
     action_ids, note_ids = set(), set()
     for stage in stages.values():
-        check(stage['speaker'] in by['staff'] or stage['speaker'] == encounter['patient_id'], prefix + 'unknown speaker')
+        check(stage['speaker'] in by['staff'] or stage['speaker'] in {'outpatient_support', encounter['patient_id']}, prefix + 'unknown speaker')
         check(stage['background_id'] in by['backgrounds'], prefix + 'unknown background')
         check(len(stage['actions']) <= 4, prefix + 'UI supports at most four actions per stage')
         for action in stage['actions']:
             check(action['id'] not in action_ids, prefix + 'duplicate action')
             action_ids.add(action['id'])
-            check(action['speaker'] in by['staff'] or action['speaker'] == encounter['patient_id'], prefix + 'unknown response speaker')
+            check(action['speaker'] in by['staff'] or action['speaker'] in {'outpatient_support', encounter['patient_id']}, prefix + 'unknown response speaker')
             check(action['next'] is None or action['next'] in stages, prefix + 'unknown next stage')
             if action.get('consent_state') == 'coerced':
-                check(action.get('player_effects', {}).get('ethics', 0) < 0, prefix + action['id'] + ': coerced clinic action must reduce ethics')
-                check(action.get('player_effects', {}).get('intimidation', 0) > 0, prefix + action['id'] + ': coerced clinic action must raise intimidation')
+                check(action.get('presence_delta', 0) > 0, prefix + action['id'] + ': coerced clinic action must raise clinical presence')
             for note in action['notes']:
                 check(note['id'] not in note_ids, prefix + 'duplicate note')
                 note_ids.add(note['id'])
@@ -650,7 +1401,7 @@ for encounter in collections['encounters']:
         for bundle in stage.get('bundles', []):
             check(bundle['id'] not in action_ids | bundle_ids, prefix + 'duplicate bundle id')
             bundle_ids.add(bundle['id'])
-            check(bundle['speaker'] in by['staff'] or bundle['speaker'] == encounter['patient_id'], prefix + 'unknown bundle speaker')
+            check(bundle['speaker'] in by['staff'] or bundle['speaker'] in {'outpatient_support', encounter['patient_id']}, prefix + 'unknown bundle speaker')
             for key in bundle['actions']:
                 check(key in actions and key not in grouped, prefix + 'invalid grouped action')
                 grouped.add(key)

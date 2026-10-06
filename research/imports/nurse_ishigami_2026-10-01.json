@@ -1,0 +1,64 @@
+{
+  "id": "nurse_ishigami_2026_10_01",
+  "date": "2026-10-01",
+  "character_id": "nurse_ishigami",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_ISHIGAMI_CHIZURU_CHARACTER_BIBLE.md",
+    "bytes": 22535,
+    "sha256": "f8894e447ae6e1e97139d2f5014d759ebc116fbabb64cc23092a98f37c1881dc"
+  },
+  "user_references": [
+    {
+      "path": "research/character_references/nurse_ishigami/01_reference_neutral.png",
+      "bytes": 3287991,
+      "sha256": "351cdd321260e5f70d9db77efb24d3dd56caa6c98e6ba2422072b6e71cbfee7f"
+    },
+    {
+      "path": "research/character_references/nurse_ishigami/02_reference_serious.png",
+      "bytes": 3290265,
+      "sha256": "2b4b8f3c1e38ab37def9cc12ea837ffe06dede669010d5d5b9b89be2a3a12041"
+    }
+  ],
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "use_case": "illustration-story / identity-preserve",
+    "direction": "Adult Chizuru Ishigami as Hoshimi Hospital Head of Nursing: mysterious, cool and authoritative, with long black hair and narrow violet eyes.",
+    "runtime_spec": "1024x1536 RGBA transparent visual-novel portraits.",
+    "prompts_summary": [
+      "Skirt-style white senior nurse uniform, dark management jacket, nurse cap, thin black choker with a small silver pendant, and clipboard; tall half-body design.",
+      "Non-sterile dark-teal OR supervision scrubs, bouffant cap, tie-back mask and monitoring clipboard; no jewelry, gown, gloves or instruments."
+    ]
+  },
+  "runtime_portraits": [
+    {
+      "path": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "bytes": 1669197,
+      "sha256": "a6c8672d89f1048ad965845b2bb6e13674a9bda7390599d05b79a6666301a6a7"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "bytes": 1589622,
+      "sha256": "b62f2166fb5aeff2821aff41e12a15840ca533c09805ee26627db0791532442b"
+    }
+  ],
+  "implementation": {
+    "staff_id": "nurse_ishigami",
+    "position": "head_of_nursing",
+    "relationship_route": "professional_trust",
+    "relationship_max_level": 5,
+    "ordinary_or_selectable": false,
+    "introduction_event": "pending_user_entry_point",
+    "location_presence_enabled": false,
+    "advanced_referral_support": true,
+    "public_teaching_support": true,
+    "romance_route": false,
+    "sunday_date": false,
+    "hotel": false,
+    "staff_as_patient": false
+  },
+  "notes": [
+    "The source Character Bible is preserved as the canonical stable file.",
+    "The actor and professional relationship shell are registered, but no acquaintance trigger or ambient location presence is enabled until the user provides the entry point.",
+    "The OR portrait depicts command and on-site monitoring attire, not sterile-field participation."
+  ]
+}

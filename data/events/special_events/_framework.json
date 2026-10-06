@@ -1,0 +1,76 @@
+[
+  {
+    "id": "framework_single_day_test",
+    "title": "框架验证 · 单日活动",
+    "category": "training",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": true,
+    "unlock_requirements": [
+      {
+        "type": "flag",
+        "flag": "special_event_test_unlocked",
+        "value": true
+      }
+    ],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "framework_single_day_main"
+    ],
+    "completion_flags": [
+      "framework_single_day_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "framework_single_day_test",
+      "title": "单日活动验证",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 100,
+      "final_week_allowed": false
+    }
+  },
+  {
+    "id": "framework_three_day_test",
+    "title": "框架验证 · 三日活动",
+    "category": "training",
+    "duration_days": 3,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": true,
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "framework_single_day_test"
+    ],
+    "event_chain": [
+      "framework_three_day_1",
+      "framework_three_day_2",
+      "framework_three_day_3"
+    ],
+    "completion_flags": [
+      "framework_three_day_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "framework_three_day_test",
+      "title": "三日活动验证",
+      "chapters": [
+        "第一天",
+        "第二天",
+        "第三天"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 10,
+      "final_week_allowed": false
+    }
+  }
+]

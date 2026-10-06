@@ -7,7 +7,6 @@
     "location_id": "clinic",
     "time_start": 540,
     "time_end": 960,
-    "min_trust": 10,
     "min_familiarity": 0,
     "cooldown_days": 2,
     "weight": 70,
@@ -33,7 +32,6 @@
         "impact": "soft",
         "memory_tag": "haru_invited_to_signal",
         "effects": {
-          "trust": 1,
           "familiarity": 1
         }
       },
@@ -82,12 +80,11 @@
     "location_id": "clinic",
     "time_start": 540,
     "time_end": 960,
-    "min_trust": 15,
     "min_familiarity": 4,
     "cooldown_days": 3,
     "weight": 55,
     "personality_basis": "她重视患者在细节中感到被尊重，也会留意医生说话的距离感。",
-    "prompt": "七瀬恋把门带上，忽然侧过脸。\n「你刚才叫她名字的时候，语气和平时不一样。」\n她看着本多。\n「故意的？」",
+    "prompt": "七瀬恋把门带上，忽然侧过脸。\n「你刚才叫她名字的时候，语气和平时不一样。」\n她看着坂口。\n「故意的？」",
     "outfit": "uniform",
     "expression": "neutral",
     "choices": [
@@ -116,9 +113,7 @@
         "expression": "serious",
         "impact": "soft",
         "memory_tag": "haru_shared_address_method",
-        "effects": {
-          "respect": 1
-        }
+        "effects": {}
       }
     ],
     "opening_lines": [
@@ -132,7 +127,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「你刚才叫她名字的时候，语气和平时不一样。」\n她看着本多。\n「故意的？」",
+        "text": "「你刚才叫她名字的时候，语气和平时不一样。」\n她看着坂口。\n「故意的？」",
         "expression": "neutral"
       }
     ],
@@ -156,12 +151,11 @@
     "location_id": "or",
     "time_start": 540,
     "time_end": 1020,
-    "min_trust": 15,
     "min_familiarity": 3,
     "cooldown_days": 2,
     "weight": 65,
     "personality_basis": "她在手术后仍先确认团队和患者状态，私人情绪通常排在最后。",
-    "prompt": "最后一副手套丢进回收桶，七瀬恋还站在原地。\n「手术结束第一秒，你脑子里是什么？」\n她看了看本多的脸。\n「别给我标准答案，我今天没力气听。」",
+    "prompt": "最后一副手套丢进回收桶，七瀬恋还站在原地。\n「手术结束第一秒，你脑子里是什么？」\n她看了看坂口的脸。\n「别给我标准答案，我今天没力气听。」",
     "outfit": "scrubs",
     "expression": "warm",
     "choices": [
@@ -172,9 +166,7 @@
         "expression": "warm",
         "impact": "soft",
         "memory_tag": "haru_shared_recovery_concern",
-        "effects": {
-          "trust": 1
-        }
+        "effects": {}
       },
       {
         "id": "review_steps",
@@ -206,7 +198,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「手术结束第一秒，你脑子里是什么？」\n她看了看本多的脸。\n「别给我标准答案，我今天没力气听。」",
+        "text": "「手术结束第一秒，你脑子里是什么？」\n她看了看坂口的脸。\n「别给我标准答案，我今天没力气听。」",
         "expression": "warm"
       }
     ],
@@ -230,12 +222,11 @@
     "location_id": "or",
     "time_start": 540,
     "time_end": 1020,
-    "min_trust": 18,
     "min_familiarity": 5,
     "cooldown_days": 4,
     "weight": 45,
     "personality_basis": "作为手术护士，她熟悉团队节奏，能从沉默和动作变化判断压力。",
-    "prompt": "清点结束后，七瀬恋靠在器械台边没走。\n「刚才有一段你突然完全不说话。」\n她盯着本多两秒，嘴角一点点弯起来。\n「是在集中，还是手术台上的人太能吸引你注意？」\n她停了半秒。\n「……要是哪天换我躺在那里，你最好也这么认真。」",
+    "prompt": "清点结束后，七瀬恋靠在器械台边没走。\n「刚才有一段你突然完全不说话。」\n她盯着坂口两秒，嘴角一点点弯起来。\n「是在集中，还是手术台上的人太能吸引你注意？」\n她停了半秒。\n「……要是哪天换我躺在那里，你最好也这么认真。」",
     "outfit": "scrubs",
     "expression": "focused",
     "choices": [
@@ -255,10 +246,7 @@
         "expression": "warm",
         "impact": "soft",
         "memory_tag": "haru_player_admitted_or_doubt",
-        "effects": {
-          "trust": 1,
-          "respect": 1
-        }
+        "effects": {}
       },
       {
         "id": "ask_if_she_worried",
@@ -281,7 +269,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「刚才有一段你突然完全不说话。」\n她盯着本多两秒，嘴角一点点弯起来。\n「是在集中，还是手术台上的人太能吸引你注意？」\n她停了半秒。\n「……要是哪天换我躺在那里，你最好也这么认真。」",
+        "text": "「刚才有一段你突然完全不说话。」\n她盯着坂口两秒，嘴角一点点弯起来。\n「是在集中，还是手术台上的人太能吸引你注意？」\n她停了半秒。\n「……要是哪天换我躺在那里，你最好也这么认真。」",
         "expression": "focused"
       }
     ],
@@ -312,12 +300,11 @@
     "location_id": "lounge",
     "time_start": 600,
     "time_end": 870,
-    "min_trust": 10,
     "min_familiarity": 1,
     "cooldown_days": 3,
     "weight": 60,
     "personality_basis": "她习惯照顾别人，会用饮料这种小问题确认对方是否愿意被照顾。",
-    "prompt": "七瀬恋站在饮水机前，两个杯子都已经拿好了。\n「热的、温的、冰的。」\n她不给本多插嘴。\n「今天敢说‘都可以’，我就替你选最难喝的。」",
+    "prompt": "七瀬恋站在饮水机前，两个杯子都已经拿好了。\n「热的、温的、冰的。」\n她不给坂口插嘴。\n「今天敢说‘都可以’，我就替你选最难喝的。」",
     "outfit": "uniform",
     "expression": "smile",
     "choices": [
@@ -342,7 +329,7 @@
       {
         "id": "cold",
         "label": "冰的",
-        "response": "她上下看了本多一眼。\n「可以。胃不舒服的时候我会没收。别跟护士讨价还价。」",
+        "response": "她上下看了坂口一眼。\n「可以。胃不舒服的时候我会没收。别跟护士讨价还价。」",
         "expression": "serious",
         "impact": "memory",
         "memory_tag": "haru_knows_cold_drink",
@@ -360,7 +347,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「热的、温的、冰的。」\n她不给本多插嘴。\n「今天敢说‘都可以’，我就替你选最难喝的。」",
+        "text": "「热的、温的、冰的。」\n她不给坂口插嘴。\n「今天敢说‘都可以’，我就替你选最难喝的。」",
         "expression": "smile"
       }
     ],
@@ -391,7 +378,6 @@
     "location_id": "lounge",
     "time_start": 660,
     "time_end": 960,
-    "min_trust": 18,
     "min_familiarity": 5,
     "cooldown_days": 4,
     "weight": 50,
@@ -465,7 +451,6 @@
     "location_id": "rooftop",
     "time_start": 660,
     "time_end": 960,
-    "min_trust": 15,
     "min_familiarity": 4,
     "cooldown_days": 5,
     "weight": 45,
@@ -547,12 +532,11 @@
     "location_id": "rooftop",
     "time_start": 720,
     "time_end": 1020,
-    "min_trust": 20,
     "min_familiarity": 7,
     "cooldown_days": 6,
     "weight": 35,
     "personality_basis": "关系稍近后，她会以克制的方式询问工作以外的生活。",
-    "prompt": "七瀬恋望着远处住宅区，忽然问：\n「如果明天不用上班，你还设闹钟吗？」\n她转头看本多。\n「我是在确认你有没有正常人的休息日。顺便确认一下……你休息日会不会给别人一点时间。」",
+    "prompt": "七瀬恋望着远处住宅区，忽然问：\n「如果明天不用上班，你还设闹钟吗？」\n她转头看坂口。\n「我是在确认你有没有正常人的休息日。顺便确认一下……你休息日会不会给别人一点时间。」",
     "outfit": "uniform",
     "expression": "neutral",
     "choices": [
@@ -595,7 +579,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「如果明天不用上班，你还设闹钟吗？」\n她转头看本多。\n「我是在确认你有没有正常人的休息日。顺便确认一下……你休息日会不会给别人一点时间。」",
+        "text": "「如果明天不用上班，你还设闹钟吗？」\n她转头看坂口。\n「我是在确认你有没有正常人的休息日。顺便确认一下……你休息日会不会给别人一点时间。」",
         "expression": "neutral"
       }
     ],
@@ -626,7 +610,6 @@
     "location_id": "station",
     "time_start": 780,
     "time_end": 1020,
-    "min_trust": 18,
     "min_familiarity": 5,
     "cooldown_days": 4,
     "weight": 50,
@@ -661,8 +644,7 @@
         "impact": "soft",
         "memory_tag": "haru_received_direct_thanks",
         "effects": {
-          "affection": 1,
-          "trust": 1
+          "affection": 1
         }
       }
     ],
@@ -701,12 +683,11 @@
     "location_id": "station",
     "time_start": 840,
     "time_end": 1020,
-    "min_trust": 20,
     "min_familiarity": 8,
     "cooldown_days": 5,
     "weight": 40,
     "personality_basis": "她会察觉医生疲惫，但尊重对方选择沉默或倾诉。",
-    "prompt": "护士站终于安静下来。七瀬恋靠着桌沿，声音也低了。\n「两个选项。」\n「说说今天最想骂人的事，或者陪我安静一分钟。」\n她看了本多一眼。\n「第三个选项是陪我去个没人的地方，但这个要关系再好一点才能选。」",
+    "prompt": "护士站终于安静下来。七瀬恋靠着桌沿，声音也低了。\n「两个选项。」\n「说说今天最想骂人的事，或者陪我安静一分钟。」\n她看了坂口一眼。\n「第三个选项是陪我去个没人的地方，但这个要关系再好一点才能选。」",
     "outfit": "uniform",
     "expression": "tired",
     "choices": [
@@ -734,7 +715,7 @@
       {
         "id": "send_her_to_rest",
         "label": "你去休息，我替你守",
-        "response": "她盯了本多两秒。\n「你最近越来越会命令护士了。」\n她站起身，却俯近一点低声说：「好。十分钟。等我回来你还在这里的话，我就当你是在等我。」",
+        "response": "她盯了坂口两秒。\n「你最近越来越会命令护士了。」\n她站起身，却俯近一点低声说：「好。十分钟。等我回来你还在这里的话，我就当你是在等我。」",
         "expression": "smile",
         "impact": "memory",
         "memory_tag": "haru_accepted_player_cover",
@@ -752,7 +733,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「两个选项。」\n「说说今天最想骂人的事，或者陪我安静一分钟。」\n她看了本多一眼。\n「第三个选项是陪我去个没人的地方，但这个要关系再好一点才能选。」",
+        "text": "「两个选项。」\n「说说今天最想骂人的事，或者陪我安静一分钟。」\n她看了坂口一眼。\n「第三个选项是陪我去个没人的地方，但这个要关系再好一点才能选。」",
         "expression": "tired"
       }
     ],
@@ -778,35 +759,32 @@
   {
     "id": "yui_micro_notebook_question",
     "actor_id": "nurse_yui",
-    "title": "写在小本子上的问题",
+    "title": "流程表上的问题",
     "context": "after_encounter",
     "location_id": "clinic",
     "time_start": 540,
     "time_end": 960,
-    "min_trust": 10,
     "min_familiarity": 0,
     "cooldown_days": 2,
     "weight": 75,
-    "personality_basis": "朝倉美幸认真好学，遇到疑问会兴奋地记录，也担心占用医生时间。",
-    "prompt": "患者刚离开，朝倉美幸的小本子已经“啪”地翻开。\n「医生，只问一个问题！」\n她竖起一根手指。\n「为什么刚才先问疼痛怎么变，不先问到底有多痛？——真的只问一个，暂时。」",
+    "personality_basis": "朝倉美幸已有独立护理经验；她会主动确认星见的记录逻辑，不拿旧院习惯替代本院流程。",
+    "prompt": "患者刚离开，朝倉美幸翻开贴满标签的流程本。\n「医生，我想确认星见的写法。」\n她点了点疼痛记录栏。\n「这里把变化过程放在强度前面，是为了交班时先保留病程线索，对吗？我以前的单位顺序相反。」",
     "outfit": "uniform",
     "expression": "serious",
     "choices": [
       {
         "id": "explain_reasoning",
-        "label": "变化过程更能提示病因",
-        "response": "她刷刷写了两行，又立刻抬头。\n「所以顺序本身也是判断？等一下，这算第二个问题吗？」",
+        "label": "对，顺序是为了先呈现病程",
+        "response": "她在两套格式之间画了一条箭头。\n「明白。判断逻辑一样，只是交班入口不同。那我按星见的来。」",
         "expression": "smile",
         "impact": "soft",
         "memory_tag": "yui_learned_history_sequence",
-        "effects": {
-          "respect": 1
-        }
+        "effects": {}
       },
       {
         "id": "ask_her_guess",
-        "label": "你先猜",
-        "response": "「又来！」她鼓起脸，「医生很喜欢把问题原封不动丢回来吧？」嘴上抱怨，笔已经准备好了。",
+        "label": "你先说说旧流程的优缺点",
+        "response": "她没有被考住，反而把记录板转过来。\n「旧格式适合快速量化，但容易把变化过程压到后面。星见这套更适合连续观察——我想确认的是这个取舍。」",
         "expression": "surprised",
         "impact": "memory",
         "memory_tag": "yui_likes_teaching_questions",
@@ -814,8 +792,8 @@
       },
       {
         "id": "promise_later",
-        "label": "午休再讲，现在先记着",
-        "response": "她在旁边画了一个巨大的星号。\n「证人有了。中午赖账我就拿这个去护士站公开催债。」",
+        "label": "午休一起把本院格式过一遍",
+        "response": "她在那一页画了一个小星号。\n「成交。我负责带旧经验，你负责解释星见为什么这样做。」",
         "expression": "smile",
         "impact": "memory",
         "memory_tag": "yui_waiting_for_lunch_explanation",
@@ -825,15 +803,15 @@
     "opening_lines": [
       {
         "speaker": "narrator",
-        "text": "患者刚离开，朝倉美幸已经翻开小本子，笔尖悬在新的一页上。"
+        "text": "患者刚离开，朝倉美幸已经翻到写着“星见门诊”的那一页。"
       },
       {
         "speaker": "player",
-        "text": "你已经翻到新的一页了。又发现了什么？"
+        "text": "你已经把两套记录顺序都写下来了。哪里还不清楚？"
       },
       {
         "speaker": "actor",
-        "text": "「医生，只问一个问题！」\n她竖起一根手指。\n「为什么刚才先问疼痛怎么变，不先问到底有多痛？——真的只问一个，暂时。」",
+        "text": "「医生，我想确认星见的写法。」\n她点了点疼痛记录栏。\n「这里把变化过程放在强度前面，是为了交班时先保留病程线索，对吗？我以前的单位顺序相反。」",
         "expression": "serious"
       }
     ],
@@ -864,7 +842,6 @@
     "location_id": "clinic",
     "time_start": 540,
     "time_end": 960,
-    "min_trust": 12,
     "min_familiarity": 3,
     "cooldown_days": 3,
     "weight": 60,
@@ -898,9 +875,7 @@
         "expression": "serious",
         "impact": "soft",
         "memory_tag": "yui_shared_patient_detail",
-        "effects": {
-          "trust": 1
-        }
+        "effects": {}
       }
     ],
     "opening_lines": [
@@ -940,36 +915,32 @@
   {
     "id": "yui_micro_steady_hands",
     "actor_id": "nurse_yui",
-    "title": "第一次没有发抖",
+    "title": "第一次配合这套流程",
     "context": "after_surgery",
     "location_id": "or",
     "time_start": 540,
     "time_end": 1020,
-    "min_trust": 12,
     "min_familiarity": 2,
     "cooldown_days": 3,
     "weight": 65,
-    "personality_basis": "经验较少的她会在意自己的进步，也渴望得到具体而诚实的反馈。",
-    "prompt": "离开手术台后，朝倉美幸低头盯着自己的手，忽然把两只手一起伸到本多面前。\n「医生，鉴定一下。」\n她眼睛发亮。\n「今天是不是没抖？」",
+    "personality_basis": "她的技术已经稳定；她在意的是自己能否准确适应星见的团队节奏，并愿意要具体反馈。",
+    "prompt": "离开手术台后，朝倉美幸摘下手套，把清点记录递给坂口。\n「技术动作我有数，想问的是配合。」\n她认真看着他。\n「刚才递送和清点的时机，跟星见这边的节奏对上了吗？」",
     "outfit": "scrubs",
     "expression": "worried",
     "choices": [
       {
         "id": "noticed_progress",
-        "label": "没抖，而且比上次稳很多",
-        "response": "口罩挡不住她一下子亮起来的眼睛。\n「我就知道！——不对，我其实不知道，所以才来问你。」",
+        "label": "对得很准，几乎不用磨合",
+        "response": "她明显松了口气，却没有夸张地高兴。\n「好。那下次我可以少分一点注意力给流程，多留一点给患者。」",
         "expression": "warm",
         "impact": "soft",
         "memory_tag": "yui_progress_was_seen",
-        "effects": {
-          "trust": 1,
-          "respect": 1
-        }
+        "effects": {}
       },
       {
         "id": "give_specific_note",
-        "label": "传器械很稳，清点还可以慢一点",
-        "response": "「好严格！」她先垮下脸，下一秒又认真点头，「不过这种具体的我喜欢。至少知道下次赢在哪里。」",
+        "label": "器械很稳，清点提示可以再早一点",
+        "response": "「明白，提前一个节点。」她立刻记下。\n「这种具体反馈最好。我问流程，就是为了少让别人迁就我。」",
         "expression": "focused",
         "impact": "memory",
         "memory_tag": "yui_received_specific_feedback",
@@ -977,8 +948,8 @@
       },
       {
         "id": "ask_how_she_felt",
-        "label": "你自己觉得呢？",
-        "response": "她想了想。\n「还是怕。」\n随后笑起来。\n「但这次怕归怕，手没跟着一起逃跑。」",
+        "label": "你自己觉得哪一步最别扭？",
+        "response": "她想了想。\n「不是操作，是你们默认的眼神暗号。」\n她笑起来。\n「技术可以直接用，默契得重新学。」",
         "expression": "warm",
         "impact": "memory",
         "memory_tag": "yui_named_her_progress",
@@ -988,26 +959,26 @@
     "opening_lines": [
       {
         "speaker": "narrator",
-        "text": "离开手术台后，朝倉美幸摊开双手，反复看了两遍。"
+        "text": "离开手术台后，朝倉美幸先核对完清点记录，才摘下手套。"
       },
       {
         "speaker": "player",
-        "text": "手不舒服吗？让我看看。"
+        "text": "记录没有问题。你还在复盘哪一段？"
       },
       {
         "speaker": "actor",
-        "text": "「医生，鉴定一下。」\n她眼睛发亮。\n「今天是不是没抖？」",
+        "text": "「技术动作我有数，想问的是配合。」\n她认真看着他。\n「刚才递送和清点的时机，跟星见这边的节奏对上了吗？」",
         "expression": "worried"
       }
     ],
     "closing_lines": [
       {
         "speaker": "player",
-        "text": "今天的感觉也记下来吧，免得以后只记得紧张。"
+        "text": "你的手一直很稳。需要适应的只是这支团队。"
       },
       {
         "speaker": "actor",
-        "text": "「我要把今天记得很大。」她比划了一下，「以后紧张就翻回来提醒自己：我也有不抖的时候。」"
+        "text": "「这句话我收下。」她拍了拍记录板。\n「我是星见的新人，但不是护理新人。两件事终于说清楚了。」"
       }
     ],
     "tone": "casual_professional"
@@ -1015,24 +986,23 @@
   {
     "id": "yui_micro_long_procedure_name",
     "actor_id": "nurse_yui",
-    "title": "太长的术式名字",
+    "title": "星见的术式简称",
     "context": "after_surgery",
     "location_id": "or",
     "time_start": 540,
     "time_end": 1020,
-    "min_trust": 12,
     "min_familiarity": 3,
     "cooldown_days": 4,
     "weight": 50,
-    "personality_basis": "她会用轻松方法消化专业压力，也乐于和玩家建立专属的小习惯。",
-    "prompt": "朝倉美幸摘下口罩，努力把刚才的术式名称从头念了一遍，念到最后自己先投降。\n「这名字是给人记的吗？」\n她看向本多。\n「医生不会其实也偷偷写小抄吧？」",
+    "personality_basis": "她熟悉正式术式名，但会确认星见院内简称，避免把旧单位的叫法带进交接。",
+    "prompt": "朝倉美幸摘下口罩，在记录板上并排写下正式术式名和护士站刚才使用的简称。\n「正式名称我知道。」\n她用笔尖点了点后者。\n「我想确认的是：这个简称只在口头用，还是交接记录里也允许？」",
     "outfit": "scrubs",
     "expression": "neutral",
     "choices": [
       {
         "id": "break_into_steps",
-        "label": "拆成部位、动作和目的",
-        "response": "「哦——像拆长句！」她在空中划成三段，「突然从怪物名字变成人话了。」",
+        "label": "拆成部位、动作和目的，只用于口头",
+        "response": "「了解。口头提高效率，正式记录不省略。」她把两栏分开标好，「这样最安全。」",
         "expression": "warm",
         "impact": "memory",
         "memory_tag": "yui_learned_name_method",
@@ -1040,8 +1010,8 @@
       },
       {
         "id": "invent_nickname",
-        "label": "给它起个只有我们懂的简称",
-        "response": "她立刻想了一个极其糟糕的简称。\n两个人沉默半秒，同时笑出声。\n「不准告诉别人。这个会毁掉我的职业生涯。」",
+        "label": "我们可以另定一个团队内简称",
+        "response": "她立刻想了一个极其糟糕的简称。\n两个人沉默半秒，同时笑出声。\n「口头都不准用。这个会毁掉我们的职业生涯。」",
         "expression": "warm",
         "impact": "soft",
         "memory_tag": "yui_shared_procedure_nickname",
@@ -1052,8 +1022,8 @@
       },
       {
         "id": "admit_checking",
-        "label": "我也会确认两遍",
-        "response": "「真的？」她明显松口气，「太好了。原来熟练不是不用确认，是确认的时候脸比较镇定。」",
+        "label": "我也会在交接前确认院内写法",
+        "response": "「那就好。」她合上本子，「熟练不是假装所有医院都一样，而是知道哪里必须重新确认。」",
         "expression": "warm",
         "impact": "memory",
         "memory_tag": "yui_knows_player_double_checks",
@@ -1063,26 +1033,26 @@
     "opening_lines": [
       {
         "speaker": "narrator",
-        "text": "朝倉美幸摘下口罩，小声重复了一遍刚才的术式名称，最后还是叹了口气。"
+        "text": "朝倉美幸摘下口罩，把正式术式名和星见常用简称并排写在记录板上。"
       },
       {
         "speaker": "player",
-        "text": "刚才已经念对了前半段，怎么先叹气了？"
+        "text": "正式名称写得没错。你是在确认简称的使用范围？"
       },
       {
         "speaker": "actor",
-        "text": "「这名字是给人记的吗？」\n她看向本多。\n「医生不会其实也偷偷写小抄吧？」",
+        "text": "「正式名称我知道。」\n她用笔尖点了点后者。\n「我想确认的是：这个简称只在口头用，还是交接记录里也允许？」",
         "expression": "neutral"
       }
     ],
     "closing_lines": [
       {
         "speaker": "player",
-        "text": "记住名字只是开始，别忘了它为什么这样做。"
+        "text": "正式记录用全称，团队口头简称也要避免歧义。"
       },
       {
         "speaker": "actor",
-        "text": "「正式名称照背，私下简称保留。」她竖起手指，「这是我们之间的非法记忆术。」"
+        "text": "「记住了。」她竖起手指，「旧院习惯归旧院，星见的语言从今天开始学。」"
       }
     ],
     "tone": "casual_professional"
@@ -1095,12 +1065,11 @@
     "location_id": "lounge",
     "time_start": 660,
     "time_end": 840,
-    "min_trust": 10,
     "min_familiarity": 1,
     "cooldown_days": 3,
     "weight": 70,
     "personality_basis": "她开朗，愿意用无关紧要的小问题拉近距离。",
-    "prompt": "朝倉美幸把食堂新菜的照片推到本多面前。\n「满分十分，只看脸给分。」\n她一本正经地补充：\n「现在它是食物，不是患者，所以可以肤浅。」\n说完又眨眨眼：「评价人也可以的话……等下再开第二轮。」",
+    "prompt": "朝倉美幸把食堂新菜的照片推到坂口面前。\n「满分十分，只看脸给分。」\n她一本正经地补充：\n「现在它是食物，不是患者，所以可以肤浅。」\n说完又眨眨眼：「评价人也可以的话……等下再开第二轮。」",
     "outfit": "uniform",
     "expression": "smile",
     "choices": [
@@ -1137,7 +1106,7 @@
     "opening_lines": [
       {
         "speaker": "narrator",
-        "text": "朝倉美幸把食堂的新菜照片推到本多面前，旁边已经画好了十分制的格子。"
+        "text": "朝倉美幸把食堂的新菜照片推到坂口面前，旁边已经画好了十分制的格子。"
       },
       {
         "speaker": "player",
@@ -1176,7 +1145,6 @@
     "location_id": "lounge",
     "time_start": 660,
     "time_end": 900,
-    "min_trust": 15,
     "min_familiarity": 5,
     "cooldown_days": 5,
     "weight": 45,
@@ -1238,7 +1206,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「下次不用拿甜点贿赂我。」本多说。\n她眨眨眼：「那换别的？」\n停了一秒，她自己先笑了。\n「比如我去当一次特别配合的患者？这算不算高价值交换？」"
+        "text": "「下次不用拿甜点贿赂我。」坂口说。\n她眨眨眼：「那换别的？」\n停了一秒，她自己先笑了。\n「比如我去当一次特别配合的患者？这算不算高价值交换？」"
       }
     ],
     "tone": "familiar_playful",
@@ -1258,7 +1226,6 @@
     "location_id": "rooftop",
     "time_start": 660,
     "time_end": 960,
-    "min_trust": 15,
     "min_familiarity": 4,
     "cooldown_days": 5,
     "weight": 45,
@@ -1332,12 +1299,11 @@
     "location_id": "rooftop",
     "time_start": 720,
     "time_end": 1020,
-    "min_trust": 18,
     "min_familiarity": 6,
     "cooldown_days": 5,
     "weight": 40,
     "personality_basis": "她明明喜欢学习，却也开始察觉两人的关系不必永远围绕教学。",
-    "prompt": "朝倉美幸刚开口“我有个问题”，又猛地把自己的嘴捂住。\n「不行。今天十分钟不谈工作。」\n她放下手，认真看着本多。\n「那我们平时到底还能聊什么？」\n停了一秒，她自己先笑：「总不能一开口就聊喜欢什么类型吧。」",
+    "prompt": "朝倉美幸刚开口“我有个问题”，又猛地把自己的嘴捂住。\n「不行。今天十分钟不谈工作。」\n她放下手，认真看着坂口。\n「那我们平时到底还能聊什么？」\n停了一秒，她自己先笑：「总不能一开口就聊喜欢什么类型吧。」",
     "outfit": "uniform",
     "expression": "smile",
     "choices": [
@@ -1362,7 +1328,7 @@
       {
         "id": "comfortable_silence",
         "label": "也可以不说话",
-        "response": "她本来想抗议，最后却站到本多身边。\n过了一会儿，她小声说：「这个比我想的更像约会。」\n说完自己先僵住。\n「……刚才那句能撤回吗？」",
+        "response": "她本来想抗议，最后却站到坂口身边。\n过了一会儿，她小声说：「这个比我想的更像约会。」\n说完自己先僵住。\n「……刚才那句能撤回吗？」",
         "expression": "neutral",
         "impact": "soft",
         "memory_tag": "yui_shared_rooftop_silence",
@@ -1383,7 +1349,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「不行。今天十分钟不谈工作。」\n她放下手，认真看着本多。\n「那我们平时到底还能聊什么？」\n停了一秒，她自己先笑：「总不能一开口就聊喜欢什么类型吧。」",
+        "text": "「不行。今天十分钟不谈工作。」\n她放下手，认真看着坂口。\n「那我们平时到底还能聊什么？」\n停了一秒，她自己先笑：「总不能一开口就聊喜欢什么类型吧。」",
         "expression": "smile"
       }
     ],
@@ -1414,7 +1380,6 @@
     "location_id": "station",
     "time_start": 720,
     "time_end": 1020,
-    "min_trust": 12,
     "min_familiarity": 3,
     "cooldown_days": 4,
     "weight": 55,
@@ -1435,7 +1400,7 @@
       {
         "id": "make_new_line",
         "label": "我再给你补一句",
-        "response": "本多补的那句把节奏彻底毁掉。\n美幸沉默两秒：「太烂了。留下。」",
+        "response": "坂口补的那句把节奏彻底毁掉。\n美幸沉默两秒：「太烂了。留下。」",
         "expression": "smile",
         "impact": "soft",
         "memory_tag": "yui_coauthored_handoff_code",
@@ -1488,12 +1453,11 @@
     "location_id": "clinic",
     "time_start": 540,
     "time_end": 960,
-    "min_trust": 18,
     "min_familiarity": 7,
     "cooldown_days": 6,
     "weight": 35,
     "personality_basis": "关系深入后，她会借假设问题确认玩家如何看待脆弱状态下的自己。",
-    "prompt": "诊室空下来以后，朝倉美幸忽然坐到患者刚才的位置。\n「假设我是患者。」\n她抬头看本多，双手乖乖放在膝上，却明显是在憋笑。\n「你会先解释检查，先问我怕不怕，还是先让我把白大褂以外的东西都交给护士？」\n她说完自己先卡了一下。\n「……我只是做情境模拟。」",
+    "prompt": "诊室空下来以后，朝倉美幸忽然坐到患者刚才的位置。\n「假设我是患者。」\n她抬头看坂口，双手乖乖放在膝上，却明显是在憋笑。\n「你会先解释检查，先问我怕不怕，还是先让我把白大褂以外的东西都交给护士？」\n她说完自己先卡了一下。\n「……我只是做情境模拟。」",
     "outfit": "uniform",
     "expression": "neutral",
     "choices": [
@@ -1523,8 +1487,7 @@
         "impact": "soft",
         "memory_tag": "yui_remembers_sitting_beside",
         "effects": {
-          "affection": 1,
-          "trust": 1
+          "affection": 1
         }
       }
     ],
@@ -1539,7 +1502,7 @@
       },
       {
         "speaker": "actor",
-        "text": "「假设我是患者。」\n她抬头看本多，双手乖乖放在膝上，却明显是在憋笑。\n「你会先解释检查，先问我怕不怕，还是先让我把白大褂以外的东西都交给护士？」\n她说完自己先卡了一下。\n「……我只是做情境模拟。」",
+        "text": "「假设我是患者。」\n她抬头看坂口，双手乖乖放在膝上，却明显是在憋笑。\n「你会先解释检查，先问我怕不怕，还是先让我把白大褂以外的东西都交给护士？」\n她说完自己先卡了一下。\n「……我只是做情境模拟。」",
         "expression": "neutral"
       }
     ],

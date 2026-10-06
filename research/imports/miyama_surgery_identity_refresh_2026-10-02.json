@@ -1,0 +1,144 @@
+{
+  "id": "miyama_surgery_identity_refresh_2026_10_02",
+  "date": "2026-10-02",
+  "character_id": "doc_rei",
+  "identity_standard": "Original second-game face and burgundy-red eyes. During surgery, her deep violet-purple high ponytail and red ribbon are fully contained inside a bouffant cap; almost all bangs/front hair are tucked under the cap edge.",
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "method": "Identity-preserving regeneration followed by a medical hair-containment correction. Portraits were rendered against chroma green, converted locally to true alpha, and restored to the existing canvas size.",
+    "prompt_set": [
+      "SFW teal short-sleeve scrub portrait; all long hair and ribbon fully inside bouffant cap; almost all bangs tucked; neutral/focused/worried/warm eye variants.",
+      "SFW teal long-sleeve sterile-gown portrait; identical hair containment; neutral/focused/worried/warm eye variants.",
+      "SFW operating-room assistant-confirmation CG; no externally visible ponytail, ribbon, or long front locks."
+    ]
+  },
+  "implementation": {
+    "runtime_references_unchanged": true,
+    "export_performed": false,
+    "replaced_assets": 9
+  },
+  "assets": [
+    {
+      "path": "assets/characters/portrait_pack_v2/doc_rei/scrubs/neutral.png",
+      "bytes": 1415945,
+      "sha256": "ecaf7e25c5db133d53528f75dff437e843d2715425b370f4e12278d584677e4e",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v5/doc_rei/scrubs/focused.png",
+      "bytes": 1066837,
+      "sha256": "3c1413c6a9c2235cb8449a14ac641a62a81f816953e8591adec9b8efb436ca78",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v5/doc_rei/scrubs/worried.png",
+      "bytes": 1406078,
+      "sha256": "bb9cbc42d916b19af1aca83d44a49c7f8aec47d943f632bfa6231e2738c9f0a0",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/portrait_pack_v5/doc_rei/scrubs/warm.png",
+      "bytes": 1060551,
+      "sha256": "95247c88cbcde164c5f2027eb0f6b064437e04d378fdefc57f51f0811d3ca027",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/sterile_pack_v1/doc_rei/neutral.png",
+      "bytes": 1574310,
+      "sha256": "6360a947902d412067ef023fca399c7e897b3d842b3c1b90b63fdad0cab01eb8",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/sterile_pack_v1/doc_rei/focused.png",
+      "bytes": 1568446,
+      "sha256": "e57d40afc80b885fe1c18b4bf5eb16cc7a59760c1730f81c518f5835eabe75a4",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/sterile_pack_v1/doc_rei/worried.png",
+      "bytes": 1228801,
+      "sha256": "be502758ff395bfc98b0ceead72d92ba7c9ccec1f88bc32e1f1126be7e4814ca",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/characters/sterile_pack_v1/doc_rei/warm.png",
+      "bytes": 1249377,
+      "sha256": "39665a619efc1a687bf83518b53f472fa793789825782daa1050b5698d43856b",
+      "size": [
+        1159,
+        1358
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/events/staff_surgery_v1/doc_rei/assistant_confirmation_v2.png",
+      "bytes": 1819633,
+      "sha256": "4e7758e7c5dd602f1be817485d4885c746dd97351872841cf339190f5aec9d1c",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    }
+  ]
+}

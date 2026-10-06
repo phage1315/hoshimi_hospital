@@ -20,7 +20,7 @@ F5 → 开始游戏（或直接医院导览）→ 门诊诊室 → 音羽響子�
 
 保存内容：已经进行的病例选择、收集到的记录、时间、当前阶段、最近的反馈与住院状态。恢复时回到当前病例。入职对话位置、界面位置、滚动位置不保存；没有自动存档。
 
-实际存档位于 Godot 的 `user://clinic_slot_1.json`，通常是 macOS 的 `~/Library/Application Support/Godot/app_userdata/星见医院 · 春日序章/clinic_slot_1.json`，以 Godot 的用户数据目录设置为准。
+8 个正式存档位于 Godot 的 `user://clinic_slot_1.json` 至 `user://clinic_slot_8.json`，通常是 macOS 的 `~/Library/Application Support/Godot/app_userdata/星见医院 · 春日序章/`，以 Godot 的用户数据目录设置为准。旧版单槽存档会直接显示在位置 1。
 
 ## 体验边界
 

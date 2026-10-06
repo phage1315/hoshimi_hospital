@@ -15,6 +15,7 @@
 - 门诊立绘：`assets/characters/patient_rie_v1/patient_rie/outpatient/`
 - 病房立绘及差分：`assets/characters/patient_rie_v1/patient_rie/ward/`
 - 手术台全景及差分：`assets/characters/patient_rie_v1/patient_rie/operating_table/`
+- 截石位手术台全景及差分：`assets/characters/patient_rie_v1/patient_rie/operating_table_lithotomy/`
 - 全身麻醉 splash：`assets/characters/patient_rie_v1/patient_rie/splash/general_anesthesia.png`
 - 术中反应头像：`assets/characters/intraoperative_portraits_v1/patient_rie/`
 - 检查相关立绘：`assets/characters/patient_rie_v1/patient_rie/examination/`
@@ -22,6 +23,10 @@
 `examination/shy.png` 已从原始 917×688 横向透明画布裁去两侧留白，并等比重构为 1024×1536 纵向画布。人物从头顶显示至大腿上部，主体占画面比例与琪琪的检查立绘接近；原始用户附件仍保存在 `research/character_references/patient_rie/05_examination_reference.png`。
 
 手术台素材沿用现有患者的统一俯视全身构图。术中头像包含 `tense`、`pain`、`near_collapse`、`anesthetized`；其中疼痛与濒临崩溃差分按柳原理惠本人的五官、克制性格和情绪方式单独制作。
+
+截石位素材包含 `awake`、`tense`、`afraid`、`anesthetized` 四张 1448×1086 差分。主床完整承托头部至骨盆并在臀部后方结束；大型软垫腿架支撑膝后至近端小腿，膝下与双脚自然悬空。腹部、骨盆与双腿由不透明无菌单完整覆盖，两腿之间使用一整块连续帘式无菌单，不使用裤装式分叉。中央床尾保持移除，为术者保留站位。该构图作为后续患者截石位手术台素材的标准母版。
+
+手术界面以 450×310 容器和 `STRETCH_KEEP_ASPECT_CENTERED` 显示手术台图。4:3 原图实际缩放约为 413×310，左右各保留约 18 像素，因此无需预先裁切左右边缘，也不会裁掉腿架或双脚。
 
 ## ImageGen 提示词摘要
 

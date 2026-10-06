@@ -1,0 +1,32 @@
+{
+  "id": "appendix_operative_field_overlays_2026_10_03",
+  "date": "2026-10-03",
+  "source": "user-provided images",
+  "assets": [
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-c1d11e06-b1c0-468c-bc14-8728f84918f1.png",
+      "runtime_target": "assets/surgeries/overlays/appendix/open_appendix_field_01.png",
+      "width": 1760,
+      "height": 920,
+      "format": "PNG",
+      "has_alpha": false,
+      "sha256": "2eba76a5804781e1255865f6933072c57011c196233bd7ce36e17d789866990e"
+    },
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-00314816-851f-4295-a07a-a5a1495e2866.png",
+      "runtime_target": "assets/surgeries/overlays/appendix/open_appendix_field_02.png",
+      "width": 1504,
+      "height": 1136,
+      "format": "PNG",
+      "has_alpha": true,
+      "sha256": "572b0e098690fd9ec51dcdc3642c4480abace7002d0bd1e08c9541127da8acae"
+    }
+  ],
+  "runtime_behavior": {
+    "surgery_id": "surgery_appendix",
+    "appears_after": "incision_made",
+    "hidden_from": "closure_interaction",
+    "selection": "one image is selected from the two-image pool using the operation's randomized, save-stable operative background id",
+    "layering": "operative-team CG < appendix operative-field overlay < common wash and interface < character portraits"
+  }
+}

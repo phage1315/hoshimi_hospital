@@ -1,0 +1,95 @@
+{
+  "id": "miyama_ayako_event_v8_2026_09_30",
+  "date": "2026-09-30",
+  "event_id": "miyama_02_manga_artist_wrong_patient",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_MIYAMA_LV2_AYAKO_EVENT_DIALOGUE_DRAFT_V8.md",
+    "bytes": 63405,
+    "sha256": "a6e503eefb3e499439c73c774fe98ef9e4498be2e7b071731aba18f4275546ed"
+  },
+  "runtime_data": [
+    {
+      "path": "data/events/special_events.json",
+      "bytes": 4926,
+      "sha256": "b445db5bd2b558a7168b5997b3b4748a269f14df149a8ea4a88f9fb22380d3a9"
+    },
+    {
+      "path": "data/events/special_event_steps.json",
+      "bytes": 283765,
+      "sha256": "e061fd17cf74062dd2776a987760e8b0e107aa935c14e4205a71ca9e041c3d55"
+    },
+    {
+      "path": "data/relationships/relationships.json",
+      "bytes": 15631,
+      "sha256": "49dd3ad572e978fd82ddd4dcdb0cd229f3397995f88287a7b0790f3bc6d95149"
+    }
+  ],
+  "sfw_cgs": [
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_01_lucky.png",
+      "bytes": 1919857,
+      "sha256": "051528ed2fbf9c39cf49af0f9c277a005daac87d7c43513c5e98722335d9142c"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_02_patient_disguise.png",
+      "bytes": 1806905,
+      "sha256": "4f4c2fb9d8527be5a0b25491674b5f6d85c8611d120a0c17e925976b452dfe13"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_03_or_table.png",
+      "bytes": 2108820,
+      "sha256": "899e7383744ca56b1fcd11407052fe1c7d7b5eaebee9e05cd524066f4ea1f88d"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_04_lesion_missing.png",
+      "bytes": 1929454,
+      "sha256": "317770ca11db24e28eec3f0bbbbcdf3156a5f7bbc493ca553ed53a786b91dc47"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_05_firsthand_notes.png",
+      "bytes": 2038158,
+      "sha256": "b7e7ab61f3b6be155f742b672a322261b9e515467b3c143a90ad63b86ed3a20d"
+    }
+  ],
+  "implementation": {
+    "duration_days": 1,
+    "auto_schedule": true,
+    "runtime_nodes": 520,
+    "temporary_test_gate": [
+      "met_doc_rei",
+      "met_doc_shiori",
+      "met_doc_asuka"
+    ],
+    "formal_gate_after_testing": [
+      "relationship_doc_rei >= 1",
+      "relationship_doc_shiori >= 1",
+      "met_doc_asuka"
+    ],
+    "relationship_reward": {
+      "actor_id": "doc_rei",
+      "target_level": 2,
+      "allow_level_skip_during_testing": true
+    },
+    "sunday_start_allowed": false,
+    "final_week_allowed": false
+  },
+  "notes": [
+    "CG 03A/03B are matched extreme-close-up variants: the operative opening is rotated about 45 degrees counterclockwise, the scalpel and incision follow the upper-left-to-lower-right anatomical longitudinal axis, and the skin uses a fair porcelain anime treatment.",
+    "CG 04 uses Sakaguchi first-assistant POV; a raised sterile drape fully obscures Ayako and the operative field, keeping the image SFW.",
+    "Nanase Ren uses a tie-on surgical mask matching Miyama Kaori; no ear loops remain.",
+    "The event keeps the V8 wrong-patient chain, valid wristband mystery, appendectomy request, Shiori reunion, and Miyama Lv2 ending.",
+    "Restore the formal Lv1 gates and remove allow_level_skip after playtesting."
+  ],
+  "medical_cgs": [
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_03a_first_incision_pre.png",
+      "bytes": 1793086,
+      "sha256": "f4026c4bc5f329c5554e36ec6ecb1719c1b987e05949e5fd210fcf98b1dde3cd"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/cg_03b_first_incision_after.png",
+      "bytes": 1790812,
+      "sha256": "6daede0d148f3183c5b1afae84250a9e1636e3ee30e8791b510d5cdf124f50f3"
+    }
+  ]
+}

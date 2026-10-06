@@ -1,0 +1,109 @@
+[
+  {
+    "id": "framework_single_day_main",
+    "title": "单日活动验证",
+    "background_id": "staff_lounge",
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "这是用于验证通用特殊事件框架的单日活动。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "closing",
+            "requirements": []
+          }
+        ]
+      },
+      {
+        "id": "closing",
+        "speaker": "narrator",
+        "text": "活动主干执行完毕，今天的日程也随之结束。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "finish",
+            "label": "结束今天",
+            "next": "@day_end",
+            "requirements": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "framework_three_day_1",
+    "title": "三日活动验证 · 第一天",
+    "background_id": "staff_lounge",
+    "start": "main",
+    "nodes": [
+      {
+        "id": "main",
+        "speaker": "narrator",
+        "text": "第一天：准备。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "day_1_done",
+            "label": "完成第一天",
+            "next": "@day_end",
+            "requirements": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "framework_three_day_2",
+    "title": "三日活动验证 · 第二天",
+    "background_id": "staff_lounge",
+    "start": "main",
+    "nodes": [
+      {
+        "id": "main",
+        "speaker": "narrator",
+        "text": "第二天：主要活动。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "day_2_done",
+            "label": "完成第二天",
+            "next": "@day_end",
+            "requirements": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "framework_three_day_3",
+    "title": "三日活动验证 · 第三天",
+    "background_id": "staff_lounge",
+    "start": "main",
+    "nodes": [
+      {
+        "id": "main",
+        "speaker": "narrator",
+        "text": "第三天：总结。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "day_3_done",
+            "label": "完成第三天",
+            "next": "@day_end",
+            "requirements": []
+          }
+        ]
+      }
+    ]
+  }
+]

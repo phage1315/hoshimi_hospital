@@ -54,7 +54,7 @@
       "id": "history",
       "title": "询问病史",
       "prompt": "「先把发现肿块后的变化说清楚吧。」",
-      "speaker": "doc_aoi",
+      "speaker": "outpatient_support",
       "actions": [
         {
           "id": "pain",
@@ -120,7 +120,7 @@
           "id": "to_exam",
           "label": "开始查体",
           "response": "「接下来检查一下。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 0,
           "requires": [
             "pain",
@@ -155,8 +155,8 @@
     {
       "id": "exam",
       "title": "基础检查",
-      "prompt": "「先记录生命体征。之后，我需要你脱掉所有衣服完成基础查体。」",
-      "speaker": "doc_aoi",
+      "prompt": "「先记录生命体征。之后需要进行基础查体，再决定采用哪种检查范围。」",
+      "speaker": "outpatient_support",
       "actions": [
         {
           "id": "vitals",
@@ -193,6 +193,29 @@
           "admit": false,
           "mistake": false,
           "summary": "患者对完全脱衣提出异议"
+        },
+        {
+          "id": "limited_clothed_exam",
+          "label": "请患者稍微解开衣物",
+          "response": "「这样就可以了吧？需要检查哪里，请直接告诉我。」",
+          "speaker": "$PATIENT_ID",
+          "minutes": 2,
+          "requires": [
+            "vitals"
+          ],
+          "notes": [
+            {
+              "id": "exam_limited",
+              "section": "查体",
+              "text": "患者仅稍微解开衣物，在常服遮挡下完成有限基础查体；未取得针对性查体发现。"
+            }
+          ],
+          "next": "tests",
+          "diagnosis": "",
+          "admit": false,
+          "mistake": false,
+          "summary": "有限查体完成 · 无针对性发现",
+          "consent_state": "informed"
         }
       ],
       "auto_record": false,
@@ -224,9 +247,7 @@
           "admit": false,
           "mistake": false,
           "summary": "尊重拒绝 · 查体未完成",
-          "player_effects": {
-            "ethics": 1
-          },
+          "player_effects": {},
           "consent_state": "none"
         },
         {
@@ -248,9 +269,7 @@
           "admit": false,
           "mistake": false,
           "summary": "患者配合脱衣 · 查体完成",
-          "player_effects": {
-            "charisma": 1
-          },
+          "player_effects": {},
           "consent_state": "informed"
         },
         {
@@ -272,10 +291,7 @@
           "admit": false,
           "mistake": false,
           "summary": "患者自愿配合 · 查体完成",
-          "player_effects": {
-            "ethics": 1,
-            "charisma": 2
-          },
+          "player_effects": {},
           "consent_state": "informed"
         },
         {
@@ -297,11 +313,9 @@
           "admit": false,
           "mistake": false,
           "summary": "患者被迫配合 · 查体完成",
-          "player_effects": {
-            "ethics": -2,
-            "intimidation": 2
-          },
-          "consent_state": "coerced"
+          "player_effects": {},
+          "consent_state": "coerced",
+          "presence_delta": 1
         }
       ],
       "auto_record": false,
@@ -312,13 +326,13 @@
       "id": "tests",
       "title": "选择检查",
       "prompt": "「先确认肿块的形态，再取得病理依据。」",
-      "speaker": "doc_aoi",
+      "speaker": "outpatient_support",
       "actions": [
         {
           "id": "blood",
           "label": "乳腺超声",
           "response": "「影像显示肿块边界清楚，但仍需要病理确认。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 20,
           "requires": [],
           "notes": [
@@ -337,8 +351,8 @@
         {
           "id": "imaging",
           "label": "穿刺取样",
-          "response": "「取样结果支持良性纤维上皮性病变。」",
-          "speaker": "doc_aoi",
+          "response": "「取样结果倾向良性，和目前影像可以对照起来。最终判断由你来做。」",
+          "speaker": "outpatient_support",
           "minutes": 25,
           "requires": [],
           "notes": [
@@ -358,7 +372,7 @@
           "id": "extra",
           "label": "追加乳腺 MRI",
           "response": "「这次追加检查没有改变现有判断。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 15,
           "requires": [],
           "notes": [
@@ -378,7 +392,7 @@
           "id": "to_diagnosis",
           "label": "作出判断",
           "response": "「结合触诊、超声和病理，说说你的判断。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 0,
           "requires": [
             "blood",
@@ -399,13 +413,13 @@
       "id": "diagnosis",
       "title": "初步诊断",
       "prompt": "「这些线索，你怎么看？」",
-      "speaker": "doc_aoi",
+      "speaker": "outpatient_support",
       "actions": [
         {
           "id": "diagnose_gastro",
           "label": "单纯周期性胀痛",
           "response": "「持续存在的实性肿块不能只用周期性疼痛解释。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 2,
           "requires": [],
           "notes": [],
@@ -419,7 +433,7 @@
           "id": "diagnose_appendix",
           "label": "乳腺良性肿瘤",
           "response": "「与现有线索吻合。和患者谈谈切除与病理复核吧。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 2,
           "requires": [
             "pain",
@@ -444,7 +458,7 @@
           "id": "diagnose_observe",
           "label": "无需处理直接离院",
           "response": "「持续存在的肿块仍需要明确处理和病理复核。」",
-          "speaker": "doc_aoi",
+          "speaker": "outpatient_support",
           "minutes": 2,
           "requires": [],
           "notes": [],
@@ -515,7 +529,7 @@
       "id": "complete",
       "title": "门诊流程完成",
       "prompt": "「交接完成了。病房已经准备好。」",
-      "speaker": "doc_aoi",
+      "speaker": "outpatient_support",
       "actions": [],
       "auto_record": false,
       "background_id": "clinic"

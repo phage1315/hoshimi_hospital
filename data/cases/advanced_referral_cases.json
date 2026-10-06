@@ -1,0 +1,31 @@
+[
+  {
+    "id": "advanced_referral_tutorial_chisato_case",
+    "title": "本人就在这里",
+    "category": "advanced_referral",
+    "patient_id": "guest_chisato",
+    "procedure_id": "surgery_adv_artificial_heart_exchange",
+    "duration_days": 3,
+    "priority": 150,
+    "unique_per_campaign": true,
+    "unlock_requirements": [],
+    "team_slots": {
+      "primary_surgeon": 1,
+      "assistant_surgeon": 2,
+      "scrub_nurse": 2,
+      "circulating_nurse": 2,
+      "anesthesia_team": 1
+    },
+    "case_modifiers": [
+      "tutorial_safe_choices",
+      "fixed_grand_or_team"
+    ],
+    "effective_difficulty_bonus": 0,
+    "rewards": {
+      "surgery_xp_bonus": 360,
+      "reputation": 30
+    },
+    "allow_sunday_span": true,
+    "final_week_allowed": false
+  }
+]

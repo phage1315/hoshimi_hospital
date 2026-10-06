@@ -1,7 +1,7 @@
 [
   {
     "id": "surgery_appendix",
-    "name": "阑尾切除术",
+    "name": "开腹阑尾切除",
     "duration_minutes": 60,
     "status": "ready",
     "required_roles": [
@@ -13,96 +13,170 @@
     "initial_state": {
       "stability": 100,
       "blood_loss": 0,
-      "visibility": 100,
+      "visibility": 60,
       "progress": 0,
       "elapsed_time": 0,
       "stress": 0
     },
     "stages": [
       {
-        "id": "exposure",
-        "title": "术野确认",
+        "id": "abdominal_entry",
+        "title": "切开与进入",
         "kind": "confirm",
-        "prompt": "回盲部与阑尾位置已经显露。确认阑尾与周围组织的关系。",
+        "prompt": "切口完成，右下腹已经进入。团队等待坂口确认继续建立术野。",
         "options": [
           {
-            "id": "confirm_exposure",
-            "label": "确认术野，继续",
-            "response": "「术野清楚，确认阑尾与周围组织的关系，可以继续。」",
+            "id": "confirm_entry",
+            "label": "确认进入腹腔，继续",
+            "response": "「进入顺利，可以继续建立术野。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "progress": 8,
+              "elapsed_time": 10,
+              "visibility": 5
+            }
           }
         ],
         "awake_interlude": "operative_contact",
         "patient_cues": [
           "incision",
-          "exposure"
+          "pressure"
         ]
       },
       {
-        "id": "team_exchange",
-        "title": "团队配合",
-        "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "id": "establish_exposure",
+        "title": "建立术野",
+        "kind": "decision",
+        "prompt": "回盲部区域已经可以观察，但暴露余量有限。接下来怎样建立术野？",
         "options": [
           {
-            "id": "ask_assistant",
-            "label": "请助手复述当前进度",
-            "response": "「确认阑尾与周围组织的关系。我会继续维持术野并提醒关键节点。」",
+            "id": "standard_exposure",
+            "label": "按常规扩大暴露",
+            "response": "「这样够了。右下腹的关系已经清楚很多。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "progress": 12,
+              "elapsed_time": 8,
+              "visibility": 15
+            }
           },
           {
-            "id": "check_instruments",
-            "label": "询问器械准备情况",
-            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
-            "response_role": "scrub_nurse",
+            "id": "wide_exposure",
+            "label": "再花一点时间，把术野做得更宽",
+            "response": "「现在非常清楚。不过我们多花了一点时间。」",
+            "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "progress": 12,
+              "elapsed_time": 12,
+              "visibility": 25
+            }
           },
           {
-            "id": "check_monitoring",
-            "label": "询问监护与记录",
-            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
-            "response_role": "circulating_nurse",
+            "id": "minimal_exposure",
+            "label": "现在已经能看见，先往下做",
+            "response": "「可以，但余量不大。」",
+            "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "progress": 12,
+              "elapsed_time": 5,
+              "visibility": 5
+            }
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure"
+        ]
+      },
+      {
+        "id": "identify_appendix",
+        "title": "找到阑尾",
+        "kind": "decision",
+        "prompt": "回盲部已经出现。现在需要找到并确认阑尾。",
+        "options": [
+          {
+            "id": "systematic_identification",
+            "label": "沿现有解剖关系逐步确认",
+            "response": "「确认到了。位置和周围关系都清楚。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 14,
+              "elapsed_time": 6,
+              "visibility": 5
+            }
+          },
+          {
+            "id": "assistant_retraction",
+            "label": "让助手调整牵拉，再确认",
+            "response": "「好，我来维持这里。现在看会容易很多。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 14,
+              "elapsed_time": 7,
+              "visibility": 12
+            }
+          },
+          {
+            "id": "direct_identification",
+            "label": "现在已经看得差不多，直接确认",
+            "response": "「好，按你的判断继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 14,
+              "elapsed_time": 4
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "metric": "visibility",
+                  "operator": "<",
+                  "value": 75
+                },
+                "effects": {
+                  "visibility": -10,
+                  "blood_loss": 4
+                },
+                "response": "「等等——这里没有刚才看起来那么清楚。能继续，但现在反而把术野弄乱了。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
           }
         ],
         "awake_interlude": "",
         "patient_cues": []
       },
       {
-        "id": "key_decision",
-        "title": "关键判断",
-        "kind": "decision",
-        "prompt": "进入处理阑尾根部前，最应该先确认什么？",
+        "id": "mobilize_appendix",
+        "title": "游离阑尾",
+        "kind": "confirm",
+        "prompt": "阑尾已经被完整辨认，坂口与助手逐步完成周围组织的处理。",
         "options": [
           {
-            "id": "confirm_anatomy",
-            "label": "目标结构和邻近组织已经辨认清楚",
-            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "id": "continue_mobilization",
+            "label": "继续游离",
+            "response": "「活动度出来了，可以进入下一步。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
-          },
-          {
-            "id": "rush_by_appearance",
-            "label": "只看切口长度就继续",
-            "response": "",
-            "response_role": "assistant_surgeon",
-            "correct": false,
-            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
-          },
-          {
-            "id": "delegate_decision",
-            "label": "等器械护士主动决定",
-            "response": "",
-            "response_role": "assistant_surgeon",
-            "correct": false,
-            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+            "correction": "",
+            "strategic_effects": {
+              "progress": 10,
+              "elapsed_time": 7,
+              "visibility": -5
+            }
           }
         ],
         "awake_interlude": "strain_interaction",
@@ -112,18 +186,268 @@
         ]
       },
       {
-        "id": "completion_check",
-        "title": "阶段完成",
-        "kind": "confirm",
-        "prompt": "阑尾根部处理完成，腹腔检查无异常。团队等待本多医生的最终确认。",
+        "id": "control_attachment",
+        "title": "处理连接区域",
+        "kind": "decision",
+        "prompt": "阑尾已经能够活动。接下来需要处理连接区域，目前术野仍然可以继续。",
         "options": [
           {
-            "id": "confirm_completion",
-            "label": "确认关键步骤完成",
-            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "id": "careful_control",
+            "label": "放慢一点，逐步处理",
+            "response": "「好，按这个节奏来。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "progress": 14,
+              "elapsed_time": 8,
+              "visibility": 2,
+              "blood_loss": 2
+            }
+          },
+          {
+            "id": "standard_control",
+            "label": "按标准节奏继续",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 14,
+              "elapsed_time": 6,
+              "blood_loss": 4
+            }
+          },
+          {
+            "id": "fast_control",
+            "label": "术野还可以，快速推进",
+            "response": "「好，跟你的节奏。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 14,
+              "elapsed_time": 4,
+              "blood_loss": 6
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "metric": "visibility",
+                  "operator": "<",
+                  "value": 70
+                },
+                "effects": {
+                  "visibility": -8,
+                  "blood_loss": 6
+                },
+                "response": "「慢一点。现在已经不是刚才那个术野了。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": [
+          "traction"
+        ]
+      },
+      {
+        "id": "irreversible_commitment",
+        "title": "关键步骤前确认",
+        "kind": "decision",
+        "prompt": "已经来到主要不可逆步骤前。坂口需要决定是否现在继续。",
+        "options": [
+          {
+            "id": "commit_now",
+            "label": "现在条件已经足够，继续",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 18,
+              "elapsed_time": 4
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "metric": "visibility",
+                  "operator": "<",
+                  "value": 75
+                },
+                "effects": {
+                  "visibility": -8,
+                  "blood_loss": 5
+                },
+                "response": "「能做，但你是在一个并不漂亮的局面里硬推进。」",
+                "response_role": "assistant_surgeon"
+              },
+              {
+                "when": {
+                  "metric": "blood_loss",
+                  "operator": ">",
+                  "value": 15
+                },
+                "effects": {
+                  "stability": -5
+                },
+                "response": "「失血已经开始累积。继续可以，但代价在变大。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          },
+          {
+            "id": "reestablish_field",
+            "label": "先重新整理术野",
+            "response": "「好。现在重新把条件做干净。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 18,
+              "elapsed_time": 8,
+              "visibility": 12,
+              "blood_loss": 1
+            }
+          },
+          {
+            "id": "assistant_recheck",
+            "label": "请助手一起复核当前条件",
+            "response": "「我也看清楚了。现在可以。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 18,
+              "elapsed_time": 6,
+              "visibility": 6,
+              "blood_loss": 1
+            }
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "specimen_complete",
+        "title": "主要处理完成",
+        "kind": "confirm",
+        "prompt": "主要处理完成，标本已经取出。团队开始重新检查术野。",
+        "options": [
+          {
+            "id": "continue_after_specimen",
+            "label": "继续检查术野",
+            "response": "「标本完成。现在看最后的术野。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 8,
+              "elapsed_time": 6,
+              "visibility": -5
+            }
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": [
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "final_review",
+        "title": "关闭前复核",
+        "kind": "decision",
+        "prompt": "阑尾已经切除。术野目前没有明显异常。关闭前准备怎样复核？",
+        "options": [
+          {
+            "id": "quick_final_review",
+            "label": "情况很好，快速确认后关闭",
+            "response": "「好，做最后确认。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 10,
+              "elapsed_time": 4
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "metric": "visibility",
+                  "operator": "<",
+                  "value": 70
+                },
+                "effects": {
+                  "stability": -5
+                },
+                "response": "「等一下。我觉得这里值得再看一眼。」",
+                "response_role": "assistant_surgeon"
+              },
+              {
+                "when": {
+                  "metric": "blood_loss",
+                  "operator": ">",
+                  "value": 18
+                },
+                "effects": {
+                  "stability": -5,
+                  "elapsed_time": 3
+                },
+                "response": "「失血比一开始多。先别把关闭做得太快。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          },
+          {
+            "id": "full_final_review",
+            "label": "再仔细检查一遍",
+            "response": "「复核完成，没有遗漏。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 10,
+              "elapsed_time": 7,
+              "visibility": 10
+            }
+          },
+          {
+            "id": "team_final_review",
+            "label": "让助手一起复核，再准备关闭",
+            "response": "「我这边也确认完成。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 10,
+              "elapsed_time": 5,
+              "visibility": 5
+            }
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "closure",
+        "title": "关闭切口",
+        "kind": "confirm",
+        "prompt": "最终检查完成，可以关闭切口。",
+        "options": [
+          {
+            "id": "complete_surgery",
+            "label": "完成手术",
+            "response": "「确认完成。手术结束。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "progress": 6,
+              "elapsed_time": 8
+            }
           }
         ],
         "awake_interlude": "closure_interaction",
@@ -142,11 +466,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 32,
+    "recommended_surgery": 30,
+    "training_ceiling": 60,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_breast_tumor",
-    "name": "乳腺肿瘤切除术",
+    "name": "乳房肿瘤切除",
     "duration_minutes": 120,
     "status": "ready",
     "required_roles": [
@@ -189,7 +530,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -259,7 +600,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "标本已经完整取出，术野止血确认完成。团队等待本多医生的最终确认。",
+        "prompt": "标本已经完整取出，术野止血确认完成。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -286,11 +627,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "breast"
+    "procedure_group": "breast",
+    "diagnosis_reaction_site_group": "breast",
+    "palpation_profile": "breast",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "supine_arm_abducted",
+      "access_tags": [
+        "breast"
+      ]
+    },
+    "base_difficulty": 38,
+    "recommended_surgery": 35,
+    "training_ceiling": 65,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "breast"
+    ]
   },
   {
     "id": "surgery_hysterectomy",
-    "name": "子宫切除术",
+    "name": "开腹子宫全切除",
     "duration_minutes": 240,
     "status": "ready",
     "required_roles": [
@@ -333,7 +691,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -360,8 +718,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "position_discomfort",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -404,7 +765,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "子宫切除步骤完成，盆腔术野复核稳定。团队等待本多医生的最终确认。",
+        "prompt": "子宫切除步骤完成，盆腔术野复核稳定。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -431,11 +792,31 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "female_pelvic"
+    "procedure_group": "female_pelvic",
+    "diagnosis_reaction_site_group": "gynecology_pelvic",
+    "palpation_profile": "gynecology_pelvic",
+    "positioning": {
+      "primary_position": "lithotomy",
+      "presentation_group": "lithotomy",
+      "variant": "low_dorsal_lithotomy",
+      "access_tags": [
+        "abdominal",
+        "pelvic",
+        "vaginal_assistance",
+        "uterine_manipulator"
+      ]
+    },
+    "base_difficulty": 68,
+    "recommended_surgery": 65,
+    "training_ceiling": 82,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "genital"
+    ]
   },
   {
     "id": "surgery_cabg",
-    "name": "心脏搭桥术",
+    "name": "开胸心脏搭桥",
     "duration_minutes": 360,
     "status": "ready",
     "required_roles": [
@@ -478,7 +859,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -505,8 +886,10 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -548,7 +931,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "桥血管通路已经完成，团队正在复核循环状态。团队等待本多医生的最终确认。",
+        "prompt": "桥血管通路已经完成，团队正在复核循环状态。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -575,11 +958,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "cardiac"
+    "procedure_group": "cardiac",
+    "diagnosis_reaction_site_group": "thoracic_cardiac",
+    "palpation_profile": "thoracic_cardiac",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "supine_arms_tucked",
+      "access_tags": [
+        "median_sternotomy"
+      ]
+    },
+    "base_difficulty": 92,
+    "recommended_surgery": 88,
+    "training_ceiling": 99,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "chest"
+    ]
   },
   {
     "id": "surgery_exploratory_laparotomy",
-    "name": "大开腹探查术",
+    "name": "大开腹探查",
     "duration_minutes": 480,
     "status": "ready",
     "required_roles": [
@@ -622,7 +1022,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -649,8 +1049,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -693,7 +1096,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "系统探查完成，所有发现均已向团队复述。团队等待本多医生的最终确认。",
+        "prompt": "系统探查完成，所有发现均已向团队复述。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -720,11 +1123,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 82,
+    "recommended_surgery": 78,
+    "training_ceiling": 92,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_cholecystectomy",
-    "name": "开腹胆囊切除术",
+    "name": "开腹胆囊切除",
     "duration_minutes": 120,
     "status": "ready",
     "required_roles": [
@@ -767,7 +1187,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -831,14 +1251,15 @@
         "awake_interlude": "strain_interaction",
         "patient_cues": [
           "traction",
-          "deep_manipulation"
+          "deep_manipulation",
+          "nausea"
         ]
       },
       {
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "胆囊已经移除，胆囊床与术野完成复核。团队等待本多医生的最终确认。",
+        "prompt": "胆囊已经移除，胆囊床与术野完成复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -865,11 +1286,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 42,
+    "recommended_surgery": 38,
+    "training_ceiling": 68,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_inguinal_hernia",
-    "name": "开放式腹股沟疝修补术",
+    "name": "腹股沟疝修补",
     "duration_minutes": 90,
     "status": "ready",
     "required_roles": [
@@ -912,7 +1350,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -983,7 +1421,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "疝修补已经完成，张力与覆盖范围得到确认。团队等待本多医生的最终确认。",
+        "prompt": "疝修补已经完成，张力与覆盖范围得到确认。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1010,11 +1448,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 35,
+    "recommended_surgery": 32,
+    "training_ceiling": 62,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_ventral_hernia",
-    "name": "开放式腹壁疝修补术",
+    "name": "腹壁疝修补",
     "duration_minutes": 150,
     "status": "ready",
     "required_roles": [
@@ -1057,7 +1512,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1128,7 +1583,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "腹壁重建完成，关闭范围与张力复核稳定。团队等待本多医生的最终确认。",
+        "prompt": "腹壁重建完成，关闭范围与张力复核稳定。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1155,11 +1610,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 45,
+    "recommended_surgery": 42,
+    "training_ceiling": 68,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_distal_gastrectomy",
-    "name": "开腹远端胃切除术",
+    "name": "开腹部分胃切除",
     "duration_minutes": 180,
     "status": "ready",
     "required_roles": [
@@ -1202,7 +1674,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1273,7 +1745,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "远端胃切除与消化道重建已经完成。团队等待本多医生的最终确认。",
+        "prompt": "远端胃切除与消化道重建已经完成。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1300,11 +1772,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 62,
+    "recommended_surgery": 58,
+    "training_ceiling": 78,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_total_gastrectomy",
-    "name": "开腹全胃切除术",
+    "name": "开腹全胃切除",
     "duration_minutes": 240,
     "status": "ready",
     "required_roles": [
@@ -1347,7 +1836,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1374,8 +1863,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -1418,7 +1910,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "全胃切除与重建完成，吻合区域复核稳定。团队等待本多医生的最终确认。",
+        "prompt": "全胃切除与重建完成，吻合区域复核稳定。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1445,11 +1937,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 78,
+    "recommended_surgery": 74,
+    "training_ceiling": 90,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_right_hemicolectomy",
-    "name": "开腹右半结肠切除术",
+    "name": "开腹右半结肠切除",
     "duration_minutes": 180,
     "status": "ready",
     "required_roles": [
@@ -1492,7 +2001,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1563,7 +2072,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "右半结肠切除与重建完成，肠管状态稳定。团队等待本多医生的最终确认。",
+        "prompt": "右半结肠切除与重建完成，肠管状态稳定。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1590,11 +2099,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 68,
+    "recommended_surgery": 64,
+    "training_ceiling": 84,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_sigmoid_colectomy",
-    "name": "开腹乙状结肠切除术",
+    "name": "开腹乙状结肠切除",
     "duration_minutes": 180,
     "status": "ready",
     "required_roles": [
@@ -1637,7 +2163,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1708,7 +2234,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "乙状结肠切除与重建完成，吻合区域已复核。团队等待本多医生的最终确认。",
+        "prompt": "乙状结肠切除与重建完成，吻合区域已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1735,11 +2261,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 70,
+    "recommended_surgery": 66,
+    "training_ceiling": 85,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_abdominoperineal_resection",
-    "name": "开放式腹会阴联合直肠切除术",
+    "name": "开腹直肠切除（含肛门）",
     "duration_minutes": 300,
     "status": "ready",
     "required_roles": [
@@ -1782,7 +2325,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1809,8 +2352,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -1853,7 +2399,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "联合切除步骤完成，两处术野进入关闭准备。团队等待本多医生的最终确认。",
+        "prompt": "联合切除步骤完成，两处术野进入关闭准备。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -1880,11 +2426,30 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "lithotomy",
+      "presentation_group": "lithotomy",
+      "variant": "modified_lithotomy",
+      "access_tags": [
+        "abdominal",
+        "pelvic",
+        "perineal"
+      ]
+    },
+    "base_difficulty": 84,
+    "recommended_surgery": 80,
+    "training_ceiling": 93,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_whipple",
-    "name": "开放式胰十二指肠切除术",
+    "name": "开腹胰十二指肠切除",
     "duration_minutes": 360,
     "status": "ready",
     "required_roles": [
@@ -1927,7 +2492,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -1954,8 +2519,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -1991,14 +2559,16 @@
         "awake_interlude": "strain_interaction",
         "patient_cues": [
           "traction",
-          "deep_manipulation"
+          "deep_manipulation",
+          "nausea",
+          "drowsiness"
         ]
       },
       {
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "切除与各项重建步骤完成，团队逐项复核。团队等待本多医生的最终确认。",
+        "prompt": "切除与各项重建步骤完成，团队逐项复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2025,11 +2595,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 95,
+    "recommended_surgery": 92,
+    "training_ceiling": 100,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_major_liver_resection",
-    "name": "开腹肝叶切除术",
+    "name": "开腹肝叶切除",
     "duration_minutes": 300,
     "status": "ready",
     "required_roles": [
@@ -2072,7 +2659,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2099,8 +2686,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -2143,7 +2733,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "目标肝叶切除完成，切面与止血状态已复核。团队等待本多医生的最终确认。",
+        "prompt": "目标肝叶切除完成，切面与止血状态已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2170,11 +2760,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 90,
+    "recommended_surgery": 86,
+    "training_ceiling": 98,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_splenectomy",
-    "name": "开腹脾切除术",
+    "name": "开腹脾切除",
     "duration_minutes": 120,
     "status": "ready",
     "required_roles": [
@@ -2217,7 +2824,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2288,7 +2895,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "脾脏已经取出，左上腹术野复核稳定。团队等待本多医生的最终确认。",
+        "prompt": "脾脏已经取出，左上腹术野复核稳定。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2315,11 +2922,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "general_abdominal"
+    "procedure_group": "general_abdominal",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 58,
+    "recommended_surgery": 54,
+    "training_ceiling": 75,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_ovarian_cystectomy",
-    "name": "开腹卵巢囊肿切除术",
+    "name": "开腹卵巢囊肿切除",
     "duration_minutes": 120,
     "status": "ready",
     "required_roles": [
@@ -2362,7 +2986,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2433,7 +3057,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "囊肿已经完整处理，保留组织与止血状态良好。团队等待本多医生的最终确认。",
+        "prompt": "囊肿已经完整处理，保留组织与止血状态良好。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2460,11 +3084,29 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "female_pelvic"
+    "procedure_group": "female_pelvic",
+    "diagnosis_reaction_site_group": "gynecology_pelvic",
+    "palpation_profile": "gynecology_pelvic",
+    "positioning": {
+      "primary_position": "lithotomy",
+      "presentation_group": "lithotomy",
+      "variant": "low_dorsal_lithotomy",
+      "access_tags": [
+        "abdominal",
+        "pelvic"
+      ]
+    },
+    "base_difficulty": 48,
+    "recommended_surgery": 44,
+    "training_ceiling": 70,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "genital"
+    ]
   },
   {
     "id": "surgery_open_abdominal_myomectomy",
-    "name": "开腹子宫肌瘤剔除术",
+    "name": "开腹子宫肌瘤切除",
     "duration_minutes": 150,
     "status": "ready",
     "required_roles": [
@@ -2507,7 +3149,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2571,14 +3213,15 @@
         "awake_interlude": "dignity_interaction",
         "patient_cues": [
           "exposure",
-          "deep_manipulation"
+          "deep_manipulation",
+          "drowsiness"
         ]
       },
       {
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "肌瘤已经剔除，子宫修复与止血完成。团队等待本多医生的最终确认。",
+        "prompt": "肌瘤已经剔除，子宫修复与止血完成。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2605,11 +3248,29 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "female_pelvic"
+    "procedure_group": "female_pelvic",
+    "diagnosis_reaction_site_group": "gynecology_pelvic",
+    "palpation_profile": "gynecology_pelvic",
+    "positioning": {
+      "primary_position": "lithotomy",
+      "presentation_group": "lithotomy",
+      "variant": "low_dorsal_lithotomy",
+      "access_tags": [
+        "abdominal",
+        "pelvic"
+      ]
+    },
+    "base_difficulty": 55,
+    "recommended_surgery": 50,
+    "training_ceiling": 74,
+    "unlocked_at_start": true,
+    "anesthesia_target_regions": [
+      "genital"
+    ]
   },
   {
     "id": "surgery_total_mastectomy",
-    "name": "全乳房切除术",
+    "name": "全乳房切除",
     "duration_minutes": 120,
     "status": "ready",
     "required_roles": [
@@ -2652,7 +3313,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2722,7 +3383,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "乳房组织切除完成，皮瓣与术野状态已复核。团队等待本多医生的最终确认。",
+        "prompt": "乳房组织切除完成，皮瓣与术野状态已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2749,11 +3410,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "breast"
+    "procedure_group": "breast",
+    "diagnosis_reaction_site_group": "breast",
+    "palpation_profile": "breast",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "supine_arm_abducted",
+      "access_tags": [
+        "breast"
+      ]
+    },
+    "base_difficulty": 58,
+    "recommended_surgery": 54,
+    "training_ceiling": 76,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "breast"
+    ]
   },
   {
     "id": "surgery_open_lung_lobectomy",
-    "name": "开胸肺叶切除术",
+    "name": "开胸肺叶切除",
     "duration_minutes": 180,
     "status": "ready",
     "required_roles": [
@@ -2796,7 +3474,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2866,7 +3544,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "目标肺叶已经切除，余肺与胸腔状态已复核。团队等待本多医生的最终确认。",
+        "prompt": "目标肺叶已经切除，余肺与胸腔状态已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -2893,11 +3571,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "thoracic"
+    "procedure_group": "thoracic",
+    "diagnosis_reaction_site_group": "thoracic_cardiac",
+    "palpation_profile": "thoracic_cardiac",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "thoracic"
+      ]
+    },
+    "base_difficulty": 78,
+    "recommended_surgery": 74,
+    "training_ceiling": 90,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "chest"
+    ]
   },
   {
     "id": "surgery_open_pneumonectomy",
-    "name": "开胸全肺切除术",
+    "name": "开胸全肺切除",
     "duration_minutes": 240,
     "status": "ready",
     "required_roles": [
@@ -2940,7 +3635,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -2967,8 +3662,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "position_discomfort",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -3010,7 +3708,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "全肺切除完成，胸腔与循环呼吸状态已复核。团队等待本多医生的最终确认。",
+        "prompt": "全肺切除完成，胸腔与循环呼吸状态已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -3037,11 +3735,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "thoracic"
+    "procedure_group": "thoracic",
+    "diagnosis_reaction_site_group": "thoracic_cardiac",
+    "palpation_profile": "thoracic_cardiac",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "thoracic"
+      ]
+    },
+    "base_difficulty": 88,
+    "recommended_surgery": 84,
+    "training_ceiling": 96,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "chest"
+    ]
   },
   {
     "id": "surgery_open_esophagectomy",
-    "name": "开放式食管切除术",
+    "name": "开胸食管切除",
     "duration_minutes": 360,
     "status": "ready",
     "required_roles": [
@@ -3084,7 +3799,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -3111,8 +3826,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "position_discomfort",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -3154,7 +3872,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "食管切除与重建完成，连接区域复核稳定。团队等待本多医生的最终确认。",
+        "prompt": "食管切除与重建完成，连接区域复核稳定。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -3181,11 +3899,29 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "thoracic"
+    "procedure_group": "thoracic",
+    "diagnosis_reaction_site_group": "thoracic_cardiac",
+    "palpation_profile": "thoracic_cardiac",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal",
+        "thoracic"
+      ]
+    },
+    "base_difficulty": 94,
+    "recommended_surgery": 90,
+    "training_ceiling": 99,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "chest"
+    ]
   },
   {
     "id": "surgery_open_radical_cystectomy",
-    "name": "开放式根治性膀胱切除术",
+    "name": "开腹膀胱全切除",
     "duration_minutes": 300,
     "status": "ready",
     "required_roles": [
@@ -3228,7 +3964,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -3255,8 +3991,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -3299,7 +4038,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "膀胱切除与尿路重建完成，盆腔术野已复核。团队等待本多医生的最终确认。",
+        "prompt": "膀胱切除与尿路重建完成，盆腔术野已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -3326,11 +4065,31 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "urologic"
+    "procedure_group": "urologic",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "lithotomy",
+      "presentation_group": "lithotomy",
+      "variant": "low_dorsal_lithotomy",
+      "access_tags": [
+        "abdominal",
+        "pelvic",
+        "perineal_optional",
+        "vaginal_assistance"
+      ]
+    },
+    "base_difficulty": 87,
+    "recommended_surgery": 83,
+    "training_ceiling": 96,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_nephrectomy",
-    "name": "开放式肾切除术",
+    "name": "开腹肾切除",
     "duration_minutes": 120,
     "status": "ready",
     "required_roles": [
@@ -3373,7 +4132,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -3444,7 +4203,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "目标肾脏已经切除，肾窝与止血状态已复核。团队等待本多医生的最终确认。",
+        "prompt": "目标肾脏已经切除，肾窝与止血状态已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -3471,11 +4230,28 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "urologic"
+    "procedure_group": "urologic",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "flank"
+      ]
+    },
+    "base_difficulty": 72,
+    "recommended_surgery": 68,
+    "training_ceiling": 86,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
   },
   {
     "id": "surgery_open_abdominal_aortic_aneurysm",
-    "name": "开放式腹主动脉瘤修复术",
+    "name": "开腹主动脉瘤修补",
     "duration_minutes": 240,
     "status": "ready",
     "required_roles": [
@@ -3518,7 +4294,7 @@
         "id": "team_exchange",
         "title": "团队配合",
         "kind": "flavor",
-        "prompt": "关键步骤开始前，本多医生准备怎样与团队确认节奏？",
+        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
         "options": [
           {
             "id": "ask_assistant",
@@ -3545,8 +4321,11 @@
             "correction": ""
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "fatigue"
+        ]
       },
       {
         "id": "key_decision",
@@ -3589,7 +4368,7 @@
         "id": "completion_check",
         "title": "阶段完成",
         "kind": "confirm",
-        "prompt": "血管重建完成，循环状态与吻合区域已复核。团队等待本多医生的最终确认。",
+        "prompt": "血管重建完成，循环状态与吻合区域已复核。团队等待坂口医生的最终确认。",
         "options": [
           {
             "id": "confirm_completion",
@@ -3616,6 +4395,351 @@
       "operator": "<=",
       "value": 0
     },
-    "procedure_group": "vascular"
+    "procedure_group": "vascular",
+    "diagnosis_reaction_site_group": "abdominal",
+    "palpation_profile": "abdominal",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "standard_supine",
+      "access_tags": [
+        "abdominal"
+      ]
+    },
+    "base_difficulty": 93,
+    "recommended_surgery": 89,
+    "training_ceiling": 99,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "abdomen"
+    ]
+  },
+  {
+    "id": "surgery_vaginal_hysterectomy",
+    "name": "经阴道子宫全切除",
+    "duration_minutes": 180,
+    "status": "placeholder",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "female_pelvic",
+    "diagnosis_reaction_site_group": "gynecology_pelvic",
+    "palpation_profile": "gynecology_pelvic",
+    "positioning": {
+      "primary_position": "lithotomy",
+      "presentation_group": "lithotomy",
+      "variant": "low_dorsal_lithotomy",
+      "access_tags": [
+        "pelvic",
+        "perineal",
+        "vaginal_assistance"
+      ]
+    },
+    "base_difficulty": 70,
+    "recommended_surgery": 66,
+    "training_ceiling": 84,
+    "unlocked_at_start": false,
+    "anesthesia_target_regions": [
+      "genital"
+    ]
+  },
+  {
+    "id": "surgery_adv_artificial_heart_exchange",
+    "name": "开胸人工心脏系统置换",
+    "duration_minutes": 360,
+    "status": "ready",
+    "catalog_visibility": "advanced_referral",
+    "required_roles": [
+      "primary_surgeon",
+      "assistant_surgeon",
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "initial_state": {
+      "stability": 100,
+      "blood_loss": 0,
+      "visibility": 100,
+      "progress": 0,
+      "elapsed_time": 0,
+      "stress": 0
+    },
+    "stages": [
+      {
+        "id": "reestablish_exposure",
+        "title": "重新建立胸部术野",
+        "kind": "confirm",
+        "prompt": "既往开胸造成的粘连使层次难以辨认。下一步怎样建立清晰术野？",
+        "options": [
+          {
+            "id": "exposure_cautious",
+            "label": "先把暴露做扎实，再处理装置周围区域",
+            "response": "「同意。先把层次和边界做清楚。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "exposure_steady",
+            "label": "沿既定层次稳定推进，同时逐段复核",
+            "response": "「节奏可以。我会跟着复核关键结构。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "grand_or_team_check",
+        "title": "Grand OR Team Check",
+        "kind": "flavor",
+        "prompt": "进入装置周围区域前，先向哪一组确认？",
+        "options": [
+          {
+            "id": "check_mido",
+            "label": "向第一助手御堂确认术野与计划",
+            "response": "「术野与术前计划一致，可以继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_scrub",
+            "label": "向器械组确认下一阶段物品",
+            "response": "「主台与备用台都已完成清点。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_anesthesia",
+            "label": "向麻醉侧确认循环状态",
+            "response": "「循环稳定。进入不可逆步骤前再报一次。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "check_circulation",
+            "label": "向巡回组确认设备、血液与记录",
+            "response": "「设备、血液和记录链完整。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "adhesion_bleeding",
+        "title": "粘连与轻度渗血",
+        "kind": "decision",
+        "prompt": "分离粘连时出现轻度渗血，视野仍可维持。如何处理？",
+        "options": [
+          {
+            "id": "bleeding_cautious",
+            "label": "暂停推进，先完成止血并重新辨认层次",
+            "response": "「止血完成。层次重新清楚了。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "bleeding_steady",
+            "label": "控制出血点，同时维持当前暴露",
+            "response": "「出血已控制，暴露保持稳定。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "irreversible_check",
+        "title": "装置切换前最终确认",
+        "kind": "decision",
+        "prompt": "旧系统即将与患者循环分离。进入不可逆步骤前做什么？",
+        "options": [
+          {
+            "id": "final_check_team",
+            "label": "执行完整口头暂停，由各岗位依次确认",
+            "response": "「所有岗位确认完成。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "final_check_plan",
+            "label": "先复述切换顺序，再要求团队报告异常",
+            "response": "「顺序一致，没有新增异常。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "device_exchange",
+        "title": "核心装置置换",
+        "kind": "decision",
+        "prompt": "旧装置已经解除，新的人工心脏系统准备接入。如何推进？",
+        "options": [
+          {
+            "id": "exchange_cautious",
+            "label": "逐接口接入，每完成一步立即核对",
+            "response": "「接口逐项确认，没有遗漏。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "exchange_steady",
+            "label": "按预演顺序连续完成，再作整体复核",
+            "response": "「连续步骤完成，开始整体复核。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "anesthesia_intervention",
+        "title": "麻醉侧介入",
+        "kind": "decision",
+        "prompt": "切换期间血压下降。樱花要求外科暂停推进。",
+        "options": [
+          {
+            "id": "pause_for_anesthesia",
+            "label": "立即停手并保持术野，等待麻醉侧稳定循环",
+            "response": "「保持不动。循环正在恢复。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "confirm_pause_scope",
+            "label": "确认当前动作可以安全暂停，再交由麻醉侧处理",
+            "response": "「可以安全暂停。先恢复循环。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "system_validation",
+        "title": "新系统运行确认",
+        "kind": "confirm",
+        "prompt": "新系统开始运行，各项参数进入目标范围。下一步如何确认？",
+        "options": [
+          {
+            "id": "validate_cautious",
+            "label": "延长观察，逐项核对趋势与备用方案",
+            "response": "「趋势持续稳定，备用方案保持可用。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "validate_steady",
+            "label": "完成规定验证周期后进入关闭阶段",
+            "response": "「规定验证完成，可以关闭。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      },
+      {
+        "id": "nursing_rotation_close",
+        "title": "护理换位与关闭",
+        "kind": "confirm",
+        "prompt": "手术进入关闭阶段。护理团队正在换位、清点并准备转运。",
+        "options": [
+          {
+            "id": "close_team_oriented",
+            "label": "等待护理完成双重清点与交接确认",
+            "response": "「双重清点无误，转运与交接已经准备好。」",
+            "response_role": "scrub_nurse",
+            "correct": true,
+            "correction": ""
+          },
+          {
+            "id": "close_steady",
+            "label": "同步关闭切口，由巡回组逐项报告完成状态",
+            "response": "「记录、设备与转运状态全部完成。」",
+            "response_role": "circulating_nurse",
+            "correct": true,
+            "correction": ""
+          }
+        ],
+        "awake_interlude": "",
+        "patient_cues": []
+      }
+    ],
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "procedure_group": "cardiac",
+    "diagnosis_reaction_site_group": "thoracic_cardiac",
+    "palpation_profile": "thoracic_cardiac",
+    "positioning": {
+      "primary_position": "supine",
+      "presentation_group": "standard_torso",
+      "variant": "supine_arms_tucked",
+      "access_tags": [
+        "median_sternotomy"
+      ]
+    },
+    "base_difficulty": 90,
+    "recommended_surgery": 88,
+    "training_ceiling": 100,
+    "unlocked_at_start": false,
+    "unlock_source": "special_event",
+    "case_pool": "advanced_referral",
+    "anesthesia_target_regions": [
+      "chest"
+    ]
   }
 ]

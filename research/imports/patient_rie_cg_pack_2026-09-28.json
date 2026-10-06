@@ -1,0 +1,126 @@
+{
+  "date": "2026-09-28",
+  "patient_id": "patient_rie",
+  "patient_name": "柳原理惠",
+  "source_dimensions": {
+    "width": 1536,
+    "height": 1024,
+    "aspect_ratio": "3:2",
+    "mode": "RGB"
+  },
+  "runtime_viewport": {
+    "width": 1280,
+    "height": 800,
+    "aspect_ratio": "16:10",
+    "stretch_mode": "keep_aspect_covered",
+    "note": "The 3:2 sources are kept unchanged. Fullscreen cover crops about 27 pixels from both the top and bottom of a 1536x1024 source. Future CGs should prefer 16:10, for example 1536x960, when exact edge preservation matters."
+  },
+  "assets": [
+    {
+      "purpose": "Patient-specific fullscreen preoperative skin-preparation CG.",
+      "source_file": "codex-clipboard-e1a14c66-8d3b-4406-9a01-c7db2142329d.png",
+      "reference_copy": "research/character_references/patient_rie/06_skin_prep_reference.png",
+      "runtime_target": "assets/events/ward_preparation_v1/patient_rie/skin_prep.png",
+      "sha256": "fbc1ea78bc7e02fc3b525ade4ea444d760b3de7127370835657d5fda8bbbb83a",
+      "pool_id": "ward_skin_prep_patient_rie",
+      "action_ids": [
+        "ward_skin_prep",
+        "ward_skin_prep_unnecessary"
+      ]
+    },
+    {
+      "purpose": "Patient-specific fullscreen awake scalpel-ready CG.",
+      "source_file": "codex-clipboard-a19acbc8-b1bf-4613-a180-09989287d077.png",
+      "reference_copy": "research/character_references/patient_rie/07_scalpel_ready_reference.png",
+      "runtime_target": "assets/events/ward_preparation_v1/patient_rie/scalpel_ready.png",
+      "sha256": "d54f12704a7c466e17af83f12b72428cbed1aee50fb930da8b0685b92623cbd9",
+      "pool_id": "scalpel_ready_patient_rie",
+      "action_ids": [
+        "request_scalpel"
+      ],
+      "awake_only": true
+    },
+    {
+      "purpose": "Patient-specific fullscreen sterile-draping CG for abdominal and pelvic operative fields.",
+      "source_file": "codex-clipboard-7090812c-4274-4ecc-8ef6-108c716a0540.png",
+      "reference_copy": "research/character_references/patient_rie/08_sterile_draping_reference.png",
+      "runtime_target": "assets/events/ward_preparation_v1/patient_rie/sterile_draping.png",
+      "sha256": "6333b088b7915b657df07cade4a78c737e508da2b8f5c749cf8252a443ae68bb",
+      "pool_id": "sterile_draping_patient_rie",
+      "action_ids": [
+        "ack_disinfection"
+      ],
+      "procedure_groups": [
+        "general_abdominal",
+        "female_pelvic",
+        "vascular"
+      ],
+      "awake_only": true
+    },
+    {
+      "purpose": "Patient-specific fullscreen clinic full-undress examination CG.",
+      "source_file": "codex-clipboard-91522e67-a60f-4659-b14c-d97d78997317.png",
+      "reference_copy": "research/character_references/patient_rie/09_full_undress_exam_reference.png",
+      "runtime_target": "assets/examinations/patient_rie/full_undress_basic_exam.png",
+      "sha256": "3e548dca011bebfc95583e7b8de8c49d6545df8b49ef48ec437d78a4d6be9d25",
+      "pool_id": "full_undress_basic_exam_patient_rie",
+      "action_ids": [
+        "authoritative_full_undress",
+        "gentle_full_undress",
+        "threaten_full_undress"
+      ]
+    },
+    {
+      "purpose": "Patient-specific fullscreen urinary-catheterization CG.",
+      "source_file": "codex-clipboard-deaab468-13ce-4b42-831a-bb5c35317d73.png",
+      "reference_copy": "research/character_references/patient_rie/10_urinary_catheterization_reference.png",
+      "runtime_target": "assets/events/ward_preparation_v1/patient_rie/urinary_catheterization.png",
+      "width": 1536,
+      "height": 960,
+      "aspect_ratio": "16:10",
+      "mode": "RGB",
+      "sha256": "57f2937e9f3a4fd752c222cb197bd8ca7cdffd14c81f811012ed9e1a8d7d6cce",
+      "pool_id": "urinary_catheterization_patient_rie",
+      "action_ids": [
+        "urinary_catheterization"
+      ]
+    },
+    {
+      "purpose": "Patient-specific fullscreen awake operative-field skin-disinfection CG.",
+      "source_file": "codex-clipboard-571369f4-9d0f-496f-8ffb-12ed7cfb6747.png",
+      "reference_copy": "research/character_references/patient_rie/11_skin_disinfection_reference.png",
+      "runtime_target": "assets/events/ward_preparation_v1/patient_rie/skin_disinfection.png",
+      "width": 1536,
+      "height": 960,
+      "aspect_ratio": "16:10",
+      "mode": "RGB",
+      "sha256": "b0fe68ae44fdc40e8951026bf14f4e2be578122606bc072db8108fb5519e9f4a",
+      "pool_id": "skin_disinfection_patient_rie",
+      "action_ids": [
+        "skin_disinfection"
+      ],
+      "awake_only": true
+    },
+    {
+      "purpose": "Patient-specific fullscreen general-anesthesia pre-induction CG shown before the induction response and existing completed-induction splash.",
+      "source_file": "codex-clipboard-1c47f55d-746d-40cc-b934-4c07235784ea.png",
+      "reference_copy": "research/character_references/patient_rie/12_general_anesthesia_pre_induction_reference.png",
+      "runtime_target": "assets/events/anesthesia_v1/patient_rie/general_pre_induction.png",
+      "width": 1536,
+      "height": 1024,
+      "aspect_ratio": "3:2",
+      "mode": "RGB",
+      "sha256": "cbc176b52c4e84a220459fdb6f1cfb7aca22bb1d0d5485e7389e0bc6d46f5d8f",
+      "portrait_key": "splash/general_anesthesia_pre_induction",
+      "action_ids": [
+        "choose_general"
+      ],
+      "sequence": [
+        "choose_general",
+        "general_pre_induction splash",
+        "induction response",
+        "general_anesthesia splash"
+      ]
+    }
+  ]
+}

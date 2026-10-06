@@ -1,0 +1,273 @@
+{
+  "id": "doc_sayaka_operating_patient_2026_10_01",
+  "date": "2026-10-01",
+  "character_id": "doc_sayaka",
+  "source": {
+    "type": "user_provided_local_image",
+    "source_file": "00058-4019010021-Picsart-BackgroundRemover.png",
+    "reference_copy": "research/character_references/doc_sayaka/07_operating_patient_reference.png",
+    "usage": "Private local prototype asset supplied by the user; no redistribution authorization claimed."
+  },
+  "asset": {
+    "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_patient/nervous.png",
+    "portrait_key": "operating_patient/nervous",
+    "width": 960,
+    "height": 1536,
+    "format": "RGBA PNG",
+    "bytes": 1201635,
+    "sha256": "eb28d3c24c9d003386293b1726f6165b69cc016d43f21070e099e6f3064a0ccb"
+  },
+  "implementation": {
+    "future_activity_ids": [
+      "operating_room_patient_play",
+      "clinical_practice_patient"
+    ],
+    "current_runtime_entry": false,
+    "relationship_unlocks_implemented": false
+  },
+  "notes": [
+    "The user-provided image was copied without redrawing or resampling.",
+    "The runtime scales portraits from their native dimensions; this source is 960x1536 rather than the usual 1024x1536."
+  ],
+  "operating_table_pack": {
+    "generation_tool": "OpenAI ImageGen (built-in)",
+    "visual_spec": "Close overhead SFW operating-table scene; opaque teal drape covers the body; frame excludes feet and lower body.",
+    "assets": [
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/anesthetized.png",
+        "state": "anesthetized",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2030350,
+        "sha256": "9de961ce6e89191d43e31d637df7a3144dd5bb5fc0d595072abbf18f5455cc08"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/awake.png",
+        "state": "awake",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2132210,
+        "sha256": "9b03b4d62215c92c17e17f6f967abd7192b58ce5920c5f0e289a50131f3544d4"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/happy.png",
+        "state": "happy",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2030236,
+        "sha256": "e51ea1e3b242951511b46fe41f1bc57ec4f3009da34b5d196e28c423ca669169"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/shy.png",
+        "state": "shy",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2058968,
+        "sha256": "49fe2f77b77dde5e48f22cace53dfb69f25bfbcce85e4d412ba08b562e7e3f40"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/startled.png",
+        "state": "startled",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2052433,
+        "sha256": "0fe1b6b2965e138c49141a7b6c03f2ad2a7e603881e6943edf506c3c1f0912f6"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/teasing.png",
+        "state": "teasing",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2054724,
+        "sha256": "0affeb922ed74e78efb7867afd003e7b035e7c49f6a6a01fd4983801da34b631"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/operating_table/tense.png",
+        "state": "tense",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2064812,
+        "sha256": "2a6ee67c39afa39e467b0b3fa5ad6667182768de15f82e876134320cf5a57c03"
+      }
+    ],
+    "runtime_aliases": {
+      "operating_table/afraid": "operating_table/startled"
+    },
+    "notes": [
+      "The first full-body drafts were rejected for shortened proportions and were not imported.",
+      "All retained variants derive from the same close-shot master and differ primarily in facial expression."
+    ]
+  },
+  "intraoperative_portrait_pack": {
+    "generation_tool": "OpenAI ImageGen (built-in)",
+    "visual_spec": "Transparent front-facing head-and-shoulders intraoperative status portraits; adult Sayaka wears a teal surgical cap, with the image cropped below the clavicles and no drape or background visible.",
+    "assets": [
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/tense.png",
+        "state": "tense",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1149358,
+        "sha256": "dee95a95331bc7b3957ee07033aa9ad4bb1983ae9e5b8c01bd6eb6005f219393"
+      },
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/pain.png",
+        "state": "pain",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1159294,
+        "sha256": "71e07207b2775985352db15047202c1cf678589346e72acc32753fe436f8a28a"
+      },
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/near_collapse.png",
+        "state": "near_collapse",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1110676,
+        "sha256": "93b1e552b2865612e8f6229370a202910fe684e37c0d31d4a10ae67e7a957b55"
+      },
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/anesthetized.png",
+        "state": "anesthetized",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1106097,
+        "sha256": "fa7a437d07a4bac0055555695a4a10a7ecd8b4a0e73b1bd4e246ae21404f0acd"
+      },
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/embarrassed.png",
+        "state": "embarrassed",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1182182,
+        "sha256": "7bf31b3a60fa051671a0283714a984ea793b132542358b34679bd39cbbb9f8f0"
+      },
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/teasing.png",
+        "state": "teasing",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1180501,
+        "sha256": "54b95b5cc0e739b6a815a0feb7461dbfc6ae93ce8c5f88fac044bce95611c8a0"
+      },
+      {
+        "path": "assets/characters/intraoperative_portraits_v1/doc_sayaka/happy.png",
+        "state": "happy",
+        "width": 1448,
+        "height": 1086,
+        "format": "RGBA PNG",
+        "bytes": 1155580,
+        "sha256": "20ca6f3b17f8e077ce8fbbf53493830ce258bc78f3cc764f3bfb5f79aca3f30e"
+      }
+    ],
+    "runtime_keys": [
+      "intraoperative/tense",
+      "intraoperative/pain",
+      "intraoperative/near_collapse",
+      "intraoperative/anesthetized",
+      "intraoperative/embarrassed",
+      "intraoperative/teasing",
+      "intraoperative/happy"
+    ],
+    "notes": [
+      "These are status-panel portraits, separate from the opaque operating_table scene pack.",
+      "All four files use the same 1448x1086 RGBA format as the existing standard patient intraoperative portrait set."
+    ]
+  },
+  "preop_patient_gown_pack": {
+    "generation_tool": "OpenAI ImageGen (built-in)",
+    "visual_spec": "Transparent full/three-quarter VN sprites in a modest pale-blue patient gown before surgery.",
+    "assets": [
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/preop_patient_gown/neutral.png",
+        "state": "neutral",
+        "width": 1024,
+        "height": 1536,
+        "format": "RGBA PNG",
+        "bytes": 1656057,
+        "sha256": "bc43deee8e72f5ea3255207a6ce1521062522df18768fb80306d07c5bab14f48"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/preop_patient_gown/nervous.png",
+        "state": "nervous",
+        "width": 1024,
+        "height": 1536,
+        "format": "RGBA PNG",
+        "bytes": 1654431,
+        "sha256": "9cb537c1d1fe2188b0749ff3cddcd5e5152f6ae31dee4d790041aadc51e0b237"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/preop_patient_gown/teasing.png",
+        "state": "teasing",
+        "width": 1024,
+        "height": 1536,
+        "format": "RGBA PNG",
+        "bytes": 1674076,
+        "sha256": "1b7364a03af9a3e56778271f29496637c9b301de009fd018cfb0bd74022ae2d1"
+      }
+    ]
+  },
+  "general_anesthesia_pack": {
+    "generation_tool": "OpenAI ImageGen (built-in)",
+    "visual_spec": "Close overhead SFW induction CG pair with correct face mask placement and opaque drape covering the upper chest downward.",
+    "assets": [
+      {
+        "path": "assets/events/anesthesia_v1/doc_sayaka/pre_induction.png",
+        "state": "pre_induction",
+        "width": 1536,
+        "height": 1024,
+        "format": "RGB PNG",
+        "bytes": 2090896,
+        "sha256": "3a9a2d0e940065fcb53757e65008f7a362ed2ce819d54fb254959165a36a39b5"
+      },
+      {
+        "path": "assets/events/anesthesia_v1/doc_sayaka/anesthetized.png",
+        "state": "anesthetized",
+        "width": 1536,
+        "height": 1024,
+        "format": "RGB PNG",
+        "bytes": 1967246,
+        "sha256": "a70398debda1c92a3f8da4e514d93f75e4649a6a643c0561fc62e3214cbf43dd"
+      }
+    ]
+  },
+  "postop_recovery_pack": {
+    "generation_tool": "OpenAI ImageGen (built-in)",
+    "visual_spec": "Transparent seated waist-up postoperative sprites in a closed pale-blue patient gown with loose, slightly tousled hair.",
+    "assets": [
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/postop_recovery/drowsy.png",
+        "state": "drowsy",
+        "width": 1024,
+        "height": 1536,
+        "format": "RGBA PNG",
+        "bytes": 1968968,
+        "sha256": "d37fe5143ec594ec03faaa0cc6d156b49ca02b8b0d7fb356d4252098310ee5e1"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/postop_recovery/relieved.png",
+        "state": "relieved",
+        "width": 1024,
+        "height": 1536,
+        "format": "RGBA PNG",
+        "bytes": 2001051,
+        "sha256": "c075e6d1654de2efcaf0136a8ebff2053cb997b7ff54599fd36d1f40ed554442"
+      },
+      {
+        "path": "assets/characters/relationship_patient_v1/doc_sayaka/postop_recovery/teasing.png",
+        "state": "teasing",
+        "width": 1024,
+        "height": 1536,
+        "format": "RGBA PNG",
+        "bytes": 1932097,
+        "sha256": "7828cc3ac78a3450fbc0e58694863a9ae67e8b85444c690fa97a207e6b3571da"
+      }
+    ]
+  }
+}

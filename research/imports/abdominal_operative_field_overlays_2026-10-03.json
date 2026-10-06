@@ -1,0 +1,33 @@
+{
+  "id": "abdominal_operative_field_overlays_2026_10_03",
+  "date": "2026-10-03",
+  "source": "user-provided images",
+  "assets": [
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-25a17c51-0786-40a2-b016-e8a18d460ef9.png",
+      "runtime_target": "assets/surgeries/overlays/abdominal/open_abdominal_field_01.png",
+      "width": 1760,
+      "height": 920,
+      "format": "PNG",
+      "has_alpha": false,
+      "sha256": "db65fbf4c0e66ba4cc3ecb13fabe144f3bd816f27303f32c591ede3e55c15bff"
+    },
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-cf426735-7797-4aeb-a6cb-150119278d9e.png",
+      "runtime_target": "assets/surgeries/overlays/abdominal/open_abdominal_field_02.png",
+      "width": 1528,
+      "height": 880,
+      "format": "PNG",
+      "has_alpha": false,
+      "sha256": "d9667f9a3736e72ed18710d8e32f502b36525907855263cc17ee63631d864b79"
+    }
+  ],
+  "runtime_behavior": {
+    "procedure_group": "general_abdominal",
+    "appears_after": "incision_made",
+    "hidden_from": "closure_interaction",
+    "selection": "one image is selected from the two-image pool using the operation's randomized, save-stable operative background id",
+    "layering": "operative-team CG < abdominal operative-field overlay < common wash and interface < character portraits",
+    "procedure_override": "surgery_appendix continues to use its dedicated appendix operative-field pool"
+  }
+}

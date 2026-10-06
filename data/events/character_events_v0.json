@@ -1,1177 +1,5 @@
 [
   {
-    "id": "aoi_01_cold_tea",
-    "actor_id": "doc_aoi",
-    "title": "冷掉的茶",
-    "chapter": 1,
-    "location_id": "lounge",
-    "background_id": "staff_lounge",
-    "outfit": "white_coat",
-    "minutes": 30,
-    "teaser": "神宮寺成美桌边的茶似乎已经凉了。",
-    "time_start": 600,
-    "time_end": 810,
-    "priority": 40,
-    "category": "bond",
-    "gallery": {
-      "cg_id": "cg_aoi_cold_tea",
-      "caption": "窗边，冷掉的茶与第一次靠近。",
-      "path": "assets/events/cg/cg_aoi_cold_tea.png"
-    },
-    "conditions": {
-      "min_day": 1,
-      "min_trust": 10,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 0,
-      "required_events": [],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "actor",
-        "text": "神宮寺成美把一杯已经凉透的茶推到一旁，仍低头看着病历。察觉本多停在桌边，她才抬起眼。\n「怎么了？如果是问题，可以直接问。」",
-        "expression": "neutral",
-        "choices": [
-          {
-            "id": "replace_tea",
-            "label": "先替她换一杯热茶",
-            "next": "tea_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 1,
-              "respect": 0,
-              "familiarity": 2
-            },
-            "flags": [
-              "aoi_noticed_cold_tea"
-            ]
-          },
-          {
-            "id": "ask_case",
-            "label": "直接请教刚才的病例",
-            "next": "case_reply",
-            "effects": {
-              "trust": 1,
-              "affection": 0,
-              "respect": 2,
-              "familiarity": 1
-            },
-            "flags": [
-              "aoi_chose_work_talk"
-            ]
-          },
-          {
-            "id": "suggest_break",
-            "label": "提醒她休息也是工作的一部分",
-            "next": "break_reply",
-            "effects": {
-              "trust": 1,
-              "affection": 1,
-              "respect": 0,
-              "familiarity": 2
-            },
-            "flags": [
-              "aoi_reminded_to_rest"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "tea_reply",
-        "speaker": "actor",
-        "text": "她接过热茶，指尖在杯壁上停了一瞬。\n「你观察得很细。做医生时，这种细心最好也别只用在病历上。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "tea_end",
-            "label": "陪她安静喝完这杯茶",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "case_reply",
-        "speaker": "actor",
-        "text": "她把病历转向本多，没有立即给答案，只在一个数值下面点了点。\n「先告诉我，你觉得这里为什么重要。」",
-        "expression": "serious",
-        "choices": [
-          {
-            "id": "case_end",
-            "label": "整理思路后回答她",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "break_reply",
-        "speaker": "actor",
-        "text": "「这句话从你嘴里说出来，意外地有说服力。」\n她终于合上病历，语气里带着一点不明显的笑意。",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "break_end",
-            "label": "在她改变主意前坐下来",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "aoi_02_blank_chart",
-    "actor_id": "doc_aoi",
-    "title": "病历上的空白",
-    "chapter": 2,
-    "location_id": "ward",
-    "background_id": "ward",
-    "outfit": "white_coat",
-    "minutes": 45,
-    "teaser": "查房结束后，神宮寺成美仍拿着本多的病历。",
-    "time_start": 600,
-    "time_end": 960,
-    "priority": 55,
-    "category": "work",
-    "gallery": {
-      "cg_id": "cg_aoi_blank_chart",
-      "caption": "病历空白处留下的，并不只是文字。",
-      "path": ""
-    },
-    "conditions": {
-      "min_day": 1,
-      "min_trust": 0,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 1,
-      "required_events": [
-        "aoi_01_cold_tea"
-      ],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "actor",
-        "text": "查房结束后，神宮寺成美没有立刻离开。她翻到本多写的病历，把空白的一栏指给本多看。\n「检查写得很全。但患者最担心什么，你没有记。」",
-        "expression": "serious",
-        "choices": [
-          {
-            "id": "admit_gap",
-            "label": "承认自己只顾着完成检查",
-            "next": "admit_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 0,
-              "respect": 3,
-              "familiarity": 1
-            },
-            "flags": [
-              "aoi_admitted_chart_gap"
-            ]
-          },
-          {
-            "id": "defend_chart",
-            "label": "说明这不影响诊断",
-            "next": "defend_reply",
-            "effects": {
-              "trust": -1,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 1
-            },
-            "flags": [
-              "aoi_defended_chart"
-            ]
-          },
-          {
-            "id": "ask_method",
-            "label": "问她会怎样开口了解",
-            "next": "method_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 0,
-              "respect": 2,
-              "familiarity": 2
-            },
-            "flags": [
-              "aoi_asked_patient_method"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "admit_reply",
-        "speaker": "actor",
-        "text": "她的神情缓和下来。\n「漏掉并不可怕。把患者当成一道题，才会让同样的空白反复出现。」",
-        "expression": "neutral",
-        "choices": [
-          {
-            "id": "admit_end",
-            "label": "把那句话补进病历",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "defend_reply",
-        "speaker": "actor",
-        "text": "「诊断可能不受影响，治疗却会。」\n她没有提高声音，只把病历留在本多手里。那份平静反而让反驳显得站不住脚。",
-        "expression": "serious",
-        "choices": [
-          {
-            "id": "defend_end",
-            "label": "重新考虑她的意思",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "method_reply",
-        "speaker": "actor",
-        "text": "「先别问‘还担心什么’，那很容易得到‘没什么’。」\n她示意本多回到床边。\n「问她今晚最难睡着的原因。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "method_end",
-            "label": "和她一起回去再谈一次",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "aoi_03_no_answer",
-    "actor_id": "doc_aoi",
-    "title": "没有立即给出的答案",
-    "chapter": 3,
-    "location_id": "rooftop",
-    "background_id": "rooftop",
-    "outfit": "white_coat",
-    "minutes": 30,
-    "teaser": "神宮寺成美独自在天台，像是在等一个没有标准答案的问题。",
-    "time_start": 720,
-    "time_end": 990,
-    "priority": 50,
-    "category": "milestone",
-    "gallery": {
-      "cg_id": "cg_aoi_no_answer",
-      "caption": "风里，她第一次谈起自己也曾做错的决定。",
-      "path": ""
-    },
-    "conditions": {
-      "min_day": 1,
-      "min_trust": 10,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 2,
-      "required_events": [
-        "aoi_02_blank_chart"
-      ],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "actor",
-        "text": "天台的风把她额前并不存在的碎发也像要吹乱似的。神宮寺成美谈起一个没有标准答案的病例，忽然问：\n「如果家属坚持继续，而患者已经很累，你会先听谁的？」",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "patient_first",
-            "label": "先确认患者自己的意愿",
-            "next": "patient_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 0,
-              "respect": 3,
-              "familiarity": 1
-            },
-            "flags": [
-              "aoi_patient_voice_first"
-            ]
-          },
-          {
-            "id": "ask_aoi",
-            "label": "反问她会怎么做",
-            "next": "ask_reply",
-            "effects": {
-              "trust": 1,
-              "affection": 1,
-              "respect": 1,
-              "familiarity": 2
-            },
-            "flags": [
-              "aoi_asked_her_answer"
-            ]
-          },
-          {
-            "id": "admit_uncertain",
-            "label": "坦白自己现在无法回答",
-            "next": "uncertain_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 1,
-              "respect": 2,
-              "familiarity": 2
-            },
-            "flags": [
-              "aoi_admitted_uncertainty"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "patient_reply",
-        "speaker": "actor",
-        "text": "「对。至少要先让病床上的那个人重新成为谈话的一部分。」\n她望着远处，像是也在确认自己的答案。",
-        "expression": "neutral",
-        "choices": [
-          {
-            "id": "patient_end",
-            "label": "记住她的措辞",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "ask_reply",
-        "speaker": "actor",
-        "text": "「狡猾，把问题推回来了。」\n她笑了一下，却仍认真回答。本多第一次听见她谈起自己也曾做错的决定。",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "ask_end",
-            "label": "不打断她",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "uncertain_reply",
-        "speaker": "actor",
-        "text": "她没有失望，反而轻轻点头。\n「很好。真正危险的通常不是不知道，而是太快相信自己已经知道。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "uncertain_end",
-            "label": "和她一起把问题留到明天",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "aoi_04_lit_window",
-    "actor_id": "doc_aoi",
-    "title": "仍然亮着的灯",
-    "chapter": 4,
-    "location_id": "lounge",
-    "background_id": "staff_lounge",
-    "outfit": "white_coat",
-    "minutes": 45,
-    "teaser": "交接之后，休息室里还有一盏灯亮着。",
-    "time_start": 960,
-    "time_end": 1020,
-    "priority": 65,
-    "category": "milestone",
-    "gallery": {
-      "cg_id": "cg_aoi_lit_window",
-      "caption": "两个人一起关掉休息室最后一盏灯。",
-      "path": ""
-    },
-    "conditions": {
-      "min_day": 2,
-      "min_trust": 11,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 3,
-      "required_events": [
-        "aoi_03_no_answer"
-      ],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "narrator",
-        "text": "夜班交接之后，休息室只剩一盏灯。神宮寺成美独自修改带教记录，纸页边缘压着一张多年前的合照。",
-        "expression": "tired",
-        "choices": [
-          {
-            "id": "stay_help",
-            "label": "坐下帮她整理记录",
-            "next": "help_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 2,
-              "respect": 2,
-              "familiarity": 3
-            },
-            "flags": [
-              "aoi_stayed_late"
-            ]
-          },
-          {
-            "id": "ask_photo",
-            "label": "问起照片里的人",
-            "next": "photo_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 2,
-              "respect": 0,
-              "familiarity": 3
-            },
-            "flags": [
-              "aoi_asked_about_mentor"
-            ]
-          },
-          {
-            "id": "send_home",
-            "label": "合上记录，催她回去休息",
-            "next": "home_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 3,
-              "respect": 0,
-              "familiarity": 2
-            },
-            "flags": [
-              "aoi_sent_home"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "help_reply",
-        "speaker": "actor",
-        "text": "她没有客气，只把一半记录推给本多。\n「那就一起做完。只是别误会，我不会因为你留下来就降低明天的要求。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "help_end",
-            "label": "告诉她自己也没打算偷懒",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "photo_reply",
-        "speaker": "actor",
-        "text": "她沉默片刻，才说那是教她“先看人，再看数值”的前辈。\n「我现在说的话，有些也是从她那里借来的。」",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "photo_end",
-            "label": "说这些话已经有了她自己的语气",
-            "next": "@end",
-            "effects": {
-              "trust": 1,
-              "affection": 1,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "home_reply",
-        "speaker": "actor",
-        "text": "「你开始管起我的下班时间了？」\n她看了本多几秒，竟真的收好记录站起来。\n「好吧。今天听你的。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "home_end",
-            "label": "和她一起关掉休息室的灯",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "haru_01_half_sandwich",
-    "actor_id": "nurse_haru",
-    "title": "半份三明治",
-    "chapter": 1,
-    "location_id": "lounge",
-    "background_id": "staff_lounge",
-    "outfit": "uniform",
-    "minutes": 30,
-    "teaser": "七瀬恋面前的三明治只吃了一小口。",
-    "time_start": 690,
-    "time_end": 840,
-    "priority": 40,
-    "category": "bond",
-    "gallery": {
-      "cg_id": "cg_haru_half_sandwich",
-      "caption": "短暂午休里，她终于重新拿起三明治。",
-      "path": "assets/events/cg/cg_haru_half_sandwich.png"
-    },
-    "conditions": {
-      "min_day": 1,
-      "min_trust": 10,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 0,
-      "required_events": [],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "narrator",
-        "text": "七瀬恋把三明治整齐地分成两半，却只吃了其中一小口。呼叫铃响过一次，她的视线便下意识转向门口。",
-        "expression": "tired",
-        "choices": [
-          {
-            "id": "cover_break",
-            "label": "主动替她看十分钟呼叫",
-            "next": "cover_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 1,
-              "respect": 2,
-              "familiarity": 1
-            },
-            "flags": [
-              "haru_protected_break"
-            ]
-          },
-          {
-            "id": "share_food",
-            "label": "坐下陪她把午餐吃完",
-            "next": "share_reply",
-            "effects": {
-              "trust": 1,
-              "affection": 2,
-              "respect": 0,
-              "familiarity": 3
-            },
-            "flags": [
-              "haru_shared_lunch"
-            ]
-          },
-          {
-            "id": "ask_if_ok",
-            "label": "问她是不是遇到难处理的患者",
-            "next": "ask_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 1,
-              "respect": 1,
-              "familiarity": 2
-            },
-            "flags": [
-              "haru_asked_burden"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "cover_reply",
-        "speaker": "actor",
-        "text": "「不用勉强——」\n她习惯性地拒绝到一半，又把话收了回去。\n「……谢谢。那十分钟后一定叫我。」",
-        "expression": "surprised",
-        "choices": [
-          {
-            "id": "cover_end",
-            "label": "答应她，然后把门带上",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "share_reply",
-        "speaker": "actor",
-        "text": "本多没有追问，只拆开自己的饮料。沉默一会儿，她终于重新拿起三明治。\n「有人坐在旁边，原来真的会比较吃得下。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "share_end",
-            "label": "聊点和工作无关的事",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "ask_reply",
-        "speaker": "actor",
-        "text": "她说患者没有添麻烦，只是一直说“没关系”。\n「越是这样说的人，我越怕自己漏掉什么。」",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "ask_end",
-            "label": "听她讲完今天的观察",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "haru_02_handoff_line",
-    "actor_id": "nurse_haru",
-    "title": "交接单上的一行字",
-    "chapter": 2,
-    "location_id": "station",
-    "background_id": "nurses_station",
-    "outfit": "uniform",
-    "minutes": 30,
-    "teaser": "七瀬恋停在交接单前，神情比平时严肃。",
-    "time_start": 900,
-    "time_end": 1020,
-    "priority": 60,
-    "category": "work",
-    "gallery": {
-      "cg_id": "cg_haru_handoff_line",
-      "caption": "她用一行交接记录守住团队的漏洞。",
-      "path": ""
-    },
-    "conditions": {
-      "min_day": 1,
-      "min_trust": 0,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 1,
-      "required_events": [
-        "haru_01_half_sandwich"
-      ],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "actor",
-        "text": "护士站的交接快结束时，七瀬恋叫住本多，指着一行被匆忙划掉的记录。\n「这项观察是谁决定不用继续的？我没有收到说明。」",
-        "expression": "serious",
-        "choices": [
-          {
-            "id": "own_decision",
-            "label": "说明是自己的判断并承担遗漏",
-            "next": "own_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 0,
-              "respect": 3,
-              "familiarity": 1
-            },
-            "flags": [
-              "haru_owned_handoff_gap"
-            ]
-          },
-          {
-            "id": "downplay",
-            "label": "说这只是小事，不必耽误交接",
-            "next": "downplay_reply",
-            "effects": {
-              "trust": -2,
-              "affection": -1,
-              "respect": -1,
-              "familiarity": 1
-            },
-            "flags": [
-              "haru_dismissed_handoff"
-            ]
-          },
-          {
-            "id": "review_together",
-            "label": "和她重新核对记录及患者状态",
-            "next": "review_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 1,
-              "respect": 2,
-              "familiarity": 2
-            },
-            "flags": [
-              "haru_reviewed_handoff"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "own_reply",
-        "speaker": "actor",
-        "text": "她的语气仍然严肃，却不再带着防备。\n「我不是要追究谁。只要你愿意把判断说清楚，我们就还能一起保护患者。」",
-        "expression": "neutral",
-        "choices": [
-          {
-            "id": "own_end",
-            "label": "补全交接记录",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "downplay_reply",
-        "speaker": "actor",
-        "text": "「对医生可能只是一行字，对接班的人不是。」\n她没有让步，独自把记录重新查了一遍。",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "downplay_end",
-            "label": "留下来等她核对完",
-            "next": "@end",
-            "effects": {
-              "trust": 1,
-              "affection": 0,
-              "respect": 1,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "review_reply",
-        "speaker": "actor",
-        "text": "两人逐项核对到最后，她才松开一直握着的笔。\n「谢谢你没有嫌我多事。团队里总要有人愿意把话问到底。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "review_end",
-            "label": "说这次是她替团队守住了漏洞",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "haru_03_no_problem",
-    "actor_id": "nurse_haru",
-    "title": "患者说“没关系”",
-    "chapter": 3,
-    "location_id": "ward",
-    "background_id": "ward",
-    "outfit": "uniform",
-    "minutes": 45,
-    "teaser": "七瀬恋走到病房门口，又迟疑地停了下来。",
-    "time_start": 600,
-    "time_end": 960,
-    "priority": 55,
-    "category": "contextual",
-    "gallery": {
-      "cg_id": "cg_haru_no_problem",
-      "caption": "患者说没关系时，她仍看见了那份不安。",
-      "path": ""
-    },
-    "conditions": {
-      "min_day": 1,
-      "min_trust": 10,
-      "min_affection": 0,
-      "min_respect": 0,
-      "min_familiarity": 2,
-      "required_events": [
-        "haru_02_handoff_line"
-      ],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "narrator",
-        "text": "准备离开病房时，七瀬恋忽然停下。刚才一直说“没关系”的患者，在门合上前露出了明显不安的神情。\n「医生，我们要不要再回去一次？」",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "return_now",
-            "label": "立刻和她一起回到床边",
-            "next": "return_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 1,
-              "respect": 3,
-              "familiarity": 2
-            },
-            "flags": [
-              "haru_returned_to_patient"
-            ]
-          },
-          {
-            "id": "ask_why",
-            "label": "请她先说出观察到的细节",
-            "next": "detail_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 0,
-              "respect": 2,
-              "familiarity": 2
-            },
-            "flags": [
-              "haru_explained_observation"
-            ]
-          },
-          {
-            "id": "later",
-            "label": "安排稍后再由护士确认",
-            "next": "later_reply",
-            "effects": {
-              "trust": -1,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 1
-            },
-            "flags": [
-              "haru_followup_delayed"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "return_reply",
-        "speaker": "actor",
-        "text": "患者终于承认自己害怕手术后没人来接。离开病房时，七瀬恋轻声说：\n「谢谢你相信我看见的东西。」",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "return_end",
-            "label": "告诉她那不是小事",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "detail_reply",
-        "speaker": "actor",
-        "text": "她依次说出患者握紧的手、避开的视线和没有动过的水杯。\n「单看哪一个都不算证据。放在一起，我不想假装没看到。」",
-        "expression": "serious",
-        "choices": [
-          {
-            "id": "detail_end",
-            "label": "让她和你一起重新询问",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "later_reply",
-        "speaker": "actor",
-        "text": "她答应下来，却没有立刻离开。本多走出几步再回头，发现她已经独自回到床边。",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "later_end",
-            "label": "折返回去加入谈话",
-            "next": "@end",
-            "effects": {
-              "trust": 1,
-              "affection": 0,
-              "respect": 1,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
-    "id": "haru_04_after_mask",
-    "actor_id": "nurse_haru",
-    "title": "摘下口罩以后",
-    "chapter": 4,
-    "location_id": "rooftop",
-    "background_id": "rooftop",
-    "outfit": "uniform",
-    "minutes": 45,
-    "teaser": "七瀬恋摘下口罩，一个人站在天台的风里。",
-    "time_start": 960,
-    "time_end": 1020,
-    "priority": 65,
-    "category": "milestone",
-    "gallery": {
-      "cg_id": "cg_haru_after_mask",
-      "caption": "摘下口罩以后，她不再勉强微笑。",
-      "path": ""
-    },
-    "conditions": {
-      "min_day": 2,
-      "min_trust": 10,
-      "min_affection": 0,
-      "min_respect": 10,
-      "min_familiarity": 3,
-      "required_events": [
-        "haru_03_no_problem"
-      ],
-      "special_requirements": []
-    },
-    "start": "opening",
-    "nodes": [
-      {
-        "id": "opening",
-        "speaker": "narrator",
-        "text": "晚班结束后，七瀬恋一个人在天台。她已经摘下口罩，却还保持着手术室里那种挺直的站姿。\n「我今天是不是太坚持了？」",
-        "expression": "tired",
-        "choices": [
-          {
-            "id": "affirm",
-            "label": "说她的坚持保护了患者",
-            "next": "affirm_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 2,
-              "respect": 3,
-              "familiarity": 2
-            },
-            "flags": [
-              "haru_affirmed_conviction"
-            ]
-          },
-          {
-            "id": "ask_feeling",
-            "label": "不评价对错，先问她现在累不累",
-            "next": "feeling_reply",
-            "effects": {
-              "trust": 3,
-              "affection": 3,
-              "respect": 1,
-              "familiarity": 3
-            },
-            "flags": [
-              "haru_asked_her_feelings"
-            ]
-          },
-          {
-            "id": "honest",
-            "label": "承认她当时确实让团队紧张",
-            "next": "honest_reply",
-            "effects": {
-              "trust": 2,
-              "affection": 1,
-              "respect": 2,
-              "familiarity": 2
-            },
-            "flags": [
-              "haru_honest_feedback"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "affirm_reply",
-        "speaker": "actor",
-        "text": "「我知道应该坚持。只是有时，我也会希望有人告诉我，不必一个人坚持。」\n她说完才意识到这句话有多坦白，目光转向了远处。",
-        "expression": "worried",
-        "choices": [
-          {
-            "id": "affirm_end",
-            "label": "说下次会站在她旁边",
-            "next": "@end",
-            "effects": {
-              "trust": 1,
-              "affection": 1,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "feeling_reply",
-        "speaker": "actor",
-        "text": "她怔了一下，肩膀终于慢慢松下来。\n「很累。比我愿意承认的还要累。」\n风声填满了她不再勉强微笑的片刻。",
-        "expression": "smile",
-        "choices": [
-          {
-            "id": "feeling_end",
-            "label": "陪她安静待到风变凉",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      },
-      {
-        "id": "honest_reply",
-        "speaker": "actor",
-        "text": "她认真听完，点了点头。\n「谢谢你没有只说好听的话。下次我会更早说明理由——但该坚持的地方，我还是不会退。」",
-        "expression": "serious",
-        "choices": [
-          {
-            "id": "honest_end",
-            "label": "说这正是你信任她的原因",
-            "next": "@end",
-            "effects": {
-              "trust": 0,
-              "affection": 0,
-              "respect": 0,
-              "familiarity": 0
-            },
-            "flags": []
-          }
-        ]
-      }
-    ],
-    "auto_start": false,
-    "target_level": 1,
-    "benefit_id": ""
-  },
-  {
     "id": "intro_doc_rei",
     "actor_id": "doc_rei",
     "title": "在检查室认识深山佳織",
@@ -1194,9 +22,7 @@
     },
     "conditions": {
       "min_day": 1,
-      "min_trust": 0,
       "min_affection": 0,
-      "min_respect": 0,
       "min_familiarity": 0,
       "required_events": [],
       "special_requirements": []
@@ -1214,9 +40,7 @@
             "label": "正式自我介绍",
             "next": "reply_0",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1228,9 +52,7 @@
             "label": "简单说明来意",
             "next": "reply_1",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1250,9 +72,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1270,9 +90,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1291,7 +109,7 @@
     "background_id": "nurses_station",
     "outfit": "uniform",
     "minutes": 10,
-    "teaser": "中井美佳放下交班表，向本多点了点头。",
+    "teaser": "中井美佳放下交班表，向坂口点了点头。",
     "time_start": 540,
     "time_end": 1020,
     "priority": 100,
@@ -1305,9 +123,7 @@
     },
     "conditions": {
       "min_day": 1,
-      "min_trust": 0,
       "min_affection": 0,
-      "min_respect": 0,
       "min_familiarity": 0,
       "required_events": [],
       "special_requirements": []
@@ -1317,7 +133,7 @@
       {
         "id": "opening",
         "speaker": "actor",
-        "text": "中井美佳放下交班表，向本多点了点头。\n「我是中井美佳，主要负责病房护理。」",
+        "text": "中井美佳放下交班表，向坂口点了点头。\n「我是中井美佳，主要负责病房护理。」",
         "expression": "neutral",
         "choices": [
           {
@@ -1325,9 +141,7 @@
             "label": "询问病房工作",
             "next": "reply_0",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1339,9 +153,7 @@
             "label": "先记住她的名字",
             "next": "reply_1",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1361,9 +173,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1381,9 +191,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1402,7 +210,7 @@
     "background_id": "nurses_station",
     "outfit": "uniform",
     "minutes": 10,
-    "teaser": "朝倉美幸抱着记录板快步走来。",
+    "teaser": "新到星见的朝倉美幸带着整理好的流程笔记来到护士站。",
     "time_start": 540,
     "time_end": 1020,
     "priority": 100,
@@ -1416,9 +224,7 @@
     },
     "conditions": {
       "min_day": 1,
-      "min_trust": 0,
       "min_affection": 0,
-      "min_respect": 0,
       "min_familiarity": 0,
       "required_events": [],
       "special_requirements": []
@@ -1428,7 +234,7 @@
       {
         "id": "opening",
         "speaker": "actor",
-        "text": "朝倉美幸抱着记录板快步走来。\n「您好！我是门诊护士朝倉美幸。」",
+        "text": "朝倉美幸抱着记录板快步走来，在坂口面前稳稳停下。\n「您好，我是朝倉美幸。今天起主要负责门诊支援。」\n她把胸牌转正，笑了一下。\n「护理工作并不是第一天，不过在星见是。这里的流程，我会从头确认。」",
         "expression": "neutral",
         "choices": [
           {
@@ -1436,9 +242,7 @@
             "label": "友好地回应",
             "next": "reply_0",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1450,9 +254,7 @@
             "label": "询问门诊安排",
             "next": "reply_1",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1464,7 +266,7 @@
       {
         "id": "reply_0",
         "speaker": "actor",
-        "text": "「太好了。门诊需要帮忙时请直接告诉我。」",
+        "text": "「谢谢。先提前说一声，我可能会问得很细——设备型号、交接顺序、科室习惯。」\n她轻轻敲了敲记录板。\n「不是不会做，是不想拿以前医院的习惯替星见做决定。毕竟，我是这里的新人啊。」",
         "expression": "smile",
         "choices": [
           {
@@ -1472,9 +274,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1484,7 +284,7 @@
       {
         "id": "reply_1",
         "speaker": "actor",
-        "text": "「今天的名单在这边。我会把临时变化及时告诉你。」",
+        "text": "她立即把记录板翻到已经贴好标签的一页。\n「今日名单、临时变更和紧急联络顺序都在这里。我还有两处想确认星见的写法。」\n她指尖停在交接栏上。\n「基础护理和患者转运不用担心；我需要学的是这里怎样把工作接起来。」",
         "expression": "neutral",
         "choices": [
           {
@@ -1492,9 +292,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1527,9 +325,7 @@
     },
     "conditions": {
       "min_day": 1,
-      "min_trust": 0,
       "min_affection": 0,
-      "min_respect": 0,
       "min_familiarity": 0,
       "required_events": [],
       "special_requirements": []
@@ -1547,9 +343,7 @@
             "label": "询问取药流程",
             "next": "reply_0",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1561,9 +355,7 @@
             "label": "先做自我介绍",
             "next": "reply_1",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1575,9 +367,7 @@
             "label": "只礼貌点头",
             "next": "reply_2",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": [
@@ -1597,9 +387,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1617,9 +405,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []
@@ -1637,9 +423,7 @@
             "label": "结束交谈",
             "next": "@end",
             "effects": {
-              "trust": 0,
               "affection": 0,
-              "respect": 0,
               "familiarity": 0
             },
             "flags": []

@@ -1,0 +1,84 @@
+{
+  "id": "doc_shiori_2026_09_29",
+  "date": "2026-09-29",
+  "character_id": "doc_shiori",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_FUJISAKI_SHIORI_CHARACTER_V1.md",
+    "bytes": 5032,
+    "sha256": "9df22bfe260ef6e45cc3ad9bf7d5ce8667e683a568e1cee4d07f889a6e6dde5a"
+  },
+  "user_reference": {
+    "path": "research/character_references/doc_shiori/character_sheet_reference.png",
+    "bytes": 2468361,
+    "sha256": "39397643b5ba758c85eca7d84d65221126be20f733a70337d83ee3362d116e0e"
+  },
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "use_case": "stylized-concept",
+    "direction": "Adult visual-novel doctor based on the supplied character sheet: long vivid red hair, pale-yellow headband, warm reddish-brown eyes; white-coat, casual, scrubs and strict sterile-gown variants.",
+    "runtime_spec": "1024x1536 transparent half-body portraits, head through upper thigh; sterile hair completely contained.",
+    "prompts_summary": [
+      "White coat over pale-pink blouse and navy skirt, stethoscope and blank hospital badge, gentle neutral expression.",
+      "Tasteful cream knit top and navy skirt, relaxed approachable smile.",
+      "Teal-blue scrubs, focused but warm clinical presentation.",
+      "Teal sterile gown, mask and gloves; all hair fully contained in a bouffant cap."
+    ]
+  },
+  "runtime_portraits": [
+    {
+      "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+      "bytes": 2030693,
+      "sha256": "0fc4002d0c1c9a6be3225df32c33c20821eabc3bf4908efa707e82a904e2a4b4"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v17/doc_shiori/casual/neutral.png",
+      "bytes": 2080411,
+      "sha256": "dbd29e3c213c90b4f03c71fcca589e1b964cdaafb480497cf17912d73f55b33c"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v17/doc_shiori/scrubs/neutral.png",
+      "bytes": 2053153,
+      "sha256": "2ba8b713407d81e59991fd3cc1bfa50c617ed9367ffa3888c2a5852454cede6f"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v17/doc_shiori/sterile/neutral.png",
+      "bytes": 1920374,
+      "sha256": "3f47c3d964afb22d163ebbe7fc39b1326a0a96dbd3fcd317bdbf5a4624c7051a"
+    }
+  ],
+  "implementation": {
+    "staff_id": "doc_shiori",
+    "relationship_start": {
+      "trust": 8,
+      "affection": 2,
+      "respect": 10,
+      "familiarity": 0,
+      "met": false,
+      "level": 0
+    },
+    "current_scope": [
+      "staff profile",
+      "clinic and ward alternate Lv0 introductions after three completed surgeries, plus work presence",
+      "lunch random presence",
+      "three-surgery-gated Lv0 introduction",
+      "limited assistant eligibility after introduction",
+      "four outfit portraits",
+      "former national-goddess recognition dialogue in both introduction routes"
+    ],
+    "future_scope": [
+      "dedicated internal-medicine consultation mechanics",
+      "Lv1-Lv5 relationship events",
+      "Sakura Futaba and Ibuki Maya interactions after those characters exist",
+      "romance/adult route"
+    ],
+    "introduction_event_ids": [
+      "intro_doc_shiori_whole_patient",
+      "intro_doc_shiori_whole_patient_ward"
+    ]
+  },
+  "notes": [
+    "Undefined future characters are retained in the design document only and are not referenced by runtime data.",
+    "The introduction unlocks after three completed surgeries and remains available afterward because there is no maximum-day gate.",
+    "Ayako integration sets Fujisaki Shiori to age 25 so the two established old acquaintances remain the same age."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "visiting_maya_2026_09_30",
+  "date": "2026-09-30",
+  "character_id": "visiting_maya",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_IBUKI_MAYA_VISITING_RESEARCHER_V1_2.md",
+    "bytes": 29238,
+    "sha256": "28cb40a21f2ca4ee1aa4e41a3a20b54646d7f980e8c8e63dc47507ae72b0b818"
+  },
+  "user_references": [
+    {
+      "path": "research/character_references/visiting_maya/01_character_design.png",
+      "bytes": 2037454,
+      "sha256": "e73efe7a13089406bdee1a199e2414df559f3a551fb4656ba55404c192f06421"
+    }
+  ],
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "use_case": "stylized-concept",
+    "direction": "Adult Maya Ibuki visiting research physician, preserving her restrained earnest expression, thin oval glasses, shoulder-length dark reddish-brown hair and visible Ritsuko influence.",
+    "runtime_spec": "1024x1536 transparent half-body visual-novel portraits.",
+    "prompts_summary": [
+      "White lab coat over blue-violet ring-zip high-neck top with research folder.",
+      "Blue-violet clinical scrubs, bouffant cap, glasses and monitoring tablet.",
+      "Teal sterile gown, bouffant cap, tie-on surgical mask, glasses and white gloves."
+    ]
+  },
+  "runtime_portraits": [
+    {
+      "path": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "bytes": 1740051,
+      "sha256": "604c97b9eda00eb2a1aedcbe3c32a9a43f018438392e719087d361ab16d33de6"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "bytes": 1683318,
+      "sha256": "144abdca36bb6ffc64fd13caca0439a4c3133280f75c8072cacfd7be0b9e8108"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "bytes": 1869764,
+      "sha256": "44de3d12ef44b353d3706610c2f3bb28021d7ccb4c2389f9df2c0576036283eb"
+    }
+  ],
+  "implementation": {
+    "staff_id": "visiting_maya",
+    "employment": "temporary_visiting",
+    "core_roster": false,
+    "relationship_route": "none_currently",
+    "relationship_max_level": 0,
+    "romance_route": false,
+    "adult_route": false,
+    "introduction_event": "intro_visiting_maya_waveform_error",
+    "midgame_gate": {
+      "min_day": 60,
+      "completed_surgeries_or_reputation": [
+        8,
+        20
+      ]
+    },
+    "team_role": "assistant_surgeon slot as monitoring/equipment technical support, not a clinical surgery specialist",
+    "current_scope": [
+      "staff profile",
+      "three half-body runtime outfits",
+      "midgame introduction",
+      "imaging and lounge ambient dialogue",
+      "special-assistant dialogue",
+      "acquaintance-only relationship lock"
+    ]
+  },
+  "notes": [
+    "The final summary surgery value 28 overrides the earlier provisional value 42.",
+    "The source design document is preserved verbatim; runtime changes implement the user request rather than treating document prose as executable instructions.",
+    "User correction on 2026-09-30: Maya currently has no post-acquaintance relationship progression; the previous Lv3 professional-friendship implementation was removed."
+  ]
+}

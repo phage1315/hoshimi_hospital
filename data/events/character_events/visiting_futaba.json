@@ -1,0 +1,131 @@
+[
+  {
+    "id": "intro_visiting_futaba_body_does_not_believe",
+    "actor_id": "visiting_futaba",
+    "title": "身体还不相信",
+    "chapter": 0,
+    "location_id": "imaging",
+    "trigger_mode": "location",
+    "background_id": "diagnostics",
+    "outfit": "white_coat",
+    "minutes": 15,
+    "teaser": "监护信号没有故障，但双叶注意到变化恰好发生在一句话之后。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 114,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "cg_intro_visiting_futaba_body_does_not_believe",
+      "caption": "佐仓双叶从心理刺激与生理反应的时序中找到规律。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 60,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "intro_visiting_maya_waveform_error"
+      ],
+      "special_requirements": []
+    },
+    "start": "real_signal",
+    "nodes": [
+      {
+        "id": "real_signal",
+        "speaker": "narrator",
+        "text": "上次校准后的监护设备再次记录到明显的心率上升。伊吹摩耶确认传感器和原始波形都没有问题。\n站在屏幕另一侧的橙发女性却没有立刻看曲线，而是倒回了房间录音。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "listen",
+            "label": "听她重放记录",
+            "next": "timing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "timing",
+        "speaker": "actor",
+        "text": "「这里。」\n她停在工作人员说出“下一阶段开始”的一秒之后。\n「心率、呼吸频率、手指肌张力，按这个顺序一起变了。信号是真的，而且不是随机的。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "ask_pain",
+            "label": "“是疼痛吗？”",
+            "next": "anticipation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "anticipation",
+        "speaker": "actor",
+        "text": "「还没开始刺激，哪来的疼？」\n她把眼镜向上推了一点。\n「是预期。她知道这里安全，但身体还不相信。脑子也是器官，别老假装它不参与医疗。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "introduction",
+            "label": "询问她的身份",
+            "next": "identity",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "identity",
+        "speaker": "actor",
+        "text": "「佐仓双叶。医学、心理学，两边都读了博士。现在研究精神怎么改变身体，身体又怎么反过来改写精神。」\n她瞥了一眼摩耶的设备报告。\n「摩耶确认变化是真的，我负责问它为什么偏偏现在发生。我们是同一批来的。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "recognize",
+            "label": "“这能解释许多围术期反应。”",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "closing",
+        "speaker": "actor",
+        "text": "双叶的眼睛亮了一瞬，语速也突然快起来。\n「对。Fear、Pain、Dignity、Cooperation——不是四个互不相干的槽。只要找到触发点，身体会告诉你它们是怎么连起来的。」\n她停了一下，又恢复平静。\n「以后有奇怪病例，记得叫我。越解释不通越好。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "finish",
+            "label": "记下她的研究联系方式",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_visiting_futaba",
+              "unlocked_visiting_futaba_assistant"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

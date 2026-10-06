@@ -8,7 +8,10 @@
       "doc_aoi",
       "nurse_yui",
       "nurse_hiroko",
-      "nurse_moe"
+      "nurse_moe",
+      "doc_shiori",
+      "doc_aqua",
+      "doc_sayaka"
     ],
     "background_id": "clinic"
   },
@@ -19,7 +22,8 @@
     "description": "探视已住院患者，说明手术安排并准备团队。",
     "staff_ids": [
       "nurse_rin",
-      "nurse_hiroko"
+      "nurse_hiroko",
+      "doc_shiori"
     ],
     "background_id": "ward"
   },
@@ -51,7 +55,10 @@
     "name": "影像与检验",
     "subtitle": "DIAGNOSTICS",
     "description": "首个病例的检验与影像结果可在门诊病历中查看。",
-    "staff_ids": [],
+    "staff_ids": [
+      "visiting_maya",
+      "visiting_futaba"
+    ],
     "background_id": "diagnostics"
   },
   {
@@ -63,7 +70,8 @@
       "doc_aoi",
       "nurse_haru",
       "nurse_ange",
-      "doc_emiko"
+      "doc_emiko",
+      "visiting_maya"
     ],
     "background_id": "operating_room"
   },
@@ -77,7 +85,8 @@
       "doc_rei",
       "nurse_haru",
       "nurse_rin",
-      "nurse_yui"
+      "nurse_yui",
+      "doc_sayaka"
     ],
     "background_id": "staff_lounge"
   },
@@ -98,6 +107,16 @@
       "doc_emiko"
     ],
     "background_id": "emiko_office"
+  },
+  {
+    "id": "artoria_office",
+    "name": "副部长办公室",
+    "subtitle": "PENDRAGON OFFICE",
+    "description": "外科副部长阿尔托莉雅·潘德拉贡处理手术排班、病例计划与团队配置的个人办公室。墙边的排程板总是更新到当天最后一台手术。",
+    "staff_ids": [
+      "doc_artoria"
+    ],
+    "background_id": "artoria_office"
   },
   {
     "id": "surgery_director_office",
@@ -121,16 +140,28 @@
     "id": "gynecology_exam",
     "name": "妇科检查室",
     "subtitle": "GYNECOLOGY",
-    "description": "配备妇科检查台与超声设备的独立检查室。目前没有固定出场人物，未来将承载专科检查与相关事件。",
-    "staff_ids": [],
+    "description": "配备电动妇科检查台与超声设备的独立检查室。妇科主任水城阿库娅常在这里接诊，也偶尔亲自测试她没有先看说明书的新设备。",
+    "staff_ids": [
+      "doc_aqua"
+    ],
     "background_id": "gynecology_exam_room"
   },
   {
     "id": "director_office",
     "name": "院长室",
     "subtitle": "HOSPITAL DIRECTOR",
-    "description": "院长室现在无人。年轻院长的人物设定与她为何身居此职的故事，将在后续加入。",
-    "staff_ids": [],
+    "description": "院长室的门平时关着。现在似乎没人。",
+    "staff_ids": [
+      "doc_asuka"
+    ],
     "background_id": "director_office"
+  },
+  {
+    "id": "player_office",
+    "name": "主角办公室",
+    "subtitle": "YOUR OFFICE",
+    "description": "医院暂时借给坂口的办公室。桌面还很空，但病例、关系和这一年的经历会逐渐在这里留下痕迹。",
+    "staff_ids": [],
+    "background_id": "player_office"
   }
 ]

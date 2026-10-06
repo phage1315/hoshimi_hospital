@@ -2,9 +2,7 @@
   {
     "source_id": "player",
     "target_id": "doc_aoi",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -16,7 +14,7 @@
     "rank_slots": [
       {
         "target_level": 1,
-        "event_id": "aoi_01_cold_tea",
+        "event_id": "",
         "benefit_id": "",
         "special_requirements": []
       },
@@ -49,9 +47,7 @@
   {
     "source_id": "player",
     "target_id": "doc_rei",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -63,19 +59,19 @@
     "rank_slots": [
       {
         "target_level": 1,
-        "event_id": "",
+        "event_id": "miyama_01_safety_pin",
         "benefit_id": "",
         "special_requirements": []
       },
       {
         "target_level": 2,
-        "event_id": "",
+        "event_id": "miyama_02_manga_artist_wrong_patient",
         "benefit_id": "",
         "special_requirements": []
       },
       {
         "target_level": 3,
-        "event_id": "",
+        "event_id": "miyama_03_or_god",
         "benefit_id": "",
         "special_requirements": []
       },
@@ -96,9 +92,7 @@
   {
     "source_id": "player",
     "target_id": "nurse_haru",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -110,7 +104,7 @@
     "rank_slots": [
       {
         "target_level": 1,
-        "event_id": "haru_01_half_sandwich",
+        "event_id": "",
         "benefit_id": "",
         "special_requirements": []
       },
@@ -143,9 +137,7 @@
   {
     "source_id": "player",
     "target_id": "nurse_rin",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -190,9 +182,7 @@
   {
     "source_id": "player",
     "target_id": "nurse_yui",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -237,9 +227,7 @@
   {
     "source_id": "player",
     "target_id": "pharmacist_manami",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -284,9 +272,7 @@
   {
     "source_id": "player",
     "target_id": "nurse_ange",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -298,32 +284,32 @@
     "rank_slots": [
       {
         "target_level": 1,
-        "event_id": "",
+        "event_id": "ange_lv1_handover_followup",
         "benefit_id": "",
         "special_requirements": []
       },
       {
         "target_level": 2,
-        "event_id": "",
+        "event_id": "ange_lv2_explanation_followup",
         "benefit_id": "",
         "special_requirements": []
       },
       {
         "target_level": 3,
-        "event_id": "",
+        "event_id": "ange_lv3_check_again_followup",
         "benefit_id": "",
         "special_requirements": []
       },
       {
         "target_level": 4,
-        "event_id": "",
-        "benefit_id": "unlock_intimacy_events",
+        "event_id": "ange_lv4_afraid",
+        "benefit_id": "",
         "special_requirements": []
       },
       {
         "target_level": 5,
-        "event_id": "",
-        "benefit_id": "unlock_clinical_practice_patient",
+        "event_id": "ange_lv5_call_me_followup",
+        "benefit_id": "",
         "special_requirements": []
       }
     ]
@@ -331,9 +317,7 @@
   {
     "source_id": "player",
     "target_id": "nurse_hiroko",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -345,7 +329,7 @@
     "rank_slots": [
       {
         "target_level": 1,
-        "event_id": "",
+        "event_id": "hiroko_lv1_worth_it",
         "benefit_id": "",
         "special_requirements": []
       },
@@ -378,9 +362,7 @@
   {
     "source_id": "player",
     "target_id": "nurse_moe",
-    "trust": 10,
     "affection": 0,
-    "respect": 10,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -425,9 +407,7 @@
   {
     "source_id": "player",
     "target_id": "doc_emiko",
-    "trust": 5,
     "affection": 0,
-    "respect": 20,
     "familiarity": 0,
     "flags": [],
     "event_history": [],
@@ -453,6 +433,474 @@
         "target_level": 3,
         "event_id": "",
         "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "unlock_intimacy_events",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "unlock_clinical_practice_patient",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "doc_asuka",
+    "affection": 2,
+    "familiarity": 0,
+    "flags": [],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "",
+        "benefit_id": "unlock_asuka_surgical_team",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "unlock_intimacy_events",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "unlock_clinical_practice_patient",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "doc_artoria",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "artoria_lv1_right_position",
+        "benefit_id": "unlock_artoria_surgical_team",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "unlock_intimacy_events",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "unlock_clinical_practice_patient",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "doc_shiori",
+    "affection": 2,
+    "familiarity": 0,
+    "flags": [],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "unlock_intimacy_events",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "unlock_clinical_practice_patient",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "doc_aqua",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "aqua_lv1_gyne_obsession",
+        "benefit_id": "unlock_aqua_surgical_team",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "unlock_intimacy_events",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "unlock_clinical_practice_patient",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "doc_sayaka",
+    "affection": 4,
+    "familiarity": 0,
+    "flags": [],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "sayaka_lv1_first_date",
+        "benefit_id": "unlock_sayaka_lv1_flirt",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "sayaka_lv2_working_hours",
+        "benefit_id": "unlock_sayaka_lv2_workplace_flirt",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "unlock_intimacy_events",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "unlock_clinical_practice_patient",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "visiting_maya",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [
+      "relationship_progression_locked",
+      "relationship_route_none"
+    ],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "visiting_futaba",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [
+      "relationship_progression_locked",
+      "relationship_route_none"
+    ],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "nurse_ishigami",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [
+      "professional_trust_route",
+      "introduction_pending",
+      "romance_disabled",
+      "sunday_date_disabled",
+      "hotel_disabled",
+      "staff_as_patient_disabled"
+    ],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "doc_sakura_anesthesiology",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [
+      "relationship_progression_locked"
+    ],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 4,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 5,
+        "event_id": "",
+        "benefit_id": "",
+        "special_requirements": []
+      }
+    ]
+  },
+  {
+    "source_id": "player",
+    "target_id": "nurse_satsuki",
+    "affection": 0,
+    "familiarity": 0,
+    "flags": [
+      "introduction_pending",
+      "events_deferred"
+    ],
+    "event_history": [],
+    "met": false,
+    "level": 0,
+    "route": "colleague",
+    "rank_history": [],
+    "unlocked_benefits": [],
+    "rank_slots": [
+      {
+        "target_level": 1,
+        "event_id": "satsuki_lv1_real_patient_test",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 2,
+        "event_id": "satsuki_lv2_patient_transport",
+        "benefit_id": "",
+        "special_requirements": []
+      },
+      {
+        "target_level": 3,
+        "event_id": "satsuki_lv3_wrong_patient_appendectomy",
+        "benefit_id": "unlock_satsuki_normal_sunday_date",
         "special_requirements": []
       },
       {

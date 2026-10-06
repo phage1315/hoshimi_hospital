@@ -1,0 +1,135 @@
+[
+  {
+    "id": "intro_visiting_maya_waveform_error",
+    "actor_id": "visiting_maya",
+    "title": "波形不对",
+    "chapter": 0,
+    "location_id": "imaging",
+    "trigger_mode": "location",
+    "background_id": "diagnostics",
+    "outfit": "white_coat",
+    "minutes": 15,
+    "teaser": "监护测试台反复报警，站在设备前的访问研究医却先让所有人别碰患者。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 115,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "cg_intro_visiting_maya_waveform_error",
+      "caption": "伊吹摩耶指出异常来自监测链路，而非患者。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 60,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "career_progress_any",
+          "minimum_completed_surgeries": 8,
+          "minimum_reputation": 20
+        }
+      ]
+    },
+    "start": "alarm",
+    "nodes": [
+      {
+        "id": "alarm",
+        "speaker": "narrator",
+        "text": "影像与检验区的监护测试台突然连续报警。屏幕上的血氧曲线急剧下坠，可坐在旁边接受例行采样的志愿者仍面色平稳、呼吸均匀。\n一名戴细框眼镜的女性抬手拦住正要更换氧气面罩的工作人员。",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "observe",
+            "label": "先看她如何判断",
+            "next": "compare",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "compare",
+        "speaker": "actor",
+        "text": "「先不要动患者。桡动脉脉搏、另一侧探头和呼吸波都对得上，只有这一条通道在漂。」\n她调出原始波形，把两个时间轴叠在一起。\n「不是人的状态突然恶化，是传感器基线和系统时钟一起偏了。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "ask_certainty",
+            "label": "“你确定是机器的问题？”",
+            "next": "proof",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "proof",
+        "speaker": "actor",
+        "text": "「不能只凭一条漂亮的曲线相信机器，也不能只凭患者看起来没事就忽略报警。」\n她换上校准探头，异常数值立刻回到正常范围。\n「要让独立来源互相证明。这样才算确定。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "introduce",
+            "label": "向她自我介绍",
+            "next": "identity",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "identity",
+        "speaker": "actor",
+        "text": "「伊吹摩耶。访问研究医，负责生理监测、医疗仪器和数据质量。」\n她扶了一下眼镜，像是担心这串职称听起来太夸张。\n「我不做常规门诊，也不是外科医生。手术室需要设备支持时，我会过去。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "value",
+            "label": "“临床判断也需要知道机器何时会撒谎。”",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "closing",
+        "speaker": "actor",
+        "text": "摩耶怔了一下，眼神先软下来，随后才认真点头。\n「……是。你看到患者，我看到机器怎么看患者。两边都确认，才不会被任何一边骗过去。」\n她把校准报告递给坂口。\n「以后请多关照，坂口医生。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "finish",
+            "label": "接受校准报告",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_visiting_maya",
+              "unlocked_visiting_maya_special_assistant"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

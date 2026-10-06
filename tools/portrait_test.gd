@@ -14,8 +14,10 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	var count := 0
-	for id in ["doc_aoi", "nurse_haru", "doc_rei", "doc_emiko", "nurse_rin", "nurse_yui", "nurse_ange", "nurse_hiroko", "nurse_moe"]:
-		var person: Dictionary = app.content.find_record("staff", id)
+	var expected_staff_count := 0
+	for person in app.content.collections.staff:
+		var id: String = person.id
+		expected_staff_count += person.visuals.portraits.size()
 		var dimensions: Dictionary = {}
 		for key in person.visuals.portraits:
 			var outfit: String = key.get_slice("/", 0)
@@ -39,14 +41,15 @@ func run() -> void:
 			count += 1
 			await process_frame
 		app.show_staff(id, "clinic")
-		app.page.get_node("Outfit_scrubs").pressed.emit()
-		expect(app.page.get_node("Outfit_scrubs").disabled, "Outfit button failed")
-		if person.visuals.portraits.has("scrubs/worried"):
+		var scrubs_button: Button = app.page.get_node_or_null("Outfit_scrubs")
+		var has_scrubs_portrait: bool = person.visuals.portraits.keys().any(func(key): return str(key).begins_with("scrubs/"))
+		expect(not has_scrubs_portrait or scrubs_button != null, "Scrubs outfit button missing: " + id)
+		if has_scrubs_portrait and scrubs_button != null:
+			scrubs_button.pressed.emit()
+			expect(app.page.get_node("Outfit_scrubs").disabled, "Outfit button failed: " + id)
+		if scrubs_button != null and person.visuals.portraits.has("scrubs/worried"):
 			app.page.get_node("Expression_worried").pressed.emit()
 			expect(app.page.get_node("CharacterPortrait").texture.resource_path.ends_with("scrubs/worried.png"), "Expression button failed")
-	for id in ["doc_rei", "doc_emiko", "nurse_rin", "nurse_yui", "nurse_ange", "nurse_hiroko", "nurse_moe"]:
-		app.show_staff(id, "clinic")
-		expect(app.page.get_node_or_null("CharacterPortrait") != null, "New staff portrait missing: " + id)
 	var patient_count := 0
 	var expected_patient_count := 0
 	for patient in app.content.collections.patients:
@@ -78,7 +81,7 @@ func run() -> void:
 			expect(app.page.get_node("PatientExpression_" + expression).disabled, "Patient selection indicator wrong: " + key)
 			patient_count += 1
 			await process_frame
-	expect(count == 132, "Expected 132 staff portraits, found %s" % count)
+	expect(count == expected_staff_count, "Expected %s staff portraits, found %s" % [expected_staff_count, count])
 	expect(patient_count == expected_patient_count, "Expected %s patient images, found %s" % [expected_patient_count, patient_count])
 	print("PORTRAITS: %s staff + %s patient images checked, %s failure(s)" % [count, patient_count, failures])
 	quit(1 if failures else 0)

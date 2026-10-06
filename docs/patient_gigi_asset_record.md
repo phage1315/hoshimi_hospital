@@ -9,5 +9,5 @@
 - 生成内容：门诊立绘、病房平静、微笑、强装镇定、担忧与哭泣状态；手术台采用与既有患者一致的俯视全身构图，并提供清醒、紧张、害怕、全麻四张独立表情差分；术中反应另用透明胸像差分；全身麻醉使用独立横向手术室 splash CG，包含麻醉面罩与呼吸管
 - 医疗美术约束：手术帽收纳侧发、后发和全部长发，在前额保留整齐的标志性刘海；手术台由不透明病员服与无菌单覆盖；无创口或血腥表现
 - 病房准备专属CG：`assets/events/ward_preparation_v1/patient_gigi/enema.png`，用于琪琪的必要及多余灌肠行动，以全屏方式显示
-- 门诊／病房全裸立绘：`assets/characters/patient_gigi_v1/patient_gigi/examination/shy.png`，用于门诊完整脱衣检查和病房亲手术前准备；两处共用 `examination/shy` 状态
+- 门诊／病房全裸立绘：`assets/characters/patient_gigi_v1/patient_gigi/examination/shy.png`，用于门诊完整脱衣检查和病房亲手术前准备；两处共用 `examination/shy` 状态。2026-09-27 已用用户提供的 1024×1536 RGBA 纵向透明图替换早期 458×688 版本，保持原始像素，不再需要运行时放大低分辨率素材
 - 来源/授权状态：用户提供的既有角色参考；用于私人本地原型

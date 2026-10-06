@@ -1,0 +1,105 @@
+{
+  "id": "advanced_referral_tutorial_chisato_sources_2026_10_01",
+  "imported_on": "2026-10-01",
+  "event_id": "advanced_referral_tutorial_chisato",
+  "sources": [
+    {
+      "role": "guest_chisato_reference",
+      "files": [
+        "research/character_references/guest_chisato/01_red_uniform_fullbody.png",
+        "research/character_references/guest_chisato/02_red_uniform_closeup.png",
+        "research/character_references/guest_chisato/03_kimono_scene.png"
+      ],
+      "usage": "Reference for character portraits and SFW event artwork."
+    },
+    {
+      "role": "doc_sakura_anesthesiology_reference",
+      "files": [
+        "research/character_references/doc_sakura_anesthesiology/01_lab_coat_fullbody.png",
+        "research/character_references/doc_sakura_anesthesiology/02_blue_outfit_closeup.png",
+        "research/character_references/doc_sakura_anesthesiology/03_lab_coat_closeup.png"
+      ],
+      "usage": "Reference for the new anesthesiologist Sakura; this actor is distinct from visiting_futaba."
+    },
+    {
+      "role": "tutorial_injection_cg",
+      "source": "research/character_references/advanced_referral_tutorial_chisato/07_injection_cg_source.png",
+      "runtime_asset": "assets/events/advanced_referral_tutorial_chisato/injection.png",
+      "usage": "User-supplied MVP event CG. Preserve unchanged; do not use as an image-generation reference."
+    }
+  ],
+  "generated_assets": [
+    {
+      "role": "guest_chisato_conference_portrait",
+      "runtime_asset": "assets/events/advanced_referral_tutorial_chisato/chisato_conference_v1.png",
+      "references": [
+        "research/character_references/guest_chisato/01_red_uniform_fullbody.png",
+        "research/character_references/guest_chisato/02_red_uniform_closeup.png",
+        "research/character_references/guest_chisato/03_kimono_scene.png"
+      ],
+      "tool": "built-in ImageGen",
+      "prompt_summary": "Adult AU Chisato in red uniform; transparent visual-novel conference portrait.",
+      "sha256": "cef2d70eb02aa91ad4f839eeeca7ef1333a618d9c27ef3154dd589ea0e18c46b"
+    },
+    {
+      "role": "guest_chisato_patient_gown_portrait",
+      "runtime_asset": "assets/events/advanced_referral_tutorial_chisato/chisato_patient_gown_v1.png",
+      "references": [
+        "research/character_references/guest_chisato/01_red_uniform_fullbody.png",
+        "research/character_references/guest_chisato/02_red_uniform_closeup.png",
+        "research/character_references/guest_chisato/03_kimono_scene.png"
+      ],
+      "tool": "built-in ImageGen",
+      "prompt_summary": "Adult AU Chisato in modest hospital gown; transparent preoperative portrait.",
+      "sha256": "d23ce0410303edd67d87f652d1a093496274520fd8f2b1bafb7d520b5307ba2d"
+    },
+    {
+      "role": "guest_chisato_induction_portrait",
+      "runtime_asset": "assets/events/advanced_referral_tutorial_chisato/chisato_induction_v1.png",
+      "references": [
+        "research/character_references/guest_chisato/01_red_uniform_fullbody.png",
+        "research/character_references/guest_chisato/02_red_uniform_closeup.png",
+        "research/character_references/guest_chisato/03_kimono_scene.png"
+      ],
+      "tool": "built-in ImageGen",
+      "prompt_summary": "Adult AU Chisato, reclined before general-anesthesia induction; transparent SFW portrait.",
+      "sha256": "f1a58f57d511ca9688d78eb79084b42a891b57d51aa8d69dc8f7b93e5010a0f5"
+    },
+    {
+      "role": "guest_chisato_postop_portrait",
+      "runtime_asset": "assets/events/advanced_referral_tutorial_chisato/chisato_postop_v1.png",
+      "references": [
+        "research/character_references/guest_chisato/01_red_uniform_fullbody.png",
+        "research/character_references/guest_chisato/02_red_uniform_closeup.png",
+        "research/character_references/guest_chisato/03_kimono_scene.png"
+      ],
+      "tool": "built-in ImageGen",
+      "prompt_summary": "Adult AU Chisato stable on postoperative ward round; transparent SFW portrait.",
+      "sha256": "eddc4568c625d6dfb19846347d66a881a576cf6164a161f7ddbb879b73c1aab2"
+    },
+    {
+      "role": "doc_sakura_white_coat_portrait",
+      "runtime_asset": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "references": [
+        "research/character_references/doc_sakura_anesthesiology/01_lab_coat_fullbody.png",
+        "research/character_references/doc_sakura_anesthesiology/02_blue_outfit_closeup.png",
+        "research/character_references/doc_sakura_anesthesiology/03_lab_coat_closeup.png"
+      ],
+      "tool": "built-in ImageGen",
+      "prompt_summary": "Sakura anesthesiologist in white coat; transparent authoritative visual-novel portrait.",
+      "sha256": "08431a8f8679880e1c6d5d8823db4611b2ca02424149fcd7ee8cf4ad15706035"
+    },
+    {
+      "role": "doc_sakura_grand_or_portrait",
+      "runtime_asset": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/scrubs/neutral_v2.png",
+      "references": [
+        "research/character_references/doc_sakura_anesthesiology/01_lab_coat_fullbody.png",
+        "research/character_references/doc_sakura_anesthesiology/02_blue_outfit_closeup.png",
+        "research/character_references/doc_sakura_anesthesiology/03_lab_coat_closeup.png"
+      ],
+      "tool": "built-in ImageGen",
+      "prompt_summary": "Sakura in plain navy scrubs, surgical cap, and tie-back mask; no outer garment, gloves, or jewelry.",
+      "sha256": "6770c8619822517cfad13d9e79a8df3b2f0834791378685acc7d310c52f9d926"
+    }
+  ]
+}

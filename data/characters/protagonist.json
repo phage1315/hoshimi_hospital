@@ -1,9 +1,27 @@
 {
   "id": "player",
-  "name": "本多繁邦",
-  "family_name": "本多",
-  "given_name": "繁邦",
-  "professional_name": "本多医生",
-  "name_origin_hook": "mishima_honda_shigekuni",
+  "name": "坂口隆司",
+  "family_name": "坂口",
+  "given_name": "隆司",
+  "professional_name": "坂口医生",
+  "career_background": {
+    "overseas_training_completed": true,
+    "distinguished_resume": true,
+    "arrival_reason": "mentor_recommendation",
+    "contract_months": 12,
+    "initial_intent": "temporary_return_base"
+  },
+  "office_flags": [
+    "office_has_mentor_letter"
+  ],
+  "office_items": [
+    {
+      "id": "mentor_recommendation_letter",
+      "label": "导师的推荐信",
+      "description": "一封导师写给星见医院的推荐信。当时你并不明白，他为什么偏偏推荐这里。",
+      "flag": "office_has_mentor_letter"
+    }
+  ],
+  "name_origin_hook": "sakaguchi_takashi_name",
   "name_origin_revealed_flag": "player_name_origin_recognized"
 }

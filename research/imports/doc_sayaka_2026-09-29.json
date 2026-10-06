@@ -1,0 +1,117 @@
+{
+  "id": "doc_sayaka_2026_09_29",
+  "date": "2026-09-29",
+  "character_id": "doc_sayaka",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_NANJOU_SAYAKA_CHARACTER_BIBLE_V1.md",
+    "bytes": 31634,
+    "sha256": "a912283ed545d0b8505006f330787aaa532ae2ed4bb8a411d5e3ade9835ff061"
+  },
+  "user_references": [
+    {
+      "path": "research/character_references/doc_sayaka/01_reference.png",
+      "bytes": 1456862,
+      "sha256": "abdfe04551e4e0289e7f1ffd4dcd2f2e51968470c325e2b751d144de09027315"
+    },
+    {
+      "path": "research/character_references/doc_sayaka/02_reference.png",
+      "bytes": 1446909,
+      "sha256": "404e5ba19fdc5dc40f423d9545e0c0953b3bfab21a436721d61697aab353fe64"
+    },
+    {
+      "path": "research/character_references/doc_sayaka/03_reference.png",
+      "bytes": 2266822,
+      "sha256": "38a290fd8adef24b3a0c7e45c0696c132d9106bebe738386de2c9fcc071f9a32"
+    },
+    {
+      "path": "research/character_references/doc_sayaka/04_reference.png",
+      "bytes": 2344082,
+      "sha256": "227a58e80bf010fc1685777c2aeab8f51907f27a9a2ad793560f38b17e658983"
+    },
+    {
+      "path": "research/character_references/doc_sayaka/05_reference.png",
+      "bytes": 2338536,
+      "sha256": "dce5831e27f4eb8f0cece1ec62af27a84506c86ca274de5c1f05046f8a9f1fd2"
+    },
+    {
+      "path": "research/character_references/doc_sayaka/06_reference.png",
+      "bytes": 1851688,
+      "sha256": "787ebc350c74fb391d82ac52028a310deb0e0819aed30641c859198a841e643d"
+    }
+  ],
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "use_case": "stylized-concept",
+    "direction": "Adult visual-novel doctor preserving crimson hair, magenta eyes, petite mature proportions, self-aware playful confidence and clear professional boundaries.",
+    "runtime_spec": "1024x1536 transparent half-body portraits for white coat, casual, scrubs and sterile outfits.",
+    "prompts_summary": [
+      "Open white coat over fitted black blouse and dark high-waisted skirt; neutral and knowing-smile variants.",
+      "Light-blue clinical scrubs with relaxed professional posture.",
+      "Blue sterile gown, bouffant cap, mask and gloves; focused and warm-eye variants.",
+      "Adult smart-casual black knit top and burgundy skirt for Sunday outings."
+    ]
+  },
+  "runtime_portraits": [
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/neutral.png",
+      "bytes": 1828760,
+      "sha256": "5a5311035d21fd259de8a471fba7f0abc65f875c81ebbf7b15da9e9120fde1f7"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/smile.png",
+      "bytes": 1851670,
+      "sha256": "e3031d50e5830159f7a52ceae278857882f08bbe3e87e88eaaeb0cc813b9a517"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/casual/neutral.png",
+      "bytes": 1778618,
+      "sha256": "d8f2592992840fa919ebc66f0ca8aad8894fa6d4c2b9e3a1afa44bb056a59b6c"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/scrubs/neutral.png",
+      "bytes": 1846367,
+      "sha256": "9f56728a94f7d44061e7415009b4f3f1a655d1c3fcd423951408a344f0fdc391"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/sterile/focused.png",
+      "bytes": 2058453,
+      "sha256": "b8720a84abbefc6e37dd4928b086ef62a5c4a5f1c8231d5f88fcb1c4d28f892c"
+    },
+    {
+      "path": "assets/characters/portrait_pack_v19/doc_sayaka/sterile/warm.png",
+      "bytes": 2018518,
+      "sha256": "c745a2eb56a2a92417277c49307805b19b036f80d6f20a14f8c7bcd5443f85d1"
+    }
+  ],
+  "implementation": {
+    "staff_id": "doc_sayaka",
+    "relationship_start": {
+      "trust": 10,
+      "affection": 4,
+      "respect": 8,
+      "familiarity": 0,
+      "met": false,
+      "level": 0
+    },
+    "current_scope": [
+      "staff profile",
+      "guaranteed Day 1 prologue acquaintance",
+      "assistant-surgeon eligibility",
+      "clinic/lounge/rooftop ambient conversations",
+      "Sunday date profile and casual portrait prepared; can_date remains false until at least one date-location background and baseline dialogue are ready",
+      "new OR acceptance training core participant",
+      "six half-body runtime portraits"
+    ],
+    "future_scope": [
+      "Lv1-Lv5 relationship events",
+      "dedicated hotel tutorial",
+      "staff-as-patient teaching event",
+      "public teaching surgery event",
+      "full adult route"
+    ]
+  },
+  "notes": [
+    "Character Bible is treated as design evidence; future events described there remain interfaces and flags until separately authored.",
+    "No tragic or dark backstory was added."
+  ]
+}

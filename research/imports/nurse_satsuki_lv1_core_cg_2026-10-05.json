@@ -1,0 +1,49 @@
+{
+  "id": "nurse_satsuki_lv1_core_cg_2026-10-05",
+  "date": "2026-10-05",
+  "character": "nurse_satsuki",
+  "adult": true,
+  "assets": [
+    {
+      "path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_test_chair_v1.png",
+      "sha256": "00d2814e4caf707e891fdb3869c555260b1a61501033f326aa1b6a8dcdcb4406",
+      "dimensions": "1672x941",
+      "format": "PNG RGB"
+    },
+    {
+      "path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_patient_pov_v1.png",
+      "sha256": "357f0bb4139dae434b13cdc4f3bf3a6121e8e3da2b9023a64195ac0c7febc9c7",
+      "dimensions": "1672x941",
+      "format": "PNG RGB"
+    },
+    {
+      "path": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_alone_with_sakaguchi_v1.png",
+      "sha256": "f6f58bf2db3979226cac7635dbd92eac1cf014fc6dbe866a0efd62f895b7e163",
+      "dimensions": "1672x941",
+      "format": "PNG RGB"
+    }
+  ],
+  "runtime_nodes": {
+    "s03_frame": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_test_chair_v1.png",
+    "s04_pov": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_patient_pov_v1.png",
+    "s09_alone": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_alone_with_sakaguchi_v1.png"
+  },
+  "creation": [
+    {
+      "asset": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_test_chair_v1.png",
+      "method": "OpenAI built-in ImageGen edit of the approved Lv1 examination-chair concept",
+      "prompt_summary": "Removed the distant protagonist figure and reconstructed the equipment area; preserved Satsuki, Aqua, secure medical drape, clinical composition, and made the camera Sakaguchi observation POV."
+    },
+    {
+      "asset": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_patient_pov_v1.png",
+      "method": "OpenAI built-in ImageGen edit of the approved Lv1 patient-POV concept",
+      "prompt_summary": "Removed the distant protagonist figure; preserved the reclined patient viewpoint, ceiling light, chair supports, secure drape, and Aqua at the edge of view."
+    },
+    {
+      "asset": "assets/events/character_events/satsuki/cg/cg_satsuki_lv1_alone_with_sakaguchi_v1.png",
+      "method": "OpenAI built-in ImageGen generation and correction using Satsuki identity and gynecology-room references",
+      "prompt_summary": "Quiet post-test closing CG with fully dressed Satsuki touching her glasses beside the chair, seen strictly from Sakaguchi first-person POV with no protagonist body or appearance cues."
+    }
+  ],
+  "protagonist_camera_rule": "No visible protagonist body, face, hair, clothing, reflection, shadow, height cue, or other appearance implication. Use first-person POV wherever possible."
+}

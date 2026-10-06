@@ -55,6 +55,11 @@ assets/characters/<patient_id>_v1/<patient_id>/
 │   ├── tense.png
 │   ├── afraid.png
 │   └── anesthetized.png
+├── operating_table_lithotomy/
+│   ├── awake.png
+│   ├── tense.png
+│   ├── afraid.png
+│   └── anesthetized.png
 ├── splash/
 │   └── general_anesthesia.png
 └── examination/
@@ -67,7 +72,7 @@ assets/characters/intraoperative_portraits_v1/<patient_id>/
 └── anesthetized.png
 ```
 
-标准患者需要 **17 个状态映射和17张独立图片**。不要用术中麻醉头像代替全麻 splash。
+标准患者当前需要 **21 个状态映射和21张图片**，包括四张普通仰卧手术台图与四张截石位手术台图。不要用术中麻醉头像代替全麻 splash。
 
 ## 三、美术素材矩阵
 
@@ -110,7 +115,7 @@ operating_table/afraid
 operating_table/anesthetized
 ```
 
-当前基准规格为1448×1086、不透明横图。生成时必须参考已有患者的 `operating_table/awake.png`，而不是自由构图。
+当前基准规格为1448×1086、不透明横图。这一组是展示完整体位与铺单的场景图，不是剧情对话立绘。生成时必须参考已有患者的 `operating_table/awake.png`，而不是自由构图。
 
 统一要求：
 
@@ -121,6 +126,8 @@ operating_table/anesthetized
 - 患者佩戴手术帽。侧发、后发和长发必须收入帽内；允许保留整齐、适量的标志性刘海，以维持自然感与辨识度。
 - 医护人员仍执行完全收发规则；患者刘海例外不能套用到医生和护士。
 - 四张差分只改变面部状态，不改变身体、铺单、器械、镜头和照明。
+
+剧情节点另需患者对话立绘时，遵循 `docs/patient_dialogue_portrait_framing.md`：病床／担架取头部至上胸，手术台可只保留头、颈和裸肩。完整手术台场景图与紧构图对话立绘不得互相替代。
 
 ### 4. 术中反应头像
 
@@ -147,7 +154,8 @@ intraoperative/anesthetized
 
 ### 5. 全身麻醉 splash CG
 
-- 键：`splash/general_anesthesia`
+- 必填全麻键：`splash/general_anesthesia`
+- 可选硬膜外键：`splash/epidural_anesthesia`；配置后会在选择硬膜外麻醉时显示患者专属 CG
 - 当前基准规格：1672×941、不透明横图。
 - 必须是独立的全场景CG，不能复用透明 `intraoperative/anesthetized` 头像，也不能只提交枕上半身切图。
 - 使用俯视或略带角度的手术台近景，包含枕头、手术室环境和设备边缘。
@@ -330,6 +338,8 @@ incision_marking_none
 - `responses`：放弃、权威说服、温柔说服与威胁四种回应；
 - `visual_pool_id`：可选的患者专属检查 CG 池；没有专属图时留空。
 
+共用模板在生命体征后同时提供“要求患者脱掉所有衣服”和“请患者稍微解开衣物”。后者直接完成常服遮挡下的有限基础查体，不进入患者专属完全脱衣回应，不显示 `examination/shy` 或脱衣 CG，也不取得针对性查体发现。
+
 疾病主诉、症状、检查、诊断和住院方案由随机 `case_templates` 在运行时写入生成后的门诊定义。
 
 ## 九、术前专属内容
@@ -386,6 +396,7 @@ godot --headless --path . --script res://tools/preop_test.gd -- /tmp/hoshimi-pre
 分别测试：
 
 - 全身麻醉：应显示独立 `splash/general_anesthesia`，包含面罩、呼吸管和手术室背景；之后患者不出现导尿、消毒和下刀三类清醒角色CG。
+- 硬膜外麻醉：若患者配置了 `splash/epidural_anesthesia`，选择后应先显示该 CG，关闭后进入体位摆放；未配置时直接进入体位摆放。
 - 硬膜外麻醉：患者保持清醒，术中能出现 `tense` 和对应术式反应。
 - 局部麻醉：确认牵拉、刺痛及询问台词正常。
 - 无麻醉：确认 `pain` 在前中段出现，最后两个手术步骤切换为明显不同的 `near_collapse`。

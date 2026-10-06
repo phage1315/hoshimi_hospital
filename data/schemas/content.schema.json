@@ -25,6 +25,73 @@
           "type": "string",
           "minLength": 1
         },
+        "career_background": {
+          "type": "object",
+          "properties": {
+            "overseas_training_completed": {
+              "type": "boolean"
+            },
+            "distinguished_resume": {
+              "type": "boolean"
+            },
+            "arrival_reason": {
+              "const": "mentor_recommendation"
+            },
+            "contract_months": {
+              "const": 12
+            },
+            "initial_intent": {
+              "const": "temporary_return_base"
+            }
+          },
+          "required": [
+            "overseas_training_completed",
+            "distinguished_resume",
+            "arrival_reason",
+            "contract_months",
+            "initial_intent"
+          ],
+          "additionalProperties": false
+        },
+        "office_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "office_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "flag": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "description",
+              "flag"
+            ],
+            "additionalProperties": false
+          }
+        },
         "name_origin_hook": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -40,6 +107,9 @@
         "family_name",
         "given_name",
         "professional_name",
+        "career_background",
+        "office_flags",
+        "office_items",
         "name_origin_hook",
         "name_origin_revealed_flag"
       ],
@@ -59,6 +129,10 @@
         "path": {
           "type": "string",
           "pattern": "^assets/backgrounds/.+\\.png$"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "required": [
@@ -78,6 +152,15 @@
         "location_id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "trigger_mode": {
+          "description": "How an eligible character event starts: once at the beginning of a workday, immediately on entering its location, at a preoperative stage, or through the Sunday schedule.",
+          "enum": [
+            "day_start",
+            "location",
+            "preop_stage",
+            "sunday"
+          ]
         },
         "label": {
           "type": "string",
@@ -105,6 +188,27 @@
         },
         "repeatable": {
           "type": "boolean"
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "reputation": {
+              "type": "integer",
+              "minimum": -10,
+              "maximum": 10
+            },
+            "charm": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "presence": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
         }
       },
       "required": [
@@ -136,17 +240,7 @@
         "effects": {
           "type": "object",
           "properties": {
-            "trust": {
-              "type": "integer",
-              "minimum": -20,
-              "maximum": 20
-            },
             "affection": {
-              "type": "integer",
-              "minimum": -20,
-              "maximum": 20
-            },
-            "respect": {
               "type": "integer",
               "minimum": -20,
               "maximum": 20
@@ -155,12 +249,20 @@
               "type": "integer",
               "minimum": -20,
               "maximum": 20
+            },
+            "charm": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "presence": {
+              "type": "integer",
+              "minimum": -2,
+              "maximum": 2
             }
           },
           "required": [
-            "trust",
             "affection",
-            "respect",
             "familiarity"
           ],
           "additionalProperties": false
@@ -173,11 +275,66 @@
           },
           "uniqueItems": true
         },
+        "clear_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
         "route": {
           "enum": [
             "colleague",
             "romance"
           ]
+        },
+        "related_effects": {
+          "description": "Optional relationship changes for supporting characters participating in the same event choice.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "actor_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "effects": {
+                "type": "object",
+                "properties": {
+                  "affection": {
+                    "type": "integer",
+                    "minimum": -20,
+                    "maximum": 20
+                  },
+                  "familiarity": {
+                    "type": "integer",
+                    "minimum": -20,
+                    "maximum": 20
+                  }
+                },
+                "required": [
+                  "affection",
+                  "familiarity"
+                ],
+                "additionalProperties": false
+              },
+              "flags": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "actor_id",
+              "effects",
+              "flags"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [
@@ -202,6 +359,11 @@
             "player",
             "narrator"
           ]
+        },
+        "speaker_label": {
+          "description": "Optional display name for a supporting speaker while the event remains owned by its primary actor.",
+          "type": "string",
+          "minLength": 1
         },
         "text": {
           "type": "string",
@@ -245,6 +407,10 @@
         },
         "hide_portrait": {
           "description": "Suppress character art for narration that occurs before the actor becomes visible.",
+          "type": "boolean"
+        },
+        "allow_dialogue_scroll": {
+          "description": "Exceptional opt-in for intentionally scrollable transcripts or system summaries. Ordinary VN dialogue must fit one dialogue page.",
           "type": "boolean"
         },
         "choices": {
@@ -363,17 +529,7 @@
               "type": "integer",
               "minimum": 1
             },
-            "min_trust": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 100
-            },
             "min_affection": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 100
-            },
-            "min_respect": {
               "type": "integer",
               "minimum": 0,
               "maximum": 100
@@ -400,40 +556,191 @@
               "description": "Implemented character-event gates. Unknown requirement types remain locked.",
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "const": "player_attribute"
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "player_attribute"
+                      },
+                      "attribute": {
+                        "enum": [
+                          "skill",
+                          "leadership",
+                          "charm",
+                          "reputation",
+                          "presence"
+                        ]
+                      },
+                      "minimum": {
+                        "type": "integer",
+                        "minimum": -999,
+                        "maximum": 999
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "attribute",
+                      "minimum"
+                    ],
+                    "additionalProperties": false
                   },
-                  "attribute": {
-                    "enum": [
-                      "skill",
-                      "ethics",
-                      "charisma",
-                      "intimidation",
-                      "reputation"
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "career_progress_any"
+                      },
+                      "minimum_completed_surgeries": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minimum_reputation": {
+                        "type": "integer",
+                        "minimum": -100,
+                        "maximum": 100
+                      },
+                      "minimum_day": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 365
+                      }
+                    },
+                    "required": [
+                      "type"
+                    ],
+                    "additionalProperties": false,
+                    "anyOf": [
+                      {
+                        "required": [
+                          "minimum_completed_surgeries"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "minimum_reputation"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "minimum_day"
+                        ]
+                      }
                     ]
                   },
-                  "minimum": {
-                    "type": "integer",
-                    "minimum": -100,
-                    "maximum": 100
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "completed_surgeries"
+                      },
+                      "minimum": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "minimum"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "relationship_level"
+                      },
+                      "level": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 5
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "level"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "completed_surgeries_in_group"
+                      },
+                      "procedure_group": {
+                        "enum": [
+                          "general_abdominal",
+                          "breast",
+                          "female_pelvic",
+                          "cardiac",
+                          "thoracic",
+                          "urologic",
+                          "vascular"
+                        ]
+                      },
+                      "minimum": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "procedure_group",
+                      "minimum"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "story_flag"
+                      },
+                      "flag": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9_]*$"
+                      },
+                      "value": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "flag",
+                      "value"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "const": "special_event_completed"
+                      },
+                      "event_id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9_]*$"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "event_id"
+                    ],
+                    "additionalProperties": false
                   }
-                },
-                "required": [
-                  "type",
-                  "attribute",
-                  "minimum"
-                ],
-                "additionalProperties": false
+                ]
               }
+            },
+            "max_day": {
+              "type": "integer",
+              "minimum": 1
             }
           },
           "required": [
             "min_day",
-            "min_trust",
             "min_affection",
-            "min_respect",
             "min_familiarity",
             "required_events",
             "special_requirements"
@@ -454,6 +761,10 @@
         "auto_start": {
           "type": "boolean"
         },
+        "chain_followup": {
+          "description": "Marks a rank-granting epilogue inside an already-started relationship chain. Its required-event delay is exact and does not inherit the inter-milestone cooldown.",
+          "type": "boolean"
+        },
         "allow_unmet_actor": {
           "type": "boolean"
         },
@@ -465,6 +776,15 @@
           "description": "When present, this event auto-starts on entering the named preoperative stage and is excluded from ordinary location entry triggers.",
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "preop_required_flags": {
+          "description": "Optional preoperative flags that must already be present before a stage-triggered event can start.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
         },
         "target_level": {
           "type": "integer",
@@ -501,6 +821,40 @@
         },
         "locks_saving": {
           "type": "boolean"
+        },
+        "mandatory": {
+          "description": "Auto-start this short event from the map when its conditions are met.",
+          "type": "boolean"
+        },
+        "consumes_sunday": {
+          "description": "Completing this event uses the current Sunday activity slot.",
+          "type": "boolean"
+        },
+        "date_location_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "rank_up_required_flags": {
+          "description": "All listed relationship flags must exist before a bond/rank event grants its level.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "retry_if_flags": {
+          "description": "A completed event remains available when all listed relationship flags exist.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "location_label": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "required": [
@@ -509,6 +863,7 @@
         "title",
         "chapter",
         "location_id",
+        "trigger_mode",
         "background_id",
         "outfit",
         "minutes",
@@ -555,7 +910,7 @@
           "pattern": "^[a-z][a-z0-9_]*$"
         },
         "identity_revealed_by_default": {
-          "const": false
+          "type": "boolean"
         },
         "visuals": {
           "type": "object",
@@ -579,6 +934,393 @@
         "identity_revealed_by_default",
         "visuals",
         "notes"
+      ],
+      "additionalProperties": false
+    },
+    "adult_intimacy_reaction": {
+      "type": "object",
+      "properties": {
+        "line": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expression": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "sfx": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "line",
+        "expression"
+      ],
+      "additionalProperties": false
+    },
+    "adult_intimacy_cg": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^assets/.+\\.png$"
+        },
+        "location": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "outfit": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        }
+      },
+      "required": [
+        "id",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "adult_intimacy_profile": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "const": true
+        },
+        "initiative": {
+          "enum": [
+            "proactive",
+            "responsive",
+            "switch"
+          ]
+        },
+        "initiative_overrides": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "enum": [
+              "proactive",
+              "responsive",
+              "switch"
+            ]
+          }
+        },
+        "fallback_h_cg": {
+          "$ref": "#/$defs/adult_intimacy_cg"
+        },
+        "base_locations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "base_outfits": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "outfit_portraits": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^assets/.+\\.png$"
+          }
+        },
+        "opening_lines": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "foreplay_preferences": {
+          "type": "object",
+          "properties": {
+            "touch": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "kiss": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "lick": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            }
+          },
+          "required": [
+            "touch",
+            "kiss",
+            "lick"
+          ],
+          "additionalProperties": false
+        },
+        "target_preferences": {
+          "type": "object",
+          "properties": {
+            "face": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "neck": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "chest": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "waist": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "thigh": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            },
+            "intimate": {
+              "enum": [
+                "weak",
+                "normal",
+                "preferred",
+                "strong_preference"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "action_reactions": {
+          "type": "object",
+          "properties": {
+            "touch": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "kiss": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "lick": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            }
+          },
+          "required": [
+            "touch",
+            "kiss",
+            "lick"
+          ],
+          "additionalProperties": false
+        },
+        "target_reactions": {
+          "type": "object",
+          "properties": {
+            "face": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "neck": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "chest": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "waist": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "thigh": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            },
+            "intimate": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/adult_intimacy_reaction"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "initiative_event": {
+          "type": "object",
+          "properties": {
+            "threshold": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 99
+            },
+            "line": {
+              "type": "string",
+              "minLength": 1
+            },
+            "follow_label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lead_label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "follow_response": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lead_response": {
+              "type": "string",
+              "minLength": 1
+            },
+            "expression": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "required": [
+            "threshold",
+            "line",
+            "follow_label",
+            "lead_label",
+            "follow_response",
+            "lead_response",
+            "expression"
+          ],
+          "additionalProperties": false
+        },
+        "position_lines": {
+          "type": "object",
+          "properties": {
+            "top": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bottom": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rear": {
+              "type": "string",
+              "minLength": 1
+            },
+            "69": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "top",
+            "bottom",
+            "rear",
+            "69"
+          ],
+          "additionalProperties": false
+        },
+        "after_lines": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "special_cgs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/adult_intimacy_cg"
+          }
+        }
+      },
+      "required": [
+        "enabled",
+        "initiative",
+        "fallback_h_cg",
+        "base_locations",
+        "base_outfits",
+        "outfit_portraits",
+        "opening_lines",
+        "foreplay_preferences",
+        "action_reactions",
+        "initiative_event",
+        "position_lines",
+        "after_lines"
       ],
       "additionalProperties": false
     },
@@ -619,6 +1361,10 @@
         "appearance": {
           "type": "string",
           "minLength": 1
+        },
+        "familiarity_gain_multiplier": {
+          "type": "number",
+          "minimum": 0
         },
         "skills": {
           "type": "object",
@@ -698,6 +1444,42 @@
               "additionalProperties": {
                 "type": "string"
               }
+            },
+            "intraoperative_avatar": {
+              "description": "Machine-readable production checklist for the compact staff head-and-shoulders avatar used beneath the operative-field HUD.",
+              "type": "object",
+              "properties": {
+                "status": {
+                  "enum": [
+                    "needed",
+                    "ready"
+                  ]
+                },
+                "portrait_key": {
+                  "const": "intraoperative_avatar/neutral"
+                },
+                "target_path": {
+                  "type": "string",
+                  "pattern": "^assets/characters/intraoperative_staff_avatars_v1/[a-z0-9_]+/neutral\\.png$"
+                },
+                "required_for": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "operative_field_hud"
+                    ]
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "status",
+                "portrait_key",
+                "target_path",
+                "required_for"
+              ],
+              "additionalProperties": false
             }
           },
           "required": [
@@ -869,6 +1651,137 @@
             "intraoperative"
           ],
           "additionalProperties": false
+        },
+        "procedure_group_team_dialogue": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "general_abdominal",
+              "breast",
+              "female_pelvic",
+              "cardiac",
+              "thoracic",
+              "urologic",
+              "vascular",
+              "default"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "assignment": {
+                "type": "string"
+              },
+              "intraoperative": {
+                "type": "string"
+              },
+              "intraoperative_correction": {
+                "type": "string"
+              },
+              "confirmation": {
+                "type": "string"
+              },
+              "role_confirmation": {
+                "type": "string"
+              },
+              "stabilize": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "assignment",
+              "intraoperative"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "familiarity_affinities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "attribute": {
+                "enum": [
+                  "skill",
+                  "leadership",
+                  "charm",
+                  "reputation",
+                  "presence"
+                ]
+              },
+              "minimum": {
+                "type": "integer"
+              },
+              "maximum": {
+                "type": "integer"
+              },
+              "multiplier": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "attribute",
+              "multiplier"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "h_profile": {
+          "$ref": "#/$defs/adult_intimacy_profile"
+        },
+        "personal_nurse": {
+          "type": "object",
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "dialogue": {
+              "type": "object",
+              "properties": {
+                "next_test_hint": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "insufficient_evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "sufficient_evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "chatter": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "required": [
+                "next_test_hint",
+                "insufficient_evidence",
+                "sufficient_evidence",
+                "chatter"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eligible",
+            "dialogue"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -936,6 +1849,16 @@
         "age": {
           "type": "integer",
           "minimum": 0
+        },
+        "medical_background": {
+          "type": "boolean"
+        },
+        "has_prior_surgery": {
+          "type": "boolean"
+        },
+        "first_surgery_diagnosis_shock_override_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
         },
         "case_id": {
           "type": "string",
@@ -1361,17 +2284,7 @@
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
         },
-        "trust": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 100
-        },
         "affection": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 100
-        },
-        "respect": {
           "type": "integer",
           "minimum": 0,
           "maximum": 100
@@ -1461,9 +2374,7 @@
       "required": [
         "source_id",
         "target_id",
-        "trust",
         "affection",
-        "respect",
         "familiarity",
         "flags",
         "event_history",
@@ -1679,6 +2590,16 @@
           "type": "string",
           "minLength": 1
         },
+        "difficulty_modifier": {
+          "type": "integer",
+          "minimum": -30,
+          "maximum": 30
+        },
+        "case_weight": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
         "rare_variants": {
           "type": "array",
           "items": {
@@ -1761,11 +2682,10 @@
                         "dignity": {
                           "type": "integer"
                         },
-                        "ethics": {
-                          "type": "integer"
-                        },
-                        "intimidation": {
-                          "type": "integer"
+                        "presence": {
+                          "type": "integer",
+                          "minimum": -2,
+                          "maximum": 2
                         }
                       },
                       "additionalProperties": false
@@ -1823,6 +2743,24 @@
             "draft",
             "ready"
           ]
+        },
+        "frequency_tier": {
+          "enum": [
+            "common",
+            "standard",
+            "uncommon",
+            "rare",
+            "very_rare"
+          ]
+        },
+        "recent_repeat_multipliers": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "maxItems": 5
         }
       },
       "required": [
@@ -1837,6 +2775,8 @@
         "diagnosis",
         "differential_diagnoses",
         "intake_notes",
+        "difficulty_modifier",
+        "case_weight",
         "status"
       ],
       "additionalProperties": false
@@ -1953,11 +2893,6 @@
           "type": "integer",
           "minimum": 540,
           "maximum": 1020
-        },
-        "min_trust": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 100
         },
         "min_familiarity": {
           "type": "integer",
@@ -2128,17 +3063,7 @@
               "effects": {
                 "type": "object",
                 "properties": {
-                  "trust": {
-                    "type": "integer",
-                    "minimum": -3,
-                    "maximum": 3
-                  },
                   "affection": {
-                    "type": "integer",
-                    "minimum": -3,
-                    "maximum": 3
-                  },
-                  "respect": {
                     "type": "integer",
                     "minimum": -3,
                     "maximum": 3
@@ -2173,7 +3098,6 @@
         "location_id",
         "time_start",
         "time_end",
-        "min_trust",
         "min_familiarity",
         "cooldown_days",
         "weight",
@@ -2307,6 +3231,42 @@
         },
         "correction": {
           "type": "string"
+        },
+        "strategic_effects": {
+          "$ref": "#/$defs/surgery_strategic_effects"
+        },
+        "conditional_effects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "when": {
+                "$ref": "#/$defs/surgery_strategic_condition"
+              },
+              "effects": {
+                "$ref": "#/$defs/surgery_strategic_effects"
+              },
+              "response": {
+                "type": "string",
+                "minLength": 1
+              },
+              "response_role": {
+                "enum": [
+                  "assistant_surgeon",
+                  "scrub_nurse",
+                  "circulating_nurse"
+                ]
+              }
+            },
+            "required": [
+              "when",
+              "effects",
+              "response",
+              "response_role"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [
@@ -2316,6 +3276,61 @@
         "response_role",
         "correct",
         "correction"
+      ],
+      "additionalProperties": false
+    },
+    "surgery_strategic_effects": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "progress": {
+          "type": "integer"
+        },
+        "elapsed_time": {
+          "type": "integer"
+        },
+        "visibility": {
+          "type": "integer"
+        },
+        "blood_loss": {
+          "type": "integer"
+        },
+        "stability": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "surgery_strategic_condition": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "enum": [
+            "progress",
+            "elapsed_time",
+            "visibility",
+            "blood_loss",
+            "stability"
+          ]
+        },
+        "operator": {
+          "enum": [
+            "<",
+            "<=",
+            ">",
+            ">=",
+            "==",
+            "!="
+          ]
+        },
+        "value": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "metric",
+        "operator",
+        "value"
       ],
       "additionalProperties": false
     },
@@ -2355,7 +3370,7 @@
         "options": {
           "type": "array",
           "minItems": 1,
-          "maxItems": 3,
+          "maxItems": 4,
           "items": {
             "$ref": "#/$defs/surgery_flow_option"
           }
@@ -2390,6 +3405,58 @@
       ],
       "additionalProperties": false
     },
+    "first_surgery_diagnosis_reaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "event_type": {
+          "const": "first_surgery_diagnosis_shock"
+        },
+        "site_group": {
+          "enum": [
+            "breast",
+            "abdominal",
+            "gynecology_pelvic",
+            "thoracic_cardiac",
+            "generic"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "weight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "event_type",
+        "site_group",
+        "tags",
+        "weight",
+        "lines"
+      ],
+      "additionalProperties": false
+    },
     "surgery": {
       "type": "object",
       "properties": {
@@ -2409,8 +3476,27 @@
         "status": {
           "enum": [
             "draft",
-            "ready"
+            "ready",
+            "placeholder"
           ]
+        },
+        "base_difficulty": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "recommended_surgery": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "training_ceiling": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "unlocked_at_start": {
+          "type": "boolean"
         },
         "required_roles": {
           "type": "array",
@@ -2453,7 +3539,7 @@
         },
         "stages": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 0,
           "items": {
             "$ref": "#/$defs/surgery_flow_stage"
           }
@@ -2518,19 +3604,132 @@
             "cardiac",
             "vascular"
           ]
+        },
+        "diagnosis_reaction_site_group": {
+          "enum": [
+            "breast",
+            "abdominal",
+            "gynecology_pelvic",
+            "thoracic_cardiac",
+            "generic"
+          ]
+        },
+        "positioning": {
+          "type": "object",
+          "properties": {
+            "primary_position": {
+              "enum": [
+                "supine",
+                "lithotomy"
+              ]
+            },
+            "presentation_group": {
+              "enum": [
+                "standard_torso",
+                "lithotomy"
+              ]
+            },
+            "variant": {
+              "enum": [
+                "standard_supine",
+                "supine_arm_abducted",
+                "supine_arms_tucked",
+                "low_dorsal_lithotomy",
+                "modified_lithotomy"
+              ]
+            },
+            "access_tags": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "anterior_torso",
+                  "abdominal",
+                  "pelvic",
+                  "breast",
+                  "thoracic",
+                  "flank",
+                  "perineal",
+                  "perineal_optional",
+                  "vaginal_assistance",
+                  "uterine_manipulator",
+                  "median_sternotomy"
+                ]
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "primary_position",
+            "presentation_group",
+            "variant",
+            "access_tags"
+          ],
+          "additionalProperties": false
+        },
+        "catalog_visibility": {
+          "enum": [
+            "standard",
+            "advanced_referral",
+            "master_hidden"
+          ]
+        },
+        "unlock_source": {
+          "enum": [
+            "patient_exposure",
+            "expert_teaching",
+            "special_event"
+          ]
+        },
+        "case_pool": {
+          "enum": [
+            "normal",
+            "advanced_referral",
+            "legendary"
+          ]
+        },
+        "palpation_profile": {
+          "type": "string",
+          "enum": [
+            "generic",
+            "abdominal",
+            "breast",
+            "gynecology_pelvic",
+            "thoracic_cardiac"
+          ]
+        },
+        "anesthesia_target_regions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "chest",
+              "abdomen",
+              "breast",
+              "genital"
+            ]
+          }
         }
       },
       "required": [
         "id",
         "name",
         "procedure_group",
+        "diagnosis_reaction_site_group",
+        "positioning",
         "duration_minutes",
         "status",
+        "base_difficulty",
+        "recommended_surgery",
+        "training_ceiling",
+        "unlocked_at_start",
         "required_roles",
         "initial_state",
         "stages",
         "success_condition",
-        "failure_condition"
+        "failure_condition",
+        "palpation_profile",
+        "anesthesia_target_regions"
       ],
       "additionalProperties": false
     },
@@ -2800,22 +3999,12 @@
         "player_effects": {
           "type": "object",
           "properties": {
-            "skill": {
+            "charm": {
               "type": "integer",
               "minimum": -100,
               "maximum": 100
             },
-            "ethics": {
-              "type": "integer",
-              "minimum": -100,
-              "maximum": 100
-            },
-            "charisma": {
-              "type": "integer",
-              "minimum": -100,
-              "maximum": 100
-            },
-            "intimidation": {
+            "presence": {
               "type": "integer",
               "minimum": -100,
               "maximum": 100
@@ -2827,6 +4016,11 @@
             }
           },
           "additionalProperties": false
+        },
+        "presence_delta": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 100
         }
       },
       "required": [
@@ -3135,22 +4329,12 @@
         "player_effects": {
           "type": "object",
           "properties": {
-            "skill": {
+            "charm": {
               "type": "integer",
               "minimum": -100,
               "maximum": 100
             },
-            "ethics": {
-              "type": "integer",
-              "minimum": -100,
-              "maximum": 100
-            },
-            "charisma": {
-              "type": "integer",
-              "minimum": -100,
-              "maximum": 100
-            },
-            "intimidation": {
+            "presence": {
               "type": "integer",
               "minimum": -100,
               "maximum": 100
@@ -3165,6 +4349,11 @@
         },
         "reset_procedure": {
           "type": "boolean"
+        },
+        "presence_delta": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 100
         }
       },
       "required": [
@@ -3495,6 +4684,21 @@
           },
           "uniqueItems": true
         },
+        "procedure_groups": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "general_abdominal",
+              "female_pelvic",
+              "breast",
+              "urologic",
+              "thoracic",
+              "cardiac",
+              "vascular"
+            ]
+          },
+          "uniqueItems": true
+        },
         "paths": {
           "type": "array",
           "minItems": 1,
@@ -3518,6 +4722,48 @@
         "patient_ids",
         "paths",
         "caption"
+      ],
+      "additionalProperties": false
+    },
+    "staff_role_cg_reward": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "staff_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "role_id": {
+          "enum": [
+            "assistant_surgeon",
+            "scrub_nurse",
+            "circulating_nurse",
+            "ward_nurse"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^assets/events/staff_surgery_v1/.+\\.png$"
+        }
+      },
+      "required": [
+        "id",
+        "staff_id",
+        "role_id",
+        "title",
+        "caption",
+        "path"
       ],
       "additionalProperties": false
     },
@@ -3692,6 +4938,11 @@
               "additionalProperties": false
             }
           ]
+        },
+        "presence_delta": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 100
         }
       },
       "required": [
@@ -3779,6 +5030,22 @@
         "once_per_surgery": {
           "type": "boolean"
         },
+        "required_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "excluded_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
         "prompt": {
           "type": "string",
           "minLength": 1
@@ -3808,6 +5075,1411 @@
         "actions"
       ],
       "additionalProperties": false
+    },
+    "temporary_condition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_cue": {
+          "enum": [
+            "nausea",
+            "drowsiness"
+          ]
+        },
+        "initial_severity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "remaining_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "prompts": {
+          "type": "object",
+          "properties": {
+            "1": {
+              "type": "string",
+              "minLength": 1
+            },
+            "2": {
+              "type": "string",
+              "minLength": 1
+            },
+            "3": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "1",
+            "2",
+            "3"
+          ],
+          "additionalProperties": false
+        },
+        "actions": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/patient_interaction_action"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "trigger_cue",
+        "initial_severity",
+        "remaining_steps",
+        "priority",
+        "prompts",
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "special_event_requirement": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "player_attribute"
+            },
+            "attribute": {
+              "enum": [
+                "skill",
+                "leadership",
+                "charm",
+                "reputation",
+                "presence"
+              ]
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": -999,
+              "maximum": 999
+            },
+            "maximum": {
+              "type": "integer",
+              "minimum": -999,
+              "maximum": 999
+            }
+          },
+          "required": [
+            "type",
+            "attribute",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "career_progress_any"
+            },
+            "minimum_completed_surgeries": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimum_reputation": {
+              "type": "integer",
+              "minimum": -100,
+              "maximum": 100
+            },
+            "minimum_day": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 365
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "minimum_completed_surgeries"
+              ]
+            },
+            {
+              "required": [
+                "minimum_reputation"
+              ]
+            },
+            {
+              "required": [
+                "minimum_day"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "completed_surgeries"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "type",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "completed_surgeries_in_group"
+            },
+            "procedure_group": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "type",
+            "procedure_group",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "relationship_level"
+            },
+            "actor_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "maximum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "type",
+            "actor_id",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "staff_unlocked"
+            },
+            "actor_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "required": [
+            "type",
+            "actor_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "relationship_familiarity"
+            },
+            "actor_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "maximum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "type",
+            "actor_id",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "flag"
+            },
+            "flag": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "flag",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "character_event_completed"
+            },
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "required": [
+            "type",
+            "event_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "days_after_character_event"
+            },
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "days": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 365
+            }
+          },
+          "required": [
+            "type",
+            "event_id",
+            "days"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "days_after_special_event"
+            },
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "days": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 365
+            }
+          },
+          "required": [
+            "type",
+            "event_id",
+            "days"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "special_event_completed"
+            },
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "required": [
+            "type",
+            "event_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "day_number"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maximum": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "month_number"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maximum": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "calendar_date"
+            },
+            "date": {
+              "type": "string",
+              "pattern": "^202(5|6)-[0-9]{2}-[0-9]{2}$"
+            }
+          },
+          "required": [
+            "type",
+            "date"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "calendar_range"
+            },
+            "start_date": {
+              "type": "string",
+              "pattern": "^202(5|6)-[0-9]{2}-[0-9]{2}$"
+            },
+            "end_date": {
+              "type": "string",
+              "pattern": "^202(5|6)-[0-9]{2}-[0-9]{2}$"
+            }
+          },
+          "required": [
+            "type",
+            "start_date",
+            "end_date"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "weekday"
+            },
+            "days": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "mon",
+                  "tue",
+                  "wed",
+                  "thu",
+                  "fri",
+                  "sat",
+                  "sun"
+                ]
+              }
+            }
+          },
+          "required": [
+            "type",
+            "days"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "day_type"
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "weekday",
+                  "saturday",
+                  "sunday",
+                  "public_holiday",
+                  "hospital_holiday"
+                ]
+              }
+            }
+          },
+          "required": [
+            "type",
+            "values"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "special_event_choice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            {
+              "const": "@day_end"
+            }
+          ]
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/special_event_requirement"
+          }
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "tutorial_style": {
+              "enum": [
+                "cautious",
+                "steady",
+                "team_oriented"
+              ]
+            },
+            "tutorial_tone": {
+              "enum": [
+                "confident",
+                "wary",
+                "team_oriented"
+              ]
+            },
+            "story_flags": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            },
+            "meet_characters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            },
+            "set_local": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "next",
+        "requirements"
+      ],
+      "additionalProperties": false
+    },
+    "special_event_node": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "speaker": {
+          "enum": [
+            "actor",
+            "player",
+            "narrator"
+          ]
+        },
+        "speaker_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expression": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outfit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "background_id": {
+          "description": "Optional per-node background override for a single-day event that moves between locations.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "cg_path": {
+          "type": "string",
+          "pattern": "^assets/events/.+\\.png$"
+        },
+        "cg_fit": {
+          "enum": [
+            "cover",
+            "contain"
+          ]
+        },
+        "cg_dialogue_delay_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "portrait_path": {
+          "type": "string",
+          "pattern": "^assets/events/.+\\.png$"
+        },
+        "portrait_scale": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2.0
+        },
+        "portrait_right": {
+          "type": "number",
+          "minimum": 700,
+          "maximum": 1280
+        },
+        "portrait_y": {
+          "type": "number",
+          "minimum": -200,
+          "maximum": 400
+        },
+        "hide_portrait": {
+          "type": "boolean"
+        },
+        "allow_dialogue_scroll": {
+          "description": "Exceptional opt-in for intentionally scrollable transcripts or system summaries. Ordinary VN dialogue must fit one dialogue page.",
+          "type": "boolean"
+        },
+        "presentation": {
+          "enum": [
+            "narrative",
+            "advanced_referral_summary",
+            "advanced_surgery"
+          ]
+        },
+        "procedure_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "stage_number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99
+        },
+        "requirements": {
+          "description": "When unmet in normal play, the node is skipped to fallback_next. Gallery replay retains the complete authored branch.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/special_event_requirement"
+          }
+        },
+        "fallback_next": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/special_event_choice"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "speaker",
+        "text",
+        "expression",
+        "choices"
+      ],
+      "additionalProperties": false
+    },
+    "special_event_step": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "background_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "start": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/special_event_node"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "background_id",
+        "start",
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    "date_profile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "staff_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "can_date": {
+          "type": "boolean"
+        },
+        "minimum_level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "casual_outfit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preferred_locations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "disliked_locations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "hotel_unlock_level": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 5
+        },
+        "required_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "always_accept": {
+          "type": "boolean"
+        },
+        "acceptance_chance_by_level": {
+          "description": "Optional deterministic Sunday invitation acceptance percentage overrides keyed by relationship level.",
+          "type": "object",
+          "patternProperties": {
+            "^[0-5]$": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        "first_date_event_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        }
+      },
+      "required": [
+        "id",
+        "staff_id",
+        "can_date",
+        "minimum_level",
+        "casual_outfit",
+        "preferred_locations",
+        "disliked_locations",
+        "hotel_unlock_level"
+      ],
+      "additionalProperties": false
+    },
+    "date_location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "background_id": {
+          "type": "string"
+        },
+        "preview_path": {
+          "type": "string"
+        },
+        "asset_status": {
+          "enum": [
+            "pending",
+            "ready",
+            "locked"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "tags",
+        "background_id",
+        "preview_path",
+        "asset_status"
+      ],
+      "additionalProperties": false
+    },
+    "special_event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "duration_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30
+        },
+        "consumes_full_day": {
+          "const": true
+        },
+        "cg_dialogue_delay_seconds": {
+          "description": "Seconds a newly displayed CG remains unobstructed before its dialogue and controls appear.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "repeatable": {
+          "type": "boolean"
+        },
+        "developer_only": {
+          "type": "boolean"
+        },
+        "auto_schedule": {
+          "description": "Automatically starts at the 09:00 day boundary once the event becomes due on a conflict-free day; the player cannot postpone or refuse it.",
+          "type": "boolean"
+        },
+        "announcement": {
+          "description": "Short scheduling notice shown before an automatically scheduled event begins.",
+          "type": "string",
+          "minLength": 1
+        },
+        "unlock_requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/special_event_requirement"
+          }
+        },
+        "required_characters": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              {
+                "const": "PLAYER"
+              }
+            ]
+          },
+          "uniqueItems": true
+        },
+        "prerequisite_events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "event_chain": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "completion_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "completion_effects": {
+          "type": "object",
+          "properties": {
+            "unlock_procedures": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            },
+            "advanced_referral_case_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "completed_surgery_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "surgery_xp_bonus": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "reputation": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 999
+            },
+            "personal_nurse_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "relationship_rewards": {
+          "description": "Relationship levels granted when the special event completes.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "actor_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "target_level": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "benefit_id": {
+                "type": "string"
+              },
+              "allow_level_skip": {
+                "description": "Temporary testing escape hatch; remove when the authored prior-rank gate is restored.",
+                "type": "boolean"
+              },
+              "award_event_familiarity": {
+                "description": "Awards the centrally configured familiarity amount for the target relationship level.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "actor_id",
+              "target_level",
+              "benefit_id",
+              "allow_level_skip"
+            ],
+            "additionalProperties": false
+          },
+          "uniqueItems": true
+        },
+        "gallery_unlock": {
+          "type": "boolean"
+        },
+        "gallery_entry": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "chapters": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "chapters"
+          ],
+          "additionalProperties": false
+        },
+        "timing": {
+          "type": "object",
+          "properties": {
+            "trigger_day": {
+              "description": "Preferred first day. If blocked by a higher-priority event, the event remains due and is retried on later days.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 365
+            },
+            "trigger_date": {
+              "description": "Fixed Gregorian trigger date in the 2025-04-01 to 2026-03-31 game year.",
+              "type": "string",
+              "pattern": "^202(5|6)-[0-9]{2}-[0-9]{2}$"
+            },
+            "priority": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000
+            },
+            "final_week_allowed": {
+              "description": "Only explicitly marked story/ending events may occupy days 359-365.",
+              "type": "boolean"
+            },
+            "sunday_start_allowed": {
+              "description": "Explicit opt-in for fixed festivals, mandatory events or major cases that may begin on Sunday. Ongoing multi-day events do not need this flag to span Sunday.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "priority",
+            "final_week_allowed"
+          ],
+          "oneOf": [
+            {
+              "required": [
+                "trigger_day"
+              ]
+            },
+            {
+              "required": [
+                "trigger_date"
+              ]
+            }
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "duration_days",
+        "consumes_full_day",
+        "repeatable",
+        "unlock_requirements",
+        "required_characters",
+        "prerequisite_events",
+        "event_chain",
+        "completion_flags",
+        "gallery_unlock"
+      ],
+      "additionalProperties": false
+    },
+    "advanced_referral_case": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "advanced_referral",
+            "prestige_referral",
+            "legendary_referral"
+          ]
+        },
+        "patient_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "procedure_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_days": {
+          "const": 3
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 999
+        },
+        "unique_per_campaign": {
+          "const": true
+        },
+        "unlock_requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/special_event_requirement"
+          }
+        },
+        "team_slots": {
+          "type": "object",
+          "properties": {
+            "primary_surgeon": {
+              "const": 1
+            },
+            "assistant_surgeon": {
+              "const": 2
+            },
+            "scrub_nurse": {
+              "const": 2
+            },
+            "circulating_nurse": {
+              "const": 2
+            },
+            "anesthesia_team": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "primary_surgeon",
+            "assistant_surgeon",
+            "scrub_nurse",
+            "circulating_nurse",
+            "anesthesia_team"
+          ],
+          "additionalProperties": false
+        },
+        "case_modifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "effective_difficulty_bonus": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "rewards": {
+          "type": "object",
+          "properties": {
+            "surgery_xp_bonus": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "reputation": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 999
+            }
+          },
+          "required": [
+            "surgery_xp_bonus",
+            "reputation"
+          ],
+          "additionalProperties": false
+        },
+        "allow_sunday_span": {
+          "const": true
+        },
+        "final_week_allowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "patient_id",
+        "procedure_id",
+        "duration_days",
+        "priority",
+        "unique_per_campaign",
+        "unlock_requirements",
+        "team_slots",
+        "case_modifiers",
+        "effective_difficulty_bonus",
+        "rewards",
+        "allow_sunday_span",
+        "final_week_allowed"
+      ],
+      "additionalProperties": false
+    },
+    "palpation_profile": {
+      "type": "object",
+      "required": [
+        "id",
+        "regions",
+        "reactions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [
+            "generic",
+            "abdominal",
+            "breast",
+            "gynecology_pelvic",
+            "thoracic_cardiac"
+          ]
+        },
+        "regions": {
+          "type": "object",
+          "required": [
+            "chest",
+            "abdomen",
+            "breast",
+            "nipple",
+            "genital"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "chest": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "adjacent",
+                "unrelated"
+              ]
+            },
+            "abdomen": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "adjacent",
+                "unrelated"
+              ]
+            },
+            "breast": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "adjacent",
+                "unrelated"
+              ]
+            },
+            "nipple": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "adjacent",
+                "unrelated"
+              ]
+            },
+            "genital": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "adjacent",
+                "unrelated"
+              ]
+            }
+          }
+        },
+        "reactions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "light": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "response"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "response": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "minItems": 1
+                },
+                "standard": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "response"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "response": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "minItems": 1
+                },
+                "deep": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "response"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "response": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

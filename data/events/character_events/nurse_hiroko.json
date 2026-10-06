@@ -1,0 +1,1109 @@
+[
+  {
+    "id": "hiroko_patient_escape",
+    "actor_id": "nurse_hiroko",
+    "actor_alias": "手术室护士",
+    "allow_unmet_actor": true,
+    "title": "逃出手术室的患者",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "location",
+    "background_id": "operating_room",
+    "outfit": "sterile",
+    "minutes": 15,
+    "teaser": "走廊上传来慌乱的脚步声",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "contextual",
+    "gallery": {
+      "cg_id": "hiroko_patient_escape",
+      "caption": "只戴着手术帽的女患者从手术室里逃了出来。",
+      "path": "assets/events/character_events/hiroko/chihaya_escape_corridor.png",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "corridor_noise",
+    "auto_start": true,
+    "target_level": 1,
+    "nodes": [
+      {
+        "id": "corridor_noise",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "手术室门口的走廊里，突然传来一阵杂乱而急促的脚步声。金属门被猛地撞开，里面夹着护士的呼喊。",
+        "choices": [
+          {
+            "id": "look_toward_noise",
+            "label": "循声望去",
+            "next": "collision",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/chihaya_escape_corridor.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "collision",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "咣当！一个肉色的人影迎面撞进坂口怀里。温暖、柔软，是年轻女人的身体。她踉跄了一下，还想继续向前跑，坂口下意识伸手把她拦腰抱住。",
+        "choices": [
+          {
+            "id": "steady_patient",
+            "label": "先扶稳她",
+            "next": "exposed_patient",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/hiroko/chihaya_shy.png"
+      },
+      {
+        "id": "exposed_patient",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "一名神色惊恐的年轻女性站在面前。她浑身一丝不挂，只戴着蓝色手术帽；羞耻让她急忙遮住双乳，慌乱中却完全顾不上同样暴露的下身。",
+        "choices": [
+          {
+            "id": "ask_what_happened",
+            "label": "询问发生了什么",
+            "next": "patient_plea",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/hiroko/chihaya_shy.png"
+      },
+      {
+        "id": "patient_plea",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "女患者喘得几乎说不成句：\n「救、救命！她们要给我开的刀和说好的完全不一样啊！说要把整个肚子切开来……救命，我不要开刀！」",
+        "choices": [
+          {
+            "id": "hear_footsteps_behind",
+            "label": "身后的脚步声已经追近",
+            "next": "nurses_arrive",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/hiroko/chihaya_shy.png"
+      },
+      {
+        "id": "nurses_arrive",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "两名穿着全套手术服的护士追出门来，一左一右夹住女患者，牢牢抓住她的手臂。\n「患者怎么能从手术台上突然跑掉！？太不像话了！」",
+        "choices": [
+          {
+            "id": "try_to_keep_scene_calm",
+            "label": "示意所有人先冷静",
+            "next": "patient_resists",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/hiroko/chihaya_restrained_portrait.png"
+      },
+      {
+        "id": "patient_resists",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "女患者拼命向后挣扎，泪水不断从脸颊滚落。\n「不、不要啊！不要拉我回去！我不要开刀啊——！」",
+        "choices": [
+          {
+            "id": "watch_nurses_return",
+            "label": "护士仍把她往手术室带",
+            "next": "dragged_back",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/hiroko/chihaya_restrained_portrait.png"
+      },
+      {
+        "id": "dragged_back",
+        "speaker": "narrator",
+        "expression": "worried",
+        "text": "两名护士架住她的双臂，将哭喊不止的女患者带回敞开的手术室。她赤裸的身影很快消失在门后，走廊里只剩下散乱的脚步声。",
+        "choices": [
+          {
+            "id": "notice_following_nurse",
+            "label": "还有一名护士留在门外",
+            "next": "hiroko_apology",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/hiroko/chihaya_restrained_portrait.png"
+      },
+      {
+        "id": "hiroko_apology",
+        "speaker": "actor",
+        "expression": "worried",
+        "text": "跟在后面的手术室护士向坂口深深鞠了一躬。\n「非常抱歉，让您撞见这样的场面。她第一次接受手术，害怕是可以理解的……可是从手术台上直接跑出来，实在太夸张了。我们马上把现场处理好。」",
+        "choices": [
+          {
+            "id": "respond_to_apology",
+            "label": "让她不必在意",
+            "next": "honda_instruction",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "honda_instruction",
+        "speaker": "player",
+        "expression": "worried",
+        "text": "坂口略显尴尬地移开视线。\n「不用在意。她现在情绪太激动了，回去以后把镇静再加一点，安抚好再继续手术。」",
+        "choices": [
+          {
+            "id": "send_them_back",
+            "label": "让她赶快回去照看患者",
+            "next": "hiroko_return",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hiroko_return",
+        "speaker": "actor",
+        "expression": "focused",
+        "text": "「明白。我会重新确认她的状态。」\n护士再次低头致意，快步追进手术室。厚重的门在她身后合拢，走廊终于安静下来。",
+        "choices": [
+          {
+            "id": "finish_escape_event",
+            "label": "离开手术室门口",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "hiroko_patient_escape_witnessed",
+              "chihaya_identity_hidden"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  },
+  {
+    "id": "intro_nurse_hiroko",
+    "actor_id": "nurse_hiroko",
+    "title": "昨天的手术室护士",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 20,
+    "teaser": "一名蓝发护士主动向坂口问候",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "introduction",
+    "gallery": {
+      "cg_id": "intro_nurse_hiroko",
+      "caption": "换回普通护士服后，她终于正式报上了姓名。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "hiroko_patient_escape"
+      ],
+      "days_after_required_events": 1,
+      "special_requirements": []
+    },
+    "start": "greeting",
+    "auto_start": true,
+    "target_level": 1,
+    "nodes": [
+      {
+        "id": "greeting",
+        "speaker": "actor",
+        "expression": "smile",
+        "text": "「坂口医生，昨天真的非常感谢您。」\n蓝发护士见到坂口，立刻从护士站后走出来。换下手术服以后，她的长发束在身后，神情也比昨天柔和得多。",
+        "choices": [
+          {
+            "id": "ask_who",
+            "label": "你是？",
+            "next": "who_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "mistake_patient",
+            "label": "昨天手术室那个跑出来的患者？",
+            "next": "patient_mistake_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "who_reply",
+        "speaker": "actor",
+        "expression": "worried",
+        "text": "「啊……果然没认出来吗？」\n她有些不好意思地摸了摸发梢。\n「昨天我戴着手术帽和口罩，只来得及道歉。我是病房护士杉村弘子，也会协助手术室工作。」",
+        "choices": [
+          {
+            "id": "accept_intro",
+            "label": "原来是昨天那名护士",
+            "next": "patient_update",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "patient_mistake_reply",
+        "speaker": "actor",
+        "expression": "surprised",
+        "text": "「诶？不、不是！跑出来的不是我！」\n她下意识红着脸摆手，随后才意识到坂口是在打趣，困窘地抿了抿嘴。\n「我是后来向您道歉的护士，杉村弘子。平时主要负责病房，也会进手术室帮忙。」",
+        "choices": [
+          {
+            "id": "apologize_tease",
+            "label": "抱歉，只是换了制服一时没认出",
+            "next": "patient_update",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "patient_update",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "「昨天那位患者后来总算慢慢平静下来。我们重新确认了状况，后续手术也顺利完成了。」\n弘子轻轻松了口气。\n「她醒来以后还是很难为情，不过身体没有问题。那样闹了一场还能平安结束，已经是最好的结果了。」",
+        "choices": [
+          {
+            "id": "glad_success",
+            "label": "听到手术成功就好",
+            "next": "work_talk",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "work_talk",
+        "speaker": "actor",
+        "expression": "smile",
+        "text": "「嗯。以后在病房或门诊见到我，都可以直接叫我弘子。」\n她温和地笑了笑，又认真补充：\n「手术室需要人手时也请找我。器械和巡回的工作我都做过，不会给坂口医生添乱。」",
+        "choices": [
+          {
+            "id": "welcome_hiroko",
+            "label": "以后请多关照，杉村护士",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_nurse_hiroko"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  },
+  {
+    "id": "hiroko_lv1_or_instrument_panic",
+    "actor_id": "nurse_hiroko",
+    "title": "别让她看见",
+    "chapter": 1,
+    "location_id": "or",
+    "trigger_mode": "location",
+    "background_id": "operating_room",
+    "outfit": "sterile",
+    "minutes": 25,
+    "teaser": "清醒的年轻患者正紧盯着摆满刀剪的器械台。",
+    "time_start": 780,
+    "time_end": 1020,
+    "priority": 180,
+    "category": "contextual",
+    "gallery": {
+      "cg_id": "hiroko_lv1_or_instrument_panic",
+      "caption": "弘子先照顾患者，再教会新人如何看见患者的恐惧。",
+      "path": "assets/events/character_events/hiroko/lv1_instrument_lesson.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "intro_nurse_hiroko",
+        "intro_nurse_moe"
+      ],
+      "special_requirements": [
+        {
+          "type": "completed_surgeries",
+          "minimum": 1
+        }
+      ]
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "下午的手术室已经准备得差不多了。无影灯亮着，二十二岁的成年女患者躺在手术台上；手术帽完全包住头发，手术单严密地盖在身上。她还没有进入全身麻醉，目光紧张地在房间里四处游移。\n\n另一边，本庄萌惠正兴致勃勃地整理器械台。金属器械一件接一件排开，在手术灯下反着冷光。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_opening",
+            "label": "看看本庄在忙什么",
+            "next": "moe_inventory",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "moe_inventory",
+        "speaker": "actor",
+        "text": "「好……手术刀、剪刀、止血钳、牵开器……这一组也放这里比较顺手。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_moe_inventory",
+            "label": "患者叫住了她",
+            "next": "patient_question",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "本庄 萌惠",
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png"
+      },
+      {
+        "id": "patient_question",
+        "speaker": "narrator",
+        "text": "「……护士小姐。」\n\n本庄抬起头：「嗯？」\n\n患者盯着摆得满满的器械台，小声问：「那些……都是等一下要用的吗？」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_patient_question",
+            "label": "本庄认真地点了点头",
+            "next": "moe_explains",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "成年女患者",
+        "hide_portrait": true
+      },
+      {
+        "id": "moe_explains",
+        "speaker": "actor",
+        "text": "「是啊。你今天这个术式比较大，所以会准备得多一点。刀子会换几把，剪刀也有好几种，这边这些钳子——」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_moe_explains",
+            "label": "弘子的声音从身后响起",
+            "next": "hiroko_warning",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "本庄 萌惠",
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png"
+      },
+      {
+        "id": "hiroko_warning",
+        "speaker": "actor",
+        "text": "「萌恵。」\n\n患者已经完全移不开视线。她看着一排又一排金属器械，脸色一点点发白。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "continue_hiroko_warning",
+            "label": "患者的呼吸突然变得急促",
+            "next": "patient_panics",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "patient_panics",
+        "speaker": "narrator",
+        "text": "「等、等等……这些刀子、剪子、钳子，全部都会用在我身上吗？」\n\n本庄毫无恶意地笑着回答：「大部分都会吧。毕竟是开腹手术嘛。」\n\n「萌恵！」\n\n患者猛地想坐起来：「不要！我不要了！我不要做了！」监护仪上的心率骤然往上跳。她慌乱地挣动，手术单随之滑动。",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_patient_panics",
+            "label": "弘子立刻上前",
+            "next": "hiroko_covers",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "成年女患者",
+        "hide_portrait": true
+      },
+      {
+        "id": "hiroko_covers",
+        "speaker": "actor",
+        "text": "弘子先替患者把露出的部分重新遮严，声音没有提高，却让本庄立刻闭上了嘴。\n\n「萌恵，先别说话。」\n\n「医生，她现在已经没办法靠自己平静下来了。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "continue_hiroko_covers",
+            "label": "患者的身体忽然僵住",
+            "next": "patient_accident",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "patient_accident",
+        "speaker": "narrator",
+        "text": "患者像是意识到了什么，惊恐瞬间又变成羞耻。\n\n「不、不要看……对不起……我不是故意的……」\n\n手术单下传来一阵窘迫的动静。她因为过度惊恐，在尚未导尿的情况下失禁了。",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_patient_accident",
+            "label": "弘子几乎没有停顿",
+            "next": "hiroko_reassures",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "成年女患者",
+        "hide_portrait": true
+      },
+      {
+        "id": "hiroko_reassures",
+        "speaker": "actor",
+        "text": "弘子示意拿来干净的垫单，又将患者遮得更严。\n\n「没关系。你没有做错任何事，只是太紧张了。大家都是医护人员，这种情况不是第一次，也绝不会是最后一次。」\n\n「先把这边收拾好。你不用动。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "continue_hiroko_reassures",
+            "label": "先帮助患者平静下来",
+            "next": "sedation_order",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sedation_order",
+        "speaker": "player",
+        "text": "「按术前医嘱给镇静吧。」\n\n弘子确认药物、医嘱与患者信息后，经静脉通路给入术前镇静药。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "continue_sedation_order",
+            "label": "弘子守在患者身边",
+            "next": "look_at_hiroko",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "look_at_hiroko",
+        "speaker": "actor",
+        "text": "「会稍微有点困。什么都不用想，慢慢呼吸就好。」\n\n患者仍盯着器械台：「……那些刀子……」\n\n「不要看那边。看着我。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "continue_look_at_hiroko",
+            "label": "患者紧紧盯着弘子的眼睛",
+            "next": "patient_settles",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "patient_settles",
+        "speaker": "narrator",
+        "text": "几次急促呼吸以后，患者的肩膀终于慢慢松了下来。\n\n「……杉村护士。等我睡着以后……才会开始，对吧？」\n\n「对。你睡着以前，没有人会动刀。」\n\n患者轻轻点头，眼皮开始变沉：「那……不要再让我看到那些了……」\n\n「好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_patient_settles",
+            "label": "患者终于安静下来",
+            "next": "moe_apology",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "moe_apology",
+        "speaker": "actor",
+        "text": "本庄已经把器械台默默往旁边推了半步，脸上的兴奋早已消失。\n\n「杉村前辈……对不起。是我把她吓成这样的。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_moe_apology",
+            "label": "弘子没有当着患者继续说",
+            "next": "hiroko_lesson",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "本庄 萌惠",
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png"
+      },
+      {
+        "id": "hiroko_lesson",
+        "speaker": "actor",
+        "text": "弘子等患者安静以后，才把器械台彻底推离她醒着时能够看到的位置。\n\n「你没有说错。问题就是你说得太对了。」\n\n「对我们来说，这些只是每天都会碰到的器械。对躺在那里的人来说，每一把都代表‘等一下可能会发生在自己身上的事情’。」\n\n「患者还清醒的时候，不要把整个器械台摆进她视线里，尤其是大手术。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "continue_hiroko_lesson",
+            "label": "本庄低头看了一眼手术刀",
+            "next": "moe_understands",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "moe_understands",
+        "speaker": "actor",
+        "text": "「……明白了。」\n\n弘子又轻轻叹气：「还有。患者问‘这些是不是都会用在我身上’的时候，不要一脸开心地回答‘是啊’。」\n\n「……是。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "tease_moe",
+            "label": "「这个可能比器械清点还难教。」",
+            "next": "choice_tease",
+            "effects": {
+              "affection": 0,
+              "familiarity": 2
+            },
+            "flags": [],
+            "related_effects": [
+              {
+                "actor_id": "nurse_moe",
+                "effects": {
+                  "affection": 0,
+                  "familiarity": 1
+                },
+                "flags": []
+              }
+            ]
+          },
+          {
+            "id": "praise_hiroko",
+            "label": "「刚才你处理得很稳。」",
+            "next": "choice_praise",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "encourage_moe",
+            "label": "「记住这次就好。下次你会处理得更好。」",
+            "next": "choice_encourage",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [],
+            "related_effects": [
+              {
+                "actor_id": "nurse_moe",
+                "effects": {
+                  "affection": 0,
+                  "familiarity": 0
+                },
+                "flags": []
+              }
+            ]
+          }
+        ],
+        "speaker_label": "本庄 萌惠",
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png"
+      },
+      {
+        "id": "choice_tease",
+        "speaker": "narrator",
+        "text": "本庄立刻抗议：「医生！」\n\n弘子终于笑了一下。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_choice_tease",
+            "label": "弘子重新检查患者的被单与体位",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "choice_praise",
+        "speaker": "actor",
+        "text": "弘子微微一怔，随后摇了摇头。\n\n「先把患者照顾好，本来就是我们的工作。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "continue_choice_praise",
+            "label": "她重新检查患者的被单与体位",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "choice_encourage",
+        "speaker": "narrator",
+        "text": "本庄认真地点头。\n\n「……嗯。下次我一定先想想患者看到的是什么。」\n\n弘子看了坂口一眼，没有说话，但神情明显缓和。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_choice_encourage",
+            "label": "弘子重新检查患者的被单与体位",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "closing",
+        "speaker": "actor",
+        "text": "「慢慢来吧。」\n\n她重新检查了一遍患者的被单与体位。\n\n「先把患者照顾好，再把手术做漂亮。手术室护士，两件事都不能忘。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "finish_hiroko_lv1_part1",
+            "label": "完成术前交接",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "hiroko_lv1_part1_complete",
+              "moe_or_training_incident",
+              "hiroko_mentor_side_seen"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "locks_saving": true
+  },
+  {
+    "id": "hiroko_lv1_worth_it",
+    "actor_id": "nurse_hiroko",
+    "title": "值得的事情",
+    "chapter": 1,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 20,
+    "teaser": "弘子守着一杯早已凉掉的咖啡和昨夜的交班记录。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 180,
+    "category": "bond",
+    "gallery": {
+      "cg_id": "hiroko_lv1_worth_it",
+      "caption": "她总在照顾患者和后辈，却忘了自己的咖啡早已凉透。",
+      "path": "assets/events/character_events/hiroko/lv1_worth_it.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "hiroko_lv1_or_instrument_panic"
+      ],
+      "days_after_required_events": 1,
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "第二天经过护士站时，坂口看见弘子一个人坐在交班记录前。她手边放着一杯已经凉掉的咖啡，眼下有一点浅浅的疲色。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_opening",
+            "label": "问起昨天那名患者",
+            "next": "patient_update",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "patient_update",
+        "speaker": "player",
+        "text": "「昨天那台患者怎么样了？」\n\n弘子回答：「醒得很顺利。今天早上还特地跟我道歉。」\n\n「她为什么要道歉？那又不是她的错。」\n\n「我也这么告诉她了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_patient_update",
+            "label": "谈起昨天的处理",
+            "next": "praise_handling",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "praise_handling",
+        "speaker": "player",
+        "text": "「昨天你处理得很好。患者失控的时候，你一下就把场面稳住了。本庄也没被你骂到抬不起头。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_praise_handling",
+            "label": "弘子看向交班记录",
+            "next": "hiroko_on_moe",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hiroko_on_moe",
+        "speaker": "actor",
+        "text": "「她又不是故意的。萌恵只是……有时候会忘记，自己知道的东西，患者并不知道。」\n\n坂口问：「你昨天还在手术结束以后教她？所以才这么困？」\n\n「一点点而已。」\n\n「你的‘一点点’通常不太可信。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_hiroko_on_moe",
+            "label": "弘子轻轻笑了一下",
+            "next": "late_training",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "late_training",
+        "speaker": "actor",
+        "text": "「昨天她留下来，把整套术前流程重新走了一遍。包括器械车应该停在哪里、患者醒着的时候什么东西不要进入她的视野，还有怎么回答患者的问题。」\n\n「到几点？」\n\n「……没多晚。」\n\n「杉村。」\n\n弘子移开视线：「十一点多。」",
+        "expression": "tired",
+        "choices": [
+          {
+            "id": "continue_late_training",
+            "label": "果然",
+            "next": "worth_teaching",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "worth_teaching",
+        "speaker": "actor",
+        "text": "「可是她学会了。」\n\n她的声音带着疲惫，却明显有一点满足。\n\n「新人犯错不可怕。最怕的是没人告诉她为什么错。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_worth_teaching",
+            "label": "说起她照顾人的方式",
+            "next": "why_reliable",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "why_reliable",
+        "speaker": "player",
+        "text": "「你很喜欢照顾后辈。患者也是。昨天那种场面，换个人可能先想着怎么把手术按时做下去。你先想到的是她有多害怕。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_why_reliable",
+            "label": "弘子沉默了几秒",
+            "next": "one_patient",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "one_patient",
+        "speaker": "actor",
+        "text": "「因为躺在台上的人，只有那一个。」\n\n「我们一天可能进很多次手术室。可是对她来说，也许一辈子就只有这一次。」\n\n她揉了揉有些发酸的眼角。\n\n「所以……累一点也没关系。这些女孩子能慢慢变成可靠的护士，患者也能平平安安回家……」\n\n弘子露出一个疲倦却温柔的笑容。\n\n「我觉得都是值得的。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "everyone_relies_on_you",
+            "label": "「所以大家才会依赖你。」",
+            "next": "choice_rely",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          },
+          {
+            "id": "someone_should_care_for_you",
+            "label": "「但是你也得有人照顾。」",
+            "next": "choice_care",
+            "effects": {
+              "affection": 2,
+              "familiarity": 2
+            },
+            "flags": []
+          },
+          {
+            "id": "moe_is_lucky",
+            "label": "「本庄碰到你这种前辈算她走运。」",
+            "next": "choice_moe",
+            "effects": {
+              "affection": 0,
+              "familiarity": 2
+            },
+            "flags": [],
+            "related_effects": [
+              {
+                "actor_id": "nurse_moe",
+                "effects": {
+                  "affection": 0,
+                  "familiarity": 0
+                },
+                "flags": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "choice_rely",
+        "speaker": "actor",
+        "text": "弘子怔了一下。\n\n「被依赖可不一定全是好事。」\n\n她嘴上这样说，表情却明显柔和了一点。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_choice_rely",
+            "label": "看向她手边的咖啡",
+            "next": "coffee",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "choice_care",
+        "speaker": "actor",
+        "text": "弘子像是没想到坂口会这样回答，短暂地沉默了一下。\n\n「……你最近是不是越来越会说这种话了？」",
+        "expression": "surprised",
+        "choices": [
+          {
+            "id": "continue_choice_care",
+            "label": "看向她手边的咖啡",
+            "next": "coffee",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "choice_moe",
+        "speaker": "actor",
+        "text": "弘子轻轻摇头。\n\n「她愿意听、愿意改，才最重要。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_choice_moe",
+            "label": "看向她手边的咖啡",
+            "next": "coffee",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "coffee",
+        "speaker": "player",
+        "text": "「那至少把咖啡换成热的。」\n\n弘子低头看了一眼杯子：「……什么时候凉的？」\n\n「这就是我说的问题。」\n\n「又来了。」\n\n她嘴上抱怨着，却没有拒绝坂口从她手里拿走那杯冷咖啡。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "finish_hiroko_lv1",
+            "label": "替她换一杯热咖啡",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "hiroko_lv1_complete",
+              "hiroko_or_interactions_tier1",
+              "hiroko_mentor_micro_events",
+              "moe_training_callbacks",
+              "hiroko_team_invite"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "hiroko_team_invite",
+    "chain_followup": true
+  }
+]

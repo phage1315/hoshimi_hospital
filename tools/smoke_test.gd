@@ -15,23 +15,35 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	expect(app.content.errors.is_empty(), "Content load failed")
-	expect(app.content.protagonist.get("name", "") == "本多繁邦", "Canonical protagonist profile was not loaded")
+	expect(app.content.protagonist.get("name", "") == "坂口隆司", "Canonical protagonist profile was not loaded")
+	expect(app.content.protagonist.get("family_name", "") == "坂口" and app.content.protagonist.get("given_name", "") == "隆司", "Protagonist surname or given name was not loaded correctly")
+	expect(app.protagonist_professional_name() == "坂口医生", "Professional protagonist address was not updated")
+	var career_background: Dictionary = app.content.protagonist.get("career_background", {})
+	expect(career_background.get("overseas_training_completed", false), "Prologue background omitted overseas training")
+	expect(career_background.get("distinguished_resume", false), "Prologue background omitted the protagonist's strong resume")
+	expect(career_background.get("arrival_reason", "") == "mentor_recommendation", "Prologue background omitted the mentor recommendation")
+	expect(career_background.get("contract_months", 0) == 12 and career_background.get("initial_intent", "") == "temporary_return_base", "Prologue background omitted the one-year temporary-base premise")
 	expect(app.screen == "title", "Title did not open")
 	expect(app.page.get_node_or_null("SceneBackground") != null, "Title lobby background missing")
 	app.start_story()
 	expect(app.page.get_node_or_null("SceneBackground") != null, "Prologue hallway background missing")
-	var prose: Label = app.page.get_node_or_null("PrologueText")
+	var prose: RichTextLabel = app.page.get_node_or_null("PrologueText")
 	var dialogue_box: Panel = app.page.get_node_or_null("PrologueDialogueBox")
 	expect(prose != null and dialogue_box != null, "Prologue dialogue controls missing")
 	if prose != null and dialogue_box != null:
-		expect(prose.autowrap_mode == TextServer.AUTOWRAP_ARBITRARY and prose.clip_text, "Chinese prologue text is not safely wrapped")
+		expect(prose.autowrap_mode == TextServer.AUTOWRAP_ARBITRARY and not prose.scroll_active, "Chinese prologue text is not safely wrapped into click-through pages")
 		expect(prose.position.x + prose.size.x < dialogue_box.position.x + dialogue_box.size.x, "Prologue text exceeds dialogue frame")
+	var background_nodes := ["arrival", "mentor_recommendation", "one_year_contract", "first_day"]
+	for node_id in background_nodes:
+		var node: Dictionary = app.content.dialogue.nodes.filter(func(candidate): return str(candidate.id) == node_id).front()
+		expect(node.get("background_id", "") == "hallway", "Career-background frame changed the spring hallway: " + node_id)
 	for node in app.content.dialogue.nodes:
 		app.session.current_id = node.id
 		app.show_dialogue()
 		await process_frame
 		prose = app.page.get_node_or_null("PrologueText")
-		expect(prose != null and prose.get_line_count() <= 3, "Prologue node does not fit dialogue box: " + str(node.id))
+		dialogue_box = app.page.get_node_or_null("PrologueDialogueBox")
+		expect(prose != null and dialogue_box != null and prose.position.y + prose.size.y <= dialogue_box.position.y + dialogue_box.size.y, "Prologue text control exceeds dialogue frame: " + str(node.id))
 	app.start_story()
 	expect(advance_until("aoi_question"), "Intro did not reach senior-doctor choice")
 	app.advance(0)
@@ -39,7 +51,7 @@ func run() -> void:
 	expect(advance_until("haru_invite"), "Intro did not reach nurse-station invitation")
 	app.advance(-1)
 	var station_nodes: Array[String] = []
-	for i in range(12):
+	for i in range(24):
 		if app.screen != "dialogue":
 			break
 		station_nodes.append(app.session.current_id)
@@ -54,7 +66,7 @@ func run() -> void:
 	expect(advance_until("haru_invite"), "Restarted intro did not reach mandatory nurse-station stop")
 	app.advance(-1)
 	var visited_station := false
-	for i in range(12):
+	for i in range(24):
 		if app.screen != "dialogue":
 			break
 		visited_station = visited_station or app.session.current_id.begins_with("station_")
@@ -62,8 +74,8 @@ func run() -> void:
 	expect(visited_station and app.screen == "location", "Prologue did not force the nurse-station introductions")
 	app.show_map()
 	expect(app.page.get_node_or_null("SceneBackground") != null, "Directory lobby background missing")
-	expect(app.content.collections.locations.size() == 13, "Expanded hospital directory should contain thirteen locations")
-	for location_id in ["pharmacy", "gynecology_exam", "emiko_office", "director_office"]:
+	expect(app.content.collections.locations.size() == 15, "Expanded hospital directory should contain fifteen locations")
+	for location_id in ["pharmacy", "gynecology_exam", "emiko_office", "artoria_office", "director_office"]:
 		expect(app.page.get_node_or_null("Location_" + location_id) != null, "New map entry missing: " + location_id)
 	for location in app.content.collections.locations:
 		app.show_location(location.id)

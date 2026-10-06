@@ -1,0 +1,506 @@
+[
+  {
+    "id": "asuka_scrub_sink_encounter",
+    "actor_id": "doc_asuka",
+    "actor_alias": "刷手池边的年轻女性",
+    "title": "刷手池边的女孩",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "scrub_area",
+    "outfit": "scrubs",
+    "minutes": 4,
+    "teaser": "刷手池边多了一名动作熟练的年轻女性",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 125,
+    "category": "contextual",
+    "auto_start": true,
+    "allow_unmet_actor": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "asuka_scrub_sink_encounter",
+      "caption": "在刷手池边遇见身份不明的年轻医生。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "career_progress_any",
+          "minimum_completed_surgeries": 2,
+          "minimum_reputation": 5
+        }
+      ]
+    },
+    "start": "notice_technique",
+    "nodes": [
+      {
+        "id": "notice_technique",
+        "speaker": "narrator",
+        "text": "刷手池边，一名娇小得近乎像学生的年轻女性正在刷手。她的动作却没有半点生涩：时间、范围和无菌边界都控制得十分准确。\n这么年轻……但动作不像新人。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "continue_notice",
+            "label": "向她打招呼",
+            "next": "greeting",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "greeting",
+        "speaker": "player",
+        "text": "「辛苦了。你也准备上台？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_greeting",
+            "label": "听她回答",
+            "next": "adjacent_room",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "adjacent_room",
+        "speaker": "actor",
+        "text": "「嗯。隔壁那台。」\n她抬眼笑了一下。\n「今天手术室挺忙。忙一点，总比病床一直空着好吧。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "ask_plan",
+            "label": "顺口谈起术式",
+            "next": "medical_hint",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "medical_hint",
+        "speaker": "actor",
+        "text": "她听完坂口提到的术式安排，很快指出了一个容易被忽略的体位与循环风险。语气轻松，判断却准确得不像临时听来的。\n「不过你应该已经考虑到了。我只是习惯在进门前再过一遍。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "acknowledge_skill",
+            "label": "认可她的判断",
+            "next": "departure",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "departure",
+        "speaker": "actor",
+        "text": "门内有人叫她。她把口罩拉好，朝坂口轻轻点头。\n「那我先过去了。你的手术也请顺利。」\n她没有留下姓名，只留下一个过分熟练的背影。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "remember_unknown_woman",
+            "label": "记住这名年轻女性",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_asuka_scrub_sink",
+              "asuka_identity_unknown"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": "",
+    "preop_stage_id": "changing",
+    "preop_required_flags": [
+      "hands_ready"
+    ]
+  },
+  {
+    "id": "asuka_adjacent_operation_reveal",
+    "actor_id": "doc_asuka",
+    "actor_alias": "手术室护士长",
+    "title": "隔壁那台",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "operating_room",
+    "outfit": "scrubs",
+    "minutes": 2,
+    "teaser": "手术室护士长提起了隔壁手术间",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 126,
+    "category": "contextual",
+    "auto_start": true,
+    "allow_unmet_actor": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "asuka_adjacent_operation_reveal",
+      "caption": "从护士长口中得知刷手池女孩的真正身份。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "asuka_scrub_sink_encounter"
+      ],
+      "special_requirements": []
+    },
+    "start": "corridor",
+    "nodes": [
+      {
+        "id": "corridor",
+        "speaker": "narrator",
+        "text": "本台手术结束，患者被送往恢复区。坂口经过手术室走廊时，想起刷手池边那名年轻女性。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_head_nurse",
+            "label": "向护士长问起隔壁那台",
+            "next": "answer",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "answer",
+        "speaker": "narrator",
+        "text": "护士长愣了一下。\n「您说隔壁主刀？那是城宮院长。」\n「院长？」\n「是啊。她很少摆架子，换上刷手服以后，看起来更像刚进医院的年轻医生。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "realize_identity",
+            "label": "重新理解那段谈话",
+            "next": "office_note",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "office_note",
+        "speaker": "narrator",
+        "text": "护士长把一份术后交接记录夹回板夹。\n「院长也提到您了。她说明天如果有空，可以去院长室见她。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "accept_invitation",
+            "label": "记下明天的约定",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "asuka_identity_hint_revealed"
+            ]
+          }
+        ],
+        "hide_portrait": true
+      }
+    ],
+    "benefit_id": "",
+    "preop_stage_id": "surgery_result"
+  },
+  {
+    "id": "intro_doc_asuka_director_office",
+    "actor_id": "doc_asuka",
+    "title": "院长室里的她",
+    "chapter": 0,
+    "location_id": "director_office",
+    "trigger_mode": "location",
+    "background_id": "director_office",
+    "outfit": "white_coat",
+    "minutes": 15,
+    "teaser": "院长室的门今天开着",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 130,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "intro_doc_asuka_director_office",
+      "caption": "宽大的办公桌后，年轻娇小的城宮明日香以医院院长的身份正式与坂口见面。",
+      "path": "assets/events/character_events/asuka/director_office_reveal.png"
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "asuka_adjacent_operation_reveal"
+      ],
+      "days_after_required_events": 1,
+      "special_requirements": []
+    },
+    "start": "door_opens",
+    "nodes": [
+      {
+        "id": "door_opens",
+        "speaker": "narrator",
+        "text": "第二天，院长室的门终于开着。坐在宽大办公桌后的，正是昨天在刷手池边遇见的年轻女性。她穿着医生的白大褂，桌上的名牌写着——城宮明日香，医院院长。",
+        "expression": "surprised",
+        "cg_path": "assets/events/character_events/asuka/director_office_reveal.png",
+        "cg_fit": "cover",
+        "choices": [
+          {
+            "id": "continue_reveal",
+            "label": "走进院长室",
+            "next": "greeting",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "greeting",
+        "speaker": "actor",
+        "text": "「早上好，坂口医生。」\n她像昨天一样轻轻笑了笑。\n「抱歉，没有在刷手池边先自我介绍。那种地方说自己是院长，反而会让谈话变得很奇怪吧？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "say_surprised",
+            "label": "坦白说确实很意外",
+            "next": "record_review",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "stay_formal",
+            "label": "正式向院长问候",
+            "next": "record_review",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "record_review",
+        "speaker": "actor",
+        "text": "「昨天那台手术的记录，我已经看过了。」\n她翻开桌上的病历夹，准确说出术前准备用时、团队配置和术中患者反应。\n「我不是只想知道结果成功没有。过程里患者承受了什么、团队在哪一步迟疑，也都是医院该负责的事。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "discuss_record",
+            "label": "和她讨论记录",
+            "next": "training_ideal",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "training_ideal",
+        "speaker": "actor",
+        "text": "「医学院里女生一点也不少。可越往外科、管理层和主任的位置走，人就越来越少。」\n「有能力的人，不应该因为二十五岁、三十岁以后可能结婚、生孩子，就在二十三岁的时候先被判断‘不值得培养’。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "agree_training",
+            "label": "认同真实的训练机会",
+            "next": "decision",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "ask_responsibility",
+            "label": "追问机会与责任如何平衡",
+            "next": "decision",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "decision",
+        "speaker": "actor",
+        "text": "「如果别人不愿意给她们第一台手术、第一次带队、第一次独立处理患者的机会——那我们给。」\n她仍然语气温和，目光却没有动摇。\n「当然，机会必须和复核、带教以及承担责任放在一起。这件事已经决定了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "formal_introduction",
+            "label": "正式自我介绍",
+            "next": "welcome",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "welcome",
+        "speaker": "actor",
+        "text": "「重新认识一下吧。我是城宮明日香，星见医院的院长，也是一名还在积累主刀经验的外科医生。」\n「以后在手术室，或是在这里，都请直接告诉我你的判断。坂口医生，请多关照。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "meet_asuka",
+            "label": "与城宮明日香正式相识",
+            "next": "@end",
+            "effects": {
+              "affection": 1,
+              "familiarity": 2
+            },
+            "flags": [
+              "met_asuka",
+              "asuka_identity_known"
+            ],
+            "clear_flags": [
+              "asuka_identity_unknown"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  },
+  {
+    "id": "asuka_mentions_artoria_rival",
+    "actor_id": "doc_asuka",
+    "title": "另一位主任候选",
+    "chapter": 0,
+    "location_id": "director_office",
+    "trigger_mode": "location",
+    "background_id": "director_office",
+    "outfit": "white_coat",
+    "minutes": 8,
+    "teaser": "明日香似乎想谈谈外科主任的人选。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 125,
+    "category": "contextual",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "cg_asuka_mentions_artoria_rival",
+      "caption": "明日香向坂口提起御堂的另一位竞争者。",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "intro_doc_asuka_director_office",
+        "emiko_intro_rumored_hands"
+      ],
+      "special_requirements": []
+    },
+    "start": "vacant_office",
+    "nodes": [
+      {
+        "id": "vacant_office",
+        "speaker": "actor",
+        "text": "“坂口医生，你已经见过御堂医生了吧。”\n\n明日香把一份外科人事表转向坂口。外科主任的位置仍然空着，御堂江美子的名字旁边还有另一栏候选记录。\n\n“御堂医生是医院里最锋利的那把刀。不过，她不是唯一的主任候选。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_other_candidate",
+            "label": "询问另一位候选人",
+            "next": "name_artoria",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "name_artoria",
+        "speaker": "actor",
+        "text": "“另一位是外科副部长，阿尔托莉雅·潘德拉贡。”\n\n“她和御堂医生正好相反。御堂相信自己的技术能突破问题；阿尔托莉雅更擅长让整个团队在正确的位置一起解决问题。”\n\n明日香轻轻笑了一下。\n“她们会竞争，但不会拿患者当胜负。正因为如此，我才认真考虑她们两个人。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_meeting",
+            "label": "“我应该去见见她。”",
+            "next": "invitation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "invitation",
+        "speaker": "actor",
+        "text": "“我也是这样想的。”\n\n明日香写下一间办公室的位置。\n“她已经读过你的履历。不过，她真正想看的大概不是你一个人能把刀用得多好。”\n“去副部长办公室吧。我会告诉她，你已经见过御堂医生。”",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "accept_artoria_introduction",
+            "label": "收下办公室位置",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "asuka_introduced_artoria_rival"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

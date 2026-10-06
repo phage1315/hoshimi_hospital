@@ -1,0 +1,123 @@
+{
+  "id": "guest_ayako_2026_09_29",
+  "date": "2026-09-29",
+  "character_id": "guest_ayako",
+  "design_source": {
+    "path": "docs/design/HOSHIMI_CHARACTER_PROFILE_KATAGIRI_AYAKO_V1.md",
+    "bytes": 9744,
+    "sha256": "dce94c1a5191b536778a024f7e71440a96e959622b071e5f1b4873821a6e4752"
+  },
+  "user_reference": {
+    "path": "research/character_references/guest_ayako/character_sheet_reference.png",
+    "bytes": 2337301,
+    "sha256": "aecbaf8c57d532e6fbe081f9740c5370ff53062c5e9c70838691480754ff9507"
+  },
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "use_case": "stylized-concept",
+    "direction": "Adult age-25 manga artist based on the supplied character sheet. Surgical-flow variants treat her strictly as a patient: pale blue-green wrap patient gown and disposable cap, then a draped operating-table portrait; later variants use an ordinary ward gown and a keepsake nurse uniform.",
+    "runtime_spec": "Transparent visual-novel portraits: 1024x1536 standing or seated half-body variants, plus one 1182x1330 overhead operating-table head-and-shoulders portrait.",
+    "prompts_summary": [
+      "Bright approachable manga-artist neutral portrait with sketchbook/tablet and stylus.",
+      "Same identity and outfit with vivid comic shock for the mistaken-surgery event.",
+      "Surgical-patient gown and bouffant cap with hair mostly tucked inside: neutral, puzzled, and happy expressions.",
+      "Supine pre-anesthesia operating-table portrait with bare shoulders and an opaque sterile drape covering the chest and body.",
+      "Postoperative ordinary ward patient gown, tired but resilient.",
+      "Later hospital visit in the keepsake nurse uniform, holding a sketchbook and pen.",
+      "Operating-table expression sequence: nervous, sedated-drowsy, composed after discovering the incision, cheerfully accepting the appendix outcome, and mildly annoyed that nobody listened."
+    ]
+  },
+  "runtime_portraits": [
+    {
+      "path": "assets/events/character_events/rei/ayako/casual_neutral.png",
+      "bytes": 2256829,
+      "sha256": "a05890792cf1179aff6a0c289085c5a424879f580b877ba1a10f8003dc21040a"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/casual_shocked.png",
+      "bytes": 2360504,
+      "sha256": "65986c59a83de3d5d845adfd00cef171809db74ed2846a44820e36546b3f6407"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/patient_gown_neutral.png",
+      "bytes": 1994503,
+      "sha256": "9882e62b76baf4ccbd2fb20222541c3917ca1d6d58c673a123f2ce36b4dc6bc1"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/patient_gown_puzzled.png",
+      "bytes": 1946536,
+      "sha256": "11a6dd9ebff2f0f847ea80477b0e61a1d669299fc00a539781621c2ea7668ca9"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/patient_gown_happy.png",
+      "bytes": 2067627,
+      "sha256": "041a01734515be1a97653ceb906c797ce497f5b877b30933132431e03b6abada"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/operating_table_nervous.png",
+      "bytes": 2151442,
+      "sha256": "d242e8404e234379f9a738bffc0c3e53638451a1a1ad9bbbc8c3010093ff1b5e"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/operating_table_drowsy.png",
+      "bytes": 2056323,
+      "sha256": "5a68b4d4f28eb94d5dd4bda0ba835a77c751f539922914415f781dbaae3cb2b7"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/operating_table_composed.png",
+      "bytes": 2053851,
+      "sha256": "44354866ce141481fc588bbf8278901127654c288235c427a3ec520123edd10e"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/operating_table_happy.png",
+      "bytes": 2095140,
+      "sha256": "6ae3a37f5da2959f3a95ce92648de00d4ee4bf6b20dd0b9e5b0e51e6326c18c3"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/operating_table_annoyed.png",
+      "bytes": 2019892,
+      "sha256": "45edc3380ad17dd01500795f655e9a4f87aa271a0a05dd376ae0804206b1a040"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/ward_postop.png",
+      "bytes": 2306253,
+      "sha256": "f04807852b8592b4de7eddbfe3f616bb0432087f9d3472ea722ea66ce124b2d5"
+    },
+    {
+      "path": "assets/events/character_events/rei/ayako/nurse_visit.png",
+      "bytes": 2071681,
+      "sha256": "345e09bf25967d5edb9e1a3855bf36a7b5ba6133828286c81c048b321217d2db"
+    }
+  ],
+  "implementation": {
+    "current_scope": [
+      "character bible",
+      "story cameo registry",
+      "casual neutral and shocked portraits",
+      "patient-gown neutral, puzzled, and happy portraits",
+      "five draped operating-table expression portraits: nervous, drowsy, composed, happy, and annoyed",
+      "postoperative ward-gown portrait",
+      "keepsake nurse-uniform return portrait",
+      "implemented Miyama Lv2 full-day special event interface"
+    ],
+    "future_scope": [
+      "mistaken-surgery event CGs",
+      "hospital manga return",
+      "finale or festival return"
+    ],
+    "romanceable": false,
+    "surgical_team_eligible": false,
+    "planned_event_ids": [
+      "miyama_02_manga_artist_wrong_patient",
+      "ayako_hospital_manga_return",
+      "ayako_nurse_uniform_keepsake",
+      "ayako_finale_party_return"
+    ]
+  },
+  "notes": [
+    "The latest user direction is preserved without changing the core event: the mistaken operation reaches incision before healthy anatomy reveals the wrong-patient error.",
+    "Ayako is a patient in the surgical-flow portraits; rejected scrub-suit generations were not imported.",
+    "Ayako and Fujisaki Shiori are both recorded as age 25.",
+    "The mistaken-identity chain now begins when a similar-looking scheduled patient panics, flees the operating room, and passes Ayako; unfamiliar staff then confuse Ayako for the returned patient."
+  ]
+}

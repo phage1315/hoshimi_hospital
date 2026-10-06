@@ -5,21 +5,42 @@
     {
       "id": "arrival",
       "speaker": "narrator",
-      "text": "四月的晨光穿过星见医院的玻璃长廊。消毒水的气味很淡，推车轮声从转角一闪而过。白衣口袋里的新名牌贴着胸口——今天，是本多繁邦作为外科医生在这里工作的第一天。",
+      "text": "四月的晨光穿过星见医院的玻璃长廊。海外研修结束后，坂口隆司原本并没有打算立刻决定自己的下一站。以他的履历，他还有不少更显眼的选择。",
+      "next": "mentor_recommendation",
+      "background_id": "hallway"
+    },
+    {
+      "id": "mentor_recommendation",
+      "speaker": "narrator",
+      "text": "最后让他来到星见医院的，是医学院时代导师的一句推荐。\n「如果还没决定去哪，就到这里试试看吧。」",
+      "next": "one_year_contract",
+      "background_id": "hallway"
+    },
+    {
+      "id": "one_year_contract",
+      "speaker": "narrator",
+      "text": "坂口最终只签了一份为期一年的合同。对他而言，星见暂时只是回国后的落脚点。",
+      "next": "first_day",
+      "background_id": "hallway"
+    },
+    {
+      "id": "first_day",
+      "speaker": "narrator",
+      "text": "消毒水的气味很淡，推车轮声从转角一闪而过。白衣口袋里的新名牌贴着胸口。今天，是坂口隆司在这里工作的第一天。",
       "next": "aoi_first_impression",
       "background_id": "hallway"
     },
     {
       "id": "aoi_first_impression",
       "speaker": "narrator",
-      "text": "约定来接本多繁邦的人已经等在窗边。她将病历夹抱在身前，白大褂一丝不乱；看到他时，视线先落在名牌上，随后才露出一个很浅的笑。那不是刻意摆出的亲切，更像一位习惯先观察、再开口的前辈。",
+      "text": "约定来接坂口隆司的人已经等在窗边。她将病历夹抱在身前，白大褂一丝不乱；看到他时，视线先落在名牌上，随后才露出一个很浅的笑。那不是刻意摆出的亲切，更像一位习惯先观察、再开口的前辈。",
       "next": "aoi_welcome",
       "background_id": "hallway"
     },
     {
       "id": "aoi_welcome",
       "speaker": "doc_aoi",
-      "text": "早上好。本多医生，对吧？我是神宮寺成美，普通外科。今天先由我带本多医生熟悉这里。",
+      "text": "早上好。坂口医生，对吧？我是神宮寺成美，普通外科。今天先由我带坂口医生熟悉这里。",
       "next": "aoi_advice",
       "expression": "smile",
       "background_id": "hallway"
@@ -27,7 +48,7 @@
     {
       "id": "aoi_advice",
       "speaker": "doc_aoi",
-      "text": "本多医生的履历我看过了。不过，履历只说明过去做过什么；从今天起，我们会一起看你在患者面前怎么判断、怎么说话。遇到拿不准的事就问我，不必为了像个“老练的医生”而逞强。",
+      "text": "坂口医生的履历我看过了。不过，履历只说明过去做过什么；从今天起，我们会一起看你在患者面前怎么判断、怎么说话。遇到拿不准的事就问我，不必为了像个“老练的医生”而逞强。",
       "next": "aoi_question",
       "expression": "serious",
       "background_id": "hallway"
@@ -68,14 +89,14 @@
     {
       "id": "haru_arrival",
       "speaker": "narrator",
-      "text": "她的话音刚落，走廊另一端便传来轻快而克制的脚步声。一名护士抱着整理好的门诊资料停在两人面前，先向神宮寺医生点头，才转向本多。",
+      "text": "她的话音刚落，走廊另一端便传来轻快而克制的脚步声。一名护士抱着整理好的门诊资料停在两人面前，先向神宮寺医生点头，才转向坂口。",
       "next": "haru_intro",
       "background_id": "hallway"
     },
     {
       "id": "haru_intro",
       "speaker": "nurse_haru",
-      "text": "初次见面，我是七瀬恋，主要负责手术护理和今天的协调。本多医生的门诊资料已经准备好了。以后如果一时找不到人，先到护士站来，通常总能在那里找到我。",
+      "text": "初次见面，我是七瀬恋，主要负责手术护理和今天的协调。坂口医生的门诊资料已经准备好了。以后如果一时找不到人，先到护士站来，通常总能在那里找到我。",
       "next": "haru_first_impression",
       "expression": "smile",
       "background_id": "hallway"
@@ -83,7 +104,7 @@
     {
       "id": "haru_first_impression",
       "speaker": "narrator",
-      "text": "她说话时始终直视着本多，声音柔和，递来资料的动作却干净利落。资料边缘贴着不同颜色的索引，连本多还没来得及问的病房与手术室位置，也已经用笔做了简短标记。",
+      "text": "她说话时始终直视着坂口，声音柔和，递来资料的动作却干净利落。资料边缘贴着不同颜色的索引，连坂口还没来得及问的病房与手术室位置，也已经用笔做了简短标记。",
       "next": "haru_invite",
       "background_id": "hallway"
     },
@@ -98,7 +119,7 @@
     {
       "id": "station_walk",
       "speaker": "narrator",
-      "text": "本多跟上七瀬恋。她放慢半步走在前面，沿路指出药品间、病房通道和通往手术区的门。护士站的电话声与键盘声渐渐清晰起来。",
+      "text": "坂口跟上七瀬恋。她放慢半步走在前面，沿路指出药品间、病房通道和通往手术区的门。护士站的电话声与键盘声渐渐清晰起来。",
       "next": "station_haru",
       "background_id": "nurses_station"
     },
@@ -113,7 +134,7 @@
     {
       "id": "rin_intro",
       "speaker": "nurse_rin",
-      "text": "中井美佳，主要负责病房护理。住院患者的准备、交接和术后观察，我会再跟本多医生核对。需要病房配合时直接说清楚，不用绕圈子。",
+      "text": "中井美佳，主要负责病房护理。住院患者的准备、交接和术后观察，我会再跟坂口医生核对。需要病房配合时直接说清楚，不用绕圈子。",
       "next": "rin_impression",
       "expression": "serious",
       "background_id": "nurses_station"
@@ -121,14 +142,14 @@
     {
       "id": "rin_impression",
       "speaker": "narrator",
-      "text": "中井护士把手里的交接表翻到下一页，语气简洁得近乎严厉，却已经在本多的名字旁补上了内线号码。她似乎属于会把所有事情提前一步准备好的人。",
+      "text": "中井护士把手里的交接表翻到下一页，语气简洁得近乎严厉，却已经在坂口的名字旁补上了内线号码。她似乎属于会把所有事情提前一步准备好的人。",
       "next": "yui_intro",
       "background_id": "nurses_station"
     },
     {
       "id": "yui_intro",
       "speaker": "nurse_yui",
-      "text": "我是朝倉美幸，今天负责门诊！我还在熟悉一些流程，不过抽血、检查安排和带患者过去都可以交给我。啊——如果我跑得太快，记得叫住我。",
+      "text": "我是朝倉美幸，今天负责门诊支援！护理工作我做过几年，不过在星见是第一天，所以本院的流程我会重新确认。抽血、检查安排和患者转运都可以交给我。啊——如果我问得太细，别误会成我不会做。",
       "next": "yui_impression",
       "expression": "smile",
       "background_id": "nurses_station"
@@ -136,7 +157,7 @@
     {
       "id": "yui_impression",
       "speaker": "narrator",
-      "text": "朝倉护士说到最后自己先笑了起来。她的名牌还很新，口袋里的便笺却写得密密麻麻；那份活力让忙碌的护士站短暂地轻松了一点。",
+      "text": "朝倉护士说到最后自己先笑了起来。她的星见名牌还很新，口袋里的便笺却把本院设备型号和交接顺序分得清清楚楚；那份活力让忙碌的护士站短暂地轻松了一点。",
       "next": "station_close",
       "background_id": "nurses_station"
     },
@@ -144,9 +165,47 @@
       "id": "station_close",
       "speaker": "nurse_haru",
       "text": "第一天先记住我们三个人就够了。以后排班和人员会更多，但今天门诊与病房需要谁，你已经都见过了。走吧，我带你去诊室。",
-      "next": "clinic_walk",
+      "next": "sayaka_hallway_collision",
       "expression": "smile",
       "background_id": "nurses_station"
+    },
+    {
+      "id": "sayaka_hallway_collision",
+      "speaker": "narrator",
+      "text": "走出护士站不久，转角另一侧的人影忽然停步。坂口也及时收脚，两人的肩膀只差一点便撞在一起。几张健康管理表从对方怀里滑了出来。",
+      "next": "sayaka_intro",
+      "background_id": "hallway"
+    },
+    {
+      "id": "sayaka_intro",
+      "speaker": "doc_sayaka",
+      "text": "「好险。没撞疼吧？」\n她蹲下捡起资料，抬头看了看坂口胸前的新名牌。\n「坂口隆司医生？我是南条小夜香。综合诊疗、健康管理，还有哪里临时缺医生，就可能把我塞到哪里。」",
+      "next": "sayaka_generalist",
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "sayaka_generalist",
+      "speaker": "player",
+      "text": "「这也算一种科室介绍？」",
+      "next": "sayaka_boundary",
+      "background_id": "hallway"
+    },
+    {
+      "id": "sayaka_boundary",
+      "speaker": "doc_sayaka",
+      "text": "「算星见特色。」\n她把最后一张表塞回文件夹，笑意里带着一点明知故问的从容。\n「普通助手、跨科补位都可以找我。太难的我会自己说不行——能坦白做不到，也是医生的能力。」",
+      "next": "sayaka_tease",
+      "expression": "smile",
+      "background_id": "hallway"
+    },
+    {
+      "id": "sayaka_tease",
+      "speaker": "doc_sayaka",
+      "text": "「还有，刚才一直看着我，是在努力记住新同事的脸吧？」\n没等坂口回答，她已经侧身让开通道。\n「答案先记成‘是’好了。第一天别迟到，坂口医生。」",
+      "next": "clinic_walk",
+      "expression": "smile",
+      "background_id": "hallway"
     },
     {
       "id": "clinic_walk",
@@ -158,7 +217,7 @@
     {
       "id": "clinic_handover",
       "speaker": "nurse_haru",
-      "text": "这里就是本多医生的诊室。第一位患者已经到了，我会在附近配合。准备好以后，我们就开始吧。",
+      "text": "这里就是坂口医生的诊室。第一位患者已经到了，我会在附近配合。准备好以后，我们就开始吧。",
       "next": "@location:clinic",
       "expression": "smile",
       "background_id": "clinic"

@@ -1,0 +1,30 @@
+{
+  "id": "pelvic_operative_field_overlay_2026_10_03",
+  "date": "2026-10-03",
+  "source": "user-provided image",
+  "assets": [
+    {
+      "source_file": "/Users/ningye/Documents/AI Images/00003-3608006828.png",
+      "runtime_target": "assets/surgeries/overlays/pelvic/open_pelvic_field.png",
+      "width": 1528,
+      "height": 936,
+      "format": "PNG",
+      "sha256": "3b0fd44c9ec1c32de36f768695add754a112ce2174767b35f10d325a12abf984"
+    },
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-c62ee930-ac4c-4e29-b902-5849c32abb42.png",
+      "runtime_target": "assets/surgeries/overlays/pelvic/open_pelvic_field_02.png",
+      "width": 1504,
+      "height": 1136,
+      "format": "PNG",
+      "sha256": "ee39c27659bf2c7f9928623b0385d8a190ab4f381a0db90e858db14afd41ce02"
+    }
+  ],
+  "runtime_behavior": {
+    "procedure_group": "female_pelvic",
+    "appears_after": "incision_made",
+    "hidden_from": "closure_interaction",
+    "selection": "one image is selected from the two-image pool using the operation's randomized, save-stable operative background id",
+    "layering": "operative-team CG < pelvic operative-field overlay < common wash and interface < character portraits"
+  }
+}

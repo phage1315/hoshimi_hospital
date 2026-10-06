@@ -1,0 +1,29 @@
+{
+  "id": "sayaka_shiori_assistant_cgs_2026_10_03",
+  "date": "2026-10-03",
+  "assets": [
+    {
+      "character_id": "doc_sayaka",
+      "source": "user-provided attachment",
+      "source_path": "research/character_references/doc_sayaka/08_assistant_confirmation_reference.png",
+      "runtime_path": "assets/events/staff_surgery_v1/doc_sayaka/assistant_confirmation.png",
+      "bytes": 1820139,
+      "sha256": "d8a4840eb587fd74f94ee5c568abff15e71cb30b95a5026433cd925bcc53043e"
+    },
+    {
+      "character_id": "doc_shiori",
+      "source": "OpenAI ImageGen (built-in)",
+      "reference_path": "research/character_references/doc_shiori/character_sheet_reference.png",
+      "reference_sha256": "39397643b5ba758c85eca7d84d65221126be20f733a70337d83ee3362d116e0e",
+      "runtime_path": "assets/events/staff_surgery_v1/doc_shiori/assistant_confirmation.png",
+      "bytes": 2005172,
+      "sha256": "498b9b9a29aab94284b21e4d672f9691fe684235188274c5ccbe36d85df737f7",
+      "use_case": "stylized-concept",
+      "prompt_summary": "Fujisaki Shiori in full sterile gown, mask, gloves and opaque surgical cap with her long red hair and headband completely concealed; only minimal red fringe remains. At the assistant-surgeon position she carefully draws clear medication from a vial into a syringe, checks the markings and air bubbles, and shows a poised national-goddess presence with restrained first-time nervousness as an internal-medicine doctor."
+    }
+  ],
+  "runtime": {
+    "collection": "data/events/staff_role_cg_rewards.json",
+    "unlock_behavior": "Each CG plays once on the character's first successful assistant-surgeon assignment and then remains available in the event/CG gallery."
+  }
+}

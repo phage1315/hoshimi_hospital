@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-27",
+  "tool": "built-in ImageGen",
+  "purpose": "SFW assistant-surgeon role confirmation reward CG pack",
+  "status": "implemented",
+  "format": {
+    "dimensions": "1672x941",
+    "mode": "RGB",
+    "aspect_ratio": "16:9 landscape",
+    "style": "high-definition Japanese visual-novel event CG"
+  },
+  "shared_direction": [
+    "Preserve each adult staff member's face, eye color, hair identity and established sterile clothing.",
+    "Use a coherent modern operating-room palette, crisp line art, detailed cel shading and cinematic cool light.",
+    "Keep the staff member attractive and anatomically correct, with no text, logo, watermark, blood, incision or exposed patient anatomy."
+  ],
+  "assets": [
+    {
+      "staff_id": "doc_aoi",
+      "display_name": "神宮寺 成美",
+      "path": "assets/events/staff_surgery_v1/doc_aoi/assistant_confirmation.png",
+      "sha256": "70aa26cf48f01550620f63ff0a741b53b1d47d086c0c84a9fbe0fe851d9b5d1e",
+      "references": [
+        "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+        "assets/characters/sterile_pack_v1/doc_aoi/focused.png"
+      ],
+      "prompt_summary": "Calm teaching-style assistant confirmation; green eyes and oval glasses preserved; both sterile hands raised correctly at chest height in a bright operating room."
+    },
+    {
+      "staff_id": "doc_rei",
+      "display_name": "深山 佳織",
+      "path": "assets/events/staff_surgery_v1/doc_rei/assistant_confirmation.png",
+      "sha256": "3cc51ffd3542ad2799800ff8ea3896f4403e9bdd9449d8b21f174e7140fd8239",
+      "references": [
+        "assets/characters/portrait_pack_v3/doc_rei/white_coat/serious.png",
+        "assets/characters/sterile_pack_v1/doc_rei/focused.png"
+      ],
+      "prompt_summary": "Decisive dynamic assistant confirmation; magenta eyes and hair identity preserved; one hand above the drape and one at chest height under crisp operating-room light."
+    },
+    {
+      "staff_id": "doc_emiko",
+      "display_name": "御堂 江美子",
+      "path": "assets/events/staff_surgery_v1/doc_emiko/assistant_confirmation.png",
+      "sha256": "3a18a3241aef7b2c5b1629bab4f4675607fd15c57436847ed39f40ed795331cb",
+      "references": [
+        "assets/characters/portrait_pack_v14/doc_emiko/white_coat/serious.png",
+        "assets/characters/portrait_pack_v14/doc_emiko/sterile/focused.png"
+      ],
+      "prompt_summary": "Centered, authoritative chief-surgeon assistant confirmation; cool unwavering gaze and poised sterile hands in a darker teal operating room."
+    },
+    {
+      "staff_id": "pharmacist_manami",
+      "display_name": "飯村 真奈美",
+      "path": "assets/events/staff_surgery_v1/pharmacist_manami/assistant_confirmation.png",
+      "sha256": "f48ebe55b662311a1d40255a7537ba15bcfca7ef49b96af81ab9717fe8ca94b8",
+      "references": [
+        "assets/characters/portrait_pack_v10/pharmacist_manami/pharmacist/neutral.png",
+        "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/worried.png",
+        "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/neutral.png"
+      ],
+      "prompt_summary": "Attractive light-comedy confirmation: red hair and green eyes preserved; she freezes with both hands raised, a small sweat drop and a sliding gauze pack showing nervous inexperience without a dangerous accident."
+    }
+  ],
+  "future_runtime_contract": {
+    "trigger": "First successful assignment of the matching staff member to the assistant-surgeon role.",
+    "playback": "Show once immediately after assignment, then add permanently to Event Memories.",
+    "repeat_behavior": "Do not interrupt later assignments; replay only from Event Memories.",
+    "persistence": "Reward IDs are stored in the staff relationship unlocked_benefits list.",
+    "content_boundary": "This pack contains SFW generated CGs. User-supplied NSFW assets use separate source records and may share the same unlock/gallery framework."
+  }
+}

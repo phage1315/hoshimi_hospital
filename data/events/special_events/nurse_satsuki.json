@@ -1,0 +1,237 @@
+[
+  {
+    "id": "satsuki_lv1_real_patient_test",
+    "title": "真人测试",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "阿库娅叫皐月去测试新妇科检查椅。一次看似简单的设备试用，让团队第一次从患者躺下后的视角重新审视流程。",
+    "unlock_requirements": [
+      {
+        "type": "flag",
+        "flag": "satsuki_lv0_complete",
+        "value": true
+      },
+      {
+        "type": "relationship_familiarity",
+        "actor_id": "nurse_satsuki",
+        "minimum": 10
+      },
+      {
+        "type": "player_attribute",
+        "attribute": "presence",
+        "minimum": -999,
+        "maximum": 30
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "nurse_satsuki",
+      "doc_aqua"
+    ],
+    "prerequisite_events": [],
+    "event_chain": [
+      "satsuki_lv1_real_patient_test_main"
+    ],
+    "completion_flags": [
+      "satsuki_lv1_complete",
+      "satsuki_clinical_trust_sakaguchi",
+      "satsuki_patient_perspective_trait",
+      "satsuki_lv2_gate_check"
+    ],
+    "relationship_rewards": [
+      {
+        "actor_id": "nurse_satsuki",
+        "target_level": 1,
+        "benefit_id": "",
+        "allow_level_skip": false,
+        "award_event_familiarity": true
+      }
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "satsuki_lv1_real_patient_test",
+      "title": "真人测试",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 2,
+      "priority": 190,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "satsuki_lv2_patient_transport",
+    "title": "陪我去一次",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "皐月递交了围术期护理轮转申请。几次平稳转运以后，一名患者在手术室门口突然用双脚把自己卡在门框上。",
+    "unlock_requirements": [
+      {
+        "type": "flag",
+        "flag": "satsuki_lv1_complete",
+        "value": true
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "nurse_satsuki",
+        "minimum": 1,
+        "maximum": 1
+      },
+      {
+        "type": "relationship_familiarity",
+        "actor_id": "nurse_satsuki",
+        "minimum": 25
+      },
+      {
+        "type": "player_attribute",
+        "attribute": "presence",
+        "minimum": -999,
+        "maximum": 0
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "satsuki_lv1_real_patient_test",
+        "days": 3
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "nurse_satsuki",
+      "doc_artoria",
+      "nurse_ishigami",
+      "nurse_hiroko"
+    ],
+    "prerequisite_events": [],
+    "event_chain": [
+      "satsuki_lv2_patient_transport_main"
+    ],
+    "completion_flags": [
+      "satsuki_or_rotation_unlocked",
+      "satsuki_successful_patient_transport",
+      "satsuki_lv2_patient_transport_complete"
+    ],
+    "relationship_rewards": [
+      {
+        "actor_id": "nurse_satsuki",
+        "target_level": 2,
+        "benefit_id": "unlock_satsuki_or_rotation",
+        "allow_level_skip": false,
+        "award_event_familiarity": true
+      }
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "satsuki_lv2_patient_transport",
+      "title": "陪我去一次",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 5,
+      "priority": 185,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "satsuki_lv3_wrong_patient_appendectomy",
+    "title": "我送错了人",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "一次床位调整、旧转运单与同名患者构成连续失效链。皐月必须面对自己没有完成最终身份核对所造成的严重后果。",
+    "unlock_requirements": [
+      {
+        "type": "flag",
+        "flag": "satsuki_lv2_patient_transport_complete",
+        "value": true
+      },
+      {
+        "type": "flag",
+        "flag": "satsuki_or_rotation_unlocked",
+        "value": true
+      },
+      {
+        "type": "flag",
+        "flag": "satsuki_lv3_complete",
+        "value": false
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "nurse_satsuki",
+        "minimum": 2,
+        "maximum": 2
+      },
+      {
+        "type": "relationship_familiarity",
+        "actor_id": "nurse_satsuki",
+        "minimum": 45
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "satsuki_lv2_patient_transport",
+        "days": 3
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "nurse_satsuki",
+      "nurse_hiroko",
+      "nurse_ishigami",
+      "doc_artoria",
+      "nurse_haru"
+    ],
+    "prerequisite_events": [
+      "satsuki_lv2_patient_transport"
+    ],
+    "event_chain": [
+      "satsuki_lv3_wrong_patient_appendectomy_main"
+    ],
+    "completion_flags": [
+      "satsuki_lv3_complete",
+      "satsuki_romantic_awareness",
+      "satsuki_accepts_close_proximity_sakaguchi",
+      "satsuki_full_identity_verification_trait",
+      "satsuki_normal_sunday_date",
+      "satsuki_lv4_gate_check"
+    ],
+    "relationship_rewards": [
+      {
+        "actor_id": "nurse_satsuki",
+        "target_level": 3,
+        "benefit_id": "unlock_satsuki_normal_sunday_date",
+        "allow_level_skip": false,
+        "award_event_familiarity": true
+      }
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "satsuki_lv3_wrong_patient_appendectomy",
+      "title": "我送错了人",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 8,
+      "priority": 190,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  }
+]

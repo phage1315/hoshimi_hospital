@@ -1,0 +1,86 @@
+[
+  {
+    "id": "advanced_referral_tutorial_chisato",
+    "title": "本人就在这里",
+    "category": "advanced_referral_tutorial",
+    "duration_days": 3,
+    "consumes_full_day": true,
+    "cg_dialogue_delay_seconds": 2.0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "星见医院收到第一例需要Grand OR配置的高级转诊。术前会议、正式手术和术后复盘将连续占用三天。",
+    "unlock_requirements": [
+      {
+        "type": "player_attribute",
+        "attribute": "skill",
+        "minimum": 80
+      },
+      {
+        "type": "player_attribute",
+        "attribute": "reputation",
+        "minimum": 250
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_emiko",
+        "minimum": 1
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_asuka",
+      "doc_emiko",
+      "nurse_hiroko",
+      "nurse_ishigami",
+      "doc_sayaka",
+      "nurse_yui",
+      "nurse_haru",
+      "nurse_ange"
+    ],
+    "prerequisite_events": [
+      "emiko_lv1_first_operation"
+    ],
+    "event_chain": [
+      "advanced_referral_tutorial_chisato_day1",
+      "advanced_referral_tutorial_chisato_day2",
+      "advanced_referral_tutorial_chisato_day3"
+    ],
+    "completion_flags": [
+      "advanced_referral_unlocked",
+      "advanced_referral_tutorial_complete",
+      "advanced_referral_random_cases_enabled",
+      "grand_or_team_builder_enabled",
+      "met_sakura",
+      "chisato_advanced_case_complete",
+      "advanced_anesthesia_tutorial_complete",
+      "advanced_tutorial_day2_complete",
+      "tutorial_surgery_success"
+    ],
+    "completion_effects": {
+      "unlock_procedures": [
+        "surgery_adv_artificial_heart_exchange"
+      ],
+      "advanced_referral_case_id": "advanced_referral_tutorial_chisato_case",
+      "completed_surgery_id": "surgery_adv_artificial_heart_exchange",
+      "surgery_xp_bonus": 360,
+      "reputation": 30
+    },
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "advanced_referral_tutorial_chisato",
+      "title": "本人就在这里",
+      "chapters": [
+        "第一天：术前会议",
+        "第二天：Grand OR",
+        "第三天：查房与复盘"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 150,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  }
+]

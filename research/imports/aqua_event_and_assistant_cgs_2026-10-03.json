@@ -1,0 +1,45 @@
+{
+  "id": "aqua_event_and_assistant_cgs_2026_10_03",
+  "date": "2026-10-03",
+  "tool": "OpenAI ImageGen",
+  "character_id": "doc_aqua",
+  "references": [
+    "research/character_references/doc_aqua/01_character_reference.png",
+    "research/character_references/doc_aqua/07_sterile_reference.png",
+    "research/character_references/doc_aqua/08_white_coat_reference.png"
+  ],
+  "assets": [
+    {
+      "path": "assets/events/character_events/aqua/exam_chair_stuck.png",
+      "sha256": "eea05e267ce9a9537a7eb2872fb47399404d434fb1dc85c27f6ba3b3a17514a5",
+      "bytes": 1603698
+    },
+    {
+      "path": "assets/events/character_events/aqua/exam_chair_recovered.png",
+      "sha256": "ab7faa67799bf874d655567f3f10bab7f14a2d1314cdaafe58eaea4434793b77",
+      "bytes": 1711452
+    },
+    {
+      "path": "assets/events/character_events/aqua/five_gyne_surgeries_heart_eyes.png",
+      "sha256": "a7e129b5a8858fc3fdf6b0416881e8b091236d2deb346c55fe1b5007df44bcd3",
+      "bytes": 1632426
+    },
+    {
+      "path": "assets/events/staff_surgery_v1/doc_aqua/assistant_confirmation.png",
+      "sha256": "83f663be6903173a908e8dcf88d4ef46100aca21533db7976717c68ff3cf10bc",
+      "bytes": 1866397
+    }
+  ],
+  "prompt_summaries": {
+    "exam_chair_stuck": "Strict side-profile, fully clothed powered-chair maintenance malfunction; foot platforms high, backrest low, remote out of reach, two-arm anatomy.",
+    "exam_chair_recovered": "Fully clothed Aqua beside the reset chair, holding the controller and recovering her confident chief-physician demeanor.",
+    "five_gyne_surgeries_heart_eyes": "White-coat Aqua holding five case reports and raising five fingers, with clear heart-shaped pupils.",
+    "assistant_confirmation": "Sterile Aqua with nearly all hair under cap, excited eyes, safely inspecting a hysteroscope as assistant surgeon."
+  },
+  "runtime_mapping": {
+    "aqua_intro_exam_chair.heard_voice": "assets/events/character_events/aqua/exam_chair_stuck.png",
+    "aqua_intro_exam_chair.identity_reveal": "assets/events/character_events/aqua/exam_chair_recovered.png",
+    "aqua_lv1_gyne_obsession.five_cases": "assets/events/character_events/aqua/five_gyne_surgeries_heart_eyes.png",
+    "role_cg_doc_aqua_assistant_surgeon": "assets/events/staff_surgery_v1/doc_aqua/assistant_confirmation.png"
+  }
+}

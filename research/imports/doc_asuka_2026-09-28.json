@@ -1,0 +1,27 @@
+{
+  "id": "doc_asuka_import_2026_09_28",
+  "character_id": "doc_asuka",
+  "display_name": "城宮明日香",
+  "source_design": "docs/design/SHIROIMIYA_ASUKA_EVENT_DESIGN.md",
+  "source_assets": [
+    "assets/characters/portrait_pack_v15/doc_asuka/sources/white_coat_neutral.png",
+    "assets/characters/portrait_pack_v15/doc_asuka/sources/director_suit_surprised.png",
+    "assets/characters/portrait_pack_v15/doc_asuka/sources/white_coat_worried.png",
+    "assets/characters/portrait_pack_v15/doc_asuka/sources/director_suit_neutral.png",
+    "assets/characters/portrait_pack_v15/doc_asuka/sources/casual_neutral.png",
+    "assets/characters/portrait_pack_v15/doc_asuka/sources/operating_patient_nervous.png"
+  ],
+  "generated_assets": {
+    "method": "OpenAI built-in image generation/editing",
+    "outputs": [
+      "white_coat/neutral",
+      "white_coat/worried",
+      "director_suit/neutral",
+      "director_suit/surprised",
+      "casual/neutral",
+      "scrubs/neutral",
+      "sterile/neutral"
+    ]
+  },
+  "notes": "The five RGB source differences had black backgrounds. They were converted to standardized 1024x1536 RGBA VN sprites. The supplied transparent operating-patient portrait is retained directly for future Lv4/Lv5 content. On 2026-09-28, the sterile portrait was revised so all long hair, temple hair, and nape hair are contained beneath the surgical cap, leaving only a few short wispy fringe strands for recognition."
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "nausea",
+    "label": "恶心",
+    "trigger_cue": "nausea",
+    "initial_severity": 1,
+    "remaining_steps": 2,
+    "priority": 20,
+    "prompts": {
+      "1": "「医生……我有点恶心，胃里一直往上翻……」",
+      "2": "「呃……好难受……我、我快吐出来了，身体控制不住……」",
+      "3": "「不行……真的要吐了……求你先停一下，我受不了了……！」"
+    },
+    "actions": [
+      {
+        "id": "treat_nausea_personally",
+        "label": "暂停操作，亲自安抚并调整体位",
+        "response": "「……好多了。谢谢你先停下来。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 3,
+        "effects": {"fear": -8, "pain": -2, "dignity": 4, "cooperation": 5},
+        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+      },
+      {
+        "id": "delegate_nausea_assistant",
+        "label": "让助手医生稳定患者并说明情况",
+        "response": "「我来维持体位并和她说明。呼吸放慢，我们先把这阵恶心压下去。」",
+        "response_speaker": "staff",
+        "delegate_role": "assistant_surgeon",
+        "minutes": 2,
+        "effects": {"fear": -6, "pain": -1, "dignity": 3, "cooperation": 4},
+        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+      },
+      {
+        "id": "delegate_nausea_circulating",
+        "label": "让巡回护士准备吸引、冷巾并安抚",
+        "response": "「吸引和冷巾已经准备好。我在这里，慢慢呼吸，不要勉强说话。」",
+        "response_speaker": "staff",
+        "delegate_role": "circulating_nurse",
+        "minutes": 2,
+        "effects": {"fear": -7, "pain": -1, "dignity": 4, "cooperation": 4},
+        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+      },
+      {
+        "id": "ignore_nausea",
+        "label": "维持当前节奏，暂不处理",
+        "response": "「呃……恶心没有停……我快忍不住了……」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 0,
+        "effects": {"fear": 6, "pain": 2, "dignity": -3, "cooperation": -5},
+        "condition_effect": {"severity_delta": 1, "remaining_steps_delta": 1, "clear": false}
+      }
+    ]
+  },
+  {
+    "id": "drowsiness",
+    "label": "嗜睡",
+    "trigger_cue": "drowsiness",
+    "initial_severity": 1,
+    "remaining_steps": 2,
+    "priority": 10,
+    "prompts": {
+      "1": "「医生……眼睛好沉……我还醒着，只是有点睁不开……」",
+      "2": "「……刚才你们说什么？对不起，我总是一下子听不见……」",
+      "3": "「我……听不清了……别让我睡过去……请、请叫着我……」"
+    },
+    "actions": [
+      {
+        "id": "treat_drowsiness_personally",
+        "label": "亲自呼唤并重新确认意识与指令",
+        "response": "「我听得见……请继续告诉我下一步。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {"fear": -4, "pain": 0, "dignity": 3, "cooperation": 6},
+        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+      },
+      {
+        "id": "delegate_drowsiness_assistant",
+        "label": "让助手医生持续呼唤并复述指令",
+        "response": "「看着我，保持清醒。我会逐句告诉你现在做到哪里。」",
+        "response_speaker": "staff",
+        "delegate_role": "assistant_surgeon",
+        "minutes": 2,
+        "effects": {"fear": -3, "pain": 0, "dignity": 2, "cooperation": 5},
+        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+      },
+      {
+        "id": "delegate_drowsiness_circulating",
+        "label": "让巡回护士持续观察并保持言语刺激",
+        "response": "「我会继续观察她的反应。请听着我的声音，慢慢回答名字和地点。」",
+        "response_speaker": "staff",
+        "delegate_role": "circulating_nurse",
+        "minutes": 2,
+        "effects": {"fear": -4, "pain": 0, "dignity": 3, "cooperation": 5},
+        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+      },
+      {
+        "id": "ignore_drowsiness",
+        "label": "继续手术，不打断当前操作",
+        "response": "患者的目光再次散开，迟迟没有回应刚才的指令。",
+        "response_speaker": "narrator",
+        "delegate_role": "",
+        "minutes": 0,
+        "effects": {"fear": 2, "pain": 0, "dignity": -2, "cooperation": -5},
+        "condition_effect": {"severity_delta": 1, "remaining_steps_delta": 1, "clear": false}
+      }
+    ]
+  }
+]

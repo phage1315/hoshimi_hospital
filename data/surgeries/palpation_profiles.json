@@ -1,0 +1,237 @@
+[
+  {
+    "id": "generic",
+    "regions": {
+      "chest": "unrelated",
+      "abdomen": "unrelated",
+      "breast": "unrelated",
+      "nipple": "unrelated",
+      "genital": "unrelated"
+    },
+    "reactions": {}
+  },
+  {
+    "id": "abdominal",
+    "regions": {
+      "chest": "unrelated",
+      "abdomen": "primary",
+      "breast": "unrelated",
+      "nipple": "unrelated",
+      "genital": "unrelated"
+    },
+    "reactions": {
+      "abdomen": {
+        "primary": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「……这里有一点痛。」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「嗯……就是这里。右边按下去更不舒服。」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「啊、这里很痛……请轻一点！」"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "breast",
+    "regions": {
+      "chest": "adjacent",
+      "abdomen": "unrelated",
+      "breast": "primary",
+      "nipple": "primary",
+      "genital": "unrelated"
+    },
+    "reactions": {
+      "breast": {
+        "primary": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「那里碰到的时候有一点不舒服……」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「嗯……就是这里，按下去会不舒服。」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「痛……那里按得太重了。」"
+            }
+          ]
+        }
+      },
+      "nipple": {
+        "primary": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「啊……那里也要确认吗？」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「那里很敏感……我知道是在检查。」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「啊！太用力了……那里很敏感。」"
+            }
+          ]
+        }
+      },
+      "chest": {
+        "adjacent": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「胸骨这里也需要一起确认吗……？」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「这里也和乳房手术的检查有关吗？」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「胸口有点痛……请轻一点。」"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "gynecology_pelvic",
+    "regions": {
+      "chest": "unrelated",
+      "abdomen": "primary",
+      "breast": "unrelated",
+      "nipple": "unrelated",
+      "genital": "adjacent"
+    },
+    "reactions": {
+      "abdomen": {
+        "primary": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「下面这里按下去有一点胀……」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「嗯……下腹这里会不舒服。」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「啊、下腹很痛……请轻一点！」"
+            }
+          ]
+        }
+      },
+      "genital": {
+        "adjacent": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「……这里也需要检查吗？」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「我知道是检查，可还是好羞耻……」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「我知道是在检查……但请不要这么用力。」"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "thoracic_cardiac",
+    "regions": {
+      "chest": "primary",
+      "abdomen": "unrelated",
+      "breast": "adjacent",
+      "nipple": "unrelated",
+      "genital": "unrelated"
+    },
+    "reactions": {
+      "chest": {
+        "primary": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「胸口这里有一点闷……」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「嗯……就是胸骨这里有些不舒服。」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「啊、胸口很痛……请轻一点！」"
+            }
+          ]
+        }
+      },
+      "breast": {
+        "adjacent": {
+          "light": [
+            {
+              "id": "line_01",
+              "response": "「这里也和开胸有关系吗……？」"
+            }
+          ],
+          "standard": [
+            {
+              "id": "line_01",
+              "response": "「原来这里也需要一起检查吗……」"
+            }
+          ],
+          "deep": [
+            {
+              "id": "line_01",
+              "response": "「有点痛……这里也要按这么重吗？」"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

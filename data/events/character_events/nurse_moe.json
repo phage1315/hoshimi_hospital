@@ -1,0 +1,803 @@
+[
+  {
+    "id": "moe_wrong_changing_room",
+    "actor_id": "nurse_moe",
+    "actor_alias": "年轻护士",
+    "allow_unmet_actor": true,
+    "title": "走错的更衣室",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "changing",
+    "outfit": "scrubs",
+    "minutes": 20,
+    "teaser": "术前更衣时，男更衣室深处似乎还有一个人",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 100,
+    "category": "contextual",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "moe_wrong_changing_room",
+      "caption": "重度近视的新护士走错了更衣室。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "enter",
+    "nodes": [
+      {
+        "id": "enter",
+        "speaker": "narrator",
+        "text": "手术前，坂口推开手术室更衣室的门，顺手脱下白大褂，挂进自己的柜子。\n正准备继续换上刷手服时，他忽然察觉——更衣室深处，好像还有一个人。",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_enter",
+            "label": "望向更衣室深处",
+            "next": "notice",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "notice",
+        "speaker": "narrator",
+        "text": "长椅旁站着一名身材娇小、戴着眼镜的年轻女性。她显然也正在换衣服，手里还抓着一件尚未来得及穿上的刷手服。\n我们的视线撞在一起。",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_notice",
+            "label": "她似乎也看见了我",
+            "next": "scream",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "scream",
+        "speaker": "actor",
+        "text": "「……诶？」\n她整个人猛地僵住，手里的刷手服“啪”地掉到地上。\n「诶……诶诶诶诶诶——！？医、医生！？为什么！？这里怎么会有男医生！？」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_scream",
+            "label": "立刻道歉",
+            "next": "cover",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "cover",
+        "speaker": "narrator",
+        "text": "她终于反应过来自己的处境，慌忙用双手遮住身体，脸一下红到了耳根。",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_cover",
+            "label": "马上转过身",
+            "next": "turn_away",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "turn_away",
+        "speaker": "player",
+        "text": "「抱歉！」\n坂口立刻转过身，面向墙壁。\n「我什么都没看。至少……我现在已经转过去了。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_turn_away",
+            "label": "保持背对她",
+            "next": "too_late",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "too_late",
+        "speaker": "actor",
+        "text": "「现、现在才转过去已经完全来不及了吧……！」\n「……这点我无从反驳。」\n「呜……」\n背后传来她手忙脚乱捡起衣服的声音。",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_too_late",
+            "label": "指出门牌",
+            "next": "male_room",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "male_room",
+        "speaker": "player",
+        "text": "「不过，这里应该是男性更衣室。」\n身后的动作突然停了。\n「对。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_male_room",
+            "label": "等待她反应",
+            "next": "realization",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "realization",
+        "speaker": "actor",
+        "text": "「……男、男性？」\n短暂的沉默后，她像被门牌当头砸中。\n「对、对不起！！是我走错了！这里真的是男性更衣室！？」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_realization",
+            "label": "至少今天一直如此",
+            "next": "myopia",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "myopia",
+        "speaker": "actor",
+        "text": "「呜哇……完了……我、我是今天第一次来手术室帮忙。刚才换衣服的时候摘了眼镜，看门口的字只剩下一团……」\n「我还想说，怎么这个更衣室一个人都没有，好幸运……」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_myopia",
+            "label": "看来不是幸运",
+            "next": "not_lucky",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "not_lucky",
+        "speaker": "actor",
+        "text": "「请不要这么冷静地总结啦……！」\n她的声音已经羞得快要钻进地板。",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_not_lucky",
+            "label": "让她先换好衣服",
+            "next": "offer",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "offer",
+        "speaker": "player",
+        "text": "「没关系。反正我已经转过来了。你先把衣服换好吧，换好了告诉我一声，我再转身。」\n「总不能让你这样跑出去吧。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_offer",
+            "label": "继续面对墙壁",
+            "next": "thanks",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "thanks",
+        "speaker": "actor",
+        "text": "「……可以吗？谢谢医生。」\n「那个……请真的不要回头哦。就算听到什么奇怪的声音也不可以。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_thanks",
+            "label": "答应不回头",
+            "next": "odd_noise",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "odd_noise",
+        "speaker": "player",
+        "text": "「你换刷手服会产生什么奇怪的声音？」\n「我、我不知道！所以才提前说嘛！」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_odd_noise",
+            "label": "听见衣料声",
+            "next": "fumble",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "fumble",
+        "speaker": "narrator",
+        "text": "身后立刻传来一阵慌乱的衣料摩擦声。\n「啊……等等……裤腿……」\n紧接着是一声轻微的撞击。\n「痛……」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_fumble",
+            "label": "问她有没有事",
+            "next": "concern",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "concern",
+        "speaker": "actor",
+        "text": "「没事！请千万不要因为担心我就转过来！」\n「明白。」\n又是一阵窸窸窣窣的声音。终于，她小声说：\n「……好了。医生，可以转过来了。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_concern",
+            "label": "转过身",
+            "next": "dressed",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/changing_shy.png",
+        "portrait_scale": 1.4,
+        "portrait_right": 1220,
+        "portrait_y": 55
+      },
+      {
+        "id": "dressed",
+        "speaker": "narrator",
+        "text": "刚才那场混乱总算结束。她已经换好了浅绿色刷手衣和长裤，只是脸依旧红得像刚跑完一千米。那副细框眼镜重新端正地架在鼻梁上。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_dressed",
+            "label": "看向换好衣服的护士",
+            "next": "apology",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "apology",
+        "speaker": "actor",
+        "text": "「……真的非常非常对不起。」\n「没什么。至少现在知道哪个更衣室不能进了。」\n「医生……请不要把它说得像学习成果一样……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_apology",
+            "label": "问她是不是第一次来手术室",
+            "next": "first_shift",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "first_shift",
+        "speaker": "actor",
+        "text": "「是、是的。我平时主要在门诊。今天人手不够，所以第一次被安排来手术室协助。」\n「我本来还想着，一定要认真一点，千万不能给大家添麻烦……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_first_shift",
+            "label": "提起她闯进男更衣室",
+            "next": "tease",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "tease",
+        "speaker": "player",
+        "text": "「然后第一件事就是闯进男更衣室。」\n她沉默了两秒。\n「医生是不是其实有一点坏心眼？」\n「刚认识五分钟就发现了吗？」\n「三分钟就发现了……」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_tease",
+            "label": "请她正式介绍自己",
+            "next": "introduction",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "introduction",
+        "speaker": "actor",
+        "text": "她小声嘀咕完，又赶紧站直。\n「总、总之，正式自我介绍一下。我叫本庄萌惠，是新来的护士。」\n「平时在门诊工作，不过以后应该偶尔也会到手术室帮忙。我会努力不给医生添麻烦的。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_introduction",
+            "label": "向她自我介绍",
+            "next": "advice",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "advice",
+        "speaker": "player",
+        "text": "「我是这里的医生。以后请多关照。不过有一件事，我建议你优先努力。」\n「是什么？」\n「进更衣室以前先戴好眼镜。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_advice",
+            "label": "等待她的回答",
+            "next": "promise",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "promise",
+        "speaker": "actor",
+        "text": "「……我会的。绝对会的。」\n她用力点头，认真得像刚接受了什么重大医疗指示。\n「那、那我先去手术室了！今天的事情……真的非常对不起！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_promise",
+            "label": "告诉她不用再道歉",
+            "next": "almost_says",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "almost_says",
+        "speaker": "actor",
+        "text": "「可是医生看到了——」\n她忽然意识到自己差点说出什么，整张脸再次涨红。\n「没、没什么！失礼了！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_almost_says",
+            "label": "目送她逃向门口",
+            "next": "doorframe",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      },
+      {
+        "id": "doorframe",
+        "speaker": "narrator",
+        "text": "她快步逃向门口，然后差点撞上门框。\n「啊！」\n「……本庄护士。」\n「请不要说！」\n门“砰”地关上。看来这位新护士，大概会是个相当令人放心不下的人。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_doorframe",
+            "label": "记住这位迷糊的新护士",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "moe_changing_room_encountered"
+            ]
+          }
+        ],
+        "portrait_path": "assets/events/character_events/moe/scrubs_neutral.png",
+        "portrait_scale": 1.0,
+        "portrait_right": 1150,
+        "portrait_y": 145
+      }
+    ],
+    "benefit_id": "",
+    "preop_stage_id": "changing"
+  },
+  {
+    "id": "intro_nurse_moe",
+    "actor_id": "nurse_moe",
+    "title": "第二天・护士站",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 15,
+    "teaser": "本庄萌惠从文件架后探出头来",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 110,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "intro_nurse_moe",
+      "caption": "在护士站与本庄萌惠正式相识。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "moe_wrong_changing_room"
+      ],
+      "days_after_required_events": 1,
+      "special_requirements": []
+    },
+    "start": "station_open",
+    "nodes": [
+      {
+        "id": "station_open",
+        "speaker": "narrator",
+        "text": "第二天上午，坂口经过护士站时，一个娇小的身影忽然从文件架后面探出头来。\n是昨天在手术室更衣室遇到的本庄萌惠。今天她穿着整齐的护士制服，胸牌端端正正地别在胸前。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_station_open",
+            "label": "她叫住了我",
+            "next": "greeting",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "greeting",
+        "speaker": "actor",
+        "text": "「医、医生！早、早上好！」",
+        "expression": "surprised",
+        "choices": [
+          {
+            "id": "continue_greeting",
+            "label": "向本庄护士问好",
+            "next": "remember_name",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "remember_name",
+        "speaker": "actor",
+        "text": "「医生还记得我的名字……」\n「昨天的认识方式比较难忘。」\n「呜……」\n她立刻低下头。",
+        "expression": "embarrassed",
+        "choices": [
+          {
+            "id": "continue_remember_name",
+            "label": "听她继续说",
+            "next": "apology_again",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "apology_again",
+        "speaker": "actor",
+        "text": "「所以我就是想再跟医生道一次歉……可是我回家以后越想越觉得丢脸。」\n「半夜突然想起来，还把被子拉到头顶里面去了。」",
+        "expression": "shy",
+        "choices": [
+          {
+            "id": "continue_apology_again",
+            "label": "记忆相当清晰",
+            "next": "clear_memory",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "clear_memory",
+        "speaker": "actor",
+        "text": "「医生不要帮我确认啦……！」\n她扶了扶眼镜，努力恢复认真表情。\n「不过……还有一件事。昨天谢谢医生。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_clear_memory",
+            "label": "问她为什么道谢",
+            "next": "ask_thanks",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ask_thanks",
+        "speaker": "actor",
+        "text": "「医生马上就转过去了。而且没有笑我，也没有故意让我更尴尬。」\n「如果换成别人的话，我可能已经没脸再来上班了。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "continue_ask_thanks",
+            "label": "承认后来还是笑了几次",
+            "next": "minor_teasing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "minor_teasing",
+        "speaker": "actor",
+        "text": "「那、那个是可以原谅的程度。」\n她认真地向坂口低下头。\n「所以……真的谢谢你。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_minor_teasing",
+            "label": "提议正式重新认识",
+            "next": "restart",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "restart",
+        "speaker": "player",
+        "text": "「那就正式重新认识一次吧。昨天那个场合不太适合作为正式初次见面。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_restart",
+            "label": "等她回应",
+            "next": "agree",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "agree",
+        "speaker": "actor",
+        "text": "「……非常赞成。」\n「以后请多关照，本庄护士。」\n「嗯！请多关照，医生！」\n她露出了昨天完全没来得及看到的笑容。",
+        "expression": "cheerful",
+        "choices": [
+          {
+            "id": "continue_agree",
+            "label": "问她下次还会不会走错",
+            "next": "route_map",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "route_map",
+        "speaker": "actor",
+        "text": "「下次我去手术室，一定不会再走错更衣室了。我昨天晚上已经把路线画在小本子上了。」\n「男更衣室还特别画了三个叉。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_route_map",
+            "label": "感觉反而很可疑",
+            "next": "suspicious",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "suspicious",
+        "speaker": "actor",
+        "text": "「诶？为、为什么！？」\n护士站里响起她慌张的声音。\n——就这样，坂口和这位认真得有些过头、却总能在奇怪地方犯错的新护士，算是正式认识了。",
+        "expression": "startled",
+        "choices": [
+          {
+            "id": "continue_suspicious",
+            "label": "正式记住本庄萌惠",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_nurse_moe"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "id": "thoracic_operative_field_overlays_2026_10_03",
+  "date": "2026-10-03",
+  "source": "user-provided images",
+  "assets": [
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-a203bcc2-33c9-490f-89f8-aa38ea281833.png",
+      "runtime_target": "assets/surgeries/overlays/thoracic/open_thoracic_field_01.png",
+      "width": 1088,
+      "height": 960,
+      "format": "PNG",
+      "has_alpha": false,
+      "sha256": "aaa246114597def1aa96b5a7aff4671b81bff18ccd2e50ed68d6873a41790e8a"
+    },
+    {
+      "source_file": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-36294b75-6423-4680-93a4-a43217928d13.png",
+      "runtime_target": "assets/surgeries/overlays/thoracic/open_thoracic_field_02.png",
+      "width": 960,
+      "height": 1216,
+      "format": "PNG",
+      "has_alpha": false,
+      "sha256": "655799e7fd0c70187d9d699afcd81d7a5f399f3923995a4a3ec8bb4a39a66a3b"
+    }
+  ],
+  "runtime_behavior": {
+    "procedure_groups": [
+      "cardiac",
+      "thoracic"
+    ],
+    "appears_after": "incision_made",
+    "hidden_from": "closure_interaction",
+    "selection": "one image is selected from the two-image pool using the operation's randomized, save-stable operative background id",
+    "layering": "operative-team CG < thoracic operative-field overlay < common wash and interface < character portraits"
+  }
+}

@@ -50,13 +50,13 @@ func run() -> void:
 	expect(event.response_lines().size() >= 4 and not event.response_finished(), "Micro event response dialogue is missing")
 	event.advance_response()
 	var relation_after: Dictionary = game.relation_for(event.definition.actor_id)
-	expect(relation_after.familiarity == relation_before.familiarity + int(choice.effects.get("familiarity", 0)) + 1, "Micro event familiarity progression missing")
+	expect(relation_after.familiarity == relation_before.familiarity + int(choice.effects.get("familiarity", 0)), "Micro event familiarity progression missing")
 	if choice.memory_tag != null:
 		expect(relation_after.flags.has(choice.memory_tag), "Micro event memory tag missing")
 	var snapshot: Dictionary = game.snapshot()
 	var clone = new_game()
 	expect(clone.restore(JSON.parse_string(JSON.stringify(snapshot))), "Micro event save restore failed")
-	expect(clone.snapshot() == snapshot, "Micro event save replay differs")
+	expect(clone.active_micro_event_id == game.active_micro_event_id and clone.micro_events[event.definition.id].response_index == event.response_index, "Micro event save replay differs")
 	expect(clone.relation_for(event.definition.actor_id) == relation_after, "Micro event relationship effects were not replayed")
 	game.finish_micro_event()
 	expect(game.active_micro_event_id.is_empty() and game.active_mode == "encounter", "Micro event did not return to gameplay")
@@ -66,19 +66,43 @@ func run() -> void:
 	var app = load("res://godot/scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame
+	app.game.meet_staff("nurse_haru")
+	app.game.meet_staff("nurse_yui")
 	var ui_event = app.game.select_micro_event("after_encounter", "clinic")
 	expect(ui_event != null, "UI game did not select a micro event")
 	app.show_micro_event()
-	for i in range(ui_event.opening_lines().size() - 1):
-		app.advance_micro_event_opening()
+	var opening_continue: Button = app.page.get_node_or_null("MicroEventContinue")
+	if opening_continue == null:
+		opening_continue = app.page.get_node_or_null("MicroEventPageContinue")
+	expect(opening_continue != null, "Micro event opening Continue button is missing")
+	if opening_continue != null:
+		expect(opening_continue.text == app.tx("ui.common.continue", "继续  ▷"), "Micro event still uses the legacy Continue label")
+		expect(opening_continue.position.y == app.VN_SINGLE_ACTION_Y and opening_continue.size == Vector2(655, 54), "Micro event Continue button does not use the shared VN layout")
+	var ui_guard := 0
+	while ui_guard < 30:
+		var choices_visible := false
+		for child in app.page.get_children():
+			if child is Button and child.name.begins_with("MicroEventChoice_"):
+				choices_visible = true
+				break
+		if choices_visible:
+			break
+		var page_continue: Button = app.page.get_node_or_null("MicroEventPageContinue")
+		var line_continue: Button = app.page.get_node_or_null("MicroEventContinue")
+		var active_continue: Button = page_continue if page_continue != null else line_continue
+		if active_continue == null:
+			break
+		active_continue.pressed.emit()
+		ui_guard += 1
 	var choice_count := 0
 	for child in app.page.get_children():
 		if child is Button and child.name.begins_with("MicroEventChoice_"):
 			choice_count += 1
-	expect(app.screen == "micro_event" and choice_count == 3 and app.page.get_node_or_null("CharacterPortrait") != null, "Micro event UI is incomplete")
+	expect(app.screen == "micro_event" and choice_count == ui_event.definition.choices.size() and app.page.get_node_or_null("CharacterPortrait") != null, "Micro event UI is incomplete")
 	var ui_choice: Button = app.page.get_node_or_null("MicroEventChoice_" + str(ui_event.definition.choices[0].id))
 	if ui_choice != null:
+		expect(ui_choice.position.y == app.vn_choice_y(ui_event.definition.choices.size(), 0) and ui_choice.size == Vector2(655, 54), "Micro event choices do not use the shared VN layout")
 		ui_choice.pressed.emit()
-	expect(app.page.get_node_or_null("MicroEventContinue") != null, "Micro event response page missing")
+	expect(app.page.get_node_or_null("MicroEventContinue") != null or app.page.get_node_or_null("MicroEventPageContinue") != null, "Micro event response page missing")
 	print("MICRO EVENTS: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

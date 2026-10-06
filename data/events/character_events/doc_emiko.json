@@ -1,0 +1,1037 @@
+[
+  {
+    "id": "emiko_office_denied",
+    "actor_id": "doc_emiko",
+    "title": "门外的回答",
+    "chapter": 0,
+    "location_id": "emiko_office",
+    "trigger_mode": "location",
+    "background_id": "emiko_office",
+    "outfit": "white_coat",
+    "minutes": 5,
+    "teaser": "门外的护士拦住了坂口。",
+    "time_start": 540,
+    "time_end": 1019,
+    "priority": 190,
+    "category": "contextual",
+    "gallery": {
+      "cg_id": "cg_emiko_office_denied",
+      "caption": "门外的回答",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "actor",
+        "text": "「御堂医生在忙。她说如果是手术相关的事情，把病例留下就可以了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "ask_name",
+            "label": "追问：她知道是谁找她吗？",
+            "next": "asked",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "asked",
+        "speaker": "player",
+        "text": "「她知道是谁找她吗？」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "then",
+            "label": "等护士回答",
+            "next": "answer",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "answer",
+        "speaker": "actor",
+        "text": "「……我报了名字。」\n\n坂口问：「然后？」\n\n护士停了一下。\n「她说——‘不认识’。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "leave",
+            "label": "留下病例，暂时离开",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_first_refusal"
+            ]
+          }
+        ],
+        "hide_portrait": true
+      }
+    ],
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "allow_unmet_actor": true,
+    "actor_alias": "护士"
+  },
+  {
+    "id": "emiko_intro_rumored_hands",
+    "actor_id": "doc_emiko",
+    "title": "传闻中的手",
+    "chapter": 0,
+    "location_id": "emiko_office",
+    "trigger_mode": "location",
+    "background_id": "emiko_office",
+    "outfit": "white_coat",
+    "minutes": 25,
+    "teaser": "御堂医长这一次允许坂口进入办公室。",
+    "time_start": 540,
+    "time_end": 1019,
+    "priority": 200,
+    "category": "introduction",
+    "gallery": {
+      "cg_id": "cg_emiko_intro_rumored_hands",
+      "caption": "传闻中的手",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 56
+        }
+      ]
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "医术得到进一步磨炼后，坂口再次来到御堂外科医长办公室。\n这一次，门外的护士没有拦他。\n\n办公室整洁得近乎冷淡。桌面上只有手术记录、病例摘要和一杯已经冷掉的咖啡。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "sit",
+            "label": "在她示意后坐下",
+            "next": "assessment",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "assessment",
+        "speaker": "actor",
+        "text": "「这是你的履历？」\n\n她没有寒暄，只扫了一眼纸页。\n「履历只能证明一个人在过去没有把自己写得太难看。真正站到手术台边是什么东西，我习惯自己看。」\n\n她的目光越过坂口的脸，停在他的手上。\n「医院里有人说，你的手很稳。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "face",
+            "label": "反问：第一次见外科医生，不看脸吗？",
+            "next": "face_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "emiko_joked_about_face"
+            ]
+          },
+          {
+            "id": "resume",
+            "label": "回答：还是应该先看履历吧",
+            "next": "resume_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_defended_resume"
+            ]
+          },
+          {
+            "id": "table",
+            "label": "回答：看他敢不敢上台",
+            "next": "table_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_spoke_of_restraint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "face_reply",
+        "speaker": "actor",
+        "text": "「长得好看不能止血。」\n她短暂停顿。\n「至少大多数时候不能。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_face",
+            "label": "听她继续",
+            "next": "invitation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "resume_reply",
+        "speaker": "actor",
+        "text": "「我刚才已经说了，我不信那个。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "continue_resume",
+            "label": "听她继续",
+            "next": "invitation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "table_reply",
+        "speaker": "actor",
+        "text": "「敢上台的人太多了。知道自己什么时候不该乱动的人，反而少。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "continue_table",
+            "label": "听她继续",
+            "next": "invitation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "invitation",
+        "speaker": "actor",
+        "text": "「明天下午有一台胆囊手术。我主刀，你做第一助手。」\n\n坂口问这是不是邀请。\n\n「测试。」她重新拿起病例，「明天让我看看，传闻里的那双手，到底值不值得我记住。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "accept_test",
+            "label": "接受这场测试",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_intro_complete"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "auto_follow_up": {
+      "event_id": "emiko_lv1_first_operation",
+      "day_offset": 1,
+      "absolute_clock": 780
+    }
+  },
+  {
+    "id": "emiko_lv1_first_operation",
+    "actor_id": "doc_emiko",
+    "title": "她的手术",
+    "chapter": 1,
+    "location_id": "or",
+    "trigger_mode": "location",
+    "background_id": "operating_team_01",
+    "outfit": "sterile",
+    "minutes": 90,
+    "teaser": "御堂已经在手术台边等待第一助手。",
+    "time_start": 540,
+    "time_end": 1019,
+    "priority": 200,
+    "category": "bond",
+    "gallery": {
+      "cg_id": "cg_emiko_lv1_first_operation",
+      "caption": "她的手术",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "emiko_intro_rumored_hands"
+      ],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 56
+        }
+      ],
+      "days_after_required_events": 1
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "第二天下午，坂口按约定进入手术室。御堂已经戴好手术帽和口罩，穿着无菌手术袍站在台边。\n\n「迟到三十秒。」\n\n清醒的成年女患者低声问自己是否会一直醒着。御堂回答得很直接：「会。」\n患者承认害怕。御堂停了一秒：「害怕就告诉巡回护士。她负责安慰你，我负责把手术做好。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "begin",
+            "label": "站到第一助手的位置",
+            "next": "exposure",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "exposure",
+        "speaker": "actor",
+        "text": "「今天你是第一助手。我不需要你证明自己有多聪明。我要你跟上。」\n\n术中发现粘连比预想明显。御堂停下动作，正在重新判断术野。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "adjust",
+            "label": "主动调整暴露角度",
+            "next": "adjust_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "emiko_lv1_adjusted_exposure"
+            ]
+          },
+          {
+            "id": "wait",
+            "label": "等待御堂明确下令",
+            "next": "wait_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv1_waited_order"
+            ]
+          },
+          {
+            "id": "warn",
+            "label": "提醒粘连比影像明显",
+            "next": "warn_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv1_noted_adhesion"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "adjust_reply",
+        "speaker": "actor",
+        "text": "「……对，就是那里。」\n她没有表扬，但手里的操作立即继续。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "to_patient_a",
+            "label": "继续配合",
+            "next": "patient",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "wait_reply",
+        "speaker": "actor",
+        "text": "「牵拉。」\n坂口照做。她没有评价。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "to_patient_b",
+            "label": "继续配合",
+            "next": "patient",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "warn_reply",
+        "speaker": "actor",
+        "text": "「我看到了。」她停顿一下，「但你能看到，至少不是坏事。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "to_patient_c",
+            "label": "继续配合",
+            "next": "patient",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "patient",
+        "speaker": "narrator",
+        "text": "患者因牵拉感抓紧床单，问还要多久。御堂只回答「还有一段」，随后又补了一句：「别抬头。现在不是你看手术的时候。」\n\n手术进入最稳定的一段。御堂的动作快得惊人，却没有一丝急躁。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "praise",
+            "label": "说：难怪医院里都在传你的手术",
+            "next": "praise_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "emiko_lv1_praised"
+            ]
+          },
+          {
+            "id": "silent",
+            "label": "保持沉默，只跟上她",
+            "next": "silent_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv1_kept_rhythm"
+            ]
+          },
+          {
+            "id": "rumor",
+            "label": "说：看来关于你的传闻也是真的",
+            "next": "rumor_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 2
+            },
+            "flags": [
+              "emiko_lv1_teased_rumor"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "praise_reply",
+        "speaker": "actor",
+        "text": "「手术台上少说没用的话。」\n但她的语气没有刚才那么冷。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "finish_a",
+            "label": "进入收尾",
+            "next": "finish",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "silent_reply",
+        "speaker": "narrator",
+        "text": "御堂没有说话。几分钟后，她把一个关键位置交给坂口维持。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "finish_b",
+            "label": "稳稳接住她交来的位置",
+            "next": "finish",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rumor_reply",
+        "speaker": "actor",
+        "text": "「哪条？」\n坂口说是技术很好。\n「只有这条？」\n「其他的以后验证。」\n她看了坂口一眼：「先把眼前这台做好。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "finish_c",
+            "label": "进入收尾",
+            "next": "finish",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "finish",
+        "speaker": "actor",
+        "text": "主要操作完成后，御堂把最后一个关键步骤交给坂口。\n「最后这部分，你来。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "direct",
+            "label": "不说话，直接完成",
+            "next": "direct_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv1_clean_finish"
+            ]
+          },
+          {
+            "id": "score",
+            "label": "问她做完后能打几分",
+            "next": "score_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "emiko_lv1_asked_score"
+            ]
+          },
+          {
+            "id": "watching",
+            "label": "问她是不是看自己的手看上瘾了",
+            "next": "watch_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 2
+            },
+            "flags": [
+              "emiko_lv1_teased_watching"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "direct_reply",
+        "speaker": "actor",
+        "text": "御堂认真看完整个过程。\n「不错。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "post_a",
+            "label": "结束手术",
+            "next": "postop",
+            "effects": {
+              "affection": 0,
+              "familiarity": 10
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "score_reply",
+        "speaker": "actor",
+        "text": "「八十五。」\n坂口嫌她严格。\n「第一次就给满分的人，要么水平太低，要么没有下一次。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "post_b",
+            "label": "记下这个分数",
+            "next": "postop",
+            "effects": {
+              "affection": 0,
+              "familiarity": 10
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "watch_reply",
+        "speaker": "actor",
+        "text": "「我是在看你有没有犯错。」\n她仍然给了八十五分。",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "post_c",
+            "label": "结束手术",
+            "next": "postop",
+            "effects": {
+              "affection": 0,
+              "familiarity": 10
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "postop",
+        "speaker": "narrator",
+        "text": "手术顺利结束，患者被交接出去。\n\n摘下外层手套后，御堂的动作依旧稳定，眼睛却比术前亮得多。\n坂口说她完全不像刚做完一台手术。\n\n「有些人跑完步会兴奋，有些人喝酒会兴奋。」她的呼吸似乎比平时稍快，「我只是比较喜欢手术而已。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "lv1_end",
+            "label": "先离开，让她完成记录",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv1_complete",
+              "emiko_postop_excitement_hint"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "unlock_emiko_surgical_team",
+    "locks_saving": true
+  },
+  {
+    "id": "emiko_lv2_follow_my_lead",
+    "actor_id": "doc_emiko",
+    "title": "这一次听你的",
+    "chapter": 2,
+    "location_id": "or",
+    "trigger_mode": "location",
+    "background_id": "operating_team_02",
+    "outfit": "sterile",
+    "minutes": 100,
+    "teaser": "这一次，排班表上的主刀是坂口，第一助手是御堂。",
+    "time_start": 540,
+    "time_end": 1019,
+    "priority": 180,
+    "category": "rank_up",
+    "gallery": {
+      "cg_id": "cg_emiko_lv2_follow_my_lead",
+      "caption": "这一次听你的",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [
+        "emiko_lv1_first_operation"
+      ],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 70
+        }
+      ],
+      "days_after_required_events": 7
+    },
+    "start": "opening",
+    "nodes": [
+      {
+        "id": "opening",
+        "speaker": "narrator",
+        "text": "至少一周后，一台手术的排班表上写着：主刀，坂口；第一助手，御堂江美子。\n\n坂口确认她没有看错位置。\n「主刀是你。」\n「所以我才确认。」\n「你以为我不会做助手？」\n「会听指令？」\n她戴好手套：「如果指令值得听。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "start_lv2",
+            "label": "开始手术",
+            "next": "anticipation",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "anticipation",
+        "speaker": "narrator",
+        "text": "前几个步骤非常顺利。御堂总在下一句指令出口前完成一半准备。稍后，她依照自己的判断提前调整了术野；方向没有错，但节奏与坂口计划的不同。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "correct",
+            "label": "直接纠正：先回来，按我的节奏",
+            "next": "correct_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv2_asserted_leadership"
+            ]
+          },
+          {
+            "id": "accept",
+            "label": "接受她的判断，顺势继续",
+            "next": "accept_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv2_adapted_together"
+            ]
+          },
+          {
+            "id": "ask",
+            "label": "问她为什么这样调整",
+            "next": "ask_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "emiko_lv2_requested_reason"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "correct_reply",
+        "speaker": "actor",
+        "text": "御堂看了坂口一眼，立即恢复原位。\n「明白。」\n没有争辩。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "hard_a",
+            "label": "进入困难步骤",
+            "next": "hard_step",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "accept_reply",
+        "speaker": "narrator",
+        "text": "坂口顺着她调整后的术野继续，御堂立刻理解了新的节奏。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "hard_b",
+            "label": "进入困难步骤",
+            "next": "hard_step",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ask_reply",
+        "speaker": "actor",
+        "text": "「这里暴露更直接。」\n坂口确认理由足够，让她继续。她的眼神短暂地变了一下。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "hard_c",
+            "label": "进入困难步骤",
+            "next": "hard_step",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hard_step",
+        "speaker": "narrator",
+        "text": "清醒患者因为长时间的安静而紧张。御堂先开口确认手术仍按计划进行。随后操作进入真正困难的一段。\n\n坂口停下重新观察。御堂没有抢着给答案，只问：「怎么做？」\n她问的不是“应该怎么做”，而是“你准备怎么做”。",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "command",
+            "label": "明确给出指令并继续",
+            "next": "command_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv2_commanded"
+            ]
+          },
+          {
+            "id": "consult",
+            "label": "让御堂先说她的判断，再做最终决定",
+            "next": "consult_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv2_consulted"
+            ]
+          },
+          {
+            "id": "follow",
+            "label": "告诉她：跟着我",
+            "next": "follow_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 2
+            },
+            "flags": [
+              "emiko_lv2_followed"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "command_reply",
+        "speaker": "actor",
+        "text": "坂口给出计划。御堂只确认一次。\n「明白。」",
+        "expression": "focused",
+        "choices": [
+          {
+            "id": "rhythm_a",
+            "label": "继续",
+            "next": "rhythm",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "consult_reply",
+        "speaker": "actor",
+        "text": "御堂说明判断，坂口听完后作出最终决定。\n「所以还是你决定。」\n「我是主刀。」\n她的眼睛微微眯起：「很好。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "rhythm_b",
+            "label": "继续",
+            "next": "rhythm",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "follow_reply",
+        "speaker": "actor",
+        "text": "御堂盯着坂口一秒。\n「……好。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "rhythm_c",
+            "label": "继续",
+            "next": "rhythm",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rhythm",
+        "speaker": "narrator",
+        "text": "之后的一段操作几乎没有多余交流。\n「这里。」\n「嗯。」\n「再一点。」\n「够了？」\n「够。」\n\n整张手术台形成一种安静而准确的节奏。主要难点解决后，坂口问她第一次给自己做助手感觉如何。\n\n「手还算稳。」",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "only_hands",
+            "label": "追问：只有手？",
+            "next": "only_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 2
+            },
+            "flags": [
+              "emiko_lv2_only_hands"
+            ]
+          },
+          {
+            "id": "better",
+            "label": "问：比你预计的好吗？",
+            "next": "better_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv2_confirmed_expectation"
+            ]
+          },
+          {
+            "id": "next_time",
+            "label": "说：听起来下次还愿意来",
+            "next": "next_reply",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": [
+              "emiko_lv2_expected_next"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "only_reply",
+        "speaker": "actor",
+        "text": "「你还希望我在手术台上评价什么？」\n坂口说以后慢慢想。\n「专心。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_a",
+            "label": "完成手术",
+            "next": "ending",
+            "effects": {
+              "affection": 0,
+              "familiarity": 10
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "better_reply",
+        "speaker": "actor",
+        "text": "「我没有低估你。只是需要确认。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_b",
+            "label": "完成手术",
+            "next": "ending",
+            "effects": {
+              "affection": 0,
+              "familiarity": 10
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "next_reply",
+        "speaker": "actor",
+        "text": "她没有立刻回答。\n「先把这一台做完。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "end_c",
+            "label": "完成手术",
+            "next": "ending",
+            "effects": {
+              "affection": 0,
+              "familiarity": 10
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ending",
+        "speaker": "narrator",
+        "text": "最后检查完成后，御堂评价这台手术“比想得顺”，并把评分从八十五提高到八十八。\n\n换下手术服，两人在走廊再次遇到。\n她主动问：「下一台什么时候？」\n\n坂口问她是不是喜欢给自己做助手。\n「别误会。我只是想看看，今天是不是你的极限。」\n「如果不是呢？」\n「那就再看下一台。」\n\n她已经不再只是检查一个传闻中的医生，而开始期待下一次共同手术。",
+        "expression": "warm",
+        "choices": [
+          {
+            "id": "lv2_end",
+            "label": "目送她离开",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "emiko_lv2_complete",
+              "emiko_reliable_surgical_partner"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": false,
+    "target_level": 2,
+    "benefit_id": "unlock_emiko_partner_dialogue",
+    "locks_saving": true
+  }
+]

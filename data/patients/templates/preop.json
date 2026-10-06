@@ -210,7 +210,7 @@
         {
           "id": "to_changing",
           "label": "前往更衣区 →",
-          "response": "本多医生把患者交给团队，先去完成自己的准备。",
+          "response": "坂口医生把患者交给团队，先去完成自己的准备。",
           "next": "changing",
           "requires": [
             "patient_prepared"
@@ -238,7 +238,7 @@
         {
           "id": "change_scrubs",
           "label": "更换手术服",
-          "response": "本多医生换上手术服，戴好帽子和口罩。",
+          "response": "坂口医生换上手术服，戴好帽子和口罩。",
           "next": null,
           "requires": [],
           "flags": [
@@ -255,7 +255,7 @@
         {
           "id": "scrub_hands",
           "label": "刷手准备",
-          "response": "刷手准备完成。团队在门内等本多医生。",
+          "response": "刷手准备完成。团队在门内等坂口医生。",
           "next": null,
           "requires": [
             "changed"
@@ -443,7 +443,7 @@
         {
           "id": "acknowledge_procedure_mismatch",
           "label": "无视患者，仍按错误术式继续",
-          "response": "「手术方案由我决定。」本多医生没有更改术式。患者脸色发白，手术团队陷入令人不安的沉默。",
+          "response": "「手术方案由我决定。」坂口医生没有更改术式。患者脸色发白，手术团队陷入令人不安的沉默。",
           "next": "ready",
           "requires": [],
           "flags": [
@@ -455,19 +455,16 @@
           "minutes": 0,
           "requires_team": false,
           "execute_preparation": false,
-          "player_effects": {
-            "ethics": -35,
-            "intimidation": 25,
-            "reputation": -10
-          },
+          "player_effects": {},
           "response_role": "",
           "response_by_staff": {},
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": 2
         },
         {
           "id": "correct_procedure_selection",
           "label": "停下并重新核对术式",
-          "response": "本多医生承认选择有误，重新打开术式清单。患者仍然紧张，但团队的气氛缓和下来。",
+          "response": "坂口医生承认选择有误，重新打开术式清单。患者仍然紧张，但团队的气氛缓和下来。",
           "next": "procedure_select",
           "requires": [],
           "flags": [
@@ -1156,7 +1153,7 @@
         {
           "id": "ongoing_eye_contact",
           "label": "保持目光回应她",
-          "response": "她看着本多医生，急促的呼吸逐渐放缓。",
+          "response": "她看着坂口医生，急促的呼吸逐渐放缓。",
           "next": "procedure_flow",
           "requires": [
             "anesthesia_chosen"
@@ -1310,7 +1307,7 @@
         {
           "id": "execute_confirmed_procedure",
           "label": "手术成功，现在缝合",
-          "response": "本多医生确认手术完成，示意团队开始缝合。",
+          "response": "坂口医生确认手术完成，示意团队开始缝合。",
           "next": "surgery_result",
           "requires": [
             "interaction_complete"

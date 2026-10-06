@@ -1,0 +1,60 @@
+{
+  "id": "miyama_lv1_lv3_and_identity_assets_2026_10_01",
+  "date": "2026-10-01",
+  "character_id": "doc_rei",
+  "documents": [
+    {
+      "path": "docs/design/HOSHIMI_MIYAMA_LV1_SAFETY_PIN_EVENT.md",
+      "sha256": "fba2bcaa4f77eaa3dd598d43a16805d3dd415e2289f97e1c8afe75afbf5101e8"
+    },
+    {
+      "path": "docs/design/HOSHIMI_MIYAMA_LV1_LV3_CODEX_HANDOFF.md",
+      "sha256": "f806ad6bc794e2b792e8bdb0584daba535876fa3801625dc0de8427195d373ef"
+    }
+  ],
+  "implementation": {
+    "event_chain": [
+      "miyama_01_safety_pin",
+      "miyama_02_manga_artist_wrong_patient",
+      "miyama_03_or_god"
+    ],
+    "lv1_palpation": "One-click placeholder; detailed interaction deferred by user request.",
+    "lv3_roles": {
+      "restraint_safety": "nurse_moe",
+      "emergency_report": "nurse_ange"
+    },
+    "lv3_formal_cg": "The user-supplied rear three-quarter emergency-surgery CG is installed. Sayaka temporarily assists until Sakaguchi finishes scrubbing; Honjo is present at the sterile field.",
+    "rank_policy": "Strict sequential Lv1 -> Lv2 -> Lv3; no level skipping."
+  },
+  "generation": {
+    "tool": "OpenAI ImageGen (built-in)",
+    "identity_standard": "Second-game official purple hair, high side ponytail, burgundy-purple eyes, thin red ribbon.",
+    "outputs": [
+      "Six transparent white-coat expression portraits.",
+      "A purple-hair identity retouch of the assistant-surgeon confirmation CG.",
+      "A replaceable SFW Lv3 surgical placeholder CG.",
+      "A clothed emergency-command CG source for the user's later adult edit; v2 gives instrument nurse Honjo a long-sleeved sterile gown.",
+      "The user-edited nude emergency-command transition CG, installed between restraint release and formal scrubbing/gowning."
+    ]
+  },
+  "assets": [
+    {"path": "assets/characters/portrait_pack_v20/doc_rei/white_coat/neutral.png", "bytes": 1199243, "sha256": "8b95add443244c452c8b2f2e2da523e8e079811ac65b51914af1e7784d838a99"},
+    {"path": "assets/characters/portrait_pack_v20/doc_rei/white_coat/serious.png", "bytes": 1237570, "sha256": "9477ee0d8f2d05fc4ce9fff8a41258014af10379f9c3dc94a9f0d7bef2bdd5dc"},
+    {"path": "assets/characters/portrait_pack_v20/doc_rei/white_coat/smile.png", "bytes": 1230751, "sha256": "caceb4096ad387d1e4005702b4018df9bb304004a7b7e7568047ba029ec66065"},
+    {"path": "assets/characters/portrait_pack_v20/doc_rei/white_coat/surprised.png", "bytes": 1228388, "sha256": "b26c1686b2b491b19e4a193ccc0e54996ab7bfd36f468190df4f43086ae66329"},
+    {"path": "assets/characters/portrait_pack_v20/doc_rei/white_coat/tired.png", "bytes": 1224479, "sha256": "72aa45199a856e2be406cfd8750cfddf57ad97f67c23b7ebb318592ced3604cb"},
+    {"path": "assets/characters/portrait_pack_v20/doc_rei/white_coat/worried.png", "bytes": 1237532, "sha256": "998dbe34f3fa7e5d16863c21dd26c10f469e951ee41ac523b40847f29f495298"},
+    {"path": "assets/characters/adult_portraits_v1/doc_rei/nude/guarded.png", "bytes": 1344541, "sha256": "57e28dee6950d43a78a5637d0ac4b9e51b91be74309489d8537a3e237f30db08"},
+    {"path": "assets/events/character_events/rei/lv3/nude_guarded.png", "bytes": 1344541, "sha256": "57e28dee6950d43a78a5637d0ac4b9e51b91be74309489d8537a3e237f30db08"},
+    {"path": "assets/events/character_events/rei/lv3/or_god_surgery_rear.png", "bytes": 1879509, "sha256": "a17696856a03e130a78165d4b190e34717e78f0e32c70429c105382da6106135", "status": "installed"},
+    {"path": "assets/events/character_events/rei/lv3/or_god_surgery_rear_placeholder_v1.png", "bytes": 2119743, "sha256": "cf3cb071f5602f34c6c2483e33e654bba982d9f0da9fb708ad9587174b3c2654", "status": "archived_placeholder"},
+    {"path": "assets/events/character_events/rei/lv3/emergency_command_nude.png", "bytes": 2226345, "sha256": "1059986e14aa27873bf004f025b3b863f4fd413166e527c3fc51987970eb40cb", "status": "installed"},
+    {"path": "assets/events/character_events/rei/lv3/emergency_command_scrubs_source.png", "bytes": 2112499, "sha256": "ff6cab8d70de7b0b9f71cf6f1fe5f071d0608f0be7b34f93f014a11119f83938", "status": "superseded_source"},
+    {"path": "assets/events/character_events/rei/lv3/emergency_command_scrubs_source_v2.png", "bytes": 2161873, "sha256": "ef02a43532e96760453c6df5815c121011e9c6e2ff080d36ea6ad2a038a8f213", "status": "user_edit_source"},
+    {"path": "assets/events/staff_surgery_v1/doc_rei/assistant_confirmation_v2.png", "bytes": 1870789, "sha256": "225cbb4f44c16baa5166724846ebe13a6652b711d0c9b2ce9e61e63dd18e51ef"}
+  ],
+  "accepted_existing_asset": {
+    "path": "assets/characters/relationship_patient_v1/doc_rei/operating_patient/nervous.png",
+    "note": "User confirmed this was produced by the same identity model; retained unchanged."
+  }
+}

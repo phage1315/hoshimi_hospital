@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-28",
+  "generator": "OpenAI ImageGen",
+  "assets": [
+    {
+      "event_id": "hiroko_lv1_or_instrument_panic",
+      "purpose": "Event-ending unlock CG: Hiroko mentors Moe after moving the instrument trolley outside the conscious patient's sightline.",
+      "path": "assets/events/character_events/hiroko/lv1_instrument_lesson.png",
+      "dimensions": [1536, 1024],
+      "sha256": "f195992b81ff1a7df25e82476e3a1cbf8abb54e28aa99830ce7666d886c920dc",
+      "references": [
+        "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/warm.png",
+        "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png"
+      ],
+      "prompt_summary": "Bright modern operating room; Hiroko calmly teaches Moe to reposition and cover the instrument trolley; no patient, blood or gore; correct caps, masks, gowns and gloves; professional mentorship."
+    },
+    {
+      "event_id": "hiroko_lv1_worth_it",
+      "purpose": "Lv1 relationship-upgrade unlock CG at the nurse station.",
+      "path": "assets/events/character_events/hiroko/lv1_worth_it.png",
+      "dimensions": [1536, 1024],
+      "sha256": "015a95915c7722d33495ef55ce739f6460a4a5630536241fdf31193825de8b7a",
+      "references": [
+        "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/smile.png",
+        "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/tired.png"
+      ],
+      "prompt_summary": "Hiroko in her established white nurse uniform at the station after a long shift, surrounded by handoff records and cold coffee, looking up warmly as the player offers a fresh hot drink."
+    }
+  ],
+  "runtime": {
+    "display": "fullscreen character-event reward",
+    "show_on_complete": true,
+    "gallery": "event gallery",
+    "unlock_policy": "first completion of each event"
+  }
+}

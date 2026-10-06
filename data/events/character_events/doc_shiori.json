@@ -1,0 +1,364 @@
+[
+  {
+    "id": "intro_doc_shiori_whole_patient",
+    "actor_id": "doc_shiori",
+    "title": "完整的患者",
+    "chapter": 0,
+    "location_id": "clinic",
+    "trigger_mode": "location",
+    "background_id": "clinic",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "一名红发内科医生正在重新核对一份术前会诊单。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 96,
+    "category": "introduction",
+    "auto_start": false,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "intro_doc_shiori_whole_patient",
+      "caption": "在门诊认识藤崎詩織。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "completed_surgeries",
+          "minimum": 3
+        }
+      ]
+    },
+    "start": "name_recognition",
+    "nodes": [
+      {
+        "id": "name_recognition",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "一名戴着淡黄色发带的红发女医生抬起头，礼貌地向坂口点头。\n「坂口隆司医生，对吗？初次见面。我是综合内科的藤崎詩織。」\n坂口原本已经伸向会诊单的手停在半空。这个名字、这张脸，还有那条几乎没变过的发带——忽然与多年前铺满电视和杂志的画面重合。",
+        "choices": [
+          {
+            "id": "recognize_national_goddess",
+            "label": "等等……你不是那位“国民女神”藤崎詩織？",
+            "next": "former_goddess",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "recognize_carefully",
+            "label": "这个名字很熟悉……你以前参加过选秀？",
+            "next": "former_goddess",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "former_goddess",
+        "speaker": "actor",
+        "expression": "worried",
+        "text": "「国、国民女神……」\n詩織刚才还十分从容，听见这个称呼却明显僵了一下。她下意识摸了摸发带，耳尖也跟着红了。\n「请不要在医院里用那么夸张的称呼。要是被患者听见，我明天可能就得在病历上签‘国民女神医师’了。」\n她轻轻咳了一声，试图恢复平时端庄的语气。\n「我的确参加过一次游戏角色设计选秀。本来只觉得是很有趣的纪念，没想到后来……规模变得有一点大。广告、采访、事务所的邀请，全都来了。」",
+        "choices": [
+          {
+            "id": "ask_why_medicine",
+            "label": "所以你最后还是选择了医学？",
+            "next": "chosen_path",
+            "effects": {
+              "affection": 1,
+              "familiarity": 1
+            },
+            "flags": []
+          },
+          {
+            "id": "promise_not_to_spread",
+            "label": "放心，我不会拿这件事到处宣传",
+            "next": "chosen_path",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "chosen_path",
+        "speaker": "actor",
+        "expression": "smile",
+        "text": "「谢谢。其实也不是什么必须隐藏的秘密，只是每次被认出来，我都不知道该摆出哪一种表情。」\n她的笑意慢慢自然下来。\n「娱乐圈的人对我很好，可那里总有人希望我成为他们心目中的‘藤崎詩織’。今天该怎么笑、该说什么话、应该让谁喜欢……我一直不太习惯。」\n她用指尖轻轻敲了敲桌上的会诊单。\n「医学不轻松，但至少患者需要的不是某个被设计好的角色。他们需要我认真听完、弄清问题，然后承认我能做什么、不能做什么。」\n「所以，还是当医生更舒服。虽然值夜班的时候，我偶尔也会怀疑当年的选择。」",
+        "choices": [
+          {
+            "id": "return_to_consult",
+            "label": "笑着把话题带回会诊单",
+            "next": "chart_question",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "shiori_past_known"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chart_question",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "门诊桌边，詩織把坂口最近三例手术的术前记录、这次的会诊单和患者长期用药表并排放好，指向其中一处空白。\n「前三例的处理都很稳。不过这一次，病灶的计划虽然清楚，她最近上楼会气促的情况却还没有写进术前判断。」",
+        "choices": [
+          {
+            "id": "review_together",
+            "label": "请她一起把病史重新整理一遍",
+            "next": "whole_picture",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          },
+          {
+            "id": "admit_blind_spot",
+            "label": "承认自己把注意力放得太集中",
+            "next": "whole_picture",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "whole_picture",
+        "speaker": "actor",
+        "expression": "smile",
+        "text": "「外科医生先看病灶很正常。内科会诊的意义，就是把镜头往后拉一点。」\n詩織没有卖弄结论，只把症状、用药和既往检查按时间重新排好。\n「漂亮的单项数据让人安心，但患者不是一张数据表。以后有术前风险拿不准的病例，请直接找我。」",
+        "choices": [
+          {
+            "id": "agree_consult",
+            "label": "约好以后互相会诊",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "closing",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "「还有一件事要先说明。」\n她望向会诊单，语气仍旧柔和。\n「如果我认为全身状态不适合手术，我会明确要求暂缓。即使主刀是你，或者御堂医生，也一样。」\n说完，她才露出一点含蓄的笑意。\n「希望我们第一次意见不合时，也能像今天这样把理由说清楚。」",
+        "choices": [
+          {
+            "id": "end_colleagues",
+            "label": "接受这位会诊搭档",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_doc_shiori"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  },
+  {
+    "id": "intro_doc_shiori_whole_patient_ward",
+    "actor_id": "doc_shiori",
+    "title": "病房里的会诊单",
+    "chapter": 0,
+    "location_id": "ward",
+    "trigger_mode": "location",
+    "background_id": "ward",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "一名红发内科医生在病房走廊重新核对术前会诊单。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 95,
+    "category": "introduction",
+    "auto_start": false,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "intro_doc_shiori_whole_patient_ward",
+      "caption": "在病房认识藤崎詩織。",
+      "path": ""
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "completed_surgeries",
+          "minimum": 3
+        }
+      ]
+    },
+    "start": "name_recognition",
+    "nodes": [
+      {
+        "id": "name_recognition",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "一名戴着淡黄色发带的红发女医生抬起头，礼貌地向坂口点头。\n「坂口隆司医生，对吗？初次见面。我是综合内科的藤崎詩織。」\n坂口原本已经伸向会诊单的手停在半空。这个名字、这张脸，还有那条几乎没变过的发带——忽然与多年前铺满电视和杂志的画面重合。",
+        "choices": [
+          {
+            "id": "recognize_national_goddess",
+            "label": "等等……你不是那位“国民女神”藤崎詩織？",
+            "next": "former_goddess",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "recognize_carefully",
+            "label": "这个名字很熟悉……你以前参加过选秀？",
+            "next": "former_goddess",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "former_goddess",
+        "speaker": "actor",
+        "expression": "worried",
+        "text": "「国、国民女神……」\n詩織刚才还十分从容，听见这个称呼却明显僵了一下。她下意识摸了摸发带，耳尖也跟着红了。\n「请不要在医院里用那么夸张的称呼。要是被患者听见，我明天可能就得在病历上签‘国民女神医师’了。」\n她轻轻咳了一声，试图恢复平时端庄的语气。\n「我的确参加过一次游戏角色设计选秀。本来只觉得是很有趣的纪念，没想到后来……规模变得有一点大。广告、采访、事务所的邀请，全都来了。」",
+        "choices": [
+          {
+            "id": "ask_why_medicine",
+            "label": "所以你最后还是选择了医学？",
+            "next": "chosen_path",
+            "effects": {
+              "affection": 1,
+              "familiarity": 1
+            },
+            "flags": []
+          },
+          {
+            "id": "promise_not_to_spread",
+            "label": "放心，我不会拿这件事到处宣传",
+            "next": "chosen_path",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "chosen_path",
+        "speaker": "actor",
+        "expression": "smile",
+        "text": "「谢谢。其实也不是什么必须隐藏的秘密，只是每次被认出来，我都不知道该摆出哪一种表情。」\n她的笑意慢慢自然下来。\n「娱乐圈的人对我很好，可那里总有人希望我成为他们心目中的‘藤崎詩織’。今天该怎么笑、该说什么话、应该让谁喜欢……我一直不太习惯。」\n她用指尖轻轻敲了敲桌上的会诊单。\n「医学不轻松，但至少患者需要的不是某个被设计好的角色。他们需要我认真听完、弄清问题，然后承认我能做什么、不能做什么。」\n「所以，还是当医生更舒服。虽然值夜班的时候，我偶尔也会怀疑当年的选择。」",
+        "choices": [
+          {
+            "id": "return_to_consult",
+            "label": "笑着把话题带回会诊单",
+            "next": "chart_question",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "shiori_past_known"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chart_question",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "病房走廊的记录台边，詩織把坂口最近三例手术的术前记录、这次的会诊单和患者长期用药表并排放好，指向其中一处空白。\n「前三例的处理都很稳。不过这一次，病灶的计划虽然清楚，她最近上楼会气促的情况却还没有写进术前判断。」",
+        "choices": [
+          {
+            "id": "review_together",
+            "label": "请她一起把病史重新整理一遍",
+            "next": "whole_picture",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          },
+          {
+            "id": "admit_blind_spot",
+            "label": "承认自己把注意力放得太集中",
+            "next": "whole_picture",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "whole_picture",
+        "speaker": "actor",
+        "expression": "smile",
+        "text": "「外科医生先看病灶很正常。内科会诊的意义，就是把镜头往后拉一点。」\n詩織没有卖弄结论，只把症状、用药和既往检查按时间重新排好。\n「漂亮的单项数据让人安心，但患者不是一张数据表。以后有术前风险拿不准的病例，请直接找我。」",
+        "choices": [
+          {
+            "id": "agree_consult",
+            "label": "约好以后互相会诊",
+            "next": "closing",
+            "effects": {
+              "affection": 0,
+              "familiarity": 1
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "closing",
+        "speaker": "actor",
+        "expression": "neutral",
+        "text": "「还有一件事要先说明。」\n她望向会诊单，语气仍旧柔和。\n「如果我认为全身状态不适合手术，我会明确要求暂缓。即使主刀是你，或者御堂医生，也一样。」\n说完，她才露出一点含蓄的笑意。\n「希望我们第一次意见不合时，也能像今天这样把理由说清楚。」",
+        "choices": [
+          {
+            "id": "end_colleagues",
+            "label": "接受这位会诊搭档",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_doc_shiori"
+            ]
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

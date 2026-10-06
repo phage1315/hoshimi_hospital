@@ -11,6 +11,9 @@
     "procedure_groups": [],
     "surgery_ids": [],
     "once_per_surgery": false,
+    "excluded_flags": [
+      "no_anesthesia_confirmed"
+    ],
     "prompt": "「医生……刚才那一下我感觉到了。已经开始了吗？」",
     "speaker": "patient",
     "actions": [
@@ -62,6 +65,150 @@
     ]
   },
   {
+    "id": "contact_no_anesthesia_incision_01",
+    "theme": "operative_contact",
+    "states": [],
+    "cues": [
+      "incision"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "required_flags": [
+      "no_anesthesia_confirmed"
+    ],
+    "prompt": "「医生，这么痛真的是正常的吗……我、我受不了了……」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "steady_unanesthetized_contact_01",
+        "label": "回应她，放慢动作并引导呼吸",
+        "response": "「呜……好……可是太痛了，我真的快撑不住了……」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": -2,
+          "dignity": 3,
+          "cooperation": 3
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "continue_unanesthetized_contact_01",
+        "label": "要求她忍耐并继续手术",
+        "response": "「不行……真的太痛了……求求你慢一点……」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 0,
+        "effects": {
+          "fear": 5,
+          "pain": 2,
+          "dignity": -5,
+          "cooperation": -2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "contact_no_anesthesia_incision_02",
+    "theme": "operative_contact",
+    "states": [],
+    "cues": [
+      "incision"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "required_flags": [
+      "no_anesthesia_confirmed"
+    ],
+    "prompt": "「医生！别、别再往里面切了……呜呜……我受不了了……」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "steady_unanesthetized_contact_02",
+        "label": "短暂停手，确认她仍能配合",
+        "response": "「等、等一下……让我喘口气……我会努力不动……」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -5,
+          "pain": -2,
+          "dignity": 3,
+          "cooperation": 3
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "continue_unanesthetized_contact_02",
+        "label": "继续当前操作",
+        "response": "「啊——不、不要……里面也好痛……！」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 0,
+        "effects": {
+          "fear": 6,
+          "pain": 3,
+          "dignity": -5,
+          "cooperation": -3
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "contact_no_anesthesia_incision_03",
+    "theme": "operative_contact",
+    "states": [],
+    "cues": [
+      "incision"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "required_flags": [
+      "no_anesthesia_confirmed"
+    ],
+    "prompt": "「医生……求求你，给我一点麻药吧……我真的撑不住了……」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "steady_unanesthetized_contact_03",
+        "label": "明确拒绝追加麻醉，让团队放慢动作",
+        "response": "「不给麻药吗……那请慢一点……至少先告诉我你要做什么……」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 3
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "continue_unanesthetized_contact_03",
+        "label": "明确拒绝追加麻醉并继续手术",
+        "response": "「怎么会……不要……我真的受不了了……」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 0,
+        "effects": {
+          "fear": 6,
+          "pain": 2,
+          "dignity": -6,
+          "cooperation": -3
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
     "id": "contact_default_01",
     "theme": "operative_contact",
     "states": [],
@@ -69,6 +216,9 @@
     "procedure_groups": [],
     "surgery_ids": [],
     "once_per_surgery": false,
+    "excluded_flags": [
+      "no_anesthesia_confirmed"
+    ],
     "prompt": "「医生……手术是不是已经开始了？」",
     "speaker": "patient",
     "actions": [
@@ -889,6 +1039,1400 @@
           "fear": -4,
           "pain": 0,
           "dignity": 0,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "contact_pain_incision_02",
+    "theme": "operative_contact",
+    "states": [
+      "pain"
+    ],
+    "cues": [
+      "incision"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "excluded_flags": [
+      "no_anesthesia_confirmed"
+    ],
+    "prompt": "「嘶……刀口那里很清楚。医生，你还在听我说话吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "acknowledge_second_contact",
+        "label": "回应她并确认目前仍按计划进行",
+        "response": "「好……你有回应就好。我会照你说的呼吸。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_second_contact",
+        "label": "简短确认后继续",
+        "response": "「嗯……我知道你还在。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "contact_fear_incision_01",
+    "theme": "operative_contact",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "incision"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "excluded_flags": [
+      "no_anesthesia_confirmed"
+    ],
+    "prompt": "「真的已经切下去了吗？我看不见，反而更害怕……」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "orient_fearful_contact",
+        "label": "告诉她刚刚完成了哪一步",
+        "response": "「原来只是刚开始……好，请继续告诉我进度。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -12,
+          "pain": 0,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "steady_fearful_contact",
+        "label": "让她听着你的声音保持呼吸",
+        "response": "「好……我听着。请别突然不说话。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "dismiss_fearful_contact",
+        "label": "要求她不要继续追问",
+        "response": "「……我会安静，可是我还是很怕。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 0,
+        "effects": {
+          "fear": 4,
+          "pain": 1,
+          "dignity": -3,
+          "cooperation": -1
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "progress_fear_fatigue_01",
+    "theme": "progress_check",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「已经过去很久了吗？为什么还没结束……是不是比预计更麻烦？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "explain_fatigue_progress",
+        "label": "说明目前阶段和剩余进度",
+        "response": "「还有这些步骤……我明白了。至少不是出了意外。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -12,
+          "pain": 0,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_fatigue_progress",
+        "label": "确认手术仍按计划进行",
+        "response": "「好……那我再坚持一下。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "progress_fear_fatigue_02",
+    "theme": "progress_check",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「医生，我越来越没有时间感了……现在离结束还有多远？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "mark_fatigue_milestone",
+        "label": "给她一个清楚的阶段标记",
+        "response": "「记住这个阶段就行，对吧……好，我会等你再告诉我。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "encourage_fatigue_progress",
+        "label": "告诉她已经完成了重要部分",
+        "response": "「已经走过一大段了……这样听起来好多了。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "strain_pain_traction_02",
+    "theme": "strain_interaction",
+    "states": [
+      "pain"
+    ],
+    "cues": [
+      "traction"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「里面又被牵住了……这次比刚才更酸、更深。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "pause_second_traction",
+        "label": "暂缓牵拉，让她重新放松",
+        "response": "「慢一点以后好多了……请给我一口气的时间。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": -7,
+          "dignity": 3,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "coach_second_traction",
+        "label": "提示她放松腹部并缓慢呼气",
+        "response": "「呼气……好，我尽量不绷紧。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": -4,
+          "dignity": 2,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "strain_pain_pressure_01",
+    "theme": "strain_interaction",
+    "states": [
+      "pain"
+    ],
+    "cues": [
+      "pressure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「这里一直被压着……不是一下疼，是越来越难受。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "relieve_pressure",
+        "label": "暂停并重新调整持续压力",
+        "response": "「松开一点以后好多了……谢谢。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": -7,
+          "dignity": 3,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "explain_pressure",
+        "label": "说明这段压力感还会持续片刻",
+        "response": "「我知道了……至少我可以准备好。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "dignity_low_exposure_02",
+    "theme": "dignity_interaction",
+    "states": [
+      "dignity"
+    ],
+    "cues": [
+      "exposure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「我知道是在手术，可是一直这样露着……还是很难受。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "reduce_exposure_again",
+        "label": "让团队收拢无关区域的覆盖",
+        "response": "「这样好多了……需要看的地方留下就好。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": 0,
+          "dignity": 10,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "acknowledge_exposure_again",
+        "label": "承认她的不适并说明当前必要范围",
+        "response": "「谢谢你肯说明。我会尽量忍一下。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 6,
+          "cooperation": 3
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "dignity_cooperation_exposure_01",
+    "theme": "dignity_interaction",
+    "states": [
+      "cooperation"
+    ],
+    "cues": [
+      "exposure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「我会配合……但能不能别让所有人都一直看着我？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "limit_observers",
+        "label": "确认只保留必要人员与术野",
+        "response": "「好……这样我比较能继续撑住。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": 0,
+          "dignity": 10,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_privacy_confirmation",
+        "label": "确认团队只关注必要区域",
+        "response": "「嗯，我相信你。请继续吧。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "ongoing_fear_fatigue_01",
+    "theme": "ongoing_interaction",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「医生，你们突然安静下来，我会忍不住乱想……手术还顺利吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "maintain_running_update",
+        "label": "在操作间隙给出简短进度",
+        "response": "「好，我听见了……知道你们还在按计划做就行。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_running_update",
+        "label": "告诉她情况稳定",
+        "response": "「嗯……那我继续等。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "ongoing_fear_fatigue_02",
+    "theme": "ongoing_interaction",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「我有点撑不住这种漫长的安静……能告诉我接下来是什么吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "preview_next_milestone",
+        "label": "说明下一个阶段性目标",
+        "response": "「等到那里就算又完成一段……好，我记住了。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "encourage_next_milestone",
+        "label": "告诉她正在接近下一个节点",
+        "response": "「好……我再坚持这一段。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "ongoing_pain_position_01",
+    "theme": "ongoing_interaction",
+    "states": [
+      "pain"
+    ],
+    "cues": [
+      "position_discomfort"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「这个姿势越来越酸，肩背都僵住了……我还能稍微动一下吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "adjust_pressure_points",
+        "label": "让巡回护士检查支撑和受压点",
+        "response": "「垫好以后舒服多了……我不会乱动。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 3,
+        "effects": {
+          "fear": -5,
+          "pain": -8,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "coach_position_stillness",
+        "label": "说明不能自行移动并指导小幅放松",
+        "response": "「我明白……那我只按你说的放松。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "closure_fear_closure_01",
+    "theme": "closure_interaction",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "closure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「是在缝合了吗？这是不是代表真的快结束了？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "confirm_closure_phase",
+        "label": "确认已进入关闭阶段",
+        "response": "「好……终于到这里了。我会继续不动。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -10,
+          "pain": 0,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_closure_phase",
+        "label": "告诉她正在完成最后处理",
+        "response": "「嗯……我再坚持一会儿。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "closure_fear_closure_02",
+    "theme": "closure_interaction",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "closure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「别突然停下来……告诉我，是不是已经处理完里面了？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "explain_final_checks",
+        "label": "说明主要步骤完成，正在逐项复核",
+        "response": "「原来是在复核……好，我等你们确认完。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "confirm_final_checks",
+        "label": "确认正在收尾",
+        "response": "「好……听到这句话我安心一点了。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "closure_pain_closure_01",
+    "theme": "closure_interaction",
+    "states": [
+      "pain"
+    ],
+    "cues": [
+      "closure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「缝合的时候我也能感觉到拉扯……还要多久？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "pause_closure_discomfort",
+        "label": "短暂停顿并处理她的疼痛",
+        "response": "「缓下来以后好多了……请继续吧。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": -7,
+          "dignity": 3,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "pace_closure_breathing",
+        "label": "配合呼吸节奏继续关闭",
+        "response": "「好……我跟着你的节奏呼吸。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": -4,
+          "dignity": 2,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "abdominal_ongoing_pressure_01",
+    "theme": "ongoing_interaction",
+    "states": [],
+    "cues": [
+      "pressure",
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "general_abdominal"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「肚子里一直有沉重的压迫感……现在是在处理很深的位置吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "explain_abdominal_pressure",
+        "label": "说明正在完成腹腔内的重要阶段",
+        "response": "「我明白了……知道原因以后没那么慌了。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_abdominal_pressure",
+        "label": "确认压力感与当前步骤相符",
+        "response": "「好，我会继续放松腹部。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "pelvic_ongoing_position_01",
+    "theme": "ongoing_interaction",
+    "states": [],
+    "cues": [
+      "position_discomfort",
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "female_pelvic"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「腰和腿维持这个姿势太久了……我怕自己会突然绷紧。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "support_pelvic_position",
+        "label": "让巡回护士重新检查支撑点",
+        "response": "「垫好以后轻松一些了，我能继续保持。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 3,
+        "effects": {
+          "fear": -6,
+          "pain": -7,
+          "dignity": 5,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "coach_pelvic_position",
+        "label": "指导她分段放松腰腿",
+        "response": "「好……我照着做，不会突然动。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "breast_closure_fear_01",
+    "theme": "closure_interaction",
+    "states": [
+      "fear"
+    ],
+    "cues": [
+      "closure"
+    ],
+    "procedure_groups": [
+      "breast"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「已经在缝合了吗……醒来以后，我会变成什么样子？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "answer_breast_closure",
+        "label": "说明手术范围已按术前计划完成",
+        "response": "「好……至少你们没有改变约定。我会等到结束。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -10,
+          "pain": 0,
+          "dignity": 7,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_breast_closure",
+        "label": "确认正在按计划收尾",
+        "response": "「嗯……请把最后一步做好。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "urologic_strain_pressure_01",
+    "theme": "strain_interaction",
+    "states": [],
+    "cues": [
+      "pressure",
+      "deep_manipulation"
+    ],
+    "procedure_groups": [
+      "urologic"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「侧腹里面又胀又被拉着……这种感觉让我很难不绷紧。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "pause_urologic_strain",
+        "label": "暂停片刻并让她调整呼吸",
+        "response": "「好一点了……我会尽量把身体放松。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -6,
+          "pain": -7,
+          "dignity": 3,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "explain_urologic_strain",
+        "label": "说明深部牵拉感来自当前阶段",
+        "response": "「我知道了……请提前告诉我下一次。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "thoracic_progress_fatigue_01",
+    "theme": "progress_check",
+    "states": [],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "thoracic"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「胸口一直被固定着，我越来越累……现在已经过了最难的部分吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "explain_thoracic_progress",
+        "label": "说明胸腔手术目前所处阶段",
+        "response": "「好……知道已经到这里，我还能再撑一段。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_thoracic_progress",
+        "label": "确认关键阶段正按计划推进",
+        "response": "「嗯，我继续保持不动。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "thoracic_ongoing_position_01",
+    "theme": "ongoing_interaction",
+    "states": [],
+    "cues": [
+      "position_discomfort",
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "thoracic"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「肩背被这个姿势压得发麻……我不敢动，可是真的很难受。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "check_thoracic_support",
+        "label": "让巡回护士复核肩背支撑",
+        "response": "「麻胀减轻了一些……谢谢，我不会乱动。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 3,
+        "effects": {
+          "fear": -5,
+          "pain": -8,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "coach_thoracic_stillness",
+        "label": "说明固定必要性并指导局部放松",
+        "response": "「我明白……我会只按你说的调整呼吸。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "cardiac_ongoing_fatigue_01",
+    "theme": "ongoing_interaction",
+    "states": [],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "cardiac"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「我知道你们正在处理心脏……越安静，我越控制不住地害怕。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "reassure_cardiac_ongoing",
+        "label": "持续用简短信息维持她的方向感",
+        "response": "「好……只要还能听见你，我就不会一直往坏处想。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -12,
+          "pain": 0,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_cardiac_ongoing",
+        "label": "确认团队仍按计划推进",
+        "response": "「嗯……我相信你们。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "vascular_progress_deep_01",
+    "theme": "progress_check",
+    "states": [],
+    "cues": [
+      "deep_manipulation",
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "vascular"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「腹部深处的感觉突然变了……是到了血管那一步吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "explain_vascular_milestone",
+        "label": "说明已进入计划中的关键阶段",
+        "response": "「好……你说这是计划内的，我就继续配合。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_vascular_milestone",
+        "label": "确认当前变化符合预期",
+        "response": "「明白了……请继续。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "vascular_ongoing_pressure_01",
+    "theme": "ongoing_interaction",
+    "states": [],
+    "cues": [
+      "pressure",
+      "fatigue"
+    ],
+    "procedure_groups": [
+      "vascular"
+    ],
+    "surgery_ids": [],
+    "once_per_surgery": false,
+    "prompt": "「里面的压力一直没有松开……我有点分不清是疼还是害怕。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "separate_vascular_sensations",
+        "label": "帮助她辨认感觉并说明当前进度",
+        "response": "「这样说以后清楚一些了……我还能继续。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -8,
+          "pain": -4,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_vascular_pressure",
+        "label": "确认团队正在密切观察",
+        "response": "「好……请别让我一个人猜。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "hysterectomy_signature_01",
+    "theme": "dignity_interaction",
+    "states": [],
+    "cues": [
+      "exposure",
+      "deep_manipulation"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [
+      "surgery_hysterectomy"
+    ],
+    "once_per_surgery": true,
+    "prompt": "「医生……再确认一次。你们现在处理的范围，和术前答应我的完全一样吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "confirm_hysterectomy_scope",
+        "label": "逐项确认当前范围与术前同意一致",
+        "response": "「好，我需要听见这句话……请按约定继续。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -10,
+          "pain": 0,
+          "dignity": 10,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_hysterectomy_scope",
+        "label": "确认没有超出既定范围",
+        "response": "「嗯……那我相信你。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "ovarian_cystectomy_signature_01",
+    "theme": "dignity_interaction",
+    "states": [],
+    "cues": [
+      "deep_manipulation"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [
+      "surgery_open_ovarian_cystectomy"
+    ],
+    "once_per_surgery": true,
+    "prompt": "「你们还在尽量保留正常的部分，对吗？我一直在担心这件事。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "confirm_ovarian_preservation",
+        "label": "说明当前仍按术前器官保留计划进行",
+        "response": "「谢谢……只要你们没有忘记，我就能继续撑住。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -12,
+          "pain": 0,
+          "dignity": 8,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_ovarian_preservation",
+        "label": "确认仍以保留正常组织为目标",
+        "response": "「好……拜托你们了。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "myomectomy_signature_01",
+    "theme": "dignity_interaction",
+    "states": [],
+    "cues": [
+      "exposure",
+      "deep_manipulation"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [
+      "surgery_open_abdominal_myomectomy"
+    ],
+    "once_per_surgery": true,
+    "prompt": "「现在还是只处理肌瘤，对吗？不会在我不知道的时候改变手术吧？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "confirm_myomectomy_scope",
+        "label": "明确确认当前没有改变术式",
+        "response": "「好……你亲口确认以后，我安心多了。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -12,
+          "pain": 0,
+          "dignity": 9,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_myomectomy_scope",
+        "label": "确认仍按原计划处理",
+        "response": "「嗯，我会继续配合。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "breast_tumor_signature_01",
+    "theme": "dignity_interaction",
+    "states": [],
+    "cues": [
+      "exposure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [
+      "surgery_breast_tumor"
+    ],
+    "once_per_surgery": true,
+    "prompt": "「切除的范围还是术前画给我看的那一块，对吗？」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "confirm_breast_tumor_scope",
+        "label": "重新确认切除范围与术前标记一致",
+        "response": "「好……谢谢你没有把我的担心当成多余。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -10,
+          "pain": 0,
+          "dignity": 10,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_breast_tumor_scope",
+        "label": "确认仍在既定边界内",
+        "response": "「嗯……请继续。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
+          "cooperation": 2
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "mastectomy_signature_01",
+    "theme": "dignity_interaction",
+    "states": [],
+    "cues": [
+      "exposure"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [
+      "surgery_total_mastectomy"
+    ],
+    "once_per_surgery": true,
+    "prompt": "「我知道自己同意了……可是真到这一刻，还是觉得像要失去身体的一部分。」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "acknowledge_mastectomy_loss",
+        "label": "承认她的失落并确认手术范围",
+        "response": "「谢谢你没有只叫我坚强……我会把这一段撑过去。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 3,
+        "effects": {
+          "fear": -10,
+          "pain": 0,
+          "dignity": 12,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "confirm_mastectomy_plan",
+        "label": "确认团队将严格按同意范围完成",
+        "response": "「好……至少请替我把它做好。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -5,
+          "pain": 0,
+          "dignity": 5,
+          "cooperation": 3
+        },
+        "condition_effect": null
+      }
+    ]
+  },
+  {
+    "id": "cabg_signature_01",
+    "theme": "progress_check",
+    "states": [],
+    "cues": [
+      "fatigue"
+    ],
+    "procedure_groups": [],
+    "surgery_ids": [
+      "surgery_cabg"
+    ],
+    "once_per_surgery": true,
+    "prompt": "「现在是在做新的血流通路吗？我听见你们说到吻合……」",
+    "speaker": "patient",
+    "actions": [
+      {
+        "id": "explain_cabg_milestone",
+        "label": "用简短语言说明已进入计划中的重建阶段",
+        "response": "「好……这就是术前说过的关键一步。我会继续听你的。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 2,
+        "effects": {
+          "fear": -12,
+          "pain": 0,
+          "dignity": 5,
+          "cooperation": 5
+        },
+        "condition_effect": null
+      },
+      {
+        "id": "brief_cabg_milestone",
+        "label": "确认正在完成预定的关键步骤",
+        "response": "「明白了……请继续。」",
+        "response_speaker": "patient",
+        "delegate_role": "",
+        "minutes": 1,
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 1,
           "cooperation": 2
         },
         "condition_effect": null

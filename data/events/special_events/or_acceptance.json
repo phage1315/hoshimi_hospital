@@ -1,0 +1,51 @@
+[
+  {
+    "id": "or_acceptance_training_01",
+    "title": "新手术室启用日",
+    "category": "hospital_training",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "明日香几天前就把今天圈进了全院日程：新手术室验收与团队训练。设备、流程和每一个岗位都要在正式启用前重新确认。",
+    "unlock_requirements": [
+      {
+        "type": "days_after_character_event",
+        "event_id": "intro_doc_asuka_director_office",
+        "days": 5
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_asuka",
+      "doc_sayaka"
+    ],
+    "prerequisite_events": [
+      "intro_doc_asuka_director_office"
+    ],
+    "event_chain": [
+      "or_acceptance_training_01_main"
+    ],
+    "completion_flags": [
+      "or_acceptance_training_01_completed",
+      "new_or_accepted",
+      "positioning_tutorial_seen",
+      "sayaka_first_volunteer_gag"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "or_acceptance_training_01",
+      "title": "新手术室启用日",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 220,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  }
+]

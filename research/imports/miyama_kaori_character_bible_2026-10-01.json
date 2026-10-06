@@ -1,0 +1,94 @@
+{
+  "imported_at": "2026-10-01",
+  "actor_id": "doc_rei",
+  "character": "深山佳織",
+  "document": "docs/design/HOSHIMI_MIYAMA_KAORI_CHARACTER_BIBLE.md",
+  "reference_directory": "research/character_references/doc_rei",
+  "runtime_assets_changed": true,
+  "visual_review": {
+    "canonical_hair_identity": "饱和兰紫／葡萄紫；高光偏浅粉紫，暗部偏深紫，不再以亮玫红粉发作为主色",
+    "canonical_silhouette": "高位偏侧长马尾、顶部大型折面发束、尖锐分束刘海、两束长鬓发、红色细发带",
+    "canonical_build": "162 cm、纤细的成年女性体型；急诊医生姿态利落",
+    "priority_fix": "白大褂／日常立绘已统一为模型的紫发和五官；用户确认现有 operating_patient/nervous 来自同一模型，予以保留",
+    "retain": "现有服装设计、姿态和构图可作参考；现有粉发白大褂不再作为最终身份母版。刷手服和无菌服可暂用，但后续表情包须按模型的酒红眼、眉形和脸部比例校正",
+    "policy": "原作粉发图降为服装与姿态参考，不在剧情中解释为染发或形象变更；所有新素材直接遵循模型紫发身份",
+    "identity_master": "model_identity_master_purple.png；SFW、事件 CG 与成人素材均以此图的发色和五官为最高优先级身份基准",
+    "canonical_face": "成年偏长鹅蛋脸、窄而柔和的下颌、大型酒红眼、细长上睫毛、薄而略拱的眉、挺直鼻梁与小幅克制微笑",
+    "official_anchor": "《淫内感染2》初登场官设为基础：紫发、高位长马尾、红色细发带、紫红眼、成熟锐利的成年脸型",
+    "hair_floor": "任何新图不得使用粉红色头发；即使高光偏粉，整体第一视觉判断必须是紫色"
+  },
+  "references": [
+    {
+      "file": "source_sprite_pink.png",
+      "use": "早期粉发小头像与正面轮廓"
+    },
+    {
+      "file": "source_white_coat_purple_hallway.png",
+      "use": "紫发版本、白大褂、长马尾与站姿"
+    },
+    {
+      "file": "source_closeup_purple.png",
+      "use": "紫发版本面部与害羞表情"
+    },
+    {
+      "file": "source_stats_purple.png",
+      "use": "原作身高体重及三围资料卡"
+    },
+    {
+      "file": "source_white_coat_pink_transparent.png",
+      "use": "粉发版本标准白大褂全身造型"
+    },
+    {
+      "file": "source_body_reference_pink_adult.png",
+      "use": "成年体型参考；不直接作为默认公开立绘"
+    },
+    {
+      "file": "source_white_coat_pink_hallway.png",
+      "use": "粉发版本在场景光照下的色彩参考"
+    },
+    {
+      "file": "model_identity_master_purple.png",
+      "use": "用户模型身份母版；发色、五官与跨 SFW／成人素材一致性的最高优先级参考"
+    },
+    {
+      "file": "official_v2_pink_suit.png",
+      "use": "二代官设便装全身：标准紫发、马尾轮廓、体型与脸型锚点"
+    },
+    {
+      "file": "official_v2_white_coat.png",
+      "use": "二代官设白大褂全身：默认职业造型和紫发色板锚点"
+    }
+  ],
+  "asset_audit_2026_10_01": {
+    "replace_or_recolor": [
+      "assets/characters/portrait_pack_v2/doc_rei/white_coat/neutral.png",
+      "assets/characters/portrait_pack_v3/doc_rei/white_coat/smile.png",
+      "assets/characters/portrait_pack_v3/doc_rei/white_coat/serious.png",
+      "assets/characters/portrait_pack_v3/doc_rei/white_coat/worried.png",
+      "assets/characters/portrait_pack_v3/doc_rei/white_coat/surprised.png",
+      "assets/characters/portrait_pack_v3/doc_rei/white_coat/tired.png"
+    ],
+    "rebuild_to_identity_master": [],
+    "minor_retouch": [
+      "assets/events/staff_surgery_v1/doc_rei/assistant_confirmation.png"
+    ],
+    "retain": [
+      "assets/characters/portrait_pack_v2/doc_rei/scrubs/neutral.png",
+      "assets/characters/portrait_pack_v5/doc_rei/scrubs/focused.png",
+      "assets/characters/portrait_pack_v5/doc_rei/scrubs/worried.png",
+      "assets/characters/portrait_pack_v5/doc_rei/scrubs/warm.png",
+      "assets/characters/sterile_pack_v1/doc_rei/neutral.png",
+      "assets/characters/sterile_pack_v1/doc_rei/focused.png",
+      "assets/characters/sterile_pack_v1/doc_rei/worried.png",
+      "assets/characters/sterile_pack_v1/doc_rei/warm.png",
+      "assets/events/character_events/rei/ayako/cg_04_lesion_missing.png"
+    ],
+    "notes": {
+      "white_coat": "服装、姿态和透明构图可复用；头发必须从粉红改为明确紫色，五官向二代官设与模型母版收敛。",
+      "operating_patient": "用户确认该图由同一身份模型生成；现状接受并保留。",
+      "surgical_portraits": "头发完全包住，酒红眼与锐利眉形已经足够识别；无需为发色单独重做。",
+      "assistant_confirmation": "只需将帽缘和耳侧露出的粉色发丝改为紫色，必要时微调虹膜至紫红。",
+      "lv2_cg_04": "佳織完全包发，当前紫红眼和表情符合身份，不需要改。"
+    }
+  }
+}

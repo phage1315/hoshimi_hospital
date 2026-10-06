@@ -1,0 +1,211 @@
+[
+  {
+    "id": "miyama_02_manga_artist_wrong_patient",
+    "title": "取材过头了",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "完成《叮。》后，深山第一次主动邀请坂口担任胃部教学病例的第一助手。今天九点开始，整日行程由这台手术占用。",
+    "unlock_requirements": [
+      {
+        "type": "day_number",
+        "minimum": 5
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_rei",
+        "minimum": 1
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_shiori",
+        "minimum": 1
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_shiori",
+      "doc_asuka"
+    ],
+    "prerequisite_events": [
+      "miyama_01_safety_pin"
+    ],
+    "event_chain": [
+      "miyama_02_manga_artist_wrong_patient_main"
+    ],
+    "completion_flags": [
+      "miyama_02_manga_artist_wrong_patient_completed",
+      "relationship_doc_rei_lv2",
+      "guest_ayako_met",
+      "ayako_wrong_surgery_survived",
+      "ayako_appendectomy_completed",
+      "ayako_surgical_field_photo_owned",
+      "true_gastric_patient_fled_or",
+      "true_gastric_patient_found_safe",
+      "true_gastric_patient_surgery_rescheduled",
+      "patient_id_protocol_reviewed",
+      "origin_of_patient_disguise_unresolved",
+      "shared_crisis_memory",
+      "shiori_knows_ayako_incident",
+      "ayako_shiori_reconnected"
+    ],
+    "relationship_rewards": [
+      {
+        "actor_id": "doc_rei",
+        "target_level": 2,
+        "benefit_id": "",
+        "allow_level_skip": false
+      }
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "miyama_02_manga_artist_wrong_patient",
+      "title": "取材过头了",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 5,
+      "priority": 210,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "miyama_01_safety_pin",
+    "title": "叮。",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "深山接诊了一位腹痛患者。X光片上的尖锐金属影把今天的日程直接推进了手术室。",
+    "unlock_requirements": [
+      {
+        "type": "day_number",
+        "minimum": 3
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_asuka"
+    ],
+    "prerequisite_events": [
+      "intro_doc_rei"
+    ],
+    "event_chain": [
+      "miyama_01_safety_pin_main"
+    ],
+    "completion_flags": [
+      "miyama_01_safety_pin_completed",
+      "relationship_doc_rei_lv1",
+      "or_table_palpation_unlocked",
+      "safety_pin_patient_safe",
+      "miyama_negative_exploration_memory"
+    ],
+    "completion_effects": {
+      "unlock_procedures": [
+        "surgery_exploratory_laparotomy"
+      ],
+      "completed_surgery_id": "surgery_exploratory_laparotomy",
+      "surgery_xp_bonus": 8
+    },
+    "relationship_rewards": [
+      {
+        "actor_id": "doc_rei",
+        "target_level": 1,
+        "benefit_id": "",
+        "allow_level_skip": false
+      }
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "miyama_01_safety_pin",
+      "title": "叮。",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 3,
+      "priority": 220,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "miyama_03_or_god",
+    "title": "手术室之神",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "两次荒谬的手术记忆让佳織开始怀疑“规律”。她在非值班日借用空手术室做一次不太像医生的经验性排除。",
+    "unlock_requirements": [
+      {
+        "type": "day_number",
+        "minimum": 8
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_rei",
+        "minimum": 2
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_asuka",
+      "nurse_moe",
+      "nurse_ange"
+    ],
+    "prerequisite_events": [
+      "miyama_02_manga_artist_wrong_patient"
+    ],
+    "event_chain": [
+      "miyama_03_or_god_main"
+    ],
+    "completion_flags": [
+      "miyama_03_or_god_completed",
+      "relationship_doc_rei_lv3",
+      "miyama_primary_surgeon_confidence_restored",
+      "miyama_or_god_gag_known_by_inner_circle"
+    ],
+    "completion_effects": {
+      "completed_surgery_id": "surgery_open_cholecystectomy",
+      "surgery_xp_bonus": 12,
+      "reputation": 2
+    },
+    "relationship_rewards": [
+      {
+        "actor_id": "doc_rei",
+        "target_level": 3,
+        "benefit_id": "",
+        "allow_level_skip": false
+      }
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "miyama_03_or_god",
+      "title": "手术室之神",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 8,
+      "priority": 205,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  }
+]

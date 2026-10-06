@@ -4,6 +4,8 @@
     "id": "patient_gigi",
     "name": "琪琪·安达露西亚",
     "age": 20,
+    "medical_background": false,
+    "has_prior_surgery": false,
     "case_id": "case_abdomen",
     "visuals": {
       "state": "outpatient",
@@ -24,7 +26,11 @@
         "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_gigi/near_collapse.png",
         "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_gigi/anesthetized.png",
         "splash/general_anesthesia": "assets/characters/patient_gigi_v1/patient_gigi/splash/general_anesthesia.png",
-        "examination/shy": "assets/characters/patient_gigi_v1/patient_gigi/examination/shy.png"
+        "examination/shy": "assets/characters/patient_gigi_v1/patient_gigi/examination/shy.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_gigi_v1/patient_gigi/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_gigi_v1/patient_gigi/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_gigi_v1/patient_gigi/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_gigi_v1/patient_gigi/operating_table_lithotomy/anesthetized.png"
       }
     },
     "admission_status": "outpatient",
@@ -153,28 +159,28 @@
   },
   "preop": {
     "stage_prompts": {
-      "ward_visit": "「医生，麻烦本多医生了。手术的安排，可以再跟我说一遍吗？」",
-      "team": "本多医生担任主刀，选好与本多医生配合的三位同事。",
-      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由本多医生亲手执行。额外照顾最多选两项。",
+      "ward_visit": "「医生，麻烦坂口医生了。手术的安排，可以再跟我说一遍吗？」",
+      "team": "坂口医生担任主刀，选好与坂口医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由坂口医生亲手执行。额外照顾最多选两项。",
       "prepared": "「都准备好了。抱歉，我好像比自己以为的更紧张。」",
       "changing": "先换上手术服，再完成刷手准备。",
-      "operating_room": "「医生……看到本多医生进来，我就安心多了。」",
+      "operating_room": "「医生……看到坂口医生进来，我就安心多了。」",
       "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
       "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
-      "procedure_mismatch": "「等等，医生……这和本多医生之前告诉我的手术不一样吧？」",
+      "procedure_mismatch": "「等等，医生……这和坂口医生之前告诉我的手术不一样吧？」",
       "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
       "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
-      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。本多医生抬眼确认团队已经就位。",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。坂口医生抬眼确认团队已经就位。",
       "surgery_start_epidural": "「我有一点紧张……如果需要配合呼吸，请慢慢告诉我。」",
       "surgery_start_local": "「马上要开始了吧？请让我知道每一步，我会尽力配合。」",
       "surgery_start_none": "「请等一下……我似乎还没有接受麻醉。现在开始会很痛吧？」",
-      "instrument_handoff": "本多医生的命令落下，器械护士已经准备好第一把器械。",
-      "assistant_ready": "器械已经到手。助手女医正等待本多医生的下一项指令。",
+      "instrument_handoff": "坂口医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待坂口医生的下一项指令。",
       "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
-      "general_operation": "患者在全身麻醉下没有语言反应。本多医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
-      "operative_contact": "切口已经建立。患者的反应变得明显，本多医生需要决定如何回应。",
-      "ongoing_interaction": "操作仍在继续。患者正在根据本多医生的态度调整自己的反应。",
-      "closure_interaction": "最紧张的一段已经过去。本多医生准备如何结束这次互动？",
+      "general_operation": "患者在全身麻醉下没有语言反应。坂口医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，坂口医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据坂口医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。坂口医生准备如何结束这次互动？",
       "procedure_flow": "团队进入术式特有的关键步骤。",
       "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
       "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
@@ -212,7 +218,7 @@
         "paths": [
           "assets/events/ward_preparation_v1/patient_gigi/enema.png"
         ],
-        "caption": "本多医生依照病房准备流程，亲手为琪琪·安达露西亚完成灌肠。"
+        "caption": "坂口医生依照病房准备流程，亲手为琪琪·安达露西亚完成灌肠。"
       }
     ]
   }
