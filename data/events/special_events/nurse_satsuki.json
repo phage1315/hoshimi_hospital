@@ -4,7 +4,7 @@
     "title": "真人测试",
     "category": "character_special_event",
     "duration_days": 1,
-    "consumes_full_day": true,
+    "consumes_full_day": false,
     "repeatable": false,
     "developer_only": false,
     "auto_schedule": true,
@@ -66,14 +66,15 @@
       "sunday_start_allowed": false
     },
     "trigger_mode": "location",
-    "location_id": "gynecology_exam"
+    "location_id": "gynecology_exam",
+    "completion_hint": "后续提示：最快在本事件完成三天后，前往护士站触发折川皐月 Lv2。"
   },
   {
     "id": "satsuki_lv2_patient_transport",
     "title": "陪我去一次",
     "category": "character_special_event",
     "duration_days": 1,
-    "consumes_full_day": true,
+    "consumes_full_day": false,
     "repeatable": false,
     "developer_only": false,
     "auto_schedule": true,
@@ -147,14 +148,15 @@
       "sunday_start_allowed": false
     },
     "trigger_mode": "location",
-    "location_id": "station"
+    "location_id": "station",
+    "completion_hint": "后续提示：最快在本事件完成三天后，前往住院病房触发折川皐月 Lv3。"
   },
   {
     "id": "satsuki_lv3_wrong_patient_appendectomy",
     "title": "我送错了人",
     "category": "character_special_event",
     "duration_days": 1,
-    "consumes_full_day": true,
+    "consumes_full_day": false,
     "repeatable": false,
     "developer_only": false,
     "auto_schedule": true,

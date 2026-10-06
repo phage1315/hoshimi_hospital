@@ -454,6 +454,14 @@
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
         },
+        "trigger_mode": {
+          "enum": [
+            "location",
+            "day_start",
+            "preop_stage",
+            "sunday"
+          ]
+        },
         "background_id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -5966,7 +5974,7 @@
           "maximum": 30
         },
         "consumes_full_day": {
-          "const": true
+          "type": "boolean"
         },
         "cg_dialogue_delay_seconds": {
           "description": "Seconds a newly displayed CG remains unobstructed before its dialogue and controls appear.",
@@ -5997,6 +6005,11 @@
         },
         "announcement": {
           "description": "Short scheduling notice shown before an automatically scheduled event begins.",
+          "type": "string",
+          "minLength": 1
+        },
+        "completion_hint": {
+          "description": "Optional player-facing guidance shown after completion, such as the location and delay for the next relationship event.",
           "type": "string",
           "minLength": 1
         },

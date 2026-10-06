@@ -118,6 +118,8 @@ func run() -> void:
 
 	var game = prepare_game()
 	expect(game.special_event_base_requirements_met(definition), "Satsuki Lv3 did not unlock at the authored thresholds")
+	var event_start_day := game.day_number()
+	var event_start_clock := game.elapsed()
 	expect(game.start_special_event(definition.id) != null, "Satsuki Lv3 could not start")
 	expect(not game.can_save_progress(), "Satsuki Lv3 allowed a save during its narrative")
 	var visited: Array[String] = []
@@ -132,6 +134,7 @@ func run() -> void:
 		expect(game.choose_special_event(str(choices[0].id)).accepted, "Satsuki Lv3 continuation failed at " + str(node.get("id", "")))
 		safety += 1
 	expect(game.active_special_event.completed and safety == 785, "Satsuki Lv3 did not traverse all 785 beats")
+	expect(game.day_number() == event_start_day and game.elapsed() == event_start_clock, "Satsuki Lv3 consumed game time")
 	for required_node in ["s02_023", "s03_001", "s07_001", "s08_001", "s09_001", "s12_001", "s14_001", "s18_001", "s19_001", "s20_001", "s20_100", "s21_001", "s22_019", "s23_009"]:
 		expect(required_node in visited, "Satsuki Lv3 skipped canonical beat " + required_node)
 	for flag in ["satsuki_lv3_complete", "satsuki_romantic_awareness", "satsuki_accepts_close_proximity_sakaguchi", "satsuki_full_identity_verification_trait", "satsuki_normal_sunday_date", "satsuki_lv4_gate_check"]:

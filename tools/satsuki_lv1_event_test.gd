@@ -38,6 +38,16 @@ func run() -> void:
 	var step: Dictionary = content.find_record("special_event_steps", "satsuki_lv1_real_patient_test_main")
 	expect(not definition.is_empty() and not step.is_empty(), "Satsuki Lv1 event data is missing")
 	expect(step.get("nodes", []).size() >= 100, "Satsuki Lv1 script lost authored storyboard beats")
+	expect(not bool(definition.get("consumes_full_day", true)), "Satsuki Lv1 still consumes a full game day")
+	var visual_app = load("res://godot/scenes/main.tscn").instantiate()
+	root.add_child(visual_app)
+	await process_frame
+	var cg_node: Dictionary = step.get("nodes", []).filter(func(node: Dictionary): return str(node.get("id", "")) == "s03_frame")[0]
+	visual_app.screen = "special_event"
+	visual_app.base("CG test", "", true, str(cg_node.get("background_id", "")))
+	visual_app.add_special_event_visual(cg_node)
+	expect(visual_app.page.get_node_or_null("CharacterEventCG") != null, "Satsuki Lv1 CG was hidden together with hide_portrait")
+	visual_app.queue_free()
 
 	var missing_lv0 = prepare_game(30, 10, false)
 	expect(not missing_lv0.special_event_base_requirements_met(definition), "Satsuki Lv1 bypassed the Lv0 completion gate")
@@ -46,6 +56,8 @@ func run() -> void:
 	var high_presence = prepare_game(31, 10, true)
 	expect(not high_presence.special_event_base_requirements_met(definition), "Satsuki Lv1 bypassed the clinical-presence maximum")
 	var game = prepare_game()
+	var event_start_day := game.day_number()
+	var event_start_clock := game.elapsed()
 	expect(game.special_event_base_requirements_met(definition), "Satsuki Lv1 did not unlock at its exact authored thresholds")
 	expect(game.start_special_event(definition.id) != null, "Satsuki Lv1 could not start")
 
@@ -61,6 +73,7 @@ func run() -> void:
 		expect(game.choose_special_event(str(choices[0].id)).accepted, "Satsuki Lv1 continuation failed at " + str(node.get("id", "")))
 		safety += 1
 	expect(game.active_special_event.completed and safety < 200, "Satsuki Lv1 did not reach its ending")
+	expect(game.day_number() == event_start_day and game.elapsed() == event_start_clock, "Satsuki Lv1 consumed game time")
 	for required_node in ["s02_angle", "s03_whirr", "s04_pov", "s05_almost_fine", "s06_stop_anytime", "s07_standing_view", "s08_nurse", "s09_thank_listen", "s10_listens"]:
 		expect(required_node in visited, "Satsuki Lv1 skipped storyboard beat " + required_node)
 	for flag in ["satsuki_lv1_complete", "satsuki_clinical_trust_sakaguchi", "satsuki_patient_perspective_trait", "satsuki_lv2_gate_check"]:

@@ -441,7 +441,9 @@ special_event_flags = set()
 for event in collections['special_events']:
     prefix = event['id'] + ': '
     check(event['duration_days'] == len(event['event_chain']), prefix + 'duration_days must match event_chain length')
-    check(event['consumes_full_day'] is True, prefix + 'special events must consume full days')
+    check(isinstance(event['consumes_full_day'], bool), prefix + 'consumes_full_day must be boolean')
+    if not event['consumes_full_day']:
+        check(event['duration_days'] == 1, prefix + 'zero-time special events must use one event-chain chapter')
     trigger_mode = event.get('trigger_mode', 'day_start')
     check(trigger_mode in {'day_start', 'location'}, prefix + 'invalid trigger_mode')
     if trigger_mode == 'location':

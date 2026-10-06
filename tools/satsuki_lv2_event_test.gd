@@ -109,6 +109,8 @@ func run() -> void:
 	expect(not too_early.special_event_base_requirements_met(definition), "Satsuki Lv2 bypassed the three-day cooldown")
 
 	var game = prepare_game()
+	var event_start_day := game.day_number()
+	var event_start_clock := game.elapsed()
 	expect(game.special_event_base_requirements_met(definition), "Satsuki Lv2 did not unlock at its exact authored thresholds")
 	expect(game.start_special_event(definition.id) != null, "Satsuki Lv2 could not start")
 	var visited: Array[String] = []
@@ -124,6 +126,7 @@ func run() -> void:
 		expect(game.choose_special_event(str(choices[0].id)).accepted, "Satsuki Lv2 continuation failed at " + str(node.get("id", "")))
 		safety += 1
 	expect(game.active_special_event.completed and safety < 220, "Satsuki Lv2 did not reach its ending")
+	expect(game.day_number() == event_start_day and game.elapsed() == event_start_clock, "Satsuki Lv2 consumed game time")
 	for required_node in ["s021", "s036", "s079", "s086", "s099", "s110", "s123", "s125", "s141", "s161", "s173", "s175_practice_transition", "s176_practice_cg", "s177_like", "s178_lv2_complete"]:
 		expect(required_node in visited, "Satsuki Lv2 skipped storyboard beat " + required_node)
 	for flag in ["satsuki_or_rotation_unlocked", "satsuki_successful_patient_transport", "satsuki_lv2_patient_transport_complete"]:
@@ -135,6 +138,7 @@ func run() -> void:
 
 	game.finish_special_event()
 	game.date_profile_definitions = {"nurse_satsuki": game.date_profile_definitions["nurse_satsuki"]}
+	game.advance_story_to_future_day(1, 540)
 	expect(game.is_sunday(), "Satsuki Lv2 test did not finish on its expected Sunday")
 	expect(game.sunday_date_candidates().has("nurse_satsuki"), "Satsuki did not become a Sunday invitation candidate after Lv2")
 	expect(game.sunday_invitation_rejection_rate("nurse_satsuki") == 65, "Satsuki Lv2 invitation chance is not the authored 35 percent")

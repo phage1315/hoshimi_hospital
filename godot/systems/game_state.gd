@@ -2184,9 +2184,10 @@ func choose_special_event(choice_id: String) -> Dictionary:
 	if not active_special_event.last_day_finished and not active_special_event.completed:
 		normalize_special_event_position()
 	result.accepted = true
-	result.day_finished = active_special_event.last_day_finished
+	var consumes_full_day := bool(active_special_event.definition.get("consumes_full_day", true))
+	result.day_finished = active_special_event.last_day_finished and consumes_full_day
 	result.event_finished = active_special_event.completed
-	if active_special_event.last_day_finished:
+	if active_special_event.last_day_finished and consumes_full_day:
 		advance_story_to_future_day(1, SHIFT_START_MINUTE)
 	if active_special_event.completed:
 		var id := active_special_event_id

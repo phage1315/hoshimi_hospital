@@ -87,6 +87,7 @@ var gallery_replay_is_test := false
 var gallery_replay_return_actor := ""
 var gallery_return_location := ""
 var special_event_pending_id := ""
+var special_event_return_location := ""
 var special_event_gallery_replay: RefCounted
 var special_event_last_cg_path := ""
 var special_event_replay_last_cg_path := ""
@@ -241,7 +242,8 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 	var wash := ColorRect.new()
 	# Finished background art should remain visible. Pages without art keep the
 	# stronger geometric-placeholder wash used by the original prototype.
-	var wash_alpha := 0.14 if authored_texture == null else (0.46 if background_id.begins_with("operating_team_") else 0.83 if screen not in ["dialogue", "encounter", "preop"] else 0.30)
+	var lightly_shaded_screen := screen in ["dialogue", "encounter", "preop", "special_event", "special_gallery_replay"]
+	var wash_alpha := 0.14 if authored_texture == null else (0.46 if background_id.begins_with("operating_team_") else 0.30 if lightly_shaded_screen else 0.83)
 	wash.color = Color(0.025, 0.075, 0.09, wash_alpha)
 	wash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -1146,6 +1148,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 		return
 	var location_special_event: Dictionary = game.next_special_event_at(id)
 	if not location_special_event.is_empty():
+		special_event_return_location = id
 		confirm_special_event(str(location_special_event.id))
 		return
 	var natural_event: Dictionary = game.next_character_event_at(id)
@@ -1654,8 +1657,6 @@ func show_character_event() -> void:
 	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 
 func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: String) -> void:
-	if bool(node.get("hide_portrait", false)):
-		return
 	var cg_path := str(node.get("cg_path", ""))
 	if not cg_path.is_empty() and FileAccess.file_exists("res://" + cg_path):
 		var cg := TextureRect.new()
@@ -1666,6 +1667,8 @@ func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: Str
 		cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED if str(node.get("cg_fit", "cover")) == "cover" else TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		cg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		page.add_child(cg)
+		return
+	if bool(node.get("hide_portrait", false)):
 		return
 	var portrait_path := str(node.get("portrait_path", ""))
 	if not portrait_path.is_empty() and FileAccess.file_exists("res://" + portrait_path):
@@ -1865,7 +1868,7 @@ func show_special_events() -> void:
 		for i in range(events.size()):
 			var definition: Dictionary = events[i]
 			var days := int(definition.duration_days)
-			var caption := tx("ui.auto.9337056caa0d", "%s\n%s · 连续占用 %s 天") % [definition.title, str(definition.category), days]
+			var caption := tx("ui.special_event.zero_time_caption", "%s\n%s · 不消耗游戏时间") % [definition.title, str(definition.category)] if not bool(definition.get("consumes_full_day", true)) else tx("ui.auto.9337056caa0d", "%s\n%s · 连续占用 %s 天") % [definition.title, str(definition.category), days]
 			var button := button_at(caption, Vector2.ZERO, Vector2(1110, 72), confirm_special_event.bind(str(definition.id)))
 			page.remove_child(button)
 			event_content.add_child(button)
@@ -2080,14 +2083,23 @@ func show_special_event_complete() -> void:
 	screen = "special_event_complete"
 	base(tx("ui.auto.fda784039855", "特殊活动完成"), str(event.definition.title), false, event.current_step().get("background_id", "lobby"))
 	label_at(tx("ui.auto.4a39afe64504", "活动的全部日程已经完成。"), Vector2(110, 260), 34, Color("f4f0e6"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label_at(tx("ui.auto.4c7e14cb5767", "耗时 %s 天　/　现在是 %s %s") % [event.definition.duration_days, game.day_text(), game.clock_text()], Vector2(110, 350), 22, Color("e8cfaa"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	var time_summary := tx("ui.special_event.zero_time_complete", "不消耗游戏时间　/　现在是 %s %s") % [game.day_text(), game.clock_text()] if not bool(event.definition.get("consumes_full_day", true)) else tx("ui.auto.4c7e14cb5767", "耗时 %s 天　/　现在是 %s %s") % [event.definition.duration_days, game.day_text(), game.clock_text()]
+	label_at(time_summary, Vector2(110, 350), 22, Color("e8cfaa"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if bool(event.definition.gallery_unlock):
 		label_at(tx("ui.auto.779b69fdeeb5", "已收录至事件鉴赏。"), Vector2(110, 410), 20, Color("c2d2cc"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	button_at(tx("ui.auto.5718d25b2437", "返回特殊活动  →"), Vector2(475, 510), Vector2(330, 58), finish_special_event_and_return)
+	var completion_hint := str(event.definition.get("completion_hint", ""))
+	if not completion_hint.is_empty():
+		label_at(completion_hint, Vector2(110, 452), 19, Color("d8e6c8"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	button_at(tx("ui.special_event.return_to_hospital", "返回医院  →"), Vector2(475, 510), Vector2(330, 58), finish_special_event_and_return)
 
 func finish_special_event_and_return() -> void:
 	game.finish_special_event()
-	show_special_events()
+	var return_location := special_event_return_location
+	special_event_return_location = ""
+	if not return_location.is_empty():
+		show_location(return_location, true, false)
+	else:
+		show_map()
 
 func clock_from_minutes(minutes: int) -> String:
 	return "%02d:%02d" % [minutes / 60, minutes % 60]

@@ -75,6 +75,22 @@ func run() -> void:
 	expect(app.page.find_child("GallerySpecial_framework_single_day_test", true, false) != null, "Completed special event was not listed in the gallery")
 	expect(not app.game.special_event_available(single) and app.game.start_special_event(single.id) == null, "One-time event could start twice")
 
+	var zero_time := single.duplicate(true)
+	zero_time.id = "framework_zero_time_test"
+	zero_time.consumes_full_day = false
+	zero_time.unlock_requirements = []
+	zero_time.completion_flags = []
+	zero_time.gallery_unlock = false
+	app.game.special_event_definitions[zero_time.id] = zero_time
+	var zero_start_day := app.game.day_number()
+	var zero_start_elapsed := app.game.elapsed()
+	expect(app.game.start_special_event(zero_time.id) != null, "Zero-time special event did not start")
+	expect(app.game.choose_special_event("continue").accepted, "Zero-time event did not advance")
+	var zero_finish: Dictionary = app.game.choose_special_event("finish")
+	expect(zero_finish.event_finished and not zero_finish.day_finished, "Zero-time event incorrectly requested a day transition")
+	expect(app.game.day_number() == zero_start_day and app.game.elapsed() == zero_start_elapsed, "Zero-time event advanced the calendar or clock")
+	app.game.finish_special_event()
+
 	var before_replay: Dictionary = app.game.snapshot()
 	var replay = replay_for(app.game, single.id)
 	expect(replay.apply("continue") and replay.apply("finish") and replay.completed, "Gallery replay could not play the completed event")
