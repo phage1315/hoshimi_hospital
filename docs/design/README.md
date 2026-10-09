@@ -55,6 +55,7 @@
 - `HOSHIMI_MIYAMA_LV1_LV3_CODEX_HANDOFF.md`：深山 Lv1／Lv3 事件交接稿；Lv3 正式裸穿手术服 CG 等待用户后续替换占位图。
 - [通用特殊事件框架 v0.1](HOSHIMI_SPECIAL_EVENT_FRAMEWORK_V0_1.md)
 - [手术失败与术中危机系统 v0.1](HOSHIMI_SURGERY_FAILURE_AND_CRISIS_SYSTEM_V0_1_2026-10-04.md)：普通手术以单一生理危机入口、三次补救和安全中止构成低致死性的成败系统；当前实现说明见 [术中危机系统实现](../surgery_crisis_system.md)。
+- [术中危机巡回护士播报层 v0.1](HOSHIMI_SURGERY_CRISIS_NURSE_CALLOUT_LAYER_V0_1.md)：由当前巡回护士报告八类随机生理异常；同一次危机在连续失败时保持症状不变，并按三次处理逐级升级播报。
 - [手术台触诊术式相关性与提前下刀 v0.1](HOSHIMI_OR_PALPATION_RELEVANCE_AND_PREMATURE_INCISION_CODEX_V0_1_2026-10-04.md)：在保留现有点击与通用反应的基础上，增加腹部、乳房、妇科盆腔、开胸／心脏四种数据驱动相关性，以及一次性有效发现和独立的提前下刀流程。
 - [可选触诊与麻醉感觉测试 v0.1](HOSHIMI_OPTIONAL_PALPATION_AND_ANESTHESIA_SENSORY_TEST_CODEX_V0_1_2026-10-04.md)：让术前触诊可以无惩罚跳过，并为局麻／硬膜外增加共用身体热点的可选手、针和手术刀感觉测试；覆盖结果由术式目标区域确定。
 - [成人亲密互动系统 v0.1](HOSHIMI_H_SYSTEM_V0_1.md)：成年可攻略角色的文字前戏、兴奋度、主动权、地点／服装和 CG 选择设计；当前底层实现及逐角色资料清单见 [成人亲密互动底层模块](../adult_intimacy_system.md)。

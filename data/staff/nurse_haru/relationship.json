@@ -14,32 +14,108 @@
     {
       "target_level": 1,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [],
+      "min_familiarity": 10,
+      "cooldown_days": 3
     },
     {
       "target_level": 2,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [],
+      "min_familiarity": 25,
+      "cooldown_days": 3
     },
     {
       "target_level": 3,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 60
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "presence",
+          "minimum": -999,
+          "maximum": 29
+        },
+        {
+          "type": "story_flag",
+          "flag": "kazama_ai_surgery_completed",
+          "value": true
+        }
+      ],
+      "min_familiarity": 40,
+      "cooldown_days": 3
     },
     {
       "target_level": 4,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_intimacy_events",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 60
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "presence",
+          "minimum": -999,
+          "maximum": 29
+        },
+        {
+          "type": "relationship_level",
+          "actor_id": "nurse_hiroko",
+          "minimum": 4
+        }
+      ],
+      "min_familiarity": 55,
+      "cooldown_days": 3
     },
     {
       "target_level": 5,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_clinical_practice_patient",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 70
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "presence",
+          "minimum": -999,
+          "maximum": 29
+        },
+        {
+          "type": "relationship_level",
+          "actor_id": "nurse_hiroko",
+          "minimum": 5
+        },
+        {
+          "type": "story_flag",
+          "flag": "takemi_unlocked",
+          "value": true
+        },
+        {
+          "type": "story_flag",
+          "flag": "ren_hiroko_double_surgery_completed",
+          "value": true
+        }
+      ],
+      "min_familiarity": 75,
+      "cooldown_days": 3
     }
   ]
 }

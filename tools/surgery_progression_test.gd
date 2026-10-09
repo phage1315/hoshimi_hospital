@@ -85,6 +85,12 @@ func run() -> void:
 	expect(is_equal_approx(game.leadership_xp_to_next_level(50), 8.0) and game.leadership_xp_to_next_level(80) > game.leadership_xp_to_next_level(60), "Leadership XP curve is incorrect")
 	appendix.team = {"assistant_surgeon": "pharmacist_manami"}
 	expect(is_equal_approx(game.team_relevant_skill_average(appendix.team), 5.0), "Team average did not use the assistant's surgery skill")
+	game.record_completed_surgery_progress(appendix, "surgery_appendix")
+	expect(game.character_progress_counter("pharmacist_manami", "completed_surgeries_as_assistant_surgeon") == 1 and game.character_progress_counter("pharmacist_manami", "completed_no_anesthesia_surgeries") == 1, "Completed no-anesthesia assistant participation was not recorded")
+	var gynecology_prep = training_prep("surgery_open_abdominal_myomectomy")
+	gynecology_prep.team = {"assistant_surgeon": "doc_aqua"}
+	game.record_completed_surgery_progress(gynecology_prep, "surgery_open_abdominal_myomectomy")
+	expect(game.character_progress_counter("", "gynecology_case_count") == 1 and game.character_progress_counter("doc_aqua", "completed_surgeries_in_group_female_pelvic") == 1, "Gynecology case or participating-staff progress was not recorded")
 	expect(is_equal_approx(game.award_leadership_xp(appendix), 1.5), "Developing team did not grant the leadership learning multiplier")
 	var staff_training := game.train_surgery_team(appendix.team, "surgery_appendix")
 	expect(staff_training.size() == 1 and game.staff_skill_value("pharmacist_manami", "surgery") == 6, "Routine case did not train the role-relevant staff skill")
@@ -97,5 +103,6 @@ func run() -> void:
 	configure_game(clone)
 	expect(clone.restore(JSON.parse_string(JSON.stringify(snapshot))), "Surgery progression save could not restore")
 	expect(clone.surgery_xp == game.surgery_xp and is_equal_approx(clone.leadership_xp, game.leadership_xp) and clone.staff_skill_value("pharmacist_manami", "surgery") == 6 and clone.unlocked_procedure_ids == game.unlocked_procedure_ids, "Five-dimension or staff progression changed after restore")
+	expect(clone.character_progress_counter("pharmacist_manami", "completed_no_anesthesia_surgeries") == 1 and clone.character_progress_counter("", "gynecology_case_count") == 1, "Character progress counters changed after surgery-progression restore")
 	print("SURGERY PROGRESSION: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

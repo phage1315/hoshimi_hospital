@@ -151,5 +151,46 @@
       "role_confirmation": "「助手位确认。虽然不是妇科……好吧，我会认真做。」",
       "stabilize": "「别急，先保持术野。按已经确认的解剖关系处理。」"
     }
+  },
+  "familiarity_rules": {
+    "base": 0.5,
+    "operations": [
+      {
+        "input": "progress_counter",
+        "actor_id": "global",
+        "counter_id": "gynecology_case_count",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 5,
+            "value": 0.5
+          },
+          {
+            "minimum": 6,
+            "maximum": 9,
+            "value": 0.7
+          },
+          {
+            "minimum": 10,
+            "maximum": 14,
+            "value": 0.9
+          },
+          {
+            "minimum": 15,
+            "maximum": 19,
+            "value": 1.05
+          },
+          {
+            "minimum": 20,
+            "maximum": 29,
+            "value": 1.2
+          },
+          {
+            "minimum": 30,
+            "value": 1.35
+          }
+        ]
+      }
+    ]
   }
 }

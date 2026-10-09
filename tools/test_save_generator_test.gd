@@ -53,11 +53,80 @@ func run() -> void:
 	delayed_character.completed_surgeries_total += 1
 	expect(delayed_character.character_event_available(character_definition), "Delayed character event did not unlock after one surgery")
 
+	var aqua_game = GameState.new()
+	configure_game(aqua_game)
+	expect(aqua_game.prepare_character_event_test_save("aqua_intro_exam_chair"), "Aqua counter-gated test save could not be prepared")
+	expect(aqua_game.character_progress_counter("global", "gynecology_case_count") == 1, "Aqua test save did not synthesize the gynecology case counter")
+	expect(aqua_game.character_event_available(aqua_game.character_event_definitions.aqua_intro_exam_chair), "Aqua counter-gated test save is not immediately available")
+
+	var hiroko_game = GameState.new()
+	configure_game(hiroko_game)
+	expect(hiroko_game.prepare_character_event_test_save("hiroko_lv1_or_instrument_panic"), "Hiroko cross-character test save could not be prepared")
+	expect(int(hiroko_game.relation_for("nurse_hiroko").familiarity) == 10 and int(hiroko_game.relation_for("nurse_moe").familiarity) == 10, "Hiroko test save did not synthesize both familiarity gates")
+	expect(hiroko_game.relationship_level("nurse_hiroko") == 0 and hiroko_game.relationship_level("nurse_moe") == 0 and hiroko_game.completed_surgeries_total == 1, "Hiroko test save did not synthesize its joint Lv0 and surgery gates")
+	expect(hiroko_game.character_event_available(hiroko_game.character_event_definitions.hiroko_lv1_or_instrument_panic), "Hiroko cross-character test save is not immediately available")
+
+	var miyama_game = GameState.new()
+	configure_game(miyama_game)
+	expect(miyama_game.prepare_special_event_test_save("miyama_02_manga_artist_wrong_patient"), "Miyama Lv2 range-gated test save could not be prepared")
+	expect(miyama_game.relationship_level("doc_rei") == 1 and int(miyama_game.relation_for("doc_rei").familiarity) == 25, "Miyama Lv2 test save did not synthesize its exact level and familiarity gates")
+	expect(miyama_game.special_event_available(miyama_game.special_event_definitions.miyama_02_manga_artist_wrong_patient), "Miyama Lv2 test save is not immediately available")
+
+	var satsuki_lv3_game = GameState.new()
+	configure_game(satsuki_lv3_game)
+	expect(satsuki_lv3_game.prepare_special_event_test_save("satsuki_lv3_wrong_patient_appendectomy"), "Satsuki Lv3 test save could not be prepared")
+	expect(satsuki_lv3_game.relationship_level("nurse_satsuki") == 2 and int(satsuki_lv3_game.relation_for("nurse_satsuki").familiarity) == 40, "Satsuki Lv3 test save did not synthesize relationship gates")
+	expect(int(satsuki_lv3_game.player_attributes().skill) == 55 and int(satsuki_lv3_game.player_attributes().presence) == -30, "Satsuki Lv3 test save did not synthesize player-attribute boundaries")
+	expect(satsuki_lv3_game.special_event_available(satsuki_lv3_game.special_event_definitions.satsuki_lv3_wrong_patient_appendectomy), "Satsuki Lv3 test save is not immediately available")
+
+	var relationship_gate_checks := 0
+	var structurally_blocked_checks := 0
+	for source_relation in satsuki_lv3_game.relationships.values():
+		var actor_id := str(source_relation.target_id)
+		for slot in source_relation.rank_slots:
+			if str(slot.get("content_status", "unavailable")) == "unavailable":
+				continue
+			var target_level := int(slot.target_level)
+			var exact_game = GameState.new()
+			configure_game(exact_game)
+			if actor_id == "nurse_ishigami" and target_level == 3:
+				expect(not exact_game.prepare_relationship_gate_test_save(actor_id, target_level, "exact") and exact_game.last_error == "relationship_gate_roster_blocked", "Ishigami Lv3 should report that its eight-other-nurses gate exceeds the current roster")
+				structurally_blocked_checks += 1
+				relationship_gate_checks += 1
+				continue
+			expect(exact_game.prepare_relationship_gate_test_save(actor_id, target_level, "exact"), "%s Lv%d exact relationship-gate preset failed" % [actor_id, target_level])
+			expect(exact_game.relationship_rank_gate_met(actor_id, target_level), "%s Lv%d exact relationship-gate preset did not pass" % [actor_id, target_level])
+			var exact_snapshot: Dictionary = exact_game.snapshot()
+			var exact_restored = GameState.new()
+			configure_game(exact_restored)
+			expect(exact_restored.restore(exact_snapshot) and exact_restored.relationship_rank_gate_met(actor_id, target_level), "%s Lv%d relationship-gate preset changed after save/load" % [actor_id, target_level])
+			if int(slot.min_familiarity) > 0:
+				var before_game = GameState.new()
+				configure_game(before_game)
+				expect(before_game.prepare_relationship_gate_test_save(actor_id, target_level, "before"), "%s Lv%d before-boundary preset failed" % [actor_id, target_level])
+				expect(not before_game.relationship_rank_gate_met(actor_id, target_level), "%s Lv%d one-point-short preset incorrectly passed" % [actor_id, target_level])
+			var above_game = GameState.new()
+			configure_game(above_game)
+			expect(above_game.prepare_relationship_gate_test_save(actor_id, target_level, "above"), "%s Lv%d above-boundary preset failed" % [actor_id, target_level])
+			expect(above_game.relationship_rank_gate_met(actor_id, target_level), "%s Lv%d above-boundary preset did not pass" % [actor_id, target_level])
+			if str(slot.get("content_status", "")) == "planned":
+				expect(not exact_game.rank_ready(actor_id), "%s Lv%d planned milestone entered the event schedule" % [actor_id, target_level])
+			relationship_gate_checks += 1
+	expect(relationship_gate_checks == 85, "Relationship-gate generator did not audit all 85 active milestones")
+	expect(structurally_blocked_checks == 1, "Relationship-gate generator found an unexpected number of roster-blocked milestones")
+	var unavailable_game = GameState.new()
+	configure_game(unavailable_game)
+	expect(not unavailable_game.prepare_relationship_gate_test_save("visiting_maya", 1, "exact"), "Unavailable professional route received a relationship-gate preset")
+
 	var overrides := {
 		"player_attributes": {"skill": 63, "leadership": 61, "presence": -25, "reputation": 120, "charm": 33},
 		"relationships": {"nurse_satsuki": {"met": true, "level": 2, "affection": 41, "familiarity": 48, "route": "colleague"}},
 		"story_flags": {"test_custom_flag": true},
-		"progress": {"completed_surgeries_total": 12},
+		"progress": {
+			"completed_surgeries_total": 12,
+			"character_counters": {"global": {"gynecology_case_count": 15}},
+			"staff_skills": {"pharmacist_manami": {"surgery": 60}},
+		},
 		"special_events": {},
 	}
 	expect(delayed.apply_test_save_overrides(overrides), "Advanced overrides were rejected")
@@ -66,6 +135,8 @@ func run() -> void:
 	expect(int(delayed.relation_for("nurse_satsuki").familiarity) == 48, "Relationship override failed")
 	expect(delayed.story_flag("test_custom_flag"), "Global flag override failed")
 	expect(delayed.completed_surgeries_total == 12, "Progress override failed")
+	expect(delayed.character_progress_counter("global", "gynecology_case_count") == 15, "Character-counter override failed")
+	expect(delayed.staff_skill_value("pharmacist_manami", "surgery") == 60, "Staff-skill override failed")
 
 	var restored = GameState.new()
 	configure_game(restored)

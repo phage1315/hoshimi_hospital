@@ -4,12 +4,14 @@ Debug builds expose **DEBUG: Test Save Generator** on the title screen. The gene
 
 ## Event presets
 
-The preset list includes both special events and ordinary character events.
+The preset list includes special events, ordinary character events, and relationship Gate checkpoints whose scripts are still planned.
 
 - **Requirements ready on load** prepares the earliest valid day and time, required staff introductions, relationship level/familiarity, player attributes, prerequisite events, cooldown completion days, surgery totals, and boolean flags. Competing automatic events are temporarily suppressed until the selected event completes.
 - **Trigger after the next surgery** prepares the same state but adds a saved one-surgery latch. The target remains unavailable until `completed_surgeries_total` increases once, regardless of the selected operation's duration. The latch is removed when the target event completes.
 
 For location-based character events, “ready” means that the event is available at its authored location and time. Mandatory/automatic events can prompt as soon as the loaded game returns to the map.
+
+The list also includes every `planned` relationship milestone that has a finalized Gate but no authored event yet. These presets can place Familiarity one point below the threshold, exactly at it, or one point above it. Other requirements are synthesized at their exact passing values. Relationship-gate presets remain idle at the hospital and never create or start placeholder events.
 
 ## Time override
 
@@ -48,6 +50,19 @@ All sections are optional. Unknown character IDs, player attributes, relationshi
     },
     "completed_surgeries_by_procedure": {
       "surgery_appendix": 2
+    },
+    "character_counters": {
+      "global": {
+        "gynecology_case_count": 15
+      },
+      "pharmacist_manami": {
+        "completed_no_anesthesia_surgeries_as_assistant_surgeon": 1
+      }
+    },
+    "staff_skills": {
+      "pharmacist_manami": {
+        "surgery": 60
+      }
     }
   },
   "special_events": {

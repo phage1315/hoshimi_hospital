@@ -21,32 +21,93 @@
     {
       "target_level": 1,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "staff_relationship_count",
+          "team_category": "nurse",
+          "minimum_level": 2,
+          "minimum_count": 3,
+          "exclude_actor_id": "nurse_ishigami"
+        }
+      ],
+      "min_familiarity": 0,
+      "cooldown_days": 3
     },
     {
       "target_level": 2,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "staff_relationship_count",
+          "team_category": "nurse",
+          "minimum_level": 2,
+          "minimum_count": 5,
+          "exclude_actor_id": "nurse_ishigami"
+        }
+      ],
+      "min_familiarity": 0,
+      "cooldown_days": 3
     },
     {
       "target_level": 3,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "staff_relationship_count",
+          "team_category": "nurse",
+          "minimum_level": 2,
+          "minimum_count": 8,
+          "exclude_actor_id": "nurse_ishigami"
+        }
+      ],
+      "min_familiarity": 0,
+      "cooldown_days": 3
     },
     {
       "target_level": 4,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 80
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "leadership",
+          "minimum": 80
+        }
+      ],
+      "min_familiarity": 0,
+      "cooldown_days": 3
     },
     {
       "target_level": 5,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 85
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "leadership",
+          "minimum": 85
+        }
+      ],
+      "min_familiarity": 0,
+      "cooldown_days": 3
     }
   ]
 }

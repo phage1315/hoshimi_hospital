@@ -61,7 +61,7 @@ func validate_yurika_portraits(step: Dictionary) -> void:
 func configure_game(game) -> void:
 	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases, content.collections.first_surgery_diagnosis_reactions, content.collections.palpation_profiles)
 
-func prepare_game(level: int = 2, familiarity: int = 45, completed_day: int = 5, current_day: int = 8, include_flags: bool = true):
+func prepare_game(level: int = 2, familiarity: int = 40, completed_day: int = 5, current_day: int = 8, include_flags: bool = true):
 	var game = GameState.new()
 	configure_game(game)
 	for actor_id in ["nurse_satsuki", "doc_artoria", "nurse_ishigami", "nurse_hiroko", "nurse_haru"]:
@@ -69,6 +69,8 @@ func prepare_game(level: int = 2, familiarity: int = 45, completed_day: int = 5,
 	var relation: Dictionary = game.relation_for("nurse_satsuki")
 	relation.level = level
 	relation.familiarity = familiarity
+	game.set_test_player_attribute("skill", 55)
+	game.set_test_player_attribute("presence", -30)
 	if include_flags:
 		game.set_story_flag("satsuki_lv2_patient_transport_complete", true)
 		game.set_story_flag("satsuki_or_rotation_unlocked", true)
@@ -112,9 +114,15 @@ func run() -> void:
 
 	expect(not prepare_game(1).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed relationship level 2")
 	expect(not prepare_game(3).special_event_base_requirements_met(definition), "Satsuki Lv3 remained available after relationship level 2")
-	expect(not prepare_game(2, 44).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed familiarity 45")
-	expect(not prepare_game(2, 45, 5, 7).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed the three-day cooldown")
-	expect(not prepare_game(2, 45, 5, 8, false).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed its Lv2 completion flags")
+	expect(not prepare_game(2, 39).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed familiarity 40")
+	expect(not prepare_game(2, 40, 5, 7).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed the three-day cooldown")
+	expect(not prepare_game(2, 40, 5, 8, false).special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed its Lv2 completion flags")
+	var strong_presence_game = prepare_game()
+	strong_presence_game.set_test_player_attribute("presence", -29)
+	expect(not strong_presence_game.special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed the Presence -30 ceiling")
+	var low_skill_game = prepare_game()
+	low_skill_game.set_test_player_attribute("skill", 54)
+	expect(not low_skill_game.special_event_base_requirements_met(definition), "Satsuki Lv3 bypassed Surgery 55")
 
 	var game = prepare_game()
 	expect(game.special_event_base_requirements_met(definition), "Satsuki Lv3 did not unlock at the authored thresholds")
@@ -140,7 +148,7 @@ func run() -> void:
 	for flag in ["satsuki_lv3_complete", "satsuki_romantic_awareness", "satsuki_accepts_close_proximity_sakaguchi", "satsuki_full_identity_verification_trait", "satsuki_normal_sunday_date", "satsuki_lv4_gate_check"]:
 		expect(game.story_flag(flag), "Satsuki Lv3 did not set " + flag)
 	expect(game.relationship_level("nurse_satsuki") == 3, "Satsuki Lv3 did not award relationship level 3")
-	expect(int(game.relation_for("nurse_satsuki").familiarity) == 57, "Satsuki Lv3 did not award the shared Lv3 familiarity gain")
+	expect(int(game.relation_for("nurse_satsuki").familiarity) == 51, "Satsuki Lv3 did not award the shared Lv3 familiarity gain")
 	expect(game.relation_for("nurse_satsuki").unlocked_benefits.has("unlock_satsuki_normal_sunday_date"), "Satsuki Lv3 did not unlock normal Sunday dates")
 	expect(game.special_event_gallery_unlocked(definition.id), "Satsuki Lv3 did not unlock gallery replay")
 	expect(not game.can_save_progress(), "Completed Satsuki Lv3 allowed a save before leaving the event scene")

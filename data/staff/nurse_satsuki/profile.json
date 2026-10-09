@@ -140,5 +140,56 @@
       "sufficient_evidence": [],
       "chatter": []
     }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「可以。我会按你实际可能感觉到的顺序说明，不只说操作名称。」",
+    "insert_a": "「教科书常把这一段写成一个词，但患者真正经历时，会分成几种不同的感觉。」",
+    "insert_b": "「如果你觉得某一种感觉超过了刚才说明的范围，请立刻说，不必为了配合而忍耐。」",
+    "close": "「以上是主要过程。抱歉，说得有些细……但我希望你进去以前，知道自己可以怎样开口。」"
+  },
+  "familiarity_rules": {
+    "base": 0.75,
+    "operations": [
+      {
+        "input": "player_attribute",
+        "attribute": "presence",
+        "mode": "replace",
+        "bands": [
+          {
+            "minimum": 60,
+            "value": 0.5
+          },
+          {
+            "minimum": 30,
+            "maximum": 59,
+            "value": 0.6
+          },
+          {
+            "minimum": -29,
+            "maximum": 29,
+            "value": 0.75
+          },
+          {
+            "minimum": -59,
+            "maximum": -30,
+            "value": 0.9
+          },
+          {
+            "minimum": -119,
+            "maximum": -60,
+            "value": 1.05
+          },
+          {
+            "minimum": -169,
+            "maximum": -120,
+            "value": 1.2
+          },
+          {
+            "maximum": -170,
+            "value": 1.3
+          }
+        ]
+      }
+    ]
   }
 }

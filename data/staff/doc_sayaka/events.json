@@ -685,11 +685,12 @@
     "conditions": {
       "min_day": 2,
       "min_affection": 0,
-      "min_familiarity": 10,
+      "min_familiarity": 0,
       "required_events": [
         "sayaka_lv1_monday_callback"
       ],
-      "special_requirements": []
+      "special_requirements": [],
+      "days_after_required_events": 3
     },
     "start": "work_arrival",
     "nodes": [
@@ -999,6 +1000,409 @@
     "auto_start": true,
     "target_level": 2,
     "benefit_id": "unlock_sayaka_lv2_workplace_flirt",
+    "locks_saving": false
+  },
+  {
+    "id": "sayaka_lv3_relationship",
+    "actor_id": "doc_sayaka",
+    "title": "一直在看",
+    "chapter": 3,
+    "location_id": "lounge",
+    "trigger_mode": "after_work",
+    "background_id": "hallway",
+    "outfit": "white_coat",
+    "minutes": 60,
+    "teaser": "下班前，小夜香似乎一直在看坂口。",
+    "time_start": 960,
+    "time_end": 1020,
+    "priority": 220,
+    "category": "rank_up",
+    "gallery": {
+      "cg_id": "cg_sayaka_lv3_first_kiss",
+      "caption": "那我们现在算什么？",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 2,
+      "min_affection": 0,
+      "min_familiarity": 40,
+      "required_events": [
+        "sayaka_lv2_working_hours"
+      ],
+      "days_after_required_events": 3,
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 10
+        }
+      ]
+    },
+    "start": "scene_01_fallback",
+    "opening_variants": {
+      "nurse_haru": "scene_01_haru",
+      "nurse_hiroko": "scene_01_hiroko",
+      "fallback": "scene_01_fallback"
+    },
+    "nodes": [
+      {
+      "id": "scene_01_haru",
+        "speaker": "narrator",
+        "text": "小夜香手里拿着病历夹，仍处在工作状态。\n\n七瀬恋看了一眼小夜香，又看了一眼坂口。\n\n七瀬恋：\n「南条医生。」\n\n南条小夜香：\n「嗯？」\n\n七瀬恋：\n「你今天是不是一直在看坂口医生？」\n\n南条小夜香：\n「嗯。」\n\n七瀬恋：\n「……承认得这么快吗？」\n\n南条小夜香：\n「不然呢？」\n\n小夜香把病历夹换到另一只手。\n\n南条小夜香：\n「看了就是看了啊。」\n\n坂口转头看向小夜香。\n\n坂口隆司：\n「你在看我？」\n\n南条小夜香：\n「现在才发现？」",
+      "expression": "smile",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "uniform",
+        "actor_id": "nurse_haru",
+        "choices": [
+          {
+            "id": "scene_01_haru_next",
+            "label": "继续",
+            "next": "scene_02_haru",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "scene_01_hiroko",
+        "speaker": "narrator",
+        "text": "小夜香手里拿着病历夹，仍处在工作状态。\n\n杉村弘子看了一眼小夜香，又看了一眼坂口。\n\n杉村弘子：\n「南条医生。」\n\n南条小夜香：\n「怎么？」\n\n杉村弘子：\n「你刚才已经往坂口先生那边看了好几次。」\n\n南条小夜香：\n「有吗？」\n\n杉村弘子：\n「有。」\n\n小夜香想了一下。\n\n南条小夜香：\n「那就是有吧。」\n\n坂口隆司：\n「你不解释一下？」\n\n小夜香看向坂口。\n\n南条小夜香：\n「为什么要解释？」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "uniform",
+        "actor_id": "nurse_hiroko",
+        "choices": [
+          {
+            "id": "scene_01_hiroko_next",
+            "label": "继续",
+            "next": "scene_02_common",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "scene_01_fallback",
+        "speaker": "narrator",
+        "text": "小夜香手里拿着病历夹，仍处在工作状态。\n\n一名护士看了一眼小夜香，又看了一眼坂口。\n\n普通护士：\n「南条医生，你今天是不是一直在看坂口医生？」\n\n南条小夜香：\n「嗯。」\n\n普通护士：\n「……承认得这么快吗？」\n\n南条小夜香：\n「不然呢？」\n「看了就是看了啊。」\n\n坂口转头看向小夜香。\n\n坂口隆司：\n「你在看我？」\n\n南条小夜香：\n「现在才发现？」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "scene_01_fallback_next",
+            "label": "继续",
+            "next": "scene_02_common",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "scene_02_haru",
+        "speaker": "narrator",
+        "text": "坂口隆司：\n「所以你到底在看什么？」\n\n南条小夜香：\n「很多啊。」\n\n坂口隆司：\n「比如？」\n\n南条小夜香：\n「你跟患者说话的时候。」\n「护士问你东西的时候。」\n「有点麻烦的时候，你会不会先装懂。」\n\n坂口隆司：\n「结论呢？」\n\n小夜香看着坂口。\n\n南条小夜香：\n「目前还行。」\n\n坂口隆司：\n「只是还行？」\n\n南条小夜香：\n「你想听高评价？」\n\n坂口隆司：\n「听听。」\n\n小夜香嘴角动了一下。\n\n南条小夜香：\n「工作的时候挺可靠。」\n「这句够不够？」\n\n坂口隆司：\n「还有呢？」\n\n南条小夜香：\n「还有？」\n\n坂口隆司：\n「你说很多。」\n\n小夜香露出一点熟悉的坏笑。\n\n南条小夜香：\n「脸啊。」\n\n坂口隆司：\n「……」\n\n南条小夜香：\n「脸也看。」\n「喜欢的男人在旁边，不看才奇怪吧。」\n\n坂口隆司：\n「所以你一直在考察我？」\n\n南条小夜香：\n「没有。」\n「别给自己加戏。」\n\n小夜香轻轻用病历夹碰了一下坂口的手臂。\n\n南条小夜香：\n「我就是想看。」\n\n坂口隆司：\n「有什么区别？」\n\n南条小夜香：\n「当然有。」\n\n小夜香往前走了两步，又回头看坂口。\n\n南条小夜香：\n「考察是为了决定要不要。」\n「我早就决定要不要了。」\n\n坂口隆司：\n「那你还看什么？」\n\n小夜香笑了。\n\n南条小夜香：\n「喜欢看啊。」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "scene_02_haru_next",
+            "label": "继续",
+            "next": "scene_2a_extra",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "scene_02_common",
+        "speaker": "narrator",
+        "text": "坂口隆司：\n「所以你到底在看什么？」\n\n南条小夜香：\n「很多啊。」\n\n坂口隆司：\n「比如？」\n\n南条小夜香：\n「你跟患者说话的时候。」\n「护士问你东西的时候。」\n「有点麻烦的时候，你会不会先装懂。」\n\n坂口隆司：\n「结论呢？」\n\n小夜香看着坂口。\n\n南条小夜香：\n「目前还行。」\n\n坂口隆司：\n「只是还行？」\n\n南条小夜香：\n「你想听高评价？」\n\n坂口隆司：\n「听听。」\n\n小夜香嘴角动了一下。\n\n南条小夜香：\n「工作的时候挺可靠。」\n「这句够不够？」\n\n坂口隆司：\n「还有呢？」\n\n南条小夜香：\n「还有？」\n\n坂口隆司：\n「你说很多。」\n\n小夜香露出一点熟悉的坏笑。\n\n南条小夜香：\n「脸啊。」\n\n坂口隆司：\n「……」\n\n南条小夜香：\n「脸也看。」\n「喜欢的男人在旁边，不看才奇怪吧。」\n\n坂口隆司：\n「所以你一直在考察我？」\n\n南条小夜香：\n「没有。」\n「别给自己加戏。」\n\n小夜香轻轻用病历夹碰了一下坂口的手臂。\n\n南条小夜香：\n「我就是想看。」\n\n坂口隆司：\n「有什么区别？」\n\n南条小夜香：\n「当然有。」\n\n小夜香往前走了两步，又回头看坂口。\n\n南条小夜香：\n「考察是为了决定要不要。」\n「我早就决定要不要了。」\n\n坂口隆司：\n「那你还看什么？」\n\n小夜香笑了。\n\n南条小夜香：\n「喜欢看啊。」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "scene_02_common_next",
+            "label": "继续",
+            "next": "scene_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_2a_extra",
+        "speaker": "narrator",
+        "text": "七瀬恋：\n「那我是不是应该先走？」\n\n南条小夜香：\n「你工作做完了吗？」\n\n七瀬恋：\n「……还没有。」\n\n南条小夜香：\n「那就别拿谈恋爱当理由偷懒。」\n\n七瀬恋：\n「明明是南条医生先——」\n\n南条小夜香：\n「我也在工作啊。」\n\n小夜香低头继续翻病历。",
+      "expression": "smile",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "uniform",
+        "actor_id": "nurse_haru",
+        "choices": [
+          {
+            "id": "scene_2a_extra_next",
+            "label": "继续",
+            "next": "scene_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_03",
+        "speaker": "narrator",
+        "text": "小夜香已经换回常服，从员工区域走出来。\n\n坂口看到她时停了一下。\n\n南条小夜香：\n「干嘛？」\n\n坂口隆司：\n「没什么。」\n\n小夜香低头看了一眼自己的衣服。\n\n南条小夜香：\n「白天看够了，现在不认识？」\n\n坂口隆司：\n「白天你穿的不是这个。」\n\n南条小夜香：\n「所以？」\n\n坂口隆司：\n「感觉不太一样。」\n\n小夜香笑了一下。\n\n南条小夜香：\n「医生下班也得穿自己的衣服啊。」\n「走不走？」\n\n坂口隆司：\n「去哪？」\n\n南条小夜香：\n「不知道。」\n「先出去再说。」",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "hallway",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "scene_03_next",
+            "label": "继续",
+            "next": "scene_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_04",
+        "speaker": "narrator",
+        "text": "坂口隆司：\n「你平时真的一直在看？」\n\n南条小夜香：\n「哪有一直。」\n\n小夜香停了一下。\n\n南条小夜香：\n「有空的时候吧。」\n\n坂口隆司：\n「那还挺多。」\n\n南条小夜香：\n「你意见很多耶。」\n\n小夜香喝了一口东西。\n\n南条小夜香：\n「不想让我看？」\n\n坂口隆司：\n「没说。」\n\n南条小夜香：\n「那就好。」\n\n小夜香停了一下。\n\n南条小夜香：\n「而且你也会看我。」\n\n坂口隆司：\n「我？」\n\n南条小夜香：\n「嗯。」\n「我经过护士站的时候。」\n「一起开刀的时候。」\n「我跟别人讲话的时候。」\n\n坂口隆司：\n「你怎么知道？」\n\n小夜香看了坂口一眼。\n\n南条小夜香：\n「因为我也在看你啊。」\n\n两个人安静了一下。",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "italian_trattoria",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "scene_04_next",
+            "label": "继续",
+            "next": "scene_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "scene_05",
+        "speaker": "narrator",
+        "text": "坂口和小夜香吃完东西以后继续往前走。\n\n南条小夜香：\n「坂口。」\n\n坂口隆司：\n「嗯？」\n\n南条小夜香：\n「我问你个事。」\n\n坂口隆司：\n「说。」\n\n小夜香走了几步。\n\n南条小夜香：\n「我们都这样了。」\n\n小夜香停了一下。\n\n南条小夜香：\n「还要继续装普通同事？」\n\n坂口看着小夜香。\n\n南条小夜香：\n「出去吃饭。」\n「私下联系。」\n「你约我，我也会去。」\n「工作的时候又一直互相看。」\n\n坂口隆司：\n「最后一个是你自己承认的。」\n\n南条小夜香：\n「你也有。」\n\n两个人安静了一下。\n\n南条小夜香：\n「所以呢。」\n「你要是想谈，就好好谈。」\n\n小夜香停下来，面对坂口。\n\n南条小夜香：\n「那我们现在到底算什么？」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "answer_a",
+            "label": "女朋友。",
+            "next": "answer_a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "answer_b",
+            "label": "我以为你早就算了。",
+            "next": "answer_b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "answer_a",
+        "speaker": "narrator",
+        "text": "坂口隆司：\n「女朋友。」\n\n小夜香明显停了半拍。\n\n南条小夜香：\n「……你今天很敢嘛。」\n\n坂口隆司：\n「不喜欢？」\n\n小夜香移开视线半秒，又看回来。\n\n南条小夜香：\n「没有。」\n「挺喜欢的。」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "answer_a_next",
+            "label": "继续",
+            "next": "scene_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "answer_b",
+        "speaker": "narrator",
+        "text": "坂口隆司：\n「我以为你早就算我女朋友了。」\n\n南条小夜香：\n「谁允许的？」\n\n坂口隆司：\n「那现在申请。」\n\n小夜香忍不住笑了一下。\n\n南条小夜香：\n「申请内容？」\n\n坂口隆司：\n「南条小夜香，当我女朋友。」\n\n小夜香看着坂口。\n\n南条小夜香：\n「批准。」\n「这样够正式了吧。」",
+        "expression": "neutral",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "answer_b_next",
+            "label": "继续",
+            "next": "scene_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_08",
+        "speaker": "narrator",
+        "text": "关系说清楚以后，两个人安静了一会儿。\n\n坂口看着小夜香。\n\n小夜香没有躲开坂口的视线。\n\n坂口往小夜香面前靠近一点。\n\n南条小夜香：\n「现在才想起来？」\n\n坂口隆司：\n「什么？」\n\n小夜香没有回答，又靠近了一点。\n\n她没有退。\n\n坂口靠过去时，她只是抬起脸。\n\n很短的一次接触。\n\n分开以后，两个人都安静了一秒。",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "scene_08_next",
+            "label": "继续",
+            "next": "scene_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_09",
+        "speaker": "narrator",
+        "text": "南条小夜香：\n「……嗯。」\n\n坂口隆司：\n「嗯？」\n\n南条小夜香：\n「比我想的快一点。」\n\n坂口隆司：\n「你不是嫌我们拖太久？」\n\n小夜香看着坂口。\n\n南条小夜香：\n「我说关系。」\n「没说你亲得这么快。」\n\n坂口隆司：\n「后悔？」\n\n南条小夜香：\n「没有。」\n\n小夜香很快又恢复了平时的样子。\n\n南条小夜香：\n「你现在是不是很得意？」\n\n坂口隆司：\n「有一点。」\n\n小夜香笑了一下。\n\n南条小夜香：\n「看得出来。」",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "scene_09_next",
+            "label": "继续",
+            "next": "scene_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_10",
+        "speaker": "narrator",
+        "text": "坂口和小夜香继续往前走。\n\n两个人又走了几步。\n\n南条小夜香：\n「……那男朋友。」\n\n坂口隆司：\n「嗯？」\n\n小夜香看着坂口。\n\n南条小夜香：\n「今天送我回去。」\n\n坂口隆司：\n「这就开始使唤我了？」\n\n小夜香往坂口身边靠近半步。\n\n南条小夜香：\n「不行啊？」\n\n坂口隆司：\n「行。」\n\n小夜香马上笑了。\n\n南条小夜香：\n「那走吧。」\n\n小夜香走得比刚才近了一点。\n\n过马路时，小夜香的手背轻轻碰到坂口，她没有躲开。",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "scene_10_next",
+            "label": "继续",
+            "next": "scene_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_11",
+        "speaker": "narrator",
+        "text": "南条小夜香：\n「今天挺好。」\n\n坂口隆司：\n「哪部分？」\n\n小夜香想了一下。\n\n南条小夜香：\n「工作也挺好。」\n「下班以后也挺好。」\n「最后那部分最好。」\n\n坂口隆司：\n「哪部分？」\n\n小夜香看着坂口。\n\n南条小夜香：\n「你自己想。」\n\n坂口隆司：\n「你刚才不是说别装？」\n\n小夜香笑出声。\n\n南条小夜香：\n「关系说清楚了。」\n「别的可以继续逗你啊。」",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "scene_11_next",
+            "label": "继续",
+            "next": "scene_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+      "id": "scene_12",
+        "speaker": "narrator",
+        "text": "坂口隆司：\n「明天医院见。」\n\n南条小夜香：\n「嗯。」\n\n小夜香走出两步，又回头。\n\n南条小夜香：\n「坂口。」\n\n坂口隆司：\n「怎么？」\n\n南条小夜香：\n「明天工作的时候别一直看我。」\n\n坂口隆司：\n「不是你先一直看？」\n\n南条小夜香：\n「我可以看你。」\n\n小夜香故意板起一点脸。\n\n南条小夜香：\n「你不可以看我哦。」\n\n坂口隆司：\n「这是什么规矩？」\n\n小夜香自己先笑了。\n\n南条小夜香：\n「我定的。」\n「开玩笑的。」\n「想看就看。」\n\n小夜香转身离开。",
+      "expression": "happy",
+        "allow_dialogue_scroll": true,
+        "background_id": "hospital_night",
+        "outfit": "casual",
+        "choices": [
+          {
+            "id": "finish_lv3",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "sayaka_lv3_romance_confirmed",
+              "sayaka_first_kiss_happened"
+            ]
+          }
+        ]
+      }
+    ],
+    "auto_start": false,
+    "target_level": 3,
+    "benefit_id": "",
     "locks_saving": false
   }
 ]

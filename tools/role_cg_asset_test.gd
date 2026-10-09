@@ -48,6 +48,11 @@ func run() -> void:
 	if explain != null:
 		explain.pressed.emit()
 	await process_frame
+	var appropriate_answer: Button = app.page.get_node_or_null("PreopAction_appropriate_answer")
+	expect(appropriate_answer != null, "English vivid-explanation choice did not expose the appropriate-answer branch")
+	if appropriate_answer != null:
+		appropriate_answer.pressed.emit()
+	await process_frame
 	for role_id in ["assistant_surgeon", "scrub_nurse"]:
 		var picker: OptionButton = app.page.get_node_or_null("Role_" + role_id)
 		expect(picker != null and picker.selected == 0, "English " + role_id + " picker preselected staff before the first assignment")

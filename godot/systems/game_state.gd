@@ -9,6 +9,7 @@ const PresenceResolver = preload("res://godot/systems/presence_resolver.gd")
 const FixedCalendar = preload("res://godot/systems/fixed_calendar.gd")
 const Progression = preload("res://godot/systems/progression_config.gd")
 const SAVE_VERSION := 35
+const MIN_SUPPORTED_SAVE_VERSION := 35
 const CONTENT_VERSION := 1
 const SHIFT_START_MINUTE := 9 * 60
 const SHIFT_MINUTES := 8 * 60
@@ -37,6 +38,8 @@ var recent_patient_ids: Array[String] = []
 var completed_surgeries_total := 0
 var completed_surgeries_by_group: Dictionary = {}
 var completed_surgeries_by_procedure: Dictionary = {}
+var surgical_quality_records: Dictionary = {}
+var character_progress_counters: Dictionary = {}
 var surgery_xp := 0
 var surgery_xp_history: Array[Dictionary] = []
 var leadership_xp := 0.0
@@ -181,6 +184,8 @@ func reset() -> void:
 	completed_surgeries_total = 0
 	completed_surgeries_by_group.clear()
 	completed_surgeries_by_procedure.clear()
+	surgical_quality_records.clear()
+	character_progress_counters.clear()
 	surgery_xp = 0
 	surgery_xp_history.clear()
 	leadership_xp = 0.0
@@ -253,6 +258,8 @@ func remember_deferred_day_transition() -> void:
 func can_save_progress() -> bool:
 	if active_surgery_in_progress():
 		return false
+	if not active_preop_id.is_empty() and preops.has(active_preop_id) and preops[active_preop_id].graphic_preop_dialogue_locked():
+		return false
 	if not active_after_work_walk.is_empty():
 		return false
 	# Narrative sessions are deliberately atomic. Their scripts and state migrations
@@ -275,6 +282,8 @@ func save_block_reason() -> String:
 		return ""
 	if active_surgery_in_progress():
 		return "手术进行中，无法保存。请完成本次手术后再保存。"
+	if not active_preop_id.is_empty() and preops.has(active_preop_id) and preops[active_preop_id].graphic_preop_dialogue_locked():
+		return "术前说明进行中，无法保存。请完成本段对话后再保存。"
 	if not active_after_work_walk.is_empty():
 		return "下班同行事件进行中，无法保存。请完成本段剧情后再保存。"
 	return "剧情事件进行中，无法保存。请完成本段剧情后再保存。"
@@ -622,6 +631,10 @@ func apply_clinic_action(id: String) -> bool:
 				"first_surgery_diagnosis_shock_seen": true,
 				"first_surgery_diagnosis_shock_variant_id": variant_id,
 			}
+	if id in ["authoritative_full_undress", "threaten_full_undress"]:
+		var support_actor := resolve_outpatient_support_actor()
+		if support_actor == "nurse_yui":
+			increment_character_progress_counter(support_actor, "outpatient_forced_undress")
 	return true
 
 func open_visit(id: String) -> RefCounted:
@@ -773,6 +786,29 @@ func staff_can_join_surgery_team(actor_id: String) -> bool:
 func relationship_level(actor_id: String) -> int:
 	return int(relation_for(actor_id).get("level", 0))
 
+func character_progress_counter(actor_id: String, counter_id: String) -> int:
+	var scope_id := actor_id if not actor_id.is_empty() else "global"
+	return int(character_progress_counters.get(scope_id, {}).get(counter_id, 0))
+
+func increment_character_progress_counter(actor_id: String, counter_id: String, amount: int = 1) -> int:
+	if counter_id.is_empty() or amount <= 0:
+		return character_progress_counter(actor_id, counter_id)
+	var scope_id := actor_id if not actor_id.is_empty() else "global"
+	if not character_progress_counters.has(scope_id):
+		character_progress_counters[scope_id] = {}
+	var counters: Dictionary = character_progress_counters[scope_id]
+	counters[counter_id] = int(counters.get(counter_id, 0)) + amount
+	return int(counters[counter_id])
+
+func set_test_character_progress_counter(actor_id: String, counter_id: String, value: int) -> bool:
+	if not OS.is_debug_build() or counter_id.is_empty() or value < 0:
+		return false
+	var scope_id := actor_id if not actor_id.is_empty() else "global"
+	if not character_progress_counters.has(scope_id):
+		character_progress_counters[scope_id] = {}
+	character_progress_counters[scope_id][counter_id] = value
+	return true
+
 func relationship_max_level(actor_id: String) -> int:
 	for person in staff:
 		if str(person.get("id", "")) == actor_id:
@@ -906,12 +942,8 @@ func finish_adult_intimacy(consumes_day: bool = true) -> bool:
 	return true
 
 func next_rank_threshold(actor_id: String) -> int:
-	var target := relationship_level(actor_id) + 1
-	var thresholds: Array[int] = []
-	for definition in character_event_definitions.values():
-		if str(definition.get("actor_id", "")) == actor_id and str(definition.get("category", "")) in ["bond", "rank_up"] and int(definition.get("target_level", 0)) == target:
-			thresholds.append(int(definition.get("conditions", {}).get("min_familiarity", 0)))
-	return 100 if thresholds.is_empty() else thresholds.min()
+	var slot := next_rank_slot(actor_id)
+	return 100 if slot.is_empty() else int(slot.get("min_familiarity", 100))
 
 func rank_ready(actor_id: String) -> bool:
 	if not staff_is_met(actor_id) or relationship_level(actor_id) >= relationship_max_level(actor_id):
@@ -931,6 +963,91 @@ func next_rank_slot(actor_id: String) -> Dictionary:
 			return slot
 	return {}
 
+func relationship_rank_slot(actor_id: String, target_level: int) -> Dictionary:
+	for slot in relation_for(actor_id).get("rank_slots", []):
+		if int(slot.get("target_level", 0)) == target_level:
+			return slot
+	return {}
+
+func relationship_rank_gate_evaluation(actor_id: String, target_level: int) -> Dictionary:
+	var relation := relation_for(actor_id)
+	var slot := relationship_rank_slot(actor_id, target_level)
+	var result := {
+		"met": false,
+		"familiarity_current": int(relation.get("familiarity", 0)),
+		"familiarity_required": int(slot.get("min_familiarity", 0)),
+		"familiarity_met": false,
+		"cooldown_current": 0,
+		"cooldown_required": int(slot.get("cooldown_days", Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS)),
+		"cooldown_remaining": 0,
+		"cooldown_met": false,
+		"requirements": {"met": false, "results": [], "unmet": []},
+	}
+	if relation.is_empty() or slot.is_empty() or target_level != int(relation.get("level", 0)) + 1:
+		return result
+	result.familiarity_met = int(result.familiarity_current) >= int(result.familiarity_required)
+	var latest_milestone_day := 0
+	for event_id in relation.get("rank_history", []):
+		var completed_event = character_events.get(str(event_id))
+		if completed_event != null:
+			latest_milestone_day = maxi(latest_milestone_day, int(completed_event.completed_day))
+		else:
+			latest_milestone_day = maxi(latest_milestone_day, int(special_event_completion_days.get(str(event_id), 0)))
+	var cooldown_days := int(result.cooldown_required)
+	if latest_milestone_day <= 0 and target_level > 1:
+		var previous_slot := relationship_rank_slot(actor_id, target_level - 1)
+		var previous_event_id := str(previous_slot.get("event_id", ""))
+		var previous_event = character_events.get(previous_event_id)
+		if previous_event != null:
+			latest_milestone_day = int(previous_event.completed_day)
+		else:
+			latest_milestone_day = int(special_event_completion_days.get(previous_event_id, 0))
+	result.cooldown_current = maxi(0, day_number() - latest_milestone_day) if latest_milestone_day > 0 else cooldown_days
+	result.cooldown_remaining = maxi(0, cooldown_days - int(result.cooldown_current))
+	result.cooldown_met = latest_milestone_day <= 0 or int(result.cooldown_remaining) == 0
+	result.requirements = requirements_evaluation(slot.get("special_requirements", []), {"actor_id": actor_id})
+	result.met = result.familiarity_met and result.cooldown_met and bool(result.requirements.met)
+	return result
+
+func relationship_progress(actor_id: String) -> Dictionary:
+	var relation := relation_for(actor_id)
+	var current_level := int(relation.get("level", 0))
+	var maximum_level := relationship_max_level(actor_id)
+	var progress := {
+		"known": bool(relation.get("met", false)),
+		"current_level": current_level,
+		"maximum_level": maximum_level,
+		"complete": current_level >= maximum_level,
+		"target_level": mini(current_level + 1, maximum_level),
+		"has_slot": false,
+		"content_status": "unavailable",
+		"event_authored": false,
+		"slot": {},
+		"gate": {},
+	}
+	if not bool(progress.known) or bool(progress.complete):
+		return progress
+	var slot := relationship_rank_slot(actor_id, int(progress.target_level))
+	if slot.is_empty():
+		return progress
+	var event_id := str(slot.get("event_id", ""))
+	progress.has_slot = true
+	progress.content_status = str(slot.get("content_status", "unavailable"))
+	progress.event_authored = progress.content_status == "authored" and not event_id.is_empty() and (character_event_definitions.has(event_id) or special_event_definitions.has(event_id))
+	progress.slot = slot
+	progress.gate = relationship_rank_gate_evaluation(actor_id, int(progress.target_level))
+	return progress
+
+func relationship_rank_gate_met(actor_id: String, target_level: int) -> bool:
+	return bool(relationship_rank_gate_evaluation(actor_id, target_level).met)
+
+func relationship_rank_gate_applies_to_event(actor_id: String, target_level: int, event_id: String) -> bool:
+	var slot := relationship_rank_slot(actor_id, target_level)
+	if slot.is_empty():
+		return false
+	var gate_event_id := str(slot.get("gate_event_id", slot.get("event_id", "")))
+	return not gate_event_id.is_empty() and gate_event_id == event_id
+
 func add_familiarity(actor_id: String, amount: int) -> void:
 	var relation := relation_for(actor_id)
 	if relation.is_empty():
@@ -940,29 +1057,84 @@ func add_familiarity(actor_id: String, amount: int) -> void:
 func add_familiarity_to(relation: Dictionary, amount: int) -> void:
 	relation.familiarity = clampi(int(relation.get("familiarity", 0)) + amount, 0, 100)
 
-func familiarity_gain_multiplier(actor_id: String) -> float:
-	for person in staff:
-		if str(person.get("id", "")) == actor_id:
-			var multiplier := maxf(0.0, float(person.get("familiarity_gain_multiplier", 1.0)))
-			var attributes := player_attributes()
-			for affinity in person.get("familiarity_affinities", []):
-				var attribute := str(affinity.get("attribute", ""))
-				var value := int(attributes.get(attribute, 0))
-				if value >= int(affinity.get("minimum", -2147483648)) and value <= int(affinity.get("maximum", 2147483647)):
-					multiplier *= maxf(0.0, float(affinity.get("multiplier", 1.0)))
-			return multiplier
-	return 1.0
+func familiarity_rule_input(actor_id: String, operation: Dictionary) -> int:
+	match str(operation.get("input", "player_attribute")):
+		"player_attribute":
+			return int(player_attributes().get(str(operation.get("attribute", "")), 0))
+		"relationship_level":
+			return relationship_level(actor_id)
+		"progress_counter":
+			return character_progress_counter(str(operation.get("actor_id", actor_id)), str(operation.get("counter_id", "")))
+	return 0
+
+func familiarity_gain_multiplier(actor_id: String, source: String = "standard") -> float:
+	var person := staff_record(actor_id)
+	if person.is_empty():
+		return 1.0
+	var rules: Dictionary = person.get("familiarity_rules", {})
+	if rules.is_empty():
+		# Compatibility for profiles authored before familiarity_rules existed.
+		var legacy_multiplier := maxf(0.0, float(person.get("familiarity_gain_multiplier", 1.0)))
+		var attributes := player_attributes()
+		for affinity in person.get("familiarity_affinities", []):
+			var attribute := str(affinity.get("attribute", ""))
+			var value := int(attributes.get(attribute, 0))
+			if value >= int(affinity.get("minimum", -2147483648)) and value <= int(affinity.get("maximum", 2147483647)):
+				legacy_multiplier *= maxf(0.0, float(affinity.get("multiplier", 1.0)))
+		return legacy_multiplier
+	var multiplier := float(rules.get("base", 1.0))
+	for raw_operation in rules.get("operations", []):
+		var operation: Dictionary = raw_operation
+		var input_value := familiarity_rule_input(actor_id, operation)
+		var band_found := false
+		var band_value := 0.0
+		for raw_band in operation.get("bands", []):
+			var band: Dictionary = raw_band
+			if input_value < int(band.get("minimum", -2147483648)) or input_value > int(band.get("maximum", 2147483647)):
+				continue
+			band_found = true
+			band_value = float(band.get("value", 0.0))
+			break
+		if not band_found:
+			continue
+		match str(operation.get("mode", "replace")):
+			"add":
+				multiplier += band_value
+			"multiply":
+				multiplier *= band_value
+			_:
+				multiplier = band_value
+	var limits: Dictionary = rules.get("clamp", {})
+	if limits.has("minimum"):
+		multiplier = maxf(multiplier, float(limits.minimum))
+	if limits.has("maximum"):
+		multiplier = minf(multiplier, float(limits.maximum))
+	return maxf(0.0, multiplier)
+
+func familiarity_reward(actor_id: String, base_amount: int, source: String = "standard") -> int:
+	var person := staff_record(actor_id)
+	var rules: Dictionary = person.get("familiarity_rules", {})
+	var overrides: Dictionary = rules.get("source_overrides", {})
+	var source_override: Dictionary = overrides.get(source, {})
+	if source_override.has("fixed_reward"):
+		return maxi(0, int(source_override.fixed_reward))
+	var reward := maxi(0, roundi(float(base_amount) * familiarity_gain_multiplier(actor_id, source)))
+	if source_override.has("minimum_reward"):
+		reward = maxi(reward, int(source_override.minimum_reward))
+	if source_override.has("maximum_reward"):
+		reward = mini(reward, int(source_override.maximum_reward))
+	return reward
 
 func surgery_familiarity_reward(actor_id: String, case_tier: String = "routine") -> int:
 	var base := int(Progression.FAMILIARITY_CASE_BASE.get(case_tier, Progression.FAMILIARITY_CASE_BASE.routine))
-	return maxi(0, roundi(float(base) * familiarity_gain_multiplier(actor_id)))
+	return familiarity_reward(actor_id, base, "surgery")
 
 func date_familiarity_reward(actor_id: String) -> int:
-	return maxi(0, roundi(float(Progression.DATE_FAMILIARITY_BASE) * familiarity_gain_multiplier(actor_id)))
+	return familiarity_reward(actor_id, Progression.DATE_FAMILIARITY_BASE, "date")
 
 func relationship_event_familiarity_reward(actor_id: String, target_level: int) -> int:
 	var base := int(Progression.RELATIONSHIP_EVENT_FAMILIARITY_BASE.get(target_level, 0))
-	return maxi(0, roundi(float(base) * familiarity_gain_multiplier(actor_id)))
+	return familiarity_reward(actor_id, base, "relationship_event")
 
 func award_case_familiarity(participants: Dictionary, case_tier: String = "routine") -> void:
 	var awarded: Dictionary = {}
@@ -1120,7 +1292,7 @@ func character_event_done(id: String) -> bool:
 
 func character_event_trigger_mode(definition: Dictionary) -> String:
 	var authored := str(definition.get("trigger_mode", ""))
-	if authored in ["day_start", "location", "preop_stage", "sunday"]:
+	if authored in ["day_start", "location", "preop_stage", "sunday", "after_work"]:
 		return authored
 	# Compatibility for authored content predating explicit trigger modes.
 	if bool(definition.get("consumes_sunday", false)):
@@ -1165,6 +1337,8 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if definition.category == "rank_up" and int(definition.get("target_level", 1)) != int(relation.level) + 1:
 		return false
+	if relationship_rank_gate_applies_to_event(str(definition.actor_id), int(definition.get("target_level", 1)), str(definition.id)) and not relationship_rank_gate_met(str(definition.actor_id), int(definition.get("target_level", 1))):
+		return false
 	if definition.category in ["bond", "rank_up"] and not bool(definition.get("chain_followup", false)) and not relation.get("rank_history", []).is_empty():
 		var milestone_gap := maxi(int(Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS), int(definition.conditions.get("days_after_required_events", 0)))
 		var latest_milestone_day := 0
@@ -1189,35 +1363,8 @@ func character_event_available(definition: Dictionary) -> bool:
 			var required_event = character_events.get(required)
 			if required_event == null or int(required_event.completed_day) <= 0 or day_number() < int(required_event.completed_day) + required_gap_days:
 				return false
-	for requirement in definition.conditions.get("special_requirements", []):
-		var requirement_type := str(requirement.get("type", ""))
-		if requirement_type == "player_attribute":
-			var attribute_id := str(requirement.get("attribute", ""))
-			if int(player_attributes().get(attribute_id, -1000)) < int(requirement.get("minimum", 0)):
-				return false
-		elif requirement_type == "career_progress_any":
-			var surgery_gate := completed_surgeries_total >= int(requirement.get("minimum_completed_surgeries", 0))
-			var reputation_gate := int(player_attributes().get("reputation", -1000)) >= int(requirement.get("minimum_reputation", 0))
-			if not surgery_gate and not reputation_gate:
-				return false
-		elif requirement_type == "completed_surgeries":
-			if completed_surgeries_total < int(requirement.get("minimum", 0)):
-				return false
-		elif requirement_type == "relationship_level":
-			if int(relation.get("level", 0)) != int(requirement.get("level", -1)):
-				return false
-		elif requirement_type == "completed_surgeries_in_group":
-			var procedure_group := str(requirement.get("procedure_group", ""))
-			if int(completed_surgeries_by_group.get(procedure_group, 0)) < int(requirement.get("minimum", 0)):
-				return false
-		elif requirement_type == "story_flag":
-			if story_flag(str(requirement.get("flag", ""))) != bool(requirement.get("value", true)):
-				return false
-		elif requirement_type == "special_event_completed":
-			if not special_event_done(str(requirement.get("event_id", ""))):
-				return false
-		else:
-			return false
+	if not requirements_met(definition.conditions.get("special_requirements", []), {"actor_id": str(definition.get("actor_id", ""))}):
+		return false
 	return true
 
 func character_events_for(actor_id: String) -> Array:
@@ -1303,6 +1450,59 @@ func next_character_event_for_preop_stage(stage_id: String) -> Dictionary:
 		return a.id < b.id)
 	return {} if result.is_empty() else result[0]
 
+func next_character_event_for_active_preop() -> Dictionary:
+	if active_preop_id.is_empty() or not preops.has(active_preop_id):
+		return {}
+	var preparation = preops[active_preop_id]
+	return next_character_event_for_preop_stage(str(preparation.stage_id))
+
+func next_sunday_character_event() -> Dictionary:
+	if not is_sunday() or sunday_activity_done():
+		return {}
+	var candidate_ids := sunday_date_candidates()
+	var result: Array = []
+	for definition in character_event_definitions.values():
+		if character_event_trigger_mode(definition) != "sunday":
+			continue
+		if not candidate_ids.has(str(definition.get("actor_id", ""))):
+			continue
+		if not character_event_available(definition):
+			continue
+		result.append(definition)
+	result.sort_custom(func(a: Dictionary, b: Dictionary):
+		if int(a.priority) != int(b.priority):
+			return int(a.priority) > int(b.priority)
+		return str(a.id) < str(b.id))
+	return {} if result.is_empty() else result[0]
+
+func next_after_work_character_event() -> Dictionary:
+	if is_sunday() or is_hospital_closed_day() or active_surgery_in_progress() or special_event_in_progress() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
+		return {}
+	var clock: int = int(schedule_at(elapsed()).absolute_clock)
+	var result: Array = []
+	for definition in character_event_definitions.values():
+		if character_event_trigger_mode(definition) != "after_work" or not character_event_available(definition):
+			continue
+		if clock < int(definition.time_start) or clock > int(definition.time_end):
+			continue
+		result.append(definition)
+	result.sort_custom(func(a: Dictionary, b: Dictionary):
+		if int(a.priority) != int(b.priority):
+			return int(a.priority) > int(b.priority)
+		return str(a.id) < str(b.id))
+	return {} if result.is_empty() else result[0]
+
+func character_event_opening_node(definition: Dictionary) -> String:
+	var variants: Dictionary = definition.get("opening_variants", {})
+	if variants.is_empty():
+		return str(definition.get("start", ""))
+	var present := staff_present_at(str(definition.get("location_id", "")))
+	for actor_id in ["nurse_haru", "nurse_hiroko"]:
+
+		if actor_id in present and variants.has(actor_id):
+			return str(variants[actor_id])
+	return str(variants.get("fallback", definition.get("start", "")))
+
 func start_character_event(id: String) -> RefCounted:
 	# Once the start command has been given, the operation is an uninterrupted
 	# flow. Location introductions and other character events must never replace
@@ -1322,6 +1522,7 @@ func start_character_event(id: String) -> RefCounted:
 		if not character_event_available(definition):
 			return null
 		character_events[id] = CharacterEvent.new(definition)
+		character_events[id].node_id = character_event_opening_node(definition)
 		character_event_order.append(id)
 	active_character_event_id = id
 	active_mode = "character_event"
@@ -1523,92 +1724,169 @@ func complete_sunday_activity(activity_id: String, actor_id: String = "", locati
 	})
 	if activity_id == "date" and not actor_id.is_empty() and staff_is_met(actor_id):
 		add_familiarity(actor_id, date_familiarity_reward(actor_id))
+		increment_character_progress_counter(actor_id, "completed_sunday_dates")
 		add_player_attribute_effect("charm", 1, "sunday_date_%s_%s" % [actor_id, day_number()], "星期日约会 · 魅力 +1")
 	advance_story_to_future_day(1, SHIFT_START_MINUTE)
 	return true
 
-func special_requirements_met(requirements: Array) -> bool:
+func requirement_evaluation(raw_requirement: Variant, context: Dictionary = {}) -> Dictionary:
+	var result := {
+		"type": "",
+		"met": false,
+		"valid": false,
+		"visible": true,
+		"current": null,
+		"minimum": null,
+		"maximum": null,
+		"reason": "",
+	}
+	if not raw_requirement is Dictionary:
+		result.reason = "invalid_requirement"
+		return result
+	var requirement: Dictionary = raw_requirement
+	var kind := str(requirement.get("type", ""))
+	result.type = kind
+	result.visible = bool(requirement.get("visible", true))
+	result.reason = str(requirement.get("hint", kind))
+	result.requirement = requirement.duplicate(true)
+	match kind:
+		"player_attribute":
+			var value := int(player_attributes().get(str(requirement.get("attribute", "")), -1000))
+			var minimum := int(requirement.get("minimum", -999))
+			var maximum := int(requirement.get("maximum", 999))
+			result.merge({"valid": true, "current": value, "minimum": minimum, "maximum": maximum, "met": value >= minimum and value <= maximum}, true)
+		"staff_skill":
+			var actor_id := str(requirement.get("actor_id", ""))
+			var skill_id := str(requirement.get("skill", ""))
+			var person := staff_record(actor_id)
+			var current := int(person.get("skills", {}).get(skill_id, -1))
+			var minimum := int(requirement.get("minimum", 0))
+			result.merge({"valid": not person.is_empty() and not skill_id.is_empty(), "actor_id": actor_id, "current": current, "minimum": minimum, "met": not person.is_empty() and current >= minimum}, true)
+		"staff_relationship_count":
+			var category := str(requirement.get("team_category", ""))
+			var minimum_level := int(requirement.get("minimum_level", 0))
+			var excluded := str(requirement.get("exclude_actor_id", ""))
+			var current := 0
+			for person in staff:
+				var candidate_id := str(person.get("id", ""))
+				if candidate_id == excluded or str(person.get("team_category", person.get("profession", ""))) != category:
+					continue
+				if relationship_level(candidate_id) >= minimum_level:
+					current += 1
+			var minimum_count := int(requirement.get("minimum_count", 1))
+			result.merge({"valid": not category.is_empty(), "current": current, "minimum": minimum_count, "met": not category.is_empty() and current >= minimum_count}, true)
+		"career_progress_any":
+			var gates: Array[bool] = []
+			var values := {}
+			if requirement.has("minimum_completed_surgeries"):
+				values.completed_surgeries = completed_surgeries_total
+				gates.append(completed_surgeries_total >= int(requirement.minimum_completed_surgeries))
+			if requirement.has("minimum_reputation"):
+				values.reputation = int(player_attributes().get("reputation", -1000))
+				gates.append(int(values.reputation) >= int(requirement.minimum_reputation))
+			if requirement.has("minimum_day"):
+				values.day = day_number()
+				gates.append(day_number() >= int(requirement.minimum_day))
+			result.merge({"valid": not gates.is_empty(), "current": values, "met": not gates.is_empty() and gates.has(true)}, true)
+		"completed_surgeries":
+			var minimum := int(requirement.get("minimum", 0))
+			result.merge({"valid": true, "current": completed_surgeries_total, "minimum": minimum, "met": completed_surgeries_total >= minimum}, true)
+		"completed_surgeries_in_group":
+			var current := int(completed_surgeries_by_group.get(str(requirement.get("procedure_group", "")), 0))
+			var minimum := int(requirement.get("minimum", 0))
+			result.merge({"valid": true, "current": current, "minimum": minimum, "met": current >= minimum}, true)
+		"progress_counter":
+			var actor_id := str(requirement.get("actor_id", context.get("actor_id", "")))
+			var counter_id := str(requirement.get("counter_id", ""))
+			var current := character_progress_counter(actor_id, counter_id)
+			var minimum := int(requirement.get("minimum", 0))
+			var maximum := int(requirement.get("maximum", 2147483647))
+			result.merge({"valid": not counter_id.is_empty(), "actor_id": actor_id, "counter_id": counter_id, "current": current, "minimum": minimum, "maximum": maximum, "met": not counter_id.is_empty() and current >= minimum and current <= maximum}, true)
+		"relationship_level":
+			var actor_id := str(requirement.get("actor_id", context.get("actor_id", "")))
+			var exact_legacy := requirement.has("level")
+			var minimum := int(requirement.get("level", requirement.get("minimum", 0)))
+			var maximum := int(requirement.get("level", requirement.get("maximum", RELATIONSHIP_MAX_LEVEL)))
+			var current := relationship_level(actor_id) if not actor_id.is_empty() else -1
+			result.merge({"valid": not actor_id.is_empty() and (exact_legacy or requirement.has("minimum")), "actor_id": actor_id, "current": current, "minimum": minimum, "maximum": maximum, "met": not actor_id.is_empty() and current >= minimum and current <= maximum}, true)
+		"relationship_familiarity":
+			var actor_id := str(requirement.get("actor_id", context.get("actor_id", "")))
+			var relation := relation_for(actor_id)
+			var current := int(relation.get("familiarity", -1))
+			var minimum := int(requirement.get("minimum", 0))
+			var maximum := int(requirement.get("maximum", 100))
+			result.merge({"valid": not actor_id.is_empty(), "actor_id": actor_id, "current": current, "minimum": minimum, "maximum": maximum, "met": not relation.is_empty() and current >= minimum and current <= maximum}, true)
+		"staff_unlocked":
+			var actor_id := str(requirement.get("actor_id", context.get("actor_id", "")))
+			var met := not actor_id.is_empty() and staff_is_met(actor_id)
+			result.merge({"valid": not actor_id.is_empty(), "actor_id": actor_id, "current": met, "met": met}, true)
+		"flag", "story_flag":
+			var expected := bool(requirement.get("value", true))
+			var current := story_flag(str(requirement.get("flag", "")))
+			result.merge({"valid": not str(requirement.get("flag", "")).is_empty(), "current": current, "expected": expected, "met": current == expected}, true)
+		"character_event_completed":
+			var current := character_event_done(str(requirement.get("event_id", "")))
+			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "met": current}, true)
+		"special_event_completed":
+			var current := special_event_done(str(requirement.get("event_id", "")))
+			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "met": current}, true)
+		"days_after_character_event":
+			var required_event = character_events.get(str(requirement.get("event_id", "")))
+			var completed_day := int(required_event.completed_day) if required_event != null and required_event.completed else 0
+			var current := day_number() - completed_day if completed_day > 0 else -1
+			var minimum := int(requirement.get("days", 0))
+			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "minimum": minimum, "met": completed_day > 0 and current >= minimum}, true)
+		"days_after_special_event":
+			var completed_day := int(special_event_completion_days.get(str(requirement.get("event_id", "")), 0))
+			var current := day_number() - completed_day if completed_day > 0 else -1
+			var minimum := int(requirement.get("days", 0))
+			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "minimum": minimum, "met": completed_day > 0 and current >= minimum}, true)
+		"day_number":
+			var current := day_number()
+			var minimum := int(requirement.get("minimum", 1))
+			var maximum := int(requirement.get("maximum", 2147483647))
+			result.merge({"valid": true, "current": current, "minimum": minimum, "maximum": maximum, "met": current >= minimum and current <= maximum}, true)
+		"month_number":
+			var current := month_number()
+			var minimum := int(requirement.get("minimum", 1))
+			var maximum := int(requirement.get("maximum", 2147483647))
+			result.merge({"valid": true, "current": current, "minimum": minimum, "maximum": maximum, "met": current >= minimum and current <= maximum}, true)
+		"calendar_date":
+			var expected := str(requirement.get("date", ""))
+			var current := calendar_iso()
+			result.merge({"valid": not expected.is_empty(), "current": current, "expected": expected, "met": current == expected}, true)
+		"calendar_range":
+			var first := day_number_for_date(str(requirement.get("start_date", "")))
+			var last := day_number_for_date(str(requirement.get("end_date", "")))
+			var current := day_number()
+			result.merge({"valid": first > 0 and last >= first, "current": current, "minimum": first, "maximum": last, "met": first > 0 and last >= first and current >= first and current <= last}, true)
+		"weekday":
+			var current := str(calendar_date().weekday_id)
+			var allowed: Array = requirement.get("days", [])
+			result.merge({"valid": not allowed.is_empty(), "current": current, "expected": allowed, "met": allowed.has(current)}, true)
+		"day_type":
+			var current := day_type()
+			var allowed: Array = requirement.get("values", [])
+			result.merge({"valid": not allowed.is_empty(), "current": current, "expected": allowed, "met": allowed.has(current)}, true)
+		_:
+			result.reason = "unknown_requirement_type"
+	return result
+
+func requirements_evaluation(requirements: Array, context: Dictionary = {}) -> Dictionary:
+	var results: Array[Dictionary] = []
+	var unmet: Array[Dictionary] = []
 	for requirement in requirements:
-		if not requirement is Dictionary:
-			return false
-		var kind := str(requirement.get("type", ""))
-		match kind:
-			"player_attribute":
-				var attribute_value := int(player_attributes().get(str(requirement.get("attribute", "")), -1000))
-				if attribute_value < int(requirement.get("minimum", -999)) or attribute_value > int(requirement.get("maximum", 999)):
-					return false
-			"career_progress_any":
-				var gates: Array[bool] = []
-				if requirement.has("minimum_completed_surgeries"):
-					gates.append(completed_surgeries_total >= int(requirement.minimum_completed_surgeries))
-				if requirement.has("minimum_reputation"):
-					gates.append(int(player_attributes().get("reputation", -1000)) >= int(requirement.minimum_reputation))
-				if requirement.has("minimum_day"):
-					gates.append(day_number() >= int(requirement.minimum_day))
-				if gates.is_empty() or not gates.has(true):
-					return false
-			"completed_surgeries":
-				if completed_surgeries_total < int(requirement.get("minimum", 0)):
-					return false
-			"completed_surgeries_in_group":
-				if int(completed_surgeries_by_group.get(str(requirement.get("procedure_group", "")), 0)) < int(requirement.get("minimum", 0)):
-					return false
-			"relationship_level":
-				var level := relationship_level(str(requirement.get("actor_id", "")))
-				if level < int(requirement.get("minimum", 0)) or level > int(requirement.get("maximum", RELATIONSHIP_MAX_LEVEL)):
-					return false
-			"relationship_familiarity":
-				var familiarity := int(relation_for(str(requirement.get("actor_id", ""))).get("familiarity", -1))
-				if familiarity < int(requirement.get("minimum", 0)) or familiarity > int(requirement.get("maximum", 100)):
-					return false
-			"staff_unlocked":
-				if not staff_is_met(str(requirement.get("actor_id", ""))):
-					return false
-			"flag":
-				if story_flag(str(requirement.get("flag", ""))) != bool(requirement.get("value", true)):
-					return false
-			"character_event_completed":
-				if not character_event_done(str(requirement.get("event_id", ""))):
-					return false
-			"days_after_character_event":
-				var required_event_id := str(requirement.get("event_id", ""))
-				var required_event = character_events.get(required_event_id)
-				if required_event == null or not required_event.completed:
-					return false
-				if int(required_event.completed_day) <= 0 or day_number() < int(required_event.completed_day) + int(requirement.get("days", 0)):
-					return false
-			"days_after_special_event":
-				var required_special_id := str(requirement.get("event_id", ""))
-				var completed_day := int(special_event_completion_days.get(required_special_id, 0))
-				if completed_day <= 0 or day_number() < completed_day + int(requirement.get("days", 0)):
-					return false
-			"special_event_completed":
-				if not special_event_done(str(requirement.get("event_id", ""))):
-					return false
-			"day_number":
-				if day_number() < int(requirement.get("minimum", 1)) or day_number() > int(requirement.get("maximum", 2147483647)):
-					return false
-			"month_number":
-				if month_number() < int(requirement.get("minimum", 1)) or month_number() > int(requirement.get("maximum", 2147483647)):
-					return false
-			"calendar_date":
-				if calendar_iso() != str(requirement.get("date", "")):
-					return false
-			"calendar_range":
-				var today := day_number()
-				var first := day_number_for_date(str(requirement.get("start_date", "")))
-				var last := day_number_for_date(str(requirement.get("end_date", "")))
-				if first < 1 or last < first or today < first or today > last:
-					return false
-			"weekday":
-				if not requirement.get("days", []).has(str(calendar_date().weekday_id)):
-					return false
-			"day_type":
-				if not requirement.get("values", []).has(day_type()):
-					return false
-			_:
-				return false
-	return true
+		var evaluation := requirement_evaluation(requirement, context)
+		results.append(evaluation)
+		if not bool(evaluation.get("met", false)):
+			unmet.append(evaluation)
+	return {"met": unmet.is_empty(), "results": results, "unmet": unmet}
+
+func requirements_met(requirements: Array, context: Dictionary = {}) -> bool:
+	return bool(requirements_evaluation(requirements, context).met)
+
+func special_requirements_met(requirements: Array) -> bool:
+	return requirements_met(requirements)
 
 func special_event_done(id: String) -> bool:
 	return int(special_event_completion_counts.get(id, 0)) > 0
@@ -1629,6 +1907,11 @@ func special_event_base_requirements_met(definition: Dictionary) -> bool:
 	for event_id in definition.get("prerequisite_events", []):
 		var prerequisite := str(event_id)
 		if not character_event_done(prerequisite) and not special_event_done(prerequisite):
+			return false
+	for reward in definition.get("relationship_rewards", []):
+		var actor_id := str(reward.get("actor_id", ""))
+		var target_level := int(reward.get("target_level", 0))
+		if relationship_rank_gate_applies_to_event(actor_id, target_level, str(definition.get("id", ""))) and not relationship_rank_gate_met(actor_id, target_level):
 			return false
 	return special_requirements_met(definition.get("unlock_requirements", []))
 
@@ -1810,13 +2093,39 @@ func _test_event_earliest_day(definition: Dictionary) -> int:
 				result = maxi(result, int(dependency.get("conditions", {}).get("min_day", 1)) + int(requirement.get("days", 0)))
 	return clampi(result, 1, GAME_DURATION_DAYS)
 
-func _apply_test_event_requirement(requirement: Dictionary, target_day: int) -> void:
+func _apply_test_event_requirement(requirement: Dictionary, target_day: int, context_actor_id: String = "") -> void:
 	match str(requirement.get("type", "")):
 		"player_attribute":
 			var attribute := str(requirement.get("attribute", ""))
 			var current := int(player_attributes().get(attribute, 0))
 			var selected := clampi(current, int(requirement.get("minimum", -999)), int(requirement.get("maximum", 999)))
 			set_test_player_attribute(attribute, selected)
+		"staff_skill":
+			var actor_id := str(requirement.get("actor_id", ""))
+			var skill_id := str(requirement.get("skill", ""))
+			var minimum := int(requirement.get("minimum", 0))
+			if base_staff_skills.has(actor_id) and base_staff_skills[actor_id].has(skill_id):
+				if not staff_skill_levels.has(actor_id):
+					staff_skill_levels[actor_id] = {}
+				staff_skill_levels[actor_id][skill_id] = maxi(staff_skill_value(actor_id, skill_id), minimum)
+				apply_staff_skill_levels()
+		"staff_relationship_count":
+			var category := str(requirement.get("team_category", ""))
+			var excluded := str(requirement.get("exclude_actor_id", ""))
+			var minimum_level := int(requirement.get("minimum_level", 0))
+			var remaining := int(requirement.get("minimum_count", 0))
+			for person in staff:
+				var candidate_id := str(person.get("id", ""))
+				if remaining <= 0:
+					break
+				if candidate_id == excluded or str(person.get("team_category", person.get("profession", ""))) != category:
+					continue
+				var relation := relation_for(candidate_id)
+				if relation.is_empty():
+					continue
+				relation.met = true
+				relation.level = maxi(int(relation.level), minimum_level)
+				remaining -= 1
 		"career_progress_any":
 			if requirement.has("minimum_day"):
 				advance_story_to_day(maxi(day_number(), int(requirement.minimum_day)), SHIFT_START_MINUTE)
@@ -1829,19 +2138,24 @@ func _apply_test_event_requirement(requirement: Dictionary, target_day: int) -> 
 		"completed_surgeries_in_group":
 			var group := str(requirement.get("procedure_group", ""))
 			completed_surgeries_by_group[group] = maxi(int(completed_surgeries_by_group.get(group, 0)), int(requirement.get("minimum", 0)))
+		"progress_counter":
+			var counter_actor_id := str(requirement.get("actor_id", context_actor_id))
+			set_test_character_progress_counter(counter_actor_id, str(requirement.get("counter_id", "")), int(requirement.get("minimum", 0)))
 		"relationship_level":
-			var relation := relation_for(str(requirement.get("actor_id", "")))
+			var actor_id := str(requirement.get("actor_id", context_actor_id))
+			var relation := relation_for(actor_id)
 			if not relation.is_empty():
 				relation.met = true
-				relation.level = clampi(int(requirement.get("minimum", 0)), 0, relationship_max_level(str(requirement.get("actor_id", ""))))
+				relation.level = clampi(int(requirement.get("level", requirement.get("minimum", 0))), 0, relationship_max_level(actor_id))
 		"relationship_familiarity":
-			var relation := relation_for(str(requirement.get("actor_id", "")))
+			var actor_id := str(requirement.get("actor_id", context_actor_id))
+			var relation := relation_for(actor_id)
 			if not relation.is_empty():
 				relation.met = true
 				relation.familiarity = clampi(int(requirement.get("minimum", 0)), 0, int(requirement.get("maximum", 100)))
 		"staff_unlocked":
 			meet_staff(str(requirement.get("actor_id", "")))
-		"flag":
+		"flag", "story_flag":
 			set_story_flag(str(requirement.get("flag", "")), bool(requirement.get("value", true)))
 		"character_event_completed":
 			_complete_character_event_for_test(str(requirement.get("event_id", "")), target_day - 1)
@@ -1864,6 +2178,15 @@ func prepare_special_event_test_save(event_id: String, wait_for_one_surgery: boo
 	var definition: Dictionary = special_event_definitions[event_id]
 	set_story_flag("__test_save_target_event__" + event_id, true)
 	var target_day := _test_event_earliest_day(definition)
+	var milestone_gap := 1
+	for reward in definition.get("relationship_rewards", []):
+		var actor_id := str(reward.get("actor_id", ""))
+		var target_level := int(reward.get("target_level", 0))
+		var slot := relationship_rank_slot(actor_id, target_level)
+		if not slot.is_empty():
+			milestone_gap = maxi(milestone_gap, int(slot.get("cooldown_days", Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS)))
+			if target_level > 1:
+				target_day = maxi(target_day, 1 + milestone_gap)
 	for actor_id in definition.get("required_characters", []):
 		if str(actor_id) != "PLAYER":
 			meet_staff(str(actor_id))
@@ -1871,9 +2194,22 @@ func prepare_special_event_test_save(event_id: String, wait_for_one_surgery: boo
 		var prerequisite := str(prerequisite_id)
 		if special_event_definitions.has(prerequisite):
 			special_event_completion_counts[prerequisite] = 1
-			special_event_completion_days[prerequisite] = maxi(1, target_day - 1)
+			special_event_completion_days[prerequisite] = maxi(1, target_day - milestone_gap)
 		else:
-			_complete_character_event_for_test(prerequisite, target_day - 1)
+			_complete_character_event_for_test(prerequisite, maxi(1, target_day - milestone_gap))
+	for reward in definition.get("relationship_rewards", []):
+		var actor_id := str(reward.get("actor_id", ""))
+		var target_level := int(reward.get("target_level", 0))
+		var relation := relation_for(actor_id)
+		var slot := relationship_rank_slot(actor_id, target_level)
+		if relation.is_empty() or slot.is_empty():
+			continue
+		relation.met = true
+		relation.level = maxi(0, target_level - 1)
+		relation.familiarity = maxi(int(relation.get("familiarity", 0)), int(slot.get("min_familiarity", 0)))
+		for requirement in slot.get("special_requirements", []):
+			if requirement is Dictionary:
+				_apply_test_event_requirement(requirement, target_day, actor_id)
 	for requirement in definition.get("unlock_requirements", []):
 		if requirement is Dictionary:
 			_apply_test_event_requirement(requirement, target_day)
@@ -1911,33 +2247,55 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 		relation.level = maxi(0, int(definition.get("target_level", 1)) - 1)
 	relation.affection = maxi(int(relation.get("affection", 0)), int(conditions.get("min_affection", 0)))
 	relation.familiarity = maxi(int(relation.get("familiarity", 0)), int(conditions.get("min_familiarity", 0)))
+	var target_level := int(definition.get("target_level", 0))
+	if relationship_rank_gate_applies_to_event(actor_id, target_level, event_id):
+		var slot := relationship_rank_slot(actor_id, target_level)
+		relation.familiarity = maxi(int(relation.familiarity), int(slot.get("min_familiarity", 0)))
+		for requirement in slot.get("special_requirements", []):
+			if requirement is Dictionary:
+				_apply_test_event_requirement(requirement, target_day, actor_id)
 	for requirement in conditions.get("special_requirements", []):
-		if not requirement is Dictionary:
-			continue
-		match str(requirement.get("type", "")):
-			"player_attribute":
-				set_test_player_attribute(str(requirement.get("attribute", "")), int(requirement.get("minimum", 0)))
-			"career_progress_any":
-				completed_surgeries_total = maxi(completed_surgeries_total, int(requirement.get("minimum_completed_surgeries", 0)))
-			"completed_surgeries":
-				completed_surgeries_total = maxi(completed_surgeries_total, int(requirement.get("minimum", 0)))
-			"completed_surgeries_in_group":
-				var group := str(requirement.get("procedure_group", ""))
-				completed_surgeries_by_group[group] = maxi(int(completed_surgeries_by_group.get(group, 0)), int(requirement.get("minimum", 0)))
-			"relationship_level":
-				relation.level = clampi(int(requirement.get("level", relation.level)), 0, relationship_max_level(actor_id))
-			"story_flag":
-				set_story_flag(str(requirement.get("flag", "")), bool(requirement.get("value", true)))
-			"special_event_completed":
-				var special_id := str(requirement.get("event_id", ""))
-				special_event_completion_counts[special_id] = 1
-				special_event_completion_days[special_id] = maxi(1, target_day - 1)
+		if requirement is Dictionary:
+			_apply_test_event_requirement(requirement, target_day, actor_id)
 	set_story_flag("__test_save_target_character_event__" + event_id, true)
 	set_test_time(target_day, clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1))
 	if wait_for_one_surgery:
 		arm_test_save_one_surgery(event_id)
 	active_mode = "encounter"
 	active_id = ""
+	last_error = ""
+	return true
+
+func prepare_relationship_gate_test_save(actor_id: String, target_level: int, boundary: String = "exact") -> bool:
+	last_error = "relationship_gate_invalid"
+	if not OS.is_debug_build() or boundary not in ["before", "exact", "above"]:
+		return false
+	var slot := relationship_rank_slot(actor_id, target_level)
+	if slot.is_empty() or str(slot.get("content_status", "unavailable")) == "unavailable":
+		return false
+	reset()
+	var relation := relation_for(actor_id)
+	if relation.is_empty() or target_level < 1 or target_level > relationship_max_level(actor_id):
+		return false
+	relation.met = true
+	relation.level = target_level - 1
+	var required_familiarity := int(slot.get("min_familiarity", 0))
+	match boundary:
+		"before":
+			relation.familiarity = maxi(0, required_familiarity - 1)
+		"above":
+			relation.familiarity = mini(100, required_familiarity + 1)
+		_:
+			relation.familiarity = required_familiarity
+	for requirement in slot.get("special_requirements", []):
+		if requirement is Dictionary:
+			_apply_test_event_requirement(requirement, 1, actor_id)
+	set_test_time(1, SHIFT_START_MINUTE)
+	active_mode = "encounter"
+	active_id = ""
+	if boundary != "before" and not relationship_rank_gate_met(actor_id, target_level):
+		last_error = "relationship_gate_roster_blocked"
+		return false
 	last_error = ""
 	return true
 
@@ -2005,6 +2363,33 @@ func apply_test_save_overrides(overrides: Dictionary) -> bool:
 		if not progress.completed_surgeries_by_procedure is Dictionary:
 			return false
 		completed_surgeries_by_procedure = progress.completed_surgeries_by_procedure.duplicate(true)
+	if progress.has("character_counters"):
+		if not progress.character_counters is Dictionary:
+			return false
+		for actor_id in progress.character_counters:
+			var counters: Variant = progress.character_counters[actor_id]
+			if not counters is Dictionary or (str(actor_id) != "global" and relation_for(str(actor_id)).is_empty()):
+				return false
+			for counter_id in counters:
+				var value: Variant = counters[counter_id]
+				if str(counter_id).is_empty() or not (value is int or value is float) or float(value) != floorf(float(value)) or int(value) < 0:
+					return false
+				set_test_character_progress_counter(str(actor_id), str(counter_id), int(value))
+	if progress.has("staff_skills"):
+		if not progress.staff_skills is Dictionary:
+			return false
+		for actor_id in progress.staff_skills:
+			var skills: Variant = progress.staff_skills[actor_id]
+			if not skills is Dictionary or not base_staff_skills.has(str(actor_id)):
+				return false
+			for skill_id in skills:
+				var value: Variant = skills[skill_id]
+				if not base_staff_skills[str(actor_id)].has(str(skill_id)) or not (value is int or value is float):
+					return false
+				if not staff_skill_levels.has(str(actor_id)):
+					staff_skill_levels[str(actor_id)] = {}
+				staff_skill_levels[str(actor_id)][str(skill_id)] = clampi(int(value), int(base_staff_skills[str(actor_id)][str(skill_id)]), 90)
+		apply_staff_skill_levels()
 	var completions: Variant = overrides.get("special_events", {})
 	if not completions is Dictionary:
 		return false
@@ -2131,6 +2516,9 @@ func apply_special_event_choice_effects(choice: Dictionary) -> void:
 		set_story_flag(str(flag), true)
 	for actor_id in effects.get("meet_characters", []):
 		meet_staff(str(actor_id))
+	for reward in effects.get("familiarity", []):
+		if reward is Dictionary:
+			add_familiarity(str(reward.get("actor_id", "")), int(reward.get("amount", 0)))
 
 func apply_special_event_completion_effects(definition: Dictionary) -> void:
 	var effects: Variant = definition.get("completion_effects", {})
@@ -2591,6 +2979,13 @@ func resolve_outpatient_support_actor() -> String:
 		return personal_nurse_id
 	return "nurse_haru" if personal_nurse_candidates().has("nurse_haru") else "doc_aoi"
 
+func resolve_preop_explainer() -> String:
+	if personal_nurse_system_unlocked and personal_nurse_candidates().has(personal_nurse_id):
+		return personal_nurse_id
+	# Before Sakaguchi receives a formally assigned personal nurse, Nanase already
+	# handles the ward-side preoperative explanations as part of her regular work.
+	return "nurse_haru"
+
 func personal_nurse_dialogue(kind: String) -> String:
 	var actor_id := resolve_outpatient_support_actor()
 	var person := staff_record(actor_id)
@@ -2648,6 +3043,59 @@ func encounter_id_for_patient(patient_id: String) -> String:
 			return id
 	return ""
 
+func record_completed_surgery_progress(preparation: RefCounted, surgery_id: String) -> void:
+	var procedure_group := surgery_procedure_group(surgery_id)
+	if procedure_group == "female_pelvic":
+		increment_character_progress_counter("", "gynecology_case_count")
+	var no_anesthesia: bool = preparation.flags.has("no_anesthesia_confirmed")
+	var recorded: Dictionary = {}
+	for role_id in preparation.team:
+		var actor_id := str(preparation.team[role_id])
+		if actor_id.is_empty():
+			continue
+		increment_character_progress_counter(actor_id, "completed_surgeries_as_%s" % str(role_id))
+		if no_anesthesia:
+			increment_character_progress_counter(actor_id, "completed_no_anesthesia_surgeries_as_%s" % str(role_id))
+		if recorded.has(actor_id):
+			continue
+		recorded[actor_id] = true
+		increment_character_progress_counter(actor_id, "completed_surgeries")
+		if not procedure_group.is_empty():
+			increment_character_progress_counter(actor_id, "completed_surgeries_in_group_%s" % procedure_group)
+		if no_anesthesia:
+			increment_character_progress_counter(actor_id, "completed_no_anesthesia_surgeries")
+	if preparation.flags.has("manual_ward_preparation_complete"):
+		var ward_role_id := str(preparation.definition.get("ward_role", {}).get("id", ""))
+		var ward_nurse_id := str(preparation.team.get(ward_role_id, ""))
+		if not ward_nurse_id.is_empty():
+			increment_character_progress_counter(ward_nurse_id, "assisted_player_ward_preparation")
+
+func surgery_quality_record(surgery_id: String) -> Dictionary:
+	return surgical_quality_records.get(surgery_id, {}).duplicate(true)
+
+func update_surgical_quality_record(preparation: RefCounted) -> Dictionary:
+	var surgery_id := str(preparation.procedure_id)
+	if not preparation.pilot_surgery() or preparation.flags.has("quick_surgery"):
+		return surgery_quality_record(surgery_id)
+	var summary: Dictionary = preparation.pilot_technical_summary()
+	var grade := str(summary.get("surgical_quality_grade", "F"))
+	var score := int(summary.get("surgical_quality_score", 0))
+	var record := surgery_quality_record(surgery_id)
+	var best_score := maxi(int(record.get("best_score", 0)), score)
+	var completions := int(record.get("manual_completions", 0)) + 1
+	var quick_unlocked := bool(record.get("quick_surgery_unlocked", false)) or grade == "A" or grade == "S"
+	record = {
+		"best_grade": grade if score >= int(record.get("best_score", -1)) else str(record.get("best_grade", "F")),
+		"best_score": best_score,
+		"manual_completions": completions,
+		"quick_surgery_unlocked": quick_unlocked,
+		"last_grade": grade,
+		"last_score": score,
+		"last_summary": summary,
+	}
+	surgical_quality_records[surgery_id] = record
+	return record
+
 func finish_active_surgery() -> bool:
 	if active_preop_id.is_empty() or not preops.has(active_preop_id):
 		return false
@@ -2656,6 +3104,8 @@ func finish_active_surgery() -> bool:
 		return false
 	var completed_patient_id: String = preparation.definition.patient_id
 	var surgery_id := str(preparation.procedure_id)
+	update_surgical_quality_record(preparation)
+	record_completed_surgery_progress(preparation, surgery_id)
 	persist_shared_surgery_counts(preparation.team)
 	award_surgery_team_familiarity(preparation.team, familiarity_case_tier(surgery_id))
 	unlock_procedure(str(preparation.procedure_id))
@@ -2709,7 +3159,17 @@ func set_intraoperative_crisis_enabled(enabled: bool) -> void:
 	intraoperative_crisis_enabled = enabled
 
 func procedure_sweep_unlocked(surgery_id: String) -> bool:
-	return procedure_unlocked(surgery_id) and int(completed_surgeries_by_procedure.get(surgery_id, 0)) > 0
+	if not procedure_unlocked(surgery_id) or int(completed_surgeries_by_procedure.get(surgery_id, 0)) <= 0:
+		return false
+	if surgery_id not in ["surgery_appendix", "surgery_open_cholecystectomy", "surgery_open_inguinal_hernia"]:
+		return true
+	var record := surgery_quality_record(surgery_id)
+	# Saves created before Surgical Quality existed are grandfathered. Fresh
+	# completions always create a record and therefore use the A/S gate.
+	if record.is_empty():
+		record = {"quick_surgery_unlocked": true, "legacy_grandfathered": true}
+		surgical_quality_records[surgery_id] = record
+	return bool(record.get("quick_surgery_unlocked", false))
 
 func sweep_active_surgery(surgery_id: String) -> Dictionary:
 	last_error = "这项术式尚未完成过，不能扫荡。"
@@ -2816,6 +3276,9 @@ func surgery_reputation_award_for(surgery_id: String, current_reputation: int = 
 func award_surgery_reputation(surgery_id: String, procedure_name: String = "", preparation: RefCounted = null) -> int:
 	var deliberately_wrong: bool = preparation != null and bool(preparation.procedure_mismatch)
 	var award := 0 if deliberately_wrong else surgery_reputation_award_for(surgery_id)
+	if preparation != null and preparation.pilot_surgery() and preparation.surgery_success and not preparation.flags.has("quick_surgery") and award > 0:
+		var quality_multiplier := {"S": 1.20, "A": 1.10, "B": 1.00, "C": 0.75, "F": 0.00}.get(preparation.surgical_quality_grade(), 1.0)
+		award = floori(float(award) * float(quality_multiplier))
 	var profile := surgery_reputation_profile(surgery_id)
 	if award > 0:
 		add_player_attribute_effect("reputation", award, "surgery_reputation_%s_%s" % [surgery_id, completed_surgeries_total + 1], "%s · %s术式声望 +%s" % [procedure_name if not procedure_name.is_empty() else surgery_id, profile.label, award])
@@ -3132,7 +3595,10 @@ func surgery_xp_award_for(preparation: RefCounted) -> int:
 	var team_average := team_relevant_skill_average(preparation.team)
 	var team_multiplier := Progression.team_surgery_xp_multiplier(team_average) if team_average >= 0.0 else 1.0
 	var interaction_bonus := maxi(0, int(preparation.get("sensory_interaction_xp_bonus")))
-	var raw_award := maxi(0, roundi(float(surgery.duration_minutes) * efficiency * quality * indication * team_multiplier) + interaction_bonus)
+	var quality_multiplier := 1.0
+	if preparation.pilot_surgery() and preparation.surgery_success and not preparation.flags.has("quick_surgery"):
+		quality_multiplier = {"S": 1.15, "A": 1.08, "B": 1.00, "C": 0.85, "F": 0.50}.get(preparation.surgical_quality_grade(), 1.0)
+	var raw_award := maxi(0, roundi(float(surgery.duration_minutes) * efficiency * quality * indication * team_multiplier * quality_multiplier) + interaction_bonus)
 	return mini(raw_award, maxi(0, surgery_xp_for_level(ceiling) - surgery_xp))
 
 func award_surgery_xp(preparation: RefCounted) -> int:
@@ -3237,6 +3703,8 @@ func snapshot() -> Dictionary:
 		"completed_surgeries_total": completed_surgeries_total,
 		"completed_surgeries_by_group": completed_surgeries_by_group.duplicate(true),
 		"completed_surgeries_by_procedure": completed_surgeries_by_procedure.duplicate(true),
+		"surgical_quality_records": surgical_quality_records.duplicate(true),
+		"character_progress_counters": character_progress_counters.duplicate(true),
 		"surgery_xp": surgery_xp,
 		"surgery_xp_history": surgery_xp_history.duplicate(true),
 		"leadership_xp": leadership_xp,
@@ -3484,7 +3952,7 @@ func restore(data: Variant) -> bool:
 	if not data is Dictionary:
 		return false
 	var version := int(data.get("version", -1))
-	if version != SAVE_VERSION or data.get("content_version") != CONTENT_VERSION:
+	if version < MIN_SUPPORTED_SAVE_VERSION or version > SAVE_VERSION or data.get("content_version") != CONTENT_VERSION:
 		last_error = "存档版本不兼容，当前进度未改变。"
 		return false
 	if not data.get("progress") is Dictionary or not data.get("active_id") is String:
@@ -3504,6 +3972,8 @@ func restore(data: Variant) -> bool:
 	var restored_completed_surgeries_total := 0
 	var restored_completed_surgeries_by_group: Dictionary = {}
 	var restored_completed_surgeries_by_procedure: Dictionary = {}
+	var restored_surgical_quality_records: Dictionary = {}
+	var restored_character_progress_counters: Dictionary = {}
 	var restored_surgery_xp := 0
 	var restored_surgery_xp_history: Array[Dictionary] = []
 	var restored_leadership_xp := 0.0
@@ -3518,6 +3988,20 @@ func restore(data: Variant) -> bool:
 	var restored_campaign_seed := 1
 	var restored_crisis_enabled := true
 	var restored_sunday_history: Array[Dictionary] = []
+	var raw_character_progress_counters: Variant = data.get("character_progress_counters", {})
+	if not raw_character_progress_counters is Dictionary:
+		return false
+	for actor_id in raw_character_progress_counters:
+		var raw_counters: Variant = raw_character_progress_counters[actor_id]
+		if not actor_id is String or not raw_counters is Dictionary or (actor_id != "global" and staff_record(actor_id).is_empty()):
+			return false
+		var counters: Dictionary = {}
+		for counter_id in raw_counters:
+			var raw_count: Variant = raw_counters[counter_id]
+			if not counter_id is String or str(counter_id).is_empty() or not (raw_count is int or raw_count is float) or float(raw_count) != floorf(float(raw_count)) or int(raw_count) < 0:
+				return false
+			counters[counter_id] = int(raw_count)
+		restored_character_progress_counters[actor_id] = counters
 	var raw_crisis_enabled: Variant = data.get("intraoperative_crisis_enabled", true)
 	if not raw_crisis_enabled is bool:
 		return false
@@ -3619,6 +4103,18 @@ func restore(data: Variant) -> bool:
 			if not surgery_id is String or surgery_definition(surgery_id).is_empty() or not (raw_count is int or raw_count is float) or float(raw_count) != floorf(float(raw_count)) or int(raw_count) < 0:
 				return false
 			restored_completed_surgeries_by_procedure[surgery_id] = int(raw_count)
+		var raw_quality_records: Variant = data.get("surgical_quality_records", {})
+		if not raw_quality_records is Dictionary:
+			return false
+		for surgery_id in raw_quality_records:
+			if not surgery_id is String or surgery_definition(surgery_id).is_empty() or not raw_quality_records[surgery_id] is Dictionary:
+				return false
+			var quality_record: Dictionary = raw_quality_records[surgery_id]
+			if quality_record.has("best_score") and not (quality_record.best_score is int or quality_record.best_score is float):
+				return false
+			if quality_record.has("quick_surgery_unlocked") and not quality_record.quick_surgery_unlocked is bool:
+				return false
+			restored_surgical_quality_records[surgery_id] = quality_record.duplicate(true)
 	elif version >= 28:
 		# Version 28 recorded the procedure ID with each positive training award.
 		# One record is enough to prove that the operation was completed before.
@@ -4074,6 +4570,9 @@ func restore(data: Variant) -> bool:
 		for preparation in rebuilt_preops.values():
 			if preparation.surgery_success and not str(preparation.procedure_id).is_empty():
 				restored_completed_surgeries_by_procedure[preparation.procedure_id] = maxi(1, int(restored_completed_surgeries_by_procedure.get(preparation.procedure_id, 0)))
+	for pilot_id in ["surgery_appendix", "surgery_open_cholecystectomy", "surgery_open_inguinal_hernia"]:
+		if int(restored_completed_surgeries_by_procedure.get(pilot_id, 0)) > 0 and not restored_surgical_quality_records.has(pilot_id):
+			restored_surgical_quality_records[pilot_id] = {"quick_surgery_unlocked": true, "legacy_grandfathered": true}
 	if restored_reported_surgeries > restored_completed_surgeries_total:
 		return false
 	visits = rebuilt
@@ -4086,6 +4585,8 @@ func restore(data: Variant) -> bool:
 	completed_surgeries_total = restored_completed_surgeries_total
 	completed_surgeries_by_group = restored_completed_surgeries_by_group
 	completed_surgeries_by_procedure = restored_completed_surgeries_by_procedure
+	surgical_quality_records = restored_surgical_quality_records
+	character_progress_counters = restored_character_progress_counters
 	surgery_xp = restored_surgery_xp
 	surgery_xp_history = restored_surgery_xp_history
 	leadership_xp = restored_leadership_xp
@@ -4136,6 +4637,8 @@ func restore(data: Variant) -> bool:
 	active_id = data.active_id
 	if personal_nurse_system_unlocked and not personal_nurse_candidates().has(personal_nurse_id):
 		personal_nurse_id = "nurse_haru" if personal_nurse_candidates().has("nurse_haru") else ""
+	for preparation in preops.values():
+		preparation.set_graphic_preop_explainer(resolve_preop_explainer())
 	ensure_waiting_patient()
 	last_error = ""
 	return true
@@ -4167,6 +4670,7 @@ func open_preop(id: String) -> RefCounted:
 	else:
 		preops[id].set_known_staff(known_staff_ids(), true)
 		preops[id].set_procedure_unlocks(unlocked_procedure_ids, true)
+	preops[id].set_graphic_preop_explainer(resolve_preop_explainer())
 	active_id = definition.encounter_id
 	active_preop_id = id
 	active_mode = "preop"

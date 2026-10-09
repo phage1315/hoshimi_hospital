@@ -75,5 +75,40 @@
   "team_dialogue": {
     "assignment": "",
     "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.0,
+    "operations": [
+      {
+        "input": "player_attribute",
+        "attribute": "skill",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 59,
+            "value": 1.0
+          },
+          {
+            "minimum": 60,
+            "maximum": 69,
+            "value": 1.05
+          },
+          {
+            "minimum": 70,
+            "maximum": 79,
+            "value": 1.1
+          },
+          {
+            "minimum": 80,
+            "maximum": 89,
+            "value": 1.15
+          },
+          {
+            "minimum": 90,
+            "value": 1.2
+          }
+        ]
+      }
+    ]
   }
 }

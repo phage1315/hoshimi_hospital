@@ -79,7 +79,7 @@ func run() -> void:
 	for flag in ["satsuki_lv1_complete", "satsuki_clinical_trust_sakaguchi", "satsuki_patient_perspective_trait", "satsuki_lv2_gate_check"]:
 		expect(game.story_flag(flag), "Satsuki Lv1 did not set " + flag)
 	expect(game.relationship_level("nurse_satsuki") == 1, "Satsuki Lv1 did not award relationship level 1")
-	expect(int(game.relation_for("nurse_satsuki").familiarity) == 20, "Satsuki Lv1 did not use the shared Lv1 event familiarity reward")
+	expect(int(game.relation_for("nurse_satsuki").familiarity) == 16, "Satsuki Lv1 did not use the shared Lv1 event familiarity reward")
 	expect(game.special_event_gallery_unlocked(definition.id), "Satsuki Lv1 did not unlock gallery replay")
 	expect(game.date_profile_definitions.has("nurse_satsuki"), "Satsuki Lv2 date profile is missing")
 	game.advance_story_to_day(6, 540)

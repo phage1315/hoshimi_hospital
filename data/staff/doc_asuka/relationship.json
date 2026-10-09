@@ -14,32 +14,77 @@
     {
       "target_level": 1,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_asuka_surgical_team",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 10
+        }
+      ],
+      "min_familiarity": 10,
+      "cooldown_days": 3
     },
     {
       "target_level": 2,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 25
+        }
+      ],
+      "min_familiarity": 25,
+      "cooldown_days": 3
     },
     {
       "target_level": 3,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 50
+        }
+      ],
+      "min_familiarity": 40,
+      "cooldown_days": 3
     },
     {
       "target_level": 4,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_intimacy_events",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 100
+        }
+      ],
+      "min_familiarity": 55,
+      "cooldown_days": 3
     },
     {
       "target_level": 5,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_clinical_practice_patient",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 70
+        }
+      ],
+      "min_familiarity": 75,
+      "cooldown_days": 3
     }
   ]
 }

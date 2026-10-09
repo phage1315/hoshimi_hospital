@@ -189,14 +189,9 @@
     "conditions": {
       "min_day": 1,
       "min_affection": 0,
-      "min_familiarity": 10,
+      "min_familiarity": 0,
       "required_events": [],
-      "special_requirements": [
-        {
-          "type": "relationship_level",
-          "level": 0
-        }
-      ]
+      "special_requirements": []
     },
     "start": "beat_001",
     "nodes": [
@@ -1541,16 +1536,11 @@
     "conditions": {
       "min_day": 1,
       "min_affection": 0,
-      "min_familiarity": 25,
+      "min_familiarity": 0,
       "required_events": [
         "ange_lv1_handover_followup"
       ],
-      "special_requirements": [
-        {
-          "type": "relationship_level",
-          "level": 1
-        }
-      ],
+      "special_requirements": [],
       "days_after_required_events": 3
     },
     "start": "beat_001",
@@ -3189,21 +3179,11 @@
     "conditions": {
       "min_day": 1,
       "min_affection": 0,
-      "min_familiarity": 40,
+      "min_familiarity": 0,
       "required_events": [
         "ange_lv2_explanation_followup"
       ],
-      "special_requirements": [
-        {
-          "type": "player_attribute",
-          "attribute": "skill",
-          "minimum": 65
-        },
-        {
-          "type": "relationship_level",
-          "level": 2
-        }
-      ],
+      "special_requirements": [],
       "days_after_required_events": 3
     },
     "start": "beat_001",
@@ -4765,21 +4745,11 @@
     "conditions": {
       "min_day": 1,
       "min_affection": 0,
-      "min_familiarity": 55,
+      "min_familiarity": 0,
       "required_events": [
         "ange_lv3_check_again_followup"
       ],
-      "special_requirements": [
-        {
-          "type": "player_attribute",
-          "attribute": "skill",
-          "minimum": 75
-        },
-        {
-          "type": "relationship_level",
-          "level": 3
-        }
-      ],
+      "special_requirements": [],
       "days_after_required_events": 3
     },
     "start": "beat_001",
@@ -6335,26 +6305,11 @@
     "conditions": {
       "min_day": 1,
       "min_affection": 0,
-      "min_familiarity": 75,
+      "min_familiarity": 0,
       "required_events": [
         "ange_lv4_afraid"
       ],
-      "special_requirements": [
-        {
-          "type": "player_attribute",
-          "attribute": "skill",
-          "minimum": 80
-        },
-        {
-          "type": "player_attribute",
-          "attribute": "leadership",
-          "minimum": 70
-        },
-        {
-          "type": "relationship_level",
-          "level": 4
-        }
-      ],
+      "special_requirements": [],
       "days_after_required_events": 3
     },
     "start": "beat_001",

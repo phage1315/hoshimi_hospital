@@ -100,9 +100,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 			add_operative_field_overlay(app, prep)
 	var map_action: Callable = app.finish_aborted_surgery_and_return if prep.surgery_aborted else app.finish_surgery_and_return if prep.surgery_success else app.show_map
 	var map_button: Button = app.button_at(app.tx("ui.auto.53c4c7fe6bb3", "← 医院导览"), Vector2(1040, 88), Vector2(180, 44), map_action)
-	if prep.surgery_committed():
+	if prep.surgery_committed() or prep.graphic_preop_dialogue_locked():
 		map_button.disabled = true
-		map_button.tooltip_text = app.tx("ui.notice.surgery_committed", "手术团队已经确认，必须完成本次手术后才能离开。")
+		map_button.tooltip_text = app.tx("ui.preop.graphic.locked", "请先完成这段术前说明。") if prep.graphic_preop_dialogue_locked() else app.tx("ui.notice.surgery_committed", "手术团队已经确认，必须完成本次手术后才能离开。")
 	var speaking_staff: Dictionary = prep.presentation_staff()
 	# Operating-table art is an intentional framed inset. Ward patients and staff
 	# are transparent character cutouts and sit directly over the room background.
@@ -119,7 +119,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 		art.anxiety = prep.anxiety
 		art.changed = prep.flags.has("changed")
 		app.page.add_child(art)
-	var show_staff_portrait: bool = not speaking_staff.is_empty() and (not operative_scene or (stage.kind == "surgery_flow" and (prep.awaiting_flow_acknowledgement or prep.awaiting_patient_acknowledgement)))
+	var show_staff_portrait: bool = not speaking_staff.is_empty() and (not operative_scene or (stage.kind == "surgery_flow" and (prep.awaiting_flow_acknowledgement or prep.awaiting_patient_acknowledgement or not prep.active_crisis.is_empty())))
 	var show_intraoperative_patient: bool = operative_scene and speaking_staff.is_empty() and (stage.kind != "surgery_flow" or prep.awaiting_patient_choice or prep.awaiting_patient_acknowledgement)
 	if show_staff_portrait:
 		if art != null:
@@ -127,7 +127,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 		var staff_outfit := operating_room_outfit(speaking_staff) if stage.scene == "operating_room" else str(speaking_staff.visuals.default_outfit)
 		var staff_expression := "focused" if stage.scene == "operating_room" else "smile"
 		var staff_portraits: Dictionary = speaking_staff.get("visuals", {}).get("portraits", {})
-		if prep.staff_has_low_surgery_proficiency(str(speaking_staff.id)) and staff_portraits.has(staff_outfit + "/worried"):
+		if not prep.active_crisis.is_empty() and staff_portraits.has(staff_outfit + "/worried"):
+			staff_expression = "worried"
+		elif prep.staff_has_low_surgery_proficiency(str(speaking_staff.id)) and staff_portraits.has(staff_outfit + "/worried"):
 			staff_expression = "worried"
 		var use_hud_avatar: bool = field_visual_visible and app.operative_field_hud_enabled and staff_portraits.has("intraoperative_avatar/neutral")
 		app.add_portrait(speaking_staff, "neutral" if use_hud_avatar else staff_expression, "intraoperative_avatar" if use_hud_avatar else staff_outfit)
@@ -164,6 +166,17 @@ static func render(app: Control, prep: RefCounted) -> void:
 	var action_spacing := 72
 	var preparation_sweep_id := ""
 	match stage.kind:
+		"graphic_preop_choice":
+			app.pause_dialogue_for_choice()
+		"graphic_preop_dialogue":
+			var node_total: int = prep.graphic_preop_nodes.size()
+			var node_number: int = prep.graphic_preop_node_index + 1
+			app.label_at(app.tx("ui.preop.graphic.progress", "术前说明　%s / %s") % [node_number, node_total], Vector2(65, 205), 21, Color("e8cfaa"), 640)
+			var dialogue_continue: Button = app.button_at(app.tx("ui.preop.graphic.continue", "继续听说明  →"), Vector2(60, 315), Vector2(655, 54), app.preop_event.bind({"kind": "graphic_preop_next"}))
+			dialogue_continue.name = "GraphicPreopContinue"
+			app.register_dialogue_continue(dialogue_continue, prep.feedback)
+			app.add_dialogue_playback_controls()
+			action_y = 900
 		"team":
 			app.label_at(app.tx("ui.auto.4ca46634c12d", "主刀 / 你"), Vector2(62, 190), 21, Color("e8cfaa"), 640)
 			for i in range(prep.definition.roles.size()):
@@ -246,7 +259,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 			choice_panel.name = "SurgeryChoicePanel"
 			var flow: Array = prep.surgery_flow_steps()
 			var condition_status: String = prep.temporary_condition_status_text()
-			var flow_heading: String = app.tx("ui.auto.65113f75dcf1", "%s · 步骤 %s / %s") % [prep.procedure_name, prep.procedure_step_index + 1, flow.size()]
+			var flow_heading: String = app.tx("ui.auto.65113f75dcf1", "%s · 步骤 %s") % [prep.procedure_name, prep.surgery_step_display_label()]
 			if not condition_status.is_empty():
 				flow_heading += " · " + condition_status
 			app.label_at(flow_heading, Vector2(65, 183), 19, Color("e8cfaa"), 640)
@@ -298,8 +311,11 @@ static func render(app: Control, prep: RefCounted) -> void:
 				continue_button.name = "SurgeryFlowContinue"
 				emphasize_flow_button(app, continue_button)
 			else:
-				app.label_at(str(flow_step.get("prompt", "")), Vector2(65, 242), 20, Color("e1e4db"), 650)
-				action_y = 315
+				var transition_text := str(flow_step.get("transition_text", ""))
+				if not transition_text.is_empty():
+					app.label_at(transition_text, Vector2(65, 239), 14, Color("9fc9c7"), 650)
+				app.label_at(str(flow_step.get("prompt", "")), Vector2(65, 270 if not transition_text.is_empty() else 242), 20, Color("e1e4db"), 650)
+				action_y = 340 if not transition_text.is_empty() else 315
 				action_spacing = 62
 				for option in flow_step.get("options", []):
 					var flow_button: Button = app.button_at(option.label, Vector2(60, action_y), Vector2(655, 54), app.preop_event.bind({"kind": "surgery_step", "id": option.id}))
@@ -319,10 +335,13 @@ static func render(app: Control, prep: RefCounted) -> void:
 			var time_breakdown: String = app.tx("ui.surgery.settlement_time", "手术耗时 %s　·　术后交接与整理 %s　·　本次合计 %s") % [prep.duration_text(prep.procedure_total_minutes()), prep.duration_text(prep.POSTOPERATIVE_WRAP_UP_MINUTES), prep.duration_text(prep.surgery_settlement_total_minutes())]
 			var time_label: Label = app.label_at(time_breakdown, Vector2(65, 402), 20, Color("e8cfaa"), 645)
 			time_label.name = "SurgerySettlementTime"
+			if prep.pilot_surgery():
+				var quality_label: Label = app.label_at(("Surgical Quality: %s (%s)" if prep.english_mode() else "手术质量 Surgical Quality：%s（%s分）") % [prep.surgical_quality_grade(), prep.surgical_quality_score()], Vector2(65, 438), 20, Color("e8cfaa"), 645)
+				quality_label.name = "SurgicalQualityResult"
 			if not prep.surgery_state_summary().is_empty():
-				var strategy_result: Label = app.label_at(prep.surgery_state_summary(), Vector2(65, 445), 17, Color("9fc9c7"), 645)
+				var strategy_result: Label = app.label_at(prep.surgery_state_summary(), Vector2(65, 470), 17, Color("9fc9c7"), 645)
 				strategy_result.name = "SurgeryStrategyResult"
-			var metrics: Label = app.label_at(app.tx("ui.auto.21715e65478b", "恐惧 %s　痛苦 %s　尊严 %s　配合 %s") % [prep.fear, prep.pain, prep.dignity, prep.cooperation_value()], Vector2(65, 476), 19, Color("c2d2cc"), 645)
+			var metrics: Label = app.label_at(app.tx("ui.auto.21715e65478b", "恐惧 %s　痛苦 %s　尊严 %s　配合 %s") % [prep.fear, prep.pain, prep.dignity, prep.cooperation_value()], Vector2(65, 505), 19, Color("c2d2cc"), 645)
 			metrics.name = "SurgeryResultMetrics"
 			var return_button: Button = app.button_at(app.tx("ui.auto.fb28c027242c", "结算患者并返回医院导览"), Vector2(60, 520), Vector2(655, 54), app.finish_surgery_and_return)
 			return_button.name = "SurgeryResultReturn"
@@ -374,10 +393,10 @@ static func render(app: Control, prep: RefCounted) -> void:
 		early_sweep_button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 	UI.panel(app, Vector2(55, 558), Vector2(1170, 142))
 	var note_name: String = app.tx("ui.auto.4d549b32477a", "术中记录") if stage.kind == "surgery_flow" else app.tx("ui.auto.77a3ebc10ddf", "互动记录") if stage.kind in ["interaction", "surgery_complete"] else app.tx("ui.auto.159ea794a181", "术前记事")
-	var speaker_name: String = speaking_staff.name if not speaking_staff.is_empty() else patient.name if prep.feedback_speaker == "patient" or stage.speaker == "patient" else note_name
+	var speaker_name: String = speaking_staff.name if not speaking_staff.is_empty() else prep.crisis_callout_speaker_name() if not prep.active_crisis.is_empty() and prep.feedback_speaker == "staff" else patient.name if prep.feedback_speaker == "patient" or stage.speaker == "patient" else note_name
 	var record_speaker: Label = app.label_at(speaker_name, Vector2(82, 570), 20, Color("e8cfaa"), 1100)
 	record_speaker.name = "PreopRecordSpeaker"
-	var choosing_flow_option: bool = stage.kind == "surgery_flow" and not prep.awaiting_flow_acknowledgement and not prep.awaiting_patient_choice and not prep.awaiting_patient_acknowledgement
+	var choosing_flow_option: bool = stage.kind == "surgery_flow" and prep.active_crisis.is_empty() and not prep.awaiting_flow_acknowledgement and not prep.awaiting_patient_choice and not prep.awaiting_patient_acknowledgement
 	var default_prompt: String = str(flow_step.get("prompt", stage.prompt))
 	var text: String = "" if choosing_flow_option else default_prompt if prep.feedback.is_empty() else prep.feedback
 	if not speaking_staff.is_empty() and text.begins_with(speaking_staff.name + "："):
@@ -385,7 +404,8 @@ static func render(app: Control, prep: RefCounted) -> void:
 	elif not prep.feedback.is_empty() and prep.feedback_speaker == "player":
 		text = app.protagonist_name() + "：" + text
 	var record_font_size := 18 if text.length() > 110 else 20 if text.length() > 65 else 22
-	app.scrollable_text_at(text.replace("{patient}", patient.name), Vector2(82, 600), Vector2(1100, 90), record_font_size, Color("f4f0e6"), "PreopRecordText")
+	var record_name := "GraphicPreopDialogueText" if stage.kind == "graphic_preop_dialogue" else "PreopRecordText"
+	app.scrollable_text_at(text.replace("{patient}", patient.name), Vector2(82, 600), Vector2(1100, 90), record_font_size, Color("f4f0e6"), record_name)
 	var save_button: Button = app.button_at(app.tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
 	if not app.game.can_save_progress():
 		save_button.disabled = true

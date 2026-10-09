@@ -1,0 +1,683 @@
+[
+  {
+    "id": "minato_intro_sunday_cholecystectomy_main",
+    "title": "今天不是星期日吗？",
+    "background_id": "ward",
+    "start": "ward_open",
+    "nodes": [
+      {
+        "id": "ward_open",
+        "speaker": "narrator",
+        "text": "【星期日 早晨】\n艾莉娜·金城·王仍在睡觉。",
+        "expression": "neutral",
+        "background_id": "ward",
+        "hide_portrait": true,
+        "choices": [{"id": "ward_open_next", "label": "继续", "next": "megumi_wakes_her", "requirements": []}]
+      },
+      {
+        "id": "megumi_wakes_her",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "惠推门进来，手里的术前用品已经按顺序排好。她的动作麻利、声音平稳。",
+        "expression": "professional",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/ward/professional.png",
+        "background_id": "ward",
+        "cg_path": "assets/events/character_events/minato_intro/cg/megumi_wakes_her.png",
+        "cg_fit": "cover",
+        "choices": [{"id": "megumi_wakes_her_next", "label": "继续", "next": "erina_dazed", "requirements": []}]
+      },
+      {
+        "id": "erina_dazed",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜半睡半醒地睁开眼。\n「……现在几点？」",
+        "expression": "dazed",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/ward_preparation/dazed.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_dazed_next", "label": "继续", "next": "megumi_surgery_today", "requirements": []}]
+      },
+      {
+        "id": "megumi_surgery_today",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "「现在是早上七点半。早上好，金城小姐。今天十点二十分手术。」\n惠已经把病历和准备清单放到床边。",
+        "expression": "professional",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/ward/professional.png",
+        "background_id": "ward",
+        "choices": [{"id": "megumi_surgery_today_next", "label": "继续", "next": "erina_surprised", "requirements": []}]
+      },
+      {
+        "id": "erina_surprised",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜猛地清醒。\n「今天？！我的手术是明天！」",
+        "expression": "surprised",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/ward_preparation/surprised.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_surprised_next", "label": "继续", "next": "megumi_schedule_check", "requirements": []}]
+      },
+      {
+        "id": "megumi_schedule_check",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "惠低头确认排程。\n「这里写的是今天，星期日，十点二十分。」",
+        "expression": "focused",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/ward/focused.png",
+        "background_id": "ward",
+        "choices": [{"id": "megumi_schedule_check_next", "label": "继续", "next": "erina_irritated", "requirements": []}]
+      },
+      {
+        "id": "erina_irritated",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「那是排程错了！我今天只是要在病房看电视！」\n她终于完全醒了，但术前准备已经开始。",
+        "expression": "irritated",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/ward_preparation/irritated.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_irritated_next", "label": "继续", "next": "megumi_preparation", "requirements": []}]
+      },
+      {
+        "id": "megumi_preparation",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "惠没有和她争论日期。她只是把术前准备一项项做完：灌肠、备皮、更衣，再把所有头发收进手术帽。每一步都专业、迅速。",
+        "expression": "focused",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/ward/focused.png",
+        "background_id": "ward",
+        "choices": [{"id": "megumi_preparation_next", "label": "继续", "next": "erina_defeated", "requirements": []}]
+      },
+      {
+        "id": "erina_defeated",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "准备完成后，艾莉娜已经盖好毯子，坐上了转运车。她看了一眼时间。\n「……至少让我知道现在几点。」",
+        "expression": "exhausted",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/exhausted.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_defeated_next", "label": "继续", "next": "minato_enters_ward", "requirements": []}]
+      },
+      {
+        "id": "minato_enters_ward",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "white_coat",
+        "expression": "warm",
+        "text": "遥凑推门进来，目光落在已经坐上转运车的艾莉娜身上。\n「早上好。艾莉娜，你已经准备好了？」",
+        "background_id": "ward",
+        "choices": [{"id": "minato_enters_ward_next", "label": "继续", "next": "erina_meets_minato", "requirements": []}]
+      },
+      {
+        "id": "erina_meets_minato",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「……遥医生。」\n艾莉娜转过头看她。\n「你知道今天是星期日吗？」",
+        "expression": "irritated",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/prepared_arms_crossed.png",
+        "background_id": "ward",
+        "cg_path": "assets/events/character_events/minato_intro/cg/minato_names_player.png",
+        "cg_fit": "cover",
+        "choices": [{"id": "erina_meets_minato_next", "label": "继续", "next": "erina_baseball_plan", "requirements": [], "effects": {"meet_characters": ["doc_minato"], "familiarity": [{"actor_id": "doc_minato", "amount": 10}]}}]
+      },
+      {
+        "id": "erina_baseball_plan",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜低头看了一眼盖在腿上的毯子。\n「我本来今天要看棒球转播的。」",
+        "expression": "irritated",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/prepared_arms_crossed.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_baseball_plan_next", "label": "继续", "next": "minato_baseball_promise", "requirements": []}]
+      },
+      {
+        "id": "minato_baseball_promise",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "white_coat",
+        "expression": "warm",
+        "text": "遥凑想了一下。\n「放心，赶得上。手术会按计划结束。」",
+        "background_id": "ward",
+        "choices": [{"id": "minato_baseball_promise_next", "label": "继续", "next": "erina_no_confidence", "requirements": []}]
+      },
+      {
+        "id": "erina_no_confidence",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「你说‘放心’我更不放心。」",
+        "expression": "sarcastic",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/amused.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_no_confidence_next", "label": "继续", "next": "minato_to_holding", "requirements": []}]
+      },
+      {
+        "id": "minato_to_holding",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "white_coat",
+        "expression": "warm",
+        "text": "遥凑笑眯眯地退开一步。\n「那，手术室见哦。」",
+        "background_id": "ward",
+        "choices": [{"id": "minato_to_holding_next", "label": "继续", "next": "megumi_to_holding", "requirements": []}]
+      },
+      {
+        "id": "megumi_to_holding",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "「好，艾莉娜小姐，我们现在去手术室。」\n惠推动转运车，准备离开病房。",
+        "expression": "professional",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/ward/professional.png",
+        "background_id": "ward",
+        "choices": [{"id": "megumi_to_holding_next", "label": "继续", "next": "erina_held_against_will", "requirements": []}]
+      },
+      {
+        "id": "erina_held_against_will",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「不要啊啊啊啊！」",
+        "expression": "resigned",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/exhausted.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_held_against_will_next", "label": "继续", "next": "holding_transfer", "requirements": []}]
+      },
+      {
+        "id": "holding_transfer",
+        "speaker": "narrator",
+        "text": "艾莉娜被送到手术部 Holding。遥凑看了看周日的人员安排，才发现原本的第一助手根本不在院内。",
+        "expression": "neutral",
+        "background_id": "or_holding",
+        "hide_portrait": true,
+        "choices": [{"id": "holding_transfer_next", "label": "继续", "next": "minato_grabs_sakaguchi", "requirements": []}]
+      },
+      {
+        "id": "minato_grabs_sakaguchi",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "scrubs",
+        "expression": "surprised",
+        "text": "遥凑在走廊里抓住刚好经过的坂口。\n「坂口医生，今天有空吗？」",
+        "background_id": "or_holding",
+        "choices": [{"id": "minato_grabs_sakaguchi_next", "label": "继续", "next": "player_drafted", "requirements": []}]
+      },
+      {
+        "id": "player_drafted",
+        "speaker": "player",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "background_id": "or_holding",
+        "text": "坂口看了看遥凑，又看了看手术室的方向。",
+        "choices": [
+          {"id": "player_drafted_offer", "label": "需要我帮什么吗？", "next": "minato_response_offer", "requirements": []},
+          {"id": "player_drafted_sunday", "label": "啊？今天可是星期天啊。", "next": "minato_response_sunday", "requirements": []},
+          {"id": "player_drafted_identity", "label": "你是谁？", "next": "minato_response_identity", "requirements": []}
+        ]
+      },
+      {
+        "id": "minato_response_offer",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "scrubs",
+        "expression": "warm",
+        "text": "「正好。患者是清醒的开放手术，第一助手位缺人。借你一上午。」",
+        "background_id": "or_holding",
+        "choices": [{"id": "minato_response_offer_next", "label": "继续", "next": "erina_new_assistant", "requirements": []}]
+      },
+      {
+        "id": "minato_response_sunday",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "scrubs",
+        "expression": "warm",
+        "text": "「所以才来找你呀。周日的第一助手，通常不会自己出现在手术室。」",
+        "background_id": "or_holding",
+        "choices": [{"id": "minato_response_sunday_next", "label": "继续", "next": "erina_new_assistant", "requirements": []}]
+      },
+      {
+        "id": "minato_response_identity",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "scrubs",
+        "expression": "warm",
+        "text": "「遥凑。今天的主刀。」\n她看了一眼手术室。\n「至于你——我刚决定由你来当第一助手。」",
+        "background_id": "or_holding",
+        "choices": [{"id": "minato_response_identity_next", "label": "继续", "next": "erina_new_assistant", "requirements": []}]
+      },
+      {
+        "id": "erina_new_assistant",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜看了看坂口。\n「他是谁？」",
+        "expression": "sarcastic",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/skeptical.png",
+        "background_id": "or_holding",
+        "choices": [{"id": "erina_new_assistant_next", "label": "继续", "next": "minato_names_player", "requirements": []}]
+      },
+      {
+        "id": "minato_names_player",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "expression": "skeptical",
+        "text": "艾莉娜盯着坂口看了两秒。\n「什么？他靠谱吗？真的会开刀吗？不会是星期天在医院闲逛的闲杂人员吧？？」",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/skeptical.png",
+        "background_id": "or_holding",
+        "choices": [{"id": "minato_names_player_next", "label": "继续", "next": "player_assistant_joke", "requirements": []}]
+      },
+      {
+        "id": "player_assistant_joke",
+        "speaker": "player",
+        "text": "「虽然是星期天在医院的闲杂人员，但是手术这种事情，我还是懂一点点的。」",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "background_id": "or_holding",
+        "choices": [{"id": "player_assistant_joke_next", "label": "继续", "next": "minato_reassures_team", "requirements": []}]
+      },
+      {
+        "id": "minato_reassures_team",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "scrubs",
+        "expression": "warm",
+        "text": "遥凑笑了笑。\n「没问题，我们保证一切都会顺利的！」",
+        "background_id": "or_holding",
+        "choices": [{"id": "minato_reassures_team_next", "label": "继续", "next": "erina_unimpressed", "requirements": []}]
+      },
+      {
+        "id": "erina_unimpressed",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜看了看遥凑，又看了看坂口。\n「……我一点也没有被安慰到。」",
+        "expression": "resigned",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/exhausted.png",
+        "background_id": "or_holding",
+        "choices": [{"id": "erina_unimpressed_next", "label": "继续", "next": "megumi_or_ready", "requirements": []}]
+      },
+      {
+        "id": "megumi_or_ready",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "惠已经在手术室内完成器械与无菌流程确认，把下一件该做的事递到遥凑手边。",
+        "expression": "professional",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/or/professional.png",
+        "background_id": "operating_room",
+        "choices": [{"id": "megumi_or_ready_next", "label": "继续", "next": "epidural_fixed", "requirements": []}]
+      },
+      {
+        "id": "epidural_fixed",
+        "speaker": "narrator",
+        "speaker_label": "遥凑",
+        "text": "遥凑完成了硬膜外麻醉确认。",
+        "expression": "focused",
+        "portrait_path": "assets/characters/portrait_pack_v21/doc_minato/sterile/focused.png",
+        "background_id": "operating_room",
+        "choices": [{"id": "epidural_fixed_next", "label": "继续", "next": "erina_awake_start", "requirements": []}]
+      },
+      {
+        "id": "erina_awake_start",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜看着无影灯。\n「遥医生，你今天说的‘很快’，我已经不相信了。」",
+        "expression": "skeptical",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/skeptical.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_awake_start_next", "label": "继续", "next": "minato_reliable", "requirements": []}]
+      },
+      {
+        "id": "minato_reliable",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "focused",
+        "text": "遥凑的语气收紧。\n「知道。保持平稳呼吸。这里我来处理。」\n她站上术野，语气也跟着沉了下来。",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "minato_reliable_next", "label": "继续", "next": "megumi_time_check", "requirements": []}]
+      },
+      {
+        "id": "megumi_time_check",
+        "speaker": "narrator",
+        "text": "坂口站到第一助手位。遥凑接过手术刀，稳稳地在艾莉娜腹部划出一道漂亮的切入线。",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "background_id": "operating_team_01",
+        "choices": [{"id": "megumi_time_check_next", "label": "继续", "next": "erina_asks_time", "requirements": []}]
+      },
+      {
+        "id": "erina_asks_time",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「至少告诉我现在几点了？」",
+        "expression": "tense_amused",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/tense_amused.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_asks_time_next", "label": "继续", "next": "player_time", "requirements": []}]
+      },
+      {
+        "id": "player_time",
+        "speaker": "player",
+        "text": "「十一点零五。」",
+        "expression": "neutral",
+        "hide_portrait": true,
+        "background_id": "operating_team_01",
+        "choices": [{"id": "player_time_next", "label": "继续", "next": "minato_baseball_reassurance", "requirements": []}]
+      },
+      {
+        "id": "minato_baseball_reassurance",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "warm",
+        "text": "「你看，肯定赶得上。」\n遥凑没有抬头，手上的动作仍然稳定。",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "minato_baseball_reassurance_next", "label": "继续", "next": "erina_no_plan", "requirements": []}]
+      },
+      {
+        "id": "erina_no_plan",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「不要一副这是你计划好的样子！」",
+        "expression": "skeptical",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/skeptical.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_no_plan_next", "label": "继续", "next": "baseball_small_talk", "requirements": []}]
+      },
+      {
+        "id": "baseball_small_talk",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "warm",
+        "text": "遥凑语气轻了下来。\n「那说点别的。你喜欢哪个队？」",
+        "background_id": "operating_team_01",
+        "cg_path": "assets/events/character_events/minato_intro/cg/baseball_small_talk.png",
+        "cg_fit": "cover",
+        "choices": [{"id": "baseball_small_talk_next", "label": "继续", "next": "erina_baseball_team", "requirements": []}]
+      },
+      {
+        "id": "erina_baseball_team",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜沉默了几秒。\n「……读卖巨人队。」",
+        "expression": "resigned",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/resigned.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_baseball_team_next", "label": "继续", "next": "minato_baseball_followup", "requirements": []}]
+      },
+      {
+        "id": "minato_baseball_followup",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "warm",
+        "text": "「诶，巨人？你比较喜欢看投手战还是打击战？」",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "minato_baseball_followup_next", "label": "继续", "next": "erina_open_abdomen", "requirements": []}]
+      },
+      {
+        "id": "erina_open_abdomen",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「遥医生。」\n「嗯？」\n「我现在肚子还开着。」",
+        "expression": "resigned",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/resigned.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_open_abdomen_next", "label": "继续", "next": "megumi_focus", "requirements": []}]
+      },
+      {
+        "id": "megumi_focus",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "「遥医生。」\n惠的眼神越过口罩，准确地落到遥凑身上。\n「专心开刀。不要跟患者开棒球座谈会。」",
+        "expression": "dry_admonishing",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/or/dry_admonishing.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "megumi_focus_next", "label": "继续", "next": "minato_defends_focus", "requirements": []}]
+      },
+      {
+        "id": "minato_defends_focus",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "focused",
+        "text": "「我有在专心啊。」\n她没有停下手上的动作。\n「这里，牵引再松一点。」",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "minato_defends_focus_next", "label": "继续", "next": "erina_thanks_megumi", "requirements": []}]
+      },
+      {
+        "id": "erina_thanks_megumi",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「谢谢。」",
+        "expression": "resigned",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/resigned.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_thanks_megumi_next", "label": "继续", "next": "megumi_knows_minato", "requirements": []}]
+      },
+      {
+        "id": "megumi_knows_minato",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "「不用谢。」\n她停了一下。\n「她一直这样。手很稳，嘴也没停过。」",
+        "expression": "knowing",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/or/knowing.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "megumi_knows_minato_next", "label": "继续", "next": "erina_duration", "requirements": []}]
+      },
+      {
+        "id": "erina_duration",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "过了一会儿。\n「还要多久？」",
+        "expression": "skeptical",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/skeptical.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_duration_next", "label": "继续", "next": "minato_smooth", "requirements": []}]
+      },
+      {
+        "id": "minato_smooth",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "focused",
+        "text": "「很顺利。」",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "minato_smooth_next", "label": "继续", "next": "megumi_one_ten", "requirements": []}]
+      },
+      {
+        "id": "megumi_one_ten",
+        "speaker": "narrator",
+        "speaker_label": "惠",
+        "text": "惠看了一眼时间。\n「一点十分。」",
+        "expression": "professional",
+        "portrait_path": "assets/events/character_events/minato_intro/megumi/or/professional.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "megumi_one_ten_next", "label": "继续", "next": "erina_thanks_time", "requirements": []}]
+      },
+      {
+        "id": "erina_thanks_time",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「谢谢。至少这里还有一个人记得时间。」",
+        "expression": "tense_amused",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/tense_amused.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_thanks_time_next", "label": "继续", "next": "erina_deadline", "requirements": []}]
+      },
+      {
+        "id": "erina_deadline",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「你们最好两点半以前结束。我要回病房，打开电视，确保三点开赛的时候我不是还在这里。」",
+        "expression": "skeptical",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/skeptical.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_deadline_next", "label": "继续", "next": "minato_reassures", "requirements": []}]
+      },
+      {
+        "id": "minato_reassures",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "sterile",
+        "expression": "focused",
+        "text": "「放心。」\n遥凑仍然盯着术野。\n「我会让你赶上。」",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "minato_reassures_next", "label": "继续", "next": "erina_distrusts", "requirements": []}]
+      },
+      {
+        "id": "erina_distrusts",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「我今天最不放心的就是你。」",
+        "expression": "resigned",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/intraoperative/resigned.png",
+        "background_id": "operating_team_01",
+        "choices": [{"id": "erina_distrusts_next", "label": "继续", "next": "surgery_complete", "requirements": []}]
+      },
+      {
+        "id": "surgery_complete",
+        "speaker": "narrator",
+        "text": "开腹胆囊切除顺利完成。遥凑完成最后确认，惠清点器械，坂口配合交接。",
+        "expression": "neutral",
+        "background_id": "operating_team_01",
+        "hide_portrait": true,
+        "choices": [{"id": "surgery_complete_next", "label": "继续", "next": "postop_return", "requirements": []}]
+      },
+      {
+        "id": "postop_return",
+        "speaker": "narrator",
+        "text": "下午两点四十，艾莉娜回到病房。电视打开时，棒球转播还没有正式开始。",
+        "expression": "neutral",
+        "background_id": "ward",
+        "hide_portrait": true,
+        "choices": [{"id": "postop_return_next", "label": "继续", "next": "erina_postop", "requirements": []}]
+      },
+      {
+        "id": "erina_postop",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜疲惫地躺回床上。\n「……赶上了。」",
+        "expression": "exhausted",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/postoperative/exhausted.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_postop_next", "label": "继续", "next": "erina_postop_baseball", "requirements": []}]
+      },
+      {
+        "id": "erina_postop_baseball",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "「电视。」\n她看着屏幕，像是终于把今天的安排和比赛时间都对上了。\n「至少这场没有错过。」",
+        "expression": "baseball",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/postoperative/baseball.png",
+        "background_id": "ward",
+        "cg_path": "assets/events/character_events/minato_intro/cg/erina_postop_baseball.png",
+        "cg_fit": "cover",
+        "choices": [{"id": "erina_postop_baseball_next", "label": "继续", "next": "minato_postop", "requirements": []}]
+      },
+      {
+        "id": "minato_postop",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "white_coat",
+        "expression": "warm",
+        "text": "遥凑随后进来。\n「看上了？」",
+        "background_id": "ward",
+        "choices": [{"id": "minato_postop_next", "label": "继续", "next": "erina_postop_tv_reply", "requirements": []}]
+      },
+      {
+        "id": "erina_postop_tv_reply",
+        "speaker": "narrator",
+        "speaker_label": "艾莉娜·金城·王",
+        "text": "艾莉娜闭了闭眼。\n「……暂时看上了。」",
+        "expression": "exhausted",
+        "portrait_path": "assets/characters/portrait_pack_v21/patient_erin/postoperative/exhausted.png",
+        "background_id": "ward",
+        "choices": [{"id": "erina_postop_tv_reply_next", "label": "继续", "next": "minato_change_clothes", "requirements": []}]
+      },
+      {
+        "id": "minato_change_clothes",
+        "speaker": "narrator",
+        "text": "艾莉娜的电视已经调到比赛频道。\n坂口完成最后一点术后记录，病房里只剩下比赛解说的声音。",
+        "background_id": "ward",
+        "choices": [{"id": "minato_change_clothes_next", "label": "继续", "next": "minato_casual_transition", "requirements": []}]
+      },
+      {
+        "id": "minato_casual_transition",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "casual",
+        "expression": "neutral",
+        "text": "坂口换好衣服回到走廊，看到同样换好衣服的遥凑站在那里，拿着自己的包。\n\n「坂口医生，今天剩下的时间有安排吗？」",
+        "background_id": "hallway",
+        "portrait_path": "assets/characters/portrait_pack_v21/doc_minato/casual/neutral.png",
+        "choices": [{"id": "minato_casual_transition_next", "label": "继续", "next": "sakaguchi_walk_schedule", "requirements": []}]
+      },
+      {
+        "id": "sakaguchi_walk_schedule",
+        "speaker": "narrator",
+        "speaker_label": "坂口隆司",
+        "text": "坂口看了她一眼。\n「本来有的。现在……没有了。」",
+        "background_id": "hallway",
+        "hide_portrait": true,
+        "choices": [{"id": "sakaguchi_walk_schedule_next", "label": "继续", "next": "minato_walk_invitation", "requirements": []}]
+      },
+      {
+        "id": "minato_walk_invitation",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "casual",
+        "expression": "warm",
+        "text": "遥凑笑眯眯地说：\n「今天天气这么好，既然坂口医生也没事，我们一起出去走走？」",
+        "background_id": "hallway",
+        "portrait_path": "assets/characters/portrait_pack_v21/doc_minato/casual/neutral.png",
+        "choices": [{"id": "minato_walk_invitation_next", "label": "继续", "next": "minato_riverside_walk", "requirements": []}]
+      },
+      {
+        "id": "minato_riverside_walk",
+        "speaker": "narrator",
+        "text": "两个人沿着城市河边的散步道慢慢走。遥凑的心情明显很好，指着沿岸的树木、桥下的水面和街角的小店，兴致勃勃地和坂口聊起医院附近的街区。\n\n坂口偶尔接上几句，两个人很快就聊得投机起来。",
+        "background_id": "minato_riverside_walk",
+        "portrait_path": "assets/characters/portrait_pack_v21/doc_minato/casual/neutral.png",
+        "choices": [{"id": "minato_riverside_walk_next", "label": "继续", "next": "minato_riverside_coffee", "requirements": []}]
+      },
+      {
+        "id": "minato_riverside_coffee",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "casual",
+        "expression": "warm",
+        "text": "遥凑在自动贩卖机前买了两罐咖啡，把其中一罐递给坂口。\n\n「今天谢谢你救场。」",
+        "background_id": "minato_riverside_walk",
+        "cg_path": "assets/events/character_events/minato_intro/cg/minato_riverside_coffee.png",
+        "cg_fit": "cover",
+        "choices": [{"id": "minato_riverside_coffee_next", "label": "继续", "next": "sakaguchi_riverside_question", "requirements": []}]
+      },
+      {
+        "id": "sakaguchi_riverside_question",
+        "speaker": "narrator",
+        "speaker_label": "坂口隆司",
+        "text": "坂口接过咖啡，谨慎地看了她一眼。\n「不客气。不过……你为什么会把手术日期记错？」",
+        "background_id": "minato_riverside_walk",
+        "hide_portrait": true,
+        "choices": [{"id": "sakaguchi_riverside_question_next", "label": "继续", "next": "minato_riverside_excuse", "requirements": []}]
+      },
+      {
+        "id": "minato_riverside_excuse",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "casual",
+        "expression": "warm",
+        "text": "遥凑眨了眨眼，笑得若无其事。\n「啊哈哈……最近排班表有点挤，一不小心就把星期一挤到星期日去了。」\n\n坂口显然没有完全相信，但也没有继续追问。",
+        "background_id": "minato_riverside_walk",
+        "portrait_path": "assets/characters/portrait_pack_v21/doc_minato/casual/neutral.png",
+        "choices": [{"id": "minato_riverside_excuse_next", "label": "继续", "next": "minato_walk_end", "requirements": []}]
+      },
+      {
+        "id": "minato_walk_end",
+        "speaker": "actor",
+        "actor_id": "doc_minato",
+        "outfit": "casual",
+        "expression": "neutral",
+        "text": "咖啡喝完时，天色已经开始变暗。遥凑朝坂口扬了扬手里的空罐。\n\n「今天就到这里。下次见，坂口医生。」\n\n她笑着转身，沿着河边的散步道走远。",
+        "background_id": "minato_riverside_walk",
+        "portrait_path": "assets/characters/portrait_pack_v21/doc_minato/casual/neutral.png",
+        "choices": [{"id": "minato_walk_end_next", "label": "结束星期日事件", "next": "@day_end", "requirements": [], "effects": {"story_flags": ["minato_intro_sunday_walk_complete"]}}]
+      }
+    ]
+  }
+]

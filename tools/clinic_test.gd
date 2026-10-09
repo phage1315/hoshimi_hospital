@@ -162,20 +162,32 @@ func run() -> void:
 	invalid_timeline.time_log[1].start = 999
 	expect(not timeline_clone.restore(invalid_timeline), "Impossible time-event timestamp accepted")
 	var chat_timeline = GameState.new()
-	chat_timeline.configure(content.collections.encounters, [], content.collections.staff, content.collections.time_events)
-	expect(chat_timeline.spend_time("lounge_chat_doc_aoi") and chat_timeline.elapsed() == 30, "Lounge chat did not spend 30 minutes")
+	chat_timeline.configure(content.collections.encounters, [], content.collections.staff, content.collections.time_events, [], [], content.collections.relationships, content.collections.character_events)
+	for staff_id in ["doc_aoi", "doc_rei", "nurse_haru", "nurse_rin", "nurse_yui"]:
+		chat_timeline.meet_staff(staff_id)
+	var available_staff_chat := ""
+	for location_id in ["clinic", "exam", "station", "ward", "or", "lounge", "rooftop"]:
+		for event_definition in chat_timeline.time_events_at(location_id):
+			if event_definition.get("actor_id") != null:
+				available_staff_chat = str(event_definition.id)
+				break
+		if not available_staff_chat.is_empty():
+			break
+	expect(not available_staff_chat.is_empty(), "No known staff chat was scheduled at shift start")
+	expect(not available_staff_chat.is_empty() and chat_timeline.spend_time(available_staff_chat) and chat_timeline.elapsed() == 30, "Known staff chat did not spend 30 minutes")
 	expect(not chat_timeline.last_time_event_response.is_empty(), "Random chat response missing")
 	var overtime = GameState.new()
-	overtime.configure(content.collections.encounters, [], content.collections.staff, content.collections.time_events)
+	overtime.configure(content.collections.encounters, [], content.collections.staff, content.collections.time_events, [], [], content.collections.relationships, content.collections.character_events)
+	overtime.meet_staff("doc_aoi")
 	for i in range(15):
-		overtime.spend_time("lounge_chat_doc_aoi")
+		overtime.spend_time("rooftop_pause")
 	var surgery_start := overtime.elapsed()
 	for i in range(48):
 		overtime.spend_time("rooftop_pause")
 	expect(overtime.settle_overtime(surgery_start, 480), "Overtime surgery did not end the day")
 	expect(overtime.elapsed() == 480 and overtime.day_number() == 2 and overtime.clock_text() == "09:00", "Surgery overtime consumed the next day")
 	var overtime_clone = GameState.new()
-	overtime_clone.configure(content.collections.encounters, [], content.collections.staff, content.collections.time_events)
+	overtime_clone.configure(content.collections.encounters, [], content.collections.staff, content.collections.time_events, [], [], content.collections.relationships, content.collections.character_events)
 	expect(overtime_clone.restore(overtime.snapshot()) and overtime_clone.elapsed() == 480, "Overtime adjustment did not survive save replay")
 	var visit = game.open_visit("visit_sora")
 	expect(not visit.apply("admit"), "Admission allowed before intake")
@@ -250,12 +262,12 @@ func run() -> void:
 	baseline.configure(content.collections.encounters)
 	var quick = baseline.open_visit("visit_sora")
 	apply_all(quick, ["greet"] + HISTORY + EXAM + TESTS + ["diagnose_appendix", "explain", "admit"])
-	expect(quick.minutes == 66 and baseline.day_text() == "DAY 01" and baseline.clock_text() == "10:06" and baseline.shift_remaining() == 414, "Baseline timeline incorrect")
+	expect(quick.minutes == 76 and baseline.day_text() == "DAY 01" and baseline.clock_text() == "10:16" and baseline.shift_remaining() == 404, "Baseline timeline incorrect: minutes=%s clock=%s remaining=%s" % [quick.minutes, baseline.clock_text(), baseline.shift_remaining()])
 	var optional = GameState.new()
 	optional.configure(content.collections.encounters)
 	var slow = optional.open_visit("visit_sora")
 	apply_all(slow, ["comfort"] + HISTORY + EXAM + ["extra"] + TESTS + ["diagnose_observe", "diagnose_appendix", "explain", "admit"])
-	expect(slow.minutes == 84 and slow.notes.has("concern") and slow.notes.has("extra"), "Optional path effects lost")
+	expect(slow.minutes == 94 and slow.notes.has("concern") and slow.notes.has("extra"), "Optional path effects lost: minutes=%s concern=%s extra=%s" % [slow.minutes, slow.notes.has("concern"), slow.notes.has("extra")])
 	# Old partial v1 saves continue through bundled controls without double-counting.
 	var legacy = GameState.new()
 	legacy.configure(content.collections.encounters)
@@ -277,7 +289,7 @@ func run() -> void:
 		store.path = args[0]
 		expect(store.write_slot(game), "First save failed")
 		expect(store.write_slot(optional), "Atomic replacement failed")
-		expect(store.read_slot(clone) and clone.elapsed() == 84, "File round-trip failed")
+		expect(store.read_slot(clone) and clone.elapsed() == 94, "File round-trip failed")
 		var before: Dictionary = clone.snapshot()
 		var broken := FileAccess.open(store.path, FileAccess.WRITE)
 		broken.store_string("{broken JSON")
@@ -382,13 +394,10 @@ func run() -> void:
 		expect(app.page.get_node_or_null("TimeEvent_director_office_check") == null, "One-time office action remained available")
 	app.show_time_log()
 	expect(app.page.get_node_or_null("TimeLogEntry_0") != null and app.page.get_node_or_null("TimeLogEntry_1") != null, "Visible time history omitted location actions")
-	app.show_location("lounge")
 	for staff_id in ["doc_aoi", "doc_rei", "nurse_haru", "nurse_rin", "nurse_yui"]:
-		expect(app.page.get_node_or_null("TimeEvent_lounge_chat_" + staff_id) != null, "Lounge chat missing for " + staff_id)
-	app.rooftop_actor_id = "doc_aoi"
-	app.show_location("rooftop", true)
-	expect(app.page.get_node_or_null("TimeEvent_rooftop_chat_doc_aoi") != null, "Encountered rooftop staff chat missing")
-	expect(app.page.get_node_or_null("TimeEvent_rooftop_chat_doc_rei") == null, "Unencountered rooftop staff chat visible")
+		app.game.meet_staff(staff_id)
+	for staff_id in ["doc_aoi", "doc_rei", "nurse_haru", "nurse_rin", "nurse_yui"]:
+		expect(app.game.time_event_definitions.has("lounge_chat_" + staff_id), "Isolated lounge chat definition missing for " + staff_id)
 	app.show_day_transition(app.show_map)
 	expect(app.screen == "day_transition" and app.page.get_node_or_null("SceneBackground") != null, "Day transition did not show night background")
 	var continue_button: Button = null

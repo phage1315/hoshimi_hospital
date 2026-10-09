@@ -25,7 +25,7 @@ func run() -> void:
 	expect(content.load_all(), "Content load failed")
 	var futaba: Dictionary = content.find_record("staff", "visiting_futaba")
 	expect(not futaba.is_empty() and futaba.age == 26, "Adult Futaba profile missing")
-	expect(futaba.skills == {"surgery": 34, "diagnostics": 91, "teamwork": 76, "patient_care": 74, "instrument_handling": 70, "calmness": 68}, "Futaba skill profile changed")
+	expect(int(futaba.skills.surgery) == 34 and int(futaba.skills.diagnostics) == 91 and int(futaba.skills.teamwork) == 76 and int(futaba.skills.patient_care) == 74 and int(futaba.skills.instrument_handling) == 70 and int(futaba.skills.calmness) == 68, "Futaba skill profile changed")
 	expect("relationship_progression_locked" in futaba.flags and "no_romance_route" in futaba.flags and "no_adult_route" in futaba.flags, "Futaba route exclusions are incomplete")
 	for portrait_key in ["white_coat/neutral", "scrubs/neutral", "sterile/neutral"]:
 		var portrait := load("res://" + str(futaba.visuals.portraits[portrait_key])) as Texture2D
@@ -44,6 +44,6 @@ func run() -> void:
 	expect(game.relationship_level("visiting_futaba") == 0 and game.next_rank_slot("visiting_futaba").is_empty(), "Futaba advanced beyond acquaintance")
 	var prep = Preop.new(content.collections.preops[0], content.collections.staff, content.collections.surgeries, content.collections.patients, ["visiting_futaba"], true)
 	expect(prep.assignment_response("assistant_surgeon", "visiting_futaba").contains("我负责看她为什么"), "Futaba assistant assignment dialogue was not selected")
-	expect(prep.staff_action_response("visiting_futaba", "confirm_assistant_role", "fallback").contains("脑子也是器官"), "Futaba mind-body role dialogue was not selected")
+	expect(prep.staff_action_response("visiting_futaba", "confirm_assistant_role", "fallback").contains("Fear、Pain 和 Cooperation"), "Futaba mind-body role dialogue was not selected")
 	print("FUTABA CHARACTER: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

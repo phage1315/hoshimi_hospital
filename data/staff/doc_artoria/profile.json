@@ -105,5 +105,40 @@
     "relationship_arc": "最初把坂口当作需要评估领导力的优秀术者；在共同承担复杂手术后，她逐渐允许对方分担责任，并学习不以工作目的定义全部相处。",
     "speech_style": "高正式度、高直接度、低讽刺。先让对方说完，再以“我明白了”“决定如下”给出结论。",
     "ethical_handling": "她与御堂的竞争必须围绕用人理念、术式判断与责任承担展开，绝不能以患者安全或同事尊严作为胜负工具。"
+  },
+  "familiarity_rules": {
+    "base": 0.75,
+    "operations": [
+      {
+        "input": "player_attribute",
+        "attribute": "leadership",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 59,
+            "value": 0.75
+          },
+          {
+            "minimum": 60,
+            "maximum": 69,
+            "value": 0.8
+          },
+          {
+            "minimum": 70,
+            "maximum": 79,
+            "value": 0.9
+          },
+          {
+            "minimum": 80,
+            "maximum": 89,
+            "value": 1.0
+          },
+          {
+            "minimum": 90,
+            "value": 1.1
+          }
+        ]
+      }
+    ]
   }
 }

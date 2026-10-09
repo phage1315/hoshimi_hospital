@@ -88,6 +88,10 @@ func run() -> void:
 	app.game.advance_story_to_future_day(1, 540)
 	expect(app.game.start_character_event("moe_wrong_changing_room") != null, "Moe changing-room event could not start for portrait regression test")
 	app.show_character_event()
+	var event_background := app.page.get_node_or_null("SceneBackground") as TextureRect
+	var event_wash := app.page.get_node_or_null("BackgroundWash") as ColorRect
+	expect(event_background != null, "Character event did not render its authored location background")
+	expect(event_wash != null and is_equal_approx(event_wash.color.a, 0.30), "Character event background used the opaque menu wash")
 	app.choose_character_event("continue_enter")
 	var moe_portrait: TextureRect = app.page.get_node_or_null("CharacterEventPortrait")
 	expect(moe_portrait != null, "Moe event portrait missing")
@@ -95,15 +99,21 @@ func run() -> void:
 		expect(moe_portrait.size.distance_to(Vector2(429.33, 644.0)) < 2.0, "Moe event portrait ignored authored display size")
 		expect(moe_portrait.position.distance_to(Vector2(790.67, 55.0)) < 2.0, "Moe event portrait ignored authored position")
 
-	# Emiko remains inaccessible until the protagonist's surgical skill is high
-	# enough. Her introduction schedules Lv1 for the next afternoon, while Lv2
-	# requires a higher skill threshold and a full seven-day gap.
+	# Emiko's introduction requires the Asuka office introduction and Surgery 75.
+	# Her Lv1 professional-recognition operation then requires Familiarity 10 and
+	# the fixed three-day milestone interval; Lv2 uses Familiarity 25.
 	var emiko_game = new_game()
 	var emiko_intro: Dictionary = emiko_game.character_event_definitions.emiko_intro_rumored_hands
 	var emiko_lv2: Dictionary = emiko_game.character_event_definitions.emiko_lv2_follow_my_lead
 	expect(not emiko_game.staff_is_met("doc_emiko"), "Emiko should begin unknown")
 	expect(emiko_game.character_event_available(emiko_game.character_event_definitions.emiko_office_denied), "Low-skill office refusal was unavailable")
-	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction ignored the surgical-skill gate")
+	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction ignored its Asuka introduction and Surgery gate")
+	emiko_game.completed_surgeries_total = 3
+	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(75)
+	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction ignored the Asuka introduction prerequisite")
+	var asuka_fixture := emiko_game._complete_character_event_for_test("intro_doc_asuka_director_office", 1)
+	expect(asuka_fixture, "Could not create Asuka introduction prerequisite fixture")
+	expect(emiko_game.character_event_available(emiko_intro), "Emiko introduction did not unlock after Asuka introduction and Surgery 75")
 	# The first refusal is delivered entirely by the nurse outside the office.
 	# Completing it must not reveal Emiko's portrait before her Lv0 meeting.
 	app.game.reset()
@@ -111,18 +121,18 @@ func run() -> void:
 	app.show_character_event_complete()
 	expect(not app.game.staff_is_met("doc_emiko"), "Emiko office refusal met Emiko early")
 	expect(app.page.get_node_or_null("CharacterPortrait") == null, "Emiko portrait appeared before the Lv0 meeting")
-	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(56)
-	expect(emiko_game.character_event_available(emiko_intro), "Emiko introduction did not unlock at skill 56")
 	expect(finish_event(emiko_game, "emiko_intro_rumored_hands"), "Emiko introduction could not complete")
 	expect(emiko_game.staff_is_met("doc_emiko") and emiko_game.relationship_level("doc_emiko") == 0, "Emiko introduction did not establish the Lv0 acquaintance")
-	emiko_game.advance_story_to_future_day(1, 780)
-	expect(emiko_game.day_number() == 2 and emiko_game.clock_text() == "13:00", "Emiko Lv1 appointment did not advance to the next day at 13:00")
+	emiko_game.add_familiarity("doc_emiko", 10)
+	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(75)
+	emiko_game.advance_story_to_future_day(3, 780)
+	expect(emiko_game.day_number() == 4 and emiko_game.clock_text() == "13:00", "Emiko Lv1 appointment did not honor the three-day interval")
 	expect(finish_event(emiko_game, "emiko_lv1_first_operation"), "Emiko Lv1 operation could not complete")
 	expect(emiko_game.relationship_level("doc_emiko") == 1, "Emiko Lv1 operation did not establish Lv1")
-	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(70)
-	expect(not emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 ignored the seven-day delay")
-	emiko_game.advance_story_to_future_day(7, 780)
-	expect(emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 did not unlock at skill 70 after seven days")
+	emiko_game.add_familiarity("doc_emiko", 15)
+	expect(not emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 ignored the three-day delay")
+	emiko_game.advance_story_to_future_day(3, 780)
+	expect(emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 did not unlock at Familiarity 25 after three days")
 
 	# Asuka's identity stays hidden through the scrub-sink encounter and the
 	# postoperative hint. The encounter requires career progress and the actual
@@ -245,20 +255,21 @@ func run() -> void:
 	aqua_game.completed_surgeries_total = 4
 	aqua_game.completed_surgeries_by_group = {"general_abdominal": 4}
 	expect(not aqua_game.character_event_available(aqua_game.character_event_definitions.aqua_intro_exam_chair), "Non-gynecology operations unlocked Aqua")
-	aqua_game.completed_surgeries_by_group["female_pelvic"] = 1
+	aqua_game.set_test_character_progress_counter("", "gynecology_case_count", 1)
 	expect(aqua_game.next_character_event_at("gynecology_exam").get("id", "") == "aqua_intro_exam_chair", "Aqua introduction did not unlock after one gynecology operation")
 	expect(finish_event(aqua_game, "aqua_intro_exam_chair"), "Aqua examination-chair introduction could not complete")
 	expect(aqua_game.staff_is_met("doc_aqua") and "doc_aqua" not in aqua_game.known_staff_ids(), "Aqua became selectable before Lv1")
 	expect(not aqua_game.character_event_available(aqua_game.character_event_definitions.aqua_lv1_gyne_obsession), "Aqua Lv1 ignored the five-operation gate")
-	aqua_game.completed_surgeries_total = 8
-	aqua_game.completed_surgeries_by_group["female_pelvic"] = 5
+	aqua_game.set_test_character_progress_counter("", "gynecology_case_count", 5)
+	aqua_game.add_familiarity("doc_aqua", 10)
+	aqua_game.advance_story_to_future_day(3, 540)
 	expect(aqua_game.character_event_available(aqua_game.character_event_definitions.aqua_lv1_gyne_obsession), "Aqua Lv1 did not unlock after five gynecology operations")
 	expect(finish_event(aqua_game, "aqua_lv1_gyne_obsession"), "Aqua Lv1 gynecology event could not complete")
 	expect(aqua_game.relationship_level("doc_aqua") == 1 and "doc_aqua" in aqua_game.known_staff_ids(), "Aqua Lv1 did not unlock her surgical-team role")
 	expect(aqua_game.relation_for("doc_aqua").unlocked_benefits.has("unlock_aqua_surgical_team"), "Aqua team-unlock benefit was not recorded")
 	var aqua_snapshot: Dictionary = aqua_game.snapshot()
 	var aqua_clone = new_game()
-	expect(aqua_clone.restore(JSON.parse_string(JSON.stringify(aqua_snapshot))) and aqua_clone.completed_surgeries_by_group.get("female_pelvic", 0) == 5, "Aqua specialty progress did not survive save restore")
+	expect(aqua_clone.restore(JSON.parse_string(JSON.stringify(aqua_snapshot))) and aqua_clone.character_progress_counter("", "gynecology_case_count") == 5, "Aqua specialty progress did not survive save restore")
 
 	# Hiroko's Lv1 chain requires both nurses to be known and at least one
 	# completed operation. Part A changes Moe as well as Hiroko; Part B waits a
@@ -270,7 +281,10 @@ func run() -> void:
 	hiroko_game.advance_story_to_future_day(1, 780)
 	expect(finish_event(hiroko_game, "intro_nurse_hiroko"), "Hiroko introduction could not complete")
 	expect(finish_event(hiroko_game, "intro_nurse_moe"), "Moe introduction could not complete")
+	hiroko_game.add_familiarity("nurse_hiroko", 10)
+	hiroko_game.add_familiarity("nurse_moe", 10)
 	hiroko_game.completed_surgeries_total = 1
+	hiroko_game.advance_story_to_future_day(3, 780)
 	var part_a_definition: Dictionary = hiroko_game.character_event_definitions.hiroko_lv1_or_instrument_panic
 	expect(part_a_definition.gallery.path == "assets/events/character_events/hiroko/lv1_instrument_lesson.png" and part_a_definition.gallery.show_on_complete, "Hiroko Lv1 part A reward CG is not configured")
 	expect(ResourceLoader.exists("res://" + str(part_a_definition.gallery.path)), "Hiroko Lv1 part A reward CG resource is missing")

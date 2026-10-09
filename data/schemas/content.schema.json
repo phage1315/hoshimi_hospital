@@ -365,6 +365,11 @@
           "type": "string",
           "minLength": 1
         },
+        "actor_id": {
+          "description": "Optional visual actor override for a supporting character in a multi-character event.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
         "text": {
           "type": "string",
           "minLength": 1
@@ -408,6 +413,16 @@
         "hide_portrait": {
           "description": "Suppress character art for narration that occurs before the actor becomes visible.",
           "type": "boolean"
+        },
+        "background_id": {
+          "description": "Optional per-node background override for multi-location character events.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "outfit": {
+          "description": "Optional per-node outfit override for multi-state character events.",
+          "type": "string",
+          "minLength": 1
         },
         "allow_dialogue_scroll": {
           "description": "Exceptional opt-in for intentionally scrollable transcripts or system summaries. Ordinary VN dialogue must fit one dialogue page.",
@@ -459,7 +474,8 @@
             "location",
             "day_start",
             "preop_stage",
-            "sunday"
+            "sunday",
+            "after_work"
           ]
         },
         "background_id": {
@@ -561,184 +577,10 @@
               "minimum": 0
             },
             "special_requirements": {
-              "description": "Implemented character-event gates. Unknown requirement types remain locked.",
+              "description": "Unified authored requirements shared with special events. Unknown requirement types remain locked.",
               "type": "array",
               "items": {
-                "oneOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "player_attribute"
-                      },
-                      "attribute": {
-                        "enum": [
-                          "skill",
-                          "leadership",
-                          "charm",
-                          "reputation",
-                          "presence"
-                        ]
-                      },
-                      "minimum": {
-                        "type": "integer",
-                        "minimum": -999,
-                        "maximum": 999
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "attribute",
-                      "minimum"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "career_progress_any"
-                      },
-                      "minimum_completed_surgeries": {
-                        "type": "integer",
-                        "minimum": 0
-                      },
-                      "minimum_reputation": {
-                        "type": "integer",
-                        "minimum": -100,
-                        "maximum": 100
-                      },
-                      "minimum_day": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 365
-                      }
-                    },
-                    "required": [
-                      "type"
-                    ],
-                    "additionalProperties": false,
-                    "anyOf": [
-                      {
-                        "required": [
-                          "minimum_completed_surgeries"
-                        ]
-                      },
-                      {
-                        "required": [
-                          "minimum_reputation"
-                        ]
-                      },
-                      {
-                        "required": [
-                          "minimum_day"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "completed_surgeries"
-                      },
-                      "minimum": {
-                        "type": "integer",
-                        "minimum": 0
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "minimum"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "relationship_level"
-                      },
-                      "level": {
-                        "type": "integer",
-                        "minimum": 0,
-                        "maximum": 5
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "level"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "completed_surgeries_in_group"
-                      },
-                      "procedure_group": {
-                        "enum": [
-                          "general_abdominal",
-                          "breast",
-                          "female_pelvic",
-                          "cardiac",
-                          "thoracic",
-                          "urologic",
-                          "vascular"
-                        ]
-                      },
-                      "minimum": {
-                        "type": "integer",
-                        "minimum": 0
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "procedure_group",
-                      "minimum"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "story_flag"
-                      },
-                      "flag": {
-                        "type": "string",
-                        "pattern": "^[a-z][a-z0-9_]*$"
-                      },
-                      "value": {
-                        "type": "boolean"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "flag",
-                      "value"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "special_event_completed"
-                      },
-                      "event_id": {
-                        "type": "string",
-                        "pattern": "^[a-z][a-z0-9_]*$"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "event_id"
-                    ],
-                    "additionalProperties": false
-                  }
-                ]
+                "$ref": "#/$defs/special_event_requirement"
               }
             },
             "max_day": {
@@ -758,6 +600,17 @@
         "start": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "opening_variants": {
+          "description": "Selects the opening node for an authored context-specific branch.",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
         },
         "nodes": {
           "type": "array",
@@ -1332,6 +1185,43 @@
       ],
       "additionalProperties": false
     },
+    "crisis_callout_variant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "tone": {
+          "enum": [
+            "professional",
+            "character",
+            "hoshimi"
+          ]
+        },
+        "weight": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "attempt_lines": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "tone",
+        "weight",
+        "attempt_lines"
+      ],
+      "additionalProperties": false
+    },
     "staff": {
       "type": "object",
       "properties": {
@@ -1370,9 +1260,121 @@
           "type": "string",
           "minLength": 1
         },
-        "familiarity_gain_multiplier": {
-          "type": "number",
-          "minimum": 0
+        "familiarity_rules": {
+          "type": "object",
+          "properties": {
+            "base": {
+              "type": "number",
+              "minimum": 0
+            },
+            "operations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "enum": [
+                      "player_attribute",
+                      "relationship_level",
+                      "progress_counter"
+                    ]
+                  },
+                  "actor_id": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]*$"
+                  },
+                  "counter_id": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]*$"
+                  },
+                  "attribute": {
+                    "enum": [
+                      "skill",
+                      "leadership",
+                      "charm",
+                      "reputation",
+                      "presence"
+                    ]
+                  },
+                  "mode": {
+                    "enum": [
+                      "replace",
+                      "add",
+                      "multiply"
+                    ]
+                  },
+                  "bands": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "minimum": {
+                          "type": "integer"
+                        },
+                        "maximum": {
+                          "type": "integer"
+                        },
+                        "value": {
+                          "type": "number",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "input",
+                  "mode",
+                  "bands"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "clamp": {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "maximum": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            },
+            "source_overrides": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "fixed_reward": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minimum_reward": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "maximum_reward": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "base"
+          ],
+          "additionalProperties": false
         },
         "skills": {
           "type": "object",
@@ -1660,6 +1662,40 @@
           ],
           "additionalProperties": false
         },
+        "crisis_callouts": {
+          "description": "Escalating attempt-1/2/3 physiologic-crisis reports used when this nurse is assigned to the circulating role.",
+          "type": "object",
+          "properties": {
+            "hypotension": {},
+            "hypertension": {},
+            "tachycardia": {},
+            "bradycardia": {},
+            "arrhythmia": {},
+            "desaturation": {},
+            "respiratory_instability": {},
+            "generic_instability": {}
+          },
+          "required": [
+            "hypotension",
+            "hypertension",
+            "tachycardia",
+            "bradycardia",
+            "arrhythmia",
+            "desaturation",
+            "respiratory_instability",
+            "generic_instability"
+          ],
+          "additionalProperties": false,
+          "patternProperties": {
+            "^(hypotension|hypertension|tachycardia|bradycardia|arrhythmia|desaturation|respiratory_instability|generic_instability)$": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/crisis_callout_variant"
+              }
+            }
+          }
+        },
         "procedure_group_team_dialogue": {
           "type": "object",
           "propertyNames": {
@@ -1738,6 +1774,17 @@
         "h_profile": {
           "$ref": "#/$defs/adult_intimacy_profile"
         },
+        "preop_graphic_wrapper": {
+          "type": "object",
+          "properties": {
+            "open": {"type": "string", "minLength": 1},
+            "insert_a": {"type": "string", "minLength": 1},
+            "insert_b": {"type": "string", "minLength": 1},
+            "close": {"type": "string", "minLength": 1}
+          },
+          "required": ["open", "insert_a", "insert_b", "close"],
+          "additionalProperties": false
+        },
         "personal_nurse": {
           "type": "object",
           "properties": {
@@ -1812,6 +1859,39 @@
         "surgery_proficiency",
         "presence",
         "team_dialogue"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "profession": {"const": "nurse"},
+              "surgical_roles": {
+                "contains": {"const": "circulating_nurse"}
+              }
+            },
+            "required": ["profession", "surgical_roles"]
+          },
+          "then": {
+            "required": ["crisis_callouts"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "profession": {"const": "nurse"},
+              "personal_nurse": {
+                "properties": {
+                  "eligible": {"const": true}
+                },
+                "required": ["eligible"]
+              }
+            },
+            "required": ["profession", "personal_nurse"]
+          },
+          "then": {
+            "required": ["preop_graphic_wrapper"]
+          }
+        }
       ],
       "additionalProperties": false
     },
@@ -2373,19 +2453,102 @@
               "event_id": {
                 "type": "string"
               },
+              "content_status": {
+                "description": "Whether this milestone has playable authored content, is a gate-only placeholder for future writing, or is deliberately unavailable for this route.",
+                "enum": [
+                  "authored",
+                  "planned",
+                  "unavailable"
+                ]
+              },
               "benefit_id": {
                 "type": "string"
               },
+              "gate_event_id": {
+                "type": "string"
+              },
+              "min_familiarity": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "cooldown_days": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 365
+              },
               "special_requirements": {
                 "type": "array",
-                "maxItems": 0
+                "items": {
+                  "$ref": "#/$defs/special_event_requirement"
+                }
               }
             },
             "required": [
               "target_level",
               "event_id",
+              "content_status",
               "benefit_id",
+              "min_familiarity",
+              "cooldown_days",
               "special_requirements"
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "content_status": {
+                      "const": "authored"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "event_id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]*$"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "content_status": {
+                      "enum": [
+                        "planned",
+                        "unavailable"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "event_id": {
+                      "const": ""
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "content_status": {
+                      "const": "unavailable"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "benefit_id": {
+                      "const": ""
+                    },
+                    "special_requirements": {
+                      "maxItems": 0
+                    }
+                  }
+                }
+              }
             ],
             "additionalProperties": false
           }
@@ -3267,6 +3430,9 @@
               "effects": {
                 "$ref": "#/$defs/surgery_strategic_effects"
               },
+              "strategic_effects": {
+                "$ref": "#/$defs/surgery_strategic_effects"
+              },
               "response": {
                 "type": "string",
                 "minLength": 1
@@ -3279,12 +3445,7 @@
                 ]
               }
             },
-            "required": [
-              "when",
-              "effects",
-              "response",
-              "response_role"
-            ],
+            "required": ["when", "response", "response_role"],
             "additionalProperties": false
           }
         }
@@ -3315,8 +3476,33 @@
         "blood_loss": {
           "type": "integer"
         },
+        "bleeding": {
+          "type": "integer"
+        },
         "stability": {
           "type": "integer"
+        },
+        "set_flags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "clear_flags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "add_complications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "severity": {"type": "string"}
+            },
+            "required": ["id", "severity"],
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": false
@@ -3324,6 +3510,20 @@
     "surgery_strategic_condition": {
       "type": "object",
       "properties": {
+        "any": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/surgery_strategic_condition"}
+        },
+        "all": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/surgery_strategic_condition"}
+        },
+        "field": {
+          "type": "string"
+        },
+        "op": {
+          "enum": ["lt", "lte", "gt", "gte", "eq", "neq"]
+        },
         "metric": {
           "enum": [
             "progress",
@@ -3344,14 +3544,9 @@
           ]
         },
         "value": {
-          "type": "integer"
+          "type": ["integer", "boolean"]
         }
       },
-      "required": [
-        "metric",
-        "operator",
-        "value"
-      ],
       "additionalProperties": false
     },
     "surgery_flow_stage": {
@@ -3375,6 +3570,21 @@
         "prompt": {
           "type": "string",
           "minLength": 1
+        },
+        "transition_text": {
+          "type": "string"
+        },
+        "stage_kind": {
+          "enum": ["fixed", "conditional_correction"]
+        },
+        "progress_delta": {
+          "type": "integer"
+        },
+        "entry_condition": {
+          "$ref": "#/$defs/surgery_strategic_condition"
+        },
+        "once_per_episode": {
+          "type": "boolean"
         },
         "awake_interlude": {
           "enum": [
@@ -3547,9 +3757,12 @@
             "elapsed_time": {
               "type": "number"
             },
-            "stress": {
-              "type": "number"
-            }
+              "stress": {
+                "type": "number"
+              },
+              "bleeding": {
+                "type": "number"
+              }
           },
           "required": [
             "stability",
@@ -3733,6 +3946,24 @@
               "genital"
             ]
           }
+        },
+        "case_variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "weight": {"type": "integer", "minimum": 0},
+              "initial_visibility": {"type": "integer", "minimum": 0, "maximum": 100},
+              "player_hint": {"type": "string"}
+            },
+            "required": ["id", "weight", "initial_visibility"],
+            "additionalProperties": false
+          }
+        },
+        "fixed_stage_progress": {
+          "type": "array",
+          "items": {"type": "integer", "minimum": 0}
         }
       },
       "required": [
@@ -4417,6 +4648,8 @@
         "kind": {
           "enum": [
             "story",
+            "graphic_preop_choice",
+            "graphic_preop_dialogue",
             "team",
             "preparation",
             "changing",
@@ -4576,6 +4809,9 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 100
+        },
+        "graphic_preop": {
+          "type": "object"
         },
         "roles": {
           "type": "array",
@@ -5182,6 +5418,74 @@
           "type": "object",
           "properties": {
             "type": {
+              "const": "staff_skill"
+            },
+            "actor_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "skill": {
+              "enum": [
+                "surgery",
+                "diagnostics",
+                "teamwork",
+                "patient_care",
+                "instrument_handling",
+                "calmness"
+              ]
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "type",
+            "actor_id",
+            "skill",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "staff_relationship_count"
+            },
+            "team_category": {
+              "enum": [
+                "doctor",
+                "nurse"
+              ]
+            },
+            "minimum_level": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "minimum_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "exclude_actor_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            }
+          },
+          "required": [
+            "type",
+            "team_category",
+            "minimum_level",
+            "minimum_count"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
               "const": "player_attribute"
             },
             "attribute": {
@@ -5297,11 +5601,49 @@
           "type": "object",
           "properties": {
             "type": {
+              "const": "progress_counter"
+            },
+            "actor_id": {
+              "description": "Defaults to the character event actor; omit for a global counter.",
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "counter_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "type",
+            "counter_id",
+            "minimum"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
               "const": "relationship_level"
             },
             "actor_id": {
+              "description": "Defaults to the character event actor for legacy/self requirements.",
               "type": "string",
               "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "level": {
+              "description": "Legacy exact-level form used by character events.",
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
             },
             "minimum": {
               "type": "integer",
@@ -5315,9 +5657,20 @@
             }
           },
           "required": [
-            "type",
-            "actor_id",
-            "minimum"
+            "type"
+          ],
+          "oneOf": [
+            {
+              "required": [
+                "level"
+              ]
+            },
+            {
+              "required": [
+                "actor_id",
+                "minimum"
+              ]
+            }
           ],
           "additionalProperties": false
         },
@@ -5371,6 +5724,27 @@
           "properties": {
             "type": {
               "const": "flag"
+            },
+            "flag": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "flag",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "story_flag"
             },
             "flag": {
               "type": "string",
@@ -5664,6 +6038,28 @@
                 "pattern": "^[a-z][a-z0-9_]*$"
               },
               "uniqueItems": true
+            },
+            "familiarity": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "actor_id": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]*$"
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "minimum": -20,
+                    "maximum": 20
+                  }
+                },
+                "required": [
+                  "actor_id",
+                  "amount"
+                ],
+                "additionalProperties": false
+              }
             },
             "set_local": {
               "type": "object"

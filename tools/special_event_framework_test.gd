@@ -14,6 +14,11 @@ func expect(condition: bool, message: String) -> void:
 
 func configure_clone(clone, app) -> void:
 	clone.configure(app.content.collections.encounters, app.content.collections.preops, app.content.collections.staff, app.content.collections.time_events, app.content.collections.surgeries, app.content.collections.patients, app.content.collections.relationships, app.content.collections.character_events, app.content.collections.case_templates, app.content.collections.micro_events, app.content.collections.examination_cg_pools, app.content.collections.surgery_team_dialogue_profiles, app.content.collections.patient_interactions, app.content.collections.temporary_conditions, app.content.collections.staff_role_cg_rewards, app.content.collections.special_events, app.content.collections.special_event_steps)
+	# Tests add zero-time and timing-only definitions at runtime. A restored clone
+	# must know those definitions just as a real build knows all authored content.
+	for event_id in app.game.special_event_definitions:
+		if not clone.special_event_definitions.has(event_id):
+			clone.special_event_definitions[event_id] = app.game.special_event_definitions[event_id].duplicate(true)
 
 func replay_for(game, event_id: String):
 	var definition: Dictionary = game.special_event_definitions[event_id]
@@ -82,8 +87,8 @@ func run() -> void:
 	zero_time.completion_flags = []
 	zero_time.gallery_unlock = false
 	app.game.special_event_definitions[zero_time.id] = zero_time
-	var zero_start_day := app.game.day_number()
-	var zero_start_elapsed := app.game.elapsed()
+	var zero_start_day: int = app.game.day_number()
+	var zero_start_elapsed: int = app.game.elapsed()
 	expect(app.game.start_special_event(zero_time.id) != null, "Zero-time special event did not start")
 	expect(app.game.choose_special_event("continue").accepted, "Zero-time event did not advance")
 	var zero_finish: Dictionary = app.game.choose_special_event("finish")
@@ -105,7 +110,10 @@ func run() -> void:
 	var mid_save: Dictionary = app.game.snapshot()
 	var clone = GameState.new()
 	configure_clone(clone, app)
-	expect(clone.restore(JSON.parse_string(JSON.stringify(mid_save))), "In-progress multi-day event save did not restore")
+	var restored_mid_event: bool = clone.restore(JSON.parse_string(JSON.stringify(mid_save)))
+	if not restored_mid_event:
+		push_error("Mid-event restore detail: " + clone.last_error)
+	expect(restored_mid_event, "In-progress multi-day event save did not restore")
 	expect(clone.active_mode == "special_event" and clone.active_special_event.step_index == 1, "Restored event lost its day/step lock")
 	var day_two: Dictionary = clone.choose_special_event("day_2_done")
 	expect(day_two.day_finished and not day_two.event_finished and clone.active_special_event.step_index == 2, "Day 2 did not chain automatically to Day 3")

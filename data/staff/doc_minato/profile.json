@@ -1,0 +1,84 @@
+{
+  "id": "doc_minato",
+  "name": "遥凑",
+  "age": 30,
+  "profession": "doctor",
+  "specialty": "普通外科／开放手术",
+  "rank": "普通外科医生",
+  "personality": "成熟松弛、会照顾人、很会记住患者和同事，却容易忘记日期、排程与下一步安排；真正站上手术台后可靠而专注",
+  "appearance": "用户提供原作参考图 · AI高清补绘为白大褂、短袖刷手服、完整无菌手术服与常服半身透明立绘",
+  "skills": {"surgery": 84, "diagnostics": 78, "teamwork": 82, "patient_care": 90, "instrument_handling": 80, "calmness": 86},
+  "surgical_roles": ["primary_surgeon", "assistant_surgeon"],
+  "visuals": {
+    "color": "b47752",
+    "default_outfit": "white_coat",
+    "outfits": ["white_coat", "scrubs", "sterile", "casual"],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v21/doc_minato/white_coat/neutral.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v21/doc_minato/white_coat/surprised.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v21/doc_minato/white_coat/serious.png",
+      "white_coat/warm": "assets/characters/portrait_pack_v21/doc_minato/white_coat/warm.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v21/doc_minato/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v21/doc_minato/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v21/doc_minato/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v21/doc_minato/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v21/doc_minato/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v21/doc_minato/sterile/focused.png",
+      "sterile/worried": "assets/characters/portrait_pack_v21/doc_minato/sterile/worried.png",
+      "sterile/warm": "assets/characters/portrait_pack_v21/doc_minato/sterile/warm.png",
+      "casual/neutral": "assets/characters/portrait_pack_v21/doc_minato/casual/neutral.png",
+      "casual/smile": "assets/characters/portrait_pack_v21/doc_minato/casual/smile.png",
+      "casual/amused": "assets/characters/portrait_pack_v21/doc_minato/casual/amused.png",
+      "casual/thoughtful": "assets/characters/portrait_pack_v21/doc_minato/casual/thoughtful.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_minato/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_minato/neutral.png",
+      "required_for": ["operative_field_hud"]
+    }
+  },
+  "dialogue_style": "语气松弛、自然、略带成熟玩笑；面对患者会记得具体的人和担忧，真正进入手术状态后语言简洁、判断稳定",
+  "flags": ["general_surgery", "open_surgery_specialist", "minato_intro_pending"],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "advanced",
+  "presence": {"fixed_locations": ["or", "clinic"], "random_locations": ["lounge", "hallway", "rooftop"]},
+  "team_dialogue": {
+    "assignment": "遥凑看了一眼术前资料，先确认患者和术式，再很自然地把自己的排程问题放到一边。",
+    "intraoperative": "遥凑在术野前迅速收起松弛的语气，凭记忆确认患者情况并给出稳定明确的判断。",
+    "confirmation": "遥凑确认患者、术式和团队职责；她可能忘了日期，但不会忘记自己正在照顾谁。",
+    "role_confirmation": "「主刀确认。患者和术式我已经核对过了，开始吧。」",
+    "stabilize": "「先别急。保持术野，我来确认下一步。」"
+  },
+  "characterization": {
+    "public_persona": "成熟、亲切、略显随性而有松弛感的普通外科医生；很容易和患者及同事建立舒服的距离。",
+    "core_traits": ["成熟", "松弛", "温柔", "会照顾人", "善于观察", "临床可靠", "排程健忘"],
+    "strengths": ["记得患者的具体经历、恐惧和术后顾虑", "开放手术稳定，进入手术状态后高度可靠", "能迅速察觉患者和同事的情绪变化", "计划被打乱时不容易失控"],
+    "flaws": ["容易忘记日期、预约和下一步安排", "交接与前瞻性记忆需要系统兜底", "忙起来会忘记吃饭和休息", "常把自己刚刚确认过的事情再次确认"],
+    "stress_behavior": "临床风险出现时会立即收束玩笑、缩短语言并按优先级处理；生活排程出错时则会先认真计算，偶尔用一本正经的方式解释荒唐结果。",
+    "professional_behavior": "术前重视患者沟通和既往细节，术中保持冷静并准确完成开放手术，术后会记得患者最在意的恢复问题。",
+    "relationship_arc": "坂口先看到她排程混乱却手术可靠的一面，随后在共同建立可靠流程、共同承担错误和日常相处中形成成熟而松弛的亲密关系。",
+    "speech_style": "低压力、自然、偶尔轻轻调侃；面对患者会放慢语速解释，站上手术台后转为简洁、清楚、稳定。",
+    "ethical_handling": "健忘只能造成排程和社交层面的麻烦，不能被写成拿患者安全、无菌、同意或术式风险开玩笑。"
+  },
+  "familiarity_rules": {
+    "base": 1.2,
+    "operations": [
+      {
+        "input": "relationship_level",
+        "mode": "replace",
+        "bands": [
+          {"maximum": 0, "value": 1.2},
+          {"minimum": 1, "maximum": 1, "value": 1.2},
+          {"minimum": 2, "maximum": 2, "value": 0.9},
+          {"minimum": 3, "maximum": 3, "value": 1.1},
+          {"minimum": 4, "value": 1.25}
+        ]
+      }
+    ],
+    "clamp": {"minimum": 0.5, "maximum": 1.25}
+  }
+}

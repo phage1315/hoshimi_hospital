@@ -2,7 +2,9 @@ extends SceneTree
 const Loader = preload("res://godot/scripts/content_loader.gd")
 const Preop = preload("res://godot/systems/preop_session.gd")
 const Game = preload("res://godot/systems/game_state.gd")
+const PreopView = preload("res://godot/ui/preop_view.gd")
 var content = Loader.new()
+var english_content = Loader.new()
 var checks := 0
 var failures := 0
 
@@ -15,15 +17,18 @@ func expect(condition: bool, message: String) -> void:
 func _initialize() -> void:
 	call_deferred("run")
 
-func fixture() -> RefCounted:
+func fixture(source = null, locale: String = "zh_CN") -> RefCounted:
+	if source == null:
+		source = content
 	var definition := {
 		"id": "crisis_test", "patient_id": "patient_sora", "encounter_id": "visit_sora", "surgery_id": "surgery_appendix", "start": "surgery_flow",
+		"_locale": locale,
 		"initial_anxiety": 2, "initial_interaction": {"fear": 35, "pain": 0, "dignity": 100, "cooperation": 70},
 		"roles": [], "ward_role": {"id": "ward_nurse"}, "preparations": [], "max_optional_preparations": 0,
 		"care_reassurance_threshold": 70, "completion": "surgery_abort",
 		"stages": [{"id": "surgery_flow", "title": "Crisis Test", "scene": "operating_room", "kind": "surgery_flow", "speaker": "narrator", "next": "surgery_flow", "actions": [], "background_id": "operating_room"}],
 	}
-	var prep = Preop.new(definition, content.collections.staff, content.collections.surgeries, content.collections.patients, [], false, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions)
+	var prep = Preop.new(definition, source.collections.staff, source.collections.surgeries, source.collections.patients, [], false, source.collections.surgery_team_dialogue_profiles, source.collections.patient_interactions, source.collections.temporary_conditions)
 	prep.procedure_id = "surgery_appendix"
 	prep.procedure_name = "开腹阑尾切除"
 	prep.initialize_procedure_state()
@@ -46,6 +51,7 @@ func completion_probability(node_count: int, crisis_chance: float, rescue_chance
 
 func run() -> void:
 	expect(content.load_all(), "Could not load content")
+	expect(english_content.load_all("en"), "Could not load English content")
 	var prep = fixture()
 	prep.fear = 95
 	prep.pain = 95
@@ -63,6 +69,25 @@ func run() -> void:
 	var first_option: Dictionary = first_step.options[0]
 	expect(crisis_prep.apply({"kind": "surgery_step", "id": first_option.id, "crisis_roll": 0}), "Forced crisis surgery step was rejected")
 	expect(not crisis_prep.active_crisis.is_empty() and not crisis_prep.awaiting_flow_acknowledgement, "Forced crisis did not pause the surgery node")
+	expect(crisis_prep.active_crisis.flavor_id == "hypotension" and crisis_prep.active_crisis.speaker_actor_id == "nurse_rin", "Crisis did not bind the rolled symptom and assigned circulating nurse")
+	expect(not str(crisis_prep.active_crisis.callout_variant_id).is_empty() and crisis_prep.feedback_speaker == "staff" and crisis_prep.last_staff_id == "nurse_rin", "Crisis did not select and present the circulating nurse's authored callout")
+	var rolled_flavors: Array[String] = []
+	for flavor_roll in range(8):
+		rolled_flavors.append(crisis_prep.crisis_flavor_id_from_roll(flavor_roll))
+	expect(rolled_flavors == Preop.CRISIS_FLAVOR_IDS, "The deterministic roll did not expose the complete locked crisis-flavor pool")
+	crisis_prep.operative_background_id = "operating_team_01"
+	crisis_prep.flags.append("incision_made")
+	var app = load("res://godot/scenes/main.tscn").instantiate()
+	root.add_child(app)
+	await process_frame
+	PreopView.render(app, crisis_prep)
+	var record_speaker = app.page.get_node_or_null("PreopRecordSpeaker")
+	var record_text = app.page.get_node_or_null("PreopRecordText")
+	expect(app.page.get_node_or_null("StaffInteractionPortrait") != null, "Active crisis did not show the circulating nurse portrait")
+	expect(record_speaker != null and record_speaker.text == "中井 美佳", "Active crisis did not identify the circulating nurse in the record panel")
+	expect(record_text != null and record_text.text == crisis_prep.crisis_callout_text(), "Active crisis callout was not visible beside the rescue choices")
+	expect(app.page.get_node_or_null("CrisisRescue_pause_and_stabilize") != null and app.page.get_node_or_null("CrisisRescue_hold_field_team_rescue") != null and app.page.get_node_or_null("CrisisRescue_finish_critical_action") != null, "Crisis callout displaced one or more rescue choices")
+	app.queue_free()
 	expect(crisis_prep.apply({"kind": "crisis_rescue", "id": "pause_and_stabilize", "roll": 0}), "Successful rescue was rejected")
 	expect(crisis_prep.awaiting_crisis_acknowledgement and not crisis_prep.surgery_aborted, "Successful rescue did not stabilize the patient")
 	expect(crisis_prep.apply({"kind": "crisis_acknowledge"}) and crisis_prep.active_crisis.is_empty(), "Resolved crisis did not return to the node flow")
@@ -71,14 +96,34 @@ func run() -> void:
 	first_step = abort_prep.surgery_flow_steps()[0]
 	first_option = first_step.options[0]
 	expect(abort_prep.apply({"kind": "surgery_step", "id": first_option.id, "crisis_roll": 0}), "Could not start abort-path crisis")
+	var original_flavor: String = str(abort_prep.active_crisis.flavor_id)
+	var original_variant: String = str(abort_prep.active_crisis.callout_variant_id)
+	var escalation_lines: Array[String] = [abort_prep.crisis_callout_text()]
 	for attempt in range(3):
 		expect(abort_prep.apply({"kind": "crisis_rescue", "id": "finish_critical_action", "roll": 9999}), "Failed rescue attempt %s was rejected" % (attempt + 1))
+		if attempt < 2:
+			expect(abort_prep.active_crisis.flavor_id == original_flavor and abort_prep.active_crisis.callout_variant_id == original_variant, "Failed rescue rerolled the symptom or nurse line instead of escalating it")
+			escalation_lines.append(abort_prep.crisis_callout_text())
+	expect(escalation_lines.size() == 3 and escalation_lines[0] != escalation_lines[1] and escalation_lines[1] != escalation_lines[2], "Crisis attempts did not use three distinct escalating reports")
 	expect(abort_prep.surgery_aborted and abort_prep.stage_id == "surgery_abort" and not abort_prep.surgery_success, "Three failed rescues did not abort the procedure safely")
 	expect(int(abort_prep.procedure_state.stability) >= 40, "Additional support did not leave the aborted patient stable")
 	var replayed_abort = fixture()
 	for event in abort_prep.events:
 		expect(replayed_abort.apply(event), "Recorded crisis event could not be replayed")
 	expect(replayed_abort.surgery_aborted and replayed_abort.crisis_history == abort_prep.crisis_history and replayed_abort.procedure_state == abort_prep.procedure_state, "Crisis event log did not replay deterministically")
+
+	var generic_prep = fixture()
+	generic_prep.team.erase("circulating_nurse")
+	first_step = generic_prep.surgery_flow_steps()[0]
+	first_option = first_step.options[0]
+	expect(generic_prep.apply({"kind": "surgery_step", "id": first_option.id, "crisis_roll": 0}), "Generic-fallback crisis could not start")
+	expect(generic_prep.active_crisis.speaker_actor_id == "" and generic_prep.crisis_callout_speaker_name() == "巡回护士" and not generic_prep.crisis_callout_text().is_empty(), "Missing circulating nurse did not use the generic callout fallback")
+
+	var english_prep = fixture(english_content, "en")
+	first_step = english_prep.surgery_flow_steps()[0]
+	first_option = first_step.options[0]
+	expect(english_prep.apply({"kind": "surgery_step", "id": first_option.id, "crisis_roll": 0}), "English crisis could not start")
+	expect(english_prep.feedback.contains("Blood pressure") and not english_prep.feedback.contains("血压"), "English circulating-nurse crisis callout was not localized")
 
 	var legacy_prep = fixture()
 	first_step = legacy_prep.surgery_flow_steps()[0]

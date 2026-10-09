@@ -266,3 +266,22 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 - 导入用户提供的成年角色医疗裸体 CG `assets/events/character_events/satsuki/cg/lv3/cg_satsuki_lv3_yurika_skin_prep_v1.png`，表现折川皐月为百合香完成术前下腹及会阴完整备皮。
 - 运行时绑定 `satsuki_lv3_wrong_patient_appendectomy_main / s03_019`，在一次性剃刀开始操作时显示；同步将本段文字调整为星见流程中的全裸准备和完整阴毛处理，随后衔接戴手术帽、覆盖并转运。
 - 原图为 `1584 × 1056` RGB PNG，SHA-256 与来源见 `research/imports/nurse_satsuki_lv3_yurika_skin_prep_cg_2026-10-05.json`。
+
+### 遥凑 Intro / 惠事件专用立绘（2026-10-07）
+
+- 使用用户提供的惠 / Megumi Reinard 原作参考图，通过内置 ImageGen 生成事件专用半身透明立绘。
+- 病房组保存于 `assets/events/character_events/minato_intro/megumi/ward/`：短袖纯白日式护士裙制服与纯白护士帽，包含 `professional`、`focused`、`dry_admonishing`、`reassuring`、`knowing` 五种差分。
+- 手术室组保存于 `assets/events/character_events/minato_intro/megumi/or/`：长袖手术袍、系带口罩与完全遮发手术帽，包含同名五种差分。
+- 小夜香初见事件 CG 保存于 `assets/events/character_events/minato_intro/cg/`：`megumi_wakes_her.png`（惠叫醒艾莉娜）、`minato_names_player.png`（艾莉娜已坐上转运车并与遥凑争辩手术日期）、`baseball_small_talk.png`（坂口助手侧主观视角的术中棒球对话）、`erina_postop_baseball.png`（术后艾莉娜观看棒球直播）。
+- 遥凑事件术后散步素材：`assets/backgrounds/v12/minato_riverside_walk.png` 为城市河边散步道背景；`assets/events/character_events/minato_intro/cg/minato_riverside_coffee.png` 为遥凑在自动贩卖机前拿罐装咖啡并向坂口眨眼的结尾 CG。两者绑定在 `minato_riverside_walk` 与 `minato_riverside_coffee` 节点。
+- 惠保持 story-only，不建立正式 staff profile；素材由 `minato_intro_sunday_cholecystectomy_main` 直接引用。
+
+### 艾莉娜术前、术中与术后事件立绘（2026-10-07）
+
+- 术前无帽病号服差分位于 `assets/characters/portrait_pack_v21/patient_erin/ward_preparation/`，包含 `dazed`、`surprised`、`irritated`。
+- 术中肩部以上清醒患者差分位于 `assets/characters/portrait_pack_v21/patient_erin/intraoperative/`，采用平躺俯视暗示构图，包含 `tense_amused`、`skeptical`、`resigned`；不包含手臂、托脸或手术器械。
+- 术后病号服差分位于 `assets/characters/portrait_pack_v21/patient_erin/postoperative/`，包含 `exhausted`、`relieved`、`baseball`。
+- 术前准备完成后至手术结束使用的带手术帽患者差分，来自用户提供的透明 PNG，位于 `assets/characters/portrait_pack_v21/patient_erin/intraoperative_nude/`，包含 `prepared_arms_crossed`、`prepared_hand_head`、`exhausted`、`skeptical`、`amused`；事件中保持半身构图，并与病房病号服差分分开使用。
+- 相关素材由 `minato_intro_sunday_cholecystectomy_main` 直接引用；病房争论使用 `minato_names_player` CG，术中与术后 CG 保持原有节点绑定。
+- 遥凑补齐术中 HUD 头像 `assets/characters/intraoperative_staff_avatars_v1/doc_minato/neutral.png`，以及助手医生角色奖励 CG `assets/events/staff_surgery_v1/doc_minato/assistant_confirmation.png`；两项均登记在 `doc_minato` 数据包中。
+- 遥凑通用约会资料登记为 `date_doc_minato`，偏好咖啡店、河边公园、大型书店和意大利小餐馆；星期日初见事件的河边散步仍保持为专用事件段落，不改用通用约会系统。

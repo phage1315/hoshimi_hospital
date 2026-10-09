@@ -120,5 +120,148 @@
       "sufficient_evidence": [],
       "chatter": []
     }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「真想听？好。先把最容易让人误会的地方说清楚，免得你躺上去以后才装作没事。」",
+    "insert_a": "「你刚才说不怕，手却一直攥着被角。这部分我再讲慢一点。」",
+    "insert_b": "「听着可怕和真的出了问题不是一回事。该停的时候，我们比你先知道。」",
+    "close": "「能问出来就好。最麻烦的是一路点头，进门才说自己其实什么都没听懂。」"
+  },
+  "familiarity_rules": {
+    "base": 1.0,
+    "operations": [
+      {
+        "input": "relationship_level",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 0,
+            "value": 1.0
+          },
+          {
+            "minimum": 1,
+            "maximum": 1,
+            "value": 0.9
+          },
+          {
+            "minimum": 2,
+            "maximum": 2,
+            "value": 0.75
+          },
+          {
+            "minimum": 3,
+            "value": 0.6
+          }
+        ]
+      }
+    ]
+  },
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压在往下。",
+          "下降得很快。",
+          "血压已经太低了，不能再等。"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压升高。",
+          "升得很明显。",
+          "血压已经高得很危险。"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率上升。",
+          "还没停下来。",
+          "心率已经太快了。"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率下降。",
+          "越来越慢。",
+          "心率已经太低了。"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心律乱了。",
+          "节律已经不是刚才那个样子。",
+          "心律已经严重紊乱。"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血氧下降。",
+          "还在掉。",
+          "血氧已经太低了。"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "呼吸状态变了。",
+          "通气越来越不稳定。",
+          "通气状态已经很危险。"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "患者状态不稳。",
+          "监护还在恶化。",
+          "患者已经非常不稳定。"
+        ]
+      },
+      {
+        "id": "hoshimi",
+        "tone": "hoshimi",
+        "weight": 1,
+        "attempt_lines": [
+          "患者状态不稳。今天这台，好像开始不想让我们顺利结束了。",
+          "监护还在恶化，看来它很坚持。",
+          "患者已经非常不稳定。现在先让它闭嘴。"
+        ]
+      }
+    ]
   }
 }

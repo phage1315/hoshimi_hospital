@@ -13,170 +13,285 @@
     "initial_state": {
       "stability": 100,
       "blood_loss": 0,
-      "visibility": 60,
+      "visibility": 90,
       "progress": 0,
       "elapsed_time": 0,
-      "stress": 0
+      "stress": 0,
+      "bleeding": 0
     },
     "stages": [
       {
-        "id": "abdominal_entry",
-        "title": "切开与进入",
+        "id": "appendix_01_entry",
+        "title": "切口与腹壁进入",
         "kind": "confirm",
-        "prompt": "切口完成，右下腹已经进入。团队等待坂口确认继续建立术野。",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "切口开始后，器械护士按顺序递入进入腹壁所需器械，助手医生维持切口暴露，巡回护士在无菌区外确认灯光、吸引与记录。皮肤、皮下和腹壁层次依次进入。",
+        "prompt": "腹壁层次已经进入，团队等待坂口医生确认继续。",
         "options": [
           {
-            "id": "confirm_entry",
-            "label": "确认进入腹腔，继续",
-            "response": "「进入顺利，可以继续建立术野。」",
+            "id": "appendix_confirm_entry",
+            "label": "确认进入腹壁，继续",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 8,
-              "elapsed_time": 10,
-              "visibility": 5
+              "elapsed_time": 6,
+              "bleeding": 1,
+              "blood_loss": 2
             }
           }
         ],
         "awake_interlude": "operative_contact",
         "patient_cues": [
           "incision",
-          "pressure"
+          "exposure"
         ]
       },
       {
-        "id": "establish_exposure",
-        "title": "建立术野",
+        "id": "appendix_02_exposure",
+        "title": "腹膜进入与建立右下腹术野",
         "kind": "decision",
-        "prompt": "回盲部区域已经可以观察，但暴露余量有限。接下来怎样建立术野？",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "腹膜进入后，助手逐步调整牵开，回盲部区域开始进入视野。",
+        "prompt": "接下来怎样建立右下腹术野？",
         "options": [
           {
-            "id": "standard_exposure",
-            "label": "按常规扩大暴露",
-            "response": "「这样够了。右下腹的关系已经清楚很多。」",
+            "id": "appendix_wide_exposure",
+            "label": "先调整牵开，把右下腹术野做清楚",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 12,
-              "elapsed_time": 8,
-              "visibility": 15
+              "elapsed_time": 7,
+              "visibility": 10,
+              "bleeding": 1,
+              "blood_loss": 3
             }
           },
           {
-            "id": "wide_exposure",
-            "label": "再花一点时间，把术野做得更宽",
-            "response": "「现在非常清楚。不过我们多花了一点时间。」",
+            "id": "appendix_current_exposure",
+            "label": "按当前暴露继续进入",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 12,
-              "elapsed_time": 12,
-              "visibility": 25
-            }
-          },
-          {
-            "id": "minimal_exposure",
-            "label": "现在已经能看见，先往下做",
-            "response": "「可以，但余量不大。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 12,
               "elapsed_time": 5,
-              "visibility": 5
+              "visibility": 3,
+              "bleeding": 2,
+              "blood_loss": 4
             }
           }
         ],
         "awake_interlude": "ongoing_interaction",
         "patient_cues": [
-          "pressure"
+          "pressure",
+          "exposure"
         ]
       },
       {
-        "id": "identify_appendix",
-        "title": "找到阑尾",
+        "id": "appendix_03_identify",
+        "title": "寻找盲肠并定位阑尾",
         "kind": "decision",
-        "prompt": "回盲部已经出现。现在需要找到并确认阑尾。",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "回盲部已经显露，团队沿解剖关系寻找阑尾。",
+        "prompt": "怎样确认阑尾的位置？",
         "options": [
           {
-            "id": "systematic_identification",
-            "label": "沿现有解剖关系逐步确认",
-            "response": "「确认到了。位置和周围关系都清楚。」",
+            "id": "appendix_systematic_identification",
+            "label": "沿盲肠关系逐步定位阑尾",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 14,
-              "elapsed_time": 6,
-              "visibility": 5
-            }
-          },
-          {
-            "id": "assistant_retraction",
-            "label": "让助手调整牵拉，再确认",
-            "response": "「好，我来维持这里。现在看会容易很多。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 14,
               "elapsed_time": 7,
-              "visibility": 12
+              "visibility": 8,
+              "bleeding": 1,
+              "blood_loss": 3
             }
           },
           {
-            "id": "direct_identification",
-            "label": "现在已经看得差不多，直接确认",
-            "response": "「好，按你的判断继续。」",
+            "id": "appendix_direct_identification",
+            "label": "按当前术野直接寻找阑尾",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 14,
-              "elapsed_time": 4
+              "elapsed_time": 5,
+              "visibility": -2,
+              "bleeding": 3,
+              "blood_loss": 4
             },
             "conditional_effects": [
               {
                 "when": {
-                  "metric": "visibility",
-                  "operator": "<",
-                  "value": 75
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    }
+                  ]
                 },
-                "effects": {
-                  "visibility": -10,
-                  "blood_loss": 4
+                "strategic_effects": {
+                  "visibility": -5
                 },
-                "response": "「等等——这里没有刚才看起来那么清楚。能继续，但现在反而把术野弄乱了。」",
+                "response": "「这里没有刚才看起来那么清楚。」",
                 "response_role": "assistant_surgeon"
               }
             ]
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "pressure"
+        ]
       },
       {
-        "id": "mobilize_appendix",
-        "title": "游离阑尾",
-        "kind": "confirm",
-        "prompt": "阑尾已经被完整辨认，坂口与助手逐步完成周围组织的处理。",
+        "id": "appendix_04_mobilize",
+        "title": "游离并充分显露阑尾",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "阑尾已经找到，助手维持牵开，周围层次逐步分开。",
+        "prompt": "怎样继续游离并显露阑尾？",
         "options": [
           {
-            "id": "continue_mobilization",
-            "label": "继续游离",
-            "response": "「活动度出来了，可以进入下一步。」",
+            "id": "appendix_full_mobilization",
+            "label": "先把阑尾游离并充分提出，再继续",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 10,
-              "elapsed_time": 7,
-              "visibility": -5
+              "elapsed_time": 10,
+              "visibility": 10,
+              "bleeding": -2,
+              "blood_loss": 4
             }
+          },
+          {
+            "id": "appendix_progressive_mobilization",
+            "label": "维持当前暴露，边游离边向系膜推进",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 8,
+              "visibility": 3,
+              "bleeding": 3,
+              "blood_loss": 5
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "bleeding": 4,
+                  "stability": -3
+                },
+                "response": "「术野偏窄，继续时要更谨慎。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "pressure"
+        ]
+      },
+      {
+        "id": "appendix_05_mesappendix",
+        "title": "处理阑尾系膜与供血",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "阑尾已经充分显露，接下来进入系膜与供血处理。",
+        "prompt": "选择处理节奏。",
+        "options": [
+          {
+            "id": "appendix_mesowell",
+            "label": "稳妥处理：分段控制系膜，边处理边维持清楚术野",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "visibility": 5,
+              "bleeding": -5,
+              "blood_loss": 5
+            }
+          },
+          {
+            "id": "appendix_mesostandard",
+            "label": "标准推进：按正常节奏处理系膜与供血",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 9,
+              "bleeding": 3,
+              "blood_loss": 6
+            }
+          },
+          {
+            "id": "appendix_mesofast",
+            "label": "快速推进：加快系膜处理，尽快进入根部",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 6,
+              "visibility": -5,
+              "bleeding": 9,
+              "blood_loss": 9
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "any": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    },
+                    {
+                      "field": "bleeding",
+                      "op": "gte",
+                      "value": 15
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "bleeding": 6,
+                  "blood_loss": 6,
+                  "stability": -5
+                },
+                "response": "「现在的术野不适合再快。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
           }
         ],
         "awake_interlude": "strain_interaction",
@@ -186,267 +301,287 @@
         ]
       },
       {
-        "id": "control_attachment",
-        "title": "处理连接区域",
+        "id": "appendix_06_base",
+        "title": "处理阑尾根部",
         "kind": "decision",
-        "prompt": "阑尾已经能够活动。接下来需要处理连接区域，目前术野仍然可以继续。",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "系膜与供血已经处理，团队转向阑尾根部。",
+        "prompt": "怎样完成根部控制？",
         "options": [
           {
-            "id": "careful_control",
-            "label": "放慢一点，逐步处理",
-            "response": "「好，按这个节奏来。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 14,
-              "elapsed_time": 8,
-              "visibility": 2,
-              "blood_loss": 2
-            }
-          },
-          {
-            "id": "standard_control",
-            "label": "按标准节奏继续",
+            "id": "appendix_recheck_base",
+            "label": "重新确认根部关系，再完成控制",
             "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 14,
-              "elapsed_time": 6,
+              "elapsed_time": 9,
+              "visibility": 3,
+              "bleeding": -2,
               "blood_loss": 4
             }
           },
           {
-            "id": "fast_control",
-            "label": "术野还可以，快速推进",
-            "response": "「好，跟你的节奏。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 14,
-              "elapsed_time": 4,
-              "blood_loss": 6
-            },
-            "conditional_effects": [
-              {
-                "when": {
-                  "metric": "visibility",
-                  "operator": "<",
-                  "value": 70
-                },
-                "effects": {
-                  "visibility": -8,
-                  "blood_loss": 6
-                },
-                "response": "「慢一点。现在已经不是刚才那个术野了。」",
-                "response_role": "assistant_surgeon"
-              }
-            ]
-          }
-        ],
-        "awake_interlude": "",
-        "patient_cues": [
-          "traction"
-        ]
-      },
-      {
-        "id": "irreversible_commitment",
-        "title": "关键步骤前确认",
-        "kind": "decision",
-        "prompt": "已经来到主要不可逆步骤前。坂口需要决定是否现在继续。",
-        "options": [
-          {
-            "id": "commit_now",
-            "label": "现在条件已经足够，继续",
+            "id": "appendix_direct_base",
+            "label": "按当前术野直接完成根部处理",
             "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 18,
-              "elapsed_time": 4
+              "elapsed_time": 7,
+              "bleeding": 2,
+              "blood_loss": 5
             },
             "conditional_effects": [
               {
                 "when": {
-                  "metric": "visibility",
-                  "operator": "<",
-                  "value": 75
+                  "any": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 70
+                    },
+                    {
+                      "field": "bleeding",
+                      "op": "gte",
+                      "value": 20
+                    }
+                  ]
                 },
-                "effects": {
-                  "visibility": -8,
-                  "blood_loss": 5
+                "strategic_effects": {
+                  "bleeding": 5,
+                  "blood_loss": 5,
+                  "stability": -4
                 },
-                "response": "「能做，但你是在一个并不漂亮的局面里硬推进。」",
-                "response_role": "assistant_surgeon"
-              },
-              {
-                "when": {
-                  "metric": "blood_loss",
-                  "operator": ">",
-                  "value": 15
-                },
-                "effects": {
-                  "stability": -5
-                },
-                "response": "「失血已经开始累积。继续可以，但代价在变大。」",
+                "response": "「根部关系还需要再看清一点。」",
                 "response_role": "assistant_surgeon"
               }
             ]
-          },
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "pressure",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "appendix_07_resection",
+        "title": "切除阑尾与完成残端处理",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "阑尾根部处理完成，标本即将离开术野。",
+        "prompt": "切除后怎样进入最终复核？",
+        "options": [
           {
-            "id": "reestablish_field",
-            "label": "先重新整理术野",
-            "response": "「好。现在重新把条件做干净。」",
+            "id": "appendix_clean_stump",
+            "label": "完成切除后先整理残端与周围术野",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 18,
-              "elapsed_time": 8,
-              "visibility": 12,
-              "blood_loss": 1
+              "elapsed_time": 5,
+              "bleeding": -2,
+              "blood_loss": 2
             }
           },
           {
-            "id": "assistant_recheck",
-            "label": "请助手一起复核当前条件",
-            "response": "「我也看清楚了。现在可以。」",
+            "id": "appendix_direct_review",
+            "label": "完成切除后直接进入最终复核",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 18,
-              "elapsed_time": 6,
-              "visibility": 6,
-              "blood_loss": 1
+              "elapsed_time": 4,
+              "bleeding": 1,
+              "blood_loss": 3
             }
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "pressure",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "appendix_correction",
+        "title": "术野纠正",
+        "kind": "decision",
+        "stage_kind": "conditional_correction",
+        "progress_delta": 0,
+        "transition_text": "主要处理已经完成，但术野还需要一次纠正。",
+        "prompt": "当前术野需要先处理，再进入最终复核。",
+        "options": [
+          {
+            "id": "appendix_correction_repair",
+            "label": "重新建立暴露并完成追加止血",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 20,
+              "bleeding": -20,
+              "blood_loss": 6,
+              "stability": 3
+            }
+          },
+          {
+            "id": "appendix_correction_defer",
+            "label": "维持当前局面，留到最终复核处理",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 4,
+              "bleeding": 7,
+              "blood_loss": 10,
+              "stability": -5
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "bleeding",
+                      "op": "gte",
+                      "value": 30
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "blood_loss": 15,
+                  "stability": -10,
+                  "add_complications": [
+                    {
+                      "id": "active_field_bleeding",
+                      "severity": "minor"
+                    }
+                  ]
+                },
+                "response": "「先别再拖了。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "deep_manipulation"
+        ],
+        "entry_condition": {
+          "any": [
+            {
+              "field": "visibility",
+              "op": "lt",
+              "value": 70
+            },
+            {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 18
+            }
+          ]
+        },
+        "once_per_episode": true
+      },
+      {
+        "id": "appendix_08_review",
+        "title": "最终复核与止血",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "阑尾已经切除，器械护士完成标本核对，团队开始检查残端与周围术野。",
+        "prompt": "怎样完成关闭前复核？",
+        "options": [
+          {
+            "id": "appendix_complete_review",
+            "label": "完整复核残端、周围组织与止血状态",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 7,
+              "visibility": 5,
+              "bleeding": -15,
+              "blood_loss": 3,
+              "stability": 2
+            }
+          },
+          {
+            "id": "appendix_focus_review",
+            "label": "做重点复核，状态可接受就关闭",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 5,
+              "bleeding": -8,
+              "blood_loss": 4
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "bleeding",
+                      "op": "gte",
+                      "value": 20
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "blood_loss": 10,
+                  "stability": -8,
+                  "add_complications": [
+                    {
+                      "id": "residual_bleeding",
+                      "severity": "minor"
+                    }
+                  ]
+                },
+                "response": "「这里还留着一点渗血。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
           }
         ],
         "awake_interlude": "progress_check",
         "patient_cues": [
-          "deep_manipulation"
+          "pressure"
         ]
       },
       {
-        "id": "specimen_complete",
-        "title": "主要处理完成",
+        "id": "appendix_09_closure",
+        "title": "关闭",
         "kind": "confirm",
-        "prompt": "主要处理完成，标本已经取出。团队开始重新检查术野。",
+        "stage_kind": "fixed",
+        "progress_delta": 12,
+        "transition_text": "最终复核完成，器械护士开始最终清点，助手协助逐层关闭。",
+        "prompt": "关闭切口，结束手术。",
         "options": [
           {
-            "id": "continue_after_specimen",
-            "label": "继续检查术野",
-            "response": "「标本完成。现在看最后的术野。」",
+            "id": "appendix_complete_closure",
+            "label": "完成关闭，结束手术",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
             "correction": "",
             "strategic_effects": {
-              "progress": 8,
-              "elapsed_time": 6,
-              "visibility": -5
-            }
-          }
-        ],
-        "awake_interlude": "",
-        "patient_cues": [
-          "deep_manipulation"
-        ]
-      },
-      {
-        "id": "final_review",
-        "title": "关闭前复核",
-        "kind": "decision",
-        "prompt": "阑尾已经切除。术野目前没有明显异常。关闭前准备怎样复核？",
-        "options": [
-          {
-            "id": "quick_final_review",
-            "label": "情况很好，快速确认后关闭",
-            "response": "「好，做最后确认。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 10,
-              "elapsed_time": 4
-            },
-            "conditional_effects": [
-              {
-                "when": {
-                  "metric": "visibility",
-                  "operator": "<",
-                  "value": 70
-                },
-                "effects": {
-                  "stability": -5
-                },
-                "response": "「等一下。我觉得这里值得再看一眼。」",
-                "response_role": "assistant_surgeon"
-              },
-              {
-                "when": {
-                  "metric": "blood_loss",
-                  "operator": ">",
-                  "value": 18
-                },
-                "effects": {
-                  "stability": -5,
-                  "elapsed_time": 3
-                },
-                "response": "「失血比一开始多。先别把关闭做得太快。」",
-                "response_role": "assistant_surgeon"
-              }
-            ]
-          },
-          {
-            "id": "full_final_review",
-            "label": "再仔细检查一遍",
-            "response": "「复核完成，没有遗漏。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 10,
-              "elapsed_time": 7,
-              "visibility": 10
-            }
-          },
-          {
-            "id": "team_final_review",
-            "label": "让助手一起复核，再准备关闭",
-            "response": "「我这边也确认完成。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 10,
-              "elapsed_time": 5,
-              "visibility": 5
-            }
-          }
-        ],
-        "awake_interlude": "",
-        "patient_cues": []
-      },
-      {
-        "id": "closure",
-        "title": "关闭切口",
-        "kind": "confirm",
-        "prompt": "最终检查完成，可以关闭切口。",
-        "options": [
-          {
-            "id": "complete_surgery",
-            "label": "完成手术",
-            "response": "「确认完成。手术结束。」",
-            "response_role": "assistant_surgeon",
-            "correct": true,
-            "correction": "",
-            "strategic_effects": {
-              "progress": 6,
-              "elapsed_time": 8
+              "elapsed_time": 8,
+              "blood_loss": 2
             }
           }
         ],
@@ -483,6 +618,31 @@
     "unlocked_at_start": true,
     "anesthesia_target_regions": [
       "abdomen"
+    ],
+    "case_variants": [
+      {
+        "id": "standard",
+        "weight": 75,
+        "initial_visibility": 90,
+        "player_hint": "进入腹腔后，回盲部位置比较直接，当前暴露尚可。"
+      },
+      {
+        "id": "difficult_exposure",
+        "weight": 25,
+        "initial_visibility": 70,
+        "player_hint": "进入腹腔后，回盲部位置偏深。牵开以后，阑尾区域仍没有完全进入清楚视野。"
+      }
+    ],
+    "fixed_stage_progress": [
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      12
     ]
   },
   {
@@ -1156,25 +1316,34 @@
     "initial_state": {
       "stability": 100,
       "blood_loss": 0,
-      "visibility": 100,
+      "visibility": 90,
       "progress": 0,
       "elapsed_time": 0,
-      "stress": 0
+      "stress": 0,
+      "bleeding": 0
     },
     "stages": [
       {
-        "id": "exposure",
-        "title": "术野确认",
+        "id": "chole_01_entry",
+        "title": "右上腹切口与腹腔进入",
         "kind": "confirm",
-        "prompt": "胆囊与周围区域已经显露。确认胆囊周围关键结构关系。",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "切口开始后，团队依次完成腹壁进入、吸引与术野建立。",
+        "prompt": "团队等待进入确认。",
         "options": [
           {
-            "id": "confirm_exposure",
-            "label": "确认术野，继续",
-            "response": "「术野清楚，确认胆囊周围关键结构关系，可以继续。」",
+            "id": "chole_confirm_entry",
+            "label": "完成进入，建立初始术野",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "bleeding": 1,
+              "blood_loss": 5
+            }
           }
         ],
         "awake_interlude": "operative_contact",
@@ -1184,90 +1353,536 @@
         ]
       },
       {
-        "id": "team_exchange",
-        "title": "团队配合",
-        "kind": "flavor",
-        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
+        "id": "chole_02_exposure",
+        "title": "建立右上腹暴露与牵开",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "右上腹切口已经进入，助手开始调整牵开。",
+        "prompt": "怎样建立稳定暴露？",
         "options": [
           {
-            "id": "ask_assistant",
-            "label": "请助手复述当前进度",
-            "response": "「确认胆囊周围关键结构关系。我会继续维持术野并提醒关键节点。」",
+            "id": "chole_wide_exposure",
+            "label": "先充分调整牵开，建立稳定暴露",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 18,
+              "visibility": 15,
+              "bleeding": 2,
+              "blood_loss": 5
+            }
           },
           {
-            "id": "check_instruments",
-            "label": "询问器械准备情况",
-            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
-            "response_role": "scrub_nurse",
+            "id": "chole_current_exposure",
+            "label": "按当前暴露进入下一步",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
-          },
-          {
-            "id": "check_monitoring",
-            "label": "询问监护与记录",
-            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
-            "response_role": "circulating_nurse",
-            "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 15,
+              "visibility": 5,
+              "bleeding": 4,
+              "blood_loss": 6
+            }
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "exposure"
+        ]
       },
       {
-        "id": "key_decision",
-        "title": "关键判断",
+        "id": "chole_03_triangle",
+        "title": "显露胆囊及胆囊三角区域",
         "kind": "decision",
-        "prompt": "处理关键结构前，应当先完成哪项确认？",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "胆囊进入术野，团队继续向胆囊颈部与周围区域靠近。",
+        "prompt": "怎样显露关键区域？",
         "options": [
           {
-            "id": "delegate_decision",
-            "label": "让助手猜测结构名称",
-            "response": "",
-            "response_role": "assistant_surgeon",
-            "correct": false,
-            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
-          },
-          {
-            "id": "confirm_anatomy",
-            "label": "目标结构和周围解剖关系清楚",
-            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "id": "chole_clear_neck",
+            "label": "先把胆囊颈部与周围关系显露清楚",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 16,
+              "visibility": 12,
+              "bleeding": 2,
+              "blood_loss": 6
+            }
           },
           {
-            "id": "rush_by_appearance",
-            "label": "仅凭器械触感判断",
-            "response": "",
+            "id": "chole_direct_triangle",
+            "label": "按现有暴露直接开始关键区域解剖",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
-            "correct": false,
-            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "visibility": 3,
+              "bleeding": 5,
+              "blood_loss": 7
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "visibility": -6,
+                  "bleeding": 4
+                },
+                "response": "「关键区域还没有完全打开。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
           }
         ],
         "awake_interlude": "strain_interaction",
         "patient_cues": [
           "traction",
-          "deep_manipulation",
-          "nausea"
+          "deep_manipulation"
         ]
       },
       {
-        "id": "completion_check",
-        "title": "阶段完成",
-        "kind": "confirm",
-        "prompt": "胆囊已经移除，胆囊床与术野完成复核。团队等待坂口医生的最终确认。",
+        "id": "chole_04_anatomy",
+        "title": "解剖并确认关键结构",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "胆囊三角区域已经显露，接下来必须确认关键结构关系。",
+        "prompt": "选择解剖节奏。",
         "options": [
           {
-            "id": "confirm_completion",
-            "label": "确认关键步骤完成",
-            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "id": "chole_anatomy_slow",
+            "label": "稳妥处理：继续解剖，直到关键结构关系非常清楚",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 22,
+              "visibility": 10,
+              "bleeding": -2,
+              "blood_loss": 7
+            }
+          },
+          {
+            "id": "chole_anatomy_standard",
+            "label": "标准推进：确认结构关系达到可安全推进程度",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 18,
+              "visibility": 3,
+              "bleeding": 3,
+              "blood_loss": 8
+            }
+          },
+          {
+            "id": "chole_anatomy_fast",
+            "label": "快速推进：依当前关系直接进入控制阶段",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 13,
+              "visibility": -8,
+              "bleeding": 10,
+              "blood_loss": 12
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "bleeding": 6,
+                  "blood_loss": 8,
+                  "stability": -6
+                },
+                "response": "「这里的关系还不够清楚。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "chole_05_cystic_duct",
+        "title": "控制胆囊管",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "关键结构已经确认，团队开始控制胆囊管。",
+        "prompt": "怎样完成控制？",
+        "options": [
+          {
+            "id": "chole_duct_recheck",
+            "label": "再确认一次管道关系后完成控制",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "bleeding": -2,
+              "blood_loss": 5
+            }
+          },
+          {
+            "id": "chole_duct_direct",
+            "label": "按当前确认结果直接完成控制",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 8,
+              "bleeding": 2,
+              "blood_loss": 6
+            }
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure"
+        ]
+      },
+      {
+        "id": "chole_06_cystic_artery",
+        "title": "控制胆囊动脉",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "胆囊管已经控制，团队转向供血结构。",
+        "prompt": "怎样完成动脉控制？",
+        "options": [
+          {
+            "id": "chole_artery_recheck",
+            "label": "保持暴露，确认供血结构后完成控制",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "bleeding": -4,
+              "blood_loss": 5
+            }
+          },
+          {
+            "id": "chole_artery_direct",
+            "label": "按当前术野直接完成控制",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 8,
+              "bleeding": 3,
+              "blood_loss": 6
+            }
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure"
+        ]
+      },
+      {
+        "id": "chole_07_liver_bed",
+        "title": "从肝床分离胆囊",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "胆囊管与动脉已经处理，接下来从肝床分离胆囊。",
+        "prompt": "怎样完成肝床分离？",
+        "options": [
+          {
+            "id": "chole_segmented_dissection",
+            "label": "分段分离并随时控制胆囊床渗血",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 24,
+              "visibility": 8,
+              "bleeding": -8,
+              "blood_loss": 12
+            }
+          },
+          {
+            "id": "chole_standard_dissection",
+            "label": "按正常节奏完成肝床分离",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 22,
+              "bleeding": 5,
+              "blood_loss": 15
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 70
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "bleeding": 7,
+                  "blood_loss": 8,
+                  "stability": -5
+                },
+                "response": "「肝床的视野变窄了。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "chole_correction",
+        "title": "胆囊床纠正",
+        "kind": "decision",
+        "stage_kind": "conditional_correction",
+        "progress_delta": 0,
+        "transition_text": "主要分离已经完成，但胆囊床还需要一次纠正。",
+        "prompt": "胆囊已经从肝床分离，但当前术野需要先处理，再进入最终检查。",
+        "options": [
+          {
+            "id": "chole_correction_repair",
+            "label": "先清理胆囊床并完成追加止血",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 14,
+              "visibility": 20,
+              "bleeding": -20,
+              "blood_loss": 7,
+              "stability": 3
+            }
+          },
+          {
+            "id": "chole_correction_defer",
+            "label": "继续推进，留到最终复核一起处理",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 6,
+              "bleeding": 7,
+              "blood_loss": 15,
+              "stability": -8
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "bleeding",
+                      "op": "gte",
+                      "value": 35
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "blood_loss": 18,
+                  "stability": -10,
+                  "add_complications": [
+                    {
+                      "id": "gallbladder_bed_bleeding",
+                      "severity": "minor"
+                    }
+                  ]
+                },
+                "response": "「胆囊床的出血不能再拖。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "deep_manipulation"
+        ],
+        "entry_condition": {
+          "any": [
+            {
+              "field": "visibility",
+              "op": "lt",
+              "value": 70
+            },
+            {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 24
+            }
+          ]
+        },
+        "once_per_episode": true
+      },
+      {
+        "id": "chole_08_specimen",
+        "title": "胆囊取出与重新整理术野",
+        "kind": "confirm",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "胆囊离开术野，器械护士接收标本，助手重新建立胆囊床暴露。",
+        "prompt": "团队等待标本确认。",
+        "options": [
+          {
+            "id": "chole_confirm_specimen",
+            "label": "确认标本离开术野，进入最终复核",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 7,
+              "blood_loss": 3
+            }
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure"
+        ]
+      },
+      {
+        "id": "chole_09_review",
+        "title": "胆囊床最终检查、止血与胆漏复核",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "胆囊床重新显露，团队开始进行关闭前检查。",
+        "prompt": "怎样完成最终复核？",
+        "options": [
+          {
+            "id": "chole_complete_review",
+            "label": "完整检查胆囊床与关键区域，再进入关闭",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 14,
+              "visibility": 5,
+              "bleeding": -20,
+              "blood_loss": 5,
+              "stability": 2
+            }
+          },
+          {
+            "id": "chole_focus_review",
+            "label": "做重点复核，状态可接受就关闭",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "bleeding": -10,
+              "blood_loss": 6
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "bleeding",
+                      "op": "gte",
+                      "value": 20
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "blood_loss": 12,
+                  "stability": -8,
+                  "add_complications": [
+                    {
+                      "id": "residual_bed_bleeding",
+                      "severity": "minor"
+                    }
+                  ]
+                },
+                "response": "「胆囊床还需要再看一眼。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "pressure",
+          "closure"
+        ]
+      },
+      {
+        "id": "chole_10_closure",
+        "title": "关闭",
+        "kind": "confirm",
+        "stage_kind": "fixed",
+        "progress_delta": 10,
+        "transition_text": "最终复核完成，器械护士开始最终清点，助手协助逐层关闭。",
+        "prompt": "关闭切口，结束手术。",
+        "options": [
+          {
+            "id": "chole_complete_closure",
+            "label": "完成关闭，结束手术",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "blood_loss": 8
+            }
           }
         ],
         "awake_interlude": "closure_interaction",
@@ -1303,6 +1918,32 @@
     "unlocked_at_start": true,
     "anesthesia_target_regions": [
       "abdomen"
+    ],
+    "case_variants": [
+      {
+        "id": "standard",
+        "weight": 75,
+        "initial_visibility": 90,
+        "player_hint": "右上腹暴露顺利，胆囊和周围结构能够比较清楚地进入术野。"
+      },
+      {
+        "id": "inflamed_exposure",
+        "weight": 25,
+        "initial_visibility": 70,
+        "player_hint": "胆囊周围组织明显充血、水肿，关键区域显得拥挤，辨认结构需要更多耐心。"
+      }
+    ],
+    "fixed_stage_progress": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
@@ -1319,25 +1960,34 @@
     "initial_state": {
       "stability": 100,
       "blood_loss": 0,
-      "visibility": 100,
+      "visibility": 90,
       "progress": 0,
       "elapsed_time": 0,
-      "stress": 0
+      "stress": 0,
+      "bleeding": 0
     },
     "stages": [
       {
-        "id": "exposure",
-        "title": "术野确认",
+        "id": "hernia_01_entry",
+        "title": "腹股沟切口与皮下进入",
         "kind": "confirm",
-        "prompt": "腹股沟区已经显露。确认疝囊与周围结构关系。",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "切口开始后，团队完成皮下进入并逐层建立术野。",
+        "prompt": "团队等待进入确认。",
         "options": [
           {
-            "id": "confirm_exposure",
-            "label": "确认术野，继续",
-            "response": "「术野清楚，确认疝囊与周围结构关系，可以继续。」",
+            "id": "hernia_confirm_entry",
+            "label": "完成切口与皮下进入",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 8,
+              "bleeding": 1,
+              "blood_loss": 2
+            }
           }
         ],
         "awake_interlude": "operative_contact",
@@ -1347,68 +1997,148 @@
         ]
       },
       {
-        "id": "team_exchange",
-        "title": "团队配合",
-        "kind": "flavor",
-        "prompt": "关键步骤开始前，坂口医生准备怎样与团队确认节奏？",
+        "id": "hernia_02_canal",
+        "title": "打开腹外斜肌腱膜与进入腹股沟管",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "皮下层次已经进入，团队开始打开腹外斜肌腱膜。",
+        "prompt": "怎样进入腹股沟管？",
         "options": [
           {
-            "id": "ask_assistant",
-            "label": "请助手复述当前进度",
-            "response": "「确认疝囊与周围结构关系。我会继续维持术野并提醒关键节点。」",
+            "id": "hernia_wide_canal",
+            "label": "先把腹股沟管入口充分显露",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "visibility": 10,
+              "bleeding": 1,
+              "blood_loss": 3
+            }
           },
           {
-            "id": "check_instruments",
-            "label": "询问器械准备情况",
-            "response": "「下一阶段器械已经按顺序备好，清点无误。」",
-            "response_role": "scrub_nurse",
+            "id": "hernia_current_canal",
+            "label": "按当前暴露继续进入",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
-          },
-          {
-            "id": "check_monitoring",
-            "label": "询问监护与记录",
-            "response": "「监护趋势稳定，出入量和关键时间点都已记录。」",
-            "response_role": "circulating_nurse",
-            "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 4,
+              "bleeding": 2,
+              "blood_loss": 4
+            }
           }
         ],
-        "awake_interlude": "",
-        "patient_cues": []
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "exposure"
+        ]
       },
       {
-        "id": "key_decision",
-        "title": "关键判断",
+        "id": "hernia_03_identify",
+        "title": "辨认局部结构与疝类型",
         "kind": "decision",
-        "prompt": "修补开始前，最需要确认什么？",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "腹股沟管已经打开，团队沿局部解剖关系辨认疝囊与缺损方向。",
+        "prompt": "怎样确认局部结构？",
         "options": [
           {
-            "id": "confirm_anatomy",
-            "label": "疝内容物状态和修补范围明确",
-            "response": "「确认一致。关键结构和下一步计划都与术前方案相符。」",
+            "id": "hernia_complete_identification",
+            "label": "先完整辨认局部结构与缺损方向",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "visibility": 8,
+              "bleeding": 1,
+              "blood_loss": 3
+            }
           },
           {
-            "id": "rush_by_appearance",
-            "label": "只确认皮肤切口方向",
-            "response": "",
+            "id": "hernia_direct_sac",
+            "label": "确认主要关系后直接开始寻找疝囊",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
-            "correct": false,
-            "correction": "「先停一下。这个依据不足以支持下一步；我们需要先共同确认目标结构和既定计划。」"
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 2,
+              "bleeding": 2,
+              "blood_loss": 4
+            }
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "pressure"
+        ]
+      },
+      {
+        "id": "hernia_04_sac",
+        "title": "辨认并分离疝囊",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "疝囊已经定位，团队开始沿层次进行分离。",
+        "prompt": "怎样完成疝囊分离？",
+        "options": [
+          {
+            "id": "hernia_layered_sac",
+            "label": "沿层次逐步分离，保持关系清楚",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 16,
+              "visibility": 10,
+              "bleeding": 1,
+              "blood_loss": 4
+            }
           },
           {
-            "id": "delegate_decision",
-            "label": "先放置修补材料再观察",
-            "response": "",
+            "id": "hernia_standard_sac",
+            "label": "按正常节奏完成疝囊分离",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
-            "correct": false,
-            "correction": "「这项判断应由主刀结合术野作出。请先核对解剖关系和手术计划。」"
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 13,
+              "visibility": 3,
+              "bleeding": 4,
+              "blood_loss": 6
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "visibility": -5,
+                  "bleeding": 4
+                },
+                "response": "「这里的层次还不够干净。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
           }
         ],
         "awake_interlude": "strain_interaction",
@@ -1418,18 +2148,351 @@
         ]
       },
       {
-        "id": "completion_check",
-        "title": "阶段完成",
-        "kind": "confirm",
-        "prompt": "疝修补已经完成，张力与覆盖范围得到确认。团队等待坂口医生的最终确认。",
+        "id": "hernia_05_reduction",
+        "title": "处理疝囊与还纳疝内容",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "疝囊已经分离，团队开始处理疝内容与还纳。",
+        "prompt": "怎样处理疝囊与内容？",
         "options": [
           {
-            "id": "confirm_completion",
-            "label": "确认关键步骤完成",
-            "response": "「复核完成，没有发现遗漏，可以准备关闭切口。」",
+            "id": "hernia_organized_reduction",
+            "label": "先把疝囊与内容处理整齐，再继续",
+            "response": "「明白，继续。」",
             "response_role": "assistant_surgeon",
             "correct": true,
-            "correction": ""
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 13,
+              "visibility": 5,
+              "bleeding": -2,
+              "blood_loss": 3
+            }
+          },
+          {
+            "id": "hernia_standard_reduction",
+            "label": "按正常节奏完成处理与还纳",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "bleeding": 2,
+              "blood_loss": 4
+            }
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "hernia_06_defect",
+        "title": "评估缺损与修补条件",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "疝内容已经还纳，团队开始确认缺损边界与修补条件。",
+        "prompt": "怎样确认修补边界？",
+        "options": [
+          {
+            "id": "hernia_recheck_defect",
+            "label": "重新整理暴露，完整确认修补边界",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 15,
+              "visibility": 8,
+              "bleeding": -2,
+              "blood_loss": 3
+            }
+          },
+          {
+            "id": "hernia_current_defect",
+            "label": "按当前暴露确认修补范围",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "visibility": 2,
+              "blood_loss": 4
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 72
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "set_flags": [
+                    "repair_recheck_required"
+                  ]
+                },
+                "response": "「修补边界需要留一个复核标记。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "pressure"
+        ]
+      },
+      {
+        "id": "hernia_07_repair",
+        "title": "完成后壁与补片修补",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "缺损范围已经确认，接下来完成后壁与补片修补。",
+        "prompt": "选择修补节奏。",
+        "options": [
+          {
+            "id": "hernia_repair_slow",
+            "label": "稳妥处理：控制张力，逐步完成并反复确认修补",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 18,
+              "visibility": 5,
+              "bleeding": -3,
+              "blood_loss": 4
+            }
+          },
+          {
+            "id": "hernia_repair_standard",
+            "label": "标准推进：按正常节奏完成修补",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 14,
+              "bleeding": 1,
+              "blood_loss": 5
+            }
+          },
+          {
+            "id": "hernia_repair_fast",
+            "label": "快速推进：减少中间复核，尽快完成修补",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": -6,
+              "bleeding": 5,
+              "blood_loss": 7
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "any": [
+                    {
+                      "field": "visibility",
+                      "op": "lt",
+                      "value": 75
+                    },
+                    {
+                      "field": "repair_recheck_required",
+                      "op": "eq",
+                      "value": true
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "stability": -4,
+                  "set_flags": [
+                    "repair_recheck_required"
+                  ]
+                },
+                "response": "「修补完成了，但复核标记还在。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "strain_interaction",
+        "patient_cues": [
+          "traction",
+          "deep_manipulation"
+        ]
+      },
+      {
+        "id": "hernia_correction",
+        "title": "修补区返工与复核",
+        "kind": "decision",
+        "stage_kind": "conditional_correction",
+        "progress_delta": 0,
+        "transition_text": "主要修补已经完成，但修补区还需要一次纠正。",
+        "prompt": "修补区需要一次额外显露或返工，再进入最终复核。",
+        "options": [
+          {
+            "id": "hernia_correction_repair",
+            "label": "重新显露修补区，处理渗血并完成必要返工",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "visibility": 15,
+              "bleeding": -12,
+              "blood_loss": 4,
+              "stability": 2,
+              "clear_flags": [
+                "repair_recheck_required"
+              ]
+            }
+          },
+          {
+            "id": "hernia_correction_defer",
+            "label": "维持当前结果，留给最终复核处理",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 5,
+              "bleeding": 5,
+              "blood_loss": 6,
+              "stability": -4
+            }
+          }
+        ],
+        "awake_interlude": "ongoing_interaction",
+        "patient_cues": [
+          "pressure",
+          "deep_manipulation"
+        ],
+        "entry_condition": {
+          "any": [
+            {
+              "field": "visibility",
+              "op": "lt",
+              "value": 70
+            },
+            {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 16
+            },
+            {
+              "field": "repair_recheck_required",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        "once_per_episode": true
+      },
+      {
+        "id": "hernia_08_review",
+        "title": "修补区与止血最终复核",
+        "kind": "decision",
+        "stage_kind": "fixed",
+        "progress_delta": 11,
+        "transition_text": "修补区重新显露，团队开始完成关闭前复核。",
+        "prompt": "怎样完成最终复核？",
+        "options": [
+          {
+            "id": "hernia_complete_review",
+            "label": "完整复核修补区并完成止血",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 9,
+              "visibility": 5,
+              "bleeding": -12,
+              "blood_loss": 3,
+              "clear_flags": [
+                "repair_recheck_required"
+              ]
+            }
+          },
+          {
+            "id": "hernia_focus_review",
+            "label": "做针对性复核，状态可接受就关闭",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 7,
+              "bleeding": -6,
+              "blood_loss": 4
+            },
+            "conditional_effects": [
+              {
+                "when": {
+                  "all": [
+                    {
+                      "field": "repair_recheck_required",
+                      "op": "eq",
+                      "value": true
+                    }
+                  ]
+                },
+                "strategic_effects": {
+                  "elapsed_time": 5,
+                  "add_complications": [
+                    {
+                      "id": "closure_rework",
+                      "severity": "minor"
+                    }
+                  ]
+                },
+                "response": "「这里还留着一个需要返工的点。」",
+                "response_role": "assistant_surgeon"
+              }
+            ]
+          }
+        ],
+        "awake_interlude": "progress_check",
+        "patient_cues": [
+          "pressure"
+        ]
+      },
+      {
+        "id": "hernia_09_closure",
+        "title": "关闭",
+        "kind": "confirm",
+        "stage_kind": "fixed",
+        "progress_delta": 12,
+        "transition_text": "最终复核完成，器械护士开始最终清点，助手协助逐层关闭。",
+        "prompt": "关闭切口，结束手术。",
+        "options": [
+          {
+            "id": "hernia_complete_closure",
+            "label": "完成关闭，结束手术",
+            "response": "「明白，继续。」",
+            "response_role": "assistant_surgeon",
+            "correct": true,
+            "correction": "",
+            "strategic_effects": {
+              "elapsed_time": 6,
+              "blood_loss": 2
+            }
           }
         ],
         "awake_interlude": "closure_interaction",
@@ -1465,6 +2528,31 @@
     "unlocked_at_start": true,
     "anesthesia_target_regions": [
       "abdomen"
+    ],
+    "case_variants": [
+      {
+        "id": "standard",
+        "weight": 75,
+        "initial_visibility": 90,
+        "player_hint": "腹股沟管暴露以后，疝囊与周围组织的关系比较清楚。"
+      },
+      {
+        "id": "adherent_sac",
+        "weight": 25,
+        "initial_visibility": 72,
+        "player_hint": "疝囊和周围组织粘连得更紧，分离层次没有平常那么干净。"
+      }
+    ],
+    "fixed_stage_progress": [
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      12
     ]
   },
   {

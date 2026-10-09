@@ -35,7 +35,7 @@ func _initialize() -> void:
 		var preop: Dictionary = content.find_record("preops", "preop_" + short_id)
 		expect(str(encounter.get("patient_id", "")) == patient.id, "Generated encounter belongs to the wrong patient: " + patient.id)
 		expect(str(preop.get("patient_id", "")) == patient.id and str(preop.get("encounter_id", "")) == "visit_" + short_id, "Generated preop links are wrong: " + patient.id)
-		expect(preop.get("stages", []).size() == 25, "Generated preop lost shared stages: " + patient.id)
+		expect(preop.get("stages", []).size() == 27, "Generated preop lost shared stages: " + patient.id)
 		for stage in preop.get("stages", []):
 			expect(not str(stage.get("prompt", "")).is_empty(), "Patient preop prompt is missing: %s/%s" % [patient.id, stage.get("id", "")])
 	var sora_encounter: Dictionary = content.find_record("encounters", "visit_sora")

@@ -156,6 +156,49 @@ diagnosis_ids = [row.get('id') for row in collections['first_surgery_diagnosis_r
 check(len(diagnosis_ids) == len(set(diagnosis_ids)), 'Duplicate id after merging patient-owned diagnosis reactions')
 by = {key: {r['id']: r for r in rows} for key, rows in collections.items() if key != 'relationships'}
 
+# Familiarity curves are optional. A profile that omits them uses the runtime
+# default multiplier of 1.0. When a profile supplies rules, operations must
+# cover the whole integer input domain exactly once so a boundary can never
+# silently fall back to the base multiplier.
+for person in collections.get('staff', []):
+    actor_id = person.get('id', '<unknown staff>')
+    check('familiarity_gain_multiplier' not in person,
+          actor_id + ': legacy familiarity_gain_multiplier must be migrated to familiarity_rules')
+    rules = person.get('familiarity_rules')
+    if rules is None:
+        continue
+    check(isinstance(rules, dict) and isinstance(rules.get('base'), (int, float)),
+          actor_id + ': familiarity_rules.base must be numeric when rules are provided')
+    clamp = rules.get('clamp', {}) if isinstance(rules, dict) else {}
+    if isinstance(clamp, dict) and 'minimum' in clamp and 'maximum' in clamp:
+        check(clamp['minimum'] <= clamp['maximum'], actor_id + ': familiarity clamp minimum exceeds maximum')
+    for operation_index, operation in enumerate(rules.get('operations', []) if isinstance(rules, dict) else []):
+        prefix = f'{actor_id}: familiarity operation {operation_index}'
+        input_kind = operation.get('input')
+        if input_kind == 'player_attribute':
+            check(operation.get('attribute') in {'skill', 'leadership', 'charm', 'reputation', 'presence'},
+                  prefix + ' has an invalid player attribute')
+        elif input_kind == 'progress_counter':
+            check(isinstance(operation.get('counter_id'), str) and bool(operation.get('counter_id')),
+                  prefix + ' is missing its progress counter id')
+        bands = operation.get('bands', [])
+        if not isinstance(bands, list) or not bands:
+            check(False, prefix + ' has no bands')
+            continue
+        ordered = sorted(bands, key=lambda band: band.get('minimum', -10**30))
+        check('minimum' not in ordered[0], prefix + ' does not cover values below its first boundary')
+        check('maximum' not in ordered[-1], prefix + ' does not cover values above its last boundary')
+        previous_maximum = None
+        for band_index, band in enumerate(ordered):
+            minimum = band.get('minimum')
+            maximum = band.get('maximum')
+            if minimum is not None and maximum is not None:
+                check(minimum <= maximum, f'{prefix} band {band_index} has minimum above maximum')
+            if band_index > 0:
+                check(previous_maximum is not None and minimum == previous_maximum + 1,
+                      f'{prefix} has an overlap or gap before band {band_index}')
+            previous_maximum = maximum
+
 diagnosis_reaction_counts = {}
 for reaction in collections['first_surgery_diagnosis_reactions']:
     check(reaction['event_type'] == 'first_surgery_diagnosis_shock',
@@ -221,6 +264,14 @@ legacy_role_cg_backlog = {
     'visiting_futaba', 'doc_sakura_anesthesiology',
     'nurse_ishigami', 'nurse_satsuki',
 }
+# These older doctors predate the unified dating-data contract. New female
+# doctors with a relationship route must provide a date profile unless they
+# are explicitly kept on this migration backlog.
+legacy_date_profile_backlog = {
+    'doc_aoi', 'doc_rei', 'doc_asuka', 'doc_artoria', 'doc_emiko',
+    'doc_aqua', 'doc_sakura_anesthesiology', 'doc_shiori',
+}
+date_profile_staff_ids = {profile.get('staff_id') for profile in collections['date_profiles']}
 for actor in collections['staff']:
     if actor.get('gender') != 'female' or actor['id'] in legacy_role_cg_backlog:
         continue
@@ -232,6 +283,9 @@ for actor in collections['staff']:
         for role_id in ('scrub_nurse', 'circulating_nurse', 'ward_nurse'):
             check((actor['id'], role_id) in role_reward_pairs,
                   actor['id'] + ': female nurse is missing mandatory ' + role_id + ' CG')
+    if category == 'doctor' and actor['id'] not in legacy_date_profile_backlog:
+        check(actor['id'] in date_profile_staff_ids,
+              actor['id'] + ': new female doctor is missing a date profile')
 
 for relation in collections['relationships']:
     prefix = relation['target_id'] + ': '
@@ -239,7 +293,19 @@ for relation in collections['relationships']:
     check({slot['target_level'] for slot in slots} == set(range(1, 6)),
           prefix + 'relationship slots must cover Lv.1 through Lv.5 exactly once')
     for slot in slots:
+        content_status = slot['content_status']
+        check(slot['cooldown_days'] == 3,
+              prefix + f"Lv{slot['target_level']}: relationship milestone cooldown must be exactly three days")
+        check(0 <= slot['min_familiarity'] <= 100,
+              prefix + f"Lv{slot['target_level']}: familiarity gate is outside 0..100")
         event_id = slot['event_id']
+        if content_status == 'authored':
+            check(bool(event_id), prefix + f"Lv{slot['target_level']}: authored milestone is missing event_id")
+        else:
+            check(not event_id, prefix + f"Lv{slot['target_level']}: {content_status} milestone must not name an event")
+        if content_status == 'unavailable':
+            check(not slot['benefit_id'] and not slot['special_requirements'],
+                  prefix + f"Lv{slot['target_level']}: unavailable milestone must not grant a benefit or retain gates")
         if not event_id:
             continue
         event = by['character_events'].get(event_id, {})
@@ -255,6 +321,10 @@ for relation in collections['relationships']:
                            if entry.get('actor_id') == relation['target_id']), {})
             check(reward.get('target_level') == slot['target_level'],
                   prefix + event_id + ': special-event relationship reward mismatch')
+        gate_event_id = slot.get('gate_event_id', event_id)
+        if gate_event_id:
+            check(gate_event_id in by['character_events'] or gate_event_id in by['special_events'],
+                  prefix + gate_event_id + ': unknown relationship gate event')
 
 activity_placeholders = by['relationship_activity_placeholders']
 patient_play = activity_placeholders.get('operating_room_patient_play', {})
@@ -292,6 +362,13 @@ for placeholder in collections['relationship_activity_placeholders']:
 for relation in collections['relationships']:
     slots = {slot['target_level']: slot for slot in relation['rank_slots']}
     actor = by['staff'][relation['target_id']]
+    progression_locked = 'relationship_progression_locked' in set(actor.get('flags', []))
+    if progression_locked:
+        check(all(slot['content_status'] == 'unavailable' for slot in slots.values()),
+              relation['target_id'] + ': progression-locked route must mark every milestone unavailable')
+    else:
+        check(all(slot['content_status'] != 'unavailable' for slot in slots.values()),
+              relation['target_id'] + ': active route contains an unavailable milestone')
     if {'professional_friendship_only', 'relationship_progression_locked'} & set(actor.get('flags', [])):
         check(not slots[4]['event_id'] and not slots[4]['benefit_id'] and
               not slots[5]['event_id'] and not slots[5]['benefit_id'],
@@ -304,6 +381,45 @@ for relation in collections['relationships']:
               relation['target_id'] + ': Lv4 intimacy-event benefit placeholder missing')
         check(slots[5]['benefit_id'] == 'unlock_clinical_practice_patient',
               relation['target_id'] + ': Lv5 clinical-practice benefit placeholder missing')
+
+relationship_dependencies = {relation['target_id']: set() for relation in collections['relationships']}
+for relation in collections['relationships']:
+    ordered_slots = sorted(relation['rank_slots'], key=lambda slot: slot['target_level'])
+    thresholds = [slot['min_familiarity'] for slot in ordered_slots]
+    check(thresholds == sorted(thresholds),
+          relation['target_id'] + ': familiarity thresholds decrease at a later relationship level')
+    for slot in ordered_slots:
+        for requirement in slot['special_requirements']:
+            if requirement['type'] != 'relationship_level':
+                continue
+            minimum = int(requirement.get('minimum', requirement.get('level', 0)))
+            dependency = requirement.get('actor_id')
+            if minimum > 0 and dependency and dependency != relation['target_id']:
+                relationship_dependencies[relation['target_id']].add(dependency)
+
+relationship_cycle_nodes = set()
+relationship_visiting = set()
+relationship_visited = set()
+def audit_relationship_dependencies(actor_id):
+    if actor_id in relationship_visiting:
+        relationship_cycle_nodes.add(actor_id)
+        return
+    if actor_id in relationship_visited:
+        return
+    relationship_visiting.add(actor_id)
+    for dependency in relationship_dependencies.get(actor_id, ()):
+        audit_relationship_dependencies(dependency)
+        if dependency in relationship_cycle_nodes:
+            relationship_cycle_nodes.add(actor_id)
+    relationship_visiting.remove(actor_id)
+    relationship_visited.add(actor_id)
+
+for actor_id in relationship_dependencies:
+    audit_relationship_dependencies(actor_id)
+check(not relationship_cycle_nodes,
+      'relationship-level dependency cycle: ' + ', '.join(sorted(relationship_cycle_nodes)))
+check(all('奈奈美' not in str(actor.get('name', '')) for actor in collections['staff']),
+      'story-only Nanami must not enter the medical staff or relationship roster')
 
 # Display names deliberately follow the VNDB source characters while stable IDs
 # keep saves, event references, and code links compatible.
@@ -446,7 +562,7 @@ for event in collections['character_events']:
     check(isinstance(requirements, list), event['id'] + ': special requirement placeholder missing')
     for requirement in requirements or []:
         requirement_type = requirement.get('type')
-        check(requirement_type in {'player_attribute', 'career_progress_any', 'completed_surgeries', 'completed_surgeries_in_group', 'story_flag', 'special_event_completed', 'relationship_level'},
+        check(requirement_type in {'player_attribute', 'career_progress_any', 'completed_surgeries', 'completed_surgeries_in_group', 'progress_counter', 'story_flag', 'flag', 'special_event_completed', 'character_event_completed', 'relationship_level', 'relationship_familiarity', 'staff_unlocked', 'days_after_character_event', 'days_after_special_event', 'day_number', 'month', 'date', 'date_range', 'weekday', 'day_type'},
               event['id'] + ': unknown special requirement type')
         if requirement_type == 'player_attribute':
             check(requirement.get('attribute') in {'skill', 'leadership', 'charm', 'reputation', 'presence'},
@@ -462,9 +578,18 @@ for event in collections['character_events']:
             check(requirement.get('procedure_group') in {surgery['procedure_group'] for surgery in collections['surgeries']} and
                   isinstance(requirement.get('minimum'), int) and requirement.get('minimum') >= 0,
                   event['id'] + ': invalid procedure-group surgery requirement')
+        elif requirement_type == 'progress_counter':
+            check(isinstance(requirement.get('counter_id'), str) and bool(requirement.get('counter_id')) and
+                  isinstance(requirement.get('minimum'), int) and requirement.get('minimum') >= 0,
+                  event['id'] + ': invalid progress-counter requirement')
         elif requirement_type == 'relationship_level':
-            check(isinstance(requirement.get('level'), int) and 0 <= requirement.get('level') <= 5,
+            level = requirement.get('level', requirement.get('minimum'))
+            check(isinstance(level, int) and 0 <= level <= 5 and
+                  (not isinstance(requirement.get('maximum'), int) or level <= requirement.get('maximum') <= 5),
                   event['id'] + ': invalid relationship-level requirement')
+        elif requirement_type == 'relationship_familiarity':
+            check(isinstance(requirement.get('minimum'), int) and 0 <= requirement.get('minimum') <= 100,
+                  event['id'] + ': invalid relationship-familiarity requirement')
         elif requirement_type == 'special_event_completed':
             check(requirement.get('event_id') in by['special_events'],
                   event['id'] + ': unknown special-event requirement')
@@ -708,6 +833,22 @@ for person in collections['staff']:
         authored = person.get('team_dialogue', {})
         for dialogue_key in {'assignment', 'intraoperative', 'intraoperative_correction'}:
             check(bool(authored.get(dialogue_key)), person['id'] + ': inexperienced doctor requires personal ' + dialogue_key + ' dialogue')
+    if person.get('profession') == 'nurse' and 'circulating_nurse' in person.get('surgical_roles', []):
+        required_crisis_flavors = {
+            'hypotension', 'hypertension', 'tachycardia', 'bradycardia',
+            'arrhythmia', 'desaturation', 'respiratory_instability', 'generic_instability',
+        }
+        callouts = person.get('crisis_callouts', {})
+        crisis_prefix = person['id'] + ': circulating-nurse crisis callouts '
+        check(set(callouts) == required_crisis_flavors, crisis_prefix + 'must cover exactly the eight approved physiologic flavors')
+        for flavor_id, variants in callouts.items():
+            variant_ids = [variant.get('id', '') for variant in variants]
+            check(len(variant_ids) == len(set(variant_ids)), crisis_prefix + flavor_id + ' has duplicate variant IDs')
+            check(all(len(variant.get('attempt_lines', [])) == 3 for variant in variants), crisis_prefix + flavor_id + ' must escalate across exactly three attempts')
+            check(all(len(set(variant.get('attempt_lines', []))) == 3 for variant in variants), crisis_prefix + flavor_id + ' must use a distinct report at each escalation attempt')
+            total_weight = sum(int(variant.get('weight', 0)) for variant in variants)
+            hoshimi_weight = sum(int(variant.get('weight', 0)) for variant in variants if variant.get('tone') == 'hoshimi')
+            check(total_weight > 0 and hoshimi_weight * 4 <= total_weight, crisis_prefix + flavor_id + ' Hoshimi humor must remain rare')
 
 ange = by['staff'].get('nurse_ange', {})
 check(bool(ange.get('characterization')), 'nurse_ange: structured characterization is required')
@@ -833,18 +974,24 @@ check('emiko_office' in by['locations'] and 'emiko_office' in emiko.get('presenc
 emiko_intro = by['character_events'].get('emiko_intro_rumored_hands', {})
 emiko_lv1 = by['character_events'].get('emiko_lv1_first_operation', {})
 emiko_lv2 = by['character_events'].get('emiko_lv2_follow_my_lead', {})
-check(emiko_intro.get('conditions', {}).get('special_requirements') ==
-      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 56}],
-      'doc_emiko: introduction must require player skill 56')
+check(emiko_intro.get('conditions', {}).get('required_events') == ['intro_doc_asuka_director_office'] and
+      emiko_intro.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 75}],
+      'doc_emiko: introduction must require Asuka introduction and Surgery 75')
 check(emiko_intro.get('auto_follow_up') ==
-      {'event_id': 'emiko_lv1_first_operation', 'day_offset': 1, 'absolute_clock': 780},
-      'doc_emiko: introduction must schedule Lv1 for the next day at 13:00')
-check(emiko_lv1.get('conditions', {}).get('days_after_required_events') == 1,
-      'doc_emiko: Lv1 must occur on the day after the introduction')
-check(emiko_lv2.get('conditions', {}).get('days_after_required_events') == 7 and
-      emiko_lv2.get('conditions', {}).get('special_requirements') ==
-      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 70}],
-      'doc_emiko: Lv2 must require skill 70 and a seven-day gap')
+      {'event_id': 'emiko_lv1_first_operation', 'day_offset': 3, 'absolute_clock': 780},
+      'doc_emiko: introduction must schedule Lv1 after the fixed three-day cooldown')
+check(emiko_slots[1].get('min_familiarity') == 10 and
+      emiko_slots[1].get('cooldown_days') == 3 and
+      emiko_slots[1].get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 75}] and
+      emiko_lv1.get('conditions', {}).get('min_familiarity') == 0,
+      'doc_emiko: Lv1 must require Familiarity 10, Surgery 75 and a three-day gap')
+check(emiko_slots[2].get('min_familiarity') == 25 and
+      emiko_slots[2].get('cooldown_days') == 3 and
+      emiko_slots[2].get('special_requirements') == [] and
+      emiko_lv2.get('conditions', {}).get('min_familiarity') == 0,
+      'doc_emiko: Lv2 must require Familiarity 25 and a three-day gap')
 
 asuka = by['staff'].get('doc_asuka', {})
 asuka_relation = next((relation for relation in collections['relationships']
@@ -996,12 +1143,15 @@ for portrait_key in ([f'{outfit}/{expression}'
 check(aqua_intro.get('category') == 'introduction' and
       aqua_intro.get('location_id') == 'gynecology_exam' and
       aqua_intro.get('conditions', {}).get('special_requirements') == [
-          {'type': 'completed_surgeries_in_group', 'procedure_group': 'female_pelvic', 'minimum': 1}],
+          {'type': 'progress_counter', 'actor_id': 'global', 'counter_id': 'gynecology_case_count', 'minimum': 1}],
       'doc_aqua: introduction must require one completed gynecology surgery')
 check(aqua_lv1.get('category') == 'bond' and
       aqua_lv1.get('conditions', {}).get('required_events') == ['aqua_intro_exam_chair'] and
-      aqua_lv1.get('conditions', {}).get('special_requirements') == [
-          {'type': 'completed_surgeries_in_group', 'procedure_group': 'female_pelvic', 'minimum': 5}] and
+      aqua_lv1.get('conditions', {}).get('min_familiarity') == 0 and
+      aqua_slots.get(1, {}).get('min_familiarity') == 10 and
+      aqua_slots.get(1, {}).get('cooldown_days') == 3 and
+      aqua_slots.get(1, {}).get('special_requirements') == [
+          {'type': 'progress_counter', 'actor_id': 'global', 'counter_id': 'gynecology_case_count', 'minimum': 5}] and
       aqua_slots.get(1, {}).get('event_id') == 'aqua_lv1_gyne_obsession' and
       aqua_slots.get(1, {}).get('benefit_id') == 'unlock_aqua_surgical_team',
       'doc_aqua: Lv1 gate or team-unlock link is not configured')
@@ -1155,10 +1305,7 @@ check(png_has_alpha_channel(lookalike_path),
       'patient_ayako_lookalike: fleeing portrait must be transparent')
 miyama_ayako = by['special_events'].get('miyama_02_manga_artist_wrong_patient', {})
 check(miyama_ayako.get('required_characters') == ['PLAYER', 'doc_rei', 'doc_shiori', 'doc_asuka'] and
-      miyama_ayako.get('unlock_requirements') == [
-          {'type': 'day_number', 'minimum': 5},
-          {'type': 'relationship_level', 'actor_id': 'doc_rei', 'minimum': 1},
-          {'type': 'relationship_level', 'actor_id': 'doc_shiori', 'minimum': 1}] and
+      miyama_ayako.get('unlock_requirements') == [] and
       miyama_ayako.get('prerequisite_events') == ['miyama_01_safety_pin'],
       'miyama_02: formal Lv1 prerequisites are incomplete')
 check(miyama_ayako.get('auto_schedule') is True and
@@ -1257,7 +1404,8 @@ for surgery in collections['surgeries']:
     for stage in surgery['stages']:
         options = stage['options']
         tutorial_safe = surgery.get('catalog_visibility') == 'advanced_referral'
-        check((1 <= len(options) <= 4) if tutorial_safe else len(options) == (1 if stage['kind'] == 'confirm' else 3),
+        pilot_strategy_stage = surgery['id'] in {'surgery_appendix', 'surgery_open_cholecystectomy', 'surgery_open_inguinal_hernia'} and (stage.get('stage_kind') == 'conditional_correction' or any('strategic_effects' in option or 'conditional_effects' in option for option in options))
+        check((1 <= len(options) <= 4) if tutorial_safe else (len(options) in (2, 3) if pilot_strategy_stage and stage['kind'] != 'confirm' else len(options) == (1 if stage['kind'] == 'confirm' else 3)),
               prefix + stage['id'] + ': wrong option count')
         for option in options:
             check(option['id'] not in option_ids, prefix + 'duplicate surgery-flow option id')
@@ -1536,6 +1684,10 @@ for prep in collections['preops']:
             for interlude in ['operative_contact', 'ongoing_interaction', 'closure_interaction']:
                 if interlude in stages:
                     reachable.add(interlude)
+            continue
+        if stages[stage_id]['kind'] == 'graphic_preop_dialogue':
+            check(bool(stages[stage_id].get('next')), prefix + 'graphic pre-op dialogue requires next stage')
+            pending.append((stages[stage_id].get('next'), done, flags | {'preop_graphic_explanation_complete'}))
             continue
         available = [a for a in stages[stage_id]['actions'] if a['id'] not in done and set(a['requires']) <= flags]
         check(bool(available), prefix + 'deadlocked actions at ' + stage_id)

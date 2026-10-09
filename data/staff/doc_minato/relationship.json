@@ -1,0 +1,20 @@
+{
+  "source_id": "player",
+  "target_id": "doc_minato",
+  "affection": 0,
+  "familiarity": 0,
+  "flags": [],
+  "event_history": [],
+  "met": false,
+  "level": 0,
+  "route": "colleague",
+  "rank_history": [],
+  "unlocked_benefits": [],
+  "rank_slots": [
+    {"target_level": 1, "event_id": "minato_lv1_name_memory", "content_status": "planned", "benefit_id": "unlock_minato_surgical_team", "special_requirements": [{"type": "progress_counter", "actor_id": "global", "counter_id": "completed_surgeries_with_minato", "minimum": 1}], "min_familiarity": 10, "cooldown_days": 3},
+    {"target_level": 2, "event_id": "minato_lv2_forgotten_patient", "content_status": "planned", "benefit_id": "", "special_requirements": [{"type": "progress_counter", "actor_id": "global", "counter_id": "completed_surgeries_with_minato", "minimum": 2}], "min_familiarity": 25, "cooldown_days": 3},
+    {"target_level": 3, "event_id": "minato_lv3_write_it_down", "content_status": "planned", "benefit_id": "unlock_minato_handoff_protocol", "special_requirements": [{"type": "player_attribute", "attribute": "leadership", "minimum": 55}], "min_familiarity": 40, "cooldown_days": 5},
+    {"target_level": 4, "event_id": "minato_lv4_today_is_today", "content_status": "planned", "benefit_id": "unlock_intimacy_events", "special_requirements": [{"type": "player_attribute", "attribute": "charm", "minimum": 30}], "min_familiarity": 55, "cooldown_days": 3},
+    {"target_level": 5, "event_id": "minato_lv5_be_the_patient", "content_status": "planned", "benefit_id": "unlock_minato_clinical_practice_patient", "special_requirements": [{"type": "player_attribute", "attribute": "skill", "minimum": 65}, {"type": "any_of", "requirements": [{"type": "player_attribute", "attribute": "leadership", "minimum": 60}, {"type": "player_attribute", "attribute": "clinical_presence", "maximum": -20}]}], "min_familiarity": 75, "cooldown_days": 5}
+  ]
+}

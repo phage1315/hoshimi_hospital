@@ -79,7 +79,7 @@ godot --headless --path . --script tools/localization_runtime_scan.gd
 
 角色包中有些台词以 `team_dialogue`、`procedure_group_team_dialogue`、`personal_nurse.dialogue` 和地点闲谈 `responses` 的语义键保存，普通字段审计无法自然识别。`tools/staff_localization_test.py` 会递归检查这些台词，要求每句中文原文都有非空、无中文残留且占位符一致的英文译文；当前检查覆盖 176 句。
 
-31 个人物专属事件、20 个日常 micro event，以及《新手术室启用日》《取材过头了》两项大型特殊活动的长篇对白均已有英文。`tools/narrative_localization_test.py` 会强制检查这三类内容中的全部中文正文、标题、提示和选项；任何新增但未翻译的字段都会令测试失败。
+31 个人物专属事件、20 个日常 micro event，以及大型特殊活动的长篇对白均已有英文。`tools/narrative_localization_test.py` 会强制检查人物事件、micro event、特殊事件定义和特殊事件节点中的全部中文正文、标题、公告、完成提示、画廊章节、说话人标签和选项；任何新增但未翻译的字段都会令测试失败。
 
 新增或修改基础医疗循环数据后，应重新运行 `tools/seed_english_content.py` 与 `tools/seed_english_clinical.py`，再由人工校订生成的英文。新增或修改上述三类剧情时，应补充英文表并运行：
 

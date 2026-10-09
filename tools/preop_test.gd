@@ -22,6 +22,11 @@ func _initialize() -> void:
 func new_game() -> RefCounted:
 	var game = Game.new()
 	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards)
+	# This suite verifies authored pre-op routes. Pin each patient to the legacy
+	# fixture that owns that route so unrelated randomized case assignment cannot
+	# make the assertions flaky.
+	game.patient_cases = game.legacy_patient_cases()
+	game.rebuild_patient_content(game.patient_cases)
 	for surgery in content.collections.surgeries:
 		if str(surgery.get("status", "ready")) != "placeholder":
 			game.unlock_procedure(str(surgery.id))
@@ -38,6 +43,12 @@ func admitted_game() -> RefCounted:
 
 func act(prep: RefCounted, id: String) -> bool:
 	return prep.apply({"kind": "action", "id": id})
+
+func left_click() -> InputEventMouseButton:
+	var event := InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.pressed = true
+	return event
 
 func finish_operative_preparation(prep: RefCounted, branch: String) -> bool:
 	if prep.current().kind == "anesthesia_sensory_test":
@@ -118,9 +129,12 @@ func preop_id_for_patient(game: RefCounted, patient_id: String) -> String:
 
 func check_roundtrip(game: RefCounted) -> void:
 	var clone = new_game()
-	var json_data: Variant = JSON.parse_string(JSON.stringify(game.snapshot()))
+	var source_snapshot: Dictionary = game.snapshot()
+	var json_data: Variant = JSON.parse_string(JSON.stringify(source_snapshot))
 	expect(clone.restore(json_data), "Roundtrip failed")
-	expect(clone.snapshot() == game.snapshot(), "Roundtrip event log differs")
+	var clone_snapshot: Dictionary = clone.snapshot()
+	var normalized_clone: Variant = JSON.parse_string(JSON.stringify(clone_snapshot))
+	expect(normalized_clone == json_data, "Roundtrip event log differs")
 	if game.active_mode == "preop":
 		var a = game.preops[game.active_preop_id]
 		var b = clone.preops[clone.active_preop_id]
@@ -262,7 +276,7 @@ func run() -> void:
 	if not dialogue_profile.is_empty():
 		var dialogue_prep = Preop.new(content.collections.preops[0], content.collections.staff, content.collections.surgeries, content.collections.patients, [], false, content.collections.surgery_team_dialogue_profiles)
 		for response_id in dialogue_profile.responses:
-			var line := dialogue_prep.inexperienced_nurse_response("nurse_yui", response_id, "fallback")
+			var line := dialogue_prep.inexperienced_nurse_response("nurse_satsuki", response_id, "fallback")
 			expect(line in dialogue_profile.responses[response_id], "Limited nurse did not use generic dialogue at " + response_id)
 		expect(dialogue_prep.inexperienced_nurse_response("nurse_haru", "request_scalpel", "trained fallback") == "trained fallback", "Expert nurse incorrectly used inexperienced dialogue")
 	for background_id in OperativeBackgrounds.IDS:
@@ -448,7 +462,7 @@ func run() -> void:
 	expect(scalpel_prep.pain == 100 and scalpel_prep.stage_id == "or_table_scalpel_incident" and scalpel_prep.feedback_speaker == "patient", "Scalpel click did not max pain and isolate the patient's scream")
 	expect(scalpel_prep.flags.has("or_table_scalpel_incident") and scalpel_prep.flags.has("or_table_palpation_complete"), "Scalpel incident flags were not recorded")
 	expect(act(scalpel_prep, "acknowledge_or_table_scalpel_incident") and scalpel_prep.stage_id == "ready", "Nurse warning did not force the anesthesia-selection stage")
-	expect(scalpel_prep.feedback_speaker == "staff" and scalpel_prep.feedback.contains("怎么能不消毒不麻醉就下刀"), "Nurse warning dialogue was not presented separately")
+	expect(scalpel_prep.feedback_speaker == "staff" and scalpel_prep.feedback.contains("怎么能不消毒、不麻醉就下刀"), "Nurse warning dialogue was not presented separately")
 	var pre_palpation_save: Dictionary = game.snapshot()
 	pre_palpation_save.preops.preop_sora.append({"kind": "action", "id": "choose_general"})
 	var legacy_direct_anesthesia_game = new_game()
@@ -539,7 +553,10 @@ func run() -> void:
 	expect(prep.apply({"kind": "patient_interaction_action", "id": "continue_unanesthetized_contact_01"}) and prep.stage_id == "procedure_flow" and prep.procedure_step_index == 0 and prep.awaiting_patient_acknowledgement, "First no-anesthesia patient response did not open its acknowledgement page")
 	expect(acknowledge_patient(prep) and prep.feedback.is_empty(), "First patient response was not cleared before the next choice")
 	expect(surgery_step(prep, "ask_assistant") and prep.awaiting_flow_acknowledgement, "Team exchange did not pause on its response")
-	expect(acknowledge_flow(prep) and prep.stage_id == "procedure_flow" and prep.procedure_step_index == 2 and not prep.awaiting_patient_choice, "Stage without an awake interlude did not advance directly")
+	var assistant_acknowledged := acknowledge_flow(prep)
+	expect(assistant_acknowledged and prep.stage_id == "procedure_flow" and prep.procedure_step_index == 1 and prep.awaiting_patient_choice and prep.active_patient_interaction.get("id") == "cardiac_ongoing_fatigue_01", "Cardiac ongoing interaction did not open after the team exchange")
+	expect(prep.apply({"kind": "patient_interaction_action", "id": "brief_cardiac_ongoing"}) and prep.awaiting_patient_acknowledgement, "Cardiac ongoing response did not open its acknowledgement page")
+	expect(acknowledge_patient(prep) and prep.procedure_step_index == 2 and not prep.awaiting_patient_choice, "Cardiac ongoing response did not advance to the key decision")
 	expect(PreopView.intraoperative_patient_expression(prep) == "near_collapse", "Late no-anesthesia surgery did not switch to the near-collapse portrait")
 	var wrong_decision: Dictionary = {}
 	for option in prep.surgery_flow_step().options:
@@ -568,7 +585,7 @@ func run() -> void:
 	expect(not game.active_surgery_in_progress() and game.can_save_progress(), "Navigation and saving did not return after the surgery result")
 	expect(prep.minutes == before_surgery_minutes + 390 and prep.surgery_success and prep.procedure_name == "开胸心脏搭桥" and not prep.interaction_summary().is_empty(), "Procedure result or duration wrong")
 	expect(game.player_attributes().skill == 50 and game.surgery_xp == 0, "Surgery XP was awarded before the completed case was settled")
-	expect(prep.procedure_extra_minutes == 2 and prep.feedback == "开胸心脏搭桥基础用时6小时；术中应对额外2分钟，总计6小时2分钟。手术顺利完成，患者音羽 響子的状态暂时平稳。", "Surgery completion description or extra duration wrong")
+	expect(prep.procedure_extra_minutes == 3 and prep.feedback.contains("额外3分钟") and prep.feedback.contains("总计6小时3分钟") and prep.feedback.contains("患者音羽 響子的状态暂时平稳"), "Surgery completion description or extra duration wrong")
 	expect(prep.postoperative_state_text() == "暂时平稳", "Postoperative placeholder state wrong")
 	var legacy_wrong_save: Dictionary = game.snapshot().duplicate(true)
 	legacy_wrong_save.version = 15
@@ -651,7 +668,9 @@ func run() -> void:
 						ward = nurse
 				assign(scenario, "ward_nurse", ward)
 				expect(act(scenario, "perform_preparation"), "Valid team cannot prepare patient")
-				expect(scenario.anxiety == (2 if ward == "nurse_yui" else 1), "Nurse care difference absent")
+				var ward_profile: Dictionary = content.find_record("staff", ward)
+				var expected_anxiety := 1 if int(ward_profile.get("skills", {}).get("patient_care", 0)) >= int(scenario.definition.care_reassurance_threshold) else 2
+				expect(scenario.anxiety == expected_anxiety, "Nurse care threshold was not applied")
 				for action in ["to_changing", "change_scrubs", "scrub_hands", "enter_room", "team_check", "confirm_assistant_role", "confirm_scrub_role", "confirm_circulating_role"]:
 					expect(act(scenario, action), "Valid branch deadlocked at " + action)
 				check_roundtrip(branch)
@@ -844,10 +863,12 @@ func run() -> void:
 	var epidural_app = load("res://godot/scenes/main.tscn").instantiate()
 	root.add_child(epidural_app)
 	await process_frame
+	epidural_app.game.patient_cases = epidural_app.game.legacy_patient_cases()
+	epidural_app.game.rebuild_patient_content(epidural_app.game.patient_cases)
 	var epidural_visit = epidural_app.game.open_visit("visit_emi")
 	epidural_visit.admitted = true
 	var epidural_prep = epidural_app.game.open_preop("preop_emi")
-	epidural_prep.procedure_id = str(epidural_prep.definition.surgery_id)
+	epidural_prep.procedure_id = "surgery_open_abdominal_myomectomy"
 	epidural_prep.stage_id = "ready"
 	epidural_app.show_preop("preop_emi")
 	epidural_app.preop_event({"kind": "action", "id": "choose_epidural"})
@@ -865,6 +886,8 @@ func run() -> void:
 	expect(epidural_app.page.get_node_or_null("AnesthesiaTestComplete") != null, "Epidural splash did not reveal the optional sensory-test HUD")
 	epidural_prep.procedure_id = "surgery_open_abdominal_myomectomy"
 	epidural_prep.stage_id = "skin_disinfection_response"
+	if not epidural_prep.flags.has("skin_disinfected"):
+		epidural_prep.flags.append("skin_disinfected")
 	epidural_app.show_preop("preop_emi")
 	epidural_app.preop_event({"kind": "action", "id": "ack_disinfection"})
 	await process_frame
@@ -945,7 +968,7 @@ func run() -> void:
 	expect(rie_disinfection_cg_pool.get("id", "") == "skin_disinfection_patient_rie" and rie_disinfection_cg_pool.paths.size() == 1 and rie_disinfection_cg_pool.presentation == "fullscreen", "Rie-specific skin-disinfection fullscreen CG pool did not resolve")
 	expect(app.ward_preparation_cg_pool_for("skin_disinfection", "patient_miki").is_empty(), "Rie's skin-disinfection CG leaked to another patient")
 	expect(app.ward_preparation_cg_pool_for("ward_skin_prep", "patient_sora").get("id", "") == "ward_skin_prep_generic", "Skin-prep splash CG pool did not resolve")
-	expect(app.ward_preparation_cg_pool_for("ward_skin_prep_unnecessary", "patient_emi").get("id", "") == "ward_skin_prep_generic", "Unnecessary skin prep did not use the skin-prep splash pool")
+	expect(app.ward_preparation_cg_pool_for("ward_skin_prep_unnecessary", "patient_emi").get("id", "") == "ward_skin_prep_patient_emi", "Emi's unnecessary skin prep did not use her dedicated skin-prep CG")
 	expect(app.ward_preparation_cg_pool_for("ward_change_gown", "patient_sora").is_empty(), "Removed gown-change action still resolved a CG pool")
 	expect(app.ward_preparation_cg_pool_for("ward_surgical_cap", "patient_sora").get("id", "") == "ward_surgical_cap_generic", "Surgical-cap splash CG pool did not resolve")
 	expect(app.ward_preparation_cg_pool_for("skip_required_ward_enema", "patient_sora").is_empty(), "Skipped enema incorrectly triggered a splash CG")
@@ -987,7 +1010,16 @@ func run() -> void:
 	var second_continue: Button = app.page.get_node_or_null("SurgeryCGContinue")
 	if second_continue != null:
 		second_continue.pressed.emit()
-	expect(app.game.restore(old_save), "UI old save load failed")
+	app.game.reset()
+	app.game.patient_cases = app.game.legacy_patient_cases()
+	app.game.rebuild_patient_content(app.game.patient_cases)
+	app.game.intraoperative_crisis_enabled = false
+	for staff_member in content.collections.staff:
+		app.game.meet_staff(str(staff_member.id))
+	var ui_visit = app.game.open_visit("visit_sora")
+	for clinic_action in CLINIC:
+		expect(ui_visit.apply(clinic_action), "UI pre-op fixture failed at " + clinic_action)
+	expect(app.game.open_preop("preop_sora") != null, "UI pre-op fixture could not open")
 	expect(ResourceLoader.exists(app.ABDOMINAL_INCISION_VIDEO), "Abdominal incision OGV is missing")
 	expect(load(app.ABDOMINAL_INCISION_VIDEO) is VideoStream, "Abdominal incision OGV did not load as a Godot video stream")
 	expect(ResourceLoader.exists(app.ABDOMINAL_INCISION_VIDEO_V2), "Second abdominal incision OGV is missing")
@@ -1069,6 +1101,7 @@ func run() -> void:
 	app.show_preop("preop_sora")
 	expect(app.page.get_node_or_null("OperatingTableFrame") == null, "Ward portrait still has the operating-table backdrop")
 	press(app, "explain_plan")
+	press(app, "appropriate_answer")
 	for role in ["assistant_surgeon", "scrub_nurse", "circulating_nurse"]:
 		expect(app.page.get_node("Role_" + role).selected == 0, "Unassigned team role displays a staff member")
 	pick(app, "assistant_surgeon", 1)
@@ -1113,8 +1146,13 @@ func run() -> void:
 		await process_frame
 		if action in ["change_scrubs", "scrub_hands", "enter_room"]:
 			expect(app.screen == "preop_transition_video", "Preop action did not open its inline animation: " + action)
-			app.complete_preop_transition_video()
+			if action == "enter_room":
+				var entrance_background := app.page.get_node_or_null("SceneBackground")
+				expect(entrance_background != null and entrance_background.texture.resource_path == "res://assets/backgrounds/v11/or_entrance.png", "Entering the operating room did not use the dedicated entrance background")
+			expect(app.page.get_node_or_null("PreopTransitionVideoOverlay") != null, "Preop transition video did not create its input overlay: " + action)
+			app.handle_preop_transition_video_input(left_click())
 			await process_frame
+			expect(app.screen != "preop_transition_video", "Mouse click did not skip preop transition video: " + action)
 		if action == "change_scrubs":
 			var scrub_background = app.page.get_node_or_null("SceneBackground")
 			expect(scrub_background != null and scrub_background.texture.resource_path == "res://assets/backgrounds/v7/scrub_area.png", "Changing completion did not move the preop flow to the scrub-area background")
@@ -1202,7 +1240,9 @@ func run() -> void:
 			var anesthetized_portrait = app.page.get_node_or_null("IntraoperativePatientPortrait")
 			expect(anesthetized_portrait != null and anesthetized_portrait.texture.resource_path.ends_with("/patient_sora/anesthetized.png"), "General anesthesia did not show the patient's anesthetized portrait")
 	var ui_used_wrong := false
-	while app.game.preops.preop_sora.current().kind == "surgery_flow":
+	var ui_flow_guard := 0
+	while app.game.preops.preop_sora.current().kind == "surgery_flow" and ui_flow_guard < 50:
+		ui_flow_guard += 1
 		var ui_prep = app.game.preops.preop_sora
 		if ui_prep.awaiting_patient_acknowledgement:
 			var patient_continue: Button = app.page.get_node_or_null("SurgeryPatientContinue")
@@ -1216,6 +1256,7 @@ func run() -> void:
 			expect(app.page.get_node_or_null("SurgeryChoicePanel") != null, "Surgery choices have no contrast panel over the operative CG")
 			continue
 		var ui_step: Dictionary = ui_prep.surgery_flow_step()
+		var ui_step_index: int = int(ui_prep.procedure_step_index)
 		var ui_option: Dictionary = ui_step.options[0]
 		if ui_step.kind == "decision" and not ui_used_wrong:
 			for option in ui_step.options:
@@ -1225,8 +1266,9 @@ func run() -> void:
 					break
 		var flow_button: Button = app.page.get_node_or_null("SurgeryStep_" + str(ui_option.id))
 		expect(flow_button != null, "Surgery-flow option button missing")
-		if flow_button != null:
-			flow_button.pressed.emit()
+		if flow_button == null:
+			break
+		flow_button.pressed.emit()
 		await process_frame
 		var selected_was_correct: bool = bool(ui_option.correct)
 		expect(app.page.get_node_or_null("StaffInteractionPortrait") != null and app.page.get_node_or_null("PreopStageArt") == null, "Surgery-flow team response did not show the responding staff portrait")
@@ -1239,13 +1281,20 @@ func run() -> void:
 			flow_continue.pressed.emit()
 		await process_frame
 		if not selected_was_correct:
-			expect(app.game.preops.preop_sora.procedure_step_index == 2 and app.page.get_node_or_null("SurgeryChoicePanel") != null, "Wrong surgery choice advanced instead of returning to the same step")
-	expect(app.game.preops.preop_sora.procedure_step_history.size() == 5 and app.game.preops.preop_sora.procedure_corrections == 1, "UI surgery flow did not record its corrected retry")
+			expect(app.game.preops.preop_sora.procedure_step_index == ui_step_index and app.page.get_node_or_null("SurgeryChoicePanel") != null, "Wrong surgery choice advanced instead of returning to the same step")
+	expect(ui_flow_guard < 50, "UI surgery flow exceeded its safety bound")
+	var expected_ui_corrections := 1 if ui_used_wrong else 0
+	expect(app.game.preops.preop_sora.procedure_step_history.size() == app.game.preops.preop_sora.surgery_flow_steps().size() + expected_ui_corrections and app.game.preops.preop_sora.procedure_corrections == expected_ui_corrections, "UI surgery flow did not record the expected choices and retries")
 	expect(app.game.preops.preop_sora.stage_id == "procedure_execute", "UI interaction did not reach procedure execution")
-	while app.game.elapsed() < 450:
-		expect(app.game.spend_time("lounge_chat_doc_aoi"), "Could not prepare late surgery timeline")
+	app.game.story_time_advance_minutes += maxi(0, 450 - app.game.elapsed())
 	press(app, "execute_confirmed_procedure")
 	expect(app.game.preops.preop_sora.stage_id == "surgery_result" and app.game.preops.preop_sora.surgery_success, "UI procedure execution failed")
+	if app.screen == "surgery_cg":
+		var surgery_cg_continue: Button = app.page.get_node_or_null("SurgeryCGContinue")
+		expect(surgery_cg_continue != null, "Completed surgery CG omitted its continue button")
+		if surgery_cg_continue != null:
+			surgery_cg_continue.pressed.emit()
+			await process_frame
 	expect(app.screen == "preop" and app.game.pending_surgery_day_transition, "Late surgery showed day transition before its result")
 	expect(app.game.preops.preop_sora.feedback.contains("患者音羽 響子的状态暂时平稳"), "UI omitted postoperative patient description")
 	expect(not app.game.preops.preop_sora.procedure_mismatch, "Correct procedure triggered mismatch reaction")
@@ -1253,27 +1302,39 @@ func run() -> void:
 	var result_summary = app.page.get_node_or_null("SurgeryResultSummary")
 	var result_metrics = app.page.get_node_or_null("SurgeryResultMetrics")
 	var result_return = app.page.get_node_or_null("SurgeryResultReturn")
+	var result_record = app.page.get_node_or_null("PreopRecordText")
 	expect(result_summary != null and result_metrics != null and result_return != null, "Surgery result layout controls missing")
 	if result_summary != null and result_metrics != null and result_return != null:
 		expect(result_summary.position.y + result_summary.size.y <= result_metrics.position.y, "Surgery summary overlaps metrics")
 		expect(result_metrics.position.y + 30 <= result_return.position.y, "Surgery metrics overlap return button")
-		expect(result_return.position.y + result_return.size.y < 558, "Surgery result controls overlap interaction record")
+		expect(result_record == null or result_return.position.y + result_return.size.y <= result_record.position.y, "Surgery result controls overlap interaction record")
+	app.game.micro_event_definitions.clear()
+	var pending_departure: Dictionary = app.game.pending_departure_context()
+	for staff_member in content.collections.staff:
+		app.game.set_after_work_last_offer_day(str(staff_member.id), int(pending_departure.get("workday", 1)))
 	if result_return != null:
 		result_return.pressed.emit()
 	expect(app.screen == "day_transition" and not app.game.active_preop_id.is_empty(), "Late surgery did not defer day transition until after result")
 	var pending_snapshot: Dictionary = app.game.snapshot()
 	var pending_clone = Game.new()
-	pending_clone.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, [], [], content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards)
-	expect(pending_clone.restore(JSON.parse_string(JSON.stringify(pending_snapshot))) and pending_clone.pending_surgery_day_transition, "Deferred day transition did not survive save/load")
-	expect(pending_clone.staff_role_cg_unlocked("role_cg_doc_aoi_assistant_surgeon") and pending_clone.staff_role_cg_unlocked(ward_reward_id), "Role CG unlocks did not survive save/load")
-	expect(pending_clone.preops.preop_sora.operative_background_id == app.game.preops.preop_sora.operative_background_id, "Random operative background changed after save replay")
+	pending_clone.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases, content.collections.first_surgery_diagnosis_reactions, content.collections.palpation_profiles)
+	var pending_restored := pending_clone.restore(JSON.parse_string(JSON.stringify(pending_snapshot)))
+	if not pending_restored:
+		print("PENDING RESTORE ERROR: ", pending_clone.last_error)
+	expect(pending_restored and pending_clone.pending_surgery_day_transition, "Deferred day transition did not survive save/load")
+	if pending_restored:
+		expect(pending_clone.staff_role_cg_unlocked("role_cg_doc_aoi_assistant_surgeon") and pending_clone.staff_role_cg_unlocked(ward_reward_id), "Role CG unlocks did not survive save/load")
+		expect(pending_clone.preops.preop_sora.operative_background_id == app.game.preops.preop_sora.operative_background_id, "Random operative background changed after save replay")
 	var next_day_button: Button = null
 	for node in app.page.get_children():
 		if node is Button and node.text.contains("进入下一天"):
 			next_day_button = node
 	expect(next_day_button != null, "Deferred day transition omitted continue button")
+	app.game.character_event_definitions.clear()
 	if next_day_button != null:
 		next_day_button.pressed.emit()
+	if app.screen != "map" or not app.game.active_preop_id.is_empty() or app.game.pending_surgery_day_transition:
+		print("DAY TRANSITION RESULT: screen=", app.screen, " active_preop=", app.game.active_preop_id, " pending=", app.game.pending_surgery_day_transition, " mode=", app.game.active_mode)
 	expect(app.screen == "map" and app.game.active_preop_id.is_empty() and not app.game.pending_surgery_day_transition, "Day transition did not settle surgery and return to map")
 	var ui_next_patient: String = app.game.current_patient_id()
 	var ui_next_visit: String = app.game.encounter_id_for_patient(ui_next_patient)

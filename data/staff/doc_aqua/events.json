@@ -28,8 +28,9 @@
       "required_events": [],
       "special_requirements": [
         {
-          "type": "completed_surgeries_in_group",
-          "procedure_group": "female_pelvic",
+          "type": "progress_counter",
+          "actor_id": "global",
+          "counter_id": "gynecology_case_count",
           "minimum": 1
         }
       ]
@@ -241,13 +242,8 @@
       "required_events": [
         "aqua_intro_exam_chair"
       ],
-      "special_requirements": [
-        {
-          "type": "completed_surgeries_in_group",
-          "procedure_group": "female_pelvic",
-          "minimum": 5
-        }
-      ]
+      "special_requirements": [],
+      "days_after_required_events": 3
     },
     "start": "five_cases",
     "nodes": [

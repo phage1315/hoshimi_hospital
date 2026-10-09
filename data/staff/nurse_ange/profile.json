@@ -101,7 +101,6 @@
     "speech_style": "工作时多用短促的确认句和祈使句；情绪升高时抢话、重复关键词；冷静后不善于直接道歉，更常用补做工作和实际行动修复关系。",
     "ethical_handling": "她对脆弱患者的残酷失言必须被视为严重职业失范；相关剧情需要呈现制止、患者保护、后果、反省和修复，不能作为正确判断或喜剧奖励。"
   },
-  "familiarity_gain_multiplier": 1.0,
   "personal_nurse": {
     "eligible": true,
     "dialogue": {
@@ -110,5 +109,112 @@
       "sufficient_evidence": [],
       "chatter": []
     }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「既然要听，就认真听到最后。提前知道，总比进了手术室才慌张好。」",
+    "insert_a": "「等等，这里不能只说‘会痛’。痛在哪里、持续多久、什么时候必须告诉我们，都要讲清楚。」",
+    "insert_b": "「别摆出那副表情。步骤多说明每一步都有人负责，不代表我们会拿你试运气。」",
+    "close": "「就是这样。现在害怕可以；到了那一步要按说明配合——有不懂的，现在问。」"
+  },
+  "familiarity_rules": {
+    "base": 1.0
+  },
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压下降。",
+          "还在下降。",
+          "血压已经太低了！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压升高。",
+          "还在升。",
+          "血压已经升得太高了！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率上升。",
+          "现在太快了。",
+          "心率已经快到危险范围！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率下降。",
+          "越来越慢。",
+          "心率已经太低了！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心律异常。",
+          "节律越来越不规则。",
+          "心律已经严重紊乱！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血氧下降。",
+          "还在往下。",
+          "血氧已经太低了！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "呼吸状态异常。",
+          "通气越来越不稳定。",
+          "通气状态已经很危险！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "监护异常。",
+          "患者状态还在恶化。",
+          "患者已经非常不稳定！"
+        ]
+      }
+    ]
   }
 }

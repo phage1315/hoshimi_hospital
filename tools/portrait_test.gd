@@ -27,7 +27,10 @@ func run() -> void:
 			expect(source != null and not source.is_empty(), "Cannot load " + path)
 			if source == null or source.is_empty():
 				continue
-			expect(source.detect_alpha() != Image.ALPHA_NONE, "No transparency: " + path)
+			# Full-frame operating-table and splash art intentionally shares the
+			# portrait lookup API while retaining an opaque CG canvas.
+			if outfit not in ["operating_table", "splash"]:
+				expect(source.detect_alpha() != Image.ALPHA_NONE, "No transparency: " + path)
 			if dimensions.has(outfit):
 				# Native image edits can round a canvas edge by one pixel; larger drift is an error.
 				var delta: Vector2i = (dimensions[outfit] - source.get_size()).abs()
@@ -49,7 +52,7 @@ func run() -> void:
 			expect(app.page.get_node("Outfit_scrubs").disabled, "Outfit button failed: " + id)
 		if scrubs_button != null and person.visuals.portraits.has("scrubs/worried"):
 			app.page.get_node("Expression_worried").pressed.emit()
-			expect(app.page.get_node("CharacterPortrait").texture.resource_path.ends_with("scrubs/worried.png"), "Expression button failed")
+			expect(app.page.get_node("CharacterPortrait").texture.resource_path == "res://" + str(person.visuals.portraits["scrubs/worried"]), "Expression button failed")
 	var patient_count := 0
 	var expected_patient_count := 0
 	for patient in app.content.collections.patients:
@@ -70,7 +73,9 @@ func run() -> void:
 				var last := source.get_size() - Vector2i.ONE
 				for corner in [Vector2i.ZERO, Vector2i(last.x, 0), Vector2i(0, last.y), last]:
 					expect(source.get_pixelv(corner).a <= 0.05, "Ward patient has an opaque canvas corner: " + path)
-			if dimensions.has(outfit):
+			# Splash screens and dedicated anesthetized cuts are authored as
+			# full-frame state art and need not share the base portrait canvas.
+			if dimensions.has(outfit) and outfit != "splash" and expression != "anesthetized":
 				var delta: Vector2i = (dimensions[outfit] - texture.get_size()).abs()
 				expect(delta.x <= 1 and delta.y <= 1, "Patient canvas differs within state: " + path)
 			else:

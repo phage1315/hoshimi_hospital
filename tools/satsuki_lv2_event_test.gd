@@ -132,7 +132,7 @@ func run() -> void:
 	for flag in ["satsuki_or_rotation_unlocked", "satsuki_successful_patient_transport", "satsuki_lv2_patient_transport_complete"]:
 		expect(game.story_flag(flag), "Satsuki Lv2 did not set " + flag)
 	expect(game.relationship_level("nurse_satsuki") == 2, "Satsuki Lv2 did not award relationship level 2")
-	expect(int(game.relation_for("nurse_satsuki").familiarity) == 35, "Satsuki Lv2 did not use the shared Lv2 event familiarity reward")
+	expect(int(game.relation_for("nurse_satsuki").familiarity) == 33, "Satsuki Lv2 did not use the shared Lv2 event familiarity reward")
 	expect(game.relation_for("nurse_satsuki").unlocked_benefits.has("unlock_satsuki_or_rotation"), "Satsuki Lv2 did not unlock the OR-rotation benefit")
 	expect(game.special_event_gallery_unlocked(definition.id), "Satsuki Lv2 did not unlock gallery replay")
 

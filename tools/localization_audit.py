@@ -24,7 +24,7 @@ TRANSLATABLE_FIELDS = {
     "name", "family_name", "given_name", "professional_name", "title", "subtitle", "description",
     "label", "text", "prompt", "response", "teaser", "caption", "lines",
     "announcement", "completion_hint", "location_label", "speaker_label", "specialty", "personality",
-    "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "correction",
+    "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "correction", "chapters",
 }
 
 
@@ -79,6 +79,8 @@ def collect_staff_dialogue_keys(value: object, path: str, result: set[str]) -> N
             ".team_dialogue." in key
             or ".procedure_group_team_dialogue." in key
             or ".personal_nurse.dialogue." in key
+            or ".preop_graphic_wrapper." in key
+            or ".crisis_callouts." in key
             or (key.startswith("collections.time_events.") and ".responses." in key)
         ):
             result.add(key)

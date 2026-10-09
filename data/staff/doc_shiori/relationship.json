@@ -14,32 +14,100 @@
     {
       "target_level": 1,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [],
+      "min_familiarity": 10,
+      "cooldown_days": 3
     },
     {
       "target_level": 2,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [],
+      "min_familiarity": 25,
+      "cooldown_days": 3
     },
     {
       "target_level": 3,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 65
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 30
+        }
+      ],
+      "min_familiarity": 40,
+      "cooldown_days": 3
     },
     {
       "target_level": 4,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_intimacy_events",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 75
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "leadership",
+          "minimum": 70
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 50
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "reputation",
+          "minimum": 300
+        }
+      ],
+      "min_familiarity": 55,
+      "cooldown_days": 3
     },
     {
       "target_level": 5,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_clinical_practice_patient",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 85
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "leadership",
+          "minimum": 80
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 70
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "reputation",
+          "minimum": 500
+        }
+      ],
+      "min_familiarity": 75,
+      "cooldown_days": 3
     }
   ]
 }

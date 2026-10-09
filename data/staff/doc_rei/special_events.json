@@ -9,22 +9,7 @@
     "developer_only": false,
     "auto_schedule": true,
     "announcement": "完成《叮。》后，深山第一次主动邀请坂口担任胃部教学病例的第一助手。今天九点开始，整日行程由这台手术占用。",
-    "unlock_requirements": [
-      {
-        "type": "day_number",
-        "minimum": 5
-      },
-      {
-        "type": "relationship_level",
-        "actor_id": "doc_rei",
-        "minimum": 1
-      },
-      {
-        "type": "relationship_level",
-        "actor_id": "doc_shiori",
-        "minimum": 1
-      }
-    ],
+    "unlock_requirements": [],
     "required_characters": [
       "PLAYER",
       "doc_rei",
@@ -88,8 +73,9 @@
     "announcement": "深山接诊了一位腹痛患者。X光片上的尖锐金属影把今天的日程直接推进了手术室。",
     "unlock_requirements": [
       {
-        "type": "day_number",
-        "minimum": 3
+        "type": "days_after_character_event",
+        "event_id": "intro_doc_rei",
+        "days": 3
       }
     ],
     "required_characters": [
@@ -150,17 +136,7 @@
     "developer_only": false,
     "auto_schedule": true,
     "announcement": "两次荒谬的手术记忆让佳織开始怀疑“规律”。她在非值班日借用空手术室做一次不太像医生的经验性排除。",
-    "unlock_requirements": [
-      {
-        "type": "day_number",
-        "minimum": 8
-      },
-      {
-        "type": "relationship_level",
-        "actor_id": "doc_rei",
-        "minimum": 2
-      }
-    ],
+    "unlock_requirements": [],
     "required_characters": [
       "PLAYER",
       "doc_rei",

@@ -120,12 +120,14 @@
       "min_day": 1,
       "min_affection": 0,
       "min_familiarity": 0,
-      "required_events": [],
+      "required_events": [
+        "intro_doc_asuka_director_office"
+      ],
       "special_requirements": [
         {
           "type": "player_attribute",
           "attribute": "skill",
-          "minimum": 56
+          "minimum": 75
         }
       ]
     },
@@ -274,7 +276,7 @@
     "benefit_id": "",
     "auto_follow_up": {
       "event_id": "emiko_lv1_first_operation",
-      "day_offset": 1,
+      "day_offset": 3,
       "absolute_clock": 780
     }
   },
@@ -306,14 +308,8 @@
       "required_events": [
         "emiko_intro_rumored_hands"
       ],
-      "special_requirements": [
-        {
-          "type": "player_attribute",
-          "attribute": "skill",
-          "minimum": 56
-        }
-      ],
-      "days_after_required_events": 1
+      "special_requirements": [],
+      "days_after_required_events": 3
     },
     "start": "opening",
     "nodes": [
@@ -680,18 +676,12 @@
     "conditions": {
       "min_day": 1,
       "min_affection": 0,
-      "min_familiarity": 10,
+      "min_familiarity": 0,
       "required_events": [
         "emiko_lv1_first_operation"
       ],
-      "special_requirements": [
-        {
-          "type": "player_attribute",
-          "attribute": "skill",
-          "minimum": 70
-        }
-      ],
-      "days_after_required_events": 7
+      "special_requirements": [],
+      "days_after_required_events": 3
     },
     "start": "opening",
     "nodes": [

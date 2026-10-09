@@ -45,13 +45,13 @@ func run() -> void:
 	expect(prep.stage_id == "or_table_palpation" and prep.or_table_palpation_cg_id == "body_type_03", "Procedure selection did not retain its palpation CG")
 	var before := {"fear": prep.fear, "pain": prep.pain, "dignity": prep.dignity, "cooperation": prep.cooperation_base, "minutes": prep.minutes}
 	expect(prep.apply({"kind": "or_table_palpation", "region": "chest", "intensity": "standard"}), "Chest hotspot event was rejected")
-	expect(prep.feedback.contains("胸骨") and prep.pain == before.pain + 2 and prep.fear == before.fear and prep.dignity == before.dignity and prep.cooperation_base == before.cooperation and prep.minutes == before.minutes + 1, "Generic chest palpation response or effects are wrong")
+	expect(prep.feedback.contains("胸骨") and prep.pain == before.pain + 2 and prep.fear == before.fear and prep.dignity == before.dignity and prep.cooperation_base == before.cooperation and prep.minutes == before.minutes + 1 and prep.sensory_interaction_xp_bonus == 0, "Generic chest palpation response or effects are wrong")
 	expect(prep.palpation_findings_confirmed.is_empty() and prep.last_palpation_confirmation.is_empty(), "Unrelated chest palpation created a medical finding")
 	expect(prep.apply({"kind": "or_table_palpation", "region": "abdomen", "intensity": "standard"}), "Primary abdominal palpation was rejected")
-	expect(prep.feedback.contains("右边") and prep.palpation_findings_confirmed == ["abdomen"] and prep.last_palpation_confirmation == "abdomen", "Abdominal profile did not create its first relevant finding")
+	expect(prep.feedback.contains("右边") and prep.palpation_findings_confirmed == ["abdomen"] and prep.last_palpation_confirmation == "abdomen" and prep.sensory_interaction_xp_bonus == 5, "Abdominal profile did not create its first relevant finding or one-time XP bonus")
 	var after_first_abdominal := {"fear": prep.fear, "pain": prep.pain, "dignity": prep.dignity, "cooperation": prep.cooperation_base}
 	expect(prep.apply({"kind": "or_table_palpation", "region": "abdomen", "intensity": "standard"}), "Repeated abdominal palpation was rejected")
-	expect(prep.palpation_findings_confirmed == ["abdomen"] and prep.last_palpation_confirmation.is_empty(), "Repeated primary palpation granted a second medical confirmation")
+	expect(prep.palpation_findings_confirmed == ["abdomen"] and prep.last_palpation_confirmation.is_empty() and prep.sensory_interaction_xp_bonus == 5, "Repeated primary palpation granted a second medical confirmation or XP bonus")
 	expect(prep.fear > after_first_abdominal.fear and prep.pain > after_first_abdominal.pain and prep.cooperation_base < after_first_abdominal.cooperation, "Repeated primary palpation stopped changing patient state")
 
 	var breast = fixture("prototype_v1", "surgery_breast_tumor")
@@ -88,7 +88,7 @@ func run() -> void:
 	expect(needle.apply({"kind": "or_table_needle", "region": "breast"}), "Palpation needle event was rejected")
 	var needle_after_first := {"fear": needle.fear, "pain": needle.pain, "dignity": needle.dignity, "cooperation": needle.cooperation_base}
 	expect(needle.apply({"kind": "or_table_needle", "region": "breast"}), "Repeated palpation needle event was rejected")
-	expect(needle.fear - needle_after_first.fear == needle_after_first.fear - needle_before.fear and needle.pain - needle_after_first.pain == needle_after_first.pain - needle_before.pain, "Repeated needle use did not retain its full cumulative penalty")
+	expect(needle.fear - needle_after_first.fear == needle_after_first.fear - needle_before.fear and needle.pain - needle_after_first.pain == needle_after_first.pain - needle_before.pain and needle.sensory_interaction_xp_bonus == 0, "Repeated needle use did not retain its full cumulative penalty or incorrectly granted XP")
 	expect(needle.palpation_findings_confirmed.is_empty() and needle.or_table_needle_counts.get("breast", 0) == 2, "Needle misuse created a finding or failed to record repeats")
 
 	var skipped = fixture("body_type_02")
@@ -102,8 +102,10 @@ func run() -> void:
 	expect(local.anesthesia_region_covered("abdomen") and not local.anesthesia_region_covered("breast") and local.operative_analgesia_effective(), "Local anesthesia coverage resolver is wrong")
 	var local_covered_pain: int = int(local.pain)
 	expect(local.apply({"kind": "anesthesia_sensory_test", "tool": "needle", "region": "abdomen"}) and local.pain == local_covered_pain, "Covered pinprick incorrectly added pain")
+	expect(local.sensory_interaction_xp_bonus == 5, "Correct covered pinprick did not grant its one-time XP bonus")
 	var local_uncovered_pain: int = int(local.pain)
 	expect(local.apply({"kind": "anesthesia_sensory_test", "tool": "needle", "region": "breast"}) and local.pain > local_uncovered_pain, "Uncovered pinprick did not add pain")
+	expect(local.sensory_interaction_xp_bonus == 5, "Uncovered pinprick incorrectly granted an XP bonus")
 	var local_skip_state := [local.fear, local.pain, local.dignity, local.cooperation_base]
 	expect(local.apply({"kind": "anesthesia_sensory_test_complete"}) and local.stage_id == "operative_positioning" and [local.fear, local.pain, local.dignity, local.cooperation_base] == local_skip_state, "Completing or skipping sensory testing changed state")
 	var local_replay = fixture("body_type_03", "surgery_appendix")

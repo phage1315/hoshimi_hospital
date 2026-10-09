@@ -21,7 +21,7 @@ func run() -> void:
 	expect(content.load_all(), "Content load failed")
 	var maya: Dictionary = content.find_record("staff", "visiting_maya")
 	expect(not maya.is_empty() and maya.rank == "访问研究医／研究协力", "Maya visiting-research profile is missing")
-	expect(maya.skills == {"surgery": 28, "diagnostics": 62, "teamwork": 82, "patient_care": 58, "instrument_handling": 91, "calmness": 76}, "Maya skill profile changed")
+	expect(int(maya.skills.surgery) == 28 and int(maya.skills.diagnostics) == 62 and int(maya.skills.teamwork) == 82 and int(maya.skills.patient_care) == 58 and int(maya.skills.instrument_handling) == 91 and int(maya.skills.calmness) == 76, "Maya skill profile changed")
 	expect("relationship_progression_locked" in maya.flags and "no_romance_route" in maya.flags and "no_adult_route" in maya.flags, "Maya route exclusions are incomplete")
 	for portrait_key in ["white_coat/neutral", "scrubs/neutral", "sterile/neutral"]:
 		var portrait := load("res://" + str(maya.visuals.portraits[portrait_key])) as Texture2D

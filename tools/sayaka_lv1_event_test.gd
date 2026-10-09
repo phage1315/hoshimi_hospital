@@ -73,7 +73,7 @@ func run() -> void:
 			expect(game.choose_character_event(str(retry_date.current().choices[0].id)), "Confirmed date continuation failed")
 	expect(game.relationship_level("doc_sayaka") == 1, "Confirmed first date did not raise Sayaka to Lv1")
 	expect(game.character_event_done("sayaka_lv1_first_date"), "Confirmed first date was not recorded")
-	expect(int(relation.familiarity) == 10, "Sayaka's successful first date did not stop at the Lv2 familiarity threshold")
+	expect(int(relation.familiarity) > 10, "Sayaka's successful first date did not preserve familiarity earned beyond the old milestone cap")
 	expect(not relation.flags.has("sayaka_first_date_retry_pending"), "Successful retry left the retry flag behind")
 	for flag in ["sayaka_first_date_completed", "sayaka_mutual_attraction", "sayaka_romantic_interest_confirmed", "sayaka_lv2_eligible_base"]:
 		expect(relation.flags.has(flag), "Successful first date did not set " + flag)
@@ -83,12 +83,17 @@ func run() -> void:
 	expect(not game.character_event_available(game.character_event_definitions.sayaka_lv2_working_hours), "Sayaka Lv2 bypassed the Monday callback")
 	var callback = game.start_character_event("sayaka_lv1_monday_callback")
 	expect(callback != null, "Monday callback could not start")
+	var familiarity_before_callback := int(relation.familiarity)
 	if callback != null:
 		while not callback.completed:
 			expect(game.choose_character_event(str(callback.current().choices[0].id)), "Monday callback continuation failed")
-	expect(relation.flags.has("sayaka_monday_callback_complete") and int(relation.familiarity) == 10, "Familiarity continued accumulating while Sayaka's Lv2 prerequisites were incomplete")
+	expect(relation.flags.has("sayaka_monday_callback_complete") and int(relation.familiarity) == mini(100, familiarity_before_callback + 3), "Monday callback did not award its authored familiarity")
+	if int(relation.familiarity) < 25:
+		game.add_familiarity("doc_sayaka", 25 - int(relation.familiarity))
+	expect(not game.character_event_available(game.character_event_definitions.sayaka_lv2_working_hours), "Sayaka Lv2 bypassed the three-day milestone cooldown")
+	game.advance_story_to_day(17, 540)
 	expect(game.next_mandatory_character_event().get("id", "") == "sayaka_lv2_working_hours", "Sayaka Lv2 was not selected by the day-start scheduler")
-	expect(game.next_character_event_at("player_office").get("id", "") == "sayaka_lv2_working_hours", "Sayaka Lv2 did not unlock in the player office")
+	expect(game.next_character_event_at("player_office").is_empty(), "Sayaka Lv2 leaked into the location-event scheduler")
 	var working_hours = game.start_character_event("sayaka_lv2_working_hours")
 	expect(working_hours != null and advance_to_node(game, working_hours, "white_coat"), "Sayaka Lv2 did not reach its appearance choice")
 	if working_hours != null and working_hours.node_id == "white_coat":
@@ -99,6 +104,27 @@ func run() -> void:
 	for flag in ["sayaka_workplace_flirt_established", "sayaka_school_nurse_background_shared", "sayaka_medicine_return_motivation_known", "sayaka_surgical_outfit_compliment_seen", "sayaka_lv3_pre_event_eligible"]:
 		expect(relation.flags.has(flag), "Sayaka Lv2 did not set " + flag)
 	expect(relation.unlocked_benefits.has("unlock_sayaka_lv2_workplace_flirt"), "Sayaka Lv2 benefit was not unlocked")
+
+	var lv3_game = GameState.new()
+	configure_game(lv3_game)
+	lv3_game.meet_staff("doc_sayaka")
+	expect(lv3_game._complete_character_event_for_test("sayaka_lv2_working_hours", 1), "Sayaka Lv3 fixture could not complete its Lv2 prerequisite")
+	var lv3_relation: Dictionary = lv3_game.relation_for("doc_sayaka")
+	lv3_relation.level = 2
+	lv3_relation.familiarity = 40
+	lv3_relation.rank_history = ["sayaka_lv2_working_hours"]
+	lv3_game.set_test_player_attribute("charm", 10)
+	lv3_game.advance_story_to_day(4, 1019)
+	var lv3_definition: Dictionary = lv3_game.next_after_work_character_event()
+	expect(lv3_definition.get("id", "") == "sayaka_lv3_relationship", "Sayaka Lv3 did not queue at the end of a qualifying workday")
+	var lv3_event = lv3_game.start_character_event("sayaka_lv3_relationship")
+	expect(lv3_event != null and lv3_event.node_id == "scene_01_fallback", "Sayaka Lv3 did not use its fallback opening when no observing nurse was present")
+	if lv3_event != null:
+		while not lv3_event.completed:
+			expect(lv3_game.choose_character_event(str(lv3_event.current().choices[0].id)), "Sayaka Lv3 continuation failed")
+	expect(lv3_game.relationship_level("doc_sayaka") == 3 and lv3_game.character_event_done("sayaka_lv3_relationship"), "Sayaka Lv3 did not complete its rank-up")
+	expect(lv3_relation.familiarity == 40, "Sayaka Lv3 awarded an unintended familiarity reward")
+	expect(lv3_relation.flags.has("sayaka_lv3_romance_confirmed") and lv3_relation.flags.has("sayaka_first_kiss_happened"), "Sayaka Lv3 did not preserve its romance and first-kiss flags")
 
 	var snapshot: Dictionary = game.snapshot()
 	var clone = GameState.new()

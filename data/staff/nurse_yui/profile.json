@@ -86,5 +86,138 @@
       "sufficient_evidence": [],
       "chatter": []
     }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「好的。我会按星见实际采用的流程从头说。术式名称、先后顺序和你会感觉到的部分，我分开讲。」",
+    "insert_a": "「这里我再确认一下：我说的是星见现在采用的做法，不是教科书里列出的所有可能性。」",
+    "insert_b": "「听起来步骤很多，是因为每一步都有人确认。不是把你送进去以后，大家才临时决定。」",
+    "close": "「我说完了。你也可以按顺序问；一个问题结束以后，我们再开下一个。」"
+  },
+  "familiarity_rules": {
+    "base": 1.0,
+    "operations": [
+      {
+        "input": "relationship_level",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 2,
+            "value": 1.0
+          },
+          {
+            "minimum": 3,
+            "value": 0.75
+          }
+        ]
+      }
+    ]
+  },
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压往下掉。看监护。",
+          "掉得很快。",
+          "血压已经低得不能再等了！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压上去了。",
+          "升得有点过头。",
+          "血压已经高得太危险了！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率一路往上。",
+          "还在升，太快了。",
+          "心率已经快得不能再拖了！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率往下。",
+          "越来越慢，别只看术野。",
+          "心率已经太低了！马上处理！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心律乱了。",
+          "节律越来越不对。",
+          "心律已经严重紊乱！"
+        ]
+      },
+      {
+        "id": "hoshimi",
+        "tone": "hoshimi",
+        "weight": 1,
+        "attempt_lines": [
+          "心律乱了。这个节奏可不是给你配手术BGM的。",
+          "节律还在恶化，别跟着它乱。",
+          "心律已经严重紊乱，马上处理！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血氧在掉。",
+          "还在往下。",
+          "血氧已经太低了！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "呼吸不对。",
+          "通气状态还在恶化。",
+          "通气已经非常危险！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "监护不稳。",
+          "坂口医生，别只看里面，状态还在掉。",
+          "患者已经非常不稳定！"
+        ]
+      }
+    ]
   }
 }

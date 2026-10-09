@@ -14,32 +14,102 @@
     {
       "target_level": 1,
       "event_id": "aqua_lv1_gyne_obsession",
+      "content_status": "authored",
       "benefit_id": "unlock_aqua_surgical_team",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "progress_counter",
+          "actor_id": "global",
+          "counter_id": "gynecology_case_count",
+          "minimum": 5
+        }
+      ],
+      "min_familiarity": 10,
+      "cooldown_days": 3
     },
     {
       "target_level": 2,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "progress_counter",
+          "actor_id": "global",
+          "counter_id": "gynecology_case_count",
+          "minimum": 10
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 60
+        },
+        {
+          "type": "story_flag",
+          "flag": "aqua_hysterectomy_teaching_complete",
+          "value": true
+        }
+      ],
+      "min_familiarity": 25,
+      "cooldown_days": 3
     },
     {
       "target_level": 3,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "progress_counter",
+          "actor_id": "global",
+          "counter_id": "gynecology_case_count",
+          "minimum": 15
+        }
+      ],
+      "min_familiarity": 40,
+      "cooldown_days": 3
     },
     {
       "target_level": 4,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_intimacy_events",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "progress_counter",
+          "actor_id": "global",
+          "counter_id": "gynecology_case_count",
+          "minimum": 20
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 70
+        }
+      ],
+      "min_familiarity": 55,
+      "cooldown_days": 3
     },
     {
       "target_level": 5,
       "event_id": "",
+      "content_status": "planned",
       "benefit_id": "unlock_clinical_practice_patient",
-      "special_requirements": []
+      "special_requirements": [
+        {
+          "type": "progress_counter",
+          "actor_id": "global",
+          "counter_id": "gynecology_case_count",
+          "minimum": 30
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 80
+        }
+      ],
+      "min_familiarity": 75,
+      "cooldown_days": 3
     }
   ]
 }

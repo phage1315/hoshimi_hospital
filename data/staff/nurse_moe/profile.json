@@ -114,5 +114,153 @@
       "sufficient_evidence": [],
       "chatter": []
     }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「好、好的，我来详细说明。这个流程我已经重新确认过三遍，所以……应该不会讲错。」",
+    "insert_a": "「接下来是——等一下，我不是故意停顿吓你，我只是确认自己没有跳过一层。」",
+    "insert_b": "「听起来很可怕吗？其实大家都会按表做。那张表我也会带着，而且字很大。」",
+    "close": "「说完了！……我是不是讲得太具体了？对不起，可是少讲一步我反而更不放心。」"
+  },
+  "familiarity_rules": {
+    "base": 0.6,
+    "operations": [
+      {
+        "input": "relationship_level",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 0,
+            "value": 0.6
+          },
+          {
+            "minimum": 1,
+            "maximum": 1,
+            "value": 0.8
+          },
+          {
+            "minimum": 2,
+            "maximum": 2,
+            "value": 1.0
+          },
+          {
+            "minimum": 3,
+            "maximum": 3,
+            "value": 1.25
+          },
+          {
+            "minimum": 4,
+            "value": 1.5
+          }
+        ]
+      }
+    ]
+  },
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血、血压下降了……！",
+          "还在下降。",
+          "坂口医生，血压已经太低了！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血压突然升高了！",
+          "比刚才高很多。",
+          "血压已经升得太高了！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率上来了！",
+          "还、还在升。",
+          "心率已经太快了！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心率越来越慢了。",
+          "坂口医生，心率还在往下。",
+          "心率已经太低了！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "心律……不规则。",
+          "监护上的节律还在变！",
+          "心律已经严重紊乱了！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "血氧下降了！",
+          "还没停……还在往下。",
+          "坂口医生，血氧已经太低了！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "呼吸状态变了。",
+          "通气好像越来越不对。",
+          "通气状态已经很危险了！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 8,
+        "attempt_lines": [
+          "患者状态不稳定！",
+          "坂口医生，监护还在恶化！",
+          "患者已经非常不稳定了！"
+        ]
+      },
+      {
+        "id": "hoshimi",
+        "tone": "hoshimi",
+        "weight": 1,
+        "attempt_lines": [
+          "监护不稳！今天的监护仪怎么突然这么有精神……！",
+          "它还在报警，患者状态继续恶化！",
+          "坂口医生，患者已经非常不稳定了！"
+        ]
+      }
+    ]
   }
 }

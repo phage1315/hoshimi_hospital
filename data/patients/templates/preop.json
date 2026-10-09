@@ -80,19 +80,19 @@
         {
           "id": "explain_plan",
           "label": "详细说明，留时间提问",
-          "response": "「谢谢……知道接下来会发生什么，安心一点了。」",
-          "next": "team",
+          "response": "患者犹豫了一下，追问起等下手术时具体会发生什么。",
+          "next": "graphic_preop_question",
           "requires": [],
           "flags": [
             "announced"
           ],
-          "calm": 1,
-          "minutes": 3,
+          "calm": 0,
+          "minutes": 0,
           "requires_team": false,
           "execute_preparation": false,
           "response_role": "",
           "response_by_staff": {},
-          "response_speaker": "patient"
+          "response_speaker": "narrator"
         },
         {
           "id": "brief_plan",
@@ -113,6 +113,70 @@
         }
       ],
       "background_id": "ward"
+    },
+    {
+      "id": "graphic_preop_question",
+      "title": "术前详细说明",
+      "scene": "ward",
+      "kind": "graphic_preop_choice",
+      "prompt": "患者已经主动问起具体过程。要回答到什么程度？",
+      "speaker": "patient",
+      "background_id": "ward",
+      "actions": [
+        {
+          "id": "appropriate_answer",
+          "label": "简短而适当地回答",
+          "response": "患者简单问了几个关于手术流程和术后恢复的问题。你们逐一回答，没有再展开不必要的细节。",
+          "response_speaker": "narrator",
+          "next": "team",
+          "requires": [],
+          "flags": [
+            "preop_question_answered"
+          ],
+          "calm": 1,
+          "minutes": 3,
+          "requires_team": false,
+          "execute_preparation": false,
+          "effects": {
+            "fear": -5,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 0
+          }
+        },
+        {
+          "id": "graphic_answer",
+          "label": "绘声绘色地回答",
+          "response": "患者等着你们继续说明。",
+          "response_speaker": "narrator",
+          "next": "graphic_preop_dialogue",
+          "requires": [],
+          "flags": [
+            "preop_graphic_answer"
+          ],
+          "calm": 0,
+          "minutes": 5,
+          "requires_team": false,
+          "execute_preparation": false,
+          "effects": {
+            "fear": 0,
+            "pain": 0,
+            "dignity": 0,
+            "cooperation": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "graphic_preop_dialogue",
+      "title": "绘声绘色的术前说明",
+      "scene": "ward",
+      "kind": "graphic_preop_dialogue",
+      "prompt": "术前说明正在进行。",
+      "speaker": "narrator",
+      "background_id": "ward",
+      "next": "team",
+      "actions": []
     },
     {
       "id": "team",
@@ -1334,5 +1398,408 @@
       "actions": [],
       "background_id": "operating_room"
     }
-  ]
+  ],
+  "graphic_preop": {
+    "family_by_procedure_group": {
+      "general_abdominal": "abdominal",
+      "urologic": "abdominal",
+      "vascular": "abdominal",
+      "breast": "breast",
+      "female_pelvic": "gynecology_pelvic",
+      "thoracic": "thoracic_cardiac",
+      "cardiac": "thoracic_cardiac"
+    },
+    "default_wrapper": {
+      "open": "「你真的想听详细的吗？那我就从最开始说。知道流程总比自己乱想好。」",
+      "insert_a": "「这里听起来吓人，不过大家都是按顺序做，不会乱来。」",
+      "insert_b": "「你只要记住，越紧张越容易把自己弄得更难受。」",
+      "close": "「好了，大概就是这样。还有哪里没听懂？」"
+    },
+    "families": {
+      "abdominal": {
+        "fear_delta": 20,
+        "dignity_delta": -5,
+        "nodes": [
+          {
+            "id": "opening",
+            "speaker": "patient",
+            "text": "「如果最后真的决定不麻醉……开肚子到底是什么样子？不会像杀猪那样一刀扎进去，再把肚子豁开吧？」"
+          },
+          {
+            "id": "open",
+            "speaker": "wrapper",
+            "slot": "open"
+          },
+          {
+            "id": "skin",
+            "speaker": "explainer",
+            "text": "「哪有那么开的。第一步是切皮肤；这一层感觉敏锐，第一刀往往最不好受。接下来才是皮下脂肪，会一点点分开，不是在里面乱搅。」"
+          },
+          {
+            "id": "wall",
+            "speaker": "explainer",
+            "text": "「再往下是筋膜和腹壁。越痛越不能把肚子绷紧；腹壁硬得像板，医生不好分层，你自己也会更难受。」"
+          },
+          {
+            "id": "instinct",
+            "speaker": "patient",
+            "text": "「……这听起来完全违背本能。」"
+          },
+          {
+            "id": "insert_a",
+            "speaker": "wrapper",
+            "slot": "insert_a"
+          },
+          {
+            "id": "peritoneum",
+            "speaker": "explainer",
+            "text": "「腹壁处理完才到腹膜。剪开时感觉会突然变得又尖、又冷、又空，像封着的地方一下被打开。」"
+          },
+          {
+            "id": "retractor",
+            "speaker": "explainer",
+            "text": "「然后放拉钩。不是再切一刀，而是已经开的伤口被持续往两边撑；拉到位以后，身体才会慢慢习惯牵拉。」"
+          },
+          {
+            "id": "habit",
+            "speaker": "patient",
+            "text": "「你说的‘习惯’为什么听起来这么可怕……」"
+          },
+          {
+            "id": "prep",
+            "speaker": "explainer",
+            "text": "「少数人会痛到控制不住大小便。所以等下会先处理肠道，上台再放尿管。这样就算真的失禁，也不会把术野弄得乱七八糟。」"
+          },
+          {
+            "id": "wrong_concern",
+            "speaker": "patient",
+            "text": "「我担心的根本不是手术会不会乱七八糟！」"
+          },
+          {
+            "id": "insert_b",
+            "speaker": "wrapper",
+            "slot": "insert_b"
+          },
+          {
+            "id": "fixation",
+            "speaker": "explainer",
+            "text": "「如果你痛得想躲、缩、甚至坐起来，也不用担心。固定就是为了让本能反应不会妨碍术野。真开始以后，你大概就不会觉得固定最难受了。」"
+          },
+          {
+            "id": "fixation_reaction",
+            "speaker": "patient",
+            "text": "「……这是什么安慰方法？」"
+          },
+          {
+            "id": "closing",
+            "speaker": "patient",
+            "text": "「我现在有点不想去手术室了。」"
+          },
+          {
+            "id": "close",
+            "speaker": "wrapper",
+            "slot": "close"
+          },
+          {
+            "id": "last",
+            "speaker": "patient",
+            "text": "「……我现在有点后悔听懂了。」"
+          }
+        ]
+      },
+      "breast": {
+        "fear_delta": 20,
+        "dignity_delta": -10,
+        "nodes": [
+          {
+            "id": "opening",
+            "speaker": "patient",
+            "text": "「乳房手术到底怎么开？不会真的把这里整个翻开吧？」"
+          },
+          {
+            "id": "open",
+            "speaker": "wrapper",
+            "slot": "open"
+          },
+          {
+            "id": "position",
+            "speaker": "explainer",
+            "text": "「不会整个翻开。躺好以后，助手会先把会挡住切口的软组织往旁边带开，该托住的托住，把要切的皮肤拉平。」"
+          },
+          {
+            "id": "point",
+            "speaker": "patient",
+            "text": "「你不要指……」"
+          },
+          {
+            "id": "layers",
+            "speaker": "explainer",
+            "text": "「皮肤绷平以后，第一刀会更整齐。下面先是脂肪，再往里才是乳腺组织；病灶深的话会分到胸肌表面。」"
+          },
+          {
+            "id": "insert_a",
+            "speaker": "wrapper",
+            "slot": "insert_a"
+          },
+          {
+            "id": "retractor",
+            "speaker": "explainer",
+            "text": "「医生会用拉钩撑开切口。感觉会从表面尖痛，变成整片胸口被牵着、压着、拨开；需要扩大时也是一点一点来。」"
+          },
+          {
+            "id": "nipple",
+            "speaker": "explainer",
+            "text": "「乳头附近很敏感，我们会尽量避开。不过铺巾、拉钩和器械换位置时偶尔碰到还是有可能。受不了就直接说。」"
+          },
+          {
+            "id": "nipple_reaction",
+            "speaker": "patient",
+            "text": "「你们不会觉得我太夸张吗？」"
+          },
+          {
+            "id": "reassure",
+            "speaker": "explainer",
+            "text": "「不会。清醒做乳房手术，本来就会有反应。而且这台手术不是冲着乳头去的。」"
+          },
+          {
+            "id": "alarm",
+            "speaker": "patient",
+            "text": "「我刚才根本没想到会割掉！」"
+          },
+          {
+            "id": "insert_b",
+            "speaker": "wrapper",
+            "slot": "insert_b"
+          },
+          {
+            "id": "arms",
+            "speaker": "explainer",
+            "text": "「疼的时候你会本能地耸肩、缩胸、夹手臂，所以手臂会摆好并固定。心里可以抱住自己，手最好不要去抓拉钩。」"
+          },
+          {
+            "id": "closing",
+            "speaker": "patient",
+            "text": "「我现在觉得穿着衣服的时候，它们两个看起来特别珍贵。」"
+          },
+          {
+            "id": "close",
+            "speaker": "wrapper",
+            "slot": "close"
+          },
+          {
+            "id": "last",
+            "speaker": "patient",
+            "text": "「……我现在有点后悔听懂了。」"
+          }
+        ]
+      },
+      "gynecology_pelvic": {
+        "fear_delta": 20,
+        "dignity_delta": -15,
+        "nodes": [
+          {
+            "id": "opening",
+            "speaker": "patient",
+            "text": "「妇科手术……是不是会摆那种很难为情的姿势？」"
+          },
+          {
+            "id": "direct",
+            "speaker": "explainer",
+            "text": "「会。」"
+          },
+          {
+            "id": "too_fast",
+            "speaker": "patient",
+            "text": "「你回答得也太快了。」"
+          },
+          {
+            "id": "open",
+            "speaker": "wrapper",
+            "slot": "open"
+          },
+          {
+            "id": "position",
+            "speaker": "explainer",
+            "text": "「两条腿会分别放好、固定住，医生站在你腿中间。那里视野最好，下刀和从下面做准备都方便。」"
+          },
+          {
+            "id": "embarrassed",
+            "speaker": "patient",
+            "text": "「你这么解释以后更难为情了。」"
+          },
+          {
+            "id": "field",
+            "speaker": "explainer",
+            "text": "「对我们来说那只是术野。开腹以后，第一件麻烦事通常不是子宫，是挡在前面的肠管；要往上拨、往上托，让盆腔空出来。」"
+          },
+          {
+            "id": "bowel",
+            "speaker": "patient",
+            "text": "「我会感觉到肠子被推走？」"
+          },
+          {
+            "id": "bowel_answer",
+            "speaker": "explainer",
+            "text": "「如果清醒，会感觉里面有东西真的被推开，第一次有点反胃也正常。」"
+          },
+          {
+            "id": "insert_a",
+            "speaker": "wrapper",
+            "slot": "insert_a"
+          },
+          {
+            "id": "bladder",
+            "speaker": "explainer",
+            "text": "「膀胱就在子宫前面，所以一定会导尿，让它扁下来别挡住术野。肠子往上、膀胱变扁，子宫就容易露出来。」"
+          },
+          {
+            "id": "manipulator",
+            "speaker": "explainer",
+            "text": "「如果子宫还是藏得深，会从下面放器械，把它向上托一点。没麻醉时会酸、胀，像从里面被顶上来。」"
+          },
+          {
+            "id": "reaction",
+            "speaker": "patient",
+            "text": "「请不要笑着说‘一切都在计划之内’……」"
+          },
+          {
+            "id": "prep",
+            "speaker": "explainer",
+            "text": "「肠道也会提前处理，上台再放尿管。这样就算痛、恶心和牵拉一起上来，也不会因为失禁把术野污染得一团糟。」"
+          },
+          {
+            "id": "wrong_concern",
+            "speaker": "patient",
+            "text": "「我担心的根本不是污染！」"
+          },
+          {
+            "id": "insert_b",
+            "speaker": "wrapper",
+            "slot": "insert_b"
+          },
+          {
+            "id": "fixation",
+            "speaker": "explainer",
+            "text": "「等下叫你放松时尽量放松：腿别夹，肚子别绷，腰别突然扭。你越想保护自己，医生越难整理术野。」"
+          },
+          {
+            "id": "closing",
+            "speaker": "patient",
+            "text": "「我现在真的有点想从医院逃出去。」"
+          },
+          {
+            "id": "close",
+            "speaker": "wrapper",
+            "slot": "close"
+          },
+          {
+            "id": "last",
+            "speaker": "patient",
+            "text": "「你为什么马上把退路堵上了！」"
+          }
+        ]
+      },
+      "thoracic_cardiac": {
+        "fear_delta": 25,
+        "dignity_delta": -5,
+        "nodes": [
+          {
+            "id": "opening",
+            "speaker": "patient",
+            "text": "「开胸到底是什么意思？不会真的从胸口正中一路切开吧？」"
+          },
+          {
+            "id": "open",
+            "speaker": "wrapper",
+            "slot": "open"
+          },
+          {
+            "id": "position",
+            "speaker": "explainer",
+            "text": "「会从正中进去。平躺后先把肩膀和胸口摆正；如果乳房挡在正中，助手会把两边软组织带开，让皮肤绷平，刀才走得直。」"
+          },
+          {
+            "id": "fat",
+            "speaker": "explainer",
+            "text": "「这样刀不会陷在胸口脂肪里来回拖。皮肤以后是皮下脂肪，再把胸骨表面露出来。」"
+          },
+          {
+            "id": "wrong_concern",
+            "speaker": "patient",
+            "text": "「你为什么觉得‘不会陷进去’是在安慰我？」"
+          },
+          {
+            "id": "sternum",
+            "speaker": "explainer",
+            "text": "「然后用专门的胸骨锯。会有声音，也可能觉得震动从胸口传到肩膀和下巴。」"
+          },
+          {
+            "id": "saw",
+            "speaker": "patient",
+            "text": "「……你刚才是不是说‘锯’？」"
+          },
+          {
+            "id": "insert_a",
+            "speaker": "wrapper",
+            "slot": "insert_a"
+          },
+          {
+            "id": "retractor",
+            "speaker": "explainer",
+            "text": "「胸骨切开以后要放开胸器，卡在两边，一格一格地撑开。你会听到器械喀哒、喀哒，撑到医生能看清里面才停。」"
+          },
+          {
+            "id": "toolbox",
+            "speaker": "patient",
+            "text": "「你在描述我的胸口被当成工具箱打开。」"
+          },
+          {
+            "id": "pressure",
+            "speaker": "explainer",
+            "text": "「撑开以后会变成整个胸廓被往两边拽住的压力。身体会想蜷起来，但器械已经摆好，所以必须躺平、呼吸、别突然抬肩。」"
+          },
+          {
+            "id": "fixation",
+            "speaker": "explainer",
+            "text": "「真的忍不住乱动，就再固定一点。这反而是最好解决的问题。」"
+          },
+          {
+            "id": "easy",
+            "speaker": "patient",
+            "text": "「你们说‘再固定一点’的时候为什么都这么轻松……」"
+          },
+          {
+            "id": "insert_b",
+            "speaker": "wrapper",
+            "slot": "insert_b"
+          },
+          {
+            "id": "benefit",
+            "speaker": "explainer",
+            "text": "「暴露做好以后，里面反而很清楚。固定好以后也不用担心自己突然坐起来——基本做不到。」"
+          },
+          {
+            "id": "thanks",
+            "speaker": "patient",
+            "text": "「……谢谢你告诉我。」"
+          },
+          {
+            "id": "closing",
+            "speaker": "patient",
+            "text": "「我现在觉得全身麻醉是人类最伟大的发明。」"
+          },
+          {
+            "id": "close",
+            "speaker": "wrapper",
+            "slot": "close"
+          },
+          {
+            "id": "last",
+            "speaker": "patient",
+            "text": "「……我真的不想进手术室了。」"
+          }
+        ]
+      }
+    }
+  }
 }

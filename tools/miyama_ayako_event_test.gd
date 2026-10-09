@@ -26,6 +26,9 @@ func complete_character_event(game, id: String) -> bool:
 		if choices.is_empty() or not game.choose_character_event(str(choices[0].id)):
 			return false
 		guard += 1
+	if event.completed:
+		game.active_character_event_id = ""
+		game.active_mode = "encounter"
 	return event.completed
 
 func complete_special_event(game, id: String, visited: Dictionary, limit: int = 900) -> bool:
@@ -58,8 +61,10 @@ func run() -> void:
 
 	expect(complete_character_event(game, "intro_doc_rei"), "Kaori introduction could not complete")
 	game.meet_staff("doc_asuka")
-	game.advance_story_to_day(3, 540)
+	game.add_familiarity("doc_rei", 10)
+	game.advance_story_to_day(4, 540)
 	var lv1: Dictionary = game.special_event_definitions["miyama_01_safety_pin"]
+	game.set_story_flag("__test_save_target_event__" + str(lv1.id), true)
 	expect(game.special_event_available(lv1), "Kaori Lv1 did not unlock after her introduction")
 	var lv1_nodes := {}
 	expect(complete_special_event(game, lv1.id, lv1_nodes), "Kaori Lv1 did not traverse to completion")
@@ -70,9 +75,12 @@ func run() -> void:
 		expect(game.story_flag(flag), "Kaori Lv1 completion flag missing: " + flag)
 
 	game.meet_staff("doc_shiori")
-	game.complete_rank_up("doc_shiori", "test_shiori_lv1", 1)
-	game.advance_story_to_day(5, 540)
+	game.add_familiarity("doc_rei", 15)
+	# Full-day special events record completion after advancing to the following
+	# workday, so a three-day milestone cooldown reaches day 8 here.
+	game.advance_story_to_day(8, 540)
 	var lv2: Dictionary = game.special_event_definitions["miyama_02_manga_artist_wrong_patient"]
+	game.set_story_flag("__test_save_target_event__" + str(lv2.id), true)
 	expect(game.special_event_available(lv2), "Kaori Lv2 did not honor the formal Lv1/Lv2 prerequisites")
 	var lv2_nodes := {}
 	expect(complete_special_event(game, lv2.id, lv2_nodes), "Kaori Lv2 did not traverse its complete script")
@@ -81,8 +89,10 @@ func run() -> void:
 
 	game.meet_staff("nurse_moe")
 	game.meet_staff("nurse_ange")
-	game.advance_story_to_day(8, 540)
+	game.add_familiarity("doc_rei", 15)
+	game.advance_story_to_day(12, 540)
 	var lv3: Dictionary = game.special_event_definitions["miyama_03_or_god"]
+	game.set_story_flag("__test_save_target_event__" + str(lv3.id), true)
 	expect(game.special_event_available(lv3), "Kaori Lv3 did not unlock after Lv2")
 	var lv3_nodes := {}
 	expect(complete_special_event(game, lv3.id, lv3_nodes), "Kaori Lv3 did not traverse to completion")

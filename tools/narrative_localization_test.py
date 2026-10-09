@@ -14,13 +14,14 @@ ENGLISH = json.loads((ROOT / "data/localization/en.json").read_text(encoding="ut
 TARGETS = {
     "character_events": ROOT / "data/events/character_events/index.json",
     "micro_events": ROOT / "data/events/micro_events.json",
+    "special_events": ROOT / "data/events/special_events/index.json",
     "special_event_steps": ROOT / "data/events/special_event_steps/index.json",
 }
 FIELDS = {
     "name", "family_name", "given_name", "professional_name", "title", "subtitle",
     "description", "label", "text", "prompt", "response", "teaser", "caption",
     "announcement", "location_label", "speaker_label", "specialty", "personality",
-    "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section",
+    "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "chapters",
     "correction",
 }
 HAN = re.compile(r"[\u3400-\u9fff]")
@@ -37,6 +38,8 @@ def walk(value: object, path: str, rows: list[tuple[str, str]]) -> None:
     elif isinstance(value, list):
         for index, child in enumerate(value):
             identity = str(child.get("id", index)) if isinstance(child, dict) else str(index)
+            if isinstance(child, str) and path.rsplit(".", 1)[-1] in FIELDS and child.strip():
+                rows.append((f"{path}.{identity}", child))
             walk(child, f"{path}.{identity}", rows)
 
 
