@@ -156,6 +156,17 @@ func apply_patient_bundle_overrides(encounter: Dictionary, preop: Dictionary, bu
 	preop["initial_interaction"] = preop_data.get("initial_interaction", preop.get("initial_interaction", {})).duplicate(true)
 	preop["_locale"] = localizer.locale
 	var preop_prompts: Dictionary = preop_data.get("stage_prompts", {})
+	var graphic_preop_final_response: String = str(preop_data.get("graphic_preop_final_response", ""))
+	if include_authored_text and not graphic_preop_final_response.is_empty():
+		var graphic_preop: Dictionary = preop.get("graphic_preop", {})
+		var families: Dictionary = graphic_preop.get("families", {})
+		for family_value in families.values():
+			if family_value is Dictionary:
+				var nodes: Array = family_value.get("nodes", [])
+				nodes.append({"id": "patient_final_response", "speaker": "patient", "text": graphic_preop_final_response})
+				family_value["nodes"] = nodes
+		graphic_preop["families"] = families
+		preop["graphic_preop"] = graphic_preop
 	var incision_responses: Dictionary = preop_data.get("incision_responses", {})
 	for stage in preop.get("stages", []):
 		var stage_id: String = str(stage.get("id", ""))
@@ -167,13 +178,45 @@ func apply_patient_bundle_overrides(encounter: Dictionary, preop: Dictionary, bu
 				if include_authored_text and incision_responses.has(action_id):
 					action["response"] = str(incision_responses[action_id])
 
+func merge_patient_dialogue_profile(patient: Dictionary, dialogue_profiles: Dictionary, patient_id: String) -> void:
+	var profile_id: String = str(patient.get("dialogue_profile", ""))
+	if profile_id.is_empty():
+		errors.append("患者 %s 未指定对白 profile" % patient_id)
+		return
+	if not dialogue_profiles.has(profile_id):
+		errors.append("患者 %s 的对白 profile 不存在：%s" % [patient_id, profile_id])
+		return
+	var profile: Dictionary = dialogue_profiles[profile_id]
+	var profile_lines: Dictionary = profile.get("reaction_lines", {})
+	var patient_lines: Dictionary = patient.get("reaction_lines", {})
+	var merged_lines: Dictionary = profile_lines.duplicate(true)
+	merged_lines.merge(patient_lines, true)
+	patient["reaction_lines"] = merged_lines
+	var profile_variants: Dictionary = profile.get("reaction_variants", {})
+	var patient_variants: Dictionary = patient.get("reaction_variants", {})
+	var merged_variants: Dictionary = profile_variants.duplicate(true)
+	merged_variants.merge(patient_variants, true)
+	patient["reaction_variants"] = merged_variants
+
 func load_patient_bundles(config: Dictionary) -> void:
 	var index: Variant = read_json("res://data/" + str(config.get("index", "")))
 	var encounter_template: Variant = read_json("res://data/" + str(config.get("encounter_template", "")))
 	var preop_template: Variant = read_json("res://data/" + str(config.get("preop_template", "")))
-	if not index is Array or not encounter_template is Dictionary or not preop_template is Dictionary:
+	var dialogue_profiles_source: Variant = read_json("res://data/" + str(config.get("dialogue_profiles", "")))
+	if not index is Array or not encounter_template is Dictionary or not preop_template is Dictionary or not dialogue_profiles_source is Dictionary:
 		errors.append("患者数据包索引或共用模板无效")
 		return
+	var dialogue_profiles: Dictionary = {}
+	var profile_rows: Variant = dialogue_profiles_source.get("profiles", {})
+	if not profile_rows is Dictionary:
+		errors.append("患者对白 profile 集合无效")
+	else:
+		for profile_id in profile_rows:
+			var raw_profile: Variant = profile_rows[profile_id]
+			if not raw_profile is Dictionary:
+				errors.append("患者对白 profile 无效：" + str(profile_id))
+				continue
+			dialogue_profiles[str(profile_id)] = localizer.localize_tree(raw_profile, "patient_dialogue_profiles.%s" % str(profile_id))
 	collections["patients"] = []
 	collections["encounters"] = []
 	collections["preops"] = []
@@ -187,6 +230,8 @@ func load_patient_bundles(config: Dictionary) -> void:
 		collections["examination_cg_pools"] = []
 	if not collections.has("ward_preparation_cg_pools"):
 		collections["ward_preparation_cg_pools"] = []
+	if not collections.has("surgery_cg_pools"):
+		collections["surgery_cg_pools"] = []
 	if not collections.has("first_surgery_diagnosis_reactions"):
 		collections["first_surgery_diagnosis_reactions"] = []
 	var patient_ids: Dictionary = {}
@@ -206,6 +251,7 @@ func load_patient_bundles(config: Dictionary) -> void:
 		# records are merged into the shared runtime collections.
 		bundle = localizer.localize_tree(bundle, "patient_bundles.%s" % patient_id)
 		patient = bundle.patient.duplicate(true)
+		merge_patient_dialogue_profile(patient, dialogue_profiles, patient_id)
 		var short_id: String = patient_id.trim_prefix("patient_")
 		var fallback: Dictionary = bundle.get("fallback", {})
 		var tokens: Dictionary = {
@@ -249,6 +295,12 @@ func load_patient_bundles(config: Dictionary) -> void:
 				collections.ward_preparation_cg_pools.append(pool.duplicate(true))
 			else:
 				errors.append("患者专属术前 CG 池 ID 重复：" + pool_id)
+		for pool in exclusive_pools.get("surgery", []):
+			var pool_id: String = str(pool.get("id", ""))
+			if find_record("surgery_cg_pools", pool_id).is_empty():
+				collections.surgery_cg_pools.append(pool.duplicate(true))
+			else:
+				errors.append("患者专属手术 CG 池 ID 重复：" + pool_id)
 
 func load_all(requested_locale: String = "") -> bool:
 	collections.clear()

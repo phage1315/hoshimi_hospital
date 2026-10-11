@@ -9,6 +9,29 @@ var opening_index := 0
 var response_index := 0
 var last_error := ""
 
+func snapshot_state() -> Dictionary:
+	return {
+		"trigger_day": trigger_day,
+		"choice_id": choice_id,
+		"last_choice": last_choice.duplicate(true),
+		"completed": completed,
+		"opening_index": opening_index,
+		"response_index": response_index,
+	}
+
+func restore_state(state: Dictionary) -> bool:
+	var raw_day: Variant = state.get("trigger_day", 0)
+	if not (raw_day is int or raw_day is float) or int(raw_day) < 1:
+		return false
+	trigger_day = int(raw_day)
+	choice_id = str(state.get("choice_id", ""))
+	last_choice = state.get("last_choice", {}).duplicate(true) if state.get("last_choice", {}) is Dictionary else {}
+	completed = bool(state.get("completed", false))
+	opening_index = maxi(0, int(state.get("opening_index", 0)))
+	response_index = maxi(0, int(state.get("response_index", 0)))
+	last_error = ""
+	return true
+
 func _init(data: Dictionary, day: int = 1) -> void:
 	definition = data
 	trigger_day = day

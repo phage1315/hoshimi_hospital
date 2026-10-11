@@ -1,5 +1,45 @@
 # 人物素材 / 本地占位测试
 
+### 四季街景夜间差分（2026-10-11，接续四季差分）
+
+- 触发边界已按用户要求收紧：八张四季昼夜街景仅在同行会话 `phase=result` 且 `outcome=completed`（邀请且同事接受）后显示。邀请页面、同事婉拒、选择各自回家均保留医院大厅/医院夜景；不修改接受率、奖励或剧情原文。
+- 经用户授权，用内置imagegen分别编辑四季原图，新增星空、原有街灯及少量窗灯亮起的四张夜景，保留街道构图与各季节特征。成品均1672×941，已目视检查并原样复制至 `assets/backgrounds/after_work_v1/street_{spring,summer,autumn,winter}_night.png`。
+- 注册 `after_work_street_{season}_night`；沿用既有月份及夜间触发规则，中英共用。白天的四张图原样保留。夜景实图仅保留0.12 UI遮罩，不再叠加旧版模拟夜色的0.24遮罩。
+- 来源文件、完整提示词和目标路径见 `research/imports/after_work_street_nights_2026-10-11.json`。这项更新替代下文历史记录中的“夜间暂无专图”状态。
+
+### 下班街景四季差分（2026-10-11，接续占位图）
+
+- 用户调整确认：原始绿荫街景作为夏季图；新增同一构图的樱花春季、秋叶秋季、薄雪冬季。使用内置imagegen编辑原图，仅改变季节植被与环境细节；三张成品原样复制，均为1672×941。建筑、道路、车站和视角经目视核对保持一致。
+- `after_work_street_spring` → `assets/backgrounds/after_work_v1/street_spring.png`；`after_work_street_summer` → 原图 `street_placeholder.png`；`after_work_street_autumn` → `street_autumn.png`；`after_work_street_winter` → `street_winter.png`（均在同目录）。额外生成的夏季候选未接入。
+- 月份严格采用春3/4/5、夏6/7/8、秋9/10/11、冬12/1/2，以同行会话离院日期选图，不读取预留次日日期。中英共用同一映射。
+- 查找顺序：季节+昼夜专图 → 季节基础图 → 通用昼夜图 → 原占位图。当前没有独立夜景，深夜使用对应季节图及既有遮罩；未来注册 `after_work_street_{season}_night` 即可覆盖。
+- 完整提示词、来源及文件清单：`research/imports/after_work_street_seasons_2026-10-11.json`。专项测试：`tools/after_work_seasons_test.gd`，遍历全年365天、中英及普通/深夜分支，并检查每月实际背景纹理。
+
+### 下班同行街景占位（2026-10-11）
+
+- 用户授权使用内置 imagegen 生成一张室外街景，替换下班同行页面误用的医院大厅。成品 `assets/backgrounds/after_work_v1/street_placeholder.png`，1672×941，无人物、无界面文字，原样复制；ID 为 `after_work_street_placeholder`。
+- 构图与成品已目视检查；中英运行时测试确认实际加载街景纹理。当前昼夜共用一张傍晚占位图，夜间沿用遮罩，不将其标为完整夜景素材。
+- 季节/时段选图约定、来源和完整提示词见 `research/imports/after_work_street_2026-10-11.txt`。后续只需按约定在 `data/backgrounds.json` 注册素材；不需要重写同行事件对白。
+
+### 蒂法·洛克哈特（patient_tifa，病房服装修复，2026-10-10）
+
+- 全量检查当前 14 名患者的 6 个 `ward/*` 表情资源；蒂法是唯一仍引用常服的角色。新增浅蓝病号服六态至 `assets/characters/patient_tifa_v1/patient_tifa/ward_gown/`，并仅切换 `ward/*` 映射，原常服资源保留。
+
+### 槇村香（patient_makimura_kaori，2026-10-10）
+
+- 用户患者包原样存档于 `research/character_references/patient_makimura_kaori/user_bundle_v1.json`；4 张种子图在同目录，用户提供的裸体诊察立绘逐字节复制至 `assets/examinations/patient_makimura_kaori/full_undress.png`，作为 `examination/shy`，未纳入 CG 池。
+
+### 野上冴子 CG（patient_nogami_saeko，2026-10-10）
+
+- 按用户指定节点导入六张附件：诊室全裸查体 `assets/examinations/patient_nogami_saeko/full_undress_basic_exam.png`；病房备皮/剃毛、术野消毒、留置导尿、铺设无菌单、下刀分别保存至 `assets/events/ward_preparation_v1/patient_nogami_saeko/{skin_prep,skin_disinfection,urinary_catheterization,sterile_draping,incision}.png`。
+- 六张均为 1584×1056，按附件原样复制；池与节点映射见 `data/patients/patient_nogami_saeko/patient.json`。诊室 CG 由 `encounter.full_undress.visual_pool_id` 指向；术前图均为患者专属全屏池。
+- SHA-256：查体 `f0a7636241b12eb4a7f682c400273a81094a6a1ea2cf3e0a1eb8154dd56edd26`；剃毛 `11dacd77e5c6915234428dfc0cdd4b1a61cd9686530ba41470f425d753895b5b`；消毒 `55ac00339f09e37435cece215e53f1dbae7d02ab6d9f29133f3aaa32b63f7e1f`；导尿 `f3212fd3692c1b7470efb4b58dd0c75c06aea71cd1b107bf0008773a0382cce3`；铺巾 `530c693ff54daa6550003c429591f0cdc94b14e9580703df593531a457474368`；下刀 `099b5a8899956aa076571849d6259c3a30bee4db8724480f053f0f9cb342a683`。
+- 导入 21 个立绘键：20 张标准 SFW（门诊 1、病房 6、仰卧手术台 4、截石位手术台 4、术中头像 4、全麻 splash 1）和用户提供的诊察立绘 1 张。病房穿浅蓝病号服；手术台铺不透明青绿色手术巾；术中头像透明、限头肩；麻醉头像闭眼。术中图统一为 1448×1086 RGBA，边界通过透明留白适配，不裁掉角色内容。
+
+### 槇村香 CG（patient_makimura_kaori，2026-10-10）
+
+- 后续补入 6 张用户指定 CG，分别接入诊室全裸查体、灌肠、戴手术帽、下刀、留置导尿和妇科截石位；“上推车”附件未指定导入，因此未登记。原图均为 1584×1056 RGB，原样复制；妇科截石位池限定 `female_pelvic`，下刀池连接清醒麻醉分支。来源、哈希、池 ID 与节点映射见 `research/imports/patient_makimura_kaori_cg_2026-10-10.json`。
+
 用户明确选择 VNDB 原作图片作为本地占位。没有获得再分发授权；此记录不是授权声明，AI 重绘也不把原角色变为原创角色。正式发布前需替换或取得相应许可。
 
 2026-09-30 导入用户提供的成年伊吹摩耶设定图与访问研究医设计文档。使用内置 ImageGen 制作三张 1024×1536 RGBA 半身透明立绘：白大褂研究装、刷手服设备支持装和系带口罩的完整无菌装，保存于 `assets/characters/portrait_pack_v20/visiting_maya/`。角色以中期访问研究医身份接入，关系仅限 Lv3 专业友谊，不加入恋爱、成人活动或常驻核心医护计数；来源和哈希见 `research/imports/visiting_maya_2026-09-30.json`。
@@ -119,6 +159,10 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 
 2026-09-28 导入用户提供的四张柳原理惠专属 CG，均以原始 1536×1024 RGB 保存：术前备皮 `assets/events/ward_preparation_v1/patient_rie/skin_prep.png`、清醒下刀前 `scalpel_ready.png`、腹部／盆腔／血管术式消毒后的铺巾 `sterile_draping.png`，以及诊室完整脱衣查体 `assets/examinations/patient_rie/full_undress_basic_exam.png`。下刀与铺巾图沿用现有术前系统的清醒患者显示规则，全麻后不显示；铺巾图只匹配 `general_abdominal`、`female_pelvic` 与 `vascular`。来源、哈希和触发点见 `research/imports/patient_rie_cg_pack_2026-09-28.json`。
 
+2026-10-10 导入岩井善美完整患者数据并登记于患者索引。源 bundle 原文保存在 `research/character_references/patient_iwai_yoshimi/patient_bundle_v1.json`，运行时副本为 `data/patients/patient_iwai_yoshimi/patient.json`；保留用户提供的全裸查体立绘原始像素并映射至 `examination/shy`，三个种子图及用户补充的三张原画参考均归档于角色参考目录。依原画重新生成并注册 20 个标准立绘键，英文对白映射完整。源字段 `stress_response: embarrassed_apologetic` 原先不在项目枚举内；为保留源值，已增加对应 schema 枚举和中英显示映射，没有将它改写成其他性格值。收到画风反馈后，手术台与术中头像各状态均按蝴蝶忍对应资产作画风／构图参考重新生成并更新映射；全麻图按要求露出双肩。截石位四态现均为带腿托的实际姿势，胸腹及骨盆由铺巾覆盖；awake 基图为生成图，tense、afraid、anesthetized 三张差分由用户于 2026-10-11 补充并原样导入，原件归档在 `research/character_references/patient_iwai_yoshimi/`。源 bundle 的 exclusive CG pools、diagnosis reactions 和全裸事件 visual_pool_id 为空，按原样保留，未自行补写 CG／事件数据。校验结果及全部来源信息见该导入记录。
+
+2026-10-11 用户补充岩井善美五张专属 CG：诊室全裸检查、术前剃毛、术前体位固定、术前导尿和清醒下刀。图片原样归档至 `research/character_references/patient_iwai_yoshimi/cgs/`，分别绑定检查 `visual_pool_id` 及术前动作池；所有 CG 池的标签和说明均加入英文映射。下刀图绑定硬膜外、局麻及无麻醉下刀动作（图中患者清醒）；运行时触发使用语言无关的动作 ID。导入审计与哈希见 `research/imports/patient_iwai_yoshimi_cg_2026-10-11.json`。
+
 2026-09-28 追加用户提供的柳原理惠留置导尿专属 CG，原样保存为 `assets/events/ward_preparation_v1/patient_rie/urinary_catheterization.png`（1536×960 RGB，16:10，SHA-256 `57f2937e9f3a4fd752c222cb197bd8ca7cdffd14c81f811012ed9e1a8d7d6cce`）。该图绑定手术室准备中的 `urinary_catheterization`，以全屏形式显示；其比例与游戏1280×800逻辑画布完全一致，无需裁切。来源记录合并于 `research/imports/patient_rie_cg_pack_2026-09-28.json`。
 
 2026-09-28 追加用户提供的柳原理惠术野消毒专属 CG，原样保存为 `assets/events/ward_preparation_v1/patient_rie/skin_disinfection.png`（1536×960 RGB，16:10，SHA-256 `b0fe68ae44fdc40e8951026bf14f4e2be578122606bc072db8108fb5519e9f4a`）。该图绑定实际执行 `skin_disinfection` 的清醒患者路线并以全屏方式显示；全身麻醉路线继续隐藏导尿、消毒和下刀患者 CG。原始附件副本与触发记录已合并至 `research/imports/patient_rie_cg_pack_2026-09-28.json`。
@@ -216,11 +260,17 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 - Coverage: all 20 current staff records, each registered as `intraoperative_avatar/neutral` for the operative-field HUD.
 - Creation: 19 portraits are identity-preserving head-and-shoulders crops from the characters' existing transparent sterile/scrubs artwork, normalized to a `1200 × 900` RGBA canvas by visible-pixel bounds. `nurse_satsuki` lacked operating-room artwork, so OpenAI built-in ImageGen used her existing focused uniform portrait as an identity reference and supplied the surgical cap, mask, and sterile gown. Full source paths and output hashes are recorded in the import record.
 
-### 东川映見普通患者包（2026-10-05）
+### 东川杏子普通患者包（2026-10-05）
 
 - 导入用户提供的五张角色参考及一张透明诊室全裸立绘；角色明确设定为23岁成年女性。
 - 使用内置 ImageGen 制作门诊、病房、普通仰卧手术台、截石位手术台、术中反应头像与全身麻醉场景。用户提供的诊室立绘不重绘，原样接入患者专属基础查体池，只在对应检查选择后显示。
 - 运行时患者数据：`data/patients/patient_emi_higashikawa/patient.json`。素材、提示摘要与 SHA-256 见 `research/imports/patient_emi_higashikawa_2026-10-05.json`。
+
+### 东川杏子患者流程 CG 补充（2026-10-09）
+
+- 导入用户提供的四张成年患者流程 CG：诊室脱衣 `assets/examinations/patient_emi_higashikawa/full_undress_v2.png`、术前备皮 `assets/events/ward_preparation_v1/patient_emi_higashikawa/skin_prep_v1.png`、手术铺巾 `assets/events/ward_preparation_v1/patient_emi_higashikawa/operative_draping_v1.png`、下刀前 `assets/events/ward_preparation_v1/patient_emi_higashikawa/incision_ready_v1.png`。
+- 运行时均通过 `patient_emi_higashikawa` 的专属 CG 池接入：脱衣绑定基础查体，备皮绑定 `ward_skin_prep` / `ward_skin_prep_unnecessary`，铺巾绑定 `operative_positioning`，下刀前绑定 `request_scalpel`。这些池优先于通用池；全麻路线继续遵守现有规则，隐藏清醒患者的术前准备 CG。
+- 原图未修改；尺寸均为 `1584×1056` RGB PNG。文件哈希与来源补充记录见 `research/imports/patient_emi_higashikawa_2026-10-05.json`。
 
 ### 折川皐月 Lv1–Lv3 立绘补完（2026-10-05）
 
@@ -285,3 +335,80 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 - 相关素材由 `minato_intro_sunday_cholecystectomy_main` 直接引用；病房争论使用 `minato_names_player` CG，术中与术后 CG 保持原有节点绑定。
 - 遥凑补齐术中 HUD 头像 `assets/characters/intraoperative_staff_avatars_v1/doc_minato/neutral.png`，以及助手医生角色奖励 CG `assets/events/staff_surgery_v1/doc_minato/assistant_confirmation.png`；两项均登记在 `doc_minato` 数据包中。
 - 遥凑通用约会资料登记为 `date_doc_minato`，偏好咖啡店、河边公园、大型书店和意大利小餐馆；星期日初见事件的河边散步仍保持为专用事件段落，不改用通用约会系统。
+
+### 香田映见普通患者包（2026-10-09）
+
+- 患者以 `patient_emi_koda` 接入普通患者池，显示年龄固定为 22 岁；运行时病例仍由普通患者轮换和病例分配系统决定，不绑定固定诊断、术式、麻醉或关系事件。
+- 复用 `socially_anxious_formal_quiet` 性格台词 Profile，仅在患者包中覆盖香田映见专属的术前、麻醉、切口、互动、闭合对白，以及灌肠、备皮、戴帽、体位、导尿和切口标记差分。
+- 用户提供的透明脱衣立绘原样接入 `assets/examinations/patient_emi_koda/full_undress.png`，只绑定基础查体的患者专属 CG 池。
+- 使用内置 ImageGen 补齐 `assets/characters/patient_emi_koda_v1/patient_emi_koda/` 的门诊、病房六态、仰卧手术台四态与截石位手术台四态；手术台构图和裸肩／锁骨裁切以高卷杏 `patient_ann` 的既有目录为参考，患者不穿病号服或手术衣。
+- 使用内置 ImageGen 补齐 `assets/characters/intraoperative_portraits_v1/patient_emi_koda/` 的紧张、疼痛、濒临崩溃、麻醉四态透明头像；同样采用高卷杏的裸肩、手术帽和头肩构图作为规范。全麻 splash 保存于 `assets/events/anesthesia_v1/patient_emi_koda/general.png`。
+- 2026-10-09 导入用户提供的香田映见四张专属 CG：基础查体脱衣 `assets/examinations/patient_emi_koda/full_undress_basic_exam.png`、术前灌肠 `assets/events/ward_preparation_v1/patient_emi_koda/enema.png`、术前戴手术帽 `assets/events/ward_preparation_v1/patient_emi_koda/surgical_cap.png`、手术下刀前 `assets/events/ward_preparation_v1/patient_emi_koda/incision_ready.png`。四张均原样保存，并分别绑定既有患者专属检查／术前准备 CG 池；来源与哈希见 `research/imports/patient_emi_koda_2026-10-09.json`。
+- `reference_sheet.png` 保留为研究参考副本，不再被运行时状态键引用；之后用户提供的特殊 CG 会另行登记到 `exclusive_cg_pools.surgery` / `ward_preparation`，不替换这套通用状态素材。
+- 原始参考图、文件哈希与接入范围见 `research/imports/patient_emi_koda_2026-10-09.json`。
+### 蒂法·洛克哈特（patient_tifa，2026-10-09）
+
+- 附件 1、2 用作五官、发型、体型与 2D 画风参考；标准门诊、病房、手术台、术中头像和全麻图由图像生成流程按项目规格生成。
+- 附件 3 为用户提供的透明诊察立绘，原样导入 `assets/examinations/patient_tifa/full_undress.png`，并通过 `exclusive_cg_pools.examination` 绑定；未将其冒充为普通 `examination/shy` 以外的资源。
+- 生成的手术台与术中资源保持手术帽、裸肩和露锁骨构图；没有加入衣领或病号服遮挡。
+- 当前未加入蒂法专属灌肠、戴帽、备皮或下刀前 CG；患者 bundle 的 `ward_preparation` 与 `surgery` 池保持为空。
+- 完整资源哈希与尺寸记录见 `research/imports/patient_tifa_2026-10-09.json`。
+
+### 爱丽丝·盖恩斯巴勒（patient_aerith，v2 已注册）
+
+- 按修订后的 `skills/add-patient/SKILL.md`，使用内置 ImageGen 逐张生成 20 张独立 SFW 标准图；每次实际输入用户的 2D 五官参考及对应高卷杏构图/表情参考。同类差分使用已验收的新患者基图，没有切分拼图或复制改名凑数。
+- 门诊和病房六态：`assets/characters/patient_aerith_v1/patient_aerith/`，1024×1536 RGBA；病房为浅蓝交领宽袖病号服，双肩被衣服覆盖。门诊保留红裙与单辫，去掉生成草稿擅加的高开衩。
+- 仰卧与截石位各四态：同目录下的 `operating_table/`、`operating_table_lithotomy/`，1448×1086 RGB，完整俯视台面、手术帽、裸肩/锁骨和不透明铺巾；胸腹、骨盆及大腿完整覆盖。闭眼麻醉态不加面罩。
+- 术中四态：`assets/characters/intraoperative_portraits_v1/patient_aerith/`，1448×1086 RGBA，正面头颈肩锁骨头像，无面罩、床、铺巾或衣领。全麻特写：`assets/events/anesthesia_v1/patient_aerith/general.png`，1672×941 RGB，闭眼、口鼻面罩及右侧管路；修正了草稿误生双辫的问题。
+- 用户附件 4 原样保存为 `assets/examinations/patient_aerith/full_undress.png`，1056×1584 RGBA，作为 `examination/shy` 候选立绘；哈希与附件完全相同。该透明立绘与后续全屏 CG 分开保存。
+- 2026-10-10 原样导入用户补充的 5 张 1584×1056 RGB 全屏 CG：`assets/examinations/patient_aerith/full_undress_basic_exam.png`，以及 `assets/events/ward_preparation_v1/patient_aerith/` 下的 `enema.png`、`skin_prep.png`、`sterile_draping.png`、`incision.png`。草稿专属池为检查 1 个、动作 4 个；铺巾绑定 `ack_disinfection`，下刀绑定实际 `incise_epidural` / `incise_local` / `incise_none`，不绑定较早的 `request_scalpel`。铺巾和下刀画面仅匹配腹部/盆腔术式组，不改变随机病例分配。
+- CG 来源、哈希、触发规则和待注册英文标签见 `research/imports/patient_aerith_cg_2026-10-10.json`。原图未裁切；现有全屏等比覆盖在 1280×800 下会裁去上下各约 33 个源像素，尚未进行 Godot UI 实测。
+- 21 个键、尺寸、模式、Alpha、唯一哈希和浅/深底并排检查通过。8 张台面图及 1 张头像由 1447×1087 按比例微调并居中裁去缩放后的 2 行像素，规范为 1448×1086；原始生成文件保留。提示词及真实输入路径见 `research/imports/patient_aerith_portraits.json`，验收与哈希见 `research/imports/patient_aerith_portrait_audit.json`，并排图见 `research/imports/patient_aerith_qa/`。
+- 新增共享人格 `playful_defiant_detail`，保留用户提供的 27 条通用台词、13 组差分；爱丽丝草稿只保存 7 条个人台词、4 组个人差分覆盖，中文原文逐句核对，英文译文分别保存。未修改病例分配、麻醉、术式、关系或数值机制。
+- 用户补全并验收的 v2 已原样保存到 `data/patients/patient_aerith/patient.json`，并在普通患者索引注册一次。原文存档为 `research/character_references/patient_aerith/user_bundle_v2.json`；与附件逐字节一致。新增 62 个患者英文键，现有性格英文、21 张立绘与 5 张 CG 原件未改动。
+- 正式入库及验证记录见 `research/imports/patient_aerith_registered_v2.json`、`research/imports/patient_aerith_STATUS.md`；旧 `patient_aerith_2026-10-09.json` 仅保留为历史草稿。完整 bundle schema、原文/资源哈希、中英文 Python 加载和患者英文覆盖检查通过；尚未执行 Godot 运行时或 UI 测试。
+
+### 天手让叶（玛秋，patient_amate_yuzuriha，2026-10-10）
+
+- 用户提供的成年 AU 诊察室裸体半身立绘原样保存为 `assets/examinations/patient_amate_yuzuriha/full_undress.png`，不与生成的标准 SFW 立绘混用。五张用户种子图保存在 `research/character_references/patient_amate_yuzuriha/`，仅作为人物身份与画风参考。
+- 使用内置 ImageGen 按高卷杏 `patient_ann` 的既有目录规格逐张制作 20 张标准 SFW 资源：门诊 1 张、病房 6 张、仰卧手术台 4 张、截石位手术台 4 张、术中头肩头像 4 张、全麻 splash 1 张。手术台画面均露肩露锁骨；铺巾从上胸／腋下附近开始，胸腹骨盆与大腿由不透明青绿色手术单遮盖；截石位只露出手术单以下的裸小腿和脚，不含裤子、袜子或鞋。
+- 术中头像保存于 `assets/characters/intraoperative_portraits_v1/patient_amate_yuzuriha/`，为 `1448×1086 RGBA` 透明头颈肩锁骨构图，不带手术单、病床、器械或背景。此前不符合要求的穿衣／穿袜候选没有进入运行时目录。
+- 患者包 `data/patients/patient_amate_yuzuriha/patient.json` 已注册到 `data/patients/index.json`，继承 `strong_front_expressive_irritable`；不绑定固定诊断、术式、麻醉、关系或剧情。6 张用户提供的流程 CG 已通过 1 个 `examination` 池和 5 个 `ward_preparation` 池登记，`surgery` 池保持为空。
+- 2026-10-10 导入用户提供的六张成年患者流程 CG：诊察室脱衣 `assets/examinations/patient_amate_yuzuriha/full_undress_basic_exam.png`、术前灌肠 `assets/events/ward_preparation_v1/patient_amate_yuzuriha/enema.png`、术前剃毛 `skin_prep.png`、普通手术固定 `operative_positioning.png`、妇科手术体位 `operative_positioning_female_pelvic.png`、下刀瞬间 `incision.png`。其中妇科体位池只匹配 `female_pelvic`，普通手术固定池排除该组；下刀池匹配既有清醒下刀动作并限制于腹部／盆腔术式组。
+- 上述六张 CG 均为用户原图，统一为 `1584×1056 RGB`，通过 `exclusive_cg_pools` 绑定；来源文件、SHA-256 与池 ID 见 `research/imports/patient_amate_yuzuriha_2026-10-10.json`。
+- Bundle schema、运行时患者加载、患者英文覆盖、20 张标准 SFW 及 6 张专属 CG 的尺寸／模式／哈希检查均通过。完整来源、生成候选、哈希和审计记录见 `research/imports/patient_amate_yuzuriha_2026-10-10.json`。
+
+### 妮安（patient_nyaan，2026-10-10）
+
+- 用户提供的 5 张 SFW 种子图用于身份、五官、发色和 2D 画风参考；附件 6 的成年患者诊察室全裸半身立绘原样保存为 `assets/examinations/patient_nyaan/full_undress.png`，只接入 `examination/shy`，不与 20 张标准 SFW 图混用。
+- 按高卷杏 `patient_ann` 实际目录逐类生成 20 张标准图：门诊 1 张、病房 6 张、仰卧手术台 4 张、截石位手术台 4 张、术中头肩头像 4 张、全麻 splash 1 张。病房使用浅蓝交领病号服；两类手术台均保持裸肩、露锁骨和不透明青绿色铺巾；截石位只露铺巾以下的小腿和脚；术中头像只到锁骨下方且真实透明。
+- 生成图全部逐键独立制作，没有使用拼图、切片或复制改名凑数；6 张 `1447×1087` 草稿按比例规范为 `1448×1086`，未改变构图内容。已在浅色底并排检查透明图边缘，并逐组检查表情差异、帽子、铺巾覆盖和人物尺度。
+- 患者 bundle 使用 `shy_reassurance_quiet`，不绑定固定诊断、术式、麻醉、关系或剧情；将来源中的 `soft`／`quiet_then_outburst` 归一化为现有 schema 的 `reserved`／`becomes_quiet`，原始语义由患者专属对白保留。
+- Bundle schema、运行时加载、21 个立绘键、27/13 对白合并、英文覆盖、尺寸／模式／Alpha 和哈希检查均通过。来源与完整审计记录见 `research/imports/patient_nyaan_2026-10-10.json`。
+- 2026-10-10 原样导入用户提供的 5 张成人患者流程 CG：诊察室脱衣 `assets/examinations/patient_nyaan/full_undress_basic_exam.png`、术前剃毛 `assets/events/ward_preparation_v1/patient_nyaan/skin_prep.png`、戴手术帽 `surgical_cap.png`、妇科手术体位 `operative_positioning_female_pelvic.png`、下刀瞬间 `incision.png`。5 张均为 `1584×1056 RGB`，分别绑定 1 个 examination 池和 4 个 ward-preparation 池；妇科体位与下刀仅匹配 `female_pelvic` 术式组，未改动病例分配。
+- 上述 CG 未经裁切、缩放或像素编辑，来源文件与目标文件逐字节校验；完整来源、SHA-256、池 ID 与触发动作见 `research/imports/patient_nyaan_cg_2026-10-10.json`。
+
+### 小森·哈珂特（patient_comoli_harcourt，2026-10-10）
+
+- 用户提供的患者包原文存档于 `research/character_references/patient_comoli_harcourt/user_bundle_v1.json`；五张SFW种子图存档于同目录。用户提供的成年诊室裸体立绘已原样注册为 `examination/shy`，并复用为诊室全裸查体 CG 显示资源，路径为 `assets/examinations/patient_comoli_harcourt/full_undress.png`；尺寸1056×1584 RGBA，SHA-256为 `f9f0c03d17d2edce863484f56588ff815135196be17c9b70e42351e0b0ca3119`。检查动作池 `full_undress_basic_exam_patient_comoli_harcourt` 已连接 authoritative/gentle/threaten 三个完成脱衣选项，英文标签与说明已补齐。原始 bundle 没有独立诊室背景 CG，故当前复用该立绘显示；没有患者专属术前准备或手术阶段 CG 文件，通用池仍按项目既有规则回退。
+- 按 `patient_ann` 资源布局导入6张首批SFW立绘，并在用户确认后生成并导入8张表情变体；经同规格重试后，当前已登记20张标准SFW图中的18张（门诊1、病房6、仰卧手术台4、截石位手术台2、术中头像4、全麻splash 1）。术中头像为1448×1086 RGBA；截石位图为1448×1086 RGB；病房/门诊透明图为1024×1536；splash为1672×941。仍缺截石位 afraid/anesthetized：同规格重试后仍遭输入审核拒绝，未用重复图替代。
+- 患者数据年龄22岁，沿用既有性格对白组；病例仍采用随机分配及既有 fallback。患者专属“术前追问”覆盖提问节点，用户确认的第二句作为详细说明节点末尾的患者对白，英文也已登记。未引入固定关系、剧情或CG池。
+- 图像来源路径、生成提示规格、SHA-256、尺寸/Alpha、完成和阻塞清单见 `research/imports/patient_comoli_harcourt_2026-10-10.json`。当前资源集仍为部分完成，只有截石位 afraid/anesthetized 两张SFW图未登记。
+
+### 瑟法（patient_sepha，2026-10-10）
+
+- 用户提供的患者包原文存档于 `research/character_references/patient_sepha/user_bundle_v1.json`；4张SFW种子图存档于同目录。用户提供的成年诊室裸体立绘已逐字节复制并注册为 `examination/shy`：`assets/examinations/patient_sepha/full_undress.png`，1056×1584 RGBA；未纳入SFW生成输入。
+- 患者年龄24岁，沿用 `calm_analytical_reassurance` 对白组；来源 `voice_style=soft` 映射至schema允许的 `gentle`。病例与fallback保持来源包值；三个专属CG池为空，不新增池。
+- 用户确认六类基图方向并选定截石位awake候选2；现已完整登记20/20张标准SFW图。用户补充的 `operating_table_lithotomy/afraid` 原图为1448×1080 RGB，按比例与原图内容不变原则在上下各扩展3 px画布，注册尺寸1448×1086 RGB；原件存于 `research/character_references/patient_sepha/user_lithotomy_afraid_original.png`。另有用户提供的4张CG已分别接入诊室脱衣、术前灌肠、术前导尿和清醒下刀前节点，原图保存在 `research/character_references/patient_sepha/user_cgs/`；图像为1584×1056 RGB，原样导入。门诊穿用户种子图中的军装，病房使用浅蓝交领病号服；手术台/截石位露肩锁骨且以不透明青绿色铺巾覆盖胸腹及下身；术中头像为横向头肩透明图；全麻splash闭眼并带面罩，其他麻醉图闭眼且无面罩。用户提供的新 `graphic_preop_dialogue` 旁白按原文导入并加入英文映射。路径、哈希、Alpha/尺寸记录见 `research/imports/patient_sepha_2026-10-10.json`。
+### 蝴蝶忍（patient_kocho_shinobu，2026-10-10）
+
+- 用户提供的数据包原件归档于 `research/character_references/patient_kocho_shinobu/patient_bundle_v1.json`，六张种子图归档为同目录 `seed_01.png` 至 `seed_06.png`；诊室立绘原件归档为 `full_undress_original.png`，并逐字节复制到 `assets/examinations/patient_kocho_shinobu/full_undress.png`，注册为 `examination/shy`。
+- 已导入完整患者数据 `data/patients/patient_kocho_shinobu/patient.json` 并登记至患者索引。标准立绘齐全：门诊1、病房6、普通手术台4、截石位手术台4、术中头像4、全麻splash 1；加上用户提供的诊室立绘共21个portrait状态键。标准立绘以用户种子图为角色外观参考。
+- 来源包的 `voice_style=soft` 保留原值；同步扩展患者数据schema和对白风格映射以原生支持该值，未改写患者包对白或字段。用户随后提供的6张CG依次接入诊室全裸、灌肠、戴手术帽、铺巾、导尿和下刀节点；原件保存在 `research/character_references/patient_kocho_shinobu/user_cgs/`。未提供的其他CG池及诊断反应仍为空。
+- 来源原件哈希、CG节点/路径映射和静态验证结果见 `research/imports/patient_kocho_shinobu_2026-10-10.json`。数据schema、患者包本地化、全局本地化和剧情本地化检查均通过；当前环境未检测到Godot可执行文件，因此未进行Godot运行时加载测试。
+
+### 宫水三叶（patient_miyamizu_mitsuha，2026-10-11）
+
+- 用户提供的 6 张种子图和透明全裸诊察立绘已归档于 `research/character_references/patient_miyamizu_mitsuha/`；立绘原样导入 `assets/examinations/patient_miyamizu_mitsuha/full_undress.png`，只绑定 `patient.visuals.portraits["examination/shy"]`，未冒充全屏诊察 CG。
+- 已导入来源 bundle 至 `data/patients/patient_miyamizu_mitsuha/patient.json` 并登记患者索引。21 个基础 portrait 键现已全部映射：门诊 1、病房 6、仰卧台 4、截石位 4、术中头像 4、全麻 splash 1、用户提供的诊察立绘 1。截石位麻醉态仅做 1px 画布尺寸规范，不拉伸；新补的透明术中头像有轻微青色边缘杂色，已在记录中注明。
+- 用户原始中文剧情与对白保持未改；为 bundle 中全部 95 个中文叶字段加入英文映射。没有新增专属全屏 CG 池；该类别按用户工作流标记为可选后续阶段，不阻塞基础数据和 portrait 导入。详情与每个运行时文件的 SHA-256 见 `research/imports/patient_miyamizu_mitsuha_2026-10-11.json`。

@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_tifa",
+    "name": "蒂法·洛克哈特",
+    "age": 20,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_tifa_v1/patient_tifa/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/neutral.png",
+        "ward/smile": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/smile.png",
+        "ward/brave": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/brave.png",
+        "ward/worried": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/worried.png",
+        "ward/afraid": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/afraid.png",
+        "ward/crying": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/crying.png",
+        "operating_table/awake": "assets/characters/patient_tifa_v1/patient_tifa/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_tifa_v1/patient_tifa/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_tifa_v1/patient_tifa/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_tifa_v1/patient_tifa/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_tifa_v1/patient_tifa/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_tifa_v1/patient_tifa/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_tifa_v1/patient_tifa/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_tifa_v1/patient_tifa/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_tifa/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_tifa/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_tifa/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_tifa/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_tifa/general.png",
+        "examination/shy": "assets/examinations/patient_tifa/full_undress.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "reserved",
+    "personality": {
+      "primary": "graceful_caretaker",
+      "secondary": "lonely_yearning",
+      "stress_response": "seeks_reassurance"
+    },
+    "dialogue_profile": "graceful_caretaker_reassurance",
+    "traits": {
+      "baseline_anxiety": 48,
+      "pain_sensitivity": 62,
+      "privacy_sensitivity": 68,
+      "trust_baseline": 64,
+      "control_need": 88,
+      "expressiveness": 58,
+      "health_literacy": 55,
+      "compliance_tendency": 72
+    },
+    "fear_profile": {
+      "pain_fear": 68,
+      "procedure_fear": 62,
+      "diagnosis_fear": 48,
+      "loss_control_fear": 92
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「要住院啊……嗯，我明白。那我得先安排一下店里的事。」",
+      "procedure_mismatch": "「等一下，坂口医生。现在说的手术和刚才说明的不一样吧？能告诉我是怎么回事吗？」",
+      "explain_plan": "「嗯，我明白了。接下来需要我怎么配合，你直接告诉我就好。」",
+      "last_reassure": "「放心，我没事的……唔，其实还是有一点紧张。」",
+      "choose_general": "「全身麻醉啊……说真的，想到自己会完全失去意识，还是有点不安呢。」",
+      "choose_local": "「也就是说，我会一直醒着，对吧？好，我会努力保持不动的。」",
+      "choose_none": "「不打麻醉……？我知道自己挺能忍痛的，可手术和打架完全不是一回事吧……？」",
+      "induction_reassure": "「嗯……那就拜托你了，坂口医生。这次我只能相信你了。」",
+      "insist_without_anesthesia": "「等、等等！我知道自己刚才说过会坚持，可是真的不麻醉就开刀，我……我没有把握啊！」",
+      "assistant_stabilize_none": "「我知道不能动！可是刚才那一下……啊、好疼……！我会努力的，别放开我……！」",
+      "incise_local": "「呜……！我感觉到了……不是很痛，可是真的开始切开了，对吧……？」",
+      "incise_none": "「啊——！！等、等一下！好疼……！不行，这和受伤完全不一样……里面好疼……！」",
+      "contact_pause": "「谢谢……让我缓一下就好。我会继续配合的。」",
+      "contact_command": "「嗯……我不动。你们继续吧……我能撑住。」",
+      "contact_continue": "「呜……！医生，刚才那一下……至少告诉我，你们现在做到哪里了……！」",
+      "ongoing_narrate": "「嗯，我听着呢。知道你们在做什么，我反而能安心一点。」",
+      "ongoing_silent": "「医生……？怎么突然都不说话了？是不是出了什么问题……？」",
+      "closure_reassure": "「最难的部分过去了……？太好了……我还以为自己真的撑不下去了呢。」",
+      "closure_coach": "「嗯……慢慢呼吸，对吧？好，我听你的。」",
+      "closure_silent": "「应该快结束了吧……？医生，能不能告诉我一声……？」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠啊……嗯，我明白是术前准备。只是……这个也必须做吗？」",
+        "「等一下……要我侧过身去？好、好的……没想到连这种事情都得让别人帮忙啊……」"
+      ],
+      "ward_enema_unnecessary": [
+        "「咦……这一步其实不需要吗？那、那刚才为什么还……」",
+        "「原来可以不用做啊……呼……我还真的有点不好意思呢。」"
+      ],
+      "ward_skin_prep": [
+        "「这里也要备皮吗……？嗯，好吧。只是……能让我先做好心理准备吗？」",
+        "「等一下……连这么下面的位置也要处理啊……我知道了，会保持不动的。」"
+      ],
+      "ward_surgical_cap": [
+        "「头发全部收进去就好了吗？我的头发挺长的，需要我帮忙吗？」",
+        "「这样啊……连头发都要完全盖起来。感觉真的要开始手术了呢……」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂要固定在这里啊……好，我不动。只是这样躺着，感觉有点奇怪呢。」",
+        "「这个姿势要保持到手术结束吗？嗯……我会尽量配合的。」"
+      ],
+      "operative_positioning_none": [
+        "「等、等等……还没有麻醉，就要这样固定住我吗……？真的要这样开刀……？」",
+        "「我知道不能乱动……可是等一下真的痛起来，我不知道自己能不能控制住身体啊……！」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管……是要从那里放进去啊……？我明白了。只是有点难为情……」",
+        "「嗯……我会配合的。不过，可以先告诉我会有什么感觉吗？」"
+      ],
+      "urinary_catheterization_none": [
+        "「等一下……完全清醒的时候，就要把导尿管插进去吗？我、我还没准备好……！」",
+        "「啊……！这种感觉……呜……抱歉，我不是故意绷紧身体的……！」"
+      ],
+      "skin_disinfection_none": [
+        "「好冷……！等一下，消毒完就要开始切开了吗……？」",
+        "「已经在准备开刀的地方了啊……我知道，可是心跳突然变得好快……」"
+      ],
+      "incision_marking_none": [
+        "「这条线……就是等一下要切开的地方吧？……我真的要清醒着看你们动刀啊……」",
+        "「原来是这里啊……平时受伤的时候从没想过这些，可现在看着这条线，真的有点害怕……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "最近没有特别严重的不舒服，只是想确认一下身体状况。",
+      "primary": "麻烦你把需要我配合的事情都告诉我。",
+      "secondary": "如果需要住院，我得先安排一下店里的工作。",
+      "background": "平时身体还不错，没有听说过药物过敏。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "蒂法·洛克哈特的病历",
+    "full_undress": {
+      "prompt": "「基础查体需要把内衣也脱掉吗……？好，我先听你说明检查范围。」",
+      "responses": {
+        "abandon_full_undress": "「明白了，那这部分先不做。谢谢你尊重我的选择。」",
+        "authoritative_full_undress": "「如果这是统一规定……我会配合。」她努力维持镇定，完成检查前的准备。",
+        "gentle_full_undress": "「好的。请一步一步告诉我需要怎么做。」她依照说明脱去衣物，抱住手臂等待检查。",
+        "threaten_full_undress": "「请不要用治疗资格逼我……我明白了。」她沉默地完成检查，努力保持呼吸平稳。"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_tifa"
+    }
+  },
+  "preop": {
+    "title": "蒂法·洛克哈特 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 48,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 72
+    },
+    "stage_prompts": {
+      "ward_visit": "「坂口医生，麻烦您了……手术安排可以再跟我说一遍吗？」",
+      "team": "坂口医生担任主刀，选好与坂口医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由坂口医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「都准备好了。接下来需要我怎么配合？」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生……看到您进来，我就安心一点了。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「等一下，坂口医生。现在说的手术和刚才说明的不一样吧？」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。坂口医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我会尽量保持端正……如果发抖，请提醒我呼吸。」",
+      "surgery_start_local": "「马上要开始了吧？请告诉我每一步。」",
+      "surgery_start_none": "「请等一下，我还没有接受麻醉。现在开始我会无法保持不动。」",
+      "instrument_handoff": "坂口医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待坂口医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。坂口医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，坂口医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据坂口医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。坂口医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。蒂法·洛克哈特在全身麻醉下没有意识反应。",
+      "incise_epidural": "「我会感觉到一些压力，对吧？请继续告诉我进度。」",
+      "incise_local": "「嘶……有一点刺痛。请慢一点，我会尽量不动。」",
+      "incise_none": "「啊——！！好疼！等、等一下……！我真的忍不住了！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_tifa",
+        "label": "蒂法·洛克哈特 · 基础查体脱衣",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_tifa/full_undress_basic_exam.png"
+        ],
+        "caption": "蒂法·洛克哈特抱住双臂，努力保持镇定，等待基础查体。"
+      }
+    ],
+    "surgery": [],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_tifa",
+        "label": "蒂法·洛克哈特 · 术前准备 · 备皮",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_tifa"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_tifa/skin_prep.png"
+        ],
+        "caption": "蒂法·洛克哈特努力保持镇定，配合术前备皮。"
+      },
+      {
+        "id": "urinary_catheterization_patient_tifa",
+        "label": "蒂法·洛克哈特 · 手术室准备 · 留置导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_tifa"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_tifa/urinary_catheterization.png"
+        ],
+        "caption": "蒂法·洛克哈特在手术室准备阶段接受留置导尿，努力保持配合。"
+      },
+      {
+        "id": "skin_disinfection_patient_tifa",
+        "label": "蒂法·洛克哈特 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_tifa"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_tifa/skin_disinfection.png"
+        ],
+        "caption": "手术团队为蒂法·洛克哈特完成术野消毒，并等待消毒液干燥。"
+      },
+      {
+        "id": "scalpel_ready_patient_tifa",
+        "label": "蒂法·洛克哈特 · 手术下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_tifa"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_tifa/scalpel_ready.png"
+        ],
+        "caption": "手术刀已经准备就绪，停在蒂法·洛克哈特预定切口的上方。"
+      }
+    ]
+  },
+  "diagnosis_reactions": []
+}

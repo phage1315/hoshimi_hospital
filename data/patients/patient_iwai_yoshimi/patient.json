@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_iwai_yoshimi",
+    "name": "岩井善美",
+    "age": 25,
+    "medical_background": true,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/ward/smile.png",
+        "ward/brave": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/ward/brave.png",
+        "ward/worried": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/awake_style_v2.png",
+        "operating_table/tense": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/tense_style_v2.png",
+        "operating_table/afraid": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/afraid_style_v2.png",
+        "operating_table/anesthetized": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/anesthetized_style_v2.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/awake_position_v2.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/tense_user_v1.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/afraid_user_v1.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/anesthetized_user_v1.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/tense_style_v2.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/pain_style_v2.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/near_collapse_style_v2.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/anesthetized_style_v2.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_iwai_yoshimi/general_style_v3.png",
+        "examination/shy": "assets/examinations/patient_iwai_yoshimi/full_undress.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "caretaker",
+      "secondary": "earnest_scatterbrained",
+      "stress_response": "embarrassed_apologetic"
+    },
+    "dialogue_profile": "graceful_caretaker_reassurance",
+    "traits": {
+      "baseline_anxiety": 58,
+      "pain_sensitivity": 71,
+      "privacy_sensitivity": 94,
+      "trust_baseline": 69,
+      "control_need": 45,
+      "expressiveness": 73,
+      "health_literacy": 75,
+      "compliance_tendency": 87
+    },
+    "fear_profile": {
+      "pain_fear": 72,
+      "procedure_fear": 67,
+      "diagnosis_fear": 55,
+      "loss_control_fear": 77
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「要住院吗……？我得先请人替我排班了。啊，抱歉，我怎么又在想工作……医生，大概要住几天呢？」",
+      "hospitalization_response": "「好，我会住院的。虽然我也是护士，可这次是患者……麻烦您照平常那样，把事情都告诉我好吗？」",
+      "procedure_mismatch": "「咦……？等一下，刚才向我说明的好像不是这项手术。那个，能请您再核对一遍病历吗？」",
+      "explain_plan": "「这样解释我就放心一点了。以前我也是这样和患者说的……没想到轮到自己听，会这么紧张。」",
+      "brief_plan": "「只有这些吗……？我知道大家很忙，但可以再告诉我准备怎么开始吗？抱歉，我有点坐立不安。」",
+      "last_reassure": "「谢谢您……我会努力配合的。明明特意没去熟悉的医院，结果在这里还是紧张得脸红……真不好意思。」",
+      "choose_general": "「全身麻醉啊……我平时总跟患者说，睡一觉就结束了。可自己真的要睡过去……还是有点怕呢。」",
+      "choose_epidural": "「硬膜外麻醉的话，我会一直醒着，对吧？我懂一些护理知识……但想到腿不能动，还是会不安。」",
+      "choose_local": "「局部麻醉，我明白了。我会尽量不动；如果感觉到深处不舒服，我会好好告诉您的。」",
+      "choose_none": "「一、一点麻醉都不用吗？！……我知道您说的是什么，所以才更害怕……真的要这样开刀吗？」",
+      "induction_reassure": "「麻烦您了……我会好好配合。啊，我的手怎么还在发抖……等睡着以后就不会给您添乱了吧……」",
+      "insist_without_anesthesia": "「呜……医生，我知道您还要继续，可真的很疼……！对不起，能不能先听我说一下……！」",
+      "assistant_stabilize_none": "「现在就要把我固定好了吗……？我知道是怕我乱动，可是没有麻醉，我怕疼起来根本忍不住……」",
+      "assistant_stabilize_local": "「好的，我会保持不动……啊，被扶住时吓了一跳。对不起，我会照您说的做。」",
+      "assistant_stabilize_epidural": "「腿真的抬不起来了……谢谢您帮我摆好。明明知道是麻醉的作用，还是有点慌呢。」",
+      "incise_epidural": "「……已经开始切了吗？不算刺痛，可里面那股拉扯……原来躺在手术台上会感觉这么清楚……」",
+      "incise_local": "「嘶……！外面好像不疼，可刚才里面那一下真的很难受……医生，现在做到哪一步了？」",
+      "incise_none": "「啊——！！好疼！等、等一下……！对不起，我真的忍不住……医生，太疼了……！」",
+      "contact_pause": "「停、停下来了吗……？谢谢……请等我缓一口气。我会努力重新稳住的。」",
+      "contact_command": "「好，我不动……我知道这很重要，可身体一直发抖……对不起，真的不是故意的。」",
+      "contact_continue": "「嗯……您可以继续。请在下一步之前再提醒我一下，我会尽量配合的。」",
+      "ongoing_narrate": "「谢谢您告诉我做到哪里了……以前我也常常这样陪患者说话，今天才知道真的很有用。」",
+      "ongoing_eye_contact": "「啊……您在看着我呀。谢谢……刚才我还以为，大家都只顾着手术，听不见我了。」",
+      "ongoing_silent": "「那个……医生？是哪里出问题了吗……？啊，我不是催你们，只是突然没人说话，我有点害怕……」",
+      "closure_reassure": "「真的快结束了……？太好了……谢谢您。等我回到岗位，也会记得好好安慰患者的。」",
+      "closure_coach": "「好……慢慢呼吸，我记住了。以前我教过别人好多遍，自己做起来居然这么不容易……」",
+      "closure_silent": "「……嗯。我先不说话了。知道各位还在我旁边，我就安心多了……」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠呀……我在病房也会帮忙准备的。只是这次要我自己侧躺……能先把帘子拉好吗？」",
+        "「我知道这项准备该怎么配合……那个，能让我再缓一下吗？被人护理的感觉比想象中害羞呢。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「如果这次并不需要灌肠……可不可以先不做？我不是不愿配合，只是想确认真的有必要。」",
+        "「嗯……我知道有时会加做准备，可如果不属于必要项目，能再核对一下医嘱吗？」"
+      ],
+      "ward_skin_prep": [
+        "「备皮范围到这里呀……连这么靠下的地方也要剃吗？我明白是为了手术，只是……真的好不好意思。」",
+        "「我平时也会跟患者说别紧张……可是轮到自己把要剃的地方露出来，脸还是一下子红了。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「这一块不是必须备皮的区域吧？……如果不需要，能不能保留原样呢？」",
+        "「我会配合必要的备皮。只是这部分如果和手术没关系，可以再确认一下吗？」"
+      ],
+      "ward_surgical_cap": [
+        "「手术帽得把头发和耳朵都遮好……嗯，我知道的。啊，后面还有一点头发没收进去，我自己再整理一下！」",
+        "「帽子戴好了……平时给患者戴的时候还挺自然的，自己戴上却突然有种真的要被推进手术室的感觉。」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂放这里，腿稍微调整……明白。我会配合的，麻烦您摆好之前先告诉我一声。」",
+        "「我知道这个体位方便手术……可这么多人在旁边替我摆姿势，还是有点不自在。对不起……」"
+      ],
+      "operative_positioning_none": [
+        "「没有麻醉，就先把手脚固定住吗……？我知道是怕我乱动，可我真的担心疼起来控制不住……」",
+        "「医生，如果等一下我喊得很大声，请别以为我在故意添乱……我怕自己真的忍不住。」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管……是的，我知道用途。只是自己躺着等人从那里放进去……能先提醒我一下吗？」",
+        "「我给患者解释过很多次了……没想到真正要把双腿摆好、等着导尿的人是我时，会这么紧张……」"
+      ],
+      "urinary_catheterization_none": [
+        "「呀……！还没麻醉就要放导尿管吗……？我会尽量配合，先让我缓一口气……」",
+        "「呜……好不舒服……！我知道要留置，可是这样清醒着，感觉实在太明显了……！」"
+      ],
+      "skin_disinfection_awake": [
+        "「呀，好冰……啊，是消毒液，我知道的！只是突然一凉，还是忍不住缩了一下……」",
+        "「嗯，我不动。麻醉已经做过，可消毒时的冷意还是这么清楚……真奇怪。」"
+      ],
+      "skin_disinfection_none": [
+        "「消毒已经开始了呀……擦完这里，等下真的就要直接动刀了吗……？」",
+        "「好凉……明明还没切，我已经紧张得发抖了。对不起，我会努力不乱动……」"
+      ],
+      "incision_marking_awake": [
+        "「切口要画在这里……我明白标记很重要。麻醉的效果能再帮我确认一次吗？」",
+        "「看见这条线，突然就更紧张了……医生，一会儿开始前请叫我一声，好吗？」"
+      ],
+      "incision_marking_none": [
+        "「这条线……就是等下完全不麻醉也要切开的地方？……我、我真的有点怕……」",
+        "「医生，刀子还没碰到我，我就已经想躲了……我知道不该乱动，可真的很害怕……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "那个，医生……我今天来就诊，是因为：{line}",
+      "primary": "最明显的不舒服是：{line}……我会尽量说明白的。",
+      "secondary": "另外还有一件事，也请您一起记下：{line}",
+      "background": "我在另一家医院做护士。不是不信任那边的同事……只是想到万一需要脱衣检查、住院甚至开刀，要由每天一起值班的人来照顾我，就太难为情了。所以我选择来星见。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "岩井善美的病历",
+    "full_undress": {
+      "prompt": "「啊……这次检查要把衣服全部脱掉吗？我知道这是正常的检查……可是轮到自己，还是好害羞。能先说明范围吗？」",
+      "responses": {
+        "abandon_full_undress": "「这项先不做吗……？呼，谢谢。不过真正需要的检查请不要因为我害羞就省略，好吗？」",
+        "authoritative_full_undress": "「好、好的，我会照要求做的……那个，可以先把帘子拉好，再让我脱衣服吗？」",
+        "gentle_full_undress": "「谢谢您先说明白……我会配合。明明平时也是我在安慰患者，今天自己却紧张成这样……」",
+        "threaten_full_undress": "「请、请别用那样的口气……我知道必要的检查得做，可越这样说，我越不知道该怎么办了……」"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_iwai_yoshimi"
+    }
+  },
+  "preop": {
+    "title": "岩井善美的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「医生……我是别家医院的护士。不是不信任同事，只是实在没勇气让熟人照顾我这个样子。今天的安排能先告诉我吗？」",
+      "graphic_preop_question": "「那个，我能问得具体一点吗？平时我也协助过术前准备，可那都是别人的事……一会儿我上台以后，从摆体位到消毒、真正开始切开，会是什么顺序呢？」",
+      "graphic_preop_dialogue": "善美起初还习惯性地点头，仿佛在听一次病房护理交接。医护把待会儿的身体暴露、体位固定、消毒、切口与后续操作解释得越清楚，她就越难把这些步骤当成普通工作。想到下一次躺在手术台上接受这一切的人就是自己，她悄悄攥紧被角，脸红得不敢抬头。",
+      "team": "你担任岩井善美本次手术的主刀。请确认助手医生、器械护士与巡回护士的岗位分工。",
+      "preparation": "请安排岩井善美的病房准备护士，并依照当前病例与术式完成必要的术前准备。",
+      "prepared": "「准备都完成了……？呼。那个，刚才我是不是太紧张，给负责护理我的护士添麻烦了……？」",
+      "changing": "手术团队依照规定更衣、刷手并完成无菌准备，随后进入手术室。",
+      "operating_room": "「哇……灯好亮。我平时陪患者到手术室门口，没想到自己躺上来会这么慌……请多关照。」",
+      "team_confirmations": "团队逐项核对岩井善美的身份、当前病例对应的手术方案与成员职责。她认真听着，既熟悉这些确认，又因自己成了被核对的患者而不自在。",
+      "procedure_select": "请核对当前病例已确认的手术方案，并选择与之对应的术式。",
+      "procedure_mismatch": "「咦……？这和刚才向我说明的手术不一样吧？医生，能不能先再核对一下病历？」",
+      "ready": "岩井善美的术前准备已经完成。她躺在手术台上等待，团队需最终确认麻醉方式与手术开始条件。",
+      "general_induction": "「麻烦您了……以前我叫过很多患者放松，今天才发现自己连手指都松不开。那、那我就拜托各位了……」",
+      "surgery_start_general": "岩井善美已经进入全身麻醉状态，不播放清醒患者的术中主观对白。手术团队确认监护及当前操作条件后继续。",
+      "surgery_start_epidural": "「腿真的使不上力气了……我平时还说这是正常的。可自己一直醒着，果然还是会慌呢……」",
+      "surgery_start_local": "「表面已经麻了吗……我会保持不动。要是深处疼起来，我一定告诉您，不会硬撑的。」",
+      "surgery_start_none": "「……真的一点麻醉都没有就开始吗？医生，我知道您说的是什么……可是我真的好害怕……」",
+      "instrument_handoff": "主刀提出器械需求，器械护士按当前术式与操作阶段递交对应器械。",
+      "assistant_ready": "助手医生确认体位、术野暴露与操作条件，配合主刀维持视野，等待下一步指令。",
+      "incision_ready": "切口位置及麻醉状态完成核对。助手维持暴露，器械护士备好手术刀，等待主刀确认开始。",
+      "general_operation": "岩井善美处于全身麻醉中，不产生清醒术中主观反应。团队持续监护，按当前术式流程推进。",
+      "operative_contact": "切口已经建立。若岩井善美保持清醒，她熟悉的护理知识并不能替她承受压力、牵拉或疼痛；具体反应仍按现有麻醉与患者状态判定。",
+      "ongoing_interaction": "手术继续进行。若岩井善美清醒，她会努力配合，偶尔习惯性地为自己的反应道歉；当医护告知进度时，她明显更能安定下来。",
+      "closure_interaction": "主要操作进入收尾阶段。若岩井善美保持清醒，她终于开始相信手术快结束了，也逐渐不再为自己的紧张感到羞愧。",
+      "procedure_flow": "进入当前所选术式的标准流程，按该术式既定阶段与技术选项继续。",
+      "procedure_execute": "主要操作完成，团队复核术野及必要技术结果，准备最终处理与缝合。",
+      "surgery_result": "手术结束。团队依照现有流程完成切口处理、器械清点及术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经开始切了吗？不算刺痛，可里面那股拉扯……原来躺在手术台上会感觉这么清楚……」",
+      "incise_local": "「嘶……！外面好像不疼，可刚才里面那一下真的很难受……医生，现在做到哪一步了？」",
+      "incise_none": "「啊——！！好疼！等、等一下……！对不起，我真的忍不住……医生，太疼了……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_iwai_yoshimi",
+        "label": "岩井善美 · 诊室全裸检查",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_iwai_yoshimi/full_undress_basic_exam.png"
+        ],
+        "caption": "岩井善美在诊室脱去衣物，抱着双臂等待基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_iwai_yoshimi",
+        "label": "岩井善美 · 术前准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_iwai_yoshimi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_iwai_yoshimi/skin_prep.png"
+        ],
+        "caption": "岩井善美接受术前剃毛准备。"
+      },
+      {
+        "id": "operative_positioning_patient_iwai_yoshimi",
+        "label": "岩井善美 · 术前体位固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_iwai_yoshimi"
+        ],
+        "procedure_groups": [
+          "general_abdominal"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_iwai_yoshimi/operative_positioning.png"
+        ],
+        "caption": "手术团队将岩井善美安置并固定在仰卧手术台上。"
+      },
+      {
+        "id": "urinary_catheterization_patient_iwai_yoshimi",
+        "label": "岩井善美 · 术前导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_iwai_yoshimi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_iwai_yoshimi/urinary_catheterization.png"
+        ],
+        "caption": "手术团队为岩井善美进行术前导尿。"
+      },
+      {
+        "id": "incision_ready_patient_iwai_yoshimi",
+        "label": "岩井善美 · 下刀",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "incise_epidural",
+          "incise_local",
+          "incise_none"
+        ],
+        "patient_ids": [
+          "patient_iwai_yoshimi"
+        ],
+        "procedure_groups": [
+          "general_abdominal"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_iwai_yoshimi/incision_ready.png"
+        ],
+        "caption": "麻醉状态核对完成，手术刀来到岩井善美预定切口上方。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

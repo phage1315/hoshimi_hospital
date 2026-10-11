@@ -35,8 +35,16 @@ func run() -> void:
 	configure_game(game)
 	expect(game.unlocked_procedure_ids.size() == 9, "New game did not start with exactly nine procedures")
 	expect(game.procedure_unlocked("surgery_appendix") and not game.procedure_unlocked("surgery_cabg"), "Starting procedure locks are incorrect")
-	expect(not game.unlock_procedure("surgery_vaginal_hysterectomy"), "Placeholder procedure was unlockable")
-	expect(game.procedure_catalog().size() == 26, "Procedure catalog did not include all 25 operations plus the placeholder")
+	# Registering an unlock does not bypass the separate authored teaching gate.
+	game.unlock_procedure("surgery_vaginal_hysterectomy")
+	expect(not game.procedure_unlocked("surgery_vaginal_hysterectomy"), "Clinical registration bypassed the teaching gate")
+	game.set_story_flag("aqua_vaginal_hysterectomy_teaching_complete", true)
+	expect(game.procedure_unlocked("surgery_vaginal_hysterectomy"), "Completed teaching did not unlock its procedure")
+	game.set_story_flag("aqua_vaginal_hysterectomy_teaching_complete", false)
+	expect(game.procedure_catalog().size() == 31, "Ordinary catalog exposed an advanced-referral procedure")
+	game.set_story_flag("advanced_referral_random_cases_enabled", true)
+	expect(game.procedure_catalog().size() == 32, "Unlocked advanced catalog omitted its procedure")
+	game.set_story_flag("advanced_referral_random_cases_enabled", false)
 	# A normal case can introduce a procedure the player has not performed yet.
 	# Admission plus entry into that patient's preoperative workflow unlocks it
 	# for the current operation; completion is no longer a circular prerequisite.
@@ -69,9 +77,9 @@ func run() -> void:
 	expect(game.surgery_xp_award_for(wrong_cabg) == 14, "Wrong-indication surgery did not apply the 20 percent XP multiplier")
 	expect(game.surgery_reputation_profile("surgery_appendix").tier == "simple" and game.surgery_reputation_award_for("surgery_appendix", 0) == 2, "Simple surgery reputation profile is incorrect")
 	expect(game.surgery_reputation_award_for("surgery_appendix", 80) == 1 and game.surgery_reputation_award_for("surgery_appendix", 100) == 0, "Simple surgery reputation soft or hard cap is incorrect")
-	expect(game.surgery_reputation_profile("surgery_open_abdominal_myomectomy").tier == "standard" and game.surgery_reputation_award_for("surgery_open_abdominal_myomectomy", 0) == 2 and game.surgery_reputation_award_for("surgery_open_abdominal_myomectomy", 300) == 0, "Standard surgery reputation profile is incorrect")
-	expect(game.surgery_reputation_profile("surgery_open_lung_lobectomy").tier == "advanced" and game.surgery_reputation_award_for("surgery_open_lung_lobectomy", 0) == 40 and game.surgery_reputation_award_for("surgery_open_lung_lobectomy", 600) == 0, "Advanced surgery reputation profile is incorrect")
-	expect(game.surgery_reputation_profile("surgery_cabg").tier == "extreme" and game.surgery_reputation_award_for("surgery_cabg", 0) == 75 and game.surgery_reputation_award_for("surgery_cabg", 999) == 0, "Extreme surgery reputation profile is incorrect")
+	expect(game.surgery_reputation_profile("surgery_open_abdominal_myomectomy").tier == "standard" and game.surgery_reputation_award_for("surgery_open_abdominal_myomectomy", 0) == 7 and game.surgery_reputation_award_for("surgery_open_abdominal_myomectomy", 300) == 0, "Standard surgery reputation profile is incorrect")
+	expect(game.surgery_reputation_profile("surgery_open_lung_lobectomy").tier == "advanced" and game.surgery_reputation_award_for("surgery_open_lung_lobectomy", 0) == 11 and game.surgery_reputation_award_for("surgery_open_lung_lobectomy", 600) == 0, "Ordinary-pool lobectomy incorrectly used advanced-referral rewards")
+	expect(game.surgery_reputation_profile("surgery_cabg").tier == "extreme" and game.surgery_reputation_award_for("surgery_cabg", 0) == 14 and game.surgery_reputation_award_for("surgery_cabg", 999) == 0, "Ordinary-pool CABG incorrectly used advanced-referral rewards")
 	var penalty_game = Game.new()
 	configure_game(penalty_game)
 	appendix.flags.append("no_anesthesia_confirmed")

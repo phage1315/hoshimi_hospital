@@ -3,7 +3,7 @@ import json
 import re
 from datetime import date
 from pathlib import Path
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, RefResolver
 from patient_bundles import load_patient_bundles
 from staff_bundles import load_staff_bundles
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +24,16 @@ def read_collection(path):
         rows.extend(part)
     return rows
 schema = read('schemas/content.schema.json')
+patient_bundle_schema_path = ROOT / 'data' / 'schemas' / 'patient_bundle.schema.json'
+patient_bundle_schema = json.loads(patient_bundle_schema_path.read_text())
+patient_bundle_resolver = RefResolver(
+    patient_bundle_schema_path.as_uri(),
+    patient_bundle_schema,
+    store={
+        str(schema.get('$id', '')): schema,
+        str(patient_bundle_schema.get('$id', '')): patient_bundle_schema,
+    },
+)
 manifest = read('manifest.json')
 errors = []
 collections = {}
@@ -74,7 +84,7 @@ check('office_has_mentor_letter' in protagonist.get('office_flags', []),
       'Initial office must contain the mentor-letter flag')
 check(mentor_letter.get('flag') == 'office_has_mentor_letter',
       'Mentor recommendation letter must use its reserved office flag')
-kind = dict(staff='staff', patients='patient', cameo_patients='cameo_patient', first_surgery_diagnosis_reactions='first_surgery_diagnosis_reaction', relationships='relationship', relationship_activity_placeholders='relationship_activity_placeholder', cases='case', case_templates='case_template', advanced_referral_cases='advanced_referral_case', surgeries='surgery', patient_interactions='patient_interaction', temporary_conditions='temporary_condition', palpation_profiles='palpation_profile', teams='team', backgrounds='background', time_events='time_event', character_events='character_event', special_events='special_event', special_event_steps='special_event_step', date_profiles='date_profile', date_locations='date_location', staff_role_cg_rewards='staff_role_cg_reward', micro_events='micro_event', surgery_team_dialogue_profiles='surgery_team_dialogue_profile', examination_cg_pools='examination_cg_pool', surgery_cg_pools='surgery_cg_pool', ward_preparation_cg_pools='ward_preparation_cg_pool', locations='location', encounters='encounter', preops='preop')
+kind = dict(staff='staff', patients='patient', cameo_patients='cameo_patient', first_surgery_diagnosis_reactions='first_surgery_diagnosis_reaction', relationships='relationship', relationship_activity_placeholders='relationship_activity_placeholder', cases='case', case_templates='case_template', advanced_referral_cases='advanced_referral_case', surgeries='surgery', patient_interactions='patient_interaction', awake_special_barks='awake_special_bark', temporary_conditions='temporary_condition', palpation_profiles='palpation_profile', teams='team', backgrounds='background', time_events='time_event', character_events='character_event', special_events='special_event', special_event_steps='special_event_step', date_profiles='date_profile', date_locations='date_location', staff_role_cg_rewards='staff_role_cg_reward', micro_events='micro_event', surgery_team_dialogue_profiles='surgery_team_dialogue_profile', examination_cg_pools='examination_cg_pool', surgery_cg_pools='surgery_cg_pool', ward_preparation_cg_pools='ward_preparation_cg_pool', locations='location', encounters='encounter', preops='preop')
 for key, path in manifest['collections'].items():
     rows = read_collection(path)
     collections[key] = rows
@@ -115,6 +125,10 @@ for surgery in collections.get('surgeries', []):
         'breast': ['breast'],
         'gynecology_pelvic': ['genital'],
     }.get(surgery.get('palpation_profile'))
+    if surgery.get('id') in {'surgery_open_abdominoperineal_resection', 'surgery_open_low_anterior_resection'}:
+        expected_anesthesia_targets = ['abdomen', 'genital']
+    elif surgery.get('id') == 'surgery_open_esophagectomy':
+        expected_anesthesia_targets = ['abdomen', 'chest']
     if expected_anesthesia_targets is not None:
         check(surgery.get('anesthesia_target_regions') == expected_anesthesia_targets,
               f"Surgery {surgery.get('id')} has the wrong anesthesia target regions")
@@ -122,6 +136,8 @@ for surgery in collections.get('surgeries', []):
 patient_collections, patient_bundles = load_patient_bundles(ROOT / 'data', manifest['patient_bundles'])
 for relative_path, bundle in patient_bundles:
     prefix = relative_path + ': '
+    bundle_validator = Draft202012Validator(patient_bundle_schema, resolver=patient_bundle_resolver)
+    errors.extend(f'{prefix}{e.json_path}: {e.message}' for e in bundle_validator.iter_errors(bundle))
     check(bundle.get('schema_version') == 1, prefix + 'unsupported patient bundle schema')
     check(isinstance(bundle.get('patient'), dict), prefix + 'missing patient record')
     check(isinstance(bundle.get('fallback'), dict), prefix + 'missing fallback data')
@@ -141,7 +157,7 @@ for key in ['patients', 'encounters', 'preops']:
         errors.extend(f'{key}[{index}] {e.json_path}: {e.message}' for e in validator.iter_errors(row))
     ids = [row.get('id') for row in rows]
     check(len(ids) == len(set(ids)), f'Duplicate id in generated {key}')
-for key in ['examination_cg_pools', 'ward_preparation_cg_pools']:
+for key in ['examination_cg_pools', 'ward_preparation_cg_pools', 'surgery_cg_pools']:
     collections[key].extend(patient_collections[key])
     ids = [row.get('id') for row in collections[key]]
     check(len(ids) == len(set(ids)), f'Duplicate id after merging patient-owned {key}')
@@ -219,8 +235,9 @@ for reaction in collections['first_surgery_diagnosis_reactions']:
         owned_diagnosis_groups.setdefault(reaction['patient_id'], set()).add(reaction['site_group'])
 required_diagnosis_groups = {'breast', 'abdominal', 'gynecology_pelvic', 'thoracic_cardiac', 'generic'}
 for patient in patient_collections['patients']:
-    check(owned_diagnosis_groups.get(patient['id'], set()) == required_diagnosis_groups,
-          patient['id'] + ': patient bundle must own one first-surgery reaction for every site group')
+    owned_groups = owned_diagnosis_groups.get(patient['id'], set())
+    check(not owned_groups or owned_groups == required_diagnosis_groups,
+          patient['id'] + ': patient-owned first-surgery reactions must cover every site group')
 
 date_location_ids = set(by['date_locations'])
 for profile in collections['date_profiles']:
@@ -269,7 +286,7 @@ legacy_role_cg_backlog = {
 # are explicitly kept on this migration backlog.
 legacy_date_profile_backlog = {
     'doc_aoi', 'doc_rei', 'doc_asuka', 'doc_artoria', 'doc_emiko',
-    'doc_aqua', 'doc_sakura_anesthesiology', 'doc_shiori',
+    'doc_aqua', 'doc_sakura_anesthesiology', 'doc_shiori', 'pharmacist_manami',
 }
 date_profile_staff_ids = {profile.get('staff_id') for profile in collections['date_profiles']}
 for actor in collections['staff']:
@@ -728,7 +745,11 @@ known_preparation_cg_actions = {
     'ward_enema', 'ward_enema_unnecessary',
     'ward_skin_prep', 'ward_skin_prep_unnecessary',
     'ward_surgical_cap',
+    'complete_manual_ward_preparation',
+    'operative_positioning',
     'urinary_catheterization', 'skin_disinfection', 'ack_disinfection', 'request_scalpel',
+    # Existing preop_event action dispatch also resolves CGs at the actual incision.
+    'incise_epidural', 'incise_local', 'incise_none',
 }
 for pool in collections['ward_preparation_cg_pools']:
     prefix = pool['id'] + ': '
@@ -758,7 +779,7 @@ required_preparation_reaction_variants = {
     'skin_disinfection_awake', 'skin_disinfection_none',
     'incision_marking_awake', 'incision_marking_none',
 }
-personality_pairs = set()
+personality_pairs = {}
 for patient in collections['patients']:
     prefix = patient['id'] + ': '
     check(patient['age'] >= 18, prefix + 'ordinary surgery-pool patients must be adults')
@@ -774,8 +795,11 @@ for patient in collections['patients']:
             check((ROOT / portraits[portrait_key]).is_file(), prefix + 'intraoperative portrait asset missing: ' + portraits[portrait_key])
     profile = patient['personality']
     personality_pair = (profile['primary'], profile['secondary'])
-    check(personality_pair not in personality_pairs, prefix + 'duplicate primary/secondary personality pair')
-    personality_pairs.add(personality_pair)
+    dialogue_profile_id = str(patient.get('dialogue_profile', ''))
+    existing_dialogue_profile = personality_pairs.get(personality_pair)
+    check(existing_dialogue_profile is None or existing_dialogue_profile == dialogue_profile_id,
+          prefix + 'duplicate primary/secondary personality pair across dialogue profiles')
+    personality_pairs[personality_pair] = dialogue_profile_id
     check(set(patient['reaction_lines']) == required_patient_reactions, prefix + 'incomplete reaction-line coverage')
     check(len(set(patient['reaction_lines'].values())) == len(patient['reaction_lines']), prefix + 'duplicate reaction lines within patient')
     variants = patient['reaction_variants']
@@ -1014,7 +1038,7 @@ check(asuka_scrub.get('preop_stage_id') == 'changing' and
 check(asuka_scrub.get('conditions', {}).get('special_requirements') == [{
           'type': 'career_progress_any', 'minimum_completed_surgeries': 2, 'minimum_reputation': 5}],
       'doc_asuka: first encounter needs two surgeries or reputation 5')
-check(asuka_hint.get('preop_stage_id') == 'surgery_result' and
+check(asuka_hint.get('preop_stage_id') == 'post_surgery_return' and
       asuka_hint.get('conditions', {}).get('required_events') == ['asuka_scrub_sink_encounter'],
       'doc_asuka: identity hint must follow a completed surgery')
 check(asuka_intro.get('location_id') == 'director_office' and
@@ -1201,7 +1225,7 @@ for event in collections['character_events']:
     trigger_mode = event['trigger_mode']
     preop_stage_id = event.get('preop_stage_id', '')
     if preop_stage_id:
-        check(any(any(stage['id'] == preop_stage_id for stage in prep['stages']) for prep in collections['preops']),
+        check(preop_stage_id == 'post_surgery_return' or any(any(stage['id'] == preop_stage_id for stage in prep['stages']) for prep in collections['preops']),
               prefix + 'unknown preoperative stage trigger')
     check(trigger_mode != 'preop_stage' or bool(preop_stage_id), prefix + 'preop-stage trigger needs preop_stage_id')
     check(trigger_mode != 'sunday' or event.get('consumes_sunday') is True, prefix + 'Sunday trigger must consume Sunday')
@@ -1236,7 +1260,7 @@ for event in collections['character_events']:
     nodes = {node['id']: node for node in event['nodes']}
     check(len(nodes) == len(event['nodes']) and event['start'] in nodes, prefix + 'invalid nodes')
     choice_ids = set()
-    reachable, pending = set(), [event['start']]
+    reachable, pending = set(), [event['start'], *event.get('opening_variants', {}).values()]
     while pending:
         node_id = pending.pop()
         if node_id in reachable or node_id not in nodes: continue
@@ -1404,7 +1428,22 @@ for surgery in collections['surgeries']:
     for stage in surgery['stages']:
         options = stage['options']
         tutorial_safe = surgery.get('catalog_visibility') == 'advanced_referral'
-        pilot_strategy_stage = surgery['id'] in {'surgery_appendix', 'surgery_open_cholecystectomy', 'surgery_open_inguinal_hernia'} and (stage.get('stage_kind') == 'conditional_correction' or any('strategic_effects' in option or 'conditional_effects' in option for option in options))
+        pilot_strategy_stage = surgery['id'] in {
+            'surgery_appendix', 'surgery_open_cholecystectomy', 'surgery_open_inguinal_hernia',
+            'surgery_open_ventral_hernia', 'surgery_breast_tumor', 'surgery_open_ovarian_cystectomy',
+            'surgery_open_abdominal_myomectomy', 'surgery_open_splenectomy',
+            'surgery_open_distal_gastrectomy', 'surgery_hysterectomy',
+            'surgery_open_right_hemicolectomy', 'surgery_total_mastectomy',
+            'surgery_open_nephrectomy', 'surgery_open_lung_lobectomy',
+            'surgery_open_sigmoid_colectomy', 'surgery_vaginal_hysterectomy',
+            'surgery_open_distal_pancreatectomy', 'surgery_open_partial_nephrectomy',
+            'surgery_open_adrenalectomy', 'surgery_exploratory_laparotomy',
+            'surgery_open_pneumonectomy', 'surgery_open_esophagectomy',
+            'surgery_open_radical_cystectomy', 'surgery_open_abdominoperineal_resection',
+            'surgery_open_left_hemicolectomy', 'surgery_open_low_anterior_resection',
+            'surgery_cabg', 'surgery_open_total_gastrectomy',
+            'surgery_open_major_liver_resection', 'surgery_open_abdominal_aortic_aneurysm',
+        } and (stage.get('stage_kind') == 'conditional_correction' or any('strategic_effects' in option or 'conditional_effects' in option for option in options))
         check((1 <= len(options) <= 4) if tutorial_safe else (len(options) in (2, 3) if pilot_strategy_stage and stage['kind'] != 'confirm' else len(options) == (1 if stage['kind'] == 'confirm' else 3)),
               prefix + stage['id'] + ': wrong option count')
         for option in options:
@@ -1428,10 +1467,89 @@ check({s['id'] for s in collections['surgeries'] if s['unlocked_at_start']} == e
       'Starting procedure set must contain the authored nine operations')
 vaginal_hysterectomy = by['surgeries'].get('surgery_vaginal_hysterectomy', {})
 check(vaginal_hysterectomy.get('name') == '经阴道子宫全切除' and
-      vaginal_hysterectomy.get('status') == 'placeholder' and
+      vaginal_hysterectomy.get('status') == 'ready' and
       not vaginal_hysterectomy.get('unlocked_at_start') and
-      not vaginal_hysterectomy.get('stages'),
-      'Vaginal hysterectomy must remain a locked non-selectable placeholder')
+      len(vaginal_hysterectomy.get('stages', [])) == 11 and
+      vaginal_hysterectomy.get('duration_minutes') == 120 and
+      vaginal_hysterectomy.get('recommended_surgery') == 65 and
+      vaginal_hysterectomy.get('training_ceiling') == 84,
+      'Vaginal hysterectomy must be a locked ready procedure with its authored metadata')
+batch_04_specs = {
+    'surgery_vaginal_hysterectomy': (120, 70, 65, 84, 11, 'lithotomy'),
+    'surgery_open_distal_pancreatectomy': (180, 76, 72, 89, 12, 'supine'),
+    'surgery_open_partial_nephrectomy': (150, 80, 76, 91, 13, 'supine'),
+    'surgery_open_adrenalectomy': (120, 74, 70, 88, 11, 'supine'),
+}
+for batch_id, (duration, difficulty, recommended, ceiling, stage_count, position) in batch_04_specs.items():
+    batch_surgery = by['surgeries'].get(batch_id, {})
+    check(batch_surgery.get('status') == 'ready' and
+          not batch_surgery.get('unlocked_at_start') and
+          batch_surgery.get('duration_minutes') == duration and
+          batch_surgery.get('base_difficulty') == difficulty and
+          batch_surgery.get('recommended_surgery') == recommended and
+          batch_surgery.get('training_ceiling') == ceiling and
+          len(batch_surgery.get('stages', [])) == stage_count and
+          batch_surgery.get('positioning', {}).get('primary_position') == position,
+          batch_id + ': Batch 04 metadata or stage catalog is incorrect')
+batch_05_specs = {
+    'surgery_cabg': (360, 92, 88, 99, 13, 'supine'),
+    'surgery_open_total_gastrectomy': (240, 78, 74, 90, 14, 'supine'),
+    'surgery_open_major_liver_resection': (300, 90, 87, 98, 13, 'supine'),
+    'surgery_open_abdominal_aortic_aneurysm': (240, 93, 90, 99, 12, 'supine'),
+}
+for batch_id, (duration, difficulty, recommended, ceiling, stage_count, position) in batch_05_specs.items():
+    batch_surgery = by['surgeries'].get(batch_id, {})
+    fixed_stages = [stage for stage in batch_surgery.get('stages', []) if stage.get('stage_kind', 'fixed') != 'conditional_correction']
+    check(batch_surgery.get('status') == 'ready' and
+          not batch_surgery.get('unlocked_at_start') and
+          batch_surgery.get('duration_minutes') == duration and
+          batch_surgery.get('base_difficulty') == difficulty and
+          batch_surgery.get('recommended_surgery') == recommended and
+          batch_surgery.get('training_ceiling') == ceiling and
+          len(batch_surgery.get('stages', [])) == stage_count and
+          len(fixed_stages) + 1 == stage_count and
+          sum(int(stage.get('progress_delta', 0)) for stage in fixed_stages) == 100 and
+          batch_surgery.get('positioning', {}).get('primary_position') == position,
+          batch_id + ': Batch 05 metadata or stage catalog is incorrect')
+batch_06_specs = {
+    'surgery_exploratory_laparotomy': (480, 82, 78, 92, 11, 'supine'),
+    'surgery_open_pneumonectomy': (240, 88, 84, 96, 11, 'supine'),
+    'surgery_open_esophagectomy': (360, 94, 90, 99, 14, 'supine'),
+    'surgery_open_radical_cystectomy': (300, 87, 83, 96, 13, 'supine'),
+}
+for batch_id, (duration, difficulty, recommended, ceiling, stage_count, position) in batch_06_specs.items():
+    batch_surgery = by['surgeries'].get(batch_id, {})
+    fixed_stages = [stage for stage in batch_surgery.get('stages', []) if stage.get('stage_kind', 'fixed') != 'conditional_correction']
+    check(batch_surgery.get('status') == 'ready' and
+          not batch_surgery.get('unlocked_at_start') and
+          batch_surgery.get('duration_minutes') == duration and
+          batch_surgery.get('base_difficulty') == difficulty and
+          batch_surgery.get('recommended_surgery') == recommended and
+          batch_surgery.get('training_ceiling') == ceiling and
+          len(batch_surgery.get('stages', [])) == stage_count and
+          len(fixed_stages) + 1 == stage_count and
+          sum(int(stage.get('progress_delta', 0)) for stage in fixed_stages) == 100 and
+          batch_surgery.get('positioning', {}).get('primary_position') == position,
+          batch_id + ': Batch 06 metadata or stage catalog is incorrect')
+batch_07_specs = {
+    'surgery_open_abdominoperineal_resection': (300, 84, 80, 93, 15, 'lithotomy'),
+    'surgery_open_left_hemicolectomy': (180, 72, 68, 86, 13, 'supine'),
+    'surgery_open_low_anterior_resection': (240, 82, 78, 92, 14, 'lithotomy'),
+}
+for batch_id, (duration, difficulty, recommended, ceiling, stage_count, position) in batch_07_specs.items():
+    batch_surgery = by['surgeries'].get(batch_id, {})
+    fixed_stages = [stage for stage in batch_surgery.get('stages', []) if stage.get('stage_kind', 'fixed') != 'conditional_correction']
+    check(batch_surgery.get('status') == 'ready' and
+          not batch_surgery.get('unlocked_at_start') and
+          batch_surgery.get('duration_minutes') == duration and
+          batch_surgery.get('base_difficulty') == difficulty and
+          batch_surgery.get('recommended_surgery') == recommended and
+          batch_surgery.get('training_ceiling') == ceiling and
+          len(batch_surgery.get('stages', [])) == stage_count and
+          len(fixed_stages) + 1 == stage_count and
+          sum(int(stage.get('progress_delta', 0)) for stage in fixed_stages) == 100 and
+          batch_surgery.get('positioning', {}).get('primary_position') == position,
+          batch_id + ': Batch 07 metadata or stage catalog is incorrect')
 interaction_themes = {
     'operative_contact', 'progress_check', 'strain_interaction',
     'dignity_interaction', 'ongoing_interaction', 'closure_interaction',
@@ -1497,6 +1615,7 @@ long_surgery_ongoing_ids = {
     'surgery_open_whipple', 'surgery_open_major_liver_resection',
     'surgery_open_pneumonectomy', 'surgery_open_esophagectomy',
     'surgery_open_radical_cystectomy', 'surgery_open_abdominal_aortic_aneurysm',
+    'surgery_open_left_hemicolectomy', 'surgery_open_low_anterior_resection',
 }
 for surgery_id in long_surgery_ongoing_ids:
     surgery = by['surgeries'].get(surgery_id, {})

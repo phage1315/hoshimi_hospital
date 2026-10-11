@@ -3,6 +3,17 @@ extends SceneTree
 var checks := 0
 var failures := 0
 
+func complete_asuka_introduction(game) -> void:
+	var id := "intro_doc_asuka_director_office"
+	var session = load("res://godot/systems/character_event_session.gd").new(game.character_event_definitions[id])
+	while not session.completed:
+		var options: Array = session.current().choices
+		if options.is_empty() or not session.apply(str(options[0].id)):
+			expect(false, "Asuka introduction fixture could not finish")
+			return
+	game.character_events[id] = session
+	game.meet_staff("doc_asuka")
+
 func expect(condition: bool, message: String) -> void:
 	checks += 1
 	if not condition:
@@ -40,12 +51,17 @@ func run() -> void:
 	game.set_test_time(29, 540)
 	game.set_test_player_attribute("reputation", 49)
 	expect(not game.special_event_base_requirements_met(definition), "Probation event unlocked below both thresholds")
+	game.set_test_time(30, 540)
+	expect(not game.special_event_base_requirements_met(definition), "Day threshold bypassed Asuka's director-office introduction")
+	complete_asuka_introduction(game)
 
 	var trigger_day := first_available_day(game, definition, 30, 36)
 	expect(trigger_day >= 30, "Day-30 probation event did not become available during the next workweek")
 	if trigger_day >= 30:
 		expect(game.start_special_event(definition.id) != null, "Could not start probation event")
+		var before_elapsed: int = game.elapsed()
 		finish_event(game)
+		expect(game.elapsed() == before_elapsed, "Personal-nurse appointment consumed a workday")
 	expect(game.probation_complete and game.personal_nurse_system_unlocked, "Completing probation did not unlock the personal-nurse system")
 	expect(game.personal_nurse_id == "nurse_haru" and game.resolve_outpatient_support_actor() == "nurse_haru", "Nanase Ren was not assigned as the first personal nurse")
 	expect(game.story_flag("probation_complete") and game.story_flag("personal_nurse_system_unlocked"), "Probation completion flags were not recorded")
@@ -71,6 +87,8 @@ func run() -> void:
 	game.reset()
 	game.set_test_time(10, 540)
 	game.set_test_player_attribute("reputation", 50)
+	expect(not game.special_event_base_requirements_met(definition), "Reputation bypassed the unfinished Asuka introduction")
+	complete_asuka_introduction(game)
 	expect(game.special_event_base_requirements_met(definition), "Reputation 50 did not unlock early probation completion")
 	expect(game.resolve_outpatient_support_actor() == "doc_aoi", "The nurse replaced Jinguji before the event was completed")
 

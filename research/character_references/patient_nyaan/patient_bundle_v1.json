@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_nyaan",
+    "name": "妮安",
+    "age": 20,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {}
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "shy",
+      "secondary": "guarded_independent",
+      "stress_response": "quiet_then_outburst"
+    },
+    "dialogue_profile": "shy_reassurance_quiet",
+    "traits": {
+      "baseline_anxiety": 72,
+      "pain_sensitivity": 64,
+      "privacy_sensitivity": 70,
+      "trust_baseline": 32,
+      "control_need": 82,
+      "expressiveness": 24,
+      "health_literacy": 24,
+      "compliance_tendency": 74
+    },
+    "fear_profile": {
+      "pain_fear": 71,
+      "procedure_fear": 79,
+      "diagnosis_fear": 53,
+      "loss_control_fear": 90
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院……？那个……一定要登记所有资料吗？」",
+      "hospitalization_response": "「……知道了。我会住院的。只是……什么时候能回去？」",
+      "procedure_mismatch": "「……等一下。刚才说的不是这个手术……医生，你们弄错了吧？」",
+      "explain_plan": "「嗯……我知道了。接下来……只要照你说的做就好吗？」",
+      "brief_plan": "「……就这些？那……之后会怎么样？」",
+      "last_reassure": "「……嗯。我会努力的。医生……你们会一直在这里吧？」",
+      "choose_general": "「全身麻醉……就是会睡着吧。醒过来的时候……我还会在这里吗？」",
+      "choose_epidural": "「身体会动不了……？……嗯。我知道了。只是有点害怕。」",
+      "choose_local": "「……我会尽量不动的。如果真的疼……我可以说吗？」",
+      "choose_none": "「……不麻醉？……那……会很疼吧。」",
+      "induction_reassure": "「……嗯。那……我睡着以后，就拜托你们了。」",
+      "insist_without_anesthesia": "「不、不要……！我已经很努力了……真的……真的不能再这样继续了……！」",
+      "assistant_stabilize_none": "「放、放开……！啊……疼！我知道不能动，可是真的好疼啊……！」",
+      "assistant_stabilize_local": "「……嗯，扶着我吧。身体……一直在抖。」",
+      "assistant_stabilize_epidural": "「……动不了了。腿……真的动不了了……」",
+      "incise_epidural": "「……已经开始切了吗？……我好像感觉到了……」",
+      "incise_local": "「呜……！刚才那一下……里面有感觉……已经切开了吗……？」",
+      "incise_none": "「啊——！！疼！！不、不要……！停下来！真的好疼……！！」",
+      "contact_pause": "「……谢谢。刚才……我真的有点撑不住了。」",
+      "contact_command": "「……嗯。我会不动的。……会努力的。」",
+      "contact_continue": "「等、等等……我还没说完……！医生……听我说……！」",
+      "ongoing_narrate": "「……嗯。我听得见。这样……我就知道还在继续了。」",
+      "ongoing_eye_contact": "「……医生。……你还在这里啊。」",
+      "ongoing_silent": "「……医生？……你还在吗？」",
+      "closure_reassure": "「……结束了？……真的……结束了吗？」",
+      "closure_coach": "「……嗯。慢慢呼吸……我知道了。」",
+      "closure_silent": "「……还没有结束吗……？」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「……灌肠？……是要从那里进去吗……？」",
+        "「……嗯。我会侧过身去的……只是……可以把门关好吗？」"
+      ],
+      "ward_enema_unnecessary": [
+        "「……不需要也要做吗？……为什么？」",
+        "「……可是……刚才不是说，这个手术用不着灌肠吗？」"
+      ],
+      "ward_skin_prep": [
+        "「……备皮……连这里的毛发也要剃掉吗……？」",
+        "「……还要再露出来一点？……嗯，我知道了……」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「……这里不是要开刀的地方吧……？为什么也要剃掉……？」",
+        "「……请等一下。这个部位……是手术准备必须处理的吗？」"
+      ],
+      "ward_surgical_cap": [
+        "「……头发全部收进去……这样就可以了吗？」",
+        "「……嗯。戴好了。……接下来就要去手术室了吧？」"
+      ],
+      "operative_positioning_awake": [
+        "「……手放这里……嗯，我知道了。……别突然把我翻过去。」",
+        "「……这个姿势……要保持很久吗？……我会尽量不动的。」"
+      ],
+      "operative_positioning_none": [
+        "「等一下……还没麻醉……就要把手固定住了吗……？」",
+        "「……这样的话……真的疼起来，我连躲都不能躲了……」"
+      ],
+      "urinary_catheterization_awake": [
+        "「……导尿管……是要插进去的吗……？……嗯，我知道了……」",
+        "「……那里……真的要露出来啊……能不能……尽快做好……？」"
+      ],
+      "urinary_catheterization_none": [
+        "「呜……！等、等一下……我还醒着……真的要现在插进去吗……？」",
+        "「啊……！难受……别、别突然……我会努力不动的……！」"
+      ],
+      "skin_disinfection_awake": [
+        "「……好冰。……已经在消毒了吗？」",
+        "「……这里就是要开刀的地方啊……」"
+      ],
+      "skin_disinfection_none": [
+        "「……好冷。……消毒完……就真的要切了吗……？」",
+        "「……等一下……手术刀……已经准备好了吗……？」"
+      ],
+      "incision_marking_awake": [
+        "「……这一条线……就是要切开的地方……？已经打过麻药了，还是会紧张……」",
+        "「……画好以后……开始之前会告诉我吧？我还醒着……」"
+      ],
+      "incision_marking_none": [
+        "「……这条线……就是要切开的地方……？」",
+        "「……等一下。……真的要从这里切……我还没有准备好……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "……医生，我不知道该不该来……身体的情况是这样：{line}",
+      "primary": "最明显的……是这个：{line} ……我这样说，可以吗？",
+      "secondary": "……还有一件事……{line} 这个也需要告诉你吧……",
+      "background": "……我不是在这里长大的。后来一直靠自己生活……以前的事，能暂时不问吗？"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "妮安的病历",
+    "full_undress": {
+      "prompt": "「……全部衣服都要脱掉……？……现在就要检查吗？」",
+      "responses": {
+        "abandon_full_undress": "「……这项检查先不做了吗？……嗯。那……我的身体还能查清楚吗？」",
+        "authoritative_full_undress": "「……知道了。我会脱的……只是……请先告诉我，要检查哪里。」",
+        "gentle_full_undress": "「……嗯。谢谢你说清楚。我会配合的……门，能关好吗？」",
+        "threaten_full_undress": "「……别这样吓我。我会接受检查的……不用对我说那种话。」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "妮安 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「……手术已经定下来了吗？……我知道了。……有人会告诉我什么时候要过去吧？」",
+      "team": "你将担任妮安本次手术的主刀。请确认助手医生、器械护士与巡回护士的人员分工。",
+      "preparation": "妮安在病房等待，几乎不主动提问。请安排术前准备护士，并根据本次病例决定必要准备与额外照护。",
+      "prepared": "「……都准备好了吗。……到了手术室以后……会有人一直在旁边吧？」",
+      "changing": "你与手术团队按流程更衣、刷手，准备进入手术室。",
+      "operating_room": "「……这里的灯……好亮。……我躺在这里就可以了吗？」",
+      "team_confirmations": "手术团队依次核对妮安的身份、手术方案及岗位职责。她安静地听着，没有主动插话。",
+      "procedure_select": "请核对当前病例已确认的手术方案，并选择对应的术式。",
+      "procedure_mismatch": "「……等一下。刚才说的……不是这个手术吧？……你们弄错了吗？」",
+      "ready": "妮安已经处于手术台上的准备位置，团队完成必要检查。请确认麻醉方案与手术开始条件。",
+      "general_induction": "「……现在就会睡着吗？……醒来以后……会有人在这里吗？」",
+      "surgery_start_general": "妮安已进入全身麻醉，术中没有清醒的主观语言反应。团队复核麻醉监护与开刀条件。",
+      "surgery_start_epidural": "「……腿……真的动不了了。……医生，我还醒着……你听得见吗？」",
+      "surgery_start_local": "「……局部麻醉已经好了吧……？……你们开始之前，请告诉我。」",
+      "surgery_start_none": "「……真的……不麻醉就要开始吗……？……等一下……」",
+      "instrument_handoff": "你提出器械要求，器械护士依照当前手术流程递交所需器械。",
+      "assistant_ready": "助手医生在预定操作区域协助建立暴露，等待主刀确认下一步。",
+      "incision_ready": "切口位置与麻醉状态已核对，手术刀在预定切口上方就位，团队等待主刀指令。",
+      "general_operation": "全身麻醉中的妮安没有主观应答；手术团队依据已选择术式继续操作，并监测患者状态。",
+      "operative_contact": "切口已经建立。若妮安处于清醒状态，牵拉、压力或疼痛可能引发她的身体反应，需依据当前状态处理。",
+      "ongoing_interaction": "手术继续进行。清醒的妮安很少主动发问，却在医护沉默时愈发警惕周围动静。",
+      "closure_interaction": "关键操作进入收尾。若妮安保持清醒，她仍在等待医生明确告诉自己是否快要结束。",
+      "procedure_flow": "当前手术进入所选术式的阶段流程，请按照对应术式继续操作。",
+      "procedure_execute": "主要操作已经完成，团队复核术野与必要技术结果，准备最终处理及缝合。",
+      "surgery_result": "手术已经结束，切口处理、器械清点与术后交接按流程完成。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经开始切了吗？……我好像感觉到了……」",
+      "incise_local": "「呜……！刚才那一下……里面有感觉……已经切开了吗……？」",
+      "incise_none": "「啊——！！疼！！不、不要……！停下来！真的好疼……！！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

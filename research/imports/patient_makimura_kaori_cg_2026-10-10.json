@@ -1,0 +1,84 @@
+{
+  "patient_id": "patient_makimura_kaori",
+  "date": "2026-10-10",
+  "status": "six_user_supplied_cgs_imported",
+  "processing": "All selected images were copied without crop, resize, or pixel edits. The user specified an explicit attachment-to-node mapping. Attachment 5 (stretcher transfer) was not imported.",
+  "images": [
+    {
+      "attachment": 1,
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-f92fc4b4-c844-4bc6-a8f8-3fdb46327e8c.png",
+      "archive": "research/character_references/patient_makimura_kaori/user_cgs/incision.png",
+      "target": "assets/events/ward_preparation_v1/patient_makimura_kaori/incision.png",
+      "pool_id": "incision_patient_makimura_kaori",
+      "node": "incise_epidural, incise_local, incise_none",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "96afdb352f49956df3fbf8157dd03baf23bb477fe5d11c4ebf257d73045d0d4f"
+    },
+    {
+      "attachment": 2,
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-a24b9e8f-a14a-4ab9-915d-d772a2150dea.png",
+      "archive": "research/character_references/patient_makimura_kaori/user_cgs/examination_undressing.png",
+      "target": "assets/examinations/patient_makimura_kaori/full_undress_basic_exam.png",
+      "pool_id": "full_undress_basic_exam_patient_makimura_kaori",
+      "node": "exam_undress_decision: authoritative_full_undress, gentle_full_undress, threaten_full_undress",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "2561849ddb888c1f944eb214b32c6cd5c37b20bd17b7b47ae54404d6ea8b7a0d"
+    },
+    {
+      "attachment": 3,
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-b9152de5-0f02-4fec-b62e-d82f07d53f33.png",
+      "archive": "research/character_references/patient_makimura_kaori/user_cgs/enema.png",
+      "target": "assets/events/ward_preparation_v1/patient_makimura_kaori/enema.png",
+      "pool_id": "ward_enema_patient_makimura_kaori",
+      "node": "ward_enema, ward_enema_unnecessary",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "41e8586fbaa888424ff00afbde5100cd8c4350925b06bbf310c4f3091d5aa151"
+    },
+    {
+      "attachment": 4,
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-455a62e2-4d6c-41f8-aa00-699a5d7b77f2.png",
+      "archive": "research/character_references/patient_makimura_kaori/user_cgs/surgical_cap.png",
+      "target": "assets/events/ward_preparation_v1/patient_makimura_kaori/surgical_cap.png",
+      "pool_id": "ward_surgical_cap_patient_makimura_kaori",
+      "node": "ward_surgical_cap",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "11fbf97f9a484091274ee58dfe3e1538a9cdfcad09826d51fa98a3969e2f0cac"
+    },
+    {
+      "attachment": 6,
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-3d2796d9-9e3f-4033-ae00-c1a25bebebd0.png",
+      "archive": "research/character_references/patient_makimura_kaori/user_cgs/urinary_catheterization.png",
+      "target": "assets/events/ward_preparation_v1/patient_makimura_kaori/urinary_catheterization.png",
+      "pool_id": "urinary_catheterization_patient_makimura_kaori",
+      "node": "urinary_catheterization",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "9835250309b52eabf1b1cc91dbf1f78d6fee263fc0320a29a8216635b3a027ac"
+    },
+    {
+      "attachment": 7,
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-f12fc42d-79c1-4248-b303-f8c900cc0b16.png",
+      "archive": "research/character_references/patient_makimura_kaori/user_cgs/operative_positioning_female_pelvic.png",
+      "target": "assets/events/ward_preparation_v1/patient_makimura_kaori/operative_positioning_female_pelvic.png",
+      "pool_id": "operative_positioning_female_pelvic_patient_makimura_kaori",
+      "node": "operative_positioning; procedure_group=female_pelvic",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "e2ae23d2bad2e17a04d6ad326ebbd796acd8bf099c8d1487178fcbbf39a6d61d"
+    }
+  ],
+  "validation": {
+    "patient_bundle_schema": "passed",
+    "runtime_patient_bundle_merge": "passed; Kaori loaded with 1 examination pool and 5 ward-preparation pools",
+    "patient_bundle_localization_test": "passed; 2052 English entries, 0 failures",
+    "all_six_asset_paths_exist": true,
+    "source_target_sha256_match": true,
+    "project_localization_audit": "not clean; reports pre-existing unrelated localization coverage/placeholder issues elsewhere in the project",
+    "project_data_validator": "not clean; reports pre-existing unrelated staff bundle, relationship rank-slot, and character-event priority schema issues; no Kaori bundle schema errors",
+    "godot_runtime_import_test": "not run; Godot CLI unavailable in this environment"
+  }
+}

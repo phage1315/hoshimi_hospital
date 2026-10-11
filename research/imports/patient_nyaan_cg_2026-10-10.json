@@ -1,0 +1,122 @@
+{
+  "patient_id": "patient_nyaan",
+  "status": "bound_in_registered_patient_nyaan",
+  "asset_count": 5,
+  "assets": [
+    {
+      "key": "full_undress_basic_exam",
+      "role": "full_undress_basic_exam",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-5b19418c-b65a-4d41-a783-87b08066179d.png",
+      "destination": "assets/examinations/patient_nyaan/full_undress_basic_exam.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "d4fb89de48229242f1d9e5c48cab0d8cdab7ebb9a6faaf5a72af4b25168f9fd2",
+      "pool_id": "full_undress_basic_exam_patient_nyaan",
+      "category": "examination"
+    },
+    {
+      "key": "skin_prep",
+      "role": "skin_prep",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-a0fd2278-8204-4b64-bc59-2f5f459b646c.png",
+      "destination": "assets/events/ward_preparation_v1/patient_nyaan/skin_prep.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "daf907dbab19f9000eb585810bb354b64b382361bd7d38b228dee00da2bd1a03",
+      "pool_id": "ward_skin_prep_patient_nyaan",
+      "category": "ward_preparation"
+    },
+    {
+      "key": "surgical_cap",
+      "role": "surgical_cap",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-4a3b8c7c-6cac-498e-9e21-226bd578c548.png",
+      "destination": "assets/events/ward_preparation_v1/patient_nyaan/surgical_cap.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "9fd03f6d918c73de92418ffdadd23e090fe0cd11fac4064685cedd9023f65b1e",
+      "pool_id": "ward_surgical_cap_patient_nyaan",
+      "category": "ward_preparation"
+    },
+    {
+      "key": "operative_positioning_female_pelvic",
+      "role": "operative_positioning_female_pelvic",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-39a9ed1b-b52e-422a-ba08-f15ed1bf5cc4.png",
+      "destination": "assets/events/ward_preparation_v1/patient_nyaan/operative_positioning_female_pelvic.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "a4fec877c3c869b8f1a08b42daa41e1bfb5c2d61281de8999ce7fcef640f350a",
+      "pool_id": "operative_positioning_female_pelvic_patient_nyaan",
+      "category": "ward_preparation"
+    },
+    {
+      "key": "incision",
+      "role": "incision",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-1b4c2008-455b-49c3-81e2-8a95599feee9.png",
+      "destination": "assets/events/ward_preparation_v1/patient_nyaan/incision.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "24b1af0d4ab656c3559139ad8837138e09d4e3900d04af79af96bbe73ad26c6b",
+      "pool_id": "incision_patient_nyaan",
+      "category": "ward_preparation"
+    }
+  ],
+  "localization_en": {
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.examination.full_undress_basic_exam_patient_nyaan.label": "Nyaan · Examination room — undressing for examination",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.examination.full_undress_basic_exam_patient_nyaan.caption": "Nyaan undresses in the examination room, holds her arms and waits for the basic examination with her eyes lowered.",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.ward_skin_prep_patient_nyaan.label": "Nyaan · Preoperative shaving",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.ward_skin_prep_patient_nyaan.caption": "The medical team completes Nyaan's preoperative skin preparation while she nervously holds still.",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.ward_surgical_cap_patient_nyaan.label": "Nyaan · Surgical cap",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.ward_surgical_cap_patient_nyaan.caption": "Nyaan puts on the surgical cap and tucks away her long hair before entering the operating room.",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.operative_positioning_female_pelvic_patient_nyaan.label": "Nyaan · Gynecological operative position",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.operative_positioning_female_pelvic_patient_nyaan.caption": "Before the gynecological operation, the team places Nyaan in the dedicated lithotomy position.",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.incision_patient_nyaan.label": "Nyaan · Incision",
+    "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.incision_patient_nyaan.caption": "The scalpel descends along the planned incision as Nyaan enters the operation proper."
+  },
+  "binding": {
+    "full_undress": "encounter.full_undress.visual_pool_id",
+    "skin_prep": [
+      "ward_skin_prep",
+      "ward_skin_prep_unnecessary"
+    ],
+    "surgical_cap": [
+      "ward_surgical_cap"
+    ],
+    "operative_positioning_female_pelvic": {
+      "action_ids": [
+        "operative_positioning"
+      ],
+      "procedure_groups": [
+        "female_pelvic"
+      ]
+    },
+    "incision": {
+      "action_ids": [
+        "incise_epidural",
+        "incise_local",
+        "incise_none"
+      ],
+      "procedure_groups": [
+        "female_pelvic"
+      ]
+    }
+  },
+  "notes": [
+    "All five images were user supplied and copied byte-for-byte; no generation, cropping, resizing or pixel editing was performed.",
+    "The images are registered as patient-owned exclusive examination and ward-preparation CG pools; the generic 21 portrait keys remain unchanged.",
+    "The gynecological positioning and incision pools are restricted to the female_pelvic procedure group."
+  ]
+}

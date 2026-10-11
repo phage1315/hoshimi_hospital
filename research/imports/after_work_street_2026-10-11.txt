@@ -1,0 +1,23 @@
+After-work street placeholder — 2026-10-11
+
+Update: this is the historical initial-generation record. The user subsequently designated this original as SUMMER and requested seasonal variants. See after_work_street_seasons_2026-10-11.json for current assets and prompts. Current selection also tries after_work_street_{season} immediately after the season+period candidate.
+
+User authorization: generate one street placeholder with imagegen now; seasonal and day/night variants can be supplied in future.
+Tool: built-in image_gen (not CLI/API fallback).
+Source: /Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-0240fa82-d4c0-4175-8a0f-a55d630e1d55.png
+Project copy: assets/backgrounds/after_work_v1/street_placeholder.png
+Dimensions: 1672 x 941, opaque landscape. Copied unchanged.
+Registered background ID: after_work_street_placeholder
+
+Exact generation prompt:
+Use case: illustration-story. Asset type: visual novel game background placeholder. Generate one wide 16:9 landscape background of a quiet contemporary Japanese neighborhood street on the walking route from a hospital toward a small train station. Eye-level perspective from the broad sidewalk, street receding toward distant modest station buildings, low-rise buildings and street trees. Detailed hand-painted anime visual novel background, soft clean architectural linework, restrained natural textures, compatible with classic hospital visual novel backgrounds. Late afternoon / early evening warm light, calm welcoming mood, mild neutral-season greenery, no emphatic seasonal motifs. Composition must leave lower third visually uncluttered for a dialogue box and right-middle open for a separately composited character sprite. No people, no character silhouettes, no readable lettering, no captions, no UI, no logos, no watermarks. Full-frame opaque background. This is a reusable street establishing scene, not a hospital interior.
+
+Selection contract:
+Optional registered background IDs are tried in order:
+1. after_work_street_{spring|summer|autumn|winter}_{day|night}
+2. after_work_street_{day|night}
+3. after_work_street_placeholder
+Season uses the departure workday's calendar month, not the pre-reserved next morning.
+Period preserves the existing walk variant (normal -> day; night -> night).
+Only the placeholder is currently supplied. The night scene uses the same art with the existing nighttime overlay; it is NOT a separate generated night variant.
+No narrative dialogue, encounter timing, probability, familiarity reward, or character art was changed.

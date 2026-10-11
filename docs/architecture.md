@@ -93,3 +93,20 @@ CharacterEventSession 是通用的短篇选择树运行器，只认识节点、�
 Debug builds expose **Test Save Generator** on the title screen. It writes only to an empty one of the eight normal save slots and uses the same `GameState.snapshot()` / `SaveStore.write_slot()` format as player saves. Special-event and character-event presets can satisfy their authored character, relationship, attribute, flag, prerequisite, cooldown, location-time, and timing gates either immediately or after exactly one additional completed surgery. Optional JSON overrides support `player_attributes`, per-character `relationships`, boolean `story_flags`, surgery `progress`, and prior `special_events`. Generated states remain idle and saveable; the generator never starts an event in progress and never overwrites an occupied slot.
 
 Field reference and override examples: [`docs/test_save_generator.md`](test_save_generator.md).
+
+## 2026-10-11 缺陷复盘与渐进重构建议
+
+本轮问题不只是文本录入遗漏，也暴露了跨模块契约缺失。不建议立即推倒重写；先固定回归门槛，再逐步拆分，保持现有中文剧本与存档格式不变。
+
+1. **导航和时间推进应有单一负责人。** `app.gd` 保存页面回调，`GameState` 与各会话又分别推进时间，导致完成页回调跨日后仍有效。下一步抽出 DayFlow/Navigation 协调器，统一“能否离院、何时结算、次日去哪里”。本轮已统一离院防线和普通次日落地，但未重写整个时间模型。
+2. **本地化缺失必须可检测，不能由通用句子伪装完成。** 之前手术通用兜底令不同选项不可区分，且审计没有纳入过渡、记录和特殊对白字段。本轮补齐字段及严格专项测试；下一步把所有玩家可见字段与技术ID在schema中显式区分，并将严格覆盖测试设为CI门槛。
+3. **存档保存语义，不保存最终显示句。** 经验历史存中文标签会在切换语言后残留。本轮按稳定ID重建已知记录的显示；后续逐步统一为 `message_key + args`，保留未知旧记录兜底，不盲目替换原文。
+4. **资源校验要覆盖加载与触发，而不仅是文件存在。** 新图片存在但未import、准备CG与术后CG池概念混淆，都会造成误诊。本轮增加中英实际加载/派发测试；后续在患者导入验收中统一输出“素材—池ID—动作ID—麻醉条件”清单。
+5. **UI与主状态脚本职责过多。** `app.gd`、`game_state.gd`、`preop_session.gd` 合计约1.2万行，页面、存档、成长、流程和资源策略高度集中。已先抽出按钮排版和档案显示模块；下一步按页面、成长、存档与流程边界逐步拆分，复用容器布局，避免继续堆绝对坐标补丁。
+6. **测试契约必须同步演进。** 旧测试仍假定读档恢复剧情中途，当前设计却只恢复世界状态。先整理测试矩阵与存档边界，保证CI失败有明确含义；不要以“跑了若干专项”代替全流程验收，也不要为了旧断言改变已确认设计。
+
+本轮逐项结果、待素材与原生窗口验收项见 [`docs/bug_backlog.md`](bug_backlog.md)。
+
+### Save boundary and format migration
+
+Player saves are state-dictionary checkpoints created only from the hospital directory or the Sunday menu. Loading never resumes a surgery, consultation, or narrative node; it rebuilds world state and returns to the appropriate hospital entry screen. The current format is `state_dictionary_v1` (save version 36). Version 35 event-log saves remain readable temporarily through a best-effort compatibility path: unrecognized records are skipped and warnings are reported, rather than blocking the entire load. Once the old-save migration window is closed, that replay path can be removed.

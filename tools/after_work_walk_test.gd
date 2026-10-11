@@ -55,6 +55,18 @@ func run() -> void:
 	expect(clinic_game.open_visit("visit_sora") == null, "A new ordinary visit started after outpatient close")
 	expect(clinic_game.last_error == "今天的会诊已经结束了。", "Outpatient close did not use the requested nurse message")
 	expect(clinic_game.can_end_workday(), "A free player could not end work at 16:00")
+	var waiting_game = new_game()
+	waiting_game.meet_staff("nurse_haru")
+	var waiting_visit = waiting_game.open_visit("visit_sora")
+	expect(waiting_visit != null, "Waiting-patient fixture could not open visit")
+	if waiting_visit != null:
+		waiting_visit.admitted = true
+		waiting_visit.stage_id = waiting_visit.definition.completion
+		for seed in range(1, 40):
+			waiting_game.campaign_seed = seed
+			expect(not waiting_game.begin_after_work_departure(1, 19 * 60, false), "Automatic departure abandoned an admitted patient")
+			expect(not waiting_game.begin_after_work_departure(1, 16 * 60, true), "Manual departure abandoned an admitted patient")
+		expect(waiting_game.active_after_work_walk.is_empty(), "Blocked departure mutated walk state")
 
 	var normal_game = find_completed_walk("normal")
 	expect(normal_game != null, "Could not produce a deterministic accepted normal walk")

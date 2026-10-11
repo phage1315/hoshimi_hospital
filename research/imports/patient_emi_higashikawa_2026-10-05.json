@@ -1,7 +1,7 @@
 {
   "date": "2026-10-05",
   "patient_id": "patient_emi_higashikawa",
-  "patient_name": "东川映見",
+  "patient_name": "东川杏子",
   "adult_age": 23,
   "source": "User-provided character references and transparent examination portrait.",
   "generation_mode": "OpenAI built-in ImageGen, identity-preserving generation/editing; deterministic file copies for the user-provided examination portrait.",
@@ -127,6 +127,22 @@
     {
       "path": "assets/examinations/patient_emi_higashikawa/full_undress_basic_exam.png",
       "sha256": "99e8f95ee123efcdeaa8f4cd907ab61a701940c6681e6488d47a978e2bd29a8f"
+    },
+    {
+      "path": "assets/examinations/patient_emi_higashikawa/full_undress_v2.png",
+      "sha256": "09e708103553ec17563fffe5174be50c4a8e9cd844f89be6d17f94c92b6a152b"
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_higashikawa/skin_prep_v1.png",
+      "sha256": "84ac4a5fe13b8df2107ff9e294d49ab80fc93cd9b73f85f0dda97750c21dd1b5"
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_higashikawa/operative_draping_v1.png",
+      "sha256": "fee88ed02104f2c8d97f64676e5f03356d6da8f083d401cf11681ff6d189daf8"
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_higashikawa/incision_ready_v1.png",
+      "sha256": "6669961be7ff1d1786003707f423e92345085f58f9529738b07b3653d5f8573f"
     }
   ],
   "data_files": [
@@ -135,6 +151,7 @@
   ],
   "notes": [
     "The examination image is not used for outpatient, ward, or operating-room states.",
+    "Follow-up CG additions supplied on 2026-10-09: clinic undressing, skin preparation, sterile draping, and scalpel-ready incision staging. They are bound to existing patient action IDs in patient_emi_higashikawa/patient.json.",
     "All generated clinical images depict the character as an adult."
   ]
 }

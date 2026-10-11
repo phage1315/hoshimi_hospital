@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_makimura_kaori",
+    "name": "槇村香",
+    "age": 25,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {}
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "strong_front",
+      "secondary": "protective_caring",
+      "stress_response": "bravado_then_embarrassment"
+    },
+    "dialogue_profile": "strong_front_expressive_irritable",
+    "traits": {
+      "baseline_anxiety": 53,
+      "pain_sensitivity": 65,
+      "privacy_sensitivity": 83,
+      "trust_baseline": 57,
+      "control_need": 72,
+      "expressiveness": 82,
+      "health_literacy": 29,
+      "compliance_tendency": 79
+    },
+    "fear_profile": {
+      "pain_fear": 68,
+      "procedure_fear": 67,
+      "diagnosis_fear": 54,
+      "loss_control_fear": 76
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院？喂，真的非住不可吗？我还有委托得处理……不过，身体要紧我懂。」",
+      "hospitalization_response": "「好，我会住院。院里有什么规定你直说，我会认真配合的。」",
+      "procedure_mismatch": "「等一下！说好的不是这台手术吧？先停下，把我的病历再核对清楚！」",
+      "explain_plan": "「这样我就明白了。你说怎么配合，我照做。」",
+      "brief_plan": "「就一句按流程？不行，至少把等会儿怎么准备说清楚。」",
+      "last_reassure": "「……谢了。别看我平时嗓门大，今天其实也挺紧张的。」",
+      "choose_general": "「全麻啊……我醒过来的时候，你们会告诉我已经结束了吧？」",
+      "choose_epidural": "「腿会麻得动不了？……哼，知道是药效，可听上去还是让人不舒服。」",
+      "choose_local": "「局麻？好，我努力保持不动。要是里面开始疼，我会直接告诉你。」",
+      "choose_none": "「不麻醉？！你当我平时胆子大，就什么都不怕吗！」",
+      "induction_reassure": "「……嗯。那我就放心睡了。接下来交给你们。」",
+      "insist_without_anesthesia": "「等等……！我说愿意配合，可没说能清醒地硬挨这一刀啊！」",
+      "assistant_stabilize_none": "「别、别按那么紧！啊……疼！我知道不能乱动，可身体自己在缩！」",
+      "assistant_stabilize_local": "「扶着就好……手有点发抖。我还能听懂你们说话。」",
+      "assistant_stabilize_epidural": "「别突然动我的腿……我现在自己根本使不上劲。」",
+      "incise_epidural": "「……已经切了吗？感觉像有人在拉扯，明明不怎么疼，还是发毛。」",
+      "incise_local": "「嘶……！这一下我感觉到了！医生，是不是已经切开了？！」",
+      "incise_none": "「啊——！！疼！等、等一下！！你们真的在切……好疼！先停一下！」",
+      "contact_pause": "「……谢谢。我缓一口气就好，等会儿还能继续配合。」",
+      "contact_command": "「知道了，我不动！但是……能不能先告诉我下一步？」",
+      "contact_continue": "「喂……！我刚才在说疼，听见没有？！」",
+      "ongoing_narrate": "「嗯，就这么说着吧。让我知道进度，我反而容易镇定。」",
+      "ongoing_eye_contact": "「……你还肯抬头看我啊。好，那我就再坚持一下。」",
+      "ongoing_silent": "「怎么了？怎么忽然没人吭声……医生，没出什么事吧？」",
+      "closure_reassure": "「总算到这一步了……唉，刚才真差点让我出丑。谢谢你。」",
+      "closure_coach": "「慢慢呼吸，肩膀放松……好，我试试。」",
+      "closure_silent": "「……还要多久？医生，我就想听你亲口说一句快好了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠？……你这份术前说明，最难开口的放最后说是吧。」",
+        "「要我侧过身？……好，我配合。等等，门总得先关上吧？」"
+      ],
+      "ward_enema_unnecessary": [
+        "「不必需？那这一步就别拿来凑流程了吧！」",
+        "「你们专业我信，可不是非做不可，就先告诉我意义呀。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……啊？连这么下面的地方也要剃？别突然掀被子啊！」",
+        "「我知道要露出手术的地方……可我不是木头，给我一点心理准备！」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「连不在术野里的位置也要剃？医生，这我就要问清楚了。」",
+        "「不是必需的准备就别随手加啊。被剃的是我，又不是流程表！」"
+      ],
+      "ward_surgical_cap": [
+        "「头发全塞进去就行？……好啦，别笑，短发也不代表好收拾。」",
+        "「帽子戴好以后……怎么说呢，突然有点真要上台的感觉。」"
+      ],
+      "operative_positioning_awake": [
+        "「手伸到两边？腿也要这样摆？……知道了，可先告诉我姿势要保持多久。」",
+        "「好，我不乱动……可是这么多人围着替我摆姿势，真叫人不自在。」"
+      ],
+      "operative_positioning_none": [
+        "「没麻醉就要固定好？别开玩笑！等会儿疼起来我真的不保证不乱动！」",
+        "「手脚现在都不能自己挪……你们确定等下真的打算这样开始？」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管？你说得倒轻巧……从那里插进去啊？！」",
+        "「好，我会配合……只是先把步骤说清楚，别等器械都到了才告诉我。」"
+      ],
+      "urinary_catheterization_none": [
+        "「等、等一下！现在连麻醉都没用，就要插导尿管？」",
+        "「嘶……！别突然……我知道得放进去，可这感觉也太难受了！」"
+      ],
+      "skin_disinfection_awake": [
+        "「嘶，好冰！……行，我不缩。是不是差不多要动刀了？」",
+        "「擦完消毒液就要铺巾了吧？我知道，可心跳还是快。」"
+      ],
+      "skin_disinfection_none": [
+        "「好冷……别告诉我下一步真的就是手术刀啊！」",
+        "「你们倒是忙得很熟练……我却要清醒着等下刀，怎么可能不怕！」"
+      ],
+      "incision_marking_awake": [
+        "「切口画在这里啊……看得到这条线还真不太妙。」",
+        "「别画完就突然下刀啊！开始之前至少看我一眼。」"
+      ],
+      "incision_marking_none": [
+        "「等等！这条线就是等下没有麻醉也要切开的地方？！」",
+        "「一想到刀要从这里下去……哈，我现在一点都不想逞强了。」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "我本来想先把手头的委托处理完，可身体实在不对劲：{line}",
+      "primary": "医生，先记这一条，最明显的是：{line}",
+      "secondary": "还有这个也别漏了：{line}",
+      "background": "我和搭档平时在新宿接委托，习惯照顾别人。轮到我坐在诊室里被人问东问西……说实话，挺别扭的。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "槇村香的病历",
+    "full_undress": {
+      "prompt": "「……等等，这项检查要把衣服全部脱掉？我知道检查是正事，可总得先说清楚要看哪里吧！」",
+      "responses": {
+        "abandon_full_undress": "「先不做？……呼，算是松了口气。不过该查的病还是得查清楚。」",
+        "authoritative_full_undress": "「……知道了，我会配合。不过医生，别把我当成只会听命令的人。」",
+        "gentle_full_undress": "「你先说清楚就好多了……那我照做。只、只是别一直盯着我看。」",
+        "threaten_full_undress": "「喂！说要检查我听得懂，拿威胁吓我算什么本事？专业的事情就专业地讲！」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "槇村香 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「手术真的安排今天？……我会配合。说来有点别扭，平时是我照顾别人，今天倒要麻烦你们了。」",
+      "graphic_preop_question": "「医生，我想听具体的。等会儿怎么准备、从哪里开始？别把我当成听了会晕过去的人……虽然我可能真的会害怕。」",
+      "graphic_preop_dialogue": "香原本抱着手臂，像在听一份委托行动安排一样专心。医护把即将进行的切开、牵开和内部操作逐项说明，她才意识到这些不是要由自己替别人安排的事，而是一会儿都要在自己身上完成。她嘴上没再反驳，肩膀却渐渐收紧。",
+      "team": "你担任槇村香本次手术的主刀。请确认助手医生、器械护士与巡回护士的岗位分工。",
+      "preparation": "请为槇村香安排病房准备护士，并根据本次病例决定必要术前准备及可选照护项目。",
+      "prepared": "「准备都做完了？……呼。别看我平时挺能干，刚才那些步骤还真让我有点不知所措。」",
+      "changing": "你与手术团队按规定更衣、刷手并完成无菌准备，即将进入手术室。",
+      "operating_room": "「灯真亮……喂，这时候可别让我帮你们检查器械齐没齐啊。我、我现在也是病人呢。」",
+      "team_confirmations": "团队逐项核对槇村香的身份、当前手术方案及成员职责。她认真听着，虽然面露紧张，仍等待最后确认。",
+      "procedure_select": "请核对当前病例已经确认的手术方案，并选择相应术式。",
+      "procedure_mismatch": "「等一下！这和刚才确认的不一样吧？先别继续，病历重新核对一次！」",
+      "ready": "术前必要准备已经完成，槇村香正在手术台上等待。请确认麻醉方式与手术开始条件。",
+      "general_induction": "「……好，那我交给你们了。等我醒来，记得第一个告诉我已经平安结束啊。」",
+      "surgery_start_general": "槇村香已进入全身麻醉状态，没有术中清醒主观反应。团队确认监护与当前手术条件后准备开始。",
+      "surgery_start_epidural": "「腿已经不怎么听使唤了……知道是麻醉的作用，可真不好受。开始前叫我一声吧。」",
+      "surgery_start_local": "「这里麻了，可我还能听见。医生，要是我感觉到疼，会直接告诉你的。」",
+      "surgery_start_none": "「喂……真的不做麻醉？你们手术刀都拿到了，我、我可还醒着啊！」",
+      "instrument_handoff": "你发出器械要求，器械护士根据本次术式与阶段递交所需器械。",
+      "assistant_ready": "助手医生协助建立并维持当前手术区域的暴露，等待主刀确认下一步。",
+      "incision_ready": "切口位置与麻醉状态已经核对。助手维持暴露，器械护士备好手术刀，等待第一刀指令。",
+      "general_operation": "全身麻醉中的槇村香没有清醒主观发言；团队持续监护，并依照当前术式推进。",
+      "operative_contact": "切口已经建立。若槇村香保持清醒，压力、牵拉与疼痛可能让她的逞强逐渐失效，需根据现有患者状态回应。",
+      "ongoing_interaction": "手术仍在进行。若槇村香清醒，她努力配合操作，但逐渐在意医护是否听见她正在报告的不适。",
+      "closure_interaction": "主要操作进入收尾阶段。若槇村香仍清醒，她等待医生明确告知是否接近结束。",
+      "procedure_flow": "进入当前所选术式的标准阶段流程，请按对应术式继续操作。",
+      "procedure_execute": "主要操作已经完成。团队复核术野和必要技术结果，准备最终处理与缝合。",
+      "surgery_result": "手术结束。切口处理、器械清点及术后交接按既定流程完成。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经动刀了？那股压着、拉着的感觉……原来我真的在接受手术啊。」",
+      "incise_local": "「嘶……！等等，刚才那一下里面都感觉到了……你们已经切开了吗？！」",
+      "incise_none": "「啊——！！疼！等一下、等一下……！医生，好疼！我真的撑不住了！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

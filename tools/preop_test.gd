@@ -1155,7 +1155,7 @@ func run() -> void:
 			expect(app.screen != "preop_transition_video", "Mouse click did not skip preop transition video: " + action)
 		if action == "change_scrubs":
 			var scrub_background = app.page.get_node_or_null("SceneBackground")
-			expect(scrub_background != null and scrub_background.texture.resource_path == "res://assets/backgrounds/v7/scrub_area.png", "Changing completion did not move the preop flow to the scrub-area background")
+			expect(scrub_background != null and scrub_background.texture.resource_path == "res://assets/backgrounds/v1/changing_scrub.png", "Changing completion did not keep the preop flow in the changing-area background")
 		expect(app.page.get_node_or_null("PreopStageArt") != null, "Stage image missing")
 	for confirmation in [
 		{"action": "confirm_assistant_role", "staff": "doc_aoi"},

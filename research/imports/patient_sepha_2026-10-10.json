@@ -1,0 +1,262 @@
+{
+  "patient_id": "patient_sepha",
+  "date": "2026-10-10",
+  "status": "complete_sfw_and_four_user_cgs_import",
+  "adult_age": 24,
+  "source_bundle": {
+    "original": "/Users/ningye/Downloads/patient_sepha_complete_bundle_v1.json",
+    "archived_copy": "research/character_references/patient_sepha/user_bundle_v1.json",
+    "sha256": "66f662c4a7b5d96c21d04486464e89a7230d39cacd40f6d10cb8ddd60d8c43aa"
+  },
+  "patient_contract": {
+    "id": "patient_sepha",
+    "display_name": "瑟法",
+    "dialogue_profile": "calm_analytical_reassurance",
+    "case_id": "case_abdomen",
+    "fallback": {
+      "case_id": "case_abdomen",
+      "surgery_id": "surgery_appendix"
+    },
+    "cg_pools": "Source bundle pools were empty. Four user-supplied CGs were subsequently registered: one examination pool and three patient-specific ward-preparation pools.",
+    "normalization": "Source voice_style 'soft' is not an allowed enum; runtime bundle maps it to the closest supported value 'gentle'. Source archive remains unchanged."
+  },
+  "seed_images": [
+    {
+      "archive": "research/character_references/patient_sepha/seed_face.png",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-a0f0f59a-5ceb-43db-af25-a46afe5ebaff.png",
+      "size": [372, 372],
+      "mode": "RGB",
+      "sha256": "920083aa14ec6d755a79932fccc416b9a90800088c7eff92d18484edab34db20",
+      "purpose": "face, blue eyes and freckles"
+    },
+    {
+      "archive": "research/character_references/patient_sepha/seed_full_body.png",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-af8481a7-bc88-4784-9e3e-f2531046002d.png",
+      "size": [1023, 2000],
+      "mode": "RGBA",
+      "sha256": "e0e3866a1f33ed3c42814359f95fa686fad32cb44e5f25a42d1de1bef5f1c2ad",
+      "purpose": "identity, blonde hair, military uniform and proportions"
+    },
+    {
+      "archive": "research/character_references/patient_sepha/seed_profile.png",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-07ba1405-d520-45d4-bf72-e4daf1cbabc8.png",
+      "size": [130, 148],
+      "mode": "RGB",
+      "sha256": "7fd244e441fd751b3ea35235f559ae0a62e80367e8d78037feed44403d9c1f36",
+      "purpose": "side profile and expression"
+    },
+    {
+      "archive": "research/character_references/patient_sepha/seed_profile_alt.png",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-06430e0e-d4c7-4b0d-916f-2da8b679b0e7.png",
+      "size": [237, 331],
+      "mode": "RGB",
+      "sha256": "7c2209009b4fba4cdba59ed7aec47c14db1ee3fb116ad81113da0d118a1fe4a4",
+      "purpose": "alternate side profile, uniform and seated context"
+    }
+  ],
+  "registered_user_supplied_portrait": {
+    "source": "/Users/ningye/Downloads/00036-1268066692-Picsart-BackgroundRemover.png",
+    "target": "assets/examinations/patient_sepha/full_undress.png",
+    "key": "examination/shy",
+    "status": "copied_verbatim_and_registered",
+    "size": [1056, 1584],
+    "mode": "RGBA",
+    "sha256": "4e84856d229326e961dbec62c6a70552c3f118acfa16240d2117a3580fba616c"
+  },
+  "registered_user_supplied_sfw_portrait": {
+    "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-559a6a58-3c41-4dfc-bbdc-a2b89a229a28.png",
+    "source_archive": "research/character_references/patient_sepha/user_lithotomy_afraid_original.png",
+    "target": "assets/characters/patient_sepha_v1/patient_sepha/operating_table_lithotomy/afraid.png",
+    "key": "operating_table_lithotomy/afraid",
+    "status": "copied_and_registered_with_canvas_padding",
+    "source_size": [1448, 1080],
+    "source_mode": "RGB",
+    "final_size": [1448, 1086],
+    "final_mode": "RGB",
+    "source_sha256": "f97937722a3a944bab84f6a5b167f48ac9d29623bc31eac8c561d09aef956951",
+    "final_sha256": "90e219aec0bfffb58d45ebcfbe47e800e04a903b8ea1b3f3ff849228dc803800",
+    "processing": "Preserved the original image content and extended the top and bottom canvas by 3 px each using the corresponding edge rows; no crop or stretch."
+  },
+  "registered_user_supplied_cgs": [
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-2b21a6ea-f8f3-4fa1-897c-7700d3eec63d.png",
+      "archive": "research/character_references/patient_sepha/user_cgs/examination_undressing.png",
+      "target": "assets/examinations/patient_sepha/full_undress_basic_exam.png",
+      "pool_id": "full_undress_basic_exam_patient_sepha",
+      "node": "exam_undress_decision: authoritative_full_undress, gentle_full_undress, threaten_full_undress",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "7cd6e03f4acf9a6282fc7f98f874af8c689d5d37ca801c19c1a158619bf9ec5f"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-a8b86cd6-7b82-4a3f-92ad-df436e14c66a.png",
+      "archive": "research/character_references/patient_sepha/user_cgs/preop_enema.png",
+      "target": "assets/events/ward_preparation_v1/patient_sepha/enema.png",
+      "pool_id": "ward_enema_patient_sepha",
+      "node": "ward_enema",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "7ef3047cd28ebfad023ecdd43a76b6cffc5f3abc3e064b0868f961bbfdf63a18"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-2cdf663f-62b9-4021-a21c-0bb941faa2bd.png",
+      "archive": "research/character_references/patient_sepha/user_cgs/urinary_catheterization.png",
+      "target": "assets/events/ward_preparation_v1/patient_sepha/urinary_catheterization.png",
+      "pool_id": "urinary_catheterization_patient_sepha",
+      "node": "urinary_catheterization",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "37eeb4979a67463dfe36f2bbb18373d97f1035e132a7d49752e08e2f3b9c2bed"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-dc120a2d-3ccc-4deb-81c9-3da8d62c3e69.png",
+      "archive": "research/character_references/patient_sepha/user_cgs/incision_ready.png",
+      "target": "assets/events/ward_preparation_v1/patient_sepha/incision_ready.png",
+      "pool_id": "incision_ready_patient_sepha",
+      "node": "incise_epidural, incise_local, incise_none (awake branches)",
+      "size": [1584, 1056],
+      "mode": "RGB",
+      "sha256": "aa2f7c2f950cea84654dea8066d76d960a7745f7d2fc2288ea020cf57f9fa3ac"
+    }
+  ],
+  "portrait_generation": {
+    "first_wave": [
+      "outpatient/neutral",
+      "ward/neutral",
+      "operating_table/awake",
+      "operating_table_lithotomy/awake",
+      "intraoperative/tense",
+      "splash/general_anesthesia"
+    ],
+    "first_wave_status": "user approved the six base directions and selected lithotomy/awake candidate 2; all base categories are now registered. Outpatient and ward neutral were regenerated to match Sepha's short-blonde identity and required uniform/ward-gown classes",
+    "second_wave_status": "All 20 standard SFW keys are now audited and registered; the user supplied the final lithotomy/afraid image.",
+    "reference_root": "assets/characters/patient_ann_v1/patient_ann/",
+    "intraoperative_reference_root": "assets/characters/intraoperative_portraits_v1/patient_ann/",
+    "anesthesia_reference": "assets/events/anesthesia_v1/patient_ann/general.png",
+    "specification": {
+      "outpatient_and_ward": "1024x1536 RGBA with true transparency",
+      "operating_table_and_lithotomy": "1448x1086 RGB with full scene",
+      "intraoperative_portraits": "1448x1086 RGBA with true transparency",
+      "general_anesthesia_splash": "1672x941 RGB with full scene"
+    },
+    "historical_first_wave_drafts": [
+      {
+        "key": "outpatient/neutral",
+        "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-5403eada-27a7-420e-afec-df46297852b0.png",
+        "size": [1024, 1536],
+        "mode": "RGBA",
+        "alpha": "verified: min 0, max 254, 874150 fully transparent pixels",
+        "sha256": "280cd37506150c916fada8fa98aa03dd279929858de58384f7418d4529fedd3d",
+        "status": "superseded historical draft; final replacement registered",
+        "superseded_draft": "exec-b5a38c43-fd04-4039-8f21-e52cbd105e36.png"
+      },
+      {
+        "key": "ward/neutral",
+        "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-37f1bdee-7640-45d4-a2de-36482205331b.png",
+        "size": [1024, 1536],
+        "mode": "RGBA",
+        "alpha": "verified: min 0, max 254, 870780 fully transparent pixels",
+        "sha256": "c6ff27f431a9a602b5d024a1ef61144df0b2abe995785a958f4817e268a1ed9e",
+        "status": "superseded historical draft; final replacement registered",
+        "superseded_draft": "exec-d5f1275c-b8c4-4a64-9f37-2316d212f1cd.png"
+      },
+      {
+        "key": "operating_table/awake",
+        "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-dd276aa4-eafe-4a5b-acc8-0f79cc120598.png",
+        "size": [1448, 1086],
+        "mode": "RGB",
+        "sha256": "d92887a2532d3ebefd8d6051998a50c3fa7f3b0ee0861f1ae257a833a66b899c",
+        "status": "selected base; final asset registered"
+      },
+      {
+        "key": "operating_table_lithotomy/awake",
+        "retry_policy": "three additional attempts used the same prompt and same three references; no wording changes",
+        "candidates": [
+          {
+            "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-639b3fc1-cc04-4258-83f6-6151283e304a.png",
+            "size": [1448, 1086],
+            "mode": "RGB",
+            "sha256": "84b52074ece7852c69d6759d96a92fcf74c75d9b8051062dbdac9b16ea2f5ca4",
+            "visual_check": "lithotomy supports, full-scene framing, bare shoulders/collarbones, and opaque full coverage visible; not selected"
+          },
+          {
+            "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-a869cbfa-5bc7-4a37-bfa2-2fdf7ad842d7.png",
+            "size": [1448, 1086],
+            "mode": "RGB",
+            "sha256": "6b76e8cf25e02c880b7eb43a8aa834f67c9739dc9c505c696df32c6b4b7e929a",
+            "visual_check": "lithotomy supports, full-scene framing, bare shoulders/collarbones, and opaque full coverage visible; selected by user and copied to assets/characters/patient_sepha_v1/patient_sepha/operating_table_lithotomy/awake.png"
+          },
+          {
+            "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-2c4c11d8-3394-4136-bca3-6c5bb348fd5a.png",
+            "size": [1448, 1086],
+            "mode": "RGB",
+            "sha256": "05832939519568c80bffd05014c0f92cab12583deb93064a4841bfb8182c3842",
+            "visual_check": "lithotomy supports, full-scene framing, bare shoulders/collarbones, and opaque full coverage visible; not selected"
+          }
+        ]
+      },
+      {
+        "key": "intraoperative/tense",
+        "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-3aa62447-be09-41df-ab8f-f3fcb94aa434.png",
+        "size": [1448, 1086],
+        "mode": "RGBA",
+        "alpha": "verified: min 0, max 255, 888868 fully transparent pixels",
+        "sha256": "b58b593d9ecdfdfc08d34277b29b7656ea4ef616afa4eeeecc37b93e55258165",
+        "status": "selected base; final asset registered"
+      },
+      {
+        "key": "splash/general_anesthesia",
+        "file": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-774db92a-3097-490e-b58a-d29153d766ee.png",
+        "size": [1672, 941],
+        "mode": "RGB",
+        "sha256": "b98bc0b45ffd8b7f20aa14a1de09bf6e914bb95539fb6b49ad8583f3033546f3",
+        "status": "selected base; final asset registered"
+      }
+    ],
+    "generation_block": "The user approved the six base directions and selected lithotomy/awake candidate 2. The previously missing lithotomy/afraid key has now been supplied by the user and registered.",
+    "registered_sfw_keys": ["outpatient/neutral", "ward/neutral", "ward/smile", "ward/brave", "ward/worried", "ward/afraid", "ward/crying", "operating_table/awake", "operating_table/tense", "operating_table/afraid", "operating_table/anesthetized", "operating_table_lithotomy/awake", "operating_table_lithotomy/tense", "operating_table_lithotomy/afraid", "operating_table_lithotomy/anesthetized", "intraoperative/tense", "intraoperative/pain", "intraoperative/near_collapse", "intraoperative/anesthetized", "splash/general_anesthesia"],
+    "missing_sfw_keys": [],
+    "asset_audit": "All 20 standard SFW paths are uniquely keyed in the patient bundle and resolve to decodable files. Target sizes/modes validated; transparent assets have non-empty true alpha transparency and were composited on light and dark backgrounds. Source one-pixel size discrepancies were proportionally scaled and canvas-padded without cropping or stretching; the user-supplied lithotomy/afraid source was padded 3 px top and bottom to match target dimensions. Per-file SHA-256 and pixel/alpha stats were recorded."
+  },
+  "dialogue_integration_note": "The source bundle's original quoted line remains preserved in user_bundle_v1.json. The user supplied a revised unquoted narration for graphic_preop_dialogue; the runtime bundle uses that exact revision as the narrator prompt, with English localization.",
+  "approved_dialogue_revision": "瑟法原本像平时核对异常报告那样，认真听着医护逐项解释手术流程。可当她意识到，刚才提到的切开、牵开和后续操作，一会儿都将发生在自己身上时，她渐渐不再接话。方才的镇定正在消失，心跳也越来越快。",
+  "sha256": {
+    "outpatient/neutral": "576b909decfff7dffdfcca9e8df7e499eb7c41218904437e0c0f9784624aa894",
+    "ward/neutral": "a9cd00e79be8feadf9e301134fce4cdfe088d414d77f8dfa435d699932acf904",
+    "ward/smile": "84990ebb026bf05ffb2586f8fecf156f2c4b93cd076530b82a437bb50ccb7c48",
+    "ward/brave": "a5219fe9fe142702662ac595e433b5ce25ab3a00981985228bf3af7a9cedee30",
+    "ward/worried": "461f1c6ed0b1361272ba9a14188ec33aa185ff79ad0f0b9901ea37ba2c9816c5",
+    "ward/afraid": "b66f275e6117e0fd3e8ada71a04764bc3f4c2434b0ae97c36901fe7e23ea65ce",
+    "ward/crying": "166b83d266304be49790af2cdba97404d45b1fd5d0d86f9e16b09e048de4c5d9",
+    "operating_table/awake": "d92887a2532d3ebefd8d6051998a50c3fa7f3b0ee0861f1ae257a833a66b899c",
+    "operating_table/tense": "306111e579070276fda9d887c1fd6e7f3b78f2f220075b8ee2792d74f917c205",
+    "operating_table/afraid": "02d6e83ee193dea38f8445c6f05c42303390e9cef261a4c15a6691d79893a3f5",
+    "operating_table/anesthetized": "412883ecff5871bdbf91353149de237dcbc4a29ff7989be7b0f549dc831dd532",
+    "operating_table_lithotomy/awake": "6b76e8cf25e02c880b7eb43a8aa834f67c9739dc9c505c696df32c6b4b7e929a",
+    "operating_table_lithotomy/tense": "1a36d27bfc89a1669f3c7e683df80124dd48d46bd40daa13470622a936e3b468",
+    "operating_table_lithotomy/afraid": "90e219aec0bfffb58d45ebcfbe47e800e04a903b8ea1b3f3ff849228dc803800",
+    "operating_table_lithotomy/anesthetized": "f3206a58830509e9204e748664eddc190a6353fa1880d1bca6f0c42ca91c443d",
+    "intraoperative/tense": "b58b593d9ecdfdfc08d34277b29b7656ea4ef616afa4eeeecc37b93e55258165",
+    "intraoperative/pain": "44356851d0bb8aca76d011b805bb8e83987d4cb13085d631c973dbe4887eed8f",
+    "intraoperative/near_collapse": "bb34705e81efab62c040fbc4363fcf6d742dea84fd80fe8fd2f637d4198f0587",
+    "intraoperative/anesthetized": "c72b87b9fd2464c530c5dd02c8a1a85492d62eeaabd86abaec7e1ad289e57387",
+    "splash/general_anesthesia": "b98bc0b45ffd8b7f20aa14a1de09bf6e914bb95539fb6b49ad8583f3033546f3",
+    "seed_face.png": "920083aa14ec6d755a79932fccc416b9a90800088c7eff92d18484edab34db20",
+    "seed_full_body.png": "e0e3866a1f33ed3c42814359f95fa686fad32cb44e5f25a42d1de1bef5f1c2ad",
+    "seed_profile.png": "7fd244e441fd751b3ea35235f559ae0a62e80367e8d78037feed44403d9c1f36",
+    "seed_profile_alt.png": "7c2209009b4fba4cdba59ed7aec47c14db1ee3fb116ad81113da0d118a1fe4a4",
+    "examination/shy": "4e84856d229326e961dbec62c6a70552c3f118acfa16240d2117a3580fba616c",
+    "cg/examination_undressing": "7cd6e03f4acf9a6282fc7f98f874af8c689d5d37ca801c19c1a158619bf9ec5f",
+    "cg/preop_enema": "7ef3047cd28ebfad023ecdd43a76b6cffc5f3abc3e064b0868f961bbfdf63a18",
+    "cg/urinary_catheterization": "37eeb4979a67463dfe36f2bbb18373d97f1035e132a7d49752e08e2f3b9c2bed",
+    "cg/incision_ready": "aa2f7c2f950cea84654dea8066d76d960a7745f7d2fc2288ea020cf57f9fa3ac"
+  },
+  "validation": {
+    "patient_bundle_localization_test": "passed after CG integration: 1945 English entries, 0 failures",
+    "focused_bundle_load": "passed: patient appears exactly once; all 21 portrait mappings resolve; preop_sepha and patient CG pools merge; one examination CG pool and three ward-preparation CG pools are registered for patient_sepha",
+    "schema_review": "Source voice_style=soft is mapped to supported gentle. All 20 standard SFW keys, the separate examination/shy portrait, and four user-supplied patient CGs are registered. CG pool paths and action IDs are valid; no Sepha-specific path/schema error appeared.",
+    "image_specs": "All 20 standard SFW images decoded and match their class target dimensions and modes. The four user-supplied CGs are 1584x1056 RGB and preserved without crop or stretch. RGBA SFW files have true alpha with zero-alpha pixels and were inspected against light/dark composites. The user-supplied lithotomy/afraid source was padded by 3 px at the top and bottom to match 1448x1086 RGB.",
+    "localization_audit": "No patient_sepha localization errors. The repository-wide audit still fails on unrelated orphaned/stale keys, one existing placeholder mismatch, UI coverage 671/672, and two hard-coded Chinese UI candidates.",
+    "godot_runtime_test": "not run: no godot/godot4 executable available in PATH"
+  }
+}

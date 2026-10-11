@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hoshimi.example/schemas/patient_bundle.schema.json",
+  "title": "Hoshimi random patient bundle v1",
+  "description": "Authoring contract for one ordinary random patient. Canonical patient and CG pool field definitions are referenced from content.schema.json.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "patient": {
+      "$ref": "content.schema.json#/$defs/patient"
+    },
+    "fallback": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "surgery_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        }
+      },
+      "required": ["case_id", "surgery_id"],
+      "additionalProperties": false
+    },
+    "encounter": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "full_undress": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "responses": {
+              "type": "object",
+              "properties": {
+                "abandon_full_undress": {"type": "string", "minLength": 1},
+                "authoritative_full_undress": {"type": "string", "minLength": 1},
+                "gentle_full_undress": {"type": "string", "minLength": 1},
+                "threaten_full_undress": {"type": "string", "minLength": 1}
+              },
+              "required": [
+                "abandon_full_undress",
+                "authoritative_full_undress",
+                "gentle_full_undress",
+                "threaten_full_undress"
+              ],
+              "additionalProperties": false
+            },
+            "visual_pool_id": {
+              "anyOf": [
+                {"const": ""},
+                {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                }
+              ]
+            }
+          },
+          "required": ["prompt", "responses"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["title", "full_undress"],
+      "additionalProperties": false
+    },
+    "preop": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initial_anxiety": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "initial_interaction": {
+          "type": "object",
+          "properties": {
+            "fear": {"type": "integer", "minimum": 0, "maximum": 100},
+            "pain": {"type": "integer", "minimum": 0, "maximum": 100},
+            "dignity": {"type": "integer", "minimum": 0, "maximum": 100},
+            "cooperation": {"type": "integer", "minimum": 0, "maximum": 100}
+          },
+          "required": ["fear", "pain", "dignity", "cooperation"],
+          "additionalProperties": false
+        },
+        "stage_prompts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "graphic_preop_final_response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "incision_responses": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "title",
+        "initial_anxiety",
+        "initial_interaction",
+        "stage_prompts",
+        "incision_responses"
+      ],
+      "additionalProperties": false
+    },
+    "exclusive_cg_pools": {
+      "type": "object",
+      "properties": {
+        "examination": {
+          "type": "array",
+          "items": {"$ref": "content.schema.json#/$defs/examination_cg_pool"}
+        },
+        "ward_preparation": {
+          "type": "array",
+          "items": {"$ref": "content.schema.json#/$defs/ward_preparation_cg_pool"}
+        },
+        "surgery": {
+          "type": "array",
+          "items": {"$ref": "content.schema.json#/$defs/surgery_cg_pool"}
+        }
+      },
+      "required": ["examination", "ward_preparation", "surgery"],
+      "additionalProperties": false
+    },
+    "diagnosis_reactions": {
+      "type": "array",
+      "items": {"$ref": "content.schema.json#/$defs/first_surgery_diagnosis_reaction"}
+    }
+  },
+  "required": [
+    "schema_version",
+    "patient",
+    "fallback",
+    "encounter",
+    "preop",
+    "exclusive_cg_pools",
+    "diagnosis_reactions"
+  ],
+  "additionalProperties": false
+}

@@ -123,7 +123,9 @@ func run() -> void:
 	expect(scrub_hands_video.get("path", "") == app.SCRUB_HANDS_VIDEO and is_equal_approx(float(scrub_hands_video.get("speed", 0.0)), 2.0), "Scrub-hands action did not resolve its 2x transition video")
 	var enter_room_video: Dictionary = app.preop_transition_video_for("enter_room")
 	expect(enter_room_video.get("path", "") == app.ENTER_OPERATING_ROOM_VIDEO and is_equal_approx(float(enter_room_video.get("speed", 0.0)), 2.0), "Enter-room action did not resolve its 2x transition video")
-	expect(PreopView.background_id_for({"kind": "changing", "background_id": "changing"}, ["changed"], false, "") == "scrub_area", "Changed preop state did not resolve to the dedicated scrub-area background")
+	expect(PreopView.background_id_for({"kind": "changing", "background_id": "changing"}, [], false, "") == "changing", "Unchanged preop state did not resolve to the changing-room background")
+	expect(PreopView.background_id_for({"kind": "changing", "background_id": "changing"}, ["changed"], false, "") == "scrub_area", "Scrub-preparation state did not resolve to the dedicated scrub-area background")
+	expect(PreopView.background_id_for({"kind": "changing", "background_id": "changing"}, ["changed", "hands_ready"], false, "") == "or_entrance", "Room-entry state did not resolve to the operating-room doorway background")
 	app.show_preop_transition_video(change_scrubs_video, app.show_map)
 	await process_frame
 	var transition_player: VideoStreamPlayer = app.page.get_node_or_null("PreopTransitionVideoPlayer")

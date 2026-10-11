@@ -1,6 +1,6 @@
 # 新增随机患者完整流程
 
-本文件是星见医院新增普通随机患者的执行清单。它汇总琪琪·安达露西亚与柳原理惠接入时发现的问题，覆盖资料准备、美术、患者数据、随机病例、门诊、术前、术中反应、自动检查和实机验收。
+本文件是星见医院新增普通随机患者的执行清单。它汇总现有普通患者接入时发现的问题，覆盖资料准备、美术、患者数据、随机病例、门诊、术前、术中反应、自动检查和实机验收。
 
 适用对象是会进入普通门诊轮换、随机疾病和手术流程的成年患者。只参与固定剧情的患者应使用 `cameo_patient`，不应照搬本流程。
 
@@ -72,7 +72,7 @@ assets/characters/intraoperative_portraits_v1/<patient_id>/
 └── anesthetized.png
 ```
 
-标准患者当前需要 **21 个状态映射和21张图片**，包括四张普通仰卧手术台图与四张截石位手术台图。不要用术中麻醉头像代替全麻 splash。
+标准患者当前需要 **21 个核心状态映射和21张图片**，包括四张普通仰卧手术台图与四张截石位手术台图。硬膜外麻醉、术前诱导等特殊节点可以在此基础上增加状态。不要用术中麻醉头像代替全麻 splash。
 
 ## 三、美术素材矩阵
 
@@ -240,6 +240,16 @@ diagnosis_reactions
 exclusive_cg_pools
 ```
 
+`exclusive_cg_pools` 必须包含三个数组：
+
+```text
+examination
+ward_preparation
+surgery
+```
+
+检查 CG 和术前准备 CG 会分别并入对应的全局池。手术 CG 也可以直接写在患者包的 `surgery` 数组中；loader 会将其并入手术 CG 池，并按 `patient_ids` 优先于通用 CG。这样新增患者不需要修改 GDScript，也不必手工编辑全局手术 CG catalog。
+
 其中 `patient` 的必填字段为：
 
 ```text
@@ -267,11 +277,13 @@ outpatient_lines
 - `voice_style` 只能是 `direct`、`reserved`、`bold`、`gentle`。
 - `outpatient_lines` 必须包含 `complaint`、`primary`、`secondary`、`background`；前三项可用 `{line}` 插入随机病例提供的医学内容。这样患者口吻留在本人的文件内，疾病资料仍由病例模板提供。
 - `personality.primary + secondary` 的组合必须在患者池中唯一。
-- `stress_response` 使用现有枚举：`becomes_quiet`、`seeks_reassurance`、`becomes_irritable`、`asks_for_details`。
+- `stress_response` 使用现有枚举：`becomes_quiet`、`seeks_reassurance`、`becomes_irritable`、`asks_for_details`、`bravado_then_embarrassment`、`embarrassed_apologetic`。
 - `traits` 和 `fear_profile` 数值范围均为0—100。
-- `visuals.portraits` 填入前述17个完整键；路径从项目根目录开始，不加 `res://`。
+- `visuals.portraits` 至少填入前述21个核心键；路径从项目根目录开始，不加 `res://`。
 
 loader 会从 `data/patients/templates/encounter.json` 与 `preop.json` 自动生成 `visit_<short_id>` 和 `preop_<short_id>`。患者专属的完全脱衣查体对白、术前阶段提示和旧下刀回应保存在数据包中，并覆盖共用模板。
+
+检查 CG 当前以全屏 splash 方式显示。默认自动前进时间为2秒；如果某个检查 CG 需要更长停留，可在池对象中加入 `display_seconds`，范围为0.5—10秒。
 
 ## 七、患者专属反应文案
 

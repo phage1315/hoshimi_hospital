@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_emi_koda",
+    "name": "香田映見",
+    "age": 22,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_emi_koda_v1/patient_emi_koda/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_emi_koda_v1/patient_emi_koda/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_emi_koda_v1/patient_emi_koda/ward/smile.png",
+        "ward/brave": "assets/characters/patient_emi_koda_v1/patient_emi_koda/ward/brave.png",
+        "ward/worried": "assets/characters/patient_emi_koda_v1/patient_emi_koda/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_emi_koda_v1/patient_emi_koda/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_emi_koda_v1/patient_emi_koda/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_emi_koda_v1/patient_emi_koda/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_emi_koda/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_emi_koda/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_emi_koda/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_emi_koda/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_emi_koda/general.png",
+        "examination/shy": "assets/examinations/patient_emi_koda/full_undress.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "reserved",
+    "personality": {
+      "primary": "socially_anxious",
+      "secondary": "formal_elegant",
+      "stress_response": "becomes_quiet"
+    },
+    "dialogue_profile": "socially_anxious_formal_quiet",
+    "traits": {
+      "baseline_anxiety": 76,
+      "pain_sensitivity": 72,
+      "privacy_sensitivity": 96,
+      "trust_baseline": 50,
+      "control_need": 82,
+      "expressiveness": 32,
+      "health_literacy": 55,
+      "compliance_tendency": 86
+    },
+    "fear_profile": {
+      "pain_fear": 72,
+      "procedure_fear": 88,
+      "diagnosis_fear": 55,
+      "loss_control_fear": 96
+    },
+    "outpatient_lines": {
+      "complaint": "那个……我在工作时突然晕倒了，之后总觉得身体有些不对劲。",
+      "primary": "我会尽量说明清楚的……如果说得不够好，请您提醒我。",
+      "secondary": "还有就是……我不希望这件事给同事和客人添麻烦。",
+      "background": "平时没有什么大病，也没有听说过药物过敏。"
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院……是吗？请问，大概要请多久的假呢……我不想再给公司添麻烦了。」",
+      "hospitalization_response": "「好的，我明白了……明明应该是我照顾别人，现在却让这么多人来照顾我，实在不好意思。」",
+      "procedure_mismatch": "「请、请等一下，坂口医生……那里和刚才向我说明的手术部位，好像不一样……是不是弄错了？」",
+      "explain_plan": "「谢谢您说明得这么仔细……那、那个，需要我配合的时候，请直接告诉我。我会尽力的。」",
+      "last_reassure": "「我会好好配合的……只是，如果我太紧张了，请不要觉得我很麻烦……」",
+      "choose_general": "「全身麻醉的话……至少，我不会在大家面前失态了，对吗……？」",
+      "choose_local": "「我明白了……如果我忍不住发抖，请您告诉我该怎么做。我不是故意不配合的。」",
+      "choose_none": "「对不起……不麻醉的意思是，我会清醒地感觉到你们开刀……是这样吗？」",
+      "induction_reassure": "「谢谢您，坂口医生……我会尽量放松的。希望睡着以后，不会再给大家添麻烦……」",
+      "insist_without_anesthesia": "「不、不要……！对不起，我知道大家都已经准备好了，可是……我真的没有办法就这样挨刀……！」",
+      "incise_none": "「啊——！！疼、好疼！等、等一下……！对不起，我、我忍不住叫出来了……啊！」",
+      "contact_command": "「是……我会尽量不动的。可、可是手一直在抖……请不要误会，我真的在努力……」",
+      "closure_reassure": "「已、已经过了最难的部分吗……？谢谢您……我刚才，一定失态得很厉害吧……」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌、灌肠……是要在这里做吗？对不起……我、我有点不知道该怎么办才好……」",
+        "「那、那个……请问，护士小姐也会一直在旁边吗……？我从来没有在别人面前做过这种准备……」"
+      ],
+      "ward_enema_unnecessary": [
+        "「咦……原来不是必须的吗……？那、那我刚才……真的很难为情……」",
+        "「不、不需要灌肠也可以吗……？我明白了……不好意思，我刚才还那么紧张……」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……是要把那里的毛发也剃掉吗……？对不起，我不是想妨碍准备……」",
+        "「连这里也要露出来吗……？我、我知道是手术需要，只是……请稍等一下……」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「如果不是必须的……那我可以先不做吗？我会配合真正需要的准备。」",
+        "「对不起，我知道这是工作……只是想到要在这里处理，还是有点紧张。」"
+      ],
+      "ward_surgical_cap": [
+        "「帽子……谢谢您。这样一来，我看起来就真的像一个要接受手术的病人了呢……」",
+        "「头发全部收进去就可以了吗……？好的……平常上班时那么在意仪容，现在倒是完全不同了……」"
+      ],
+      "operative_positioning_awake": [
+        "「这个姿势……还要保持很久吗？我、我会尽量照做的……」",
+        "「对不起，我有点紧张……以前都是我提醒客人站稳，现在连自己该怎么躺好都不太清楚了……」"
+      ],
+      "operative_positioning_none": [
+        "「等、等一下……还没有麻醉，就要这样固定住了吗……？我会尽量不动，可是已经在发抖了……」",
+        "「请、请稍等……如果开刀的时候真的很痛，我还能一直保持这个姿势吗……？」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管……是要从那里放进去吗……？我明白是必要的，可是……真的很不好意思……」",
+        "「我会配合的……只是，能不能不要一直看着我……？对不起，我知道您是在工作……」"
+      ],
+      "urinary_catheterization_none": [
+        "「等、等等……！导尿管真的要在我完全清醒的时候插进去吗……？我、我好害怕……！」",
+        "「啊……！请、请轻一点……我知道不能乱动，可是这种感觉……我真的没办法装作没事……！」"
+      ],
+      "incision_marking_none": [
+        "「您现在画的这条线……就是等一下不麻醉也要切开的地方吗……？真、真的要这样开始了吗……？」",
+        "「等一下……让我再看一眼……这里马上就要切开了吗？我、我还没有准备好……！」"
+      ]
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "香田映见的病历",
+    "full_undress": {
+      "prompt": "「基础查体需要把内衣也脱掉吗……？对不起，我只是想先确认范围。」",
+      "responses": {
+        "abandon_full_undress": "「明白了，那这部分先不做。谢谢您尊重我的选择。」",
+        "authoritative_full_undress": "「如果这是统一规定……我会配合。」她努力维持着端正的姿势，却不敢抬头看医护的表情。",
+        "gentle_full_undress": "「好的。请一步一步告诉我需要怎么做。」她依照说明脱去衣物，抱住手臂等待检查。",
+        "threaten_full_undress": "「请不要用治疗资格逼我……我明白了。」她沉默地完成检查，脸上的礼貌几乎维持不住。"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_emi_koda"
+    }
+  },
+  "preop": {
+    "title": "香田映见 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 50,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 86
+    },
+    "stage_prompts": {
+      "ward_visit": "「坂口医生，麻烦您了……手术安排可以再跟我说一遍吗？」",
+      "team": "坂口医生担任主刀，选好与坂口医生配合的三位同事。",
+      "preparation": "指派一位未进手术团队的护士；可以让护士完成准备，也可以由坂口医生亲手执行。额外照顾最多选两项。",
+      "prepared": "「都准备好了。对不起，我的手一直在抖。」",
+      "changing": "先换上手术服，再完成刷手准备。",
+      "operating_room": "「医生……看到您进来，我就安心一点了。」",
+      "team_confirmations": "手术开始前，团队成员依次确认自己的职责。",
+      "procedure_select": "请选择本次时间演示使用的术式。当前版本会直接结算耗时与成功结果。",
+      "procedure_mismatch": "「请、请等一下，坂口医生……这和刚才说明的手术部位，好像不一样……」",
+      "ready": "所有人都在自己的位置上。先决定如何让患者度过接下来的过程。",
+      "general_induction": "「如果可以，睡着以前请再告诉我一声。」",
+      "surgery_start_general": "患者已经进入全身麻醉，监护数据平稳。坂口医生抬眼确认团队已经就位。",
+      "surgery_start_epidural": "「我会尽量保持端正……如果发抖，请提醒我呼吸。」",
+      "surgery_start_local": "「马上要开始了吧？请告诉我每一步。」",
+      "surgery_start_none": "「请等一下，我还没有接受麻醉。现在开始我会无法保持不动。」",
+      "instrument_handoff": "坂口医生的命令落下，器械护士已经准备好第一把器械。",
+      "assistant_ready": "器械已经到手。助手女医正等待坂口医生的下一项指令。",
+      "incision_ready": "助手维持着稳定的张力。手术刀已经停在预定切口上方。",
+      "general_operation": "患者在全身麻醉下没有语言反应。坂口医生与团队完成暴露和关键步骤，监护数据持续显示在屏幕上。",
+      "operative_contact": "切口已经建立。患者的反应变得明显，坂口医生需要决定如何回应。",
+      "ongoing_interaction": "操作仍在继续。患者正在根据坂口医生的态度调整自己的反应。",
+      "closure_interaction": "最紧张的一段已经过去。坂口医生准备如何结束这次互动？",
+      "procedure_flow": "团队进入术式特有的关键步骤。",
+      "procedure_execute": "关键步骤已经完成，术野确认无误。现在可以结束手术并进入缝合。",
+      "surgery_result": "切口已经缝合，手术团队完成器械清点与术后交接。"
+    },
+    "incision_responses": {
+      "incise_general": "刀锋沿预定切口落下。香田映见在全身麻醉下没有意识反应。",
+      "incise_epidural": "「感觉到被碰到了……不算很痛，可我还是有点怕。」",
+      "incise_local": "「嘶……有一点刺痛。请慢一点，我会尽量不动。」",
+      "incise_none": "「啊——！！疼、好疼！等、等一下……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_emi_koda",
+        "label": "香田映见 · 基础查体脱衣",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_emi_koda/full_undress_basic_exam.png"
+        ],
+        "caption": "香田映见脱去衣物，抱住双臂，努力维持端庄却明显紧张地等待基础查体。"
+      }
+    ],
+    "surgery": [],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_emi_koda",
+        "label": "香田映见 · 术前准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_emi_koda"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi_koda/enema.png"
+        ],
+        "caption": "坂口医生依照病房准备流程，为香田映见完成灌肠。她努力保持配合，表情却明显紧张。"
+      },
+      {
+        "id": "ward_surgical_cap_patient_emi_koda",
+        "label": "香田映见 · 术前准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_emi_koda"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi_koda/surgical_cap.png"
+        ],
+        "caption": "香田映见戴上手术帽，努力把最后一点职业礼仪般的镇定维持下去。"
+      },
+      {
+        "id": "incision_ready_patient_emi_koda",
+        "label": "香田映见 · 手术下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_emi_koda"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_emi_koda/incision_ready.png"
+        ],
+        "caption": "器械已经递到坂口医生手中，手术刀停在香田映见预定切口的上方。"
+      }
+    ]
+  },
+  "diagnosis_reactions": []
+}

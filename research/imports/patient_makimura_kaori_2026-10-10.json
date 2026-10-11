@@ -1,0 +1,83 @@
+{
+  "patient_id": "patient_makimura_kaori",
+  "name": "槇村香",
+  "age": 25,
+  "source_bundle": "research/character_references/patient_makimura_kaori/user_bundle_v1.json",
+  "reference_images": [
+    "research/character_references/patient_makimura_kaori/seed_1.png",
+    "research/character_references/patient_makimura_kaori/seed_2.png",
+    "research/character_references/patient_makimura_kaori/seed_3.png",
+    "research/character_references/patient_makimura_kaori/seed_4.png"
+  ],
+  "patient_bundle": "data/patients/patient_makimura_kaori/patient.json",
+  "standard_portraits": {
+    "count": 20,
+    "dimensions": {
+      "outpatient_and_ward": "1024x1536 RGBA",
+      "operating_table_and_lithotomy": "1448x1086 RGB",
+      "intraoperative": "1448x1086 RGBA",
+      "general_anesthesia_splash": "1672x941 RGB"
+    },
+    "keys": [
+      "outpatient/neutral",
+      "ward/neutral", "ward/smile", "ward/brave", "ward/worried", "ward/afraid", "ward/crying",
+      "operating_table/awake", "operating_table/tense", "operating_table/afraid", "operating_table/anesthetized",
+      "operating_table_lithotomy/awake", "operating_table_lithotomy/tense", "operating_table_lithotomy/afraid", "operating_table_lithotomy/anesthetized",
+      "intraoperative/tense", "intraoperative/pain", "intraoperative/near_collapse", "intraoperative/anesthetized",
+      "splash/general_anesthesia"
+    ],
+    "sha256": {
+      "outpatient/neutral": "e2f792ca2942b19539487faa4c9001a9c0acb69600f3858edaf44f23e35f8c3c",
+      "ward/neutral": "5db8ed0265a8cf805847163f664272f46e029b8de6fdcb447178dbce55461b57",
+      "ward/smile": "3983d3310c4bca3f052b1cf512949569f9e3d38048419a22780242b8c55b6f38",
+      "ward/brave": "65caa19a1a0e71cb940cb38f21c244ab5b62346a42e6f4e781fff22c96a0cc62",
+      "ward/worried": "5da2a4620797caaa6d0cc1437aff7b408b9c7e4250348b4c5033eb98d0259539",
+      "ward/afraid": "949ac6b40d392c1ef6b062ad00080082ada94b57a055add16e411415bd859ff9",
+      "ward/crying": "224751e75bd9cbf91a4e3b8375b5b7ff7f5f0eb4f8c01eb2a1e79bcda56a3f48",
+      "operating_table/awake": "c5ae501ebfa9a0d22c930b739f99cf89acc9de48fa1b99e5a5eb0f8f2d75c7a1",
+      "operating_table/tense": "6f9f6bff7a44a75c02ac01f4c5e125da5b072f512fedefa723a6c45be2e77fe1",
+      "operating_table/afraid": "ed9ccf250132a1fd577d81c2f68edc4e781ad1ed5c54cf1893372c6e873b1191",
+      "operating_table/anesthetized": "67beb875a8429a65b36585f8795f454ec54d422e4ecf80b46b986854386eccf3",
+      "operating_table_lithotomy/awake": "d5fb2ea80463c7f783ee795a8acf2a9061130c55273f625d755bfdaac2fb2ca4",
+      "operating_table_lithotomy/tense": "df4bb14373a89105f49859bb5f4c06b6ab17d435a6d1d29f0f1ef2f38d25f1d5",
+      "operating_table_lithotomy/afraid": "fecb528d8371b8f4d23ac0f2949c4db46d3dcc7ebc910c186c9b37ddc630e6f0",
+      "operating_table_lithotomy/anesthetized": "e7317daa9cebca6d052b6407e458afe99e3686d6d531e469fdd3063ab483ca06",
+      "intraoperative/tense": "d861c7e0b238c79194826dc1e77772a2e5a801ea39db9e5ab0ad2b6135d84f0d",
+      "intraoperative/pain": "ee364d2616afc3b77158ace12ecaa925895e0d33f753ed17fb11774367410160",
+      "intraoperative/near_collapse": "2d310ea5fd2b760cbd7fe05c5ba3b72ca4f385064baae256e677fc6faa7d559b",
+      "intraoperative/anesthetized": "bf0bcb0d62714902dc30a4df5f33b90d39d087823a500f0c8e83ab272f22efa5",
+      "splash/general_anesthesia": "e42ca0c442e504651993e93d1a4aa77661d4a9a72ae3009151e098e75f58cc90"
+    }
+  },
+  "user_supplied_examination_portrait": {
+    "source": "research/character_references/patient_makimura_kaori/user_examination_portrait.png",
+    "registered_path": "assets/examinations/patient_makimura_kaori/full_undress.png",
+    "key": "examination/shy",
+    "dimensions": "1056x1584 RGBA",
+    "sha256": "ad4885c0c614786681e8e51666b14fe0e9f6afd7be8294fbb5c363b192949dc2",
+    "copied_without_pixel_changes": true
+  },
+  "clothing_and_composition_review": {
+    "outpatient": "white cropped jacket, pink shirt and jeans matching outfit references",
+    "ward": "light-blue hospital wrap gown",
+    "operating_table": "teal cap; shoulders/collarbones visible; opaque teal drape covers torso and lower body",
+    "intraoperative": "transparent head-and-shoulders portraits; anesthetized state has closed eyes and no mask",
+    "splash": "closed eyes with anesthesia mask"
+  },
+  "cg_imported": false,
+  "exclusive_cg_pools": "left empty per source bundle; no CG was added",
+  "localization": "patient-specific English entries added to data/localization/en.json; source bundle narrative strings left unchanged",
+  "generation_note": "Twenty independent standard SFW images were generated from the user's identity/outfit references and matching patient_ann pose/expression references. Three intraoperative portraits were fitted to the required canvas with transparent padding; character content was not cropped.",
+  "tifa_ward_fix": {
+    "portrait_count": 6,
+    "path": "assets/characters/patient_tifa_v1/patient_tifa/ward_gown/",
+    "sha256": {
+      "neutral": "db92707fc81cf9e8742b50fca8f51ab27ea957b36674333f73f6b383593be1af",
+      "smile": "d10e675da1d13d290d7b00590f1cb3e3f95dfbdf1b33fb4a81260f6a8bbdca5b",
+      "brave": "cba7d5ef0da67d153fc58ac36d1287e023ffb5b057337c3969b79d8eff4f202f",
+      "worried": "98c557f523f5373a051a5119a4a31cde76d160c40622211f2965f42fa11d4893",
+      "afraid": "8755a5f2b274ba46588bc9ec7e3a95d92dfa14f181b77aa8488702ee850875c1",
+      "crying": "20e755f191ddc96dec05b19c9ca26c7313888116e7c3351c43a211cfa6d765ac"
+    }
+  }
+}

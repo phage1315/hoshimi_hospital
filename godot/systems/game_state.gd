@@ -8,9 +8,10 @@ const AdultIntimacySession = preload("res://godot/systems/adult_intimacy_session
 const PresenceResolver = preload("res://godot/systems/presence_resolver.gd")
 const FixedCalendar = preload("res://godot/systems/fixed_calendar.gd")
 const Progression = preload("res://godot/systems/progression_config.gd")
-const SAVE_VERSION := 35
+const SAVE_VERSION := 36
 const MIN_SUPPORTED_SAVE_VERSION := 35
 const CONTENT_VERSION := 1
+const STATE_DICTIONARY_SAVE_FORMAT := "state_dictionary_v1"
 const SHIFT_START_MINUTE := 9 * 60
 const SHIFT_MINUTES := 8 * 60
 const OUTPATIENT_CLOSE_MINUTE := 16 * 60
@@ -58,6 +59,7 @@ var surgery_team_dialogue_profiles: Array = []
 var patient_interaction_definitions: Array = []
 var temporary_condition_definitions: Array = []
 var palpation_profile_definitions: Array = []
+var awake_special_bark_definitions: Array = []
 var patient_definitions: Array = []
 var diagnosis_shock_definitions: Dictionary = {}
 var first_surgery_diagnosis_shock_state: Dictionary = {}
@@ -112,8 +114,9 @@ var intraoperative_crisis_enabled := true
 var adult_intimacy_unlocks: Dictionary = {}
 var active_adult_intimacy: RefCounted
 var adult_intimacy_return_mode := "encounter"
+var restore_warnings: Array[String] = []
 
-func configure(data: Array, preop_data: Array = [], staff_data: Array = [], time_event_data: Array = [], surgery_data: Array = [], patient_data: Array = [], relationship_data: Array = [], character_event_data: Array = [], case_template_data: Array = [], micro_event_data: Array = [], examination_cg_pool_data: Array = [], surgery_team_dialogue_data: Array = [], patient_interaction_data: Array = [], temporary_condition_data: Array = [], staff_role_cg_data: Array = [], special_event_data: Array = [], special_event_step_data: Array = [], date_profile_data: Array = [], date_location_data: Array = [], advanced_referral_data: Array = [], diagnosis_shock_data: Array = [], palpation_profile_data: Array = []) -> void:
+func configure(data: Array, preop_data: Array = [], staff_data: Array = [], time_event_data: Array = [], surgery_data: Array = [], patient_data: Array = [], relationship_data: Array = [], character_event_data: Array = [], case_template_data: Array = [], micro_event_data: Array = [], examination_cg_pool_data: Array = [], surgery_team_dialogue_data: Array = [], patient_interaction_data: Array = [], temporary_condition_data: Array = [], staff_role_cg_data: Array = [], special_event_data: Array = [], special_event_step_data: Array = [], date_profile_data: Array = [], date_location_data: Array = [], advanced_referral_data: Array = [], diagnosis_shock_data: Array = [], palpation_profile_data: Array = [], awake_special_bark_data: Array = []) -> void:
 	preop_definitions.clear()
 	preop_blueprints.clear()
 	encounter_blueprints.clear()
@@ -130,6 +133,7 @@ func configure(data: Array, preop_data: Array = [], staff_data: Array = [], time
 	patient_interaction_definitions = patient_interaction_data
 	temporary_condition_definitions = temporary_condition_data
 	palpation_profile_definitions = palpation_profile_data
+	awake_special_bark_definitions = awake_special_bark_data
 	patient_definitions = patient_data
 	diagnosis_shock_definitions.clear()
 	for entry in diagnosis_shock_data:
@@ -177,8 +181,10 @@ func configure(data: Array, preop_data: Array = [], staff_data: Array = [], time
 	reset()
 
 func reset() -> void:
-	patient_queue = random_patient_queue()
-	patient_cases = random_patient_cases() if not case_templates.is_empty() else {}
+	campaign_seed = randi_range(1, 2147483646)
+	var campaign_rng := RandomNumberGenerator.new()
+	campaign_rng.seed = campaign_seed
+	patient_queue = random_patient_queue(campaign_rng)
 	patient_referrals.clear()
 	recent_patient_ids.clear()
 	completed_surgeries_total = 0
@@ -199,7 +205,6 @@ func reset() -> void:
 	archived_player_effects = zero_player_effects()
 	archived_player_effect_history.clear()
 	first_surgery_diagnosis_shock_state.clear()
-	rebuild_patient_content(patient_cases)
 	visits.clear()
 	preops.clear()
 	active_preop_id = ""
@@ -216,6 +221,8 @@ func reset() -> void:
 	special_event_completion_counts.clear()
 	special_event_completion_days.clear()
 	story_flags.clear()
+	patient_cases = random_patient_cases(campaign_rng) if not case_templates.is_empty() else {}
+	rebuild_patient_content(patient_cases)
 	probation_complete = false
 	personal_nurse_system_unlocked = false
 	personal_nurse_id = ""
@@ -228,7 +235,6 @@ func reset() -> void:
 	pending_day_exit_workday = 0
 	pending_day_exit_clock = 0
 	active_after_work_walk.clear()
-	campaign_seed = randi_range(1, 2147483646)
 	sunday_history.clear()
 	intraoperative_crisis_enabled = true
 	adult_intimacy_unlocks.clear()
@@ -256,6 +262,10 @@ func remember_deferred_day_transition() -> void:
 		pending_surgery_day_transition = true
 
 func can_save_progress() -> bool:
+	# Saves are boundary snapshots, never resumable UI/event positions. The
+	# player can save from the hospital directory or Sunday menu only.
+	if not active_id.is_empty() or not active_preop_id.is_empty() or active_mode != "encounter":
+		return false
 	if active_surgery_in_progress():
 		return false
 	if not active_preop_id.is_empty() and preops.has(active_preop_id) and preops[active_preop_id].graphic_preop_dialogue_locked():
@@ -282,21 +292,35 @@ func save_block_reason() -> String:
 		return ""
 	if active_surgery_in_progress():
 		return "手术进行中，无法保存。请完成本次手术后再保存。"
+	if not active_id.is_empty():
+		return "看诊进行中，无法保存。请返回医院导览后再保存。"
+	if not active_preop_id.is_empty():
+		return "术前流程进行中，无法保存。请返回医院导览后再保存。"
 	if not active_preop_id.is_empty() and preops.has(active_preop_id) and preops[active_preop_id].graphic_preop_dialogue_locked():
 		return "术前说明进行中，无法保存。请完成本段对话后再保存。"
 	if not active_after_work_walk.is_empty():
 		return "下班同行事件进行中，无法保存。请完成本段剧情后再保存。"
 	return "剧情事件进行中，无法保存。请完成本段剧情后再保存。"
 
-func random_patient_queue() -> Array[String]:
+func shuffle_with_rng(values: Array, rng: RandomNumberGenerator) -> void:
+	for index in range(values.size() - 1, 0, -1):
+		var swap_index := rng.randi_range(0, index)
+		var value: Variant = values[index]
+		values[index] = values[swap_index]
+		values[swap_index] = value
+
+func random_patient_queue(rng: RandomNumberGenerator = null) -> Array[String]:
 	var result: Array[String] = []
 	for patient in patient_definitions:
 		result.append(patient.id)
-	result.shuffle()
+	if rng == null:
+		result.shuffle()
+	else:
+		shuffle_with_rng(result, rng)
 	return result
 
 func valid_patient_queue(value: Variant) -> bool:
-	if not value is Array or value.size() != patient_definitions.size():
+	if not value is Array or value.size() > patient_definitions.size():
 		return false
 	var expected := {}
 	for patient in patient_definitions:
@@ -306,7 +330,7 @@ func valid_patient_queue(value: Variant) -> bool:
 		if not id is String or not expected.has(id) or seen.has(id):
 			return false
 		seen[id] = true
-	return seen.size() == expected.size()
+	return true
 
 func zero_player_effects() -> Dictionary:
 	var result := {}
@@ -360,21 +384,52 @@ func starting_procedure_ids() -> Array[String]:
 			result.append(str(surgery.id))
 	return result
 
-func weighted_case_pick(pool: Array) -> String:
+func weighted_case_pick(pool: Array, rng: RandomNumberGenerator = null) -> String:
 	if pool.is_empty():
 		return ""
 	var total_weight := 0
 	for template_id in pool:
 		total_weight += maxi(1, int(case_templates[template_id].get("case_weight", 1)))
-	var roll := randi_range(1, total_weight)
+	var roll := rng.randi_range(1, total_weight) if rng != null else randi_range(1, total_weight)
 	for template_id in pool:
 		roll -= maxi(1, int(case_templates[template_id].get("case_weight", 1)))
 		if roll <= 0:
 			return str(template_id)
 	return str(pool.back())
 
-func random_patient_cases() -> Dictionary:
-	var pool: Array = case_templates.keys()
+func procedure_unlock_requirement_flag(surgery_id: String) -> String:
+	match surgery_id:
+		"surgery_hysterectomy":
+			return "aqua_hysterectomy_teaching_complete"
+		"surgery_vaginal_hysterectomy":
+			return "aqua_vaginal_hysterectomy_teaching_complete"
+		_:
+			return ""
+
+func synchronize_story_locked_procedures() -> void:
+	for surgery in surgery_definitions:
+		var surgery_id := str(surgery.get("id", ""))
+		var requirement_flag := procedure_unlock_requirement_flag(surgery_id)
+		if requirement_flag.is_empty() or not story_flag(requirement_flag):
+			continue
+		if not unlocked_procedure_ids.has(surgery_id):
+			unlocked_procedure_ids.append(surgery_id)
+	for preparation in preops.values():
+		preparation.set_procedure_unlocks(unlocked_procedure_ids, true)
+
+func case_template_available(template_id: String, saved_story_flags: Dictionary = {}, use_saved_flags: bool = false) -> bool:
+	if not case_templates.has(template_id):
+		return false
+	var surgery_id := str(case_templates[template_id].get("surgery_id", ""))
+	var requirement_flag := procedure_unlock_requirement_flag(surgery_id)
+	if not requirement_flag.is_empty():
+		return bool(saved_story_flags.get(requirement_flag, false)) if use_saved_flags else story_flag(requirement_flag)
+	# Ordinary cases are allowed to introduce their indicated procedure on
+	# admission. Only procedures with an explicit teaching gate are filtered.
+	return true
+
+func random_patient_cases(rng: RandomNumberGenerator = null, saved_story_flags: Dictionary = {}, use_saved_flags: bool = false) -> Dictionary:
+	var pool: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id), saved_story_flags, use_saved_flags))
 	var starting_pool: Array = pool.filter(func(template_id: Variant): return starting_procedure_ids().has(str(case_templates[template_id].surgery_id)))
 	var result := {}
 	var assignment_order: Array[String] = patient_queue.duplicate()
@@ -386,10 +441,62 @@ func random_patient_cases() -> Dictionary:
 		if pool.is_empty():
 			break
 		var candidates: Array = starting_pool if i < guaranteed_starting and not starting_pool.is_empty() else pool
-		var selected := weighted_case_pick(candidates)
+		var selected := weighted_case_pick(candidates, rng)
 		result[assignment_order[i]] = selected
 		pool.erase(selected)
 		starting_pool.erase(selected)
+	return result
+
+func complete_patient_queue(saved_queue: Array, rng: RandomNumberGenerator) -> Array[String]:
+	var result: Array[String] = []
+	var known := {}
+	for patient in patient_definitions:
+		known[str(patient.id)] = true
+	var seen := {}
+	for patient_id in saved_queue:
+		if known.has(patient_id) and not seen.has(patient_id):
+			result.append(patient_id)
+			seen[patient_id] = true
+	var additions: Array = []
+	for patient in patient_definitions:
+		if not seen.has(str(patient.id)):
+			additions.append(str(patient.id))
+	shuffle_with_rng(additions, rng)
+	for patient_id in additions:
+		result.append(patient_id)
+	return result
+
+func complete_patient_cases(saved_cases: Dictionary, saved_queue: Array[String], rng: RandomNumberGenerator, saved_story_flags: Dictionary) -> Dictionary:
+	var result := {}
+	var used_templates := {}
+	for patient in patient_definitions:
+		var patient_id := str(patient.id)
+		var template_id: Variant = saved_cases.get(patient_id)
+		if template_id is String and case_templates.has(template_id):
+			result[patient_id] = template_id
+			used_templates[template_id] = true
+	var available_templates: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id), saved_story_flags, true) and not used_templates.has(template_id))
+	var starting_templates: Array = available_templates.filter(func(template_id: Variant): return starting_procedure_ids().has(str(case_templates[template_id].surgery_id)))
+	var assignment_order: Array[String] = []
+	for patient_id in saved_queue:
+		if not result.has(patient_id):
+			assignment_order.append(patient_id)
+	for patient in patient_definitions:
+		var patient_id := str(patient.id)
+		if not result.has(patient_id) and not assignment_order.has(patient_id):
+			assignment_order.append(patient_id)
+	var guaranteed_starting := mini(2, mini(assignment_order.size(), starting_templates.size()))
+	for index in assignment_order.size():
+		if available_templates.is_empty():
+			available_templates = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id), saved_story_flags, true))
+			starting_templates = available_templates.duplicate()
+		if available_templates.is_empty():
+			break
+		var candidates: Array = starting_templates if index < guaranteed_starting and not starting_templates.is_empty() else available_templates
+		var selected := weighted_case_pick(candidates, rng)
+		result[assignment_order[index]] = selected
+		available_templates.erase(selected)
+		starting_templates.erase(selected)
 	return result
 
 func legacy_patient_cases() -> Dictionary:
@@ -406,10 +513,8 @@ func valid_patient_cases(assignments: Variant) -> bool:
 		return false
 	if case_templates.is_empty():
 		return assignments.is_empty()
-	if assignments.size() != patient_definitions.size():
-		return false
-	for patient in patient_definitions:
-		if not assignments.get(patient.id) is String or not case_templates.has(assignments.get(patient.id)):
+	for patient_id in assignments:
+		if not patient_id is String or not assignments[patient_id] is String or not case_templates.has(assignments[patient_id]):
 			return false
 	return true
 
@@ -465,7 +570,8 @@ func patient_voice_line(patient_id: String, line: String, beat: String) -> Strin
 		"direct": {"complaint": "", "primary": "", "secondary": "还有，"},
 		"reserved": {"complaint": "那个……", "primary": "我想想……", "secondary": "还有就是……"},
 		"bold": {"complaint": "其实吧，", "primary": "就是，", "secondary": "而且，"},
-		"gentle": {"complaint": "不好意思，", "primary": "", "secondary": "另外，"}
+		"gentle": {"complaint": "不好意思，", "primary": "", "secondary": "另外，"},
+		"soft": {"complaint": "嗯……", "primary": "比较明显的是，", "secondary": "另外还有，"}
 	}
 	var style_prefixes: Dictionary = prefixes.get(style, prefixes["direct"])
 	if beat == "background":
@@ -1441,7 +1547,9 @@ func next_character_event_for_preop_stage(stage_id: String) -> Dictionary:
 			var preparation = preops[active_preop_id]
 			if required_flags.any(func(flag: Variant): return str(flag) not in preparation.flags):
 				continue
-		if clock < int(definition.time_start) or clock > int(definition.time_end):
+		# A postoperative continuation follows its completed operation even if
+		# that operation ran past the normal location-event time window.
+		if stage_id != "post_surgery_return" and (clock < int(definition.time_start) or clock > int(definition.time_end)):
 			continue
 		result.append(definition)
 	result.sort_custom(func(a: Dictionary, b: Dictionary):
@@ -1558,6 +1666,7 @@ func choose_character_event(choice_id: String) -> bool:
 	if active_character_event_id.is_empty() or not character_events.has(active_character_event_id):
 		return false
 	var event = character_events[active_character_event_id]
+	var event_day := int(display_schedule().day)
 	if not event.apply(choice_id):
 		return false
 	var relation: Dictionary = relationships[event.definition.actor_id]
@@ -1567,17 +1676,33 @@ func choose_character_event(choice_id: String) -> bool:
 	if chosen_route in ["colleague", "romance"] and (chosen_route != "romance" or int(event.definition.get("target_level", 1)) >= INTIMATE_ROUTE_LEVEL):
 		relation.route = chosen_route
 	if event.completed and not character_event_retry_pending(event.definition, relation) and not relation.event_history.has(event.definition.id):
-		event.completed_day = day_number()
+		event.completed_day = event_day
 		relation.event_history.append(event.definition.id)
 		if event.definition.category == "introduction":
 			meet_staff(str(event.definition.actor_id))
 		elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, relation):
 			complete_rank_up(str(event.definition.actor_id), str(event.definition.id), int(event.definition.target_level), str(event.definition.get("benefit_id", "")))
 	elif event.completed:
-		event.completed_day = day_number()
+		event.completed_day = event_day
 	if event.completed and test_save_target_character_event_id() == str(event.definition.id):
 		clear_test_save_target()
 	return true
+
+func character_event_in_progress() -> bool:
+	if active_character_event_id.is_empty() or not character_events.has(active_character_event_id):
+		return false
+	return not character_events[active_character_event_id].completed
+
+func finish_character_event() -> void:
+	# Completing a character event and leaving its result screen are separate
+	# operations. Clear the active session at that boundary so the hospital map
+	# is a saveable world-state boundary rather than a stale event scene.
+	if active_character_event_id.is_empty():
+		return
+	if character_events.has(active_character_event_id) and not character_events[active_character_event_id].completed:
+		return
+	active_character_event_id = ""
+	active_mode = "preop" if not active_preop_id.is_empty() else "encounter"
 
 func set_story_flag(flag: String, value: bool = true) -> void:
 	if flag.is_empty():
@@ -1587,6 +1712,8 @@ func set_story_flag(flag: String, value: bool = true) -> void:
 		probation_complete = value
 	elif flag == "personal_nurse_system_unlocked":
 		personal_nurse_system_unlocked = value
+	if value:
+		synchronize_story_locked_procedures()
 
 func story_flag(flag: String) -> bool:
 	return bool(story_flags.get(flag, false))
@@ -1750,6 +1877,15 @@ func requirement_evaluation(raw_requirement: Variant, context: Dictionary = {}) 
 	result.reason = str(requirement.get("hint", kind))
 	result.requirement = requirement.duplicate(true)
 	match kind:
+		"any_of":
+			var alternatives: Array = requirement.get("requirements", [])
+			var alternative_results: Array[Dictionary] = []
+			var any_met := false
+			for alternative in alternatives:
+				var evaluation := requirement_evaluation(alternative, context)
+				alternative_results.append(evaluation)
+				any_met = any_met or bool(evaluation.get("met", false))
+			result.merge({"valid": not alternatives.is_empty(), "met": not alternatives.is_empty() and any_met, "results": alternative_results}, true)
 		"player_attribute":
 			var value := int(player_attributes().get(str(requirement.get("attribute", "")), -1000))
 			var minimum := int(requirement.get("minimum", -999))
@@ -2626,8 +2762,14 @@ func finish_special_event() -> void:
 
 func settle_overtime(start_elapsed: int, action_minutes: int) -> bool:
 	var start_schedule := schedule_at(start_elapsed)
-	if (pending_encounter_day_transition or pending_surgery_day_transition) and pending_day_exit_workday > 0:
+	if pending_day_exit_workday > 0:
 		pending_day_exit_clock += action_minutes
+		# Subsequent clinical/epilogue actions belong to the same overtime
+		# evening, not to the already reserved next-morning schedule slot.
+		var excess := elapsed() - pending_day_exit_workday * SHIFT_MINUTES
+		if excess > 0:
+			discarded_overtime_minutes += excess
+		return true
 	if int(start_schedule.shift_minute) + action_minutes < SHIFT_MINUTES:
 		return false
 	pending_day_exit_workday = int(start_schedule.day)
@@ -2717,6 +2859,10 @@ func after_work_roll(workday: int, variant: String, salt: String) -> int:
 	return absi(hash("%s:after_work:%s:%s:%s" % [campaign_seed, workday, variant, salt])) % 100
 
 func begin_after_work_departure(workday: int, departure_clock: int, advance_day_on_finish: bool) -> bool:
+	# Both manual departure and deferred/automatic day-end enter here. Never
+	# offer a walk while a patient is still waiting for clinical care.
+	if active_encounter_in_progress() or active_surgery_committed() or active_surgery_in_progress() or unresolved_admitted_patient_exists():
+		return false
 	if not active_after_work_walk.is_empty() or special_event_in_progress() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
 		return false
 	var variant := "night" if departure_clock >= AFTER_WORK_NIGHT_MINUTE else "normal"
@@ -2862,6 +3008,15 @@ func schedule_at(total_minutes: int) -> Dictionary:
 func day_number() -> int:
 	return int(schedule_at(elapsed()).day)
 
+func display_schedule() -> Dictionary:
+	# The workday ledger reserves tomorrow as soon as a shift overflows. The
+	# visible scene still takes place at the actual departure/overtime time.
+	if not active_after_work_walk.is_empty():
+		return {"day": int(active_after_work_walk.workday), "absolute_clock": int(active_after_work_walk.departure_clock)}
+	if pending_day_exit_workday > 0:
+		return {"day": pending_day_exit_workday, "absolute_clock": pending_day_exit_clock}
+	return schedule_at(elapsed())
+
 func day_text() -> String:
 	return "DAY %02d" % day_number()
 
@@ -2920,7 +3075,7 @@ func archive_and_reset_patient(patient_id: String) -> void:
 		visits.erase(id)
 	patient_referrals.erase(patient_id)
 	if not case_templates.is_empty():
-		var choices: Array = case_templates.keys()
+		var choices: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id)))
 		var previous_case: String = str(patient_cases.get(patient_id, ""))
 		if choices.size() > 1:
 			choices.erase(previous_case)
@@ -3257,6 +3412,10 @@ func surgery_reputation_profile(surgery_id: String) -> Dictionary:
 	var tier := Progression.reputation_tier(int(surgery.get("base_difficulty", 50)))
 	var profile: Dictionary = Progression.REPUTATION_PROFILES[tier].duplicate(true)
 	profile["tier"] = tier
+	var advanced_referral := str(surgery.get("case_pool", "")) == "advanced_referral" or str(surgery.get("catalog_visibility", "standard")) == "advanced_referral"
+	if not advanced_referral:
+		profile["award"] = Progression.ordinary_surgery_reputation(int(surgery.get("base_difficulty", 50)))
+		profile["per_case_cap"] = Progression.ORDINARY_REPUTATION_MAX
 	profile["base"] = int(profile.award)
 	return profile
 
@@ -3277,9 +3436,14 @@ func award_surgery_reputation(surgery_id: String, procedure_name: String = "", p
 	var deliberately_wrong: bool = preparation != null and bool(preparation.procedure_mismatch)
 	var award := 0 if deliberately_wrong else surgery_reputation_award_for(surgery_id)
 	if preparation != null and preparation.pilot_surgery() and preparation.surgery_success and not preparation.flags.has("quick_surgery") and award > 0:
-		var quality_multiplier := {"S": 1.20, "A": 1.10, "B": 1.00, "C": 0.75, "F": 0.00}.get(preparation.surgical_quality_grade(), 1.0)
-		award = floori(float(award) * float(quality_multiplier))
+		var quality_multiplier: float = float({"S": 1.20, "A": 1.10, "B": 1.00, "C": 0.75, "F": 0.00}.get(preparation.surgical_quality_grade(), 1.0))
+		award = floori(float(award) * quality_multiplier)
 	var profile := surgery_reputation_profile(surgery_id)
+	if not profile.is_empty():
+		# Apply caps after quality bonuses as well, including the last point below
+		# the cumulative reputation ceiling for this difficulty tier.
+		award = mini(award, int(profile.get("per_case_cap", award)))
+		award = mini(award, maxi(0, int(profile.cap) - int(player_attributes().get("reputation", 0))))
 	if award > 0:
 		add_player_attribute_effect("reputation", award, "surgery_reputation_%s_%s" % [surgery_id, completed_surgeries_total + 1], "%s · %s术式声望 +%s" % [procedure_name if not procedure_name.is_empty() else surgery_id, profile.label, award])
 	var penalty := 0
@@ -3294,7 +3458,12 @@ func award_surgery_reputation(surgery_id: String, procedure_name: String = "", p
 
 func procedure_unlocked(surgery_id: String) -> bool:
 	var definition := surgery_definition(surgery_id)
-	return not definition.is_empty() and str(definition.get("status", "ready")) != "placeholder" and unlocked_procedure_ids.has(surgery_id)
+	if definition.is_empty() or str(definition.get("status", "ready")) == "placeholder":
+		return false
+	var requirement_flag := procedure_unlock_requirement_flag(surgery_id)
+	if not requirement_flag.is_empty():
+		return story_flag(requirement_flag)
+	return unlocked_procedure_ids.has(surgery_id)
 
 func unlock_procedure(surgery_id: String) -> bool:
 	var definition := surgery_definition(surgery_id)
@@ -3597,7 +3766,7 @@ func surgery_xp_award_for(preparation: RefCounted) -> int:
 	var interaction_bonus := maxi(0, int(preparation.get("sensory_interaction_xp_bonus")))
 	var quality_multiplier := 1.0
 	if preparation.pilot_surgery() and preparation.surgery_success and not preparation.flags.has("quick_surgery"):
-		quality_multiplier = {"S": 1.15, "A": 1.08, "B": 1.00, "C": 0.85, "F": 0.50}.get(preparation.surgical_quality_grade(), 1.0)
+		quality_multiplier = float({"S": 1.15, "A": 1.08, "B": 1.00, "C": 0.85, "F": 0.50}.get(preparation.surgical_quality_grade(), 1.0))
 	var raw_award := maxi(0, roundi(float(surgery.duration_minutes) * efficiency * quality * indication * team_multiplier * quality_multiplier) + interaction_bonus)
 	return mini(raw_award, maxi(0, surgery_xp_for_level(ceiling) - surgery_xp))
 
@@ -3673,13 +3842,13 @@ func snapshot() -> Dictionary:
 	var progress := {}
 	var diagnosis_shock_visit_variants := {}
 	for id in visits:
-		progress[id] = visits[id].action_log.duplicate()
+		progress[id] = visits[id].snapshot_state()
 		var variant_id := str(visits[id].definition.get("first_surgery_diagnosis_shock_variant_id", ""))
 		if not variant_id.is_empty():
 			diagnosis_shock_visit_variants[id] = variant_id
 	var preparation_logs := {}
 	for id in preops:
-		preparation_logs[id] = preops[id].events.duplicate(true)
+		preparation_logs[id] = preops[id].snapshot_state()
 	var active_special_event_snapshot: Variant = null
 	if active_special_event != null:
 		active_special_event_snapshot = {
@@ -3692,8 +3861,9 @@ func snapshot() -> Dictionary:
 		active_adult_intimacy_snapshot = active_adult_intimacy.snapshot()
 		active_adult_intimacy_snapshot["return_mode"] = adult_intimacy_return_mode
 	return {"version": SAVE_VERSION, "content_version": CONTENT_VERSION,
-		"active_id": active_id, "progress": progress, "preops": preparation_logs,
-		"active_preop_id": active_preop_id, "active_mode": active_mode,
+		"save_format": STATE_DICTIONARY_SAVE_FORMAT,
+		"active_id": "", "progress": progress, "preops": preparation_logs,
+		"active_preop_id": "", "active_mode": "encounter",
 		"patient_cases": patient_cases.duplicate(true),
 		"patient_queue": patient_queue.duplicate(),
 		"patient_referrals": patient_referrals.duplicate(true),
@@ -3725,9 +3895,9 @@ func snapshot() -> Dictionary:
 		"discarded_overtime_minutes": discarded_overtime_minutes,
 		"story_time_advance_minutes": story_time_advance_minutes,
 		"relationship_state": relationships.duplicate(true),
-		"character_events": character_event_order.map(func(id: String): return {"id": id, "choices": character_events[id].choices.duplicate(), "completed_day": character_events[id].completed_day}),
+		"character_events": character_event_order.map(func(id: String): return {"id": id, "state": character_events[id].snapshot_state()}),
 		"active_character_event_id": active_character_event_id,
-		"micro_events": micro_event_order.map(func(id: String): return {"id": id, "choice_id": micro_events[id].choice_id, "trigger_day": micro_events[id].trigger_day, "opening_index": micro_events[id].opening_index, "response_index": micro_events[id].response_index}),
+		"micro_events": micro_event_order.map(func(id: String): return {"id": id, "state": micro_events[id].snapshot_state()}),
 		"active_micro_event_id": active_micro_event_id,
 		"story_flags": story_flags.duplicate(true),
 		"probation_complete": probation_complete,
@@ -3947,24 +4117,56 @@ func migrate_operative_preparation_events(source: Array) -> Array:
 	return migrated
 
 func restore(data: Variant) -> bool:
-	# Validate and replay in temporary objects; never partially mutate live progress.
+	# Restore into temporary objects; live progress is replaced only after all
+	# required global state has been validated. New saves restore state directly;
+	# only pre-state-dictionary saves use the legacy event-log compatibility path.
 	last_error = "存档格式不正确，当前进度未改变。"
+	restore_warnings.clear()
 	if not data is Dictionary:
 		return false
 	var version := int(data.get("version", -1))
 	if version < MIN_SUPPORTED_SAVE_VERSION or version > SAVE_VERSION or data.get("content_version") != CONTENT_VERSION:
 		last_error = "存档版本不兼容，当前进度未改变。"
 		return false
+	var save_format := str(data.get("save_format", "legacy_event_log_v1"))
+	var state_dictionary_save := save_format == STATE_DICTIONARY_SAVE_FORMAT
+	if save_format not in ["legacy_event_log_v1", STATE_DICTIONARY_SAVE_FORMAT]:
+		last_error = "存档格式不兼容，当前进度未改变。"
+		return false
+	if state_dictionary_save and version < SAVE_VERSION:
+		last_error = "存档状态字典版本不兼容，当前进度未改变。"
+		return false
+	var migration_seed := 1
+	var raw_migration_seed: Variant = data.get("campaign_seed", 1)
+	if (raw_migration_seed is int or raw_migration_seed is float) and int(raw_migration_seed) > 0:
+		migration_seed = int(raw_migration_seed)
+	var migration_rng := RandomNumberGenerator.new()
+	migration_rng.seed = migration_seed
+	var saved_story_flags_for_cases: Dictionary = data.get("story_flags", {}) if data.get("story_flags", {}) is Dictionary else {}
 	if not data.get("progress") is Dictionary or not data.get("active_id") is String:
 		return false
+	var restored_patient_queue: Array[String] = []
+	if version >= 9:
+		if not valid_patient_queue(data.get("patient_queue")) or not data.get("patient_referrals") is Dictionary:
+			last_error = "存档中的患者队列或转诊记录无效，当前进度未改变。"
+			return false
+		restored_patient_queue = complete_patient_queue(data.patient_queue, migration_rng)
+		if restored_patient_queue.size() != data.patient_queue.size():
+			restore_warnings.append("已按当前患者名单补齐队列与新增患者的病例分配。")
+	else:
+		for patient in patient_definitions:
+			restored_patient_queue.append(str(patient.id))
 	var restored_patient_cases: Dictionary = {}
 	if not case_templates.is_empty():
 		restored_patient_cases = data.get("patient_cases", {}) if version >= 7 else legacy_patient_cases()
 		if not valid_patient_cases(restored_patient_cases):
+			last_error = "存档中的患者病例分配无效，当前进度未改变。"
 			return false
+		if restored_patient_cases.size() < patient_definitions.size():
+			restore_warnings.append("已按当前患者名单补齐队列与新增患者的病例分配。")
+		restored_patient_cases = complete_patient_cases(restored_patient_cases, restored_patient_queue, migration_rng, saved_story_flags_for_cases)
 	elif version >= 7 and (not data.get("patient_cases") is Dictionary or not data.patient_cases.is_empty()):
 		return false
-	var restored_patient_queue: Array[String] = []
 	var restored_patient_referrals: Dictionary = {}
 	var restored_diagnosis_shock_state: Dictionary = {}
 	var restored_diagnosis_shock_visit_variants: Dictionary = {}
@@ -3985,7 +4187,7 @@ func restore(data: Variant) -> bool:
 	var restored_unlocked_procedure_ids: Array[String] = starting_procedure_ids()
 	var restored_archived_player_effects := zero_player_effects()
 	var restored_archived_player_effect_history: Array[Dictionary] = []
-	var restored_campaign_seed := 1
+	var restored_campaign_seed := migration_seed
 	var restored_crisis_enabled := true
 	var restored_sunday_history: Array[Dictionary] = []
 	var raw_character_progress_counters: Variant = data.get("character_progress_counters", {})
@@ -3993,8 +4195,11 @@ func restore(data: Variant) -> bool:
 		return false
 	for actor_id in raw_character_progress_counters:
 		var raw_counters: Variant = raw_character_progress_counters[actor_id]
-		if not actor_id is String or not raw_counters is Dictionary or (actor_id != "global" and staff_record(actor_id).is_empty()):
+		if not actor_id is String or not raw_counters is Dictionary:
 			return false
+		if actor_id != "global" and staff_record(actor_id).is_empty():
+			restore_warnings.append("忽略已不在当前医护名单中的角色进度：%s" % str(actor_id))
+			continue
 		var counters: Dictionary = {}
 		for counter_id in raw_counters:
 			var raw_count: Variant = raw_counters[counter_id]
@@ -4072,7 +4277,8 @@ func restore(data: Variant) -> bool:
 			if not actor_id is String or not data.staff_skill_levels[actor_id] is Dictionary:
 				return false
 			if not base_staff_skills.has(actor_id):
-				return false
+				restore_warnings.append("忽略已不在当前医护名单中的技能记录：%s" % str(actor_id))
+				continue
 			for skill_id in data.staff_skill_levels[actor_id]:
 				var raw_level: Variant = data.staff_skill_levels[actor_id][skill_id]
 				if not base_staff_skills[actor_id].has(skill_id) or not (raw_level is int or raw_level is float) or float(raw_level) != floorf(float(raw_level)) or int(raw_level) < int(base_staff_skills[actor_id][skill_id]) or int(raw_level) > 90:
@@ -4082,7 +4288,8 @@ func restore(data: Variant) -> bool:
 			if not actor_id is String or not data.staff_training_credits[actor_id] is Dictionary:
 				return false
 			if not base_staff_skills.has(actor_id):
-				return false
+				restore_warnings.append("忽略已不在当前医护名单中的培训记录：%s" % str(actor_id))
+				continue
 			for skill_id in data.staff_training_credits[actor_id]:
 				var raw_credits: Variant = data.staff_training_credits[actor_id][skill_id]
 				if not base_staff_skills[actor_id].has(skill_id) or not (raw_credits is int or raw_credits is float) or float(raw_credits) != floorf(float(raw_credits)) or int(raw_credits) < 0:
@@ -4114,7 +4321,15 @@ func restore(data: Variant) -> bool:
 				return false
 			if quality_record.has("quick_surgery_unlocked") and not quality_record.quick_surgery_unlocked is bool:
 				return false
-			restored_surgical_quality_records[surgery_id] = quality_record.duplicate(true)
+			var sanitized_quality_record := quality_record.duplicate(true)
+			# Patient experience is settlement-only flavor. Strip it from old
+			# summaries during migration so a later save cannot preserve it.
+			var last_summary: Variant = sanitized_quality_record.get("last_summary")
+			if last_summary is Dictionary:
+				last_summary.erase("patient_experience_grade")
+				last_summary.erase("patient_experience_score")
+				sanitized_quality_record["last_summary"] = last_summary
+			restored_surgical_quality_records[surgery_id] = sanitized_quality_record
 	elif version >= 28:
 		# Version 28 recorded the procedure ID with each positive training award.
 		# One record is enough to prove that the operation was completed before.
@@ -4123,10 +4338,6 @@ func restore(data: Variant) -> bool:
 			if not surgery_id.is_empty():
 				restored_completed_surgeries_by_procedure[surgery_id] = maxi(1, int(restored_completed_surgeries_by_procedure.get(surgery_id, 0)))
 	if version >= 9:
-		if not valid_patient_queue(data.get("patient_queue")) or not data.get("patient_referrals") is Dictionary:
-			return false
-		for patient_id in data.patient_queue:
-			restored_patient_queue.append(patient_id)
 		for patient_id in data.patient_referrals:
 			if not patient_id is String or not data.patient_referrals[patient_id] is String or patient_id not in restored_patient_queue:
 				return false
@@ -4139,9 +4350,6 @@ func restore(data: Variant) -> bool:
 			if not doctor_exists:
 				return false
 			restored_patient_referrals[patient_id] = doctor_id
-	else:
-		for patient in patient_definitions:
-			restored_patient_queue.append(patient.id)
 	if version >= 11:
 		if not valid_recent_patients(data.get("recent_patient_ids")) or not data.get("archived_player_effects") is Dictionary or not data.get("archived_player_effect_history") is Array:
 			return false
@@ -4188,13 +4396,11 @@ func restore(data: Variant) -> bool:
 	var restored_preop_definitions := preop_definitions_for(restored_patient_cases)
 	var rebuilt := {}
 	for id in data.progress:
-		if not restored_definitions.has(id) or not data.progress[id] is Array:
-			return false
-		var events: Array = data.progress[id]
-		if events.size() > 500:
-			return false
-		if version < 17:
-			events = migrate_full_undress_exam(events)
+		if not restored_definitions.has(id):
+			if state_dictionary_save:
+				return false
+			restore_warnings.append("跳过无法识别的病例状态：%s" % str(id))
+			continue
 		var restored_visit_definition: Dictionary = restored_definitions[id]
 		if restored_diagnosis_shock_visit_variants.has(id):
 			restored_visit_definition = restored_seen_shock_definitions[id]
@@ -4202,12 +4408,25 @@ func restore(data: Variant) -> bool:
 				return false
 			restored_definitions[id] = restored_visit_definition
 		var visit = Encounter.new(restored_visit_definition)
-		for event in events:
-			if not event is String or not visit.apply(event):
-				last_error = "存档中的病例进度无效，当前进度未改变。"
+		if state_dictionary_save:
+			if not data.progress[id] is Dictionary or not visit.restore_state(data.progress[id]):
+				last_error = "存档中的病例状态无效，当前进度未改变。"
 				return false
+		else:
+			if not data.progress[id] is Array or data.progress[id].size() > 500:
+				restore_warnings.append("跳过无法解析的病例日志：%s" % str(id))
+				continue
+			var events: Array = data.progress[id]
+			if version < 17:
+				events = migrate_full_undress_exam(events)
+			for event_index in events.size():
+				var event: Variant = events[event_index]
+				if not event is String or not visit.apply(event):
+					restore_warnings.append("跳过病例 %s 的第 %d 个旧节点" % [str(id), event_index + 1])
 		rebuilt[id] = visit
-	if data.active_id != "" and not rebuilt.has(data.active_id):
+	if not state_dictionary_save and data.active_id != "" and not rebuilt.has(data.active_id):
+		restore_warnings.append("旧存档的当前病例无法恢复，已返回医院导览。")
+	if state_dictionary_save and data.active_id != "" and not rebuilt.has(data.active_id):
 		return false
 	var rebuilt_preops := {}
 	var mode := "encounter"
@@ -4223,30 +4442,62 @@ func restore(data: Variant) -> bool:
 		if not data.get("preops") is Dictionary or not data.get("active_preop_id") is String or data.get("active_mode") not in valid_modes:
 			return false
 		for id in data.preops:
-			if not restored_preop_definitions.has(id) or not data.preops[id] is Array or data.preops[id].size() > 500:
-				return false
+			if not restored_preop_definitions.has(id):
+				if state_dictionary_save:
+					return false
+				restore_warnings.append("跳过无法识别的术前状态：%s" % str(id))
+				continue
 			var definition: Dictionary = restored_preop_definitions[id]
 			if not rebuilt.has(definition.encounter_id) or not rebuilt[definition.encounter_id].admitted:
-				last_error = "存档中的术前准备缺少住院记录。"
-				return false
-			var prep = Preop.new(definition, staff, surgery_definitions, patient_definitions, [], false, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, [], false, palpation_profile_definitions)
-			var preop_events: Array = migrate_legacy_surgery_events(data.preops[id])
-			if version < 12:
-				preop_events = migrate_surgery_flow_acknowledgements(preop_events)
-			if version < 14:
-				preop_events = migrate_surgery_patient_acknowledgements(preop_events)
-			if version < 15:
-				preop_events = migrate_operative_preparation_events(preop_events)
-			if version < 16:
-				preop_events = migrate_wrong_surgery_decision_retries(preop_events)
-			if version < 22 and preop_events.any(func(event: Variant): return event is Dictionary and event.get("kind") == "surgery_step"):
-				preop_events.push_front({"kind": "legacy_disable_temporary_conditions"})
-			for event in preop_events:
-				if not prep.apply(event):
-					last_error = "存档中的术前选择无效，当前进度未改变。"
+				if state_dictionary_save:
+					last_error = "存档中的术前准备缺少住院记录。"
 					return false
+				restore_warnings.append("跳过缺少住院记录的术前状态：%s" % str(id))
+				continue
+			var prep = Preop.new(definition, staff, surgery_definitions, patient_definitions, [], false, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, [], false, palpation_profile_definitions, awake_special_bark_definitions)
+			var preop_events: Array = []
+			if state_dictionary_save:
+				if not data.preops[id] is Dictionary or not prep.restore_state(data.preops[id]):
+					last_error = "存档中的术前状态无效，当前进度未改变。"
+					return false
+			else:
+				if not data.preops[id] is Array or data.preops[id].size() > 500:
+					restore_warnings.append("跳过无法解析的术前日志：%s" % str(id))
+					continue
+				prep.set_historical_replay_mode(true)
+				preop_events = migrate_legacy_surgery_events(data.preops[id])
+				if version < 12:
+					preop_events = migrate_surgery_flow_acknowledgements(preop_events)
+				if version < 14:
+					preop_events = migrate_surgery_patient_acknowledgements(preop_events)
+				if version < 15:
+					preop_events = migrate_operative_preparation_events(preop_events)
+				if version < 16:
+					preop_events = migrate_wrong_surgery_decision_retries(preop_events)
+				if version < 22 and preop_events.any(func(event: Variant): return event is Dictionary and event.get("kind") == "surgery_step"):
+					preop_events.push_front({"kind": "legacy_disable_temporary_conditions"})
+				var legacy_completion_marker := false
+				for event in preop_events:
+					if event is Dictionary and event.get("kind") == "action" and event.get("id") == "execute_confirmed_procedure":
+						legacy_completion_marker = true
+						break
+				for event_index in preop_events.size():
+					var event: Variant = preop_events[event_index]
+					if not prep.apply(event):
+						var event_label := "未知事件"
+						if event is Dictionary:
+							event_label = str(event.get("kind", "未知事件"))
+							var event_id := str(event.get("id", ""))
+							if not event_id.is_empty():
+								event_label += " / " + event_id
+						var replay_stage := str(prep.stage_id)
+						restore_warnings.append("跳过术前 %s 的第 %d 个旧节点（%s；阶段：%s）" % [str(id), event_index + 1, event_label, replay_stage])
+				if legacy_completion_marker and not prep.surgery_success:
+					prep.restore_legacy_completed_surgery()
+					restore_warnings.append("按旧存档的手术完成标记恢复术前状态：%s" % str(id))
+				prep.set_historical_replay_mode(false)
 			rebuilt_preops[id] = prep
-			if version < 28:
+			if not state_dictionary_save and version < 28:
 				for event in preop_events:
 					if event is Dictionary and event.get("kind") == "procedure":
 						var historical_procedure_id := str(event.get("id", ""))
@@ -4255,9 +4506,14 @@ func restore(data: Variant) -> bool:
 		mode = data.active_mode
 		current_preop = data.active_preop_id
 		if current_preop != "" and not rebuilt_preops.has(current_preop):
-			return false
+			if state_dictionary_save:
+				return false
+			restore_warnings.append("旧存档的当前术前流程无法恢复，已返回医院导览。")
+			current_preop = ""
 		if mode == "preop" and current_preop.is_empty():
-			return false
+			if state_dictionary_save:
+				return false
+			mode = "encounter"
 	var rebuilt_time_log: Array[Dictionary] = []
 	var rebuilt_discarded_overtime := 0
 	var rebuilt_story_time_advance := 0
@@ -4292,6 +4548,7 @@ func restore(data: Variant) -> bool:
 			# Keep that new relationship at its authored defaults instead of rejecting
 			# the whole save because it has no historical state for the new actor.
 			if saved == null:
+				restore_warnings.append("为新增医护初始化默认关系与技能：%s" % str(actor_id))
 				continue
 			if not saved is Dictionary:
 				return false
@@ -4303,72 +4560,99 @@ func restore(data: Variant) -> bool:
 		if not data.get("character_events") is Array or not data.get("active_character_event_id") is String:
 			return false
 		for record in data.character_events:
-			var expected_character_event_record_size := 3 if version >= 20 else 2
-			if not record is Dictionary or record.size() != expected_character_event_record_size or not record.get("id") is String or not record.get("choices") is Array:
-				return false
-			if not character_event_definitions.has(record.id) or rebuilt_character_events.has(record.id):
-				return false
-			var event = CharacterEvent.new(character_event_definitions[record.id])
-			for choice_id in record.choices:
-				if not choice_id is String or not event.apply(choice_id):
+			if not record is Dictionary or not record.get("id") is String or not character_event_definitions.has(record.id) or rebuilt_character_events.has(record.id):
+				if state_dictionary_save:
 					return false
-				apply_relationship_choice(rebuilt_relationships[event.definition.actor_id], event.last_choice)
-				var restored_route := str(event.last_choice.get("route", ""))
-				if restored_route in ["colleague", "romance"] and (restored_route != "romance" or int(event.definition.get("target_level", 1)) >= INTIMATE_ROUTE_LEVEL):
-					rebuilt_relationships[event.definition.actor_id].route = restored_route
-			if event.completed:
-				event.completed_day = int(record.get("completed_day", 1))
-				var restored_relation: Dictionary = rebuilt_relationships[event.definition.actor_id]
-				if not character_event_retry_pending(event.definition, restored_relation):
-					restored_relation.event_history.append(event.definition.id)
-				if event.definition.category == "introduction" and not character_event_retry_pending(event.definition, restored_relation):
-					restored_relation.met = true
-				elif event.definition.category in ["bond", "rank_up"] and not character_event_retry_pending(event.definition, restored_relation) and character_event_rank_up_allowed(event.definition, restored_relation):
-					var target_level := int(event.definition.target_level)
-					if target_level == int(restored_relation.level) + 1:
-						restored_relation.level = target_level
-						restored_relation.rank_history.append(event.definition.id)
-						var benefit_id := str(event.definition.get("benefit_id", ""))
-						if not benefit_id.is_empty():
-							restored_relation.unlocked_benefits.append(benefit_id)
+				restore_warnings.append("跳过无法解析的旧人物事件节点。")
+				continue
+			var event = CharacterEvent.new(character_event_definitions[record.id])
+			if state_dictionary_save:
+				if not record.get("state") is Dictionary or not event.restore_state(record.state):
+					return false
+			else:
+				var expected_character_event_record_size := 3 if version >= 20 else 2
+				if record.size() != expected_character_event_record_size or not record.get("choices") is Array:
+					restore_warnings.append("跳过无法解析的旧人物事件：%s" % str(record.id))
+					continue
+				for choice_id in record.choices:
+					if not choice_id is String or not event.apply(choice_id):
+						if state_dictionary_save:
+							return false
+						restore_warnings.append("跳过人物事件 %s 的一个旧选项" % str(record.id))
+						break
+					apply_relationship_choice(rebuilt_relationships[event.definition.actor_id], event.last_choice)
+					var restored_route := str(event.last_choice.get("route", ""))
+					if restored_route in ["colleague", "romance"] and (restored_route != "romance" or int(event.definition.get("target_level", 1)) >= INTIMATE_ROUTE_LEVEL):
+						rebuilt_relationships[event.definition.actor_id].route = restored_route
+				if event.completed:
+					event.completed_day = int(record.get("completed_day", 1))
+					var restored_relation: Dictionary = rebuilt_relationships[event.definition.actor_id]
+					if not character_event_retry_pending(event.definition, restored_relation):
+						restored_relation.event_history.append(event.definition.id)
+					if event.definition.category == "introduction" and not character_event_retry_pending(event.definition, restored_relation):
+						restored_relation.met = true
+					elif event.definition.category in ["bond", "rank_up"] and not character_event_retry_pending(event.definition, restored_relation) and character_event_rank_up_allowed(event.definition, restored_relation):
+						var target_level := int(event.definition.target_level)
+						if target_level == int(restored_relation.level) + 1:
+							restored_relation.level = target_level
+							restored_relation.rank_history.append(event.definition.id)
+							var benefit_id := str(event.definition.get("benefit_id", ""))
+							if not benefit_id.is_empty():
+								restored_relation.unlocked_benefits.append(benefit_id)
 			rebuilt_character_events[record.id] = event
 			rebuilt_character_event_order.append(record.id)
 		rebuilt_active_character_event = data.active_character_event_id
 		if not rebuilt_active_character_event.is_empty() and not rebuilt_character_events.has(rebuilt_active_character_event):
-			return false
+			if state_dictionary_save:
+				return false
+			restore_warnings.append("旧存档的当前人物事件无法恢复，已返回医院导览。")
+			rebuilt_active_character_event = ""
 	if version >= 10:
 		if not data.get("micro_events") is Array or not data.get("active_micro_event_id") is String or data.micro_events.size() > micro_event_definitions.size():
 			return false
 		for record in data.micro_events:
-			var expected_record_size := 5 if version >= 18 else 3
-			if not record is Dictionary or record.size() != expected_record_size or not record.get("id") is String or not record.get("choice_id") is String:
-				return false
-			if version >= 18:
-				var raw_opening_index: Variant = record.get("opening_index")
-				var raw_response_index: Variant = record.get("response_index")
-				if not (raw_opening_index is int or raw_opening_index is float) or float(raw_opening_index) != floorf(float(raw_opening_index)) or int(raw_opening_index) < 0:
+			if not record is Dictionary or not record.get("id") is String or not micro_event_definitions.has(record.id) or rebuilt_micro_events.has(record.id):
+				if state_dictionary_save:
 					return false
-				if not (raw_response_index is int or raw_response_index is float) or float(raw_response_index) != floorf(float(raw_response_index)) or int(raw_response_index) < 0:
+				restore_warnings.append("跳过无法解析的旧微事件节点。")
+				continue
+			var event = MicroEvent.new(micro_event_definitions[record.id], 1)
+			if state_dictionary_save:
+				if not record.get("state") is Dictionary or not event.restore_state(record.state):
 					return false
-			var raw_day: Variant = record.get("trigger_day")
-			if not (raw_day is int or raw_day is float) or float(raw_day) != floorf(float(raw_day)) or int(raw_day) < 1:
-				return false
-			if not micro_event_definitions.has(record.id) or rebuilt_micro_events.has(record.id):
-				return false
-			var event = MicroEvent.new(micro_event_definitions[record.id], int(raw_day))
-			event.opening_index = clampi(int(record.get("opening_index", 0)), 0, maxi(0, event.opening_lines().size() - 1))
-			if not record.choice_id.is_empty():
-				if not event.apply(record.choice_id):
-					return false
-				event.response_index = clampi(int(record.get("response_index", 0)), 0, maxi(0, event.response_lines().size() - 1))
-				apply_micro_event_choice(rebuilt_relationships[event.definition.actor_id], event.last_choice)
+			else:
+				var expected_record_size := 5 if version >= 18 else 3
+				if record.size() != expected_record_size or not record.get("choice_id") is String:
+					restore_warnings.append("跳过无法解析的旧微事件：%s" % str(record.id))
+					continue
+				var raw_opening_index: Variant = record.get("opening_index", 0)
+				var raw_response_index: Variant = record.get("response_index", 0)
+				var raw_day: Variant = record.get("trigger_day")
+				if not (raw_day is int or raw_day is float) or int(raw_day) < 1 or not (raw_opening_index is int or raw_opening_index is float) or int(raw_opening_index) < 0 or not (raw_response_index is int or raw_response_index is float) or int(raw_response_index) < 0:
+					restore_warnings.append("跳过微事件 %s 的无效旧状态" % str(record.id))
+					continue
+				event = MicroEvent.new(micro_event_definitions[record.id], int(raw_day))
+				event.opening_index = clampi(int(raw_opening_index), 0, maxi(0, event.opening_lines().size() - 1))
+				if not record.choice_id.is_empty():
+					if not event.apply(record.choice_id):
+						if state_dictionary_save:
+							return false
+						restore_warnings.append("跳过微事件 %s 的一个旧选项" % str(record.id))
+					else:
+						event.response_index = clampi(int(raw_response_index), 0, maxi(0, event.response_lines().size() - 1))
+						apply_micro_event_choice(rebuilt_relationships[event.definition.actor_id], event.last_choice)
 			rebuilt_micro_events[record.id] = event
 			rebuilt_micro_event_order.append(record.id)
 		rebuilt_active_micro_event = data.active_micro_event_id
 		if not rebuilt_active_micro_event.is_empty() and not rebuilt_micro_events.has(rebuilt_active_micro_event):
-			return false
+			if state_dictionary_save:
+				return false
+			restore_warnings.append("旧存档的当前微事件无法恢复，已返回医院导览。")
+			rebuilt_active_micro_event = ""
 		if mode == "micro_event" and rebuilt_active_micro_event.is_empty():
-			return false
+			if state_dictionary_save:
+				return false
+			mode = "encounter"
 	if version >= 25:
 		if not data.get("story_flags") is Dictionary or not data.get("special_event_completion_counts") is Dictionary or not data.get("special_event_completion_days") is Dictionary:
 			return false
@@ -4613,6 +4897,7 @@ func restore(data: Variant) -> bool:
 	micro_event_order = rebuilt_micro_event_order
 	active_micro_event_id = rebuilt_active_micro_event
 	story_flags = rebuilt_story_flags
+	synchronize_story_locked_procedures()
 	probation_complete = rebuilt_probation_complete
 	personal_nurse_system_unlocked = rebuilt_personal_nurse_system_unlocked
 	personal_nurse_id = rebuilt_personal_nurse_id
@@ -4632,9 +4917,19 @@ func restore(data: Variant) -> bool:
 	campaign_seed = restored_campaign_seed
 	intraoperative_crisis_enabled = restored_crisis_enabled
 	sunday_history = restored_sunday_history
-	active_preop_id = current_preop
-	active_mode = mode
-	active_id = data.active_id
+	# A save is a world-state checkpoint, not a resumable scene. Always return
+	# to the hospital directory (the UI will route Sunday to its Sunday menu).
+	active_preop_id = ""
+	active_mode = "encounter"
+	active_id = ""
+	active_character_event_id = ""
+	active_micro_event_id = ""
+	active_special_event_id = ""
+	active_special_event = null
+	active_adult_intimacy = null
+	adult_intimacy_return_mode = "encounter"
+	pending_encounter_day_transition = false
+	pending_surgery_day_transition = false
 	if personal_nurse_system_unlocked and not personal_nurse_candidates().has(personal_nurse_id):
 		personal_nurse_id = "nurse_haru" if personal_nurse_candidates().has("nurse_haru") else ""
 	for preparation in preops.values():
@@ -4657,16 +4952,15 @@ func open_preop(id: String) -> RefCounted:
 		return null
 	if not visits.has(definition.encounter_id) or not visits[definition.encounter_id].admitted:
 		return null
-	# Ordinary cases are themselves a procedure-unlock source. Once the
-	# diagnosis and surgical plan have led to admission, entering that patient's
-	# preoperative workflow must make the indicated operation selectable for the
-	# same case. Previously this happened only after a successful operation,
-	# leaving newly encountered procedures in an impossible locked loop.
+	# Ordinary cases are themselves a procedure-unlock source. Teaching-gated
+	# Aqua procedures are the exception: entering a case must not bypass their
+	# relationship milestone. They are also filtered out of the ordinary pool
+	# until the corresponding story flag is complete.
 	var indicated_procedure_id := str(definition.get("surgery_id", ""))
-	if not indicated_procedure_id.is_empty():
+	if not indicated_procedure_id.is_empty() and procedure_unlock_requirement_flag(indicated_procedure_id).is_empty():
 		unlock_procedure(indicated_procedure_id)
 	if not preops.has(id):
-		preops[id] = Preop.new(definition, staff, surgery_definitions, patient_definitions, known_staff_ids(), true, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, unlocked_procedure_ids, true, palpation_profile_definitions)
+		preops[id] = Preop.new(definition, staff, surgery_definitions, patient_definitions, known_staff_ids(), true, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, unlocked_procedure_ids, true, palpation_profile_definitions, awake_special_bark_definitions)
 	else:
 		preops[id].set_known_staff(known_staff_ids(), true)
 		preops[id].set_procedure_unlocks(unlocked_procedure_ids, true)

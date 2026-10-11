@@ -1,0 +1,120 @@
+{
+  "patient_id": "patient_kocho_shinobu",
+  "date": "2026-10-10",
+  "status": "complete_import_with_six_user_cgs_static_validation_passed",
+  "adult_age": 26,
+  "source_bundle": {
+    "original": "/Users/ningye/Downloads/patient_kocho_shinobu_complete_bundle_v1.json",
+    "archived_copy": "research/character_references/patient_kocho_shinobu/patient_bundle_v1.json",
+    "sha256": "5bfa8c24fb5bde758046dbb0c694a4282a1aa17e149e84853afb9bd77a73f1fb"
+  },
+  "patient_contract": {
+    "display_name": "蝴蝶忍",
+    "case_id": "case_abdomen",
+    "fallback": {
+      "case_id": "case_abdomen",
+      "surgery_id": "surgery_appendix"
+    },
+    "dialogue_profile": "enigmatic_self_possessed_detail",
+    "voice_style": "soft",
+    "voice_style_handling": "Preserved the source value and added it to the schema/runtime voice-style mapping.",
+    "cg_pools": "The examination CG and five ward-preparation CGs supplied in the subsequent user message are registered. Surgery CG pools and diagnosis reactions remain empty as in the source."
+  },
+  "reference_images": {
+    "directory": "research/character_references/patient_kocho_shinobu",
+    "seed_images": ["seed_01.png", "seed_02.png", "seed_03.png", "seed_04.png", "seed_05.png", "seed_06.png"],
+    "note": "User-supplied seed images retained as source references for generated standard portraits."
+  },
+  "registered_user_supplied_portrait": {
+    "source": "/Users/ningye/Downloads/00088-3580995863-Picsart-BackgroundRemover.png",
+    "archive": "research/character_references/patient_kocho_shinobu/full_undress_original.png",
+    "target": "assets/examinations/patient_kocho_shinobu/full_undress.png",
+    "key": "examination/shy",
+    "status": "copied_verbatim_and_registered",
+    "sha256": "b433f35ca0cceed1fc4fd7e8c1869306839cb0803073788b76c58ca4cf966869",
+    "cg_pool_id": "full_undress_basic_exam_patient_kocho_shinobu"
+  },
+  "standard_portrait_matrix": {
+    "count": 20,
+    "additional_user_supplied_portrait_count": 1,
+    "keys": {
+      "outpatient": ["neutral"],
+      "ward": ["neutral", "smile", "brave", "worried", "afraid", "crying"],
+      "operating_table": ["awake", "tense", "afraid", "anesthetized"],
+      "operating_table_lithotomy": ["awake", "tense", "afraid", "anesthetized"],
+      "intraoperative": ["tense", "pain", "near_collapse", "anesthetized"],
+      "splash": ["general_anesthesia"],
+      "examination": ["shy"]
+    },
+    "splash_path": "assets/events/anesthesia_v1/patient_kocho_shinobu/general.png",
+    "standard_portrait_roots": [
+      "assets/characters/patient_kocho_shinobu_v1/patient_kocho_shinobu/",
+      "assets/characters/intraoperative_portraits_v1/patient_kocho_shinobu/"
+    ],
+    "note": "Six subsequent user-supplied CGs are registered in the order specified by the user."
+  },
+  "registered_user_supplied_cgs": [
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-89816f73-ee3a-408d-a2ce-f60380c3cf84.png",
+      "archive": "research/character_references/patient_kocho_shinobu/user_cgs/examination_full_undress.png",
+      "target": "assets/examinations/patient_kocho_shinobu/full_undress_basic_exam.png",
+      "pool_id": "full_undress_basic_exam_patient_kocho_shinobu",
+      "node": "exam_undress_decision",
+      "size": [1584, 1056],
+      "sha256": "474bab38d5f31082e79247436b8858564c6fb1e162d529772eb2b6449b9ccbcd"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-f0c5b00a-f28e-4265-8da5-6649beecd3a6.png",
+      "archive": "research/character_references/patient_kocho_shinobu/user_cgs/preop_enema.png",
+      "target": "assets/events/ward_preparation_v1/patient_kocho_shinobu/enema.png",
+      "pool_id": "ward_enema_patient_kocho_shinobu",
+      "node": "ward_enema",
+      "size": [1584, 1056],
+      "sha256": "fbe262be00b0093bb23254c702a4b3d841952c61c933b3ca4819fe683091debf"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-931c039d-80b2-4816-9663-c7ec475130cd.png",
+      "archive": "research/character_references/patient_kocho_shinobu/user_cgs/surgical_cap.png",
+      "target": "assets/events/ward_preparation_v1/patient_kocho_shinobu/surgical_cap.png",
+      "pool_id": "ward_surgical_cap_patient_kocho_shinobu",
+      "node": "ward_surgical_cap",
+      "size": [1584, 1056],
+      "sha256": "d2b5a4659f7052d3a37d4838d40677984d62522a91bc287ebcd8f95cf05ad905"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-92fe4b0c-5ba1-4579-9f3f-4aee91577aa4.png",
+      "archive": "research/character_references/patient_kocho_shinobu/user_cgs/sterile_draping.png",
+      "target": "assets/events/ward_preparation_v1/patient_kocho_shinobu/sterile_draping.png",
+      "pool_id": "sterile_draping_patient_kocho_shinobu",
+      "node": "ack_disinfection",
+      "size": [1584, 1056],
+      "sha256": "02a52fd33a975cd0dee751e7944baf801d20a815dc777691d61dd95984604b42"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-b47151de-76a5-493b-8f30-99a66467d2a7.png",
+      "archive": "research/character_references/patient_kocho_shinobu/user_cgs/urinary_catheterization.png",
+      "target": "assets/events/ward_preparation_v1/patient_kocho_shinobu/urinary_catheterization.png",
+      "pool_id": "urinary_catheterization_patient_kocho_shinobu",
+      "node": "urinary_catheterization",
+      "size": [1584, 1056],
+      "sha256": "909e4bc16dd673ec42e42bfc34bdf1fbac88745bf0ebf91ba886e820a844dec2"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-6ab8745c-5da8-43a9-80b8-0f741e50b496.png",
+      "archive": "research/character_references/patient_kocho_shinobu/user_cgs/incision.png",
+      "target": "assets/events/ward_preparation_v1/patient_kocho_shinobu/incision.png",
+      "pool_id": "incision_patient_kocho_shinobu",
+      "node": "incise_epidural, incise_local, incise_none",
+      "size": [1584, 1056],
+      "sha256": "83e6c8b2d34336e794a1f81b899ff33b1edeb6a7ef4ddca68418ba57f865306d"
+    }
+  ],
+  "validation": {
+    "patient_bundle_localization_test": "passed: 1895 English entries; 0 failures",
+    "localization_audit": "passed: 11486 translations; English 11320 translations, authored coverage 10546/13046; UI 674/674; 0 hardcoded Chinese strings",
+    "validate_data": "passed: 606 records, schemas, references, roles, dialogue and encounter graphs",
+    "narrative_localization_test": "passed: 6899 checks; 0 failures",
+    "portrait_files": "passed: all 21 portrait keys resolve to existing files",
+    "godot_runtime": "not_run: no Godot executable available in the environment"
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "patient_id": "patient_aerith",
+  "status": "draft_not_registered_missing_authored_text",
+  "display_name": "爱丽丝·盖恩斯巴勒",
+  "source_profile": "research/character_references/patient_aerith/user_profile_v1.txt",
+  "source_profile_sha256": "d5572ec9b876fb97cf34fc01a002a6334a72b068fc10eeaf5d1ff5e012813a54",
+  "dialogue_source": "research/imports/patient_aerith_dialogue_source.json",
+  "english_dialogue": "research/imports/patient_aerith_dialogue_en.json",
+  "portrait_manifest": "research/imports/patient_aerith_portraits.json",
+  "bundle_draft": {
+    "schema_version": 1,
+    "patient": {
+      "id": "patient_aerith",
+      "name": "爱丽丝·盖恩斯巴勒",
+      "age": 22,
+      "medical_background": false,
+      "has_prior_surgery": false,
+      "case_id": "case_abdomen",
+      "visuals": {
+        "state": "outpatient",
+        "portraits": {
+          "outpatient/neutral": "assets/characters/patient_aerith_v1/patient_aerith/outpatient/neutral.png",
+          "operating_table/awake": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/awake.png",
+          "ward/neutral": "assets/characters/patient_aerith_v1/patient_aerith/ward/neutral.png",
+          "operating_table_lithotomy/awake": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/awake.png",
+          "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_aerith/general.png",
+          "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_aerith/tense.png",
+          "ward/smile": "assets/characters/patient_aerith_v1/patient_aerith/ward/smile.png",
+          "ward/brave": "assets/characters/patient_aerith_v1/patient_aerith/ward/brave.png",
+          "ward/worried": "assets/characters/patient_aerith_v1/patient_aerith/ward/worried.png",
+          "ward/afraid": "assets/characters/patient_aerith_v1/patient_aerith/ward/afraid.png",
+          "ward/crying": "assets/characters/patient_aerith_v1/patient_aerith/ward/crying.png",
+          "operating_table/afraid": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/afraid.png",
+          "operating_table/tense": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/tense.png",
+          "operating_table/anesthetized": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/anesthetized.png",
+          "operating_table_lithotomy/tense": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/tense.png",
+          "operating_table_lithotomy/afraid": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/afraid.png",
+          "operating_table_lithotomy/anesthetized": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/anesthetized.png",
+          "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_aerith/pain.png",
+          "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_aerith/near_collapse.png",
+          "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_aerith/anesthetized.png",
+          "examination/shy": "assets/examinations/patient_aerith/full_undress.png"
+        }
+      },
+      "admission_status": "outpatient",
+      "voice_style": "bold",
+      "personality": {
+        "primary": "playful_optimist",
+        "secondary": "independent_defiant",
+        "stress_response": "asks_for_details"
+      },
+      "dialogue_profile": "playful_defiant_detail",
+      "traits": {
+        "baseline_anxiety": 54,
+        "pain_sensitivity": 68,
+        "privacy_sensitivity": 43,
+        "trust_baseline": 40,
+        "control_need": 76,
+        "expressiveness": 85,
+        "health_literacy": 55,
+        "compliance_tendency": 62
+      },
+      "fear_profile": {
+        "pain_fear": 72,
+        "procedure_fear": 58,
+        "diagnosis_fear": 48,
+        "loss_control_fear": 84
+      },
+      "reaction_lines": {
+        "hospitalization_response": "「好吧，住院就住院。不过医生，这次记得叫我的名字哦。我叫爱丽丝，可不是什么编号。」",
+        "procedure_mismatch": "「等一下！这和刚才说好的不一样吧？医生，这里又不是宝条的实验室。你得先解释清楚呀。」",
+        "last_reassure": "「我知道你不是宝条啦……只是这么多白大褂围着我，偶尔还是会想起以前的事呢。」",
+        "choose_none": "「不麻醉？医生，你是想给我治病，还是想看看我能忍到什么时候？这种研究，我以前可见得够多了哦。」",
+        "insist_without_anesthesia": "「啊！医生，真的好疼！不要只盯着我的反应……我会说话呀！听我说话……！」",
+        "ongoing_silent": "「医生……？你们突然不说话，我就会想起以前在研究室的日子。能不能跟我说句话……？」",
+        "closure_reassure": "「真的结束啦……太好了。这次我不是谁的实验结果，只是一个普通病人，对吧？」"
+      },
+      "reaction_variants": {
+        "ward_enema_unnecessary": [
+          "「欸？不需要也要做？医生，你这做法有点像某位神罗研究员哦……我可一点都不怀念他。」",
+          "「为了多观察一下，就连灌肠也要做吗？……开玩笑的。不过你最好告诉我真正的理由哦。」"
+        ],
+        "ward_surgical_cap": [
+          "「连蝴蝶结都得摘下来呀……好吧。不过你们等一下可别只叫我『患者』哦，我叫爱丽丝。」",
+          "「头发全部藏进去……唔，有点像以前在研究所的时候呢。不过这次应该只是普通手术，对吧？」"
+        ],
+        "operative_positioning_none": [
+          "「等一下……手臂也要固定住？我知道这是手术……可是听见『别动』，我还是会有点害怕。」",
+          "「医生，你知道吗？以前最讨厌的，就是有人把我摆好以后，只管记录我的反应……所以至少跟我说说话，好不好？」"
+        ],
+        "urinary_catheterization_none": [
+          "「等、等等！在我完全清醒的时候放进去？你们至少先告诉我呀……别只叫我『不要动』！」",
+          "「啊……！医生，我知道这是必要的……可是好难受……你有听见我说话吧？」"
+        ]
+      }
+    },
+    "fallback": {
+      "case_id": "case_abdomen",
+      "surgery_id": "surgery_appendix"
+    },
+    "encounter": {
+      "title": "爱丽丝·盖恩斯巴勒的病历",
+      "full_undress": {
+        "visual_pool_id": "full_undress_basic_exam_patient_aerith"
+      }
+    },
+    "preop": {
+      "title": "爱丽丝·盖恩斯巴勒 · 术前准备",
+      "initial_anxiety": 3,
+      "initial_interaction": {
+        "fear": 40,
+        "pain": 0,
+        "dignity": 100,
+        "cooperation": 75
+      },
+      "stage_prompts": {},
+      "incision_responses": {}
+    },
+    "exclusive_cg_pools": {
+      "examination": [
+        {
+          "id": "full_undress_basic_exam_patient_aerith",
+          "label": "爱丽丝·盖恩斯巴勒 · 诊室脱衣检查",
+          "test_ids": [],
+          "surgery_ids": [],
+          "paths": [
+            "assets/examinations/patient_aerith/full_undress_basic_exam.png"
+          ],
+          "caption": "爱丽丝·盖恩斯巴勒 · 诊室脱衣检查"
+        }
+      ],
+      "ward_preparation": [
+        {
+          "id": "ward_enema_patient_aerith",
+          "label": "爱丽丝·盖恩斯巴勒 · 术前灌肠",
+          "priority": 100,
+          "presentation": "fullscreen",
+          "action_ids": [
+            "ward_enema",
+            "ward_enema_unnecessary"
+          ],
+          "patient_ids": [
+            "patient_aerith"
+          ],
+          "paths": [
+            "assets/events/ward_preparation_v1/patient_aerith/enema.png"
+          ],
+          "caption": "爱丽丝·盖恩斯巴勒 · 术前灌肠"
+        },
+        {
+          "id": "ward_skin_prep_patient_aerith",
+          "label": "爱丽丝·盖恩斯巴勒 · 术前剃毛",
+          "priority": 100,
+          "presentation": "fullscreen",
+          "action_ids": [
+            "ward_skin_prep",
+            "ward_skin_prep_unnecessary"
+          ],
+          "patient_ids": [
+            "patient_aerith"
+          ],
+          "paths": [
+            "assets/events/ward_preparation_v1/patient_aerith/skin_prep.png"
+          ],
+          "caption": "爱丽丝·盖恩斯巴勒 · 术前剃毛"
+        },
+        {
+          "id": "sterile_draping_patient_aerith",
+          "label": "爱丽丝·盖恩斯巴勒 · 铺巾",
+          "priority": 100,
+          "presentation": "fullscreen",
+          "action_ids": [
+            "ack_disinfection"
+          ],
+          "patient_ids": [
+            "patient_aerith"
+          ],
+          "procedure_groups": [
+            "general_abdominal",
+            "female_pelvic"
+          ],
+          "paths": [
+            "assets/events/ward_preparation_v1/patient_aerith/sterile_draping.png"
+          ],
+          "caption": "爱丽丝·盖恩斯巴勒 · 铺巾"
+        },
+        {
+          "id": "incision_patient_aerith",
+          "label": "爱丽丝·盖恩斯巴勒 · 下刀瞬间",
+          "priority": 100,
+          "presentation": "fullscreen",
+          "action_ids": [
+            "incise_epidural",
+            "incise_local",
+            "incise_none"
+          ],
+          "patient_ids": [
+            "patient_aerith"
+          ],
+          "procedure_groups": [
+            "general_abdominal",
+            "female_pelvic"
+          ],
+          "paths": [
+            "assets/events/ward_preparation_v1/patient_aerith/incision.png"
+          ],
+          "caption": "爱丽丝·盖恩斯巴勒 · 下刀瞬间"
+        }
+      ],
+      "surgery": []
+    },
+    "diagnosis_reactions": []
+  },
+  "pending_fields": [
+    "patient.outpatient_lines (complaint, primary, secondary, background)",
+    "encounter.full_undress.prompt",
+    "encounter.full_undress.responses (abandon, authoritative, gentle, threaten)",
+    "preop.stage_prompts (25 template prompts are empty)"
+  ],
+  "notes": [
+    "User-provided Chinese dialogue copied verbatim including punctuation; no extra narration or personal callbacks added.",
+    "Numeric fields reuse patient_ann baseline provisionally. No new stat modifier, pain immunity, mechanic or special surgery history was introduced.",
+    "case_abdomen/surgery_appendix are fallback only; no fixed diagnosis, procedure, anesthesia, relationship or story gate.",
+    "Portraits passed static image QA; no Godot UI/texture loading test performed.",
+    "Five supplied fullscreen CGs are bound in draft exclusive_cg_pools (one examination, four action pools). Examination portrait remains separate.",
+    "Not added to data/patients/index.json; awaiting missing text or explicit permission to author it."
+  ],
+  "cg_import": "research/imports/patient_aerith_cg_2026-10-10.json"
+}

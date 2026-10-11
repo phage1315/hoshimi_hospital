@@ -46,8 +46,8 @@ func save_intraoperative_crisis_preference(enabled: bool) -> bool:
 func preferred_operative_field_hud_enabled() -> bool:
 	var config: ConfigFile = ConfigFile.new()
 	if config.load(SETTINGS_PATH) != OK:
-		return false
-	return bool(config.get_value("gameplay", "operative_field_hud_enabled", false))
+		return true
+	return bool(config.get_value("gameplay", "operative_field_hud_enabled", true))
 
 func save_operative_field_hud_preference(enabled: bool) -> bool:
 	var config: ConfigFile = ConfigFile.new()
@@ -95,9 +95,79 @@ func text(key: String, fallback: String, replacements: Dictionary = {}) -> Strin
 	var result: String = fallback
 	if locale != DEFAULT_LOCALE and strings.has(key) and not str(strings[key]).is_empty():
 		result = str(strings[key])
+	elif locale == "en":
+		# A few large authored collections were added before their English locale
+		# entries were completed.  Keep the English build readable while those
+		# entries are being filled in; this is deliberately limited to known
+		# semantic fields and never changes the Chinese source locale.
+		result = english_runtime_fallback(key, fallback)
 	for name in replacements:
 		result = result.replace("{" + str(name) + "}", str(replacements[name]))
 	return result
+
+func english_runtime_fallback(key: String, fallback: String) -> String:
+	if key.ends_with(".actor_alias"):
+		return {
+			"手术室护士": "OR Nurse",
+			"年轻护士": "Young Nurse",
+			"护士": "Nurse",
+			"刷手池边的年轻女性": "Young Woman at the Scrub Sink",
+			"手术室护士长": "OR Nurse Supervisor",
+		}.get(fallback, "Staff")
+	if key == "collections.staff.doc_minato.name":
+		return "Minato Haruka"
+	if key == "collections.staff.doc_minato.personality":
+		return "Quiet, observant, and difficult to read"
+	if key == "collections.staff.doc_minato.specialty":
+		return "Anesthesiology"
+	if key == "collections.backgrounds.minato_riverside_walk.label":
+		return "Minato Riverside Walk"
+	if key.begins_with("collections.surgeries."):
+		return english_surgery_fallback(key, fallback)
+	if key.begins_with("collections.case_templates."):
+		return english_case_fallback(key, fallback)
+	return fallback
+
+func english_case_fallback(key: String, fallback: String) -> String:
+	var parts := key.split(".")
+	var field := str(parts[parts.size() - 1])
+	var case_id := str(parts[2]) if parts.size() > 2 else "case"
+	var titles := {
+		"template_vaginal_hysterectomy": "Severe Uterine Prolapse (Suitable for Vaginal Hysterectomy)",
+		"template_distal_pancreatectomy": "Solid Pseudopapillary Tumor of the Pancreatic Tail",
+		"template_partial_nephrectomy": "Small Localized Renal Tumor (Nephron-Sparing Resection)",
+		"template_adrenalectomy": "Unilateral Aldosterone-Secreting Adrenal Adenoma",
+		"template_left_hemicolectomy": "Descending Colon Adenocarcinoma",
+		"template_low_anterior_resection": "Mid-to-Low Rectal Cancer (Sphincter-Preserving)",
+	}
+	if field == "title":
+		return titles.get(case_id, "Patient Case")
+	if field == "diagnosis":
+		return "The documented diagnosis for this surgical case."
+	if field == "presenting_complaint":
+		return "The patient presents with symptoms requiring the planned operation."
+	if field == "intake_notes":
+		return "The case history and operative indication are recorded for review."
+	if field == "label":
+		return "Diagnostic test"
+	if field == "result":
+		return "Findings are consistent with the documented diagnosis."
+	return fallback
+
+func english_surgery_fallback(_key: String, fallback: String) -> String:
+	# Preserve the source when a translation is absent. Never turn distinct
+	# surgical choices into the same generic sentence; the surgical locale
+	# coverage test makes missing English a release failure.
+	return fallback
+
+func identifier_title(identifier: String) -> String:
+	var words := identifier.trim_prefix("surgery_").replace("_", " ").split(" ")
+	var result := ""
+	for word in words:
+		if word.is_empty():
+			continue
+		result += (" " if not result.is_empty() else "") + word.capitalize()
+	return result if not result.is_empty() else "Surgical Stage"
 
 func localize_tree(value: Variant, key: String) -> Variant:
 	if value is Dictionary:
@@ -115,5 +185,12 @@ func localize_tree(value: Variant, key: String) -> Variant:
 			localized.append(localize_tree(entry, key + "." + identity))
 		return localized
 	if value is String:
+		# Role rewards contain routing IDs and an asset path as well as prose.
+		# Only their authored display fields may pass through translation, even
+		# if a locale file accidentally contains a key for a technical field.
+		if key.begins_with("collections.staff_role_cg_rewards."):
+			var field := key.get_slice(".", key.get_slice_count(".") - 1)
+			if field not in ["title", "caption"]:
+				return value
 		return text(key, value)
 	return value

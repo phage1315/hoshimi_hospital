@@ -4,7 +4,7 @@
     "title": "从今天起，独立看诊",
     "category": "career_milestone",
     "duration_days": 1,
-    "consumes_full_day": true,
+    "consumes_full_day": false,
     "repeatable": false,
     "developer_only": false,
     "auto_schedule": true,
@@ -17,7 +17,7 @@
       }
     ],
     "required_characters": ["PLAYER"],
-    "prerequisite_events": [],
+    "prerequisite_events": ["intro_doc_asuka_director_office"],
     "event_chain": ["probation_completion_personal_nurse_main"],
     "completion_flags": ["probation_complete", "personal_nurse_system_unlocked"],
     "completion_effects": {"personal_nurse_id": "nurse_haru"},

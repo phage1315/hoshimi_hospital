@@ -45,6 +45,8 @@ const LOWER_ABDOMINAL_PREP_SURGERIES := [
 	"surgery_open_right_hemicolectomy",
 	"surgery_open_sigmoid_colectomy",
 	"surgery_open_abdominoperineal_resection",
+	"surgery_open_left_hemicolectomy",
+	"surgery_open_low_anterior_resection",
 	"surgery_open_whipple",
 	"surgery_open_major_liver_resection",
 	"surgery_open_splenectomy",
@@ -53,6 +55,10 @@ const LOWER_ABDOMINAL_PREP_SURGERIES := [
 	"surgery_hysterectomy",
 	"surgery_open_radical_cystectomy",
 	"surgery_open_nephrectomy",
+	"surgery_open_partial_nephrectomy",
+	"surgery_open_adrenalectomy",
+	"surgery_vaginal_hysterectomy",
+	"surgery_open_distal_pancreatectomy",
 	"surgery_open_abdominal_aortic_aneurysm",
 ]
 var definition: Dictionary
@@ -66,8 +72,10 @@ var enforce_procedure_unlocks := false
 var surgery_team_dialogue_profiles: Array = []
 var patient_interactions: Array = []
 var temporary_condition_definitions: Dictionary = {}
+var awake_special_barks: Array = []
 var stage_id: String
 var events: Array = []
+var event_count := 0
 var team: Dictionary = {}
 var selected_preparations: Array[String] = []
 var flags: Array[String] = []
@@ -116,7 +124,10 @@ var awaiting_patient_choice := false
 var awaiting_patient_acknowledgement := false
 var active_patient_interaction: Dictionary = {}
 var patient_interaction_history: Array[String] = []
+var awake_special_bark_history: Array[String] = []
 var patient_event_count := 0
+var patient_regular_interaction_count := 0
+var historical_replay_mode := false
 var active_temporary_conditions: Dictionary = {}
 var active_condition_id := ""
 var temporary_conditions_enabled := true
@@ -150,8 +161,129 @@ var graphic_preop_explainer_id := "doc_aoi"
 var graphic_preop_nodes: Array[Dictionary] = []
 var graphic_preop_node_index := -1
 
+func snapshot_state() -> Dictionary:
+	# New saves store durable state directly. `events` remains an in-memory
+	# runtime history only and is intentionally not serialized.
+	var fields := [
+		"stage_id", "event_count", "team", "selected_preparations", "flags", "done",
+		"minutes", "anxiety", "fear", "pain", "dignity", "cooperation_base", "anesthesia",
+		"procedure_id", "procedure_name", "procedure_minutes", "procedure_extra_minutes",
+		"surgery_success", "surgery_aborted", "procedure_mismatch", "procedure_step_index",
+		"procedure_step_history", "procedure_corrections", "procedure_state", "bleeding",
+		"minimum_stability_seen", "surgical_complications", "surgical_technical_flags",
+		"surgery_rng_seed", "case_variant_id", "resolved_random_choices", "conditional_stage_resolution",
+		"patient_event_consumed_this_stage", "last_intrusion_stage_index", "cooperation_disruption_count",
+		"patient_intrusion_history", "lowest_dignity_seen", "lowest_cooperation_seen", "peak_fear_seen",
+		"peak_pain_seen", "dignity_intrusion_count", "dignity_break_count", "patient_caused_complication_count",
+		"awaiting_flow_acknowledgement", "pending_flow_stage_id", "pending_flow_retry",
+		"awaiting_patient_choice", "awaiting_patient_acknowledgement", "active_patient_interaction",
+		"patient_interaction_history", "patient_event_count", "patient_regular_interaction_count",
+		"awake_special_bark_history",
+		"active_temporary_conditions", "active_condition_id", "temporary_conditions_enabled",
+		"operative_background_id", "patient_name", "patient_personality", "patient_traits",
+		"patient_reactions", "patient_reaction_variants", "feedback", "feedback_speaker",
+		"last_staff_id", "last_staff_role", "player_effects", "player_effect_history",
+		"presence_preop_raw", "presence_or_raw", "or_table_palpation_counts", "or_table_needle_counts",
+		"anesthesia_test_counts", "sensory_interaction_xp_bonus", "or_table_palpation_cg_id",
+		"palpation_findings_confirmed", "last_palpation_confirmation", "active_crisis",
+		"awaiting_crisis_acknowledgement", "crisis_history", "graphic_preop_explainer_id",
+		"graphic_preop_nodes", "graphic_preop_node_index"
+	]
+	var result := {}
+	for field in fields:
+		var value: Variant = get(field)
+		if value is Dictionary or value is Array:
+			result[field] = value.duplicate(true)
+		else:
+			result[field] = value
+	return result
+
+func restore_state(state: Dictionary) -> bool:
+	var saved_stage := str(state.get("stage_id", ""))
+	if saved_stage.is_empty() or not stages.has(saved_stage):
+		return false
+	var fields := [
+		"stage_id", "event_count", "team", "selected_preparations", "flags", "done",
+		"minutes", "anxiety", "fear", "pain", "dignity", "cooperation_base", "anesthesia",
+		"procedure_id", "procedure_name", "procedure_minutes", "procedure_extra_minutes",
+		"surgery_success", "surgery_aborted", "procedure_mismatch", "procedure_step_index",
+		"procedure_step_history", "procedure_corrections", "procedure_state", "bleeding",
+		"minimum_stability_seen", "surgical_complications", "surgical_technical_flags",
+		"surgery_rng_seed", "case_variant_id", "resolved_random_choices", "conditional_stage_resolution",
+		"patient_event_consumed_this_stage", "last_intrusion_stage_index", "cooperation_disruption_count",
+		"patient_intrusion_history", "lowest_dignity_seen", "lowest_cooperation_seen", "peak_fear_seen",
+		"peak_pain_seen", "dignity_intrusion_count", "dignity_break_count", "patient_caused_complication_count",
+		"awaiting_flow_acknowledgement", "pending_flow_stage_id", "pending_flow_retry",
+		"awaiting_patient_choice", "awaiting_patient_acknowledgement", "active_patient_interaction",
+		"patient_interaction_history", "patient_event_count", "patient_regular_interaction_count",
+		"awake_special_bark_history",
+		"active_temporary_conditions", "active_condition_id", "temporary_conditions_enabled",
+		"operative_background_id", "patient_name", "patient_personality", "patient_traits",
+		"patient_reactions", "patient_reaction_variants", "feedback", "feedback_speaker",
+		"last_staff_id", "last_staff_role", "player_effects", "player_effect_history",
+		"presence_preop_raw", "presence_or_raw", "or_table_palpation_counts", "or_table_needle_counts",
+		"anesthesia_test_counts", "sensory_interaction_xp_bonus", "or_table_palpation_cg_id",
+		"palpation_findings_confirmed", "last_palpation_confirmation", "active_crisis",
+		"awaiting_crisis_acknowledgement", "crisis_history", "graphic_preop_explainer_id",
+		"graphic_preop_nodes", "graphic_preop_node_index"
+	]
+	for field in fields:
+		if state.has(field):
+			var value: Variant = state[field]
+			if value is Dictionary:
+				set(field, value.duplicate(true))
+			elif value is Array:
+				match field:
+					"procedure_step_history", "surgical_complications", "player_effect_history", "crisis_history", "graphic_preop_nodes":
+						var dictionary_entries: Array[Dictionary] = []
+						for entry in value:
+							if not entry is Dictionary:
+								return false
+							dictionary_entries.append(entry.duplicate(true))
+						set(field, dictionary_entries)
+					"selected_preparations", "flags", "done", "surgical_technical_flags", "patient_intrusion_history", "patient_interaction_history", "awake_special_bark_history", "palpation_findings_confirmed":
+						var string_entries: Array[String] = []
+						for entry in value:
+							if not entry is String:
+								return false
+							string_entries.append(entry)
+						set(field, string_entries)
+					_:
+						set(field, value.duplicate(true))
+			else:
+				set(field, value)
+	# Keep the old event array only as a live-session buffer. It is never needed
+	# to restore the state and must not turn the new save format back into replay.
+	events.clear()
+	last_error = ""
+	historical_replay_mode = false
+	return true
+
+func restore_legacy_completed_surgery() -> void:
+	# A legacy event-log save may contain the terminal action even when one of the
+	# preceding flow nodes no longer replays after a content update. Preserve the
+	# durable fact that the operation finished instead of leaving the patient
+	# incorrectly admitted after loading.
+	if surgery_success or surgery_aborted:
+		return
+	surgery_success = true
+	if not flags.has("surgery_success"):
+		flags.append("surgery_success")
+	if not flags.has("postoperative_wrap_up_complete"):
+		flags.append("postoperative_wrap_up_complete")
+	if not procedure_state.is_empty():
+		procedure_state["progress"] = 100
+	stage_id = str(definition.get("completion", stage_id))
+	feedback = surgery_completion_text()
+	feedback_speaker = "narrator"
+
 func english_mode() -> bool:
 	return str(definition.get("_locale", "zh_CN")) == "en" if definition != null else false
+
+func set_historical_replay_mode(enabled: bool) -> void:
+	# Save restoration replays the exact events already written to the save.
+	# Current live-flow pacing rules must not invalidate that historical log.
+	historical_replay_mode = enabled
 
 func runtime_english(value: Variant) -> Variant:
 	if not english_mode():
@@ -212,13 +344,17 @@ func runtime_english(value: Variant) -> Variant:
 		"「等等，这项灌肠在准备清单里。跳过会增加污染和感染风险……真的要省略吗？」":"“This is on the checklist. Omitting it raises contamination and infection risk—are you sure?”", "「我反对跳过。清单要求完成灌肠，省略会增加污染与术后感染风险。」":"“I advise against omission. The checklist requires it, and skipping it increases infection risk.”", "「医生，这项不能随便省呀。跳过灌肠会增加污染和感染风险，请再确认一次。」":"“Doctor, this should not be omitted casually. Please confirm once more.”",
 		"「这次要准备下腹和会阴术野。跳过会影响后面的消毒与铺单……还是按清单做吧？」":"“This field requires preparation. Skipping it will affect antisepsis and draping; we should follow the checklist.”", "「下腹及会阴备皮属于本次术野准备。我不建议跳过。」":"“This preparation is part of the operative field. I do not recommend skipping it.”", "「医生，这次真的需要备皮。省掉以后消毒和铺单都会受影响呀。」":"“Doctor, this preparation is required. Omitting it will affect antisepsis and draping.”",
 		"「好，接下来交给我。我会慢慢推她去手术室。」":"“All right, I will take over and bring her slowly to the operating room.”", "「准备项目都核对完了。接下来由我把她送到手术室。」":"“Every preparation item is verified. I will bring her to the operating room.”", "「护栏和管路都好了。医生放心，我现在推她去手术室。」":"“The rails and lines are secure. I will take her to the operating room now.”",
+		"「等一下……我不想再继续了。至少先告诉我接下来要做什么。」":"“Wait... I don't want to continue. At least tell me what you're going to do next.”", "暂停并向患者说明下一步":"Pause and explain the next step to the patient", "「好……这样我能配合。」":"“All right... I can cooperate like this.”", "要求患者继续配合":"Ask the patient to continue cooperating", "「……我会尽量不动。」":"“...I will try to keep still.”",
+		"「我有点撑不住了……能不能先停一下？」":"“I don't think I can hold on much longer... Could we stop for a moment?”", "先稳定患者，再继续操作":"Stabilize the patient first, then continue", "「好，我会尽量保持不动。」":"“All right, I will try to keep still.”", "维持当前操作，要求患者继续":"Maintain the current maneuver and ask the patient to continue", "「……我知道了。」":"“...I understand.”",
+		"「……这样暴露着，我还是有点不舒服。」":"“...Being left exposed like this still makes me uncomfortable.”", "确认必要范围，并尽快继续":"Confirm the necessary exposure and continue promptly", "「嗯……知道了。」":"“Mm... I understand.”", "不作解释，直接继续":"Continue without explanation", "「……」":"“...”",
 	}
 	return phrases.get(value, value)
 
-func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_data: Array = [], known_staff: Array[String] = [], restrict_known: bool = false, surgery_team_dialogue_data: Array = [], patient_interaction_data: Array = [], temporary_condition_data: Array = [], unlocked_procedures: Array[String] = [], enforce_unlocks: bool = false, palpation_profile_data: Array = []) -> void:
+func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_data: Array = [], known_staff: Array[String] = [], restrict_known: bool = false, surgery_team_dialogue_data: Array = [], patient_interaction_data: Array = [], temporary_condition_data: Array = [], unlocked_procedures: Array[String] = [], enforce_unlocks: bool = false, palpation_profile_data: Array = [], awake_special_bark_data: Array = []) -> void:
 	definition = data
 	surgery_team_dialogue_profiles = surgery_team_dialogue_data
 	patient_interactions = patient_interaction_data
+	awake_special_barks = awake_special_bark_data
 	for condition in temporary_condition_data:
 		temporary_condition_definitions[str(condition.id)] = condition
 	for profile in palpation_profile_data:
@@ -592,29 +728,29 @@ func apply_or_table_palpation(region: String, intensity: String) -> bool:
 	var intensity_index := ["light", "standard", "deep"].find(intensity)
 	var effects := {
 		"chest": [
-			{"fear": 0, "pain": 0, "dignity": 0, "cooperation": 0},
-			{"fear": 0, "pain": 2, "dignity": 0, "cooperation": 0},
-			{"fear": 2, "pain": 5, "dignity": 0, "cooperation": -1},
+			{"fear": 1, "pain": 0, "dignity": 0, "cooperation": 0},
+			{"fear": 1, "pain": 2, "dignity": 0, "cooperation": 0},
+			{"fear": 1, "pain": 5, "dignity": 0, "cooperation": -1},
 		],
 		"abdomen": [
-			{"fear": 0, "pain": 1, "dignity": 0, "cooperation": 0},
+			{"fear": 1, "pain": 1, "dignity": 0, "cooperation": 0},
 			{"fear": 1, "pain": 4, "dignity": 0, "cooperation": -1},
-			{"fear": 3, "pain": 8, "dignity": 0, "cooperation": -3},
+			{"fear": 1, "pain": 8, "dignity": 0, "cooperation": -3},
 		],
 		"breast": [
 			{"fear": 1, "pain": 0, "dignity": -4, "cooperation": -1},
-			{"fear": 2, "pain": 1, "dignity": -7, "cooperation": -2},
-			{"fear": 3, "pain": 2, "dignity": -10, "cooperation": -4},
+			{"fear": 1, "pain": 1, "dignity": -7, "cooperation": -2},
+			{"fear": 1, "pain": 2, "dignity": -10, "cooperation": -4},
 		],
 		"nipple": [
 			{"fear": 1, "pain": 1, "dignity": -6, "cooperation": -2},
-			{"fear": 2, "pain": 2, "dignity": -10, "cooperation": -4},
-			{"fear": 4, "pain": 3, "dignity": -14, "cooperation": -6},
+			{"fear": 1, "pain": 2, "dignity": -10, "cooperation": -4},
+			{"fear": 1, "pain": 3, "dignity": -14, "cooperation": -6},
 		],
 		"genital": [
-			{"fear": 2, "pain": 0, "dignity": -8, "cooperation": -3},
-			{"fear": 4, "pain": 1, "dignity": -12, "cooperation": -5},
-			{"fear": 6, "pain": 2, "dignity": -18, "cooperation": -8},
+			{"fear": 1, "pain": 0, "dignity": -8, "cooperation": -3},
+			{"fear": 1, "pain": 1, "dignity": -12, "cooperation": -5},
+			{"fear": 1, "pain": 2, "dignity": -18, "cooperation": -8},
 		],
 	}
 	var selected: Dictionary = effects[region][intensity_index]
@@ -660,11 +796,11 @@ func apply_or_table_needle(region: String) -> bool:
 	if not or_table_palpation_available() or region not in ["chest", "abdomen", "breast", "nipple", "genital"]:
 		return false
 	var effects := {
-		"chest": {"fear": 3, "pain": 5, "dignity": 0, "cooperation": -1},
-		"abdomen": {"fear": 3, "pain": 6, "dignity": 0, "cooperation": -2},
+		"chest": {"fear": 5, "pain": 5, "dignity": 0, "cooperation": -1},
+		"abdomen": {"fear": 5, "pain": 6, "dignity": 0, "cooperation": -2},
 		"breast": {"fear": 5, "pain": 6, "dignity": -5, "cooperation": -3},
-		"nipple": {"fear": 7, "pain": 8, "dignity": -8, "cooperation": -5},
-		"genital": {"fear": 8, "pain": 8, "dignity": -10, "cooperation": -6},
+		"nipple": {"fear": 5, "pain": 8, "dignity": -8, "cooperation": -5},
+		"genital": {"fear": 5, "pain": 8, "dignity": -10, "cooperation": -6},
 	}
 	var selected: Dictionary = effects[region]
 	fear = clampi(fear + int(selected.fear), 0, 100)
@@ -700,11 +836,10 @@ func apply_anesthesia_sensory_test(tool: String, region: String) -> bool:
 	if tool == "needle" and covered and count == 0:
 		sensory_interaction_xp_bonus += 5
 	if tool == "hand":
-		fear = clampi(fear + (1 if covered else 2), 0, 100)
 		if not covered:
 			pain = clampi(pain + 1, 0, 100)
 	else:
-		fear = clampi(fear + (2 if covered else 5), 0, 100)
+		fear = clampi(fear + (0 if covered else 5), 0, 100)
 		pain = clampi(pain + (0 if covered else 7), 0, 100)
 		if region in ["breast", "nipple", "genital"]:
 			dignity = clampi(dignity - (2 if covered else 5), 0, 100)
@@ -1042,6 +1177,17 @@ func surgery_step_display_label() -> String:
 			fixed_index += 1
 	return "%s / %s" % [fixed_index, surgery_fixed_stage_count()]
 
+func surgery_record_text() -> String:
+	var lines: Array[String] = []
+	var last_transition_text: String = ""
+	for entry in procedure_step_history:
+		var transition_text: String = str(entry.get("transition_text", "")).strip_edges()
+		if transition_text.is_empty() or transition_text == last_transition_text:
+			continue
+		lines.append(surgery_display_text(transition_text))
+		last_transition_text = transition_text
+	return "\n".join(lines)
+
 func current_surgery() -> Dictionary:
 	return surgeries.get(procedure_id, {})
 
@@ -1103,7 +1249,10 @@ func surgery_condition_met(condition: Dictionary) -> bool:
 				return false
 		return true
 	var field := str(condition.get("field", condition.get("metric", "")))
-	var current_value: Variant = surgical_technical_flags.has(field) if field in ["repair_recheck_required"] else procedure_state.get(field)
+	# Procedure-local recheck flags are stored in surgical_technical_flags. Keep
+	# condition evaluation generic so new surgery data does not need engine code
+	# for every flag name.
+	var current_value: Variant = surgical_technical_flags.has(field) if field.ends_with("_required") else procedure_state.get(field)
 	if current_value == null:
 		return false
 	var target_value: Variant = condition.get("value", 0)
@@ -1133,7 +1282,53 @@ func surgery_state_summary() -> String:
 	return "进度 %s%%　·　术野 %s　·　持续出血 %s　·　累计失血 %s　·　用时 %s 分钟　·　稳定 %s" % [procedure_state.progress, procedure_state.visibility, procedure_state.bleeding, procedure_state.blood_loss, procedure_state.elapsed_time, procedure_state.stability]
 
 func pilot_surgery() -> bool:
-	return procedure_id in ["surgery_appendix", "surgery_open_cholecystectomy", "surgery_open_inguinal_hernia"]
+	return procedure_id in [
+		"surgery_appendix",
+		"surgery_open_cholecystectomy",
+		"surgery_open_inguinal_hernia",
+		"surgery_open_ventral_hernia",
+		"surgery_breast_tumor",
+		"surgery_open_ovarian_cystectomy",
+		"surgery_open_abdominal_myomectomy",
+		"surgery_open_splenectomy",
+		"surgery_open_distal_gastrectomy",
+		"surgery_hysterectomy",
+		"surgery_open_right_hemicolectomy",
+		"surgery_total_mastectomy",
+		"surgery_open_nephrectomy",
+		"surgery_open_lung_lobectomy",
+		"surgery_open_sigmoid_colectomy",
+		"surgery_vaginal_hysterectomy",
+		"surgery_open_distal_pancreatectomy",
+		"surgery_open_partial_nephrectomy",
+		"surgery_open_adrenalectomy",
+		"surgery_cabg",
+		"surgery_open_total_gastrectomy",
+		"surgery_open_major_liver_resection",
+		"surgery_open_abdominal_aortic_aneurysm",
+		"surgery_exploratory_laparotomy",
+		"surgery_open_pneumonectomy",
+		"surgery_open_esophagectomy",
+		"surgery_open_radical_cystectomy",
+		"surgery_open_abdominoperineal_resection",
+		"surgery_open_left_hemicolectomy",
+		"surgery_open_low_anterior_resection",
+	]
+
+func surgery_display_text(raw_text: String) -> String:
+	var result: String = raw_text
+	var role_placeholders: Dictionary = {
+		"assistant_name": "assistant_surgeon",
+		"scrub_name": "scrub_nurse",
+		"circulator_name": "circulating_nurse",
+	}
+	for placeholder in role_placeholders:
+		var role_id := str(role_placeholders[placeholder])
+		var staff_id := str(team.get(role_id, ""))
+		var staff_name := str(roster.get(staff_id, {}).get("name", ""))
+		if not staff_name.is_empty():
+			result = result.replace("{" + placeholder + "}", staff_name)
+	return result
 
 func surgery_fixed_stage_count() -> int:
 	var count := 0
@@ -1142,11 +1337,44 @@ func surgery_fixed_stage_count() -> int:
 			count += 1
 	return count
 
+func patient_regular_interaction_budget() -> int:
+	var node_count := surgery_fixed_stage_count()
+	if node_count <= 0:
+		return 0
+	return maxi(1, floori(float(node_count) * 0.3))
+
 func surgery_quality_baseline() -> Dictionary:
 	return {
 		"surgery_appendix": {"expected_time": 60, "expected_blood_loss": 30},
 		"surgery_open_cholecystectomy": {"expected_time": 120, "expected_blood_loss": 70},
 		"surgery_open_inguinal_hernia": {"expected_time": 90, "expected_blood_loss": 35},
+		"surgery_open_ventral_hernia": {"expected_time": 150, "expected_blood_loss": 60},
+		"surgery_breast_tumor": {"expected_time": 120, "expected_blood_loss": 30},
+		"surgery_open_ovarian_cystectomy": {"expected_time": 120, "expected_blood_loss": 50},
+		"surgery_open_abdominal_myomectomy": {"expected_time": 150, "expected_blood_loss": 110},
+		"surgery_open_splenectomy": {"expected_time": 120, "expected_blood_loss": 65},
+		"surgery_open_distal_gastrectomy": {"expected_time": 180, "expected_blood_loss": 95},
+		"surgery_hysterectomy": {"expected_time": 240, "expected_blood_loss": 130},
+		"surgery_open_right_hemicolectomy": {"expected_time": 180, "expected_blood_loss": 95},
+		"surgery_total_mastectomy": {"expected_time": 120, "expected_blood_loss": 45},
+		"surgery_open_nephrectomy": {"expected_time": 120, "expected_blood_loss": 80},
+		"surgery_open_lung_lobectomy": {"expected_time": 180, "expected_blood_loss": 110},
+		"surgery_open_sigmoid_colectomy": {"expected_time": 180, "expected_blood_loss": 95},
+		"surgery_vaginal_hysterectomy": {"expected_time": 120, "expected_blood_loss": 60},
+		"surgery_open_distal_pancreatectomy": {"expected_time": 180, "expected_blood_loss": 90},
+		"surgery_open_partial_nephrectomy": {"expected_time": 150, "expected_blood_loss": 70},
+		"surgery_open_adrenalectomy": {"expected_time": 120, "expected_blood_loss": 60},
+		"surgery_cabg": {"expected_time": 360, "expected_blood_loss": 210},
+		"surgery_open_total_gastrectomy": {"expected_time": 240, "expected_blood_loss": 120},
+		"surgery_open_major_liver_resection": {"expected_time": 300, "expected_blood_loss": 180},
+		"surgery_open_abdominal_aortic_aneurysm": {"expected_time": 240, "expected_blood_loss": 170},
+		"surgery_exploratory_laparotomy": {"expected_time": 480, "expected_blood_loss": 135},
+		"surgery_open_pneumonectomy": {"expected_time": 240, "expected_blood_loss": 120},
+		"surgery_open_esophagectomy": {"expected_time": 360, "expected_blood_loss": 135},
+		"surgery_open_radical_cystectomy": {"expected_time": 300, "expected_blood_loss": 120},
+		"surgery_open_abdominoperineal_resection": {"expected_time": 300, "expected_blood_loss": 145},
+		"surgery_open_left_hemicolectomy": {"expected_time": 180, "expected_blood_loss": 95},
+		"surgery_open_low_anterior_resection": {"expected_time": 240, "expected_blood_loss": 110},
 	}.get(procedure_id, {"expected_time": procedure_minutes, "expected_blood_loss": 50})
 
 func surgical_quality_score() -> int:
@@ -1196,6 +1424,123 @@ func surgical_quality_grade() -> String:
 	if score >= 65:
 		return "B"
 	return "C"
+
+func patient_experience_score() -> int:
+	# Patient experience is intentionally separate from technical surgical quality.
+	# Use the worst moments of the case so that calming the patient at the end
+	# cannot erase a severe fear, pain, dignity, or cooperation breakdown.
+	var score := 100
+	score -= floori(float(maxi(0, peak_fear_seen - 25)) * 0.40)
+	score -= floori(float(maxi(0, peak_pain_seen - 20)) * 0.45)
+	score -= floori(float(maxi(0, 80 - lowest_dignity_seen)) * 0.45)
+	score -= floori(float(maxi(0, 80 - lowest_cooperation_seen)) * 0.25)
+	score -= dignity_intrusion_count * 6
+	score -= dignity_break_count * 15
+	score -= cooperation_disruption_count * 5
+	if surgery_aborted:
+		score -= 25
+	return clampi(score, 0, 100)
+
+func patient_experience_grade() -> String:
+	# S is deliberately reserved for a future special condition or story event.
+	# Normal play therefore tops out at A even with a perfect experience score.
+	var score := patient_experience_score()
+	if score >= 85:
+		return "A"
+	if score >= 65:
+		return "B"
+	if score >= 40:
+		return "C"
+	return "D"
+
+func patient_experience_grade_label() -> String:
+	var grade := patient_experience_grade()
+	if english_mode():
+		return {
+			"S": "S · Exceptional",
+			"A": "A · Reassured",
+			"B": "B · Anxious but Stable",
+			"C": "C · Significant Distress",
+			"D": "D · Severe Distress",
+		}.get(grade, grade)
+	return {
+		"S": "S · 完美",
+		"A": "A · 安心",
+		"B": "B · 紧张但稳定",
+		"C": "C · 经历明显压力",
+		"D": "D · 严重恶化",
+	}.get(grade, grade)
+
+func patient_experience_result_text() -> String:
+	var experience_grade := patient_experience_grade()
+	var technical_grade := surgical_quality_grade()
+	var chinese_lines: Dictionary = {
+		"S": {
+			"A": "刀开得漂亮，人也没被吓坏。少见。",
+			"B": "手术堪称示范。患者勉强愿意承认自己还活着。",
+			"C": "病历很漂亮。患者的回忆不一定。",
+			"D": "手术无可挑剔。患者大概再也不想见你。",
+		},
+		"A": {
+			"A": "技术不错，态度也像个人。很好。",
+			"B": "一台好手术。患者有意见，但不影响出院。",
+			"C": "病治好了。至于过程，她最好早点忘掉。",
+			"D": "主刀很满意。患者显然不是。",
+		},
+		"B": {
+			"A": "刀开得一般，好在患者觉得你人不错。",
+			"B": "平平无奇地完成了。医院每天都需要这种。",
+			"C": "手术过关，体验欠佳。双方都别细想。",
+			"D": "技术勉强过关。心理阴影另算。",
+		},
+		"C": {
+			"A": "技术需要反省。至少患者还挺喜欢你。",
+			"B": "不算好看，好歹收住了。",
+			"C": "医生想复盘，患者想回家。都很合理。",
+			"D": "刀开得不漂亮，人也得罪了。很完整。",
+		},
+		"F": {
+			"A": "患者觉得你很好。手术不同意。",
+			"B": "人还信任你。技术结果辜负了她。",
+			"C": "体验不好，结果更不好。没有反差可言。",
+			"D": "技术和体验难得达成了一致。都是灾难。",
+		},
+	}
+	var english_lines: Dictionary = {
+		"S": {
+			"A": "A beautiful procedure, and the patient wasn't terrified. Rare.",
+			"B": "A textbook operation. The patient is barely willing to admit she's still alive.",
+			"C": "The chart is beautiful. The patient's memories may not be.",
+			"D": "Flawless surgery. The patient probably never wants to see you again.",
+		},
+		"A": {
+			"A": "Good technique, and you acted like a human being. Excellent.",
+			"B": "A good operation. The patient has complaints, but can still be discharged.",
+			"C": "The disease is cured. As for the process, she should forget it soon.",
+			"D": "The surgeon is satisfied. The patient clearly isn't.",
+		},
+		"B": {
+			"A": "An ordinary operation. At least the patient thinks you're a decent person.",
+			"B": "Completed unremarkably. Hospitals need this every day.",
+			"C": "The surgery passed. The experience did not. Neither side should overthink it.",
+			"D": "The technique barely passed. The psychological scars are another matter.",
+		},
+		"C": {
+			"A": "The technique needs reflection. At least the patient rather likes you.",
+			"B": "Not pretty, but you got it under control.",
+			"C": "The doctor wants a debrief; the patient wants to go home. Both are reasonable.",
+			"D": "The surgery wasn't pretty, and neither were you. A complete performance.",
+		},
+		"F": {
+			"A": "The patient thinks you're wonderful. The surgery disagrees.",
+			"B": "The patient still trusted you. The technical result betrayed her.",
+			"C": "A bad experience, and an even worse result. No contrast to speak of.",
+			"D": "Technique and experience achieved rare consensus. Both were disasters.",
+		},
+	}
+	var lines: Dictionary = english_lines if english_mode() else chinese_lines
+	var technical_lines: Dictionary = lines.get(technical_grade, {})
+	return str(technical_lines.get(experience_grade, "手术完成，但综合评价暂不可用。" if not english_mode() else "The surgery is complete, but the combined assessment is unavailable."))
 
 func pilot_technical_summary() -> Dictionary:
 	return {
@@ -1663,6 +2008,72 @@ func cached_episode_roll(key: String) -> int:
 	resolved_random_choices[key] = roll
 	return roll
 
+func awake_special_bark_eligible() -> bool:
+	if not patient_awake() or flags.has("anesthetized"):
+		return false
+	return flags.has("no_anesthesia_confirmed") or flags.has("local_anesthesia")
+
+func blocking_crisis_fired_for_stage(stage_key: String) -> bool:
+	if not active_crisis.is_empty() and str(active_crisis.get("source_stage_id", "")) == stage_key:
+		return true
+	for record in crisis_history:
+		if str(record.get("stage_id", "")) == stage_key:
+			return true
+	return false
+
+func awake_special_bark_stage_matches(record: Dictionary, flow_step: Dictionary) -> bool:
+	var stage_ref: Dictionary = record.get("stage_ref", {})
+	var explicit_stage_id := str(stage_ref.get("stage_id", ""))
+	if not explicit_stage_id.is_empty():
+		return explicit_stage_id == str(flow_step.get("id", ""))
+	var ordinal := int(stage_ref.get("stage_ordinal", 0))
+	if ordinal != procedure_step_index + 1:
+		return false
+	# Legacy entries in the authored package use ordinal/title references. The
+	# ordinal is the stable runtime key across locales; the title remains an
+	# authoring audit field and is intentionally not parsed as logic here.
+	return not str(stage_ref.get("stage_title", "")).is_empty()
+
+func resolve_awake_special_bark_for_stage(flow_step: Dictionary) -> bool:
+	if not awake_special_bark_eligible() or blocking_crisis_fired_for_stage(str(flow_step.get("id", ""))):
+		return false
+	for record in awake_special_barks:
+		if not record is Dictionary or str(record.get("procedure_id", "")) != procedure_id:
+			continue
+		var record_id := str(record.get("id", ""))
+		if record_id.is_empty() or awake_special_bark_history.has(record_id) or not awake_special_bark_stage_matches(record, flow_step):
+			continue
+		var behavior: Dictionary = record.get("behavior", {})
+		if not bool(behavior.get("patient_awake_required", true)) or str(behavior.get("mode", "")) != "flavor_only_background_bark":
+			continue
+		var eligible_modes: Array = behavior.get("eligible_anesthesia_modes", [])
+		if not eligible_modes.is_empty() and not ((flags.has("no_anesthesia_confirmed") and eligible_modes.has("no_anesthesia")) or (flags.has("local_anesthesia") and eligible_modes.has("local_anesthesia"))):
+			continue
+		var variants: Array = record.get("variants", [])
+		if variants.is_empty():
+			continue
+		var variant_key := "awake_special_bark_variant:%s" % record_id
+		var variant_index := posmod(cached_episode_roll(variant_key), variants.size())
+		var prompt := str(variants[variant_index])
+		if prompt.is_empty():
+			continue
+		awake_special_bark_history.append(record_id)
+		patient_event_consumed_this_stage = true
+		active_patient_interaction = {
+			"id": "awake_special_bark_%s" % record_id,
+			"prompt": prompt,
+			"speaker": "patient",
+			"actions": [],
+			"background_bark": true,
+		}
+		feedback = prompt
+		feedback_speaker = "patient"
+		last_staff_id = ""
+		last_staff_role = ""
+		awaiting_patient_acknowledgement = true
+		return true
+	return false
+
 func resolve_patient_intrusion_for_stage(flow_step: Dictionary) -> bool:
 	if flags.has("anesthetized") or patient_event_consumed_this_stage:
 		return false
@@ -1685,34 +2096,34 @@ func resolve_patient_intrusion_for_stage(flow_step: Dictionary) -> bool:
 	match intrusion_kind:
 		"dignity_break":
 			dignity_break_count += 1
-			active_patient_interaction = {
+			active_patient_interaction = runtime_english({
 				"id": "intrusion_dignity_break_%s" % stage_key,
 				"prompt": "「等一下……我不想再继续了。至少先告诉我接下来要做什么。」",
 				"actions": [
 					{"id": "intrusion_break_explain", "label": "暂停并向患者说明下一步", "response": "「好……这样我能配合。」", "response_speaker": "patient", "minutes": 2, "effects": {"dignity": 6, "cooperation": 8, "fear": -3, "pain": 0}},
 					{"id": "intrusion_break_continue", "label": "要求患者继续配合", "response": "「……我会尽量不动。」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": -4, "cooperation": -12, "fear": 6, "pain": 2}},
 				]
-			}
+			})
 		"cooperation_disruption":
 			cooperation_disruption_count += 1
-			active_patient_interaction = {
+			active_patient_interaction = runtime_english({
 				"id": "intrusion_cooperation_%s" % stage_key,
 				"prompt": "「我有点撑不住了……能不能先停一下？」",
 				"actions": [
 					{"id": "intrusion_cooperation_stabilize", "label": "先稳定患者，再继续操作", "response": "「好，我会尽量保持不动。」", "response_speaker": "patient", "minutes": 2, "effects": {"cooperation": 10, "fear": -4, "pain": -2, "dignity": 0}},
 					{"id": "intrusion_cooperation_continue", "label": "维持当前操作，要求患者继续", "response": "「……我知道了。」", "response_speaker": "patient", "minutes": 0, "effects": {"cooperation": -8, "fear": 4, "pain": 4, "dignity": -2}},
 				]
-			}
+			})
 		"dignity_intrusion":
 			dignity_intrusion_count += 1
-			active_patient_interaction = {
+			active_patient_interaction = runtime_english({
 				"id": "intrusion_dignity_%s" % stage_key,
 				"prompt": "「……这样暴露着，我还是有点不舒服。」",
 				"actions": [
 					{"id": "intrusion_dignity_acknowledge", "label": "确认必要范围，并尽快继续", "response": "「嗯……知道了。」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": 5, "cooperation": 3, "fear": -2, "pain": 0}},
 					{"id": "intrusion_dignity_dismiss", "label": "不作解释，直接继续", "response": "「……」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": -8, "cooperation": -3, "fear": 5, "pain": 0}},
 				]
-			}
+			})
 	feedback = str(active_patient_interaction.prompt)
 	feedback_speaker = "patient"
 	last_staff_id = ""
@@ -1751,8 +2162,12 @@ func resolve_patient_event_for_stage() -> bool:
 			last_staff_id = ""
 			last_staff_role = ""
 			return true
+	if resolve_awake_special_bark_for_stage(flow_step):
+		return true
 	var theme: String = str(flow_step.get("awake_interlude", ""))
 	if theme.is_empty():
+		return false
+	if not historical_replay_mode and patient_regular_interaction_count >= patient_regular_interaction_budget():
 		return false
 	var interaction := match_patient_interaction(theme, flow_step.get("patient_cues", []), dominant_patient_state())
 	if interaction.is_empty():
@@ -1761,6 +2176,7 @@ func resolve_patient_event_for_stage() -> bool:
 	patient_interaction_history.append(str(interaction.id))
 	patient_event_consumed_this_stage = true
 	patient_event_count += 1
+	patient_regular_interaction_count += 1
 	awaiting_patient_choice = true
 	feedback = str(interaction.prompt)
 	feedback_speaker = "patient"
@@ -2011,7 +2427,9 @@ func apply(event: Variant) -> bool:
 			awaiting_patient_acknowledgement = false
 			active_patient_interaction.clear()
 			patient_interaction_history.clear()
+			awake_special_bark_history.clear()
 			patient_event_count = 0
+			patient_regular_interaction_count = 0
 			active_temporary_conditions.clear()
 			active_condition_id = ""
 			pending_flow_stage_id = ""
@@ -2142,7 +2560,14 @@ func apply(event: Variant) -> bool:
 				procedure_corrections += 1
 				feedback = roster[last_staff_id].name + "：" + intraoperative_response(last_staff_id, str(selected_option.id), str(selected_option.correction), true)
 			feedback_speaker = "staff"
-			procedure_step_history.append({"stage_id": flow_step.id, "option_id": selected_option.id, "correct": was_correct})
+			procedure_step_history.append({
+				"stage_id": flow_step.id,
+				"stage_title": str(flow_step.get("title", "")),
+				"operative_record": str(flow_step.get("operative_record", "")),
+				"transition_text": str(flow_step.get("transition_text", "")),
+				"option_id": selected_option.id,
+				"correct": was_correct,
+			})
 			pending_flow_retry = not was_correct
 			if pending_flow_retry:
 				# A correction is feedback, not completion of the surgical step. The
@@ -2361,6 +2786,7 @@ func apply(event: Variant) -> bool:
 				active_patient_interaction.clear()
 				patient_interaction_history.clear()
 				patient_event_count = 0
+				patient_regular_interaction_count = 0
 				active_temporary_conditions.clear()
 				active_condition_id = ""
 				pending_flow_stage_id = ""
@@ -2452,6 +2878,7 @@ func apply(event: Variant) -> bool:
 		_:
 			return false
 	events.append(event.duplicate(true))
+	event_count += 1
 	last_error = ""
 	return true
 
@@ -2482,7 +2909,7 @@ func inexperienced_nurse_response(staff_id: String, response_id: String, fallbac
 			continue
 		var variants: Variant = profile.get("responses", {}).get(response_id, [])
 		if variants is Array and not variants.is_empty():
-			var variation_seed := "%s:%s:%s:%s:%s" % [staff_id, patient_name, procedure_id, response_id, events.size()]
+			var variation_seed := "%s:%s:%s:%s:%s" % [staff_id, patient_name, procedure_id, response_id, event_count]
 			return str(variants[posmod(hash(variation_seed), variants.size())])
 	return fallback
 
@@ -2568,7 +2995,7 @@ func patient_reaction(reaction_id: String, fallback: String) -> String:
 	# continue to come from the shared action, so personality cannot change outcome.
 	var variants: Variant = patient_reaction_variants.get(reaction_id, [])
 	if variants is Array and not variants.is_empty():
-		var variant_index := posmod(hash("%s:%s:%s" % [patient_name, reaction_id, events.size()]), variants.size())
+		var variant_index := posmod(hash("%s:%s:%s" % [patient_name, reaction_id, event_count]), variants.size())
 		return str(variants[variant_index])
 	return str(runtime_english(patient_reactions.get(reaction_id, fallback)))
 
@@ -2603,6 +3030,10 @@ func stress_response_text() -> String:
 			return "openly distressed" if english_mode() else "急切外露"
 		"asks_for_details":
 			return "repeatedly asks for confirmation" if english_mode() else "反复确认"
+		"bravado_then_embarrassment":
+			return "puts on a brave front, then grows embarrassed" if english_mode() else "先逞强，随后难为情"
+		"embarrassed_apologetic":
+			return "becomes embarrassed and apologizes" if english_mode() else "感到难为情并道歉"
 	return "clear signs of stress" if english_mode() else "压力明显"
 
 func preparation(id: String) -> Dictionary:
@@ -2638,7 +3069,7 @@ func patient_state_text() -> String:
 	return "relatively stable" if english_mode() else "状态相对平稳"
 
 func interaction_summary() -> String:
-	var procedure_summary := surgery_completion_text() + "\n" if surgery_success else ""
+	var procedure_summary: String = ""
 	if english_mode():
 		if patient_event_count > 0:
 			procedure_summary += "%s awake-patient interaction(s) were handled during surgery.\n" % patient_event_count

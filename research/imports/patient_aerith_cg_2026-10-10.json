@@ -1,0 +1,96 @@
+{
+  "patient_id": "patient_aerith",
+  "status": "bound_in_registered_patient_aerith_v2",
+  "source": "Five user-provided attachments, order and labels preserved.",
+  "asset_count": 5,
+  "assets": [
+    {
+      "key": "full_undress_basic_exam",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-cd073273-edd1-40cd-b6a8-62d8688adc8b.png",
+      "destination": "assets/examinations/patient_aerith/full_undress_basic_exam.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "4d6ad0669a3af74f99ace34926e354295393b33bcbe1c31568b07c057c130da1",
+      "pool_id": "full_undress_basic_exam_patient_aerith",
+      "category": "examination"
+    },
+    {
+      "key": "enema",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-55d04581-af54-41aa-989c-a9175a2a3fb6.png",
+      "destination": "assets/events/ward_preparation_v1/patient_aerith/enema.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "9cb564f09edbe24d703a11d6cdaf6443b8963daf09944e8d935d0a5a2164009a",
+      "pool_id": "ward_enema_patient_aerith",
+      "category": "ward_preparation"
+    },
+    {
+      "key": "skin_prep",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-19b0c428-1039-4042-b3fb-59dcf72cb904.png",
+      "destination": "assets/events/ward_preparation_v1/patient_aerith/skin_prep.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "39d2ee7f8f8bcdb2f9032189f6174a8e7aa44e346a731794c7e50e322ad6190b",
+      "pool_id": "ward_skin_prep_patient_aerith",
+      "category": "ward_preparation"
+    },
+    {
+      "key": "sterile_draping",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-a0776837-a90f-4367-96c5-548322e340ef.png",
+      "destination": "assets/events/ward_preparation_v1/patient_aerith/sterile_draping.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "d5b7d449ed2b3813d2142c9be408d61b67f0c9589936ff6fa726655fc11145c2",
+      "pool_id": "sterile_draping_patient_aerith",
+      "category": "ward_preparation"
+    },
+    {
+      "key": "incision",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-6286b4d4-7b02-46f9-96c5-728c1b61a562.png",
+      "destination": "assets/events/ward_preparation_v1/patient_aerith/incision.png",
+      "size": [
+        1584,
+        1056
+      ],
+      "mode": "RGB",
+      "sha256": "0ad0085c38a74b72a79751a66d9fb84f9fc44f008c743572b02acfb47a0b1f44",
+      "pool_id": "incision_patient_aerith",
+      "category": "ward_preparation"
+    }
+  ],
+  "localization_en": {
+    "patient_bundles.patient_aerith.exclusive_cg_pools.examination.full_undress_basic_exam_patient_aerith.label": "Aerith Gainsborough · Examination room — undressing for examination",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.examination.full_undress_basic_exam_patient_aerith.caption": "Aerith Gainsborough · Examination room — undressing for examination",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.ward_enema_patient_aerith.label": "Aerith Gainsborough · Preoperative enema",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.ward_enema_patient_aerith.caption": "Aerith Gainsborough · Preoperative enema",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.ward_skin_prep_patient_aerith.label": "Aerith Gainsborough · Preoperative shaving",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.ward_skin_prep_patient_aerith.caption": "Aerith Gainsborough · Preoperative shaving",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.sterile_draping_patient_aerith.label": "Aerith Gainsborough · Surgical draping",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.sterile_draping_patient_aerith.caption": "Aerith Gainsborough · Surgical draping",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.incision_patient_aerith.label": "Aerith Gainsborough · Incision",
+    "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.incision_patient_aerith.caption": "Aerith Gainsborough · Incision"
+  },
+  "notes": [
+    "No image generation, cropping, resizing or pixel editing. All originals copied byte-for-byte.",
+    "Existing 21 portrait paths remain unchanged.",
+    "Full-undress pool is linked by explicit visual_pool_id; no global test or surgery mapping.",
+    "Draping uses ack_disinfection. Incision uses awake incise_* actions, not request_scalpel.",
+    "Incision and draping art filters use general_abdominal/female_pelvic only; this does not restrict patient case assignment.",
+    "Existing UI suppresses action pools after general anesthesia. No runtime behavior changes.",
+    "At existing 1280x800 KEEP_ASPECT_COVERED presentation, 1584x1056 input has a 1584x990 visible source rectangle: approximately 33 source pixels cropped from top and bottom. Top of hair in examination image may be trimmed. Originals retained. Godot UI not tested.",
+    "Pool labels/captions repeat the supplied labels; no missing dialogue was authored.",
+    "Registered via research/imports/patient_aerith_registered_v2.json; these English CG labels/captions are now active in data/localization/en.json."
+  ]
+}

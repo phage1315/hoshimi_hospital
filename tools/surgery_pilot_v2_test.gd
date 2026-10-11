@@ -35,7 +35,10 @@ func _initialize() -> void:
 
 func run() -> void:
 	expect(content.load_all(), "Content load failed")
-	var expected := {"surgery_appendix": [9, 11], "surgery_open_cholecystectomy": [10, 12], "surgery_open_inguinal_hernia": [9, 11]}
+	var expected := {"surgery_appendix": [9, 11], "surgery_open_cholecystectomy": [10, 12], "surgery_open_inguinal_hernia": [9, 11], "surgery_vaginal_hysterectomy": [10, 11], "surgery_open_distal_pancreatectomy": [11, 12], "surgery_open_partial_nephrectomy": [12, 13], "surgery_open_adrenalectomy": [10, 11], "surgery_cabg": [12, 13], "surgery_open_total_gastrectomy": [13, 14], "surgery_open_major_liver_resection": [12, 13], "surgery_open_abdominal_aortic_aneurysm": [11, 12], "surgery_exploratory_laparotomy": [10, 11], "surgery_open_pneumonectomy": [10, 11], "surgery_open_esophagectomy": [13, 14], "surgery_open_radical_cystectomy": [12, 13]}
+	expected["surgery_open_abdominoperineal_resection"] = [14, 15]
+	expected["surgery_open_left_hemicolectomy"] = [12, 13]
+	expected["surgery_open_low_anterior_resection"] = [13, 14]
 	for surgery_id in expected:
 		var surgery: Dictionary = content.find_record("surgeries", surgery_id)
 		var fixed := 0

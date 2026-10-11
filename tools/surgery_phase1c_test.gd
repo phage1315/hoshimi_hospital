@@ -104,6 +104,7 @@ func run() -> void:
 		awake_flow.procedure_name = surgery.name
 		awake_flow.procedure_minutes = surgery.duration_minutes
 		expect(finish_flow(awake_flow), surgery.id + ": awake Phase 1C flow did not complete")
+		expect(awake_flow.patient_regular_interaction_count <= awake_flow.patient_regular_interaction_budget(), surgery.id + ": regular patient interaction budget was exceeded")
 		var general_flow = new_prep(surgery.id)
 		general_flow.flags.append("anesthetized")
 		expect(finish_flow(general_flow), surgery.id + ": general-anesthesia Phase 1C flow did not complete")
@@ -117,6 +118,7 @@ func run() -> void:
 	expect(hysterectomy.match_patient_interaction("dignity_interaction", ["exposure", "deep_manipulation"], "default").get("id") == "pelvic_dignity_default_01", "Used signature did not fall back to procedure-group content")
 
 	var appendix = new_prep("surgery_appendix")
+	expect(appendix.patient_regular_interaction_budget() == 2, "Appendix regular patient interaction budget should be two for nine fixed nodes")
 	var first: Dictionary = appendix.match_patient_interaction("operative_contact", ["incision"], "pain")
 	appendix.patient_interaction_history.append(str(first.get("id", "")))
 	var second: Dictionary = appendix.match_patient_interaction("operative_contact", ["incision"], "pain")

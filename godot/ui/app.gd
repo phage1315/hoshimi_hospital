@@ -82,6 +82,7 @@ var rooftop_actor_id := ""
 var day_transition_next: Callable
 var character_event_return_location := "lounge"
 var character_event_return_preop_id := ""
+var day_transition_display_schedule: Dictionary = {}
 var character_event_from_test := false
 var gallery_replay_event: RefCounted
 var gallery_replay_is_test := false
@@ -114,9 +115,13 @@ var dialogue_auto_toggle_button: Button
 var dialogue_auto_speed_button: Button
 var or_table_palpation_intensity := "standard"
 var or_table_palpation_tool := "palpation"
+var or_table_tool_stage_id := ""
 var or_table_scalpel_cursor: Texture2D
 var or_table_needle_cursor: Texture2D
 var or_table_hand_cursor: Texture2D
+var or_table_cursor_refresh_serial := 0
+var or_table_virtual_cursor: TextureRect
+var or_table_virtual_cursor_hotspot := Vector2.ZERO
 var operative_field_hud_enabled := false
 
 const OR_TABLE_SCALPEL_CURSOR_PATH := "res://assets/surgeries/palpation/scalpel_cursor_v1.png"
@@ -164,7 +169,7 @@ func protagonist_professional_name() -> String:
 	return str(content.protagonist.get("professional_name", tx("ui.auto.1655bc45fa6a", "坂口医生")))
 
 func configure_game_content() -> void:
-	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases, content.collections.first_surgery_diagnosis_reactions, content.collections.palpation_profiles)
+	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases, content.collections.first_surgery_diagnosis_reactions, content.collections.palpation_profiles, content.collections.awake_special_barks)
 	if DisplayServer.get_name() != "headless":
 		game.set_intraoperative_crisis_enabled(content.localizer.preferred_intraoperative_crisis_enabled())
 		operative_field_hud_enabled = content.localizer.preferred_operative_field_hud_enabled()
@@ -206,6 +211,23 @@ func _ready() -> void:
 	configure_game_content()
 	title_screen()
 
+func _process(_delta: float) -> void:
+	refresh_calendar_header()
+	if screen == "or_table_palpation" and is_instance_valid(or_table_virtual_cursor):
+		var viewport := get_viewport()
+		if viewport != null:
+			or_table_virtual_cursor.position = viewport.get_mouse_position() - or_table_virtual_cursor_hotspot
+
+func _notification(what: int) -> void:
+	if what != NOTIFICATION_WM_WINDOW_FOCUS_IN:
+		return
+	# macOS may keep the native cursor surface from the previous frame until
+	# focus changes. Re-apply the active tool after returning to the window.
+	if screen == "or_table_palpation":
+		call_deferred("refresh_or_table_tool_cursor")
+	else:
+		call_deferred("clear_or_table_scalpel_cursor", false)
+
 func panel_style(color: Color, border: Color = Color("718f92")) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
 	style.bg_color = color
@@ -218,8 +240,10 @@ func panel_style(color: Color, border: Color = Color("718f92")) -> StyleBoxFlat:
 
 func base(title: String, subtitle: String, portrait: bool = false, background_id: String = "") -> void:
 	invalidate_dialogue_action()
-	if screen != "or_table_palpation":
-		clear_or_table_scalpel_cursor()
+	# Every page rebuild can leave the pointer over a newly created control. Clear
+	# the custom tool cursor here; the palpation view reapplies it after all of
+	# its controls have been created.
+	clear_or_table_scalpel_cursor(false)
 	if is_instance_valid(page):
 		remove_child(page)
 		page.queue_free()
@@ -273,13 +297,30 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(wash)
 	label_at(tx("ui.brand", "H O S H I M I   /   星见医院"), Vector2(54, 25), 16, Color("c9d5ca"))
-	var calendar_header := label_at("%s  /  %s  %s" % [game.day_text(), localized_calendar_text(-1, true), game.clock_text()], Vector2(815, 25), 15, Color("c9d5ca"), 430)
+	var calendar_header := label_at("", Vector2(815, 25), 15, Color("c9d5ca"), 430)
 	calendar_header.name = "CalendarHeader"
+	refresh_calendar_header()
 	var page_title := label_at(title, Vector2(56, 88), 34)
 	page_title.name = "PageTitle"
 	var page_subtitle := label_at(subtitle, Vector2(58, 139), 16, Color("b9cecb"))
 	page_subtitle.name = "PageSubtitle"
 	label_at(tx("ui.prototype_notice", "开发原型 0.5   /   本地美术占位 · 非医学教学"), Vector2(56, 758), 14, Color("b9cecb"))
+
+func refresh_calendar_header() -> void:
+	if not is_instance_valid(page):
+		return
+	var header: Label = page.get_node_or_null("CalendarHeader")
+	if header == null:
+		return
+	var timing: Dictionary = day_transition_display_schedule if screen == "day_transition" and not day_transition_display_schedule.is_empty() else game.display_schedule()
+	var day := int(timing.day)
+	var minutes := int(timing.absolute_clock)
+	# Normalize exceptionally late departures past midnight as calendar time.
+	day += minutes / (24 * 60)
+	minutes %= 24 * 60
+	var caption := "DAY %02d  /  %s  %02d:%02d" % [day, localized_calendar_text(day, true), minutes / 60, minutes % 60]
+	if header.text != caption:
+		header.text = caption
 
 func label_at(text: String, pos: Vector2, font_size: int = 20, color: Color = Color("f4f0e6"), width: float = 1100) -> Label:
 	var item := Label.new()
@@ -523,19 +564,22 @@ func button_at(text: String, pos: Vector2, dimensions: Vector2, action: Callable
 	button.add_theme_stylebox_override("focus", panel_style(Color("365963"), Color("f3dbac")))
 	button.pressed.connect(action)
 	page.add_child(button)
+	if content.localizer.locale == "en":
+		preload("res://godot/ui/button_text.gd").fit(button, dimensions, button.get_theme_font_size("font_size"))
 	return button
 
 func add_story_event_badge(button: Button) -> void:
 	var badge := Panel.new()
 	badge.name = "PendingStoryEventBadge"
-	badge.position = Vector2(button.size.x - 22, 10)
-	badge.size = Vector2(12, 12)
+	badge.position = Vector2(button.size.x - 25, 8)
+	badge.size = Vector2(16, 16)
+	badge.z_index = 3
 	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color("d96b62")
 	style.border_color = Color("f3dbac")
 	style.set_border_width_all(1)
-	style.set_corner_radius_all(6)
+	style.set_corner_radius_all(8)
 	badge.add_theme_stylebox_override("panel", style)
 	button.add_child(badge)
 
@@ -626,6 +670,19 @@ func activate_dialogue_default() -> bool:
 	dialogue_auto_generation += 1
 	button.emit_signal("pressed")
 	return true
+
+func _input(event: InputEvent) -> void:
+	# Keep keyboard focus/shortcuts from reaching the retained clinic underneath.
+	if not event is InputEventKey or not is_instance_valid(page):
+		return
+	var splash := page.get_node_or_null("ExaminationSplash")
+	if splash == null:
+		return
+	get_viewport().set_input_as_handled()
+	if event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
+		var continue_button := splash.find_child("ExaminationCGContinue", true, false) as Button
+		if continue_button != null and not continue_button.disabled:
+			continue_button.pressed.emit()
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo:
@@ -1015,10 +1072,15 @@ func advance(choice: int) -> void:
 	else:
 		show_dialogue()
 
-func show_map() -> void:
+func show_map(resolve_day_start_events: bool = true) -> void:
 	if game.active_surgery_committed():
 		show_notice(tx("ui.notice.surgery_committed", "手术团队已经确认，患者正在进入连续的术前与手术流程；必须完成本次手术后才能离开。"))
 		return
+	if game.character_event_in_progress():
+		show_character_event()
+		return
+	if not game.active_character_event_id.is_empty():
+		game.finish_character_event()
 	if not game.active_special_event_id.is_empty():
 		show_special_event()
 		return
@@ -1028,11 +1090,11 @@ func show_map() -> void:
 	if game.is_sunday() and not game.sunday_activity_done() and not sunday_hospital_browsing:
 		show_sunday_menu()
 		return
-	var auto_special_event := game.next_auto_special_event()
+	var auto_special_event := game.next_auto_special_event() if resolve_day_start_events else {}
 	if not auto_special_event.is_empty():
 		confirm_special_event(str(auto_special_event.id))
 		return
-	var day_start_character_event := game.next_day_start_character_event()
+	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events else {}
 	if not day_start_character_event.is_empty():
 		start_mandatory_character_event(str(day_start_character_event.id))
 		return
@@ -1052,6 +1114,13 @@ func show_map() -> void:
 		var location_button := button_at("%02d   %s
 		   %s" % [i + 1, location.name, location.subtitle], pos, Vector2(285, 110), show_location.bind(location.id))
 		location_button.name = "Location_" + str(location.id)
+		# English location names are often longer than their Japanese/Chinese
+		# counterparts. Keep the two-line cards readable and leave room for the
+		# pending-event marker in the upper-right corner.
+		location_button.add_theme_font_size_override("font_size", 17 if content.localizer.locale == "en" else 19)
+		location_button.add_theme_font_size_override("font_hover_font_size", 17 if content.localizer.locale == "en" else 19)
+		if content.localizer.locale == "en":
+			preload("res://godot/ui/button_text.gd").fit(location_button, Vector2(285, 110), 17)
 		if has_pending_story_event_at(str(location.id)):
 			add_story_event_badge(location_button)
 	var profile_button := button_at(tx("ui.common.doctor_profile", "医生属性"), Vector2(865, 88), Vector2(190, 44), show_player_profile)
@@ -1204,6 +1273,7 @@ func finish_sunday_activity(activity_id: String, narration: String, actor_id: St
 	button_at(tx("ui.sunday.enter_monday", "进入星期一  →"), Vector2(475, 465), Vector2(330, 58), show_map)
 
 func show_player_profile(return_location: String = "") -> void:
+	var profile_text = preload("res://godot/ui/player_profile_text.gd")
 	screen = "player_profile"
 	base(tx("ui.profile.title", "医生属性"), tx("ui.profile.subtitle", "%s的选择正在塑造医院中的身份。") % protagonist_name(), false, "lobby")
 	var values: Dictionary = game.player_attributes()
@@ -1212,16 +1282,17 @@ func show_player_profile(return_location: String = "") -> void:
 	var order := ["skill", "leadership", "charm", "reputation", "presence"]
 	for i in range(order.size()):
 		var metric_id: String = order[i]
-		var y := 205 + i * 67
+		var y := 195 + i * 92
 		var value_text := str(values[metric_id])
 		if metric_id == "charm":
-			value_text = "%s（%s）" % [game.charm_tier(), values.charm]
+			value_text = "%s (%s)" % [profile_text.tier(self, game.charm_tier()), values.charm]
 		elif metric_id == "presence":
-			value_text = game.presence_tier()
-		label_at("%s　%s" % [labels[metric_id], value_text], Vector2(75, y), 22, Color("f4f0e6"), 235)
+			value_text = profile_text.tier(self, game.presence_tier())
+		label_at(str(labels[metric_id]), Vector2(75, y), 21, Color("f4f0e6"), 310)
+		label_at(value_text, Vector2(390, y), 21, Color("f4f0e6"), 260).horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		var bar := ProgressBar.new()
-		bar.position = Vector2(315, y + 3)
-		bar.size = Vector2(335, 24)
+		bar.position = Vector2(75, y + 33)
+		bar.size = Vector2(575, 20)
 		bar.min_value = -999 if metric_id == "reputation" else 0
 		bar.max_value = 999 if metric_id in ["reputation", "charm"] else 100
 		bar.value = 50 if metric_id == "presence" else values[metric_id]
@@ -1232,18 +1303,19 @@ func show_player_profile(return_location: String = "") -> void:
 		if metric_id == "skill":
 			var progress: Dictionary = game.surgery_level_progress()
 			var progress_text := tx("ui.profile.max_level", "已达最高等级") if int(progress.required_xp) == 0 else tx("ui.profile.surgery_xp", "本级手术经验 %s / %s") % [progress.current_xp, progress.required_xp]
-			label_at(progress_text, Vector2(670, y), 17, Color("c2d2cc"), 310).name = "SurgeryXPProgress"
+			label_at(progress_text, Vector2(75, y + 59), 16, Color("c2d2cc"), 575).name = "SurgeryXPProgress"
 		elif metric_id == "leadership":
 			var leadership_progress: Dictionary = game.leadership_level_progress()
 			var leadership_progress_text := tx("ui.profile.max_level", "已达最高等级") if float(leadership_progress.required_xp) == 0.0 else tx("ui.profile.leadership_xp", "本级领导经验 %s / %s") % ["%.1f" % float(leadership_progress.current_xp), "%.1f" % float(leadership_progress.required_xp)]
-			label_at(leadership_progress_text, Vector2(670, y), 17, Color("c2d2cc"), 310).name = "LeadershipXPProgress"
-	ClinicView.panel(self, Vector2(705, 190), Vector2(510, 390))
+			label_at(leadership_progress_text, Vector2(75, y + 59), 16, Color("c2d2cc"), 575).name = "LeadershipXPProgress"
+	ClinicView.panel(self, Vector2(705, 190), Vector2(510, 480))
 	label_at(tx("ui.profile.history", "重要选择记录"), Vector2(740, 220), 23, Color("e8cfaa"), 430)
 	var history: Array[Dictionary] = game.player_attribute_history()
 	if history.is_empty():
 		label_at(tx("ui.profile.no_history", "尚未发生会改变医生道路的关键选择。"), Vector2(740, 275), 19, Color("d7dfdf"), 420)
 	else:
 		var first := maxi(0, history.size() - 5)
+		var entries: Array[String] = []
 		for i in range(first, history.size()):
 			var record: Dictionary = history[i]
 			var changes: Array[String] = []
@@ -1251,7 +1323,8 @@ func show_player_profile(return_location: String = "") -> void:
 				var amount := int(record.effects.get(metric_id, 0))
 				if amount != 0:
 					changes.append("%s %s%d" % [labels[metric_id], "+" if amount > 0 else "", amount])
-			label_at("%s\n%s" % [record.label, "　".join(changes)], Vector2(740, 270 + (i - first) * 58), 17, Color("f4f0e6"), 430)
+			entries.append("%s\n%s" % [profile_text.history_label(self, record), " / ".join(changes)])
+		scrollable_text_at("\n\n".join(entries), Vector2(740, 270), Vector2(440, 365), 17, Color("f4f0e6"), "PlayerProfileHistory")
 	var return_action: Callable = show_location.bind(return_location, true, false) if not return_location.is_empty() else show_map
 	button_at(tx("ui.common.return_office", "← 返回办公室") if not return_location.is_empty() else tx("ui.common.return_map", "← 医院导览"), Vector2(1015 if not return_location.is_empty() else 1030, 88), Vector2(200 if not return_location.is_empty() else 185, 44), return_action)
 
@@ -1370,6 +1443,11 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 	if game.special_event_in_progress():
 		show_special_event()
 		return
+	if game.character_event_in_progress():
+		show_character_event()
+		return
+	if not game.active_character_event_id.is_empty():
+		game.finish_character_event()
 	var location_special_event: Dictionary = game.next_special_event_at(id)
 	if not location_special_event.is_empty():
 		special_event_return_location = id
@@ -1976,6 +2054,9 @@ func choose_character_event(choice_id: String) -> void:
 		if game.character_event_trigger_mode(event.definition) == "after_work":
 			game.advance_story_to_future_day(1, 9 * 60)
 		var next_view := show_character_event_reward if character_event_reward_available(event.definition) else show_character_event_complete
+		if str(event.definition.get("preop_stage_id", "")) == "post_surgery_return":
+			next_view.call()
+			return
 		if game.day_number() > before_day:
 			show_day_transition(next_view)
 		else:
@@ -2041,6 +2122,10 @@ func show_character_event_complete() -> void:
 	label_at(relation_note, Vector2(65, 325), 22, Color("e8cfaa"), 650)
 	label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [event.definition.minutes, game.clock_text()], Vector2(65, 385), 19, Color("c2d2cc"), 650)
 	var return_preop_id := character_event_return_preop_id
+	if not character_event_from_test and str(event.definition.get("preop_stage_id", "")) == "post_surgery_return":
+		var return_button := button_at(tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(60, 475), Vector2(655, 54), finish_post_surgery_character_event)
+		return_button.name = "PostSurgeryEventContinue"
+		return
 	if return_preop_id.is_empty() and not str(event.definition.get("preop_stage_id", "")).is_empty():
 		return_preop_id = game.active_preop_id
 	if character_event_from_test:
@@ -2055,6 +2140,7 @@ func show_character_event_complete() -> void:
 		button_at(tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(400, 475), Vector2(315, 54), show_map)
 
 func finish_sunday_character_event(actor_id: String, location_id: String) -> void:
+	game.finish_character_event()
 	var relation: Dictionary = game.relation_for(actor_id)
 	var narration := tx("ui.auto.2b070c5ffdf5", "和%s在温暖的小餐馆里度过了星期日。") % content.find_record("staff", actor_id).name
 	if int(relation.get("level", 0)) >= 1:
@@ -2098,6 +2184,7 @@ func continue_staff_role_reward() -> void:
 	next_action.call()
 
 func return_to_preop_after_character_event(preop_id: String) -> void:
+	game.finish_character_event()
 	character_event_return_preop_id = ""
 	show_preop(preop_id)
 
@@ -2155,6 +2242,8 @@ func confirm_special_event(event_id: String) -> void:
 	base(definition.title, tx("ui.auto.7f4d0724cb43", "开始前确认"), false, "lobby")
 	var days := int(definition.duration_days)
 	var warning := tx("ui.auto.ce5babb10966", "该事件将占用今天剩余时间。") if days == 1 else tx("ui.auto.25a05ba9c198", "该特殊事件将连续占用 %s 天。\n期间无法进行普通活动。") % days
+	if not bool(definition.get("consumes_full_day", true)):
+		warning = tx("ui.special_event.zero_time_warning", "该事件不消耗游戏时间。")
 	if not str(definition.get("announcement", "")).is_empty():
 		warning = str(definition.announcement) + "\n\n" + warning
 	var warning_label := label_at(warning, Vector2(160, 225), 24, Color("f4f0e6"), 960)
@@ -2243,7 +2332,10 @@ func show_special_event() -> void:
 		show_advanced_referral_node(event, step, node)
 		return
 	screen = "special_event"
-	base(definition.title, tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [step.title, event.step_index + 1, definition.duration_days], true, node.get("background_id", step.background_id))
+	var subtitle := str(step.title)
+	if bool(definition.get("consumes_full_day", true)):
+		subtitle = tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [step.title, event.step_index + 1, definition.duration_days]
+	base(definition.title, subtitle, true, node.get("background_id", step.background_id))
 	var cg_path := str(node.get("cg_path", ""))
 	var is_new_cg := not cg_path.is_empty() and cg_path != special_event_last_cg_path
 	special_event_last_cg_path = cg_path
@@ -2715,6 +2807,9 @@ func show_examination_cg(pool_id: String, next_action: Callable) -> void:
 	if pool.is_empty() or pool.paths.is_empty():
 		next_action.call()
 		return
+	if str(pool.get("presentation", "fullscreen")) == "splash":
+		show_examination_splash(pool, next_action)
+		return
 	screen = "examination_cg"
 	examination_cg_next = next_action
 	base("", "", false)
@@ -2737,9 +2832,92 @@ func show_examination_cg(pool_id: String, next_action: Callable) -> void:
 	label_at(str(pool.caption), Vector2(55, 680), 23, Color("f4f0e6"), 900)
 	var continue_button := button_at(tx("ui.auto.dbc7e5ecc8d6", "查看结果  →"), Vector2(1020, 690), Vector2(205, 52), continue_examination_cg)
 	continue_button.name = "ExaminationCGContinue"
-	get_tree().create_timer(3.5).timeout.connect(func():
-		if screen == "examination_cg":
+	var display_seconds := clampf(float(pool.get("display_seconds", 2.0)), 0.5, 10.0)
+	var timer := Timer.new()
+	timer.wait_time = display_seconds
+	timer.one_shot = true
+	cg.add_child(timer)
+	timer.timeout.connect(func():
+		if is_instance_valid(cg) and cg.is_inside_tree() and screen == "examination_cg":
 			continue_examination_cg())
+	timer.start()
+
+func show_examination_splash(pool: Dictionary, next_action: Callable) -> void:
+	# Retain the clinic underneath. Only explicitly opted-in generic pools use
+	# this presentation; authored patient CGs retain their fullscreen flow.
+	if page.get_node_or_null("ExaminationSplash") != null:
+		return
+	var previous_screen := screen
+	screen = "examination_cg"
+	invalidate_dialogue_action()
+	var overlay := Control.new()
+	overlay.name = "ExaminationSplash"
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	overlay.focus_mode = Control.FOCUS_ALL
+	overlay.z_index = 20
+	page.add_child(overlay)
+	overlay.grab_focus()
+	var shade := ColorRect.new()
+	shade.color = Color(0.005, 0.018, 0.025, 0.42)
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	overlay.add_child(shade)
+	var frame := Panel.new()
+	frame.name = "ExaminationSplashFrame"
+	frame.position = Vector2(220, 95)
+	frame.size = Vector2(840, 610)
+	frame.add_theme_stylebox_override("panel", panel_style(Color("0b2832f7")))
+	overlay.add_child(frame)
+	var cg := TextureRect.new()
+	cg.name = "ExaminationCG"
+	cg.position = Vector2(20, 20)
+	cg.size = Vector2(800, 450)
+	cg.texture = load("res://" + str(pool.paths[randi_range(0, pool.paths.size() - 1)]))
+	cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	cg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	frame.add_child(cg)
+	var caption := Label.new()
+	caption.text = str(pool.caption)
+	caption.position = Vector2(24, 490)
+	caption.size = Vector2(560, 100)
+	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	caption.add_theme_font_size_override("font_size", 20)
+	frame.add_child(caption)
+	var continue_button := Button.new()
+	continue_button.name = "ExaminationCGContinue"
+	continue_button.text = tx("ui.auto.dbc7e5ecc8d6", "查看结果  →")
+	continue_button.position = Vector2(605, 530)
+	continue_button.size = Vector2(210, 56)
+	continue_button.add_theme_font_size_override("font_size", 20)
+	continue_button.disabled = true
+	frame.add_child(continue_button)
+	var ready_at := Time.get_ticks_msec() + 500
+	continue_button.pressed.connect(func():
+		if not is_instance_valid(overlay) or not overlay.is_inside_tree() or overlay.get_parent() != page:
+			return
+		if Time.get_ticks_msec() < ready_at or continue_button.disabled:
+			return
+		# Detach before invoking the destination: repeated input cannot settle twice.
+		page.remove_child(overlay)
+		overlay.queue_free()
+		screen = previous_screen
+		next_action.call())
+	var timer := Timer.new()
+	timer.wait_time = 0.5
+	timer.one_shot = true
+	timer.ignore_time_scale = true
+	overlay.add_child(timer)
+	timer.timeout.connect(func():
+		if overlay.is_inside_tree() and overlay.get_parent() == page:
+			# A slow first frame can advance Timer by time predating this overlay.
+			var remaining := ready_at - Time.get_ticks_msec()
+			if remaining > 0:
+				timer.start(float(remaining) / 1000.0)
+			else:
+				continue_button.disabled = false)
+	timer.start()
 
 func continue_examination_cg() -> void:
 	if not examination_cg_next.is_valid():
@@ -3039,6 +3217,8 @@ func show_encounter(id: String) -> void:
 	ClinicView.render(self, visit)
 
 func choose_clinic_action(id: String) -> void:
+	if screen == "examination_cg":
+		return
 	var visit = game.visits.get(game.active_id)
 	if visit != null:
 		var before_elapsed := game.elapsed()
@@ -3062,6 +3242,14 @@ func choose_clinic_action(id: String) -> void:
 				destination.call()
 
 func save_progress() -> void:
+	if screen not in ["map", "sunday_menu"]:
+		show_notice(tx("ui.save.disabled_location", "存档只在医院导览或星期日安排界面可用。"))
+		return
+	# A completed character event may have left an old build's result screen
+	# already pointing at the map. Normalize that stale boundary before asking
+	# the game state whether the save is allowed.
+	if not game.character_event_in_progress() and not game.active_character_event_id.is_empty():
+		game.finish_character_event()
 	if not game.can_save_progress():
 		show_notice(game.save_block_reason())
 		return
@@ -3135,7 +3323,10 @@ func load_progress(slot: int = 1) -> void:
 		return
 	active_save_slot = slot
 	reset_clinic_view()
+	sunday_hospital_browsing = false
 	resume_progress()
+	if not saves.last_warning.is_empty():
+		show_notice(tx("ui.save.compatibility_warning", saves.last_warning))
 
 func show_notice(message: String) -> void:
 	var dialog := AcceptDialog.new()
@@ -3236,14 +3427,28 @@ func complete_referral(patient_id: String, doctor_id: String) -> void:
 	show_notice(tx("ui.auto.eeb678bd832d", "已将%s转诊给%s。候诊列表已切换到下一名患者。") % [patient.name, doctor.name])
 
 func show_preop(id: String) -> void:
+	if game.character_event_in_progress():
+		show_character_event()
+		return
+	if not game.active_character_event_id.is_empty():
+		game.finish_character_event()
 	var preparation = game.open_preop(id)
 	if preparation == null:
 		show_notice(tx("ui.auto.24be0fc34e5f", "请先完成接诊并收住院。"))
 		return
+	var current_stage_kind := str(preparation.current().get("kind", ""))
+	var current_stage_id := str(preparation.stage_id)
+	var tool_stage := current_stage_kind in ["or_table_palpation", "anesthesia_sensory_test"]
+	if not tool_stage:
+		clear_or_table_scalpel_cursor()
+		or_table_tool_stage_id = ""
+	elif current_stage_id != or_table_tool_stage_id:
+		clear_or_table_scalpel_cursor()
+		or_table_tool_stage_id = current_stage_id
+	# Clear the tool cursor before returning to a character event. Otherwise the
+	# event may take over the page before the ordinary pre-op render can reset it.
 	if start_character_event_from_preop_stage(str(preparation.stage_id)):
 		return
-	if str(preparation.current().get("kind", "")) not in ["or_table_palpation", "anesthesia_sensory_test"]:
-		clear_or_table_scalpel_cursor()
 	screen = "preop"
 	PreopView.render(self, preparation)
 
@@ -3252,14 +3457,14 @@ func set_or_table_palpation_intensity(intensity: String) -> void:
 		return
 	or_table_palpation_intensity = intensity
 	or_table_palpation_tool = "palpation"
-	clear_or_table_scalpel_cursor(false)
+	refresh_or_table_tool_cursor()
 	show_preop(game.active_preop_id)
 
 func set_or_table_palpation_tool(tool: String) -> void:
 	if tool not in ["palpation", "needle", "scalpel"]:
 		return
 	or_table_palpation_tool = tool
-	clear_or_table_scalpel_cursor(false)
+	refresh_or_table_tool_cursor()
 	show_preop(game.active_preop_id)
 
 func apply_or_table_scalpel_cursor() -> void:
@@ -3275,28 +3480,83 @@ func cursor_texture(path: String, size: int) -> Texture2D:
 
 func apply_or_table_tool_cursor(tool: String = "") -> void:
 	var selected := or_table_palpation_tool if tool.is_empty() else tool
+	var cursor: Texture2D
+	var hotspot := Vector2.ZERO
 	match selected:
 		"scalpel":
 			if or_table_scalpel_cursor == null:
 				or_table_scalpel_cursor = cursor_texture(OR_TABLE_SCALPEL_CURSOR_PATH, 72)
-			if or_table_scalpel_cursor != null:
-				Input.set_custom_mouse_cursor(or_table_scalpel_cursor, Input.CURSOR_ARROW, Vector2(8, 60))
+			cursor = or_table_scalpel_cursor
+			hotspot = Vector2(8, 60)
 		"needle":
 			if or_table_needle_cursor == null:
 				or_table_needle_cursor = cursor_texture(OR_TABLE_NEEDLE_CURSOR_PATH, 88)
-			if or_table_needle_cursor != null:
-				# The transparent source points down-left; use that fine point as the click hotspot.
-				Input.set_custom_mouse_cursor(or_table_needle_cursor, Input.CURSOR_ARROW, Vector2(18, 76))
+			cursor = or_table_needle_cursor
+			# The transparent source points down-left; use that fine point as the click hotspot.
+			hotspot = Vector2(18, 76)
 		_:
 			if or_table_hand_cursor == null:
 				or_table_hand_cursor = cursor_texture(OR_TABLE_HAND_CURSOR_PATH, 64)
-			if or_table_hand_cursor != null:
-				Input.set_custom_mouse_cursor(or_table_hand_cursor, Input.CURSOR_ARROW, Vector2(30, 2))
+			cursor = or_table_hand_cursor
+			hotspot = Vector2(30, 2)
+	if cursor == null:
+		return
+	# Use one cursor renderer. Native custom-cursor registration is redundant
+	# while hidden, and repeatedly resetting it triggers macOS image errors.
+	show_or_table_virtual_cursor(cursor, hotspot)
+
+func show_or_table_virtual_cursor(cursor: Texture2D, hotspot: Vector2) -> void:
+	if cursor == null:
+		return
+	if not is_instance_valid(or_table_virtual_cursor):
+		or_table_virtual_cursor = TextureRect.new()
+		or_table_virtual_cursor.name = "OrTableVirtualCursor"
+		or_table_virtual_cursor.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		or_table_virtual_cursor.z_index = 4096
+		add_child(or_table_virtual_cursor)
+	or_table_virtual_cursor.texture = cursor
+	or_table_virtual_cursor.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	or_table_virtual_cursor.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	or_table_virtual_cursor.size = cursor.get_size()
+	or_table_virtual_cursor_hotspot = hotspot
+	var viewport := get_viewport()
+	if viewport != null:
+		or_table_virtual_cursor.position = viewport.get_mouse_position() - hotspot
+	# The native macOS cursor is the part that remains stale. Hide it while the
+	# tool stage is active and draw the exact same texture in the game viewport.
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func hide_or_table_virtual_cursor() -> void:
+	if is_instance_valid(or_table_virtual_cursor):
+		or_table_virtual_cursor.queue_free()
+	or_table_virtual_cursor = null
+	or_table_virtual_cursor_hotspot = Vector2.ZERO
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func refresh_or_table_tool_cursor() -> void:
+	# Rebuild the viewport cursor after the new page exists. The serial rejects
+	# deferred refreshes belonging to a page that has already been left.
+	or_table_cursor_refresh_serial += 1
+	var serial := or_table_cursor_refresh_serial
+	call_deferred("_finish_or_table_tool_cursor_refresh", serial)
+
+func _finish_or_table_tool_cursor_refresh(serial: int) -> void:
+	if serial != or_table_cursor_refresh_serial or screen != "or_table_palpation":
+		return
+	apply_or_table_tool_cursor()
 
 func clear_or_table_scalpel_cursor(reset_tool: bool = true) -> void:
-	Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW)
+	or_table_cursor_refresh_serial += 1
+	var serial := or_table_cursor_refresh_serial
+	hide_or_table_virtual_cursor()
 	if reset_tool:
 		or_table_palpation_tool = "palpation"
+	call_deferred("_finish_or_table_cursor_clear", serial)
+
+func _finish_or_table_cursor_clear(serial: int) -> void:
+	if serial != or_table_cursor_refresh_serial or screen == "or_table_palpation":
+		return
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func or_table_palpation_click(region: String) -> void:
 	var preparation = game.preops.get(game.active_preop_id)
@@ -3489,10 +3749,19 @@ func finish_surgery_and_return() -> void:
 	settle_surgery_return()
 
 func settle_surgery_return() -> void:
-	if game.pending_surgery_day_transition:
-		show_day_transition(complete_surgery_return)
+	var settled: bool = game.finish_active_surgery()
+	if settled and start_character_event_from_preop_stage("post_surgery_return"):
+		return
+	if not game.pending_departure_context().is_empty():
+		show_day_transition(show_map)
 	else:
-		complete_surgery_return()
+		show_map()
+
+func finish_post_surgery_character_event() -> void:
+	game.finish_character_event()
+	character_event_return_preop_id = ""
+	character_event_return_location = ""
+	settle_surgery_return()
 
 func complete_surgery_return() -> void:
 	game.finish_active_surgery()
@@ -3613,11 +3882,12 @@ func show_day_transition(next_action: Callable) -> void:
 			day_transition_next = next_action
 			show_after_work_walk()
 			return
-	render_day_transition(next_action)
+	render_day_transition(next_action, departure)
 
-func render_day_transition(next_action: Callable) -> void:
+func render_day_transition(next_action: Callable, departure: Dictionary = {}) -> void:
 	screen = "day_transition"
 	day_transition_next = next_action
+	day_transition_display_schedule = {"day": int(departure.workday), "absolute_clock": int(departure.clock)} if not departure.is_empty() else game.display_schedule()
 	base("", "", false, "hospital_night")
 	var shade := ColorRect.new()
 	shade.color = Color(0.01, 0.025, 0.08, 0.34)
@@ -3650,7 +3920,28 @@ func request_end_workday() -> void:
 		show_after_work_walk()
 		return
 	game.advance_story_to_future_day(1, 9 * 60)
-	render_day_transition(show_map)
+	render_day_transition(show_map, {"workday": workday, "clock": departure_clock})
+
+func after_work_background_id(walk: Dictionary) -> String:
+	# Meeting at the hospital is not yet a shared walk. Only mutual acceptance
+	# may move the scene onto the seasonal street (not a declined invitation).
+	if str(walk.get("phase", "offer")) != "result" or str(walk.get("outcome", "")) != "completed":
+		return "hospital_night" if str(walk.get("variant", "normal")) == "night" else "lobby"
+	var month := int(game.calendar_date(int(walk.workday)).month)
+	var season := "winter"
+	if month in [3, 4, 5]:
+		season = "spring"
+	elif month in [6, 7, 8]:
+		season = "summer"
+	elif month in [9, 10, 11]:
+		season = "autumn"
+	var period := "night" if str(walk.variant) == "night" else "day"
+	# Dedicated seasonal day/night art takes priority over the seasonal base.
+	# Until supplied, night keeps the seasonal base with the existing overlay.
+	for id in ["after_work_street_%s_%s" % [season, period], "after_work_street_" + season, "after_work_street_" + period, "after_work_street_placeholder"]:
+		if not content.find_record("backgrounds", id).is_empty():
+			return id
+	return "hospital_night"
 
 func show_after_work_walk() -> void:
 	var walk: Dictionary = game.active_after_work_walk
@@ -3663,15 +3954,22 @@ func show_after_work_walk() -> void:
 		complete_after_work_walk()
 		return
 	var is_night := str(walk.variant) == "night"
+	var street_background := after_work_background_id(walk)
+	var authored_night := is_night and street_background.begins_with("after_work_street_") and street_background.ends_with("_night")
 	screen = "after_work_walk"
 	base(
 		tx("ui.after_work.night_title", "深夜下班") if is_night else tx("ui.after_work.normal_title", "下班时刻"),
 		tx("ui.after_work.subtitle", "%s / 从医院走向车站") % actor.name,
 		false,
-		"hospital_night" if is_night else "lobby"
+		street_background
 	)
+	if authored_night:
+		# Night lighting is baked into the image; retain only a light UI wash.
+		var wash: ColorRect = page.get_node("BackgroundWash")
+		wash.color.a = 0.12
 	var shade := ColorRect.new()
-	shade.color = Color(0.01, 0.025, 0.08, 0.24 if is_night else 0.12)
+	shade.name = "AfterWorkShade"
+	shade.color = Color(0.01, 0.025, 0.08, 0.0 if authored_night else 0.24 if is_night else 0.12)
 	shade.position = Vector2.ZERO
 	shade.size = Vector2(1280, 800)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -3685,9 +3983,9 @@ func show_after_work_walk() -> void:
 	if phase == "offer":
 		var encounter_text := tx("ui.after_work.night_encounter", "医院已经安静下来。%s也刚刚结束工作，独自走向出口。") % actor.name if is_night else tx("ui.after_work.normal_encounter", "离开医院时，%s也正准备下班。") % actor.name
 		vn_dialogue_box(tx("ui.common.narrator", "旁白"), encounter_text, "AfterWorkDialogue")
-		var invite := button_at(tx("ui.after_work.invite", "要一起走去车站吗？"), Vector2(60, 470), Vector2(655, 54), choose_after_work_walk.bind(true))
+		var invite := button_at(tx("ui.after_work.invite", "要一起走去车站吗？"), Vector2(60, vn_choice_y(2, 0)), Vector2(655, 54), choose_after_work_walk.bind(true))
 		invite.name = "AfterWorkInvite"
-		var skip := button_at(tx("ui.after_work.skip", "打个招呼，各自回去"), Vector2(60, 537), Vector2(655, 54), choose_after_work_walk.bind(false))
+		var skip := button_at(tx("ui.after_work.skip", "打个招呼，各自回去"), Vector2(60, vn_choice_y(2, 1)), Vector2(655, 54), choose_after_work_walk.bind(false))
 		skip.name = "AfterWorkSkip"
 		pause_dialogue_for_choice()
 	else:
@@ -3703,7 +4001,7 @@ func show_after_work_walk() -> void:
 		var reward := int(walk.get("reward", 0))
 		if outcome == "completed":
 			label_at(tx("ui.after_work.reward", "同行结束 · %s熟悉度 +%s") % [actor.name, reward], Vector2(65, 430), 20, Color("9ee2c8"), 650)
-		var finish := button_at(tx("ui.after_work.finish", "结束同行，回家  →"), Vector2(60, 520), Vector2(655, 56), complete_after_work_walk)
+		var finish := button_at(tx("ui.after_work.finish", "结束同行，回家  →"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), complete_after_work_walk)
 		finish.name = "AfterWorkFinish"
 		register_dialogue_continue(finish, text_value, 0.5)
 	add_dialogue_playback_controls()
@@ -3720,17 +4018,34 @@ func complete_after_work_walk() -> void:
 	if bool(completed.get("advance_day_on_finish", false)):
 		game.advance_story_to_future_day(1, 9 * 60)
 	var next_action := day_transition_next if day_transition_next.is_valid() else show_map
-	render_day_transition(next_action)
+	render_day_transition(next_action, {"workday": int(completed.workday), "clock": int(completed.departure_clock)})
 
 func continue_after_day_transition() -> void:
-	if game.is_sunday() and not game.special_event_in_progress() and not game.active_surgery_in_progress():
-		day_transition_next = Callable()
-		show_sunday_menu()
+	day_transition_display_schedule.clear()
+	# Authored multi-day events have an actual ongoing session, unlike an old
+	# completion-page callback. Preserve their continuation, never a stale page.
+	var next_action := day_transition_next
+	day_transition_next = Callable()
+	if game.special_event_in_progress() or game.character_event_in_progress():
+		if next_action.is_valid():
+			next_action.call()
 		return
-	if day_transition_next.is_valid():
-		var next_action := day_transition_next
-		day_transition_next = Callable()
-		next_action.call()
+	game.finish_character_event()
+	game.finish_micro_event()
+	game.finish_special_event()
+	if not game.active_preop_id.is_empty():
+		var preparation = game.preops.get(game.active_preop_id)
+		if preparation != null and preparation.surgery_success:
+			game.finish_active_surgery()
+		elif preparation != null and preparation.surgery_aborted:
+			game.finish_active_surgery_abort()
+	character_event_return_location = ""
+	character_event_return_preop_id = ""
+	sunday_hospital_browsing = false
+	if game.is_sunday():
+		show_sunday_menu()
+	else:
+		show_map(false)
 
 func resume_progress() -> void:
 	if game.active_mode == "special_event" and not game.active_special_event_id.is_empty():

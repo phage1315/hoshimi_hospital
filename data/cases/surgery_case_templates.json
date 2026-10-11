@@ -1301,5 +1301,353 @@
     "status": "ready",
     "difficulty_modifier": 0,
     "case_weight": 1
+  },
+  {
+    "id": "template_vaginal_hysterectomy",
+    "surgery_id": "surgery_vaginal_hysterectomy",
+    "title": "重度子宫脱垂（适合经阴道全切）",
+    "presenting_complaint": "医生，我站久了下面就像有东西掉出来，最近走路和上厕所都很难受。",
+    "history": [
+      "盆底坠胀和阴道口脱出感已持续数年，近半年明显加重，站立或用力时脱出最明显。",
+      "脱出组织休息后可部分回纳，严重时需要手动回纳。",
+      "既往无盆腔手术史，无明确重度盆腔炎、子宫内膜异位症或其他提示严重盆腔粘连的病史。",
+      "无持续异常子宫出血，既往妇科筛查无明显异常。",
+      "患者已完成治疗讨论，接受子宫切除方案。"
+    ],
+    "symptoms": [
+      "阴道口明显脱出感",
+      "盆底坠胀和下腹牵拉感",
+      "久站和行走后症状加重",
+      "排尿后仍有轻度残余感"
+    ],
+    "examination_findings": [
+      "盆腔检查符合重度子宫脱垂，宫颈在用力时明显下降并超过处女膜平面。",
+      "宫颈可以稳定暴露并牵引。",
+      "子宫大小接近正常，活动度良好，无明显固定。",
+      "双侧附件区未触及明显肿物。"
+    ],
+    "tests": [
+      {
+        "id": "pelvic_ultrasound",
+        "label": "盆腔超声",
+        "result": "子宫大小接近正常，无巨大肌瘤或明显宫腔占位；双侧附件未见需要同时开腹处理的明显肿物。"
+      },
+      {
+        "id": "cervical_screening",
+        "label": "宫颈筛查",
+        "result": "未见需要改变当前手术计划的宫颈异常。"
+      },
+      {
+        "id": "pelvic_exam_route_assessment",
+        "label": "经阴道入路评估",
+        "result": "子宫下降度充分，宫颈暴露稳定，子宫活动度良好，阴道入路空间可满足经阴道全子宫切除。"
+      }
+    ],
+    "diagnosis": "重度子宫脱垂（适合经阴道子宫全切除）",
+    "differential_diagnoses": [
+      "以阴道前壁膨出为主的盆腔器官脱垂",
+      "宫颈延长伴相对轻度子宫脱垂",
+      "盆腔肿物导致的下坠和脱出感"
+    ],
+    "intake_notes": "重度子宫脱垂，子宫下降充分、宫颈可稳定暴露、子宫体积不大且活动度良好；既往无盆腔手术或其他强烈提示固定粘连的病史，影像未见巨大肌瘤或需要开腹处理的附件病变。当前病例明确支持经阴道全子宫切除，而不是单纯因为“子宫脱垂”这一病名自动选择术式。",
+    "difficulty_modifier": 0,
+    "case_weight": 3,
+    "status": "ready"
+  },
+  {
+    "id": "template_distal_pancreatectomy",
+    "surgery_id": "surgery_open_distal_pancreatectomy",
+    "title": "胰尾实性假乳头状肿瘤",
+    "presenting_complaint": "体检说胰腺尾部有个肿块，我平时只是偶尔左上腹有点发胀。",
+    "history": [
+      "体检影像偶然发现胰体尾部占位，随后完成进一步增强影像检查。",
+      "既往无反复胰腺炎病史。",
+      "近期无黄疸、进行性消瘦或持续性剧烈上腹痛。",
+      "无已知远处肿瘤病史。"
+    ],
+    "symptoms": [
+      "偶发左上腹胀满感",
+      "进食后偶有轻度上腹不适",
+      "多数时间无明显症状"
+    ],
+    "examination_findings": [
+      "腹部平软，无腹膜刺激征。",
+      "左上腹可有轻度深压不适，但无明确触及肿块。",
+      "皮肤和巩膜无黄染。"
+    ],
+    "tests": [
+      {
+        "id": "pancreas_ct",
+        "label": "胰腺增强CT",
+        "result": "胰尾见边界较清楚的局限性实性-囊性肿物，主要位于胰体尾，未见主要血管包绕或远处转移。"
+      },
+      {
+        "id": "pancreas_mri",
+        "label": "胰腺MRI",
+        "result": "病变包膜相对完整，内部可见出血/变性成分，影像特征支持实性假乳头状肿瘤；脾门和脾血管仍有可分离平面。"
+      },
+      {
+        "id": "tumor_markers",
+        "label": "胰腺相关肿瘤标志物",
+        "result": "未见明显升高。"
+      },
+      {
+        "id": "staging_scan",
+        "label": "分期影像",
+        "result": "未见肝脏、腹膜或其他远处转移证据。"
+      }
+    ],
+    "diagnosis": "胰尾实性假乳头状肿瘤（局限性）",
+    "differential_diagnoses": [
+      "胰腺神经内分泌肿瘤",
+      "胰腺黏液性囊性肿瘤",
+      "胰腺腺泡细胞肿瘤"
+    ],
+    "intake_notes": "局限性胰体尾肿物，病变集中于远端胰腺，未见主要血管包绕或远处转移，脾血管与脾门仍存在可分离平面。病例与 Ordinary 版保脾开腹胰体尾切除的设计目标一致，不使用侵袭性胰腺癌或需要联合大血管切除的高级病例。",
+    "difficulty_modifier": 0,
+    "case_weight": 2,
+    "status": "ready"
+  },
+  {
+    "id": "template_partial_nephrectomy",
+    "surgery_id": "surgery_open_partial_nephrectomy",
+    "title": "小型局限性肾肿瘤（保肾切除）",
+    "presenting_complaint": "体检说右肾上长了个小肿块，我平时几乎没有感觉。",
+    "history": [
+      "体检超声发现右肾占位，随后完成增强CT评估。",
+      "无肉眼血尿史。",
+      "无持续腰痛、反复泌尿系感染或已知慢性肾功能不全。",
+      "对侧肾既往无明确疾病。"
+    ],
+    "symptoms": [
+      "多数时间无明显症状",
+      "偶有右侧腰部轻微隐胀",
+      "无明显排尿疼痛"
+    ],
+    "examination_findings": [
+      "腹部和腰部未触及明确肿块。",
+      "右侧肾区无明显叩击痛。",
+      "无明显下肢水肿或其他提示肾功能衰竭的体征。"
+    ],
+    "tests": [
+      {
+        "id": "renal_ct",
+        "label": "肾脏增强CT",
+        "result": "右肾下极见约2.8 cm强化性外生型皮质肿物，边界相对清楚，未见肾窦、肾静脉或邻近器官侵犯。"
+      },
+      {
+        "id": "renal_function",
+        "label": "肾功能",
+        "result": "肌酐和估算肾小球滤过率处于可接受范围。"
+      },
+      {
+        "id": "contralateral_kidney",
+        "label": "对侧肾评估",
+        "result": "左肾形态和功能未见明显异常。"
+      },
+      {
+        "id": "renal_staging",
+        "label": "分期影像",
+        "result": "未见区域性大血管侵犯或远处转移。"
+      }
+    ],
+    "diagnosis": "右肾局限性小肾癌（cT1a，适合部分肾切除）",
+    "differential_diagnoses": [
+      "肾嗜酸细胞瘤",
+      "乏脂性肾血管平滑肌脂肪瘤",
+      "复杂性肾囊性肿物"
+    ],
+    "intake_notes": "右肾下极小型、外生、局限性强化肿物，未侵犯肾窦、肾静脉或邻近结构，肾功能可接受。病例重点是切除肿瘤同时保留剩余肾实质，适合作为开腹部分肾切除的标准普通病例；更大、肾门中心性或伴静脉侵犯的病变不属于本模板。",
+    "difficulty_modifier": 0,
+    "case_weight": 3,
+    "status": "ready"
+  },
+  {
+    "id": "template_adrenalectomy",
+    "surgery_id": "surgery_open_adrenalectomy",
+    "title": "单侧醛固酮分泌性肾上腺腺瘤",
+    "presenting_complaint": "我的血压一直压不下来，最近检查说右侧肾上腺有个小瘤。",
+    "history": [
+      "近年持续高血压，使用常规降压治疗后控制仍不理想。",
+      "多次检查提示低钾血症。",
+      "偶有肌无力和小腿抽筋。",
+      "无典型阵发性心悸、大汗和剧烈头痛发作史。"
+    ],
+    "symptoms": [
+      "血压持续偏高",
+      "间歇性乏力",
+      "偶发肌肉无力或抽筋"
+    ],
+    "examination_findings": [
+      "血压持续高于正常范围。",
+      "腹部查体无明显肿块或压痛。",
+      "未见明显库欣样外观改变。"
+    ],
+    "tests": [
+      {
+        "id": "serum_potassium",
+        "label": "血清钾",
+        "result": "反复低于正常范围。"
+      },
+      {
+        "id": "aldosterone_renin_ratio",
+        "label": "醛固酮/肾素比值",
+        "result": "明显升高，支持原发性醛固酮增多症。"
+      },
+      {
+        "id": "confirmatory_endocrine_test",
+        "label": "内分泌确认试验",
+        "result": "结果支持自主性醛固酮分泌。"
+      },
+      {
+        "id": "adrenal_ct",
+        "label": "肾上腺增强CT",
+        "result": "右侧肾上腺见约2.2 cm边界清楚的局限性结节，无周围器官或大血管侵犯。"
+      },
+      {
+        "id": "metanephrines",
+        "label": "儿茶酚胺代谢物筛查",
+        "result": "未见支持嗜铬细胞瘤的异常。"
+      },
+      {
+        "id": "adrenal_lateralization",
+        "label": "单侧病变定位评估",
+        "result": "结果支持右侧肾上腺为主要异常分泌来源。"
+      }
+    ],
+    "diagnosis": "右侧醛固酮分泌性肾上腺皮质腺瘤（单侧原发性醛固酮增多症）",
+    "differential_diagnoses": [
+      "双侧肾上腺增生",
+      "嗜铬细胞瘤",
+      "皮质醇分泌性肾上腺腺瘤"
+    ],
+    "intake_notes": "右侧单发、局限、非侵袭性功能性肾上腺肿物，内分泌检查支持单侧自主性醛固酮分泌，且已排除嗜铬细胞瘤方向。病例与 Ordinary 开腹单侧肾上腺切除的设计边界一致，不包含邻近器官侵犯或大血管联合切除。",
+    "difficulty_modifier": 0,
+    "case_weight": 2,
+    "status": "ready"
+  },
+  {
+    "id": "template_left_hemicolectomy",
+    "surgery_id": "surgery_open_left_hemicolectomy",
+    "title": "降结肠腺癌",
+    "presenting_complaint": "这几个月左边肚子总是隐隐作痛，大便也越来越不规律，偶尔还能看到血。",
+    "history": [
+      "近数月排便习惯逐渐改变，便秘与较稀便交替出现。",
+      "偶有粪便表面或便后少量鲜暗红色血迹。",
+      "近来较以前容易疲劳。",
+      "无既往炎症性肠病史。",
+      "无急性完全性肠梗阻表现。"
+    ],
+    "symptoms": [
+      "左侧腹部间歇性隐痛",
+      "排便习惯改变",
+      "便中带血",
+      "乏力"
+    ],
+    "examination_findings": [
+      "左侧中腹可有轻度压痛。",
+      "无明显腹膜刺激征。",
+      "未触及明确巨大腹部肿块。",
+      "肠鸣音存在，无完全梗阻体征。"
+    ],
+    "tests": [
+      {
+        "id": "colonoscopy",
+        "label": "结肠镜",
+        "result": "降结肠中段见环形溃疡型占位，病变中心明确位于降结肠，未延伸为单纯乙状结肠病变。"
+      },
+      {
+        "id": "colon_biopsy",
+        "label": "内镜活检",
+        "result": "腺癌。"
+      },
+      {
+        "id": "colon_ct",
+        "label": "胸腹盆增强CT",
+        "result": "降结肠局限性肿瘤性增厚，未见远处转移或需要扩大为多脏器联合切除的证据。"
+      },
+      {
+        "id": "cbc",
+        "label": "血常规",
+        "result": "轻度缺铁性贫血表现。"
+      },
+      {
+        "id": "cea",
+        "label": "CEA",
+        "result": "轻度升高。"
+      }
+    ],
+    "diagnosis": "降结肠腺癌（局限性）",
+    "differential_diagnoses": [
+      "脾曲结肠癌",
+      "乙状结肠癌",
+      "炎症性或缺血性结肠狭窄"
+    ],
+    "intake_notes": "病变中心位于降结肠中段，近远端范围和血供处理需求符合左半结肠切除；不是单纯乙状结肠局限病变，也没有需要高级多脏器联合切除的局部侵犯。作为 Ordinary 病例使用标准左半结肠切除流程。",
+    "difficulty_modifier": 0,
+    "case_weight": 3,
+    "status": "ready"
+  },
+  {
+    "id": "template_low_anterior_resection",
+    "surgery_id": "surgery_open_low_anterior_resection",
+    "title": "中低位直肠癌（可保肛）",
+    "presenting_complaint": "我最近总觉得还想排便，可每次出来得不多，还经常带血。",
+    "history": [
+      "近数月反复便意频繁和排便不尽感。",
+      "间歇性便血逐渐增多。",
+      "近期粪便变细。",
+      "既往无盆腔放疗史。",
+      "无既往大范围盆腔手术史。"
+    ],
+    "symptoms": [
+      "里急后重",
+      "便血",
+      "粪便变细",
+      "间歇性盆腔坠胀"
+    ],
+    "examination_findings": [
+      "直肠指检可触及中低位直肠肿物下缘。",
+      "肿物下缘距肛缘约7 cm。",
+      "肛门括约肌张力保留。",
+      "未触及明确固定侵犯肛管或盆底肌群的表现。"
+    ],
+    "tests": [
+      {
+        "id": "rectal_colonoscopy",
+        "label": "结肠镜",
+        "result": "中低位直肠见局限性溃疡型肿物，病变下缘距肛缘约7 cm。"
+      },
+      {
+        "id": "rectal_biopsy",
+        "label": "内镜活检",
+        "result": "直肠腺癌。"
+      },
+      {
+        "id": "pelvic_mri",
+        "label": "盆腔MRI",
+        "result": "病变局限于中低位直肠，括约肌复合体和提肛肌未见直接侵犯，计划远端切缘和保肛重建具有可行性。"
+      },
+      {
+        "id": "rectal_staging_ct",
+        "label": "胸腹盆增强CT",
+        "result": "未见远处转移或需要多脏器联合切除的证据。"
+      },
+      {
+        "id": "rectal_cea",
+        "label": "CEA",
+        "result": "轻度升高。"
+      }
+    ],
+    "diagnosis": "中低位直肠腺癌（可保肛，适合低位前切除）",
+    "differential_diagnoses": [
+      "更低位并侵犯括约肌的直肠癌",
+      "大型直肠腺瘤",
+      "炎症性直肠狭窄"
+    ],
+    "intake_notes": "中低位直肠癌，但括约肌和提肛肌未受侵，远端切缘与低位吻合具备可行性，因此本模板明确映射开腹低位直肠前切除。第一版不与 APR 共享病例模板；需要 APR 的极低位或括约肌受侵病例继续作为独立疾病/病例处理。",
+    "difficulty_modifier": 0,
+    "case_weight": 3,
+    "status": "ready"
   }
 ]

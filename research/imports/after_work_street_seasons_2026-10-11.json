@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-11",
+  "tool": "built-in image_gen",
+  "reference": "assets/backgrounds/after_work_v1/street_placeholder.png",
+  "size": [
+    1672,
+    941
+  ],
+  "policy": "Original image is summer, as user requested. Spring/autumn/winter derived from the same original. No narrative or timing changes. Night uses seasonal base and existing overlay until dedicated night art is supplied.",
+  "months": {
+    "spring": [
+      3,
+      4,
+      5
+    ],
+    "summer": [
+      6,
+      7,
+      8
+    ],
+    "autumn": [
+      9,
+      10,
+      11
+    ],
+    "winter": [
+      12,
+      1,
+      2
+    ]
+  },
+  "assets": {
+    "spring": {
+      "path": "assets/backgrounds/after_work_v1/street_spring.png",
+      "source": "exec-49035272-a1e2-45cf-a223-dc0f64d01a1f.png",
+      "prompt": "Use case: lighting-weather. Edit the provided existing visual-novel street background into a seasonal variant. Input image is the edit target and immutable composition reference. Preserve the EXACT camera position, framing, perspective, street and sidewalk geometry, tactile paving, tree trunk positions and shapes, fence, railway, station, buildings, windows and all architectural details. Keep the same wide aspect ratio, hand-painted anime background style, late-afternoon sunlight direction, warm sunset sky, and open space for dialogue and separately composited characters. Change ONLY seasonal foliage and environmental surface details. No people, no text, no logos, no UI, no new buildings, no camera movement. SPRING: transform the existing street trees into flowering cherry blossom trees at peak spring bloom, soft pale pink and white sakura canopies, retain their exact trunk locations and the architecture behind them. Some fresh light green leaves and a delicate scattering of petals beside the tree beds, sidewalk edges only; keep the broad walking space clear. Keep identical warm late-afternoon sunlight, sunset sky, camera, all buildings, station, railway, fences and paving, with no changes to their geometry. No festival decorations, banners, crowds or signs. This is a seasonal variant of the exact same street, not a different location."
+    },
+    "summer": {
+      "path": "assets/backgrounds/after_work_v1/street_placeholder.png",
+      "source": "Original approved street, unchanged"
+    },
+    "autumn": {
+      "path": "assets/backgrounds/after_work_v1/street_autumn.png",
+      "source": "exec-b1ba2f69-114d-45fe-941e-a76bdc453a9c.png",
+      "prompt": "Use case: lighting-weather. Edit the provided existing visual-novel street background into a seasonal variant. Input image is the edit target and immutable composition reference. Preserve the EXACT camera position, framing, perspective, street and sidewalk geometry, tactile paving, tree trunk positions and shapes, fence, railway, station, buildings, windows and all architectural details. Keep the same wide aspect ratio, hand-painted anime background style, late-afternoon sunlight direction, warm sunset sky, and open space for dialogue and separately composited characters. Change ONLY seasonal foliage and environmental surface details. No people, no text, no logos, no UI, no new buildings, no camera movement. AUTUMN: same deciduous trees now carry rich golden yellow, amber and orange autumn foliage, with some rusty red accents; a light scattering of fallen leaves along sidewalk edges and tree beds. Preserve visible paving and clear walking space. The identical street in autumn, not a different location."
+    },
+    "winter": {
+      "path": "assets/backgrounds/after_work_v1/street_winter.png",
+      "source": "exec-984ff6e5-bec5-48ae-a965-a74c3de53f77.png",
+      "prompt": "Use case: lighting-weather. Edit the provided existing visual-novel street background into a seasonal variant. Input image is the edit target and immutable composition reference. Preserve the EXACT camera position, framing, perspective, street and sidewalk geometry, tactile paving, tree trunk positions and shapes, fence, railway, station, buildings, windows and all architectural details. Keep the same wide aspect ratio, hand-painted anime background style, late-afternoon sunlight direction, warm sunset sky, and open space for dialogue and separately composited characters. Change ONLY seasonal foliage and environmental surface details. No people, no text, no logos, no UI, no new buildings, no camera movement. WINTER: same deciduous trees now mostly bare, their fine natural branches visible; subdued evergreen hedges, light settled snow on tree beds, hedge tops, roof edges and curb verges. Keep the sidewalk and road mostly cleared, preserve their exact geometry and texture. Crisp cold atmosphere with cool shadows while retaining low warm late-afternoon sun. No falling snow obscuring the scene. The identical street in winter, not a different location."
+    }
+  },
+  "unused_candidate": {
+    "season": "summer",
+    "source": "exec-c6d4c8c0-2961-4d43-ba58-223491f52e92.png",
+    "reason": "User prefers original as summer. Not imported or referenced by game."
+  },
+  "source_directory": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce"
+}

@@ -43,6 +43,11 @@ def apply_overrides(encounter, preop, bundle):
     preop['initial_anxiety'] = preop_data.get('initial_anxiety', preop.get('initial_anxiety', 0))
     preop['initial_interaction'] = deepcopy(preop_data.get('initial_interaction', preop.get('initial_interaction', {})))
     stage_prompts = preop_data.get('stage_prompts', {})
+    final_response = preop_data.get('graphic_preop_final_response', '')
+    if final_response:
+        for family in preop.get('graphic_preop', {}).get('families', {}).values():
+            nodes = family.setdefault('nodes', [])
+            nodes.append({'id': 'patient_final_response', 'speaker': 'patient', 'text': final_response})
     incision_responses = preop_data.get('incision_responses', {})
     for stage in preop.get('stages', []):
         if stage.get('id') in stage_prompts:
@@ -53,16 +58,34 @@ def apply_overrides(encounter, preop, bundle):
                     action['response'] = incision_responses[action['id']]
 
 
+def merge_dialogue_profile(patient, dialogue_profiles, patient_id):
+    profile_id = patient.get('dialogue_profile', '')
+    if not profile_id:
+        raise ValueError(f'{patient_id}: missing dialogue profile')
+    if profile_id not in dialogue_profiles:
+        raise ValueError(f'{patient_id}: unknown dialogue profile {profile_id}')
+    profile = dialogue_profiles[profile_id]
+    merged_lines = deepcopy(profile.get('reaction_lines', {}))
+    merged_lines.update(deepcopy(patient.get('reaction_lines', {})))
+    patient['reaction_lines'] = merged_lines
+    merged_variants = deepcopy(profile.get('reaction_variants', {}))
+    merged_variants.update(deepcopy(patient.get('reaction_variants', {})))
+    patient['reaction_variants'] = merged_variants
+
+
 def load_patient_bundles(data_root: Path, config: dict):
     index = read_json(data_root / config['index'])
     encounter_template = read_json(data_root / config['encounter_template'])
     preop_template = read_json(data_root / config['preop_template'])
+    dialogue_profile_source = read_json(data_root / config['dialogue_profiles'])
+    dialogue_profiles = dialogue_profile_source.get('profiles', {})
     result = {
         'patients': [],
         'encounters': [],
         'preops': [],
         'examination_cg_pools': [],
         'ward_preparation_cg_pools': [],
+        'surgery_cg_pools': [],
         'first_surgery_diagnosis_reactions': [],
     }
     bundles = []
@@ -71,6 +94,7 @@ def load_patient_bundles(data_root: Path, config: dict):
         bundles.append((relative_path, bundle))
         patient = deepcopy(bundle['patient'])
         patient_id = patient['id']
+        merge_dialogue_profile(patient, dialogue_profiles, patient_id)
         short_id = patient_id.removeprefix('patient_')
         fallback = bundle.get('fallback', {})
         tokens = {
@@ -95,4 +119,5 @@ def load_patient_bundles(data_root: Path, config: dict):
         exclusive = bundle.get('exclusive_cg_pools', {})
         result['examination_cg_pools'].extend(deepcopy(exclusive.get('examination', [])))
         result['ward_preparation_cg_pools'].extend(deepcopy(exclusive.get('ward_preparation', [])))
+        result['surgery_cg_pools'].extend(deepcopy(exclusive.get('surgery', [])))
     return result, bundles

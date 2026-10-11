@@ -1,0 +1,116 @@
+{
+  "generic": {
+    "reaction_lines": {
+      "hospitalization_question": "“Huh, I need to stay in the hospital? This is getting serious... How long will I be here?”",
+      "hospitalization_response": "“All right, I'll stay. But if there's anything I don't understand, I'm going to ask.”",
+      "procedure_mismatch": "“Wait, that isn't what you said earlier, is it? Doctor, just because I'm lying here doesn't mean I wasn't listening.”",
+      "explain_plan": "“Mm, that's much clearer now. Thank you for explaining it to me.”",
+      "brief_plan": "“Huh? That's all? Tell me a little more. I'm the one this is happening to.”",
+      "last_reassure": "“All right, I'll cooperate... But you have to keep talking to me, too.”",
+      "choose_general": "“Sleeping through it sounds pretty nice... But going to sleep without knowing anything is still a little scary.”",
+      "choose_epidural": "“My body will be numb, but my head will stay clear? Hmm... Then I'll hear everything you say.”",
+      "choose_local": "“Local anesthesia... If I tell you it hurts, you'll listen, right?”",
+      "choose_none": "“Huh? No anesthesia?! Doctor, I didn't come here for a pain-endurance contest.”",
+      "induction_reassure": "“Mm... I'm counting on you, then. This time I'm really putting myself in your hands.”",
+      "insist_without_anesthesia": "“No! I said I'd cooperate, not that I could stand being cut open without anesthesia!”",
+      "assistant_stabilize_none": "“D-don't just tell me to hold still! It hurts so much my whole body wants to pull away...!”",
+      "assistant_stabilize_local": "“Hold me steady... Even with the anesthetic, I'm still shaking from nerves.”",
+      "assistant_stabilize_epidural": "“My legs aren't really doing what I tell them anymore... You'd better hold me steady.”",
+      "incise_epidural": "“Ngh... Have you started? It doesn't hurt as much as I imagined, but knowing you're really operating is still so frightening...”",
+      "incise_local": "“Ah...! I can feel you moving... H-have you already started cutting?”",
+      "incise_none": "“Aaah!! It hurts! It really hurts! W-wait... I can't take it anymore...!”",
+      "contact_pause": "“Thank you... I almost couldn't bear it just then. Let me catch my breath...”",
+      "contact_command": "“All right, I'll stay still... But if I can't help crying out, you're not allowed to laugh at me.”",
+      "contact_continue": "“W-wait! You're just going to keep going? At least answer me...!”",
+      "ongoing_narrate": "“Mm, I'm listening. When you tell me what you're doing, I don't keep imagining things.”",
+      "ongoing_eye_contact": "“Ha... You're finally looking at me. I thought all you could see was the surgical field.”",
+      "ongoing_silent": "“Doctor? Why has everyone suddenly gone quiet...? I'm still awake.”",
+      "closure_reassure": "“It's really almost over? Whew... I shouldn't have talked so tough earlier.”",
+      "closure_coach": "“Breathe slowly... All right, I'll follow your rhythm.”",
+      "closure_silent": "“It's almost done, right...? Tell me, Doctor... I'll worry.”"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "“Oh, an enema? That's part of the preparation, too... Wait, right now?”",
+        "“Mm, lie on my side... All right. I never thought being hospitalized would mean needing help even with this.”"
+      ],
+      "ward_enema_unnecessary": [
+        "“Huh? Isn't this step optional? Then why do it?”",
+        "“Doing it anyway when it isn't needed? Doctor, this isn't trying out a new menu.”"
+      ],
+      "ward_skin_prep": [
+        "“All right, I won't pull away... Wait, you have to shave that far down, too?!”",
+        "“Skin preparation, right... Huh? Here, too? How can you all act so matter-of-fact about it...?”"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "“You have to shave places that aren't being operated on, too? ...That's a little strange, isn't it?”",
+        "“Huh? Skin preparation outside the surgical area? Doctor, tell me why first.”"
+      ],
+      "ward_surgical_cap": [
+        "“All my hair goes inside? All right... I really look like a surgical patient now.”",
+        "“Hey, can you still recognize me like this? Don't mix me up with someone else!”"
+      ],
+      "operative_positioning_awake": [
+        "“My legs go here... Mm, I know I've had anesthetic, but I'm still awake.”",
+        "“Wait, don't suddenly turn me over. I'm awake; tell me first.”"
+      ],
+      "operative_positioning_none": [
+        "“You're securing me before giving any anesthesia? W-wait... What if it hurts so much I can't help moving?”",
+        "“I have to stay like this even after you start cutting...? Doctor, I suddenly don't feel like laughing at all...”"
+      ],
+      "urinary_catheterization_awake": [
+        "“A urinary catheter... Mm, I understand. But putting it in there... It's really rather embarrassing.”",
+        "“How can you all be so calm at a time like this...? All right, I'll try not to move.”"
+      ],
+      "urinary_catheterization_none": [
+        "“Ah...! W-wait... That's so uncomfortable! I'm completely awake...!”",
+        "“D-don't put it in without warning! Tell me first... I really will flinch if you startle me!”"
+      ],
+      "skin_disinfection_awake": [
+        "“Ooh, that's cold! So I can still feel the cold disinfectant even after the anesthetic.”",
+        "“You've disinfected all the way here... The scalpel is next, isn't it? Tell me before you start.”"
+      ],
+      "skin_disinfection_none": [
+        "“So cold... Wait, once the disinfecting is done, you're really going straight to cutting?”",
+        "“It's only disinfectant... But thinking of the cut that's coming next already has me trembling...”"
+      ],
+      "incision_marking_awake": [
+        "“Oh, this is the incision... Even with anesthesia, I can't help wanting to look.”",
+        "“Do you start once you've finished marking? I may still be smiling, but I'm really a little nervous.”"
+      ],
+      "incision_marking_none": [
+        "“You're really going to cut straight along this line? Without anesthesia... Are you serious...?”",
+        "“Don't make me keep staring at it... Thinking of the knife cutting along here scares me...”"
+      ]
+    }
+  },
+  "individual": {
+    "reaction_lines": {
+      "hospitalization_response": "“All right, I'll stay. But Doctor, remember to use my name this time. I'm Aerith, not a number.”",
+      "procedure_mismatch": "“Wait! That isn't what we agreed on, is it? Doctor, this isn't Hojo's laboratory. You need to explain first.”",
+      "last_reassure": "“I know you're not Hojo... It's just that with so many white coats around me, sometimes I remember the past.”",
+      "choose_none": "“No anesthesia? Doctor, are you trying to treat me, or see how long I can stand it? I've seen plenty of that kind of research before.”",
+      "insist_without_anesthesia": "“Ah! Doctor, it really hurts! Don't just watch my reactions... I can talk! Listen to me...!”",
+      "ongoing_silent": "“Doctor...? When you all suddenly go quiet, I remember my days in the laboratory. Could you say something to me...?”",
+      "closure_reassure": "“It's really over... Thank goodness. This time I'm not somebody's experimental result, just an ordinary patient, right?”"
+    },
+    "reaction_variants": {
+      "ward_enema_unnecessary": [
+        "“Huh? You're doing it even though it isn't needed? Doctor, you're acting a little like a certain Shinra researcher... I don't miss him one bit.”",
+        "“An enema, too, just to observe a little more? ...I'm joking. But you'd better tell me the real reason.”"
+      ],
+      "ward_surgical_cap": [
+        "“Even my ribbon has to come off... All right. But don't just call me 'the patient' afterward. My name's Aerith.”",
+        "“Hiding all my hair... Mm, it feels a little like being at the research facility before. But this time it's just ordinary surgery, right?”"
+      ],
+      "operative_positioning_none": [
+        "“Wait... You're securing my arms, too? I know this is surgery... But hearing 'don't move' still makes me a little frightened.”",
+        "“Doctor, do you know what I hated most back then? Being positioned by someone who then just recorded my reactions... So at least talk to me, all right?”"
+      ],
+      "urinary_catheterization_none": [
+        "“W-wait! You're putting it in while I'm completely awake? At least tell me first... Don't just tell me 'don't move'!”",
+        "“Ah...! Doctor, I know this is necessary... But it's so uncomfortable... You can hear me talking, can't you?”"
+      ]
+    }
+  }
+}

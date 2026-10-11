@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_miyamizu_mitsuha",
+    "name": "宫水三叶",
+    "age": 26,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/ward/smile.png",
+        "ward/brave": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/ward/brave.png",
+        "ward/worried": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_miyamizu_mitsuha_v1/patient_miyamizu_mitsuha/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_miyamizu_mitsuha/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_miyamizu_mitsuha/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_miyamizu_mitsuha/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_miyamizu_mitsuha/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_miyamizu_mitsuha/general.png",
+        "examination/shy": "assets/examinations/patient_miyamizu_mitsuha/full_undress.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "calm",
+      "secondary": "analytical",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "calm_analytical_reassurance",
+    "traits": {
+      "baseline_anxiety": 52,
+      "pain_sensitivity": 70,
+      "privacy_sensitivity": 76,
+      "trust_baseline": 61,
+      "control_need": 66,
+      "expressiveness": 78,
+      "health_literacy": 31,
+      "compliance_tendency": 81
+    },
+    "fear_profile": {
+      "pain_fear": 75,
+      "procedure_fear": 69,
+      "diagnosis_fear": 57,
+      "loss_control_fear": 73
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「要住院啊……我刚投了几份简历，还约了面试呢。啊，不是说工作比身体重要！只是想先知道大概要住多久。」",
+      "hospitalization_response": "「好，我会住院的。东京这边的事我自己能安排……不过第一次遇到这种情况，还是得请医生多指点啦。」",
+      "procedure_mismatch": "「诶？等一下，刚才说的不是这项手术吧？我是不是听错了？……先把病历确认好，好吗？」",
+      "explain_plan": "「嗯，这样说我就明白了！知道下一步要做什么，感觉没那么慌了……谢谢你。」",
+      "brief_plan": "「就这样吗？我不是想为难你，可至少告诉我等会儿会怎么准备吧。不然我会一直乱猜的。」",
+      "last_reassure": "「好，我知道了。该做的准备我会认真配合……只是嘴上说得轻松，心里还是跳得好快呀。」",
+      "choose_general": "「全身麻醉……醒来的时候手术就结束了，对吧？嗯……那我就把接下来的事交给你们了。」",
+      "choose_epidural": "「硬膜外麻醉的话，我还会醒着，却没办法像平时那样动腿……？这感觉光想就有点害怕呢。」",
+      "choose_local": "「局部麻醉啊……好。要是我觉得哪里不舒服，可以马上告诉你吧？我会努力不乱动的。」",
+      "choose_none": "「诶——完全不麻醉？！等、等一下，我知道自己不该先害怕，可真的会痛吧？能再跟我讲清楚吗？」",
+      "induction_reassure": "「嗯，我准备好了……大概吧。啊，手还在发抖……医生，睡着以后的事，就拜托大家了。」",
+      "insist_without_anesthesia": "「啊……疼、疼！等一下，真的好疼！我已经很努力不动了……医生，能先听我说吗！」",
+      "assistant_stabilize_none": "「要先把我固定住……？是怕我疼得乱动吧。我知道有道理，可这么一想，突然更害怕了……」",
+      "assistant_stabilize_local": "「好，手臂放在这里对吧？我不会乱动的……啊，别突然碰我，先说一声就好！」",
+      "assistant_stabilize_epidural": "「腿真的动不了了……明明知道是麻醉起作用，还是有点慌。谢谢你帮我调整姿势。」",
+      "incise_epidural": "「……已经切开了吗？没有想象中那种刺痛，可里面沉沉的、被拉动的感觉……原来还是这么清楚啊……」",
+      "incise_local": "「嘶……！等、等等，皮肤那里没那么疼，可里面刚才那一下……医生，这样真的正常吗？」",
+      "incise_none": "「啊——！！好疼！医生、等一下……！真的在切了……我不行、我真的忍不住……！」",
+      "contact_pause": "「……停下来了？呼……谢谢。我想先缓一口气，刚才吓得连呼吸都乱了。」",
+      "contact_command": "「我知道，要保持不动……我会努力的！可是身体自己在抖，拜托别突然吓我。」",
+      "contact_continue": "「……嗯，可以继续了。下一步如果会有明显的感觉，能不能提前提醒我一下？」",
+      "ongoing_narrate": "「谢谢你一直告诉我进度……我听得见。知道大家在做什么，就不会只盯着天花板乱想了。」",
+      "ongoing_eye_contact": "「啊……医生。你还在听我说话，对吧？……嗯，那我就放心一点了。」",
+      "ongoing_silent": "「医生……？怎么突然都不说话了？是正常在忙吧……你们倒是回我一句呀。」",
+      "closure_reassure": "「真的快结束了？……太好了。我刚才还以为自己要一直撑不下去……谢谢大家。」",
+      "closure_coach": "「好，慢慢吸气、再呼出来……嗯，我照做。你说得这么清楚，我就没那么紧张了。」",
+      "closure_silent": "「……嗯。我先安静一会儿……知道你们还在旁边，就已经帮大忙了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠……也要在病房做啊。好、我知道了……能先让我把帘子拉好吗？有点不好意思呢。」",
+        "「要侧躺着接受准备，是吗？嗯，我会配合……可是从刚才开始就紧张得连手都不知道往哪儿放。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「诶，这次也必须灌肠吗？如果跟手术没关系，能不能先核对一下呀？」",
+        "「如果不需要做这项准备……我可以省掉吗？不是偷懒，我只是想弄明白理由。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮是要把这里的毛发剃掉……？啊，范围比我以为的还大！我知道是为了手术，可还是好害羞呀。」",
+        "「等、等一下，被子先别掀那么快！你告诉我要露到哪里，我会自己配合的……」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「这里也要备皮吗？如果不是手术需要的范围，能再问一下医生吗？」",
+        "「我会配合必要的准备的……只是这部分如果不用处理，能不能就先保持原样？」"
+      ],
+      "ward_surgical_cap": [
+        "「头发要全部收进帽子里，连耳朵也不能露出来呀……好，我再把后面的发梢塞好。」",
+        "「戴上手术帽以后……忽然就有真的要上台的感觉了。嗯，头发我会收好，不给你们添麻烦。」"
+      ],
+      "operative_positioning_awake": [
+        "「手放到这里、肩膀不要动……嗯，我照做。只是被这么多人一起调整姿势，还是有点紧张呢。」",
+        "「啊，这样摆好以后就不能自己动了吧？知道是为了手术……可我还是想先看看你们要怎么放。」"
+      ],
+      "operative_positioning_none": [
+        "「没有麻醉就要先固定好身体吗……？我明白怕我乱动，可等下真的痛起来，我不知道能不能控制住……」",
+        "「这姿势已经不能随便换了……医生，要是我受不了，拜托一定听我说话，好不好？」"
+      ],
+      "urinary_catheterization_awake": [
+        "「还要放导尿管呀……啊，明白了。我会配合，可是……能先给我一点准备的时间吗？」",
+        "「要从那边放进去……？嗯，我知道是医疗操作。只是别人站在旁边的时候，我还是有点不自在……」"
+      ],
+      "urinary_catheterization_none": [
+        "「等一下，还没麻醉就要放导尿管吗……？我、我尽量不动，麻烦先提醒我一声！」",
+        "「呀……！有点难受……不，是相当不舒服！我还清醒着呢，能不能慢一点告诉我下一步？」"
+      ],
+      "skin_disinfection_awake": [
+        "「呀，好凉！……啊，是消毒液。麻醉做过以后，原来冷的感觉还是这么清楚啊。」",
+        "「嗯，我不动……只是擦过来的时候有点冰，忍不住吓了一跳，抱歉。」"
+      ],
+      "skin_disinfection_none": [
+        "「消毒开始了……那下一步真的就是开刀了吧？我知道已经说好了，可心跳还是停不下来……」",
+        "「好冰……我还什么麻醉都没用呢。医生，正式开始前一定要告诉我啊。」"
+      ],
+      "incision_marking_awake": [
+        "「切口要画在这里呀……嗯，看见这条线，突然就觉得手术真的要开始了。」",
+        "「我知道标记是必要的……只是确认一下，麻醉的效果已经检查过了吧？」"
+      ],
+      "incision_marking_none": [
+        "「那条线……就是等下不麻醉也要切下去的地方吗？……呜，我突然很想把眼睛闭起来。」",
+        "「医生，真的会沿着这里下刀吧……？先、先让我呼吸一下，我已经紧张得发抖了……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，我今天来是因为：{line}……最近正忙着找工作，突然这样不舒服，心里有点没底呢。",
+      "primary": "嗯，最明显的情况是：{line}。我尽量把发生的事说明白。",
+      "secondary": "还有这件事也想告诉你：{line}。会不会跟前面那种不舒服有关呀？",
+      "background": "我从岐阜的山间小镇搬来东京，家里以前一直照料神社，我也会编传统的结绳。现在大学毕业了，正在投简历、准备面试。东京一直是我向往的地方……可真的独自在这里生活，事情还是得一件件学着应付呢。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "宫水三叶的病历",
+    "full_undress": {
+      "prompt": "「诶，检查要把衣服全部脱掉吗……？啊，我知道医生是为了检查身体，可还是有点不好意思。能先告诉我要检查哪些地方吗？」",
+      "responses": {
+        "abandon_full_undress": "「这一项先不用做了吗……？呼，稍微松了口气。不过如果真的需要，你一定要再告诉我哦。」",
+        "authoritative_full_undress": "「好、好的，我会配合……可是你这么突然一说，我真的吓了一跳。让我先把帘子拉好，可以吗？」",
+        "gentle_full_undress": "「谢谢你先解释清楚……嗯，我知道了。我会配合的，只是轮到自己，果然还是会害羞呀。」",
+        "threaten_full_undress": "「等一下……不用这样说吧？如果是必要的检查，我会认真配合。可至少让我知道为什么，好吗？」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "宫水三叶的术前准备与手术",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「医生，今天就要手术了吧……我知道已经安排好了，可正式准备开始以前，能先告诉我接下来要做什么吗？」",
+      "graphic_preop_question": "「我能再问得详细一点吗？一会儿到手术室以后，从摆姿势、消毒，到真正开始切开，会按什么顺序进行？……我怕自己紧张起来，连下一步是什么都不知道。」",
+      "graphic_preop_dialogue": "三叶起初听得非常认真，还随着医护逐项说明轻轻点头。对方从术前准备、身体固定与消毒一直讲到切开和牵开，语气平静得像在核对一张普通的工作清单。可三叶渐渐发现，清单上的每一步等下都会发生在自己身上。她不再点头，手指悄悄攥住被角，连刚才准备好的问题都忘了。",
+      "team": "你担任宫水三叶本次手术的主刀。请确认助手医生、器械护士和巡回护士的岗位与分工。",
+      "preparation": "请安排宫水三叶的病房准备护士，依照当前病例及术式完成必要的术前准备。",
+      "prepared": "「这就全部准备好了……？谢谢。刚才还在一项一项数着步骤，没想到真的轮到我去手术室了……」",
+      "changing": "手术团队依照既定流程更衣、刷手并完成无菌准备，随后进入手术室。",
+      "operating_room": "「哇……灯好亮。啊，我知道不能乱看乱动……医生，等会儿真的要开始时，能先叫我一声吗？」",
+      "team_confirmations": "手术团队逐项核对宫水三叶的身份、当前病例对应的手术方案和人员分工。她努力听清每一句确认，听见自己的姓名时轻轻应声。",
+      "procedure_select": "请核对当前病例已经确认的手术计划，选择与之对应的术式。",
+      "procedure_mismatch": "「诶？这个名字跟刚才说好的不一样吧？医生，请先确认一下……是不是哪里弄错了？」",
+      "ready": "宫水三叶的术前准备已完成。她在手术台上等待，团队需要最终确认麻醉方式及手术开始条件。",
+      "general_induction": "「要开始全麻了呀……嗯。等我醒来时，希望已经顺利结束了。……拜托你们了。」",
+      "surgery_start_general": "宫水三叶已经进入全身麻醉状态。团队继续确认监护与手术条件；本阶段不播放清醒患者的主观对白。",
+      "surgery_start_epidural": "「腿真的使不上力气了……我还醒着，却不能自己换个姿势。嗯……我会努力配合。」",
+      "surgery_start_local": "「局部麻醉已经做完了吗……？好，我会保持不动。要是哪里还是疼，我会马上说的。」",
+      "surgery_start_none": "「真的不使用麻醉就开始呀……？我知道刚才已经讲过了，可我还是好害怕……医生，请听着我说话。」",
+      "instrument_handoff": "主刀提出器械需求，器械护士按照当前术式及操作阶段递交对应器械。",
+      "assistant_ready": "助手医生确认体位、术野暴露与操作条件，准备配合主刀维持视野及执行后续指令。",
+      "incision_ready": "切口位置及麻醉状态完成核对。器械护士备好手术刀，助手维持术野，等待主刀确认开始。",
+      "general_operation": "宫水三叶处于全身麻醉中，不产生清醒术中主观反应。手术团队持续监护并按照当前术式推进。",
+      "operative_contact": "切口已经建立。若宫水三叶仍保持清醒，她努力按医护指令不乱动，但对压力、牵拉与疼痛的反应仍由既定麻醉状态和患者数值决定。",
+      "ongoing_interaction": "手术继续进行。若宫水三叶保持清醒，她会主动询问操作进度；随着疲劳与恐惧积累，原本流畅的提问逐渐变得短促。",
+      "closure_interaction": "主要操作进入收尾阶段。若宫水三叶清醒，她听见手术即将结束时才稍稍松开绷紧的手指，等待团队明确确认。",
+      "procedure_flow": "进入当前已选择术式的标准流程，按该术式既定阶段与技术选项继续。",
+      "procedure_execute": "主要操作完成。团队复核当前术野与必要技术结果，继续最终处理与缝合。",
+      "surgery_result": "手术结束。团队依照既定流程完成切口处理、器械清点和术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切开了吗？没有想象中那种刺痛，可里面沉沉的、被拉动的感觉……原来还是这么清楚啊……」",
+      "incise_local": "「嘶……！等、等等，皮肤那里没那么疼，可里面刚才那一下……医生，这样真的正常吗？」",
+      "incise_none": "「啊——！！好疼！医生、等一下……！真的在切了……我不行、我真的忍不住……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

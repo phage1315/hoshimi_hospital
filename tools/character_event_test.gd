@@ -48,7 +48,7 @@ func finish_event(game: RefCounted, id: String, first_choice: String = "") -> bo
 
 func run() -> void:
 	expect(content.load_all(), "Content load failed")
-	expect(content.collections.character_events.size() == 40, "Expected retired Aoi/Haru Lv.1 chains to stay removed while new authored events remain loaded")
+	expect(content.collections.character_events.size() == 41, "Expected retired Aoi/Haru Lv.1 chains to stay removed while new authored events remain loaded")
 	var game = new_game()
 	expect(game.next_character_event_at("or").get("id", "") != "moe_wrong_changing_room", "Preop-stage event leaked into ordinary operating-room entry")
 	expect(game.next_character_event_for_preop_stage("changing").is_empty(), "Moe changing-room event appeared on day one")
@@ -111,7 +111,7 @@ func run() -> void:
 	emiko_game.completed_surgeries_total = 3
 	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(75)
 	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction ignored the Asuka introduction prerequisite")
-	var asuka_fixture := emiko_game._complete_character_event_for_test("intro_doc_asuka_director_office", 1)
+	var asuka_fixture: bool = emiko_game._complete_character_event_for_test("intro_doc_asuka_director_office", 1)
 	expect(asuka_fixture, "Could not create Asuka introduction prerequisite fixture")
 	expect(emiko_game.character_event_available(emiko_intro), "Emiko introduction did not unlock after Asuka introduction and Surgery 75")
 	# The first refusal is delivered entirely by the nurse outside the office.
@@ -153,7 +153,8 @@ func run() -> void:
 	expect(not content.find_record("backgrounds", "scrub_area").is_empty(), "Dedicated scrub-area background was not loaded")
 	expect(finish_event(asuka_game, "asuka_scrub_sink_encounter"), "Asuka scrub-sink encounter could not complete")
 	expect(not asuka_game.staff_is_met("doc_asuka") and asuka_game.relation_for("doc_asuka").flags.has("asuka_identity_unknown"), "Asuka identity was revealed during the first encounter")
-	expect(asuka_game.next_character_event_for_preop_stage("surgery_result").get("id", "") == "asuka_adjacent_operation_reveal", "Asuka postoperative identity hint did not unlock")
+	expect(asuka_game.next_character_event_for_preop_stage("surgery_result").is_empty(), "Asuka hint interrupted surgery results")
+	expect(asuka_game.next_character_event_for_preop_stage("post_surgery_return").get("id", "") == "asuka_adjacent_operation_reveal", "Asuka postoperative identity hint did not unlock")
 	expect(finish_event(asuka_game, "asuka_adjacent_operation_reveal"), "Asuka postoperative identity hint could not complete")
 	expect(not asuka_game.character_event_available(asuka_game.character_event_definitions.intro_doc_asuka_director_office), "Asuka office reveal ignored the next-day delay")
 	asuka_game.advance_story_to_future_day(1, 540)
@@ -195,7 +196,7 @@ func run() -> void:
 	expect(not content.find_record("locations", "artoria_office").is_empty() and artoria_profile.presence.fixed_locations.has("artoria_office"), "Artoria's dedicated office is missing")
 	expect(content.find_record("locations", "artoria_office").name == "副部长办公室", "Artoria's map label is too long")
 	expect(not artoria_game.character_event_available(artoria_referral) and not artoria_game.character_event_available(artoria_intro), "Artoria referral unlocked before Emiko was met")
-	artoria_game.surgery_xp = artoria_game.surgery_xp_for_level(56)
+	artoria_game.surgery_xp = artoria_game.surgery_xp_for_level(75)
 	expect(finish_event(artoria_game, "emiko_intro_rumored_hands"), "Could not meet Emiko before Artoria's referral")
 	expect(artoria_game.next_character_event_at("director_office").get("id", "") == "asuka_mentions_artoria_rival", "Asuka did not mention Emiko's other rival after both meetings")
 	expect(not artoria_game.character_event_available(artoria_intro), "Artoria office unlocked before Asuka named her")
@@ -276,6 +277,12 @@ func run() -> void:
 	# full day, establishes Lv1 and unlocks the persistent OR callback.
 	var hiroko_game = new_game()
 	hiroko_game.advance_story_to_future_day(1, 780)
+	var hiroko_escape_definition: Dictionary = hiroko_game.character_event_definitions.get("hiroko_patient_escape", {})
+	var hiroko_escape_by_id := {}
+	for hiroko_node in hiroko_escape_definition.get("nodes", []):
+		hiroko_escape_by_id[str(hiroko_node.get("id", ""))] = hiroko_node
+	expect(str(hiroko_escape_by_id.get("patient_plea", {}).get("speaker_label", "")) == "不知名的女患者", "Hiroko escape patient plea speaker label is incorrect")
+	expect(str(hiroko_escape_by_id.get("patient_resists", {}).get("speaker_label", "")) == "不知名的女患者", "Hiroko escape patient resistance speaker label is incorrect")
 	expect(finish_event(hiroko_game, "hiroko_patient_escape"), "Hiroko acquaintance incident could not complete")
 	expect(finish_event(hiroko_game, "moe_wrong_changing_room"), "Moe changing-room encounter could not complete")
 	hiroko_game.advance_story_to_future_day(1, 780)

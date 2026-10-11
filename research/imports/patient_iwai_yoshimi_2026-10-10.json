@@ -1,0 +1,161 @@
+{
+  "patient_id": "patient_iwai_yoshimi",
+  "date": "2026-10-10",
+  "status": "portrait_matrix_complete_static_validation_passed_source_cg_pools_empty",
+  "source_bundle": {
+    "original": "/Users/ningye/Downloads/patient_iwai_yoshimi_complete_bundle_v1.json",
+    "archived_copy": "research/character_references/patient_iwai_yoshimi/patient_bundle_v1.json",
+    "sha256": "e56b6335eb48367bb358d9f70358a0baba74dcdb2df8f515b878c8a82af5422c",
+    "runtime_copy": "data/patients/patient_iwai_yoshimi/patient.json"
+  },
+  "patient_contract": {
+    "display_name": "岩井善美",
+    "age": 25,
+    "case_id": "case_abdomen",
+    "fallback": {
+      "case_id": "case_abdomen",
+      "surgery_id": "surgery_appendix"
+    },
+    "dialogue_profile": "graceful_caretaker_reassurance",
+    "voice_style": "soft",
+    "source_data_preserved": true,
+    "schema_runtime_adjustment": "Added the source bundle's embarrassed_apologetic stress_response enum and its bilingual display string; did not replace the source value.",
+    "exclusive_cg_pools": "The initial source bundle had empty CG pools. On 2026-10-11, five user-supplied examination and ward-preparation CGs were imported and bound; see research/imports/patient_iwai_yoshimi_cg_2026-10-11.json. The undressed standing portrait remains separately registered as examination/shy."
+  },
+  "user_supplied_portrait": {
+    "source": "/Users/ningye/Downloads/00105-2382337564-Picsart-BackgroundRemover.png",
+    "archive": "research/character_references/patient_iwai_yoshimi/full_undress_original.png",
+    "targets": [
+      "assets/examinations/patient_iwai_yoshimi/full_undress.png",
+      "assets/examinations/patient_iwai_yoshimi/full_undress_basic_exam.png"
+    ],
+    "key": "examination/shy",
+    "status": "copied_verbatim_and_registered",
+    "size": [1056, 1584],
+    "sha256": "ee8c08f8f368e35cc73e39e43f3d55d24ee81320a065bb8d3eca7cb6eadefb99"
+  },
+  "user_supplied_references": {
+    "directory": "research/character_references/patient_iwai_yoshimi",
+    "seed_images": ["seed_01.png", "seed_02.png", "seed_03.png"],
+    "corrective_original_art_references": ["original_01.png", "original_02.png", "original_03.png"],
+    "note": "All user-supplied appearance references were retained; the corrected original-art images were used as identity references for generated portraits."
+  },
+  "standard_portrait_matrix": {
+    "expected_keys": 20,
+    "registered_keys": {
+      "outpatient": ["neutral"],
+      "ward": ["neutral", "smile", "brave", "worried", "afraid", "crying"],
+      "operating_table": ["awake", "tense", "afraid", "anesthetized"],
+      "operating_table_lithotomy": ["awake", "tense", "afraid", "anesthetized"],
+      "intraoperative": ["tense", "pain", "near_collapse", "anesthetized"],
+      "splash": ["general_anesthesia"]
+    },
+    "standard_portrait_roots": [
+      "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/",
+      "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/",
+      "assets/events/anesthesia_v1/patient_iwai_yoshimi/general.png"
+    ],
+    "style_matched_replacements": [
+      {
+        "key": "operating_table/awake",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/awake_style_v2.png",
+        "sha256": "349a39123a0e86c2c8afb3ed544a96ca97a83576af544f5797f1e7f4a8cc720a",
+        "style_reference": "assets/characters/patient_kocho_shinobu_v1/patient_kocho_shinobu/operating_table/awake.png"
+      },
+      {
+        "key": "intraoperative/tense",
+        "path": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/tense_style_v2.png",
+        "sha256": "4a1989d8442012db74c2c06eb46b09b5de9b3b8a0e4b66e8798ea4264404760f",
+        "style_reference": "assets/characters/intraoperative_portraits_v1/patient_kocho_shinobu/tense.png"
+      },
+      {
+        "key": "splash/general_anesthesia",
+        "path": "assets/events/anesthesia_v1/patient_iwai_yoshimi/general_style_v3.png",
+        "sha256": "c4b0ef2a5b1dd52b4279b90513d1edbaad33867e16b2948c050865b1bea2ab5d",
+        "style_reference": "assets/events/anesthesia_v1/patient_kocho_shinobu/general.png",
+        "revision": "shoulders exposed, teal drape begins below both shoulders as requested"
+      },
+      {
+        "key": "operating_table/tense",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/tense_style_v2.png",
+        "sha256": "accb92235f122175f985665f9bfc9a68ad39a21692fc106099f753408f10d824",
+        "style_reference": "assets/characters/patient_kocho_shinobu_v1/patient_kocho_shinobu/operating_table/tense.png"
+      },
+      {
+        "key": "operating_table/afraid",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/afraid_style_v2.png",
+        "sha256": "5b4a4001e8488e8ac3fa58f61396acc3abe0bc65c5643a46507975c6f003ca3d",
+        "style_reference": "assets/characters/patient_kocho_shinobu_v1/patient_kocho_shinobu/operating_table/afraid.png"
+      },
+      {
+        "key": "operating_table/anesthetized",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table/anesthetized_style_v2.png",
+        "sha256": "f70468f9fd7e1910023ef8d6796652643556c7ef3380dcd5c38fa895f20e78f7",
+        "style_reference": "assets/characters/patient_kocho_shinobu_v1/patient_kocho_shinobu/operating_table/anesthetized.png"
+      },
+      {
+        "key": "operating_table_lithotomy/awake",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/awake_position_v2.png",
+        "sha256": "436903907fae0d96f87e45f63ba0168f36f384bd3371c58fac64dd41544cd7d1",
+        "revision": "actual draped lithotomy pose with padded leg supports"
+      },
+      {
+        "key": "operating_table_lithotomy/tense",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/tense_user_v1.png",
+        "sha256": "c81b47d3de13827f8f2e6210e097fde994a94dbdc300843fbdbba35d8817368b",
+        "source_archive": "research/character_references/patient_iwai_yoshimi/lithotomy_tense_original.png",
+        "size": [1448, 1080]
+      },
+      {
+        "key": "operating_table_lithotomy/afraid",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/afraid_user_v1.png",
+        "sha256": "5dcb8d287861d31b149c070f898a95717b0f352f034aa6da0aa895c0e63c7a68",
+        "source_archive": "research/character_references/patient_iwai_yoshimi/lithotomy_afraid_original.png",
+        "size": [1448, 1080]
+      },
+      {
+        "key": "operating_table_lithotomy/anesthetized",
+        "path": "assets/characters/patient_iwai_yoshimi_v1/patient_iwai_yoshimi/operating_table_lithotomy/anesthetized_user_v1.png",
+        "sha256": "a707dd1e507580bdc5fac528521219047d6707f9358ec5bcb5112e4f3d8f506e",
+        "source_archive": "research/character_references/patient_iwai_yoshimi/lithotomy_anesthetized_original.png",
+        "size": [1448, 1080]
+      },
+      {
+        "key": "intraoperative/pain",
+        "path": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/pain_style_v2.png",
+        "sha256": "473d9ae2871197eff7d4468c6ccd49a20b4ebcfdc16e6b3329fa66b81168288a",
+        "style_reference": "assets/characters/intraoperative_portraits_v1/patient_kocho_shinobu/pain.png"
+      },
+      {
+        "key": "intraoperative/near_collapse",
+        "path": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/near_collapse_style_v2.png",
+        "sha256": "2a5dbf8197960ff9be6fa1d14355917fe246266d34685cef904c6ae90d2dd569",
+        "style_reference": "assets/characters/intraoperative_portraits_v1/patient_kocho_shinobu/near_collapse.png"
+      },
+      {
+        "key": "intraoperative/anesthetized",
+        "path": "assets/characters/intraoperative_portraits_v1/patient_iwai_yoshimi/anesthetized_style_v2.png",
+        "sha256": "067a4276c76519e0921edc31626866a92fe9ec635bfd066ea8d5cfc809c1980e",
+        "style_reference": "assets/characters/intraoperative_portraits_v1/patient_kocho_shinobu/anesthetized.png"
+      }
+    ],
+    "pose_note": "All four operating_table_lithotomy states now use the same clear draped lithotomy pose with padded leg supports. The three expression-state images (tense, afraid, anesthetized) were supplied by the user and imported verbatim.",
+    "generation_prompt_summary": "For operating-table revisions, use the patient's original anime references for identity and Kocho Shinobu operating-table portraits for the project's overhead framing, surgical cap, exposed shoulders, opaque teal drape, and clean illustrated finish; vary only the requested expression/state. For intraoperative portraits, use the matching Kocho Shinobu transparent head-and-shoulders states for crop and rendering style; preserve Yoshimi's original-art face, cap, and alpha background. The successful lithotomy base prompt requested a clear clinical leg-support position from overhead, with both legs supported in padded stirrups and the torso/pelvis fully covered by an opaque surgical drape; expression variants were later supplied by the user and imported verbatim.",
+    "source_data_gaps": "The original source bundle had empty exclusive_cg_pools, diagnosis_reactions, and encounter.full_undress.visual_pool_id. Five user-supplied CGs were subsequently imported and connected in the runtime bundle; other CG categories and diagnosis reactions remain as provided or unsupplied."
+  },
+  "validation": {
+    "source_bundle_schema": "pass after preserving source stress_response by extending supported enum",
+    "runtime_index": "pass; registered at data/patients/index.json",
+    "portrait_paths": "pass; all 21 keys resolve, including all four pose-correct lithotomy states",
+    "patient_bundle_localization": "pass; all Iwai Chinese text has English mappings",
+    "exclusive_cg_pools": "pass; five requested user-supplied CGs registered with English localization; see 2026-10-11 CG import record",
+    "godot_runtime": "not run in this environment"
+  },
+  "notes": [
+    "User corrected the first generated face and provided three original anime images; regenerated assets use these references for identity.",
+    "After review, operating-table and intraoperative expressions were regenerated with matching patient Kocho Shinobu assets as style/composition references while retaining Yoshimi Iwai's original-art identity. The general-anesthesia revision exposes both shoulders above the teal drape, per user direction. On 2026-10-10, all operating-table and intraoperative states were further style-matched; all four lithotomy states now use the actual draped leg-support pose, with the last three expression images supplied by the user.",
+    "The source Chinese narrative remains unchanged. English translations were added to the localization catalog.",
+    "Twenty standard portrait assets plus the verbatim user-supplied examination portrait are registered.",
+    "On 2026-10-11, the user supplied the tense, afraid, and anesthetized lithotomy states; originals were archived and copied verbatim to their runtime keys."
+  ]
+}

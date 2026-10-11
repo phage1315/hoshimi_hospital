@@ -45,7 +45,7 @@ func run() -> void:
 	expect(prep.stage_id == "or_table_palpation" and prep.or_table_palpation_cg_id == "body_type_03", "Procedure selection did not retain its palpation CG")
 	var before := {"fear": prep.fear, "pain": prep.pain, "dignity": prep.dignity, "cooperation": prep.cooperation_base, "minutes": prep.minutes}
 	expect(prep.apply({"kind": "or_table_palpation", "region": "chest", "intensity": "standard"}), "Chest hotspot event was rejected")
-	expect(prep.feedback.contains("胸骨") and prep.pain == before.pain + 2 and prep.fear == before.fear and prep.dignity == before.dignity and prep.cooperation_base == before.cooperation and prep.minutes == before.minutes + 1 and prep.sensory_interaction_xp_bonus == 0, "Generic chest palpation response or effects are wrong")
+	expect(prep.feedback.contains("胸骨") and prep.pain == before.pain + 2 and prep.fear == before.fear + 1 and prep.dignity == before.dignity and prep.cooperation_base == before.cooperation and prep.minutes == before.minutes + 1 and prep.sensory_interaction_xp_bonus == 0, "Generic chest palpation response or effects are wrong")
 	expect(prep.palpation_findings_confirmed.is_empty() and prep.last_palpation_confirmation.is_empty(), "Unrelated chest palpation created a medical finding")
 	expect(prep.apply({"kind": "or_table_palpation", "region": "abdomen", "intensity": "standard"}), "Primary abdominal palpation was rejected")
 	expect(prep.feedback.contains("右边") and prep.palpation_findings_confirmed == ["abdomen"] and prep.last_palpation_confirmation == "abdomen" and prep.sensory_interaction_xp_bonus == 5, "Abdominal profile did not create its first relevant finding or one-time XP bonus")
@@ -101,10 +101,14 @@ func run() -> void:
 	expect(local.apply({"kind": "or_table_palpation_complete"}) and local.apply({"kind": "action", "id": "choose_local"}) and local.stage_id == "anesthesia_sensory_test", "Local anesthesia did not enter optional sensory testing")
 	expect(local.anesthesia_region_covered("abdomen") and not local.anesthesia_region_covered("breast") and local.operative_analgesia_effective(), "Local anesthesia coverage resolver is wrong")
 	var local_covered_pain: int = int(local.pain)
+	var local_covered_fear: int = int(local.fear)
 	expect(local.apply({"kind": "anesthesia_sensory_test", "tool": "needle", "region": "abdomen"}) and local.pain == local_covered_pain, "Covered pinprick incorrectly added pain")
+	expect(local.fear == local_covered_fear, "Covered pinprick incorrectly increased fear")
 	expect(local.sensory_interaction_xp_bonus == 5, "Correct covered pinprick did not grant its one-time XP bonus")
 	var local_uncovered_pain: int = int(local.pain)
+	var local_uncovered_fear: int = int(local.fear)
 	expect(local.apply({"kind": "anesthesia_sensory_test", "tool": "needle", "region": "breast"}) and local.pain > local_uncovered_pain, "Uncovered pinprick did not add pain")
+	expect(local.fear == local_uncovered_fear + 5, "Uncovered pinprick did not increase fear by five")
 	expect(local.sensory_interaction_xp_bonus == 5, "Uncovered pinprick incorrectly granted an XP bonus")
 	var local_skip_state := [local.fear, local.pain, local.dignity, local.cooperation_base]
 	expect(local.apply({"kind": "anesthesia_sensory_test_complete"}) and local.stage_id == "operative_positioning" and [local.fear, local.pain, local.dignity, local.cooperation_base] == local_skip_state, "Completing or skipping sensory testing changed state")

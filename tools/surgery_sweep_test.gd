@@ -55,6 +55,11 @@ func run() -> void:
 	manual.procedure_minutes = int(game.surgery_definition(surgery_id).duration_minutes)
 	manual.flags.append("interaction_complete")
 	var manual_before_minutes: int = manual.minutes
+	expect(not manual.apply({"kind": "action", "id": "execute_confirmed_procedure"}), "Incomplete strategic surgery bypassed its success condition")
+	expect(manual.minutes == manual_before_minutes, "Rejected early settlement advanced time")
+	# This fixture jumps directly to settlement; explicitly finish strategic
+	# progress instead of expecting the confirmation button to bypass it.
+	manual.procedure_state["progress"] = 100
 	expect(manual.apply({"kind": "action", "id": "execute_confirmed_procedure"}), "Manual surgery could not reach settlement")
 	expect(manual.surgery_success and manual.flags.has("postoperative_wrap_up_complete") and manual.minutes == manual_before_minutes + manual.procedure_minutes + 30, "Manual surgery did not include exactly one postoperative wrap-up")
 	var early_game = configure_game()

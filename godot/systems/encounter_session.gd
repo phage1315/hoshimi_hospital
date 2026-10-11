@@ -16,6 +16,57 @@ var player_effects: Dictionary = {"charm": 0, "presence": 0, "reputation": 0}
 var player_effect_history: Array[Dictionary] = []
 var presence_raw := 0
 
+func snapshot_state() -> Dictionary:
+	# Save the current visit state directly. The action log is retained as data
+	# for UI/history purposes only; restore_state() never replays it.
+	return {
+		"stage_id": stage_id,
+		"action_log": action_log.duplicate(),
+		"notes": notes.duplicate(true),
+		"minutes": minutes,
+		"mistakes": mistakes,
+		"diagnosis": diagnosis,
+		"admitted": admitted,
+		"feedback": feedback,
+		"speaker": speaker,
+		"player_effects": player_effects.duplicate(true),
+		"player_effect_history": player_effect_history.duplicate(true),
+		"presence_raw": presence_raw,
+	}
+
+func restore_state(state: Dictionary) -> bool:
+	var saved_stage := str(state.get("stage_id", ""))
+	if saved_stage.is_empty() or not stages.has(saved_stage):
+		return false
+	if not state.get("action_log", []) is Array or not state.get("notes", {}) is Dictionary:
+		return false
+	var restored_player_effect_history: Array[Dictionary] = []
+	var raw_player_effect_history: Variant = state.get("player_effect_history", [])
+	if not raw_player_effect_history is Array:
+		return false
+	for record in raw_player_effect_history:
+		if not record is Dictionary:
+			return false
+		restored_player_effect_history.append(record.duplicate(true))
+	stage_id = saved_stage
+	action_log.clear()
+	for action_id in state.get("action_log", []):
+		if not action_id is String:
+			return false
+		action_log.append(action_id)
+	notes = state.get("notes", {}).duplicate(true)
+	minutes = int(state.get("minutes", 0))
+	mistakes = int(state.get("mistakes", 0))
+	diagnosis = str(state.get("diagnosis", ""))
+	admitted = bool(state.get("admitted", false))
+	feedback = str(state.get("feedback", ""))
+	speaker = str(state.get("speaker", ""))
+	if state.get("player_effects", {}) is Dictionary:
+		player_effects = state.player_effects.duplicate(true)
+	player_effect_history = restored_player_effect_history
+	presence_raw = int(state.get("presence_raw", 0))
+	return true
+
 func _init(data: Dictionary) -> void:
 	definition = data
 	for item in data.stages:

@@ -1,0 +1,1788 @@
+[
+  {
+    "id": "noan_breast_tumor_scope",
+    "procedure_id": "surgery_breast_tumor",
+    "stage_ref": {
+      "stage_id": null,
+      "stage_ordinal": 3,
+      "stage_title": "确定切除范围"
+    },
+    "theme": "mixed",
+    "intensity": "high",
+    "perception_basis": [
+      "procedure_knowledge",
+      "team_callout",
+      "direct_local_sensation"
+    ],
+    "variants": [
+      "疼……等、等一下，你们现在是在决定要从乳房上切掉多少吗？！",
+      "啊……别一直说“范围”……听起来好像马上就要多切一块一样……",
+      "等等、那里还要再往外吗？很疼……别切到正常的地方……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_breast_tumor_excision",
+    "procedure_id": "surgery_breast_tumor",
+    "stage_ref": {
+      "stage_id": null,
+      "stage_ordinal": 4,
+      "stage_title": "完成肿瘤切除"
+    },
+    "theme": "mixed",
+    "intensity": "high",
+    "perception_basis": [
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊——疼！现在真的在把那块东西切下来吗？！",
+      "等一下、等一下……这次不是检查了吧？是真的在切了？！",
+      "疼……好疼……你们现在切的是肿瘤，对吧？别多切……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_mastectomy_chest_wall",
+    "procedure_id": "surgery_total_mastectomy",
+    "stage_ref": {
+      "stage_id": "mastectomy_chest_wall_dissection",
+      "stage_ordinal": 5,
+      "stage_title": "胸壁深面分离"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "deep_traction",
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊——！里面被扯住了……等等，这是在把整个乳房从胸口上分开吗？！",
+      "疼、好疼……别说“整块”……我听得见，你们已经做到下面了对不对？！",
+      "等一下……我知道答应过，可真的这样一点点剥下来……太可怕了……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_mastectomy_specimen",
+    "procedure_id": "surgery_total_mastectomy",
+    "stage_ref": {
+      "stage_id": "mastectomy_specimen_handoff",
+      "stage_ordinal": 7,
+      "stage_title": "标本取出"
+    },
+    "theme": "dignity",
+    "intensity": "extreme",
+    "perception_basis": [
+      "specimen_awareness",
+      "team_callout",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "等、等等……刚才拿走的那个……真的是整个乳房？！",
+      "啊……不要让我听你们说“标本”……那是我的……那本来是我的……",
+      "已经拿下来了？！这么快？！别、别让我看……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_ovarian_cortex_entry",
+    "procedure_id": "surgery_open_ovarian_cystectomy",
+    "stage_ref": {
+      "stage_id": null,
+      "stage_ordinal": 4,
+      "stage_title": "切开卵巢皮质并寻找分离面"
+    },
+    "theme": "fear",
+    "intensity": "high",
+    "perception_basis": [
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊！疼——等等，现在切的是卵巢本身吗？！",
+      "别、别把卵巢也切掉……你们只是进去找囊肿，对吧？！",
+      "疼……好疼……正常的那部分真的能留下来吧？"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_myomectomy_uterine_incision",
+    "procedure_id": "surgery_open_abdominal_myomectomy",
+    "stage_ref": {
+      "stage_id": null,
+      "stage_ordinal": 4,
+      "stage_title": "子宫切口与进入肌瘤层次"
+    },
+    "theme": "fear",
+    "intensity": "high",
+    "perception_basis": [
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊——！现在是在切子宫吗？！",
+      "等一下！不是切掉子宫吧？只是从这里进去找肌瘤，对吧？！",
+      "好疼……别、别这样一句话都不说……你们已经切到子宫上了是不是？！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_abdominal_hysterectomy_removal",
+    "procedure_id": "surgery_hysterectomy",
+    "stage_ref": {
+      "stage_id": null,
+      "stage_ordinal": 9,
+      "stage_title": "完成环周切开 / 取出子宫"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "deep_traction",
+      "specimen_awareness",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "等一下——！刚才里面被整个往外拉的那个……是子宫吗？！",
+      "已经拿出来了？！真的已经切掉了？！",
+      "啊……不要说“取出”……我听见了……真的已经没有了对不对……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_vaginal_hysterectomy_circumferential_incision",
+    "procedure_id": "surgery_vaginal_hysterectomy",
+    "stage_ref": {
+      "stage_id": "vh_circumferential_incision",
+      "stage_ordinal": 2,
+      "stage_title": "环周切开 / 建立宫颈旁层次"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊——！疼！下面真的开始切了？！",
+      "等一下、等一下！我能感觉到……是在阴道里面很深的地方切，对吧？！",
+      "别、别都在下面说话……好疼……这么里面的地方被碰到，真的太难堪了……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_vaginal_hysterectomy_delivery",
+    "procedure_id": "surgery_vaginal_hysterectomy",
+    "stage_ref": {
+      "stage_id": "vh_uterus_delivery",
+      "stage_ordinal": 8,
+      "stage_title": "子宫取出 / 标本交接"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "deep_traction",
+      "specimen_awareness",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "啊——等等！里面很深的地方一直被往下拽……那就是子宫吗？！",
+      "你们真的要从下面把它拉出来？！好疼……等一下！",
+      "别说“出来了”……我听得到……刚才像是有什么从阴道最里面被一直拉出来，太可怕了……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_distal_gastrectomy_completion",
+    "procedure_id": "surgery_open_distal_gastrectomy",
+    "stage_ref": {
+      "stage_id": null,
+      "stage_ordinal": 7,
+      "stage_title": "近端胃切断 / 完成切除"
+    },
+    "theme": "fear",
+    "intensity": "high",
+    "perception_basis": [
+      "deep_traction",
+      "procedure_knowledge",
+      "team_callout"
+    ],
+    "variants": [
+      "啊……里面突然被拉得好痛……现在是在把胃切断吗？！",
+      "等等！这一刀以后胃就真的少一块了，对吧？！",
+      "疼……别只说“完成切除”啊……那是我的胃……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_total_gastrectomy_completion",
+    "procedure_id": "surgery_open_total_gastrectomy",
+    "stage_ref": {
+      "stage_id": "tg_esophageal_division",
+      "stage_ordinal": 7,
+      "stage_title": "近端食管切断 / 完成全胃切除"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "deep_traction",
+      "team_callout",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "等一下——！你们现在连食管这边也切断了？！那胃已经整个下来了？！",
+      "啊……好痛……别说“全胃切除完成”……我听得见……",
+      "已经整个切掉了？！真的一个胃都没有了？！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_nephrectomy_specimen",
+    "procedure_id": "surgery_open_nephrectomy",
+    "stage_ref": {
+      "stage_id": "nephrectomy_specimen_handoff",
+      "stage_ordinal": 9,
+      "stage_title": "整肾切除 / 标本交接"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "specimen_awareness",
+      "team_callout",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "等等……刚才拿走的那个……真的是我的肾？！",
+      "已经整个切下来了？！我现在真的只剩另一边了？！",
+      "啊……别把它叫标本……那是从我身上拿下来的……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_partial_nephrectomy_tumor_excision",
+    "procedure_id": "surgery_open_partial_nephrectomy",
+    "stage_ref": {
+      "stage_id": "pn_tumor_excision",
+      "stage_ordinal": 6,
+      "stage_title": "肿瘤切除"
+    },
+    "theme": "fear",
+    "intensity": "high",
+    "perception_basis": [
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "疼——！现在切的是肿瘤吧？！不是整块肾吧？！",
+      "等一下！正常的肾还在，对吧？你们别一起切掉……",
+      "啊……好疼……先告诉我现在是在切病灶，不是在切整个肾……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_liver_specimen",
+    "procedure_id": "surgery_open_major_liver_resection",
+    "stage_ref": {
+      "stage_id": "liver_specimen_handoff",
+      "stage_ordinal": 10,
+      "stage_title": "肝叶标本取出 / 交接"
+    },
+    "theme": "fear",
+    "intensity": "high",
+    "perception_basis": [
+      "specimen_awareness",
+      "team_callout",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "等一下……刚才抬走那么大一块……真的是我的肝？！",
+      "啊……你们真的切掉了这么多？！",
+      "别说“肝叶标本”……听起来太吓人了……那刚才还是我身体里的一部分……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_cabg_cardioplegia",
+    "procedure_id": "surgery_cabg",
+    "stage_ref": {
+      "stage_id": "cabg_cardioplegia",
+      "stage_ordinal": 5,
+      "stage_title": "主动脉阻断 / 心肌保护"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "team_callout",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "好痛……等等！你们刚才说要让心脏停下来？！",
+      "什么叫“停搏”？！等一下、你们现在真的要把我的心脏停住？！",
+      "别这么平静地说“阻断”啊！这是我的心脏……！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_aaa_clamp",
+    "procedure_id": "surgery_open_abdominal_aortic_aneurysm",
+    "stage_ref": {
+      "stage_id": "aaa_clamp_open_sac",
+      "stage_ordinal": 5,
+      "stage_title": "主动脉夹闭 / 打开瘤体"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "team_callout",
+      "procedure_knowledge",
+      "deep_traction"
+    ],
+    "variants": [
+      "啊……等一下！你们刚才说要夹住主动脉？！现在？！",
+      "什么叫“主动脉夹闭”？！那不是最粗的那根血管吗？！",
+      "疼……好疼……别这么轻松地说“打开瘤体”啊，我全都听见了！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_lobectomy_bronchus",
+    "procedure_id": "surgery_open_lung_lobectomy",
+    "stage_ref": {
+      "stage_id": "lobectomy_bronchus",
+      "stage_ordinal": 7,
+      "stage_title": "叶支气管处理"
+    },
+    "theme": "fear",
+    "intensity": "high",
+    "perception_basis": [
+      "team_callout",
+      "procedure_knowledge",
+      "deep_traction"
+    ],
+    "variants": [
+      "等等！现在是在切那一叶肺的支气管吗？！",
+      "啊……连气道也要切断？！我听见你们说支气管了！",
+      "疼……已经做到把那一叶肺真正断开的步骤了吗？！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_pneumonectomy_main_bronchus",
+    "procedure_id": "surgery_open_pneumonectomy",
+    "stage_ref": {
+      "stage_id": "pneu_main_bronchus",
+      "stage_ordinal": 6,
+      "stage_title": "主支气管处理 / 近隆突切断"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "team_callout",
+      "procedure_knowledge",
+      "deep_traction"
+    ],
+    "variants": [
+      "等一下——！这是整边肺的主支气管？！你们真的要切断它？！",
+      "啊……不是小支气管，是整根主支气管对吧？！",
+      "别说得那么平静……这一刀下去整边肺就真的断开了是不是？！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_pneumonectomy_specimen",
+    "procedure_id": "surgery_open_pneumonectomy",
+    "stage_ref": {
+      "stage_id": "pneu_specimen_handoff",
+      "stage_ordinal": 7,
+      "stage_title": "全肺标本取出 / 交接"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "specimen_awareness",
+      "team_callout",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "刚才抬走的……真的是整只肺？！",
+      "已经整个拿掉了？！我真的少了一边肺？！",
+      "不要让我看！别把那个东西放在我能看到的地方……那是我的肺……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_esophagectomy_thoracic_transition",
+    "procedure_id": "surgery_open_esophagectomy",
+    "stage_ref": {
+      "stage_id": "eso_reposition_thoracotomy",
+      "stage_ordinal": 6,
+      "stage_title": "体位转换 / 右开胸 / 进入胸腔阶段"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "new_incision_awareness",
+      "team_callout",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "等等？！腹部还没完，现在还要开胸？！",
+      "啊……你们说“转胸腔”是什么意思？！还要从胸口再开一刀？！",
+      "不、不是已经开完腹了吗……为什么现在又要开胸……？！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_esophagectomy_proximal_division",
+    "procedure_id": "surgery_open_esophagectomy",
+    "stage_ref": {
+      "stage_id": "eso_proximal_division",
+      "stage_ordinal": 8,
+      "stage_title": "近端食管切断 / 完成切除范围"
+    },
+    "theme": "fear",
+    "intensity": "extreme",
+    "perception_basis": [
+      "team_callout",
+      "procedure_knowledge",
+      "deep_traction"
+    ],
+    "variants": [
+      "啊……等一下！现在是在把食管切断吗？！",
+      "这一头也要断开？！那接下来真的要拿胃管来接？！",
+      "疼……我听见你们说“近端切断”了……别当我听不懂啊！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_radical_cystectomy_specimen",
+    "procedure_id": "surgery_open_radical_cystectomy",
+    "stage_ref": {
+      "stage_id": "rc_specimen_handoff",
+      "stage_ordinal": 6,
+      "stage_title": "膀胱标本取出 / 交接"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "specimen_awareness",
+      "team_callout",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "等等……刚才拿走的那个……就是我的膀胱？！",
+      "已经整个切下来了？！那我以后真的再也不用原来的膀胱了？！",
+      "啊……别说“标本”……那明明刚才还在我身体里……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_radical_cystectomy_stoma",
+    "procedure_id": "surgery_open_radical_cystectomy",
+    "stage_ref": {
+      "stage_id": "rc_stoma_maturation",
+      "stage_ordinal": 10,
+      "stage_title": "回肠导管造口成熟"
+    },
+    "theme": "dignity",
+    "intensity": "extreme",
+    "perception_basis": [
+      "body_change_awareness",
+      "team_callout",
+      "direct_local_sensation"
+    ],
+    "variants": [
+      "等一下……现在是在肚子上做新的尿液出口？！",
+      "啊……造口真的已经要固定在这里了？！",
+      "别、别一直说“成熟造口”……我知道以后要从这里排尿，可现在听着真的好羞耻……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_apr_perineal_dissection",
+    "procedure_id": "surgery_open_abdominoperineal_resection",
+    "stage_ref": {
+      "stage_id": "apr_perineal_dissection",
+      "stage_ordinal": 10,
+      "stage_title": "会阴切开 / 坐骨直肠窝分离"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "direct_local_sensation",
+      "deep_traction",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊——！！等等！双腿中间真的开始切了？！停一下、太疼了！",
+      "那里……就在肛门和阴道中间那种很羞耻的位置，真的在往里面切？！我能感觉到！",
+      "疼……好疼……别、别都围在我双腿中间做……我知道这是手术，可真的太难堪了……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_apr_specimen_extraction",
+    "procedure_id": "surgery_open_abdominoperineal_resection",
+    "stage_ref": {
+      "stage_id": "apr_anterior_perineal_release",
+      "stage_ordinal": 12,
+      "stage_title": "前方会阴分离 / 标本完整取出"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "deep_traction",
+      "specimen_awareness",
+      "body_change_awareness"
+    ],
+    "variants": [
+      "啊——等等！里面整个被往双腿中间那边拽下去了……那是什么？！",
+      "你们真的在从肛门那边把里面整段东西拉出去？！太疼了……！",
+      "别、别说“出来了”……刚才那种从很下面被整个拉出去的感觉，我真的不想知道是什么……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_apr_perineal_closure_stoma",
+    "procedure_id": "surgery_open_abdominoperineal_resection",
+    "stage_ref": {
+      "stage_id": "apr_perineal_closure_stoma",
+      "stage_ordinal": 13,
+      "stage_title": "会阴关闭 / 结肠造口成熟"
+    },
+    "theme": "dignity",
+    "intensity": "extreme",
+    "perception_basis": [
+      "body_change_awareness",
+      "team_callout",
+      "direct_local_sensation"
+    ],
+    "variants": [
+      "双腿中间还在缝，肚子上又在做造口……怎么两边都还没结束？！",
+      "疼……下面那个地方还在缝，造口也已经固定好了？！",
+      "别一边说下面要缝完了、一边又说造口……我全都听得见，真的太难堪了……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_lar_distal_transection",
+    "procedure_id": "surgery_open_low_anterior_resection",
+    "stage_ref": {
+      "stage_id": "lar_distal_transection",
+      "stage_ordinal": 7,
+      "stage_title": "低位直肠切断"
+    },
+    "theme": "mixed",
+    "intensity": "extreme",
+    "perception_basis": [
+      "deep_traction",
+      "direct_local_sensation",
+      "procedure_knowledge"
+    ],
+    "variants": [
+      "啊——！好深……等等，现在是在肚子里面很下面的地方切断吗？！",
+      "已经做到这么靠近肛门里面的位置了？！别、别再往下了……",
+      "疼……刚才那一下就在最里面、很靠下的位置吧？！你们真的还能保住肛门吧？！"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  },
+  {
+    "id": "noan_lar_low_anastomosis",
+    "procedure_id": "surgery_open_low_anterior_resection",
+    "stage_ref": {
+      "stage_id": "lar_low_anastomosis",
+      "stage_ordinal": 10,
+      "stage_title": "低位结直肠吻合"
+    },
+    "theme": "mixed",
+    "intensity": "high",
+    "perception_basis": [
+      "deep_traction",
+      "procedure_knowledge",
+      "team_callout"
+    ],
+    "variants": [
+      "啊……里面又被顶住了……现在是在肛门上面很深的地方把两端接起来吗？！",
+      "疼……那个位置真的太深太下面了……你们现在就是在里面重新接起来？！",
+      "等一下……我知道是在重建，可那里感觉太明显了……别再说“再低一点”了……"
+    ],
+    "behavior": {
+      "patient_awake_required": true,
+      "content_baseline": "young_adult_female",
+      "mode": "flavor_only_background_bark",
+      "blocking": false,
+      "requires_player_choice": false,
+      "strategic_effects": {},
+      "patient_state_effects": {},
+      "reputation_effects": {},
+      "surgical_quality_effects": {},
+      "patient_experience_effects": {},
+      "telemetry_effects": {},
+      "counts_as_patient_intrusion": false,
+      "consumes_stage_choice": false,
+      "max_barks_this_stage": 1,
+      "skip_if_blocking_patient_event_already_fired": true,
+      "replace_generic_flavor_bark_this_stage": true,
+      "variant_rng": "persisted_via_existing_surgery_rng_seed_and_resolved_random_choices",
+      "eligible_anesthesia_modes": [
+        "no_anesthesia",
+        "local_anesthesia"
+      ],
+      "local_anesthesia_uses_same_variants": true
+    },
+    "tone_contract": {
+      "register": "acute_intraoperative_reaction",
+      "required_elements": [
+        "fear_or_shame",
+        "pain_undertone"
+      ],
+      "avoid": [
+        "retrospective_calmness",
+        "overly_complete_medical_sentences",
+        "detached_acceptance"
+      ],
+      "style": [
+        "short_fragments",
+        "interruptions",
+        "repetition",
+        "breathless_questions",
+        "immediate_body_awareness"
+      ]
+    }
+  }
+]

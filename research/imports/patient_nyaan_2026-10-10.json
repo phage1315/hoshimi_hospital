@@ -1,0 +1,73 @@
+{
+  "patient_id": "patient_nyaan",
+  "display_name": "妮安",
+  "status": "registered_and_validated",
+  "source_bundle": "research/character_references/patient_nyaan/patient_bundle_v1.json",
+  "source_bundle_sha256": "cacd55b9303ed1ae29908eed61ef2fdf3185105ff3f0f8577cc26b2764798ff6",
+  "age_confirmation": "The supplied bundle defines Nyaan as an adult patient aged 20.",
+  "dialogue_integration": {
+    "profile_id": "shy_reassurance_quiet",
+    "profile_reaction_lines": 27,
+    "profile_reaction_variants": 13,
+    "patient_override_reaction_lines": 27,
+    "patient_override_reaction_variants": 13,
+    "schema_normalization": {
+      "voice_style": {
+        "source": "soft",
+        "runtime": "reserved",
+        "reason": "The current schema has no soft value; reserved preserves the supplied quiet, guarded delivery."
+      },
+      "stress_response": {
+        "source": "quiet_then_outburst",
+        "runtime": "becomes_quiet",
+        "reason": "The current enum has no compound value; the authored reaction lines preserve the later outburst beats."
+      }
+    }
+  },
+  "portrait_matrix": [
+    {"key": "outpatient/neutral", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/outpatient/neutral.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "1811d4f1ecdbea20dbb4de3acb378d7b4425179351428362de4eaf327b43e586"},
+    {"key": "ward/neutral", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/ward/neutral.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "10b7dbc68361da3a0c909de58c46824f5608ca1438ff1cc892bbb5a6d46a1c3b"},
+    {"key": "ward/smile", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/ward/smile.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "8cdf257d605f9abdf29767048b210d3f92a0b28629978065145f23b15b6e546e"},
+    {"key": "ward/brave", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/ward/brave.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "f3695cd564f25562b82596aca71b0a9b4051a5d08969e301ac062ab9384cf31a"},
+    {"key": "ward/worried", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/ward/worried.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "47e08a6633bfdd19c71b59e4992cf8472d72490355ed5459770b5dc879ab8c02"},
+    {"key": "ward/afraid", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/ward/afraid.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "cd52e89f7d041a0db9e5665019e089ed544eb0d6fe98bf9c97c009d56d8b7ffa"},
+    {"key": "ward/crying", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/ward/crying.png", "size": [1024, 1536], "mode": "RGBA", "alpha": [0, 254], "sha256": "3accef812cb66d9a6813ae0a6c8acdb54926ac97734d14aad7c3b920c863af52"},
+    {"key": "operating_table/awake", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table/awake.png", "size": [1448, 1086], "mode": "RGB", "sha256": "15ff5ea7e67b55e9e6099cfc160693127e9fb962dfb8f6ef5c72d244600fd978"},
+    {"key": "operating_table/tense", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table/tense.png", "size": [1448, 1086], "mode": "RGB", "sha256": "fbd73d22647514102ffd9e6890cf1ea89234c8b9460c08a1d09150257d9188d2"},
+    {"key": "operating_table/afraid", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table/afraid.png", "size": [1448, 1086], "mode": "RGB", "sha256": "48dd878a7fb3fd76528a75f4f7e9c8568bdcd5aa10f88b00ad2ce530f9579bbd"},
+    {"key": "operating_table/anesthetized", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table/anesthetized.png", "size": [1448, 1086], "mode": "RGB", "sha256": "aaa1ebbca7b4389733e0ccfd0d2079b9948564241d510c155c55d38ebe45508f"},
+    {"key": "operating_table_lithotomy/awake", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table_lithotomy/awake.png", "size": [1448, 1086], "mode": "RGB", "sha256": "38ebd59edf8183415bdf634ccf60b28f3df31b13a80f44604066882058b6303e"},
+    {"key": "operating_table_lithotomy/tense", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table_lithotomy/tense.png", "size": [1448, 1086], "mode": "RGB", "sha256": "edea9628abdc4aa9f3656931a2286f9b8f142f793bdbaae277b796e55157940b"},
+    {"key": "operating_table_lithotomy/afraid", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table_lithotomy/afraid.png", "size": [1448, 1086], "mode": "RGB", "sha256": "445e44e92fb531abf630c2b5cfa756001a6f11b787272004c3dc0bd09744f7ef"},
+    {"key": "operating_table_lithotomy/anesthetized", "path": "assets/characters/patient_nyaan_v1/patient_nyaan/operating_table_lithotomy/anesthetized.png", "size": [1448, 1086], "mode": "RGB", "sha256": "2c02c7d956e0c1a9ac43b69c4a726dc524afeb01845b8ab046c1d4b904163452"},
+    {"key": "intraoperative/tense", "path": "assets/characters/intraoperative_portraits_v1/patient_nyaan/tense.png", "size": [1448, 1086], "mode": "RGBA", "alpha": [0, 255], "sha256": "13ade7ba3b74377751b7cf9be6bfd1437885af7b3dd389dabf9975e33602b775"},
+    {"key": "intraoperative/pain", "path": "assets/characters/intraoperative_portraits_v1/patient_nyaan/pain.png", "size": [1448, 1086], "mode": "RGBA", "alpha": [0, 255], "sha256": "75d287514cc8ea7e1643b4d5c60398066d535e4703e06c8b4bfa77f767280869"},
+    {"key": "intraoperative/near_collapse", "path": "assets/characters/intraoperative_portraits_v1/patient_nyaan/near_collapse.png", "size": [1448, 1086], "mode": "RGBA", "alpha": [0, 255], "sha256": "a015f17faa9b0e7b772f4a16cbec6dbe66cd931e3cb739964d825bd97a940310"},
+    {"key": "intraoperative/anesthetized", "path": "assets/characters/intraoperative_portraits_v1/patient_nyaan/anesthetized.png", "size": [1448, 1086], "mode": "RGBA", "alpha": [0, 255], "sha256": "488dcdd39196518fa0ec29d6f6a77cc2b07bde2a70306aa4a4c4ece84d4baffd"},
+    {"key": "splash/general_anesthesia", "path": "assets/events/anesthesia_v1/patient_nyaan/general.png", "size": [1672, 941], "mode": "RGB", "sha256": "f6bf0124c1cc3194056aa0eb29dee5b965d23b84a3f6b82f140c2484ecbebc41"},
+    {"key": "examination/shy", "path": "assets/examinations/patient_nyaan/full_undress.png", "size": [1056, 1584], "mode": "RGBA", "alpha": [0, 255], "sha256": "2b988db9a8a476b06a95bd4ffd7db8c14a038c3e15b916cd91af66e651d6d34e", "source": "user_supplied_preserved_verbatim"}
+  ],
+  "reference_images": [
+    "research/character_references/patient_nyaan/seed_01.png",
+    "research/character_references/patient_nyaan/seed_02.png",
+    "research/character_references/patient_nyaan/seed_03.png",
+    "research/character_references/patient_nyaan/seed_04.png",
+    "research/character_references/patient_nyaan/seed_05.png"
+  ],
+  "validation": {
+    "bundle_schema": "pass",
+    "random_pool_registration": true,
+    "runtime_loader": "pass; patient_nyaan registered exactly once with 21 portrait keys",
+    "dialogue_profile_merge": "pass; 27 reaction lines and 13 reaction-variant groups",
+    "patient_bundle_localization": "pass; 0 failure(s)",
+    "asset_dimensions_modes_alpha": "pass; 20 generated SFW assets plus 1 user-supplied examination portrait",
+    "patient_ann_composition_audit": "pass; ward gown, operating-table drape, bare shoulders/collarbones, lithotomy framing and transparent intraoperative head-shoulder crop checked",
+    "godot_runtime": false
+  },
+  "notes": [
+    "The supplied full-undress portrait is imported only as examination/shy; it is not counted as one of the 20 generated SFW assets.",
+    "Every generated asset used the corresponding patient_ann reference for camera, scale, pose, coverage and expression, plus Nyaan identity references.",
+    "Six generated RGB/RGBA assets initially returned 1447x1087 and were normalized to 1448x1086 by proportional resize and centered two-row crop; original generated files remain outside the runtime bundle.",
+    "No diagnosis reaction, fixed surgery, anesthesia lock, relationship route or story gate was added."
+  ]
+}

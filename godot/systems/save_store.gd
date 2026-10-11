@@ -10,6 +10,7 @@ const DEFAULT_SLOT_ONE_PATH := "user://clinic_slot_1.json"
 # retains the former filename, so existing single-slot saves migrate naturally.
 var path := DEFAULT_SLOT_ONE_PATH
 var last_error := ""
+var last_warning := ""
 
 func slot_path(slot: int) -> String:
 	if slot == 1:
@@ -109,6 +110,7 @@ func slot_summary(slot: int) -> Dictionary:
 
 func read_slot(state: RefCounted, slot: int = 1) -> bool:
 	last_error = ""
+	last_warning = ""
 	if not valid_slot(slot):
 		last_error = "存档位置不存在。"
 		return false
@@ -122,4 +124,7 @@ func read_slot(state: RefCounted, slot: int = 1) -> bool:
 	if not state.restore(data):
 		last_error = state.last_error
 		return false
+	var warnings: Variant = state.get("restore_warnings")
+	if warnings is Array and not warnings.is_empty():
+		last_warning = "存档已按当前内容兼容恢复；新增角色已初始化默认状态，无法匹配的旧记录已跳过。"
 	return true

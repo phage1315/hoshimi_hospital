@@ -1,0 +1,179 @@
+{
+  "patient_id": "patient_comoli_harcourt",
+  "date": "2026-10-10",
+  "status": "partial_import_with_examination_cg_trigger_repaired",
+  "adult_age": 22,
+  "source_bundle": {
+    "original": "/Users/ningye/Downloads/patient_comoli_harcourt_complete_bundle_v1.json",
+    "archived_copy": "research/character_references/patient_comoli_harcourt/user_bundle_v1.json"
+  },
+  "user_reference_images": [
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-c8a43e50-5fe0-4799-adc5-e49973eb0dba.png",
+      "archive": "research/character_references/patient_comoli_harcourt/seed_full_body.png",
+      "purpose": "identity, outfit and proportions"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-c5aeca7f-c7b8-42e8-996b-29d67ead6870.png",
+      "archive": "research/character_references/patient_comoli_harcourt/seed_face.png",
+      "purpose": "face and eye details"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d75ddc7c-8b87-40e3-932d-7d7034982507.png",
+      "archive": "research/character_references/patient_comoli_harcourt/seed_back.png",
+      "purpose": "hair and rear silhouette"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-6a2c5b1f-8bac-4e99-8597-16b784ce659d.png",
+      "archive": "research/character_references/patient_comoli_harcourt/seed_expression.png",
+      "purpose": "expression and line-art reference"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-3435ac50-41a4-443b-b9d7-ce78a0900210.png",
+      "archive": "research/character_references/patient_comoli_harcourt/seed_expression_sheet.png",
+      "purpose": "expression reference"
+    }
+  ],
+  "registered_user_supplied_nsfw_portrait": {
+    "source": "/Users/ningye/Downloads/00035-1422881418-Picsart-BackgroundRemover.png",
+    "target": "assets/examinations/patient_comoli_harcourt/full_undress.png",
+    "key": "examination/shy",
+    "status": "copied_verbatim_and_registered",
+    "size": [1056, 1584],
+    "mode": "RGBA",
+    "sha256": "f9f0c03d17d2edce863484f56588ff815135196be17c9b70e42351e0b0ca3119"
+  },
+  "cg_integration": {
+    "repair_date": "2026-10-11",
+    "inventory": [
+      {
+        "source": "registered_user_supplied_nsfw_portrait",
+        "runtime_asset": "assets/examinations/patient_comoli_harcourt/full_undress.png",
+        "sha256": "f9f0c03d17d2edce863484f56588ff815135196be17c9b70e42351e0b0ca3119",
+        "pool_id": "full_undress_basic_exam_patient_comoli_harcourt",
+        "trigger": "encounter.full_undress.visual_pool_id; authoritative_full_undress, gentle_full_undress, threaten_full_undress",
+        "english_localization": [
+          "patient_bundles.patient_comoli_harcourt.exclusive_cg_pools.examination.full_undress_basic_exam_patient_comoli_harcourt.label",
+          "patient_bundles.patient_comoli_harcourt.exclusive_cg_pools.examination.full_undress_basic_exam_patient_comoli_harcourt.caption"
+        ],
+        "note": "The existing user-supplied portrait is reused as the examination display asset; no separate clinic-background CG was present in the source bundle."
+      }
+    ],
+    "empty_categories": {
+      "ward_preparation": "No patient-specific preparation CG files were supplied in the source bundle; shared generic pools remain in effect where available.",
+      "surgery": "No patient-specific surgery-stage CG files were supplied in the source bundle."
+    }
+  },
+  "portrait_generation": {
+    "accepted_six_base_images": "User-approved first-wave images; identity references were the five clothed seeds above. Anatomical framing and state references followed the existing patient_ann portrait categories.",
+    "accepted_eight_variants": "Each was generated from the accepted Comoli base for that category, the relevant clothed Comoli identity seed, and the corresponding patient_ann expression/pose reference. Facial expression changed; outfit, framing, patient identity and medical draping remained locked.",
+    "generated_output_directory": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/",
+    "shared_prompt_specification": "Adult Comoli Harcourt, preserve her navy hair with tan streaks, gold/blue eyes, beauty mark and established anime line art. Use the supplied pose/expression reference for composition only and the Comoli base image for identity. Keep all approved clothing/draping and anatomy unchanged except the requested facial expression. No text or watermark.",
+    "accepted_variant_specs": {
+      "ward/smile": "subtle reassuring smile",
+      "ward/brave": "determined, trying to stay composed",
+      "ward/worried": "concerned, brows raised and mouth slightly parted",
+      "ward/afraid": "fearful wide eyes and tense mouth",
+      "ward/crying": "tearful and visibly distressed",
+      "operating_table/tense": "awake, tense expression",
+      "operating_table/afraid": "awake, frightened expression",
+      "operating_table/anesthetized": "eyes gently closed, anesthetized"
+    },
+    "generated_output_files": {
+      "outpatient/neutral": "exec-b0d434da-b5a0-489a-b08e-80db3b8613a1.png",
+      "ward/neutral": "exec-fc0fa27f-fc98-44f6-97b9-c85b1b40585c.png",
+      "ward/smile": "exec-dc4907ae-5cad-49c1-bbad-b0ed8f1fb79c.png",
+      "ward/brave": "exec-77b93185-f783-444d-af5d-5a123691e4fa.png",
+      "ward/worried": "exec-39a755c1-e9bb-43c4-b503-216102d1666d.png",
+      "ward/afraid": "exec-60e4651d-2a37-4fba-9fce-e19ba189281c.png",
+      "ward/crying": "exec-9150ed98-3752-4a7b-a488-16b1f8c61671.png",
+      "operating_table/awake": "exec-351fb10b-a892-4458-bb3b-5680039e77d8.png",
+      "operating_table/tense": "exec-e7cc05b0-6f1f-4cc7-a31d-d811d07f9fcc.png",
+      "operating_table/afraid": "exec-0df94e53-5c79-4609-a99d-d3529b08011e.png",
+      "operating_table/anesthetized": "exec-8ea4a4b8-af35-49bf-9ff7-1927231bc96f.png",
+      "operating_table_lithotomy/awake": "exec-e9e174ef-4a9f-4b4f-91c5-ef4f0ee31027.png",
+      "intraoperative/tense": "exec-6bef2b4d-098a-4b35-b4b9-d3bbf6fa6050.png",
+      "intraoperative/pain": "exec-7561c0b8-277e-4f7d-a995-15839648c3f2.png",
+      "intraoperative/near_collapse": "exec-89e4dfa6-ac38-49df-a350-f524b9362aa0.png",
+      "intraoperative/anesthetized": "exec-c504c6e1-88c3-46e9-a4f2-3b1a3489c2d8.png",
+      "operating_table_lithotomy/tense": "exec-7893121e-6e74-45f5-9a8e-4bd746ff5dfb.png",
+      "splash/general_anesthesia": "exec-2d6bee57-203e-4569-8112-f36beca382c6.png"
+    },
+    "technical_spec": {
+      "outpatient_and_ward": "1024x1536 PNG with transparency",
+      "operating_table_and_lithotomy": "1448x1086 PNG RGB",
+      "intraoperative_portraits": "1448x1086 PNG RGBA",
+      "general_anesthesia_splash": "1672x941 PNG RGB",
+      "resize_note": "Three 1447x1087 operating-table images were proportionally resized to width 1448 and center-cropped to 1448x1086; the original generated versions remain in the generated-images directory."
+    },
+    "retry_policy": "On input moderation rejection, retry the unchanged asset request with the same SFW references and prompt; do not alter wording to evade moderation or mark rejected outputs complete.",
+    "visual_qa": "Approved six base images and eight generated variants were visually inspected in-session. Four recovered SFW outputs (intraoperative pain, near_collapse, anesthetized; lithotomy tense) were visually inspected and registered. All four final files have verified dimensions and alpha/background mode. No portrait is claimed for a missing key."
+  },
+  "imported_portraits": [
+    "examination/shy",
+    "outpatient/neutral",
+    "ward/neutral",
+    "ward/smile",
+    "ward/brave",
+    "ward/worried",
+    "ward/afraid",
+    "ward/crying",
+    "operating_table/awake",
+    "operating_table/tense",
+    "operating_table/afraid",
+    "operating_table/anesthetized",
+    "operating_table_lithotomy/awake",
+    "operating_table_lithotomy/tense",
+    "intraoperative/tense",
+    "intraoperative/pain",
+    "intraoperative/near_collapse",
+    "intraoperative/anesthetized",
+    "splash/general_anesthesia"
+  ],
+  "sha256": {
+    "user_bundle_v1.json": "3c503d62f3eb18f59dfe5601c860509320d5c158c80aba4c4cc5f536e0e4522d",
+    "seed_back.png": "805f9c3d7c6404097af1545b42866699c0556b4df92e5068b8eb3334d27d5eae",
+    "seed_expression.png": "2e34ca08e995490a4013450308f74a9be945fc252874b9a83ce3d0d4a8e2500f",
+    "seed_expression_sheet.png": "88c74fe1c9f94bd75ca1d8f9e655234298568195696cc63117bf86e40d81f3f2",
+    "seed_face.png": "09484b84c5dbc3c068f9cf8fdc4772bbe7d90a7c61018219307ebf8eca8761f5",
+    "seed_full_body.png": "cc47b8d0c203d211b8e507b1400f861cc3790e6c5c938b3f2dc3cee066c77058",
+    "examination/shy": "f9f0c03d17d2edce863484f56588ff815135196be17c9b70e42351e0b0ca3119",
+    "outpatient/neutral": "135e8ff161f69809475a7b5daeb7c8710308dec28e88f4f1880d5ca5b7b9cab4",
+    "ward/neutral": "6822118b0e5b75642ff0b474f3ef2cf4a82b0ca91ca1b1589d162c9b981167fe",
+    "ward/smile": "f4ab263db8a23c2506ac6942b6abec06a9b10327048f8e22b2de08084fe0759d",
+    "ward/brave": "a0737a2cdb0aeb557130375854e67fdf58a2bfd58e480c5598fce36422b9bf18",
+    "ward/worried": "f6e0be309a5b3f6e7534bec176a6da939c9382420a771e9ba0e33c997dc0a0b4",
+    "ward/afraid": "2968a06cccc125c6ac374d1e587cfe5f1619dd51cd8e81628b09d9f227ffe502",
+    "ward/crying": "4691d02e5584281281fa5aa51c34e53f1c4fa6fc8ef619c91d119225e79b580f",
+    "operating_table/awake": "6867111383adf1dde4ce11791b4040b4075a08429703e1aabdec3c29566dc4c1",
+    "operating_table/tense": "d9e69cf584f12e608b2ad9bfa1894c7f07b43ff0239d8b0bdf3af6f822180302",
+    "operating_table/afraid": "f940b9a466a65c99a13c307abe2e07866b6fd11e602bdadf4258e2646aaced4b",
+    "operating_table/anesthetized": "3a077dc1ced40be57acbb6174e680b1b9ee33f81f808385d30cce095269904b9",
+    "operating_table_lithotomy/awake": "e61d9972ff1c88df2402cce4b35e2e0a6de5b00ea058da8b9bbf534051080af6",
+    "operating_table_lithotomy/tense": "93b1c7df9a668c3a0a1c9a139de929b5a9e7c5996ecb5b7541b37d3366b52110",
+    "intraoperative/tense": "d460a913fca180c44513b5992c20a916361f6eb961559c1e1a340ce2a10c55a0",
+    "intraoperative/pain": "4c09c8a7689ded4c7c0199a3c42163f4da67c7dc14f6850d11e0af4c0d8ea935",
+    "intraoperative/near_collapse": "8e5ceede18b101f269b792049f44be8307c3847280a7b02fb1fc4b9530589cc3",
+    "intraoperative/anesthetized": "7252b564ba58ce5e88963857203ef57229ca6b75bfd1994c86cea94e46be83c5",
+    "splash/general_anesthesia": "d52ffa5bcf6c732451129059a0caaa7bf07473fe7d5c8939ac3dc94b49415146"
+  },
+  "missing_non_nsfw_portraits": [
+    "operating_table_lithotomy/afraid",
+    "operating_table_lithotomy/anesthetized"
+  ],
+  "generation_blocker": "The three first-wave intraoperative requests succeeded on same-spec retry and are now registered. Lithotomy tense succeeded on a subsequent same-spec retry. Lithotomy afraid and anesthetized were each retried three times with the same SFW references and prompt and continue to be rejected at input moderation (category other); they remain unregistered. Latest request IDs: afraid a1ee5649-f593-485e-b2f4-c9fe5b7af7e6; anesthetized db80a28c-9227-4f45-87ce-acc50cd1f624. No prompt changes were made to evade moderation.",
+  "dialogue": {
+    "graphic_preop_question": "Imported verbatim from the user's approved text into preop.stage_prompts.graphic_preop_question.",
+    "graphic_preop_final_response": "Imported verbatim from the user's approved revision and appended as a patient-speaker node after the selected detailed pre-op explanation family.",
+    "english": "Patient bundle English localization added for all source bundle string leaves."
+  },
+  "validation": {
+    "cg_trigger_audit": "repaired: full-undress image now has an examination pool and all three completed undressing choices reference it; English label/caption added",
+    "patient_bundle_localization_test": "passed: 1842 entries, 0 patient-bundle localization failures",
+    "python_patient_bundle_override_check": "passed: question prompt overridden and final patient line appended to each procedure-family node list",
+    "full_data_validation": "Repository-wide validation reports pre-existing unrelated schema/content errors. The patient-specific missing list contains only operating_table_lithotomy/afraid and operating_table_lithotomy/anesthetized after successful retry/import of the other four keys.",
+    "narrative_localization_test": "repository-wide failure: 36 unrelated missing keys in sayaka_lv3_relationship; no Comoli failures",
+    "localization_audit": "repository-wide pre-existing failures; patient-specific English entries are present",
+    "godot_runtime_test": "not run; Godot executable unavailable in this environment"
+  }
+}

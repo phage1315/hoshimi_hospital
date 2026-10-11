@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_sepha",
+    "name": "瑟法",
+    "age": 24,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {}
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "calm",
+      "secondary": "analytical",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "calm_analytical_reassurance",
+    "traits": {
+      "baseline_anxiety": 51,
+      "pain_sensitivity": 68,
+      "privacy_sensitivity": 63,
+      "trust_baseline": 57,
+      "control_need": 72,
+      "expressiveness": 48,
+      "health_literacy": 30,
+      "compliance_tendency": 82
+    },
+    "fear_profile": {
+      "pain_fear": 73,
+      "procedure_fear": 66,
+      "diagnosis_fear": 52,
+      "loss_control_fear": 78
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院……明白。预计要待多久？我得先把手头的工作交接一下。」",
+      "hospitalization_response": "「好的，我会按安排住院。下一项要做什么，麻烦提前告诉我。」",
+      "procedure_mismatch": "「等一下，医生。我刚才听到的术式不是这个。请再核对一遍……我想确认没有弄错。」",
+      "explain_plan": "「明白了。这样按顺序说，我就能跟得上。后面如果有变化，请及时告诉我。」",
+      "brief_plan": "「……只有这些吗？至少让我知道，上台以后第一步会做什么。」",
+      "last_reassure": "「我会配合的。只是心跳突然有点快……医生，你听见我说的了吗？」",
+      "choose_general": "「全身麻醉啊……等于从这里开始，我什么也没办法确认了。那就拜托你们了。」",
+      "choose_epidural": "「硬膜外麻醉……下半身会不听使唤，但我还醒着，对吗？开始前请说一声。」",
+      "choose_local": "「局部麻醉的话，我可能还是会感觉到牵拉吧？如果不舒服，我会告诉你。」",
+      "choose_none": "「……没有麻醉？等一下，我是不是漏听了哪一步？真的要直接开刀吗？」",
+      "induction_reassure": "「嗯……我听到了。睡着以后就交给你们，醒来再告诉我结果……好吗？」",
+      "insist_without_anesthesia": "「不行……！啊，好疼！医生，我真的撑不住了……不要只看数字，听我说啊！」",
+      "assistant_stabilize_none": "「别、别突然按住我……！啊！刚才那一下太疼了，我不是故意躲的……！」",
+      "assistant_stabilize_local": "「……手有点抖。扶一下就好，我还能听懂你们的指令。」",
+      "assistant_stabilize_epidural": "「腿真的动不了……嗯，我知道是麻醉的作用。请先告诉我你们要把我挪到哪里。」",
+      "incise_epidural": "「……已经下刀了吗？感觉不清楚，可我知道你们正在切……有点害怕。」",
+      "incise_local": "「呜……！刚才那一下……切开了？我还能感觉到往里面碰的感觉……」",
+      "incise_none": "「啊——！！疼！真的疼……！停、停一下！我没办法这样撑住……！」",
+      "contact_pause": "「……谢谢你停下来。我调整一下呼吸……好了，我还听得见。」",
+      "contact_command": "「收到……我会尽量不动。只是下一步之前，请先提醒我。」",
+      "contact_continue": "「等、等等……！我还在说疼……医生，能不能先回应我一下？！」",
+      "ongoing_narrate": "「嗯，这样就好。我知道做到哪里了，就不必一直猜。」",
+      "ongoing_eye_contact": "「……你看见我了。嗯，我刚才不是在喊你们的监护仪，是在喊你。」",
+      "ongoing_silent": "「医生……？你们怎么突然安静了？我说话，你们还听得见吧？」",
+      "closure_reassure": "「最困难的部分结束了……？呼……谢谢，我一直在等这个确认。」",
+      "closure_coach": "「好……慢慢呼吸。我跟着你说的节奏来。」",
+      "closure_silent": "「……快结束了吗？医生，告诉我一声吧……我不想继续猜了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠也是准备的一部分啊……明白。能先告诉我，接下来需要怎么配合吗？」",
+        "「……要侧身接受灌肠？我知道了。只是这种事情有人站在旁边，确实挺难为情的。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「等一下，这次并不需要灌肠吧？那为什么还要安排？」",
+        "「如果不是必要准备……能先说明目的，再决定要不要做吗？」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……就是把手术附近的毛发剃掉吧？明白……等一下，要露出这么多？」",
+        "「这里也要剃啊……好，我会保持不动。只是有点不好意思，请让我缓一下。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「这片区域不在手术范围里，对吗？……那也要备皮？」",
+        "「医生，请再确认一次。我不想因为没问清楚，就把不需要的地方也剃了。」"
+      ],
+      "ward_surgical_cap": [
+        "「头发都收进去就行了？……好。看起来真的像马上要上台了。」",
+        "「这顶帽子要把耳朵也盖住啊……明白。这样就不太听得清外面的动静了呢。」"
+      ],
+      "operative_positioning_awake": [
+        "「我还是清醒的……挪动手臂之前请说一声。嗯，这个位置可以。」",
+        "「腿要这样放啊……我会配合，只是被大家围着摆姿势，确实有点难堪。」"
+      ],
+      "operative_positioning_none": [
+        "「还没麻醉就要固定双手？……万一切开以后我疼得乱动，怎么办？」",
+        "「等一下……这样躺好以后，我就不能自己换姿势了吧？我突然有点怕。」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管……是从那里放进去吧？……我知道必要，可还是有点不好意思。」",
+        "「好，我会按你说的放松。开始的时候麻烦提醒我，我还醒着呢。」"
+      ],
+      "urinary_catheterization_none": [
+        "「等、等一下！我还没有麻醉……现在就要插导尿管吗？！」",
+        "「啊……！呜……太难受了！我、我不是想乱动，可是那一下真的吓到我了……！」"
+      ],
+      "skin_disinfection_awake": [
+        "「好冰……！我差点缩了一下。局麻以后还是能感觉到冷啊。」",
+        "「消毒已经开始了……嗯。医生，下一步要下刀时，记得告诉我。」"
+      ],
+      "skin_disinfection_none": [
+        "「还没麻醉……消毒完就真的要切开？我确认一下……是真的？」",
+        "「冰得我一哆嗦……可是更可怕的是，等下手术刀就要落下来了……」"
+      ],
+      "incision_marking_awake": [
+        "「线已经画好了……嗯。有麻醉也还是会紧张，开始前请说一声。」",
+        "「就是沿着这条线切开，对吧？……我看懂了，反而更不安了。」"
+      ],
+      "incision_marking_none": [
+        "「这条线……就是不麻醉也要切开的地方？……等一下，让我再确认一下。」",
+        "「真的要从这里下刀啊……我以为自己能冷静听完，可现在手已经在抖了……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，我先把身体不舒服的情况说清楚：{line}",
+      "primary": "最明显的问题是：{line}",
+      "secondary": "另外，还有一项情况：{line}",
+      "background": "我在吉翁军的佐冬号舰桥当操作员。平时负责看着屏幕汇报情况……今天轮到别人盯着我的身体数据，感觉真不太习惯。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "瑟法的病历",
+    "full_undress": {
+      "prompt": "「全部脱掉接受检查吗……？明白。不过我想先确认一下，检查范围具体到哪里？」",
+      "responses": {
+        "abandon_full_undress": "「这项检查暂时不做？……好，我松口气了。必要的部分以后还是得查清楚。」",
+        "authoritative_full_undress": "「收到，我会配合脱衣检查。只是下命令之前……请告诉我你们打算检查什么。」",
+        "gentle_full_undress": "「……谢谢你说明。我明白了，会配合的……不过还是有点难为情啊。」",
+        "threaten_full_undress": "「等一下，医生。检查的必要性我会认真听，可你用威胁的方式说，我反而更难安心。」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "瑟法 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「手术今天就要安排了吗？明白……我会配合。只是各位能不能别让我一直猜下一步是什么？」",
+      "graphic_preop_question": "「医生，我想再核对一次……等一下上台以后，你们会先怎样准备，再从哪里开始操作？不用省略得太厉害，我想听明白。」",
+      "graphic_preop_dialogue": "「……原来要做到这么深啊。我以为自己听惯了各种异常报告，可一想到这些步骤一会儿都要发生在我身上……医生，我现在心跳得好快。」",
+      "team": "你将担任瑟法本次手术的主刀。确认助手医生、器械护士与巡回护士的人员分配与职责。",
+      "preparation": "请为瑟法安排病房准备护士，并根据本次病例决定必要术前准备及可选照护内容。",
+      "prepared": "「准备都完成了……？嗯。刚才护士帮我处理那些地方时，我还真不知道该把眼睛往哪里放……」",
+      "changing": "你与手术团队完成术前更衣、刷手及无菌准备，即将进入手术室。",
+      "operating_room": "「手术室比我想的安静……设备都已经准备好了吧？……抱歉，我现在有点像在等一条不想听的报告。」",
+      "team_confirmations": "团队依次核对瑟法的身份、当前病例手术方案与岗位职责。她认真听着，并在术式确认时看向主刀。",
+      "procedure_select": "请核对当前病例已经确认的手术方案，并选择相应术式。",
+      "procedure_mismatch": "「等一下！这个术式和刚才确认的不一样。请重新核对……医生，别让我带着疑问上台。」",
+      "ready": "团队完成全部必要准备，瑟法已在手术台上等待。请确认麻醉方式与手术开始条件。",
+      "general_induction": "「马上就要失去意识了啊……好。我醒来以后，你们会把结果告诉我吧？」",
+      "surgery_start_general": "瑟法已进入全身麻醉，没有术中清醒主观发言。团队确认麻醉监护和手术条件后准备开始。",
+      "surgery_start_epidural": "「腿真的动不了……嗯，是麻醉的效果。我还醒着，你们开始之前请叫我一声。」",
+      "surgery_start_local": "「局部麻醉已经用了……我能感觉到有人在碰这里。开始切的时候，先告诉我，好吗？」",
+      "surgery_start_none": "「真的不打麻醉就开始……？医生，我知道你们听得很清楚，可我现在真的很害怕……！」",
+      "instrument_handoff": "你发出器械要求，器械护士按当前术式与阶段递交所需器械。",
+      "assistant_ready": "助手医生协助建立当前预定手术区域的暴露，等待主刀确认下一步。",
+      "incision_ready": "切口位置和麻醉状态已复核，助手维持暴露，器械护士备好手术刀，等待第一刀指令。",
+      "general_operation": "全身麻醉状态下，瑟法不会发出清醒主观反应；团队持续监护并推进所选术式流程。",
+      "operative_contact": "切口已经建立。若瑟法清醒，当前压力、牵拉或疼痛可能引发患者反应，需根据现有状态处理。",
+      "ongoing_interaction": "手术持续进行。清醒的瑟法试图用简短的话报告感受，但她需要医护明确回应，而不只是读取监护数据。",
+      "closure_interaction": "主要操作进入收尾阶段。若瑟法仍清醒，她在等待医生明确告知是否快要结束。",
+      "procedure_flow": "进入已选择术式的标准阶段流程，请依照当前术式继续操作。",
+      "procedure_execute": "主要操作已完成，团队复核术野和必要技术结果，准备最终处理与缝合。",
+      "surgery_result": "手术结束，切口处理、器械清点和术后交接按既定流程完成。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切了吗？身体明明麻着，知道你们在动刀，我还是有点发抖……」",
+      "incise_local": "「呜……！刚才真的切开了？我能感觉到里面有东西在动……！」",
+      "incise_none": "「啊——！！好疼！等、等等……我真的忍不住了！医生，听见我喊了吗？！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

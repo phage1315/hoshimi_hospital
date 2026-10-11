@@ -43,12 +43,14 @@ func run() -> void:
 		false,
 		app.content.collections.palpation_profiles
 	)
-	prep.procedure_id = "surgery_hysterectomy"
-	prep.procedure_name = "开腹子宫全切除"
+	prep.procedure_id = "surgery_open_radical_cystectomy"
+	prep.procedure_name = "开腹膀胱全切除"
 	prep.stage_id = "procedure_flow"
 	prep.procedure_step_index = 0
 	prep.operative_background_id = "operating_team_01"
 	prep.flags.append("incision_made")
+	expect(not PreopView.operative_field_overlay_pool(prep).is_empty(), "Urologic surgery did not resolve an operative-field pool")
+	expect(PreopView.operative_field_overlay_path(prep).contains("overlays/pelvic/"), "Urologic surgery did not resolve the pelvic operative-field pool")
 
 	app.operative_field_hud_enabled = true
 	PreopView.render(app, prep)

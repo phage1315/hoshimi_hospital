@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_amate_yuzuriha",
+    "name": "天手让叶（玛秋）",
+    "age": 20,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/ward/smile.png",
+        "ward/brave": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/ward/brave.png",
+        "ward/worried": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_amate_yuzuriha_v1/patient_amate_yuzuriha/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_amate_yuzuriha/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_amate_yuzuriha/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_amate_yuzuriha/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_amate_yuzuriha/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_amate_yuzuriha/general.png",
+        "examination/shy": "assets/examinations/patient_amate_yuzuriha/full_undress.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "strong_front",
+      "secondary": "impulsive_defiant",
+      "stress_response": "becomes_irritable"
+    },
+    "dialogue_profile": "strong_front_expressive_irritable",
+    "traits": {
+      "baseline_anxiety": 48,
+      "pain_sensitivity": 66,
+      "privacy_sensitivity": 58,
+      "trust_baseline": 50,
+      "control_need": 91,
+      "expressiveness": 88,
+      "health_literacy": 27,
+      "compliance_tendency": 56
+    },
+    "fear_profile": {
+      "pain_fear": 69,
+      "procedure_fear": 69,
+      "diagnosis_fear": 43,
+      "loss_control_fear": 91
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「啊？要住院？不能今天就处理好吗？我不想一直待在这里啊。」",
+      "hospitalization_response": "「好啦，我会住院的。不过有安排的话先告诉我，别让我一直干等啊。」",
+      "procedure_mismatch": "「喂，等一下！这和刚才说的不一样吧？医生，你们是不是弄错了？！」",
+      "explain_plan": "「哦，原来是这么回事。你们先讲清楚，我当然会配合啊。」",
+      "brief_plan": "「就这样？你至少告诉我接下来要做什么吧！光叫我听话怎么行！」",
+      "last_reassure": "「好啦，我知道了！我会配合的……不过你们也得好好说清楚哦。」",
+      "choose_general": "「全身麻醉……也就是说，我什么都不知道就睡过去？这样反而有点不安啊……」",
+      "choose_epidural": "「硬膜外麻醉……脑袋醒着，腿却不听使唤？……听起来还真让人不舒服啊。」",
+      "choose_local": "「局部麻醉啊。行，我会尽量不动……不过真的疼起来，可别说我没提醒你！」",
+      "choose_none": "「哈？！不麻醉就开刀？喂，我又不是铁做的！你们认真的吗？！」",
+      "induction_reassure": "「……知道了。那就拜托你们。等我醒过来，手术就结束了吧？」",
+      "insist_without_anesthesia": "「等、等等！我刚才是说会努力配合，又不是说什么痛都能忍啊！」",
+      "assistant_stabilize_none": "「啊！疼死了！我知道不能动，可是别突然把我按住啊……！」",
+      "assistant_stabilize_local": "「好……扶稳我。我知道打了麻药，可是身体还是会不自觉地躲啊……」",
+      "assistant_stabilize_epidural": "「腿真的动不了了……好，帮我保持这个姿势。别突然松手啊。」",
+      "incise_epidural": "「呜……已经切了吗？明明感觉不清楚，知道你们真的在动刀还是会紧张啊……！」",
+      "incise_local": "「呜……！感觉到了！真的开始切了啊……喂，别突然来下一下！」",
+      "incise_none": "「啊——！！好痛！！等、等一下！不行！这根本不是靠忍耐就能撑住的啊！」",
+      "contact_pause": "「哈……哈……终于停下了……再让我缓一下，我会努力不乱动的。」",
+      "contact_command": "「知道啦！我会不动的……可是你们也得先说一声啊！」",
+      "contact_continue": "「喂！我还在说话呢！别就这么继续啊……！」",
+      "ongoing_narrate": "「哦，已经做到这里了啊……你早这么说不就好了嘛！」",
+      "ongoing_eye_contact": "「啊……你还在看着我啊。行，那我再撑一会儿。别突然不理我就好。」",
+      "ongoing_silent": "「喂，医生？怎么突然不说话了？不会是出了什么事吧？！」",
+      "closure_reassure": "「终于结束了？……呼，太好了。别笑我，我真的没想到会这么难受啊。」",
+      "closure_coach": "「再坚持一下就好？好，我听着。你说怎么配合，我就怎么做。」",
+      "closure_silent": "「喂……到底好没好啊？都到最后了，别突然不说话嘛……」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「啊？灌肠也要做？等一下，是要从下面把药液灌进去的那个吗？！」",
+        "「喂……我知道这是术前准备，但你先说清楚我要怎么躺啊。别突然就开始！」"
+      ],
+      "ward_enema_unnecessary": [
+        "「哈？不需要也要灌肠？这是谁决定的？至少给我解释清楚啊！」",
+        "「等等，这不是手术必须的准备吧？那为什么还要我做？！」"
+      ],
+      "ward_skin_prep": [
+        "「备皮？啊，就是剃毛啊……等等！连这里也要处理？！」",
+        "「我知道手术前要准备，可是要剃到这么下面吗……？你们先说一声啊！」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「等一下，这里又不是手术要处理的地方吧？为什么还要剃啊？」",
+        "「哈？连不用动刀的地方也要备皮？……先给我一个说得通的理由！」"
+      ],
+      "ward_surgical_cap": [
+        "「头发全部塞进去？好啦好啦……感觉跟准备进驾驶舱差不多嘛。」",
+        "「这样就行了？……嗯？戴上帽子以后，突然真的有点像要去开刀了。」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂要放这里？好，我知道了……不过别突然把我的身体转过去啊！」",
+        "「腿要一直保持这个姿势吗？……真麻烦，我知道已经麻醉了，可是还是很不习惯啊。」"
+      ],
+      "operative_positioning_none": [
+        "「喂！我还没麻醉呢！这就要把手脚固定好？！等一下要是真的痛起来怎么办啊！」",
+        "「等、等等……这样我连躲一下都不行了吧？真的要在我完全清醒的时候开刀吗……？」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管？……啊？是要从那里放进去？等一下，这种事情也要做啊？！」",
+        "「好啦，我知道是准备……只是这种感觉真的很奇怪啊。至少先告诉我什么时候开始！」"
+      ],
+      "urinary_catheterization_none": [
+        "「等、等等！我完全没麻醉啊！真的现在就要插导尿管吗？！」",
+        "「啊……！难、难受死了！我知道不能乱动，可是刚才那一下真的吓到我了！」"
+      ],
+      "skin_disinfection_awake": [
+        "「哇，好冰！……局部麻醉也挡不住这个啊。下一步就要切了吗？」",
+        "「消毒液都擦到这里了啊……好啦，我不动。可你们开始前要提醒我一声。」"
+      ],
+      "skin_disinfection_none": [
+        "「呜哇，好冰！……等一下，消毒完真的就直接动刀了？！」",
+        "「喂，这里就是要切开的地方吧……？怎么搞的，光是想一想我就有点发抖了……」"
+      ],
+      "incision_marking_awake": [
+        "「这条线就是切口啊……有麻醉我也不想一直盯着看。画完就开始吗？」",
+        "「已经决定从这里下刀了？好，我知道了……开始时记得告诉我！」"
+      ],
+      "incision_marking_none": [
+        "「这条线就是要切开的地方？……喂，我真的要清醒着等你们下刀啊……？」",
+        "「等一下……真的要从这里切？我还以为自己已经做好心理准备了呢……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，我本来想自己解决的……可是情况是这样：{line}",
+      "primary": "好啦，你问的我会认真回答。最明显的是：{line}",
+      "secondary": "还有这个……你听好哦：{line}",
+      "background": "我以前在殖民卫星生活，也驾驶过机动战士。不过现在身体到底怎么了，还真不是靠我自己能弄清楚的啊。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "天手让叶（玛秋）的病历",
+    "full_undress": {
+      "prompt": "「欸？这项检查要把衣服全部脱掉？！等、等一下……先告诉我到底要检查哪里啊！」",
+      "responses": {
+        "abandon_full_undress": "「哦，这项检查先不做了？……呼。那接下来怎么确认身体的问题？」",
+        "authoritative_full_undress": "「好啦，我会配合脱衣检查的！不过别只顾着下命令，至少说清楚要做什么啊！」",
+        "gentle_full_undress": "「……哦，原来是这样。好吧，我会把衣服脱掉……但是说真的，还是挺难为情的。」",
+        "threaten_full_undress": "「你这是在威胁我吗？我会认真接受检查，但你别以为这么说我就会乖乖闭嘴！」"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_amate_yuzuriha"
+    }
+  },
+  "preop": {
+    "title": "天手让叶（玛秋） · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「已经决定要做手术了吗？……好吧。但先告诉我大概什么时候开始，我最受不了干等了。」",
+      "team": "你担任本次手术主刀。请确认助手医生、器械护士与巡回护士的分工。",
+      "preparation": "为天手让叶安排病房术前准备护士，并根据当前病例决定必要准备与额外照护。",
+      "prepared": "「准备终于做完了？……我可没说害怕啊！只是接下来去哪儿，你得告诉我一声。」",
+      "changing": "你与手术团队完成更衣及刷手，准备进入手术室。",
+      "operating_room": "「哇……灯这么亮，器械也摆了这么多。……等一下，我真的要一直躺在这里等你们操作啊？」",
+      "team_confirmations": "手术团队逐项核对天手让叶的身份、手术方案与各岗位职责；她躺在手术台上，认真听着确认内容。",
+      "procedure_select": "请核对当前病例已经确认的手术方案，选择对应的术式。",
+      "procedure_mismatch": "「喂，等一下！你们说的不是刚才确认好的手术吧？别告诉我你们弄错了！」",
+      "ready": "团队完成准备，天手让叶已经在手术台上等待。请确认麻醉选择与手术开始条件。",
+      "general_induction": "「现在就要睡着了吗……？我还没做好什么都不知道的准备啊。……好啦，你们说开始就开始吧。」",
+      "surgery_start_general": "天手让叶已经处于全身麻醉状态，没有术中主观语言反应。监护正常，团队确认后准备开始手术。",
+      "surgery_start_epidural": "「腿真的不听使唤了……好奇怪。喂，医生，要下刀之前一定跟我说一声！」",
+      "surgery_start_local": "「局麻已经打好了吧？好……我努力不动。医生，可别突然就下刀啊！」",
+      "surgery_start_none": "「喂！麻醉呢？！别告诉我你们真的打算就这样给我开刀……！」",
+      "instrument_handoff": "你提出器械要求，器械护士依照手术流程递交第一件器械。",
+      "assistant_ready": "助手医生在预定切口附近建立稳定暴露，等待你确认下一步操作。",
+      "incision_ready": "切口位置及当前麻醉状态已复核，助手保持暴露，手术刀来到预定切口上方。",
+      "general_operation": "全麻中的天手让叶没有主观应答。手术团队持续监测并按对应术式推进操作。",
+      "operative_contact": "切口已建立。清醒的天手让叶因压力、牵拉或疼痛出现明显反应，需要决定如何回应。",
+      "ongoing_interaction": "手术仍在继续。清醒的天手让叶试着弄清进度，越来越不耐烦于无人解释的沉默。",
+      "closure_interaction": "关键操作逐渐进入收尾。清醒的天手让叶正在等待医生确认是否快要结束。",
+      "procedure_flow": "本次手术进入当前已选术式的阶段流程，请按照对应术式继续操作。",
+      "procedure_execute": "主要操作完成。团队复核术野与必要技术结果，准备最后处理和缝合。",
+      "surgery_result": "手术结束，切口处理和器械清点已经完成，团队进入术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「呜……已经切了吗？明明感觉不清楚，知道你们真的在动刀还是会紧张啊……！」",
+      "incise_local": "「呜……！感觉到了！真的开始切了啊……喂，别突然来下一下！」",
+      "incise_none": "「啊——！！好痛！！等、等一下！不行！这根本不是靠忍耐就能撑住的啊！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_amate_yuzuriha",
+        "label": "天手让叶（玛秋） · 诊察室脱衣检查",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_amate_yuzuriha/full_undress_basic_exam.png"
+        ],
+        "caption": "天手让叶（玛秋）在诊察室脱去衣物，抱住双臂等待基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_amate_yuzuriha",
+        "label": "天手让叶（玛秋） · 术前灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_amate_yuzuriha"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_amate_yuzuriha/enema.png"
+        ],
+        "caption": "天手让叶接受术前灌肠准备。"
+      },
+      {
+        "id": "ward_skin_prep_patient_amate_yuzuriha",
+        "label": "天手让叶（玛秋） · 术前剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_amate_yuzuriha"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_amate_yuzuriha/skin_prep.png"
+        ],
+        "caption": "医护人员为天手让叶完成术前备皮。"
+      },
+      {
+        "id": "operative_positioning_patient_amate_yuzuriha",
+        "label": "天手让叶（玛秋） · 手术固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_amate_yuzuriha"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "breast",
+          "urologic",
+          "thoracic",
+          "cardiac",
+          "vascular"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_amate_yuzuriha/operative_positioning.png"
+        ],
+        "caption": "手术团队将天手让叶固定在手术台上，确认她能保持稳定姿势。"
+      },
+      {
+        "id": "operative_positioning_female_pelvic_patient_amate_yuzuriha",
+        "label": "天手让叶（玛秋） · 妇科手术体位",
+        "priority": 110,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_amate_yuzuriha"
+        ],
+        "procedure_groups": [
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_amate_yuzuriha/operative_positioning_female_pelvic.png"
+        ],
+        "caption": "进行妇科手术前，团队将天手让叶调整到专用截石位。"
+      },
+      {
+        "id": "incision_patient_amate_yuzuriha",
+        "label": "天手让叶（玛秋） · 下刀瞬间",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "incise_epidural",
+          "incise_local",
+          "incise_none"
+        ],
+        "patient_ids": [
+          "patient_amate_yuzuriha"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_amate_yuzuriha/incision.png"
+        ],
+        "caption": "手术刀沿预定切口落下，天手让叶进入正式手术阶段。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

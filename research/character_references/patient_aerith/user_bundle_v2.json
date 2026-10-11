@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_aerith",
+    "name": "爱丽丝·盖恩斯巴勒",
+    "age": 22,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_aerith_v1/patient_aerith/outpatient/neutral.png",
+        "operating_table/awake": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/awake.png",
+        "ward/neutral": "assets/characters/patient_aerith_v1/patient_aerith/ward/neutral.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/awake.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_aerith/general.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_aerith/tense.png",
+        "ward/smile": "assets/characters/patient_aerith_v1/patient_aerith/ward/smile.png",
+        "ward/brave": "assets/characters/patient_aerith_v1/patient_aerith/ward/brave.png",
+        "ward/worried": "assets/characters/patient_aerith_v1/patient_aerith/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_aerith_v1/patient_aerith/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_aerith_v1/patient_aerith/ward/crying.png",
+        "operating_table/afraid": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/afraid.png",
+        "operating_table/tense": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/tense.png",
+        "operating_table/anesthetized": "assets/characters/patient_aerith_v1/patient_aerith/operating_table/anesthetized.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_aerith_v1/patient_aerith/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_aerith/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_aerith/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_aerith/anesthetized.png",
+        "examination/shy": "assets/examinations/patient_aerith/full_undress.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "playful_optimist",
+      "secondary": "independent_defiant",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "playful_defiant_detail",
+    "traits": {
+      "baseline_anxiety": 54,
+      "pain_sensitivity": 68,
+      "privacy_sensitivity": 43,
+      "trust_baseline": 40,
+      "control_need": 76,
+      "expressiveness": 85,
+      "health_literacy": 55,
+      "compliance_tendency": 62
+    },
+    "fear_profile": {
+      "pain_fear": 72,
+      "procedure_fear": 58,
+      "diagnosis_fear": 48,
+      "loss_control_fear": 84
+    },
+    "reaction_lines": {
+      "hospitalization_response": "「好吧，住院就住院。不过医生，这次记得叫我的名字哦。我叫爱丽丝，可不是什么编号。」",
+      "procedure_mismatch": "「等一下！这和刚才说好的不一样吧？医生，这里又不是宝条的实验室。你得先解释清楚呀。」",
+      "last_reassure": "「我知道你不是宝条啦……只是这么多白大褂围着我，偶尔还是会想起以前的事呢。」",
+      "choose_none": "「不麻醉？医生，你是想给我治病，还是想看看我能忍到什么时候？这种研究，我以前可见得够多了哦。」",
+      "insist_without_anesthesia": "「啊！医生，真的好疼！不要只盯着我的反应……我会说话呀！听我说话……！」",
+      "ongoing_silent": "「医生……？你们突然不说话，我就会想起以前在研究室的日子。能不能跟我说句话……？」",
+      "closure_reassure": "「真的结束啦……太好了。这次我不是谁的实验结果，只是一个普通病人，对吧？」"
+    },
+    "reaction_variants": {
+      "ward_enema_unnecessary": [
+        "「欸？不需要也要做？医生，你这做法有点像某位神罗研究员哦……我可一点都不怀念他。」",
+        "「为了多观察一下，就连灌肠也要做吗？……开玩笑的。不过你最好告诉我真正的理由哦。」"
+      ],
+      "ward_surgical_cap": [
+        "「连蝴蝶结都得摘下来呀……好吧。不过你们等一下可别只叫我『患者』哦，我叫爱丽丝。」",
+        "「头发全部藏进去……唔，有点像以前在研究所的时候呢。不过这次应该只是普通手术，对吧？」"
+      ],
+      "operative_positioning_none": [
+        "「等一下……手臂也要固定住？我知道这是手术……可是听见『别动』，我还是会有点害怕。」",
+        "「医生，你知道吗？以前最讨厌的，就是有人把我摆好以后，只管记录我的反应……所以至少跟我说说话，好不好？」"
+      ],
+      "urinary_catheterization_none": [
+        "「等、等等！在我完全清醒的时候放进去？你们至少先告诉我呀……别只叫我『不要动』！」",
+        "「啊……！医生，我知道这是必要的……可是好难受……你有听见我说话吧？」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，先听我说哦：{line}",
+      "primary": "嗯，我把最明显的情况说清楚：{line}",
+      "secondary": "还有一件事也要告诉你：{line}",
+      "background": "我小时候在神罗的研究设施待过一阵子……所以有时候会问很多。别介意，我不是故意找麻烦哦。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "爱丽丝·盖恩斯巴勒的病历",
+    "full_undress": {
+      "visual_pool_id": "full_undress_basic_exam_patient_aerith",
+      "prompt": "「咦，这次检查要把衣服全部脱掉呀？……我知道啦。不过医生，能先告诉我会检查哪里吗？我可还醒着呢。」",
+      "responses": {
+        "abandon_full_undress": "「啊，不做这项检查了？……呼，那我就不用把衣服全脱掉啦。不过，该确认的事情真的都确认好了吗？」",
+        "authoritative_full_undress": "「……好，我会配合检查的。但是医生，别只顾着发指令嘛，我有不明白的地方还是会问哦。」",
+        "gentle_full_undress": "「谢谢你先说明白。嗯，我会配合的……只是要把衣服全脱掉，果然还是有点害羞呢。」",
+        "threaten_full_undress": "「……别用那种口气。以前也有人这样命令过我。医生，我知道要检查，可我不是不会说话的实验材料。」"
+      }
+    }
+  },
+  "preop": {
+    "title": "爱丽丝·盖恩斯巴勒 · 术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「今天就要安排手术了吗？……呵呵，别看我还在笑，我是真的有一点紧张哦。」",
+      "team": "你将担任本次主刀。请确认助手医生、器械护士与巡回护士的安排。",
+      "preparation": "为爱丽丝安排病房术前准备护士，并决定必要准备及可选的额外照护。",
+      "prepared": "「准备都做完啦？……嗯，我还没临阵逃跑哦。不过，接下来要做什么，可得记得告诉我呀。」",
+      "changing": "你与手术团队完成更衣和刷手准备，即将进入手术室。",
+      "operating_room": "「哇……灯光好亮，器械也摆得整整齐齐。你们每天都这样呀？……嗯，我是有一点紧张啦。」",
+      "team_confirmations": "手术团队逐项确认患者身份、术式和各自职责，爱丽丝在手术台上认真听着。",
+      "procedure_select": "请核对当前病例已经确认的手术方案，选择对应的术式。",
+      "procedure_mismatch": "「欸，等等……你们刚才说的手术部位，和之前告诉我的不一样吧？医生，我可是听得见哦。」",
+      "ready": "团队已就位，爱丽丝正在手术台上等待。接下来需要确定麻醉与开始手术的方式。",
+      "general_induction": "「这就要睡着了吗……？医生，等我醒来的时候，记得先叫我一声哦。」",
+      "surgery_start_general": "爱丽丝已处于全身麻醉状态，没有术中主观反应。监护数据平稳，团队再次核对后准备开始。",
+      "surgery_start_epidural": "「身体已经开始发麻了……原来醒着等开刀是这种感觉呀。医生，要开始之前先告诉我，好吗？」",
+      "surgery_start_local": "「局部麻药已经用上了，对吧？……好，那就拜托你啦。不过，别因为我还在笑，就突然下刀哦。」",
+      "surgery_start_none": "「喂，医生……我们好像还没有用麻药吧？不会真的打算就这样开刀吧……？」",
+      "instrument_handoff": "你发出器械口令，器械护士按顺序递出第一件器械。",
+      "assistant_ready": "助手医生稳定预定切口周围的暴露，等待你的下一步指令。",
+      "incision_ready": "切口部位与麻醉状态已经复核。助手保持稳定暴露，手术刀来到预定切口上方。",
+      "general_operation": "全麻中的爱丽丝没有主观应答。团队按术式分工完成暴露与关键操作，监护持续进行。",
+      "operative_contact": "切口已经建立。清醒的爱丽丝感受到手术操作带来的压力或牵拉，开始不安。你需要决定如何回应。",
+      "ongoing_interaction": "操作持续进行。清醒的爱丽丝试着从医护对话中判断进度，你准备怎样与她交流？",
+      "closure_interaction": "主要操作已经进入收尾阶段。清醒的爱丽丝等待确认是否快要结束。",
+      "procedure_flow": "本次手术进入对应术式的阶段流程，请按当前术式继续操作。",
+      "procedure_execute": "关键步骤已经完成。团队复核术野，准备进行必要的最终处理与缝合。",
+      "surgery_result": "手术结束。切口处理和器械清点已经完成，团队准备进行术后交接。"
+    },
+    "incision_responses": {}
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_aerith",
+        "label": "爱丽丝·盖恩斯巴勒 · 诊室脱衣检查",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_aerith/full_undress_basic_exam.png"
+        ],
+        "caption": "爱丽丝·盖恩斯巴勒 · 诊室脱衣检查"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_aerith",
+        "label": "爱丽丝·盖恩斯巴勒 · 术前灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_aerith"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_aerith/enema.png"
+        ],
+        "caption": "爱丽丝·盖恩斯巴勒 · 术前灌肠"
+      },
+      {
+        "id": "ward_skin_prep_patient_aerith",
+        "label": "爱丽丝·盖恩斯巴勒 · 术前剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_aerith"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_aerith/skin_prep.png"
+        ],
+        "caption": "爱丽丝·盖恩斯巴勒 · 术前剃毛"
+      },
+      {
+        "id": "sterile_draping_patient_aerith",
+        "label": "爱丽丝·盖恩斯巴勒 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_aerith"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_aerith/sterile_draping.png"
+        ],
+        "caption": "爱丽丝·盖恩斯巴勒 · 铺巾"
+      },
+      {
+        "id": "incision_patient_aerith",
+        "label": "爱丽丝·盖恩斯巴勒 · 下刀瞬间",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "incise_epidural",
+          "incise_local",
+          "incise_none"
+        ],
+        "patient_ids": [
+          "patient_aerith"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_aerith/incision.png"
+        ],
+        "caption": "爱丽丝·盖恩斯巴勒 · 下刀瞬间"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

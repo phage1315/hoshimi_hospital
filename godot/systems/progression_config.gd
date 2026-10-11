@@ -45,6 +45,10 @@ const REPUTATION_PROFILES := {
 	"advanced": {"label": "高级", "award": 40, "soft_cap": 480, "cap": 600},
 	"extreme": {"label": "极难", "award": 75, "soft_cap": 800, "cap": 999},
 }
+const ORDINARY_REPUTATION_MIN := 2
+const ORDINARY_REPUTATION_MAX := 15
+const ORDINARY_REPUTATION_MIN_DIFFICULTY := 32
+const ORDINARY_REPUTATION_MAX_DIFFICULTY := 95
 const NO_ANESTHESIA_REPUTATION_PENALTY := -10
 const WRONG_PROCEDURE_REPUTATION_PENALTY := -75
 
@@ -101,6 +105,11 @@ static func reputation_tier(difficulty: int) -> String:
 	if difficulty < 90:
 		return "advanced"
 	return "extreme"
+
+static func ordinary_surgery_reputation(difficulty: int) -> int:
+	# Ordinary cases can be technically difficult without being advanced referrals.
+	var ratio := clampf(float(difficulty - ORDINARY_REPUTATION_MIN_DIFFICULTY) / float(ORDINARY_REPUTATION_MAX_DIFFICULTY - ORDINARY_REPUTATION_MIN_DIFFICULTY), 0.0, 1.0)
+	return ORDINARY_REPUTATION_MIN + roundi(ratio * (ORDINARY_REPUTATION_MAX - ORDINARY_REPUTATION_MIN))
 
 static func leadership_team_class(team_average: float) -> Dictionary:
 	for definition in LEADERSHIP_TEAM_CLASSES:

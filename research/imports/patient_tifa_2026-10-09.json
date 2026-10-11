@@ -1,0 +1,22 @@
+{
+  "id": "patient_tifa_2026-10-09",
+  "patient_id": "patient_tifa",
+  "source_references": [
+    "user attachment: codex-clipboard-49f5e9c5-da73-46b5-a0c5-535fe34c88a5.png (face and style reference)",
+    "user attachment: codex-clipboard-048a5455-06a5-4009-a355-5d9934b5ee55.png (full-body appearance reference)",
+    "user file: 00126-2897009351-Picsart-BackgroundRemover.png (examination/shy source)"
+  ],
+  "integration_summary": "Added ordinary random-pool patient_tifa, inheriting graceful_caretaker_reassurance with the supplied reaction-line and variant overrides. No fixed diagnosis, surgery, anesthesia, relationship, or story-event gate was added. The user-provided transparent examination portrait is bound through exclusive_cg_pools.examination; no patient-specific ward or surgery CG was invented.",
+  "runtime_assets": [
+    {"path": "assets/characters/patient_tifa_v1/patient_tifa/outpatient/neutral.png", "sha256": "c7f5201592468e6c2ba0b425750a447ac4c672d9fa3226f0f0482863797b6e6f", "dimensions": "1024x1536 RGBA", "origin": "generated from user references"},
+    {"path": "assets/characters/patient_tifa_v1/patient_tifa/operating_table/awake.png", "sha256": "dcacf25d2598dc6388ad7dfb5e9c37adfb721d2a7c6399bb2241e0c45d4df2c8", "dimensions": "1448x1086 RGB", "origin": "generated using 高卷杏 operating-table composition reference plus Tifa user references; bare shoulders/collarbones"},
+    {"path": "assets/characters/patient_tifa_v1/patient_tifa/operating_table_lithotomy/awake.png", "sha256": "e74950bf139c54c09104d2c3971ffc16b654f277771f03247625a58f8926ef91", "dimensions": "1448x1086 RGB", "origin": "generated using 高卷杏 lithotomy composition reference plus Tifa user references; bare shoulders/collarbones"},
+    {"path": "assets/characters/intraoperative_portraits_v1/patient_tifa/tense.png", "sha256": "d630851f8bdc89059bb3e2fa688acb0ee6e9cd35f55d67077035bc4ebd19cb64", "dimensions": "1448x1086 RGBA", "origin": "generated from user references; bare shoulders/collarbones"},
+    {"path": "assets/events/anesthesia_v1/patient_tifa/general.png", "sha256": "0742095847893a635123e2c6cf0c26cc4dddc3c210584f1431425f6aa50c6392", "dimensions": "1672x941 RGB", "origin": "generated using 高卷杏 general-anesthesia composition reference plus Tifa user references; bare shoulders/collarbones"},
+    {"path": "assets/examinations/patient_tifa/full_undress.png", "sha256": "051279c5543578f952e6bcf2ec561197ddc7301ffcaa8b1b61b5249b4ee08799", "dimensions": "1056x1584 RGBA", "origin": "user-provided; imported unchanged"}
+  ],
+  "notes": [
+    "Ward neutral intentionally shares the outpatient neutral base; ward brave reuses the generated smile state and ward afraid reuses the generated worried state. The operating-table, lithotomy, and intraoperative state families have distinct generated expression renders.",
+    "No general_anesthesia_pre_induction asset was claimed or mapped."
+  ]
+}

@@ -2,6 +2,7 @@ extends SceneTree
 const Loader = preload("res://godot/scripts/content_loader.gd")
 const GameState = preload("res://godot/systems/game_state.gd")
 const Store = preload("res://godot/systems/save_store.gd")
+const Encounter = preload("res://godot/systems/encounter_session.gd")
 var failures := 0
 var checks := 0
 const HISTORY = ["pain", "associated", "background", "to_exam"]
@@ -31,9 +32,36 @@ func _initialize() -> void:
 func run() -> void:
 	var content = Loader.new()
 	expect(content.load_all(), "Content load failed")
+	var effect_visit_definition := {
+		"id": "visit_restore_effect_history_test",
+		"start": "start",
+		"completion": "complete",
+		"stages": [
+			{"id": "start", "actions": [{"id": "gain_charm", "label": "Gain charm", "minutes": 0, "mistake": false, "notes": [], "requires": [], "player_effects": {"charm": 1}, "diagnosis": "", "admit": false, "response": "", "speaker": "", "next": null}]},
+			{"id": "complete", "actions": []},
+		],
+	}
+	var effect_visit = Encounter.new(effect_visit_definition)
+	expect(effect_visit.apply("gain_charm"), "Could not create player effect history for restore test")
+	var serialized_effect_visit: Dictionary = JSON.parse_string(JSON.stringify(effect_visit.snapshot_state()))
+	var restored_effect_visit = Encounter.new(effect_visit_definition)
+	expect(restored_effect_visit.restore_state(serialized_effect_visit) and restored_effect_visit.player_effect_history == effect_visit.player_effect_history, "JSON save could not restore typed encounter effect history")
 	var randomized = GameState.new()
 	randomized.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools)
 	expect(randomized.patient_cases.size() == content.collections.patients.size(), "Random cases were not assigned to every patient")
+	var seeded_a = GameState.new()
+	seeded_a.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates)
+	var seeded_rng_a := RandomNumberGenerator.new()
+	seeded_rng_a.seed = 428197
+	seeded_a.patient_queue = seeded_a.random_patient_queue(seeded_rng_a)
+	seeded_a.patient_cases = seeded_a.random_patient_cases(seeded_rng_a)
+	var seeded_b = GameState.new()
+	seeded_b.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates)
+	var seeded_rng_b := RandomNumberGenerator.new()
+	seeded_rng_b.seed = 428197
+	seeded_b.patient_queue = seeded_b.random_patient_queue(seeded_rng_b)
+	seeded_b.patient_cases = seeded_b.random_patient_cases(seeded_rng_b)
+	expect(seeded_a.patient_queue == seeded_b.patient_queue and seeded_a.patient_cases == seeded_b.patient_cases, "Same campaign seed produced different patient rotation or case assignments")
 	expect(randomized.examination_cg_by_test.get("cbc", "") == "blood_draw", "Blood test CG pool was not indexed")
 	expect(randomized.examination_cg_by_test.get("abdominal_ct", "") == "ct_scan", "CT CG pool was not indexed")
 	expect(randomized.examination_cg_by_surgery.get("surgery_hysterectomy", "") == "gynecology_preparation", "Surgery CG pool was not indexed")
@@ -96,6 +124,20 @@ func run() -> void:
 	randomized_clone.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates)
 	expect(randomized_clone.restore(JSON.parse_string(JSON.stringify(randomized_snapshot))), "Random case save could not restore")
 	expect(randomized_clone.patient_cases == randomized.patient_cases and randomized_clone.patient_queue == randomized.patient_queue, "Random patient data changed after save/load")
+	var expanded_roster_snapshot: Dictionary = randomized_snapshot.duplicate(true)
+	var newly_added_patient: String = str(expanded_roster_snapshot.patient_queue.pop_back())
+	expanded_roster_snapshot.patient_cases.erase(newly_added_patient)
+	var added_staff_id: String = str(expanded_roster_snapshot.relationship_state.keys()[0])
+	expanded_roster_snapshot.relationship_state.erase(added_staff_id)
+	var expanded_roster_clone = GameState.new()
+	expanded_roster_clone.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates)
+	expect(expanded_roster_clone.restore(expanded_roster_snapshot), "Save from a smaller patient roster was rejected after adding patients")
+	var migrated_queue: Array[String] = expanded_roster_clone.patient_queue.duplicate()
+	migrated_queue.sort()
+	expect(migrated_queue == expected_patient_ids, "Roster migration did not add every newly introduced patient")
+	expect(expanded_roster_clone.patient_cases.size() == content.collections.patients.size() and expanded_roster_clone.case_templates.has(expanded_roster_clone.patient_cases.get(newly_added_patient, "")), "Roster migration did not assign a valid case to the newly introduced patient")
+	expect(not expanded_roster_clone.relation_for(added_staff_id).is_empty(), "Roster migration did not initialize the newly introduced staff relationship")
+	expect(not expanded_roster_clone.restore_warnings.is_empty(), "Roster migration did not report compatibility initialization")
 	var invalid_cases: Dictionary = randomized_snapshot.duplicate(true)
 	invalid_cases.patient_cases.patient_sora = "missing_template"
 	expect(not randomized_clone.restore(invalid_cases) and randomized_clone.patient_cases == randomized.patient_cases, "Invalid random case assignment mutated progress")
@@ -351,9 +393,11 @@ func run() -> void:
 		expect(clicked, "Action button missing: " + id)
 		await process_frame
 		if app.screen == "examination_cg":
-			var cg_continue: Button = app.page.get_node_or_null("ExaminationCGContinue")
+			var cg_continue: Button = app.page.find_child("ExaminationCGContinue", true, false)
 			expect(cg_continue != null, "Triggered examination CG has no continue button")
 			if cg_continue != null:
+				if cg_continue.disabled:
+					await create_timer(0.6).timeout
 				cg_continue.pressed.emit()
 				await process_frame
 		if id == "to_diagnosis":
@@ -410,11 +454,12 @@ func run() -> void:
 		expect(app.screen == "map", "Day transition did not continue")
 	app.show_examination_cg("blood_draw", app.show_map)
 	expect(app.screen == "examination_cg", "Examination CG screen did not open")
-	var examination_cg: TextureRect = app.page.get_node_or_null("ExaminationCG")
+	var examination_cg: TextureRect = app.page.find_child("ExaminationCG", true, false)
 	expect(examination_cg != null and examination_cg.texture != null, "Examination CG texture did not load")
-	var examination_continue: Button = app.page.get_node_or_null("ExaminationCGContinue")
+	var examination_continue: Button = app.page.find_child("ExaminationCGContinue", true, false)
 	expect(examination_continue != null, "Examination CG continue button missing")
 	if examination_continue != null:
+		await create_timer(0.6).timeout
 		examination_continue.pressed.emit()
 		expect(app.screen == "map", "Examination CG did not continue to its destination")
 	app.game.reset()

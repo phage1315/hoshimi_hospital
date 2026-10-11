@@ -23,8 +23,9 @@ CHINESE_LITERAL = re.compile(r'"(?:\\.|[^"\\])*[\u3400-\u9fff](?:\\.|[^"\\])*"')
 TRANSLATABLE_FIELDS = {
     "name", "family_name", "given_name", "professional_name", "title", "subtitle", "description",
     "label", "text", "prompt", "response", "teaser", "caption", "lines",
-    "announcement", "completion_hint", "location_label", "speaker_label", "specialty", "personality",
+    "announcement", "completion_hint", "location_label", "speaker_label", "actor_alias", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "correction", "chapters",
+    "transition_text", "operative_record", "player_hint", "variants",
 }
 
 
@@ -113,6 +114,9 @@ def authored_keys() -> set[str]:
         collect_keys(rows, f"collections.{collection}", result)
         collect_staff_dialogue_keys(rows, f"collections.{collection}", result)
     patient_config = manifest.get("patient_bundles", {})
+    profile_source = json.loads((ROOT / "data" / patient_config["dialogue_profiles"]).read_text(encoding="utf-8"))
+    for profile_id, profile in profile_source.get("profiles", {}).items():
+        collect_han_leaf_keys(profile, f"patient_dialogue_profiles.{profile_id}", result)
     encounter_template = json.loads((ROOT / "data" / patient_config["encounter_template"]).read_text(encoding="utf-8"))
     preop_template = json.loads((ROOT / "data" / patient_config["preop_template"]).read_text(encoding="utf-8"))
     collect_keys(encounter_template, "patient_templates.encounter", result)
