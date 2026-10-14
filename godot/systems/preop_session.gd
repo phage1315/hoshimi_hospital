@@ -1315,6 +1315,11 @@ func pilot_surgery() -> bool:
 		"surgery_open_low_anterior_resection",
 	]
 
+func staff_display_name(raw_name: String) -> String:
+	if english_mode():
+		return raw_name
+	return raw_name.replace(" ", "").replace("　", "").replace("\u00a0", "")
+
 func surgery_display_text(raw_text: String) -> String:
 	var result: String = raw_text
 	var role_placeholders: Dictionary = {
@@ -1325,9 +1330,17 @@ func surgery_display_text(raw_text: String) -> String:
 	for placeholder in role_placeholders:
 		var role_id := str(role_placeholders[placeholder])
 		var staff_id := str(team.get(role_id, ""))
-		var staff_name := str(roster.get(staff_id, {}).get("name", ""))
+		var staff_name := staff_display_name(str(roster.get(staff_id, {}).get("name", "")))
 		if not staff_name.is_empty():
+			result = result.replace("`{" + placeholder + "}`", staff_name)
 			result = result.replace("{" + placeholder + "}", staff_name)
+	# Normalize only known staff names in already-resolved records and labels.
+	# Leave authored prose spacing and English names intact.
+	if not english_mode():
+		for person in roster.values():
+			var raw_name := str(person.get("name", ""))
+			if not raw_name.is_empty():
+				result = result.replace(raw_name, staff_display_name(raw_name))
 	return result
 
 func surgery_fixed_stage_count() -> int:

@@ -26,7 +26,8 @@
       "uniform",
       "scrubs",
       "sterile",
-      "casual"
+      "casual",
+      "casual_winter"
     ],
     "portraits": {
       "uniform/neutral": "assets/characters/portrait_pack_v11/nurse_ange/uniform/neutral.png",
@@ -43,7 +44,9 @@
       "sterile/focused": "assets/characters/portrait_pack_v11/nurse_ange/sterile/focused.png",
       "sterile/worried": "assets/characters/portrait_pack_v11/nurse_ange/sterile/worried.png",
       "sterile/warm": "assets/characters/portrait_pack_v11/nurse_ange/sterile/warm.png",
-      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ange/neutral.png"
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ange/neutral.png",
+      "casual/neutral": "assets/characters/spring_summer_casual_v1/nurse_ange/neutral.png",
+      "casual_winter/neutral": "assets/characters/winter_casual_v1/nurse_ange/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -68,7 +71,16 @@
     "fixed_locations": [
       "or"
     ],
-    "random_locations": []
+    "random_locations": [
+      "clinic",
+      "ward",
+      "station",
+      "exam",
+      "imaging",
+      "lounge",
+      "pharmacy",
+      "gynecology_exam"
+    ]
   },
   "team_dialogue": {
     "assignment": "",
@@ -103,6 +115,10 @@
   },
   "personal_nurse": {
     "eligible": true,
+    "diagnosis_corrections": {
+      "diagnose_gastro": "「坂口医生，请再核对一次。这个诊断与目前的检查证据相矛盾，不能直接采用。」",
+      "diagnose_observe": "「它只能解释部分检查结果，其余异常还没有合理说明。我认为现在下结论还太早。」"
+    },
     "dialogue": {
       "next_test_hint": [],
       "insufficient_evidence": [],

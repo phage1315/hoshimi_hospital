@@ -1,0 +1,108 @@
+{
+  "patient_id": "patient_yuko_asou",
+  "stage": "existing_patient_user_asset_import",
+  "date": "2026-10-12",
+  "status": "assets_registered_and_bound; static checks passed; Godot runtime verification pending",
+  "source_policy": "User-provided images copied byte-for-byte to provenance and runtime destinations; no image edits were made.",
+  "assets": [
+    {
+      "description": "full-nudity portrait",
+      "source": "/Users/ningye/Downloads/00135-902649078-Picsart-BackgroundRemover.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/full_nude_portrait.png",
+      "runtime": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/examination/shy.png",
+      "mapping": "patient.visuals.portraits[examination/shy]",
+      "dimensions": "1056x1584 RGBA",
+      "sha256": "379cfa8e5e029b0228761806486ca8856c78061925937a8156cc8ad9adbdb008"
+    },
+    {
+      "description": "examination-room full-undress CG",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-e6275d3a-23f2-47c1-8c48-3c0d4d5ebf7a.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/examination_full_undress.png",
+      "runtime": "assets/examinations/patient_yuko_asou/full_undress_basic_exam.png",
+      "mapping": "exclusive_cg_pools.examination/full_undress_basic_exam_patient_yuko_asou; completed undressing choices only",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "4f3150b3c6890a06f38fe82580b62f729df1b4b1865af2133ed931b0b035d249"
+    },
+    {
+      "description": "shaving / skin preparation",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-f41edd05-41f2-45b9-89cc-e9a4279e14f9.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/shaving.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/skin_prep.png",
+      "mapping": "ward_skin_prep and ward_skin_prep_unnecessary",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "2f2a237a4beb1d56e0302525b54d457c91fae9f389db611a88b74e92dd703925"
+    },
+    {
+      "description": "enema",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-b7ab837c-21bc-48f1-b853-c550d75b4a3c.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/enema.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/enema.png",
+      "mapping": "ward_enema and ward_enema_unnecessary",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "eeae3bf968657750fe6894af6a9e4ffcae949eeaeb8244585f0b464b60f2f47c"
+    },
+    {
+      "description": "surgical cap",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-e039c4d7-16fb-482c-9ab8-092b332710c2.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/surgical_cap.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/surgical_cap.png",
+      "mapping": "ward_surgical_cap",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "da406c76e7355048faeb5220e6161336a722ec686d616aab47065ad9b33877d4"
+    },
+    {
+      "description": "stretcher transfer",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-45b5aaee-1303-4d23-aa96-58047d7c8b35.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/stretcher_transfer.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/stretcher_transfer.png",
+      "mapping": "complete_manual_ward_preparation; final action on manual ward-preparation route",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "40db242a06d4a9a73a51181181f4583e0fc844e15a8e8fc2aabeb93f733c5477"
+    },
+    {
+      "description": "urinary catheterization",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-1b33a547-42b5-403d-a080-cfc2b61dc9e6.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/urinary_catheterization.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/urinary_catheterization.png",
+      "mapping": "urinary_catheterization; patient-scoped, all procedure groups",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "cb69057fc7e13714de63654c90c8935ad1a359d06f6450bea635e6fa2bf3f4bb"
+    },
+    {
+      "description": "surgical-site disinfection",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-5acb110c-dcb9-4186-b192-808c96a61063.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/skin_disinfection.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/skin_disinfection.png",
+      "mapping": "skin_disinfection; patient-scoped, all procedure groups",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "3bda174f548540d67152962eed63dd77b524fadda5390c9e97eb82d6d0fb59e0"
+    },
+    {
+      "description": "sterile draping",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-60b59eb2-82e7-4cf8-8974-cc676b5c4527.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/sterile_draping.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/sterile_draping.png",
+      "mapping": "ack_disinfection; patient-scoped, all procedure groups",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "26b1f1f9b25ae2b4404ab01414107eda7bb5b817a7d2d61c012870f60f0febab"
+    },
+    {
+      "description": "pre-incision / scalpel ready",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-657818d9-b14f-4529-acc7-6c9347c2f930.png",
+      "archive": "research/character_references/patient_yuko_asou/user_cgs/scalpel_ready.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_yuko_asou/scalpel_ready.png",
+      "mapping": "request_scalpel after scalpel handoff; never bound to incise_*",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "9390da888178c0758e030b5c55ece9dd765e63912347d40a90b6312b056b4431"
+    }
+  ],
+  "localization": "English label and caption entries added for all nine full-screen CG pools.",
+  "verification": {
+    "file_format_and_dimensions": "Ten supplied PNGs identified; nude portrait is RGBA and nine scene CGs are RGB.",
+    "source_archive_runtime_hashes": "All source, archive, and runtime copies match byte-for-byte for all ten assets.",
+    "runtime_engine_import": "Not run; Godot executable and /Applications/Godot.app are unavailable in the current environment.",
+    "data_checks": "patient_data_import_test.py patient_yuko_asou passed; patient_bundle_localization_test.py passed with 0 failures; validate_data.py passed for 716 records.",
+    "focused_trigger_coverage": "Patient bundle localization test verifies examination branches, all eight ward CG action mappings, English labels/captions, and runtime file paths. preparation_asset_regression_test.gd was extended to exercise all listed actions, but could not run without Godot.",
+    "procedure_group_scope": "No procedure-group filters were added, so these patient-specific prep CGs remain available across randomized cases."
+  }
+}

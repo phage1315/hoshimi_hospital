@@ -1,0 +1,147 @@
+{
+  "patient_id": "patient_yuko_asou",
+  "stage": "portrait_assets_integrated_static_checks_passed",
+  "runtime_integration": true,
+  "random_case_evidence": {
+    "allocator": "godot/systems/game_state.gd::random_patient_cases",
+    "case_pool": "data/cases/surgery_case_templates.json",
+    "lithotomy_templates": [
+      "template_hysterectomy",
+      "template_abdominoperineal_resection",
+      "template_ovarian_cystectomy",
+      "template_abdominal_myomectomy",
+      "template_vaginal_hysterectomy",
+      "template_low_anterior_resection"
+    ],
+    "decision": "Include all four operating_table_lithotomy keys. Random-case assignment uses the shared case-template pool; patient fallback surgery does not constrain reachable positioning."
+  },
+  "matrix": {
+    "included_keys": [
+      "outpatient/neutral",
+      "ward/neutral", "ward/smile", "ward/brave", "ward/worried", "ward/afraid", "ward/crying",
+      "operating_table/awake", "operating_table/tense", "operating_table/afraid", "operating_table/anesthetized",
+      "operating_table_lithotomy/awake", "operating_table_lithotomy/tense", "operating_table_lithotomy/afraid", "operating_table_lithotomy/anesthetized",
+      "intraoperative/tense", "intraoperative/pain", "intraoperative/near_collapse", "intraoperative/anesthetized",
+      "splash/general_anesthesia"
+    ],
+    "optional_not_included": [
+      "splash/general_anesthesia_pre_induction",
+      "splash/epidural_anesthesia",
+      "examination/shy"
+    ],
+    "omission_reason": "The first two are optional full-screen splash CGs, not required generated portraits; examination/shy is a separately supplied portrait and none was supplied in this batch."
+  },
+  "base_candidates": [
+    {
+      "key": "outpatient/neutral",
+      "purpose_consumer": "Clinic portrait; app.gd:add_portrait().",
+      "prompt": "Adult Yuko Asou with long cobalt-blue hair and blue eyes, in the supplied sailor outfit; classic hand-inked retro cel animation; vertical medium standing crop from head to mid-thigh; transparent background, no glow or scenery.",
+      "references": [
+        {"path": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-2903409a-1c1d-4e9c-b64c-fbc104b696ea.png", "role": "identity, face, hair, outfit"},
+        {"path": "assets/characters/patient_ann_v1/patient_ann/outpatient/neutral.png", "role": "crop and scale only"}
+      ],
+      "candidate_path": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-01f0cf9b-69cb-4a71-bf0c-c25262add564.png",
+      "format": "PNG RGBA 1024x1536; alpha channel present with transparent pixels",
+      "sha256": "e7b664835760231ea4956b57d5da08af0b54c20b40be70ddf1405a4c4475018d",
+      "visual_status": "user-approved; copied to runtime asset path; image identity and framing visually checked"
+    },
+    {
+      "key": "ward/neutral",
+      "purpose_consumer": "Ward portrait base/fallback; app.gd:add_portrait().",
+      "prompt": "Adult Yuko Asou in an opaque light-blue wrap hospital gown, relaxed standing pose, vertical head-to-mid-thigh crop, transparent background; only the neutral base expression, retro cel-animation style.",
+      "references": [
+        {"path": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-2903409a-1c1d-4e9c-b64c-fbc104b696ea.png", "role": "identity, face and hair"},
+        {"path": "assets/characters/patient_ann_v1/patient_ann/ward/neutral.png", "role": "pose, crop, scale and gown design only"}
+      ],
+      "candidate_path": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-685555b1-64df-4622-bdc1-6325199fc767.png",
+      "format": "PNG RGBA 1024x1536; alpha channel present with transparent pixels",
+      "sha256": "d410e100654acf1343f50db369092ca28b7a89cf0d58430443f84583ea6f846c",
+      "visual_status": "user-approved; copied to runtime asset path; image identity and framing visually checked"
+    },
+    {
+      "key": "operating_table/awake",
+      "purpose_consumer": "Supine operating-table fallback/default; preop_view.gd:operating_table_outfit().",
+      "prompt": "Adult Yuko Asou awake and quietly apprehensive on a supine operating table; overhead complete table, teal cap, opaque drape covering chest through thighs, shoulders/collarbones and lower legs visible; 4:3 retro cel animation.",
+      "references": [
+        {"path": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-ed1eaf23-491e-43f3-93f2-822bfd9ad978.png", "role": "face, hair and identity"},
+        {"path": "assets/characters/patient_ann_v1/patient_ann/operating_table/awake.png", "role": "overhead framing, pose and draping"}
+      ],
+      "candidate_path": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-4d1c6122-2319-477d-81b2-95f1fd1b164d.png",
+      "format": "PNG RGB 1448x1086",
+      "sha256": "79b9693acfedaf791362246752d582358086e5f192db23acea7cbe2236552291",
+      "visual_status": "user-approved; copied to runtime asset path; image identity, framing and draping visually checked"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "purpose_consumer": "Lithotomy operating-table portrait; preop_view.gd:operating_table_outfit() when selected surgery positioning is lithotomy.",
+      "prompt": "Adult Yuko Asou awake on a lithotomy table, overhead complete 4:3 view, flexed separated legs on black padded rests, teal cap, opaque drape covering chest through pelvis and inner thighs, no perineal view; retro cel animation.",
+      "references": [
+        {"path": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-ed1eaf23-491e-43f3-93f2-822bfd9ad978.png", "role": "face, hair and identity"},
+        {"path": "assets/characters/patient_ann_v1/patient_ann/operating_table_lithotomy/awake.png", "role": "lithotomy pose, leg supports, draping and camera"}
+      ],
+      "candidate_path": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-7c3a0030-f05f-498b-a5cf-6084d66ab5e3.png",
+      "format": "PNG RGB 1448x1086",
+      "sha256": "1e8f20035abea7fd8f1164dff798161a46c37b726a9b3122f5e0881652b84cbf",
+      "visual_status": "user-approved; copied to runtime asset path; image identity, lithotomy supports and draping visually checked"
+    },
+    {
+      "key": "intraoperative/tense",
+      "purpose_consumer": "Intraoperative head-and-shoulders expression; preop_view.gd:intraoperative_patient_expression().",
+      "prompt": "Adult Yuko Asou awake under a teal surgical cap, frontal head-and-shoulders, tense but controlled expression, transparent background, crop below collarbones; no mask, tools, injury or blood; retro cel-animation style.",
+      "references": [
+        {"path": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-9cff9809-69d3-459f-b1d4-515a085bd820.png", "role": "identity, face and hair"},
+        {"path": "assets/characters/intraoperative_portraits_v1/patient_ann/tense.png", "role": "crop, scale, cap and expression class"}
+      ],
+      "candidate_path": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-73ff80ae-aaa0-416f-a0de-e0ea82202f86.png",
+      "format": "PNG RGBA 1448x1086; alpha channel present with transparent pixels",
+      "sha256": "bd8eb1e8c98487da61dc8989d59b798166b4ee74be2fa5d83ea6acfc7f906ebf",
+      "visual_status": "user-approved; copied to runtime asset path; image identity and framing visually checked"
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "purpose_consumer": "Post-induction full-screen anesthesia splash; app.gd:show_anesthesia_splash().",
+      "prompt": "Adult Yuko Asou already asleep under general anesthesia, teal cap, transparent mask and breathing tube extending right; head/upper torso in near-16:9 operating-room scene, opaque drape covers chest, retro cel animation.",
+      "references": [
+        {"path": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-2903409a-1c1d-4e9c-b64c-fbc104b696ea.png", "role": "identity, face and hair"},
+        {"path": "assets/events/anesthesia_v1/patient_ann/general.png", "role": "post-induction composition and mask/tube layout"}
+      ],
+      "candidate_path": "/Users/ningye/.codex/generated_images/01a123d3-05f7-71e1-8a5b-e2399c44430b/exec-3dda51e9-6b3d-42a5-bd1f-47f1daa7239b.png",
+      "format": "PNG RGB 1672x941",
+      "sha256": "0e3b412093841602a14292575d358ec1bd4f03e2419d3ce26c7a138beed35ffd",
+      "visual_status": "user-approved; copied to runtime asset path; image identity, scene and drape coverage visually checked"
+    }
+  ],
+  "dependent_variants": {
+    "status": "generated_integrated_static_visual_review_passed",
+    "keys": [
+      "ward/smile", "ward/brave", "ward/worried", "ward/afraid", "ward/crying",
+      "operating_table/tense", "operating_table/afraid", "operating_table/anesthetized",
+      "operating_table_lithotomy/tense", "operating_table_lithotomy/afraid", "operating_table_lithotomy/anesthetized",
+      "intraoperative/pain", "intraoperative/near_collapse", "intraoperative/anesthetized"
+    ],
+    "generation_method": "One standalone edit per key. Each edit used the user-approved same-class base as image 1 and 高卷杏's matching live expression image as expression/framing guidance. Non-expression content was locked by prompt. Initial ward drafts with insufficiently separated expressions were not integrated; targeted expression-only retries are recorded as the final outputs below.",
+    "outputs": [
+      {"key":"ward/smile","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/smile.png","source":"exec-815081bd-c283-4a15-b28a-9ffe2f5485a0.png","dimensions":"1024x1536","mode":"RGBA","sha256":"c65380dd421841a5a2d6a9bb4d7f4042084574e1b44511948956365145385c4a","visual_status":"pass; gentle closed-mouth smile, identity/pose/gown consistent; alpha channel present"},
+      {"key":"ward/brave","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/brave.png","source":"exec-5db09bd8-2fe6-42b5-8959-1930e9d36859.png","dimensions":"1024x1536","mode":"RGBA","sha256":"e4ea92e76c8543b4b3eea658a6431e1d4dfc0d0406e765acc89a7faf66038016","visual_status":"pass; determined expression distinct from smile; alpha channel present"},
+      {"key":"ward/worried","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/worried.png","source":"exec-255342c6-cdaa-47d4-be67-6aa3b0aabc80.png","dimensions":"1024x1536","mode":"RGBA","sha256":"74a7fa78f0370d9db372c26abda865469a1b4ceacdeb6da70e5ca06d3973427b","visual_status":"pass; worried expression distinct from fear and crying; alpha channel present"},
+      {"key":"ward/afraid","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/afraid.png","source":"exec-220c3d85-b9ca-4e91-8518-cc5279224c86.png","dimensions":"1024x1536","mode":"RGBA","sha256":"34b5646f3b97dfad67187198d51a1aad60a267866333f5b9ed0beef5c826fd9f","visual_status":"pass; clear fear without tears; alpha channel present"},
+      {"key":"ward/crying","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/crying.png","source":"exec-eab83212-7813-47c1-8dd7-c21d66e9eea2.png","dimensions":"1024x1536","mode":"RGBA","sha256":"12c41bed19fd4ed692db585aa7579c61f88a5e97d371afee7716121d8f04cdc5","visual_status":"pass; visible tears and crying expression; alpha channel present"},
+      {"key":"operating_table/tense","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/tense.png","source":"exec-4670383c-351c-4ac0-a033-c27bbed5c635.png","dimensions":"1448x1086","mode":"RGB","sha256":"4ee5fa6e2d6e596633ca73a442d5d6e7d5e51b4f7e659bec980069f07c690cca","visual_status":"pass; controlled awake tension; framing and opaque coverage retained"},
+      {"key":"operating_table/afraid","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/afraid.png","source":"exec-a7384052-158f-4ef1-a79f-dda99a89787b.png","dimensions":"1448x1086","mode":"RGB","sha256":"6a17fbcbd1052eb62fff1e7a9258771deb426aa6496efbc2a0d93bf826845304","visual_status":"pass; fear distinct from tense; framing and opaque coverage retained"},
+      {"key":"operating_table/anesthetized","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/anesthetized.png","source":"exec-fbec7a57-7308-4a71-a7d6-42a4e5397c29.png","dimensions":"1448x1086","mode":"RGB","sha256":"ae08a5b1935883834306fa13b44ed38849755b51ee9994557364b073c3e0ad6d","visual_status":"pass; eyes closed, relaxed, no mask/tube; framing and opaque coverage retained"},
+      {"key":"operating_table_lithotomy/tense","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/tense.png","source":"exec-f5aca93a-3ad4-43f1-ba29-0a52c2321ea0.png","dimensions":"1447x1087","mode":"RGB","sha256":"b9d66e72c6d77e3ef8770d8352572f68a4e6ebd2d67ebff72c77b28b22fab787","visual_status":"pass; supported lithotomy pose, drape and expression retained; canvas within 1px tolerance"},
+      {"key":"operating_table_lithotomy/afraid","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/afraid.png","source":"exec-8ba603f2-2135-4b12-b5d2-56645e0a1414.png","dimensions":"1448x1086","mode":"RGB","sha256":"08ba884e694dfb84b2afa4378248a51a935bd8845d3c1b214b9054aecea68f5a","visual_status":"pass; fear distinct from tense; supported pose and opaque coverage retained"},
+      {"key":"operating_table_lithotomy/anesthetized","runtime_path":"assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/anesthetized.png","source":"exec-a1f45646-6887-4392-b7fb-1c671540571d.png","dimensions":"1448x1086","mode":"RGB","sha256":"ca8ffabcbec660673a114cc9cd74f1f5f640b9f272bfa46f5b9f0c77174d3eb3","visual_status":"pass; eyes closed, relaxed, no mask/tube; pose and opaque coverage retained"},
+      {"key":"intraoperative/pain","runtime_path":"assets/characters/intraoperative_portraits_v1/patient_yuko_asou/pain.png","source":"exec-31484d9c-525e-40b6-8a1f-6e86b3762354.png","dimensions":"1447x1087","mode":"RGBA","sha256":"92919c57edce80f516759f1a798c3dd56788a3104c5d4dafd0cd3c66171551a7","visual_status":"pass; pain expression, head-and-shoulders crop, no tools/wounds; alpha channel present; canvas within 1px tolerance"},
+      {"key":"intraoperative/near_collapse","runtime_path":"assets/characters/intraoperative_portraits_v1/patient_yuko_asou/near_collapse.png","source":"exec-e0ac9fca-800a-4bca-a690-4dd3e89feefb.png","dimensions":"1448x1086","mode":"RGBA","sha256":"4168c97cb406526b98a83bc3c6db0d2a5592eaea973fcf0995648ec2bbf19198","visual_status":"pass; exhausted near-collapse expression; no injury or background; alpha channel present"},
+      {"key":"intraoperative/anesthetized","runtime_path":"assets/characters/intraoperative_portraits_v1/patient_yuko_asou/anesthetized.png","source":"exec-2584897a-eb5d-4952-be6f-c0c84245f327.png","dimensions":"1448x1086","mode":"RGBA","sha256":"d4151810b1405dfe06a71ffaebce39d8ac2325f4195e1e9242e7f395095a566a","visual_status":"pass; closed relaxed eyes, no mask/tube; alpha channel present"}
+    ],
+    "checks": {
+      "json_parse": "pass",
+      "mapped_asset_paths": "20/20 exist",
+      "patient_data_import_test": "pass",
+      "validate_data": "pass: 664 records",
+      "godot_portrait_test": "not run; Godot executable unavailable on PATH or in /Applications"
+    }
+  }
+}

@@ -161,7 +161,7 @@
         "gentle_full_undress": "「谢谢你先解释清楚……嗯，我知道了。我会配合的，只是轮到自己，果然还是会害羞呀。」",
         "threaten_full_undress": "「等一下……不用这样说吧？如果是必要的检查，我会认真配合。可至少让我知道为什么，好吗？」"
       },
-      "visual_pool_id": ""
+      "visual_pool_id": "full_undress_basic_exam_patient_miyamizu_mitsuha"
     }
   },
   "preop": {
@@ -209,8 +209,78 @@
     }
   },
   "exclusive_cg_pools": {
-    "examination": [],
-    "ward_preparation": [],
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 诊室全裸检查",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": ["assets/examinations/patient_miyamizu_mitsuha/full_undress_basic_exam.png"],
+        "caption": "宫水三叶在诊室配合基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 术前剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_miyamizu_mitsuha"],
+        "paths": ["assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/skin_prep.png"],
+        "caption": "宫水三叶接受术前皮肤准备。"
+      },
+      {
+        "id": "transport_to_or_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 术前转运至手术室",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_miyamizu_mitsuha"],
+        "paths": ["assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/transport_to_or.png"],
+        "caption": "病房护士接过担架车，准备将宫水三叶转运至手术室。"
+      },
+      {
+        "id": "urinary_catheterization_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 术前导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_miyamizu_mitsuha"],
+        "paths": ["assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/urinary_catheterization.png"],
+        "caption": "手术团队为宫水三叶完成术前导尿。"
+      },
+      {
+        "id": "operative_positioning_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 术前体位固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["operative_positioning"],
+        "patient_ids": ["patient_miyamizu_mitsuha"],
+        "paths": ["assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/operative_positioning.png"],
+        "caption": "团队完成宫水三叶的手术体位摆放与安全固定。"
+      },
+      {
+        "id": "skin_disinfection_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_miyamizu_mitsuha"],
+        "paths": ["assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/skin_disinfection.png"],
+        "caption": "手术团队为宫水三叶完成术野消毒。"
+      },
+      {
+        "id": "incision_ready_patient_miyamizu_mitsuha",
+        "label": "宫水三叶 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_miyamizu_mitsuha"],
+        "paths": ["assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/incision_ready.png"],
+        "caption": "手术刀已递交，团队完成最后确认，手术即将开始。"
+      }
+    ],
     "surgery": []
   },
   "diagnosis_reactions": []

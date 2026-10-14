@@ -80,6 +80,7 @@ def collect_staff_dialogue_keys(value: object, path: str, result: set[str]) -> N
             ".team_dialogue." in key
             or ".procedure_group_team_dialogue." in key
             or ".personal_nurse.dialogue." in key
+            or ".personal_nurse.diagnosis_corrections." in key
             or ".preop_graphic_wrapper." in key
             or ".crisis_callouts." in key
             or (key.startswith("collections.time_events.") and ".responses." in key)

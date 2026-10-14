@@ -17,3 +17,12 @@
 后续素材分工采用同一原则：SFW 岗位 CG 与流程 splash 使用 ImageGen 统一制作；NSFW CG 由用户提供，项目侧负责规格整理、命名、登记、触发和鉴赏接入。
 
 生成依据、参考图、哈希与未来触发约定见 `research/imports/assistant_surgeon_confirmation_cgs_2026-09-27.json`。
+
+
+## 2026-10-11 追加：明日香与阿尔托莉雅
+
+- 城宮明日香：`assets/events/staff_surgery_v1/doc_asuka/assistant_confirmation.png`，持牵开器确认助手位。
+- 阿尔托莉雅：`assets/events/staff_surgery_v1/doc_artoria/assistant_confirmation.png`，在助手位准备器械配合。
+- 两张均使用角色现有无菌服立绘作参考，由内置ImageGen生成1672×941 RGB完整场景。通过各自bundle的role_rewards注册，沿用首次分配播放、永久画廊解锁，不改变资格或剧情门槛。
+- 用户本批明确排除樱花（麻醉主任）、摩耶与双叶（暂定联动角色）；不将三人计入当前岗位CG待补。本次仅排除素材任务，不修改其团队资格数据或逻辑。
+- 来源、哈希与提示词：`research/imports/staff_role_cgs_2026-10-11.json`、`research/imports/staff_role_cgs_prompts_2026-10-11.json`。

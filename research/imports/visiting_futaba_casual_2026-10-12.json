@@ -1,0 +1,64 @@
+{
+  "status": "approved_registered",
+  "actor_id": "visiting_futaba",
+  "sample_manifest": "research/character_references/visiting_futaba/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/visiting_futaba/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/visiting_futaba/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/visiting_futaba/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "116cdba6e1718d6bc032f0d45cc6c493dbf6d4505d86aca337132cdef20788bc"
+    },
+    {
+      "source": "research/character_references/visiting_futaba/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/visiting_futaba/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "2043eb3ccabc75d0a849843ed22890280c09eda0c65bb5cab6017bc9fe1f13cb"
+    }
+  ],
+  "previous_visuals": {
+    "color": "D96F21",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "white_coat/focused": "assets/characters/portrait_pack_v21/visiting_futaba/white_coat/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v21/visiting_futaba/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v21/visiting_futaba/sterile/neutral.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/visiting_futaba/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/visiting_futaba/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 44642,
+    "all_staff_outfit_checks": 1184,
+    "failures": 0,
+    "data_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/visiting_futaba_casual_2026-10-12",
+    "visually_reviewed": [
+      "futaba_casual_zh_CN_62_normal_offer.png",
+      "futaba_casual_en_245_night_completed.png"
+    ]
+  }
+}

@@ -6,10 +6,8 @@
     "minimum_level": 0,
     "casual_outfit": "casual",
     "preferred_locations": [
-      "cafe",
-      "aquarium",
       "restaurant_bar",
-      "shopping_street"
+      "seaside_promenade"
     ],
     "disliked_locations": [],
     "hotel_unlock_level": 4,
@@ -18,6 +16,32 @@
       "sayaka_sunday_invite_available"
     ],
     "always_accept": true,
-    "first_date_event_id": "sayaka_lv1_first_date"
+    "first_date_event_id": "sayaka_lv1_first_date",
+    "invite_rejection": {
+      "text": "「今天真的撞上别的安排了。别不高兴，下次你再来约，我还是会很高兴的。」"
+    },
+    "minimum_familiarity": 0,
+    "acceptance_chance_by_level": {
+      "0": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "dialogue": {
+      "accepted": {
+        "text": "「好呀。你负责挑地方，我负责判断你挑得好不好。怎么样，公平吧？」"
+      },
+      "satisfied": {
+        "text": "「和你出来果然不会无聊。怎么，下个周日还想继续约我吗？」"
+      },
+      "favorites": [
+        {
+          "id": "restaurant_bar",
+          "text": "「这家意大利小店很不错嘛。菜好吃，气氛也刚刚好……尤其坐我对面的人，还挺会挑地方的。」"
+        },
+        {
+          "id": "seaside_promenade",
+          "text": "「夕阳刚好落在海面上呢。你别急着走呀——风这么大，借我牵一下手不过分吧？」"
+        }
+      ]
+    }
   }
 ]

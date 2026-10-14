@@ -1,0 +1,71 @@
+{
+  "status": "approved_registered",
+  "actor_id": "visiting_maya",
+  "sample_manifest": "research/character_references/visiting_maya/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/visiting_maya/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/visiting_maya/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/visiting_maya/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "87963d2158b9e99c25c9d6e893211ef0068ed6ef86784b125cb69cb1142f0957"
+    },
+    {
+      "source": "research/character_references/visiting_maya/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/visiting_maya/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "f447280625498082377417dd00885c8c234b0a71ba28e12dcf2b7a1d418f4f86"
+    }
+  ],
+  "previous_visuals": {
+    "color": "4D4A78",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v20/visiting_maya/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v20/visiting_maya/sterile/neutral.png",
+      "white_coat/focused": "assets/characters/portrait_pack_v20/visiting_maya/white_coat/neutral.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/visiting_maya/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/visiting_maya/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 31544,
+    "all_staff_outfit_checks": 1184,
+    "outfit_failures": 0,
+    "all_21_two_season_files_verified": true,
+    "data_validation": "failed_unrelated_patient_portrait_keys",
+    "data_errors": [
+      "patient_yuko_asou: missing intraoperative portrait tense",
+      "patient_yuko_asou: missing intraoperative portrait pain",
+      "patient_yuko_asou: missing intraoperative portrait near_collapse",
+      "patient_yuko_asou: missing intraoperative portrait anesthetized"
+    ],
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/visiting_maya_casual_2026-10-12",
+    "visually_reviewed": [
+      "maya_casual_zh_CN_62_normal_offer.png",
+      "maya_casual_en_245_night_completed.png"
+    ]
+  }
+}

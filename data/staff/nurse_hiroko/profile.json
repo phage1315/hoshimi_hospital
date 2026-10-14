@@ -27,7 +27,8 @@
       "scrubs",
       "sterile",
       "casual",
-      "operating_patient"
+      "operating_patient",
+      "casual_winter"
     ],
     "portraits": {
       "uniform/neutral": "assets/characters/portrait_pack_v12/nurse_hiroko/uniform/neutral.png",
@@ -46,7 +47,8 @@
       "sterile/warm": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/warm.png",
       "sterile/worried": "assets/characters/portrait_pack_v12/nurse_hiroko/sterile/worried.png",
       "operating_patient/nervous": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/nervous.png",
-      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_hiroko/neutral.png"
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_hiroko/neutral.png",
+      "casual_winter/neutral": "assets/characters/winter_casual_v1/nurse_hiroko/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -71,7 +73,13 @@
     ],
     "random_locations": [
       "clinic",
-      "ward"
+      "station",
+      "exam",
+      "imaging",
+      "or",
+      "lounge",
+      "pharmacy",
+      "gynecology_exam"
     ]
   },
   "team_dialogue": {
@@ -107,6 +115,10 @@
   },
   "personal_nurse": {
     "eligible": true,
+    "diagnosis_corrections": {
+      "diagnose_gastro": "「坂口先生，先别急。这一项结果和刚才的诊断对不上，我们再核对一遍吧。」",
+      "diagnose_observe": "「其他几项还解释不了呢。我们把检查结果一起理清楚，再决定也不迟。」"
+    },
     "dialogue": {
       "next_test_hint": [],
       "insufficient_evidence": [],

@@ -208,6 +208,10 @@ sayaka_events={
  'nodes.callback_reply.text':'She looks Sakaguchi over.\n\n“So you can still look at me.”\n\n“Why would I not?”\n\nShe laughs.\n\n“Nothing. Some men know exactly what to say on the weekend, then put on a white coat Monday morning and pretend they have never met you.”\n\n“So I pass?”\n\nShe nods once.\n\n“So far.”\n\nThen she turns and goes back to work.','nodes.callback_reply.choices.callback_end.label':'Start today’s work'},
 }
 for event_id, entries in sayaka_events.items():
+ # These three events are now user-approved V2; their translations are
+ # maintained alongside the authored pack, not regenerated from this V1 seed.
+ if event_id in {'sayaka_week1_phone_exchange', 'sayaka_lv1_first_date', 'sayaka_lv1_monday_callback'}:
+  continue
  for suffix,value in entries.items(): put(f'collections.character_events.{event_id}.{suffix}',value)
 
 # Awake-surgery patient prompts. Prompts retain each clinical context; action

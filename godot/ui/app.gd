@@ -289,6 +289,7 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 		"micro_event",
 		"time_event_result",
 		"after_work_walk",
+		"sunday_date",
 	]
 	var wash_alpha := 0.14 if authored_texture == null else (0.46 if background_id.begins_with("operating_team_") else 0.30 if lightly_shaded_screen else 0.83)
 	wash.name = "BackgroundWash"
@@ -471,11 +472,33 @@ func dialogue_pages(text: String, allow_scroll: bool = false) -> Array[String]:
 		pages.append(text)
 	return pages
 
-func dialogue_page(key: String, text: String, allow_scroll: bool = false) -> Dictionary:
+func authored_dialogue_pages(text: String) -> Array[String]:
+	# Explicitly owned turns need no quote/speaker heuristics. Preserve every
+	# character, and prefer English word boundaries when a long turn needs pages.
+	var pages: Array[String] = []
+	var current := ""
+	# Word wrapping can leave a partly empty line; reserve space compared with
+	# the older character-wrap estimate, so English never clips a fourth line.
+	var maximum_units := (DIALOGUE_PAGE_COLUMNS - 4.0) * DIALOGUE_PAGE_LINES
+	for character in text:
+		if dialogue_visual_units(current + character) > maximum_units and not current.is_empty():
+			var split_at := current.rfind(" ")
+			if split_at > current.length() / 2:
+				pages.append(current.left(split_at + 1))
+				current = current.substr(split_at + 1)
+			else:
+				pages.append(current)
+				current = ""
+		current += character
+	if not current.is_empty():
+		pages.append(current)
+	return pages if not pages.is_empty() else [text]
+
+func dialogue_page(key: String, text: String, allow_scroll: bool = false, explicit_turn: bool = false) -> Dictionary:
 	if dialogue_page_key != key:
 		dialogue_page_key = key
 		dialogue_page_index = 0
-	var pages := dialogue_pages(text, allow_scroll)
+	var pages := authored_dialogue_pages(text) if explicit_turn and not allow_scroll else dialogue_pages(text, allow_scroll)
 	dialogue_page_index = clampi(dialogue_page_index, 0, pages.size() - 1)
 	return {
 		"text": pages[dialogue_page_index],
@@ -1087,14 +1110,15 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	# On Sunday, let the player choose to visit the hospital before resolving
 	# day-start events.  Hospital-bound automatic events then trigger when the
 	# Sunday hospital map is entered, rather than immediately on save load.
-	if game.is_sunday() and not game.sunday_activity_done() and not sunday_hospital_browsing:
+	var awaiting_departure := not game.pending_departure_context().is_empty()
+	if not awaiting_departure and game.is_sunday() and not game.sunday_activity_done() and not sunday_hospital_browsing:
 		show_sunday_menu()
 		return
-	var auto_special_event := game.next_auto_special_event() if resolve_day_start_events else {}
+	var auto_special_event := game.next_auto_special_event() if resolve_day_start_events and not awaiting_departure else {}
 	if not auto_special_event.is_empty():
 		confirm_special_event(str(auto_special_event.id))
 		return
-	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events else {}
+	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events and not awaiting_departure else {}
 	if not day_start_character_event.is_empty():
 		start_mandatory_character_event(str(day_start_character_event.id))
 		return
@@ -1161,28 +1185,73 @@ func show_sunday_hospital_map() -> void:
 	sunday_hospital_browsing = true
 	show_map()
 
-func show_sunday_invites() -> void:
+func show_sunday_invites(other_expanded: bool = false) -> void:
 	screen = "sunday_invites"
 	base(tx("ui.sunday.invite_title", "邀请某人外出"), tx("ui.sunday.invite_subtitle", "本周可联系的人选已经确定；读取存档不会改变名单或邀请结果。"), false, "lobby")
 	var candidates: Array[String] = game.sunday_date_candidates()
 	if candidates.is_empty():
 		label_at(tx("ui.sunday.no_invites", "今天没有可邀请的对象。"), Vector2(85, 230), 28, Color("f4f0e6"), 720)
-		label_at(tx("ui.sunday.no_invites_note", "角色常服与基础约会对白完成后，她们会逐步加入这里。"), Vector2(85, 290), 20, Color("c2d2cc"), 800)
+		label_at(tx("ui.sunday.no_invites_note", "本周暂无满足约会条件的邀请对象。"), Vector2(85, 290), 20, Color("c2d2cc"), 800)
 	else:
 		for i in range(candidates.size()):
 			var actor_id: String = candidates[i]
 			var person: Dictionary = content.find_record("staff", actor_id)
 			var relation: Dictionary = game.relation_for(actor_id)
 			var caption := tx("ui.sunday.candidate", "%s　Lv%s　熟悉 %s") % [person.name, relation.level, relation.familiarity]
-			var invite := button_at(caption, Vector2(75, 215 + i * 82), Vector2(670, 62), attempt_sunday_invitation.bind(actor_id))
+			var invite := button_at(caption, Vector2(75, 215 + i * 65), Vector2(670, 55), attempt_sunday_invitation.bind(actor_id))
 			invite.name = "SundayCandidate_" + actor_id
+			if not game.sunday_character_event_for(actor_id).is_empty():
+				add_story_event_badge(invite)
+	var others: Array[String] = game.sunday_other_known_staff()
+	var fold_caption := ("▼ " if other_expanded else "▶ ") + tx("ui.sunday.other_known", "其他已相识人物（%s）") % others.size()
+	button_at(fold_caption, Vector2(785, 215), Vector2(420, 55), show_sunday_invites.bind(not other_expanded)).name = "SundayOtherToggle"
+	if other_expanded:
+		var other_note := label_at(tx("ui.sunday.other_known_note", "以下人物目前未满足普通约会条件；联系不会消耗周日。"), Vector2(785, 280), 17, Color("c2d2cc"), 420)
+		other_note.size = Vector2(420, 65)
+		var scroll := ScrollContainer.new()
+		scroll.name = "SundayOtherScroll"
+		scroll.position = Vector2(785, 355)
+		scroll.size = Vector2(420, 285)
+		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		page.add_child(scroll)
+		var list := VBoxContainer.new()
+		list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		list.add_theme_constant_override("separation", 8)
+		scroll.add_child(list)
+		for actor_id in others:
+			var person: Dictionary = content.find_record("staff", actor_id)
+			var contact := button_at(str(person.name), Vector2.ZERO, Vector2(390, 48), contact_sunday_other_staff.bind(actor_id))
+			contact.name = "SundayOther_" + actor_id
+			contact.custom_minimum_size = Vector2(0, 48)
+			contact.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			page.remove_child(contact)
+			list.add_child(contact)
+		if others.is_empty():
+			label_at(tx("ui.sunday.other_known_empty", "暂无其他已相识人物。"), Vector2(785, 355), 18, Color("c2d2cc"), 420)
 	label_at(tx("ui.sunday.decline_note", "邀请被婉拒不会扣除关系数值，也不会消耗这一天。"), Vector2(75, 570), 18, Color("e8cfaa"), 920)
 	button_at(tx("ui.common.return_sunday_arrow", "← 返回周日安排"), Vector2(60, 713), Vector2(230, 40), show_sunday_menu)
 
-func attempt_sunday_invitation(actor_id: String) -> void:
+func show_sunday_invite_rejection(actor_id: String) -> void:
 	var person: Dictionary = content.find_record("staff", actor_id)
+	var profile: Dictionary = game.date_profile_definitions.get(actor_id, {})
+	var rejection: Dictionary = profile.get("invite_rejection", {})
+	if not rejection.is_empty():
+		show_notice(str(person.name) + "\n" + str(rejection.text))
+	else:
+		show_notice(tx("ui.sunday.declined", "%s今天已经有安排了。也许下个星期日可以再问问。") % person.name)
+
+func contact_sunday_other_staff(actor_id: String) -> void:
+	if not game.sunday_other_known_staff().has(actor_id):
+		return
+	show_sunday_invite_rejection(actor_id)
+
+func attempt_sunday_invitation(actor_id: String) -> void:
 	if not game.sunday_date_candidates().has(actor_id):
 		show_sunday_invites()
+		return
+	var milestone: Dictionary = game.sunday_character_event_for(actor_id)
+	if not milestone.is_empty():
+		start_sunday_character_event(str(milestone.id))
 		return
 	var profile: Dictionary = game.date_profile_definitions.get(actor_id, {})
 	var first_date_event_id := str(profile.get("first_date_event_id", ""))
@@ -1190,9 +1259,20 @@ func attempt_sunday_invitation(actor_id: String) -> void:
 		start_sunday_character_event(first_date_event_id)
 		return
 	if not game.sunday_invitation_will_accept(actor_id):
-		show_notice(tx("ui.sunday.declined", "%s今天已经有安排了。也许下个星期日可以再问问。") % person.name)
+		show_sunday_invite_rejection(actor_id)
 		return
-	show_sunday_date_locations(actor_id)
+	show_sunday_date_acceptance(actor_id)
+
+func show_sunday_date_acceptance(actor_id: String) -> void:
+	if not game.can_start_regular_sunday_date(actor_id):
+		return
+	var actor: Dictionary = content.find_record("staff", actor_id)
+	screen = "sunday_date"
+	base(tx("ui.sunday.location_title", "选择外出地点"), "", false, "lobby")
+	add_portrait(actor, "neutral", after_work_outfit(actor))
+	vn_dialogue_box(str(actor.name), str(game.date_profile_definitions[actor_id].dialogue.accepted.text), "SundayAcceptedDialogue", true)[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	button_at(tx("ui.sunday.location_title", "选择外出地点"), Vector2(940, 713), Vector2(280, 40), show_sunday_date_locations.bind(actor_id)).name = "SundayDateChooseLocation"
+	button_at(tx("ui.sunday.change_invitee", "← 更换邀请对象"), Vector2(60, 713), Vector2(230, 40), show_sunday_invites)
 
 func start_sunday_character_event(event_id: String) -> void:
 	var definition: Dictionary = game.character_event_definitions.get(event_id, {})
@@ -1217,36 +1297,69 @@ func start_mandatory_character_event(event_id: String) -> void:
 	show_character_event()
 
 func show_sunday_date_locations(actor_id: String) -> void:
+	if not game.can_start_regular_sunday_date(actor_id):
+		return
 	screen = "sunday_date_locations"
 	var person: Dictionary = content.find_record("staff", actor_id)
 	base(tx("ui.sunday.location_title", "选择外出地点"), tx("ui.sunday.location_subtitle", "%s答应了邀请。选择今天想去的地方。") % person.name, false, "lobby")
 	label_at(tx("ui.sunday.location_label", "地点"), Vector2(65, 190), 22, Color("e8cfaa"), 360)
 	label_at(tx("ui.sunday.preview_label", "地点 CG／背景预览"), Vector2(665, 190), 22, Color("e8cfaa"), 500)
-	var locations: Array = content.collections.date_locations.filter(func(entry: Dictionary): return str(entry.id) != "hotel")
+	var locations: Array = game.sunday_date_locations()
+	var preview := TextureRect.new()
+	preview.name = "SundayDatePreview"
+	preview.position = Vector2(665, 235)
+	preview.size = Vector2(550, 310)
+	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	page.add_child(preview)
+	var caption := label_at("", Vector2(665, 565), 22, Color("f4f0e6"), 550)
+	caption.name = "SundayDatePreviewCaption"
 	for i in range(locations.size()):
 		var location: Dictionary = locations[i]
-		var row := i % 5
-		var column := i / 5
+		var row := i % 7
+		var column := i / 7
 		var x := 65 + column * 285
-		var location_button := button_at(str(location.name), Vector2(x, 235 + row * 66), Vector2(260, 50), begin_sunday_date.bind(actor_id, str(location.id)))
+		var title := str(location.name)
+		if location.has("available_months"):
+			title += " · " + tx("ui.sunday.seasonal", "季节限定")
+		var location_button := button_at(title, Vector2(x, 235 + row * 60), Vector2(260, 50), begin_sunday_date.bind(actor_id, str(location.id)))
 		location_button.name = "SundayDateLocation_" + str(location.id)
-		location_button.disabled = str(location.asset_status) != "ready"
-	var preview: Array = content.collections.date_locations.filter(func(entry: Dictionary): return str(entry.id) != "hotel" and str(entry.asset_status) == "ready")
-	if preview.is_empty():
-		var preview_box := ColorRect.new()
-		preview_box.position = Vector2(665, 235)
-		preview_box.size = Vector2(500, 320)
-		preview_box.color = Color(0.025, 0.09, 0.11, 0.88)
-		page.add_child(preview_box)
-		label_at(tx("ui.sunday.preview_pending", "CG SLOT\n地点背景准备中"), Vector2(665, 350), 26, Color("c2d2cc"), 500).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		location_button.mouse_entered.connect(preview_sunday_date_location.bind(str(location.id)))
+		location_button.focus_entered.connect(preview_sunday_date_location.bind(str(location.id)))
+	if not locations.is_empty():
+		preview_sunday_date_location(str(locations[0].id))
 	button_at(tx("ui.sunday.change_invitee", "← 更换邀请对象"), Vector2(60, 713), Vector2(230, 40), show_sunday_invites)
 
-func begin_sunday_date(actor_id: String, location_id: String) -> void:
-	var location: Dictionary = content.find_record("date_locations", location_id)
-	if location.is_empty() or str(location.get("asset_status", "pending")) != "ready":
-		show_notice(tx("ui.sunday.location_pending", "这个地点的背景与约会对白还在准备中。"))
+func preview_sunday_date_location(location_id: String) -> void:
+	if screen != "sunday_date_locations" or not game.date_location_available(location_id):
 		return
-	finish_sunday_activity("date", tx("ui.sunday.date_result", "和%s在%s度过了星期日。") % [content.find_record("staff", actor_id).name, location.name], actor_id, location_id)
+	var location: Dictionary = content.find_record("date_locations", location_id)
+	var preview := page.get_node_or_null("SundayDatePreview") as TextureRect
+	if preview != null:
+		preview.texture = load("res://" + str(location.preview_path)) as Texture2D
+		page.get_node("SundayDatePreviewCaption").text = str(location.name)
+
+func begin_sunday_date(actor_id: String, location_id: String) -> void:
+	if not game.can_start_regular_sunday_date(actor_id) or not game.date_location_available(location_id):
+		show_notice(tx("ui.sunday.location_unavailable", "这个地点当前未开放。"))
+		return
+	var location: Dictionary = content.find_record("date_locations", location_id)
+	var actor: Dictionary = content.find_record("staff", actor_id)
+	if actor.is_empty() or not game.staff_is_met(actor_id):
+		return
+	screen = "sunday_date"
+	var narration := tx("ui.sunday.date_result", "和%s在%s度过了星期日。") % [actor.name, location.name]
+	base(str(location.name), narration, false, str(location.background_id))
+	add_portrait(actor, "neutral", after_work_outfit(actor))
+	vn_dialogue_box(str(actor.name), game.sunday_date_response(actor_id, location_id), "SundaySatisfiedDialogue", true)[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	button_at(tx("ui.sunday.end_date", "结束约会 →"), Vector2(940, 713), Vector2(280, 40), finish_sunday_date.bind(actor_id, location_id, narration)).name = "SundayDateFinish"
+
+func finish_sunday_date(actor_id: String, location_id: String, narration: String) -> void:
+	if not game.can_start_regular_sunday_date(actor_id) or not game.date_location_available(location_id):
+		show_notice(tx("ui.sunday.location_unavailable", "这个地点当前未开放。"))
+		return
+	finish_sunday_activity("date", narration, actor_id, location_id)
 
 func show_sunday_office_menu() -> void:
 	screen = "sunday_office"
@@ -1490,7 +1603,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 		rooftop_actor_id = "" if present_staff.is_empty() else present_staff[0]
 	if id == "rooftop":
 		if rooftop_actor_id.is_empty():
-			label_at(tx("ui.location.rooftop_empty", "今天天台上没有其他人。"), Vector2(65, 258), 20, Color("c2d2cc"), 650)
+			label_at(tx("ui.location.rooftop_empty", "现在天台上没有其他人。"), Vector2(65, 258), 20, Color("c2d2cc"), 650)
 		else:
 			var rooftop_actor: Dictionary = content.find_record("staff", rooftop_actor_id)
 			label_at(tx("ui.location.rooftop_met", "今天在天台遇到了%s。") % rooftop_actor.name, Vector2(65, 258), 20, Color("e8cfaa"), 650)
@@ -1561,7 +1674,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 			if game.admitted_patient(patient.id):
 				button_at(tx("ui.ward.patient_chart", "%s  /  病历") % patient.name, Vector2(60, 390 + row_index * 72), Vector2(360, 60), show_encounter.bind(encounter_for_patient(patient.id)))
 				var preparation_id := preop_for_patient(patient.id)
-				if not preparation_id.is_empty() and not game.is_hospital_closed_day():
+				if not preparation_id.is_empty() and not game.is_hospital_closed_day(int(game.display_schedule().day)):
 					var preparation_button := button_at(tx("ui.auto.563b0d61871d", "探视 / 继续术前安排 →"), Vector2(445, 390 + row_index * 72), Vector2(770, 60), show_preop.bind(preparation_id))
 					if preparation_id == game.active_preop_id and has_pending_story_event_at("or"):
 						add_story_event_badge(preparation_button)
@@ -1596,7 +1709,9 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 	button_at(tx("ui.common.return_map", "← 医院导览"), Vector2(1030, 88), Vector2(185, 44), show_map)
 
 func location_uses_staff_drawer(location_id: String) -> bool:
-	return location_id in ["clinic", "ward", "or"]
+	# Hourly placement can put more than four colleagues in the lounge or
+	# another work area. Reuse the scrollable roster instead of overflowing.
+	return location_id in ["clinic", "ward", "or"] or (location_id != "rooftop" and game.staff_present_at(location_id).size() > 4)
 
 func toggle_location_staff_drawer(location_id: String) -> void:
 	location_staff_drawer_open = "" if location_staff_drawer_open == location_id else location_id
@@ -1769,6 +1884,9 @@ func perform_time_event(event_id: String, location_id: String) -> void:
 		if definition.actor_id != null:
 			location_feedback = ""
 			location_feedback_location = ""
+			# A repeated chat on the same day is a new response, not a resume of
+			# the previous response's last page (the page key contains event/day).
+			reset_dialogue_page()
 			show_time_event_result(event_id, location_id, crossed_day)
 			return
 		location_feedback = tx("ui.auto.d74916abf216", "%s\n现在是 %s · 今日还剩 %s 分钟。") % [game.last_time_event_response, game.clock_text(), game.shift_remaining()]
@@ -1790,8 +1908,14 @@ func chat_outfit_for_location(actor: Dictionary, location_id: String) -> String:
 		return "sterile"
 	return default_outfit
 
-func after_work_outfit(actor: Dictionary) -> String:
+func after_work_outfit(actor: Dictionary, walk: Dictionary = {}) -> String:
+	# The colleague has already changed for departure when the invitation opens.
+	# Use the same off-duty outfit in offer/accepted/declined/skipped scenes.
 	var portraits: Dictionary = actor.get("visuals", {}).get("portraits", {})
+	# Use the departure workday, even if the campaign has already advanced.
+	var month := int(game.calendar_date(int(walk.get("workday", game.day_number()))).month)
+	if month in [9, 10, 11, 12, 1, 2] and portraits.has("casual_winter/neutral"):
+		return "casual_winter"
 	if portraits.has("after_work/neutral"):
 		return "after_work"
 	if portraits.has("casual/neutral"):
@@ -1823,8 +1947,11 @@ func show_time_event_result(event_id: String, location_id: String, crossed_day: 
 	if portrait != null:
 		portrait.position = Vector2(760, 150)
 		portrait.size = Vector2(450, 380)
-	var dialogue := dialogue_page("time_event:%s:%s" % [event_id, game.day_number()], game.last_time_event_response)
-	vn_dialogue_box(actor.name, str(dialogue.text), "TimeEventDialogue")
+	var dialogue := dialogue_page("time_event:%s:%s" % [event_id, game.day_number()], game.last_time_event_response, false, true)
+	var dialogue_widgets := vn_dialogue_box(actor.name, str(dialogue.text), "TimeEventDialogue")
+	dialogue_widgets[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	dialogue_widgets[2].position.y = 594
+	dialogue_widgets[2].size.y = 98
 	label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [definition.minutes, game.clock_text()], Vector2(65, 205), 19, Color("c2d2cc"), 620)
 	if bool(dialogue.has_more):
 		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1015, 713), Vector2(210, 40), advance_dialogue_page.bind(show_time_event_result.bind(event_id, location_id, crossed_day)))
@@ -1948,10 +2075,16 @@ func show_character_event() -> void:
 		event_label = tx("ui.auto.78f45a8745f6", "遭遇事件")
 	elif definition.category == "bond":
 		event_label = tx("ui.auto.eb68d92bf615", "建立羁绊 Lv.1")
+		if node.has("presentation"):
+			event_label = tx("ui.event.bond_chapter", "羁绊事件 Lv.1")
 	elif definition.category == "rank_up":
 		event_label = tx("ui.auto.bd46ceb05a5c", "关系升级 Lv.%s") % definition.target_level
 	var event_background := str(node.get("background_id", definition.background_id))
+	if bool(node.get("seasonal_street", false)):
+		event_background = after_work_background_id({"phase": "result", "outcome": "completed", "workday": int(game.display_schedule().day), "variant": "night"})
 	var event_outfit := str(node.get("outfit", definition.outfit))
+	if node.has("presentation"):
+		location_name = str(content.find_record("backgrounds", event_background).get("label", location_name))
 	base(definition.title, "%s / %s / %s" % [actor_name, event_label, location_name], true, event_background)
 	var visual_actor := actor
 	var visual_actor_id := str(node.get("actor_id", definition.actor_id))
@@ -1962,14 +2095,28 @@ func show_character_event() -> void:
 	add_character_event_visual(visual_actor, node, event_outfit)
 	var source_role := str(node.get("speaker", "actor"))
 	var speaker: String = str(node.get("speaker_label", {"actor": actor_name, "player": protagonist_name(), "narrator": tx("ui.auto.ed1d855fc574", "旁白")}.get(source_role, actor_name)))
-	var dialogue := dialogue_page("character:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)))
+	var dialogue := dialogue_page("character:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
 	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
-	vn_dialogue_box(str(presentation.speaker), str(presentation.text), "CharacterEventDialogue", bool(dialogue.allow_scroll))
+	if str(node.get("presentation", "")) in ["authored", "sms"]:
+		# V2 nodes carry explicit ownership. Do not infer a different speaker
+		# from a quotation inside narration or the wording of an English line.
+		presentation = {"speaker": speaker, "text": str(dialogue.text)}
+	if str(node.get("presentation", "")) == "sms":
+		character_event_message(speaker, str(dialogue.text), source_role == "player")
+	else:
+		var dialogue_widgets := vn_dialogue_box(str(presentation.speaker), str(presentation.text), "CharacterEventDialogue", bool(dialogue.allow_scroll))
+		if node.has("presentation"):
+			dialogue_widgets[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			# Three rendered lines of the project font need 96px. Keep them
+			# inside the existing box (bottom 700), below the speaker label.
+			dialogue_widgets[2].position.y = 594
+			dialogue_widgets[2].size.y = 98
 	if bool(dialogue.has_more):
 		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_character_event))
 		continue_button.name = "EventDialogueContinue"
 		register_dialogue_continue(continue_button, str(presentation.text))
-		button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+		if game.can_save_progress():
+			button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 		button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 		add_dialogue_playback_controls()
 		return
@@ -1983,9 +2130,28 @@ func show_character_event() -> void:
 		register_dialogue_continue(only_choice_button, str(presentation.text), 0.2)
 	else:
 		pause_dialogue_for_choice()
-	button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+	if game.can_save_progress():
+		button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
 	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 	add_dialogue_playback_controls()
+
+func character_event_message(sender: String, text: String, outgoing: bool) -> void:
+	var card := Panel.new()
+	card.name = "CharacterEventMessage"
+	card.position = Vector2(260 if outgoing else 140, 215)
+	card.size = Vector2(850, 200)
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color("20444d") if outgoing else Color("142e3a")
+	style.border_color = Color("83a6ab")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(12)
+	card.add_theme_stylebox_override("panel", style)
+	page.add_child(card)
+	label_at(tx("ui.event.sms_sender", "短信 · %s") % sender, card.position + Vector2(24, 20), 22, Color("e8cfaa"), 790).name = "CharacterEventMessageSender"
+	var body := label_at(text, card.position + Vector2(24, 64), 24, Color("f4f0e6"), 790)
+	body.name = "CharacterEventMessageText"
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.size.y = 115
 
 func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: String) -> void:
 	var cg_path := str(node.get("cg_path", ""))
@@ -2052,7 +2218,9 @@ func choose_character_event(choice_id: String) -> void:
 				show_day_transition(show_character_event)
 				return
 		if game.character_event_trigger_mode(event.definition) == "after_work":
-			game.advance_story_to_future_day(1, 9 * 60)
+			# Overtime settlement may already reserve the next morning. Anchor
+			# departure to the event's actual workday, not the shifted ledger day.
+			game.advance_story_to_day(int(event.completed_day) + 1, 9 * 60)
 		var next_view := show_character_event_reward if character_event_reward_available(event.definition) else show_character_event_complete
 		if str(event.definition.get("preop_stage_id", "")) == "post_surgery_return":
 			next_view.call()
@@ -2120,7 +2288,10 @@ func show_character_event_complete() -> void:
 	elif event.definition.category == "rank_up":
 		relation_note = tx("ui.auto.1f258526390d", "关系提升至 Lv.%s") % relation.get("level", 1)
 	label_at(relation_note, Vector2(65, 325), 22, Color("e8cfaa"), 650)
-	label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [event.definition.minutes, game.clock_text()], Vector2(65, 385), 19, Color("c2d2cc"), 650)
+	if bool(event.definition.get("consumes_sunday", false)):
+		label_at(tx("ui.event.whole_sunday", "本次约会占用整个星期日。结束后进入下一工作日。"), Vector2(65, 385), 19, Color("c2d2cc"), 650)
+	else:
+		label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [event.definition.minutes, game.clock_text()], Vector2(65, 385), 19, Color("c2d2cc"), 650)
 	var return_preop_id := character_event_return_preop_id
 	if not character_event_from_test and str(event.definition.get("preop_stage_id", "")) == "post_surgery_return":
 		var return_button := button_at(tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(60, 475), Vector2(655, 54), finish_post_surgery_character_event)
@@ -2829,8 +3000,8 @@ func show_examination_cg(pool_id: String, next_action: Callable) -> void:
 	shade.size = Vector2(1280, 150)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(shade)
-	label_at(str(pool.caption), Vector2(55, 680), 23, Color("f4f0e6"), 900)
-	var continue_button := button_at(tx("ui.auto.dbc7e5ecc8d6", "查看结果  →"), Vector2(1020, 690), Vector2(205, 52), continue_examination_cg)
+	scrollable_text_at(str(pool.caption), Vector2(55, 674), Vector2(1170, 110), 23, Color("f4f0e6"), "ExaminationCGCaption")
+	var continue_button := button_at(tx("ui.auto.dbc7e5ecc8d6", "查看结果  →"), Vector2(55, 586), Vector2(205, 52), continue_examination_cg)
 	continue_button.name = "ExaminationCGContinue"
 	var display_seconds := clampf(float(pool.get("display_seconds", 2.0)), 0.5, 10.0)
 	var timer := Timer.new()
@@ -3073,8 +3244,8 @@ func show_ward_preparation_fullscreen(pool: Dictionary, next_action: Callable) -
 	shade.size = Vector2(1280, 150)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(shade)
-	label_at(str(pool.get("caption", "")), Vector2(55, 680), 23, Color("f4f0e6"), 900)
-	var continue_button := button_at(tx("ui.auto.78bfd29b9e5f", "继续准备  →"), Vector2(1010, 690), Vector2(215, 52), continue_ward_preparation_cg)
+	scrollable_text_at(str(pool.get("caption", "")), Vector2(55, 674), Vector2(1170, 110), 23, Color("f4f0e6"), "WardPreparationCGCaption")
+	var continue_button := button_at(tx("ui.auto.78bfd29b9e5f", "继续准备  →"), Vector2(55, 586), Vector2(215, 52), continue_ward_preparation_cg)
 	continue_button.name = "WardPreparationCGContinue"
 
 func continue_ward_preparation_cg() -> void:
@@ -3107,8 +3278,8 @@ func show_surgery_cg(pool: Dictionary, next_action: Callable) -> void:
 	shade.size = Vector2(1280, 150)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(shade)
-	label_at(str(pool.caption), Vector2(55, 680), 23, Color("f4f0e6"), 900)
-	var continue_button := button_at(tx("ui.auto.45095cef1d7e", "查看手术结果  →"), Vector2(985, 690), Vector2(240, 52), continue_surgery_cg)
+	scrollable_text_at(str(pool.caption), Vector2(55, 674), Vector2(1170, 110), 23, Color("f4f0e6"), "SurgeryCGCaption")
+	var continue_button := button_at(tx("ui.auto.45095cef1d7e", "查看手术结果  →"), Vector2(55, 586), Vector2(240, 52), continue_surgery_cg)
 	continue_button.name = "SurgeryCGContinue"
 	get_tree().create_timer(4.5).timeout.connect(func():
 		if screen == "surgery_cg":
@@ -3216,6 +3387,12 @@ func show_encounter(id: String) -> void:
 	screen = "encounter"
 	ClinicView.render(self, visit)
 
+func finish_admission_day(encounter_id: String) -> void:
+	if screen != "encounter" or not game.finish_admission_for_day(encounter_id):
+		return
+	reset_clinic_view()
+	show_day_transition(show_map)
+
 func choose_clinic_action(id: String) -> void:
 	if screen == "examination_cg":
 		return
@@ -3231,10 +3408,9 @@ func choose_clinic_action(id: String) -> void:
 				game.pending_encounter_day_transition = true
 			var next_view := show_encounter.bind(game.active_id)
 			var destination: Callable = next_view
-			if visit.completed() and game.pending_encounter_day_transition:
-				game.pending_encounter_day_transition = false
-				destination = show_day_transition.bind(next_view)
-			elif not was_completed and visit.completed() and game.select_micro_event("after_encounter", "clinic") != null:
+			# Always show the admission summary. Its explicit handoff button may
+			# end an overtime day; never jump away on the admit action itself.
+			if not was_completed and visit.completed() and game.select_micro_event("after_encounter", "clinic") != null:
 				destination = show_micro_event
 			if not visual_pool_id.is_empty():
 				show_examination_cg(visual_pool_id, destination)
@@ -3629,9 +3805,8 @@ func incision_video_path(action_id: String, procedure_group: String, _anesthetiz
 	return random_incision_video_from_pool(pool_id) if not pool_id.is_empty() else ""
 
 func incision_video_should_mute(preparation: Variant) -> bool:
-	# Runtime logic must use the clinical state flag. `anesthesia` is authored
-	# display text and can change with localization or content edits.
-	return preparation != null and preparation.flags.has("anesthetized")
+	# Only an explicitly unanaesthetized incision retains live audio.
+	return preparation == null or not preparation.flags.has("no_anesthesia_confirmed") or preparation.flags.has("anesthetized") or preparation.flags.has("local_anesthesia") or preparation.flags.has("epidural_anesthesia")
 
 func random_incision_video_from_pool(pool_id: String) -> String:
 	var available: Array[String] = []
@@ -3749,7 +3924,17 @@ func finish_surgery_and_return() -> void:
 	settle_surgery_return()
 
 func settle_surgery_return() -> void:
+	if page.get_node_or_null("SurgeryGrowthSplash") != null:
+		return
+	var preparation = game.preops.get(game.active_preop_id)
+	var growth_before: Dictionary = PreopView.ResultView.capture(game, preparation.team) if preparation != null else {}
 	var settled: bool = game.finish_active_surgery()
+	if settled:
+		PreopView.ResultView.show_growth(self, growth_before, finish_surgery_return_destination.bind(true))
+		return
+	finish_surgery_return_destination(false)
+
+func finish_surgery_return_destination(settled: bool) -> void:
 	if settled and start_character_event_from_preop_stage("post_surgery_return"):
 		return
 	if not game.pending_departure_context().is_empty():
@@ -3768,14 +3953,11 @@ func complete_surgery_return() -> void:
 	show_map()
 
 func finish_aborted_surgery_and_return() -> void:
-	if game.pending_surgery_day_transition:
-		show_day_transition(complete_aborted_surgery_return)
-	else:
-		complete_aborted_surgery_return()
+	complete_aborted_surgery_return()
 
 func complete_aborted_surgery_return() -> void:
 	game.finish_active_surgery_abort()
-	show_map()
+	finish_surgery_return_destination(false)
 
 func toggle_intraoperative_crisis() -> void:
 	game.set_intraoperative_crisis_enabled(not game.intraoperative_crisis_enabled)
@@ -3974,7 +4156,7 @@ func show_after_work_walk() -> void:
 	shade.size = Vector2(1280, 800)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(shade)
-	add_portrait(actor, "neutral", after_work_outfit(actor))
+	add_portrait(actor, "neutral", after_work_outfit(actor, walk))
 	var portrait = page.get_node_or_null("CharacterPortrait")
 	if portrait != null:
 		portrait.position = Vector2(785, 150)

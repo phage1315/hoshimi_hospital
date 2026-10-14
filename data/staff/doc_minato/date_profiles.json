@@ -5,10 +5,44 @@
     "can_date": true,
     "minimum_level": 0,
     "casual_outfit": "casual",
-    "preferred_locations": ["cafe", "riverside_park", "bookstore", "restaurant_bar"],
+    "preferred_locations": [
+      "cafe",
+      "riverside_park"
+    ],
     "disliked_locations": [],
     "hotel_unlock_level": 4,
-    "required_flags": [],
-    "always_accept": true
+    "required_flags": [
+      "minato_intro_complete"
+    ],
+    "always_accept": false,
+    "invite_rejection": {
+      "text": "「咦，这个周日我是不是已经答应过什么事？我先核对一下……抱歉，这次恐怕不行了。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 85,
+      "2": 85,
+      "3": 95,
+      "4": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "dialogue": {
+      "accepted": {
+        "text": "「好啊！几点见？……我自己把时间记到日历上，你等我一下。」"
+      },
+      "satisfied": {
+        "text": "「今天真开心。和你聊的那些小事我可都记住了，虽然下次见面时间还得再记一遍。」"
+      },
+      "favorites": [
+        {
+          "id": "cafe",
+          "text": "「你喝咖啡还是不太爱加糖，对吧？你上回随口说过的。我记人的喜好可比记日程可靠多了。」"
+        },
+        {
+          "id": "riverside_park",
+          "text": "「刚才河边那只狗，和你说过的老家那只是不是很像？哎呀，我记得这些，倒差点忘了看时间。」"
+        }
+      ]
+    }
   }
 ]

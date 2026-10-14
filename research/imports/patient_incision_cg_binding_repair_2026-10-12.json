@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Correct patient-specific pre-incision CGs that were incorrectly bound to incision actions.",
+  "rule": "The user-defined 下刀 CG is shown after the scalpel handoff at request_scalpel. incise_* actions start the incision-video path and must not trigger a ward-preparation CG.",
+  "affected_patients": [
+    {"patient_id": "patient_aerith", "pool_id": "incision_patient_aerith"},
+    {"patient_id": "patient_amate_yuzuriha", "pool_id": "incision_patient_amate_yuzuriha"},
+    {"patient_id": "patient_iwai_yoshimi", "pool_id": "incision_ready_patient_iwai_yoshimi"},
+    {"patient_id": "patient_iwato_tamaki", "pool_id": "incision_patient_iwato_tamaki"},
+    {"patient_id": "patient_kocho_shinobu", "pool_id": "incision_patient_kocho_shinobu"},
+    {"patient_id": "patient_makimura_kaori", "pool_id": "incision_patient_makimura_kaori"},
+    {"patient_id": "patient_nogami_saeko", "pool_id": "incision_patient_nogami_saeko"},
+    {"patient_id": "patient_nyaan", "pool_id": "incision_patient_nyaan"},
+    {"patient_id": "patient_sepha", "pool_id": "incision_ready_patient_sepha"}
+  ],
+  "before_action_ids": ["incise_epidural", "incise_local", "incise_none"],
+  "after_action_ids": ["request_scalpel"],
+  "preserved": ["source images", "runtime image paths", "patient scope", "procedure-group restrictions", "pool IDs", "labels and captions"],
+  "verification": {
+    "patient_bundle_localization_test": "passed (2457 English entries; 0 failures)",
+    "static_resolver_audit": "passed (all 9 pools resolve only at request_scalpel; no incise_* bindings remain; paths and scopes valid)",
+    "preparation_asset_regression_test": "not run (Godot executable unavailable)",
+    "surgery_video_test": "not run (Godot executable unavailable)",
+    "validate_data": "passed (654 records)",
+    "git_diff_check": "passed"
+  }
+}

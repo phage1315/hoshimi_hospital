@@ -1,0 +1,37 @@
+{
+  "patient_id": "patient_shimizu_iraiza",
+  "stage": "patient_data_only",
+  "source_bundle": "/Users/ningye/Downloads/patient_shimizu_iraiza_complete_bundle_v1.json",
+  "seed_image": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-6ffafa48-507e-426f-b9ff-aa2bb7649545.png",
+  "status": "imported",
+  "imported": [
+    "patient identity, adult age, case and fallback references",
+    "patient traits, fear profile, personality fields, existing dialogue profile, and patient-specific dialogue",
+    "outpatient, examination, and preoperative text",
+    "empty patient-owned CG pools and diagnosis reactions, as provided"
+  ],
+  "deferred": [
+    "seed image and other supplied references were not copied or connected as runtime assets",
+    "SFW portrait generation/import and visual acceptance",
+    "full-screen CG authoring/import and trigger integration"
+  ],
+  "enum_and_reference_audit": {
+    "age": 24,
+    "visual_state": "outpatient",
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "stress_response": "asks_for_details",
+    "dialogue_profile": "calm_analytical_reassurance",
+    "case_id": "case_abdomen",
+    "fallback_surgery_id": "surgery_appendix",
+    "invalid_values": [],
+    "note": "Source personality values were preserved verbatim. The supplied complete patient-specific reaction lines and variants override the shared profile's visible dialogue."
+  },
+  "localization": "English values added for every Chinese visible-text leaf without modifying source text.",
+  "acceptance": {
+    "bundle_schema_validation": "passed; 0 errors",
+    "data_bundle_import_test": "passed; bundle indexed once, profile merged, encounter and preop generated without image dependencies",
+    "patient_bundle_localization_test": "passed; 0 failures",
+    "repository_validate_data": "stage-limited failure: only four expected missing intraoperative portraits (tense, pain, near_collapse, anesthetized); these belong to the deferred portrait stage"
+  }
+}

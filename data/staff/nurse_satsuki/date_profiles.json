@@ -6,20 +6,45 @@
     "minimum_level": 2,
     "casual_outfit": "uniform",
     "preferred_locations": [
-      "cafe",
       "bookstore",
-      "aquarium"
+      "botanical_garden"
     ],
-    "disliked_locations": [
-      "restaurant_bar"
-    ],
+    "disliked_locations": [],
     "hotel_unlock_level": 4,
     "required_flags": [
       "satsuki_lv2_patient_transport_complete"
     ],
     "always_accept": false,
     "acceptance_chance_by_level": {
-      "2": 35
+      "2": 35,
+      "3": 80,
+      "4": 98
+    },
+    "invite_rejection": {
+      "text": "「抱、抱歉……这次我还没有准备好。不是讨厌您，真的。」"
+    },
+    "minimum_familiarity": 0,
+    "familiarity_acceptance_bonus": true,
+    "acceptance_cap_by_level": {
+      "2": 49
+    },
+    "dialogue": {
+      "accepted": {
+        "text": "「两个人……出去吗？如、如果是安静的地方，我想试一试。」"
+      },
+      "satisfied": {
+        "text": "「谢谢坂口先生。今天我没有一直低着头……能这样慢慢说话，我很开心。」"
+      },
+      "favorites": [
+        {
+          "id": "bookstore",
+          "text": "「这本书我以前看过。啊，如果您不嫌我讲得太慢，我想给您介绍一下它有趣的地方……」"
+        },
+        {
+          "id": "botanical_garden",
+          "text": "「温室里很安静呢。我们可以这样并肩走，不用一直对着面说话……我觉得很安心。」"
+        }
+      ]
     }
   }
 ]

@@ -49,7 +49,16 @@ func run() -> void:
 	expect(clone.first_surgery_diagnosis_shock_state.patient_sora.first_surgery_diagnosis_shock_variant_id == variant_id, "Reload changed the saved reaction variant")
 	expect(clone.visits.visit_sora.presentation().text == shown_text, "Reload changed the visible reaction text")
 	var later_definition: Dictionary = game.encounter_definitions_for(game.patient_cases, game.first_surgery_diagnosis_shock_state).visit_sora
-	expect(not later_definition.has("first_surgery_diagnosis_shock_variant_id"), "A returning patient received the first-surgery reaction again")
+	expect(not later_definition.has("first_surgery_diagnosis_shock_variant_id"), "The same case received the first-surgery reaction again")
+	game.archive_and_reset_patient("patient_sora")
+	expect(not game.first_surgery_diagnosis_shock_state.has("patient_sora"), "A fresh case inherited the previous case's diagnosis reaction flag")
+	game.patient_cases.patient_sora = "template_breast_tumor"
+	game.rebuild_patient_content(game.patient_cases)
+	expect(game.definitions.visit_sora.get("first_surgery_diagnosis_shock_variant_id", "") == variant_id, "A fresh case of the same disease lost its diagnosis reaction")
+	var fresh = game.open_visit("visit_sora")
+	apply_all(fresh, ["greet", "pain", "associated", "background", "to_exam", "vitals", "request_full_undress", "authoritative_full_undress", "blood", "imaging", "to_diagnosis", "diagnose_appendix"])
+	expect(game.apply_clinic_action("explain"), "Fresh case could not play the diagnosis reaction")
+	expect(fresh.presentation().text == shown_text, "Fresh case changed the authored diagnosis reaction")
 	var patient: Dictionary = game.patient_definition("patient_sora")
 	patient.has_prior_surgery = true
 	expect(game.first_surgery_diagnosis_reaction("patient_sora", "surgery_breast_tumor", {}).is_empty(), "Prior-surgery patient triggered the generic pool")

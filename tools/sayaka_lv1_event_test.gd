@@ -53,33 +53,19 @@ func run() -> void:
 	expect(game.sunday_invitation_rejection_rate("doc_sayaka") == 0 and game.sunday_invitation_will_accept("doc_sayaka"), "Sayaka's first invitation was allowed to reject")
 
 	var first_date = game.start_character_event("sayaka_lv1_first_date")
-	expect(first_date != null and advance_to_node(game, first_date, "what_is_this"), "First date did not reach its relationship choice")
-	if first_date != null and first_date.node_id == "what_is_this":
+	expect(first_date != null and advance_to_node(game, first_date, "v2_497"), "First date did not reach its relationship choice")
+	if first_date != null and first_date.node_id == "v2_497":
 		expect(game.choose_character_event("date_only_meal"), "Just-a-meal branch could not be chosen")
-		expect(game.choose_character_event("only_meal_end"), "Just-a-meal branch could not finish")
-	expect(game.relationship_level("doc_sayaka") == 0, "Rejecting the date framing incorrectly raised Sayaka to Lv1")
-	expect(not game.character_event_done("sayaka_lv1_first_date"), "Rejected date was marked permanently complete")
-	expect(relation.flags.has("sayaka_romantic_interest_visible") and relation.flags.has("sayaka_first_date_retry_pending"), "Rejected date did not preserve Sayaka's visible interest and retry state")
-
-	expect(game.complete_sunday_activity("date", "doc_sayaka", "restaurant_bar"), "Rejected first date did not consume its Sunday")
-	game.advance_story_to_day(13, 540)
-	expect(game.is_sunday(), "Retry day is not Sunday")
-	var retry_date = game.start_character_event("sayaka_lv1_first_date")
-	expect(retry_date != null and retry_date.choices.is_empty(), "Retry did not start a fresh date session")
-	expect(retry_date != null and advance_to_node(game, retry_date, "what_is_this"), "Retry date did not reach its relationship choice")
-	if retry_date != null and retry_date.node_id == "what_is_this":
-		expect(game.choose_character_event("date_direct"), "Direct date confirmation failed")
-		while not retry_date.completed:
-			expect(game.choose_character_event(str(retry_date.current().choices[0].id)), "Confirmed date continuation failed")
-	expect(game.relationship_level("doc_sayaka") == 1, "Confirmed first date did not raise Sayaka to Lv1")
-	expect(game.character_event_done("sayaka_lv1_first_date"), "Confirmed first date was not recorded")
-	expect(int(relation.familiarity) > 10, "Sayaka's successful first date did not preserve familiarity earned beyond the old milestone cap")
-	expect(not relation.flags.has("sayaka_first_date_retry_pending"), "Successful retry left the retry flag behind")
+		while not first_date.completed:
+			expect(game.choose_character_event(str(first_date.current().choices[0].id)), "C recovery and shared farewell")
+	expect(game.relationship_level("doc_sayaka") == 1, "C must reach Lv1 after the shared farewell")
+	expect(game.character_event_done("sayaka_lv1_first_date"), "C must permanently complete the date")
+	expect(not relation.flags.has("sayaka_first_date_retry_pending"), "No retry flag in the new story")
 	for flag in ["sayaka_first_date_completed", "sayaka_mutual_attraction", "sayaka_romantic_interest_confirmed", "sayaka_lv2_eligible_base"]:
 		expect(relation.flags.has(flag), "Successful first date did not set " + flag)
 
 	expect(game.complete_sunday_activity("date", "doc_sayaka", "restaurant_bar"), "Successful first date did not consume its Sunday")
-	expect(game.day_number() == 14 and game.next_character_event_at("clinic").get("id", "") == "sayaka_lv1_monday_callback", "Monday callback did not unlock after the successful date")
+	expect(game.day_number() == 7 and game.next_character_event_at("clinic").get("id", "") == "sayaka_lv1_monday_callback", "Monday callback did not unlock after the successful date")
 	expect(not game.character_event_available(game.character_event_definitions.sayaka_lv2_working_hours), "Sayaka Lv2 bypassed the Monday callback")
 	var callback = game.start_character_event("sayaka_lv1_monday_callback")
 	expect(callback != null, "Monday callback could not start")
@@ -91,7 +77,7 @@ func run() -> void:
 	if int(relation.familiarity) < 25:
 		game.add_familiarity("doc_sayaka", 25 - int(relation.familiarity))
 	expect(not game.character_event_available(game.character_event_definitions.sayaka_lv2_working_hours), "Sayaka Lv2 bypassed the three-day milestone cooldown")
-	game.advance_story_to_day(17, 540)
+	game.advance_story_to_day(10, 540)
 	expect(game.next_mandatory_character_event().get("id", "") == "sayaka_lv2_working_hours", "Sayaka Lv2 was not selected by the day-start scheduler")
 	expect(game.next_character_event_at("player_office").is_empty(), "Sayaka Lv2 leaked into the location-event scheduler")
 	var working_hours = game.start_character_event("sayaka_lv2_working_hours")

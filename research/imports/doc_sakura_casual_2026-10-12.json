@@ -1,0 +1,52 @@
+{
+  "status": "approved_registered",
+  "actor_id": "doc_sakura_anesthesiology",
+  "sample_manifest": "research/character_references/doc_sakura_anesthesiology/casual_samples_2026-10-12/manifest.json",
+  "tie_manifest": "research/character_references/doc_sakura_anesthesiology/casual_samples_2026-10-12/manifest_tie_v2.json",
+  "images": [
+    {
+      "source": "research/character_references/doc_sakura_anesthesiology/casual_samples_2026-10-12/spring_summer_tie_v2.png",
+      "destination": "assets/characters/spring_summer_casual_v1/doc_sakura_anesthesiology/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "ea9502e22f6bf21284e25a303ff0344d8db61643b5f25e679404cb6df7879900"
+    },
+    {
+      "source": "research/character_references/doc_sakura_anesthesiology/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/doc_sakura_anesthesiology/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "2ff1471fe7b94d216f8dad4fed989994db82b79cb59197e8e398ac040047f813"
+    }
+  ],
+  "previous_visuals": {
+    "color": "2F315D",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "white_coat/dry_smile": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/white_coat/neutral_v1.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/scrubs/neutral_v2.png",
+      "scrubs/serious": "assets/characters/portrait_pack_v23/doc_sakura_anesthesiology/scrubs/neutral_v2.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_sakura_anesthesiology/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_sakura_anesthesiology/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 96866,
+    "all_staff_checks": 1184,
+    "failures": 0,
+    "validated_records": 654,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/doc_sakura_casual_2026-10-12"
+  }
+}

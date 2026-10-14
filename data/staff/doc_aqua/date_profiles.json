@@ -1,0 +1,47 @@
+[
+  {
+    "id": "date_doc_aqua",
+    "staff_id": "doc_aqua",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "aquarium",
+      "summer_beach"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「不行不行，我今天还有个问题没弄明白！……下次再来找我，我保证尽量不带资料。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 80,
+      "2": 90,
+      "3": 98
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "required_flags": [
+      "aqua_intro_complete"
+    ],
+    "dialogue": {
+      "accepted": {
+        "text": "「约会？当然好啊！你稍等，我先把这页病例笔记收起来！」"
+      },
+      "satisfied": {
+        "text": "「今天好有趣！医院之外原来还有这么多值得研究——啊不，值得玩的东西！」"
+      },
+      "favorites": [
+        {
+          "id": "aquarium",
+          "text": "「你看到那种鱼了吗？它的繁殖方式特别有意思！……咦，你是叫我来看鱼，不是来听讲座的？」"
+        },
+        {
+          "id": "summer_beach",
+          "text": "「海风好舒服！这种感觉要是能带回检查室就好了。开玩笑啦，今天我只想多玩一会儿！」"
+        }
+      ]
+    }
+  }
+]

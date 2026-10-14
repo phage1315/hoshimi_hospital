@@ -27,7 +27,9 @@
       "changing",
       "scrubs",
       "sterile",
-      "operating_patient"
+      "operating_patient",
+      "casual",
+      "casual_winter"
     ],
     "portraits": {
       "uniform/neutral": "assets/characters/portrait_pack_v13/nurse_moe/uniform/neutral.png",
@@ -45,7 +47,9 @@
       "sterile/focused": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
       "sterile/worried": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
       "operating_patient/nervous": "assets/characters/portrait_pack_v13/nurse_moe/changing/shy.png",
-      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_moe/neutral.png"
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_moe/neutral.png",
+      "casual/neutral": "assets/characters/spring_summer_casual_v1/nurse_moe/neutral.png",
+      "casual_winter/neutral": "assets/characters/winter_casual_v1/nurse_moe/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -108,6 +112,10 @@
   },
   "personal_nurse": {
     "eligible": true,
+    "diagnosis_corrections": {
+      "diagnose_gastro": "「咦？坂口医生……这项检查不是和那个诊断不一样吗？啊，我是不是看错了？」",
+      "diagnose_observe": "「这、这几项我能理解……可是剩下的呢？这样真的能确定吗？」"
+    },
     "dialogue": {
       "next_test_hint": [],
       "insufficient_evidence": [],

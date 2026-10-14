@@ -1,4 +1,5 @@
 extends RefCounted
+const ResultView = preload("res://godot/ui/surgery_result_view.gd")
 const StageArt = preload("res://godot/ui/preop_stage_art.gd")
 const UI = preload("res://godot/ui/clinic_view.gd")
 const OR_TABLE_PALPATION_IMAGES := {
@@ -102,6 +103,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 	# stage to the dedicated scrub area.
 	var active_background_id := background_id_for(stage, prep.flags, operative_scene, prep.operative_background_id)
 	app.base(page_title, "%s / %s" % [patient.name, stage_title], false, active_background_id)
+	if stage.kind == "surgery_complete":
+		ResultView.render(app, prep)
+		return
 	var field_visual_visible := operative_field_overlay_visible(prep, stage, flow_step)
 	if field_visual_visible:
 		if app.operative_field_hud_enabled:
@@ -150,7 +154,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 			portrait.position = Vector2(760, 348) if field_visual_visible and app.operative_field_hud_enabled else Vector2(835, 145) if tall_staff_portrait else Vector2(760, 185)
 			portrait.size = Vector2(450, 172) if field_visual_visible and app.operative_field_hud_enabled else Vector2(300, 450) if tall_staff_portrait else Vector2(450, 310)
 		var staff_label_y: float = 525 if field_visual_visible and app.operative_field_hud_enabled else 600 if tall_staff_portrait else 508
-		app.label_at("%s · %s" % [speaking_staff.name, prep.presentation_staff_role()], Vector2(785, staff_label_y), 18, Color("f4f0e6"), 410)
+		app.label_at("%s · %s" % [prep.staff_display_name(speaking_staff.name), prep.presentation_staff_role()], Vector2(785, staff_label_y), 18, Color("f4f0e6"), 410)
 	elif show_intraoperative_patient:
 		var intraoperative_expression := intraoperative_patient_expression(prep)
 		app.add_portrait(patient, intraoperative_expression, "intraoperative")
@@ -358,44 +362,6 @@ static func render(app: Control, prep: RefCounted) -> void:
 			app.label_at(app.tx("ui.auto.03f556d659aa", "✓ 术前确认完成"), Vector2(65, 235), 32, Color("e8cfaa"), 650)
 			app.label_at(app.tx("ui.auto.1e84cb37b69d", "手术还未开始。\n可以保存，下次接着体验术中互动。"), Vector2(65, 304), 23, Color("e1e4db"), 650)
 			app.button_at(app.tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(60, 430), Vector2(655, 54), app.show_map)
-		"surgery_complete":
-			app.label_at(app.tx("ui.auto.db312ff6f2f4", "✓ 手术成功 · 互动阶段结束"), Vector2(65, 205), 30, Color("e8cfaa"), 650)
-			var summary: Label = app.label_at(prep.interaction_summary(), Vector2(65, 255), 18, Color("e1e4db"), 645)
-			summary.name = "SurgeryResultSummary"
-			summary.size.y = 100
-			var time_breakdown: String = app.tx("ui.surgery.settlement_time", "手术耗时 %s　·　术后交接与整理 %s　·　本次合计 %s") % [prep.duration_text(prep.procedure_total_minutes()), prep.duration_text(prep.POSTOPERATIVE_WRAP_UP_MINUTES), prep.duration_text(prep.surgery_settlement_total_minutes())]
-			# Give the time summary one full-width row. Its previous 645px width
-			# forced “本次合计” onto a second line, where it collided with the
-			# surgical-quality row below.
-			var time_label: Label = app.label_at(time_breakdown, Vector2(65, 365), 17, Color("e8cfaa"), 1100)
-			time_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-			time_label.clip_text = true
-			time_label.size.y = 26
-			time_label.name = "SurgerySettlementTime"
-			if prep.pilot_surgery():
-				var quality_text: String = app.tx("ui.surgery.quality_score", "手术质量 Surgical Quality：%s（%s分）") % [prep.surgical_quality_grade(), prep.surgical_quality_score()]
-				var quality_label: Label = app.label_at(quality_text, Vector2(65, 389), 18, Color("e8cfaa"), 900)
-				quality_label.name = "SurgicalQualityResult"
-			var experience_text: String = app.tx("ui.surgery.patient_experience", "患者体验评级：%s") % prep.patient_experience_grade_label()
-			experience_text += (" · " if prep.english_mode() else "　·　") + prep.patient_experience_result_text()
-			var experience_label: Label = app.label_at(experience_text, Vector2(65, 417), 16, Color("e8cfaa"), 1100)
-			experience_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-			experience_label.clip_text = true
-			experience_label.size.y = 24
-			experience_label.name = "PatientExperienceResult"
-			if not prep.surgery_state_summary().is_empty():
-				# Keep the compact state row on one line so its final "稳定" value
-				# cannot wrap into the patient-metrics row below it.
-				var strategy_result: Label = app.label_at(prep.surgery_state_summary(), Vector2(65, 445), 12, Color("9fc9c7"), 1100)
-				strategy_result.autowrap_mode = TextServer.AUTOWRAP_OFF
-				strategy_result.clip_text = true
-				strategy_result.size.y = 26
-				strategy_result.name = "SurgeryStrategyResult"
-			var metrics: Label = app.label_at(app.tx("ui.auto.21715e65478b", "恐惧 %s　痛苦 %s　尊严 %s　配合 %s") % [prep.fear, prep.pain, prep.dignity, prep.cooperation_value()], Vector2(65, 471), 17, Color("c2d2cc"), 900)
-			metrics.name = "SurgeryResultMetrics"
-			var return_button: Button = app.button_at(app.tx("ui.auto.fb28c027242c", "结算患者并返回医院导览"), Vector2(60, 500), Vector2(655, 50), app.finish_surgery_and_return)
-			return_button.name = "SurgeryResultReturn"
-			action_y = 900
 		"surgery_abort":
 			app.label_at(app.tx("ui.crisis.abort_title", "手术中止 · 患者已由追加支援稳定"), Vector2(65, 205), 29, Color("ef9a91"), 650)
 			app.label_at(str(stage.prompt), Vector2(65, 265), 21, Color("e1e4db"), 650)
@@ -449,7 +415,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 	UI.panel(app, Vector2(55, 558), Vector2(1170, 142))
 	var note_name: String = app.tx("ui.auto.4d549b32477a", "术中记录") if stage.kind == "surgery_flow" else app.tx("ui.auto.77a3ebc10ddf", "互动记录") if stage.kind in ["interaction", "surgery_complete"] else app.tx("ui.auto.159ea794a181", "术前记事")
 	var speaker_name: String = speaking_staff.name if not speaking_staff.is_empty() else prep.crisis_callout_speaker_name() if not prep.active_crisis.is_empty() and prep.feedback_speaker == "staff" else patient.name if prep.feedback_speaker == "patient" or stage.speaker == "patient" else note_name
-	var record_speaker: Label = app.label_at(speaker_name, Vector2(82, 570), 20, Color("e8cfaa"), 1100)
+	var record_speaker: Label = app.label_at(prep.surgery_display_text(speaker_name), Vector2(82, 570), 20, Color("e8cfaa"), 1100)
 	record_speaker.name = "PreopRecordSpeaker"
 	var choosing_flow_option: bool = stage.kind == "surgery_flow" and prep.active_crisis.is_empty() and not prep.awaiting_flow_acknowledgement and not prep.awaiting_patient_choice and not prep.awaiting_patient_acknowledgement
 	var default_prompt: String = str(flow_step.get("prompt", stage.prompt))
@@ -811,6 +777,15 @@ static func metric(app: Control, label: String, value: int, position: Vector2, c
 	bar.add_theme_stylebox_override("fill", fill)
 	app.page.add_child(bar)
 
+static func role_skill_description(app: Control, person: Dictionary, role: Dictionary) -> String:
+	# Evaluate the live skill used by this role, not the authored background tag.
+	var skill := int(person.get("skills", {}).get(str(role.skill), 0))
+	if skill < 60:
+		return app.tx("ui.team.skill_limited", "　⚠ 经验有限")
+	if skill < 80:
+		return app.tx("ui.team.skill_trained", "　熟练")
+	return app.tx("ui.team.skill_experienced", "　经验丰富")
+
 static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int) -> void:
 	app.label_at(role.label, Vector2(65, y + 10), 20, Color("e8cfaa"), 190)
 	var picker := OptionButton.new()
@@ -822,9 +797,8 @@ static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int
 	var selected_index := 0
 	for i in range(people.size()):
 		var person: Dictionary = people[i]
-		var proficiency := str(person.get("surgery_proficiency", "trained"))
-		var warning: String = app.tx("ui.auto.d46b9504fbf8", "　⚠ 手术经验有限") if proficiency in ["novice", "limited"] else ""
-		picker.add_item("%s · %s %s%s" % [person.name, person.specialty, person.skills[role.skill], warning])
+		var description := role_skill_description(app, person, role)
+		picker.add_item("%s · %s %d%s" % [prep.staff_display_name(person.name), person.specialty, int(person.skills[role.skill]), description])
 		var selected: bool = prep.team.get(role.id) == person.id
 		if selected:
 			selected_index = i + 1

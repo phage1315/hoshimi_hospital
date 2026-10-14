@@ -1,0 +1,88 @@
+{
+  "patient_id": "patient_shimizu_iraiza",
+  "stage": "existing_patient_user_asset_import",
+  "date": "2026-10-12",
+  "status": "assets_registered_and_bound; runtime verification pending",
+  "source_policy": "User-provided images copied byte-for-byte to provenance and runtime destinations; no image edits were made.",
+  "assets": [
+    {
+      "description": "full-nudity portrait",
+      "source": "/Users/ningye/Downloads/00026-3839154916-Picsart-BackgroundRemover.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/full_nude_portrait.png",
+      "runtime": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/examination/shy.png",
+      "mapping": "patient.visuals.portraits[examination/shy]",
+      "dimensions": "1056x1584 RGBA",
+      "sha256": "2087f03f61e2bcd6e39cab2396dfa9af406170c39145f27fce3b2963e1c1368e"
+    },
+    {
+      "description": "examination room full-undress CG",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-819c48bd-500e-46c5-a64a-dcec7b419c7c.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/examination_full_undress.png",
+      "runtime": "assets/examinations/patient_shimizu_iraiza/full_undress_basic_exam.png",
+      "mapping": "exclusive_cg_pools.examination/full_undress_basic_exam_patient_shimizu_iraiza; completed full-undress choices only",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "ed1bef57622c03cad9f8050c9309158adf78085be3e58e9d6e92a6b58734445c"
+    },
+    {
+      "description": "preoperative shaving / skin preparation",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-945d143b-7f01-42ee-b827-146801ca80e4.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/shaving.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/skin_prep.png",
+      "mapping": "ward_skin_prep and ward_skin_prep_unnecessary",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "44758744db4e1f20fe3a4585306be4fbcbc322af8cf8ae07266b355bb86b8e55"
+    },
+    {
+      "description": "enema",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-f7b3fb0e-c71a-4438-ac6d-b9fda91a36f2.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/enema.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/enema.png",
+      "mapping": "ward_enema and ward_enema_unnecessary",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "3766fed098e20566870d88a72df6480deffcee113609469372548beb0d144e4d"
+    },
+    {
+      "description": "urinary catheterization",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d5e7a820-5bae-4a73-a42a-c2bbf17091f4.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/urinary_catheterization.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/urinary_catheterization.png",
+      "mapping": "urinary_catheterization; general_abdominal procedure group",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "bc56987c9787b3e46622ef28afa9e00775932c329db71a2acdcd032c36aeba6a"
+    },
+    {
+      "description": "sterile draping",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-b18862e7-191f-4bec-a579-a22e8f919df9.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/sterile_draping.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/sterile_draping.png",
+      "mapping": "ack_disinfection; general_abdominal procedure group",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "758d3e46a7ef52a31d7be7378afe923b6a3797f017718dd1bd69b2b916158a8d"
+    },
+    {
+      "description": "pre-incision / scalpel ready",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d9c671ba-3110-49a1-b06e-d6ff570a3a7e.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/scalpel_ready.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/scalpel_ready.png",
+      "mapping": "request_scalpel; general_abdominal procedure group; not bound to incise_*",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "662a90c8006b71a1aa2a0792d6b4a23121ad319f1c26da8c9b2b83ae56c8f466"
+    },
+    {
+      "description": "stretcher transfer",
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-55a776dc-737c-47cf-ac55-c7660f85f74c.png",
+      "archive": "research/character_references/patient_shimizu_iraiza/user_cgs/stretcher_transfer.png",
+      "runtime": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/stretcher_transfer.png",
+      "mapping": "complete_manual_ward_preparation; after surgical cap on the manual ward-preparation route",
+      "dimensions": "1584x1056 RGB",
+      "sha256": "797cd03aa1d20ac74ab79d5f2c505f8e5cae3f0cb532fd53baea50b06aa142e1"
+    }
+  ],
+  "localization": "English label and caption entries added for every new examination and ward-preparation pool.",
+  "verification": {
+    "file_format_and_dimensions": "All eight user-provided PNGs identified; portrait is RGBA and seven scene CGs are RGB.",
+    "hashes": "Archive and runtime copies match for all imported images.",
+    "runtime_engine_import": "pending; Godot executable is unavailable in the current environment.",
+    "stretchercg_scope": "Imported after user supplied the additional stretcher image."
+  }
+}

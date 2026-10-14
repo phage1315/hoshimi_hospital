@@ -1,0 +1,69 @@
+{
+  "status": "approved_registered",
+  "actor_id": "nurse_moe",
+  "sample_manifest": "research/character_references/nurse_moe/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/nurse_moe/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/nurse_moe/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/nurse_moe/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "65aedb7dfccda88fc7a87ac30e432604533ccbab12839ac9221850a76152a7e8"
+    },
+    {
+      "source": "research/character_references/nurse_moe/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/nurse_moe/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "6bac90fd7e40b12b6a13bd08424900ec111bac25111d95cac25df01904c009d9"
+    }
+  ],
+  "previous_visuals": {
+    "color": "55a978",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "changing",
+      "scrubs",
+      "sterile",
+      "operating_patient"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v13/nurse_moe/uniform/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v13/nurse_moe/uniform/smile.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v13/nurse_moe/uniform/surprised.png",
+      "uniform/worried": "assets/characters/portrait_pack_v13/nurse_moe/uniform/worried.png",
+      "uniform/shy": "assets/characters/portrait_pack_v13/nurse_moe/uniform/shy.png",
+      "uniform/startled": "assets/characters/portrait_pack_v13/nurse_moe/uniform/startled.png",
+      "uniform/laugh": "assets/characters/portrait_pack_v13/nurse_moe/uniform/laugh.png",
+      "uniform/embarrassed": "assets/characters/portrait_pack_v13/nurse_moe/uniform/embarrassed.png",
+      "uniform/warm": "assets/characters/portrait_pack_v13/nurse_moe/uniform/warm.png",
+      "uniform/cheerful": "assets/characters/portrait_pack_v13/nurse_moe/uniform/cheerful.png",
+      "changing/shy": "assets/characters/portrait_pack_v13/nurse_moe/changing/shy.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v13/nurse_moe/sterile/neutral.png",
+      "operating_patient/nervous": "assets/characters/portrait_pack_v13/nurse_moe/changing/shy.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_moe/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_moe/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 82434,
+    "all_staff_outfit_checks": 1184,
+    "failures": 0,
+    "data_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/nurse_moe_casual_2026-10-12",
+    "visually_reviewed": [
+      "moe_casual_zh_CN_62_normal_offer.png",
+      "moe_casual_en_245_night_completed.png"
+    ]
+  }
+}

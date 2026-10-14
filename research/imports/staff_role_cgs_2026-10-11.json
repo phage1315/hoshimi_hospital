@@ -1,0 +1,57 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "role_cg_doc_asuka_assistant_surgeon",
+      "source": "/Users/ningye/.codex/generated_images/01a12d07-5e53-7860-a96a-d767acf62c30/exec-0a179c5d-46bc-4c64-ac7a-df5f0953c378.png",
+      "path": "assets/events/staff_surgery_v1/doc_asuka/assistant_confirmation.png",
+      "sha256": "b2d9692c6fefebd4749d3367cc0d3475e414a64bd9b0c3239a20ea8e8d5d7787"
+    },
+    {
+      "id": "role_cg_doc_artoria_assistant_surgeon",
+      "source": "/Users/ningye/.codex/generated_images/01a12d07-5e53-7860-a96a-d767acf62c30/exec-87422771-4930-4bd8-b90d-8c8ce1114081.png",
+      "path": "assets/events/staff_surgery_v1/doc_artoria/assistant_confirmation.png",
+      "sha256": "ab28503ba5e2bd5fe319f0ac011e4400164d5420d40951a6d470a5ebd4426d52"
+    },
+    {
+      "id": "role_cg_nurse_satsuki_scrub_nurse",
+      "source": "/Users/ningye/.codex/generated_images/01a12d07-5e53-7860-a96a-d767acf62c30/exec-e8c373cd-48a8-4890-887b-c250dc9c723c.png",
+      "path": "assets/events/staff_surgery_v1/nurse_satsuki/scrub_nurse_confirmation.png",
+      "sha256": "e1efda1ca44343c53883309eddf1e01d411228ff35ebdf8492545fad7069e37d"
+    },
+    {
+      "id": "role_cg_nurse_satsuki_circulating_nurse",
+      "source": "/Users/ningye/.codex/generated_images/01a12d07-5e53-7860-a96a-d767acf62c30/exec-9e55fc62-2884-4868-97e7-5aabe85be131.png",
+      "path": "assets/events/staff_surgery_v1/nurse_satsuki/circulating_nurse_confirmation.png",
+      "sha256": "bfc77b7686ed46dca61a634e4b61795ccfbbce2e7fb9ac03b9260f42af3cd65c"
+    },
+    {
+      "id": "role_cg_nurse_satsuki_ward_nurse",
+      "source": "/Users/ningye/.codex/generated_images/01a12d07-5e53-7860-a96a-d767acf62c30/exec-28924aae-371d-4b85-9436-f63cae0c017f.png",
+      "path": "assets/events/staff_surgery_v1/nurse_satsuki/preop_care_confirmation.png",
+      "sha256": "d029bba8487866d4e95c0a2ecb4c33f10c2e25ec1300d4a7d6ad9b8927ea400e"
+    }
+  ],
+  "excluded_per_user": [
+    "nurse_ishigami",
+    "doc_sakura_anesthesiology",
+    "visiting_maya",
+    "visiting_futaba"
+  ],
+  "scope": "Five new first-assignment memories; existing team eligibility and story unchanged. Captions use existing role labels, no new narrative.",
+  "references": {
+    "doc_asuka": "assets/characters/portrait_pack_v15/doc_asuka/sterile/neutral.png",
+    "doc_artoria": "assets/characters/portrait_pack_v16/doc_artoria/sterile/neutral.png",
+    "nurse_satsuki_surgery": "assets/characters/portrait_pack_v25/nurse_satsuki/scrubs/neutral.png",
+    "nurse_satsuki_ward": "assets/characters/portrait_pack_v24/nurse_satsuki/uniform/neutral.png"
+  },
+  "validation": {
+    "role_cgs_total": 31,
+    "runtime_checks": 1299,
+    "failures": 0,
+    "data_records": 640,
+    "narrative_localization_checks": 6901,
+    "rendering": "Godot4.5.1 OpenGL, 10 new CG displays across zh_CN/en inspected",
+    "text_audit": "Existing story/dialogue unchanged; added role labels/titles only, all ten fields translated."
+  }
+}

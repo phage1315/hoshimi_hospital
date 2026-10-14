@@ -67,6 +67,10 @@ func check_all_rewards(app) -> void:
 			expect(app.screen == "staff_role_reward", context + ": first assignment did not show CG")
 			var cg: TextureRect = app.page.get_node_or_null("StaffRoleRewardCG")
 			expect(cg != null and cg.texture == texture, context + ": wrong displayed texture")
+			if "--capture-new" in OS.get_cmdline_user_args() and original.staff_id in ["doc_asuka", "doc_artoria", "nurse_satsuki"]:
+				await process_frame
+				await RenderingServer.frame_post_draw
+				root.get_texture().get_image().save_png("/tmp/%s_%s.png" % [locale, original.id])
 			expect(app.game.staff_role_cg_unlocked(str(original.id)), context + ": gallery unlock missing")
 			var next_button: Button = app.page.get_node_or_null("StaffRoleRewardContinue")
 			expect(next_button != null, context + ": no return to preparation")

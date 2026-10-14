@@ -16,3 +16,14 @@
 运行时通过各角色目录的 `role_rewards.json` 登记。角色第一次成功被选择为对应岗位后，CG 立即播放一次并永久收入“事件鉴赏”；以后再次担任同一岗位不会重复打断术前流程。解锁 ID 写入该角色关系状态的 `unlocked_benefits`，沿用现有存档结构。
 
 完整生成来源、提示摘要、尺寸和 SHA-256 见 `research/imports/nurse_role_confirmation_cgs_2026-09-27.json`。
+
+
+## 2026-10-11 追加：折川皐月三岗位
+
+- 器械：`assets/events/staff_surgery_v1/nurse_satsuki/scrub_nurse_confirmation.png`，无菌长袖手术衣、手套、口罩与眼镜，器械递送。
+- 巡回：`assets/events/staff_surgery_v1/nurse_satsuki/circulating_nurse_confirmation.png`，刷手服、口罩与眼镜，术野外围设备及记录核对。
+- 病房：`assets/events/staff_surgery_v1/nurse_satsuki/preop_care_confirmation.png`，白色护士服，空床与术前用品准备。
+- 三张均由内置ImageGen生成1672×941 RGB。参考本人的现有刷手服/制服立绘；各岗位独立首次解锁，未修改角色资格、关系等级、剧情或奖励数值。
+- 用户明确千鹤为护士长，不在本批团队岗位CG范围；不再计为本批待补，本次未改她的资格数据。
+- 本批共新增5条岗位CG，系统总数31条。中英文岗位回归1299项零失败，覆盖首次分配播放、重复不播放、画廊、跨语言存档恢复；真实OpenGL渲染核对10张新CG中英文界面。数据验证640条通过，叙事本地化6901项零失败；全局审计正常结束、UI682/682，既有source fallback覆盖差额仍保留。
+- 本批新增文本仅为既有岗位标题/标签的登记及对应英文，无新增对白或旁白，无改动原文。来源与提示词见 `research/imports/staff_role_cgs_2026-10-11.json` 和相邻prompts文件；视觉证据 `docs/qa/staff_role_cgs_2026-10-11/`。

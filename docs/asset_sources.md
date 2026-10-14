@@ -1,5 +1,29 @@
 # 人物素材 / 本地占位测试
 
+### 人物立绘Lossy 0.90试玩（2026-10-13）
+
+- 用户反馈重新导出约1.64G，授权继续尝试立绘有损导入。范围为真实加载的医护／患者 `visuals.portraits`（排除已处理的麻醉splash）及剧情 `portrait_path`，去重830张，含人物状态图；其中2张与CG池共用、已是Lossy 0.90，本轮实际新增修改828张。不按目录处理未引用旧图或研究参考图。
+- 仅改 `.import` 的 `compress/mode=1`、`compress/lossy_quality=0.9` 并重新导入。全部原PNG、路径、尺寸、节点绑定及其他导入参数不变；830张源图SHA-256和压缩前设置／纹理大小存于 `research/imports/portrait_lossy_trial_2026-10-13.json`。回退按各条目的原始设置恢复，2张原有Lossy共用图不回退成无损；不要使用Git重置。
+- 本组830张导入纹理886,614,000→140,749,162字节（845.54→134.23MiB）；单算新增828张为845.33→134.02MiB，减少84.15%、约711.31MiB。未重新导出ZIP，不能将此数字直接视为新安装包体积；导出排除规则及全局默认设置未改。
+- 逐张原图哈希、尺寸、解码及每个像素的alpha字节比较通过，透明轮廓／半透明度未改变。此检查不等于RGB颜色、线条细节无损，也不代替用户实际窗口画质验收。重新启动工程即可试玩；旧ZIP必须另行导出。
+- 同期立绘UI回归发现芳美原图尺寸不一致：截石位tense／afraid为1448×1080，对比awake的1448×1086；术中pain为1222×1287，对比tense的1448×1086。源PNG与压缩前记录一致，压缩未改变尺寸；保留原图并另记问题，不擅自裁切／拉伸来通过测试。
+
+### 背景／剧情／岗位／麻醉CG扩展Lossy（2026-10-13）
+
+- 用户试玩ASSET-033后反馈非立绘CG有损效果看不出差异，并明确授权背景、独立剧情CG、岗位CG及麻醉CG全部沿用Lossy 0.90。该反馈属于上一批试玩结果，不代替本批画质验收。
+- 按真实加载内容定位151张新增PNG：背景注册51张、剧情节点 `cg_path`／画廊 `path` 43张、岗位奖励31张、患者全麻／诱导前／硬膜外splash 26张。工具 `tools/fullscreen_lossy_inventory.gd` 检查中英文集合并排除立绘引用；不按目录整批压缩，未接入的旧版本、参考图及无关素材不纳入。
+- 151个 `.import` 只改 `compress/mode=1` 和 `compress/lossy_quality=0.9`，已经重新导入。原图SHA-256、尺寸、原设置与原纹理体积保存在 `research/imports/fullscreen_lossy_2026-10-13.json`；PNG原图、路径、剧情节点、背景ID、岗位／麻醉触发和语言数据不改。其他导入文件与本轮前快照比较不变，包含上一批256张的Lossy设置。
+- 新增纹理215,432,444→34,631,044字节（205.45→33.03MiB），减少83.92%；与上一批合计407张，499.80→73.59MiB，减少约426.21MiB。只是纹理文件实测，未重新导出ZIP，默认导入及导出排除规则不改。
+- 回退方式同上批：仅按本批清单恢复两项原始导入设置并重新导入，不能用Git重置覆盖用户的其他修改。停止当前游戏后重新运行工程可测试新纹理；旧ZIP不自动更新。
+
+### CG池有损导入试玩（2026-10-13）
+
+- 用户授权先测试现有CG的Lossy导入。范围由当前ContentLoader实际加载的三个集合确定：`examination_cg_pools` 46张、`surgery_cg_pools` 114张、`ward_preparation_cg_pools` 96张，共256张，包括患者包注册的专属池。
+- 仅修改这些PNG的 `.import`：`compress/mode=1`、`compress/lossy_quality=0.9`，并执行Godot重新导入。原始PNG逐字节保留，路径、尺寸、池ID、触发条件及中英文映射不变。没有转成JPG、缩图或修改画面；人物立绘、背景、非池剧情CG、麻醉splash及其余导入设置不纳入。
+- 256张源图共436.39MiB；导入纹理从294.35MiB降至40.56MiB，减少86.22%。这是当前纹理文件实测，不是重新导出ZIP后的整包测量。默认导入规则、导出排除规则与既有ZIP均未修改。
+- 来源与原图SHA-256、原始压缩设置、尺寸、原纹理大小记录于 `research/imports/cg_lossy_trial_2026-10-13.json`。恢复时只将清单内 `.import` 的 `compress/mode` 和 `compress/lossy_quality` 恢复为清单的 `original_compress_mode`／`original_lossy_quality`，再重新导入；不要用Git重置，以免覆盖用户其他修改。
+- 试玩应停止当前运行实例后重新启动项目；已经导出的旧ZIP仍为旧纹理，需另行导出才能测试新压缩。画质是否接受由用户实际窗口试玩确认；自动检查只验证源图未改、纹理可解码、尺寸及透明分类、两种语言池路径一致，不把这些当作“肉眼无损”结论。
+
 ### 四季街景夜间差分（2026-10-11，接续四季差分）
 
 - 触发边界已按用户要求收紧：八张四季昼夜街景仅在同行会话 `phase=result` 且 `outcome=completed`（邀请且同事接受）后显示。邀请页面、同事婉拒、选择各自回家均保留医院大厅/医院夜景；不修改接受率、奖励或剧情原文。
@@ -361,7 +385,7 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 - 仰卧与截石位各四态：同目录下的 `operating_table/`、`operating_table_lithotomy/`，1448×1086 RGB，完整俯视台面、手术帽、裸肩/锁骨和不透明铺巾；胸腹、骨盆及大腿完整覆盖。闭眼麻醉态不加面罩。
 - 术中四态：`assets/characters/intraoperative_portraits_v1/patient_aerith/`，1448×1086 RGBA，正面头颈肩锁骨头像，无面罩、床、铺巾或衣领。全麻特写：`assets/events/anesthesia_v1/patient_aerith/general.png`，1672×941 RGB，闭眼、口鼻面罩及右侧管路；修正了草稿误生双辫的问题。
 - 用户附件 4 原样保存为 `assets/examinations/patient_aerith/full_undress.png`，1056×1584 RGBA，作为 `examination/shy` 候选立绘；哈希与附件完全相同。该透明立绘与后续全屏 CG 分开保存。
-- 2026-10-10 原样导入用户补充的 5 张 1584×1056 RGB 全屏 CG：`assets/examinations/patient_aerith/full_undress_basic_exam.png`，以及 `assets/events/ward_preparation_v1/patient_aerith/` 下的 `enema.png`、`skin_prep.png`、`sterile_draping.png`、`incision.png`。草稿专属池为检查 1 个、动作 4 个；铺巾绑定 `ack_disinfection`，下刀绑定实际 `incise_epidural` / `incise_local` / `incise_none`，不绑定较早的 `request_scalpel`。铺巾和下刀画面仅匹配腹部/盆腔术式组，不改变随机病例分配。
+- 2026-10-10 原样导入用户补充的 5 张 1584×1056 RGB 全屏 CG：`assets/examinations/patient_aerith/full_undress_basic_exam.png`，以及 `assets/events/ward_preparation_v1/patient_aerith/` 下的 `enema.png`、`skin_prep.png`、`sterile_draping.png`、`incision.png`。铺巾绑定 `ack_disinfection`；下刀图最初被错误绑定到 `incise_*`，已于 2026-10-12 修正为接过手术刀后的 `request_scalpel`。铺巾和下刀画面仅匹配腹部/盆腔术式组，不改变随机病例分配。
 - CG 来源、哈希、触发规则和待注册英文标签见 `research/imports/patient_aerith_cg_2026-10-10.json`。原图未裁切；现有全屏等比覆盖在 1280×800 下会裁去上下各约 33 个源像素，尚未进行 Godot UI 实测。
 - 21 个键、尺寸、模式、Alpha、唯一哈希和浅/深底并排检查通过。8 张台面图及 1 张头像由 1447×1087 按比例微调并居中裁去缩放后的 2 行像素，规范为 1448×1086；原始生成文件保留。提示词及真实输入路径见 `research/imports/patient_aerith_portraits.json`，验收与哈希见 `research/imports/patient_aerith_portrait_audit.json`，并排图见 `research/imports/patient_aerith_qa/`。
 - 新增共享人格 `playful_defiant_detail`，保留用户提供的 27 条通用台词、13 组差分；爱丽丝草稿只保存 7 条个人台词、4 组个人差分覆盖，中文原文逐句核对，英文译文分别保存。未修改病例分配、麻醉、术式、关系或数值机制。
@@ -411,4 +435,178 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 
 - 用户提供的 6 张种子图和透明全裸诊察立绘已归档于 `research/character_references/patient_miyamizu_mitsuha/`；立绘原样导入 `assets/examinations/patient_miyamizu_mitsuha/full_undress.png`，只绑定 `patient.visuals.portraits["examination/shy"]`，未冒充全屏诊察 CG。
 - 已导入来源 bundle 至 `data/patients/patient_miyamizu_mitsuha/patient.json` 并登记患者索引。21 个基础 portrait 键现已全部映射：门诊 1、病房 6、仰卧台 4、截石位 4、术中头像 4、全麻 splash 1、用户提供的诊察立绘 1。截石位麻醉态仅做 1px 画布尺寸规范，不拉伸；新补的透明术中头像有轻微青色边缘杂色，已在记录中注明。
-- 用户原始中文剧情与对白保持未改；为 bundle 中全部 95 个中文叶字段加入英文映射。没有新增专属全屏 CG 池；该类别按用户工作流标记为可选后续阶段，不阻塞基础数据和 portrait 导入。详情与每个运行时文件的 SHA-256 见 `research/imports/patient_miyamizu_mitsuha_2026-10-11.json`。
+- 用户原始中文剧情与对白保持未改；为 bundle 中全部 95 个中文叶字段加入英文映射。随后按用户明确的可选 CG 阶段，追加导入并连接 7 张专属全屏 CG：诊室全裸检查、术前剃毛、术前转运、导尿、体位固定、术野消毒、下刀前。转运节点确认复用既有 `complete_manual_ward_preparation` 动作 ID；其余分别接入 `ward_skin_prep`/`ward_skin_prep_unnecessary`、`urinary_catheterization`、`operative_positioning`、`skin_disinfection`、`request_scalpel`。全部池限定 `patient_miyamizu_mitsuha`，并添加英文 label/caption。来源 CG 原件归档于 `research/character_references/patient_miyamizu_mitsuha/user_cgs/`；路径、哈希及映射见 `research/imports/patient_miyamizu_mitsuha_2026-10-11.json`。静态链路已核验；因当前环境无 Godot，尚未进行运行时画面测试。
+
+
+### 七瀬恋制服修订与常服（nurse_haru，2026-10-11）
+
+- 用户提供5张人物/护士服参考及1张常服参考，批准正面、无围裙粉色护士服样张与深灰半裙常服方案。原件存于 `research/character_references/nurse_haru/refresh_2026-10-11/`。
+- 内置 ImageGen 输出6张制服表情和1张常服neutral，均1024×1536 RGBA，存于 `assets/characters/nurse_haru_refresh_v1/`。只更新对应profile映射，保留全部旧文件和其他服装；不改剧情、岗位CG、奖励或触发条件。
+- 来源路径、SHA-256、旧映射和提示词见 `research/imports/nurse_haru_refresh_2026-10-11.json` 与 `research/imports/nurse_haru_refresh_prompts_2026-10-11.json`；详细验证记录见 `docs/after_work_casual_portraits_todo.md`。中英文真实渲染、236项专项、101项同行、1900项季节检查及数据/叙事本地化审计通过。
+
+
+### 七瀬恋秋冬风衣（2026-10-11）
+
+- 用户批准B风衣样图及9–2月规则，原样注册为 `casual_winter/neutral`：`assets/characters/nurse_haru_refresh_v1/casual_winter/neutral.png`。生成提示词在 `research/character_references/nurse_haru/winter_concepts_2026-10-11/prompts.json`；来源哈希与验证见 `research/imports/nurse_haru_winter_2026-10-11.json`。
+- 保留原制服与春夏常服；按离院工作日选择，邀请阶段即穿冬装，中英文运行时与实际渲染通过。冬装原图头部比春夏略高约20屏幕像素，未改动已选定B设计。
+
+
+### 明日香、阿尔托莉雅、皐月一次性岗位CG（2026-10-11）
+
+- 内置ImageGen基于各角色既有制服/无菌服立绘生成5张1672×941 RGB场景，注册于三个角色的role_rewards.json：明日香和阿尔托莉雅助手医各1张，皐月器械/巡回/病房各1张。
+- 来源路径、SHA-256、提示词及验证记录在 `research/imports/staff_role_cgs_2026-10-11.json` 与 `research/imports/staff_role_cgs_prompts_2026-10-11.json`。中英文31张岗位CG总回归1299项通过，五张新增内容均经实际渲染检查。
+- 不改剧情及团队资格。按用户指定排除千鹤、樱花、摩耶、双叶的本批岗位CG制作。
+
+
+### 明日香、阿尔托莉雅秋冬常服定稿（2026-10-11）
+
+- 用户批准两张ImageGen样图，原样注册至 `assets/characters/winter_casual_v1/` 下各角色的neutral.png；1024×1536 RGBA，9–2月使用，原casual保持。未新建差分或更改剧情。
+- 来源、哈希、完整生成提示词与验证在 `research/character_references/winter_casual_samples_2026-10-11/` 的manifest.json和prompts.json。季节43928项、全员服装1184项均通过，中英文原生窗口截图已验证。
+
+
+### 岩户环（patient_iwato_tamaki，2026-10-11）
+
+- 用户提供的 complete bundle、5 张种子图和透明诊察立绘归档于 `research/character_references/patient_iwato_tamaki/`。透明立绘由用户确认“完全正常，没有任何问题，可以直接使用”，原样注册为 `examination/shy`；文件哈希与归档源一致，尺寸 1056×1584 RGBA，含透明像素。
+- 患者 bundle 已导入 `data/patients/patient_iwato_tamaki/patient.json` 并在 `data/patients/index.json` 登记一次。21 个标准立绘键均映射到存在的文件：门诊1、病房6、仰卧手术台4、截石位手术台4、术中头像4、全麻splash 1、用户透明诊察立绘1。原始中文台词保持不变，英文映射已补齐。
+- 来源包的 `stress_response=overexplains_then_seeks_reassurance` 不属于当前 schema 枚举；患者运行时值使用最贴近的既有 `seeks_reassurance`，不改动对白及性格主/副标签。
+- 基础立绘导入时没有提前创建全屏 CG 池。随后按用户补充请求原样导入8张全屏 CG：诊室全裸检查1张，以及灌肠、剃毛、戴手术帽、上担架车转运、导尿、术野铺巾、下刀各1张。图像保存在 `assets/examinations/patient_iwato_tamaki/` 和 `assets/events/ward_preparation_v1/patient_iwato_tamaki/`，各自绑定患者专属池；“下刀”图最初错误绑定到 `incise_*`，已于 2026-10-12 修正为接过手术刀后的 `request_scalpel`。详见 `research/imports/patient_incision_cg_binding_repair_2026-10-12.json`。
+- CG 来源 SHA-256、池 ID、动作 ID、英文标签/说明和验证状态见 `research/imports/patient_iwato_tamaki_2026-10-11.json`。患者 bundle 本地化、池与文件静态链路及全量数据 schema 检查通过；当前环境无 Godot 可执行文件，未执行游戏内运行时画面检查。
+# 明日香春夏常服补充来源（2026-10-11）
+
+- 内置ImageGen根据已批准秋冬立绘生成春夏装，并按用户反馈修正头身比；用户批准`neutral_v2.png`接入。
+- 正式资源：`assets/characters/spring_summer_casual_v1/doc_asuka/neutral.png`，1024×1536 RGBA；源图、提示词、哈希与替换前映射见`research/imports/doc_asuka_spring_summer_2026-10-11.json`及其引用。旧素材保留。
+
+## 成美两季常服（2026-10-11）
+
+用户批准内置ImageGen生成的春夏、秋冬neutral原样接入，均1024×1536 RGBA。以现有c1058-neutral-ai.png为身份参考；正式资源位于`assets/characters/spring_summer_casual_v1/doc_aoi/`及`assets/characters/winter_casual_v1/doc_aoi/`。来源、哈希及提示词见`research/imports/doc_aoi_casual_2026-10-11.json`。原工作服保留。
+
+## 弘子、詩織秋冬常服（2026-10-11）
+
+内置ImageGen根据各自现有常服生成秋冬neutral，用户确认后原样接入`assets/characters/winter_casual_v1/{nurse_hiroko,doc_shiori}/neutral.png`，均1024×1536 RGBA。源图、提示词、哈希与验收记录见`research/imports/hiroko_shiori_winter_2026-10-11.json`。原春夏常服及工作服保留。
+
+## 小夜香、遥凑秋冬常服（2026-10-11）
+
+内置ImageGen以各自casual/neutral为参考生成秋冬neutral，用户批准后原样接入`assets/characters/winter_casual_v1/{doc_sayaka,doc_minato}/neutral.png`，均1024×1536 RGBA。源图、提示词及哈希见`research/imports/sayaka_minato_winter_2026-10-11.json`。保留原春夏图和工作服。
+
+## 深山佳織两季常服（2026-10-11）
+
+内置ImageGen使用紫发身份母版、原作粉色套装服装参考与v20白大褂姿势参考生成两季neutral，用户确认后原样接入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/doc_rei/neutral.png`，均1024×1536 RGBA。原作参考未直接接入。来源、哈希及提示词见`research/imports/doc_rei_casual_2026-10-11.json`。
+
+## 御堂江美子两季常服（2026-10-12）
+
+内置ImageGen以v14白大褂neutral为参考制作，用户批准后原样接入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/doc_emiko/neutral.png`，均1024×1536 RGBA。来源、哈希及提示词见`research/imports/doc_emiko_casual_2026-10-12.json`。
+
+## 阿库娅两季常服（2026-10-12）
+
+用户批准设计并授权直接接入。内置ImageGen以v18白大褂neutral为参考绘制春夏，再以其生成秋冬，原样接入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/doc_aqua/neutral.png`，均1024×1536 RGBA。来源、哈希、提示词和验证结果见`research/imports/doc_aqua_casual_2026-10-12.json`。
+
+## 樱花两季常服（2026-10-12）
+
+内置ImageGen以v23白大褂neutral_v1为参考制作，用户确认春夏领带修正版及秋冬装后原样接入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/doc_sakura_anesthesiology/neutral.png`，均1024×1536 RGBA。来源、哈希及参考清单见`research/imports/doc_sakura_casual_2026-10-12.json`；提示词存于其引用的样图目录。
+
+## 清水伊莱莎患者专属立绘与术前 CG（2026-10-12）
+
+按用户提供顺序原样导入全裸立绘、诊室脱衣查体、剃毛、灌肠、导尿、铺巾、下刀前及担架车转运素材。立绘接入 `examination/shy`；诊室 CG 仅绑定完成脱衣的三条查体分支；术前 CG 分别绑定 `ward_skin_prep`、`ward_enema`、`urinary_catheterization`、`ack_disinfection`、`request_scalpel` 和人工病房准备结束的 `complete_manual_ward_preparation`。CG 标签与说明均提供英文版本；未改动原图。来源路径与 SHA-256 见 `research/imports/patient_shimizu_iraiza_cgs_2026-10-12.json`。
+
+## 朝倉美幸两季常服（2026-10-12）
+
+内置ImageGen以原制服身份参考绘制两季常服，按用户反馈补足颅顶及发量，用户确认后原样导入修正版至`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/nurse_yui/neutral.png`。来源、哈希、提示词与验证记录见`research/imports/nurse_yui_casual_2026-10-12.json`。
+
+## 中井美佳两季常服（2026-10-12）
+
+内置ImageGen以v2制服neutral为身份参考生成春夏，再以其生成秋冬，保留深棕长辫及蓝灰眼睛。用户确认后原样导入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/nurse_rin/neutral.png`，均1024×1536 RGBA。来源、SHA-256、提示词和验证结果见`research/imports/nurse_rin_casual_2026-10-12.json`。
+
+## 利根川安琪原作两季常服高清重绘（2026-10-12）
+
+以用户两张原作服装附件为参考，内置ImageGen按星见高清画风重绘；春夏按反馈移除胸牌、挂绳、文件夹及钢笔，两季眼睛放大靠拢原作。用户批准v2后原样导入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/nurse_ange/neutral.png`，均1024×1536 RGBA。秋冬参考缺少下半身，外套下摆与裤装为补绘。附件、来源哈希、提示词和验证结果见`research/imports/nurse_ange_casual_2026-10-12.json`及其引用。
+
+## 本庄萌惠两季常服（2026-10-12）
+
+内置ImageGen以v13制服neutral为身份参考、美佳春夏为画风与尺度参考制作春夏，再生成同姿势秋冬。用户批准后原样导入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/nurse_moe/neutral.png`，均1024×1536 RGBA。保留绿发、蓝眼和银色眼镜。来源、SHA-256、提示词及验证结果见`research/imports/nurse_moe_casual_2026-10-12.json`。
+
+## 折川皐月两季常服（2026-10-12）
+
+内置ImageGen以v24制服neutral为身份、姿势及画风参考制作春夏，再生成同姿势秋冬。用户批准后原样导入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/nurse_satsuki/neutral.png`，均1024×1536 RGBA。保留深绿长发、浅蓝灰眼和黑色矩形眼镜。来源、SHA-256、提示词及验证结果见`research/imports/nurse_satsuki_casual_2026-10-12.json`。
+
+## 真奈美、千鹤两季常服（2026-10-12）
+
+用户批准四张定稿原样接入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/{pharmacist_manami,nurse_ishigami}/neutral.png`，均1024×1536 RGBA。真奈美以v10药剂师立绘为身份参考，由内置ImageGen绘制成熟知性两季服装；千鹤以用户原作肖像和v22制服为参考，保留深色立领及银饰，补绘下装与冬装。来源、哈希、提示词和验收记录分别见`research/imports/pharmacist_manami_casual_2026-10-12.json`、`research/imports/nurse_ishigami_casual_2026-10-12.json`。
+
+## 成年双叶两季常服（2026-10-12）
+
+内置ImageGen以v21成年双叶白大褂neutral为身份及画风参考，按用户批准的成年医学专家常服设计绘制春夏与秋冬。用户确认后原样导入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/visiting_futaba/neutral.png`，均1024×1536 RGBA。来源、SHA-256、提示词和验证记录见`research/imports/visiting_futaba_casual_2026-10-12.json`。
+
+## 摩耶两季常服（2026-10-12）
+
+内置ImageGen以v20成年摩耶白大褂neutral为身份及画风参考，按用户指定的赤木律子着装影响设计紫色、黑灰配色与银色圆环元素。用户批准后原样导入`assets/characters/{spring_summer_casual_v1,winter_casual_v1}/visiting_maya/neutral.png`，均1024×1536 RGBA。来源、SHA-256、提示词及验证记录见`research/imports/visiting_maya_casual_2026-10-12.json`。
+
+## 约会地点背景第一批（2026-10-12）
+
+规划12处普通约会地点，其中意大利小餐馆与河边公园复用既有背景，其余10处由内置ImageGen参考既有小餐馆画风生成，原样保存于`assets/backgrounds/date_locations_v1/`。全部为不透明横向PNG。来源、完整提示词、尺寸与SHA-256见`research/imports/date_locations_v1_2026-10-12.json`，规划与待办见`docs/date_locations_plan.md`，预览见`docs/date_locations_gallery.html`。本批仅制作素材，新图尚未注册为游戏可选地点；酒店为独立剧情特殊地点，未纳入本批。
+
+## 酒店剧情约会背景（2026-10-12）
+
+用户要求补绘酒店背景。内置ImageGen以本批咖啡店为画风参考生成无人物夜间客房，原样保存于`assets/backgrounds/date_locations_v1/hotel_room_night.png`。来源、尺寸、SHA-256与完整提示词见`research/imports/hotel_date_background_2026-10-12.json`。该图仅供剧情特殊约会使用，尚未注册或开放普通约会入口。
+
+## 酒店背景修改稿 v2（2026-10-12）
+
+内置ImageGen依据用户反馈，以旧酒店背景为修改对象，调整为玫瑰暖光、纱帘与弧形软包的精品love hotel客房。保存于`assets/backgrounds/date_locations_v1/hotel_room_night_v2.png`，旧版保留；完整提示词、来源及哈希见`research/imports/hotel_date_background_v2_2026-10-12.json`。待审阅，未修改游戏逻辑。
+
+## 四季限定约会背景（2026-10-12）
+
+内置ImageGen参考既有海滨步道画风绘制赏樱日式庭院、夏日沙滩、红叶古寺和滑雪场四张无人物CG，原样保存于`assets/backgrounds/date_locations_v1/`。PNG可读、不透明，复制哈希一致。完整提示词、来源和尺寸见`research/imports/seasonal_date_backgrounds_2026-10-12.json`。待审阅，未接入游戏季节筛选逻辑。
+
+## 约会场景统一接入（2026-10-12）
+
+12处常驻、4处季节限定和酒店v2均已注册到`data/backgrounds.json`与`data/events/date_locations.json`；旧酒店v1仅保留历史稿。普通地点按月份开放，酒店标记`story_only`。中英文UI及四季常服显示已验证，5510项季节约会测试、17项周日测试、689条数据校验通过；详情和截图见`docs/date_locations_plan.md`及`docs/qa/date_locations_2026-10-12/`。
+
+## 麻生优子用户提供 CG 导入（2026-10-12）
+
+按用户给定顺序导入全裸立绘、诊室全裸查体、剃毛、灌肠、戴手术帽、担架车、导尿、术野消毒、铺巾和下刀前共10项。立绘映射到`examination/shy`；诊室图仅绑定完成脱衣分支；担架车绑定手动病房准备的`complete_manual_ward_preparation`；下刀前图绑定`request_scalpel`，不绑定`incise_*`。术前准备池未限定手术组，以支持随机病例；详细来源、运行路径、尺寸与哈希见`research/imports/patient_yuko_asou_cgs_2026-10-12.json`。
+
+## 通用采血 CG 五图随机池（2026-10-13）
+
+按用户批准接入 `assets/examinations/blood_draw_v2/` 的五张图：01第一版重画、02白制服双人构图、03眼镜患者、04操作近景、05采血后按压棉片。内置 ImageGen 来源、尺寸与 SHA-256 见 `research/imports/blood_draw_variants_2026-10-13_assets.json`，本批提示词见同目录 `blood_draw_variants_2026-10-13_prompts.json`。五张均为1672×941 PNG，复制哈希复核通过；02、04使用修正多余手指后的版本。
+
+`data/examination_cg_pools.json` 的 `blood_draw.paths` 替换为上述五图，复用现有随机单图 splash 逻辑，每次检查等概率抽取一张（各20%），不会串播采血与按棉片两个画面。既有检查映射、中文说明、英文说明和继续按钮保持原样；旧图保留在磁盘，不再进入采血池。Godot已导入五张纹理，716条数据及引用校验通过。
+
+验证：`tools/examination_splash_test.gd` 中英文流程215项、0失败；确认每次只显示一个检查弹窗，点击后只继续一次，真实诊察流程可继续至住院。`git diff --check`通过。
+
+## 通用腹部超声五图随机池（2026-10-13）
+
+沿用用户确认的星见采血CG画风，使用内置ImageGen生成五张1672×941 PNG，保存于 `assets/examinations/abdominal_ultrasound_v2/`：01床边仰卧、02反向构图、03探头近景、04侧卧检查、05护士肩后观察。护士统一纯白制服，覆盖人物形象、取景和检查体位的变化。生成提示词、参考图和原始输出路径分别记录在 `research/imports/abdominal_ultrasound_variants_2026-10-13_prompts.json` 与 `research/imports/abdominal_ultrasound_variants_2026-10-13_assets.json`；保存后SHA-256复核通过，五张均已完成Godot纹理导入。
+
+`abdominal_ultrasound.paths`改为上述五图，沿用单图随机弹窗：各20%，每次检查仅显示一张，点击后继续，不增加串播环节。原图保留但退出池；检查映射、中英文说明和业务逻辑均未修改。716条记录及资源引用校验通过。
+
+验证：中英文 `tools/examination_splash_test.gd` 215项、0失败；单弹窗、单次继续与真实诊察至住院流程通过。`git diff --check`通过。
+
+## 通用 CT 检查五图随机池（2026-10-13）
+
+使用内置ImageGen，参考已批准的白制服采血CG画风制作五张1672×941 PNG：床边准备、正面进机、控制室观察、患者近景、扫描架侧面。保存于 `assets/examinations/ct_scan_v2/`，提示词与来源哈希见 `research/imports/ct_scan_variants_2026-10-13_prompts.json` 和 `research/imports/ct_scan_variants_2026-10-13_assets.json`。五图复制哈希核对通过，Godot导入完成。
+
+`ct_scan.paths`替换为五图，复用每次检查单张随机弹窗，各20%；无连续播放环节。原图保留但退出池，CT检查ID映射及中英文说明保持不变。716条数据和引用校验通过。
+
+验证：中英文 `tools/examination_splash_test.gd` 本轮214项、0失败，检查弹窗及诊察继续流程通过；`git diff --check`通过。
+
+## 通用 MRI 检查五图随机池（2026-10-13）
+
+使用内置ImageGen，参考已批准的白制服采血CG画风制作五张1672×941 PNG：佩戴听力防护、正面进机、控制室观察、患者近景、侧面准备。保存于 `assets/examinations/mri_scan_v2/`，提示词与来源哈希见 `research/imports/mri_scan_variants_2026-10-13_prompts.json` 和 `research/imports/mri_scan_variants_2026-10-13_assets.json`。五张原样复制，尺寸和SHA-256复核通过，Godot纹理导入完成。
+
+`mri_scan.paths`替换为五图，沿用每次检查随机单张弹窗，各20%，不串播。保留原图但退出随机池；既有乳腺、肝脏、盆腔MRI映射及中英文说明未修改。716条数据及引用校验通过。
+
+验证：中英文 `tools/examination_splash_test.gd` 214项、0失败，单弹窗、单次继续及真实诊察至住院流程通过；`git diff --check`通过。headless环境仍有既存macOS证书提示和外部编辑器设置保存权限提示，不影响本次导入及测试完成。
+
+## 通用内镜检查准备五图随机池（2026-10-13）
+
+使用内置ImageGen，以已批准的白制服采血CG为画风参考，制作五张1672×941 PNG：床边说明、调整枕头、指夹监测、患者视角安抚、团队准备。原样保存于 `assets/examinations/endoscopy_preparation_v2/`。提示词、参考图、原始输出路径与SHA-256分别见 `research/imports/endoscopy_preparation_variants_2026-10-13_prompts.json` 和 `research/imports/endoscopy_preparation_variants_2026-10-13_assets.json`。复制哈希与尺寸复核通过，五张Godot纹理导入完成。
+
+`endoscopy_preparation.paths`替换为五图，各20%，每次检查仅显示一张，点击后继续。沿用胃镜、肠镜、支气管镜活检、膀胱镜、直肠镜和超声内镜的既有映射；画面采用通用检查前准备，不描绘特定插镜操作。原图保留但退出池，中英文说明与业务逻辑未修改。
+
+验证：716条数据及引用校验通过；中英文 `tools/examination_splash_test.gd` 215项、0失败，单弹窗、单次继续和真实诊察至住院流程通过；`git diff --check`通过。headless环境仍有既存macOS证书提示及外部编辑器设置保存权限提示，不影响导入和测试完成。
+
+## 岩井善美立绘修正（2026-10-13）
+
+试玩反馈指出门诊常服需要半身构图、术中肖像不应带无菌单。内置ImageGen据原立绘和各术中表情图编辑；门诊neutral改为半身构图，术中tense、pain、near_collapse、anesthetized四态均去除下缘无菌单并保留原状态表情。运行路径原位替换，`patient.json` 映射未改；替换前五张原文件留存在 `research/character_references/patient_iwai_yoshimi/portrait_corrections_2026-10-13/`。原始生成文件、尺寸、SHA-256及静态验证结果见 `research/imports/patient_iwai_yoshimi_portrait_correction_2026-10-13.json`。
+# 小夜香V2既有素材复用（2026-10-13）
+
+本轮没有新增／生成美术。换号沿用 `assets/events/character_events/sayaka/phone_contact_closeup.png`；账单与成功鉴赏沿用 `assets/events/character_events/sayaka/lv1_split_bill.png`。办公室、意大利餐馆、公共走廊沿用已注册背景；共同回程按日期月份复用现有四季夜间街景。电话及工作回调为white_coat，约会为casual，保留既有服装解析。技术ID与资源路径不翻译。

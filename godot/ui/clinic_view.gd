@@ -3,7 +3,7 @@ extends RefCounted
 static func render(app: Control, visit: RefCounted) -> void:
 	var patient: Dictionary = app.content.find_record("patients", visit.definition.patient_id)
 	var stage: Dictionary = visit.current()
-	var line: Dictionary = visit.presentation()
+	var line: Dictionary = app.game.clinic_presentation(visit)
 	var speaker_id := str(line.speaker)
 	if speaker_id == "outpatient_support":
 		speaker_id = app.game.resolve_outpatient_support_actor()
@@ -37,7 +37,12 @@ static func render(app: Control, visit: RefCounted) -> void:
 	if visit.completed():
 		app.label_at(app.tx("ui.clinic.admitted", "✓ 已收住院"), Vector2(65, 275), 32, Color("f4f0e6"), 610)
 		app.label_at(app.tx("ui.clinic.summary", "用时 %s 分钟 · 判断修正 %s 次") % [visit.minutes, visit.mistakes], Vector2(65, 332), 20, Color("dce5e3"), 620)
-		app.button_at(app.tx("ui.clinic.go_ward", "前往病房 →"), Vector2(60, 409), Vector2(400, 54), app.show_location.bind("ward"))
+		if app.game.can_end_day_after_admission(str(visit.definition.id)):
+			var end_day_button: Button = app.button_at(app.tx("ui.clinic.admission_end_day", "交接患者休息，结束今日工作 →"), Vector2(60, 409), Vector2(655, 54), app.finish_admission_day.bind(str(visit.definition.id)))
+			end_day_button.name = "AdmissionEndDay"
+		else:
+			var ward_button: Button = app.button_at(app.tx("ui.clinic.go_ward", "前往病房 →"), Vector2(60, 409), Vector2(400, 54), app.show_location.bind("ward"))
+			ward_button.name = "AdmissionGoWard"
 	else:
 		var choices: Array = visit.ui_actions()
 		for i in range(choices.size()):

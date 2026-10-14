@@ -1,0 +1,57 @@
+{
+  "status": "approved_registered",
+  "actor_id": "nurse_ishigami",
+  "sample_manifest": "research/character_references/nurse_ishigami/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/nurse_ishigami/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/nurse_ishigami/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/nurse_ishigami/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "bf9bc90624676419be9cdf35603b844b062791ff71e6b8db696e4968180f494d"
+    },
+    {
+      "source": "research/character_references/nurse_ishigami/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/nurse_ishigami/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "0c17d5bf1dedfadbed062fe71d205faa738dbc96875c7f75ef061d5e2915d4ee"
+    }
+  ],
+  "previous_visuals": {
+    "color": "303746",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "uniform/serious": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "uniform/observing": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "scrubs/observing": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ishigami/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_ishigami/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 56280,
+    "all_staff_outfit_checks": 1184,
+    "failures": 0,
+    "data_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/nurse_ishigami_casual_2026-10-12",
+    "visually_reviewed": [
+      "ishigami_casual_zh_CN_62_normal_offer.png",
+      "ishigami_casual_en_245_night_completed.png"
+    ]
+  }
+}

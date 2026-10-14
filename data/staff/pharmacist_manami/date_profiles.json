@@ -1,0 +1,44 @@
+[
+  {
+    "id": "date_pharmacist_manami",
+    "staff_id": "pharmacist_manami",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "bookstore",
+      "art_gallery"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「这周日我要给自己放个彻底的假，连行程都懒得排。下次吧，好吗？」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 90,
+      "2": 95,
+      "3": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「好呀！难得休息，当然要找点舒服又有意思的事做。」"
+      },
+      "satisfied": {
+        "text": "「挺不错的嘛。跟你在外面玩，比站一天手术助手位轻松多了。」"
+      },
+      "favorites": [
+        {
+          "id": "bookstore",
+          "text": "「我只打算买一本书耶，怎么最后挑了三本？都是你害我越逛越起劲的啦。」"
+        },
+        {
+          "id": "art_gallery",
+          "text": "「这次展览挺有意思的。每幅画都能聊几句，逛起来舒服，又不用赶着去哪儿。」"
+        }
+      ]
+    }
+  }
+]

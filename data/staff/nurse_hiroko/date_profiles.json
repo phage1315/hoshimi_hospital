@@ -1,0 +1,44 @@
+[
+  {
+    "id": "date_nurse_hiroko",
+    "staff_id": "nurse_hiroko",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "botanical_garden",
+      "autumn_maple_temple"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「谢谢你，这个星期我想好好休息一下。下次再邀请我吧。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 75,
+      "2": 85,
+      "4": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「好啊。难得休息日，我也想什么都不安排，就这样走走。」"
+      },
+      "satisfied": {
+        "text": "「今天好像一直是我在接受照顾呢。谢谢你，能这样慢下来很舒服。」"
+      },
+      "favorites": [
+        {
+          "id": "botanical_garden",
+          "text": "「这些花被照料得真好。今天我什么也不用做，只要站在这里看看……这种感觉很难得。」"
+        },
+        {
+          "id": "autumn_maple_temple",
+          "text": "「古寺的红叶真漂亮。听着脚下落叶的声音慢慢走，我都不想急着回去了。」"
+        }
+      ]
+    }
+  }
+]

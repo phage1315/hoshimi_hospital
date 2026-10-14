@@ -25,7 +25,9 @@
       "patient_gown",
       "preop_patient",
       "or_table_awake",
-      "postop_patient"
+      "postop_patient",
+      "casual",
+      "casual_winter"
     ],
     "portraits": {
       "uniform/neutral": "assets/characters/portrait_pack_v24/nurse_satsuki/uniform/neutral.png",
@@ -66,7 +68,9 @@
       "postop_patient/tired": "assets/characters/relationship_patient_v1/nurse_satsuki/postop/tired.png",
       "postop_patient/hurt": "assets/characters/relationship_patient_v1/nurse_satsuki/postop/hurt.png",
       "postop_patient/shy": "assets/characters/relationship_patient_v1/nurse_satsuki/postop/shy.png",
-      "postop_patient/soft_smile": "assets/characters/relationship_patient_v1/nurse_satsuki/postop/soft_smile.png"
+      "postop_patient/soft_smile": "assets/characters/relationship_patient_v1/nurse_satsuki/postop/soft_smile.png",
+      "casual/neutral": "assets/characters/spring_summer_casual_v1/nurse_satsuki/neutral.png",
+      "casual_winter/neutral": "assets/characters/winter_casual_v1/nurse_satsuki/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -134,6 +138,10 @@
   },
   "personal_nurse": {
     "eligible": true,
+    "diagnosis_corrections": {
+      "diagnose_gastro": "「坂、坂口先生……我核对过检查记录，这个诊断似乎与其中一项结果不符。能再确认一下吗？」",
+      "diagnose_observe": "「那、那个……它能说明一部分结果，但另外几项还解释不通。我觉得……现在下结论可能太早了。」"
+    },
     "dialogue": {
       "next_test_hint": [],
       "insufficient_evidence": [],

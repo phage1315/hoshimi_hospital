@@ -1,0 +1,48 @@
+{
+  "patient_id": "patient_yuko_asou",
+  "patient_name": "麻生优子",
+  "stage": "patient_data_only",
+  "source_bundle": "/Users/ningye/Downloads/patient_yuko_asou_complete_bundle_v1.json",
+  "seed_images": [
+    "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-ed1eaf23-491e-43f3-93f2-822bfd9ad978.png",
+    "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-9cff9809-69d3-459f-b1d4-515a085bd820.png",
+    "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-2903409a-1c1d-4e9c-b64c-fbc104b696ea.png",
+    "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d5cac64d-2a52-4de0-a6af-f32693def810.png"
+  ],
+  "status": "patient_data_bundle_imported",
+  "imported": [
+    "Patient identity, adult age, case and fallback references",
+    "Patient traits, fear profile, personality, existing dialogue profile, and patient-specific dialogue",
+    "Outpatient, examination, and preoperative text",
+    "Empty patient-owned CG pools and diagnosis reactions, as supplied"
+  ],
+  "deferred": [
+    "Seed images remain reference-only and were not copied or connected as runtime assets",
+    "SFW portrait generation/import and visual acceptance",
+    "CG authoring/import and trigger integration"
+  ],
+  "enum_and_reference_audit": {
+    "age": 24,
+    "voice_style": "soft",
+    "personality_primary": "shy",
+    "personality_secondary": "caring",
+    "source_stress_response": "quiet_then_resolute",
+    "stress_response": "becomes_quiet",
+    "stress_response_mapping": "User-approved mapping: the shared enum represents Yuko's baseline quiet response; her patient-specific reaction lines preserve her individual progression toward courage and cooperation.",
+    "dialogue_profile": "shy_reassurance_quiet",
+    "case_id": "case_abdomen",
+    "fallback_surgery_id": "surgery_appendix",
+    "reaction_lines_count": 27,
+    "reaction_variants_group_count": 13,
+    "patient_specific_dialogue_preserved": true,
+    "invalid_values": []
+  },
+  "localization": "English values added for every Chinese visible-text leaf without modifying source text.",
+  "acceptance": {
+    "source_comparison": "passed; runtime bundle differs semantically from source only at the explicitly approved stress_response mapping",
+    "bundle_schema_validation": "passed; no schema or reference errors reported",
+    "patient_data_import_test": "passed; bundle indexed once, dialogue profile merged, encounter and preop generated without image dependencies",
+    "patient_bundle_localization_test": "passed; 0 failures",
+    "repository_validate_data": "stage-limited; reports only four missing intraoperative portraits (tense, pain, near_collapse, anesthetized), deferred to the patient portrait generation/import stage"
+  }
+}

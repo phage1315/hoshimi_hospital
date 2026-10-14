@@ -1,0 +1,68 @@
+{
+  "status": "approved_registered",
+  "actor_id": "nurse_ange",
+  "sample_manifest": "research/character_references/nurse_ange/original_casual_redraw_2026-10-12/manifest_v2.json",
+  "original_reference_manifest": "research/character_references/nurse_ange/original_casual_redraw_2026-10-12/manifest.json",
+  "prompts": "research/character_references/nurse_ange/original_casual_redraw_2026-10-12/prompts_v2.json",
+  "images": [
+    {
+      "source": "research/character_references/nurse_ange/original_casual_redraw_2026-10-12/spring_summer_v2.png",
+      "destination": "assets/characters/spring_summer_casual_v1/nurse_ange/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "69f6ddbccd4abe9d81977ec46bc8b51633d861b65bc3fdf8bbf5e9a476214f0d"
+    },
+    {
+      "source": "research/character_references/nurse_ange/original_casual_redraw_2026-10-12/autumn_winter_v2.png",
+      "destination": "assets/characters/winter_casual_v1/nurse_ange/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "ec683debc4915648e69ec76d4be7d836041f81f5318419e7b95666e536094960"
+    }
+  ],
+  "previous_visuals": {
+    "color": "d8c47e",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v11/nurse_ange/uniform/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v11/nurse_ange/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v11/nurse_ange/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v11/nurse_ange/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v11/nurse_ange/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v11/nurse_ange/uniform/tired.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v11/nurse_ange/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v11/nurse_ange/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v11/nurse_ange/sterile/focused.png",
+      "sterile/worried": "assets/characters/portrait_pack_v11/nurse_ange/sterile/worried.png",
+      "sterile/warm": "assets/characters/portrait_pack_v11/nurse_ange/sterile/warm.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ange/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_ange/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 88232,
+    "all_staff_outfit_checks": 1184,
+    "failures": 0,
+    "data_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/nurse_ange_casual_2026-10-12",
+    "visually_reviewed": [
+      "ange_casual_zh_CN_62_normal_offer.png",
+      "ange_casual_en_245_night_completed.png"
+    ]
+  }
+}

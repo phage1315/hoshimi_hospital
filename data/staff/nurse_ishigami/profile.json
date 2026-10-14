@@ -21,7 +21,9 @@
     "default_outfit": "uniform",
     "outfits": [
       "uniform",
-      "scrubs"
+      "scrubs",
+      "casual",
+      "casual_winter"
     ],
     "portraits": {
       "uniform/neutral": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png",
@@ -30,7 +32,9 @@
       "scrubs/neutral": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
       "scrubs/focused": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
       "scrubs/observing": "assets/characters/portrait_pack_v22/nurse_ishigami/scrubs/focused.png",
-      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ishigami/neutral.png"
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_ishigami/neutral.png",
+      "casual/neutral": "assets/characters/spring_summer_casual_v1/nurse_ishigami/neutral.png",
+      "casual_winter/neutral": "assets/characters/winter_casual_v1/nurse_ishigami/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -70,7 +74,12 @@
   "surgery_proficiency": "expert",
   "presence": {
     "fixed_locations": [],
-    "random_locations": []
+    "random_locations": [
+      "or",
+      "station",
+      "lounge"
+    ],
+    "rooftop_enabled": false
   },
   "team_dialogue": {
     "assignment": "「我不占普通岗位。护理侧的人力、轮换和物资由我看着，你继续做主刀该做的事。」",

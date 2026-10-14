@@ -1,0 +1,45 @@
+[
+  {
+    "id": "date_doc_shiori",
+    "staff_id": "doc_shiori",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "botanical_garden",
+      "spring_sakura_garden"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「对不起，这个周末已经有约了。谢谢你来问我，下次再说吧。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 50,
+      "2": 70,
+      "3": 85,
+      "4": 98
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「谢谢你邀请我。那天如果没有临时安排，我很期待和你一起出去。」"
+      },
+      "satisfied": {
+        "text": "「今天很愉快。你没有刻意安排什么夸张的节目，反而让我很放松。」"
+      },
+      "favorites": [
+        {
+          "id": "botanical_garden",
+          "text": "「温室里的花开得真好。这里不用赶着做什么，安安静静看一会儿，就觉得心情变好了。」"
+        },
+        {
+          "id": "spring_sakura_garden",
+          "text": "「庭院里的樱花真美。和你这样走着，不用在意旁边谁会怎么想……我很喜欢。」"
+        }
+      ]
+    }
+  }
+]

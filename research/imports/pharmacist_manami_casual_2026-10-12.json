@@ -1,0 +1,62 @@
+{
+  "status": "approved_registered",
+  "actor_id": "pharmacist_manami",
+  "sample_manifest": "research/character_references/pharmacist_manami/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/pharmacist_manami/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/pharmacist_manami/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/pharmacist_manami/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "0fffde0fc05063143f5aec8c56d1f3ccfcc0d88d779efaa622f4d877dcc39d82"
+    },
+    {
+      "source": "research/character_references/pharmacist_manami/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/pharmacist_manami/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "01ca882175829e3da304a331fe4c6e4c6e74e3fcee8913864d5d3faf8d088940"
+    }
+  ],
+  "previous_visuals": {
+    "color": "c75b62",
+    "default_outfit": "pharmacist",
+    "outfits": [
+      "pharmacist",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "pharmacist/neutral": "assets/characters/portrait_pack_v10/pharmacist_manami/pharmacist/neutral.png",
+      "pharmacist/worried": "assets/characters/portrait_pack_v10/pharmacist_manami/pharmacist/worried.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v10/pharmacist_manami/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v10/pharmacist_manami/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/neutral.png",
+      "sterile/worried": "assets/characters/portrait_pack_v10/pharmacist_manami/sterile/worried.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/pharmacist_manami/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/pharmacist_manami/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/pharmacist_manami/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 56280,
+    "all_staff_outfit_checks": 1184,
+    "failures": 0,
+    "data_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/pharmacist_manami_casual_2026-10-12",
+    "visually_reviewed": [
+      "manami_casual_zh_CN_62_normal_offer.png",
+      "manami_casual_en_245_night_completed.png"
+    ]
+  }
+}

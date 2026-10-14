@@ -162,7 +162,6 @@ func run() -> void:
 	cycling.patient_queue.assign(patient_queue_with_sora_first(content))
 	cycling.meet_staff("doc_rei")
 	var appearance_history: Array[String] = []
-	var first_cases: Dictionary = cycling.patient_cases.duplicate(true)
 	var repeated_patient := ""
 	for i in range(content.collections.patients.size() + 1):
 		var patient_id := cycling.current_patient_id()
@@ -171,7 +170,8 @@ func run() -> void:
 			expect(patient_id != appearance_history[-1] and patient_id != appearance_history[-2], "Patient repeated within the previous two appearances")
 		if appearance_history.has(patient_id) and repeated_patient.is_empty():
 			repeated_patient = patient_id
-			expect(cycling.patient_cases[patient_id] != first_cases[patient_id], "Returning patient kept the previous case")
+			expect(cycling.case_template_available(str(cycling.patient_cases[patient_id])), "Recycled template received an unavailable disease")
+			expect(not cycling.patient_referrals.has(patient_id), "New case inherited the old referral")
 		appearance_history.append(patient_id)
 		expect(cycling.refer_current_patient("doc_rei"), "Continuous patient rotation could not advance")
 	expect(not repeated_patient.is_empty() and cycling.recent_patient_ids.size() == 2, "Patient rotation did not recycle the limited cast")

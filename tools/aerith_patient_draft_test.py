@@ -133,11 +133,14 @@ def main():
         for action in pool['action_ids']:
             assert resolve(action, 'patient_aerith', 'general_abdominal')['id'] == pool['id']
             assert not resolve(action, 'patient_ann', 'general_abdominal')
-    for action in ['ack_disinfection', 'incise_epidural', 'incise_local', 'incise_none']:
+    for action in ['ack_disinfection', 'incise_epidural', 'incise_local', 'incise_none', 'incise_general']:
         assert not resolve(action, 'patient_aerith', 'breast')
         assert not resolve(action, 'patient_aerith', 'cardiac')
-    assert not resolve('request_scalpel', 'patient_aerith', 'general_abdominal')
-    assert not resolve('incise_general', 'patient_aerith', 'general_abdominal')
+        assert not resolve(action, 'patient_aerith', 'general_abdominal')
+    assert resolve('request_scalpel', 'patient_aerith', 'general_abdominal')['id'] == 'incision_patient_aerith'
+    assert resolve('request_scalpel', 'patient_aerith', 'female_pelvic')['id'] == 'incision_patient_aerith'
+    assert not resolve('request_scalpel', 'patient_aerith', 'breast')
+    assert not resolve('request_scalpel', 'patient_aerith', 'cardiac')
     validator_ast = ast.parse((ROOT / 'tools/validate_data.py').read_text())
     known_actions = next(ast.literal_eval(n.value) for n in validator_ast.body
                          if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'known_preparation_cg_actions' for t in n.targets))

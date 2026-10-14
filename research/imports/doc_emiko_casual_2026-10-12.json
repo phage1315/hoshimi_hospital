@@ -1,0 +1,64 @@
+{
+  "status": "approved_registered",
+  "actor_id": "doc_emiko",
+  "sample_manifest": "research/character_references/doc_emiko/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/doc_emiko/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/doc_emiko/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/doc_emiko/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "0b529b2a5ffa8c6c9433ca51f46252413dc58140f04324abd053423aeccccaeb"
+    },
+    {
+      "source": "research/character_references/doc_emiko/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/doc_emiko/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "292f84b3509b6df135a5003b3ac6a0390e97555fa4441bd7f7d60e1d278af203"
+    }
+  ],
+  "previous_visuals": {
+    "color": "c85b6f",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/smile.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/serious.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/surprised.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/worried.png",
+      "white_coat/warm": "assets/characters/portrait_pack_v14/doc_emiko/white_coat/warm.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/portrait_pack_v14/doc_emiko/sterile/neutral.png",
+      "sterile/focused": "assets/characters/portrait_pack_v14/doc_emiko/sterile/focused.png",
+      "sterile/worried": "assets/characters/portrait_pack_v14/doc_emiko/sterile/worried.png",
+      "sterile/warm": "assets/characters/portrait_pack_v14/doc_emiko/sterile/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_emiko/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_emiko/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_emiko/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 95322,
+    "all_staff_checks": 1184,
+    "failures": 0,
+    "validated_records": 654,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/doc_emiko_casual_2026-10-12"
+  }
+}

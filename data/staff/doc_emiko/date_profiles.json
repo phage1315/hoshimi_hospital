@@ -1,0 +1,44 @@
+[
+  {
+    "id": "date_doc_emiko",
+    "staff_id": "doc_emiko",
+    "can_date": true,
+    "minimum_level": 2,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "restaurant_bar",
+      "jazz_bar"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「今天没空。我要是想去，自然会答应；改天再说。」"
+    },
+    "minimum_familiarity": 0,
+    "acceptance_chance_by_level": {
+      "2": 55,
+      "3": 80,
+      "4": 98
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「可以。时间和地点发给我。还有，别迟到。」"
+      },
+      "satisfied": {
+        "text": "「今天没有浪费我的时间。这算一句很高的评价了。」"
+      },
+      "favorites": [
+        {
+          "id": "restaurant_bar",
+          "text": "「这家店不错。菜端上来的时机、火候，都恰到好处……你选地方的眼光还算可以。」"
+        },
+        {
+          "id": "jazz_bar",
+          "text": "「刚才那段即兴真漂亮。难得有一段时间，我脑子里完全没在想着下一台手术。」"
+        }
+      ]
+    }
+  }
+]

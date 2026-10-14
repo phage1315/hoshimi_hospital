@@ -2,7 +2,7 @@
   "patient_id": "patient_miyamizu_mitsuha",
   "display_name": "Mitsuha Miyamizu / 宫水三叶",
   "import_date": "2026-10-11",
-  "phase": "baseline_portraits_and_bundle",
+  "phase": "baseline_portraits_bundle_and_fullscreen_cgs",
   "source_bundle": "/Users/ningye/Downloads/patient_miyamizu_mitsuha_complete_bundle_v1.json",
   "source_bundle_sha256": "efcc7615b89904f706e6150e6ba1de1f45f62e24bd90dc0d40a9a0f7be636720",
   "source_references": [
@@ -39,17 +39,37 @@
     "examination/shy": {"path":"assets/examinations/patient_miyamizu_mitsuha/full_undress.png","size":"1056x1584 RGBA","sha256":"a8acfeaf304ebfb2b14e48ccf2c936e2b3bb8c1519461a67a817207b3436bc9a","source":"/Users/ningye/Downloads/00004-2760024725-Picsart-BackgroundRemover.png","note":"User-provided standee, copied byte-for-byte; portrait slot only, not a fullscreen CG."}
   },
   "fullscreen_cg_phase": {
-    "status": "deferred_optional",
-    "reason": "This phase imports and tests the patient bundle and baseline portraits first. No patient-specific fullscreen CG was supplied in this batch; the optional fullscreen CG pass can be appended later.",
-    "encounter_visual_pool_id": "",
-    "exclusive_cg_pools": {"examination": [], "ward_preparation": [], "surgery": []}
+    "status": "imported_static_linkage_verified",
+    "reason": "Seven user-supplied fullscreen CGs were imported and connected to the examination or existing ward-preparation action triggers. The transport CG uses the existing complete_manual_ward_preparation action; no runtime node was invented.",
+    "encounter_visual_pool_id": "full_undress_basic_exam_patient_miyamizu_mitsuha",
+    "exclusive_cg_pools": {
+      "examination": ["full_undress_basic_exam_patient_miyamizu_mitsuha"],
+      "ward_preparation": [
+        "ward_skin_prep_patient_miyamizu_mitsuha",
+        "transport_to_or_patient_miyamizu_mitsuha",
+        "urinary_catheterization_patient_miyamizu_mitsuha",
+        "operative_positioning_patient_miyamizu_mitsuha",
+        "skin_disinfection_patient_miyamizu_mitsuha",
+        "incision_ready_patient_miyamizu_mitsuha"
+      ],
+      "surgery": []
+    },
+    "requested_fullscreen_cgs": [
+      {"pool_id":"full_undress_basic_exam_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/full_undress_exam.png","runtime_path":"assets/examinations/patient_miyamizu_mitsuha/full_undress_basic_exam.png","sha256":"f9aee4efb36202750da7c1266d65e89fbc047bb2956ce41e9088105a98071ade","size":"1584x1056 RGB","trigger_ids":["encounter.full_undress.visual_pool_id; full-undress response branches"],"patient_ids":["patient_miyamizu_mitsuha"]},
+      {"pool_id":"ward_skin_prep_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/skin_prep.png","runtime_path":"assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/skin_prep.png","sha256":"147358fc42dc8c676adb3b53a21ea524e03d6d7fc6e09115333e337d62e48c45","size":"1584x1056 RGB","trigger_ids":["ward_skin_prep","ward_skin_prep_unnecessary"],"patient_ids":["patient_miyamizu_mitsuha"]},
+      {"pool_id":"transport_to_or_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/transport_to_or.png","runtime_path":"assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/transport_to_or.png","sha256":"1adb7b604de24f69ea9e6e15805c885dbfc7f270ae4bb24bf4e45ed407c57ec7","size":"1584x1056 RGB","trigger_ids":["complete_manual_ward_preparation"],"patient_ids":["patient_miyamizu_mitsuha"]},
+      {"pool_id":"urinary_catheterization_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/urinary_catheterization.png","runtime_path":"assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/urinary_catheterization.png","sha256":"ce955f57f6413c1d48e6d1b480d09e37a1ce0cd52faad8e6fcce219f0442a711","size":"1584x1056 RGB","trigger_ids":["urinary_catheterization"],"patient_ids":["patient_miyamizu_mitsuha"]},
+      {"pool_id":"operative_positioning_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/operative_positioning.png","runtime_path":"assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/operative_positioning.png","sha256":"3f8885bda870b0fc9fe825f57bdb168796fbedd004306ab843e8a5fd77614484","size":"1584x1056 RGB","trigger_ids":["operative_positioning"],"patient_ids":["patient_miyamizu_mitsuha"]},
+      {"pool_id":"skin_disinfection_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/skin_disinfection.png","runtime_path":"assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/skin_disinfection.png","sha256":"b2712b1178cbd781c7c2bb6a251e812b31df35baf22f12025f6d7bb6144e2784","size":"1584x1056 RGB","trigger_ids":["skin_disinfection"],"patient_ids":["patient_miyamizu_mitsuha"]},
+      {"pool_id":"incision_ready_patient_miyamizu_mitsuha","source_archive":"research/character_references/patient_miyamizu_mitsuha/user_cgs/incision_ready.png","runtime_path":"assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/incision_ready.png","sha256":"52559cac130c7e1de0e30cff179adfce33c417496129bf0e986f7c8868c97b85","size":"1584x1056 RGB","trigger_ids":["request_scalpel"],"patient_ids":["patient_miyamizu_mitsuha"]}
+    ]
   },
   "integration": {
     "bundle": "data/patients/patient_miyamizu_mitsuha/patient.json",
     "index_entry": "patient_miyamizu_mitsuha/patient.json",
     "portrait_count": 21,
-    "english_localization": "95 source Chinese leaves mapped; patient_bundle_localization_test.py passes",
+    "english_localization": "95 source Chinese leaves plus 14 fullscreen-CG label/caption strings mapped; patient_bundle_localization_test.py passes",
     "source_dialogue": "Preserved verbatim; English strings are additional locale mappings.",
-    "runtime_test": "Static bundle, source-preservation, localization, data-validation, and portrait-path checks passed. Godot executable unavailable, so live UI texture loading/display remains untested."
+    "runtime_test": "Static bundle, source-preservation, localization, data-validation, fullscreen-CG path/hash/trigger/scope checks passed. Godot executable unavailable, so live UI texture loading/display remains untested."
   }
 }

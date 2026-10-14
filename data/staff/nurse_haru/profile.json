@@ -27,15 +27,16 @@
       "scrubs",
       "sterile",
       "casual",
-      "operating_patient"
+      "operating_patient",
+      "casual_winter"
     ],
     "portraits": {
-      "uniform/neutral": "assets/characters/third_party_preview/c1053-neutral-ai.png",
-      "uniform/smile": "assets/characters/portrait_pack_v1/nurse_haru/uniform/smile.png",
-      "uniform/serious": "assets/characters/portrait_pack_v1/nurse_haru/uniform/serious.png",
-      "uniform/worried": "assets/characters/portrait_pack_v1/nurse_haru/uniform/worried.png",
-      "uniform/surprised": "assets/characters/portrait_pack_v1/nurse_haru/uniform/surprised.png",
-      "uniform/tired": "assets/characters/portrait_pack_v1/nurse_haru/uniform/tired.png",
+      "uniform/neutral": "assets/characters/nurse_haru_refresh_v1/uniform/neutral.png",
+      "uniform/smile": "assets/characters/nurse_haru_refresh_v1/uniform/smile.png",
+      "uniform/serious": "assets/characters/nurse_haru_refresh_v1/uniform/serious.png",
+      "uniform/worried": "assets/characters/nurse_haru_refresh_v1/uniform/worried.png",
+      "uniform/surprised": "assets/characters/nurse_haru_refresh_v1/uniform/surprised.png",
+      "uniform/tired": "assets/characters/nurse_haru_refresh_v1/uniform/tired.png",
       "scrubs/focused": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/focused.png",
       "scrubs/worried": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/worried.png",
       "scrubs/warm": "assets/characters/portrait_pack_v1/nurse_haru/scrubs/warm.png",
@@ -45,7 +46,9 @@
       "sterile/worried": "assets/characters/sterile_pack_v1/nurse_haru/worried.png",
       "sterile/warm": "assets/characters/sterile_pack_v1/nurse_haru/warm.png",
       "operating_patient/nervous": "assets/characters/relationship_patient_v1/nurse_haru/operating_patient/nervous.png",
-      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_haru/neutral.png"
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_haru/neutral.png",
+      "casual/neutral": "assets/characters/nurse_haru_refresh_v1/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/nurse_haru_refresh_v1/casual_winter/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -79,6 +82,10 @@
   },
   "personal_nurse": {
     "eligible": true,
+    "diagnosis_corrections": {
+      "diagnose_gastro": "「坂口医生，等一下……刚才那项检查不是跟这个诊断对不上吗？我们再看一遍，好吗？」",
+      "diagnose_observe": "「有几项确实符合，可剩下的结果怎么办呢？我担心我们漏掉了什么。」"
+    },
     "dialogue": {
       "next_test_hint": [
         "坂口医生，我觉得再确认一项会比较安心。",

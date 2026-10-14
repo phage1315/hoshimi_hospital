@@ -1,0 +1,45 @@
+[
+  {
+    "id": "date_doc_artoria",
+    "staff_id": "doc_artoria",
+    "can_date": true,
+    "minimum_level": 1,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "restaurant_bar",
+      "winter_ski_resort"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「抱歉，今天还有必须完成的事。下次若能提前约定，我会认真考虑。」"
+    },
+    "minimum_familiarity": 0,
+    "acceptance_chance_by_level": {
+      "1": 55,
+      "2": 75,
+      "3": 90,
+      "4": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「我会把那天下午空出来。既然是私人邀约，就暂时不谈工作安排了。」"
+      },
+      "satisfied": {
+        "text": "「安排得很周到。谢谢你，让我度过了难得轻松的一天。」"
+      },
+      "favorites": [
+        {
+          "id": "restaurant_bar",
+          "text": "「这顿饭很合我的口味。能不赶时间、认真享用一道菜，原来也是一种奢侈。」"
+        },
+        {
+          "id": "winter_ski_resort",
+          "text": "「想比谁先到山下？我接受。不过先确认雪道和安全规则——然后就别指望我放水了。」"
+        }
+      ]
+    }
+  }
+]

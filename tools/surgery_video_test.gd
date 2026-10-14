@@ -111,6 +111,13 @@ func run() -> void:
 	var anesthetized_preparation := MockPreparation.new()
 	anesthetized_preparation.flags.append("anesthetized")
 	expect(app.incision_video_should_mute(anesthetized_preparation), "Anesthetized incision animation retained live audio")
+	for flag in ["local_anesthesia", "epidural_anesthesia"]:
+		var regional := MockPreparation.new()
+		regional.flags.append(flag)
+		expect(app.incision_video_should_mute(regional), flag + " retained incision audio")
+		regional.flags.append("no_anesthesia_confirmed")
+		expect(app.incision_video_should_mute(regional), "Stale no-anesthesia flag overrode " + flag)
+	expect(app.incision_video_should_mute(MockPreparation.new()), "Unconfirmed anesthesia retained audio")
 	expect(ResourceLoader.exists(app.CHANGE_SCRUBS_VIDEO), "Change-scrubs transition OGV is missing")
 	expect(load(app.CHANGE_SCRUBS_VIDEO) is VideoStream, "Change-scrubs transition OGV did not load as a VideoStream")
 	expect(ResourceLoader.exists(app.SCRUB_HANDS_VIDEO), "Scrub-hands transition OGV is missing")

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "date_doc_aoi",
+    "staff_id": "doc_aoi",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "cafe",
+      "art_gallery"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「抱歉，这个周日我想留点时间给自己。改天再邀请我，好吗？」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 70,
+      "2": 85,
+      "3": 95
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「可以呀。偶尔离开医院坐坐也好，我很愿意陪你。」"
+      },
+      "satisfied": {
+        "text": "「今天很自在。能这样慢慢说话，不用急着给出什么结论，真不错。」"
+      },
+      "favorites": [
+        {
+          "id": "cafe",
+          "text": "「咖啡都快凉了，我们居然聊了这么久。下次还是找这样的店，好不好？」"
+        },
+        {
+          "id": "art_gallery",
+          "text": "「我很喜欢刚才那一幅画。不是因为它多有名，而是看着看着，心情就慢慢平静了。」"
+        }
+      ]
+    }
+  }
+]

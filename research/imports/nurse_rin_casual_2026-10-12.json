@@ -1,0 +1,67 @@
+{
+  "status": "approved_registered",
+  "actor_id": "nurse_rin",
+  "sample_manifest": "research/character_references/nurse_rin/casual_samples_2026-10-12/manifest.json",
+  "prompts": "research/character_references/nurse_rin/casual_samples_2026-10-12/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/nurse_rin/casual_samples_2026-10-12/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/nurse_rin/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "f1d600f370bc486bc53f2f7a5ae51b354d9229b8fc0fd7c9f047edfb308554da"
+    },
+    {
+      "source": "research/character_references/nurse_rin/casual_samples_2026-10-12/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/nurse_rin/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "dc0c9ea4aabe9037953e3f057feaeb11c6a70e6e453317f95d9d67518f75f4be"
+    }
+  ],
+  "previous_visuals": {
+    "color": "c2b18e",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v2/nurse_rin/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v3/nurse_rin/scrubs/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v4/nurse_rin/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v4/nurse_rin/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v4/nurse_rin/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v4/nurse_rin/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v4/nurse_rin/uniform/tired.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v4/nurse_rin/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v4/nurse_rin/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v4/nurse_rin/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/nurse_rin/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/nurse_rin/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/nurse_rin/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/nurse_rin/warm.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_rin/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_rin/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 92570,
+    "all_staff_outfit_checks": 1184,
+    "failures": 0,
+    "data_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/nurse_rin_casual_2026-10-12",
+    "visually_reviewed": [
+      "rin_casual_zh_CN_62_normal_offer.png",
+      "rin_casual_en_245_night_completed.png"
+    ]
+  }
+}

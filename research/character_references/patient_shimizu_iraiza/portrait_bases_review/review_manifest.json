@@ -1,0 +1,112 @@
+{
+  "patient_id": "patient_shimizu_iraiza",
+  "stage": "new_patient_required_portrait_generation",
+  "review_status": "base_set_approved_by_user; full 20-key portrait set integrated per user authorization",
+  "runtime_assets_modified": true,
+  "generated_from": {
+    "patient_data": "patient_shimizu_iraiza_complete_bundle_v1.json",
+    "identity_seed": "user-provided Shimizu Iraiza anime seed image",
+    "visual_reference": "patient_takano_anzu portrait matrix and matching runtime portraits"
+  },
+  "items": [
+    {
+      "key": "outpatient.neutral",
+      "file": "outpatient_neutral.png",
+      "purpose_and_consumer": "Default outpatient portrait; used by the outpatient patient view.",
+      "composition": "Adult patient standing, vertical portrait crop, neutral expression, outpatient clothing consistent with Iraiza's seed design.",
+      "spec": "PNG, 1024x1536, RGBA transparent background.",
+      "sha256": "3e8cc2417943cacdae9d07ba40a80a42643116853161a144fcc7dfd26379d68f",
+      "visual_qa": "User reviewed and said the other base images were fine.",
+      "status": "accepted_by_user"
+    },
+    {
+      "key": "ward.neutral",
+      "file": "ward_neutral.png",
+      "purpose_and_consumer": "Default ward portrait; used by the ward patient view.",
+      "composition": "Adult patient standing in a modest light-blue hospital gown, neutral expression, arms relaxed.",
+      "spec": "PNG, 1024x1536, RGBA transparent background.",
+      "sha256": "b0c78e941bc148e90c5a6f1cf5b17d0f42330c2828631f3a5f32dead4446a511",
+      "visual_qa": "User reviewed and said the other base images were fine.",
+      "status": "accepted_by_user"
+    },
+    {
+      "key": "operating_room.supine.awake",
+      "file": "supine_awake.png",
+      "purpose_and_consumer": "Awake supine operating-table portrait for reachable surgery cases using supine position.",
+      "composition": "Overhead 4:3 view; patient capped, with chest, abdomen, pelvis, and thighs fully covered by an opaque surgical drape; no instruments or exposed operative site.",
+      "spec": "PNG, 1448x1086, RGB.",
+      "sha256": "f6e6d32159a8321bd8d35c071eab990531f469a03a120475cf3336080e0ac118",
+      "visual_qa": "User reviewed and said the other base images were fine; technical dimensions/color mode pass.",
+      "status": "accepted_by_user"
+    },
+    {
+      "key": "operating_room.lithotomy.awake",
+      "file": "lithotomy_awake.png",
+      "purpose_and_consumer": "Awake lithotomy operating-table portrait for reachable surgery cases assigned lithotomy position.",
+      "composition": "Overhead 4:3 view with supported legs; pelvis and inner thighs fully concealed by an opaque drape; no instruments or exposed operative site.",
+      "spec": "PNG, 1448x1086, RGB.",
+      "sha256": "d620bcefa998bd4fef786476688e44849232cb431a348dbce82aa1f550d2652a",
+      "visual_qa": "User reviewed and said the other base images were fine; technical dimensions/color mode pass.",
+      "status": "accepted_by_user"
+    },
+    {
+      "key": "operating_room.intraoperative.tense",
+      "file": "intraoperative_tense.png",
+      "purpose_and_consumer": "Tense awake intraoperative portrait for the surgery scene.",
+      "composition": "Head-and-shoulders cutout with surgical cap and tense expression; no background, tools, mask, wounds, or blood.",
+      "spec": "PNG, 1448x1086, RGBA transparent background.",
+      "sha256": "5ad67e6ea53f8b358861332047a7e57ecc6ffd813de18630c3178e8cef5b4102",
+      "visual_qa": "Superseded after the user identified a character-face and art-style mismatch; the user did not report edge specks.",
+      "status": "superseded_style_mismatch"
+    },
+    {
+      "key": "operating_room.intraoperative.tense",
+      "file": "intraoperative_tense_style_v2.png",
+      "purpose_and_consumer": "Replacement candidate for the tense awake intraoperative portrait.",
+      "composition": "Same head-and-shoulders transparent cutout and teal surgical cap, with Iraiza's seed-image face proportions, blue-gray eyes, and simpler cel-shaded anime style.",
+      "spec": "PNG, 1448x1086, RGBA transparent background.",
+      "sha256": "0af3be0db2130e6eae51cb2c95b902722aae689ddb2ba527a9edc99bf3d428cb",
+      "visual_qa": "User explicitly approved this revised style and said no portrait showed specks.",
+      "status": "accepted_by_user"
+    },
+    {
+      "key": "anesthesia.general.post_induction",
+      "file": "general_anesthesia_post.png",
+      "purpose_and_consumer": "General-anesthesia post-induction splash scene.",
+      "composition": "Wide 16:9 operating-room scene; patient asleep with anesthesia mask and breathing tube, fully covered with opaque drapes; no exposed operative area, wounds, or blood.",
+      "spec": "PNG, 1672x941, RGB.",
+      "sha256": "a44e5f528a878a3c1623dd191bb709d104882873021199f943922447b7c668d0",
+      "visual_qa": "User reviewed and said the other base images were fine; technical dimensions/color mode pass.",
+      "status": "accepted_by_user"
+    },
+    {
+      "key": "anesthesia.general.pre_induction",
+      "purpose_and_consumer": "Conditional general-anesthesia pre-induction splash.",
+      "status": "deferred",
+      "reason": "The supplied reference is an explicit nude medical scene and the image-generation request was blocked. No replacement scene or reference will be assumed."
+    },
+    {
+      "key": "anesthesia.epidural",
+      "purpose_and_consumer": "Conditional epidural-anesthesia splash.",
+      "status": "deferred",
+      "reason": "The supplied reference is an explicit nude medical scene and the image-generation request was blocked. No replacement scene or reference will be assumed."
+    }
+  ],
+  "deferred_dependent_variants": [
+    "ward.smile",
+    "ward.brave",
+    "ward.worried",
+    "ward.afraid",
+    "ward.crying",
+    "operating_room.supine.tense",
+    "operating_room.supine.afraid",
+    "operating_room.supine.anesthetized",
+    "operating_room.lithotomy.tense",
+    "operating_room.lithotomy.afraid",
+    "operating_room.lithotomy.anesthetized",
+    "operating_room.intraoperative.pain",
+    "operating_room.intraoperative.near_collapse",
+    "operating_room.intraoperative.anesthetized"
+  ],
+  "integration_gate": "Do not create or change runtime image mappings until the user accepts the base images. Generate dependent expression/pose variants only after the corresponding base is approved."
+}

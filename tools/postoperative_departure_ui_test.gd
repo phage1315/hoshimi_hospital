@@ -177,6 +177,10 @@ func run() -> void:
 				micro.advance_response()
 			app.continue_micro_event()
 			expect(app.game.completed_surgeries_total == 3 and app.game.active_preop_id.is_empty(), "Surgery not settled before reveal")
+			var growth: Control = app.page.get_node_or_null("SurgeryGrowthSplash")
+			expect(growth != null, "Growth summary missing after settlement")
+			if growth != null:
+				growth.get_node("SurgeryGrowthContinue").pressed.emit()
 			expect(app.game.active_character_event_id == "asuka_adjacent_operation_reveal", "Reveal missing at return boundary")
 			var event = app.game.character_events.get(app.game.active_character_event_id)
 			if event == null:

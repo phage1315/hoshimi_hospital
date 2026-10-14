@@ -6,6 +6,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator, RefResolver
 from patient_bundles import load_patient_bundles
 from staff_bundles import load_staff_bundles
+from staff_idle_chat_contract import staff_idle_chat_errors
 ROOT = Path(__file__).resolve().parents[1]
 def read(path):
     return json.loads((ROOT / 'data' / path).read_text())
@@ -101,6 +102,10 @@ for relative_path, bundle in staff_bundles:
     check(bundle.get('schema_version') == 1, prefix + 'unsupported staff bundle schema')
     check(bool(bundle.get('profile')), prefix + 'missing profile file')
     check(bool(bundle.get('relationship')), prefix + 'missing relationship file')
+    bundle_dir = (ROOT / 'data' / manifest['staff_bundles']['index']).parent / Path(relative_path).parent
+    profile = json.loads((bundle_dir / bundle['profile']).read_text())
+    idle_events = json.loads((bundle_dir / bundle['time_events']).read_text()) if bundle.get('time_events') else []
+    errors.extend(staff_idle_chat_errors(profile, bundle, idle_events))
 for key, rows in staff_collections.items():
     collections.setdefault(key, []).extend(rows)
     validator = Draft202012Validator({'$ref': '#/$defs/' + kind[key], '$defs': schema['$defs']})
@@ -178,6 +183,10 @@ by = {key: {r['id']: r for r in rows} for key, rows in collections.items() if ke
 # silently fall back to the base multiplier.
 for person in collections.get('staff', []):
     actor_id = person.get('id', '<unknown staff>')
+    presence = person.get('presence', {})
+    for field in ('fixed_locations', 'random_locations'):
+        for location_id in presence.get(field, []):
+            check(location_id in by['locations'], actor_id + ': unknown presence location ' + location_id)
     check('familiarity_gain_multiplier' not in person,
           actor_id + ': legacy familiarity_gain_multiplier must be migrated to familiarity_rules')
     rules = person.get('familiarity_rules')
@@ -311,8 +320,10 @@ for relation in collections['relationships']:
           prefix + 'relationship slots must cover Lv.1 through Lv.5 exactly once')
     for slot in slots:
         content_status = slot['content_status']
-        check(slot['cooldown_days'] == 3,
-              prefix + f"Lv{slot['target_level']}: relationship milestone cooldown must be exactly three days")
+        # Aqua's first team unlock depends only on introduction + five cases.
+        expected_cooldown = 0 if relation['target_id'] == 'doc_aqua' and slot['target_level'] == 1 else 3
+        check(slot['cooldown_days'] == expected_cooldown,
+              prefix + f"Lv{slot['target_level']}: relationship milestone cooldown must be {expected_cooldown} days")
         check(0 <= slot['min_familiarity'] <= 100,
               prefix + f"Lv{slot['target_level']}: familiarity gate is outside 0..100")
         event_id = slot['event_id']
@@ -748,8 +759,6 @@ known_preparation_cg_actions = {
     'complete_manual_ward_preparation',
     'operative_positioning',
     'urinary_catheterization', 'skin_disinfection', 'ack_disinfection', 'request_scalpel',
-    # Existing preop_event action dispatch also resolves CGs at the actual incision.
-    'incise_epidural', 'incise_local', 'incise_none',
 }
 for pool in collections['ward_preparation_cg_pools']:
     prefix = pool['id'] + ': '
@@ -897,7 +906,8 @@ check(hiroko.get('surgery_proficiency') == 'trained',
 check('best_friend_pharmacist_manami' in hiroko.get('flags', []),
       'nurse_hiroko: friendship with pharmacist_manami must remain explicit')
 check('ward' in hiroko.get('presence', {}).get('fixed_locations', []) and
-      {'clinic', 'ward'} <= set(hiroko.get('presence', {}).get('random_locations', [])),
+      'clinic' in hiroko.get('presence', {}).get('random_locations', []) and
+      'ward' not in hiroko.get('presence', {}).get('random_locations', []),
       'nurse_hiroko: must rotate between her ward post and outpatient duty after introduction')
 hiroko_escape = by['character_events'].get('hiroko_patient_escape', {})
 check(hiroko_escape.get('gallery', {}).get('show_on_complete') is False,
@@ -1172,8 +1182,9 @@ check(aqua_intro.get('category') == 'introduction' and
 check(aqua_lv1.get('category') == 'bond' and
       aqua_lv1.get('conditions', {}).get('required_events') == ['aqua_intro_exam_chair'] and
       aqua_lv1.get('conditions', {}).get('min_familiarity') == 0 and
-      aqua_slots.get(1, {}).get('min_familiarity') == 10 and
-      aqua_slots.get(1, {}).get('cooldown_days') == 3 and
+      aqua_lv1.get('conditions', {}).get('days_after_required_events', 0) == 0 and
+      aqua_slots.get(1, {}).get('min_familiarity') == 0 and
+      aqua_slots.get(1, {}).get('cooldown_days') == 0 and
       aqua_slots.get(1, {}).get('special_requirements') == [
           {'type': 'progress_counter', 'actor_id': 'global', 'counter_id': 'gynecology_case_count', 'minimum': 5}] and
       aqua_slots.get(1, {}).get('event_id') == 'aqua_lv1_gyne_obsession' and
@@ -1272,7 +1283,18 @@ for event in collections['character_events']:
             for related in choice.get('related_effects', []):
                 check(related.get('actor_id') in by['staff'], prefix + 'unknown related-effect actor')
             if choice['next'] != '@end': pending.append(choice['next'])
+            conditional = choice.get('next_if_choice', {})
+            if conditional:
+                target = conditional['next']
+                check(target == '@end' or target in nodes, prefix + 'unknown conditional target')
+                if target != '@end': pending.append(target)
     check(reachable == set(nodes), prefix + 'unreachable node')
+    for node in event['nodes']:
+        for choice in node['choices']:
+            conditional = choice.get('next_if_choice', {})
+            if conditional:
+                check(conditional['choice_id'] in choice_ids and conditional['choice_id'] != choice['id'],
+                      prefix + 'conditional route must reference another choice in this event')
     check(any(choice['next'] == '@end' for node in event['nodes'] for choice in node['choices']), prefix + 'missing ending')
 event_ids = set(by['character_events'])
 for event in collections['character_events']:

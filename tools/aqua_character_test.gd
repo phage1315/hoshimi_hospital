@@ -52,5 +52,43 @@ func run() -> void:
 	clone.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events)
 	expect(clone.restore(JSON.parse_string(JSON.stringify(snapshot))) and clone.completed_surgeries_by_group == game.completed_surgeries_by_group, "Per-specialty surgery progress did not survive save restore")
 	expect(clone.character_progress_counter("global", "gynecology_case_count") == 1, "Aqua gynecology case counter did not survive save restore")
+	for locale in ["zh_CN", "en"]:
+		test_lv1_unlock(locale)
 	print("AQUA CHARACTER: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)
+
+func finish_event(game: RefCounted, event_id: String) -> bool:
+	var event = game.start_character_event(event_id)
+	if event == null:
+		return false
+	var steps := 0
+	while not event.completed and steps < 100:
+		steps += 1
+		if not game.choose_character_event(str(event.current().choices[0].id)):
+			return false
+	game.finish_character_event()
+	return event.completed
+
+func test_lv1_unlock(locale: String) -> void:
+	var localized = Loader.new()
+	expect(localized.load_all(locale), "Aqua unlock content load failed: " + locale)
+	var game = Game.new()
+	var data: Dictionary = localized.collections
+	game.configure(data.encounters, data.preops, data.staff, data.time_events, data.surgeries, data.patients, data.relationships, data.character_events)
+	var lv1: Dictionary = game.character_event_definitions.aqua_lv1_gyne_obsession
+	game.set_test_character_progress_counter("global", "gynecology_case_count", 5)
+	expect(not game.character_event_available(lv1), "Five cases must not bypass Aqua introduction: " + locale)
+	expect(finish_event(game, "aqua_intro_exam_chair"), "Aqua introduction failed: " + locale)
+	var intro_day: int = game.day_number()
+	game.relation_for("doc_aqua").familiarity = 0
+	game.set_test_character_progress_counter("global", "gynecology_case_count", 4)
+	expect(not game.character_event_available(lv1), "Four cases must not unlock Aqua Lv1: " + locale)
+	game.set_test_character_progress_counter("global", "gynecology_case_count", 5)
+	expect(game.character_event_available(lv1), "Five cases must unlock Aqua Lv1 immediately at zero familiarity: " + locale)
+	expect(not game.staff_can_join_surgery_team("doc_aqua"), "Team unlock must still wait for Lv1 event completion: " + locale)
+	# Older saves contain relationship data; restore must use the current gates.
+	var snapshot: Dictionary = JSON.parse_string(JSON.stringify(game.snapshot()))
+	expect(game.restore(snapshot), "Aqua pre-unlock save restore failed: " + locale)
+	expect(game.day_number() == intro_day and game.character_event_available(lv1), "Same-day Aqua unlock was lost on restore: " + locale)
+	expect(finish_event(game, str(lv1.id)), "Aqua Lv1 event failed: " + locale)
+	expect(game.relationship_level("doc_aqua") == 1 and game.staff_can_join_surgery_team("doc_aqua"), "Aqua Lv1 did not unlock team membership: " + locale)

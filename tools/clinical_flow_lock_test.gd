@@ -38,11 +38,11 @@ func run() -> void:
 	for action_id in CLINIC_ACTIONS:
 		expect(visit.apply(action_id), "Clinic fixture failed at " + action_id)
 	expect(visit.completed(), "Clinic fixture did not reach admission")
-	expect(not game.day_transition_deferred(), "A completed clinic encounter still blocked day end")
-	game.pending_encounter_day_transition = false
+	expect(game.day_transition_deferred(), "Admission released the continuous clinical day-end lock")
 
 	var prep = game.open_preop("preop_sora")
 	expect(prep != null, "Admitted patient did not open preop")
+	expect(game.day_transition_deferred(), "Preparation before team confirmation did not defer day end")
 	expect(prep.apply({"kind": "action", "id": "brief_plan"}), "Could not reach team formation")
 	expect(not prep.surgery_committed(), "Surgery committed before team confirmation")
 	expect(prep.apply({"kind": "assign", "role": "assistant_surgeon", "staff_id": "doc_aoi"}), "Assistant assignment failed")

@@ -66,7 +66,7 @@ def main() -> int:
         "ward_skin_prep_patient_iwai_yoshimi": {"ward_skin_prep", "ward_skin_prep_unnecessary"},
         "operative_positioning_patient_iwai_yoshimi": {"operative_positioning"},
         "urinary_catheterization_patient_iwai_yoshimi": {"urinary_catheterization"},
-        "incision_ready_patient_iwai_yoshimi": {"incise_epidural", "incise_local", "incise_none"},
+        "incision_ready_patient_iwai_yoshimi": {"request_scalpel"},
     }
     iwai_pools = {
         pool["id"]: pool for pool in collections["ward_preparation_cg_pools"]
@@ -102,7 +102,7 @@ def main() -> int:
                 "ward_surgical_cap_patient_kocho_shinobu": {"ward_surgical_cap"},
                 "sterile_draping_patient_kocho_shinobu": {"ack_disinfection"},
                 "urinary_catheterization_patient_kocho_shinobu": {"urinary_catheterization"},
-                "incision_patient_kocho_shinobu": {"incise_epidural", "incise_local", "incise_none"},
+                "incision_patient_kocho_shinobu": {"request_scalpel"},
             },
         },
         "patient_iwai_yoshimi": {
@@ -112,6 +112,30 @@ def main() -> int:
         "patient_comoli_harcourt": {
             "examination": "full_undress_basic_exam_patient_comoli_harcourt",
             "ward_preparation": {},
+        },
+        "patient_shimizu_iraiza": {
+            "examination": "full_undress_basic_exam_patient_shimizu_iraiza",
+            "ward_preparation": {
+                "ward_skin_prep_patient_shimizu_iraiza": {"ward_skin_prep", "ward_skin_prep_unnecessary"},
+                "ward_enema_patient_shimizu_iraiza": {"ward_enema", "ward_enema_unnecessary"},
+                "stretcher_transfer_patient_shimizu_iraiza": {"complete_manual_ward_preparation"},
+                "urinary_catheterization_patient_shimizu_iraiza": {"urinary_catheterization"},
+                "sterile_draping_patient_shimizu_iraiza": {"ack_disinfection"},
+                "incision_ready_patient_shimizu_iraiza": {"request_scalpel"},
+            },
+        },
+        "patient_yuko_asou": {
+            "examination": "full_undress_basic_exam_patient_yuko_asou",
+            "ward_preparation": {
+                "ward_skin_prep_patient_yuko_asou": {"ward_skin_prep", "ward_skin_prep_unnecessary"},
+                "ward_enema_patient_yuko_asou": {"ward_enema", "ward_enema_unnecessary"},
+                "ward_surgical_cap_patient_yuko_asou": {"ward_surgical_cap"},
+                "stretcher_transfer_patient_yuko_asou": {"complete_manual_ward_preparation"},
+                "urinary_catheterization_patient_yuko_asou": {"urinary_catheterization"},
+                "skin_disinfection_patient_yuko_asou": {"skin_disinfection"},
+                "sterile_draping_patient_yuko_asou": {"ack_disinfection"},
+                "incision_ready_patient_yuko_asou": {"request_scalpel"},
+            },
         },
     }
     bundles_by_id = {bundle["patient"]["id"]: bundle for _, bundle in bundles}

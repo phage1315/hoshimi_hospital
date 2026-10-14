@@ -103,6 +103,8 @@ var last_error := ""
 var last_time_event_response := ""
 var discarded_overtime_minutes := 0
 var story_time_advance_minutes := 0
+# Global elapsed time from retired cases, not a patient medical history.
+var archived_clinical_minutes := 0
 var pending_encounter_day_transition := false
 var pending_surgery_day_transition := false
 var pending_day_exit_workday := 0
@@ -230,6 +232,7 @@ func reset() -> void:
 	active_special_event = null
 	discarded_overtime_minutes = 0
 	story_time_advance_minutes = 0
+	archived_clinical_minutes = 0
 	pending_encounter_day_transition = false
 	pending_surgery_day_transition = false
 	pending_day_exit_workday = 0
@@ -252,14 +255,41 @@ func active_surgery_committed() -> bool:
 func active_encounter_in_progress() -> bool:
 	return not active_id.is_empty() and visits.has(active_id) and not visits[active_id].completed()
 
+func active_admission_pending() -> bool:
+	return not active_id.is_empty() and visits.has(active_id) and visits[active_id].admitted and not completed_patient(str(visits[active_id].definition.patient_id))
+
 func day_transition_deferred() -> bool:
-	return active_encounter_in_progress() or active_surgery_committed()
+	# The admission summary stays visible until an explicit handoff. Patients
+	# already handed over to the ward do not lock subsequent days by themselves.
+	return active_encounter_in_progress() or active_admission_pending() or (not active_preop_id.is_empty() and preops.has(active_preop_id))
 
 func remember_deferred_day_transition() -> void:
-	if active_encounter_in_progress():
+	if active_encounter_in_progress() or active_admission_pending():
 		pending_encounter_day_transition = true
-	if active_surgery_committed():
+	if not active_preop_id.is_empty() and preops.has(active_preop_id):
 		pending_surgery_day_transition = true
+
+func can_end_day_after_admission(encounter_id: String) -> bool:
+	if encounter_id.is_empty() or encounter_id != active_id or active_mode != "encounter":
+		return false
+	var visit = visits.get(encounter_id)
+	if visit == null or not visit.completed() or not visit.admitted or completed_patient(str(visit.definition.patient_id)):
+		return false
+	if not active_preop_id.is_empty() or not active_micro_event_id.is_empty() or not active_character_event_id.is_empty() or not active_special_event_id.is_empty():
+		return false
+	for preparation in preops.values():
+		if str(preparation.definition.encounter_id) == encounter_id:
+			return false
+	return pending_day_exit_workday > 0 and pending_day_exit_clock >= SHIFT_START_MINUTE + SHIFT_MINUTES
+
+func finish_admission_for_day(encounter_id: String) -> bool:
+	if not can_end_day_after_admission(encounter_id):
+		return false
+	# Retain the visit, notes, patient queue and admission for the next workday.
+	# The UI consumes the existing overtime departure exactly once afterwards.
+	active_id = ""
+	pending_encounter_day_transition = false
+	return true
 
 func can_save_progress() -> bool:
 	# Saves are boundary snapshots, never resumable UI/event positions. The
@@ -676,8 +706,17 @@ func encounter_for_case(blueprint: Dictionary, template: Dictionary, diagnosis_s
 	actions.history.background.response = patient_spoken_line(patient_id, "", "background", english)
 	actions.history.background.notes[0].text = "Past history and allergies recorded." if english else "既往情况与过敏史已记录。"
 	var voiced_history: Array[String] = []
+	var owned_history_lines: Dictionary = patient_definition(patient_id).get("outpatient_lines", {})
+	var used_literal_beats := {}
 	for index in range(history.size()):
-		voiced_history.append(patient_voice_line(patient_id, str(history[index]), "primary" if index == 0 else "secondary"))
+		var beat := "primary" if index == 0 else "secondary"
+		# A fixed patient response is one utterance, not a template for each
+		# case-history item. Placeholder/fallback responses still keep every item.
+		if owned_history_lines.has(beat) and not str(owned_history_lines[beat]).contains("{line}"):
+			if used_literal_beats.has(beat):
+				continue
+			used_literal_beats[beat] = true
+		voiced_history.append(patient_voice_line(patient_id, str(history[index]), beat))
 	stages.history.bundles[0].response = "“%s”" % " ".join(voiced_history) if english else "「%s」" % "".join(voiced_history)
 	stages.history.bundles[0].summary = ("History organized · %s symptoms" if english else "病史已整理 · %s 种症状") % symptoms.size()
 	actions.exam.vitals.response = "“Vital signs recorded.”" if english else "「生命体征已经记录。」"
@@ -730,6 +769,8 @@ func apply_clinic_action(id: String) -> bool:
 	var visit = visits[active_id]
 	if not visit.apply(id):
 		return false
+	if id in ["diagnose_gastro", "diagnose_observe"] and visit.stage_id == "diagnosis":
+		visit.diagnosis_feedback_actor_id = resolve_outpatient_support_actor()
 	if id == "explain":
 		var variant_id := str(visit.definition.get("first_surgery_diagnosis_shock_variant_id", ""))
 		if not variant_id.is_empty():
@@ -765,7 +806,7 @@ func open_visit(id: String) -> RefCounted:
 	return visits[id]
 
 func elapsed() -> int:
-	var total := 0
+	var total := archived_clinical_minutes
 	for visit in visits.values():
 		total += visit.minutes
 	for preparation in preops.values():
@@ -802,7 +843,7 @@ func can_end_workday() -> bool:
 	if active_encounter_in_progress():
 		last_error = "正在接诊患者，不能离开。"
 		return false
-	if active_surgery_committed() or active_surgery_in_progress():
+	if not active_preop_id.is_empty() and preops.has(active_preop_id):
 		last_error = "患者仍在连续的术前与手术流程中，不能离开。"
 		return false
 	if special_event_in_progress() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
@@ -1235,8 +1276,17 @@ func surgery_familiarity_reward(actor_id: String, case_tier: String = "routine")
 	var base := int(Progression.FAMILIARITY_CASE_BASE.get(case_tier, Progression.FAMILIARITY_CASE_BASE.routine))
 	return familiarity_reward(actor_id, base, "surgery")
 
-func date_familiarity_reward(actor_id: String) -> int:
-	return familiarity_reward(actor_id, Progression.DATE_FAMILIARITY_BASE, "date")
+func date_location_familiarity_multiplier(actor_id: String, location_id: String) -> float:
+	var location: Dictionary = date_location_definitions.get(location_id, {})
+	if location.is_empty() or location_id == "hotel" or bool(location.get("story_only", false)):
+		return 1.0
+	var profile: Dictionary = date_profile_definitions.get(actor_id, {})
+	# Dislikes are reserved for future design and never reduce rewards.
+	return 1.2 if location_id in profile.get("preferred_locations", []) else 1.0
+
+func date_familiarity_reward(actor_id: String, location_id: String = "") -> int:
+	var normal_reward := familiarity_reward(actor_id, Progression.DATE_FAMILIARITY_BASE, "date")
+	return roundi(float(normal_reward) * date_location_familiarity_multiplier(actor_id, location_id))
 
 func relationship_event_familiarity_reward(actor_id: String, target_level: int) -> int:
 	var base := int(Progression.RELATIONSHIP_EVENT_FAMILIARITY_BASE.get(target_level, 0))
@@ -1268,17 +1318,20 @@ func staff_present_at(location_id: String) -> Array[String]:
 	if is_hospital_closed_day() and location_id in ["clinic", "or"]:
 		return []
 	var result: Array[String] = []
-	if presence_resolver != null:
-		result = presence_resolver.staff_at(location_id, day_number(), int(schedule_at(elapsed()).absolute_clock))
 	# Fixed and random schedules describe where known colleagues can be found.
 	# Unmet staff stay hidden until an available introduction places them at its
 	# authored location, preventing future colleagues from appearing as anonymous
 	# roster entries before their first scene.
-	var known_result: Array[String] = []
-	for actor_id in result:
-		if staff_is_met(actor_id) and (not is_sunday() or actor_id in sunday_on_duty_staff()):
-			known_result.append(actor_id)
-	result = known_result
+	var eligible_actor_ids: Array[String] = []
+	var sunday_duty: Array[String] = []
+	if is_sunday():
+		sunday_duty = sunday_on_duty_staff()
+	for person in staff:
+		var actor_id := str(person.id)
+		if staff_is_met(actor_id) and (not is_sunday() or actor_id in sunday_duty):
+			eligible_actor_ids.append(actor_id)
+	if presence_resolver != null:
+		result = presence_resolver.staff_at(location_id, day_number(), int(schedule_at(elapsed()).absolute_clock), eligible_actor_ids)
 	# A currently available personal event also places its actor at the event site.
 	for event in character_events_at(location_id):
 		if event.actor_id not in result:
@@ -1305,6 +1358,10 @@ func micro_event_available(definition: Dictionary, context: String, location_id:
 	if micro_events.has(definition.id) or definition.context != context or definition.location_id != location_id:
 		return false
 	if not staff_is_met(str(definition.actor_id)):
+		return false
+	# Location storylets must use the same roster as the visible location UI.
+	# The selector reuses this check, so a stale button cannot summon an absent actor.
+	if context == "location_visit" and str(definition.actor_id) not in staff_present_at(location_id):
 		return false
 	var today := day_number()
 	if micro_events_triggered_on_day(today) >= 2 or actor_had_micro_event_on_day(definition.actor_id, today):
@@ -1382,10 +1439,6 @@ func finish_micro_event() -> void:
 	else:
 		active_mode = "encounter"
 
-func character_event_retry_pending(definition: Dictionary, relation: Dictionary) -> bool:
-	var retry_flags: Array = definition.get("retry_if_flags", [])
-	return not retry_flags.is_empty() and retry_flags.all(func(flag: Variant): return relation.get("flags", []).has(str(flag)))
-
 func character_event_rank_up_allowed(definition: Dictionary, relation: Dictionary) -> bool:
 	var required_flags: Array = definition.get("rank_up_required_flags", [])
 	return required_flags.all(func(flag: Variant): return relation.get("flags", []).has(str(flag)))
@@ -1393,8 +1446,7 @@ func character_event_rank_up_allowed(definition: Dictionary, relation: Dictionar
 func character_event_done(id: String) -> bool:
 	if not character_events.has(id) or not character_events[id].completed:
 		return false
-	var event = character_events[id]
-	return not character_event_retry_pending(event.definition, relation_for(str(event.definition.actor_id)))
+	return true
 
 func character_event_trigger_mode(definition: Dictionary) -> String:
 	var authored := str(definition.get("trigger_mode", ""))
@@ -1621,10 +1673,6 @@ func start_character_event(id: String) -> RefCounted:
 		return null
 	if character_event_done(id):
 		return null
-	if character_events.has(id) and character_events[id].completed:
-		var previous = character_events[id]
-		if character_event_retry_pending(previous.definition, relation_for(str(previous.definition.actor_id))):
-			character_events[id] = CharacterEvent.new(character_event_definitions[id])
 	if not character_events.has(id):
 		var definition: Dictionary = character_event_definitions[id]
 		if not character_event_available(definition):
@@ -1675,7 +1723,7 @@ func choose_character_event(choice_id: String) -> bool:
 	var chosen_route := str(event.last_choice.get("route", ""))
 	if chosen_route in ["colleague", "romance"] and (chosen_route != "romance" or int(event.definition.get("target_level", 1)) >= INTIMATE_ROUTE_LEVEL):
 		relation.route = chosen_route
-	if event.completed and not character_event_retry_pending(event.definition, relation) and not relation.event_history.has(event.definition.id):
+	if event.completed and not relation.event_history.has(event.definition.id):
 		event.completed_day = event_day
 		relation.event_history.append(event.definition.id)
 		if event.definition.category == "introduction":
@@ -1768,25 +1816,42 @@ func stable_sunday_roll(actor_id: String, purpose: String, for_day: int = -1) ->
 		value = posmod(value * 48271 + int(byte) + 1, 2147483647)
 	return value % 100
 
-func sunday_date_candidates(maximum: int = 3) -> Array[String]:
-	if not is_sunday():
+func sunday_date_eligible(actor_id: String) -> bool:
+	var profile: Dictionary = date_profile_definitions.get(actor_id, {})
+	var relation := relation_for(actor_id)
+	if not bool(profile.get("can_date", false)) or relation.is_empty() or not bool(relation.get("met", false)):
+		return false
+	if int(relation.get("familiarity", 0)) < int(profile.get("minimum_familiarity", 0)):
+		return false
+	if int(relation.get("level", 0)) < int(profile.get("minimum_level", 1)):
+		return false
+	for flag in profile.get("required_flags", []):
+		if not relation.get("flags", []).has(str(flag)) and not story_flag(str(flag)):
+			return false
+	return true
+
+func sunday_other_known_staff() -> Array[String]:
+	var result: Array[String] = []
+	if not is_sunday() or sunday_activity_done():
+		return result
+	for actor_id in date_profile_definitions:
+		# Eligible people outside this week's five do not become refusal-only entries.
+		if staff_is_met(str(actor_id)) and not sunday_date_eligible(str(actor_id)):
+			result.append(str(actor_id))
+	result.sort()
+	return result
+
+func sunday_date_candidates(maximum: int = 5) -> Array[String]:
+	if not is_sunday() or sunday_activity_done():
 		return []
 	var scored: Array = []
 	for actor_id in date_profile_definitions:
-		var profile: Dictionary = date_profile_definitions[actor_id]
-		var relation := relation_for(str(actor_id))
-		if not bool(profile.get("can_date", false)) or relation.is_empty() or not bool(relation.get("met", false)):
+		if not sunday_date_eligible(str(actor_id)):
 			continue
-		if int(relation.get("level", 0)) < int(profile.get("minimum_level", 1)):
-			continue
-		var required_flags: Array = profile.get("required_flags", [])
-		if required_flags.any(func(flag: Variant):
-			var required_flag := str(flag)
-			return not relation.get("flags", []).has(required_flag) and not story_flag(required_flag)
-		):
-			continue
-		scored.append({"id": str(actor_id), "score": stable_sunday_roll(str(actor_id), "candidate")})
+		scored.append({"id": str(actor_id), "score": stable_sunday_roll(str(actor_id), "candidate"), "milestone": not sunday_character_event_for(str(actor_id)).is_empty()})
 	scored.sort_custom(func(a: Dictionary, b: Dictionary):
+		if bool(a.milestone) != bool(b.milestone):
+			return bool(a.milestone)
 		if int(a.score) != int(b.score):
 			return int(a.score) < int(b.score)
 		return str(a.id) < str(b.id))
@@ -1812,26 +1877,80 @@ func sunday_on_duty_staff(maximum: int = 4) -> Array[String]:
 	return result
 
 func sunday_invitation_rejection_rate(actor_id: String) -> int:
+	if not sunday_date_eligible(actor_id):
+		return 100
 	var profile: Dictionary = date_profile_definitions.get(actor_id, {})
 	if bool(profile.get("always_accept", false)):
 		return 0
-	var level_key := str(relationship_level(actor_id))
-	var acceptance_by_level: Dictionary = profile.get("acceptance_chance_by_level", {})
-	if acceptance_by_level.has(level_key):
-		return 100 - clampi(int(acceptance_by_level[level_key]), 0, 100)
+	var level := relationship_level(actor_id)
+	var acceptance := 0
+	var threshold := -1
+	for key in profile.get("acceptance_chance_by_level", {}):
+		if int(key) <= level and int(key) > threshold:
+			threshold = int(key)
+			acceptance = int(profile.acceptance_chance_by_level[key])
 	var familiarity := int(relation_for(actor_id).get("familiarity", 0))
-	if familiarity >= 70:
-		return 0
-	if familiarity >= 45:
-		return 5
-	if familiarity >= 25:
-		return 15
-	if familiarity >= 10:
-		return 25
-	return 35
+	if threshold < 0:
+		# Compatibility for profiles without a character-specific probability table.
+		acceptance = 100 if familiarity >= 70 else (95 if familiarity >= 45 else (85 if familiarity >= 25 else (75 if familiarity >= 10 else 65)))
+	if bool(profile.get("familiarity_acceptance_bonus", false)):
+		acceptance += (5 if familiarity >= 25 else 0) + (5 if familiarity >= 55 else 0)
+	var caps: Dictionary = profile.get("acceptance_cap_by_level", {})
+	if caps.has(str(level)):
+		acceptance = mini(acceptance, int(caps[str(level)]))
+	return 100 - clampi(acceptance, 0, 100)
 
 func sunday_invitation_will_accept(actor_id: String) -> bool:
-	return stable_sunday_roll(actor_id, "invitation") >= sunday_invitation_rejection_rate(actor_id)
+	return sunday_date_eligible(actor_id) and stable_sunday_roll(actor_id, "invitation") >= sunday_invitation_rejection_rate(actor_id)
+
+func sunday_character_event_for(actor_id: String) -> Dictionary:
+	if not is_sunday() or sunday_activity_done() or not sunday_date_eligible(actor_id):
+		return {}
+	var ready: Array = []
+	for definition in character_event_definitions.values():
+		if str(definition.get("actor_id", "")) == actor_id and character_event_trigger_mode(definition) == "sunday" and character_event_available(definition):
+			ready.append(definition)
+	ready.sort_custom(func(a: Dictionary, b: Dictionary):
+		return int(a.priority) > int(b.priority) if int(a.priority) != int(b.priority) else str(a.id) < str(b.id))
+	return {} if ready.is_empty() else ready[0]
+
+func can_start_regular_sunday_date(actor_id: String) -> bool:
+	if completed_sunday_date_event(actor_id) or not sunday_date_candidates().has(actor_id) or not sunday_invitation_will_accept(actor_id) or not sunday_character_event_for(actor_id).is_empty():
+		return false
+	var profile: Dictionary = date_profile_definitions.get(actor_id, {})
+	if relationship_level(actor_id) == 0 and not str(profile.get("first_date_event_id", "")).is_empty():
+		return false
+	return not profile.get("dialogue", {}).is_empty()
+
+func sunday_date_response(actor_id: String, location_id: String) -> String:
+	var dialogue: Dictionary = date_profile_definitions.get(actor_id, {}).get("dialogue", {})
+	for favorite in dialogue.get("favorites", []):
+		if str(favorite.id) == location_id:
+			return str(favorite.text)
+	return str(dialogue.get("satisfied", {}).get("text", ""))
+
+func date_location_available(location_id: String, for_day: int = -1) -> bool:
+	var location: Dictionary = date_location_definitions.get(location_id, {})
+	if location.is_empty() or location_id == "hotel" or bool(location.get("story_only", false)):
+		return false
+	if str(location.get("asset_status", "pending")) != "ready":
+		return false
+	var months: Array = location.get("available_months", [])
+	if months.is_empty():
+		return true
+	# JSON numbers are floats; normalize before comparing with calendar integers.
+	var month := int(calendar_date(for_day).month)
+	for allowed_month in months:
+		if int(allowed_month) == month:
+			return true
+	return false
+
+func sunday_date_locations(for_day: int = -1) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for id in date_location_definitions:
+		if date_location_available(str(id), for_day):
+			result.append(date_location_definitions[id])
+	return result
 
 func sunday_activity_done(for_day: int = -1) -> bool:
 	var selected_day := day_number() if for_day < 1 else for_day
@@ -1840,8 +1959,17 @@ func sunday_activity_done(for_day: int = -1) -> bool:
 			return true
 	return false
 
+func completed_sunday_date_event(actor_id: String, location_id: String = "") -> bool:
+	for event in character_events.values():
+		if event.completed and int(event.completed_day) == day_number() and bool(event.definition.get("consumes_sunday", false)) and str(event.definition.actor_id) == actor_id:
+			if location_id.is_empty() or str(event.definition.get("date_location_id", "")) == location_id:
+				return true
+	return false
+
 func complete_sunday_activity(activity_id: String, actor_id: String = "", location_id: String = "") -> bool:
 	if not is_sunday() or sunday_activity_done():
+		return false
+	if activity_id == "date" and not completed_sunday_date_event(actor_id, location_id) and (not can_start_regular_sunday_date(actor_id) or not date_location_available(location_id)):
 		return false
 	sunday_history.append({
 		"day": day_number(),
@@ -1850,7 +1978,7 @@ func complete_sunday_activity(activity_id: String, actor_id: String = "", locati
 		"location_id": location_id,
 	})
 	if activity_id == "date" and not actor_id.is_empty() and staff_is_met(actor_id):
-		add_familiarity(actor_id, date_familiarity_reward(actor_id))
+		add_familiarity(actor_id, date_familiarity_reward(actor_id, location_id))
 		increment_character_progress_counter(actor_id, "completed_sunday_dates")
 		add_player_attribute_effect("charm", 1, "sunday_date_%s_%s" % [actor_id, day_number()], "星期日约会 · 魅力 +1")
 	advance_story_to_future_day(1, SHIFT_START_MINUTE)
@@ -3015,6 +3143,14 @@ func display_schedule() -> Dictionary:
 		return {"day": int(active_after_work_walk.workday), "absolute_clock": int(active_after_work_walk.departure_clock)}
 	if pending_day_exit_workday > 0:
 		return {"day": pending_day_exit_workday, "absolute_clock": pending_day_exit_clock}
+	# Sunday dates are atomic full-day activities. Their scene clock can reach
+	# evening without making the 480-minute work ledger advance to Monday early.
+	# The existing Sunday completion command consumes the rest of the day once.
+	if character_events.has(active_character_event_id):
+		var event = character_events[active_character_event_id]
+		if bool(event.definition.get("consumes_sunday", false)) and event.current().has("sunday_clock"):
+			var schedule := schedule_at(elapsed())
+			return {"day": int(schedule.day), "absolute_clock": maxi(int(schedule.absolute_clock), int(event.current().sunday_clock))}
 	return schedule_at(elapsed())
 
 func day_text() -> String:
@@ -3063,6 +3199,7 @@ func archive_and_reset_patient(patient_id: String) -> void:
 			archived_player_effects[metric] = int(archived_player_effects[metric]) + int(preparation.player_effects.get(metric, 0))
 		for record in preparation.player_effect_history:
 			archived_player_effect_history.append(record.duplicate(true))
+		archived_clinical_minutes += preparation.minutes
 		preops.erase(id)
 	for id in visits.keys():
 		var visit = visits[id]
@@ -3072,13 +3209,13 @@ func archive_and_reset_patient(patient_id: String) -> void:
 			archived_player_effects[metric] = int(archived_player_effects[metric]) + int(visit.player_effects.get(metric, 0))
 		for record in visit.player_effect_history:
 			archived_player_effect_history.append(record.duplicate(true))
+		archived_clinical_minutes += visit.minutes
 		visits.erase(id)
 	patient_referrals.erase(patient_id)
+	# Reusing a template starts a new case; only the current case remembers this beat.
+	first_surgery_diagnosis_shock_state.erase(patient_id)
 	if not case_templates.is_empty():
 		var choices: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id)))
-		var previous_case: String = str(patient_cases.get(patient_id, ""))
-		if choices.size() > 1:
-			choices.erase(previous_case)
 		patient_cases[patient_id] = weighted_case_pick(choices)
 		rebuild_patient_content(patient_cases)
 
@@ -3133,6 +3270,29 @@ func resolve_outpatient_support_actor() -> String:
 	if personal_nurse_candidates().has(personal_nurse_id):
 		return personal_nurse_id
 	return "nurse_haru" if personal_nurse_candidates().has("nurse_haru") else "doc_aoi"
+
+func clinic_presentation(visit: RefCounted) -> Dictionary:
+	var line: Dictionary = visit.presentation()
+	if visit.stage_id != "diagnosis" or visit.action_log.is_empty() or str(line.speaker) != "outpatient_support":
+		return line
+	var action_id := str(visit.action_log.back())
+	if action_id not in ["diagnose_gastro", "diagnose_observe"]:
+		return line
+	# Keep the speaker who actually corrected this choice, but resolve prose
+	# from the currently loaded language. Legacy visits keep the usual context.
+	var actor_id := str(visit.diagnosis_feedback_actor_id)
+	if actor_id.is_empty():
+		actor_id = resolve_outpatient_support_actor()
+	line.speaker = actor_id
+	var person := staff_record(actor_id)
+	var profile: Dictionary = person.get("personal_nurse", {})
+	if actor_id == "doc_aoi" or str(person.get("profession", "")) != "nurse" or not bool(profile.get("eligible", false)):
+		return line
+	var corrections: Dictionary = profile.get("diagnosis_corrections", {})
+	var correction := str(corrections.get(action_id, ""))
+	if not correction.is_empty():
+		line.text = correction
+	return line
 
 func resolve_preop_explainer() -> String:
 	if personal_nurse_system_unlocked and personal_nurse_candidates().has(personal_nurse_id):
@@ -3277,17 +3437,11 @@ func finish_active_surgery() -> bool:
 	active_preop_id = ""
 	active_mode = "encounter"
 	active_id = ""
+	pending_encounter_day_transition = false
 	award_personal_nurse_outpatient_familiarity()
 	advance_patient_rotation(completed_patient_id)
-	# A surgery that crossed the workday boundary must finish its departure/day
-	# transition before the next day's outpatient encounter can be opened. Opening
-	# it here made the transition look like an unfinished clinical flow.
-	if pending_departure_context().is_empty():
-		var next_patient_id := current_patient_id()
-		if not next_patient_id.is_empty():
-			var next_encounter_id := encounter_id_for_patient(next_patient_id)
-			if not next_encounter_id.is_empty():
-				open_visit(next_encounter_id)
+	# Rotate the waiting queue without starting the next encounter. Settlement
+	# returns to a saveable directory boundary; only explicit admission opens it.
 	return true
 
 func finish_active_surgery_abort() -> bool:
@@ -3301,13 +3455,8 @@ func finish_active_surgery_abort() -> bool:
 	active_preop_id = ""
 	active_mode = "encounter"
 	active_id = ""
+	pending_encounter_day_transition = false
 	advance_patient_rotation(patient_id)
-	if pending_departure_context().is_empty():
-		var next_patient_id := current_patient_id()
-		if not next_patient_id.is_empty():
-			var next_encounter_id := encounter_id_for_patient(next_patient_id)
-			if not next_encounter_id.is_empty():
-				open_visit(next_encounter_id)
 	return true
 
 func set_intraoperative_crisis_enabled(enabled: bool) -> void:
@@ -3894,6 +4043,7 @@ func snapshot() -> Dictionary:
 		"time_log": time_log.duplicate(true),
 		"discarded_overtime_minutes": discarded_overtime_minutes,
 		"story_time_advance_minutes": story_time_advance_minutes,
+		"archived_clinical_minutes": archived_clinical_minutes,
 		"relationship_state": relationships.duplicate(true),
 		"character_events": character_event_order.map(func(id: String): return {"id": id, "state": character_events[id].snapshot_state()}),
 		"active_character_event_id": active_character_event_id,
@@ -4187,6 +4337,11 @@ func restore(data: Variant) -> bool:
 	var restored_unlocked_procedure_ids: Array[String] = starting_procedure_ids()
 	var restored_archived_player_effects := zero_player_effects()
 	var restored_archived_player_effect_history: Array[Dictionary] = []
+	# Optional for existing v35/v36 saves; time already lost by older builds is unknowable.
+	var raw_archived_minutes: Variant = data.get("archived_clinical_minutes", 0)
+	if not (raw_archived_minutes is int or raw_archived_minutes is float) or not is_finite(float(raw_archived_minutes)) or float(raw_archived_minutes) != floorf(float(raw_archived_minutes)) or float(raw_archived_minutes) < 0 or float(raw_archived_minutes) > 2147483647:
+		return false
+	var restored_archived_clinical_minutes := int(raw_archived_minutes)
 	var restored_campaign_seed := migration_seed
 	var restored_crisis_enabled := true
 	var restored_sunday_history: Array[Dictionary] = []
@@ -4407,10 +4562,12 @@ func restore(data: Variant) -> bool:
 			if str(restored_visit_definition.get("first_surgery_diagnosis_shock_variant_id", "")) != str(restored_diagnosis_shock_visit_variants[id]):
 				return false
 			restored_definitions[id] = restored_visit_definition
-		var visit = Encounter.new(restored_visit_definition)
+		var visit = Encounter.new(restored_visit_definition, false)
 		if state_dictionary_save:
 			if not data.progress[id] is Dictionary or not visit.restore_state(data.progress[id]):
 				last_error = "存档中的病例状态无效，当前进度未改变。"
+				return false
+			if not visit.diagnosis_feedback_actor_id.is_empty() and staff_record(visit.diagnosis_feedback_actor_id).is_empty():
 				return false
 		else:
 			if not data.progress[id] is Array or data.progress[id].size() > 500:
@@ -4556,6 +4713,8 @@ func restore(data: Variant) -> bool:
 				if not saved.has(key):
 					return false
 			restored_relationship_state[actor_id] = saved.duplicate(true)
+	var retired_sayaka_minutes := 0
+	var retired_sayaka_event := false
 	if version >= 6:
 		if not data.get("character_events") is Array or not data.get("active_character_event_id") is String:
 			return false
@@ -4566,8 +4725,25 @@ func restore(data: Variant) -> bool:
 				restore_warnings.append("跳过无法解析的旧人物事件节点。")
 				continue
 			var event = CharacterEvent.new(character_event_definitions[record.id])
+			# The approved V2 retires exactly the old completed C failure, not
+			# arbitrary Lv0 relationships. Preserve its paid time and all numeric
+			# rewards; do not replay choices or silently grant a rank.
+			var legacy_state := sayaka_v2_completed_state(record)
+			var saved_sayaka: Dictionary = restored_relationship_state.get("doc_sayaka", {})
+			if str(record.id) == "sayaka_lv1_first_date" and bool(legacy_state.get("failed_date", false)) and int(saved_sayaka.get("level", -1)) == 0 and saved_sayaka.get("flags", []).has("sayaka_first_date_retry_pending"):
+				retired_sayaka_minutes += 120
+				retired_sayaka_event = true
+				saved_sayaka.flags.erase("sayaka_first_date_retry_pending")
+				saved_sayaka.event_history.erase("sayaka_lv1_first_date")
+				restore_warnings.append("旧版小夜香未成功约会已恢复为未触发；此前耗时与数值保留。")
+				continue
 			if state_dictionary_save:
-				if not record.get("state") is Dictionary or not event.restore_state(record.state):
+				if not record.get("state") is Dictionary or not event.restore_state(legacy_state.get("state", record.state)):
+					return false
+			elif version >= 19 and legacy_state.has("state"):
+				# v19-v35 already persist authoritative relationships. Translate
+				# completed old endpoints without replaying obsolete choice IDs.
+				if not event.restore_state(legacy_state.state):
 					return false
 			else:
 				var expected_character_event_record_size := 3 if version >= 20 else 2
@@ -4587,11 +4763,10 @@ func restore(data: Variant) -> bool:
 				if event.completed:
 					event.completed_day = int(record.get("completed_day", 1))
 					var restored_relation: Dictionary = rebuilt_relationships[event.definition.actor_id]
-					if not character_event_retry_pending(event.definition, restored_relation):
-						restored_relation.event_history.append(event.definition.id)
-					if event.definition.category == "introduction" and not character_event_retry_pending(event.definition, restored_relation):
+					restored_relation.event_history.append(event.definition.id)
+					if event.definition.category == "introduction":
 						restored_relation.met = true
-					elif event.definition.category in ["bond", "rank_up"] and not character_event_retry_pending(event.definition, restored_relation) and character_event_rank_up_allowed(event.definition, restored_relation):
+					elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, restored_relation):
 						var target_level := int(event.definition.target_level)
 						if target_level == int(restored_relation.level) + 1:
 							restored_relation.level = target_level
@@ -4602,6 +4777,8 @@ func restore(data: Variant) -> bool:
 			rebuilt_character_events[record.id] = event
 			rebuilt_character_event_order.append(record.id)
 		rebuilt_active_character_event = data.active_character_event_id
+		if retired_sayaka_event and rebuilt_active_character_event == "sayaka_lv1_first_date":
+			rebuilt_active_character_event = ""
 		if not rebuilt_active_character_event.is_empty() and not rebuilt_character_events.has(rebuilt_active_character_event):
 			if state_dictionary_save:
 				return false
@@ -4799,7 +4976,7 @@ func restore(data: Variant) -> bool:
 			used_nonrepeatable[event.id] = true
 			rebuilt_time_log.append({"id": event.id, "start": event_start, "variant": variant})
 			previous_end = event_start + int(definition.minutes)
-		var reconstructed_total := 0
+		var reconstructed_total := restored_archived_clinical_minutes
 		for visit in rebuilt.values():
 			reconstructed_total += visit.minutes
 		for preparation in rebuilt_preops.values():
@@ -4813,7 +4990,7 @@ func restore(data: Variant) -> bool:
 			var raw_story_advance: Variant = data.get("story_time_advance_minutes")
 			if not (raw_story_advance is int or raw_story_advance is float) or float(raw_story_advance) != floorf(float(raw_story_advance)) or int(raw_story_advance) < 0 or int(raw_story_advance) > 100000:
 				return false
-			rebuilt_story_time_advance = int(raw_story_advance)
+			rebuilt_story_time_advance = int(raw_story_advance) + retired_sayaka_minutes
 			reconstructed_total += rebuilt_story_time_advance
 		if previous_end > reconstructed_total:
 			return false
@@ -4912,6 +5089,7 @@ func restore(data: Variant) -> bool:
 	adult_intimacy_return_mode = rebuilt_adult_intimacy_return_mode
 	discarded_overtime_minutes = rebuilt_discarded_overtime
 	story_time_advance_minutes = rebuilt_story_time_advance
+	archived_clinical_minutes = restored_archived_clinical_minutes
 	pending_encounter_day_transition = rebuilt_pending_encounter_transition
 	pending_surgery_day_transition = rebuilt_pending_surgery_transition
 	campaign_seed = restored_campaign_seed
@@ -4938,13 +5116,43 @@ func restore(data: Variant) -> bool:
 	last_error = ""
 	return true
 
+func sayaka_v2_completed_state(record: Dictionary) -> Dictionary:
+	# Narrow content-version bridge for completed endpoints only. Active-scene
+	# restoration is intentionally not introduced by this narrative update.
+	var endpoints := {
+		"sayaka_week1_phone_exchange": {"nodes": ["tail_a", "tail_b", "tail_c"], "choices": ["phone_end_a", "phone_end_b", "phone_end_c"], "target": "v2_192"},
+		"sayaka_lv1_first_date": {"nodes": ["walk_home", "only_meal_reply"], "choices": ["date_success_end", "only_meal_end"], "target": "v2_655"},
+		"sayaka_lv1_monday_callback": {"nodes": ["callback_reply"], "choices": ["callback_end"], "target": "v2_696"},
+		"sayaka_lv2_working_hours": {"nodes": ["ending"], "choices": ["lv2_complete"], "target": "ending"},
+		"sayaka_lv3_relationship": {"nodes": ["scene_12"], "choices": ["finish_lv3"], "target": "scene_12"},
+	}
+	var mapping: Dictionary = endpoints.get(str(record.get("id", "")), {})
+	if mapping.is_empty():
+		return {}
+	var state: Dictionary = record.get("state", {}).duplicate(true) if record.get("state") is Dictionary else {}
+	var choices: Variant = state.get("choices", record.get("choices", []))
+	if not choices is Array or choices.is_empty():
+		return {}
+	var ending := str(choices.back())
+	if not mapping.choices.has(ending):
+		return {}
+	if not state.is_empty():
+		if not bool(state.get("completed", false)) or not mapping.nodes.has(str(state.get("node_id", ""))):
+			return {}
+	else:
+		state = {"choices": choices.duplicate(), "completed": true, "completed_day": int(record.get("completed_day", 1)), "last_choice": {}}
+	state.node_id = mapping.target
+	return {"state": state, "failed_date": ending == "only_meal_end"}
+
 func open_preop(id: String) -> RefCounted:
 	if special_event_in_progress():
 		last_error = "特殊活动进行中，不能进入术前流程。"
 		return null
 	if not preop_definitions.has(id):
 		return null
-	if is_hospital_closed_day():
+	# Overtime reserves the next morning in the ledger before clinical care
+	# ends. Saturday's admitted patient must not become a new Sunday booking.
+	if is_hospital_closed_day(pending_day_exit_workday if pending_day_exit_workday > 0 else -1):
 		last_error = "%s不安排择期手术准备；已住院患者仍可探视。" % calendar_day_label()
 		return null
 	var definition: Dictionary = preop_definitions[id]

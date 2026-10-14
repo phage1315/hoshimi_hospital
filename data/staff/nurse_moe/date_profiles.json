@@ -1,0 +1,45 @@
+[
+  {
+    "id": "date_nurse_moe",
+    "staff_id": "nurse_moe",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "aquarium",
+      "shopping_street"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「对、对不起！这个周日已经有事了……下次、下次我会早一点安排好的。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 55,
+      "2": 75,
+      "3": 90,
+      "4": 98
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「真、真的可以吗？那我会提前看看怎么去的！」"
+      },
+      "satisfied": {
+        "text": "「一开始还很紧张，可后来聊着聊着就忘记紧张了。谢谢你今天陪我。」"
+      },
+      "favorites": [
+        {
+          "id": "aquarium",
+          "text": "「那条小鱼是不是在看我们？啊，游过来了！这里真有趣，我还想再看一会儿。」"
+        },
+        {
+          "id": "shopping_street",
+          "text": "「这条街好多好吃的！不过光顾着看店也不行……坂口医生，你想先逛哪边？」"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "status": "approved_registered",
+  "actor_id": "doc_rei",
+  "sample_manifest": "research/character_references/doc_rei/casual_samples_2026-10-11/manifest.json",
+  "prompts": "research/character_references/doc_rei/casual_samples_2026-10-11/prompts.json",
+  "images": [
+    {
+      "source": "research/character_references/doc_rei/casual_samples_2026-10-11/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/doc_rei/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "236feda57d6e9f3575bf4f2b8886be7116979923acccfe24457df705f66c7dd6"
+    },
+    {
+      "source": "research/character_references/doc_rei/casual_samples_2026-10-11/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/doc_rei/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "37605fbb458f03b1050dadce06eeabc19af0a85cd2776582dd0698ecac3f2076"
+    }
+  ],
+  "previous_visuals": {
+    "color": "9baccb",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/portrait_pack_v20/doc_rei/white_coat/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v2/doc_rei/scrubs/neutral.png",
+      "white_coat/smile": "assets/characters/portrait_pack_v20/doc_rei/white_coat/smile.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v20/doc_rei/white_coat/serious.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v20/doc_rei/white_coat/worried.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v20/doc_rei/white_coat/surprised.png",
+      "white_coat/tired": "assets/characters/portrait_pack_v20/doc_rei/white_coat/tired.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v5/doc_rei/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v5/doc_rei/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v5/doc_rei/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/doc_rei/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/doc_rei/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/doc_rei/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/doc_rei/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_rei/operating_patient/nervous.png",
+      "adult_nude/guarded": "assets/characters/adult_portraits_v1/doc_rei/nude/guarded.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_rei/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_rei/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 92360,
+    "all_staff_checks": 1184,
+    "failures": 0,
+    "validated_records": 651,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/doc_rei_casual_2026-10-11"
+  }
+}

@@ -26,7 +26,8 @@
       "uniform",
       "scrubs",
       "sterile",
-      "casual"
+      "casual",
+      "casual_winter"
     ],
     "portraits": {
       "uniform/neutral": "assets/characters/portrait_pack_v2/nurse_rin/uniform/neutral.png",
@@ -43,7 +44,9 @@
       "sterile/focused": "assets/characters/sterile_pack_v1/nurse_rin/focused.png",
       "sterile/worried": "assets/characters/sterile_pack_v1/nurse_rin/worried.png",
       "sterile/warm": "assets/characters/sterile_pack_v1/nurse_rin/warm.png",
-      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_rin/neutral.png"
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_rin/neutral.png",
+      "casual/neutral": "assets/characters/spring_summer_casual_v1/nurse_rin/neutral.png",
+      "casual_winter/neutral": "assets/characters/winter_casual_v1/nurse_rin/neutral.png"
     },
     "intraoperative_avatar": {
       "status": "ready",
@@ -114,6 +117,10 @@
   },
   "personal_nurse": {
     "eligible": true,
+    "diagnosis_corrections": {
+      "diagnose_gastro": "「坂口医生，这个诊断我有点在意。刚才那条检查结果，好像正好不支持它呢。」",
+      "diagnose_observe": "「嗯，部分结果是解释得通。不过另外几项还摆在这里，先别急着定吧。」"
+    },
     "dialogue": {
       "next_test_hint": [],
       "insufficient_evidence": [],

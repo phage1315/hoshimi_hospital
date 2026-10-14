@@ -144,6 +144,36 @@
     },
     "time_event": {
       "type": "object",
+      "description": "Staff idle chats use a non-null actor_id, 30 minutes, repeatable=true and no effects. Lounge/rooftop chats require at least three independent responses; validate_data.py also checks staff presence coverage and bundle ownership.",
+      "allOf": [
+        {
+          "if": {
+            "required": ["actor_id"],
+            "properties": {"actor_id": {"type": "string"}}
+          },
+          "then": {
+            "properties": {
+              "label": {"pattern": "\\S"},
+              "responses": {
+                "uniqueItems": true,
+                "items": {"type": "string", "pattern": "\\S"}
+              },
+              "minutes": {"const": 30},
+              "repeatable": {"const": true},
+              "effects": {"maxProperties": 0}
+            },
+            "allOf": [
+              {
+                "if": {
+                  "required": ["location_id"],
+                  "properties": {"location_id": {"enum": ["lounge", "rooftop"]}}
+                },
+                "then": {"properties": {"responses": {"minItems": 3}}}
+              }
+            ]
+          }
+        }
+      ],
       "properties": {
         "id": {
           "type": "string",
@@ -225,6 +255,16 @@
     "character_event_choice": {
       "type": "object",
       "properties": {
+        "next_if_choice": {
+          "description": "Override next only if choice_id was already selected in this event; otherwise use next.",
+          "type": "object",
+          "properties": {
+            "choice_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+            "next": {"type": "string", "minLength": 1}
+          },
+          "required": ["choice_id", "next"],
+          "additionalProperties": false
+        },
         "id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -349,6 +389,20 @@
     "character_event_node": {
       "type": "object",
       "properties": {
+        "presentation": {
+          "description": "Explicit authored speaker routing; sms uses a separate sender/message panel.",
+          "enum": ["authored", "sms"]
+        },
+        "sunday_clock": {
+          "description": "Scene clock within an atomic whole-Sunday activity; not extra ledger minutes.",
+          "type": "integer",
+          "minimum": 540,
+          "maximum": 1439
+        },
+        "seasonal_street": {
+          "description": "Use registered seasonal evening street art for the walking scene.",
+          "type": "boolean"
+        },
         "id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -697,15 +751,6 @@
         },
         "rank_up_required_flags": {
           "description": "All listed relationship flags must exist before a bond/rank event grants its level.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^[a-z][a-z0-9_]*$"
-          },
-          "uniqueItems": true
-        },
-        "retry_if_flags": {
-          "description": "A completed event remains available when all listed relationship flags exist.",
           "type": "array",
           "items": {
             "type": "string",
@@ -1543,7 +1588,13 @@
         },
         "presence": {
           "type": "object",
+          "description": "Hourly map placement: 80% one fixed location (or absent if none), 20% one random location, excluding fixed duplicates and legacy rooftop entries. Noon relocates one eligible staff to an empty lounge. Rooftop is independent and enabled by default. Every enabled social location requires a staff-owned idle chat with at least three responses.",
           "properties": {
+            "rooftop_enabled": {
+              "type": "boolean",
+              "default": true,
+              "description": "Independent half-hour rooftop encounter eligibility; does not depend on ordinary fixed/random locations."
+            },
             "fixed_locations": {
               "type": "array",
               "items": {
@@ -1789,6 +1840,16 @@
         "personal_nurse": {
           "type": "object",
           "properties": {
+            "diagnosis_corrections": {
+              "type": "object",
+              "description": "Personal nurse diagnosis feedback: evidence conflict (A) and incomplete explanation (B). Both lines are required when this map is supplied.",
+              "properties": {
+                "diagnose_gastro": {"type": "string", "minLength": 1, "pattern": "\\S"},
+                "diagnose_observe": {"type": "string", "minLength": 1, "pattern": "\\S"}
+              },
+              "required": ["diagnose_gastro", "diagnose_observe"],
+              "additionalProperties": false
+            },
             "eligible": {
               "type": "boolean"
             },
@@ -1890,7 +1951,12 @@
             "required": ["profession", "personal_nurse"]
           },
           "then": {
-            "required": ["preop_graphic_wrapper"]
+            "required": ["preop_graphic_wrapper"],
+            "properties": {
+              "personal_nurse": {
+                "required": ["diagnosis_corrections"]
+              }
+            }
           }
         }
       ],
@@ -6339,6 +6405,90 @@
           "type": "string",
           "minLength": 1
         },
+        "invite_rejection": {
+          "type": "object",
+          "properties": {"text": {"type": "string", "minLength": 1}},
+          "required": ["text"],
+          "additionalProperties": false
+        },
+        "minimum_familiarity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "familiarity_acceptance_bonus": {
+          "type": "boolean"
+        },
+        "acceptance_cap_by_level": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-5]$": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        "dialogue": {
+          "type": "object",
+          "properties": {
+            "accepted": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            "satisfied": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            "favorites": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 2,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "text"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "accepted",
+            "satisfied",
+            "favorites"
+          ],
+          "additionalProperties": false
+        },
         "preferred_locations": {
           "type": "array",
           "uniqueItems": true,
@@ -6425,6 +6575,19 @@
         },
         "preview_path": {
           "type": "string"
+        },
+        "available_months": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          }
+        },
+        "story_only": {
+          "type": "boolean"
         },
         "asset_status": {
           "enum": [

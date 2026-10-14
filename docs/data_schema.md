@@ -35,7 +35,7 @@
 
 角色 `visuals.portraits` 使用 `outfit/expression` 键，值为资源根相对文件路径。默认衣着必须在 outfits 中。医护另有 `visuals.intraoperative_avatar` 机器可读素材清单：统一使用 `intraoperative_avatar/neutral`，记录 `needed`／`ready` 状态、目标路径与用途；完整制作规格和全员进度见 `docs/intraoperative_staff_avatar_checklist.md`。
 
-新增员工：在 `data/staff/<角色ID>/` 创建隔离角色包，至少包含 `profile.json`、`relationship.json` 与 `bundle.json`，并将 bundle 路径加入 `data/staff/index.json`。个人事件、特殊事件、约会配置、地点闲谈、日常微事件与岗位 CG 也放在同一角色目录，由 `bundle.json` 的可选字段登记；地点仍通过 `staff_ids` 引用。人数不写死在界面中。
+新增员工：在 `data/staff/<角色ID>/` 创建隔离角色包，至少包含 `profile.json`、`relationship.json` 与 `bundle.json`，并将 bundle 路径加入 `data/staff/index.json`。个人事件、特殊事件、约会配置、地点闲谈、日常微事件与岗位 CG 也放在同一角色目录，由 `bundle.json` 的对应字段登记；普通地点含休息室或独立天台资格启用时，`time_events` 注册为必需，其他字段按启用功能决定。天台资格 `presence.rooftop_enabled` 默认true，当前仅千鹤为false。地点仍通过 `staff_ids` 引用。人数不写死在界面中。
 
 新增内容后运行 `tools/validate_data.py`。目前标准校验器校验字段、枚举、范围，额外逻辑校验引用、重复 ID、团队兼容性、对话可达性。Schema 不执行游戏规则。
 
@@ -80,6 +80,8 @@ preops 集合定义 encounter_id、patient_id、surgery_id、roles、ward_role�
 `data/time_events.json` 定义地点、参与医护、按钮文字、随机结果池、分钟消耗及是否可重复。可选 `effects` 使用 `charm / presence / reputation`；执行时写入属性历史。GameState 的 `time_log` 保存事件 ID、触发前累计分钟和抽中的文本序号，保证读档后对白不变；耗时继续从内容定义重建。非重复事件只能执行一次，重复事件可多次写入。手术报告的 `reputation +1` 每台已完成手术只能领取一次，整理病例资料不增加声望。
 
 人物事件节点可选填 `cg_path` 与 `cg_fit`，或填写 `portrait_path`，两类不能同时存在。`cg_path` 以全屏 CG 显示，同时保留底部 VN 对话框；`contain` 保留整张图，`cover` 填满画布。`portrait_path` 保留场景背景并按右侧人物立绘显示，必须是具有 Alpha 通道的透明 PNG；校验器会拒绝把不透明图片登记成节点立绘。`allow_unmet_actor` 只允许用于 `contextual` 事件，用于正式相识前发生、但不把角色标记为已认识的剧情。
+
+医护闲谈合同：`time_event.actor_id` 非空时，回应必须非空白且无重复，`minutes` 固定30、`repeatable` 固定true、`effects` 省略或为空；`lounge`／`rooftop` 每入口至少3段，其他地点至少1段。普通固定／随机地点含休息室即要求该入口；独立 `presence.rooftop_enabled` 默认true即要求天台入口，不再依赖普通地点列表中是否写了天台。显式false时不得注册天台闲谈。本人bundle必须登记这些入口；`validate_data.py` 使用 `staff_idle_chat_contract.py` 检查跨文件覆盖与归属，并检查出没地点ID存在；schema本身不读取外部文件。英文入口标签及所有同序回应由本地化测试验证。普通地图每小时80%固定／20%随机、午间休息室补位和独立天台半小时50%规则见architecture，不新增存档字段。完整写作与验收要求见 `docs/staff_minimal_requirements.md` 的“地点闲谈必需数据”。
 
 ## character_event / 医护人物事件
 

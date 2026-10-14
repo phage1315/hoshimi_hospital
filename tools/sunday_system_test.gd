@@ -31,11 +31,16 @@ func run() -> void:
 	expect(app.game.date_profile_definitions.has("doc_sayaka") and bool(app.game.date_profile_definitions["doc_sayaka"].get("can_date", false)), "Sayaka date profile should be enabled once her first-date event exists")
 	app.show_sunday_invites()
 	expect(app.screen == "sunday_invites", "Empty invitation screen did not open")
+	# This test covers the hospital navigation, not automatic story dispatch.
+	# New authored first-Sunday events otherwise replace the map under test.
+	var special_events: Dictionary = app.game.special_event_definitions.duplicate(true)
+	app.game.special_event_definitions.clear()
 	app.show_sunday_hospital_map()
 	expect(app.screen == "map" and app.page.get_node_or_null("Location_ward") != null, "Sunday hospital map did not open")
 	expect(app.page.get_node_or_null("Location_clinic") == null, "Closed outpatient clinic appeared on the Sunday map")
 	expect(app.page.get_node_or_null("Location_or") != null, "Sunday operating-room corridor should remain visitable")
 	expect(app.page.get_node_or_null("SundayHospitalEnd") != null, "Sunday hospital visit has no end-day action")
+	app.game.special_event_definitions = special_events
 
 	app.game.date_profile_definitions["doc_sayaka"].can_date = false
 	app.game.date_profile_definitions["doc_aoi"] = {"staff_id": "doc_aoi", "can_date": true, "minimum_level": 0}

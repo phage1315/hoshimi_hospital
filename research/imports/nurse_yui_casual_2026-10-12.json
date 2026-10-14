@@ -1,0 +1,66 @@
+{
+  "status": "approved_registered",
+  "actor_id": "nurse_yui",
+  "sample_manifest": "research/character_references/nurse_yui/casual_samples_2026-10-12/manifest_crown_v2.json",
+  "prompts": "research/character_references/nurse_yui/casual_samples_2026-10-12/prompts_crown_v2.json",
+  "images": [
+    {
+      "source": "research/character_references/nurse_yui/casual_samples_2026-10-12/spring_summer_crown_v2.png",
+      "destination": "assets/characters/spring_summer_casual_v1/nurse_yui/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "298fb8c78fcac5829d4666a81b065b67d279f35e17a841b4c0f5accfd3108e5c"
+    },
+    {
+      "source": "research/character_references/nurse_yui/casual_samples_2026-10-12/autumn_winter_crown_v2.png",
+      "destination": "assets/characters/winter_casual_v1/nurse_yui/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "d6a80790a27b29aa2b681d4e5005d57cdd3c385e091cc6a3a5d83eff9213422c"
+    }
+  ],
+  "previous_visuals": {
+    "color": "a9bbab",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/portrait_pack_v2/nurse_yui/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v3/nurse_yui/scrubs/neutral.png",
+      "uniform/smile": "assets/characters/portrait_pack_v4/nurse_yui/uniform/smile.png",
+      "uniform/serious": "assets/characters/portrait_pack_v4/nurse_yui/uniform/serious.png",
+      "uniform/worried": "assets/characters/portrait_pack_v4/nurse_yui/uniform/worried.png",
+      "uniform/surprised": "assets/characters/portrait_pack_v4/nurse_yui/uniform/surprised.png",
+      "uniform/tired": "assets/characters/portrait_pack_v4/nurse_yui/uniform/tired.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v4/nurse_yui/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v4/nurse_yui/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v4/nurse_yui/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/nurse_yui/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/nurse_yui/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/nurse_yui/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/nurse_yui/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/nurse_yui/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_yui/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_yui/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 95448,
+    "all_staff_checks": 1184,
+    "failures": 0,
+    "validated_records": 661,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/nurse_yui_casual_2026-10-12",
+    "anchor_note": "Approved images retained unchanged. Winter crown about 9 screen pixels above summer in 1152x720 captures; not pixel-perfect alignment."
+  }
+}

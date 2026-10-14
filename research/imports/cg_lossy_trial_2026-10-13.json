@@ -1,0 +1,2574 @@
+{
+  "schema_version": 1,
+  "status": "playtest_trial",
+  "date": "2026-10-13",
+  "scope": "Loaded examination_cg_pools, surgery_cg_pools and ward_preparation_cg_pools, including patient-owned pools. No source image changes.",
+  "quality": 0.9,
+  "collection_counts": {
+    "examination_cg_pools": 46,
+    "surgery_cg_pools": 114,
+    "ward_preparation_cg_pools": 96
+  },
+  "assets": [
+    {
+      "path": "assets/events/ward_preparation_v1/enema/01.png",
+      "sha256": "39f6e3f98e19fa2773d6a08813aba61b5f8dd32b98a5ff80f466b2be0b5bb627",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1685731,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1098752
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/enema/02.png",
+      "sha256": "72619aa9a7d07b2824721d2a98974c162478747a1781f3e867185bdc61c7f546",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1656425,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1072828
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_aerith/enema.png",
+      "sha256": "9cb564f09edbe24d703a11d6cdaf6443b8963daf09944e8d935d0a5a2164009a",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1908249,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1210514
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_aerith/incision.png",
+      "sha256": "0ad0085c38a74b72a79751a66d9fb84f9fc44f008c743572b02acfb47a0b1f44",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2076523,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1340338
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_aerith/skin_prep.png",
+      "sha256": "39d2ee7f8f8bcdb2f9032189f6174a8e7aa44e346a731794c7e50e322ad6190b",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1942310,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1242570
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_aerith/sterile_draping.png",
+      "sha256": "d5b7d449ed2b3813d2142c9be408d61b67f0c9589936ff6fa726655fc11145c2",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2028430,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1326076
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_amate_yuzuriha/enema.png",
+      "sha256": "760118ad0caef60e1c149688992e73aa9098b5c325e08cf91a76d608886f7b5b",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1691467,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1082756
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_amate_yuzuriha/incision.png",
+      "sha256": "f55e0c38f02d3af80c72835e0e8d1fdfbd6f283d9db7a8eeb83173b65c7b2da7",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1834177,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1188868
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_amate_yuzuriha/operative_positioning.png",
+      "sha256": "b61237d5d1b933e7127f3d94c6caaa3e28bf6078a2fad1283eaa04f6afc54c5e",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2089851,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1340726
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_amate_yuzuriha/operative_positioning_female_pelvic.png",
+      "sha256": "0780ded3961adc31ca401616d49abbf875df37c892774188a400cf15e8b652fc",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1931075,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1217796
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_amate_yuzuriha/skin_prep.png",
+      "sha256": "f243a81dbd648c10aff96a82b426cfe8094754ffbf35082818c6d4dec9d164e9",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1575063,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1010822
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_ann/enema.png",
+      "sha256": "836441d3945d21ea43146f7df12842897e0f7343724a35845f02c2e26fdb6566",
+      "width": 1280,
+      "height": 800,
+      "source_bytes": 1159754,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 741980
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_ann/scalpel_ready.png",
+      "sha256": "3802c00a4f8917c7005adaafcef7ee719d34dc79ca32be3689a4918fb56dd1cb",
+      "width": 1280,
+      "height": 800,
+      "source_bytes": 973766,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 620346
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_ann/skin_disinfection.png",
+      "sha256": "76aefd28c1f47f122116352a9c762e8d74c4ce5e73ec3344ef52055160dcb347",
+      "width": 1280,
+      "height": 800,
+      "source_bytes": 1301276,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 832566
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi/enema.png",
+      "sha256": "2d99fb3985281cd13f6094fd4a0b1677b5fceedb6ea441045062dd6f0a35152f",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1730852,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1116386
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi/scalpel_ready.png",
+      "sha256": "b6ee7dc33cde7beaea7faf8a5e9215c431dc4aba67120f9292b3dedb50c7ed41",
+      "width": 1920,
+      "height": 1080,
+      "source_bytes": 2368990,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1502510
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi/skin_prep.png",
+      "sha256": "9207a53f31b4a9bdfd6b17506ddf85c4602bd6506e15cf84814da7b01c0f6abd",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1911647,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1222440
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi/sterile_draping.png",
+      "sha256": "145e4daefc2d80d6a4bce755cc6e8ca7f234ca1b59f55a2dc5e8789e27b6182d",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 2061507,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1318304
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_higashikawa/incision_ready_v1.png",
+      "sha256": "6669961be7ff1d1786003707f423e92345085f58f9529738b07b3653d5f8573f",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1552124,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 987094
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_higashikawa/operative_draping_v1.png",
+      "sha256": "fee88ed02104f2c8d97f64676e5f03356d6da8f083d401cf11681ff6d189daf8",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2000204,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1271314
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_higashikawa/skin_prep_v1.png",
+      "sha256": "84ac4a5fe13b8df2107ff9e294d49ab80fc93cd9b73f85f0dda97750c21dd1b5",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1522202,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 953514
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_koda/enema.png",
+      "sha256": "9674c8c911608dea7e347f2c88b73e845919b6c2add43c3705438e134bb4a70c",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1851773,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1201762
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_koda/incision_ready.png",
+      "sha256": "7772751e44e2a3423c19ab767e951a3063448e0e69694aa8130d3ef631bb4be8",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1884008,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1221840
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_emi_koda/surgical_cap.png",
+      "sha256": "0a40ecd5d50c7515dee7d97c0625fe0a6f3fa3edc491f16cc1925c8a59c6b91a",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1687009,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1100134
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_gigi/enema.png",
+      "sha256": "a153a07704980372a81d28b6eda76a77975bf954a67cf30c75153ea532df9e56",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1840786,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1193000
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwai_yoshimi/incision_ready.png",
+      "sha256": "43fe9b2d115e0649b58af443d57e1a284b315248dc8996f0aaebbe0b237db05d",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1723130,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1121356
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwai_yoshimi/operative_positioning.png",
+      "sha256": "51f60f131d4df0a6609a92c58a484023afbd034c5ef1eecef6ecf69fba3be401",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2181099,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1471854
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwai_yoshimi/skin_prep.png",
+      "sha256": "d7707de9dc99ae97f1f0cf150fe986ae722e352b1e4e8fad28075db9ce06d57b",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1714452,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1126412
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwai_yoshimi/urinary_catheterization.png",
+      "sha256": "a36b201370bbb23db9dfec1f10bf4fa5179f1c7533f4488bdbd2ab95d96fdcf4",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2090396,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1363856
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/enema.png",
+      "sha256": "065b3f19325e083a8820eb27e39cb8ecab4e84aa248ffd8bde27e32783c71fb2",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1696933,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1089750
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/incision.png",
+      "sha256": "bdb31cfb42b2cd5738e281c71a20223481f85032e39f1a02f09e996ecceb4274",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1862666,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1199382
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/skin_prep.png",
+      "sha256": "8a223848bd8d621f7b39ecc1e83b7158e1fa87138ecfb0800dbf5d0fda11ce02",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1565913,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 982082
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/sterile_draping.png",
+      "sha256": "7a0bb14ff0cd10b615d44461c142b290aaca7e03ed24860d05fbf4391f30ad23",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2030143,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1290422
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/surgical_cap.png",
+      "sha256": "ddd0073cb6133354c6ce9531a3a607b06afe9596fdaa3060b17209076ab4ef6e",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1499324,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 963490
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/transport_to_or.png",
+      "sha256": "a97c93c0b5a77f9ea4cdb50017465287e1597bf35a010d0af69ea9270b9fdbef",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1922827,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1215210
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_iwato_tamaki/urinary_catheterization.png",
+      "sha256": "0f170cb09a0063f91d58c450b405f318ce25148b3795f5bbc3e572ab09f81b44",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2019700,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1293518
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_kocho_shinobu/enema.png",
+      "sha256": "fbe262be00b0093bb23254c702a4b3d841952c61c933b3ca4819fe683091debf",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1810824,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1121430
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_kocho_shinobu/incision.png",
+      "sha256": "83e6c8b2d34336e794a1f81b899ff33b1edeb6a7ef4ddca68418ba57f865306d",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1857964,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1159294
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_kocho_shinobu/sterile_draping.png",
+      "sha256": "02a52fd33a975cd0dee751e7944baf801d20a815dc777691d61dd95984604b42",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2063577,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1291136
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_kocho_shinobu/surgical_cap.png",
+      "sha256": "d2b5a4659f7052d3a37d4838d40677984d62522a91bc287ebcd8f95cf05ad905",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1500857,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 944308
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_kocho_shinobu/urinary_catheterization.png",
+      "sha256": "909e4bc16dd673ec42e42bfc34bdf1fbac88745bf0ebf91ba886e820a844dec2",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2042609,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1282028
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_makimura_kaori/enema.png",
+      "sha256": "41e8586fbaa888424ff00afbde5100cd8c4350925b06bbf310c4f3091d5aa151",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1637322,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1034846
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_makimura_kaori/incision.png",
+      "sha256": "96afdb352f49956df3fbf8157dd03baf23bb477fe5d11c4ebf257d73045d0d4f",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1820328,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1182770
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_makimura_kaori/operative_positioning_female_pelvic.png",
+      "sha256": "e2ae23d2bad2e17a04d6ad326ebbd796acd8bf099c8d1487178fcbbf39a6d61d",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1939475,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1217466
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_makimura_kaori/surgical_cap.png",
+      "sha256": "11fbf97f9a484091274ee58dfe3e1538a9cdfcad09826d51fa98a3969e2f0cac",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1505504,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 957790
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_makimura_kaori/urinary_catheterization.png",
+      "sha256": "9835250309b52eabf1b1cc91dbf1f78d6fee263fc0320a29a8216635b3a027ac",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2025519,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1338288
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miki/enema.png",
+      "sha256": "5f7bfe0f9967c41f8988f969c1e036e42efd659bd604534762118ff51f3202b1",
+      "width": 1280,
+      "height": 800,
+      "source_bytes": 1015923,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 655770
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miki/scalpel_ready.png",
+      "sha256": "b142e55c2eeb1d73a2f4bde4394242a235c8ddc884fb63188b24548356752ed5",
+      "width": 1920,
+      "height": 1080,
+      "source_bytes": 2004837,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1260800
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miki/urinary_catheterization.png",
+      "sha256": "8acae8fb5948e1c5b677b0c5187685f58d301da332c2d1231b48a54a31ac6992",
+      "width": 1280,
+      "height": 800,
+      "source_bytes": 1356771,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 868258
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/incision_ready.png",
+      "sha256": "52559cac130c7e1de0e30cff179adfce33c417496129bf0e986f7c8868c97b85",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1693515,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1054186
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/operative_positioning.png",
+      "sha256": "3f8885bda870b0fc9fe825f57bdb168796fbedd004306ab843e8a5fd77614484",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2182332,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1383036
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/skin_disinfection.png",
+      "sha256": "b2712b1178cbd781c7c2bb6a251e812b31df35baf22f12025f6d7bb6144e2784",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2145661,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1347418
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/skin_prep.png",
+      "sha256": "147358fc42dc8c676adb3b53a21ea524e03d6d7fc6e09115333e337d62e48c45",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1760385,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1117380
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/transport_to_or.png",
+      "sha256": "1adb7b604de24f69ea9e6e15805c885dbfc7f270ae4bb24bf4e45ed407c57ec7",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1949779,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1228128
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_miyamizu_mitsuha/urinary_catheterization.png",
+      "sha256": "ce955f57f6413c1d48e6d1b480d09e37a1ce0cd52faad8e6fcce219f0442a711",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2089028,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1318516
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nogami_saeko/incision.png",
+      "sha256": "099b5a8899956aa076571849d6259c3a30bee4db8724480f053f0f9cb342a683",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1448752,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 910246
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nogami_saeko/skin_disinfection.png",
+      "sha256": "55ac00339f09e37435cece215e53f1dbae7d02ab6adf29133f3aaa32b63f7e1f",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1814310,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1211234
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nogami_saeko/skin_prep.png",
+      "sha256": "11dacd77e5c6915234428dfc0cdd4b1a61cd9686530ba41470f425d753895b5b",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1694926,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1071246
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nogami_saeko/sterile_draping.png",
+      "sha256": "530c693ff54daa6550003c429591f0cdc94b14e9580703df593531a457474368",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2054560,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1323360
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nogami_saeko/urinary_catheterization.png",
+      "sha256": "f3212fd3692c1b7470efb4b58dd0c75c06aea71cd1b107bf0008773a0382cce3",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2067300,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1293902
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nyaan/incision.png",
+      "sha256": "24b1af0d4ab656c3559139ad8837138e09d4e3900d04af79af96bbe73ad26c6b",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1469368,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 949612
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nyaan/operative_positioning_female_pelvic.png",
+      "sha256": "a4fec877c3c869b8f1a08b42daa41e1bfb5c2d61281de8999ce7fcef640f350a",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1933153,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1220472
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nyaan/skin_prep.png",
+      "sha256": "daf907dbab19f9000eb585810bb354b64b382361bd7d38b228dee00da2bd1a03",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1401953,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 886098
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_nyaan/surgical_cap.png",
+      "sha256": "9fd03f6d918c73de92418ffdadd23e090fe0cd11fac4064685cedd9023f65b1e",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1468154,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 952916
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_rie/scalpel_ready.png",
+      "sha256": "d54f12704a7c466e17af83f12b72428cbed1aee50fb930da8b0685b92623cbd9",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1500773,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 956842
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_rie/skin_disinfection.png",
+      "sha256": "b0fe68ae44fdc40e8951026bf14f4e2be578122606bc072db8108fb5519e9f4a",
+      "width": 1536,
+      "height": 960,
+      "source_bytes": 1804093,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1194440
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_rie/skin_prep.png",
+      "sha256": "fbc1ea78bc7e02fc3b525ade4ea444d760b3de7127370835657d5fda8bbbb83a",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1680956,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1072490
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_rie/sterile_draping.png",
+      "sha256": "6333b088b7915b657df07cade4a78c737e508da2b8f5c749cf8252a443ae68bb",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1985969,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1273444
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_rie/urinary_catheterization.png",
+      "sha256": "57f2937e9f3a4fd752c222cb197bd8ca7cdffd14c81f811012ed9e1a8d7d6cce",
+      "width": 1536,
+      "height": 960,
+      "source_bytes": 1936080,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1259584
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_sepha/enema.png",
+      "sha256": "7ef3047cd28ebfad023ecdd43a76b6cffc5f3abc3e064b0868f961bbfdf63a18",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1799951,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1110374
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_sepha/incision_ready.png",
+      "sha256": "aa2f7c2f950cea84654dea8066d76d960a7745f7d2fc2288ea020cf57f9fa3ac",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1499312,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 961798
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_sepha/urinary_catheterization.png",
+      "sha256": "37eeb4979a67463dfe36f2bbb18373d97f1035e132a7d49752e08e2f3b9c2bed",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1975395,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1244380
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/enema.png",
+      "sha256": "3766fed098e20566870d88a72df6480deffcee113609469372548beb0d144e4d",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1754655,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1113766
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/scalpel_ready.png",
+      "sha256": "662a90c8006b71a1aa2a0792d6b4a23121ad319f1c26da8c9b2b83ae56c8f466",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1588192,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1012788
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/skin_prep.png",
+      "sha256": "44758744db4e1f20fe3a4585306be4fbcbc322af8cf8ae07266b355bb86b8e55",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1601808,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 991490
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/sterile_draping.png",
+      "sha256": "758d3e46a7ef52a31d7be7378afe923b6a3797f017718dd1bd69b2b916158a8d",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1953863,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1233122
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/stretcher_transfer.png",
+      "sha256": "797cd03aa1d20ac74ab79d5f2c505f8e5cae3f0cb532fd53baea50b06aa142e1",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1881915,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1189438
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_shimizu_iraiza/urinary_catheterization.png",
+      "sha256": "bc56987c9787b3e46622ef28afa9e00775932c329db71a2acdcd032c36aeba6a",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2171688,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1383644
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_sora/scalpel_ready.png",
+      "sha256": "0b7c82a3939d5009964eea1a4598882684c2430d2d70e9f71a92d8431057c9a7",
+      "width": 1920,
+      "height": 1080,
+      "source_bytes": 2442704,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1531990
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_tifa/scalpel_ready.png",
+      "sha256": "7cd83178b9e9b14b5e63a12ac24c345e68ff1aa8fda14ccce1434bc8497ab761",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1996519,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1265938
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_tifa/skin_disinfection.png",
+      "sha256": "5dda37f2740f53c29c6577434a8fb344a60618c1ef5c52db8b505654821569a5",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2013646,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1305648
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_tifa/skin_prep.png",
+      "sha256": "0932f937a49d8e69b83067060e7254e089f16c561edd5b05d652c15ea63037d0",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1678763,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1044440
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_tifa/urinary_catheterization.png",
+      "sha256": "9e4b3c8f2d635d42097f5c07c06acee105dff889f2504b00be129510b83993a3",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2153877,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1383286
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/enema.png",
+      "sha256": "eeae3bf968657750fe6894af6a9e4ffcae949eeaeb8244585f0b464b60f2f47c",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2090330,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1378674
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/scalpel_ready.png",
+      "sha256": "9390da888178c0758e030b5c55ece9dd765e63912347d40a90b6312b056b4431",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1980432,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1279032
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/skin_disinfection.png",
+      "sha256": "3bda174f548540d67152962eed63dd77b524fadda5390c9e97eb82d6d0fb59e0",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2154675,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1449016
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/skin_prep.png",
+      "sha256": "2f2a237a4beb1d56e0302525b54d457c91fae9f389db611a88b74e92dd703925",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1990290,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1332740
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/sterile_draping.png",
+      "sha256": "26b1f1f9b25ae2b4404ab01414107eda7bb5b817a7d2d61c012870f60f0febab",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2457829,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1620396
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/stretcher_transfer.png",
+      "sha256": "40db242a06d4a9a73a51181181f4583e0fc844e15a8e8fc2aabeb93f733c5477",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2234818,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1472066
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/surgical_cap.png",
+      "sha256": "da406c76e7355048faeb5220e6161336a722ec686d616aab47065ad9b33877d4",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1888797,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1270786
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/patient_yuko_asou/urinary_catheterization.png",
+      "sha256": "cb69057fc7e13714de63654c90c8935ad1a359d06f6450bea635e6fa2bf3f4bb",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2496712,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1659746
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/skin_prep/01.png",
+      "sha256": "50d2692a9e264296fbcfe4e8d5edc7007ea85bb43b71f5a1e1c4ee62b4219792",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1650230,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1072158
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/skin_prep/02.png",
+      "sha256": "421ab689ce6c966963ee510de21278784485e809caf2f183f0a9fcf9871bd792",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1681052,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1096648
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/surgical_cap/01.png",
+      "sha256": "2931311cd51a34ef12e3ffb7e00b6020afeb797edb03a8330ed0da7be982fc58",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1731372,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1109810
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/surgical_cap/02.png",
+      "sha256": "0fb00aea9e6caac910d083f3d70f5ea8c0572375e1805ce693d2c95710de9d55",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1778394,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1137588
+    },
+    {
+      "path": "assets/events/ward_preparation_v1/transport_to_or/01.png",
+      "sha256": "8024ab8680b176a9c854c8342ee44a444bb64c0d3928e1d8483876fad898e378",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1847379,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1220828
+    },
+    {
+      "path": "assets/examinations/abdominal_ultrasound_v2/01_bedside.png",
+      "sha256": "2dcb5fc2831ea97b1a7026444c41c7faf99ea2374f928662becbe4c6b17bc91c",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2010673,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1400618
+    },
+    {
+      "path": "assets/examinations/abdominal_ultrasound_v2/02_reverse_view.png",
+      "sha256": "96a2fe82d6a6b9655a716537f3d745d6a4811c3978821aa1fcbb4f3288aa4a74",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1993570,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1393574
+    },
+    {
+      "path": "assets/examinations/abdominal_ultrasound_v2/03_probe_closeup.png",
+      "sha256": "904db3da94e9c24d5b7e3ef940670e03888e72359c0375aeef1c1bf2531c472e",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1718828,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1172384
+    },
+    {
+      "path": "assets/examinations/abdominal_ultrasound_v2/04_side_lying.png",
+      "sha256": "ec3b1c6b83139bd7ba8cab80e487a881599fd7bac8d56f1ec65c0ea380ef8ea1",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2014329,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1398120
+    },
+    {
+      "path": "assets/examinations/abdominal_ultrasound_v2/05_over_shoulder.png",
+      "sha256": "400408ae02f9cd35afc9d83d9207f1d92f958523db2159ab95e8b8bb2692d9e9",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2127850,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1437746
+    },
+    {
+      "path": "assets/examinations/blood_draw_v2/01_soft_redraw.png",
+      "sha256": "d965dac7d5053c31e7af4d366ad629b1f82f1d02f2494277f54dc52cc1c1b9f7",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2058794,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1428136
+    },
+    {
+      "path": "assets/examinations/blood_draw_v2/02_white_uniform.png",
+      "sha256": "51bc664420eca927e66e657d6bc8b41bfd5ba81a9b95502a2a0286723edffefa",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1991333,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1407062
+    },
+    {
+      "path": "assets/examinations/blood_draw_v2/03_glasses_patient.png",
+      "sha256": "0b9fb124ea1ecd1631c0f255e6d5828c8c656647639ed3a7a0e0ed0d586a9e06",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2040452,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1410284
+    },
+    {
+      "path": "assets/examinations/blood_draw_v2/04_procedure_closeup.png",
+      "sha256": "07649357aec10e623f44deb6911acc310e7f40c2faf8160230b4e27a5d4d2f45",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1875329,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1320688
+    },
+    {
+      "path": "assets/examinations/blood_draw_v2/05_after_draw.png",
+      "sha256": "8735e2a443aa9761d2b9df9e6f52729bd9e834127aef39ca94b0a5bea21e5fea",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2105478,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1481850
+    },
+    {
+      "path": "assets/examinations/ct_scan_v2/01_bedside_preparation.png",
+      "sha256": "36d1a8eab38b77b8193dde876adb87a502faf85f3a1fb2dc88afadf0ab435af1",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1898944,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1337894
+    },
+    {
+      "path": "assets/examinations/ct_scan_v2/02_front_view.png",
+      "sha256": "4a9adfc2d21ff9523bd704c1b876c6af203ad94daaf44ba92596021e83a7cd05",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1849070,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1274914
+    },
+    {
+      "path": "assets/examinations/ct_scan_v2/03_control_room.png",
+      "sha256": "cbad95fa50c5cde89f102eb87fa411878f4610beb0da50070e9d8e595bc2107f",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1993718,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1410458
+    },
+    {
+      "path": "assets/examinations/ct_scan_v2/04_patient_closeup.png",
+      "sha256": "05969b07ccd25d5b6bcc2f7358b4a324d2f10a6959884870271b1d8fbba0ee64",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1831716,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1247572
+    },
+    {
+      "path": "assets/examinations/ct_scan_v2/05_lateral_view.png",
+      "sha256": "0acaf39786576edde0b15728b8bf085ee5d9e287fe50fbb0b44cb8a85ffe2fa9",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1750838,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1210312
+    },
+    {
+      "path": "assets/examinations/endoscopy_preparation_v2/01_bedside_explanation.png",
+      "sha256": "e62611e0a7936f139d22c40c00ee7883387fbe5c798b20fed1543dee7a474ac5",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1917590,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1365542
+    },
+    {
+      "path": "assets/examinations/endoscopy_preparation_v2/02_pillow_adjustment.png",
+      "sha256": "8f39550d56a5946408eb60ae0bbcab4847eccae2e848621a163a7d0c222867f5",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1967012,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1397906
+    },
+    {
+      "path": "assets/examinations/endoscopy_preparation_v2/03_finger_sensor.png",
+      "sha256": "06d2f407c11b538828429346aef94593d79cd22459d19a9bb707f5f7c1d288e2",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2033663,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1436904
+    },
+    {
+      "path": "assets/examinations/endoscopy_preparation_v2/04_patient_view.png",
+      "sha256": "5ccb8eee4d4c001b7e556d0558f1aeba1ff6767be860ec106ed4e081d857c153",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1814540,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1278602
+    },
+    {
+      "path": "assets/examinations/endoscopy_preparation_v2/05_team_preparation.png",
+      "sha256": "c129424c16fb8acb330437b03b9e25bce945d34162c1830ecb56708f97fa0e4c",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 2070236,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1478648
+    },
+    {
+      "path": "assets/examinations/generic_v1/gynecology_preparation.png",
+      "sha256": "2048a6620f3cc804d32ed39af078b9b57fba2f92fa4675ed4819efed33182c1a",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1870204,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1341928
+    },
+    {
+      "path": "assets/examinations/mri_scan_v2/01_hearing_protection.png",
+      "sha256": "1b0404b6dcb275690ec664318c84bdd5ec0f7a6c018359fd5a6bff4aaa65be21",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1927002,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1332708
+    },
+    {
+      "path": "assets/examinations/mri_scan_v2/02_bore_entry.png",
+      "sha256": "2512cdfd76cb70f86ab89d668d5bae805a5f54c319aa7b400daf66763b309fd8",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1799880,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1214940
+    },
+    {
+      "path": "assets/examinations/mri_scan_v2/03_control_room.png",
+      "sha256": "b773ca80b09a71d2a09f37102684d347c8fb018753d208666def0e23b9e6c392",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1958543,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1352572
+    },
+    {
+      "path": "assets/examinations/mri_scan_v2/04_patient_closeup.png",
+      "sha256": "6d81ca0a7452255fa0ebcdab4a74651cbbbcb51efc1a856d035aca95b3aeb1a6",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1778990,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1232022
+    },
+    {
+      "path": "assets/examinations/mri_scan_v2/05_lateral_view.png",
+      "sha256": "8b1344d9f0b9acaa7f13689307ae08a3ee0b456890425dd6cd36288888bd8140",
+      "width": 1672,
+      "height": 941,
+      "source_bytes": 1826529,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1258306
+    },
+    {
+      "path": "assets/examinations/patient_aerith/full_undress_basic_exam.png",
+      "sha256": "4d6ad0669a3af74f99ace34926e354295393b33bcbe1c31568b07c057c130da1",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1998604,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1276776
+    },
+    {
+      "path": "assets/examinations/patient_amate_yuzuriha/full_undress_basic_exam.png",
+      "sha256": "75fb77ad37d4ab9dbcea2b8a16f9fc91929e8b64555cf3067a729df98e520422",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1694938,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1087426
+    },
+    {
+      "path": "assets/examinations/patient_comoli_harcourt/full_undress.png",
+      "sha256": "f9f0c03d17d2edce863484f56588ff815135196be17c9b70e42351e0b0ca3119",
+      "width": 1056,
+      "height": 1584,
+      "source_bytes": 998099,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 515982
+    },
+    {
+      "path": "assets/examinations/patient_emi/full_undress_basic_exam.png",
+      "sha256": "f7d37fbdaedded478df1cc2a628fcadd41c49836ec8282992ecce7b38d8870d1",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1850816,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1169364
+    },
+    {
+      "path": "assets/examinations/patient_emi_higashikawa/full_undress_basic_exam.png",
+      "sha256": "99e8f95ee123efcdeaa8f4cd907ab61a701940c6681e6488d47a978e2bd29a8f",
+      "width": 1056,
+      "height": 1584,
+      "source_bytes": 1205327,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 615932
+    },
+    {
+      "path": "assets/examinations/patient_emi_higashikawa/full_undress_v2.png",
+      "sha256": "09e708103553ec17563fffe5174be50c4a8e9cd844f89be6d17f94c92b6a152b",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1685428,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1070568
+    },
+    {
+      "path": "assets/examinations/patient_emi_koda/full_undress_basic_exam.png",
+      "sha256": "53ab825cd395f296f6b653c589da3abc5e946c27640ac94cd7c2451b4cc37e67",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1831163,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1183490
+    },
+    {
+      "path": "assets/examinations/patient_iwai_yoshimi/full_undress_basic_exam.png",
+      "sha256": "63427b0c899ac0032eb2e2bc1fcad319631ed0cf383f3e973f158485950283e8",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1605066,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1054986
+    },
+    {
+      "path": "assets/examinations/patient_iwato_tamaki/full_undress_basic_exam.png",
+      "sha256": "a695f73c256cce87f06b399183d3b81e7dcaec0772abc48d40ac27cf379e0ddc",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1510388,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 960136
+    },
+    {
+      "path": "assets/examinations/patient_kocho_shinobu/full_undress_basic_exam.png",
+      "sha256": "474bab38d5f31082e79247436b8858564c6fb1e162d529772eb2b6449b9ccbcd",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1265618,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 767268
+    },
+    {
+      "path": "assets/examinations/patient_makimura_kaori/full_undress_basic_exam.png",
+      "sha256": "2561849ddb888c1f944eb214b32c6cd5c37b20bd17b7b47ae54404d6ea8b7a0d",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1635510,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1038334
+    },
+    {
+      "path": "assets/examinations/patient_miki/full_undress_basic_exam.png",
+      "sha256": "a2999fbd8956ba640d8fae07180bc9e02ce7d14ae295e548d249216c0be239d7",
+      "width": 1280,
+      "height": 800,
+      "source_bytes": 942626,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 609472
+    },
+    {
+      "path": "assets/examinations/patient_miyamizu_mitsuha/full_undress_basic_exam.png",
+      "sha256": "f9aee4efb36202750da7c1266d65e89fbc047bb2956ce41e9088105a98071ade",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1667432,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1060676
+    },
+    {
+      "path": "assets/examinations/patient_nogami_saeko/full_undress_basic_exam.png",
+      "sha256": "f0a7636241b12eb4a7f682c400273a81094a6a1ea2cf3e0a1eb8154dd56edd26",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1611487,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1006370
+    },
+    {
+      "path": "assets/examinations/patient_nyaan/full_undress_basic_exam.png",
+      "sha256": "d4fb89de48229242f1d9e5c48cab0d8cdab7ebb9a6faaf5a72af4b25168f9fd2",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1507035,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 971586
+    },
+    {
+      "path": "assets/examinations/patient_rie/full_undress_basic_exam.png",
+      "sha256": "3e548dca011bebfc95583e7b8de8c49d6545df8b49ef48ec437d78a4d6be9d25",
+      "width": 1536,
+      "height": 1024,
+      "source_bytes": 1677045,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1071238
+    },
+    {
+      "path": "assets/examinations/patient_sepha/full_undress_basic_exam.png",
+      "sha256": "7cd6e03f4acf9a6282fc7f98f874af8c689d5d37ca801c19c1a158619bf9ec5f",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1600586,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1003230
+    },
+    {
+      "path": "assets/examinations/patient_shimizu_iraiza/full_undress_basic_exam.png",
+      "sha256": "ed1bef57622c03cad9f8050c9309158adf78085be3e58e9d6e92a6b58734445c",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1622433,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1033170
+    },
+    {
+      "path": "assets/examinations/patient_tifa/full_undress_basic_exam.png",
+      "sha256": "eecc92b815794fec637640206427103189d03a48de37754ae749e0550a008563",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 1795040,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1155578
+    },
+    {
+      "path": "assets/examinations/patient_yuko_asou/full_undress_basic_exam.png",
+      "sha256": "4f3150b3c6890a06f38fe82580b62f729df1b4b1865af2133ed931b0b035d249",
+      "width": 1584,
+      "height": 1056,
+      "source_bytes": 2177430,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1437538
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_01.png",
+      "sha256": "cca8d674c5ecbff6c7d0c46d708828a1aa53da44598e3f088e3612cf5d0f8ff5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1909847,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1369088
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_02.png",
+      "sha256": "fd52cc61b129d38d98e33b2e4fd6b68d82581750ea8dd137056a8945d8f4c536",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1621164,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1199712
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_03.png",
+      "sha256": "c5daaac85afacb7a7a45e0d06d6f7aa9e45f706443240c4c1adaa87728c010c9",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1699804,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1279894
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_04.png",
+      "sha256": "f8e85798b3fd8706d20ac11a55e940e986a0a574c884565c42bc537632a9244d",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1626261,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1275278
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_05.png",
+      "sha256": "ff42126e69511305a935afe7a2201a8399ab94d373202a8623b0dfef0428198d",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1832162,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1371182
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_06.png",
+      "sha256": "488d0f437ab9c6a5ab6484427cc89ee789907edb265e378c93b270d91ee8dd56",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1867622,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1347576
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_07.png",
+      "sha256": "693b07f0ab7bb541786c4e8643befbb31bb65f862ebbd71e35dd4c704521fd17",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1926403,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1398626
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_08.png",
+      "sha256": "ab9972d784d8b5c686164fc96382ac51c7be37310b43343dcfd34a3ec441f6f2",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1801822,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1305866
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_09.png",
+      "sha256": "ee032b544690253dde55ef936c57b9b435958f9a003af560a3468946829ef362",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1961990,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1424002
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_10.png",
+      "sha256": "1b08e47f6684ad2d7c58d28ee0bf13ee05516afeb3552b65c0aa4d389fea07d6",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1718152,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1280726
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_11.png",
+      "sha256": "eae574338a5fb56b4836384d9245ede8461b63c33a42681a5fa411a2017aa1e5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1781115,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1299834
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_12.png",
+      "sha256": "17ebdaa78ebafad20243ec1409dc68bdcef9753076da40b697e59c3ba6ebfcae",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1622792,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1175698
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_13.png",
+      "sha256": "09473a0d457a32ca917ca3b13c31b9384ee61acd34b8f04041852e270629fe5f",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1473488,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1088452
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_14.png",
+      "sha256": "eadaf994833ab1328841f241b84352ee0b38c92144fddc6e4087b8ecce6a5736",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1457527,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1098100
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_15.png",
+      "sha256": "62edce25278659ea0ce01a7d94702a7f9c24a2414e150faa20f228e0746307e5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1440705,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1118688
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_16.png",
+      "sha256": "5e7846ba8b007d0efab083f8569c40c3b2b7fbf3a77779401dfdfe7daed732a6",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1443576,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1087256
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_17.png",
+      "sha256": "a22e3d1cc0567e2d597ed6a7c7a2cded090fed54e14b7aa9d63dd7101e567402",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1467522,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1089818
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_18.png",
+      "sha256": "55c299625708c28c42eb300a8032c6ab23948deb683cc6746018825498fe9295",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1395840,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1084640
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_19.png",
+      "sha256": "535b11c01792266bb8865dbc565dc00bfc9c00b17ad5b30dadc3ace3e81f398a",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1413731,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1054338
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_20.png",
+      "sha256": "500f8f698cf970927d62dce35fb44c467be59c34ff62a30a155ca820641b2dbb",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1563235,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1192522
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_21.png",
+      "sha256": "f5a6002d3bab3d7641667e9c8258623e466e7b40eb2247bbeec04ba53ef57f47",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1463458,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1093506
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_22.png",
+      "sha256": "1d7aa6472c550eef593d102d34e8e77e5f88db2c0bd7a907ac47378c3980cac7",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1446891,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1092538
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_23.png",
+      "sha256": "d301eeede1f547f0a2164f3f681ea467565c30bd2896fdb1160c5bbe2238a71c",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1472428,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1080538
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_24.png",
+      "sha256": "130895ed3175a2c60e1eeabd9d1c1337064a1fd9fa0f04c3712c08bb772ee9f6",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1595877,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1173448
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_25.png",
+      "sha256": "118717f2a119c8b05b5e13b9d3c4090604685b1b732a7988f8052e10080c91f1",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1699880,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1215766
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_26.png",
+      "sha256": "ac5679dd1ed3a0ffd15afa493b3e2a6d3ef7c3a37e96030d1393dfd44becdd9e",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1675791,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1221302
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_27.png",
+      "sha256": "6a2c267adfed1f849539addf16f21181d470d6dfb9bb41b9ebcfec44284fd4a0",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1993160,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1419930
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_28.png",
+      "sha256": "4f9dac08fc0ac0aae0d7d660c85c03f54fdab8d008acf1c093804ef85d1486f9",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1811204,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1298250
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_29.png",
+      "sha256": "89f41b1f5d39fc98766073d5fd452154f185504d8af5fa2876e986557a6bfa1a",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1894638,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1358900
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_30.png",
+      "sha256": "52b257d5ebf200794c86f6bc2fe71c42d418b6e61ab542af431f4cf18b5cd900",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1902563,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1393250
+    },
+    {
+      "path": "assets/surgeries/generic_v1/abdominal/progress_31.png",
+      "sha256": "52bb7183353b6c8bd72b7a977c9c64381c9187db5274461f9c202c055c4123fb",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1876439,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1366466
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_01.png",
+      "sha256": "0ef655d683ad5f02b39c79e3c36b1697024b9215e3bf047454367f4bdf367a64",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1914183,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1245394
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_02.png",
+      "sha256": "2c0e8126994b1427a0dbb298824469a90359d1b7d486e52e44c4bb20b40a2779",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2116719,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1384612
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_03.png",
+      "sha256": "2f6616b15f6a9f49ae248a020162dd6beaad5b576882f4735e737c3d7961e885",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1924519,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1227896
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_04.png",
+      "sha256": "580646fa487ce529593eaaeb589dff2a028afee0292f3697397c674bf13daad8",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1987787,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1282490
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_05.png",
+      "sha256": "8fa7f80233ca14c21973bb2b82c7fefb54c077ff794a6a56289a4c340ff2476b",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1901971,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1248072
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_06.png",
+      "sha256": "5c64829d02769740b4ab7c17162ffd0ae25bf602d5740a9075511d4abec08b8b",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2099852,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1368558
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_07.png",
+      "sha256": "a2eb5d4cefdb4ec22105488c1f134da4d1cbb762d04ff6b5b2538304e3a82c0e",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2076884,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1341176
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_08.png",
+      "sha256": "e3e09540fbad0adbdeee36852eed707bd47fbcdad47a4bd547562215a5f7f4b3",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1950269,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1255876
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_09.png",
+      "sha256": "e1eb31e1569bc107d8995d21ea315e370fb423c1838c3d42310da8e3e964ee0d",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2057428,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1328942
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_10.png",
+      "sha256": "65bfb2d820de4d4c16d207b8a754fd8f4b4b52de4b38574d87e5d3a27ff2020e",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1982554,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1317274
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_11.png",
+      "sha256": "a3156607b8e62266be1252aa7105c260239870aded55ba604736945b815e49bb",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2053441,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1350608
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_12.png",
+      "sha256": "b8043186a3c9de993606c87ac1c46fdd4c89d2a8cab77e8f1ece07e608bc8787",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1989070,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1299450
+    },
+    {
+      "path": "assets/surgeries/generic_v1/breast/progress_13.png",
+      "sha256": "157795288d3a412d729ce9aeb26fec3b18a446cba9376d38bf20cc43499b379f",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1907215,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1278064
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_01.png",
+      "sha256": "19d91fb1c9cd2cb819cf75d8a4c8525ac0f9bafe2821152a90802d91254a9d16",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1534255,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 976772
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_02.png",
+      "sha256": "a5e0ad71b9bf4678aef389c93efc7bdcbda44060d2194b5d4ae3c02c3872dc36",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1432306,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1077604
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_03.png",
+      "sha256": "ab9544bde213fbea0923caebee86f2c6b68069f4629c26cc97ea25b1b5df0c15",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1320454,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1030776
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_04.png",
+      "sha256": "617cf330fe4dc743137aa1066cb06c5ae12e6c33b85f9aad18f45f22138a16cc",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1427890,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1094688
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_05.png",
+      "sha256": "42580d2d945e353d1f0e7b0cc4482cb96f460158480f8745a9068771458f8e2c",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1578770,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1157592
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_06.png",
+      "sha256": "eea5010d9463e123055870b8f6c5856416ef73b9f76976c9e8f8a40f6ed328dd",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1287618,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 942028
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_07.png",
+      "sha256": "5328fddf978cbe021319e071458e73ee379e1744f77049b958a4ff0569a12bb8",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1756348,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1272468
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_08.png",
+      "sha256": "54e96cb646f6521bb87ff4327a14a977223449ec9f050031835ad173ccb334ab",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1373070,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1078706
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_09.png",
+      "sha256": "b91d778b694ebdad1aca1c6b0840f31ba0bfa94906c557390e4e2c59687dcd87",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1438015,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1119700
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_10.png",
+      "sha256": "0633b5ed1af2b9506a64222b862d0656fb836cc6e79d16f43afb088d430aae47",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1729951,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1246810
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_11.png",
+      "sha256": "701918c2264624bf9ee14c2af5ec4a91a232307f3552b65bb592d482de39433b",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1666424,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1223826
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_12.png",
+      "sha256": "b2b89de21863839c8b575e6da00fadf2624fa8cbef9acaca6d14122aa48e0e80",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1615562,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1200294
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_13.png",
+      "sha256": "971326d04b4f6162ebe41f2dcaaafd7aeff91e6f2eec9f1274826b0ad824cd81",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1620474,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1181322
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_14.png",
+      "sha256": "74092da389174852e02ea8b047b009177a8db7d9d04e43fb74083dbd8512b87b",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1478311,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1121894
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_15.png",
+      "sha256": "2cf723d4c322204f093315834c96d413905cb2f1cfc43d1561bfd16eae14f0d6",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1680440,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1224288
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_16.png",
+      "sha256": "81012a6a3070e05a91d2348893187200508c402d4a6c82934be77b5124ba76f0",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1482639,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1092038
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_17.png",
+      "sha256": "9463a0b3bcfd105c08b5f0f640ed994c375e9a00497da186662cbba539895322",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1378409,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1070870
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_18.png",
+      "sha256": "cb17a70fbe9d7d6d25922184c199da937db245cc80da49b363f4e3393fcbb234",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1418919,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1101138
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_19.png",
+      "sha256": "ed4859a063795afb6f80c21125922569e9f2613cf826135953805a08bd4cc564",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1832233,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1332004
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_20.png",
+      "sha256": "0a53e3d0a7c2f32f591a4bc239fed45adf92428dcfbeae844d39c1f1dea50342",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1542062,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1145236
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_21.png",
+      "sha256": "de6eda3763ac9c9a640469b79221d2990c537ccac623dea604e6170531a2fbbd",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1621830,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1170050
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_22.png",
+      "sha256": "348a0c42305d4d9822b7f5eacab16184b7213627bac5e350cb7c5bf96e6fb181",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1398138,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1051194
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_23.png",
+      "sha256": "ea0462f70553d7852dc10aa79fe8f1de22cb9636ff9e8c318265049f38756ef5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1623941,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1221022
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_24.png",
+      "sha256": "c0d2a2141590e2cf5405a48b931cd558052fd5c645650cd0a7a6fe065192c0a9",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1396987,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1058314
+    },
+    {
+      "path": "assets/surgeries/generic_v1/cardiac/progress_25.png",
+      "sha256": "34667174ff188287c73bdca6e506239e1dc08bad1fe07e8318855e86d32aeadb",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1510169,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1111774
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_01.png",
+      "sha256": "a5d39cf90687c3e0c3b5f8e90504c11e2b217a282075becbf480236ced7894ad",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1505594,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1100078
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_02.png",
+      "sha256": "1dfb1518150a3ac41940af0e37123526c7289ccb494af1d1d6a4ab65c8e23836",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1371693,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1007330
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_03.png",
+      "sha256": "c0dc42cacb7c042c42c16d82ae4b3611fbbb1249b15b95d79dc4094f7bc0b0ec",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1627124,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1172638
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_04.png",
+      "sha256": "687f944c41ba08e9c91e8a2fb3d24c458f6d54c180704413d053d2ea348c145d",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1437604,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1063074
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_05.png",
+      "sha256": "653b4ca177ea07395b698fb37bc6ff9e0016b8c739d097899e5b517e19ac96c5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1524848,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1150386
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_06.png",
+      "sha256": "11b81303d94ad6033086dada95c87edeb6a410b4682b0b69be15795157e5fcaf",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1512729,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1104096
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_07.png",
+      "sha256": "74b26c36fbaa98da12bf22119bd57cc1b430ea9b0cf0b8eab69af2bb63f821f5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1446078,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1060786
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_08.png",
+      "sha256": "893546517b1834c73e2b96b003faaa3c7a4516940de9d837feee5ddd4bc4ff78",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1657070,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1306640
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_09.png",
+      "sha256": "338ae482f925d6f5f27967e819acf5bcc7827e89436b1399e093c9775e25999f",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1884323,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1421092
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_10.png",
+      "sha256": "a585bdd7e062dcd22448074acc56e361cc0bbdcd4693f85575960e68d9b93df1",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1846075,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1332148
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_11.png",
+      "sha256": "b071116b37c9a966833bf3b00548a854aacfb075d331cfc6f7a28fb73c9002d7",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1773368,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1339356
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_12.png",
+      "sha256": "077e207a2cbf6ee70ab8a98bd6a96e7b4270c07ed98d8bb59bfc7c25d3376c72",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1852929,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1364228
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_13.png",
+      "sha256": "fc17d8c9c8ecbb3e72807b36d916641371d17791e6089afdb7cdbd5ac22461a7",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1884389,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1350430
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_14.png",
+      "sha256": "b6356adc703daf052327c1f4b3eef95633ae9dd062479e3d47083f43359b9439",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1956683,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1413666
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_15.png",
+      "sha256": "47f1cbf4d66ce04179044c951bb0f72b1432403a28839adeeefae5f8eb41faf8",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1879995,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1358218
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_16.png",
+      "sha256": "96742950819b5d06f22562839b1d1b914460cc7f7fa26ae0e7a620047eb9751f",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1872869,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1401138
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_17.png",
+      "sha256": "3f8c1ff68f9f237a87e7049584d6e97f43f5b2ddeacbde2ddc9003c8602b13f3",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1901537,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1362314
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_18.png",
+      "sha256": "e9d2dc07facda4efa1c5d742b4fdff660d9702de6657b3458ac90f2abda3ace4",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1854276,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1345618
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_19.png",
+      "sha256": "2778e86caffa1953be1b9ca805de0ab228c7126b610f3bc4f9053f94d4ddba6a",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1837290,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1350390
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_20.png",
+      "sha256": "933db03970063ee7fe431a15e5374d19d17f59d837e67728b550405072e0ebd3",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1776453,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1291694
+    },
+    {
+      "path": "assets/surgeries/generic_v1/pelvic/progress_21.png",
+      "sha256": "fe47955fbcba12b0a6be8edfea01db16b38f7d9b56d6fc1679c9b8a1c3e33706",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1912684,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1402794
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_01.png",
+      "sha256": "12263bb2de7f71c2800330cad70ac473628113180f983640a93fd2ad55784a6e",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2050632,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1325768
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_02.png",
+      "sha256": "d320a8f8f699e05334e2c11edbb76a64e1a22290f3440741a7a41bbf802735d6",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1706640,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1084762
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_03.png",
+      "sha256": "6e075547724dad0a38e2f0e85ee2125403dc65f407c27b74f44969563080122b",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2004976,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1303444
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_04.png",
+      "sha256": "3118a9d1faba6df9fb3224f0bb74b6e486e1f14fbdccf98e757d192f75b791f2",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2097870,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1360326
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_05.png",
+      "sha256": "e3b37430b64e5d441bfc5ecc72b716e98f3052344b70218f449f715116c0a666",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2036450,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1310458
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_06.png",
+      "sha256": "6ec396962fa6abd3363aa0c234e92d2054063a20c46712af74dd439fb73fd77f",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1843949,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1172018
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_07.png",
+      "sha256": "7d2ad8688f78d0d173fb47f0f7653a49c401b4a52cc5dc4e34aeca31444f04d5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1973556,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1263786
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_08.png",
+      "sha256": "b95d54365c4f05bb95aeaba6ff6b2a8bd445d57f0fbe692c2e7ccb6c8ab21197",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1831319,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1161956
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_09.png",
+      "sha256": "c7e265eeecbd1a94c5ee9c88a0c92620a2f1aa3d7e69fc8ca52c32bd1352e641",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1969611,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1266592
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_10.png",
+      "sha256": "4eaccfd080d432f02bed152a2da2b7de397f72b87cff3e018efc38265921708d",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2111550,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1367876
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_11.png",
+      "sha256": "994bafdc2ae2e87d62186b87a5b3183a3e93767e7f763db1a95eb5dbf49377dc",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2098175,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1341654
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_12.png",
+      "sha256": "0c7ec0b5b8578018492a23252aad268c7f4b2375b0fb91cf521921b6ad36d3dd",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1929883,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1255950
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_13.png",
+      "sha256": "46d76eade4049727cb84f4eda2c11dde725d9c664c9b9c1d7f14baf3c778aaab",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1972170,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1268014
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_14.png",
+      "sha256": "8098194975a292101c76f5a1117117684e586260f3765393c8f1bb29c34642ef",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2043489,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1324850
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_15.png",
+      "sha256": "d2b1af3c77aed4f01aed2b92b35a7d480d296dfef478e8b566ed4924458be94b",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2099730,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1359140
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_16.png",
+      "sha256": "867679f63216e3d5da3fb73797fed2a1c126af2aea3ff4609054d9519255837e",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1835443,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1195150
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_17.png",
+      "sha256": "5132987c474fa9b54ffe4baf1fcc13216cd5b023f91e9501f095ff71dcea02df",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2005866,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1273734
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_18.png",
+      "sha256": "1b360e1379f4d591704ab4a827e437028546686e940ece2e2ac3006317325cf5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 2121219,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1383012
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_19.png",
+      "sha256": "06da9999b08a66fdec3a8db49937a5e1e84975ee3f690ca9a3a9761dd2c9ddc5",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1996189,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1276744
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_20.png",
+      "sha256": "14ed8f158f986a773c055c66c86b872f5e4d2ed1ec44a5e91b83d5a6210c7e89",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1939853,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1255406
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_21.png",
+      "sha256": "da125c2f6b5d012b9710ea06eb0fbd48975c1a9b07abfdacaff06c57a4b8d8aa",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1989317,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1283946
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_22.png",
+      "sha256": "c18385e31b171d622f8a1d974af73399ff1c24c1ba74b9484ca36f10a8bc8215",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1950688,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1252286
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_23.png",
+      "sha256": "678b2a30096f4b7a40b6d99d3f7adc7f6a34f315a0099cfd6aa3646c5afdca8e",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1964065,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1287194
+    },
+    {
+      "path": "assets/surgeries/generic_v1/thoracic/progress_24.png",
+      "sha256": "9e6612b4c2aae86dfef809bdb917bda57c919d66123a256c5fef697774bbf5cb",
+      "width": 1672,
+      "height": 936,
+      "source_bytes": 1902107,
+      "original_compress_mode": 0,
+      "original_lossy_quality": 0.7,
+      "texture_bytes_before": 1238674
+    }
+  ]
+}

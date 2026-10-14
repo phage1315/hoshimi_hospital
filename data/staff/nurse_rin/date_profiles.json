@@ -1,0 +1,44 @@
+[
+  {
+    "id": "date_nurse_rin",
+    "staff_id": "nurse_rin",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "jazz_bar",
+      "seaside_promenade"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「周日有一点私人安排，真不好意思。不过谢谢你想到我。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 75,
+      "2": 85,
+      "4": 98
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「当然可以呀。时间你定好告诉我，我会准时来的。」"
+      },
+      "satisfied": {
+        "text": "「今天很愉快。和你相处总能让人放松，不必每分钟都找话题。」"
+      },
+      "favorites": [
+        {
+          "id": "jazz_bar",
+          "text": "「这首曲子真好听。能从头到尾安静听一首歌，感觉已经很久没这么悠闲了。」"
+        },
+        {
+          "id": "seaside_promenade",
+          "text": "「沿着海边慢慢走真舒服。偶尔不急着说些什么，只听浪声也很好，不是吗？」"
+        }
+      ]
+    }
+  }
+]

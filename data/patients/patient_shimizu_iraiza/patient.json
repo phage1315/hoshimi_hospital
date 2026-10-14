@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_shimizu_iraiza",
+    "name": "清水伊莱莎",
+    "age": 24,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "examination/shy": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/examination/shy.png",
+        "outpatient/neutral": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/ward/smile.png",
+        "ward/brave": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/ward/brave.png",
+        "ward/worried": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_shimizu_iraiza_v1/patient_shimizu_iraiza/splash/general_anesthesia.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "calm",
+      "secondary": "analytical",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "calm_analytical_reassurance",
+    "traits": {
+      "baseline_anxiety": 42,
+      "pain_sensitivity": 68,
+      "privacy_sensitivity": 71,
+      "trust_baseline": 65,
+      "control_need": 63,
+      "expressiveness": 90,
+      "health_literacy": 29,
+      "compliance_tendency": 80
+    },
+    "fear_profile": {
+      "pain_fear": 74,
+      "procedure_fear": 62,
+      "diagnosis_fear": 48,
+      "loss_control_fear": 76
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「诶，要住院？那排练和同人稿得拜托别人了……不过身体要紧，我知道的。医生，大概会住几天呀？」",
+      "hospitalization_response": "「OK，我会好好住院的！先跟乐队请个假就行。对了，检查和手术的安排能提前讲给我听吗？」",
+      "procedure_mismatch": "「等、等一下！你刚说的手术和前面确认的不是同一个名字吧？这可不是歌单播错一首喔，麻烦重新核对！」",
+      "explain_plan": "「噢，原来有这么多步骤！像排练前把流程表讲清楚一样，我听明白就放心多啦。谢谢医生！」",
+      "brief_plan": "「欸？这就讲完啦？我不是非要听专业讲座，但至少告诉我等下第一步要做什么嘛！」",
+      "last_reassure": "「我平时站上舞台可不怕聚光灯喔……不过今天心跳好快。医生，我紧张的时候可以一直问你吗？」",
+      "choose_general": "「全身麻醉，就是睡过去再醒来？听着倒是很方便……可中间什么都不知道，有一点点怕呢。醒来记得告诉我结果！」",
+      "choose_epidural": "「硬膜外麻醉？脑袋还醒着，下半身却动不了……哇，听起来比演出忘掉和弦还让人慌。请提前叫我一声喔。」",
+      "choose_local": "「只做局部麻醉呀……好，我会保持不动。如果里面还会拉扯或者疼，我会马上报告的。」",
+      "choose_none": "「No、等等！真的完全不用麻醉就开刀？这不是动画里能直接跳过的镜头耶……医生，你是认真的吗？！」",
+      "induction_reassure": "「嗯……那我闭眼咯。等再睁开眼，事情就结束了吧？……拜托各位，好好照顾我。」",
+      "insist_without_anesthesia": "「我、我刚才还以为自己撑得住……可是想到真的要清醒着挨刀，我就发抖了。医生，能再听我说一次吗？」",
+      "assistant_stabilize_none": "「啊……你们要扶住我吗？我知道不能乱动，可一疼起来身体会自己躲……拜托，别突然放开我！」",
+      "assistant_stabilize_local": "「好，我会按你说的姿势不动……嗯，表面还好，可里面被碰到就很难受。不是我故意乱动呀。」",
+      "assistant_stabilize_epidural": "「腿真的一点都不听话……我知道是药效。那个，你们还在旁边吧？听见声音会比较安心。」",
+      "incise_epidural": "「诶……已经下刀了吗？没有那种尖尖的痛，可里面沉沉的，好像有东西在被牵动……请告诉我进度。」",
+      "incise_local": "「嘶——！等等，皮肤倒没怎么痛，可里面刚才那一下好难受……医生，这样还算正常吗？」",
+      "incise_none": "「啊——！！疼！好疼啊！等、等一下！我真的感觉到刀切进来了……医生，先停一下！」",
+      "contact_pause": "「先、先等一下……我需要喘口气。呼……好，我还听得见，你们先别急。」",
+      "contact_command": "「别动，对吧……嗯，我知道！可是里面一阵阵难受，我得努力才能忍住呀！」",
+      "contact_continue": "「好……我听到了。你们要继续我知道，能不能边做边告诉我下一步？这样我不会一直乱猜。」",
+      "ongoing_narrate": "「噢，做到这里了呀……谢谢你告诉我。知道进度真的有用，不然我脑袋里会自己演最吓人的剧情。」",
+      "ongoing_eye_contact": "「医生……可以看着我一下吗？我知道你很忙，只要让我确认有人在听就好……」",
+      "ongoing_silent": "「……怎么突然都不说话了？喂、医生？我还醒着呢，能不能跟我说句话……？」",
+      "closure_reassure": "「真的快结束了？太好了……呼，我刚才还觉得自己再也笑不出来了呢。谢谢大家。」",
+      "closure_coach": "「跟着你数呼吸就行，对吗……一、二……呼。好，我还能跟上。请告诉我什么时候结束。」",
+      "closure_silent": "「……还没结束吗？我不说话也没关系……只是结束的时候，拜托一定告诉我一声。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「诶，术前还要灌肠？我知道你们是按手术需要安排的……但光是听着就很害羞了，能慢一点说明吗？」",
+        "「原来这一步也算正式准备呀……好，我会配合。不过你们平时讲得这么轻松，患者真的很难不紧张啦！」"
+      ],
+      "ward_enema_unnecessary": [
+        "「咦，这次不需要灌肠？呼——太好啦！那后面还有哪些准备，我先问清楚好了。」",
+        "「不用做这一项呀？谢谢告诉我。我可不是想偷懒……只是想到那一步就已经脸红了嘛。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮是要把手术区域的毛发处理掉，对吧？我懂……但真要让别人来做，突然就比换任何演出服都难为情！」",
+        "「诶，连那边也要剃吗……？好、好的，我知道是为了手术。麻烦先告诉我范围，不要一下就掀开被单呀。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「不用备皮呀？哇，那我可松了口气。不过别因为我害羞就漏做必要准备喔。」",
+        "「今天不需要处理毛发？OK！原来不同手术准备真的差好多，我还在自己乱想呢。」"
+      ],
+      "ward_surgical_cap": [
+        "「头发全都要收进手术帽里？好！我会乖乖戴好……咦，耳朵也得盖住呀，感觉自己完全换了个角色呢。」",
+        "「帽子戴这么严实呀……我平时换装很快，可今天穿成患者这样，还是有点不习惯耶。」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂放这边、身体别转过去……OK，我听明白了。只是灯照着、这么多人在旁边，果然挺紧张的。」",
+        "「医生，这个姿势要维持多久呀？我可以配合，只是躺着不能自己调整，比弹吉他还考验耐心呢。」"
+      ],
+      "operative_positioning_none": [
+        "「等、等一下……完全没麻醉的话，这个姿势也要一直保持吗？我怕疼起来真的会缩起来呀！」",
+        "「要固定好我才不会突然乱动……我知道道理，可想到等下清醒着开刀，腿都开始发抖了……」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿呀……我知道手术时可能需要。可是我还醒着呢，能先告诉我什么时候开始吗？好害羞……」",
+        "「这一步也得在手术台上做吗……？我会尽量不动，只是有点不舒服的话会说出来喔。」"
+      ],
+      "urinary_catheterization_none": [
+        "「一点麻醉都没有，还要插尿管……？等一下，我真的会紧张得乱动，拜托先讲清楚！」",
+        "「啊……我知道有必要，可这样清醒着做，既难为情又怕疼……你们别突然开始呀。」"
+      ],
+      "skin_disinfection_awake": [
+        "「哇，好凉！消毒要擦这么大一片呀……好，我会不动，刚才只是吓了一跳。」",
+        "「消毒液凉凉的……闻起来也好有医院的感觉。那个，接下来就是切口准备了吗？」"
+      ],
+      "skin_disinfection_none": [
+        "「消毒完了就要下刀，对吗……？我明明还醒着，为什么一下子觉得这里安静得可怕……」",
+        "「冷……啊，不只是消毒液。我一想到待会儿真的没有麻醉就要切开，浑身都在发紧……」"
+      ],
+      "incision_marking_awake": [
+        "「这是切口标记呀……原来会先画在身上。嗯，我看见了，医生，你们要在这里开始对吧？」",
+        "「画好这条线就知道要从哪里切了……诶，真看见它画出来，突然比听说明紧张多了。」"
+      ],
+      "incision_marking_none": [
+        "「等一下……这条线就是一会儿不麻醉也要切开的地方？我、我得先准备一下……」",
+        "「已经标好了呀……刚才还觉得自己很勇敢，现在看到这里，心跳快得像演出前的鼓点……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生你好！我本来以为休息一下就好，可身体变成这样了：{line}",
+      "primary": "最明显的情况是这个喔：{line} 不是我在夸张，真的让我有点担心啦。",
+      "secondary": "对了，还有这个要补充：{line} 我怕自己讲漏，所以先一起告诉你。",
+      "background": "我在SICK HACK弹吉他，空闲还会画同人漫画。平时忙着排练和赶稿，今天就先乖乖来检查啦。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "清水伊莱莎的病历",
+    "full_undress": {
+      "prompt": "「诶？！这项检查要把衣服全部脱掉？我平时换演出服可是很熟练的……但在检查室里完全不是一回事啦！医生，能先告诉我要检查哪里吗？」",
+      "responses": {
+        "abandon_full_undress": "「咦，这项检查先不做了吗？呼……松了一口气。不过如果真的有必要，还是请告诉我呀。」",
+        "authoritative_full_undress": "「好、好的，我会配合！只是你说得太突然啦……可以先把帘子拉好，让我准备一下吗？」",
+        "gentle_full_undress": "「谢谢医生，你这样慢慢讲我就安心多了。嗯，我会照做的……只是还是有一点害羞喔。」",
+        "threaten_full_undress": "「哎，别那么凶嘛……我知道需要检查，也没说不配合。可越这样催，我反而越紧张耶。」"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_shimizu_iraiza"
+    }
+  },
+  "preop": {
+    "title": "清水伊莱莎的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「医生，今天就要上手术台了呀……我本来想开个玩笑，可还是有点紧张。待会儿的安排能先说给我听吗？」",
+      "graphic_preop_question": "「那个，我能听更具体的流程吗？等下上台以后，从摆姿势、固定、消毒到真的下刀，依次会发生什么呀？我怕不知道的时候自己胡思乱想……」",
+      "graphic_preop_dialogue": "伊莱莎起初像在听一份舞台演出的流程表，听见医护逐项解释体位调整、身体固定、消毒及即将进行的切口，还习惯性地点头。等她意识到这不是可以排练或重来的演出，而是稍后将发生在自己身上的手术，原本轻快的笑容渐渐收住了。",
+      "team": "你担任清水伊莱莎本次手术的主刀。请确认助手医生、器械护士与巡回护士的岗位分工。",
+      "preparation": "请安排清水伊莱莎的病房准备护士，并根据当前病例和术式执行必要的术前准备项目。",
+      "prepared": "「准备都做完了？……哇，真的轮到我去手术室了。谢谢各位，我会努力配合的！」",
+      "changing": "手术团队依照既定流程更衣、刷手并完成无菌准备，随后进入手术室。",
+      "operating_room": "「哇，灯好亮……平时上台有灯光照着我也不怕，可今天怎么完全不一样呀？医生，开始前请叫我一声喔。」",
+      "team_confirmations": "手术团队逐项核对清水伊莱莎的身份、当前病例所对应的手术方案及成员分工。她努力听清每一次确认，听到自己的名字时认真应声。",
+      "procedure_select": "请核对当前病例已经确认的手术计划，选择与其相符的术式。",
+      "procedure_mismatch": "「诶，这和刚才说的手术不是同一个吧？医生，请先对一下病历！这可不能像演出曲目那样临时换呀。」",
+      "ready": "清水伊莱莎的术前准备已经完成。她躺在手术台上等候，团队需要最终确认麻醉方式及正式开始手术的条件。",
+      "general_induction": "「好……我会乖乖闭眼的。醒来以后记得告诉我手术结果喔……各位，拜托了。」",
+      "surgery_start_general": "清水伊莱莎已进入全身麻醉状态。手术团队继续监护并按当前术式推进，不出现清醒患者的术中对白。",
+      "surgery_start_epidural": "「腿真的动不了耶……我知道是麻醉，可脑袋还醒着，真奇怪。你们说话我都能听到吧？」",
+      "surgery_start_local": "「局部麻醉已经好了吗？OK，我会好好躺着。要是里面开始疼，我一定马上告诉你。」",
+      "surgery_start_none": "「真的不用麻醉就开始了……？医生，我刚才还想笑着撑过去，可现在手心全是汗……」",
+      "instrument_handoff": "主刀提出器械需求，器械护士根据当前术式与操作阶段递交所需器械。",
+      "assistant_ready": "助手医生确认清水伊莱莎的体位、术野暴露与操作条件，准备配合主刀执行后续指令。",
+      "incision_ready": "切口位置与麻醉状态已完成核对。器械护士备好手术刀，助手维持术野，等待主刀确认开始。",
+      "general_operation": "清水伊莱莎处于全身麻醉状态，没有清醒术中主观对白。团队持续监护并按既定手术流程操作。",
+      "operative_contact": "切口已经建立。若清水伊莱莎仍保持清醒，她会努力按照医护的指令配合，但感到明显的牵拉或疼痛时，原本轻松的语气会逐渐变得急促；具体反应由麻醉与患者状态决定。",
+      "ongoing_interaction": "手术继续进行。若清水伊莱莎保持清醒，她会主动问下一步是什么；恐惧与疼痛加剧时，惯常的俏皮玩笑明显减少，转为直接描述自己的不适。",
+      "closure_interaction": "主要操作进入收尾阶段。若清水伊莱莎仍清醒，听见明确的收尾说明后才稍稍放松，等待医护告知真正结束。",
+      "procedure_flow": "进入当前选定术式的标准流程，按照该术式既定阶段及技术选项继续。",
+      "procedure_execute": "主要操作完成。团队复核术野与必要技术结果，继续最终处理和缝合。",
+      "surgery_result": "手术结束。团队依照既定流程完成切口处理、器械清点与术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「诶……已经下刀了吗？没有那种尖尖的痛，可里面沉沉的，好像有东西在被牵动……请告诉我进度。」",
+      "incise_local": "「嘶——！等等，皮肤倒没怎么痛，可里面刚才那一下好难受……医生，这样还算正常吗？」",
+      "incise_none": "「啊——！！疼！好疼啊！等、等一下！我真的感觉到刀切进来了……医生，先停一下！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 基础查体脱衣",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_shimizu_iraiza/full_undress_basic_exam.png"
+        ],
+        "caption": "清水伊莱莎完成脱衣，准备接受基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 术前准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_shimizu_iraiza"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_shimizu_iraiza/skin_prep.png"
+        ],
+        "caption": "清水伊莱莎依照术前准备范围完成备皮。"
+      },
+      {
+        "id": "ward_enema_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 术前准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_shimizu_iraiza"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_shimizu_iraiza/enema.png"
+        ],
+        "caption": "清水伊莱莎按当前术前安排完成灌肠。"
+      },
+      {
+        "id": "stretcher_transfer_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 病房准备 · 转运担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_shimizu_iraiza"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_shimizu_iraiza/stretcher_transfer.png"
+        ],
+        "caption": "病房准备结束后，清水伊莱莎躺上担架车，由病房团队准备交接转运。"
+      },
+      {
+        "id": "urinary_catheterization_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 手术室准备 · 留置导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_shimizu_iraiza"
+        ],
+        "procedure_groups": [
+          "general_abdominal"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_shimizu_iraiza/urinary_catheterization.png"
+        ],
+        "caption": "清水伊莱莎在手术室准备阶段接受留置导尿。"
+      },
+      {
+        "id": "sterile_draping_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 手术室准备 · 铺设无菌单",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_shimizu_iraiza"
+        ],
+        "procedure_groups": [
+          "general_abdominal"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_shimizu_iraiza/sterile_draping.png"
+        ],
+        "caption": "术野消毒后，医护为清水伊莱莎铺设无菌单，保留预定腹部术野。"
+      },
+      {
+        "id": "incision_ready_patient_shimizu_iraiza",
+        "label": "清水伊莱莎 · 手术准备下刀",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_shimizu_iraiza"
+        ],
+        "procedure_groups": [
+          "general_abdominal"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_shimizu_iraiza/scalpel_ready.png"
+        ],
+        "caption": "器械护士递上手术刀，清水伊莱莎在正式下刀前等待主刀确认。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

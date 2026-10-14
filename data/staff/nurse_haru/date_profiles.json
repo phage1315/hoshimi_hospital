@@ -1,0 +1,45 @@
+[
+  {
+    "id": "date_nurse_haru",
+    "staff_id": "nurse_haru",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "shopping_street",
+      "cafe"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「对不起，这次恐怕不太方便。不是你的问题……下次可以再问我吗？」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 65,
+      "2": 80,
+      "3": 95,
+      "4": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「如果只是轻松逛逛的话……我想去。谢谢你邀请我。」"
+      },
+      "satisfied": {
+        "text": "「今天过得很开心。原来两个人只是随便说说话，也能有这么好的心情。」"
+      },
+      "favorites": [
+        {
+          "id": "shopping_street",
+          "text": "「刚才逛商店街的时候，我差点忘了我们明天还有班。能像普通人一样慢慢挑东西，真好。」"
+        },
+        {
+          "id": "cafe",
+          "text": "「这里的咖啡香真让人安心。今天我们聊了好多工作以外的小事，我很喜欢这样的时间。」"
+        }
+      ]
+    }
+  }
+]

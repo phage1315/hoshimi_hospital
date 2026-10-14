@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Require complete English coverage for the three finished narrative packs."""
+"""Require complete English coverage for narrative packs and dating dialogue."""
 
 from __future__ import annotations
 
@@ -12,6 +12,8 @@ from staff_bundles import load_staff_bundles
 ROOT = Path(__file__).resolve().parents[1]
 ENGLISH = json.loads((ROOT / "data/localization/en.json").read_text(encoding="utf-8"))["strings"]
 TARGETS = {
+    "time_events": None,  # Staff idle-chat bundles, not unrelated solo activities.
+    "date_profiles": None,
     "character_events": ROOT / "data/events/character_events/index.json",
     "micro_events": ROOT / "data/events/micro_events.json",
     "special_events": ROOT / "data/events/special_events/index.json",
@@ -22,7 +24,7 @@ FIELDS = {
     "description", "label", "text", "prompt", "response", "teaser", "caption",
     "announcement", "location_label", "speaker_label", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "chapters",
-    "correction",
+    "correction", "responses",
 }
 HAN = re.compile(r"[\u3400-\u9fff]")
 FORMAT = re.compile(r"%(?:0?\d+)?[sdif]")
@@ -48,10 +50,15 @@ def main() -> int:
     checked = 0
     manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
     staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
-    for collection, path in TARGETS.items():
+    for collection, path in {**TARGETS, "staff": None}.items():
         rows: list[tuple[str, str]] = []
-        authored = load_collection(path) + staff_collections.get(collection, [])
-        walk(authored, f"collections.{collection}", rows)
+        authored = (load_collection(path) if path is not None else []) + staff_collections.get(collection, [])
+        if collection == "staff":
+            for person in authored:
+                for action_id, line in person.get("personal_nurse", {}).get("diagnosis_corrections", {}).items():
+                    rows.append((f"collections.staff.{person['id']}.personal_nurse.diagnosis_corrections.{action_id}", line))
+        else:
+            walk(authored, f"collections.{collection}", rows)
         for key, source in rows:
             # Already-English authored labels such as "Lucky!" need no locale entry.
             if not HAN.search(source):

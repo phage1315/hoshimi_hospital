@@ -53,11 +53,19 @@ func apply(choice_id: String) -> bool:
 			selected = choice
 	if selected.is_empty():
 		return false
+	# A callback can depend on a choice already made in this same event.
+	# No relationship flags or new persistent branch state are needed.
+	var target := str(selected.next)
+	var conditional: Dictionary = selected.get("next_if_choice", {})
+	if not conditional.is_empty() and choices.has(str(conditional.choice_id)):
+		target = str(conditional.next)
+	if target != "@end" and not nodes.has(target):
+		return false
 	choices.append(choice_id)
 	last_choice = selected
-	if selected.next == "@end":
+	if target == "@end":
 		completed = true
 	else:
-		node_id = selected.next
+		node_id = target
 	last_error = ""
 	return true

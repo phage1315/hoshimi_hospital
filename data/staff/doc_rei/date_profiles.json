@@ -1,0 +1,44 @@
+[
+  {
+    "id": "date_doc_rei",
+    "staff_id": "doc_rei",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "cinema",
+      "winter_ski_resort"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「这星期我有安排了。别一脸失望，下回提前说一声嘛。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 80,
+      "2": 90,
+      "4": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「行啊！正好想换个地方活动活动，你有什么好主意？」"
+      },
+      "satisfied": {
+        "text": "「哈哈，今天还挺好玩的。以后发现什么有意思的，记得也叫上我。」"
+      },
+      "favorites": [
+        {
+          "id": "cinema",
+          "text": "「刚才那部电影的结尾，你真的猜到了？来，坐下好好说，我可有一堆意见！」"
+        },
+        {
+          "id": "winter_ski_resort",
+          "text": "「你刚才那一跤可太精彩了！……好啦，笑够了，下一趟我陪你慢慢滑。」"
+        }
+      ]
+    }
+  }
+]

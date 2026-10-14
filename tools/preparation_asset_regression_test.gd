@@ -6,7 +6,8 @@ const Loader = preload("res://godot/scripts/content_loader.gd")
 const Preop = preload("res://godot/systems/preop_session.gd")
 const PreopView = preload("res://godot/ui/preop_view.gd")
 const COMOLI := "patient_comoli_harcourt"
-const OR_ACTIONS := ["operative_positioning", "urinary_catheterization", "skin_disinfection", "ack_disinfection", "request_scalpel", "incise_epidural", "incise_local", "incise_none"]
+const OR_ACTIONS := ["operative_positioning", "urinary_catheterization", "skin_disinfection", "ack_disinfection", "request_scalpel"]
+const PREPARATION_CG_ACTIONS := ["ward_enema", "ward_enema_unnecessary", "ward_skin_prep", "ward_skin_prep_unnecessary", "ward_surgical_cap", "complete_manual_ward_preparation", "urinary_catheterization", "skin_disinfection", "ack_disinfection", "request_scalpel"]
 # Minimum inventory prevents a deleted bundle/pool from silently reducing coverage.
 const EXPECTED_OR_POOLS := {
 	"patient_aerith": ["sterile_draping", "incision"],
@@ -19,6 +20,8 @@ const EXPECTED_OR_POOLS := {
 	"patient_makimura_kaori": ["incision", "urinary_catheterization", "operative_positioning_female_pelvic"],
 	"patient_nogami_saeko": ["skin_disinfection", "urinary_catheterization", "sterile_draping", "incision"],
 	"patient_iwai_yoshimi": ["operative_positioning", "urinary_catheterization", "incision_ready"],
+	"patient_shimizu_iraiza": ["ward_skin_prep", "ward_enema", "stretcher_transfer", "urinary_catheterization", "sterile_draping", "incision_ready"],
+	"patient_yuko_asou": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "sterile_draping", "incision_ready"],
 }
 var checks := 0
 var failures := 0
@@ -79,7 +82,8 @@ func fixture(app, patient_id: String, surgery_id: String = "surgery_appendix") -
 
 func prepare_action(prep: RefCounted, action_id: String) -> bool:
 	# Bounded search of actual session stages, including runtime-added OR stages.
-	for stage in prep.stages.values():
+	prep.definition.surgery_id = "surgery_breast_tumor" if action_id.ends_with("_unnecessary") else "surgery_appendix"
+	for stage in prep.stages.values() + prep.ward_preparation_stages():
 		for action in stage.get("actions", []):
 			if str(action.get("id", "")) != action_id:
 				continue
@@ -144,7 +148,7 @@ func check_event(app, patient_id: String, pool: Dictionary, action_id: String, g
 	rendered_events += 1
 	# The same legal preparation action after general anesthesia must stay hidden.
 	# Awake incision IDs are not a general-anesthesia route, so exclude them here.
-	if action_id.begins_with("incise_"):
+	if action_id not in OR_ACTIONS:
 		return
 	prep = fixture(app, patient_id, surgery_id)
 	if prep == null or not prepare_action(prep, action_id):
@@ -163,6 +167,9 @@ func check_event(app, patient_id: String, pool: Dictionary, action_id: String, g
 func check_pools(app) -> void:
 	var pool_count := 0
 	var or_pool_count := 0
+	for pool in app.content.collections.get("ward_preparation_cg_pools", []):
+		for action_id in pool.get("action_ids", []):
+			expect(not str(action_id).begins_with("incise_"), "Pre-incision CG is incorrectly bound after incision: %s/%s" % [pool.id, action_id])
 	for patient_id in EXPECTED_OR_POOLS:
 		var bundle = JSON.parse_string(FileAccess.get_file_as_string("res://data/patients/%s/patient.json" % patient_id))
 		expect(bundle is Dictionary, "Missing source bundle: " + patient_id)
@@ -181,6 +188,8 @@ func check_pools(app) -> void:
 			expect(not pool.is_empty(), "Loader omitted pool: " + str(source.id))
 			if pool.is_empty():
 				continue
+			if str(pool.get("id", "")).contains("incision"):
+				expect(pool.get("action_ids", []) == ["request_scalpel"], "Incision CG must be bound only to request_scalpel: " + str(pool.id))
 			for key in ["id", "action_ids", "patient_ids", "paths", "procedure_groups", "presentation", "priority"]:
 				expect(pool.get(key) == source.get(key), "Loader/locale changed %s/%s" % [source.id, key])
 			if locale == "zh_CN":
@@ -205,7 +214,7 @@ func check_pools(app) -> void:
 					for other in app.content.collections.patients:
 						if other.id != patient_id:
 							expect(app.ward_preparation_cg_pool_for(action_id, other.id, group).get("id", "") != pool.id, "Patient CG leaked: %s -> %s" % [pool.id, other.id])
-					if action_id in OR_ACTIONS:
+					if action_id in PREPARATION_CG_ACTIONS:
 						is_or = true
 						await check_event(app, patient_id, pool, action_id, group)
 				if not pool.get("procedure_groups", []).is_empty():

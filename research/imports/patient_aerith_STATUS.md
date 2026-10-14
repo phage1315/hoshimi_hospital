@@ -10,7 +10,7 @@
 - 用户 v2 已补齐原先 34 个正文缺口。正式包为 `data/patients/patient_aerith/patient.json`，索引中恰好注册一次。
 - 通用人格原有 53 条英文保持不变；新增 62 个患者英文键（名称 1、个人覆盖 15、门诊 4、标题 2、检查提示/回应 5、阶段正文 25、CG 标签/说明 10），均已写入 `data/localization/en.json`。保留门诊 `{line}` 占位符。
 - 修正本地化审计未读取共享人格文件的问题，并将共享人格加入患者英文覆盖测试。
-- 原样导入用户补充的 5 张全屏 CG（1584×1056 RGB）：诊察 1 张，动作池 4 张。专属绑定已进入正式 bundle 的 `exclusive_cg_pools`；铺巾匹配 `ack_disinfection`，下刀匹配 `incise_epidural`、`incise_local`、`incise_none`，不在递手术刀时提前显示。铺巾和下刀图仅用于腹部/盆腔术式组的画面选择，不限制患者病例分配。
+- 原样导入用户补充的 5 张全屏 CG（1584×1056 RGB）：诊察 1 张，动作池 4 张。专属绑定已进入正式 bundle 的 `exclusive_cg_pools`；铺巾匹配 `ack_disinfection`，下刀 CG 现绑定接过手术刀后的 `request_scalpel`。此前把它放在 `incise_*` 的绑定已于 2026-10-12 修正；详见 `research/imports/patient_incision_cg_binding_repair_2026-10-12.json`。铺巾和下刀图仅用于腹部/盆腔术式组的画面选择，不限制患者病例分配。
 
 ## 文件
 

@@ -1,0 +1,65 @@
+{
+  "actor_id": "doc_aoi",
+  "status": "approved_registered",
+  "sources": [
+    {
+      "source": "research/character_references/doc_aoi/casual_samples_2026-10-11/spring_summer.png",
+      "destination": "assets/characters/spring_summer_casual_v1/doc_aoi/neutral.png",
+      "key": "casual/neutral",
+      "sha256": "34ec049f386622f2e20a38f63bf3a214d2131fe712661a28936393f7e73257e5"
+    },
+    {
+      "source": "research/character_references/doc_aoi/casual_samples_2026-10-11/autumn_winter.png",
+      "destination": "assets/characters/winter_casual_v1/doc_aoi/neutral.png",
+      "key": "casual_winter/neutral",
+      "sha256": "5deacbe296ebe019d21e842941c361abacbc97a1f4e36e2a299c3102e27063e1"
+    }
+  ],
+  "sample_manifest": "research/character_references/doc_aoi/casual_samples_2026-10-11/manifest.json",
+  "prompts": "research/character_references/doc_aoi/casual_samples_2026-10-11/prompts.json",
+  "previous_visuals": {
+    "color": "81b4b4",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "scrubs",
+      "sterile",
+      "casual",
+      "operating_patient"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/third_party_preview/c1058-neutral-ai.png",
+      "white_coat/smile": "assets/characters/third_party_preview/c1058-smile-ai.png",
+      "white_coat/serious": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+      "white_coat/worried": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/worried.png",
+      "white_coat/surprised": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/surprised.png",
+      "white_coat/tired": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/tired.png",
+      "scrubs/neutral": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/portrait_pack_v1/doc_aoi/scrubs/warm.png",
+      "sterile/neutral": "assets/characters/sterile_pack_v1/doc_aoi/neutral.png",
+      "sterile/focused": "assets/characters/sterile_pack_v1/doc_aoi/focused.png",
+      "sterile/worried": "assets/characters/sterile_pack_v1/doc_aoi/worried.png",
+      "sterile/warm": "assets/characters/sterile_pack_v1/doc_aoi/warm.png",
+      "operating_patient/nervous": "assets/characters/relationship_patient_v1/doc_aoi/operating_patient/nervous.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_aoi/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_aoi/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "validation": {
+    "seasonal_checks": 55650,
+    "all_staff_checks": 1184,
+    "failures": 0,
+    "data_records": 651,
+    "native_screenshots": 16,
+    "qa_directory": "docs/qa/doc_aoi_casual_2026-10-11"
+  }
+}

@@ -262,8 +262,7 @@ func run() -> void:
 	expect(aqua_game.staff_is_met("doc_aqua") and "doc_aqua" not in aqua_game.known_staff_ids(), "Aqua became selectable before Lv1")
 	expect(not aqua_game.character_event_available(aqua_game.character_event_definitions.aqua_lv1_gyne_obsession), "Aqua Lv1 ignored the five-operation gate")
 	aqua_game.set_test_character_progress_counter("", "gynecology_case_count", 5)
-	aqua_game.add_familiarity("doc_aqua", 10)
-	aqua_game.advance_story_to_future_day(3, 540)
+	aqua_game.relation_for("doc_aqua").familiarity = 0
 	expect(aqua_game.character_event_available(aqua_game.character_event_definitions.aqua_lv1_gyne_obsession), "Aqua Lv1 did not unlock after five gynecology operations")
 	expect(finish_event(aqua_game, "aqua_lv1_gyne_obsession"), "Aqua Lv1 gynecology event could not complete")
 	expect(aqua_game.relationship_level("doc_aqua") == 1 and "doc_aqua" in aqua_game.known_staff_ids(), "Aqua Lv1 did not unlock her surgical-team role")

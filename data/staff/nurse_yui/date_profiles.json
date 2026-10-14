@@ -1,0 +1,45 @@
+[
+  {
+    "id": "date_nurse_yui",
+    "staff_id": "nurse_yui",
+    "can_date": true,
+    "minimum_level": 0,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "shopping_street",
+      "summer_beach"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "invite_rejection": {
+      "text": "「这周末不巧有事。下次挑个好时候来约我，坂口医生。」"
+    },
+    "minimum_familiarity": 10,
+    "acceptance_chance_by_level": {
+      "0": 75,
+      "2": 85,
+      "3": 95,
+      "4": 100
+    },
+    "familiarity_acceptance_bonus": true,
+    "always_accept": false,
+    "dialogue": {
+      "accepted": {
+        "text": "「好啊。不过别以为我换上便服，就会突然变成好说话的新人哦。」"
+      },
+      "satisfied": {
+        "text": "「哼，今天倒是比我预想的有意思。不错嘛，你还挺会安排的。」"
+      },
+      "favorites": [
+        {
+          "id": "shopping_street",
+          "text": "「你逛店的速度比新人核对器械还慢。来，跟上我——这一条街还有好多地方能看呢。」"
+        },
+        {
+          "id": "summer_beach",
+          "text": "「终于不用提醒谁站错了无菌区！海风、阳光，还有你这张一脸放假的脸……今天不错。」"
+        }
+      ]
+    }
+  }
+]

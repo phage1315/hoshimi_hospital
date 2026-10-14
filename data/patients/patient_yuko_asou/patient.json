@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_yuko_asou",
+    "name": "麻生优子",
+    "age": 24,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/smile.png",
+        "ward/brave": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/brave.png",
+        "ward/worried": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_yuko_asou/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_yuko_asou/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_yuko_asou/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_yuko_asou/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_yuko_asou/general.png",
+        "examination/shy": "assets/characters/patient_yuko_asou_v1/patient_yuko_asou/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "shy",
+      "secondary": "caring",
+      "stress_response": "becomes_quiet"
+    },
+    "dialogue_profile": "shy_reassurance_quiet",
+    "traits": {
+      "baseline_anxiety": 59,
+      "pain_sensitivity": 72,
+      "privacy_sensitivity": 78,
+      "trust_baseline": 61,
+      "control_need": 72,
+      "expressiveness": 57,
+      "health_literacy": 26,
+      "compliance_tendency": 82
+    },
+    "fear_profile": {
+      "pain_fear": 77,
+      "procedure_fear": 70,
+      "diagnosis_fear": 55,
+      "loss_control_fear": 83
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「要住院吗……？我知道身体的事不能拖。只是有点突然……医生，我需要先准备些什么？」",
+      "hospitalization_response": "「好，我会住下来的。以前遇到害怕的事，我也想过逃开……但这次我会认真接受治疗。」",
+      "procedure_mismatch": "「请等一下。刚才确认的不是这项手术吧？……我不是要添麻烦，但这件事一定要弄清楚。」",
+      "explain_plan": "「原来是这样……谢谢你详细告诉我。知道接下来要做什么，我就能安心一点。」",
+      "brief_plan": "「只说按流程进行吗……？对不起，我还是想多知道一点。毕竟要躺在手术台上的人是我呀。」",
+      "last_reassure": "「嗯……我相信你们。我会尽力配合的，只是手心还是一直在冒汗……」",
+      "choose_general": "「全身麻醉……睡过去以后，就只能把自己完全交给你们了吧。醒来时，请一定告诉我手术已经结束。」",
+      "choose_epidural": "「脑袋还清醒着，身体却有一部分动不了了……听起来真奇怪。开始之前，请先叫我一声。」",
+      "choose_local": "「局部麻醉呀……那我会努力保持不动。如果里面仍然疼，我可以马上告诉你吧？」",
+      "choose_none": "「完全不用麻醉……？我曾经拿起剑面对危险，可那和清醒着挨刀完全不同呀……医生，真的要这样吗？」",
+      "induction_reassure": "「好……我闭上眼睛了。之后就拜托你们，等我醒来……再跟我说一声吧。」",
+      "insist_without_anesthesia": "「啊……医生，等一下！我真的在努力忍，可是太疼了……！请听我说，先停一下！」",
+      "assistant_stabilize_none": "「我知道不能乱动……可一想到待会儿会直接疼起来，身体就不听话。请先告诉我该怎么配合……」",
+      "assistant_stabilize_local": "「嗯，我尽量不动……刚才里面那一下有点难受。你们要继续之前，能不能提醒我？」",
+      "assistant_stabilize_epidural": "「我知道这是麻醉后的感觉……可这样被安置好、自己又不能动，还是让我有点害怕。」",
+      "incise_epidural": "「……已经切开了吗？没有尖锐的痛，可深处好像被推了一下……医生，你能继续告诉我进度吗？」",
+      "incise_local": "「嘶……！表面那里不算很疼，可刚才深处有一下明显的感觉……医生，能先确认一下吗？」",
+      "incise_none": "「啊——！！好疼！等、等一下……真的切开了！医生，求你先停一下……我受不了了！」",
+      "contact_pause": "「……停下来了吗？谢谢……让我先喘一口气。我会努力镇定下来……」",
+      "contact_command": "「好，我会不动……请你们慢一点告诉我指令，我会认真听的。」",
+      "contact_continue": "「……嗯，可以继续了。我还是怕，不过我会把不舒服的地方好好说出来。」",
+      "ongoing_narrate": "「谢谢你告诉我进度……听见你们的声音，我就不会只顾着想可怕的事。」",
+      "ongoing_eye_contact": "「……医生？嗯，我看见你了。我还清醒，也听得见……有什么不对我会告诉你的。」",
+      "ongoing_silent": "「医生……？怎么突然没人说话了……手术还顺利吗？请回答我一下，好吗？」",
+      "closure_reassure": "「真的快结束了……？太好了……我刚才还以为自己没办法撑到这里。」",
+      "closure_coach": "「好……跟着你的声音呼吸……我再坚持一下。拜托，让我知道什么时候才算结束。」",
+      "closure_silent": "「……谢谢。等真的结束了，能请你再告诉我一次吗……？」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「术前还要灌肠呀……？我明白是为了手术，可是……这样的准备，我真的有点不好意思。」",
+        "「需要侧过身来配合吗……？好，我会照做。只是麻烦先告诉我下一步，别让我突然吓一跳。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「这次不用灌肠……？呼……太好了。不是我不想配合，只是光想到就很紧张。」",
+        "「不用做这一项呀……谢谢告诉我。那还有其他需要准备的事吗？我想先知道。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……是要把手术范围的毛发剃掉吗？我知道有需要，可让别人来做，还是很难为情……」",
+        "「那个……需要处理到这么私密的地方吗？好，我会配合，但请先把范围讲清楚……」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「这次不需要备皮？……我松了口气。可如果真的有必要，你们也不用顾虑我害羞的。」",
+        "「不用处理毛发呀……原来不是所有手术都一样。我刚才还自己想了好多可怕的准备呢。」"
+      ],
+      "ward_surgical_cap": [
+        "「头发都要收进这顶帽子里呀……好，我来戴。耳朵也得盖住，对吗？」",
+        "「戴上手术帽以后，感觉自己一下子真的成了患者……明明只是换了顶帽子，心跳却变快了。」"
+      ],
+      "operative_positioning_awake": [
+        "「手放在这边、身体朝这个方向……嗯，我明白了。需要维持多久，能先告诉我吗？」",
+        "「这样躺着不能随便换姿势呀……好，我会配合。只是这么多人围着，我有一点紧张。」"
+      ],
+      "operative_positioning_none": [
+        "「一点麻醉都没有……这样固定好以后，就要清醒着接受手术吗？……我怕自己疼起来会缩着躲。」",
+        "「我知道你们怕我乱动，可想到待会儿会痛，反而更紧张了……请别突然开始，好吗？」"
+      ],
+      "urinary_catheterization_awake": [
+        "「要导尿吗……？嗯，我知道手术中可能需要。可我还醒着……能先告诉我什么时候开始吗？」",
+        "「这种事也要交给别人帮忙……真的很害羞。我会尽量不动，觉得不舒服会说的。」"
+      ],
+      "urinary_catheterization_none": [
+        "「完全没麻醉就要导尿……？等一下，我知道必须配合，可我现在紧张得连呼吸都乱了……」",
+        "「请先告诉我会有什么感觉……清醒着接受这个，已经够难为情了，我还很怕疼……」"
+      ],
+      "skin_disinfection_awake": [
+        "「呀，好凉……！对不起，我只是被消毒液吓了一跳。我会乖乖躺好的。」",
+        "「消毒的范围原来这么大……嗯，我感觉到了。等会儿是不是就要准备下刀了？」"
+      ],
+      "skin_disinfection_none": [
+        "「好冷……消毒完就要不麻醉地开始了吧？我明明知道下一步，却还是想往后躲……」",
+        "「我感觉得到消毒液……也知道等下的刀不会因为我害怕就消失。医生，请先说一声再开始……」"
+      ],
+      "incision_marking_awake": [
+        "「这是画切口的位置吗……？我知道了。原来真的会先在身体上留下这样的记号。」",
+        "「医生，这条线就是待会儿手术要开始的地方吧……嗯，我看见了。比只听说明紧张多了……」"
+      ],
+      "incision_marking_none": [
+        "「等、等一下……这条线就是没有麻醉也要切开的地方？我真的能看得这么清楚吗……」",
+        "「已经标记好了呀……以前面对危险时我还能握紧剑，现在只能躺在这里看着……医生，我好害怕。」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，你好……我本来想再观察一下，可是身体的情况变成这样：{line}",
+      "primary": "最明显的不舒服是：{line} 我怕自己说不清楚，能请你再确认一下吗？",
+      "secondary": "还有一件事也想告诉你：{line} ……这些需要一起记录吧？",
+      "background": "我现在过着普通的生活。以前为了保护重要的人，经历过一些很危险的事……不过这次是身体出了问题，我不想再靠硬撑解决了。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "麻生优子的门诊检查",
+    "full_undress": {
+      "prompt": "「检查需要把衣服全部脱下来吗……？我知道你们是为了诊断，可、可是突然这样说，还是有点不好意思……能先告诉我要检查哪里吗？」",
+      "responses": {
+        "abandon_full_undress": "「这项先不做呀……？呼……谢谢。可是该查清楚的事情，真的都已经确认了吗？」",
+        "authoritative_full_undress": "「……好，我会配合。请、请先把帘子拉好……我只是需要一点时间准备。」",
+        "gentle_full_undress": "「谢谢你慢慢解释……嗯，这样我就安心些了。我会照做的，只是有点脸红……」",
+        "threaten_full_undress": "「……请不要那样说。我知道该检查，可被催得那么急，只会让我更害怕……我会配合，请好好告诉我。」"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_yuko_asou"
+    }
+  },
+  "preop": {
+    "title": "麻生优子的术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「医生，今天就要做手术了吧……？我知道自己答应过了，可临到现在还是有点害怕。能先跟我说说待会儿的安排吗？」",
+      "graphic_preop_question": "「我想再问清楚一些……一会儿上手术台以后，要先怎么摆姿势、怎么准备身体、什么时候消毒和真正下刀？如果我还醒着，又会知道多少……？」",
+      "graphic_preop_dialogue": "优子一开始安静地听着，像是想把医护说的每一步牢牢记住。对方从体位、准备、消毒一直解释到切口与接下来的操作，语气始终平稳。她这才意识到，这不是要她拿起剑去面对的危险，而是自己将躺着接受的一连串处置。原本努力维持的镇定渐渐消失，她把被角握得更紧了。",
+      "team": "你担任麻生优子本次手术的主刀。请确认助手医生、器械护士与巡回护士的岗位分工。",
+      "preparation": "请安排麻生优子的病房准备护士，并根据当前病例及术式执行必要的术前准备项目。",
+      "prepared": "「这些准备都做完了……？谢谢。……那接下来，我真的要去手术室了吧？」",
+      "changing": "手术团队依照既定流程更衣、刷手并完成无菌准备，随后进入手术室。",
+      "operating_room": "「这里的灯……好亮。啊，我会躺好，不乱动的……医生，要正式开始的时候，请先告诉我。」",
+      "team_confirmations": "手术团队逐项核对麻生优子的身份、当前病例所对应的手术方案与成员分工。优子认真听着，听到自己的名字时轻轻应声。",
+      "procedure_select": "请核对当前病例已经确认的手术计划，选择与其相符的术式。",
+      "procedure_mismatch": "「等一下……刚才确认的手术好像不是这个名字。请再核对一次，好吗？这种事不能弄错呀。」",
+      "ready": "麻生优子的术前准备已经完成。她躺在手术台上等待，团队需要最终确认麻醉方式及开始手术的条件。",
+      "general_induction": "「好……我会闭上眼睛。醒来以后，请告诉我一切都结束了……拜托大家了。」",
+      "surgery_start_general": "麻生优子已经进入全身麻醉状态。手术团队继续监护并按照当前术式推进，不出现清醒患者的术中对白。",
+      "surgery_start_epidural": "「腿真的动不了……我还醒着，却不能自己换姿势。……医生，请不要突然开始。」",
+      "surgery_start_local": "「局部麻醉已经好了？……嗯，我会努力保持不动。如果我还有感觉，一定会告诉你们。」",
+      "surgery_start_none": "「真的一点麻醉都不用就开始吗……？我知道已经讲过了，可想到下一步，还是忍不住发抖……」",
+      "instrument_handoff": "主刀提出器械需求，器械护士根据当前术式与操作阶段递交所需器械。",
+      "assistant_ready": "助手医生确认麻生优子的体位、术野暴露及操作条件，准备配合主刀执行后续指令。",
+      "incision_ready": "切口位置与麻醉状态已完成核对。器械护士备好手术刀，助手维持术野，等待主刀确认开始。",
+      "general_operation": "麻生优子处于全身麻醉状态，没有清醒术中主观对白。团队持续监护并依照当前已选择的术式推进。",
+      "operative_contact": "切口已经建立。若麻生优子仍清醒，她会尽力按医护指令配合；对牵拉、压力及疼痛的具体反应依当前麻醉状态和患者数值判定。",
+      "ongoing_interaction": "手术继续进行。若麻生优子保持清醒，她通常先安静倾听医护说明；恐惧与疼痛加重时，她会明确求助，而不是无条件忍耐。",
+      "closure_interaction": "主要操作进入收尾阶段。若麻生优子仍清醒，听见明确的结束预告后才渐渐放松，等待团队确认手术已经完成。",
+      "procedure_flow": "进入当前已选择术式的标准流程，按该术式既定阶段及技术选项继续。",
+      "procedure_execute": "主要操作完成。团队复核术野与必要技术结果，继续完成最终处理和缝合。",
+      "surgery_result": "手术结束。团队依照既定流程完成切口处理、器械清点与术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切开了吗？没有尖锐的痛，可深处好像被推了一下……医生，你能继续告诉我进度吗？」",
+      "incise_local": "「嘶……！表面那里不算很疼，可刚才深处有一下明显的感觉……医生，能先确认一下吗？」",
+      "incise_none": "「啊——！！好疼！等、等一下……真的切开了！医生，求你先停一下……我受不了了！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_yuko_asou",
+        "label": "麻生优子 · 诊室全裸查体",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_yuko_asou/full_undress_basic_exam.png"
+        ],
+        "caption": "麻生优子在诊室完成脱衣，抱住双臂，紧张地等待基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_yuko_asou",
+        "label": "麻生优子 · 病房准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/skin_prep.png"],
+        "caption": "麻生优子按照当前术前准备安排接受备皮。"
+      },
+      {
+        "id": "ward_enema_patient_yuko_asou",
+        "label": "麻生优子 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/enema.png"],
+        "caption": "麻生优子按照当前术前安排完成灌肠准备。"
+      },
+      {
+        "id": "ward_surgical_cap_patient_yuko_asou",
+        "label": "麻生优子 · 病房准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_surgical_cap"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/surgical_cap.png"],
+        "caption": "麻生优子戴好手术帽，准备完成病房阶段的术前准备。"
+      },
+      {
+        "id": "stretcher_transfer_patient_yuko_asou",
+        "label": "麻生优子 · 病房准备 · 担架车交接",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/stretcher_transfer.png"],
+        "caption": "病房准备结束后，麻生优子躺在担架车上，等待病房团队交接转运。"
+      },
+      {
+        "id": "urinary_catheterization_patient_yuko_asou",
+        "label": "麻生优子 · 手术室准备 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/urinary_catheterization.png"],
+        "caption": "麻生优子在手术室准备阶段接受导尿。"
+      },
+      {
+        "id": "skin_disinfection_patient_yuko_asou",
+        "label": "麻生优子 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/skin_disinfection.png"],
+        "caption": "手术团队为麻生优子的手术区域涂布消毒液。"
+      },
+      {
+        "id": "sterile_draping_patient_yuko_asou",
+        "label": "麻生优子 · 手术室准备 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ack_disinfection"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/sterile_draping.png"],
+        "caption": "完成消毒后，团队铺设无菌巾并准备核对切口位置。"
+      },
+      {
+        "id": "incision_ready_patient_yuko_asou",
+        "label": "麻生优子 · 手术下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_yuko_asou"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuko_asou/scalpel_ready.png"],
+        "caption": "器械护士递上手术刀，麻生优子等待主刀确认后开始切开。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}
