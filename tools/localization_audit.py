@@ -44,7 +44,8 @@ def collect_keys(value: object, path: str, result: set[str]) -> None:
     if isinstance(value, dict):
         for field, child in value.items():
             child_path = f"{path}.{field}"
-            if isinstance(child, str) and child.strip() and (field in TRANSLATABLE_FIELDS or path.endswith(".outpatient_lines")):
+            condition_prompt = path.startswith("collections.temporary_conditions.") and path.endswith(".prompts")
+            if isinstance(child, str) and child.strip() and (field in TRANSLATABLE_FIELDS or path.endswith(".outpatient_lines") or condition_prompt):
                 result.add(child_path)
             collect_keys(child, child_path, result)
     elif isinstance(value, list):

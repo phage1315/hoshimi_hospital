@@ -1,0 +1,227 @@
+{
+  "status": "APPLIED_AND_EXACTLY_VERIFIED",
+  "archive_sha256": "11960733653d1ae4c16f3988fd70e99f4f57c80c9cc5f55aca77569e93ec7e83",
+  "runtime_export_sha256": "5bf74366216ae9292981346d0df5d38826ae18e543686c203ee481d495bad6c7",
+  "scalar_old_values_matched": 817,
+  "fully_verified_patch_rows": 817,
+  "mapped_stages": 358,
+  "mapped_options": 774,
+  "class_counts": {
+    "F": 86,
+    "L": 111,
+    "S": 161
+  },
+  "double_option_S": [
+    "surgery_appendix/appendix_04_mobilize",
+    "surgery_appendix/appendix_06_base",
+    "surgery_appendix/appendix_08_review",
+    "surgery_open_cholecystectomy/chole_02_exposure",
+    "surgery_open_cholecystectomy/chole_03_triangle",
+    "surgery_open_cholecystectomy/chole_07_liver_bed",
+    "surgery_open_cholecystectomy/chole_09_review",
+    "surgery_open_inguinal_hernia/hernia_04_sac",
+    "surgery_open_inguinal_hernia/hernia_05_reduction",
+    "surgery_open_inguinal_hernia/hernia_06_defect",
+    "surgery_open_splenectomy/splenectomy_08_final_review",
+    "surgery_open_distal_gastrectomy/gastrectomy_11_final_review",
+    "surgery_hysterectomy/hysterectomy_11_final_review",
+    "surgery_open_right_hemicolectomy/hemicolectomy_11_final_review",
+    "surgery_open_nephrectomy/nephrectomy_final_review",
+    "surgery_open_lung_lobectomy/lobectomy_final_review",
+    "surgery_open_sigmoid_colectomy/sigmoid_final_review"
+  ],
+  "issues": [],
+  "numeric_patch_applied": true,
+  "source_before_sha256": "502cf9f16c3353c8411963f1e8cf9d8eab12f7b425f996e831074721d4310f35",
+  "source_after_sha256": "455034e796026e8d9cba2ba824b7f5cbff704324d47bf5dabe9e5f07599705ba",
+  "runtime_after_sha256": "17526fa5203afbbc92caf81d2b4fb1b4f6d8389a3716e3e8417d14434d3da88c",
+  "applied_ledger_sha256": "bf7364f471ac20b2624649f3476257e666beff7951133832a92851de480e93ec",
+  "full_source_and_loader_equality": true,
+  "numeric_fields_changed": 817,
+  "conditional_blocks_restored": 2,
+  "unchanged_procedures": [
+    "surgery_appendix",
+    "surgery_cabg",
+    "surgery_open_whipple",
+    "surgery_open_abdominal_myomectomy",
+    "surgery_adv_artificial_heart_exchange"
+  ],
+  "patch_counts_by_procedure": {
+    "surgery_breast_tumor": 20,
+    "surgery_exploratory_laparotomy": 21,
+    "surgery_hysterectomy": 45,
+    "surgery_open_abdominal_aortic_aneurysm": 36,
+    "surgery_open_abdominoperineal_resection": 40,
+    "surgery_open_adrenalectomy": 32,
+    "surgery_open_cholecystectomy": 15,
+    "surgery_open_distal_gastrectomy": 41,
+    "surgery_open_distal_pancreatectomy": 37,
+    "surgery_open_esophagectomy": 27,
+    "surgery_open_inguinal_hernia": 4,
+    "surgery_open_left_hemicolectomy": 36,
+    "surgery_open_low_anterior_resection": 34,
+    "surgery_open_lung_lobectomy": 36,
+    "surgery_open_major_liver_resection": 39,
+    "surgery_open_nephrectomy": 34,
+    "surgery_open_ovarian_cystectomy": 19,
+    "surgery_open_partial_nephrectomy": 21,
+    "surgery_open_pneumonectomy": 25,
+    "surgery_open_radical_cystectomy": 32,
+    "surgery_open_right_hemicolectomy": 44,
+    "surgery_open_sigmoid_colectomy": 36,
+    "surgery_open_splenectomy": 27,
+    "surgery_open_total_gastrectomy": 36,
+    "surgery_open_ventral_hernia": 22,
+    "surgery_total_mastectomy": 26,
+    "surgery_vaginal_hysterectomy": 32
+  },
+  "patch_counts_by_field": {
+    "bleeding": 129,
+    "blood_loss": 100,
+    "elapsed_time": 574,
+    "stability": 14
+  },
+  "protected_conditional_effects": {
+    "apr_rework_b": [
+      {
+        "when": {
+          "all": [
+            {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 38
+            }
+          ]
+        },
+        "strategic_effects": {
+          "blood_loss": 12,
+          "stability": -6,
+          "add_complications": [
+            {
+              "id": "residual_bleeding",
+              "severity": "minor"
+            }
+          ]
+        },
+        "response": "「请再确认一次。」",
+        "response_role": "assistant_surgeon"
+      }
+    ],
+    "lhc_rework_b": [
+      {
+        "when": {
+          "field": "bleeding",
+          "op": "gte",
+          "value": 32
+        },
+        "strategic_effects": {
+          "blood_loss": 10,
+          "stability": -5,
+          "add_complications": [
+            {
+              "id": "closure_rework",
+              "severity": "minor"
+            }
+          ]
+        }
+      }
+    ],
+    "lar_rework_b": [
+      {
+        "when": {
+          "field": "bleeding",
+          "op": "gte",
+          "value": 32
+        },
+        "strategic_effects": {
+          "blood_loss": 10,
+          "stability": -5,
+          "add_complications": [
+            {
+              "id": "closure_rework",
+              "severity": "minor"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "restored_before_numeric_source_sha256": "f62054df43db0c00a9028776ff355620af8522e87e7594c27a82d7a685cb5c41",
+  "engine_files_unchanged_this_turn": {
+    "godot/systems/preop_session.gd": "0b5cc0ba73486aebe3b457766f134e2bbef0d7fd1251e345555dfcd56b2d6362",
+    "godot/systems/surgery_numeric_calibration.gd": "9710475679b35f7b16a0f8a67c40c2bd222e4f4193051f2ca01cdcac8b11a274",
+    "godot/ui/app.gd": "adb3d7f327d32945619dd4ca20097b6ca6ac578e1dbdcf0f8dd2ecc1047bdaaa"
+  },
+  "verification": {
+    "restoration_before_numeric": {
+      "checks": 9373,
+      "failures": 0
+    },
+    "calibration_after_numeric": {
+      "checks": 9363,
+      "failures": 0,
+      "procedures": 30,
+      "routes": 90
+    },
+    "semantic_and_schema_tests": {
+      "test_groups": 8,
+      "failures": 0
+    },
+    "crisis": {
+      "checks": 41,
+      "failures": 0
+    },
+    "pilot_v2": {
+      "checks": 921,
+      "failures": 0
+    },
+    "result_growth": {
+      "checks": 64,
+      "failures": 0
+    },
+    "progression": {
+      "checks": 37,
+      "failures": 0
+    },
+    "sweep": {
+      "checks": 101,
+      "failures_on_isolated_rerun": 0,
+      "initial_failures": 1,
+      "note": "Initial intermittent team-familiarity assertion; isolated rerun passes. No interaction code or test changed."
+    },
+    "english_runtime": {
+      "checks": 22109,
+      "failures": 0
+    },
+    "data_schema": {
+      "records": 743,
+      "failures": 0
+    },
+    "narrative_localization": {
+      "checks": 8100,
+      "failures": 0
+    },
+    "surgery_localization": {
+      "checks": 3247,
+      "failures": 0
+    },
+    "localization_audit": {
+      "exit_code": 0,
+      "authored_translated": 15405,
+      "authored_total": 15478,
+      "existing_fallbacks": 73,
+      "ui_translated": 702,
+      "ui_total": 702
+    },
+    "phase1c": {
+      "checks": 607,
+      "failures": 1,
+      "note": "Pre-existing CABG signature interaction assertion, previously reproduced against unmodified HEAD; outside scope."
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    }
+  },
+  "schema_alignment": "Permit silent effect-only conditional branches already supported by apply_surgery_option_effects. Spoken branches still require paired nonempty response and valid response_role. No added dialogue or runner change.",
+  "application_note": "Initial small-context textual patches matched repeated numerical snippets incorrectly. Final application used unique complete option-ID blocks; entire source and loader output verified against untouched snapshot plus exactly the authorized two restorations and 817 changes. No misplaced edits remain."
+}

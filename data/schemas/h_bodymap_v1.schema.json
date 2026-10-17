@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hoshimi-hospital.local/schemas/h_bodymap_v1.schema.json",
+  "title": "H Interaction Body Map V1",
+  "description": "Character-specific normalized hotspot polygons, calibrated against the final interaction base image.",
+  "type": "object",
+  "properties": {
+    "schema_version": {"const": 1},
+    "status": {"enum": ["draft", "final"]},
+    "base_image": {"type": "string", "pattern": "^assets/.+\\.(png|webp)$"},
+    "image_width": {"type": "integer", "minimum": 1},
+    "image_height": {"type": "integer", "minimum": 1},
+    "coordinate_space": {"const": "normalized_uv_0_1"},
+    "hotspots": {
+      "type": "object",
+      "properties": {
+        "lips": {"$ref": "#/$defs/polygons"},
+        "cheeks": {"$ref": "#/$defs/polygons"},
+        "neck": {"$ref": "#/$defs/polygons"},
+        "breasts": {"$ref": "#/$defs/polygons"},
+        "nipples": {"$ref": "#/$defs/polygons"},
+        "navel": {"$ref": "#/$defs/polygons"},
+        "torso_other": {"$ref": "#/$defs/polygons"},
+        "genitals": {"$ref": "#/$defs/polygons"},
+        "thighs": {"$ref": "#/$defs/polygons"}
+      },
+      "required": ["lips", "cheeks", "neck", "breasts", "nipples", "navel", "torso_other", "genitals", "thighs"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["schema_version", "status", "base_image", "image_width", "image_height", "coordinate_space", "hotspots"],
+  "additionalProperties": false,
+  "$defs": {
+    "point": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number", "minimum": 0, "maximum": 1},
+        {"type": "number", "minimum": 0, "maximum": 1}
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "polygons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/point"}}
+    }
+  }
+}

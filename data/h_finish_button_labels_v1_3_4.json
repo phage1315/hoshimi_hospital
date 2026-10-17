@@ -1,0 +1,25 @@
+{
+  "spec_version": "1.3.4",
+  "scope": "global_h_phase2_finish_button_labels",
+  "action_id": "h_finish",
+  "label_variants": [
+    "要射了！",
+    "要来了……！",
+    "忍不住了……！",
+    "就是现在！",
+    "一起到吧！"
+  ],
+  "selection": {
+    "method": "uniform_random",
+    "draw_once": "on_phase2_enter",
+    "show_after": "initial_phase2_lines_complete",
+    "persist_label_until_h_finish_click": true,
+    "independent_of_actor_reaction": true,
+    "do_not_map_label_to_reaction": true
+  },
+  "display": {
+    "count_visible": 1,
+    "enable_after_initial_playback": true,
+    "remain_visible_while_waiting": true
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hoshimi-hospital.local/schemas/h_profile_v1.schema.json",
+  "title": "H Interaction Profile V1",
+  "description": "Standalone V1 interaction profile contract. It is intentionally not yet merged into the doctor/staff content schema.",
+  "type": "object",
+  "properties": {
+    "schema_version": {"const": 1},
+    "enabled": {"const": true},
+    "default_preference": {"const": "mild"},
+    "zone_defaults": {"$ref": "#/$defs/zoneTiersRequired"},
+    "action_defaults": {
+      "type": "object",
+      "properties": {
+        "caress": {"$ref": "#/$defs/tier"},
+        "kiss": {"$ref": "#/$defs/tier"},
+        "lick": {"$ref": "#/$defs/tier"},
+        "light_bite": {"$ref": "#/$defs/tier"}
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "action_zone_overrides": {
+      "type": "object",
+      "properties": {
+        "caress": {"$ref": "#/$defs/zoneTiers"},
+        "kiss": {"$ref": "#/$defs/zoneTiers"},
+        "lick": {"$ref": "#/$defs/zoneTiers"},
+        "light_bite": {"$ref": "#/$defs/zoneTiers"}
+      },
+      "required": ["caress", "kiss", "lick", "light_bite"],
+      "additionalProperties": false
+    },
+    "reactions": {
+      "type": "object",
+      "properties": {
+        "tier_fallback": {"$ref": "#/$defs/tierPools"},
+        "zone_tier": {"$ref": "#/$defs/linePools"},
+        "action_tier": {"$ref": "#/$defs/linePools"},
+        "combo": {"$ref": "#/$defs/linePools"}
+      },
+      "required": ["tier_fallback", "zone_tier", "action_tier", "combo"],
+      "additionalProperties": false
+    },
+    "expressions": {
+      "type": "object",
+      "properties": {
+        "neutral": {"$ref": "#/$defs/assetPath"},
+        "annoyed": {"$ref": "#/$defs/assetPath"},
+        "pleased": {"$ref": "#/$defs/assetPath"},
+        "flustered": {"$ref": "#/$defs/assetPath"},
+        "delighted": {"$ref": "#/$defs/assetPath"},
+        "peak": {"$ref": "#/$defs/assetPath"}
+      },
+      "required": ["neutral", "annoyed", "pleased", "flustered", "delighted", "peak"],
+      "additionalProperties": false
+    },
+    "location_entry": {
+      "type": "object",
+      "properties": {
+        "hotel": {"$ref": "#/$defs/locationLines"},
+        "home": {"$ref": "#/$defs/locationLines"},
+        "ward": {"$ref": "#/$defs/locationLines"},
+        "gyne_exam": {"$ref": "#/$defs/locationLines"},
+        "operating_room": {"$ref": "#/$defs/locationLines"}
+      },
+      "required": ["hotel", "home", "ward", "gyne_exam", "operating_room"],
+      "additionalProperties": false
+    },
+    "scene": {
+      "type": "object",
+      "properties": {
+        "start": {"$ref": "#/$defs/threeLines"},
+        "middle": {"$ref": "#/$defs/threeLines"},
+        "finish": {"$ref": "#/$defs/threeLines"}
+      },
+      "required": ["start", "middle", "finish"],
+      "additionalProperties": false
+    },
+    "free_aftercare": {"$ref": "#/$defs/fourLines"},
+    "h_stage_image": {"$ref": "#/$defs/assetPath"},
+    "after_cg_image": {"$ref": "#/$defs/assetPath"}
+  },
+  "required": ["schema_version", "enabled", "default_preference", "zone_defaults", "action_defaults", "action_zone_overrides", "reactions", "expressions", "h_stage_image", "after_cg_image"],
+  "additionalProperties": false,
+  "$defs": {
+    "tier": {"enum": ["low", "mild", "strong", "favorite"]},
+    "zoneTiers": {
+      "type": "object",
+      "properties": {
+        "lips": {"$ref": "#/$defs/tier"},
+        "cheeks": {"$ref": "#/$defs/tier"},
+        "neck": {"$ref": "#/$defs/tier"},
+        "breasts": {"$ref": "#/$defs/tier"},
+        "nipples": {"$ref": "#/$defs/tier"},
+        "navel": {"$ref": "#/$defs/tier"},
+        "torso_other": {"$ref": "#/$defs/tier"},
+        "genitals": {"$ref": "#/$defs/tier"},
+        "thighs": {"$ref": "#/$defs/tier"}
+      },
+      "additionalProperties": false
+    },
+    "zoneTiersRequired": {
+      "allOf": [
+        {"$ref": "#/$defs/zoneTiers"},
+        {"required": ["lips", "cheeks", "neck", "breasts", "nipples", "navel", "torso_other", "genitals", "thighs"]}
+      ]
+    },
+    "point": {
+      "type": "array",
+      "prefixItems": [{"type": "number", "minimum": 0, "maximum": 1}, {"type": "number", "minimum": 0, "maximum": 1}],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "hotspotPolygons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/point"}}
+    },
+    "reaction": {
+      "type": "object",
+      "properties": {
+        "line": {"type": "string"},
+        "expression": {"enum": ["neutral", "annoyed", "pleased", "flustered", "delighted", "peak"]}
+      },
+      "required": ["line", "expression"],
+      "additionalProperties": false
+    },
+    "reactionPool": {"type": "array", "items": {"$ref": "#/$defs/reaction"}},
+    "threeLines": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string", "minLength": 1}},
+    "fourLines": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "string", "minLength": 1}},
+    "locationLines": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "tierPools": {
+      "type": "object",
+      "properties": {
+        "low": {"$ref": "#/$defs/reactionPool"},
+        "mild": {"$ref": "#/$defs/reactionPool"},
+        "strong": {"$ref": "#/$defs/reactionPool"},
+        "favorite": {"$ref": "#/$defs/reactionPool"}
+      },
+      "required": ["low", "mild", "strong", "favorite"],
+      "additionalProperties": false
+    },
+    "linePools": {
+      "type": "object",
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_]*\\|[a-z][a-z0-9_]*$"},
+      "additionalProperties": {"$ref": "#/$defs/reactionPool"}
+    },
+    "assetPath": {"type": "string", "pattern": "^assets/.+\\.(png|webp)$"}
+  }
+}

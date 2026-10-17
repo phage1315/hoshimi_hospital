@@ -109,6 +109,45 @@ func load_staff_bundles(config: Dictionary) -> void:
 					errors.append("医护数据包分片 ID 缺失或重复：%s/%s" % [collection_key, row_id])
 					continue
 				collections[collection_key].append(row)
+		# Optional narrative shards let a staff bundle grow without rewriting its
+		# established event archive. They use the same canonical localization path.
+		for part_path_value in bundle.get("additional_character_event_files", []):
+			var part_path := bundle_dir.path_join(str(part_path_value))
+			var rows: Variant = read_json(part_path)
+			if not rows is Array:
+				errors.append("角色事件分片必须是数组：" + part_path)
+				continue
+			for row in rows:
+				var row_id := str(row.get("id", "")) if row is Dictionary else ""
+				if row_id.is_empty() or not find_record("character_events", row_id).is_empty():
+					errors.append("角色事件分片 ID 缺失或重复：" + row_id)
+					continue
+				collections.character_events.append(_compile_event_script(row))
+
+func _compile_event_script(source: Dictionary) -> Dictionary:
+	if not (source.get("script", []) is Array):
+		return source
+	var result := source.duplicate(true)
+	var beats: Array = result.get("script", [])
+	var nodes: Array = []
+	for index in range(beats.size()):
+		var beat: Dictionary = beats[index]
+		var node := beat.duplicate(true)
+		node.erase("choices")
+		var beat_next := str(node.get("next", ""))
+		node.erase("next")
+		var authored_choices: Array = beat.get("choices", [])
+		if not authored_choices.is_empty():
+			node["choices"] = authored_choices.duplicate(true)
+		elif index + 1 < beats.size():
+			node["choices"] = [{"id": "continue_%s" % str(beat.get("id", index)), "label": {"zh_CN": "继续  ▷", "en": "Continue  ▷"}, "next": beat_next if not beat_next.is_empty() else str(beats[index + 1].get("id", "")), "effects": {"affection": 0, "familiarity": 0}, "flags": []}]
+		else:
+			node["choices"] = [{"id": "finish_%s" % str(beat.get("id", index)), "label": {"zh_CN": "结束  ▷", "en": "Finish  ▷"}, "next": "@end", "effects": {"affection": 0, "familiarity": 0}, "flags": []}]
+		nodes.append(node)
+	result.erase("script")
+	result["start"] = str(beats[0].get("id", "")) if not beats.is_empty() else ""
+	result["nodes"] = nodes
+	return result
 
 func replace_patient_tokens(value: Variant, tokens: Dictionary) -> Variant:
 	if value is Dictionary:

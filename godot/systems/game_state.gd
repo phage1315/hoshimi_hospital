@@ -5,6 +5,7 @@ const CharacterEvent = preload("res://godot/systems/character_event_session.gd")
 const MicroEvent = preload("res://godot/systems/micro_event_session.gd")
 const SpecialEvent = preload("res://godot/systems/special_event_session.gd")
 const AdultIntimacySession = preload("res://godot/systems/adult_intimacy_session.gd")
+const FreeHRegistry = preload("res://godot/systems/free_h_registry.gd")
 const PresenceResolver = preload("res://godot/systems/presence_resolver.gd")
 const FixedCalendar = preload("res://godot/systems/fixed_calendar.gd")
 const Progression = preload("res://godot/systems/progression_config.gd")
@@ -110,6 +111,11 @@ var pending_surgery_day_transition := false
 var pending_day_exit_workday := 0
 var pending_day_exit_clock := 0
 var active_after_work_walk: Dictionary = {}
+var free_h_booking: Dictionary = {}
+# Transient departure ownership, deliberately absent from save snapshots.
+var active_free_h_departure: Dictionary = {}
+var sayaka_lv4_callback_override_day := -1
+var sayaka_lv4_callback_override_clock := -1
 var campaign_seed := 1
 var sunday_history: Array[Dictionary] = []
 var intraoperative_crisis_enabled := true
@@ -238,6 +244,8 @@ func reset() -> void:
 	pending_day_exit_workday = 0
 	pending_day_exit_clock = 0
 	active_after_work_walk.clear()
+	free_h_booking.clear()
+	active_free_h_departure.clear()
 	sunday_history.clear()
 	intraoperative_crisis_enabled = true
 	adult_intimacy_unlocks.clear()
@@ -292,6 +300,8 @@ func finish_admission_for_day(encounter_id: String) -> bool:
 	return true
 
 func can_save_progress() -> bool:
+	if not active_free_h_departure.is_empty():
+		return false
 	# Saves are boundary snapshots, never resumable UI/event positions. The
 	# player can save from the hospital directory or Sunday menu only.
 	if not active_id.is_empty() or not active_preop_id.is_empty() or active_mode != "encounter":
@@ -834,6 +844,8 @@ func unresolved_admitted_patient_exists() -> bool:
 
 func can_end_workday() -> bool:
 	last_error = ""
+	if not active_free_h_departure.is_empty() or not active_after_work_walk.is_empty():
+		return false
 	if is_hospital_closed_day():
 		last_error = "休息日请使用星期日安排结束当天。"
 		return false
@@ -863,6 +875,88 @@ func advance_story_to_day(target_day: int, absolute_clock: int) -> void:
 	var target_shift_minute := clampi(absolute_clock - SHIFT_START_MINUTE, 0, SHIFT_MINUTES - 1)
 	var target_total := target_day_index * SHIFT_MINUTES + target_shift_minute
 	story_time_advance_minutes += maxi(0, target_total - current_total)
+	expire_free_h_booking()
+
+func current_workday() -> int:
+	if not active_free_h_departure.is_empty():
+		return int(active_free_h_departure.workday)
+	return pending_day_exit_workday if pending_day_exit_workday > 0 else day_number()
+
+func expire_free_h_booking() -> void:
+	if active_free_h_departure.is_empty() and not free_h_booking.is_empty() and int(free_h_booking.get("workday", 0)) != current_workday():
+		free_h_booking.clear()
+
+func free_h_unlocked(actor_id: String) -> bool:
+	var config := FreeHRegistry.definition(actor_id)
+	if config.is_empty() or not staff_is_met(actor_id):
+		return false
+	var person: Dictionary = {}
+	for candidate in staff:
+		if str(candidate.id) == actor_id:
+			person = candidate
+	var flags: Array = person.get("flags", [])
+	if int(person.get("age", 0)) < 18 or "professional_friendship_only" in flags or "relationship_progression_locked" in flags:
+		return false
+	return character_event_done(str(config.completion_event)) and story_flag(str(config.completion_flag)) and relation_for(actor_id).get("unlocked_benefits", []).has("unlock_intimacy_events")
+
+func free_h_known_conflict() -> bool:
+	for definition in character_event_definitions.values():
+		if character_event_trigger_mode(definition) == "after_work" and character_event_available(definition):
+			return true
+	return false
+
+func can_book_free_h(actor_id: String, location_id: String) -> bool:
+	if is_hospital_closed_day() or pending_day_exit_workday > 0 or not can_save_progress() or not free_h_unlocked(actor_id):
+		return false
+	if actor_id not in staff_present_at(location_id) or free_h_known_conflict():
+		return false
+	return not FreeHRegistry.load_bundle(actor_id).has("error")
+
+func book_free_h(actor_id: String, location_id: String, replace_actor_id: String = "") -> bool:
+	expire_free_h_booking()
+	if not can_book_free_h(actor_id, location_id):
+		return false
+	var previous_actor := str(free_h_booking.get("actor_id", ""))
+	# Compare-and-replace protects confirmations made before another selection.
+	if not previous_actor.is_empty() and previous_actor != actor_id and previous_actor != replace_actor_id:
+		return false
+	free_h_booking = {"workday": current_workday(), "actor_id": actor_id}
+	return true
+
+func cancel_free_h_booking() -> bool:
+	if not active_free_h_departure.is_empty() or free_h_booking.is_empty():
+		return false
+	free_h_booking.clear()
+	return true
+
+func claim_free_h_departure(workday: int, departure_clock: int, advance_day_on_finish: bool) -> bool:
+	if not active_free_h_departure.is_empty() or not active_after_work_walk.is_empty() or free_h_booking.is_empty():
+		return false
+	if int(free_h_booking.workday) != workday or is_hospital_closed_day(workday):
+		return false
+	if active_encounter_in_progress() or not active_preop_id.is_empty() or unresolved_admitted_patient_exists() or special_event_in_progress() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
+		return false
+	if departure_clock < OUTPATIENT_CLOSE_MINUTE or not free_h_unlocked(str(free_h_booking.actor_id)):
+		return false
+	if sayaka_lv4_callback_due(workday, departure_clock) or not next_after_work_character_event().is_empty():
+		return false
+	if FreeHRegistry.load_bundle(str(free_h_booking.actor_id)).has("error"):
+		return false
+	active_free_h_departure = {"actor_id": str(free_h_booking.actor_id), "workday": workday, "clock": departure_clock, "advance_day_on_finish": advance_day_on_finish}
+	active_mode = "free_h"
+	return true
+
+func finish_free_h_departure() -> Dictionary:
+	if active_free_h_departure.is_empty():
+		return {}
+	var completed := active_free_h_departure.duplicate(true)
+	active_free_h_departure.clear()
+	free_h_booking.clear()
+	active_mode = "encounter"
+	clear_pending_departure_context()
+	# Target-day advancement is idempotent even if overtime reserved tomorrow.
+	advance_story_to_day(int(completed.workday) + 1, SHIFT_START_MINUTE)
+	return completed
 
 func fresh_relationships() -> Dictionary:
 	var result := {}
@@ -1469,6 +1563,12 @@ func consume_day_start_character_event() -> void:
 	set_story_flag("__day_start_character_event__%s" % day_number(), true)
 
 func character_event_available(definition: Dictionary) -> bool:
+	var event_id := str(definition.get("id", ""))
+	var event_day := current_workday() if character_event_trigger_mode(definition) == "after_work" else day_number()
+	if event_id == "sayaka_lv4_hospital_callback":
+		var callback_day := day_number() if sayaka_lv4_callback_override_day < 1 else sayaka_lv4_callback_override_day
+		var callback_clock := current_absolute_clock() if sayaka_lv4_callback_override_clock < 0 else sayaka_lv4_callback_override_clock
+		return sayaka_lv4_callback_due(callback_day, callback_clock) and not character_event_done(event_id)
 	var special_target := test_save_target_event_id()
 	var character_target := test_save_target_character_event_id()
 	if not special_target.is_empty() or (not character_target.is_empty() and character_target != str(definition.get("id", ""))):
@@ -1483,9 +1583,9 @@ func character_event_available(definition: Dictionary) -> bool:
 	if character_event_done(definition.id):
 		return false
 	var relation: Dictionary = relation_for(definition.actor_id)
-	if relation.is_empty() or day_number() < int(definition.conditions.min_day):
+	if relation.is_empty() or event_day < int(definition.conditions.min_day):
 		return false
-	if definition.conditions.has("max_day") and day_number() > int(definition.conditions.max_day):
+	if definition.conditions.has("max_day") and event_day > int(definition.conditions.max_day):
 		return false
 	if definition.category == "introduction" and bool(relation.get("met", false)):
 		return false
@@ -1500,11 +1600,11 @@ func character_event_available(definition: Dictionary) -> bool:
 	if definition.category in ["bond", "rank_up"] and not bool(definition.get("chain_followup", false)) and not relation.get("rank_history", []).is_empty():
 		var milestone_gap := maxi(int(Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS), int(definition.conditions.get("days_after_required_events", 0)))
 		var latest_milestone_day := 0
-		for event_id in relation.rank_history:
-			var completed_event = character_events.get(str(event_id))
+		for rank_event_id in relation.rank_history:
+			var completed_event = character_events.get(str(rank_event_id))
 			if completed_event != null:
 				latest_milestone_day = maxi(latest_milestone_day, int(completed_event.completed_day))
-		if latest_milestone_day > 0 and day_number() < latest_milestone_day + milestone_gap:
+		if latest_milestone_day > 0 and event_day < latest_milestone_day + milestone_gap:
 			return false
 	for metric in ["affection", "familiarity"]:
 		if int(relation.get(metric, 0)) < int(definition.conditions.get("min_" + metric, 0)):
@@ -1519,7 +1619,7 @@ func character_event_available(definition: Dictionary) -> bool:
 		var required_gap_days := int(definition.conditions.get("days_after_required_events", 0))
 		if required_gap_days > 0:
 			var required_event = character_events.get(required)
-			if required_event == null or int(required_event.completed_day) <= 0 or day_number() < int(required_event.completed_day) + required_gap_days:
+			if required_event == null or int(required_event.completed_day) <= 0 or event_day < int(required_event.completed_day) + required_gap_days:
 				return false
 	if not requirements_met(definition.conditions.get("special_requirements", []), {"actor_id": str(definition.get("actor_id", ""))}):
 		return false
@@ -1636,9 +1736,9 @@ func next_sunday_character_event() -> Dictionary:
 	return {} if result.is_empty() else result[0]
 
 func next_after_work_character_event() -> Dictionary:
-	if is_sunday() or is_hospital_closed_day() or active_surgery_in_progress() or special_event_in_progress() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
+	if is_hospital_closed_day(current_workday()) or active_surgery_in_progress() or special_event_in_progress() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
 		return {}
-	var clock: int = int(schedule_at(elapsed()).absolute_clock)
+	var clock: int = int(display_schedule().absolute_clock)
 	var result: Array = []
 	for definition in character_event_definitions.values():
 		if character_event_trigger_mode(definition) != "after_work" or not character_event_available(definition):
@@ -1685,6 +1785,92 @@ func start_character_event(id: String) -> RefCounted:
 	if character_event_trigger_mode(character_event_definitions[id]) == "day_start":
 		consume_day_start_character_event()
 	return character_events[id]
+
+func reserve_sunday_character_event(event_id: String) -> bool:
+	if not is_sunday() or sunday_activity_done() or not character_event_definitions.has(event_id):
+		return false
+	var definition: Dictionary = character_event_definitions[event_id]
+	if character_event_trigger_mode(definition) != "sunday" or not character_event_available(definition):
+		return false
+	sunday_history.append({"day": day_number(), "activity_id": "sayaka_lv4_date", "actor_id": "doc_sayaka", "location_id": "hotel"})
+	return true
+
+func settle_sayaka_lv4_hotel_event() -> bool:
+	var relation := relation_for("doc_sayaka")
+	if relation.is_empty() or int(relation.get("level", 0)) not in [3, 4]:
+		return false
+	if story_flag("sayaka_lv4_complete"):
+		return false
+	if int(relation.get("level", 0)) == 3:
+		complete_rank_up("doc_sayaka", "sayaka_lv4_hotel_date", 4, "unlock_intimacy_events")
+	elif not relation.get("rank_history", []).has("sayaka_lv4_hotel_date"):
+		return false
+	set_story_flag("sayaka_lv4_complete")
+	set_story_flag("sayaka_first_h_complete")
+	set_story_flag("sayaka_lv4_patient_joke_seed")
+	set_story_flag("sayaka_lv4_next_morning_callback_pending")
+	set_story_flag("sayaka_lv4_callback_target_day:%s" % (day_number() + 1))
+	return true
+
+func sayaka_lv4_callback_target_day() -> int:
+	for flag in story_flags:
+		var flag_name := str(flag)
+		if flag_name.begins_with("sayaka_lv4_callback_target_day:") and story_flag(flag_name):
+			return int(flag_name.trim_prefix("sayaka_lv4_callback_target_day:"))
+	return -1
+
+func sayaka_lv4_callback_due(for_day: int, absolute_clock: int) -> bool:
+	var target_day := sayaka_lv4_callback_target_day()
+	if not story_flag("sayaka_lv4_next_morning_callback_pending") or story_flag("sayaka_lv4_next_morning_callback_complete"):
+		return false
+	# The callback is a Monday-only epilogue. If a forced multi-day sequence
+	# consumes that Monday, expire it instead of replaying it on a later date.
+	if target_day < 1 or for_day != target_day or str(calendar_date(for_day).weekday_id) != "mon":
+		return false
+	return absolute_clock >= 12 * 60
+
+func start_sayaka_lv4_callback(for_day: int, absolute_clock: int) -> RefCounted:
+	if not sayaka_lv4_callback_due(for_day, absolute_clock):
+		return null
+	sayaka_lv4_callback_override_day = for_day
+	sayaka_lv4_callback_override_clock = absolute_clock
+	var event := start_character_event("sayaka_lv4_hospital_callback")
+	sayaka_lv4_callback_override_day = -1
+	sayaka_lv4_callback_override_clock = -1
+	return event
+
+func expire_sayaka_lv4_callback_if_missed(for_day: int) -> bool:
+	var target_day := sayaka_lv4_callback_target_day()
+	if target_day > 0 and for_day > target_day and story_flag("sayaka_lv4_next_morning_callback_pending"):
+		settle_sayaka_lv4_callback(true)
+		return true
+	return false
+
+func settle_sayaka_lv4_callback(skipped: bool = false) -> void:
+	set_story_flag("sayaka_lv4_next_morning_callback_pending", false)
+	set_story_flag("sayaka_lv4_next_morning_callback_complete")
+	var target_day := sayaka_lv4_callback_target_day()
+	if target_day > 0:
+		set_story_flag("sayaka_lv4_callback_target_day:%s" % target_day, false)
+	if skipped:
+		set_story_flag("sayaka_lv4_next_morning_callback_skipped")
+
+func prepare_sayaka_lv4_event_test() -> bool:
+	if not OS.is_debug_build() or not character_event_definitions.has("sayaka_lv4_hotel_date"):
+		return false
+	reset()
+	var relation := relation_for("doc_sayaka")
+	relation.met = true
+	relation.level = 3
+	relation.familiarity = 55
+	relation.affection = maxi(int(relation.get("affection", 0)), 20)
+	relation.flags.append_array(["sayaka_phone_exchanged", "sayaka_sunday_invite_available"])
+	relation.rank_history.append("sayaka_lv3_relationship")
+	set_test_player_attribute("charm", 20)
+	set_test_time(6, SHIFT_START_MINUTE)
+	if not _complete_character_event_for_test("sayaka_lv3_relationship", 3):
+		return false
+	return is_sunday() and character_event_available(character_event_definitions["sayaka_lv4_hotel_date"])
 
 func apply_relationship_choice(relation: Dictionary, choice: Dictionary) -> void:
 	relation.affection = clampi(int(relation.get("affection", 0)) + int(choice.effects.get("affection", 0)), 0, 100)
@@ -2987,6 +3173,10 @@ func after_work_roll(workday: int, variant: String, salt: String) -> int:
 	return absi(hash("%s:after_work:%s:%s:%s" % [campaign_seed, workday, variant, salt])) % 100
 
 func begin_after_work_departure(workday: int, departure_clock: int, advance_day_on_finish: bool) -> bool:
+	if not active_free_h_departure.is_empty():
+		return false
+	if not free_h_booking.is_empty() and int(free_h_booking.get("workday", 0)) == workday:
+		return false
 	# Both manual departure and deferred/automatic day-end enter here. Never
 	# offer a walk while a patient is still waiting for clinical care.
 	if active_encounter_in_progress() or active_surgery_committed() or active_surgery_in_progress() or unresolved_admitted_patient_exists():
@@ -3137,6 +3327,8 @@ func day_number() -> int:
 	return int(schedule_at(elapsed()).day)
 
 func display_schedule() -> Dictionary:
+	if not active_free_h_departure.is_empty():
+		return {"day": int(active_free_h_departure.workday), "absolute_clock": int(active_free_h_departure.clock)}
 	# The workday ledger reserves tomorrow as soon as a shift overflows. The
 	# visible scene still takes place at the actual departure/overtime time.
 	if not active_after_work_walk.is_empty():
@@ -3917,7 +4109,10 @@ func surgery_xp_award_for(preparation: RefCounted) -> int:
 	if preparation.pilot_surgery() and preparation.surgery_success and not preparation.flags.has("quick_surgery"):
 		quality_multiplier = float({"S": 1.15, "A": 1.08, "B": 1.00, "C": 0.85, "F": 0.50}.get(preparation.surgical_quality_grade(), 1.0))
 	var raw_award := maxi(0, roundi(float(surgery.duration_minutes) * efficiency * quality * indication * team_multiplier * quality_multiplier) + interaction_bonus)
-	return mini(raw_award, maxi(0, surgery_xp_for_level(ceiling) - surgery_xp))
+	var remaining_to_ceiling := maxi(0, surgery_xp_for_level(ceiling) - surgery_xp)
+	if remaining_to_ceiling <= 0:
+		return 0
+	return maxi(1, mini(raw_award, remaining_to_ceiling))
 
 func award_surgery_xp(preparation: RefCounted) -> int:
 	var before_level := surgery_level()
@@ -4057,6 +4252,7 @@ func snapshot() -> Dictionary:
 		"special_event_completion_days": special_event_completion_days.duplicate(true),
 		"active_special_event": active_special_event_snapshot,
 		"adult_intimacy_unlocks": adult_intimacy_unlocks.duplicate(true),
+		"free_h_booking": free_h_booking.duplicate(true),
 		"active_adult_intimacy": active_adult_intimacy_snapshot}
 
 func migrate_legacy_surgery_events(source: Array) -> Array:
@@ -5108,6 +5304,14 @@ func restore(data: Variant) -> bool:
 	adult_intimacy_return_mode = "encounter"
 	pending_encounter_day_transition = false
 	pending_surgery_day_transition = false
+	active_free_h_departure.clear()
+	active_after_work_walk.clear()
+	clear_pending_departure_context()
+	free_h_booking.clear()
+	var saved_booking: Variant = data.get("free_h_booking", {})
+	if saved_booking is Dictionary and (saved_booking.get("workday") is int or saved_booking.get("workday") is float) and saved_booking.get("actor_id") is String:
+		if int(saved_booking.workday) == day_number() and free_h_unlocked(str(saved_booking.actor_id)):
+			free_h_booking = {"workday": int(saved_booking.workday), "actor_id": str(saved_booking.actor_id)}
 	if personal_nurse_system_unlocked and not personal_nurse_candidates().has(personal_nurse_id):
 		personal_nurse_id = "nurse_haru" if personal_nurse_candidates().has("nurse_haru") else ""
 	for preparation in preops.values():

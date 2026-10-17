@@ -475,6 +475,7 @@ save_block_reason()
 7. 手术中尝试触发保存，不应覆盖已有存档。
 8. 手术中读档，应能回到术前保存点。
 
+
 ### 反馈重点
 
 - 患者互动出现时机是否自然。
@@ -522,11 +523,56 @@ save_block_reason()
 6. 确认患者事件增加的分钟数进入最终手术用时。
 7. 全麻时确认临时状态完全不生成。
 
-测试入口：
+测试入口（以下三项为初版四步术式记录；新版节点见后面的2026-10-16说明）：
 
 - 开腹胆囊切除术：关键判断后触发 `nausea`。
 - 开腹子宫肌瘤剔除术：关键判断后触发 `drowsiness`。
 - 开放式胰十二指肠切除术：关键判断同时生成两种状态，用于验证优先级；同为 1 级时先显示恶心。
+
+2026-10-16新版接线：胆囊切除改在固定节点 `chole_07_liver_bed` 完成并确认团队回应后触发 `nausea`；子宫肌瘤剔除改在 `myomectomy_08_repair` 后触发 `drowsiness`。不再按旧步骤索引2查找，不把事件放到可能跳过的纠正节点。原有中文、处理动作、延续规则不变；普通互动预算不限制临时状态，全麻仍跳过。专项测试 `tools/surgery_temporary_condition_reconnect_test.gd` 使用真实步骤ID及实际选择／确认推进，覆盖中英和完整术式路线。现有配合度／尊严突发互动优先级未改变。
+
+#### 2026-10-16 全术式扩展（FEATURE-040）
+
+全部32种术式各配置一个恶心标记和一个嗜睡标记。只追加技术cue，不改中英对白、选项、数值或麻醉入口。下表节点全部为固定必经步骤（包括两个旧流程），不放在条件纠正步骤；Whipple保留原同节点双状态，由既有优先级先处理恶心，嗜睡可延续到下一步。
+
+| 术式 | 恶心节点 `nausea` | 嗜睡节点 `drowsiness` |
+| --- | --- | --- |
+| 开腹阑尾切除 | `appendix_04_mobilize` | `appendix_08_review` |
+| 乳房肿瘤切除 | `breast_04_excision` | `breast_07_reposition` |
+| 开腹子宫全切除 | `hysterectomy_05_adnexal_pedicles` | `hysterectomy_10_cuff_closure` |
+| 开胸心脏搭桥 | `cabg_cpb_establish` | `cabg_wean_cpb` |
+| 大开腹探查 | `el_small_bowel_run` | `el_exploration_conclusion` |
+| 开腹胆囊切除 | `chole_07_liver_bed` | `chole_09_review` |
+| 腹股沟疝修补 | `hernia_05_reduction` | `hernia_08_review` |
+| 腹壁疝修补 | `ventral_03_reduction` | `ventral_08_review` |
+| 开腹部分胃切除 | `gastrectomy_04_distal_mobilization` | `gastrectomy_10_anastomosis` |
+| 开腹全胃切除 | `tg_greater_curve_mobilization` | `tg_esophagojejunostomy` |
+| 开腹右半结肠切除 | `hemicolectomy_04_hepatic_flexure` | `hemicolectomy_10_anastomosis` |
+| 开腹乙状结肠切除 | `sigmoid_lateral_mobilization` | `sigmoid_anastomosis` |
+| 开腹直肠切除（含肛门） | `apr_posterior_tme` | `apr_perineal_closure_stoma` |
+| 开腹胰十二指肠切除 | `key_decision` | `key_decision` |
+| 开腹肝叶切除 | `liver_mobilization` | `liver_deep_vessels` |
+| 开腹脾切除 | `splenectomy_04_gastrosplenic_control` | `splenectomy_08_final_review` |
+| 开腹卵巢囊肿切除 | `ovarian_05_stripping` | `ovarian_08_reconstruction` |
+| 开腹子宫肌瘤剔除 | `myomectomy_06_enucleation` | `myomectomy_08_repair` |
+| 全乳房切除 | `mastectomy_chest_wall_dissection` | `mastectomy_cavity_hemostasis` |
+| 开胸肺叶切除 | `lobectomy_fissure_mobilization` | `lobectomy_final_review` |
+| 开胸全肺切除 | `pneu_hilar_orientation` | `pneu_stump_review` |
+| 开胸食管切除 | `eso_gastric_mobilization` | `eso_conduit_review` |
+| 开腹膀胱全切除 | `rc_bladder_mobilization` | `rc_ureteroileal_anastomoses` |
+| 开腹肾切除 | `nephrectomy_hilum_exposure` | `nephrectomy_final_review` |
+| 开腹主动脉瘤修补 | `aaa_proximal_control` | `aaa_reperfusion` |
+| 经阴道子宫全切除 | `vh_bladder_mobilization` | `vh_cuff_review` |
+| 开胸人工心脏系统置换 | `adhesion_bleeding` | `system_validation` |
+| 开腹胰体尾切除 | `dp_posterior_plane` | `dp_stump_perfusion_review` |
+| 开腹部分肾切除 | `pn_hilar_control_prep` | `pn_renorrhaphy` |
+| 开腹肾上腺切除 | `adrenal_gland_vein_exposure` | `adrenal_specimen_handoff` |
+| 开腹左半结肠切除 | `lhc_splenic_flexure` | `lhc_anastomosis` |
+| 开腹低位直肠前切除 | `lar_posterior_tme` | `lar_leak_hemostasis_review` |
+
+节点契约保存在 `tools/fixtures/surgery_temporary_condition_targets.json`，仅供测试使用；运行时唯一来源仍为 `data/surgeries/surgeries.json` 的 `patient_cues`，不存在第二套动态节点选择逻辑。新增 `tools/surgery_temporary_condition_catalog_test.gd` 对照契约推进真实步骤和处理／确认动作，覆盖中英文与四种麻醉状态，共256条路线；采用高配合度夹具隔离突发反应，不代表每个实际病例必然出现两次。
+
+全麻、显式禁用临时状态、配合度／尊严突发互动优先级均不改变。人工心脏置换的清醒测试仅验证共享运行器，并不改变特殊剧情的麻醉设置。现有中英分级提示、四个处理动作、忽略升级及持续时间规则全部复用。
 
 ### 反馈重点
 

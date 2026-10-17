@@ -1,0 +1,56 @@
+{
+  "status": "superseded_by_v1_2_import",
+  "actor_id": "doc_sayaka",
+  "schema_version": 1,
+  "source": "/Users/ningye/Downloads/HOSHIMI_SAYAKA_H_PROFILE_V1_DESIGN_REVIEW.md",
+  "source_note": "Historical preference-only draft. The authoritative preferences, dialogue, and expression-state mapping are now in h_profile_v1.json plus h_profile_v1_content.gd; do not use this file at runtime.",
+  "expression_mapping_draft": {
+    "sheet_layout": "3 columns x 2 rows, row-major",
+    "cells": {
+      "top_left": "pleased",
+      "top_middle": "annoyed",
+      "top_right": "neutral",
+      "bottom_left": "flustered",
+      "bottom_middle": "delighted",
+      "bottom_right": "peak"
+    },
+    "idle": "top_right",
+    "touch_tiers": {
+      "low": "top_middle",
+      "mild": "top_left",
+      "strong": "bottom_left",
+      "favorite": "bottom_middle",
+      "excitement_threshold": "bottom_right"
+    },
+    "authored_reaction_expression_takes_priority": true
+  },
+  "default_preference": "mild",
+  "zone_defaults": {
+    "lips": "favorite",
+    "cheeks": "strong",
+    "neck": "favorite",
+    "breasts": "strong",
+    "nipples": "strong",
+    "navel": "mild",
+    "torso_other": "mild",
+    "genitals": "strong",
+    "thighs": "mild"
+  },
+  "action_defaults": {
+    "light_bite": "mild"
+  },
+  "action_zone_overrides": {
+    "caress": {"cheeks": "favorite", "torso_other": "strong"},
+    "kiss": {"lips": "favorite", "neck": "favorite", "navel": "mild"},
+    "lick": {"cheeks": "low", "navel": "mild"},
+    "light_bite": {"lips": "low", "cheeks": "low", "genitals": "low", "neck": "strong"}
+  },
+  "content_pending": [
+    "reaction dialogue pools: tier_fallback 16, zone_tier 20, combo 22",
+    "location_entry: hotel/home/ward/gyne_exam/operating_room",
+    "scene: start/middle/finish, three authored lines each",
+    "free_aftercare: four authored lines",
+    "six expression images and final resource paths"
+  ],
+  "excluded_zones": ["arms", "shoulders", "buttocks"]
+}

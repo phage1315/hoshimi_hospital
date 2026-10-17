@@ -44,6 +44,10 @@ static func render_main(app: Control) -> void:
 		career_button.disabled = true
 	app.button_at(app.tx("ui.office.collection", "收藏与纪念物  →"), Vector2(850, 325), Vector2(340, 58), app.show_office_collection).name = "OfficeCollection"
 	app.scrollable_text_at(app.tx("ui.office.note", "查看资料不消耗时间。职业行动是主动投资，不会成为每日强制作业。"), Vector2(850, 485), Vector2(340, 92), 18, Color("c2d2cc"), "OfficeUsageNote")
+	var booking_label: String = app.free_h_booking_label()
+	if not booking_label.is_empty():
+		app.label_at(booking_label, Vector2(70, 548), 18, Color("e8cfaa"), 475).name = "FreeHBookingSummary"
+		app.button_at(app.tx("ui.free_h.cancel", "取消今晚的约定"), Vector2(560, 540), Vector2(260, 42), app.cancel_free_h_booking.bind(app.show_player_office)).name = "FreeHBookingCancel"
 	var leave_button: Button = app.button_at(app.tx("ui.office.end_workday", "结束工作，今天下班  →"), Vector2(850, 590), Vector2(340, 48), app.request_end_workday)
 	leave_button.name = "OfficeEndWorkday"
 	leave_button.disabled = not app.game.can_end_workday()

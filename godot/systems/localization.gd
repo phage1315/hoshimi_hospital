@@ -171,6 +171,8 @@ func identifier_title(identifier: String) -> String:
 
 func localize_tree(value: Variant, key: String) -> Variant:
 	if value is Dictionary:
+		if value.has("zh_CN") and value.has("en") and value.zh_CN is String and value.en is String:
+			return str(value.get(locale, value.zh_CN))
 		var localized: Dictionary = {}
 		for field in value:
 			localized[field] = localize_tree(value[field], key + "." + str(field))

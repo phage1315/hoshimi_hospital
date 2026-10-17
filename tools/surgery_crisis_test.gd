@@ -26,7 +26,7 @@ func fixture(source = null, locale: String = "zh_CN") -> RefCounted:
 		"initial_anxiety": 2, "initial_interaction": {"fear": 35, "pain": 0, "dignity": 100, "cooperation": 70},
 		"roles": [], "ward_role": {"id": "ward_nurse"}, "preparations": [], "max_optional_preparations": 0,
 		"care_reassurance_threshold": 70, "completion": "surgery_abort",
-		"stages": [{"id": "surgery_flow", "title": "Crisis Test", "scene": "operating_room", "kind": "surgery_flow", "speaker": "narrator", "next": "surgery_flow", "actions": [], "background_id": "operating_room"}],
+		"stages": [{"id": "surgery_flow", "title": "Crisis Test", "prompt": "", "scene": "operating_room", "kind": "surgery_flow", "speaker": "narrator", "next": "surgery_flow", "actions": [], "background_id": "operating_room"}],
 	}
 	var prep = Preop.new(definition, source.collections.staff, source.collections.surgeries, source.collections.patients, [], false, source.collections.surgery_team_dialogue_profiles, source.collections.patient_interactions, source.collections.temporary_conditions)
 	prep.procedure_id = "surgery_appendix"
@@ -71,6 +71,7 @@ func run() -> void:
 	expect(not crisis_prep.active_crisis.is_empty() and not crisis_prep.awaiting_flow_acknowledgement, "Forced crisis did not pause the surgery node")
 	expect(crisis_prep.active_crisis.flavor_id == "hypotension" and crisis_prep.active_crisis.speaker_actor_id == "nurse_rin", "Crisis did not bind the rolled symptom and assigned circulating nurse")
 	expect(not str(crisis_prep.active_crisis.callout_variant_id).is_empty() and crisis_prep.feedback_speaker == "staff" and crisis_prep.last_staff_id == "nurse_rin", "Crisis did not select and present the circulating nurse's authored callout")
+	var original_chinese_callout: String = crisis_prep.crisis_callout_text()
 	var rolled_flavors: Array[String] = []
 	for flavor_roll in range(8):
 		rolled_flavors.append(crisis_prep.crisis_flavor_id_from_roll(flavor_roll))
@@ -84,7 +85,7 @@ func run() -> void:
 	var record_speaker = app.page.get_node_or_null("PreopRecordSpeaker")
 	var record_text = app.page.get_node_or_null("PreopRecordText")
 	expect(app.page.get_node_or_null("StaffInteractionPortrait") != null, "Active crisis did not show the circulating nurse portrait")
-	expect(record_speaker != null and record_speaker.text == "中井 美佳", "Active crisis did not identify the circulating nurse in the record panel")
+	expect(record_speaker != null and record_speaker.text == crisis_prep.staff_display_name(crisis_prep.crisis_callout_speaker_name()), "Active crisis did not identify the circulating nurse in the record panel")
 	expect(record_text != null and record_text.text == crisis_prep.crisis_callout_text(), "Active crisis callout was not visible beside the rescue choices")
 	expect(app.page.get_node_or_null("CrisisRescue_pause_and_stabilize") != null and app.page.get_node_or_null("CrisisRescue_hold_field_team_rescue") != null and app.page.get_node_or_null("CrisisRescue_finish_critical_action") != null, "Crisis callout displaced one or more rescue choices")
 	app.queue_free()
@@ -123,7 +124,11 @@ func run() -> void:
 	first_step = english_prep.surgery_flow_steps()[0]
 	first_option = first_step.options[0]
 	expect(english_prep.apply({"kind": "surgery_step", "id": first_option.id, "crisis_roll": 0}), "English crisis could not start")
-	expect(english_prep.feedback.contains("Blood pressure") and not english_prep.feedback.contains("血压"), "English circulating-nurse crisis callout was not localized")
+	var has_chinese := false
+	for index in range(english_prep.feedback.length()):
+		var codepoint: int = english_prep.feedback.unicode_at(index)
+		has_chinese = has_chinese or (codepoint >= 0x4e00 and codepoint <= 0x9fff)
+	expect(not english_prep.crisis_callout_text().is_empty() and english_prep.crisis_callout_text() != original_chinese_callout and not has_chinese, "English circulating-nurse crisis callout was not localized")
 
 	var legacy_prep = fixture()
 	first_step = legacy_prep.surgery_flow_steps()[0]
@@ -137,15 +142,19 @@ func run() -> void:
 	expect(settings_clone.restore(JSON.parse_string(JSON.stringify(settings_snapshot))), "Crisis setting snapshot could not be restored")
 	expect(not settings_clone.intraoperative_crisis_enabled, "Office crisis toggle did not persist in the save")
 
-	# Calibration acceptance: these are outcome targets, not hard-coded case results.
-	expect(completion_probability(8, 0.10, [0.90, 0.50, 0.25]) >= 0.95, "Normal-team 8-node calibration fell below 95%")
-	expect(completion_probability(16, 0.10, [0.90, 0.50, 0.25]) >= 0.90, "Normal-team 16-node calibration fell below 90%")
-	var no_anesthesia_normal := completion_probability(16, 0.20, [0.80, 0.30, 0.10])
-	var no_anesthesia_strong := completion_probability(16, 0.20, [0.90, 0.40, 0.20])
-	var no_anesthesia_developing := completion_probability(16, 0.20, [0.77, 0.27, 0.07])
-	expect(no_anesthesia_normal >= 0.60 and no_anesthesia_normal <= 0.70, "Normal-team no-anesthesia calibration left its 60–70% target")
-	expect(no_anesthesia_strong >= 0.80 and no_anesthesia_strong <= 0.90, "Strong-team no-anesthesia calibration left its 80–90% target")
-	expect(no_anesthesia_developing >= 0.55 and no_anesthesia_developing <= 0.65, "Developing-team no-anesthesia calibration left its 55–65% target")
+	# Shared candidate curves, not a claim of full per-procedure calibration.
+	var routine_rates: Array = []
+	var severe_rates: Array = []
+	var neutral_prep = fixture()
+	neutral_prep.team.clear()
+	for attempt in range(1, 4):
+		neutral_prep.active_crisis = {"attempt": attempt, "severity": "routine"}
+		routine_rates.append(neutral_prep.crisis_rescue_chance("pause_and_stabilize") / 100.0)
+		neutral_prep.active_crisis.severity = "severe"
+		severe_rates.append(neutral_prep.crisis_rescue_chance("pause_and_stabilize") / 100.0)
+	expect(routine_rates == [0.90, 0.75, 0.60], "Routine rescue curve differs from the candidate")
+	expect(severe_rates == [0.80, 0.60, 0.40], "Severe rescue curve differs from the candidate")
+	expect(completion_probability(16, 0.10, routine_rates) > completion_probability(16, 0.20, severe_rates), "Routine/severe candidate completion ordering is incorrect")
 
 	print("SURGERY CRISIS: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

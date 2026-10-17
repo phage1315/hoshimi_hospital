@@ -12,6 +12,7 @@ from staff_bundles import load_staff_bundles
 ROOT = Path(__file__).resolve().parents[1]
 ENGLISH = json.loads((ROOT / "data/localization/en.json").read_text(encoding="utf-8"))["strings"]
 TARGETS = {
+    "temporary_conditions": ROOT / "data/surgeries/temporary_conditions.json",
     "time_events": None,  # Staff idle-chat bundles, not unrelated solo activities.
     "date_profiles": None,
     "character_events": ROOT / "data/events/character_events/index.json",
@@ -32,9 +33,16 @@ FORMAT = re.compile(r"%(?:0?\d+)?[sdif]")
 
 def walk(value: object, path: str, rows: list[tuple[str, str]]) -> None:
     if isinstance(value, dict):
+        if isinstance(value.get("zh_CN"), str) and isinstance(value.get("en"), str):
+            source = value["zh_CN"]
+            translated = value["en"]
+            if source.strip() and (not translated.strip() or HAN.search(translated)):
+                rows.append((path, "[invalid inline English]"))
+            return
         for field, child in value.items():
             child_path = f"{path}.{field}"
-            if field in FIELDS and isinstance(child, str) and child.strip():
+            condition_prompt = path.startswith("collections.temporary_conditions.") and path.endswith(".prompts")
+            if (field in FIELDS or condition_prompt) and isinstance(child, str) and child.strip():
                 rows.append((child_path, child))
             walk(child, child_path, rows)
     elif isinstance(value, list):
@@ -60,6 +68,9 @@ def main() -> int:
         else:
             walk(authored, f"collections.{collection}", rows)
         for key, source in rows:
+            if source == "[invalid inline English]":
+                failures.append(f"invalid inline English: {key}")
+                continue
             # Already-English authored labels such as "Lucky!" need no locale entry.
             if not HAN.search(source):
                 continue

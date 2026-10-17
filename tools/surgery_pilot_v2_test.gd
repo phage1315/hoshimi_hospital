@@ -58,7 +58,7 @@ func run() -> void:
 		for stage in surgery.stages:
 			if str(stage.get("stage_kind", "fixed")) == "conditional_correction":
 				continue
-			var option_count := stage.options.size()
+			var option_count: int = stage.options.size()
 			expect(option_count == 1 if stage.kind == "confirm" else option_count in [2, 3], "%s stage option density is invalid" % stage.id)
 		var prep = fixture()
 		prep.procedure_id = surgery_id

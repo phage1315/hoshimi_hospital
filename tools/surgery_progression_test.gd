@@ -75,6 +75,13 @@ func run() -> void:
 	expect(game.surgery_xp_award_for(appendix) == 30, "Appendectomy XP did not use duration and learning efficiency")
 	expect(game.surgery_xp_award_for(cabg) == 72, "Severely over-level CABG incorrectly became a power-leveling shortcut")
 	expect(game.surgery_xp_award_for(wrong_cabg) == 14, "Wrong-indication surgery did not apply the 20 percent XP multiplier")
+	game.surgery_definitions.append({"id": "test_minimum_xp", "name": "Minimum XP Test", "duration_minutes": 1, "base_difficulty": 0, "training_ceiling": 60, "status": "ready"})
+	var tiny_xp_prep := training_prep("surgery_appendix", true)
+	tiny_xp_prep.procedure_id = "test_minimum_xp"
+	tiny_xp_prep.procedure_corrections = 5
+	game.surgery_xp = game.surgery_xp_for_level(53)
+	expect(game.surgery_xp_award_for(tiny_xp_prep) == 1, "Successful eligible surgery did not retain the one-XP minimum")
+	game.surgery_xp = 0
 	expect(game.surgery_reputation_profile("surgery_appendix").tier == "simple" and game.surgery_reputation_award_for("surgery_appendix", 0) == 2, "Simple surgery reputation profile is incorrect")
 	expect(game.surgery_reputation_award_for("surgery_appendix", 80) == 1 and game.surgery_reputation_award_for("surgery_appendix", 100) == 0, "Simple surgery reputation soft or hard cap is incorrect")
 	expect(game.surgery_reputation_profile("surgery_open_abdominal_myomectomy").tier == "standard" and game.surgery_reputation_award_for("surgery_open_abdominal_myomectomy", 0) == 7 and game.surgery_reputation_award_for("surgery_open_abdominal_myomectomy", 300) == 0, "Standard surgery reputation profile is incorrect")

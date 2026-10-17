@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.3",
+  "actor_id": "doc_sayaka",
+  "adult_confirmed": true,
+  "assets": {
+    "body_map_image": "res://assets/h/doc_sayaka/body_map.png",
+    "body_map_regions": "res://data/h/doc_sayaka/h_bodymap.json",
+    "portrait_expressions": {
+      "neutral": "res://assets/h/doc_sayaka/portrait_neutral.png",
+      "annoyed": "res://assets/h/doc_sayaka/portrait_annoyed.png",
+      "pleased": "res://assets/h/doc_sayaka/portrait_pleased.png",
+      "flustered": "res://assets/h/doc_sayaka/portrait_flustered.png",
+      "delighted": "res://assets/h/doc_sayaka/portrait_delighted.png",
+      "peak": "res://assets/h/doc_sayaka/portrait_peak.png"
+    },
+    "scene_cg": "res://assets/h/doc_sayaka/scene_cg.png",
+    "aftercare_cg": "res://assets/h/doc_sayaka/aftercare_cg.png"
+  },
+  "preferences": {
+    "zone_defaults": {
+      "lips": "favorite",
+      "cheeks": "strong",
+      "neck": "favorite",
+      "breasts": "strong",
+      "nipples": "strong",
+      "navel": "mild",
+      "torso_other": "mild",
+      "genitals": "strong",
+      "thighs": "mild"
+    },
+    "action_overrides": {
+      "light_bite": "mild"
+    },
+    "combo_overrides": {
+      "caress:cheeks": "favorite",
+      "kiss:lips": "favorite",
+      "kiss:neck": "favorite",
+      "caress:torso_other": "strong",
+      "kiss:navel": "mild",
+      "lick:cheeks": "low",
+      "light_bite:lips": "low",
+      "light_bite:cheeks": "low",
+      "light_bite:genitals": "low",
+      "light_bite:neck": "strong",
+      "lick:navel": "mild"
+    }
+  },
+  "dialogue": {
+    "tier_fallback": {
+      "low": [
+        "哎……你这人，尽爱捉弄我。",
+        "唔……不、不是，是有点痒啦。",
+        "……哈，得意什么呀，傻瓜。",
+        "嗯？……你不会觉得这样很厉害吧？"
+      ],
+      "mild": [
+        "嗯……就、就这样嘛。",
+        "哈……你、你怎么这么会哄人呀。",
+        "唔……再、再靠近一点，好吗？",
+        "……嗯，这样待在一起……挺好的。"
+      ],
+      "strong": [
+        "啊……真、真是的，怎么偏偏……",
+        "唔……你、你知道我会害羞的嘛……",
+        "嗯……好、好啦，我承认……很喜欢。",
+        "哈……别、别偷看……我脸红了啦……"
+      ],
+      "favorite": [
+        "啊啊……又、又是这样……真狡猾。",
+        "嗯……你、你也太会了啦……",
+        "唔……你、你再看……我可要躲起来啦……",
+        "……哈，坏、坏心眼……真拿你没办法。"
+      ]
+    },
+    "zone_tier": {
+      "lips:favorite": [
+        "嗯……再、再看着我一下。",
+        "唔……离、离这么近……怪让人害羞的嘛……"
+      ],
+      "cheeks:strong": [
+        "唔……你、你就喜欢看我脸红呀。",
+        "嗯……别、别笑嘛……我、我也会不好意思的。"
+      ],
+      "neck:favorite": [
+        "啊啊……等，等一下……我、我又忘记要说什么了。",
+        "嗯……你、你还真知道……怎么让我分心呀……"
+      ],
+      "breasts:strong": [
+        "唔……你、你还真是不客气呀……",
+        "嗯……知、知道啦……别、别一直偷笑嘛……"
+      ],
+      "nipples:strong": [
+        "啊……等，等一下……我、我还没准备好反驳你呢。",
+        "……唔，你、你这人……又故意逗我。"
+      ],
+      "navel:mild": [
+        "嗯？……这里也要闹呀？",
+        "呵……你、你怎么这么好奇嘛。"
+      ],
+      "torso_other:mild": [
+        "嗯……这样……慢慢来，就挺好的。",
+        "……哈，别、别急嘛……我就在这里呀。"
+      ],
+      "genitals:strong": [
+        "啊啊……你、你还真够大胆的呀……",
+        "嗯……等，等一下……让、让我缓缓嘛……"
+      ],
+      "thighs:mild": [
+        "唔……你、你又在打什么主意呀？",
+        "嗯……看、看我一眼嘛……别光低着头呀。"
+      ]
+    },
+    "action_tier": {},
+    "combo": {
+      "caress:cheeks": [
+        "嗯……你、你这样看我……反而、反而让我害羞啦。",
+        "唔……是在哄我吗？还、还挺管用的嘛。"
+      ],
+      "kiss:lips": [
+        "……嗯，再、再近一点嘛……",
+        "唔……你、你怎么突然……这么认真呀……"
+      ],
+      "kiss:neck": [
+        "啊……等，等一下……你、你专挑我说不出话的时候呀。",
+        "……唔，糟、糟了……我刚才想说什么来着？"
+      ],
+      "caress:torso_other": [
+        "嗯……慢，慢一点，就这样……",
+        "哈……好、好啦……我知道你很温柔。"
+      ],
+      "kiss:navel": [
+        "唔……这、这里也要呀？",
+        "……嗯，你、你还真细心呀……"
+      ],
+      "lick:cheeks": [
+        "咦……哈？怎、怎么连这里都要闹呀！",
+        "唔……好、好痒！你、你是小孩子嘛？"
+      ],
+      "light_bite:lips": [
+        "呀……你、你又顽皮啦！",
+        "唔……这么坏呀？我可记住了哦。"
+      ],
+      "light_bite:cheeks": [
+        "唔……脸颊也要闹嘛？",
+        "哎呀……你、你真的很爱捉弄人。"
+      ],
+      "light_bite:genitals": [
+        "啊……等，等一下……这、这也太突然了吧。",
+        "唔……这招嘛，我、我可欣赏不来。"
+      ],
+      "light_bite:neck": [
+        "啊……你、你还真会……挑地方……",
+        "……嗯，别、别得意呀……我只是没想到嘛。"
+      ],
+      "lick:navel": [
+        "唔……又想到新花样啦？",
+        "……哈，好、好痒……你别笑嘛。"
+      ]
+    },
+    "location_entry": {
+      "hotel": [
+        "……嗯，门关好了？过来呀。",
+        "哈……你怎么反而有点紧张啦？"
+      ],
+      "home": [
+        "……嗯，在这里反而有点害羞了嘛。",
+        "呵……别站那么远呀。"
+      ],
+      "ward": [
+        "……嘘，小声一点嘛……",
+        "嗯……真没想到会在这里呀……"
+      ],
+      "operating_room": [
+        "……咦，你、你还真的挑这里呀。",
+        "哈……别、别一直看着我……我也会紧张嘛……",
+        "……嗯，先把那副认真工作的表情收起来呀。"
+      ]
+    },
+    "scene": {
+      "start": [
+        "……嗯，过来嘛……",
+        "哈……怎、怎么突然这么安静呀……",
+        "……唔，看、看着我……好吗？"
+      ],
+      "middle": [
+        "啊啊……你、你别一直这样看着我嘛……",
+        "……嗯，靠、靠近一点……",
+        "唔……真、真拿你没办法呀……"
+      ],
+      "finish": [
+        "……嗯，等，等一下……",
+        "哈……你、你先别……说话嘛……",
+        "……嗯……看、看着我……好不好……"
+      ]
+    }
+  }
+}

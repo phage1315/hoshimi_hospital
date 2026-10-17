@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.2",
+  "actor_id": "doc_sayaka",
+  "adult_confirmed": true,
+  "assets": {
+    "body_map_image": "res://assets/h/doc_sayaka/body_map.png",
+    "body_map_regions": "res://data/h/doc_sayaka/h_bodymap.json",
+    "portrait_expressions": {
+      "neutral": "res://assets/h/doc_sayaka/portrait_neutral.png",
+      "annoyed": "res://assets/h/doc_sayaka/portrait_annoyed.png",
+      "pleased": "res://assets/h/doc_sayaka/portrait_pleased.png",
+      "flustered": "res://assets/h/doc_sayaka/portrait_flustered.png",
+      "delighted": "res://assets/h/doc_sayaka/portrait_delighted.png",
+      "peak": "res://assets/h/doc_sayaka/portrait_peak.png"
+    },
+    "scene_cg": "res://assets/h/doc_sayaka/scene_cg.png",
+    "aftercare_cg": "res://assets/h/doc_sayaka/aftercare_cg.png"
+  },
+  "preferences": {
+    "zone_defaults": {
+      "lips": "favorite",
+      "cheeks": "strong",
+      "neck": "favorite",
+      "breasts": "strong",
+      "nipples": "strong",
+      "navel": "mild",
+      "torso_other": "mild",
+      "genitals": "strong",
+      "thighs": "mild"
+    },
+    "action_overrides": {
+      "light_bite": "mild"
+    },
+    "combo_overrides": {
+      "caress:cheeks": "favorite",
+      "kiss:lips": "favorite",
+      "kiss:neck": "favorite",
+      "caress:torso_other": "strong",
+      "kiss:navel": "mild",
+      "lick:cheeks": "low",
+      "light_bite:lips": "low",
+      "light_bite:cheeks": "low",
+      "light_bite:genitals": "low",
+      "light_bite:neck": "strong",
+      "lick:navel": "mild"
+    }
+  },
+  "dialogue": {
+    "tier_fallback": {
+      "low": [
+        "你今天的玩心是不是有点过头啦？",
+        "别急着得意，我还没给你打高分呢。",
+        "这种小花招，我可不买账。",
+        "我喜欢你，但不代表你每招都管用哦。"
+      ],
+      "mild": [
+        "嗯，这样就挺好。",
+        "你今天心情很好嘛。",
+        "好啦，我有在听。",
+        "你倒是很会安排今晚的时间。"
+      ],
+      "strong": [
+        "咦……你还真了解我。",
+        "好吧，这次算你赢。",
+        "你又在故意逗我，是不是？",
+        "被你这样认真对待，还挺高兴的。"
+      ],
+      "favorite": [
+        "……真会挑时候。",
+        "哎呀，被你发现了。",
+        "你这人，怎么总知道我在想什么。",
+        "这次换我先夸你一句：不错。"
+      ]
+    },
+    "zone_tier": {
+      "lips:favorite": [
+        "你终于肯看着我了。",
+        "……怎么，今天这么认真？"
+      ],
+      "cheeks:strong": [
+        "你今天特别在意我的表情嘛。",
+        "脸上写了什么？你看得这么仔细。"
+      ],
+      "neck:favorite": [
+        "这里有点容易让我分心呢。",
+        "你还真知道怎么打断我说话。"
+      ],
+      "breasts:strong": [
+        "你这种时候倒是挺专注的。",
+        "嗯……今天的你比平时大胆一点。"
+      ],
+      "nipples:strong": [
+        "你还真是观察得仔细。",
+        "看你这样子，我都不知道该怎么接话了。"
+      ],
+      "navel:mild": [
+        "怎么突然注意到这里？",
+        "这又是什么新发现？"
+      ],
+      "torso_other:mild": [
+        "今天倒是挺有耐心。",
+        "嗯，慢慢来就好。"
+      ],
+      "genitals:strong": [
+        "你现在的表情还挺认真的嘛。",
+        "你先别急，我又没催你。"
+      ],
+      "thighs:mild": [
+        "怎么，你有特别的打算？",
+        "你是不是又在观察我的反应？"
+      ]
+    },
+    "action_tier": {},
+    "combo": {
+      "caress:cheeks": [
+        "你这样认真看着我，我反而有点不好意思了。",
+        "喂，这算是在哄我吗？有用哦。"
+      ],
+      "kiss:lips": [
+        "终于肯好好回应我了？",
+        "……这次不错。给你一点奖励。"
+      ],
+      "kiss:neck": [
+        "你专挑我没法好好反驳的时候，是吧？",
+        "啊，等一下……我刚才要说什么来着？"
+      ],
+      "caress:torso_other": [
+        "你今天难得这么温柔。",
+        "这个节奏，我还挺喜欢的。"
+      ],
+      "kiss:navel": [
+        "怎么，你今天想走细心路线？",
+        "这地方也要照顾到？你挺认真的嘛。"
+      ],
+      "lick:cheeks": [
+        "这也太调皮了吧。别笑！",
+        "喂，你不会以为这招很帅吧？"
+      ],
+      "light_bite:lips": [
+        "喂，太顽皮了。换个温柔一点的。",
+        "你这人，怎么老想着捉弄我。"
+      ],
+      "light_bite:cheeks": [
+        "脸颊也要闹？你今天几岁？",
+        "我可没说过喜欢这种恶作剧。"
+      ],
+      "light_bite:genitals": [
+        "这种玩笑就省了吧。我喜欢你认真一点。",
+        "喂，别闹。换个方式。"
+      ],
+      "light_bite:neck": [
+        "……你这是故意不让我说完话吧？",
+        "还真被你抓到我的弱点了。"
+      ],
+      "lick:navel": [
+        "你今天的新花样还真多。",
+        "不许一边观察一边偷笑。"
+      ]
+    },
+    "location_entry": {
+      "hotel": [
+        "到了这里，怎么反而不说话了？",
+        "这次不用我再问“接下来呢”了吧？"
+      ],
+      "home": [
+        "终于不用盯着明天的排班表了。",
+        "家里还不错嘛。起码没有护士站广播找人。"
+      ],
+      "ward": [
+        "先确认这间病房现在没有安排患者。",
+        "如果等会儿有人按铃，还是得先去工作哦。"
+      ],
+      "operating_room": [
+        "这里可是我平常最认真工作的地方。你又想做什么？",
+        "我先说好：今晚没有排手术，也别把我当成值班助手哦。",
+        "别用那种准备做病例讨论的表情看我。"
+      ]
+    },
+    "scene": {
+      "start": [
+        "过来一点。今天又不赶时间。",
+        "怎么突然这么安静？刚才不是挺会说的吗？",
+        "好啦，别装成在开术前会议。"
+      ],
+      "middle": [
+        "你呀，平时在医院可不是这么爱逗人的。",
+        "嗯……今晚让我也任性一点，好不好？",
+        "别总想着下一步。现在陪我就好。"
+      ],
+      "finish": [
+        "……再陪我待一会儿。",
+        "好了，今天就先不谈医院的事。",
+        "你先别急着起身。让我靠一下。"
+      ]
+    },
+    "free_aftercare": [
+      "别急着走嘛。我今天还想多赖一会儿。",
+      "明天见面的时候，记得先跟我说早安。",
+      "你下次想找我，可以直接说。别绕那么大一个弯。",
+      "今天我很开心。嗯，就是这么简单。"
+    ]
+  }
+}

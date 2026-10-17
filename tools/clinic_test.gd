@@ -349,8 +349,16 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	app.game.patient_queue.assign(patient_queue_with_sora_first(content))
+	app.game.patient_cases["patient_sora"] = "template_appendicitis"
+	app.game.rebuild_patient_content(app.game.patient_cases)
 	app.game.meet_staff("doc_rei")
-	app.show_location("clinic")
+	app.game.set_test_player_attribute("skill", 50)
+	app.show_location("clinic", true, false)
+	expect(app.page.get_node_or_null("LowTrainingValue") == null, "Routine-level appendicitis was incorrectly marked as low training value")
+	app.game.set_test_player_attribute("skill", 100)
+	app.show_location("clinic", true, false)
+	var low_training_hint := app.page.get_node_or_null("LowTrainingValue") as Label
+	expect(low_training_hint != null and low_training_hint.text == app.tx("ui.clinic.training_value_low", "⚠ Low training value"), "Over-level appendicitis did not show the localized low-training-value cue")
 	var staff_toggle: Button = app.page.get_node_or_null("LocationStaffToggle")
 	expect(staff_toggle != null and app.page.get_node_or_null("LocationStaffDrawer") == null, "Clinic staff drawer should start collapsed")
 	var patient_portrait_before: Button = app.page.get_node_or_null("PatientPortrait")

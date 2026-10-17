@@ -30,7 +30,7 @@ func run() -> void:
 	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events)
 
 	var expected_thresholds := {
-		"doc_rei": [10, 25, 40, 55, 75], "doc_emiko": [10, 25, 40, 55, 75],
+		"doc_rei": [10, 25, 40, 55, 75], "doc_emiko": [0, 0, 40, 55, 75],
 		"doc_artoria": [0, 25, 40, 55, 75], "nurse_ishigami": [0, 0, 0, 0, 0],
 		"doc_asuka": [10, 25, 40, 55, 75], "doc_sayaka": [0, 25, 40, 55, 70],
 		"nurse_satsuki": [10, 25, 40, 55, 70], "nurse_hiroko": [10, 25, 40, 55, 75],
@@ -46,14 +46,15 @@ func run() -> void:
 		expect(slots.all(func(slot): return int(slot.cooldown_days) == 3), actor_id + ": cooldown is not fixed at three days")
 	expect(game.relationship_max_level("nurse_ishigami") == 5, "Ishigami's audited professional-trust route is still progression-locked")
 
-	set_gate_position(game, "doc_emiko", 1, 9)
+	set_gate_position(game, "doc_emiko", 1, 0)
 	game.set_test_player_attribute("skill", 100)
-	expect(not game.relationship_rank_gate_met("doc_emiko", 1), "Emiko Lv1 ignored Familiarity 10")
-	game.relation_for("doc_emiko").familiarity = 10
-	game.set_test_player_attribute("skill", 74)
-	expect(not game.relationship_rank_gate_met("doc_emiko", 1), "Emiko Lv1 accepted Surgery 74")
-	game.set_test_player_attribute("skill", 75)
-	expect(game.relationship_rank_gate_met("doc_emiko", 1), "Emiko Lv1 rejected the exact Surgery 75 boundary")
+	expect(game.relationship_rank_gate_met("doc_emiko", 1), "Emiko Lv1 incorrectly requires familiarity")
+	game.set_test_player_attribute("skill", 69)
+	expect(not game.relationship_rank_gate_met("doc_emiko", 1), "Emiko Lv1 accepted Surgery 69")
+	game.set_test_player_attribute("skill", 70)
+	expect(game.relationship_rank_gate_met("doc_emiko", 1), "Emiko Lv1 rejected the exact Surgery 70 boundary")
+	set_gate_position(game, "doc_emiko", 2, 0)
+	expect(game.relationship_rank_gate_met("doc_emiko", 2), "Emiko Lv2 incorrectly requires familiarity")
 
 	set_gate_position(game, "doc_emiko", 3, 40)
 	game.set_test_player_attribute("presence", 19)

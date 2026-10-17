@@ -123,8 +123,15 @@
           "pattern": "^[a-z][a-z0-9_]*$"
         },
         "label": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {"type": "string", "minLength": 1},
+            {
+              "type": "object",
+              "properties": {"zh_CN": {"type": "string", "minLength": 1}, "en": {"type": "string", "minLength": 1}},
+              "required": ["zh_CN", "en"],
+              "additionalProperties": false
+            }
+          ]
         },
         "path": {
           "type": "string",
@@ -270,8 +277,10 @@
           "pattern": "^[a-z][a-z0-9_]*$"
         },
         "label": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {"type": "string", "minLength": 1},
+            {"type": "object", "properties": {"zh_CN": {"type": "string", "minLength": 1}, "en": {"type": "string", "minLength": 1}}, "required": ["zh_CN", "en"], "additionalProperties": false}
+          ]
         },
         "next": {
           "type": "string",
@@ -393,11 +402,15 @@
           "description": "Explicit authored speaker routing; sms uses a separate sender/message panel.",
           "enum": ["authored", "sms"]
         },
+        "action": {
+          "description": "Existing UI handoff hook for an authored event node.",
+          "enum": ["launch_sayaka_lv4_h"]
+        },
         "sunday_clock": {
-          "description": "Scene clock within an atomic whole-Sunday activity; not extra ledger minutes.",
+          "description": "Displayed scene clock within an atomic Sunday-to-Monday activity; not extra ledger minutes.",
           "type": "integer",
           "minimum": 540,
-          "maximum": 1439
+          "maximum": 2000
         },
         "seasonal_street": {
           "description": "Use registered seasonal evening street art for the walking scene.",
@@ -425,8 +438,15 @@
           "pattern": "^[a-z][a-z0-9_]*$"
         },
         "text": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {"type": "string", "minLength": 1},
+            {
+              "type": "object",
+              "properties": {"zh_CN": {"type": "string", "minLength": 1}, "en": {"type": "string", "minLength": 1}},
+              "required": ["zh_CN", "en"],
+              "additionalProperties": false
+            }
+          ]
         },
         "expression": {
           "type": "string",
@@ -441,6 +461,10 @@
             "cover",
             "contain"
           ]
+        },
+        "cg_portrait_overlay": {
+          "description": "When true, render the event portrait over the CG instead of letting the CG replace the portrait layer.",
+          "type": "boolean"
         },
         "portrait_path": {
           "type": "string",
@@ -3489,7 +3513,16 @@
                 ]
               }
             },
-            "required": ["when", "response", "response_role"],
+            "required": ["when"],
+            "dependentRequired": {
+              "response": ["response_role"],
+              "response_role": ["response"]
+            },
+            "anyOf": [
+              {"required": ["response"]},
+              {"required": ["strategic_effects"]},
+              {"required": ["effects"]}
+            ],
             "additionalProperties": false
           }
         }
@@ -3623,6 +3656,10 @@
         },
         "stage_kind": {
           "enum": ["fixed", "conditional_correction"]
+        },
+        "risk_class": {
+          "description": "Authored numeric-variance class, independent of option count. Not a patient or episode state.",
+          "enum": ["F", "L", "S"]
         },
         "progress_delta": {
           "type": "integer"

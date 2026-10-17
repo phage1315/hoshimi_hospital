@@ -55,5 +55,29 @@ def load_staff_bundles(data_root: Path, config: dict):
             if not isinstance(rows, list):
                 raise ValueError(f'Staff bundle part must be an array: {bundle_dir / bundle[part_key]}')
             collections[collection_key].extend(rows)
+        for relative_part in bundle.get('additional_character_event_files', []):
+            part_path = bundle_dir / relative_part
+            rows = json.loads(part_path.read_text())
+            if not isinstance(rows, list):
+                raise ValueError(f'Staff event shard must be an array: {part_path}')
+            for row in rows:
+                if isinstance(row, dict) and isinstance(row.get('script'), list):
+                    beats = row['script']
+                    row = dict(row)
+                    row['start'] = beats[0].get('id', '') if beats else ''
+                    row['nodes'] = []
+                    for index, beat in enumerate(beats):
+                        node = dict(beat)
+                        authored_choices = node.pop('choices', [])
+                        beat_next = node.pop('next', '')
+                        if authored_choices:
+                            node['choices'] = authored_choices
+                        elif index + 1 < len(beats):
+                            node['choices'] = [{'id': f"continue_{beat.get('id', index)}", 'label': {'zh_CN': '继续  ▷', 'en': 'Continue  ▷'}, 'next': beat_next or beats[index + 1].get('id', ''), 'effects': {'affection': 0, 'familiarity': 0}, 'flags': []}]
+                        else:
+                            node['choices'] = [{'id': f"finish_{beat.get('id', index)}", 'label': {'zh_CN': '结束  ▷', 'en': 'Finish  ▷'}, 'next': '@end', 'effects': {'affection': 0, 'familiarity': 0}, 'flags': []}]
+                        row['nodes'].append(node)
+                    row.pop('script', None)
+                collections['character_events'].append(row)
         bundles.append((relative_path, bundle))
     return collections, bundles

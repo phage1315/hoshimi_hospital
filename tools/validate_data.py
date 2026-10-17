@@ -1010,22 +1010,22 @@ emiko_lv1 = by['character_events'].get('emiko_lv1_first_operation', {})
 emiko_lv2 = by['character_events'].get('emiko_lv2_follow_my_lead', {})
 check(emiko_intro.get('conditions', {}).get('required_events') == ['intro_doc_asuka_director_office'] and
       emiko_intro.get('conditions', {}).get('special_requirements') ==
-      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 75}],
-      'doc_emiko: introduction must require Asuka introduction and Surgery 75')
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 70}],
+      'doc_emiko: introduction must require Asuka introduction and Surgery 70')
 check(emiko_intro.get('auto_follow_up') ==
       {'event_id': 'emiko_lv1_first_operation', 'day_offset': 3, 'absolute_clock': 780},
       'doc_emiko: introduction must schedule Lv1 after the fixed three-day cooldown')
-check(emiko_slots[1].get('min_familiarity') == 10 and
+check(emiko_slots[1].get('min_familiarity') == 0 and
       emiko_slots[1].get('cooldown_days') == 3 and
       emiko_slots[1].get('special_requirements') ==
-      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 75}] and
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 70}] and
       emiko_lv1.get('conditions', {}).get('min_familiarity') == 0,
-      'doc_emiko: Lv1 must require Familiarity 10, Surgery 75 and a three-day gap')
-check(emiko_slots[2].get('min_familiarity') == 25 and
+      'doc_emiko: Lv1 must require Surgery 70, no familiarity and a three-day gap')
+check(emiko_slots[2].get('min_familiarity') == 0 and
       emiko_slots[2].get('cooldown_days') == 3 and
       emiko_slots[2].get('special_requirements') == [] and
       emiko_lv2.get('conditions', {}).get('min_familiarity') == 0,
-      'doc_emiko: Lv2 must require Familiarity 25 and a three-day gap')
+      'doc_emiko: Lv2 must require no familiarity and retain the three-day gap')
 
 asuka = by['staff'].get('doc_asuka', {})
 asuka_relation = next((relation for relation in collections['relationships']

@@ -1,0 +1,1621 @@
+[
+  {
+    "id": "sayaka_lv4_hotel_date",
+    "actor_id": "doc_sayaka",
+    "title": "那就别回去了",
+    "chapter": 4,
+    "location_id": "player_office",
+    "trigger_mode": "sunday",
+    "background_id": "date_shopping_street",
+    "outfit": "casual",
+    "minutes": 1,
+    "teaser": "周日夜晚，小夜香与坂口继续这场正式约会。",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 250,
+    "category": "rank_up",
+    "consumes_sunday": true,
+    "locks_saving": true,
+    "target_level": 4,
+    "benefit_id": "unlock_intimacy_events",
+    "rank_up_required_flags": [],
+    "gallery": {
+      "cg_id": "cg_sayaka_lv4_hotel_date",
+      "caption": "那就别回去了",
+      "path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 55,
+      "required_events": [
+        "sayaka_lv3_relationship"
+      ],
+      "days_after_required_events": 3,
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 20
+        }
+      ]
+    },
+    "start": "s01_001",
+    "script": [
+      {
+        "id": "s01_001",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "周日傍晚。坂口在一家现代法式融合餐厅门口等小夜香。透过落地玻璃，能看到浅色石桌、木质格栅和暖色灯光。开放式料理台旁，店员正将一道道小巧的菜品端往餐桌。",
+          "en": "Sunday evening, Sakaguchi waits for Sayaka outside a modern French-Japanese fusion restaurant. Through its tall windows he sees pale stone tables, wooden screens, warm lights, and staff carrying artfully plated dishes from the open kitchen."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_002",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香穿着常服走过来，目光先落在坂口身上，随后看了眼他身后的餐厅，笑着走近。",
+          "en": "Sayaka approaches in casual clothes. Her eyes settle on Sakaguchi, then flick to the restaurant behind him as she smiles and walks closer."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_003",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "来得挺早嘛。我还担心这家店招牌太低调，你会不会一不留神走过头。",
+          "en": "You're early. I worried this place's understated sign might make you walk right past it."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_004",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "还好。你挑的地方？",
+          "en": "It's nice. Did you choose this place?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_005",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "嗯。第一次约会你挑的意大利小馆我挺喜欢。这次换我挑一家想试的，想跟你慢慢吃顿不一样的晚饭。",
+          "en": "Mm. I liked the little Italian place you chose for our first date. This time I picked somewhere new, so we can take our time over a different kind of dinner."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_006",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "看起来不错，我也想进去看看。",
+          "en": "Looks nice. I'd like to go in and see for myself."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_007",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香把手包递给坂口，又很自然地把空出来的手伸向他。",
+          "en": "Sayaka hands her purse to Sakaguchi, then naturally offers him her newly freed hand."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_008",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "那先帮我拿一下包，好不好？另一只手我还想牵男朋友呢。",
+          "en": "Hold my purse for me, okay? I still want to hold my boyfriend's hand with the other one."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_009",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "原来这才是目的。",
+          "en": "So that was your real plan."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_010",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "被发现了。走吧，今天可不只是出来站在门口聊天的。",
+          "en": "You caught me. Come on. We didn't come all this way just to stand outside and talk."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s01_011",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "坂口接过包，小夜香握住他的手。两人推门走进餐厅。",
+          "en": "Sakaguchi takes her purse, Sayaka takes his hand, and together they enter the restaurant."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_012",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "两人坐在靠窗的位置。服务生先送上两份精致的小前菜：白瓷盘上盛着鱼肉、蔬菜和一点柚子味的酱汁。小夜香看了看摆盘，先尝了一口。",
+          "en": "They take a window seat. The server brings delicate appetizers of fish and vegetables with yuzu sauce on white porcelain. Sayaka admires the plating, then takes a bite."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_013",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "诶，还挺好吃的。菜单上写得那么复杂，我还以为会吃不明白呢。法式的做法，加了点日式调味，倒是蛮搭的。",
+          "en": "Oh, this is good. The menu was so complicated I thought I might not know what I was ordering. The French technique and Japanese seasoning work well together."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_014",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "你不是很有把握才挑了这家？",
+          "en": "You chose this place because you were confident about it, didn't you?"
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_015",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "我有把握的是店看起来不错，可又没说每道菜都吃过。偶尔试点没吃过的东西，不也挺有意思的嘛。",
+          "en": "I was confident the place looked good, not that I'd tried every dish. It's fun to try something new once in a while, isn't it?"
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_016",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她把自己的小盘子往坂口面前推了一点，示意他尝尝。",
+          "en": "She nudges her small plate toward Sakaguchi, inviting him to try some."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_017",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "来，分你一口。你那份等会儿也让我尝一下好不好？两个人点不同的，比自己守着一盘划算多了。",
+          "en": "Here, have a bite. Let me try yours later too, okay? Ordering different dishes is better than each guarding one plate."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_018",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "原来你是打算一顿尝两份。",
+          "en": "So you planned to try both our dishes."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_019",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "不可以啊？那我下次就把你的那份也点成自己想吃的，省得跟你商量。",
+          "en": "Why not? Next time I'll order what I want for you too, so I won't have to ask."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_020",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "坂口笑着把自己的盘子移近。接下来的主菜一道道端上来，两人边吃边聊，有时说到医院里遇见的琐事，有时只是讨论盘子里哪种味道更好。等餐盘收走，窗外已经亮起街灯。",
+          "en": "Sakaguchi smiles and moves his plate closer. Main courses arrive as they chat about hospital anecdotes and favorite flavors. By the time the plates are cleared, streetlights glow outside."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_021",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "这顿饭确实不错。你挑对地方了。",
+          "en": "That really was a good dinner. You picked the right place."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_022",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "嗯，我也很满意。不过比起菜，我更喜欢这样跟你坐着。平时在医院，说不上几句就有人找；出来以后，总算可以把话好好说完，也不用老想着下一件事。",
+          "en": "Mm, I am too. More than the food, I like sitting here with you. At the hospital someone always interrupts us; out here we can finish a conversation without thinking about what comes next."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_023",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "看来以后得多给你留点时间。",
+          "en": "Looks like I should make more time for you from now on."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_024",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "那倒不用把我写进你的排班表啦。你想约我的时候就约，我有空也会答应。今晚嘛……我还想再坐一会儿，陪我把这杯喝完？",
+          "en": "You don't have to put me on your schedule. Ask me out when you like; if I'm free, I'll say yes. Tonight, though... I'd like to sit a little longer. Keep me company until I finish this drink?"
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s02_025",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "坂口没有催她。小夜香靠着椅背，慢慢喝完杯里的饮料。两人结账离席，沿着餐厅外的街道继续散步。",
+          "en": "Sakaguchi doesn't rush her. Sayaka leans back and slowly finishes her drink. They pay, leave, and continue their walk outside."
+        },
+        "background_id": "sayaka_lv4_french_fusion_restaurant",
+        "outfit": "casual",
+        "sunday_clock": 1080
+      },
+      {
+        "id": "s03_026",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "离开餐厅以后，两人沿着橱窗明亮的街道慢慢走。小夜香还挽着坂口的手臂，聊起刚才那道摆盘漂亮、分量却出乎意料的菜，自己先笑了起来。",
+          "en": "After dinner they stroll along shop-window-lit streets, still arm in arm, laughing about the beautifully plated dish whose portion was unexpectedly large."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_027",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "这家店还挺有意思吧？下次轮到你挑地方啦。我想看看你会带我去哪里，当然不用非得像今天这么正式。",
+          "en": "That place was interesting, wasn't it? Next time you choose. I want to see where you'll take me; it doesn't have to be this fancy."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_028",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "我可不保证比今天这家好。",
+          "en": "I can't promise I'll find somewhere better than this place."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_029",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "又不是比赛。跟你一起出去，我没那么难伺候啦。不过不好吃的话，我还是会老实告诉你。",
+          "en": "It's not a competition. I'm easy to please when I'm with you—though I'll tell you honestly if the food isn't good."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_030",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "走到街口，小夜香放慢脚步，看了看前面的路，又侧过脸望向坂口。",
+          "en": "At the corner, Sayaka slows, glances down the road, and turns to Sakaguchi."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_031",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "接下来呢？",
+          "en": "So, what's next?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_032",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "我送你回去？",
+          "en": "Should I walk you home?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_033",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香停下来，偏头看着他，像是听到了什么很不可思议的答案。",
+          "en": "Sayaka stops and tilts her head, as if she'd heard something unbelievable."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_034",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "……你是认真的？今天难得这样一起出来，我还想跟你多待一会儿呢。你怎么吃完饭就急着把女朋友送回家啦？",
+          "en": "...Are you serious? We finally get an evening together, and I still want to stay with you. Why rush to send your girlfriend home right after dinner?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_035",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "那你希望怎么安排？",
+          "en": "Then what would you like to do?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_036",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "我今天本来就不想这么早结束。这个我可以直接告诉你，但接下来怎么做，总不能每一步都让我替你决定吧？",
+          "en": "I never wanted tonight to end this early. I can say that plainly, but surely I don't have to decide every next step for you?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s03_037",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她重新握住坂口的手，笑着等他回答。",
+          "en": "She takes Sakaguchi's hand again and waits with a smile."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true,
+        "choices": [
+          {
+            "id": "sayaka_lv4_direct",
+            "label": {
+              "zh_CN": "那就别这么早回去。",
+              "en": "Then let's not go back so early."
+            },
+            "next": "s04a_start",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "sayaka_lv4_drink",
+            "label": {
+              "zh_CN": "再喝一杯。",
+              "en": "Let's have one more drink."
+            },
+            "next": "s04b_start",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "sayaka_lv4_rest",
+            "label": {
+              "zh_CN": "找个地方休息。",
+              "en": "Let's find somewhere to rest."
+            },
+            "next": "s04c_start",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s04a_start",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "那就别这么早回去。",
+          "en": "Then let's not go back so early."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04a_040",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香看着他，笑意慢慢加深，然后很自然地往他身边靠近。",
+          "en": "Sayaka looks at him, her smile deepening as she naturally leans closer."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04a_041",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "这句就顺耳多了。我都已经把话说到这里了，你要是还说送我回去，我真的会怀疑你是不是故意逗我。",
+          "en": "That sounds much better. I've made myself clear; if you still offered to take me home, I'd wonder if you were teasing me."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04a_042",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "没逗你。今晚听你的。",
+          "en": "I'm not teasing you. I'll follow your lead tonight."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04a_043",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "那就走吧。今晚我不赶时间，你也不用急着表现得像在执行任务。",
+          "en": "Then let's go. I'm in no hurry tonight, and you don't have to act like you're on a mission."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04a_044",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她牵着坂口往前走，两人离开原来的街口。",
+          "en": "She takes Sakaguchi's hand and leads him away from the corner."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true,
+        "next": "s05_hotel"
+      },
+      {
+        "id": "s04b_start",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "再喝一杯。",
+          "en": "Let's have one more drink."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_046",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "好呀。刚才路过这里我就有点想进去看看，既然你也不想直接回去，那就再坐一会儿嘛。",
+          "en": "Sure. I was curious about this place when we passed it. Since you don't want to head straight back either, let's sit a while."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_047",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "两人走进街角的爵士酒吧，在靠窗的桌旁又坐了一会儿，点了饮料，透过玻璃能看见外面的街灯。两个人都保持清醒，亲密关系的推进与酒精无关。",
+          "en": "They enter the corner jazz bar and sit by the window with drinks, watching the streetlights. They both stay sober; alcohol has nothing to do with their growing intimacy."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_048",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "哎呀，这杯比我想的酸一点。你要不要尝尝？跟你出来还真容易贪心，刚才想多尝一道菜，现在又想多坐一会儿。",
+          "en": "Oh, this is tarter than I expected. Want to try it? I get greedy when we're together: first another dish, now a little more time."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_049",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "幸好你没说还要再点一整桌。",
+          "en": "Good thing you didn't ask to order another whole table."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_050",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "我有分寸啦。再坐一会儿就走，好不好？今晚剩下的时间，我们留给自己。",
+          "en": "I know my limits. Let's sit a little longer, then go, okay? Let's keep the rest of tonight for ourselves."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_051",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "杯子见底时，小夜香将它轻轻放回桌上，伸手牵住坂口。",
+          "en": "When her glass is empty, Sayaka gently sets it down and takes Sakaguchi's hand."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260
+      },
+      {
+        "id": "s04b_052",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "好了，喝完了。走吧，接下来可不要再替我安排回家的路线了哦。",
+          "en": "All done. Come on—and don't plan a route home for me again."
+        },
+        "background_id": "date_jazz_bar",
+        "outfit": "casual",
+        "sunday_clock": 1260,
+        "next": "s05_hotel"
+      },
+      {
+        "id": "s04c_start",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "找个地方休息？",
+          "en": "Find somewhere to relax?"
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04c_054",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香听完并没有装作听不懂。她停下脚步看了坂口一眼，露出心领神会的笑容。",
+          "en": "Sayaka doesn't pretend to misunderstand. She stops, looks at Sakaguchi, and gives him a knowing smile."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04c_055",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "这才对嘛。我还以为交了男朋友以后，你反而比以前更老实了。原来是让我先把话说到这儿呀。",
+          "en": "That's more like it. I thought having a boyfriend had made you more reserved. So you wanted me to say it first."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04c_056",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "总不能只让你一个人主动。",
+          "en": "I can't leave it to you to make every move."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04c_057",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "嗯，我喜欢你这样。那走吧，今天我可是自己愿意跟你来的。",
+          "en": "Mm, I like you like this. Let's go. I came with you because I wanted to."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true
+      },
+      {
+        "id": "s04c_058",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她主动挽住坂口，两个人并肩往街道另一头走去。",
+          "en": "She takes Sakaguchi's arm, and they walk side by side down the street."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1200,
+        "seasonal_street": true,
+        "next": "s05_hotel"
+      },
+      {
+        "id": "s05_hotel",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "街道上还有零星行人。坂口和小夜香拐进较安静的一段路，走向附近的酒店。小夜香自然地牵着坂口的手，沿着路灯往前走。",
+          "en": "A few people remain outside. Sakaguchi and Sayaka turn onto a quieter road toward a nearby hotel, walking hand in hand beneath the streetlights."
+        },
+        "background_id": "date_shopping_street",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "seasonal_street": true
+      },
+      {
+        "id": "s05_059",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "房门关上，街上的声音一下子远了。小夜香把包放在桌边，回过头，发现坂口忽然安静下来。",
+          "en": "The door closes, and the street sounds fade. Sayaka sets down her purse and turns, noticing Sakaguchi has gone quiet."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290
+      },
+      {
+        "id": "s05_060",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "刚才一路上还挺会说话的，怎么进了房间反倒安静了？我还以为你已经把我的意思听得很明白啦。",
+          "en": "You had plenty to say on the way here. Why so quiet now? I thought you understood what I meant."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290
+      },
+      {
+        "id": "s05_061",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "你倒挺自然。",
+          "en": "You seem pretty relaxed."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290
+      },
+      {
+        "id": "s05_062",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "不然呢？今晚是我自己想跟你一起待着。到这里了才开始装害羞，不是更奇怪？",
+          "en": "Of course. I wanted to be with you tonight. Wouldn't it be stranger to start acting shy now that we're here?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290
+      },
+      {
+        "id": "s05_063",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她笑了一下，朝坂口走近。两个人的距离比刚进门时近了许多，谁也没有急着把话接下去。",
+          "en": "She smiles and steps closer. They stand nearer than when they entered, neither in a hurry to speak."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_079",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "……你那个眼神怎么回事？",
+          "en": "...What’s with that look?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_080",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "什么眼神？",
+          "en": "What look?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_081",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "好像已经在找从哪里开刀的眼神。",
+          "en": "Like you're already figuring out where to make the incision."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_082",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "职业习惯。",
+          "en": "Occupational habit."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_083",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "少来。",
+          "en": "Oh, please."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_084",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "今天不许。",
+          "en": "Not tonight."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_085",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "以后嘛……没准让你玩。",
+          "en": "Maybe someday... I might let you."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s06_086",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "不过今天，先别把女朋友当患者。",
+          "en": "But tonight, don't treat your girlfriend like a patient."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1290,
+        "cg_path": "assets/events/character_events/sayaka/lv4_hotel_pre_kiss_v2.png",
+        "cg_fit": "cover",
+        "action": "launch_sayaka_lv4_h"
+      },
+      {
+        "id": "s08_087",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "房间终于安静下来。小夜香依旧在坂口身下，眼睛还是闭着，但神情已经松弛下来，比平时还柔和，嘴角带着一点甜甜的笑意。",
+          "en": "At last, the room fell quiet. Sayaka was still beneath Sakaguchi, her eyes closed. Her expression had softened, gentler than usual, with a faint, sweet smile on her lips."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s08_088",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "……别动，在里面多待一会儿。多一会儿就好。",
+          "en": "...Don't move. Stay inside me a little longer. Just a little longer."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s08_089",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "好。",
+          "en": "All right."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s08_090",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她的眼皮稍稍跳动了一下，嘴角的微笑展开，双手轻轻抚摸坂口的背。",
+          "en": "Her eyelids fluttered slightly. Her smile widened as she gently stroked Sakaguchi's back."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s08_091",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "……嗯。今天真的很开心。再陪我这样待一会儿嘛。",
+          "en": "...Mm. I had such a wonderful time tonight. Stay like this with me a little longer."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s08_092",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "我在。",
+          "en": "I'm here."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s08_093",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "知道啦。那就先别急着说话……陪我待着就好。",
+          "en": "I know. Then don't rush to say anything... Just stay here with me."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1380,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s09_094",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "两人就这样在被中依偎着，渐渐睡去。",
+          "en": "Cuddled together beneath the covers, the two of them slowly drifted off to sleep."
+        },
+        "background_id": "date_hotel",
+        "outfit": "h_aftercare",
+        "sunday_clock": 1420,
+        "cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
+        "cg_fit": "cover",
+        "cg_portrait_overlay": true,
+        "portrait_scale": 0.5
+      },
+      {
+        "id": "s10_095",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "天已经亮了。坂口睁开眼时，床的另一侧空着。小夜香正坐在酒店房间的镜子前，头发整理得整整齐齐，换好了常服，拿着化妆品对镜补妆。",
+          "en": "Daylight had come. When Sakaguchi opened his eyes, the other side of the bed was empty. Sayaka was sitting at the mirror in the hotel room, her hair neatly arranged and her clothes changed. She was touching up her makeup."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875,
+        "cg_path": "assets/events/character_events/sayaka/lv4_monday_mirror_makeup_v1.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s10_096",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "你什么时候起来的？",
+          "en": "When did you get up?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_097",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "早就起来啦。澡洗过了，衣服也换好了。你睡得那么熟，我都不忍心叫你。",
+          "en": "A while ago. I've showered and changed already. You were sleeping so soundly, I couldn't bring myself to wake you."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_098",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "我睡得很熟？",
+          "en": "I was sleeping that soundly?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_099",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "很熟。平时在医院那么警觉，昨晚倒是睡得像放假一样。看来这间酒店的床还挺有本事嘛。",
+          "en": "You were. You're so alert at the hospital, but last night you slept like you were on vacation. This hotel's bed must be pretty impressive."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_100",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她从镜子里看了坂口一眼，笑着把手里的化妆品放下。",
+          "en": "She glanced at Sakaguchi in the mirror, then smiled and set down the makeup in her hand."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_101",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "不过我也睡得很好。昨晚真的非常开心，以后我们都有空的时候，我还想跟你这样过夜。",
+          "en": "I slept well, too. I had such a wonderful time last night. When we’re both free, I’d like to spend another night like this with you."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_102",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "说得这么直接？",
+          "en": "You're saying that pretty directly."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_103",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "这有什么不好说的？我喜欢你，也喜欢昨晚。总不能因为睡在一起，就突然开始装害羞吧。",
+          "en": "Why shouldn't I say it? I like you, and I liked last night. We slept together; that doesn't mean I suddenly have to pretend to be shy."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_104",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "那以后我是不是得随叫随到？",
+          "en": "So am I supposed to come running whenever you call from now on?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_105",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "想得美。我可不是会缠着男人纠缠不清的女人。你有你的工作，我也有我的；想见面就好好约，哪天忙就先忙。昨晚是我自己想来的，你不用为这个额外背什么责任。",
+          "en": "Don't flatter yourself. I'm not the kind of woman who clings to a man and won't let go. You have your work, and I have mine. If we want to see each other, we'll make plans; if one of us is busy, we'll take care of that first. I came last night because I wanted to. You don't have to feel any extra obligation because of it."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_106",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香又对着镜子确认了一下妆容，满意地站起身。",
+          "en": "Sayaka checked her makeup in the mirror once more, then stood up, satisfied."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_107",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "……不过，你主动来约我的话，我还是会很高兴的。这个你已经知道了吧？",
+          "en": "...Still, I'd be happy if you were the one to ask me out. You know that by now, right?"
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_108",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "知道。",
+          "en": "I do."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_109",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "那就好。好啦，男朋友，快去洗漱。今天我们还得回医院当医生呢，总不能迟到吧。",
+          "en": "Good. All right, boyfriend, go get ready. We have to go back to the hospital and be doctors today. We can't be late."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875
+      },
+      {
+        "id": "s10_110",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "她笑着把坂口的外套递给他，自己先拿起包，在门边等他准备好。两人一起离开酒店。",
+          "en": "With a smile, she handed Sakaguchi his jacket, picked up her bag, and waited by the door for him to get ready. The two of them left the hotel together."
+        },
+        "background_id": "date_hotel",
+        "outfit": "casual",
+        "sunday_clock": 1875,
+        "choices": [
+          {
+            "id": "sayaka_lv4_return_hospital",
+            "label": {
+              "zh_CN": "一起回医院 ▷",
+              "en": "Return to the hospital together ▷"
+            },
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "date_location_id": "hotel",
+    "auto_start": false
+  },
+  {
+    "id": "sayaka_lv4_hospital_callback",
+    "actor_id": "doc_sayaka",
+    "title": "那晚的眼神",
+    "chapter": 4,
+    "location_id": "clinic",
+    "trigger_mode": "location",
+    "mandatory": false,
+    "background_id": "hallway",
+    "outfit": "white_coat",
+    "minutes": 1,
+    "teaser": "周一回到医院工作后，小夜香在走廊遇见坂口。",
+    "time_start": 720,
+    "time_end": 1020,
+    "priority": 300,
+    "category": "contextual",
+    "locks_saving": true,
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "sayaka_lv4_hotel_date"
+      ],
+      "special_requirements": [],
+      "max_day": 365
+    },
+    "start": "callback_001",
+    "script": [
+      {
+        "id": "callback_001",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "回到医院以后，两个人各自投入了工作。过了一段时间，坂口经过医院走廊，遇见了从另一端走来的小夜香。",
+          "en": "Back at the hospital, they return to work. Later, Sakaguchi walks down a corridor and sees Sayaka approaching from the other end."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_002",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香先像平常一样向他点点头，擦肩而过时却放慢脚步，故意把声音压低。",
+          "en": "Sayaka gives him her usual nod, then slows as they pass and deliberately lowers her voice."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_003",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "在医院就别用那晚那种眼神看我了。",
+          "en": "Don't look at me with that look from the other night while we're at the hospital."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_004",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "什么眼神？",
+          "en": "What look?"
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_005",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香停了一下，偏过脸看他。",
+          "en": "Sayaka pauses and turns her face toward him."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_006",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "想开刀的。",
+          "en": "The one that says you want to operate."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_007",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "职业习惯。",
+          "en": "Occupational habit."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_008",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "又来。",
+          "en": "There you go again."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_009",
+        "speaker": "narrator",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "小夜香笑了一声，恢复了平常清楚利落的说话方式。",
+          "en": "Sayaka laughs and returns to her usual crisp, businesslike tone."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_010",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "这周后面的手术安排，你看过了吗？",
+          "en": "Have you reviewed the surgeries scheduled for the rest of this week?"
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_011",
+        "speaker": "player",
+        "presentation": "authored",
+        "expression": "neutral",
+        "text": {
+          "zh_CN": "看过了。",
+          "en": "I have."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat"
+      },
+      {
+        "id": "callback_012",
+        "speaker": "actor",
+        "presentation": "authored",
+        "expression": "smile",
+        "text": {
+          "zh_CN": "那走吧。",
+          "en": "Then let's go."
+        },
+        "background_id": "hallway",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "sayaka_callback_finish",
+            "label": {
+              "zh_CN": "继续工作 ▷",
+              "en": "Back to work ▷"
+            },
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "gallery": {
+      "cg_id": "cg_sayaka_lv4_hospital_callback",
+      "caption": "那晚的眼神",
+      "path": "",
+      "show_on_complete": false
+    },
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": ""
+  }
+]

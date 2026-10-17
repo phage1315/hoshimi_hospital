@@ -1,5 +1,6 @@
 extends RefCounted
 const Progression = preload("res://godot/systems/progression_config.gd")
+const NumericCalibration = preload("res://godot/systems/surgery_numeric_calibration.gd")
 ## Preoperative narrative state. Authored data owns dialogue, tasks and transitions.
 const OperativeBackgrounds = preload("res://godot/systems/operative_backgrounds.gd")
 const POSTOPERATIVE_WRAP_UP_MINUTES := 30
@@ -1390,29 +1391,50 @@ func surgery_quality_baseline() -> Dictionary:
 		"surgery_open_low_anterior_resection": {"expected_time": 240, "expected_blood_loss": 110},
 	}.get(procedure_id, {"expected_time": procedure_minutes, "expected_blood_loss": 50})
 
+func numeric_variance_probability(flow_step: Dictionary, option_id: String) -> float:
+	if not pilot_surgery():
+		return -1.0
+	var options: Array = flow_step.get("options", [])
+	var kind := str(flow_step.get("kind", ""))
+	if not ((kind == "confirm" and options.size() == 1) or (kind == "decision" and options.size() in [2, 3])):
+		return -1.0
+	for option in options:
+		if not bool(option.get("correct", false)):
+			return -1.0
+	for index in range(options.size()):
+		if str(options[index].id) == option_id:
+			return NumericCalibration.shock_probability(str(flow_step.get("risk_class", "")), index)
+	return -1.0
+
+func prepare_surgery_step_event(event: Dictionary) -> Dictionary:
+	if event.get("kind") != "surgery_step" or event.has("variance_rolls") or current().kind != "surgery_flow":
+		return event
+	var flow_step := surgery_flow_step()
+	if numeric_variance_probability(flow_step, str(event.get("id", ""))) < 0:
+		return event
+	var prepared := event.duplicate(true)
+	prepared["variance_rolls"] = NumericCalibration.stage_rolls(surgery_rng_seed, procedure_id, str(flow_step.id))
+	return prepared
+
+func apply_numeric_variance(flow_step: Dictionary, option_id: String, rolls: Array) -> void:
+	var probability := numeric_variance_probability(flow_step, option_id)
+	var deltas := NumericCalibration.effects(surgery_quality_baseline(), surgery_flow_steps().size(), probability, rolls)
+	for delta in deltas:
+		# Clamp after noise, before shock, as in the simulator.
+		apply_surgery_strategic_effects(delta)
+	resolved_random_choices["numeric_variance_v1:" + str(flow_step.id)] = {
+		"rolls": rolls.duplicate(), "effects": deltas.duplicate(true),
+	}
+
 func surgical_quality_score() -> int:
 	if not surgery_success:
 		return 0
 	var baseline: Dictionary = surgery_quality_baseline()
 	var score := 100
 	var time_ratio := float(procedure_state.get("elapsed_time", 0)) / maxf(1.0, float(baseline.expected_time))
-	if time_ratio > 2.0:
-		score -= 25
-	elif time_ratio > 1.5:
-		score -= 15
-	elif time_ratio > 1.25:
-		score -= 8
-	elif time_ratio > 1.0:
-		score -= 4
+	score -= NumericCalibration.band_penalty(time_ratio, NumericCalibration.TIME_BREAKS, NumericCalibration.TIME_PENALTIES)
 	var loss_ratio := float(procedure_state.get("blood_loss", 0)) / maxf(1.0, float(baseline.expected_blood_loss))
-	if loss_ratio > 4.0:
-		score -= 25
-	elif loss_ratio > 2.67:
-		score -= 15
-	elif loss_ratio > 1.67:
-		score -= 8
-	elif loss_ratio > 1.0:
-		score -= 3
+	score -= NumericCalibration.band_penalty(loss_ratio, NumericCalibration.BLOOD_BREAKS, NumericCalibration.BLOOD_PENALTIES)
 	var min_stability := int(minimum_stability_seen)
 	if min_stability < 70:
 		score -= 25
@@ -1733,7 +1755,7 @@ func crisis_rescue_chance(option_id: String) -> int:
 	if active_crisis.is_empty():
 		return 0
 	var attempt := clampi(int(active_crisis.get("attempt", 1)), 1, 3)
-	var bases: Array = [80, 30, 10] if str(active_crisis.get("severity", "routine")) == "severe" else [90, 50, 25]
+	var bases: Array = NumericCalibration.SEVERE_RESCUE if str(active_crisis.get("severity", "routine")) == "severe" else NumericCalibration.ROUTINE_RESCUE
 	var option_modifier: int = int({"pause_and_stabilize": 0, "hold_field_team_rescue": -8, "finish_critical_action": -25}.get(option_id, -100))
 	var team_modifier: int = team_crisis_modifier()
 	if option_id == "hold_field_team_rescue":
@@ -2012,7 +2034,8 @@ func temporary_condition_status_text() -> String:
 		return ""
 	var definition_entry: Dictionary = temporary_condition_definitions.get(active_condition_id, {})
 	var condition_state: Dictionary = active_temporary_conditions[active_condition_id]
-	return "%s · %s级 · 预计持续%s步" % [definition_entry.get("label", active_condition_id), condition_state.severity, condition_state.remaining_steps]
+	var format := "%s · Lv%s · %s steps remaining" if english_mode() else "%s · %s级 · 预计持续%s步"
+	return format % [definition_entry.get("label", active_condition_id), condition_state.severity, condition_state.remaining_steps]
 
 func cached_episode_roll(key: String) -> int:
 	if resolved_random_choices.has(key):
@@ -2537,7 +2560,10 @@ func apply(event: Variant) -> bool:
 			feedback = "The patient interaction from this legacy save is complete. Continue the operation." if english_mode() else "旧版存档中的患者互动已经完成，继续术式流程。"
 			feedback_speaker = "narrator"
 		"surgery_step":
-			if event.size() not in [2, 3] or not event.get("id") is String or (event.has("crisis_roll") and not event.get("crisis_roll") is int) or current().kind != "surgery_flow" or awaiting_flow_acknowledgement or awaiting_patient_choice or awaiting_patient_acknowledgement or not active_crisis.is_empty():
+			for key in event:
+				if key not in ["kind", "id", "crisis_roll", "variance_rolls"]:
+					return false
+			if not event.get("id") is String or (event.has("crisis_roll") and not event.get("crisis_roll") is int) or (event.has("variance_rolls") and not NumericCalibration.valid_rolls(event.variance_rolls)) or current().kind != "surgery_flow" or awaiting_flow_acknowledgement or awaiting_patient_choice or awaiting_patient_acknowledgement or not active_crisis.is_empty():
 				return false
 			var flow_step: Dictionary = surgery_flow_step()
 			if flow_step.is_empty():
@@ -2549,6 +2575,8 @@ func apply(event: Variant) -> bool:
 					break
 			if selected_option.is_empty():
 				return false
+			if event.has("variance_rolls") and numeric_variance_probability(flow_step, str(event.id)) < 0:
+				return false
 			last_staff_role = str(selected_option.response_role)
 			if not team.has(last_staff_role):
 				return false
@@ -2557,6 +2585,8 @@ func apply(event: Variant) -> bool:
 			var triggered_conditionals: Array[Dictionary] = []
 			if was_correct:
 				triggered_conditionals = apply_surgery_option_effects(selected_option)
+				if event.has("variance_rolls"):
+					apply_numeric_variance(flow_step, str(event.id), event.variance_rolls)
 				var response_lines: Array[String] = []
 				var authored_response := str(selected_option.response)
 				response_lines.append(authored_response if selected_option.has("strategic_effects") or selected_option.has("conditional_effects") else intraoperative_response(last_staff_id, str(selected_option.id), authored_response, false))

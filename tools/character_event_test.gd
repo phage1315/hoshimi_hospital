@@ -48,7 +48,10 @@ func finish_event(game: RefCounted, id: String, first_choice: String = "") -> bo
 
 func run() -> void:
 	expect(content.load_all(), "Content load failed")
-	expect(content.collections.character_events.size() == 41, "Expected retired Aoi/Haru Lv.1 chains to stay removed while new authored events remain loaded")
+	# Check the registered events themselves; a global count becomes stale
+	# whenever another authored chapter is added. Retired IDs are checked below.
+	for required_id in ["sayaka_lv4_hotel_date", "sayaka_lv4_hospital_callback"]:
+		expect(not content.find_record("character_events", required_id).is_empty(), "Missing authored event: " + required_id)
 	var game = new_game()
 	expect(game.next_character_event_at("or").get("id", "") != "moe_wrong_changing_room", "Preop-stage event leaked into ordinary operating-room entry")
 	expect(game.next_character_event_for_preop_stage("changing").is_empty(), "Moe changing-room event appeared on day one")
@@ -99,9 +102,8 @@ func run() -> void:
 		expect(moe_portrait.size.distance_to(Vector2(429.33, 644.0)) < 2.0, "Moe event portrait ignored authored display size")
 		expect(moe_portrait.position.distance_to(Vector2(790.67, 55.0)) < 2.0, "Moe event portrait ignored authored position")
 
-	# Emiko's introduction requires the Asuka office introduction and Surgery 75.
-	# Her Lv1 professional-recognition operation then requires Familiarity 10 and
-	# the fixed three-day milestone interval; Lv2 uses Familiarity 25.
+	# Emiko's introduction requires the Asuka office introduction and Surgery 70.
+	# Lv1 and Lv2 are sequential authored operations with no familiarity gate.
 	var emiko_game = new_game()
 	var emiko_intro: Dictionary = emiko_game.character_event_definitions.emiko_intro_rumored_hands
 	var emiko_lv2: Dictionary = emiko_game.character_event_definitions.emiko_lv2_follow_my_lead
@@ -109,11 +111,14 @@ func run() -> void:
 	expect(emiko_game.character_event_available(emiko_game.character_event_definitions.emiko_office_denied), "Low-skill office refusal was unavailable")
 	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction ignored its Asuka introduction and Surgery gate")
 	emiko_game.completed_surgeries_total = 3
-	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(75)
+	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(70)
 	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction ignored the Asuka introduction prerequisite")
 	var asuka_fixture: bool = emiko_game._complete_character_event_for_test("intro_doc_asuka_director_office", 1)
 	expect(asuka_fixture, "Could not create Asuka introduction prerequisite fixture")
-	expect(emiko_game.character_event_available(emiko_intro), "Emiko introduction did not unlock after Asuka introduction and Surgery 75")
+	emiko_game.set_test_player_attribute("skill", 69)
+	expect(not emiko_game.character_event_available(emiko_intro), "Emiko introduction accepted Surgery 69")
+	emiko_game.set_test_player_attribute("skill", 70)
+	expect(emiko_game.character_event_available(emiko_intro), "Emiko introduction did not unlock after Asuka introduction and Surgery 70")
 	# The first refusal is delivered entirely by the nurse outside the office.
 	# Completing it must not reveal Emiko's portrait before her Lv0 meeting.
 	app.game.reset()
@@ -123,16 +128,15 @@ func run() -> void:
 	expect(app.page.get_node_or_null("CharacterPortrait") == null, "Emiko portrait appeared before the Lv0 meeting")
 	expect(finish_event(emiko_game, "emiko_intro_rumored_hands"), "Emiko introduction could not complete")
 	expect(emiko_game.staff_is_met("doc_emiko") and emiko_game.relationship_level("doc_emiko") == 0, "Emiko introduction did not establish the Lv0 acquaintance")
-	emiko_game.add_familiarity("doc_emiko", 10)
-	emiko_game.surgery_xp = emiko_game.surgery_xp_for_level(75)
+	emiko_game.relation_for("doc_emiko").familiarity = 0
 	emiko_game.advance_story_to_future_day(3, 780)
 	expect(emiko_game.day_number() == 4 and emiko_game.clock_text() == "13:00", "Emiko Lv1 appointment did not honor the three-day interval")
+	expect(int(emiko_game.relation_for("doc_emiko").familiarity) == 0, "Emiko fixture unexpectedly gained familiarity before Lv1")
 	expect(finish_event(emiko_game, "emiko_lv1_first_operation"), "Emiko Lv1 operation could not complete")
 	expect(emiko_game.relationship_level("doc_emiko") == 1, "Emiko Lv1 operation did not establish Lv1")
-	emiko_game.add_familiarity("doc_emiko", 15)
 	expect(not emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 ignored the three-day delay")
 	emiko_game.advance_story_to_future_day(3, 780)
-	expect(emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 did not unlock at Familiarity 25 after three days")
+	expect(emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 did not unlock after Lv1 and the three-day delay without extra familiarity")
 
 	# Asuka's identity stays hidden through the scrub-sink encounter and the
 	# postoperative hint. The encounter requires career progress and the actual

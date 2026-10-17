@@ -23,6 +23,11 @@ static func render(app: Control, id: String, from_location: String, expression: 
 		expression = "neutral"
 	app.base(person.name, app.tx("ui.staff.header", "%s / %s岁") % [person.specialty, person.age], true, app.background_for_location(from_location))
 	app.add_portrait(person, expression, outfit)
+	if app.game.can_book_free_h(id, from_location):
+		var booked: bool = str(app.game.free_h_booking.get("actor_id", "")) == id
+		var caption: String = app.tx("ui.free_h.cancel", "取消今晚的约定") if booked else app.tx("ui.free_h.invite", "约今晚下班后一起过夜")
+		var action: Callable = app.cancel_free_h_booking.bind(app.show_staff.bind(id, from_location)) if booked else app.request_free_h_booking.bind(id, from_location)
+		app.button_at(caption, Vector2(65, 160), Vector2(640, 42), action).name = "FreeHBooking"
 	var portrait = app.page.get_node_or_null("CharacterPortrait")
 	if portrait != null:
 		portrait.position = Vector2(740, 165)

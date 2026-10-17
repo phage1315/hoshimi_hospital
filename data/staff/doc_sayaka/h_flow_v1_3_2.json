@@ -1,0 +1,105 @@
+{
+  "patch_version": "1.3.2",
+  "actor_id": "doc_sayaka",
+  "profile_schema_version": "1.3",
+  "scope": "sayaka_h_scene_transition_and_external_vn_aftercare_only",
+  "excitement_max": {
+    "trigger": {
+      "excitement_gte": 100
+    },
+    "line": "啊啊……别、别再逗我了……过来呀……再近一点嘛……",
+    "show_only_once_per_h_session": true,
+    "can_continue_phase1_interactions": true,
+    "no_auto_advance": true,
+    "choices": [
+      {
+        "id": "gentle",
+        "label": "温柔进入"
+      },
+      {
+        "id": "intense",
+        "label": "粗暴进入"
+      }
+    ]
+  },
+  "entry_style": {
+    "scope": "current_h_session_only",
+    "affects": [
+      "phase2_opening_line",
+      "phase2_midpoint_line"
+    ],
+    "does_not_affect": [
+      "excitement",
+      "preferences",
+      "h_result",
+      "relationship_result",
+      "aftercare_result",
+      "scene_cg",
+      "surgery_system"
+    ],
+    "both_choices_require_mutual_consent": true,
+    "openings": {
+      "gentle": "嗯……这样、这样就好……先让我靠近一点……",
+      "intense": "啊啊……你、你还真是急性子呀……坏家伙……"
+    },
+    "midpoints": {
+      "gentle": "唔……慢、慢一点……嗯，我就在这里……",
+      "intense": "啊……哈……你、你这家伙……唔……太、太会折腾我了……"
+    }
+  },
+  "phase2": {
+    "fixed_cg_asset_ref": "assets.scene_cg",
+    "no_position_selector": true,
+    "no_new_meter": true,
+    "no_failure_or_rating": true,
+    "no_dialogue_choices_inside_phase2": true,
+    "playback": [
+      {
+        "kind": "style_line",
+        "ref": "entry_style.openings"
+      },
+      {
+        "kind": "profile_scene_pool",
+        "ref": "dialogue.scene.start",
+        "draw": 2,
+        "without_replacement": true
+      },
+      {
+        "kind": "style_line",
+        "ref": "entry_style.midpoints"
+      },
+      {
+        "kind": "profile_scene_pool",
+        "ref": "dialogue.scene.middle",
+        "draw": 2,
+        "without_replacement": true
+      },
+      {
+        "kind": "profile_scene_pool",
+        "ref": "dialogue.scene.finish",
+        "draw": 2,
+        "without_replacement": true
+      }
+    ],
+    "completion": {
+      "set_result": "h_event_completed",
+      "value": true,
+      "handoff": "external_vn_aftercare"
+    }
+  },
+  "external_vn_aftercare": {
+    "owner": "normal_vn_event_flow",
+    "scene_image_ref": "assets.aftercare_cg",
+    "free_h": {
+      "on_entry_line_sequence": [
+        "啊……太、太舒服了……再抱我一会儿，好不好……",
+        "别、别动……我想再这样靠着你多待一会儿……"
+      ]
+    },
+    "relationship_milestone": {
+      "behavior": "return_to_authored_event_aftercare",
+      "no_auto_injection_of_generic_free_h_lines": true,
+      "do_not_modify_lv4_event_script": true
+    }
+  }
+}

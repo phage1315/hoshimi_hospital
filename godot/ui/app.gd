@@ -10,6 +10,10 @@ const ClinicView = preload("res://godot/ui/clinic_view.gd")
 const PlayerOfficeView = preload("res://godot/ui/player_office_view.gd")
 const CharacterEvent = preload("res://godot/systems/character_event_session.gd")
 const SpecialEvent = preload("res://godot/systems/special_event_session.gd")
+const HProfileSession = preload("res://godot/systems/h_profile_v1_session.gd")
+const HProfileContent = preload("res://godot/systems/h_profile_v1_content.gd")
+const FreeHRegistry = preload("res://godot/systems/free_h_registry.gd")
+const SceneContext = preload("res://godot/systems/scene_content_context.gd")
 const OperativeBackgrounds = preload("res://godot/systems/operative_backgrounds.gd")
 const OperativeBackgroundBlur = preload("res://godot/ui/operative_background_blur.gdshader")
 const CHANGE_SCRUBS_VIDEO := "res://assets/animations/preop/change_scrubs_take_gown_v1.ogv"
@@ -123,6 +127,29 @@ var or_table_cursor_refresh_serial := 0
 var or_table_virtual_cursor: TextureRect
 var or_table_virtual_cursor_hotspot := Vector2.ZERO
 var operative_field_hud_enabled := false
+var h_profile_test_session: RefCounted
+var h_profile_test_bodymap: Dictionary = {}
+var h_profile_test_action := "caress"
+var h_profile_test_last_result: Dictionary = {}
+var h_profile_test_entry_lines: Array = []
+var h_profile_test_entry_index := 0
+var h_profile_test_style := ""
+var h_profile_test_max_prompt_visible := false
+var h_profile_test_aftercare_index := 0
+var h_profile_test_transitioning := false
+var h_profile_event_mode := false
+var h_profile_run_kind := "test"
+var free_h_return_action: Callable = Callable()
+var sayaka_lv4_h_handoff_complete := false
+var sayaka_lv4_test_mode := false
+var sayaka_lv4_callback_resume: Callable = Callable()
+
+const H_PROFILE_TEST_CONTENT_PATH := "res://data/staff/doc_sayaka/h_profile_v1_3_2.json"
+const H_PROFILE_TEST_FLOW_PATH := "res://data/staff/doc_sayaka/h_flow_v1_3_2.json"
+const H_PROFILE_TEST_FINISH_LABELS_PATH := "res://data/h_finish_button_labels_v1_3_4.json"
+const H_PROFILE_TEST_FINISH_ACTOR_PATH := "res://data/staff/doc_sayaka/h_phase2_finish_v1_3_4.json"
+const H_PROFILE_TEST_BODYMAP_PATH := "res://data/staff/doc_sayaka/h_bodymap_v1.draft.json"
+const H_PROFILE_TEST_CONTEXT_PATH := "res://data/staff/doc_sayaka/h_context_overrides_v1.json"
 
 const OR_TABLE_SCALPEL_CURSOR_PATH := "res://assets/surgeries/palpation/scalpel_cursor_v1.png"
 const OR_TABLE_NEEDLE_CURSOR_PATH := "res://assets/surgeries/palpation/needle_cursor_v1.png"
@@ -290,6 +317,8 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 		"time_event_result",
 		"after_work_walk",
 		"sunday_date",
+		"h_profile_test",
+		"h_profile_test_entry",
 	]
 	var wash_alpha := 0.14 if authored_texture == null else (0.46 if background_id.begins_with("operating_team_") else 0.30 if lightly_shaded_screen else 0.83)
 	wash.name = "BackgroundWash"
@@ -795,6 +824,11 @@ func begin_advanced_referral_tutorial_debug_from_title() -> void:
 func show_event_test_hub() -> void:
 	screen = "event_test_hub"
 	base(tx("ui.event_test.title", "事件测试中心"), tx("ui.event_test.subtitle", "每次从干净状态启动；不写入或覆盖正式存档"), false, "player_office")
+	var h_test_label := "Sayaka H Profile V1.3.4 · Repeatable H Test" if str(content.localizer.locale) == "en" else "H Profile V1.3.4 · 小夜香可重复H测试" # localization-invariant
+	var h_test_button := button_at(h_test_label, Vector2(45, 165), Vector2(1190, 46), begin_sayaka_h_profile_test)
+	h_test_button.name = "HProfileTestEntry"
+	var lv4_test_label := "Sayaka Lv4 Hotel Event · Full Playtest" if str(content.localizer.locale) == "en" else "小夜香 Lv4 酒店事件 · 完整流程测试（周日档）" # localization-invariant
+	button_at(lv4_test_label, Vector2(45, 218), Vector2(1190, 46), begin_sayaka_lv4_event_test).name = "SayakaLv4EventTestEntry"
 	var definitions: Array = []
 	for event_id in EVENT_TEST_HUB_EVENT_IDS:
 		if game.special_event_definitions.has(event_id):
@@ -808,8 +842,8 @@ func show_event_test_hub() -> void:
 	)
 	var event_scroll := ScrollContainer.new()
 	event_scroll.name = "EventTestScroll"
-	event_scroll.position = Vector2(45, 165)
-	event_scroll.size = Vector2(1190, 500)
+	event_scroll.position = Vector2(45, 271)
+	event_scroll.size = Vector2(1190, 394)
 	event_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	page.add_child(event_scroll)
 	var event_content := Control.new()
@@ -829,6 +863,501 @@ func show_event_test_hub() -> void:
 		event_button.position = Vector2(20, 10 + i * 86)
 		event_button.name = "EventTest_" + event_id
 	button_at(tx("ui.event_test.back", "← 返回标题"), Vector2(1030, 88), Vector2(185, 44), title_screen)
+
+func begin_sayaka_lv4_event_test() -> void:
+	if not game.prepare_sayaka_lv4_event_test():
+		show_notice("Sayaka Lv4 event data or its Sunday gate is not ready for testing.")
+		return
+	sayaka_lv4_test_mode = true
+	show_sayaka_lv4_precommit()
+
+func cancel_sayaka_lv4_precommit() -> void:
+	sayaka_lv4_test_mode = false
+	show_sunday_invites()
+
+func _read_h_profile_json(path: String) -> Dictionary:
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return {}
+	var parsed: Variant = JSON.parse_string(file.get_as_text())
+	return parsed if parsed is Dictionary else {}
+
+func begin_sayaka_h_profile_test(location_id: String = "hotel", event_id: String = "") -> void:
+	if not game.active_free_h_departure.is_empty():
+		return
+	h_profile_run_kind = "milestone" if not event_id.is_empty() else "test"
+	_begin_h_profile_session(location_id, event_id)
+
+func _begin_h_profile_session(location_id: String, event_id: String, bundle: Dictionary = {}) -> bool:
+	if h_profile_run_kind == "free" and not event_id.is_empty():
+		return false
+	h_profile_event_mode = event_id == "sayaka_lv4_first_h"
+	var runtime_profile: Dictionary = bundle.get("profile", {})
+	var source_bodymap: Dictionary = bundle.get("bodymap", {})
+	if bundle.is_empty():
+		var source_profile := _read_h_profile_json(H_PROFILE_TEST_CONTENT_PATH)
+		var source_flow := _read_h_profile_json(H_PROFILE_TEST_FLOW_PATH)
+		var finish_labels := _read_h_profile_json(H_PROFILE_TEST_FINISH_LABELS_PATH)
+		var finish_actor := _read_h_profile_json(H_PROFILE_TEST_FINISH_ACTOR_PATH)
+		var context_overrides := _read_h_profile_json(H_PROFILE_TEST_CONTEXT_PATH)
+		runtime_profile = HProfileContent.normalize(source_profile, source_flow, finish_labels, finish_actor, context_overrides)
+		source_bodymap = _read_h_profile_json(H_PROFILE_TEST_BODYMAP_PATH)
+	if runtime_profile.is_empty() or source_bodymap.is_empty():
+		show_notice("Sayaka's H profile or body-map data could not be loaded." if str(content.localizer.locale) == "en" else "小夜香 H profile 或身体热点数据无法读取。") # localization-invariant
+		return false
+	h_profile_test_session = bundle.get("session") if not bundle.is_empty() else HProfileSession.new("doc_sayaka", runtime_profile, location_id, event_id, str(content.localizer.locale))
+	if h_profile_test_session.phase == "invalid":
+		show_notice(h_profile_test_session.last_error)
+		return false
+	h_profile_test_bodymap = source_bodymap
+	h_profile_test_action = "caress"
+	h_profile_test_last_result.clear()
+	h_profile_test_style = ""
+	h_profile_test_max_prompt_visible = false
+	h_profile_test_aftercare_index = 0
+	h_profile_test_entry_lines = [] if event_id == "sayaka_lv4_first_h" else h_profile_test_session.location_entry_lines(runtime_profile.get("location_entry", {}).get(location_id, []))
+	if not h_profile_test_session.last_error.is_empty():
+		show_notice(h_profile_test_session.last_error)
+		return false
+	h_profile_test_entry_index = 0
+	if h_profile_test_entry_lines.is_empty():
+		show_sayaka_h_profile_test()
+	else:
+		_show_sayaka_h_entry()
+	return true
+
+func _h_profile_title() -> String:
+	if h_profile_run_kind == "free" and h_profile_test_session != null:
+		return tx("ui.free_h.title", "共度时光 · %s") % _h_profile_speaker_name()
+	return "H Profile V1.3.4 · Sayaka" if str(content.localizer.locale) == "en" else "H Profile V1.3.4 · 小夜香" # localization-invariant
+
+func _h_profile_speaker_name() -> String:
+	var actor_id: String = h_profile_test_session.actor_id
+	if actor_id == "doc_sayaka":
+		return "Sayaka Nanjou" if str(content.localizer.locale) == "en" else "南条小夜香" # localization-invariant
+	return str(content.find_record("staff", actor_id).get("name", actor_id))
+
+func _show_sayaka_h_entry() -> void:
+	var english := str(content.localizer.locale) == "en"
+	var location_labels := {"hotel": ["酒店入口", "Hotel Room"], "ward": ["病房", "Ward"], "operating_room": ["手术室", "Operating Room"], "gyne_exam": ["妇科检查室", "Gynecology Exam Room"], "clinic": ["诊室", "Clinic"], "home": ["家中", "Home"]} # localization-invariant
+	var location_label: Array = location_labels.get(h_profile_test_session.location_id, location_labels.hotel)
+	screen = "h_profile_test_entry"
+	base(_h_profile_title(), str(location_label[1] if english else location_label[0]), false, h_profile_test_session.background_id("date_hotel"))
+	var expression := TextureRect.new()
+	expression.name = "HProfileExpression"
+	expression.texture = _h_profile_expression_texture("neutral")
+	expression.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	expression.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	expression.position = Vector2(760, 230)
+	expression.size = Vector2(300, 300)
+	expression.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	page.add_child(expression)
+	var dialogue_box := Panel.new()
+	dialogue_box.position = Vector2(100, 550)
+	dialogue_box.size = Vector2(1040, 120)
+	dialogue_box.add_theme_stylebox_override("panel", panel_style(Color(0.04, 0.11, 0.15, 0.94)))
+	page.add_child(dialogue_box)
+	label_at(str(h_profile_test_entry_lines[h_profile_test_entry_index]), Vector2(125, 578), 22, Color("f4f0e6"), 980)
+	button_at("继续" if not english else "Continue", Vector2(870, 700), Vector2(300, 44), _advance_sayaka_h_entry) # localization-invariant
+	if h_profile_run_kind == "test":
+		button_at("退出测试" if not english else "Exit test", Vector2(80, 700), Vector2(240, 44), _exit_sayaka_h_test) # localization-invariant
+
+func _advance_sayaka_h_entry() -> void:
+	h_profile_test_entry_index += 1
+	if h_profile_test_entry_index >= h_profile_test_entry_lines.size():
+		h_profile_test_entry_lines.clear()
+		h_profile_test_entry_index = 0
+		show_sayaka_h_profile_test()
+	else:
+		_show_sayaka_h_entry()
+
+func _h_profile_expression_texture(expression_id: String) -> Texture2D:
+	var atlas_path := str(h_profile_test_session.profile.get("expression_atlas", ""))
+	var atlas := load(atlas_path) as Texture2D
+	if atlas == null:
+		return null
+	var texture := AtlasTexture.new()
+	texture.atlas = atlas
+	texture.region = h_profile_test_session.expression_atlas_region(expression_id)
+	return texture
+
+func _h_profile_test_line() -> String:
+	if not h_profile_test_last_result.is_empty():
+		return str(h_profile_test_last_result.get("line", ""))
+	return "Select an action, then click a valid hotspot on the body map." if str(content.localizer.locale) == "en" else "选择动作，再点击身体图上的有效热区。" # localization-invariant
+
+func show_sayaka_h_profile_test() -> void:
+	if h_profile_test_session == null:
+		show_event_test_hub()
+		return
+	var english := str(content.localizer.locale) == "en"
+	var action_labels := {
+		"caress": "Caress" if english else "轻抚", # localization-invariant
+		"kiss": "Kiss" if english else "亲吻", # localization-invariant
+		"lick": "Lick" if english else "舔舐", # localization-invariant
+		"light_bite": "Light bite" if english else "轻咬", # localization-invariant
+	}
+	var zone_labels := {
+		"lips": "Lips" if english else "嘴唇", "cheeks": "Cheeks" if english else "脸颊", # localization-invariant
+		"neck": "Neck" if english else "颈部", "breasts": "Breasts" if english else "乳房", # localization-invariant
+		"nipples": "Nipples" if english else "乳头", "navel": "Navel" if english else "肚脐", # localization-invariant
+		"torso_other": "Torso" if english else "躯干", "genitals": "Genitals" if english else "外阴", # localization-invariant
+		"thighs": "Thighs" if english else "大腿", # localization-invariant
+	}
+	var phase := str(h_profile_test_session.phase)
+	if h_profile_event_mode and phase == "after_cg":
+		h_profile_test_session.finish()
+		h_profile_test_session = null
+		h_profile_event_mode = false
+		sayaka_lv4_h_handoff_complete = true
+		var active_event = game.character_events.get(game.active_character_event_id)
+		if active_event != null and not active_event.current().get("choices", []).is_empty():
+			choose_character_event(str(active_event.current().choices[0].id))
+		else:
+			show_character_event()
+		return
+	if phase in ["h_stage", "h_finish_wait", "h_finish_response", "after_cg"]:
+		screen = "h_profile_test"
+		var is_after := phase == "after_cg"
+		var phase_title := ("Aftercare CG" if english else "事后 CG") if is_after else ("H Stage" if english else "H 阶段") # localization-invariant
+		base(_h_profile_title(), phase_title, false, h_profile_test_session.background_id("date_hotel"))
+		var image_path: String = h_profile_test_session.after_cg_image() if is_after else h_profile_test_session.h_stage_image()
+		if image_path.is_empty():
+			show_notice(h_profile_test_session.last_error)
+			return
+		var scene_image := TextureRect.new()
+		scene_image.name = "HProfileSceneImage"
+		scene_image.texture = load(image_path) as Texture2D
+		scene_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		scene_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		scene_image.position = Vector2(170, 165)
+		scene_image.size = Vector2(940, 500)
+		scene_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		page.add_child(scene_image)
+		var text_value: String = h_profile_test_session.current_h_scene_line() if not is_after else _sayaka_h_aftercare_line()
+		var dialogue_box := Panel.new()
+		dialogue_box.position = Vector2(120, 620)
+		dialogue_box.size = Vector2(1040, 76)
+		dialogue_box.add_theme_stylebox_override("panel", panel_style(Color(0.04, 0.11, 0.15, 0.94)))
+		page.add_child(dialogue_box)
+		if h_profile_event_mode and phase == "h_stage" and h_profile_test_session.h_scene_index >= 1 and h_profile_test_session.h_scene_index <= 3:
+			var overlay_speakers := ["南条小夜香" if not english else "Sayaka Nanjou", protagonist_name(), "南条小夜香" if not english else "Sayaka Nanjou"] # localization-invariant
+			var scripted_speaker := label_at(str(overlay_speakers[h_profile_test_session.h_scene_index - 1]), Vector2(145, 628), 16, Color("e8cfaa"), 980)
+			scripted_speaker.name = "HProfileDialogueSpeaker"
+			var scripted_text := label_at(text_value, Vector2(145, 650), 20, Color("f4f0e6"), 980)
+			scripted_text.name = "HProfileDialogueText"
+		elif phase in ["h_stage", "h_finish_response", "after_cg"]:
+			var speaker_name := label_at(_h_profile_speaker_name(), Vector2(145, 628), 16, Color("e8cfaa"), 980)
+			speaker_name.name = "HProfileDialogueSpeaker"
+			var spoken_line := label_at(text_value, Vector2(145, 650), 20, Color("f4f0e6"), 980)
+			spoken_line.name = "HProfileDialogueText"
+		else:
+			label_at(text_value, Vector2(145, 640), 21, Color("f4f0e6"), 980)
+		if is_after:
+			var aftercare_lines: Array = h_profile_test_session.aftercare_lines(h_profile_test_session.profile.get("flow", {}).get("free_aftercare_lines", []))
+			var is_last_aftercare_line := h_profile_test_aftercare_index >= aftercare_lines.size() - 1
+			button_at(("完成自由H" if not english else "Complete free H") if is_last_aftercare_line else ("继续" if not english else "Continue"), Vector2(780, 700), Vector2(250, 44), _advance_sayaka_h_aftercare) # localization-invariant
+		elif phase == "h_finish_wait":
+			var finish_button := button_at(h_profile_test_session.h_finish_label, Vector2(720, 700), Vector2(360, 48), _choose_sayaka_h_finish)
+			finish_button.name = "HProfileFinish"
+		else:
+			var advance_button := button_at("继续" if not english else "Continue", Vector2(870, 700), Vector2(300, 44), _advance_sayaka_h_stage) # localization-invariant
+			advance_button.name = "HProfileAdvance"
+		if h_profile_run_kind == "test":
+			button_at("退出测试" if not english else "Exit test", Vector2(80, 700), Vector2(240, 44), _exit_sayaka_h_test) # localization-invariant
+		return
+
+	screen = "h_profile_test"
+	base(_h_profile_title(), "前戏：选择动作，再点击身体部位" if not english else "Foreplay: choose an action, then click a body zone", false, h_profile_test_session.background_id("date_hotel")) # localization-invariant
+	var body_image_path: String = h_profile_test_session.body_map_image(str(h_profile_test_bodymap.get("base_image", "")))
+	if body_image_path.is_empty():
+		show_notice(h_profile_test_session.last_error)
+		return
+	if not body_image_path.begins_with("res://"):
+		body_image_path = "res://" + body_image_path
+	var body_image := TextureRect.new()
+	body_image.name = "HProfileBodyMap"
+	body_image.texture = load(body_image_path) as Texture2D
+	body_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	body_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	body_image.position = Vector2(70, 160)
+	body_image.size = Vector2(340, 510)
+	body_image.mouse_filter = Control.MOUSE_FILTER_STOP
+	body_image.gui_input.connect(_on_sayaka_h_bodymap_input)
+	page.add_child(body_image)
+	label_at("点击有效区域" if not english else "Click a hotspot", Vector2(70, 680), 16, Color("c9d5ca"), 340) # localization-invariant
+	label_at("动作" if not english else "Action", Vector2(450, 170), 20, Color("e8cfaa"), 330) # localization-invariant
+	for index in range(HProfileSession.ACTIONS.size()):
+		var action: String = HProfileSession.ACTIONS[index]
+		var marker := "✓ " if action == h_profile_test_action else ""
+		button_at(marker + str(action_labels[action]), Vector2(440, 205 + index * 58), Vector2(315, 48), _select_sayaka_h_action.bind(action))
+	label_at(("兴奋度 %d / 100" if not english else "Excitement %d / 100") % h_profile_test_session.excitement, Vector2(450, 450), 18, Color("e8cfaa"), 320) # localization-invariant
+	var excitement_meter := ProgressBar.new()
+	excitement_meter.name = "HProfileExcitementMeter"
+	excitement_meter.position = Vector2(450, 482)
+	excitement_meter.size = Vector2(315, 22)
+	excitement_meter.min_value = 0
+	excitement_meter.max_value = 100
+	excitement_meter.value = h_profile_test_session.excitement
+	excitement_meter.show_percentage = false
+	page.add_child(excitement_meter)
+	var expression_id: String = h_profile_test_session.idle_expression()
+	if not h_profile_test_last_result.is_empty():
+		expression_id = str(h_profile_test_last_result.get("expression", expression_id))
+	var expression := TextureRect.new()
+	expression.name = "HProfileExpression"
+	expression.texture = _h_profile_expression_texture(expression_id)
+	expression.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	expression.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	expression.position = Vector2(800, 165)
+	expression.size = Vector2(400, 392)
+	expression.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	page.add_child(expression)
+	var response_box := Panel.new()
+	response_box.position = Vector2(430, 520)
+	response_box.size = Vector2(770, 154)
+	response_box.add_theme_stylebox_override("panel", panel_style(Color(0.04, 0.11, 0.15, 0.94)))
+	page.add_child(response_box)
+	var response := _h_profile_test_line()
+	if h_profile_test_max_prompt_visible and h_profile_test_style.is_empty():
+		response = h_profile_test_session.max_prompt(str(h_profile_test_session.profile.get("flow", {}).get("max_prompt", response)))
+	if not h_profile_test_last_result.is_empty():
+		var zone := str(h_profile_test_last_result.get("zone", ""))
+		var tier := str(h_profile_test_last_result.get("tier", ""))
+		var result_summary := "%s · %s · %s · Excitement %d" if english else "%s · %s · %s · 兴奋度 %d" # localization-invariant
+		label_at(result_summary % [str(action_labels.get(h_profile_test_last_result.get("action", ""), "")), str(zone_labels.get(zone, zone)), tier, int(h_profile_test_last_result.get("excitement", 0))], Vector2(450, 540), 17, Color("b9cecb"), 720) # localization-invariant
+	label_at(response, Vector2(450, 575), 20, Color("f4f0e6"), 710)
+	if h_profile_test_session.excitement >= 100 and h_profile_test_style.is_empty():
+		var style_choices: Dictionary = h_profile_test_session.profile.get("flow", {}).get("choices", {})
+		var gentle_label := str(style_choices.get("gentle", "温柔进入")) if not english else "Enter gently" # localization-invariant
+		var intense_label := str(style_choices.get("intense", "粗暴进入")) if not english else "Enter intensely" # localization-invariant
+		button_at(gentle_label, Vector2(440, 620), Vector2(365, 44), _choose_sayaka_h_entry_style.bind("gentle")).name = "HProfileStyleGentle"
+		button_at(intense_label, Vector2(825, 620), Vector2(365, 44), _choose_sayaka_h_entry_style.bind("intense")).name = "HProfileStyleIntense"
+	if h_profile_run_kind == "test":
+		button_at("退出测试" if not english else "Exit test", Vector2(930, 700), Vector2(270, 44), _exit_sayaka_h_test) # localization-invariant
+
+func _select_sayaka_h_action(action: String) -> void:
+	h_profile_test_action = action
+	show_sayaka_h_profile_test()
+
+func _on_sayaka_h_bodymap_input(event: InputEvent) -> void:
+	if not event is InputEventMouseButton:
+		return
+	var mouse_event := event as InputEventMouseButton
+	if not mouse_event.pressed or mouse_event.button_index != MOUSE_BUTTON_LEFT:
+		return
+	var body_image := page.get_node_or_null("HProfileBodyMap") as TextureRect
+	if body_image == null:
+		return
+	var point_global := body_image.global_position + mouse_event.position
+	var actual_texture_size := body_image.texture.get_size() if body_image.texture != null else Vector2.ZERO
+	var displayed_image_rect := SceneContext.image_rect(body_image.get_global_rect(), actual_texture_size)
+	var point_uv := SceneContext.point_to_uv(point_global, displayed_image_rect)
+	var zone: String = h_profile_test_session.hit_test(point_uv, h_profile_test_bodymap)
+	if zone.is_empty():
+		return
+	h_profile_test_last_result = h_profile_test_session.perform(h_profile_test_action, zone)
+	h_profile_test_max_prompt_visible = bool(h_profile_test_last_result.get("show_max_prompt", false))
+	show_sayaka_h_profile_test()
+
+func _choose_sayaka_h_entry_style(style_id: String) -> void:
+	if h_profile_test_session != null and h_profile_test_session.begin_h_stage(style_id):
+		h_profile_test_style = style_id
+		h_profile_test_max_prompt_visible = false
+		h_profile_test_aftercare_index = 0
+		if h_profile_event_mode:
+			var locale := str(content.localizer.locale)
+			var overlay := [
+				"……射在里面！我都准备好了。" if locale != "en" else "...Come inside me! I've already taken care of everything.", # localization-invariant
+				"这样不好吧？" if locale != "en" else "Are you sure that's a good idea?", # localization-invariant
+				"我是医生诶。该做的安全措施，我当然早就做好了呀。是我自己想这样的，别替我瞎操心嘛。" if locale != "en" else "I'm a doctor, remember? Of course I've already taken the precautions I need to. This is what I want, so don't worry yourself over nothing.", # localization-invariant
+			]
+			for index in range(overlay.size() - 1, -1, -1):
+				h_profile_test_session.selected_h_scene_lines.insert(1, str(overlay[index]))
+		show_sayaka_h_profile_test()
+
+func _advance_sayaka_h_stage() -> void:
+	if h_profile_test_transitioning:
+		return
+	var previous_phase: String = h_profile_test_session.phase
+	if not h_profile_test_session.advance_h_stage():
+		return
+	if h_profile_test_session.phase == "after_cg":
+		h_profile_test_aftercare_index = 0
+		if previous_phase == "h_finish_response":
+			h_profile_test_transitioning = true
+			_transition_sayaka_h_aftercare()
+			return
+	show_sayaka_h_profile_test()
+
+func _transition_sayaka_h_aftercare() -> void:
+	var transition_layer := CanvasLayer.new()
+	transition_layer.layer = 100
+	transition_layer.name = "HProfileCGTransition"
+	add_child(transition_layer)
+	var shade := ColorRect.new()
+	shade.color = Color.WHITE
+	shade.mouse_filter = Control.MOUSE_FILTER_STOP
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var transition_material := ShaderMaterial.new()
+	transition_material.shader = load("res://godot/shaders/pixelate_transition.gdshader") as Shader
+	transition_material.set_shader_parameter("progress", 0.0)
+	shade.material = transition_material
+	transition_layer.add_child(shade)
+	var fade_out := create_tween()
+	fade_out.tween_property(transition_material, "shader_parameter/progress", 1.0, 1.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	await fade_out.finished
+	await get_tree().create_timer(0.36).timeout
+	show_sayaka_h_profile_test()
+	var fade_in := create_tween()
+	fade_in.tween_property(transition_material, "shader_parameter/progress", 0.0, 2.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	await fade_in.finished
+	transition_layer.queue_free()
+	h_profile_test_transitioning = false
+
+func _choose_sayaka_h_finish() -> void:
+	if h_profile_test_session != null and h_profile_test_session.choose_h_finish():
+		show_sayaka_h_profile_test()
+
+func _sayaka_h_aftercare_line() -> String:
+	var lines: Array = h_profile_test_session.aftercare_lines(h_profile_test_session.profile.get("flow", {}).get("free_aftercare_lines", []))
+	if h_profile_test_aftercare_index >= 0 and h_profile_test_aftercare_index < lines.size():
+		return str(lines[h_profile_test_aftercare_index])
+	return ""
+
+func _advance_sayaka_h_aftercare() -> void:
+	if h_profile_test_session == null or h_profile_test_transitioning or h_profile_test_session.phase != "after_cg":
+		return
+	var lines: Array = h_profile_test_session.aftercare_lines(h_profile_test_session.profile.get("flow", {}).get("free_aftercare_lines", []))
+	h_profile_test_aftercare_index += 1
+	if h_profile_test_aftercare_index >= lines.size():
+		h_profile_test_session.finish()
+		_exit_sayaka_h_test()
+	else:
+		show_sayaka_h_profile_test()
+
+func _finish_sayaka_h_test() -> void:
+	if h_profile_test_session != null:
+		h_profile_test_session.finish()
+	_exit_sayaka_h_test()
+
+func _exit_sayaka_h_test() -> void:
+	var departing := h_profile_run_kind == "free"
+	if departing and (h_profile_test_session == null or h_profile_test_session.phase != "completed"):
+		return
+	h_profile_test_session = null
+	h_profile_test_bodymap.clear()
+	h_profile_test_last_result.clear()
+	h_profile_test_style = ""
+	h_profile_test_max_prompt_visible = false
+	h_profile_test_aftercare_index = 0
+	h_profile_test_entry_lines.clear()
+	h_profile_test_entry_index = 0
+	h_profile_event_mode = false
+	h_profile_run_kind = "test"
+	if departing:
+		var completed := game.finish_free_h_departure()
+		var next_action := free_h_return_action if free_h_return_action.is_valid() else show_map
+		free_h_return_action = Callable()
+		if not completed.is_empty():
+			render_day_transition(next_action, completed)
+		return
+	show_event_test_hub()
+
+func free_h_booking_label() -> String:
+	game.expire_free_h_booking()
+	if game.free_h_booking.is_empty():
+		return ""
+	var actor_id := str(game.free_h_booking.actor_id)
+	var actor := content.find_record("staff", actor_id)
+	var config := FreeHRegistry.definition(actor_id)
+	var location_id := str(config.get("location_id", ""))
+	var place := tx("ui.free_h.location." + location_id, location_id)
+	return tx("ui.free_h.tonight", "今晚：%s · %s") % [str(actor.get("name", actor_id)), place]
+
+func request_free_h_booking(actor_id: String, location_id: String) -> void:
+	if not game.can_book_free_h(actor_id, location_id):
+		show_notice(tx("ui.free_h.unavailable", "当前无法安排这项约定。"))
+		return
+	var old_actor := str(game.free_h_booking.get("actor_id", ""))
+	if not old_actor.is_empty() and old_actor != actor_id:
+		var old_name := str(content.find_record("staff", old_actor).get("name", old_actor))
+		var new_name := str(content.find_record("staff", actor_id).get("name", actor_id))
+		confirm_action(tx("ui.free_h.replace", "今晚已经和%s有约定。要改为和%s过夜吗？") % [old_name, new_name], _confirm_free_h_booking.bind(actor_id, location_id, old_actor))
+	else:
+		_confirm_free_h_booking(actor_id, location_id, old_actor)
+
+func _confirm_free_h_booking(actor_id: String, location_id: String, previous_actor: String) -> void:
+	if game.book_free_h(actor_id, location_id, previous_actor):
+		show_staff(actor_id, location_id)
+		show_notice(free_h_booking_label())
+	else:
+		show_notice(tx("ui.free_h.unavailable", "当前无法安排这项约定。"))
+
+func cancel_free_h_booking(next_action: Callable) -> void:
+	if game.cancel_free_h_booking():
+		next_action.call()
+
+func _cancel_free_h_for_story() -> void:
+	if game.cancel_free_h_booking():
+		show_notice(tx("ui.free_h.story_cancel", "今晚的约定因剧情安排取消。"))
+
+func _try_free_h_departure(workday: int, clock: int, advance_day: bool, next_action: Callable) -> bool:
+	if not game.active_free_h_departure.is_empty():
+		return true
+	if game.free_h_booking.is_empty() or int(game.free_h_booking.workday) != workday:
+		return false
+	var actor_id := str(game.free_h_booking.actor_id)
+	var bundle := FreeHRegistry.load_bundle(actor_id, str(content.localizer.locale))
+	if bundle.has("error") or not game.free_h_unlocked(actor_id):
+		game.cancel_free_h_booking()
+		push_warning(str(bundle.get("error", "Booking eligibility changed: " + actor_id)))
+		show_notice(tx("ui.free_h.resource_cancel", "预约内容暂不可用，今晚的约定已取消。"))
+		return false
+	if not game.claim_free_h_departure(workday, clock, advance_day):
+		return false
+	game.clear_pending_departure_context()
+	free_h_return_action = next_action
+	h_profile_run_kind = "free"
+	h_profile_event_mode = false
+	_fade_into_free_h(bundle)
+	return true
+
+func _fade_into_free_h(bundle: Dictionary) -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 100
+	layer.name = "FreeHDepartureFade"
+	add_child(layer)
+	var shade := ColorRect.new()
+	shade.color = Color(0, 0, 0, 0)
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(shade)
+	var fade_out := create_tween()
+	fade_out.tween_property(shade, "color:a", 1.0, 0.4)
+	await fade_out.finished
+	if not _begin_h_profile_session(str(bundle.location_id), "", bundle):
+		# Preflight normally prevents this; release the claim without awarding
+		# or advancing if content fails between validation and scene construction.
+		var departure: Dictionary = game.active_free_h_departure.duplicate(true)
+		game.active_free_h_departure.clear()
+		game.active_mode = "encounter"
+		game.cancel_free_h_booking()
+		h_profile_run_kind = "test"
+		h_profile_test_session = null
+		free_h_return_action = Callable()
+		layer.queue_free()
+		show_notice(tx("ui.free_h.resource_cancel", "预约内容暂不可用，今晚的约定已取消。"))
+		if bool(departure.get("advance_day_on_finish", false)):
+			request_end_workday()
+		else:
+			game.pending_day_exit_workday = int(departure.workday)
+			game.pending_day_exit_clock = int(departure.clock)
+			show_day_transition(show_map)
+		return
+	var fade_in := create_tween()
+	fade_in.tween_property(shade, "color:a", 0.0, 0.4)
+	await fade_in.finished
+	layer.queue_free()
 
 func begin_special_event_test_from_title(event_id: String) -> void:
 	active_save_slot = 0
@@ -1024,6 +1553,25 @@ func start_story() -> void:
 	show_dialogue()
 
 func add_portrait(person: Dictionary, expression: String = "neutral", requested_outfit: String = "") -> void:
+	if requested_outfit == "h_aftercare" and str(person.get("id", "")) == "doc_sayaka":
+		var atlas := load(HProfileContent.EXPRESSION_ATLAS) as Texture2D
+		if atlas == null:
+			return
+		var expression_id := "delighted" if expression == "smile" else expression
+		var atlas_region: Rect2i = HProfileSession.EXPRESSION_ATLAS_CELLS.get(expression_id, HProfileSession.EXPRESSION_ATLAS_CELLS[HProfileSession.IDLE_EXPRESSION])
+		var h_portrait := AtlasTexture.new()
+		h_portrait.atlas = atlas
+		h_portrait.region = atlas_region
+		var h_portrait_control := TextureRect.new()
+		h_portrait_control.name = "CharacterPortrait"
+		h_portrait_control.texture = h_portrait
+		h_portrait_control.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		h_portrait_control.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		h_portrait_control.position = Vector2(760, 165)
+		h_portrait_control.size = Vector2(450, 500)
+		h_portrait_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		page.add_child(h_portrait_control)
+		return
 	var outfit: String = person.visuals.get("default_outfit", person.visuals.get("state", "outpatient")) if requested_outfit.is_empty() else requested_outfit
 	var portraits: Dictionary = person.visuals.portraits
 	var path: String = portraits.get(outfit + "/" + expression, portraits.get(outfit + "/neutral", ""))
@@ -1096,6 +1644,9 @@ func advance(choice: int) -> void:
 		show_dialogue()
 
 func show_map(resolve_day_start_events: bool = true) -> void:
+	if not game.active_free_h_departure.is_empty():
+		return
+	game.expire_free_h_booking()
 	if game.active_surgery_committed():
 		show_notice(tx("ui.notice.surgery_committed", "手术团队已经确认，患者正在进入连续的术前与手术流程；必须完成本次手术后才能离开。"))
 		return
@@ -1111,6 +1662,8 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	# day-start events.  Hospital-bound automatic events then trigger when the
 	# Sunday hospital map is entered, rather than immediately on save load.
 	var awaiting_departure := not game.pending_departure_context().is_empty()
+	if not awaiting_departure:
+		game.expire_sayaka_lv4_callback_if_missed(game.day_number())
 	if not awaiting_departure and game.is_sunday() and not game.sunday_activity_done() and not sunday_hospital_browsing:
 		show_sunday_menu()
 		return
@@ -1121,6 +1674,8 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events and not awaiting_departure else {}
 	if not day_start_character_event.is_empty():
 		start_mandatory_character_event(str(day_start_character_event.id))
+		return
+	if not awaiting_departure and begin_sayaka_lv4_callback(game.day_number(), game.current_absolute_clock()):
 		return
 	if not game.is_sunday():
 		sunday_hospital_browsing = false
@@ -1184,6 +1739,18 @@ func show_sunday_menu() -> void:
 func show_sunday_hospital_map() -> void:
 	sunday_hospital_browsing = true
 	show_map()
+
+func begin_sayaka_lv4_callback(for_day: int, absolute_clock: int, resume: Callable = Callable()) -> bool:
+	var event := game.start_sayaka_lv4_callback(for_day, absolute_clock)
+	if event == null:
+		return false
+	sayaka_lv4_callback_resume = resume
+	character_event_from_test = false
+	character_event_return_location = "clinic"
+	character_event_return_preop_id = ""
+	reset_dialogue_page()
+	show_character_event()
+	return true
 
 func show_sunday_invites(other_expanded: bool = false) -> void:
 	screen = "sunday_invites"
@@ -1251,6 +1818,9 @@ func attempt_sunday_invitation(actor_id: String) -> void:
 		return
 	var milestone: Dictionary = game.sunday_character_event_for(actor_id)
 	if not milestone.is_empty():
+		if str(milestone.get("id", "")) == "sayaka_lv4_hotel_date":
+			show_sayaka_lv4_precommit()
+			return
 		start_sunday_character_event(str(milestone.id))
 		return
 	var profile: Dictionary = game.date_profile_definitions.get(actor_id, {})
@@ -1280,10 +1850,20 @@ func start_sunday_character_event(event_id: String) -> void:
 	if not game.is_sunday() or game.sunday_activity_done() or definition.is_empty() or not bool(definition.get("consumes_sunday", false)) or game.start_character_event(event_id) == null:
 		show_notice(tx("ui.sunday.invite_unavailable", "这个邀请现在还无法进行。"))
 		return
+	if event_id == "sayaka_lv4_hotel_date" and not game.reserve_sunday_character_event(event_id):
+		game.finish_character_event()
+		show_notice(tx("ui.sunday.invite_unavailable", "这个邀请现在还无法进行。"))
+		return
 	character_event_from_test = false
 	character_event_return_location = str(definition.location_id)
 	character_event_return_preop_id = ""
 	show_character_event()
+
+func show_sayaka_lv4_precommit() -> void:
+	screen = "sayaka_lv4_precommit"
+	base(tx("collections.character_events.sayaka_lv4_hotel_date.title", "那就别回去了"), tx("ui.sayaka_lv4.precommit", "预感今晚会有好事情发生……"), false, "lobby")
+	button_at(tx("ui.sayaka_lv4.accept", "继续约会"), Vector2(120, 360), Vector2(470, 64), start_sunday_character_event.bind("sayaka_lv4_hotel_date"))
+	button_at(tx("ui.sayaka_lv4.cancel", "改天再约"), Vector2(690, 360), Vector2(470, 64), cancel_sayaka_lv4_precommit)
 
 func start_mandatory_character_event(event_id: String) -> void:
 	var definition: Dictionary = game.character_event_definitions.get(event_id, {})
@@ -1552,6 +2132,18 @@ func continue_micro_event() -> void:
 	else:
 		show_location(location_id, true, false)
 
+func case_training_value_is_low(case_data: Dictionary) -> bool:
+	var surgery_id := str(case_data.get("surgery_id", ""))
+	var surgery := game.surgery_definition(surgery_id)
+	if surgery.is_empty():
+		return false
+	var current_level := game.surgery_level()
+	var training_ceiling := int(surgery.get("training_ceiling", 100))
+	if current_level >= training_ceiling:
+		return true
+	var effective_difficulty := clampi(int(surgery.get("base_difficulty", 50)) + int(case_data.get("difficulty_modifier", 0)), 0, 100)
+	return game.surgery_learning_efficiency(effective_difficulty - current_level) <= 0.10
+
 func show_location(id: String, preserve_random: bool = false, allow_micro_event: bool = true) -> void:
 	if game.special_event_in_progress():
 		show_special_event()
@@ -1651,6 +2243,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 				case_data = content.find_record("cases", patient.case_id)
 			var encounter_id := encounter_for_patient(patient.id)
 			var caption := tx("ui.clinic.waiting", "当前候诊  /  %s · %s岁   /   %s") % [patient.name, int(patient.age), case_data.title]
+			var show_training_hint := not game.admitted_patient(patient.id) and not encounter_id.is_empty() and case_training_value_is_low(case_data)
 			if not encounter_id.is_empty() and (not game.is_hospital_closed_day() or game.visits.has(encounter_id)):
 				caption += "   /   " + (tx("ui.clinic.view_handoff", "查看住院交接") if game.admitted_patient(patient.id) else tx("ui.clinic.start_continue", "接诊 / 继续"))
 				button_at(caption, Vector2(60, patient_base_y + patient_row * 137), Vector2(1155, 60), show_encounter.bind(encounter_id))
@@ -1658,7 +2251,10 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 				label_at(caption + tx("ui.clinic.closed_suffix", "（普通门诊休诊）"), Vector2(65, patient_base_y + 15 + patient_row * 137), 21, Color("c2d2cc"), 1150)
 			else:
 				label_at(caption + tx("ui.clinic.future_suffix", "（后续开放）"), Vector2(65, patient_base_y + 15 + patient_row * 137), 21, Color("dce5e3"), 1150)
-			var action_y: int = patient_base_y + patient_row * 137 + 68
+			if show_training_hint:
+				var hint := label_at(tx("ui.clinic.training_value_low", "⚠ Low training value"), Vector2(70, patient_base_y + 61 + patient_row * 137), 17, Color("e8cfaa"), 320)
+				hint.name = "LowTrainingValue"
+			var action_y: int = patient_base_y + patient_row * 137 + (88 if show_training_hint else 68)
 			var portrait_width: int = 565 if not game.admitted_patient(patient.id) else 1155
 			var portrait_button := button_at(tx("ui.clinic.patient_portrait", "人物立绘"), Vector2(60, action_y), Vector2(portrait_width, 60), show_patient.bind(patient.id))
 			portrait_button.name = "PatientPortrait"
@@ -2164,7 +2760,8 @@ func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: Str
 		cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED if str(node.get("cg_fit", "cover")) == "cover" else TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		cg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		page.add_child(cg)
-		return
+		if not bool(node.get("cg_portrait_overlay", false)):
+			return
 	if bool(node.get("hide_portrait", false)):
 		return
 	var portrait_path := str(node.get("portrait_path", ""))
@@ -2193,19 +2790,53 @@ func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: Str
 	add_portrait(actor, node.expression, outfit)
 	var portrait = page.get_node_or_null("CharacterPortrait")
 	if portrait != null:
-		portrait.position = Vector2(760, 165)
-		portrait.size = Vector2(450, 500)
+		if outfit == "h_aftercare" and str(actor.get("id", "")) == "doc_sayaka":
+			var portrait_scale := maxf(0.0, float(node.get("portrait_scale", 1.0)))
+			portrait.size = Vector2(450, 500) * portrait_scale
+			# The aftercare portrait must sit fully above the VN dialogue frame.
+			portrait.position = Vector2(1210.0 - portrait.size.x, 540.0 - portrait.size.y)
+		else:
+			portrait.position = Vector2(760, 165)
+			portrait.size = Vector2(450, 500)
 
 func choose_character_event(choice_id: String) -> void:
 	var event = game.character_events.get(game.active_character_event_id)
 	if event == null:
 		return
+	var current_node: Dictionary = event.current()
+	if str(current_node.get("action", "")) == "launch_sayaka_lv4_h" and not sayaka_lv4_h_handoff_complete:
+		begin_sayaka_h_profile_test("hotel", "sayaka_lv4_first_h")
+		return
+	if str(current_node.get("action", "")) == "launch_sayaka_lv4_h":
+		sayaka_lv4_h_handoff_complete = false
 	var before_elapsed := game.elapsed()
 	var before_day := game.day_number()
 	if not game.choose_character_event(choice_id):
 		show_notice(event.last_error)
 		return
 	if event.completed:
+		if str(event.definition.get("id", "")) == "sayaka_lv4_hotel_date":
+			if not game.settle_sayaka_lv4_hotel_event():
+				show_notice("Sayaka Lv4 settlement failed; the event state was not advanced.")
+				return
+			game.advance_story_to_day(int(event.completed_day) + 1, 9 * 60)
+			game.finish_character_event()
+			show_map()
+			return
+		if str(event.definition.get("id", "")) == "sayaka_lv4_hospital_callback":
+			game.settle_sayaka_lv4_callback()
+			game.finish_character_event()
+			if sayaka_lv4_callback_resume.is_valid():
+				var resume := sayaka_lv4_callback_resume
+				sayaka_lv4_callback_resume = Callable()
+				resume.call()
+				return
+			if sayaka_lv4_test_mode:
+				sayaka_lv4_test_mode = false
+				show_event_test_hub()
+			else:
+				show_map()
+			return
 		game.settle_overtime(before_elapsed, int(event.definition.minutes))
 		var follow_up: Dictionary = event.definition.get("auto_follow_up", {})
 		if not follow_up.is_empty():
@@ -3995,6 +4626,9 @@ func preop_event(event: Dictionary) -> void:
 	elif event.get("kind") == "crisis_rescue" and not event.has("roll"):
 		submitted_event = event.duplicate(true)
 		submitted_event["roll"] = randi_range(0, 9999)
+	# Independent of the physiological-crisis toggle; old logged events without
+	# dice still replay through apply() without introducing new randomness.
+	submitted_event = preparation.prepare_surgery_step_event(submitted_event)
 	if event.get("kind") == "action" and str(event.get("id", "")).begins_with("incise_") and not event.has("operative_background_id"):
 		submitted_event = event.duplicate(true)
 		submitted_event["operative_background_id"] = OperativeBackgrounds.random_id()
@@ -4050,6 +4684,8 @@ func preop_event(event: Dictionary) -> void:
 		show_notice(preparation.last_error)
 
 func show_day_transition(next_action: Callable) -> void:
+	if not game.active_free_h_departure.is_empty():
+		return
 	if game.day_transition_deferred():
 		# Overtime has already been settled and remembered by the active clinical
 		# flow.  Keep the current case continuous; its completion path will show
@@ -4059,6 +4695,20 @@ func show_day_transition(next_action: Callable) -> void:
 		return
 	var departure := game.pending_departure_context()
 	if not departure.is_empty():
+		var departure_day := int(departure.workday)
+		var departure_clock := int(departure.clock)
+		game.expire_sayaka_lv4_callback_if_missed(departure_day)
+		if game.sayaka_lv4_callback_due(departure_day, departure_clock):
+			if begin_sayaka_lv4_callback(departure_day, departure_clock, Callable(self, "show_day_transition").bind(next_action)):
+				_cancel_free_h_for_story()
+				return
+	else:
+		game.expire_sayaka_lv4_callback_if_missed(game.day_number())
+	if not departure.is_empty():
+		if _start_exclusive_departure_event():
+			return
+		if _try_free_h_departure(int(departure.workday), int(departure.clock), false, next_action):
+			return
 		game.clear_pending_departure_context()
 		if game.begin_after_work_departure(int(departure.workday), int(departure.clock), false):
 			day_transition_next = next_action
@@ -4083,11 +4733,33 @@ func render_day_transition(next_action: Callable, departure: Dictionary = {}) ->
 	button_at(tx("ui.auto.5405675b4324", "进入下一天  →"), Vector2(475, 465), Vector2(330, 58), continue_after_day_transition)
 
 func request_end_workday() -> void:
+	if not game.active_free_h_departure.is_empty() or screen == "day_transition":
+		return
+	if not game.pending_departure_context().is_empty():
+		show_day_transition(show_map)
+		return
 	if not game.can_end_workday():
 		show_notice(game.last_error)
 		return
 	var workday := game.day_number()
 	var departure_clock := game.current_absolute_clock()
+	game.expire_sayaka_lv4_callback_if_missed(workday)
+	if game.sayaka_lv4_callback_due(workday, departure_clock):
+		if begin_sayaka_lv4_callback(workday, departure_clock, Callable(self, "request_end_workday")):
+			_cancel_free_h_for_story()
+			return
+	if _start_exclusive_departure_event():
+		return
+	if _try_free_h_departure(workday, departure_clock, true, show_map):
+		return
+	if game.begin_after_work_departure(workday, departure_clock, true):
+		day_transition_next = show_map
+		show_after_work_walk()
+		return
+	game.advance_story_to_future_day(1, 9 * 60)
+	render_day_transition(show_map, {"workday": workday, "clock": departure_clock})
+
+func _start_exclusive_departure_event() -> bool:
 	var after_work_event := game.next_after_work_character_event()
 	if not after_work_event.is_empty():
 		character_event_from_test = false
@@ -4096,13 +4768,9 @@ func request_end_workday() -> void:
 		reset_dialogue_page()
 		if game.start_character_event(str(after_work_event.id)) != null:
 			show_character_event()
-			return
-	if game.begin_after_work_departure(workday, departure_clock, true):
-		day_transition_next = show_map
-		show_after_work_walk()
-		return
-	game.advance_story_to_future_day(1, 9 * 60)
-	render_day_transition(show_map, {"workday": workday, "clock": departure_clock})
+			_cancel_free_h_for_story()
+			return true
+	return false
 
 func after_work_background_id(walk: Dictionary) -> String:
 	# Meeting at the hospital is not yet a shared walk. Only mutual acceptance
