@@ -109,6 +109,11 @@ func run() -> void:
 	expect(is_equal_approx(game.award_leadership_xp(appendix), 1.5), "Developing team did not grant the leadership learning multiplier")
 	var staff_training := game.train_surgery_team(appendix.team, "surgery_appendix")
 	expect(staff_training.size() == 1 and game.staff_skill_value("pharmacist_manami", "surgery") == 6, "Routine case did not train the role-relevant staff skill")
+	expect(game.role_training_skill("ward_nurse") == "patient_care", "Ward nurse role is not mapped to patient-care growth")
+	var ward_nurse_start := game.staff_skill_value("nurse_moe", "patient_care")
+	for _credit in range(4):
+		game.train_surgery_team({"ward_nurse": "nurse_moe"}, "surgery_appendix")
+	expect(game.staff_skill_value("nurse_moe", "patient_care") == ward_nurse_start + 1, "Ward nurse caring for the patient did not gain patient-care skill")
 	game.surgery_xp = game.surgery_xp_for_level(60)
 	expect(game.surgery_level() == 60 and game.surgery_xp_award_for(appendix) == 0, "Appendectomy exceeded its training ceiling")
 	expect(game.unlock_procedure("surgery_cabg") and game.procedure_unlocked("surgery_cabg"), "Clinical unlock API did not unlock CABG")

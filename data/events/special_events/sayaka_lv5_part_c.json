@@ -1,0 +1,45 @@
+[
+  {
+    "id": "sayaka_lv5_part_c",
+    "title": "院长的批准",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [
+      {
+        "type": "days_after_special_event",
+        "event_id": "sayaka_lv5_part_b",
+        "days": 3
+      }
+    ],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "sayaka_lv5_part_c_main"
+    ],
+    "completion_flags": [
+      "sayaka_lv5_part_c_complete",
+      "staff_as_patient_program_authorized",
+      "sayaka_repeatable_staff_training_unlocked"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "sayaka_lv5_part_c",
+      "title": "院长的批准",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 20,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    },
+    "completion_hint": "院长的批准事件已完成。"
+  }
+]

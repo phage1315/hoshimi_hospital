@@ -1,0 +1,1115 @@
+{
+  "doc_sayaka": {
+    "unlock_flags": [
+      "sayaka_lv5_part_c_complete",
+      "staff_as_patient_program_authorized"
+    ],
+    "dialogue_status": "v1_6_integrated",
+    "portrait_aliases": {
+      "ward/neutral": "preop_patient_gown/neutral",
+      "ward/smile": "preop_patient_gown/teasing",
+      "ward/brave": "preop_patient_gown/neutral",
+      "ward/worried": "preop_patient_gown/nervous",
+      "ward/afraid": "preop_patient_gown/nervous",
+      "ward/crying": "preop_patient_gown/nervous",
+      "examination/shy": "ward_preparation/shy"
+    },
+    "dialogue": {
+      "zh_CN": {
+        "invitation_lines": [
+          "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+          "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+          "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+        ],
+        "invitation_by_procedure": {
+          "surgery_appendix": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_breast_tumor": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_hysterectomy": [
+            "「{procedure_name}……要把我的子宫整个摘掉呀。明明知道以后会恢复原样，连子宫都会长回来……可是想到手术那天，你们真的会把它从我身体里取出来，我怎么突然有点害怕了耶……喂！我又没说不做啦！让我先害怕一下嘛。」"
+          ],
+          "surgery_cabg": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_exploratory_laparotomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_cholecystectomy": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_open_inguinal_hernia": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_open_ventral_hernia": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_open_distal_gastrectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_total_gastrectomy": [
+            "「{procedure_name}……等、等等，这个是要把整个器官都拿出来吧？呵呵，真是的，我明明知道以后还会长回来，可想到那天你要亲手把它从我身体里摘出来……光是听名字就觉得好恐怖呀！……不过难得有这种机会，我还是想试试看。坂口，这次你可要好好照顾我哦。」"
+          ],
+          "surgery_open_right_hemicolectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_sigmoid_colectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_abdominoperineal_resection": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_whipple": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_major_liver_resection": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_splenectomy": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_open_ovarian_cystectomy": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_open_abdominal_myomectomy": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_total_mastectomy": [
+            "「{procedure_name}……真的要把我的乳房切下来呀。明知道以后会恢复得跟原来一样，可是……光想到自己真的要在手术台上失去它，我就有点舍不得了耶。……哎呀，你别这样看我啦！我知道这只是暂时的嘛！不过，知道是一回事，真的躺上去又是另一回事呀……好，我愿意试一次。」"
+          ],
+          "surgery_open_lung_lobectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_pneumonectomy": [
+            "「{procedure_name}……等、等等，这个是要把整个器官都拿出来吧？呵呵，真是的，我明明知道以后还会长回来，可想到那天你要亲手把它从我身体里摘出来……光是听名字就觉得好恐怖呀！……不过难得有这种机会，我还是想试试看。坂口，这次你可要好好照顾我哦。」"
+          ],
+          "surgery_open_esophagectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_radical_cystectomy": [
+            "「{procedure_name}……等、等等，这个是要把整个器官都拿出来吧？呵呵，真是的，我明明知道以后还会长回来，可想到那天你要亲手把它从我身体里摘出来……光是听名字就觉得好恐怖呀！……不过难得有这种机会，我还是想试试看。坂口，这次你可要好好照顾我哦。」"
+          ],
+          "surgery_open_nephrectomy": [
+            "「{procedure_name}……等、等等，这个是要把整个器官都拿出来吧？呵呵，真是的，我明明知道以后还会长回来，可想到那天你要亲手把它从我身体里摘出来……光是听名字就觉得好恐怖呀！……不过难得有这种机会，我还是想试试看。坂口，这次你可要好好照顾我哦。」"
+          ],
+          "surgery_open_abdominal_aortic_aneurysm": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_vaginal_hysterectomy": [
+            "「{procedure_name}……要把我的子宫整个摘掉呀。明明知道以后会恢复原样，连子宫都会长回来……可是想到手术那天，你们真的会把它从我身体里取出来，我怎么突然有点害怕了耶……喂！我又没说不做啦！让我先害怕一下嘛。」"
+          ],
+          "surgery_adv_artificial_heart_exchange": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_distal_pancreatectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_partial_nephrectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_adrenalectomy": [
+            "「{procedure_name}？呵呵，你还真会挑呀。好，我答应。不过到了手术台上，我要是叫出声，可不许你事后拿来笑我哦！」",
+            "「哦，这次是{procedure_name}呀。听名字就知道不会太轻松……不过难得有机会从患者这边体验一次，我还真有点好奇呢。你要认真对待我哦，坂口医生。」",
+            "「{procedure_name}？行呀。不过这次我可不会像第一次那样，傻乎乎地以为进手术室就能马上开刀了。给我排好时间，别让我在台上等到怀疑人生哦！」"
+          ],
+          "surgery_open_left_hemicolectomy": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ],
+          "surgery_open_low_anterior_resection": [
+            "「{procedure_name}……坂口，你这次还真没跟我客气呀。平时开术前会议，听到这种手术我还能边听边做笔记。可一想到这回是我躺上去，光是术前准备恐怕就够我受的了……呵呵，我现在笑得是不是有点勉强？……好啦，我答应。」"
+          ]
+        },
+        "reaction_lines": {
+          "procedure_mismatch": "「等一下！我记得我们约好的不是这个术式吧？喂，坂口，别光顾着看手术单，先跟我把变化讲明白呀。我是肯让你开刀，又不是连自己要做什么都不问！」",
+          "explain_plan": "「我也当过给患者说明的人嘛，流程我大致懂。不过今天换我躺上去……从哪儿开始、关键步骤怎么做、我清醒的时候会感觉到什么，你还是认真讲给我听一次吧。」",
+          "brief_plan": "「嗯，术式我记住了。你讲得这么简短，是怕我反过来考你吗？呵呵……不过该核对的部分可别省哦。麻醉的事，等轮到那一步再认真选吧。」",
+          "last_reassure": "「……我知道你们会认真核对今天实际要做的步骤。可一想到接下来要接受一项项准备，最后躺在手术台上让大家围着我忙……我就有点笑不出来了耶。坂口，等会儿别丢下我一个人胡思乱想哦。」",
+          "choose_general": "「全麻呀……那我就是闭上眼，再睁开眼就结束了？虽然有点可惜，什么都看不到……不过这次我听你的，醒过来可要好好告诉我经过哦。」",
+          "choose_epidural": "「硬膜外呀。也就是说我还能清醒着听你们说话？呵呵，好像挺适合我。不过如果麻醉范围不够，你可得老老实实告诉我怎么办哦。」",
+          "choose_local": "「局麻？嗯……至少我不用一觉睡过去。可是只麻切口附近，对吧？深一点的时候会有什么感觉，你先跟我讲清楚，别等我吓一跳才说呀。」",
+          "choose_none": "「……这次又不麻醉？你还真敢选呀，坂口。好吧，既然说好了我就试试看……不过我先声明，等会儿我要是叫得很难听，你可不能嫌弃我！」",
+          "induction_reassure": "「嗯……我知道，慢慢呼吸就好。喂，坂口……等我醒了，你要在……」",
+          "insist_without_anesthesia": "「别再问我是不是逞强了啦！我知道会疼，上次又不是做梦……只是知道归知道，真正等着你下刀时，我还是会害怕的嘛。」",
+          "assistant_stabilize_none": "「啊，等一下……我知道要保持不动！可我现在整个人都绷着，麻烦你扶稳一点……别让坂口看见我抖成这样啦。」",
+          "assistant_stabilize_local": "「好、好，我配合。局麻是有用啦，可人家知道你们手里拿着什么，哪能完全不紧张呀？」",
+          "assistant_stabilize_epidural": "「我知道腿现在不太听使唤，是麻醉的关系……可明明懂道理，真要靠别人扶着才能保持体位，还是会心慌呀。以前都是我跟患者说‘我扶着您’，今天轮到我抓着你不放了……」",
+          "contact_pause": "「呼……谢谢，先让我喘这一口气。刚才那一下比我想的厉害多了……好，别催，我在听。」",
+          "contact_command": "「知道啦，不动、放松、慢慢呼吸……你说得倒轻巧。我正在努力啦，坂口医生！」",
+          "contact_continue": "「……嗯，继续吧。我只是想抱怨两句，可没说你可以在这儿一直等我把话说完呀。」",
+          "ongoing_narrate": "「原来已经到这一步了呀……你一说清楚，我脑子里就能把流程接起来。就是……身体可没有脑子那么镇定耶。」",
+          "ongoing_eye_contact": "「我没事……好啦，别用那种担心的眼神看我！你这样盯着，我反而更想哭了嘛。」",
+          "ongoing_silent": "「……坂口？怎么突然都不说话了？我知道你们在专心……可我这样躺着，只听见器械碰来碰去，心里会发毛耶。」",
+          "closure_reassure": "「真的快结束了？别哄我哦……我现在听到‘最后几针’都快要感动得哭出来了。」",
+          "closure_coach": "「好，我不乱动……呼，慢慢来。你看，我明明是医生，怎么连缝合都得靠人哄着熬过去呀。」",
+          "closure_silent": "「……都到缝合了，还不肯跟我说句话呀？哼，等我下了台，非要让你把今天的手术从头讲一遍不可。」",
+          "incision_marking_awake": "「……已经画到这儿了？前面准备了那么久，现在终于快下刀了，我却一点也没松口气……坂口，真的要切的时候先跟我说一声，好不好？」",
+          "incision_marking_none": "「等、等等，这个只是做记号吧？我刚才还嫌你们准备太慢……真到要下刀了，怎么又觉得太快了呀！让我先喘匀这口气……拜托。」",
+          "incise_epidural": "「……啊，已经下刀了？我能感觉到你们在碰我，可和刚才想象的完全不一样……呼，看来真的是开始了呀。」",
+          "incise_local": "「嘶……！刚刚那一下我还是吓到了！局麻是起作用了，可知道刀真的落下来，和站在旁边看可差太远了呀。」",
+          "incise_none": "「啊——！！呀、好疼！等、等一下……呼……你、你真的下刀了呀！我知道自己答应了，可这一下也太……呜，坂口，手轻点啦！」"
+        },
+        "reaction_variants": {
+          "ward_enema": [
+            "「等、等一下……你们平时可都是跟我一起工作的呀！我知道这是正常准备，可轮到同事替我做这些，我真的连抬头看你们都不好意思了……让我先缓一口气，好不好？」",
+            "「……我以前在病历上写‘术前准备完成’，几秒钟就过去了。怎么轮到我，才刚开始就觉得折腾了半天呀？呼……后面还有多少项啊？」"
+          ],
+          "ward_enema_unnecessary": [
+            "「咦，这一步不是必须的吗？那就把理由告诉我呀。平时轮到我做决定也会多问一句，今天我更想问清楚呢。」",
+            "「呵呵，我可没有说想把每一项术前准备都体验一遍哦！如果不是必须做的，你们总该先说明白嘛。」"
+          ],
+          "ward_skin_prep": [
+            "「呀……等一下，真的要准备得这么仔细吗？我知道是术野要求啦，可大家平时都跟我一起上班……现在让我这么躺着给你们检查，太丢脸了耶！」",
+            "「……以前看护士备皮，我总觉得三两下就结束了。今天被你们一处一处地核对，明明知道是必要的，还是又窘又烦……到底还要多久呀？」"
+          ],
+          "ward_skin_prep_unnecessary": [
+            "「等等，那一块不在这次手术范围内吧？要是只是顺手扩大范围，可不可以放过我一点呀？」",
+            "「嗯？这项也可以省？那我要认真考虑一下耶。我今天是来开刀的，可不是报名参加术前准备全套体验呀。」"
+          ],
+          "ward_surgical_cap": [
+            "「头发帮我全部收进去哦……唉，帽子一戴好，就真的像要把我送上手术台了。明明答应你的时候还那么痛快，怎么现在光看这顶帽子就紧张起来了呀？」",
+            "「我以前帮患者检查手术帽，总会笑着说‘别紧张，很快就好了’……现在轮到我，才发现自己最想问的就是——你们说的‘很快’，到底是多久呀？」"
+          ],
+          "operative_positioning_awake": [
+            "「……手臂这样放，身体再挪一点……我知道，我知道！可你们平时都叫我南条医生，今天却轮流把我摆好，连自己翻个身都得先问……真的好丢脸呀。」",
+            "「别、别催！我是在配合呀……可躺好了就不能随便动，接下来还得等你们忙完。你们有事做，时间过得快，我可是每一分钟都在数耶！」"
+          ],
+          "operative_positioning_none": [
+            "「等、等等……你们别一下子都围过来呀！我知道没用麻药的时候更得好好配合，可你们越认真地说‘准备’，我心里就越慌……先让我缓一下啦。」",
+            "「固定带也要上啊……嗯，我知道是为了安全。可是这么一躺好，真的会突然想到——等会儿我就是想躲，也没地方躲了呢。」"
+          ],
+          "urinary_catheterization_awake": [
+            "「……连这一步也轮到我呀。明明都是天天见面的同事，今天却得这样躺着让你们照顾……啊，别看我的脸啦，我真的要羞死了！」",
+            "「呼……我以前还一本正经地跟患者说‘放松就好’。你们今天要是再跟我说一遍，我真的会生气哦……我已经很努力了嘛！」"
+          ],
+          "urinary_catheterization_none": [
+            "「喂喂，先等一下！我知道这一步是怎么回事，可从刚才开始，你们让我怎么躺我就怎么躺……现在连这种准备也得清醒着做完，我真的快没脸见人了啦！」",
+            "「呀……等一下……我已经在努力配合了，真的。可你们越是若无其事，我越觉得自己像个被安排得明明白白的患者……讨厌，太丢脸了啦。」"
+          ],
+          "skin_disinfection_awake": [
+            "「好凉！……啊，消毒液呀。我知道，我知道。可平时站在台边听患者这么叫，和自己被擦一下就跳起来，果然是两回事耶。」",
+            "「……还没完呀？我知道消毒不能急，可从病房一路折腾到这儿，上了台又觉得等了好久……你们一个个忙得很，只有我盯着无影灯胡思乱想，都快把自己吓死了啦。」"
+          ],
+          "skin_disinfection_none": [
+            "「……只是消毒而已，我的心怎么已经跳这么快啦？坂口，你等会儿真下刀的时候，可不许笑我呀。」",
+            "「等消毒液干、铺巾、核对……我知道，一个都不能少。可我干躺在这里，居然开始盼着你快点下刀了……等一下！上次被你开刀疼成那样，我怎么还会说出这种话呀？！」"
+          ]
+        },
+        "reaction_speakers": {
+          "procedure_mismatch": "patient",
+          "explain_plan": "patient",
+          "brief_plan": "patient",
+          "last_reassure": "patient",
+          "choose_general": "patient",
+          "choose_epidural": "patient",
+          "choose_local": "patient",
+          "choose_none": "patient",
+          "induction_reassure": "patient",
+          "insist_without_anesthesia": "patient",
+          "assistant_stabilize_none": "patient",
+          "assistant_stabilize_local": "patient",
+          "assistant_stabilize_epidural": "patient",
+          "contact_pause": "patient",
+          "contact_command": "patient",
+          "contact_continue": "patient",
+          "ongoing_narrate": "patient",
+          "ongoing_eye_contact": "patient",
+          "ongoing_silent": "patient",
+          "closure_reassure": "patient",
+          "closure_coach": "patient",
+          "closure_silent": "patient",
+          "incision_marking_awake": "patient",
+          "incision_marking_none": "patient",
+          "incise_epidural": "patient",
+          "incise_local": "patient",
+          "incise_none": "patient"
+        },
+        "stage_prompts": {
+          "graphic_preop_question": "「我知道这台叫{procedure_name}。不过说实话，这一科的细节我未必比患者懂得多。你们准备从哪里进去、关键一步怎么完成？如果之后选清醒麻醉，哪些感觉可能出现，什么情况要立刻告诉你们？」"
+        },
+        "interaction_overrides": {
+          "contact_pain_incision_01": {
+            "prompt": "……嘶，刀口那一下我还是感觉到了。坂口，真的已经开始了呀？我明明知道流程，怎么心跳得这么快……",
+            "responses": {
+              "explain_contact": "嗯，我听着。照你说的慢慢呼吸就好，对吧？……今天换我被医生叮嘱了呢。",
+              "brief_contact": "知道啦，按计划进行……我会不乱动的。只是这一下，比我想象中真实多了。",
+              "continue_contact": "……好，我配合。可是你别把我当成平时那个能若无其事看手术的南条医生呀。"
+            }
+          },
+          "contact_no_anesthesia_incision_01": {
+            "prompt": "啊——！等、等一下，坂口！我知道第一刀会疼，可它怎么能疼得这么明明白白呀……！",
+            "responses": {
+              "steady_unanesthetized_contact_01": "呼……我在听，你慢一点就好。我现在可没本事装勇敢，先让我把这口气喘回来……",
+              "continue_unanesthetized_contact_01": "你说忍就忍呀……呜！好，我知道还要继续，可你别嫌我叫得难听！"
+            }
+          },
+          "contact_no_anesthesia_incision_02": {
+            "prompt": "不、不是……怎么又往里面去了？！刚才那一下我都还没缓过来呀！",
+            "responses": {
+              "steady_unanesthetized_contact_02": "呼……先停一下就好。等我不再发抖了，你再告诉我下一步，好不好？",
+              "continue_unanesthetized_contact_02": "呀啊——！喂，坂口！你们说继续倒是轻松，我可是躺在这里挨着呢！"
+            }
+          },
+          "contact_no_anesthesia_incision_03": {
+            "prompt": "坂口……呜，我知道当初自己说不用麻药，可现在真的疼得受不了啦。就一点点也不行吗……？",
+            "responses": {
+              "steady_unanesthetized_contact_03": "……不给呀。好，我听明白了……那你至少慢一点，让我知道你下一下要做什么，好不好？",
+              "continue_unanesthetized_contact_03": "呜……连缓一下都不行吗……！我知道你们要做完，可是我真的疼得想哭呀！"
+            }
+          },
+          "contact_default_01": {
+            "prompt": "……欸？已经开始了？你们动作那么熟练，我差点没察觉呢。可别因为我也是医生，就省了告诉我的那一句呀。",
+            "responses": {
+              "reassure_start": "嗯，那我就放心一点了。今天的患者可是我，你记得随时说一声哦。",
+              "brief_start": "好，知道了……唉，明明已经经历过，自己躺在台上听见“已经开始”，还是会紧张呀。",
+              "silent_start": "……好啦，我安静。我可是很会配合的……至少我会努力。"
+            }
+          },
+          "contact_pain_incision_02": {
+            "prompt": "嘶……我现在能很清楚地感觉到刀口。坂口，你有听见我说话吧？今天我可没力气一直装镇定哦。",
+            "responses": {
+              "acknowledge_second_contact": "嗯，听见你回答我就安心一点。你继续说话好不好？不用很多，偶尔一句就行。",
+              "brief_second_contact": "好，你还在……呼，那我就再坚持一下。"
+            }
+          },
+          "contact_fear_incision_01": {
+            "prompt": "……已经真的切开了吗？我看不见你们的手，反而更容易乱想。坂口，别笑我，明明平时开刀我一点都不怕呀。",
+            "responses": {
+              "orient_fearful_contact": "啊，才做到那里呀……明白了。下一步也跟我说一声，好不好？",
+              "steady_fearful_contact": "嗯……我听你的声音。慢慢吸气……好，至少现在我知道你没有丢下我。",
+              "dismiss_fearful_contact": "……好啦，我不再问。可我就是害怕嘛，等会儿不小心叫出来也别骂我。"
+            }
+          },
+          "progress_fear_default_01": {
+            "prompt": "坂口，你们突然说得那么小声……是有什么地方不对吗？我知道自己不该胡思乱想，可现在只能躺着等你们呀。",
+            "responses": {
+              "explain_progress": "哦……原来还是计划中的步骤。谢谢你认真解释，不然我这脑袋早就把最坏的结果想完一遍了。",
+              "brief_progress": "嗯，至少还在按计划走……我知道了。下次别突然都不说话嘛。",
+              "dismiss_progress": "……好，我不打扰你。可是我现在真的害怕，别把我这句话当成废话呀。"
+            }
+          },
+          "progress_default_01": {
+            "prompt": "坂口，现在到底进行到哪里啦？我越想用医生的脑袋推断，越发现躺在这里根本没有时间概念呀。",
+            "responses": {
+              "answer_progress": "哦，原来这一段已经完成了呀。呼……听见具体进度，我突然觉得有盼头了。",
+              "brief_answer_progress": "好，按计划来。我相信你啦……不过可别让我盯着无影灯一直猜下去哦。"
+            }
+          },
+          "cardiac_progress_fear_01": {
+            "prompt": "……你们是不是已经做到心脏了？大家越安静我越紧张，明明平时我最喜欢手术室安安静静的呀。",
+            "responses": {
+              "explain_cardiac_progress": "嗯，还是预定的阶段……好。拜托你偶尔跟我说一句，别让我自己猜每一个器械声。",
+              "brief_cardiac_progress": "……知道了。我尽量不打扰，你们也不要突然都不理我嘛。"
+            }
+          },
+          "progress_fear_fatigue_01": {
+            "prompt": "……怎么还没结束呀？我现在连你们什么时候换器械都懒得猜了……是不是比计划难了很多？",
+            "responses": {
+              "explain_fatigue_progress": "哦，原来是这个阶段……不是出了事就好。呼，我现在特别希望你们别为了赶时间省步骤。",
+              "brief_fatigue_progress": "还在计划里呀……好，我信你。可是等我下来，你可得让我抱怨今天到底躺了多久。"
+            }
+          },
+          "cabg_signature_01": {
+            "prompt": "……刚才我听见“吻合”了。坂口，你们真的是在替我的心脏建立新的血流通路呀……听起来还是好不可思议。",
+            "responses": {
+              "explain_cabg_milestone": "嗯，是术前说的那一步……好。你讲得越清楚，我就越能忍住不胡思乱想。",
+              "brief_cabg_milestone": "……明白了。我信你们……只是这次真的比我想象中吓人耶。"
+            }
+          },
+          "strain_pain_default_01": {
+            "prompt": "呜……等一下！里面刚才像被狠狠拽住了一下……我明明知道牵拉会难受，可轮到自己怎么完全不是一回事呀！",
+            "responses": {
+              "pause_strain": "呼……谢谢，先让我缓这一下。以前觉得停两分钟会拖慢进度，现在我终于懂患者为什么会求这两分钟了……",
+              "coach_strain": "好……吸气，慢慢呼气……我在努力啦，可身体不肯像脑袋那么听话呀。",
+              "push_through_strain": "……知道了，我会尽量不动……可是等我下台以后，你得听我抱怨这一段有多难受！"
+            }
+          },
+          "strain_default_01": {
+            "prompt": "……刚才有个地方被往旁边牵了一下，对吧？明明知道你们在调整术野，自己感受起来却陌生得吓人耶。",
+            "responses": {
+              "explain_strain": "啊，是这个步骤呀。懂了……我现在终于知道，为什么患者总想问一句“这正常吗”。",
+              "brief_strain": "嗯……一会儿就过去？那我先信你一次，坂口医生。"
+            }
+          },
+          "abdominal_strain_pain_01": {
+            "prompt": "呀……我的肚子里面又被牵住了。你现在是在处理哪一层呀？我以前听患者这么说，还真不懂她们怎么会这么难受。",
+            "responses": {
+              "explain_abdominal_strain": "哦，是那一步……知道原因是会安心一点，可你得让我的身体也配合才行呀，坂口。",
+              "coach_abdominal_strain": "呼……慢慢呼气，对吧？好，我忍一下……哎呀，肚子可一点也不听话。"
+            }
+          },
+          "strain_pain_traction_02": {
+            "prompt": "呜……里面又拉了一下！这次更深……坂口，我现在光听你们说“牵开”都要发抖了啦。",
+            "responses": {
+              "pause_second_traction": "呼……好多了。等我缓一口气再继续好吗？我保证不会赖太久。",
+              "coach_second_traction": "嗯……慢慢呼气，尽量别绷得那么紧……我在试。讨厌，身体怎么就不能听我一次话呢？"
+            }
+          },
+          "strain_pain_pressure_01": {
+            "prompt": "……这里一直被压着，越来越难受。不是一下疼完就算了……坂口，你们平时都觉得这点压力不算什么吗？",
+            "responses": {
+              "relieve_pressure": "啊……轻一点了！谢谢……我刚才差点以为要一直这么压到最后呢。",
+              "explain_pressure": "嗯，要持续一会儿呀……知道原因倒是安心点，可也真是磨人耶。"
+            }
+          },
+          "urologic_strain_pressure_01": {
+            "prompt": "……里面又胀又被牵着。坂口，你们在做哪一步呀？我知道这是泌尿系统的手术，可这种感觉还真难描述……",
+            "responses": {
+              "pause_urologic_strain": "呼……谢谢。先让我喘一下，回头我再好好研究这台手术，现在脑袋完全想不动呀。",
+              "explain_urologic_strain": "哦，是预定的深部操作呀……好。下次要牵的时候，先告诉我一声，好不好？"
+            }
+          },
+          "dignity_low_exposure_01": {
+            "prompt": "……我知道这是必要的术野啦。可是天天见面的同事都围在这里，我连抬眼看你们都觉得害羞……",
+            "responses": {
+              "restore_cover": "啊，谢谢……只留必须露出来的地方就好。这样我才敢好好喘一口气呀。",
+              "explain_exposure": "嗯，道理我都懂。可每次真轮到我躺在这里，还是觉得这样一直暴露着很难熬嘛。",
+              "ignore_exposure": "……你说不要在意？喂，我可不是在给你们找麻烦呀！我今天真的很难为情嘛。"
+            }
+          },
+          "dignity_default_01": {
+            "prompt": "……这块是不是还得一直露着呀？我知道你们只看手术部位，可被大家盯着的感觉还是好别扭。",
+            "responses": {
+              "protect_dignity": "哦，谢谢！呵呵，明明只是替我盖好一点，我居然会这么感动。",
+              "brief_dignity": "嗯，很快就好呀？那我再忍一会儿，不过真希望你们说的“很快”别跟术前准备一样长……"
+            }
+          },
+          "pelvic_dignity_exposure_01": {
+            "prompt": "……已经在盆腔里操作了呀？我知道体位和铺巾都按规定，可被熟悉的同事这样围着，还是好丢脸……",
+            "responses": {
+              "explain_pelvic_stage": "嗯，范围没变就好。你们只留必须看的地方，好不好？我现在真的比想象中害羞多了。",
+              "brief_pelvic_stage": "知道了……按计划来。只要别让我自己猜下一步在做什么，我就能多忍一会儿。"
+            }
+          },
+          "breast_dignity_exposure_01": {
+            "prompt": "……坂口，现在你们看的还是原定的那块范围吧？平时只有我们两个人的时候，你还总夸这边呢……啊，别笑！我知道会长回来，可今天真的要在这里动刀耶……",
+            "responses": {
+              "confirm_breast_scope": "嗯……和说好的一样就行。谢谢你还记得替我把其他地方遮好。",
+              "brief_breast_scope": "好……范围没变。呼，我明明知道答案，还是非要听你亲口说一次才安心。"
+            }
+          },
+          "dignity_cooperation_exposure_01": {
+            "prompt": "……我会配合呀。只是能不能不要大家一起盯着这边？我平时知道你们看的是术野，可今天真的好想把脸藏起来……",
+            "responses": {
+              "limit_observers": "谢谢……不用多说，我知道谁必须在场。只是这样我就能稍微自在一点了。",
+              "brief_privacy_confirmation": "嗯，知道啦……专业的眼光，对吧？唉，轮到自己时真难说服自己呢。"
+            }
+          },
+          "hysterectomy_signature_01": {
+            "prompt": "……已经做到子宫那一步了呀？坂口，明明知道它以后会长回来，可我还是想再问一次……真的要整个取出来了，对吧？",
+            "responses": {
+              "confirm_hysterectomy_scope": "嗯……你说得这么清楚，我就放心一点了。只是知道和亲自躺着等，真的是两回事呀……",
+              "brief_hysterectomy_scope": "……好，还是原定范围。你继续吧……我先闭一下眼睛，好不好？"
+            }
+          },
+          "ovarian_cystectomy_signature_01": {
+            "prompt": "……现在还只是处理卵巢囊肿吧？我知道我们事先说好了，可真正到了这一步，还是会担心正常的部分呀。",
+            "responses": {
+              "confirm_ovarian_preservation": "好……谢谢你把范围说清楚。呵呵，医生当患者就是这样，知道越多反倒问得越细呀。",
+              "brief_ovarian_preservation": "嗯……明白，我相信你。回头可得让我看看记录哦。"
+            }
+          },
+          "myomectomy_signature_01": {
+            "prompt": "坂口，今天是肌瘤剔除，不是子宫全切，对吧？……知道是一回事，躺上来以后我还是想听你再确认一次呀。",
+            "responses": {
+              "confirm_myomectomy_scope": "呼……好，范围没变。谢谢你。我只是突然发现，医生交代的每一句话，患者真的会抓得很紧呀。",
+              "brief_myomectomy_scope": "嗯，知道啦……那我继续配合。你一定要按说好的来哦。"
+            }
+          },
+          "breast_tumor_signature_01": {
+            "prompt": "……现在还是按术前画的那块区域切除吧？坂口，你要知道，我今天真的会一直惦记这个范围耶。",
+            "responses": {
+              "confirm_breast_tumor_scope": "嗯，和画好的范围一致……好。你别嫌我啰嗦，我平时也是这样跟患者一项项核对的嘛。",
+              "brief_breast_tumor_scope": "知道了。……呼，等会儿回去你可要让我确认一下记录哦。"
+            }
+          },
+          "mastectomy_signature_01": {
+            "prompt": "……坂口，这次真的是整侧乳房切除呀。明知道以后会恢复，可想到你们现在真的要把它从我身体上取下来……我还是有点舍不得。",
+            "responses": {
+              "acknowledge_mastectomy_loss": "……谢谢你没有说“反正会长回来就别怕了”。我知道会恢复，可现在这种难过也是真的嘛。",
+              "confirm_mastectomy_plan": "好……只按确定的范围来。我相信你。至少今天请把每一步都做得漂亮一点，好不好？"
+            }
+          },
+          "ongoing_fear_default_01": {
+            "prompt": "……你们怎么突然都不讲话了？每次听见手术室里安静下来，我就忍不住猜是不是又碰到难题了。",
+            "responses": {
+              "reassure_ongoing": "哦，还在按计划进行……好。我知道你们需要专心，偶尔给我一句话就够了。",
+              "brief_ongoing": "嗯，好……那我继续等。唉，躺着等别人做决定，真的比自己在台边做决定难多了。"
+            }
+          },
+          "ongoing_default_01": {
+            "prompt": "……现在需要我做什么吗？我知道自己只是患者，可你们忙得那么认真，我总觉得光躺着有点不甘心呀。",
+            "responses": {
+              "coach_ongoing": "好，明白。我按你说的配合……呵呵，没想到有一天会这么认真听你给我下指令。",
+              "reassure_ongoing_default": "只要保持这样就行？……好吧，今天终于轮到我练习什么都不做了。"
+            }
+          },
+          "ongoing_fear_fatigue_01": {
+            "prompt": "坂口……大家为什么都不说话了？我都躺累了，反倒有力气胡思乱想……不会是出了什么事吧？",
+            "responses": {
+              "maintain_running_update": "哦，还是按计划……呼，听你说句话我就安心多了。别看我平时能说会道，今天我真的怕这份安静。",
+              "brief_running_update": "嗯……好，那我再等一会儿。下一个阶段到了就告诉我，好不好？"
+            }
+          },
+          "ongoing_pain_position_01": {
+            "prompt": "……肩背越来越酸，我连手指都想活动一下。可你们固定得这么认真，我哪里敢自己乱动呀……",
+            "responses": {
+              "adjust_pressure_points": "啊……这样垫一下舒服多了。谢谢，没想到今天最让我感激的竟然是有人帮我调整个垫子……",
+              "coach_position_stillness": "嗯，我不会乱动。我就照你说的放松……不过等会儿可别再让我躺到天黑哦。"
+            }
+          },
+          "abdominal_ongoing_pressure_01": {
+            "prompt": "坂口……肚子里面一直这么沉沉的，你们是在做比较深的步骤吗？我现在真没办法只凭器械声判断呀。",
+            "responses": {
+              "explain_abdominal_pressure": "嗯，明白。是计划中的步骤就好……呼，原来知道“为什么难受”真的会好一点呀。",
+              "brief_abdominal_pressure": "好，我尽量放松腹部。只是今天这份“放松”可真不是嘴上说说就能做到的呀。"
+            }
+          },
+          "pelvic_ongoing_position_01": {
+            "prompt": "……腰和腿都快僵掉了。早知道这台要保持这个姿势这么久，我刚才就不该笑你们摆位太认真了……",
+            "responses": {
+              "support_pelvic_position": "啊……好多了！谢谢。你们别笑我，今天我是真的体会到一个垫子有多重要啦。",
+              "coach_pelvic_position": "好……我按你说的放松腰腿。唉，我现在倒真希望能立刻换回医生那一边去。"
+            }
+          },
+          "cardiac_ongoing_fatigue_01": {
+            "prompt": "……这么久了呀。明明是我自己想体验的，可听着你们处理心脏时一句话都不说，我真的越来越害怕了……",
+            "responses": {
+              "reassure_cardiac_ongoing": "呼……原来还在按计划。谢谢你。只要能偶尔听到你的声音，我就不会一直往坏处想。",
+              "brief_cardiac_ongoing": "嗯……好，我信你们。我只是现在连开玩笑都没什么力气了……"
+            }
+          },
+          "closure_default_01": {
+            "prompt": "……真的快结束了？先说好，我可不会因为听见“收尾”两个字就立刻精神起来哦……",
+            "responses": {
+              "confirm_closure": "呼……主要步骤都完成了呀。谢谢，你慢慢把最后这点做好，我等着。",
+              "brief_closure": "还在做最后检查？……好，我撑得住。只是这回你可别把“最后”说得太轻松啦。"
+            }
+          },
+          "closure_fear_closure_01": {
+            "prompt": "已经在缝了呀？……坂口，你说的“快结束”这次是真的吗？我可不想高兴得太早呀。",
+            "responses": {
+              "confirm_closure_phase": "呼……真的到收尾了。好，我再乖乖躺一会儿，你们可别急着省复核哦。",
+              "brief_closure_phase": "嗯，最后处理……好吧，我再忍这一小段。可你别把“一小段”说成半小时呀。"
+            }
+          },
+          "closure_pain_closure_01": {
+            "prompt": "呜……都在缝合了怎么还能这么难受呀！我知道你们要慢慢关好，可我真的快没力气忍了啦……",
+            "responses": {
+              "pause_closure_discomfort": "……谢谢。呼，终于能缓一下。我现在连说俏皮话的力气都要用光了。",
+              "pace_closure_breathing": "嗯……跟着你的节奏，慢慢呼气……好，我再把这一段熬过去。"
+            }
+          },
+          "breast_closure_fear_01": {
+            "prompt": "……已经在缝合了呀？坂口，我知道以后会恢复，可是今天被你们真的切掉了那一部分……等会儿我还能像平时一样看镜子吗？",
+            "responses": {
+              "answer_breast_closure": "嗯，完全按说好的范围来……谢谢。现在别急着安慰我漂亮不漂亮，先把最后这一步做好就行。",
+              "brief_breast_closure": "……好，按计划收尾。等我下了台，你可得慢慢把每一步讲给我听。"
+            }
+          }
+        },
+        "graphic_preop_by_procedure": {
+          "surgery_vaginal_hysterectomy": {
+            "field": {
+              "speaker": "explainer",
+              "text": "「这次是经阴道子宫全切，不像开腹手术那样先在肚子上开切口。我们会从阴道这一侧暴露宫颈，沿宫颈周围的层次逐步分离、处理支持结构和子宫血管，再经阴道把子宫取出，最后检查止血并关闭阴道残端。膀胱和直肠都靠得很近，整个过程中会仔细辨认和保护。至于你清醒时可能会有什么感觉，等麻醉方式选定后我们再确认。」"
+            },
+            "bowel": {
+              "speaker": "patient",
+              "text": "「天、天哪……真的要从那里切进去开刀呀？！明明我也知道什么叫经阴道手术，可轮到自己……坂口，完了，我连那里的解剖结构都要被你看得一清二楚了……别、别笑！我是在认真问啦！……还有，旁边不是膀胱和直肠吗？是不是也要把肠子推到一边去？」"
+            },
+            "bowel_answer": {
+              "speaker": "explainer",
+              "text": "「不需要像开腹手术那样，先把肠管大范围移开来建立腹部术野。这次主要经阴道、沿宫颈周围的层次操作；仍然要注意深部与腹腔的关系，尤其要保护膀胱和直肠。具体到牵拉、压迫会感觉多少，要看你接下来选的麻醉方式。我们会在开始前再和你确认。」"
+            },
+            "bladder": {
+              "speaker": "patient",
+              "text": "「……所以不是先把肠子推上去，而是要从宫颈前面慢慢分开膀胱呀……这一步我以前也跟患者解释过，听起来明明很普通。可现在换别人告诉我，等会儿从那里放器械、要被牵引的是我自己的宫颈……怎么光是想想就这么害怕呀！」"
+            },
+            "manipulator": {
+              "speaker": "explainer",
+              "text": "「经阴道入路主要会用器械夹持宫颈、向下牵引，必要时调整方向，让前后方的层次逐步显露出来；不是从下面把子宫直接向上托高。膀胱会沿正确的层次推离，直肠也需要保护。你平时熟悉这些步骤，但今天是你自己接受手术。有不明白或担心的地方，现在可以继续问。」"
+            }
+          }
+        },
+        "practice_labels": [
+          "首次手术练习：获得完整技术经验",
+          "第二次练习：技术经验减半",
+          "重复练习：不再获得技术经验"
+        ]
+      },
+      "en": {
+        "invitation_lines": [
+          "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+          "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+          "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+        ],
+        "invitation_by_procedure": {
+          "surgery_appendix": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_breast_tumor": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_hysterectomy": [
+            "“{procedure_name}... You're going to remove my whole uterus. I know everything will go back to normal afterward, that even my uterus will grow back... But imagining you actually taking it out of my body during the operation—why am I suddenly getting scared? ...Hey! I didn't say I wouldn't do it! Let me be scared for a minute, okay?”"
+          ],
+          "surgery_cabg": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_exploratory_laparotomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_cholecystectomy": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_open_inguinal_hernia": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_open_ventral_hernia": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_open_distal_gastrectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_total_gastrectomy": [
+            "“{procedure_name}... W-wait, this means you're going to take the entire organ out, right? Hehe, honestly... I know it'll grow back afterward, but imagining you removing it from my body with your own hands... Just hearing the name is terrifying! ...Still, it's such a rare chance that I want to try. Sakaguchi, you'd better take very good care of me this time.”"
+          ],
+          "surgery_open_right_hemicolectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_sigmoid_colectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_abdominoperineal_resection": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_whipple": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_major_liver_resection": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_splenectomy": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_open_ovarian_cystectomy": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_open_abdominal_myomectomy": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_total_mastectomy": [
+            "“{procedure_name}... You're really going to remove my breast. I know it'll return to exactly how it was afterward, but... when I think about actually losing it on the operating table, I can't help feeling reluctant. ...Oh, don't look at me like that! I know it's only temporary! But knowing that and actually lying down for it are two different things... All right. I'm willing to try it once.”"
+          ],
+          "surgery_open_lung_lobectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_pneumonectomy": [
+            "“{procedure_name}... W-wait, this means you're going to take the entire organ out, right? Hehe, honestly... I know it'll grow back afterward, but imagining you removing it from my body with your own hands... Just hearing the name is terrifying! ...Still, it's such a rare chance that I want to try. Sakaguchi, you'd better take very good care of me this time.”"
+          ],
+          "surgery_open_esophagectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_radical_cystectomy": [
+            "“{procedure_name}... W-wait, this means you're going to take the entire organ out, right? Hehe, honestly... I know it'll grow back afterward, but imagining you removing it from my body with your own hands... Just hearing the name is terrifying! ...Still, it's such a rare chance that I want to try. Sakaguchi, you'd better take very good care of me this time.”"
+          ],
+          "surgery_open_nephrectomy": [
+            "“{procedure_name}... W-wait, this means you're going to take the entire organ out, right? Hehe, honestly... I know it'll grow back afterward, but imagining you removing it from my body with your own hands... Just hearing the name is terrifying! ...Still, it's such a rare chance that I want to try. Sakaguchi, you'd better take very good care of me this time.”"
+          ],
+          "surgery_open_abdominal_aortic_aneurysm": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_vaginal_hysterectomy": [
+            "“{procedure_name}... You're going to remove my whole uterus. I know everything will go back to normal afterward, that even my uterus will grow back... But imagining you actually taking it out of my body during the operation—why am I suddenly getting scared? ...Hey! I didn't say I wouldn't do it! Let me be scared for a minute, okay?”"
+          ],
+          "surgery_adv_artificial_heart_exchange": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_distal_pancreatectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_partial_nephrectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_adrenalectomy": [
+            "“{procedure_name}? Hehe, you certainly know how to pick one. All right, I'm in. But if I end up screaming on the operating table, you don't get to tease me about it afterward!”",
+            "“Oh, {procedure_name} this time. Even the name tells me this won't be a walk in the park... But a chance to experience it from the patient's side? I'm genuinely curious. Take good care of me, Dr. Sakaguchi.”",
+            "“{procedure_name}? Sure! But I'm not going to make the same mistake as last time and think surgery starts the moment I enter the OR. Schedule it properly—don't leave me lying there long enough to question my entire existence!”"
+          ],
+          "surgery_open_left_hemicolectomy": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ],
+          "surgery_open_low_anterior_resection": [
+            "“{procedure_name}... Sakaguchi, you're really not going easy on me this time. When I hear about an operation like this at a pre-op conference, I can just sit there taking notes. But imagining myself on the table this time... the preparations alone might wear me out. Hehe, does my smile look a little forced? ...All right. I accept.”"
+          ]
+        },
+        "reaction_lines": {
+          "procedure_mismatch": "“Hold on! That's not the procedure we agreed on, is it? Hey, Sakaguchi, stop staring at the chart and explain what's changed. I'm willing to let you operate, but that doesn't mean I won't ask what you're doing to me!”",
+          "explain_plan": "“I've been the doctor explaining procedures, so I know the general routine. But today I'm the one on the table... Tell me where you start, what the crucial steps are, and what I might feel if I'm awake. Properly, please.”",
+          "brief_plan": "“Mm, I've got the procedure. Such a short explanation—worried I'll start quizzing you? Hehe... Just don't skip the checks that matter. I'll make a proper anesthesia choice when we get to that step.”",
+          "last_reassure": "“...I know you’ll carefully check every step of the procedure you’re actually doing today. But thinking about all the preparations still ahead, and then lying on that table with everyone working around me... I’m not finding it so easy to smile anymore. Sakaguchi, don’t leave me alone with my imagination, okay?”",
+          "choose_general": "“General anesthesia, huh... So I close my eyes, and when I open them, it'll all be over? Shame I'll miss the whole thing... But I'll go with that this time. You'll have to tell me all about it when I wake up.”",
+          "choose_epidural": "“An epidural, then. So I'll still be awake to hear you all talking? Hehe, that sounds rather like my kind of thing. But if the block doesn't cover enough, tell me plainly what the plan is, okay?”",
+          "choose_local": "“Local anesthesia? Mm... At least I won't sleep through it. But that only numbs the area around the incision, right? Tell me what I might feel deeper in, before I get a nasty surprise.”",
+          "choose_none": "“...No anesthesia again? You really did choose the bold option, Sakaguchi. All right, we agreed, so I'll try... But let me make one thing clear: if I scream my head off, you're not allowed to complain!”",
+          "induction_reassure": "“Mm... I know. Just breathe slowly. Hey, Sakaguchi... when I wake up, you'd better be...”",
+          "insist_without_anesthesia": "“Stop asking whether I'm just trying to act tough! I know it hurts—last time wasn't a dream... Knowing that doesn't stop me from being scared when I'm actually waiting for you to cut.”",
+          "assistant_stabilize_none": "“Ah, wait... I know I have to stay still! But I'm tense all over. Please hold me steady... And don't let Sakaguchi see how badly I'm shaking.”",
+          "assistant_stabilize_local": "“O-okay, I'll cooperate. The local anesthetic helps, but I know exactly what's in your hands. How am I supposed to be completely relaxed?”",
+          "assistant_stabilize_epidural": "“I know my legs aren’t responding properly because of the anesthesia... But understanding it doesn’t stop me from panicking when I need someone else to hold me in position. I’m usually the one telling patients, ‘I’ve got you.’ Today I’m the one hanging on to you...”",
+          "contact_pause": "“Hah... thank you. Let me catch my breath. That last bit was a lot more intense than I expected... All right, don't rush me. I'm listening.”",
+          "contact_command": "“I know—stay still, relax, breathe slowly... Easy for you to say. I'm trying, Dr. Sakaguchi!”",
+          "contact_continue": "“...Mm. Go on. I just needed to complain for a moment. I didn't say you had to stand here waiting until I ran out of things to say.”",
+          "ongoing_narrate": "“So that's where we are... Once you explain it, I can follow the procedure in my head. It's just... my body isn't nearly as calm as my brain.”",
+          "ongoing_eye_contact": "“I'm okay... Oh, don't look at me like that! When you watch me with those worried eyes, it makes me want to cry even more.”",
+          "ongoing_silent": "“...Sakaguchi? Why did everyone go quiet? I know you're concentrating... but lying here listening to instruments clink without hearing a word is making my skin crawl.”",
+          "closure_reassure": "“It's really almost over? Don't just say that to cheer me up... At this point, ‘just a few more stitches’ sounds beautiful enough to make me cry.”",
+          "closure_coach": "“Okay, I'll keep still... Hah, take your time. Look at me—I'm a doctor, and I still need someone to talk me through getting stitched up.”",
+          "closure_silent": "“...We're already at the suturing stage, and you still won't say a word to me? Hmph. Once I'm off this table, I'm making you tell me about the whole operation from the beginning.”",
+          "incision_marking_awake": "“...You’re marking it already? After all that preparation, we’re finally almost at the incision, and I don’t feel relieved at all... Sakaguchi, tell me just before you make the cut, okay?”",
+          "incision_marking_none": "“W-wait, that’s just a marking, right? A minute ago I was complaining the preparation was taking too long... Now that you’re about to cut, why does it suddenly feel too fast? Let me catch my breath... Please.”",
+          "incise_epidural": "“...Ah, you've already made the incision? I can feel that you're working on me, but it's nothing like what I'd been imagining... Hah. So it's really started.”",
+          "incise_local": "“Ah—! That still startled me! The local anesthetic is doing something, but knowing the blade has actually touched me is worlds apart from watching beside the table.”",
+          "incise_none": "“Aah—!! Ow, that hurts! W-wait... Hah... Y-you really made the cut! I know I agreed to this, but that was just... Ngh, Sakaguchi, please be gentle!”"
+        },
+        "reaction_variants": {
+          "ward_enema": [
+            "“W-wait a moment... You’re the people I work with every day! I know this is routine preparation, but having my own coworkers do all this for me... I can barely look you in the eye. Could you give me a moment to breathe?”",
+            "“...I used to write ‘pre-op preparation complete’ in a chart in a matter of seconds. How can it feel like I’ve been put through half a day of this when we’ve barely started? Hah... how many more things are there?”"
+          ],
+          "ward_enema_unnecessary": [
+            "“Huh, this step isn't mandatory? Then tell me why we're considering it. I'd ask another question if I were making the decision as a doctor, and I definitely want an answer as the patient.”",
+            "“Hehe, I never said I wanted to try every single pre-op preparation! If something isn't required, you ought to explain the reason first.”"
+          ],
+          "ward_skin_prep": [
+            "“Ah... wait, does it really have to be this thorough? I know it’s for the operative field, but we all work together every day... Lying here while you check everything is so embarrassing!”",
+            "“...When I watched nurses do skin prep, it always seemed to take no time at all. Today you’re checking one area after another. I know it’s necessary, but I’m embarrassed and getting irritated... How much longer?”"
+          ],
+          "ward_skin_prep_unnecessary": [
+            "“Hold on, that area isn't part of this surgical field, is it? If you're only extending it out of habit, could you spare me a little?”",
+            "“Hm? That part can be skipped too? Then I want to think about it. I'm here for surgery, not to sign up for the deluxe pre-op preparation package.”"
+          ],
+          "ward_surgical_cap": [
+            "“Please tuck all my hair in... Sigh. Once the cap is on, it really feels like I’m being sent off to the operating table. I was so confident when I agreed, so why is just looking at this cap making me nervous?”",
+            "“When I checked patients’ caps, I’d smile and say, ‘Don’t worry, it’ll be over soon’... Now it’s my turn, and all I want to ask is—when you say ‘soon,’ how long is that, exactly?”"
+          ],
+          "operative_positioning_awake": [
+            "“...Arm here, move my body a little more... I know, I know! You all usually call me Dr. Nanjou, but today you’re arranging me one by one, and I have to ask before I can even turn over... This is so humiliating.”",
+            "“D-don’t rush me! I am cooperating... But once I’m in position I can’t just move, and then I have to wait for you to finish. You have work to keep you busy; I’m counting every single minute!”"
+          ],
+          "operative_positioning_none": [
+            "“W-wait... Please don’t all crowd around at once! I know I need to cooperate especially carefully without anesthesia, but the more seriously you say ‘preparation,’ the more I panic... Give me a moment.”",
+            "“The straps too, huh... Mm, I know they're for safety. But once I'm settled like this, it really hits me—even if I wanted to shrink away, there's nowhere to go.”"
+          ],
+          "urinary_catheterization_awake": [
+            "“...So it’s my turn for this part, too. You’re all coworkers I see every day, and now I’m lying here needing this kind of help... Ah, don’t look at my face! I’m mortified!”",
+            "“Hah... I used to tell patients, with a perfectly straight face, ‘Just relax.’ If you say that to me one more time today, I really might get mad... I’m trying my best!”"
+          ],
+          "urinary_catheterization_none": [
+            "“H-hey, wait a second! I know what this step involves, but all this time I’ve been lying however you tell me to lie... And now I have to go through this part wide awake, too. I’m so embarrassed I can hardly face anyone!”",
+            "“Ah... wait... I really am trying to cooperate. But the more matter-of-fact you all are, the more I feel like a patient whose every move has been decided for her... Ugh, this is mortifying.”"
+          ],
+          "skin_disinfection_awake": [
+            "“Cold! ...Oh, it's the antiseptic. I know, I know. But hearing patients react from beside the table and jumping at the touch yourself are two completely different things.”",
+            "“...We’re not finished yet? I know skin disinfection can’t be rushed, but after all that preparation in the ward, it feels like I’ve been waiting here on the table forever... You’re all busy doing things, while I just stare at the surgical lights and scare myself half to death.”"
+          ],
+          "skin_disinfection_none": [
+            "“...It's only skin prep. Why is my heart pounding already? Sakaguchi, when you really make the cut, you're not allowed to laugh at me.”",
+            "“Wait for the antiseptic to dry, drape the field, do the checks... I know, none of it can be skipped. But lying here doing nothing, I’m actually starting to wish you’d hurry up and make the cut... Wait, what?! Last time it hurt terribly when you cut into me! Why am I even saying that?!”"
+          ]
+        },
+        "reaction_speakers": {
+          "procedure_mismatch": "patient",
+          "explain_plan": "patient",
+          "brief_plan": "patient",
+          "last_reassure": "patient",
+          "choose_general": "patient",
+          "choose_epidural": "patient",
+          "choose_local": "patient",
+          "choose_none": "patient",
+          "induction_reassure": "patient",
+          "insist_without_anesthesia": "patient",
+          "assistant_stabilize_none": "patient",
+          "assistant_stabilize_local": "patient",
+          "assistant_stabilize_epidural": "patient",
+          "contact_pause": "patient",
+          "contact_command": "patient",
+          "contact_continue": "patient",
+          "ongoing_narrate": "patient",
+          "ongoing_eye_contact": "patient",
+          "ongoing_silent": "patient",
+          "closure_reassure": "patient",
+          "closure_coach": "patient",
+          "closure_silent": "patient",
+          "incision_marking_awake": "patient",
+          "incision_marking_none": "patient",
+          "incise_epidural": "patient",
+          "incise_local": "patient",
+          "incise_none": "patient"
+        },
+        "stage_prompts": {
+          "graphic_preop_question": "“I know the procedure is called {procedure_name}. But honestly, I don't necessarily know this specialty any better than a patient. Where will you approach it, and what's the critical step? If I choose to stay awake later, what might I feel, and what should I tell you about right away?”"
+        },
+        "interaction_overrides": {
+          "contact_pain_incision_01": {
+            "prompt": "...Ah, I felt that at the incision. Sakaguchi, we've really started, haven't we? I know the procedure, so why is my heart racing like this...?",
+            "responses": {
+              "explain_contact": "Mm, I'm listening. Slow breaths, just like you said, right? ...So today I'm the one being coached by the doctor.",
+              "brief_contact": "I know, we're following the plan... I'll stay still. It's just much more real than I imagined.",
+              "continue_contact": "...All right, I'll cooperate. Just don't expect me to act like the Dr. Nanjou who can watch an operation without batting an eye."
+            }
+          },
+          "contact_no_anesthesia_incision_01": {
+            "prompt": "Aah! W-wait, Sakaguchi! I knew the first incision would hurt, but why does it have to feel so horribly sharp and real...?!",
+            "responses": {
+              "steady_unanesthetized_contact_01": "Hah... I'm listening. Just go a little slower. I can't pretend to be brave right now; let me catch my breath...",
+              "continue_unanesthetized_contact_01": "You make it sound so easy to endure... Ngh! I know we have to keep going, but don't complain about how loudly I scream!"
+            }
+          },
+          "contact_no_anesthesia_incision_02": {
+            "prompt": "N-no... Are you going deeper already?! I haven't even recovered from that last part!",
+            "responses": {
+              "steady_unanesthetized_contact_02": "Hah... Just a moment's pause helps. Once I've stopped shaking, tell me what comes next, okay?",
+              "continue_unanesthetized_contact_02": "Aaah! Hey, Sakaguchi! It's easy for you to say 'keep going' when I'm the one lying here feeling every bit of it!"
+            }
+          },
+          "contact_no_anesthesia_incision_03": {
+            "prompt": "Sakaguchi... Ngh, I know I was the one who said no anesthesia, but it hurts so much now. Not even a little...?",
+            "responses": {
+              "steady_unanesthetized_contact_03": "...No? All right, I understand... Then at least go slowly and tell me what you're about to do next, okay?",
+              "continue_unanesthetized_contact_03": "Ngh... Not even a moment to recover...?! I know you have to finish, but it hurts so much I could cry!"
+            }
+          },
+          "contact_default_01": {
+            "prompt": "...Huh? We've started already? You're all so practiced I almost missed it. Just because I'm a doctor too doesn't mean you can skip telling me.",
+            "responses": {
+              "reassure_start": "Mm, that's reassuring. I'm your patient today, so remember to keep me informed.",
+              "brief_start": "All right, got it... Sigh. Even though I’ve been through this before, hearing “we’ve started” while I’m on the table still makes me nervous.",
+              "silent_start": "...All right, I'll be quiet. I'm very good at cooperating... Or at least I'll try."
+            }
+          },
+          "contact_pain_incision_02": {
+            "prompt": "Ah... I can feel the incision so clearly now. Sakaguchi, you can hear me, right? I haven't got the energy to keep pretending I'm calm today.",
+            "responses": {
+              "acknowledge_second_contact": "Mm, hearing you answer helps. Can you keep talking to me? It doesn't have to be much. Just a word now and then.",
+              "brief_second_contact": "Okay, you're still there... Hah. Then I'll hang on a little longer."
+            }
+          },
+          "contact_fear_incision_01": {
+            "prompt": "...Have you really made the incision? Not being able to see your hands makes me imagine all kinds of things. Don't laugh, Sakaguchi. I'm never frightened when I'm the one operating.",
+            "responses": {
+              "orient_fearful_contact": "Oh, so that's as far as you've gone... I understand. Tell me when you're about to do the next step too, okay?",
+              "steady_fearful_contact": "Mm... I'm listening to your voice. Breathe in slowly... Okay, at least I know you haven't left me alone.",
+              "dismiss_fearful_contact": "...All right, I won't ask again. But I am scared, and don't scold me if I end up crying out."
+            }
+          },
+          "progress_fear_default_01": {
+            "prompt": "Sakaguchi, your voices just got so quiet... Is something wrong? I know I shouldn't jump to conclusions, but all I can do is lie here and wait.",
+            "responses": {
+              "explain_progress": "Oh... so it's still a planned step. Thanks for explaining. Otherwise I'd have imagined every worst-case scenario by now.",
+              "brief_progress": "Mm, so we're still on track... I understand. Just don't all go silent on me like that next time.",
+              "dismiss_progress": "...All right, I won't distract you. But I really am frightened. Please don't treat that as a pointless complaint."
+            }
+          },
+          "progress_default_01": {
+            "prompt": "Sakaguchi, how far along are we? The harder I try to work it out like a doctor, the more I realize I have no sense of time down here.",
+            "responses": {
+              "answer_progress": "Oh, so that part's finished. Hah... Hearing an actual update suddenly gives me something to look forward to.",
+              "brief_answer_progress": "Okay, stay with the plan. I trust you... Just don't leave me staring at the surgical lights and guessing forever."
+            }
+          },
+          "cardiac_progress_fear_01": {
+            "prompt": "...Are you working on my heart already? The quieter everyone gets, the more nervous I feel—and I usually love a quiet OR.",
+            "responses": {
+              "explain_cardiac_progress": "Mm, still the planned stage... Good. Just say something now and then, please, so I don't have to interpret every sound myself.",
+              "brief_cardiac_progress": "...Understood. I'll try not to distract anyone. Just don't all forget I'm here, okay?"
+            }
+          },
+          "progress_fear_fatigue_01": {
+            "prompt": "...Why isn't it over yet? I'm too tired even to guess when you change instruments... Has it become much harder than planned?",
+            "responses": {
+              "explain_fatigue_progress": "Oh, so that's the stage... As long as nothing went wrong. Hah, I really don't want you skipping steps just to save time.",
+              "brief_fatigue_progress": "Still on plan... okay, I trust you. But once I'm off the table, you have to let me complain about how long I've been lying here."
+            }
+          },
+          "cabg_signature_01": {
+            "prompt": "...I just heard 'anastomosis.' Sakaguchi, you're really making a new route for blood to reach my heart... It still sounds unbelievable.",
+            "responses": {
+              "explain_cabg_milestone": "Mm, that's the step you described before surgery... okay. The clearer you explain it, the easier it is not to imagine the worst.",
+              "brief_cabg_milestone": "...Understood. I trust you all... This is just far more frightening than I imagined."
+            }
+          },
+          "strain_pain_default_01": {
+            "prompt": "Ngh... wait! Something inside felt like it was pulled hard just now... I know traction can feel awful, but experiencing it myself is another matter entirely!",
+            "responses": {
+              "pause_strain": "Hah... thank you, let me recover from that. I used to think a two-minute pause would slow us down. Now I understand why patients beg for those two minutes...",
+              "coach_strain": "Okay... in, then breathe out slowly... I'm trying, but my body isn't nearly as obedient as my brain.",
+              "push_through_strain": "...I know. I'll try not to move... But when I'm off this table, you're going to hear exactly how miserable that was!"
+            }
+          },
+          "strain_default_01": {
+            "prompt": "...Something just tugged to the side, didn’t it? I know you’re adjusting the surgical field, but feeling it myself is frighteningly unfamiliar.",
+            "responses": {
+              "explain_strain": "Ah, so that's the step. Got it... Now I understand why patients always want to ask whether this is normal.",
+              "brief_strain": "Mm... It'll pass soon? I'll take your word for it this time, Dr. Sakaguchi."
+            }
+          },
+          "abdominal_strain_pain_01": {
+            "prompt": "Ah... there's that pulling inside my abdomen again. Which layer are you working on? I used to hear patients say this and never quite understand how awful it felt.",
+            "responses": {
+              "explain_abdominal_strain": "Oh, that step... Knowing why does help, but you've still got to get my body to cooperate too, Sakaguchi.",
+              "coach_abdominal_strain": "Hah... breathe out slowly, right? Okay, I'll hold on... My abdomen really isn't listening to me."
+            }
+          },
+          "strain_pain_traction_02": {
+            "prompt": "Ngh... that pulling again! Deeper this time... Sakaguchi, now even hearing someone say 'retractor' makes me shiver.",
+            "responses": {
+              "pause_second_traction": "Hah... much better. Can we continue once I've caught my breath? I promise I won't keep you waiting long.",
+              "coach_second_traction": "Mm... breathe out slowly, try not to tense up so much... I’m trying. Ugh, why can’t my body listen to me for once?"
+            }
+          },
+          "strain_pain_pressure_01": {
+            "prompt": "...There's constant pressure here, and it's getting worse. It isn't one quick sting and then done... Sakaguchi, do you all usually think this kind of pressure is nothing?",
+            "responses": {
+              "relieve_pressure": "Ah... that's lighter! Thank you... I was starting to think I'd be pressed like that until the very end.",
+              "explain_pressure": "Mm, so it'll last a little longer... Knowing why helps, but it really wears you down."
+            }
+          },
+          "urologic_strain_pressure_01": {
+            "prompt": "...There’s this deep pressure and pulling sensation. Sakaguchi, which step are you on? I know this is a urologic procedure, but it’s hard to describe what it feels like...",
+            "responses": {
+              "pause_urologic_strain": "Hah... thank you. Let me breathe a moment. I'll study this operation properly afterward; right now I can't think straight at all.",
+              "explain_urologic_strain": "Oh, it's the planned deep work... okay. Next time you need to pull, tell me first, all right?"
+            }
+          },
+          "dignity_low_exposure_01": {
+            "prompt": "...I know this is the necessary surgical field. But with colleagues I see every day gathered around, I'm too embarrassed even to look up at you...",
+            "responses": {
+              "restore_cover": "Ah, thank you... Just leave what actually needs to be exposed. Now I can finally take a proper breath.",
+              "explain_exposure": "Mm, I understand why it’s necessary. But every time I’m the one lying here, being exposed for so long still feels terribly uncomfortable.",
+              "ignore_exposure": "...You say not to mind? Hey, I'm not trying to make trouble for anyone! I'm genuinely embarrassed today."
+            }
+          },
+          "dignity_default_01": {
+            "prompt": "...Does this area still have to stay exposed? I know you're only looking at the operative site, but being watched like this feels so awkward.",
+            "responses": {
+              "protect_dignity": "Oh, thank you! Hehe, I can't believe I'm this touched by someone covering me properly.",
+              "brief_dignity": "Mm, it'll be over soon? I'll bear it a little longer, but I hope 'soon' doesn't mean as long as pre-op preparation did..."
+            }
+          },
+          "pelvic_dignity_exposure_01": {
+            "prompt": "...You're working in my pelvis now? I know the positioning and draping are according to protocol, but being surrounded like this by people I know is mortifying...",
+            "responses": {
+              "explain_pelvic_stage": "Mm, as long as the scope hasn't changed. Please expose only what's necessary, okay? I'm much more self-conscious than I expected.",
+              "brief_pelvic_stage": "Understood... Keep to the plan. As long as I don't have to guess what happens next, I can hold on a little longer."
+            }
+          },
+          "breast_dignity_exposure_01": {
+            "prompt": "...Sakaguchi, you're still working within the planned area, right? When it's just the two of us, you're always complimenting this part of me... Ah, don't laugh! I know it'll grow back, but you're actually operating here today...",
+            "responses": {
+              "confirm_breast_scope": "Mm... As long as it's what we agreed. Thank you for remembering to keep the rest of me covered.",
+              "brief_breast_scope": "Okay... the scope hasn't changed. Hah, I knew the answer, but I needed to hear you say it yourself."
+            }
+          },
+          "dignity_cooperation_exposure_01": {
+            "prompt": "...I will cooperate. It's just... could you not all stare over here at once? I know you're looking at the operative field, but today I want to hide my face...",
+            "responses": {
+              "limit_observers": "Thank you... You don't need to explain. I know who needs to be here. This just makes it a little easier to bear.",
+              "brief_privacy_confirmation": "Mm, I know... professional eyes, right? Sigh, it's hard to convince myself when I'm the one being looked at."
+            }
+          },
+          "hysterectomy_signature_01": {
+            "prompt": "...You've reached my uterus now? Sakaguchi, I know it'll grow back, but I still want to ask one more time... You're really going to remove the whole thing, aren't you?",
+            "responses": {
+              "confirm_hysterectomy_scope": "Mm... hearing you explain it clearly does help. It's just so different knowing about it and lying here waiting for it to happen...",
+              "brief_hysterectomy_scope": "...Okay, still the agreed scope. Go on... I just want to close my eyes for a moment, all right?"
+            }
+          },
+          "ovarian_cystectomy_signature_01": {
+            "prompt": "...You're still only treating the ovarian cyst, right? I know we agreed on the plan, but now that we've reached this step, I can't help worrying about the healthy tissue.",
+            "responses": {
+              "confirm_ovarian_preservation": "Okay... thank you for making the scope clear. Hehe, a doctor as a patient asks even more questions because she knows what they mean.",
+              "brief_ovarian_preservation": "Mm... understood. I trust you. You'll have to show me the report afterward, though."
+            }
+          },
+          "myomectomy_signature_01": {
+            "prompt": "Sakaguchi, we're removing the fibroid, not my whole uterus, right? ...Knowing that is one thing. Lying here makes me want to hear you confirm it again.",
+            "responses": {
+              "confirm_myomectomy_scope": "Hah... okay, the scope hasn't changed. Thank you. I've suddenly realized how tightly a patient holds on to every word a doctor says.",
+              "brief_myomectomy_scope": "Mm, got it... I'll keep cooperating. Just make sure we stick to what we agreed."
+            }
+          },
+          "breast_tumor_signature_01": {
+            "prompt": "...You're still removing just the area we marked before surgery, right? Sakaguchi, you should know I'll be thinking about that margin the whole time.",
+            "responses": {
+              "confirm_breast_tumor_scope": "Mm, it matches the marked area... good. Don't call me fussy. I go through these checks with patients myself.",
+              "brief_breast_tumor_scope": "Understood. ...Hah, you'll have to let me check the record later, okay?"
+            }
+          },
+          "mastectomy_signature_01": {
+            "prompt": "...Sakaguchi, this really is a full mastectomy. I know I'll recover afterward, but thinking of you actually removing my breast from my body now... I can't help feeling reluctant.",
+            "responses": {
+              "acknowledge_mastectomy_loss": "...Thank you for not saying, 'It'll grow back, so don't be scared.' I know I'll recover, but what I'm feeling right now is real too.",
+              "confirm_mastectomy_plan": "Okay... only within the agreed scope. I trust you. At least do each step neatly today, all right?"
+            }
+          },
+          "ongoing_fear_default_01": {
+            "prompt": "...Why has everyone suddenly stopped talking? Whenever the OR goes quiet, I can't help wondering whether you've run into a problem.",
+            "responses": {
+              "reassure_ongoing": "Oh, still going to plan... Good. I know you need to focus. Just a word now and then is enough.",
+              "brief_ongoing": "Mm, okay... I'll keep waiting. Sigh, lying here while other people make decisions is much harder than making them beside the table."
+            }
+          },
+          "ongoing_default_01": {
+            "prompt": "...Is there anything I should do? I know I'm just the patient, but you're all working so hard that lying here doing nothing feels strangely frustrating.",
+            "responses": {
+              "coach_ongoing": "Okay, understood. I'll do what you say... Hehe, who knew I'd be taking your instructions this seriously one day?",
+              "reassure_ongoing_default": "Just stay as I am? ...All right. Apparently today I'm practicing the art of doing nothing."
+            }
+          },
+          "ongoing_fear_fatigue_01": {
+            "prompt": "Sakaguchi... why has everyone gone quiet? I'm exhausted from lying here, yet somehow I still have energy to imagine disasters... Nothing's wrong, is it?",
+            "responses": {
+              "maintain_running_update": "Oh, still on plan... Hah, just hearing your voice helps. I may usually talk a lot, but today this silence honestly frightens me.",
+              "brief_running_update": "Mm... okay, I'll wait a little longer. Tell me when you reach the next stage, all right?"
+            }
+          },
+          "ongoing_pain_position_01": {
+            "prompt": "...My shoulders and back are aching worse and worse. I even want to wiggle my fingers. But after all the care you took positioning me, I'm afraid to move a muscle...",
+            "responses": {
+              "adjust_pressure_points": "Ah... that padding makes a huge difference. Thank you. I never thought I'd be this grateful for someone adjusting a cushion...",
+              "coach_position_stillness": "Mm, I won't move. I'll relax just as you said... Just don't leave me here until nightfall, okay?"
+            }
+          },
+          "abdominal_ongoing_pressure_01": {
+            "prompt": "Sakaguchi... there's this heavy pressure in my abdomen. Are you working deep inside? I really can't tell from the instrument sounds anymore.",
+            "responses": {
+              "explain_abdominal_pressure": "Mm, I understand. As long as it's part of the plan... Hah, it really does help to know why something feels awful.",
+              "brief_abdominal_pressure": "Okay, I'll try to relax my abdomen. It's much easier said than done today."
+            }
+          },
+          "pelvic_ongoing_position_01": {
+            "prompt": "...My back and legs are almost frozen stiff. If I'd known I'd have to stay like this so long, I wouldn't have teased you all about how carefully you positioned me...",
+            "responses": {
+              "support_pelvic_position": "Ah... that's so much better! Thank you. Don't laugh at me; today I've learned how much a single cushion matters.",
+              "coach_pelvic_position": "Okay... I'll relax my back and legs the way you said. Sigh, right now I really wish I could trade places and be the doctor again."
+            }
+          },
+          "cardiac_ongoing_fatigue_01": {
+            "prompt": "...It's been so long. I was the one who wanted to experience this, but hearing you work on my heart without saying a word is honestly getting scarier and scarier...",
+            "responses": {
+              "reassure_cardiac_ongoing": "Hah... so we're still on plan. Thank you. As long as I can hear your voice now and then, I won't keep imagining the worst.",
+              "brief_cardiac_ongoing": "Mm... okay, I trust you all. I just don't have much energy left for jokes right now..."
+            }
+          },
+          "closure_default_01": {
+            "prompt": "...Are we really almost finished? Just so you know, hearing 'closure' isn't going to make me lively again all of a sudden...",
+            "responses": {
+              "confirm_closure": "Hah... so the main part's done. Thank you. Take your time finishing the last bit properly. I'll wait.",
+              "brief_closure": "Still doing the final checks? ...Okay, I can manage. Just don't make 'final' sound quite so easy this time."
+            }
+          },
+          "closure_fear_closure_01": {
+            "prompt": "You're suturing already? ...Sakaguchi, is 'almost finished' actually true this time? I don't want to celebrate too soon.",
+            "responses": {
+              "confirm_closure_phase": "Hah... it really is the final stage. Okay, I'll lie still a little longer. Just don't rush the checks for my sake.",
+              "brief_closure_phase": "Mm, the final steps... All right, I'll bear a little longer. Just don't let 'a little longer' turn into half an hour."
+            }
+          },
+          "closure_pain_closure_01": {
+            "prompt": "Ngh... how can closing still feel this awful?! I know you have to do it properly, but I barely have the strength left to endure it...",
+            "responses": {
+              "pause_closure_discomfort": "...Thank you. Hah, I can finally catch my breath. I'm almost out of energy for witty remarks.",
+              "pace_closure_breathing": "Mm... follow your pace, breathe out slowly... Okay, I'll get through this last part."
+            }
+          },
+          "breast_closure_fear_01": {
+            "prompt": "...You're closing already? Sakaguchi, I know it'll grow back, but having that part of me genuinely removed today... Am I going to be able to face the mirror afterward?",
+            "responses": {
+              "answer_breast_closure": "Mm, exactly the area we agreed on... Thank you. Don't worry about telling me whether I'm pretty right now. Just do the last part properly.",
+              "brief_breast_closure": "...Okay, finish according to plan. Once I'm off the table, you'll have to tell me about every step."
+            }
+          }
+        },
+        "graphic_preop_by_procedure": {
+          "surgery_vaginal_hysterectomy": {
+            "field": {
+              "speaker": "explainer",
+              "text": "“This is a vaginal hysterectomy. Unlike an open abdominal procedure, we won't begin with an incision in your abdomen. We'll expose the cervix through the vaginal approach, work through the tissue planes around it, address the supporting structures and uterine blood vessels, and remove the uterus vaginally. After that we'll check for bleeding and close the vaginal cuff. The bladder and rectum are close to the operative field, so we'll identify and protect them carefully throughout. Once you've chosen an anesthesia method, we'll go over what you might feel if you're awake.”"
+            },
+            "bowel": {
+              "speaker": "patient",
+              "text": "“G-good heavens... you're really going to make the incision down there?! I know perfectly well what a vaginal procedure is, but now that it's *me*... Sakaguchi, oh no, you're going to see the anatomy down there in every little detail... D-don't laugh! I'm asking a serious question! ...And aren't the bladder and rectum right next to it? Will you have to push my intestines aside too?”"
+            },
+            "bowel_answer": {
+              "speaker": "explainer",
+              "text": "“We won't need to move the intestines extensively to establish an abdominal operative field the way we would in an open procedure. This operation is approached vaginally, following the tissue planes around the cervix. We'll still watch the deeper anatomy and its relation to the abdominal cavity, especially protecting the bladder and rectum. How much traction or pressure you might feel depends on the anesthesia you choose next. We'll confirm that with you before we begin.”"
+            },
+            "bladder": {
+              "speaker": "patient",
+              "text": "“...So you won't push the intestines up first. You'll carefully separate the bladder from the front of my cervix... I've explained that step to patients myself, and it always sounded so routine. But now someone else is telling me that instruments will go in down there, and it'll be *my* cervix they're going to hold and pull... Why does just thinking about it frighten me so much?”"
+            },
+            "manipulator": {
+              "speaker": "explainer",
+              "text": "“With the vaginal approach, we mainly use instruments to grasp the cervix and apply downward traction, adjusting the direction as needed to expose the tissue planes in front and behind. We don't simply push the uterus upward from below. We'll separate the bladder along the correct plane and protect the rectum as well. You're familiar with these steps from your work, but today you're the patient. If anything is unclear or worries you, you can keep asking.”"
+            }
+          }
+        },
+        "practice_labels": [
+          "First practice: full surgical XP",
+          "Second practice: 50% surgical XP",
+          "Repeated practice: no further surgical XP"
+        ]
+      }
+    },
+    "dialogue_source": "docs/sources/HOSHIMI_SAYAKA_STAFF_AS_PATIENT_DIALOGUE_DRAFT_V1_6_CN_EN.md",
+    "dialogue_source_sha256": "4def3e67607e6dc773dcfd5790c67f2745cce6a1ba16284c49e177c958d58885",
+    "agreement_required_interaction_ids": [
+      "hysterectomy_signature_01",
+      "ovarian_cystectomy_signature_01",
+      "myomectomy_signature_01",
+      "breast_tumor_signature_01",
+      "mastectomy_signature_01",
+      "cabg_signature_01",
+      "pelvic_dignity_exposure_01",
+      "pelvic_dignity_default_01",
+      "breast_dignity_exposure_01",
+      "breast_dignity_default_01",
+      "breast_closure_fear_01"
+    ]
+  }
+}

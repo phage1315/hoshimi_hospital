@@ -5,6 +5,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 	UI.panel(app, Vector2(55, 195), Vector2(560, 290))
 	UI.panel(app, Vector2(635, 195), Vector2(590, 290))
 	app.scrollable_text_at(app.tx("ui.result.success", "✓ 手术成功"), Vector2(75, 211), Vector2(520, 45), 25, Color("e8cfaa"), "SurgeryResultTitle")
+	if prep.is_staff_patient():
+		var reward: String = preload("res://godot/ui/staff_patient_view.gd").reward_label(app, str(prep.definition.staff_patient_id), str(prep.procedure_id)) if app.game.staff_patient_agreement_fulfilled(prep) else app.tx("ui.staff_patient.mismatch", "非约定术式 · 技术经验 0 · 不消耗次数")
+		app.label_at(reward, Vector2(75, 174), 18, Color("e8cfaa"), 1100).name = "StaffPatientRewardStatus"
 	app.scrollable_text_at(prep.interaction_summary(), Vector2(75, 270), Vector2(520, 115), 19, Color("e1e4db"), "SurgeryResultSummary")
 	if prep.pilot_surgery():
 		app.scrollable_text_at(app.tx("ui.surgery.quality_score", "手术质量 Surgical Quality：%s（%s分）") % [prep.surgical_quality_grade(), prep.surgical_quality_score()], Vector2(75, 399), Vector2(520, 65), 22, Color("e8cfaa"), "SurgicalQualityResult")
@@ -63,7 +66,7 @@ static func show_growth(app: Control, before: Dictionary, next_action: Callable)
 		for level in range(int(member.level), after):
 			earned += app.game.staff_training_credit_cost(level)
 		var person: Dictionary = app.content.find_record("staff", member.id)
-		var skill_name: String = app.tx("ui.result.skill_surgery", "手术") if member.skill == "surgery" else app.tx("ui.result.skill_instruments", "器械配合") if member.skill == "instrument_handling" else app.tx("ui.result.skill_teamwork", "团队协作")
+		var skill_name: String = app.tx("ui.result.skill_surgery", "手术") if member.skill == "surgery" else app.tx("ui.result.skill_instruments", "器械配合") if member.skill == "instrument_handling" else app.tx("ui.result.skill_patient_care", "患者照护") if member.skill == "patient_care" else app.tx("ui.result.skill_teamwork", "团队协作")
 		var member_text: String = app.tx("ui.result.member_growth", "%s · %s\n训练点 +%s　技能 %s → %s（+%s）") % [person.get("name", member.id), skill_name, earned, member.level, after, after - int(member.level)]
 		member_text += "\n" + (app.tx("ui.result.cap", "已达培养上限") if after >= 90 else app.tx("ui.result.credit_progress", "下一级进度 %s / %s") % [remaining, app.game.staff_training_credit_cost(after)])
 		lines.append(member_text)

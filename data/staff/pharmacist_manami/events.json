@@ -9,13 +9,12 @@
     "background_id": "pharmacy",
     "outfit": "pharmacist",
     "minutes": 10,
-    "teaser": "药房窗口后的女性合上药品登记册。",
+    "teaser": "药房窗口后，一名年轻女性正在核对药品登记。",
     "time_start": 540,
     "time_end": 1020,
     "priority": 100,
     "category": "introduction",
     "auto_start": true,
-    "target_level": 1,
     "gallery": {
       "cg_id": "cg_intro_pharmacist_manami",
       "caption": "第一次走进药房",
@@ -28,62 +27,20 @@
       "required_events": [],
       "special_requirements": []
     },
-    "start": "opening",
+    "start": "im0_0001",
     "nodes": [
       {
-        "id": "opening",
-        "speaker": "actor",
-        "text": "药房窗口后的女性合上登记册，隔着窗口看了坂口两秒。\n「新医生？」\n她指了指自己胸牌。\n「飯村真奈美。药剂师。你负责开，我负责在你开得太离谱时拦住你。」",
-        "expression": "neutral",
+        "id": "im0_0001",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "药房窗口后，一名年轻女性正在核对药品登记。她抬起头，发现门口站着一位不认识的男医生。",
         "choices": [
           {
-            "id": "meds",
-            "label": "询问取药流程",
-            "next": "reply_0",
-            "effects": {
-              "affection": 0,
-              "familiarity": 0
-            },
-            "flags": [
-              "met_pharmacist_manami"
-            ]
-          },
-          {
-            "id": "hello",
-            "label": "先做自我介绍",
-            "next": "reply_1",
-            "effects": {
-              "affection": 0,
-              "familiarity": 0
-            },
-            "flags": [
-              "met_pharmacist_manami"
-            ]
-          },
-          {
-            "id": "quiet",
-            "label": "只礼貌点头",
-            "next": "reply_2",
-            "effects": {
-              "affection": 0,
-              "familiarity": 0
-            },
-            "flags": [
-              "met_pharmacist_manami"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "reply_0",
-        "speaker": "actor",
-        "text": "「普通处方走这里。紧急用药先打电话。」\n她顿了一下。\n「如果凌晨三点把我叫醒，最好真的是紧急用药。」",
-        "expression": "neutral",
-        "choices": [
-          {
-            "id": "end_0",
-            "label": "结束交谈",
-            "next": "@end",
+            "id": "continue_im0_0001",
+            "label": "继续  ▷",
+            "next": "im0_0002",
             "effects": {
               "affection": 0,
               "familiarity": 0
@@ -93,15 +50,17 @@
         ]
       },
       {
-        "id": "reply_1",
-        "speaker": "actor",
-        "text": "「记住了。」\n她把登记册重新打开。\n「以后用药拿不准就来问。早点问不丢脸，出事以后才来问比较丢脸。」",
-        "expression": "neutral",
+        "id": "im0_0002",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "她有着亮丽的容貌，脸上的笑容明朗自然。",
         "choices": [
           {
-            "id": "end_1",
-            "label": "结束交谈",
-            "next": "@end",
+            "id": "continue_im0_0002",
+            "label": "继续  ▷",
+            "next": "im0_0003",
             "effects": {
               "affection": 0,
               "familiarity": 0
@@ -111,24 +70,769 @@
         ]
       },
       {
-        "id": "reply_2",
+        "id": "im0_0003",
         "speaker": "actor",
-        "text": "「这么拘谨？」\n她笑了一下。\n「放心，药房不咬人。最多把开错剂量的医生退回去重写。」",
-        "expression": "neutral",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "哎呀，新面孔！你是刚来医院的医生吧？",
         "choices": [
           {
-            "id": "end_2",
-            "label": "结束交谈",
-            "next": "@end",
+            "id": "continue_im0_0003",
+            "label": "继续  ▷",
+            "next": "im0_0004",
             "effects": {
               "affection": 0,
               "familiarity": 0
             },
             "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0004",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "是的。我叫坂口隆司，外科。今天来熟悉一下药剂部。",
+        "choices": [
+          {
+            "id": "continue_im0_0004",
+            "label": "继续  ▷",
+            "next": "im0_0005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0005",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "欢迎欢迎！我是飯村真奈美，药剂师。以后请多关照啦！",
+        "choices": [
+          {
+            "id": "continue_im0_0005",
+            "label": "继续  ▷",
+            "next": "im0_0006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0006",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "请多指教。",
+        "choices": [
+          {
+            "id": "continue_im0_0006",
+            "label": "继续  ▷",
+            "next": "im0_0007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0007",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "她说话轻快，笑起来也很漂亮。坂口原本只打算打个招呼，见她如此亲切，不由得想多聊几句。",
+        "choices": [
+          {
+            "id": "continue_im0_0007",
+            "label": "继续  ▷",
+            "next": "im0_0008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0008",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "饭村小姐，药剂部平时工作量大吗？会不会很辛苦？",
+        "choices": [
+          {
+            "id": "continue_im0_0008",
+            "label": "继续  ▷",
+            "next": "im0_0009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0009",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "呵呵，你这是在关心我，还是想打听我们药房会不会拖累你们外科的效率呀？",
+        "choices": [
+          {
+            "id": "continue_im0_0009",
+            "label": "继续  ▷",
+            "next": "im0_0010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0010",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "当然是前者。刚来医院，总想多了解一下同事们的工作。",
+        "choices": [
+          {
+            "id": "continue_im0_0010",
+            "label": "继续  ▷",
+            "next": "im0_0011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0011",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "这样呀。那坂口医生倒是挺会关心人的嘛。",
+        "choices": [
+          {
+            "id": "continue_im0_0011",
+            "label": "继续  ▷",
+            "next": "im0_0012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0012",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_professional",
+        "text": "其实我们这里和普通医院的门诊药房不太一样。门诊直接配出去的药不算特别多，主要忙的是住院患者，还有大型治疗和手术的用药。",
+        "choices": [
+          {
+            "id": "continue_im0_0012",
+            "label": "继续  ▷",
+            "next": "im0_0013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0013",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_professional",
+        "text": "这么说，我以后恐怕会经常麻烦你。",
+        "choices": [
+          {
+            "id": "continue_im0_0013",
+            "label": "继续  ▷",
+            "next": "im0_0014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0014",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_professional",
+        "text": "那当然啦。术前用药、麻醉相关的药物、术中需要的东西，还有术后的镇痛……你们外科只要一忙起来，我们这里就闲不住。",
+        "choices": [
+          {
+            "id": "continue_im0_0014",
+            "label": "继续  ▷",
+            "next": "im0_0015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0015",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_professional",
+        "text": "她笑着指了指窗口前的登记单。",
+        "choices": [
+          {
+            "id": "continue_im0_0015",
+            "label": "继续  ▷",
+            "next": "im0_0016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0016",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "不过先说好哦。你负责开，我负责在你开得太离谱时拦住你。",
+        "choices": [
+          {
+            "id": "continue_im0_0016",
+            "label": "继续  ▷",
+            "next": "im0_0017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0017",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "……开刀还是开药？",
+        "choices": [
+          {
+            "id": "continue_im0_0017",
+            "label": "继续  ▷",
+            "next": "im0_0018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0018",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "呵呵，两个都算！",
+        "choices": [
+          {
+            "id": "continue_im0_0018",
+            "label": "继续  ▷",
+            "next": "im0_0019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0019",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "说起来，你们外科的麻醉安排还真有意思耶。",
+        "choices": [
+          {
+            "id": "continue_im0_0019",
+            "label": "继续  ▷",
+            "next": "im0_0020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0020",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "怎么说？",
+        "choices": [
+          {
+            "id": "continue_im0_0020",
+            "label": "继续  ▷",
+            "next": "im0_0021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0021",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "全麻、局麻，有时候甚至不用麻醉……感觉最后都是主刀医生一句话决定的嘛。",
+        "choices": [
+          {
+            "id": "continue_im0_0021",
+            "label": "继续  ▷",
+            "next": "im0_0022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0022",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "……有什么问题吗？",
+        "choices": [
+          {
+            "id": "continue_im0_0022",
+            "label": "继续  ▷",
+            "next": "im0_0023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0023",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "呵呵，没什么呀。就是你们主刀医生的决定，我们药房经常要跟着忙得团团转。",
+        "choices": [
+          {
+            "id": "continue_im0_0023",
+            "label": "继续  ▷",
+            "next": "im0_0024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0024",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "她停顿一下，露出略带狡黠的笑容。",
+        "choices": [
+          {
+            "id": "continue_im0_0024",
+            "label": "继续  ▷",
+            "next": "im0_0025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0025",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_thoughtful",
+        "text": "不过我还挺好奇的。同一种手术，患者清醒和睡着的时候，体验究竟会差多少呢？",
+        "choices": [
+          {
+            "id": "continue_im0_0025",
+            "label": "继续  ▷",
+            "next": "im0_0026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0026",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_thoughtful",
+        "text": "其实我最近也在研究镇痛方面的东西呢。",
+        "choices": [
+          {
+            "id": "continue_im0_0026",
+            "label": "继续  ▷",
+            "next": "im0_0027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0027",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_thoughtful",
+        "text": "是新药？",
+        "choices": [
+          {
+            "id": "continue_im0_0027",
+            "label": "继续  ▷",
+            "next": "im0_0028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0028",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_thoughtful",
+        "text": "现在还早啦，只是一些研究方向。特别是患者保持清醒的时候，有没有办法让整个过程不那么难受。",
+        "choices": [
+          {
+            "id": "continue_im0_0028",
+            "label": "继续  ▷",
+            "next": "im0_0029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0029",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_thoughtful",
+        "text": "听起来很值得研究。",
+        "choices": [
+          {
+            "id": "continue_im0_0029",
+            "label": "继续  ▷",
+            "next": "im0_0030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0030",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_bright",
+        "text": "对吧！我也这么觉得。",
+        "choices": [
+          {
+            "id": "continue_im0_0030",
+            "label": "继续  ▷",
+            "next": "im0_0031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0031",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_bright",
+        "text": "她露出很高兴的表情。",
+        "choices": [
+          {
+            "id": "continue_im0_0031",
+            "label": "继续  ▷",
+            "next": "im0_0032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0032",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_bright",
+        "text": "说不定哪一天，真的能给坂口医生的手术帮上大忙哦！",
+        "choices": [
+          {
+            "id": "continue_im0_0032",
+            "label": "继续  ▷",
+            "next": "im0_0033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0033",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "那以后有机会，也许可以请你来手术室看看。",
+        "choices": [
+          {
+            "id": "continue_im0_0033",
+            "label": "继续  ▷",
+            "next": "im0_0034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0034",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_surprised",
+        "text": "咦？手术室？",
+        "choices": [
+          {
+            "id": "continue_im0_0034",
+            "label": "继续  ▷",
+            "next": "im0_0035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0035",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_surprised",
+        "text": "她愣了一下，随即吐出舌头笑了笑。",
+        "choices": [
+          {
+            "id": "continue_im0_0035",
+            "label": "继续  ▷",
+            "next": "im0_0036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0036",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "哎呀，还是让护士来我这里拿药就好啦。手术室什么的，我现在还不太敢进去呢。",
+        "choices": [
+          {
+            "id": "continue_im0_0036",
+            "label": "继续  ▷",
+            "next": "im0_0037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0037",
+        "speaker": "player",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "原来饭村小姐也有不擅长的事情。",
+        "choices": [
+          {
+            "id": "continue_im0_0037",
+            "label": "继续  ▷",
+            "next": "im0_0038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0038",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "当然有啦！我可是专门为了不用整天站在手术台边，才跑来做药剂师的耶！",
+        "choices": [
+          {
+            "id": "continue_im0_0038",
+            "label": "继续  ▷",
+            "next": "im0_0039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0039",
+        "speaker": "narrator",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_playful",
+        "text": "她笑着摆摆手。",
+        "choices": [
+          {
+            "id": "continue_im0_0039",
+            "label": "继续  ▷",
+            "next": "im0_0040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "im0_0040",
+        "speaker": "actor",
+        "actor_id": "pharmacist_manami",
+        "outfit": "pharmacist",
+        "expression": "pharm_smile",
+        "text": "所以啊，手术就拜托坂口医生，药的事情就交给我吧！",
+        "choices": [
+          {
+            "id": "finish_im0_0040",
+            "label": "结束  ▷",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "met_pharmacist_manami"
+            ]
           }
         ]
       }
     ],
-    "benefit_id": ""
+    "benefit_id": "",
+    "target_level": 1
   }
 ]

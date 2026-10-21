@@ -610,3 +610,23 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 # 小夜香V2既有素材复用（2026-10-13）
 
 本轮没有新增／生成美术。换号沿用 `assets/events/character_events/sayaka/phone_contact_closeup.png`；账单与成功鉴赏沿用 `assets/events/character_events/sayaka/lv1_split_bill.png`。办公室、意大利餐馆、公共走廊沿用已注册背景；共同回程按日期月份复用现有四季夜间街景。电话及工作回调为white_coat，约会为casual，保留既有服装解析。技术ID与资源路径不翻译。
+
+## 毛利兰门诊／病房术前准备立绘（2026-10-20）
+
+按用户指定，将附件7原样复制为 `assets/characters/patient_mouri_ran_v1/patient_mouri_ran/examination/shy.png`，保留原始PNG（1056×1584，带alpha）。SHA-256：`555285d973e589af8f0bda2483e4691aa49223f042536df3d93590a857932e02`；来源：`/Users/ningye/Downloads/00115-1891506212-Picsart-BackgroundRemover.png`。患者立绘映射为 `examination/shy`；该运行时槽由门诊脱衣展示及病房手动术前准备共用。此项是角色立绘，不是全屏CG池。
+
+## 毛利兰完整 SFW 立绘矩阵（2026-10-20）
+
+按用户要求，以参考图1–6及已确认的SFW基础图制作并接入完整20槽位差分，未使用附件7裸体图生成SFW素材。门诊、病房、仰卧手术台、截石位、术中头像与全麻后splash均已写入 `data/patients/patient_mouri_ran/patient.json`；原用户提供的 `examination/shy` 保持独立不变。每张来源生成输出、运行时路径、尺寸、alpha和SHA-256记录见 `research/imports/patient_mouri_ran_sfw_portraits_2026-10-20.md`。
+
+## 毛利兰用户提供 CG 导入（2026-10-21）
+
+按用户附件顺序导入诊室全裸查体、剃毛、灌肠、戴手术帽、担架车共5张。诊室图接入 `encounter.full_undress.visual_pool_id` 及 `exclusive_cg_pools.examination`；完成脱衣选择使用该图，放弃分支不使用。其余四张分别接入 `exclusive_cg_pools.ward_preparation` 的 `ward_skin_prep`/`ward_skin_prep_unnecessary`、`ward_enema`/`ward_enema_unnecessary`、`ward_surgical_cap`、`complete_manual_ward_preparation`。运行时文件均保留附件PNG原样；来源路径、目标路径、节点、尺寸及 SHA-256 见 `research/imports/patient_mouri_ran_cgs_2026-10-21.md`。CG标签和说明已补英文。未修改患者对白或其他流程文本。
+
+## 毛利兰手术室准备 CG 补充导入（2026-10-21）
+
+按本次用户附件顺序导入导尿、体位固定、铺巾、术野消毒、下刀前共5张，均为原样PNG。分别接入患者专属 `exclusive_cg_pools.ward_preparation`，动作依次为 `urinary_catheterization`、`operative_positioning`、`ack_disinfection`、`skin_disinfection`、`request_scalpel`；下刀前图位于递交手术刀后、切开动作前。运行时路径、来源、尺寸和 SHA-256 见 `research/imports/patient_mouri_ran_or_preparation_cgs_2026-10-21.md`。英文标签与说明已登记。
+
+## 深山佳织 Lv0 相识表情差分（2026-10-20）
+
+经用户确认，将 ImageGen 按现有佳织白大褂 `smile` 立绘生成的 `competitive_smile` 差分接入 `assets/characters/portrait_pack_v20/doc_rei/white_coat/competitive_smile.png`，仅新增表情，不覆盖原图。PNG 1159×1358，RGBA；SHA-256：`74103977368d9d6fd4890d27e347c0eaafa84ee04209ed73469ef229cbf01ab0`。运行时键登记于 `data/staff/doc_rei/profile.json`，用于 Lv0 相识事件的自信、略带挑战感的笑容。

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sayaka_staff_patient_callback_01",
+    "title": "不见的伤口",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [
+      {
+        "type": "special_event_completed",
+        "event_id": "sayaka_lv5_part_c"
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "sayaka_lv5_part_b",
+        "days": 6
+      },
+      {
+        "type": "day_type",
+        "values": [
+          "weekday",
+          "saturday"
+        ]
+      }
+    ],
+    "required_characters": [],
+    "prerequisite_events": [
+      "sayaka_lv5_part_c"
+    ],
+    "event_chain": [
+      "sayaka_staff_patient_callback_01_main"
+    ],
+    "completion_flags": [
+      "sayaka_staff_patient_callback_01_complete",
+      "sayaka_staff_patient_callback_ultrasound_complete"
+    ],
+    "gallery_unlock": false,
+    "timing": {
+      "trigger_day": 1,
+      "priority": 205,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false,
+      "exact_day_start_only": true
+    }
+  }
+]

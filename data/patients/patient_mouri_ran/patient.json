@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_mouri_ran",
+    "name": "毛利兰",
+    "age": 24,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "examination/shy": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/examination/shy.png",
+        "outpatient/neutral": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/ward/smile.png",
+        "ward/brave": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/ward/brave.png",
+        "ward/worried": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_mouri_ran_v1/patient_mouri_ran/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/intraoperative_portraits_v1/patient_mouri_ran/tense.png",
+        "intraoperative/pain": "assets/characters/intraoperative_portraits_v1/patient_mouri_ran/pain.png",
+        "intraoperative/near_collapse": "assets/characters/intraoperative_portraits_v1/patient_mouri_ran/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/intraoperative_portraits_v1/patient_mouri_ran/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_mouri_ran/general.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "caretaker",
+      "secondary": "caring",
+      "stress_response": "seeks_reassurance"
+    },
+    "dialogue_profile": "graceful_caretaker_reassurance",
+    "traits": {
+      "baseline_anxiety": 51,
+      "pain_sensitivity": 68,
+      "privacy_sensitivity": 80,
+      "trust_baseline": 65,
+      "control_need": 67,
+      "expressiveness": 78,
+      "health_literacy": 32,
+      "compliance_tendency": 84
+    },
+    "fear_profile": {
+      "pain_fear": 70,
+      "procedure_fear": 65,
+      "diagnosis_fear": 61,
+      "loss_control_fear": 77
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「需要住院吗……？我知道不能勉强自己，可家里还有些事得交代。大概要住多久呢？」",
+      "hospitalization_response": "「好，我会住院。爸爸那边我会联系……这次也得学着让别人照顾我了。」",
+      "procedure_mismatch": "「等等，医生。刚才向我说明的好像不是这个术式……请先重新确认清楚，好吗？」",
+      "explain_plan": "「原来是这样……谢谢您一项一项告诉我。知道接下来会做什么，心里踏实多了。」",
+      "brief_plan": "「只有『按流程』吗……？我会配合的，可至少告诉我第一步要怎么做吧。」",
+      "last_reassure": "「我会努力配合的……可还是有点紧张。医生，您能再陪我确认一次吗？」",
+      "choose_general": "「全身麻醉……我醒来时手术就结束了吗？……好，那接下来真的拜托您了。」",
+      "choose_epidural": "「硬膜外麻醉，意识还在，腿却动不了……嗯，我会尽量不紧张。开始前请先告诉我。」",
+      "choose_local": "「局部麻醉的话，我还能听见大家说话吧？要是里面疼，我会立刻说，不会逞强的。」",
+      "choose_none": "「完全不用麻醉吗？！……就算我练过空手道，也不能把开刀当成训练呀……真的需要这样吗？」",
+      "induction_reassure": "「谢谢您一直跟我说话……我有点怕，但我相信你们。醒来后请告诉我情况，好吗？」",
+      "insist_without_anesthesia": "「不行……！太疼了，我真的撑不住！医生，请听我说，先停一下……！」",
+      "assistant_stabilize_none": "「等、等一下！我会尽量不动，可疼起来身体真的会躲……拜托，先告诉我啊！」",
+      "assistant_stabilize_local": "「嗯，我知道得保持这个姿势……只是里面突然一牵，肩膀就绷紧了。我会尽力配合。」",
+      "assistant_stabilize_epidural": "「腿真的动不了了……我不是想乱动，只是心里有点慌。请跟我说句话，好吗？」",
+      "incise_epidural": "「咦……已经切开了吗？没有想象中的刺痛，可里面一阵一阵被推着……真的开始了啊……」",
+      "incise_local": "「嘶……！外面好像没那么疼，可里面突然扯了一下……医生，我能先告诉您这种感觉吗？」",
+      "incise_none": "「啊——！！好疼！等一下……真的切开了……医生，先停一下！我受不了了！」",
+      "contact_pause": "「……停下来了？谢谢……让我缓一下，我会告诉您还能不能继续。」",
+      "contact_command": "「好、我不动……！我知道要保持姿势，可是好害怕……请继续跟我说话！」",
+      "contact_continue": "「……嗯，我听见了。你们要继续了，对吧？我会努力配合的。」",
+      "ongoing_narrate": "「谢谢……知道您做到了哪一步，我就不会一直乱猜。请继续告诉我。」",
+      "ongoing_eye_contact": "「医生……您在看着我？……谢谢。我还在努力，只是眼泪有点止不住。」",
+      "ongoing_silent": "「……医生？怎么忽然不说话了……？我不是催您，只是想知道大家还在听我说话。」",
+      "closure_reassure": "「真的快结束了吗……？太好了……我刚才还以为自己做不到。谢谢你们。」",
+      "closure_coach": "「嗯……呼、吸……我跟着您说的做。再坚持一会儿就可以了，对吧？」",
+      "closure_silent": "「……还在缝合吗？我会安静等着……嗯，听到结束前，我不会自己乱动。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠……？啊，我明白是准备的一部分。只是明白和真正轮到自己，完全不一样……可以先告诉我什么时候开始吗？」",
+        "「我、我会配合的……但这项真的挺难为情。能先把帘子关好吗？」"
+      ],
+      "ward_enema_unnecessary": [
+        "「啊，这次不需要灌肠……呼，我还以为每台手术前都得做呢。」",
+        "「谢谢您确认。不需要的准备能省掉，心里确实轻松一点。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……是要把手术部位周围的毛发处理掉吧？……嗯，我知道是为了手术。」",
+        "「那、那个，范围真的包括这里吗……？如果有必要，我会配合。请先说一声就好。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「这次不需要备皮？太好了……啊，不是嫌麻烦，我只是有点害羞。」",
+        "「原来要看这次手术的部位决定呀……谢谢您解释清楚。」"
+      ],
+      "ward_surgical_cap": [
+        "「头发要全部收进去吗？好，我自己来整理……咦，耳朵也要盖住呀。」",
+        "「这样戴可以了吗？……这顶帽子一戴上，真的感觉自己快进手术室了。」"
+      ],
+      "operative_positioning_awake": [
+        "「双手和腿要摆在这个位置吗？我平时练习都能自己调整，躺着让别人安排还真不习惯。」",
+        "「……好，我会保持姿势。如果不舒服的话，可以马上告诉你们吧？」"
+      ],
+      "operative_positioning_none": [
+        "「没有麻醉，还要把身体固定住……我知道是为了安全，可真的疼起来，我能保证不乱动吗……？」",
+        "「请、请先告诉我为什么要这样摆……我会尽力配合，可现在已经有点发抖了。」"
+      ],
+      "urinary_catheterization_awake": [
+        "「还要导尿啊……我明白是手术准备，可这么做还是太难为情了……可以只留必要的医护在这里吗？」",
+        "「好，我会尽量放松。等、等一下，我还没准备好……让我先调整一下呼吸，好吗？」"
+      ],
+      "urinary_catheterization_none": [
+        "「连导尿也要在完全清醒时做吗……？我知道这是正常准备，可现在越接近开刀越害怕……」",
+        "「请告诉我什么时候要开始……我会尽量不乱动，但一想到后面还有手术就忍不住紧张。」"
+      ],
+      "skin_disinfection_awake": [
+        "「消毒液有点凉……啊，没关系，我知道是必要的。」",
+        "「你们消毒得这么仔细……真的要在这块皮肤上动刀了，对吧……」"
+      ],
+      "skin_disinfection_none": [
+        "「这样消毒以后，就要直接切了吗……？我、我还没做好心理准备……」",
+        "「感觉好凉……可是想到马上可能会疼，我反而希望这一步慢一点。」"
+      ],
+      "incision_marking_awake": [
+        "「现在是在皮肤上画切口位置吗？……看着这条线，忽然就紧张起来了。」",
+        "「标记得这么清楚……我知道是为了准确，可还是忍不住盯着看。」"
+      ],
+      "incision_marking_none": [
+        "「这是要下刀的位置……？一点麻醉都没有，我真的会感觉到第一刀吧……」",
+        "「医生，能再确认一次吗？这里标好记号，就真的要切了吗……？」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生您好。我本来想着忍一忍就过去了，但今天还是决定来检查：{line}",
+      "primary": "最明显的是：{line}。我有留意什么时候开始的，您可以问我。",
+      "secondary": "还有这个情况：{line}。是不是也需要一起告诉您？",
+      "background": "我在东京生活，平时坚持练习空手道，也常常操心家里的事。遇到麻烦总习惯先照顾别人，但身体方面的事，我想这次认真听医生安排。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "毛利兰的门诊检查",
+    "full_undress": {
+      "prompt": "「这项检查需要把衣服全部脱掉吗……？我明白是为了检查身体，可还是有点不好意思。能先告诉我会检查哪些部位吗？」",
+      "responses": {
+        "abandon_full_undress": "「不做这项检查了吗……？呼……那其他该检查的地方，还是麻烦医生确认清楚哦。」",
+        "authoritative_full_undress": "「……好，我会配合。只是能先把帘子拉上吗？我想知道接下来会做什么。」",
+        "gentle_full_undress": "「谢谢您说得这么清楚……这样我就没那么紧张了。那我按您说的来。」",
+        "threaten_full_undress": "「请不要这样说……我不是不肯配合。您把理由告诉我，我会认真听的。」"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_mouri_ran"
+    }
+  },
+  "preop": {
+    "title": "毛利兰的术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「医生，今天就要做手术了吧？我已经把家里的事情交代好了……可刚才还想说自己没问题，现在却有点紧张。能告诉我接下来的安排吗？」",
+      "graphic_preop_question": "「那个……能从进手术室以后怎么摆姿势、怎么固定、什么时候消毒，一直到什么时候真正开始切开，都按顺序告诉我吗？我想知道，不然会一直胡思乱想。」",
+      "graphic_preop_dialogue": "毛利兰起初坐得端正，认真听着医护把即将进行的准备和操作逐项说明。她平日习惯在危险来临时站出来保护别人，可此刻听到体位固定、消毒与切口的细节，才意识到一会儿需要躺着接受这一切的人是自己。她仍点头表示听懂了，交握的双手却不知不觉攥紧。",
+      "team": "你担任毛利兰本次手术的主刀。请确认助手医生、器械护士与巡回护士的岗位分工。",
+      "preparation": "请安排毛利兰的病房准备护士，并根据当前病例及术式执行必要的术前准备项目。",
+      "prepared": "「准备都完成了……？谢谢您。刚才我还想帮忙整理东西呢……现在才想到，今天该让我好好当患者了。」",
+      "changing": "手术团队依照既定流程更衣、刷手并完成无菌准备，随后进入手术室。",
+      "operating_room": "「这里的灯……好亮。平时我练空手道，很习惯听口令……可现在一躺上来，反倒不知道手脚该放哪里了。」",
+      "team_confirmations": "团队逐项核对毛利兰的身份、当前病例对应的手术计划以及成员分工。兰认真听完每项确认，虽然紧张，仍努力清楚地应答。",
+      "procedure_select": "请核对当前病例已经确认的手术计划，选择与之对应的术式。",
+      "procedure_mismatch": "「请等一下！这和刚才说明的手术名称不一样吧？麻烦先核对病历，好吗？这种事可不能含糊！」",
+      "ready": "毛利兰的术前准备已经完成。她躺在手术台上等待，团队需要最后确认麻醉方式与开始条件。",
+      "general_induction": "「好……我会试着放松。谢谢大家……等我醒来，请告诉我手术已经结束了，好吗？」",
+      "surgery_start_general": "毛利兰已经进入全身麻醉状态。团队确认监护与手术条件后继续，不出现清醒患者的术中主观对白。",
+      "surgery_start_epidural": "「腿真的没法自己动了……我知道是麻醉的作用。开始前请先跟我说一声，好吗？」",
+      "surgery_start_local": "「这里已经麻了吗……？好，我会保持姿势。要是里面疼起来，我一定马上告诉您。」",
+      "surgery_start_none": "「真的不用任何麻醉就开始……？我知道已经解释过了，可看到你们准备器械，我还是忍不住发抖……」",
+      "instrument_handoff": "主刀提出器械需求，器械护士依照本次术式和操作阶段递交相应器械。",
+      "assistant_ready": "助手医生确认毛利兰的体位、术野暴露与操作条件，准备配合主刀维持视野。",
+      "incision_ready": "切口位置及麻醉状态已经核对，助手维持术野，器械护士备好手术刀，等待主刀确认开始。",
+      "general_operation": "全身麻醉中的毛利兰不产生清醒的主观术中反应。团队持续监护，按照当前所选术式推进操作。",
+      "operative_contact": "切口已经建立。若毛利兰保持清醒，她会尽力遵从保持体位的指令，但对牵拉、压力与疼痛的实际反应仍按麻醉状态和既有患者数值判定。",
+      "ongoing_interaction": "手术仍在进行。若毛利兰清醒，她希望医护持续说明进度；恐惧和疼痛升高时，她会明确求助，而不是依靠空手道训练硬撑。",
+      "closure_interaction": "主要操作进入收尾阶段。若毛利兰保持清醒，她会认真听取结束预告，终于允许自己不再逞强，等待团队确认手术完成。",
+      "procedure_flow": "进入当前所选术式的标准阶段流程，请依照该术式的既定阶段与技术选项继续。",
+      "procedure_execute": "主要操作已经完成。团队复核术野及必要技术结果，准备进行最终处理与缝合。",
+      "surgery_result": "手术结束。团队按照既定流程完成切口处理、器械清点及术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「咦……已经切开了吗？没有想象中的刺痛，可里面一阵一阵被推着……真的开始了啊……」",
+      "incise_local": "「嘶……！外面好像没那么疼，可里面突然扯了一下……医生，我能先告诉您这种感觉吗？」",
+      "incise_none": "「啊——！！好疼！等一下……真的切开了……医生，先停一下！我受不了了！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_mouri_ran",
+        "label": "毛利兰 · 诊室全裸查体",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_mouri_ran/full_undress_basic_exam.png"
+        ],
+        "caption": "毛利兰完成脱衣后，在诊室等待基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_mouri_ran",
+        "label": "毛利兰 · 病房准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/skin_prep.png"],
+        "caption": "毛利兰按照当前术前准备安排接受备皮。"
+      },
+      {
+        "id": "ward_enema_patient_mouri_ran",
+        "label": "毛利兰 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/enema.png"],
+        "caption": "毛利兰按照当前术前安排完成灌肠准备。"
+      },
+      {
+        "id": "ward_surgical_cap_patient_mouri_ran",
+        "label": "毛利兰 · 病房准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_surgical_cap"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/surgical_cap.png"],
+        "caption": "毛利兰戴好手术帽，准备完成病房阶段的术前准备。"
+      },
+      {
+        "id": "stretcher_transfer_patient_mouri_ran",
+        "label": "毛利兰 · 病房准备 · 担架车交接",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/stretcher_transfer.png"],
+        "caption": "病房准备结束后，毛利兰在担架车上等待团队交接转运。"
+      },
+      {
+        "id": "urinary_catheterization_patient_mouri_ran",
+        "label": "毛利兰 · 手术室准备 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/urinary_catheterization.png"],
+        "caption": "毛利兰在手术室准备阶段接受导尿。"
+      },
+      {
+        "id": "operative_positioning_patient_mouri_ran",
+        "label": "毛利兰 · 手术室准备 · 体位固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["operative_positioning"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/operative_positioning.png"],
+        "caption": "手术团队为毛利兰调整并固定手术体位。"
+      },
+      {
+        "id": "sterile_draping_patient_mouri_ran",
+        "label": "毛利兰 · 手术室准备 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ack_disinfection"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/sterile_draping.png"],
+        "caption": "完成消毒后，团队为毛利兰铺设无菌巾。"
+      },
+      {
+        "id": "skin_disinfection_patient_mouri_ran",
+        "label": "毛利兰 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/skin_disinfection.png"],
+        "caption": "手术团队为毛利兰的手术区域进行消毒。"
+      },
+      {
+        "id": "incision_ready_patient_mouri_ran",
+        "label": "毛利兰 · 手术下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_mouri_ran"],
+        "paths": ["assets/events/ward_preparation_v1/patient_mouri_ran/scalpel_ready.png"],
+        "caption": "器械护士递上手术刀，毛利兰等待主刀确认后开始切开。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

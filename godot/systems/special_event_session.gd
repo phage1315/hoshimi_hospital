@@ -11,6 +11,7 @@ var locals: Dictionary = {}
 var last_choice: Dictionary = {}
 var started_day := 1
 var completed := false
+var cancelled := false
 var last_day_finished := false
 var last_error := ""
 
@@ -36,6 +37,18 @@ func current() -> Dictionary:
 		if str(node.get("id", "")) == node_id:
 			return node
 	return {}
+
+func presentation_schedule(fallback: Dictionary) -> Dictionary:
+	# Scene time is presentation only; atomic-event settlement owns the ledger.
+	if completed or cancelled:
+		return fallback
+	var scene: Dictionary = current_step().get("scene_schedule", {}).get(node_id.get_slice("_", 0), {})
+	if scene.is_empty():
+		return fallback
+	var result := fallback.duplicate(true)
+	result.day = int(fallback.day) + int(scene.get("day_offset", 0))
+	result.absolute_clock = int(scene.clock)
+	return result
 
 func jump_to(destination: String) -> bool:
 	if destination.is_empty() or destination == "@day_end":
@@ -68,6 +81,8 @@ func apply(choice_id: String) -> bool:
 			completed = true
 		else:
 			_reset_to_step(step_index + 1)
+	elif destination == "@cancel":
+		cancelled = true
 	else:
 		node_id = destination
 	last_error = ""

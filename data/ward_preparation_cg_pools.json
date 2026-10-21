@@ -59,5 +59,151 @@
       "assets/events/ward_preparation_v1/transport_to_or/01.png"
     ],
     "caption": "病房护士接过担架车，患者在输液管路与保暖毯的保护下被送往手术室。"
+  },
+  {
+    "id": "ward_skin_prep_doc_sayaka",
+    "label": "南条小夜香 · 术前准备 · 剃毛",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "ward_skin_prep",
+      "ward_skin_prep_unnecessary"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/skin_prep.png"
+    ],
+    "caption": "南条小夜香依照术前准备范围完成备皮。"
+  },
+  {
+    "id": "ward_enema_doc_sayaka",
+    "label": "南条小夜香 · 术前准备 · 灌肠",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "ward_enema",
+      "ward_enema_unnecessary"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/enema.png"
+    ],
+    "caption": "南条小夜香按当前术前安排完成灌肠。"
+  },
+  {
+    "id": "ward_surgical_cap_doc_sayaka",
+    "label": "南条小夜香 · 病房准备 · 戴手术帽",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "ward_surgical_cap"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/surgical_cap.png"
+    ],
+    "caption": "南条小夜香戴好手术帽，准备转运至手术室。"
+  },
+  {
+    "id": "stretcher_transfer_doc_sayaka",
+    "label": "南条小夜香 · 病房准备 · 转运担架车",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "complete_manual_ward_preparation"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/stretcher_transfer.png"
+    ],
+    "caption": "病房准备结束后，南条小夜香由病房团队转运至手术室。"
+  },
+  {
+    "id": "operative_positioning_doc_sayaka",
+    "label": "南条小夜香 · 手术室准备 · 体位摆放与固定",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "operative_positioning"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/operative_positioning.png"
+    ],
+    "caption": "团队依据术式为南条小夜香完成体位摆放与安全固定。"
+  },
+  {
+    "id": "skin_disinfection_doc_sayaka",
+    "label": "南条小夜香 · 手术室准备 · 术野消毒",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "skin_disinfection"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/skin_disinfection.png"
+    ],
+    "caption": "手术团队完成南条小夜香预定术野的消毒。"
+  },
+  {
+    "id": "sterile_draping_doc_sayaka",
+    "label": "南条小夜香 · 手术室准备 · 铺设洞巾",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "ack_disinfection"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/sterile_draping.png"
+    ],
+    "caption": "消毒完成后，团队为南条小夜香铺设无菌洞巾并保留术野。"
+  },
+  {
+    "id": "urinary_catheterization_doc_sayaka",
+    "label": "南条小夜香 · 手术室准备 · 留置导尿",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "urinary_catheterization"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/urinary_catheterization.png"
+    ],
+    "caption": "南条小夜香在手术室准备阶段接受留置导尿。"
+  },
+  {
+    "id": "scalpel_ready_doc_sayaka",
+    "label": "南条小夜香 · 手术准备 · 下刀前",
+    "priority": 100,
+    "presentation": "fullscreen",
+    "action_ids": [
+      "request_scalpel"
+    ],
+    "patient_ids": [
+      "doc_sayaka"
+    ],
+    "paths": [
+      "assets/events/ward_preparation_v1/doc_sayaka/scalpel_ready.png"
+    ],
+    "caption": "器械护士递上手术刀，南条小夜香在正式下刀前等待主刀确认。"
   }
 ]

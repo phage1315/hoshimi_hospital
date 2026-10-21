@@ -1,0 +1,54 @@
+[
+  {
+    "id": "sayaka_lv5_part_b",
+    "title": "那你给我开一次",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "skip_departure_events_on_completion": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [
+      {
+        "type": "days_after_special_event",
+        "event_id": "sayaka_lv5_part_a",
+        "days": 3
+      }
+    ],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "sayaka_lv5_part_b_main"
+    ],
+    "completion_flags": [
+      "sayaka_lv5_part_b_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "sayaka_lv5_part_b",
+      "title": "那你给我开一次",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 320,
+      "time_start": 960,
+      "time_end": 1260,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    },
+    "completion_hint": "那你给我开一次事件已完成。",
+    "relationship_rewards": [
+      {
+        "actor_id": "doc_sayaka",
+        "target_level": 5,
+        "benefit_id": "unlock_clinical_practice_patient",
+        "allow_level_skip": false
+      }
+    ]
+  }
+]

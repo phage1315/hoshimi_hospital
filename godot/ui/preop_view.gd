@@ -87,7 +87,7 @@ static func background_id_for(stage: Dictionary, flags: Array, operative_scene: 
 	return str(stage.background_id)
 
 static func render(app: Control, prep: RefCounted) -> void:
-	var patient: Dictionary = app.content.find_record("patients", prep.definition.patient_id)
+	var patient: Dictionary = app.game.patient_definition(prep.definition.patient_id)
 	var stage: Dictionary = prep.current()
 	if stage.kind in ["or_table_palpation", "anesthesia_sensory_test"]:
 		render_or_table_palpation(app, prep, patient)

@@ -632,7 +632,7 @@ for event in collections['special_events']:
     if not event['consumes_full_day']:
         check(event['duration_days'] == 1, prefix + 'zero-time special events must use one event-chain chapter')
     trigger_mode = event.get('trigger_mode', 'day_start')
-    check(trigger_mode in {'day_start', 'location'}, prefix + 'invalid trigger_mode')
+    check(trigger_mode in {'day_start', 'location', 'after_work'}, prefix + 'invalid trigger_mode')
     if trigger_mode == 'location':
         check(event.get('location_id') in by['locations'], prefix + 'unknown location trigger')
     else:
@@ -696,8 +696,8 @@ for step in collections['special_event_steps']:
         reachable.add(node_id)
         for choice in nodes[node_id]['choices']:
             destination = choice['next']
-            check(destination == '@day_end' or destination in nodes, prefix + node_id + ': unknown destination ' + destination)
-            if destination != '@day_end':
+            check(destination in {'@day_end', '@cancel'} or destination in nodes, prefix + node_id + ': unknown destination ' + destination)
+            if destination not in {'@day_end', '@cancel'}:
                 pending.append(destination)
         fallback = nodes[node_id].get('fallback_next')
         if fallback:
@@ -763,7 +763,11 @@ known_preparation_cg_actions = {
 for pool in collections['ward_preparation_cg_pools']:
     prefix = pool['id'] + ': '
     check(set(pool['action_ids']) <= known_preparation_cg_actions, prefix + 'unknown preparation CG action id')
-    check(set(pool['patient_ids']) <= set(by['patients']), prefix + 'unknown patient id')
+    # Staff-as-patient cases use the staff actor ID while ordinary cases use
+    # a patient bundle ID.  Both are valid selectors for the shared runtime CG
+    # picker; do not require a synthetic random-patient bundle for staff cases.
+    known_patient_or_staff_ids = set(by['patients']) | set(by['staff'])
+    check(set(pool['patient_ids']) <= known_patient_or_staff_ids, prefix + 'unknown patient or staff id')
     check(set(pool.get('procedure_groups', [])) <= {surgery['procedure_group'] for surgery in collections['surgeries']},
           prefix + 'unknown procedure group')
     for path in pool['paths']:

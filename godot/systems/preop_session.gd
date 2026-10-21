@@ -138,6 +138,7 @@ var patient_personality: Dictionary = {}
 var patient_traits: Dictionary = {}
 var patient_reactions: Dictionary = {}
 var patient_reaction_variants: Dictionary = {}
+var patient_dialogue_overrides: Dictionary = {}
 var feedback := ""
 var feedback_speaker := "narrator"
 var last_error := ""
@@ -200,6 +201,8 @@ func snapshot_state() -> Dictionary:
 	return result
 
 func restore_state(state: Dictionary) -> bool:
+	var authored_reactions := patient_reactions.duplicate(true)
+	var authored_variants := patient_reaction_variants.duplicate(true)
 	var saved_stage := str(state.get("stage_id", ""))
 	if saved_stage.is_empty() or not stages.has(saved_stage):
 		return false
@@ -256,6 +259,16 @@ func restore_state(state: Dictionary) -> bool:
 	# Keep the old event array only as a live-session buffer. It is never needed
 	# to restore the state and must not turn the new save format back into replay.
 	events.clear()
+	# Old saves may predate the approved staff dialogue. Keep mechanical state,
+	# but refresh authored reaction keys from the locale-specific patient record.
+	if is_staff_patient():
+		patient_reactions.merge(authored_reactions, true)
+		patient_reaction_variants.merge(authored_variants, true)
+		if stage_id == "graphic_preop_dialogue" and not graphic_preop_nodes.is_empty():
+			var saved_node_index := graphic_preop_node_index
+			if initialize_graphic_preop_dialogue():
+				graphic_preop_node_index = clampi(saved_node_index, 0, graphic_preop_nodes.size() - 1)
+				show_graphic_preop_node()
 	last_error = ""
 	historical_replay_mode = false
 	return true
@@ -377,6 +390,7 @@ func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_dat
 			patient_traits = patient.get("traits", {}).duplicate(true)
 			patient_reactions = patient.get("reaction_lines", {}).duplicate(true)
 			patient_reaction_variants = patient.get("reaction_variants", {}).duplicate(true)
+			patient_dialogue_overrides = patient.get("staff_patient_dialogue", {}).duplicate(true)
 	for stage in ward_preparation_stages():
 		stages[stage.id] = stage
 	for stage in operative_preparation_stages():
@@ -429,10 +443,17 @@ func initialize_graphic_preop_dialogue() -> bool:
 	if authored_nodes.is_empty():
 		return false
 	graphic_preop_nodes.clear()
+	# Ward explanations describe the invitation, never a later OR selection.
+	var node_overrides: Dictionary = patient_dialogue_overrides.get("graphic_preop_by_procedure", {}).get(str(definition.get("agreed_procedure_id", "")), {}) if is_staff_patient() else {}
 	for authored in authored_nodes:
 		if not authored is Dictionary:
 			continue
 		var node: Dictionary = authored.duplicate(true)
+		var override: Dictionary = node_overrides.get(str(node.get("id", "")), {})
+		if override.has("text"):
+			node["text"] = str(override.text)
+			if str(override.get("speaker", "")) in ["patient", "explainer"]:
+				node["speaker"] = str(override.speaker)
 		if str(node.get("speaker", "")) == "wrapper":
 			node["speaker"] = "explainer"
 			node["text"] = graphic_preop_wrapper(str(node.get("slot", "")))
@@ -1128,6 +1149,8 @@ func role_definition(id: String) -> Dictionary:
 	return {}
 
 func qualified(id: String, role: Dictionary) -> bool:
+	if is_staff_patient() and id == str(definition.staff_patient_id):
+		return false
 	if role.is_empty() or not roster.has(id):
 		return false
 	if restrict_to_known_staff and id not in known_staff_ids:
@@ -1322,7 +1345,7 @@ func staff_display_name(raw_name: String) -> String:
 	return raw_name.replace(" ", "").replace("　", "").replace("\u00a0", "")
 
 func surgery_display_text(raw_text: String) -> String:
-	var result: String = raw_text
+	var result: String = patient_dialogue_text(raw_text)
 	var role_placeholders: Dictionary = {
 		"assistant_name": "assistant_surgeon",
 		"scrub_name": "scrub_nurse",
@@ -1941,6 +1964,9 @@ func match_patient_interaction(theme: String, cues: Array, state: String) -> Dic
 					continue
 				if not patient_interaction_flags_match(interaction):
 					continue
+				# Filter before both dedicated overrides and generic fallback selection.
+				if is_staff_patient() and surgery_id != str(definition.get("agreed_procedure_id", "")) and definition.get("agreement_required_interaction_ids", []).has(str(interaction.id)):
+					continue
 				if patient_interaction_scope(interaction, surgery_id, procedure_group) != scope:
 					continue
 				if patient_interaction_specificity(interaction, theme, cues, state) != specificity:
@@ -1952,8 +1978,8 @@ func match_patient_interaction(theme: String, cues: Array, state: String) -> Dic
 				continue
 			for interaction in matches:
 				if not patient_interaction_history.has(str(interaction.id)):
-					return interaction
-			return matches[0]
+					return patient_interaction_with_overrides(interaction)
+			return patient_interaction_with_overrides(matches[0])
 	return {}
 
 func register_temporary_condition_cues(cues: Array) -> void:
@@ -2669,7 +2695,7 @@ func apply(event: Variant) -> bool:
 			dignity = clampi(dignity + int(interaction_effects.get("dignity", 0)), 0, 100)
 			cooperation_base = clampi(cooperation_base + int(interaction_effects.get("cooperation", 0)), 0, 100)
 			apply_temporary_condition_effect(active_condition_id, selected_action.get("condition_effect"))
-			feedback = str(selected_action.response)
+			feedback = patient_dialogue_text(str(selected_action.response))
 			feedback_speaker = str(selected_action.response_speaker)
 			last_staff_id = ""
 			last_staff_role = ""
@@ -2837,11 +2863,13 @@ func apply(event: Variant) -> bool:
 			var profile_effects: Dictionary = action.get("player_effects", {})
 			if not profile_effects.is_empty():
 				for metric in player_effects:
-					if metric == "presence":
+					if metric == "presence" or (metric == "reputation" and is_staff_patient()):
 						continue
 					player_effects[metric] = int(player_effects[metric]) + int(profile_effects.get(metric, 0))
 				var recorded_profile_effects := profile_effects.duplicate(true)
 				recorded_profile_effects.erase("presence")
+				if is_staff_patient():
+					recorded_profile_effects.erase("reputation")
 				if not recorded_profile_effects.is_empty():
 					player_effect_history.append({"id": action.id, "label": action.label, "effects": recorded_profile_effects})
 			var action_applied_presence := apply_presence_delta(int(profile_effects.get("presence", 0)) + int(action.get("presence_delta", 0)), action_presence_phase)
@@ -2856,6 +2884,8 @@ func apply(event: Variant) -> bool:
 			cooperation_base = clampi(cooperation_base + int(effects.get("cooperation", 0)), 0, 100)
 			feedback = patient_reaction(str(action.id), str(action.response))
 			feedback_speaker = str(action.response_speaker)
+			if is_staff_patient() and patient_dialogue_overrides.get("reaction_speakers", {}).get(str(action.id), "") == "patient" and patient_reactions.has(str(action.id)):
+				feedback_speaker = "patient"
 			if action.id == "incise_epidural" and not operative_analgesia_effective():
 				# The epidural still affects its authored lower-body regions, but the
 				# planned breast/thoracic incision has no analgesic coverage.
@@ -2909,6 +2939,10 @@ func apply(event: Variant) -> bool:
 				elif action.id == "choose_epidural":
 					action_next = "anesthesia_sensory_test" if epidural_effective_for_procedure() else "ineffective_epidural_warning"
 				stage_id = action_next
+				if action.id == "explain_plan" and is_staff_patient() and patient_dialogue_overrides.get("stage_prompts", {}).has("graphic_preop_question"):
+					# Both authored patient lines share the existing scrollable choice
+					# window; the action response would otherwise hide the question.
+					feedback += "\n" + patient_dialogue_text(str(current().prompt))
 				if action.id == "graphic_answer":
 					var graphic_config: Dictionary = definition.get("graphic_preop", {})
 					var graphic_family: Dictionary = graphic_config.get("families", {}).get(graphic_preop_family(), {})
@@ -2957,6 +2991,9 @@ func inexperienced_nurse_response(staff_id: String, response_id: String, fallbac
 	return fallback
 
 func intraoperative_response(staff_id: String, response_id: String, authored: String, correction: bool) -> String:
+	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(response_id + (":correction" if correction else ""), ""))
+	if not custom_response.is_empty():
+		return patient_dialogue_text(custom_response)
 	var scoped_dialogue_key := "intraoperative_correction" if correction else "intraoperative"
 	var scoped_response := procedure_group_team_dialogue(staff_id, scoped_dialogue_key)
 	if not scoped_response.is_empty():
@@ -2975,6 +3012,9 @@ func intraoperative_response(staff_id: String, response_id: String, authored: St
 	return "“I am unfamiliar with this field and followed your direction. The step is complete; please verify it.”" if english_mode() else "「我对术野不熟，只能按你的指示配合。这一步已经完成，请你再确认。」"
 
 func assignment_response(role_id: String, staff_id: String = "") -> String:
+	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get("assignment:" + role_id, ""))
+	if not custom_response.is_empty():
+		return patient_dialogue_text(custom_response)
 	if not staff_id.is_empty():
 		var scoped_response := procedure_group_team_dialogue(staff_id, "assignment")
 		if not scoped_response.is_empty():
@@ -3010,6 +3050,9 @@ func assignment_response(role_id: String, staff_id: String = "") -> String:
 	return "「收到，我会做好准备。」"
 
 func staff_action_response(staff_id: String, action_id: String, authored: String) -> String:
+	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(action_id, ""))
+	if not custom_response.is_empty():
+		return patient_dialogue_text(custom_response)
 	if str(roster.get(staff_id, {}).get("profession", "")) == "nurse" and staff_has_low_surgery_proficiency(staff_id):
 		var nurse_fallback := "“I am not familiar with this step. Please verify it once more, Dr. Sakaguchi.”" if english_mode() else "「这个步骤我不太熟，请坂口医生再确认一次。」"
 		return inexperienced_nurse_response(staff_id, action_id, nurse_fallback)
@@ -3039,8 +3082,30 @@ func patient_reaction(reaction_id: String, fallback: String) -> String:
 	var variants: Variant = patient_reaction_variants.get(reaction_id, [])
 	if variants is Array and not variants.is_empty():
 		var variant_index := posmod(hash("%s:%s:%s" % [patient_name, reaction_id, event_count]), variants.size())
-		return str(variants[variant_index])
-	return str(runtime_english(patient_reactions.get(reaction_id, fallback)))
+		return patient_dialogue_text(str(variants[variant_index]))
+	return patient_dialogue_text(str(runtime_english(patient_reactions.get(reaction_id, fallback))))
+
+func is_staff_patient() -> bool:
+	return not str(definition.get("staff_patient_id", "")).is_empty()
+
+func patient_dialogue_text(value: String) -> String:
+	if not is_staff_patient():
+		return value
+	var context: Dictionary = patient_dialogue_overrides.get("address_context", {})
+	var result := value.replace("{procedure_name}", str(surgeries.get(str(definition.get("agreed_procedure_id", "")), {}).get("name", procedure_name)))
+	for key in context:
+		result = result.replace("{" + str(key) + "}", str(context[key]))
+	return result
+
+func patient_interaction_with_overrides(source: Dictionary) -> Dictionary:
+	var result := source.duplicate(true)
+	var override: Dictionary = patient_dialogue_overrides.get("interaction_overrides", {}).get(str(source.id), {})
+	if override.has("prompt"):
+		result.prompt = patient_dialogue_text(str(override.prompt))
+	for action in result.get("actions", []):
+		if override.get("responses", {}).has(str(action.id)) and str(action.get("response_speaker", "")) == "patient":
+			action.response = patient_dialogue_text(str(override.responses[action.id]))
+	return result
 
 func operative_preparation_reaction_id(action_id: String) -> String:
 	if flags.has("anesthetized") or action_id not in ["operative_positioning", "urinary_catheterization", "skin_disinfection", "incision_marking"]:

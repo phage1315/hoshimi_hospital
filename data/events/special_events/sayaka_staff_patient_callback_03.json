@@ -1,0 +1,46 @@
+[
+  {
+    "id": "sayaka_staff_patient_callback_03",
+    "title": "院长的新发现",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [
+      {
+        "type": "days_after_special_event",
+        "event_id": "sayaka_staff_patient_callback_02",
+        "days": 1
+      },
+      {
+        "type": "day_type",
+        "values": [
+          "weekday",
+          "saturday"
+        ]
+      }
+    ],
+    "required_characters": [],
+    "prerequisite_events": [
+      "sayaka_staff_patient_callback_02"
+    ],
+    "event_chain": [
+      "sayaka_staff_patient_callback_03_main"
+    ],
+    "completion_flags": [
+      "sayaka_staff_patient_callback_03_complete",
+      "sayaka_staff_patient_callback_complete"
+    ],
+    "gallery_unlock": false,
+    "timing": {
+      "trigger_day": 1,
+      "priority": 205,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false,
+      "exact_day_start_only": true
+    }
+  }
+]

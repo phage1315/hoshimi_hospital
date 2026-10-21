@@ -1,0 +1,66 @@
+[
+  {
+    "id": "sayaka_lv5_part_a",
+    "title": "今晚这里没人吧？",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "skip_departure_events_on_completion": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_sayaka",
+        "level": 4
+      },
+      {
+        "type": "relationship_familiarity",
+        "actor_id": "doc_sayaka",
+        "minimum": 70
+      },
+      {
+        "type": "player_attribute",
+        "attribute": "charm",
+        "minimum": 30
+      },
+      {
+        "type": "player_attribute",
+        "attribute": "skill",
+        "minimum": 60
+      },
+      {
+        "type": "days_after_character_event",
+        "event_id": "sayaka_lv4_hotel_date",
+        "days": 3
+      }
+    ],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "sayaka_lv5_part_a_main"
+    ],
+    "completion_flags": [
+      "sayaka_lv5_part_a_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "sayaka_lv5_part_a",
+      "title": "今晚这里没人吧？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 310,
+      "time_start": 960,
+      "time_end": 1260,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    },
+    "completion_hint": "今晚这里没人吧？事件已完成。"
+  }
+]

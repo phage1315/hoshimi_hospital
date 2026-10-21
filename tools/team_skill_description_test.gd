@@ -1,6 +1,7 @@
 extends SceneTree
 
 const View = preload("res://godot/ui/preop_view.gd")
+const StaffView = preload("res://godot/ui/staff_view.gd")
 const Prep = preload("res://godot/systems/preop_session.gd")
 var checks := 0
 var failures := 0
@@ -39,6 +40,10 @@ func run() -> void:
 		var trained: String = app.tx("ui.team.skill_trained", "　熟练")
 		var experienced: String = app.tx("ui.team.skill_experienced", "　经验丰富")
 		expect(not limited.is_empty() and not trained.is_empty() and not experienced.is_empty(), "Localized labels")
+		var nurse_summary := StaffView.skills_summary(app, {"profession": "nurse", "skills": {"surgery": 70, "teamwork": 71, "calmness": 72, "patient_care": 73, "instrument_handling": 74}})
+		var doctor_summary := StaffView.skills_summary(app, {"profession": "doctor", "skills": {"surgery": 70, "teamwork": 71, "calmness": 72, "patient_care": 73, "instrument_handling": 74}})
+		expect(nurse_summary.count("\n") == 1 and nurse_summary.contains("74") and nurse_summary.contains("70"), "Nurse profile does not show all five competencies in two rows")
+		expect(doctor_summary.contains("70") and doctor_summary.contains("71") and doctor_summary.contains("72") and not doctor_summary.contains("73") and not doctor_summary.contains("74"), "Doctor profile did not hide patient care and instrument handling")
 		for value in [0, 59, 60, 79, 80, 90, 100]:
 			var expected: String = limited if value < 60 else trained if value < 80 else experienced
 			for background in ["novice", "limited", "trained", "expert"]:

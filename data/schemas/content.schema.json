@@ -6179,6 +6179,9 @@
             },
             {
               "const": "@day_end"
+            },
+            {
+              "const": "@cancel"
             }
           ]
         },
@@ -6261,6 +6264,12 @@
     "special_event_node": {
       "type": "object",
       "properties": {
+        "exit_blackout_seconds": {
+          "description": "Pure-black, input-locked presentation after advancing this node; does not advance game time or grant rewards.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 10
+        },
         "id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -6331,6 +6340,37 @@
           "minimum": -200,
           "maximum": 400
         },
+        "secondary_portrait_path": {
+          "type": "string",
+          "pattern": "^assets/(events|characters)/.+\\.png$"
+        },
+        "secondary_portrait_scale": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2.0
+        },
+        "secondary_portrait_right": {
+          "type": "number",
+          "minimum": 300,
+          "maximum": 1280
+        },
+        "secondary_portrait_y": {
+          "type": "number",
+          "minimum": -200,
+          "maximum": 600
+        },
+        "secondary_actor_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "secondary_outfit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secondary_expression": {
+          "type": "string",
+          "minLength": 1
+        },
         "hide_portrait": {
           "type": "boolean"
         },
@@ -6386,6 +6426,19 @@
     "special_event_step": {
       "type": "object",
       "properties": {
+        "scene_schedule": {
+          "description": "Presentation-only time by node ID scene prefix; never advances the workday ledger.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "clock": {"type": "integer", "minimum": 0, "maximum": 1439},
+              "day_offset": {"type": "integer", "minimum": 0, "maximum": 30}
+            },
+            "required": ["clock"],
+            "additionalProperties": false
+          }
+        },
         "id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -6647,6 +6700,11 @@
     "special_event": {
       "type": "object",
       "properties": {
+        "skip_departure_events_on_completion": {
+          "description": "This atomic event already includes its evening; after completion bypass departure encounters and clear the old departure context. Does not apply to cancellation.",
+          "type": "boolean",
+          "default": false
+        },
         "id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -6684,10 +6742,11 @@
           "type": "boolean"
         },
         "trigger_mode": {
-          "description": "day_start starts during workday scheduling; location starts when the player enters location_id.",
+          "description": "day_start starts during workday scheduling; location starts when the player enters location_id; after_work starts on workday departure.",
           "enum": [
             "day_start",
-            "location"
+            "location",
+            "after_work"
           ]
         },
         "location_id": {
@@ -6871,12 +6930,26 @@
               "minimum": 0,
               "maximum": 1000
             },
+            "time_start": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2000
+            },
+            "time_end": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2000
+            },
             "final_week_allowed": {
               "description": "Only explicitly marked story/ending events may occupy days 359-365.",
               "type": "boolean"
             },
             "sunday_start_allowed": {
               "description": "Explicit opt-in for fixed festivals, mandatory events or major cases that may begin on Sunday. Ongoing multi-day events do not need this flag to span Sunday.",
+              "type": "boolean"
+            },
+            "exact_day_start_only": {
+              "description": "When true, a day_start event is only available at the exact shift-start clock; if that moment is missed, retry on a later eligible day.",
               "type": "boolean"
             }
           },
