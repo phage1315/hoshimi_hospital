@@ -1,0 +1,811 @@
+[
+  {
+    "id": "intro_rumi_shiori_hiroko_monday_0900",
+    "actor_id": "nurse_iwasaki_rumi",
+    "title": "护士站的两位同事",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 20,
+    "teaser": "弘子介绍两位同事",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 90,
+    "category": "introduction",
+    "introduction_actor_ids": [
+      "nurse_iwasaki_rumi",
+      "nurse_yoneda_shiori"
+    ],
+    "gallery": {
+      "cg_id": "intro_rumi_shiori_hiroko_monday_0900",
+      "caption": "护士站的两位同事",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "rs0_0001",
+    "auto_start": true,
+    "target_level": 1,
+    "nodes": [
+      {
+        "id": "rs0_0001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "text": "周一上午，护士站里比平时热闹了一些。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0001",
+            "label": "继续",
+            "next": "rs0_0002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "text": "坂口走进来时，弘子正和两名年轻护士交谈。两人都穿着整齐的白色护士制服，其中一位说得眉飞色舞，另一位也笑着接话。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0002",
+            "label": "继续",
+            "next": "rs0_0003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「啊，坂口医生。来得正好，给您介绍两位同事。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0003",
+            "label": "继续",
+            "next": "rs0_0004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「这位是岩崎留美。这位是米田栞。以后大家会有不少一起工作的机会。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0004",
+            "label": "继续",
+            "next": "rs0_0005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「您好！我是岩崎留美。请多关照！」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0005",
+            "label": "继续",
+            "next": "rs0_0006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "留美笑容灿烂，十分大方地向坂口打招呼。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0006",
+            "label": "继续",
+            "next": "rs0_0007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「你就是坂口医生呀！之前就听弘子前辈说起过了。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0007",
+            "label": "继续",
+            "next": "rs0_0008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0008",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「是吗？希望不是说我的坏话。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0008",
+            "label": "继续",
+            "next": "rs0_0009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「我只是告诉她们，医院来了位外科医生。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0009",
+            "label": "继续",
+            "next": "rs0_0010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「呵呵，前辈真是的，难得有新同事，介绍得也太正经了吧！」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0010",
+            "label": "继续",
+            "next": "rs0_0011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「你倒是一点也不怕生。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0011",
+            "label": "继续",
+            "next": "rs0_0012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「认识新同事又不是考试，有什么好紧张的嘛。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0012",
+            "label": "继续",
+            "next": "rs0_0013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "她说着笑了起来，随后朝旁边的栞招招手。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0013",
+            "label": "继续",
+            "next": "rs0_0014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「栞，你也来打个招呼呀。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0014",
+            "label": "继续",
+            "next": "rs0_0015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「啊，是！」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_0015",
+            "label": "继续",
+            "next": "rs0_0016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「我是米田栞。坂口医生，请多指教！」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0016",
+            "label": "继续",
+            "next": "rs0_0017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0017",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「请多指教。你们两位看起来关系很好。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0017",
+            "label": "继续",
+            "next": "rs0_0018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「嗯！因为留美姐姐一直很照顾我——」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0018",
+            "label": "继续",
+            "next": "rs0_0019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "栞说到一半，突然停住。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0019",
+            "label": "继续",
+            "next": "rs0_0020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「啊……我是说，岩崎前辈。」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_0020",
+            "label": "继续",
+            "next": "rs0_0021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「有什么关系嘛，平时不也是这么叫的？」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0021",
+            "label": "继续",
+            "next": "rs0_0022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「你们私下怎么称呼我管不着。工作时记得把交接做好就行。」",
+        "expression": "serious",
+        "choices": [
+          {
+            "id": "continue_0022",
+            "label": "继续",
+            "next": "rs0_0023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「好的，杉村前辈！今天早上的交接资料，我已经确认过了。」",
+        "expression": "neutral",
+        "choices": [
+          {
+            "id": "continue_0023",
+            "label": "继续",
+            "next": "rs0_0024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「嗯，这点做得不错。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0024",
+            "label": "继续",
+            "next": "rs0_0025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「栞做事很认真的哦。坂口医生，以后可以放心找她帮忙。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0025",
+            "label": "继续",
+            "next": "rs0_0026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「留美姐姐，我也可以自己跟医生说啦……」",
+        "expression": "worried",
+        "choices": [
+          {
+            "id": "continue_0026",
+            "label": "继续",
+            "next": "rs0_0027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「啊哈哈，好啦好啦。」",
+        "expression": "closed_eye_smile",
+        "choices": [
+          {
+            "id": "continue_0027",
+            "label": "继续",
+            "next": "rs0_0028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0028",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "看着她们两人你一句我一句，坂口也不禁笑了起来。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0028",
+            "label": "继续",
+            "next": "rs0_0029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0029",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「看来今后的工作会很热闹。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0029",
+            "label": "继续",
+            "next": "rs0_0030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "text": "「热闹倒是不缺。就希望她们别光顾着聊天。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0030",
+            "label": "继续",
+            "next": "rs0_0031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "杉村弘子"
+      },
+      {
+        "id": "rs0_0031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「我们工作也很认真的啦！对吧，栞？」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0031",
+            "label": "继续",
+            "next": "rs0_0032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「嗯！」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0032",
+            "label": "继续",
+            "next": "rs0_0033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「那么坂口医生，以后有什么需要帮忙的，尽管找我们。」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0033",
+            "label": "继续",
+            "next": "rs0_0034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "岩崎留美"
+      },
+      {
+        "id": "rs0_0034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「我也会好好工作的。请多关照！」",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0034",
+            "label": "继续",
+            "next": "rs0_0035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "米田栞"
+      },
+      {
+        "id": "rs0_0035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "留美笑着挥了挥手，栞则认真地向坂口行礼。两人随后继续整理护士站的资料。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0035",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0001_morning",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "text": "这天上午，护士站里比平时热闹了一些。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0001_morning",
+            "label": "继续",
+            "next": "rs0_0002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "rs0_0001_later",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "text": "护士站里比平时热闹了一些。",
+        "expression": "smile",
+        "choices": [
+          {
+            "id": "continue_0001_later",
+            "label": "继续",
+            "next": "rs0_0002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "benefit_id": "",
+    "opening_variants": {
+      "scheduled_morning": "rs0_0001",
+      "delayed_morning": "rs0_0001_morning",
+      "delayed_later": "rs0_0001_later"
+    }
+  }
+]

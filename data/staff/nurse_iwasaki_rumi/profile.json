@@ -1,0 +1,303 @@
+{
+  "id": "nurse_iwasaki_rumi",
+  "name": "岩崎留美",
+  "age": 20,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 15,
+    "diagnostics": 44,
+    "teamwork": 72,
+    "patient_care": 66,
+    "instrument_handling": 52,
+    "calmness": 62
+  },
+  "surgery_proficiency": "limited",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "specialty": "病房护理／手术室支援",
+  "rank": "年轻护士前辈；日常多在病房、护士站或巡回相关区域",
+  "personality": "开朗主动、敢于调笑、愿意帮忙，擅长使人融入护士站的工作氛围",
+  "appearance": "栗棕色高马尾，红色眼睛；身高163cm，体重44kg，三围86-55-85cm。",
+  "dialogue_style": "快而明朗，敢主动追问；工作时能明确说明，不靠无限夸张语尾",
+  "flags": [
+    "introduction_pending",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.0,
+    "operations": []
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [
+        "再核一项检查吧。现在缺的那部分，我可不想替你猜。",
+        "坂口医生，先把还没确认的结果补上，再下结论会更稳妥。"
+      ],
+      "insufficient_evidence": [
+        "还差一点呢。现在急着下结论，我会不放心。",
+        "这一栏还是空的。先弄清楚再说，别让我们下班后回来补记录。"
+      ],
+      "sufficient_evidence": [
+        "嗯，检查结果都对上了。接下来由坂口医生判断吧。",
+        "现在的材料已经够用了。医生，轮到你做判断啦。"
+      ],
+      "diagnosis_correct_reply": [
+        "很好，检查结果和判断都对上了。接下来的安排我来帮忙。",
+        "这次判断很稳妥嘛，坂口医生。我把后续交代整理好。"
+      ],
+      "diagnosis_incorrect_reply": [
+        "等等，坂口医生。我再对一下刚才的检查记录，这个结论似乎还需要确认。",
+        "医生，先别急着往下安排。我觉得现有结果跟这个判断还没完全对上。"
+      ],
+      "chatter": [
+        "下一位患者的资料在这里。今天的门诊节奏挺快的嘛。",
+        "我把还没确认的项目都标好了，有需要随时叫我。",
+        "护士站的事情我交接过了。现在这边归我管，医生安心看诊吧。"
+      ],
+      "clinic_support": [
+        "检查准备好了。患者问到流程的地方，我已经记下来。",
+        "我先把她担心的事情记下，等您说明检查结果时一起回答。",
+        "这边需要的用品齐了；还有哪项没准备好，我会明说。"
+      ],
+      "preop_support": [
+        "术前说明我已经和患者核对了。她还想问的部分，我会请她直接跟医生确认。",
+        "准备完成的项目都已经记录；没完成的也标出来了。"
+      ]
+    },
+    "diagnosis_corrections": {
+      "diagnose_gastro": "等等，坂口医生。我再对一下刚才的检查记录，这个结论似乎还需要确认。",
+      "diagnose_observe": "医生，先别急着往下安排。我觉得现有结果跟这个判断还没完全对上。"
+    }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「好呀，我把接下来的步骤按顺序讲给你听。听到哪儿不明白，就直接打断我，不用跟我客气。」",
+    "insert_a": "「这一段听起来是有点吓人。不过我们现在慢慢讲清楚，总比你到了手术台上还在猜要好，对吧？」",
+    "insert_b": "「诶，别光顾着点头哦。觉得冷、疼，或者心里害怕，都要跟我们说；这些可不用忍着当乖患者。」",
+    "close": "「好，主要步骤就是这些啦。还有哪一段要我再讲一次？现在问清楚，等下心里也踏实一点。」"
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "今天的病房准备交给我吧。我去跟负责交班的人对一下。",
+    "scrub_nurse": "器械位？没问题，我会认真核对。刚才的玩笑就留在护士站吧。",
+    "circulating_nurse": "好，巡回交给我。谁需要什么，我都会盯着的。"
+  },
+  "post_operation_replies": [
+    "这一台辛苦了！记录我整理好再交班，大家先别急着散。",
+    "手术结束，外围记录也齐了。哎呀，终于能正常聊天了。"
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      "坂口医生，下班要不要一起走一段？路上聊点工作以外的也好。"
+    ],
+    "acceptance": [
+      "好呀！我把交接做完就可以走，不用等太久。",
+      "没问题。今天轮到我有人陪着下班啦。"
+    ],
+    "unavailable": [
+      "我今天还有交接没做完，先别等我啦。下次一起走。"
+    ],
+    "farewell": [
+      "那我从这边走啦，坂口医生。下次见！"
+    ]
+  },
+  "after_work_short_chat": [
+    "留美一边整理手提包，一边笑着说：「医生，正好同路就一起走吧。护士站的事情我可没打算一直聊到车站。」",
+    "留美走出医院大门，忽然停下来望了望天色。「原来已经这个点啦。下班能有人一起聊几句，还挺不错的。」",
+    "留美走到岔路口，朝坂口挥挥手。「我从这边走啦。下次再一起下班，别等到我又把同事全约齐才开口哦。」"
+  ],
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压开始下降了。",
+          "血压还没稳住，我在持续监看。",
+          "血压仍然偏低，监护这边还在报警。"
+        ],
+        "severe_attempt_lines": [
+          "血压掉得很快！",
+          "血压仍在下降，情况没有缓下来！",
+          "坂口医生，血压一直没稳住！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "血压突然升上去了，坂口医生。",
+          "血压还是偏高，暂时没回落。",
+          "监护显示血压持续偏高。"
+        ],
+        "severe_attempt_lines": [
+          "血压升得很快！",
+          "血压仍然很高，还没降下来！",
+          "坂口医生，血压一直没有恢复稳定！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "心率加快了，坂口医生。",
+          "心率仍然偏快，我继续监看。",
+          "心率没有回到稳定范围。"
+        ],
+        "severe_attempt_lines": [
+          "心率突然升得很快！",
+          "心率还是过快，没见缓下来！",
+          "坂口医生，心率到现在还没稳住！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率在下降。",
+          "心率仍然偏慢。",
+          "心率没有恢复，监护上还是偏低。"
+        ],
+        "severe_attempt_lines": [
+          "心率降得很快！",
+          "心率还是太低，情况没有缓过来！",
+          "坂口医生，心率一直没恢复！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "监护上的心律不规则了。",
+          "心律还是不规则，我在盯着变化。",
+          "坂口医生，心律到现在还没恢复稳定。"
+        ],
+        "severe_attempt_lines": [
+          "心律突然明显乱了！",
+          "心律仍然不稳，没有恢复！",
+          "坂口医生，心律异常一直持续！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血氧在下降。",
+          "血氧还没回稳，我继续监看。",
+          "血氧仍然偏低，监护上没有恢复。"
+        ],
+        "severe_attempt_lines": [
+          "血氧掉得很快！",
+          "血氧还在低位，没有回升！",
+          "坂口医生，血氧一直没稳住！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "呼吸状态变得不稳定了。",
+          "呼吸状态还是不稳，我在看监护。",
+          "呼吸方面的异常还在持续。"
+        ],
+        "severe_attempt_lines": [
+          "呼吸状态突然乱了！",
+          "呼吸还是不稳，没有缓下来！",
+          "坂口医生，呼吸状态始终没恢复！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护读数有变化。",
+          "监护状态还不稳定，我继续看着。",
+          "患者状态还没回稳。"
+        ],
+        "severe_attempt_lines": [
+          "监护突然明显不稳了！",
+          "监护异常还在持续！",
+          "坂口医生，患者状态还是没有稳住！"
+        ]
+      }
+    ]
+  },
+  "visuals": {
+    "color": "a75345",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "casual_winter"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/sterile/neutral.png",
+      "casual/neutral": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/casual_winter/neutral.png",
+      "uniform/smile": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/uniform/smile.png",
+      "uniform/serious": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/uniform/serious.png",
+      "uniform/worried": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/uniform/worried.png",
+      "uniform/closed_eye_smile": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/uniform/closed_eye_smile.png",
+      "scrubs/focused": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/scrubs/focused.png",
+      "scrubs/warm": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/scrubs/worried.png",
+      "sterile/focused": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/sterile/focused.png",
+      "sterile/warm": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/sterile/warm.png",
+      "sterile/worried": "assets/characters/rumi_shiori_v1/nurse_iwasaki_rumi/sterile/worried.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_iwasaki_rumi/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_iwasaki_rumi/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  }
+}

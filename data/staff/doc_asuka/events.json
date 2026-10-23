@@ -141,7 +141,7 @@
   {
     "id": "asuka_adjacent_operation_reveal",
     "actor_id": "doc_asuka",
-    "actor_alias": "手术室护士长",
+    "actor_alias": "手术室值班护士",
     "title": "隔壁那台",
     "chapter": 0,
     "location_id": "or",
@@ -149,7 +149,7 @@
     "background_id": "operating_room",
     "outfit": "scrubs",
     "minutes": 2,
-    "teaser": "手术室护士长提起了隔壁手术间",
+    "teaser": "手术室值班护士提起了隔壁手术间",
     "time_start": 540,
     "time_end": 1020,
     "priority": 126,
@@ -159,7 +159,7 @@
     "target_level": 1,
     "gallery": {
       "cg_id": "asuka_adjacent_operation_reveal",
-      "caption": "从护士长口中得知刷手池女孩的真正身份。",
+      "caption": "从值班护士口中得知刷手池女孩的真正身份。",
       "path": ""
     },
     "conditions": {
@@ -181,7 +181,7 @@
         "choices": [
           {
             "id": "ask_head_nurse",
-            "label": "向护士长问起隔壁那台",
+            "label": "向值班护士问起隔壁那台",
             "next": "answer",
             "effects": {
               "affection": 0,
@@ -195,7 +195,7 @@
       {
         "id": "answer",
         "speaker": "narrator",
-        "text": "护士长愣了一下。\n「您说隔壁主刀？那是城宮院长。」\n「院长？」\n「是啊。她很少摆架子，换上刷手服以后，看起来更像刚进医院的年轻医生。」",
+        "text": "值班护士愣了一下。\n「您说隔壁主刀？那是城宮院长。」\n「院长？」\n「是啊。她很少摆架子，换上刷手服以后，看起来更像刚进医院的年轻医生。」",
         "expression": "neutral",
         "choices": [
           {
@@ -209,12 +209,14 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "hide_portrait": false,
+        "actor_id": "nurse_sonoda_itsumi",
+        "outfit": "scrubs"
       },
       {
         "id": "office_note",
         "speaker": "narrator",
-        "text": "护士长把一份术后交接记录夹回板夹。\n「院长也提到您了。她说明天如果有空，可以去院长室见她。」",
+        "text": "值班护士把一份术后交接记录夹回板夹。\n「院长也提到您了。她说明天如果有空，可以去院长室见她。」",
         "expression": "neutral",
         "choices": [
           {
@@ -230,7 +232,9 @@
             ]
           }
         ],
-        "hide_portrait": true
+        "hide_portrait": false,
+        "actor_id": "nurse_sonoda_itsumi",
+        "outfit": "scrubs"
       }
     ],
     "benefit_id": "",

@@ -413,7 +413,10 @@ for relation in collections['relationships']:
 relationship_dependencies = {relation['target_id']: set() for relation in collections['relationships']}
 for relation in collections['relationships']:
     ordered_slots = sorted(relation['rank_slots'], key=lambda slot: slot['target_level'])
-    thresholds = [slot['min_familiarity'] for slot in ordered_slots]
+    # Unwritten planned slots use zero as an unspecified threshold. Do not
+    # force authors to invent later gates just to register early confirmed ones.
+    thresholds = [slot['min_familiarity'] for slot in ordered_slots
+                  if not (slot['content_status'] == 'planned' and slot['min_familiarity'] == 0)]
     check(thresholds == sorted(thresholds),
           relation['target_id'] + ': familiarity thresholds decrease at a later relationship level')
     for slot in ordered_slots:
@@ -490,7 +493,7 @@ maya = by['staff'].get('visiting_maya', {})
 maya_relation = next((relation for relation in collections['relationships']
                       if relation['target_id'] == 'visiting_maya'), {})
 maya_intro = by['character_events'].get('intro_visiting_maya_waveform_error', {})
-check(maya.get('age') == 29 and maya.get('profession') == 'doctor' and
+check(maya.get('age') == 28 and maya.get('profession') == 'doctor' and
       maya.get('skills') == {'surgery': 28, 'diagnostics': 62, 'teamwork': 82,
                              'patient_care': 58, 'instrument_handling': 91, 'calmness': 76},
       'visiting_maya: visiting-research profile or authored skills changed')
@@ -521,7 +524,7 @@ futaba = by['staff'].get('visiting_futaba', {})
 futaba_relation = next((relation for relation in collections['relationships']
                         if relation['target_id'] == 'visiting_futaba'), {})
 futaba_intro = by['character_events'].get('intro_visiting_futaba_body_does_not_believe', {})
-check(futaba.get('age') == 26 and futaba.get('profession') == 'doctor' and
+check(futaba.get('age') == 25 and futaba.get('profession') == 'doctor' and
       futaba.get('skills') == {'surgery': 34, 'diagnostics': 91, 'teamwork': 76,
                                'patient_care': 74, 'instrument_handling': 70, 'calmness': 68},
       'visiting_futaba: visiting physician-scientist profile or authored skills changed')

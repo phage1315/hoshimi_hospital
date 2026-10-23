@@ -868,6 +868,10 @@ func apply_clinic_action(id: String) -> bool:
 		return false
 	if id in ["diagnose_gastro", "diagnose_observe"] and visit.stage_id == "diagnosis":
 		visit.diagnosis_feedback_actor_id = resolve_outpatient_support_actor()
+	elif id == "diagnose_appendix":
+		var support_id := resolve_outpatient_support_actor()
+		if not staff_record(support_id).get("personal_nurse", {}).get("dialogue", {}).get("diagnosis_correct_reply", []).is_empty():
+			visit.diagnosis_feedback_actor_id = support_id
 	if id == "explain":
 		var variant_id := str(visit.definition.get("first_surgery_diagnosis_shock_variant_id", ""))
 		if not variant_id.is_empty():
@@ -1092,7 +1096,41 @@ func meet_staff(actor_id: String) -> bool:
 	if relation.is_empty():
 		return false
 	relation.met = true
+	if actor_id == "nurse_hiroko":
+		rumi_shiori_introduction_day()
 	return true
+
+# A durable fallback for saves that knew Hiroko before introduction dates existed.
+func rumi_shiori_introduction_day() -> int:
+	if not staff_is_met("nurse_hiroko"):
+		return 0
+	var anchor_day := 0
+	var intro = character_events.get("intro_nurse_hiroko")
+	if intro != null and intro.completed and int(intro.completed_day) > 0:
+		anchor_day = int(intro.completed_day)
+	if anchor_day == 0:
+		anchor_day = character_progress_counter("nurse_hiroko", "joint_intro_anchor_day")
+		if anchor_day == 0:
+			anchor_day = day_number()
+			increment_character_progress_counter("nurse_hiroko", "joint_intro_anchor_day", anchor_day)
+	var next_day := anchor_day + 1
+	while str(calendar_date(next_day).weekday_id) != "mon":
+		next_day += 1
+	return next_day
+
+func rumi_shiori_introduction_due(for_day: int, clock: int) -> bool:
+	var due_day := rumi_shiori_introduction_day()
+	return due_day > 0 and for_day >= due_day and clock >= 540
+
+func complete_introduction_cast(definition: Dictionary) -> void:
+	for actor_id in definition.get("introduction_actor_ids", [definition.actor_id]):
+		meet_staff(str(actor_id))
+		var relation := relation_for(str(actor_id))
+		if relation.is_empty():
+			continue
+		relation.flags.erase("introduction_pending")
+		if not relation.event_history.has(definition.id):
+			relation.event_history.append(definition.id)
 
 func staff_is_met(actor_id: String) -> bool:
 	return bool(relation_for(actor_id).get("met", false))
@@ -1666,7 +1704,36 @@ func character_event_available(definition: Dictionary) -> bool:
 	if not active_staff_patient.is_empty() and str(definition.get("actor_id", "")) == str(active_staff_patient.staff_id):
 		return false
 	var event_id := str(definition.get("id", ""))
+	if event_id == "intro_ishigami_nurse_manager":
+		if not staff_is_met("doc_asuka") or staff_is_met("nurse_ishigami"):
+			return false
+		var met_nurses := 0
+		for person in staff:
+			var actor_id := str(person.get("id", ""))
+			# Count registered nursing staff at Lv0, including ordinary interns.
+			# Visiting researchers and non-nursing NPCs are not nursing staff.
+			if actor_id != "nurse_ishigami" and str(person.get("profession", "")) == "nurse" and str(person.get("team_category", "")) == "nurse" and staff_is_met(actor_id):
+				met_nurses += 1
+		if met_nurses < 6:
+			return false
+		if active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
+	# Megumi's internship waits indefinitely for the chief nurse's introduction.
+	# The calendar minimum and day-start queue are authored on the event itself.
+	if event_id == "intro_kariya_megumi_june":
+		if not staff_is_met("nurse_ishigami") or current_absolute_clock() < 540:
+			return false
+		if active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
+	# Persist the operation boundary so an overdue chain cannot play several
+	# corridor encounters after the same operation, including after a reload.
+	if event_id in ["itsumi_lv0_c_corridor", "itsumi_lv0_d_instrument_tray", "itsumi_lv0_e_hiroko_invitation"]:
+		if story_flag("itsumi_lv0_postop_seen:%s" % completed_surgeries_total):
+			return false
 	var event_day := current_workday() if character_event_trigger_mode(definition) == "after_work" else day_number()
+	if event_id == "intro_rumi_shiori_hiroko_monday_0900":
+		if not rumi_shiori_introduction_due(event_day, current_absolute_clock()):
+			return false
 	if event_id == "sayaka_lv4_hospital_callback":
 		var callback_day := day_number() if sayaka_lv4_callback_override_day < 1 else sayaka_lv4_callback_override_day
 		var callback_clock := current_absolute_clock() if sayaka_lv4_callback_override_clock < 0 else sayaka_lv4_callback_override_clock
@@ -1689,7 +1756,7 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if definition.conditions.has("max_day") and event_day > int(definition.conditions.max_day):
 		return false
-	if definition.category == "introduction" and bool(relation.get("met", false)):
+	if definition.category == "introduction" and bool(relation.get("met", false)) and not definition.has("introduction_actor_ids"):
 		return false
 	if definition.category != "introduction" and not bool(relation.get("met", false)) and not bool(definition.get("allow_unmet_actor", false)):
 		return false
@@ -1855,6 +1922,10 @@ func next_after_work_character_event() -> Dictionary:
 	return {} if result.is_empty() else result[0]
 
 func character_event_opening_node(definition: Dictionary) -> String:
+	if str(definition.id) == "intro_rumi_shiori_hiroko_monday_0900":
+		if current_absolute_clock() >= 720:
+			return "rs0_0001_later"
+		return "rs0_0001" if day_number() == rumi_shiori_introduction_day() else "rs0_0001_morning"
 	var variants: Dictionary = definition.get("opening_variants", {})
 	if variants.is_empty():
 		return str(definition.get("start", ""))
@@ -2014,8 +2085,10 @@ func choose_character_event(choice_id: String) -> bool:
 	if event.completed and not relation.event_history.has(event.definition.id):
 		event.completed_day = event_day
 		relation.event_history.append(event.definition.id)
+		if str(event.definition.id) in ["itsumi_lv0_c_corridor", "itsumi_lv0_d_instrument_tray", "itsumi_lv0_e_hiroko_invitation"]:
+			set_story_flag("itsumi_lv0_postop_seen:%s" % completed_surgeries_total)
 		if event.definition.category == "introduction":
-			meet_staff(str(event.definition.actor_id))
+			complete_introduction_cast(event.definition)
 		elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, relation):
 			complete_rank_up(str(event.definition.actor_id), str(event.definition.id), int(event.definition.target_level), str(event.definition.get("benefit_id", "")))
 	elif event.completed:
@@ -3629,10 +3702,12 @@ func resolve_outpatient_support_actor() -> String:
 
 func clinic_presentation(visit: RefCounted) -> Dictionary:
 	var line: Dictionary = visit.presentation()
-	if visit.stage_id != "diagnosis" or visit.action_log.is_empty() or str(line.speaker) != "outpatient_support":
+	if visit.action_log.is_empty() or str(line.speaker) != "outpatient_support":
 		return line
 	var action_id := str(visit.action_log.back())
-	if action_id not in ["diagnose_gastro", "diagnose_observe"]:
+	if action_id not in ["diagnose_appendix", "diagnose_gastro", "diagnose_observe"]:
+		return line
+	if action_id == "diagnose_appendix" and str(visit.diagnosis_feedback_actor_id).is_empty():
 		return line
 	# Keep the speaker who actually corrected this choice, but resolve prose
 	# from the currently loaded language. Legacy visits keep the usual context.
@@ -3643,6 +3718,11 @@ func clinic_presentation(visit: RefCounted) -> Dictionary:
 	var person := staff_record(actor_id)
 	var profile: Dictionary = person.get("personal_nurse", {})
 	if actor_id == "doc_aoi" or str(person.get("profession", "")) != "nurse" or not bool(profile.get("eligible", false)):
+		return line
+	if action_id == "diagnose_appendix":
+		var replies: Array = profile.get("dialogue", {}).get("diagnosis_correct_reply", [])
+		if not replies.is_empty():
+			line.text = replies[posmod(visit.action_log.size(), replies.size())]
 		return line
 	var corrections: Dictionary = profile.get("diagnosis_corrections", {})
 	var correction := str(corrections.get(action_id, ""))
@@ -3672,6 +3752,17 @@ func personal_nurse_dialogue(kind: String) -> String:
 		"chatter": "下一位患者已经到了。坂口医生，准备好后我们就继续吧。",
 	}
 	return str(fallback.get(kind, fallback.chatter))
+
+func after_work_dialogue(kind: String) -> String:
+	if active_after_work_walk.is_empty():
+		return ""
+	var actor_id := str(active_after_work_walk.get("actor_id", ""))
+	var person := staff_record(actor_id)
+	var lines: Array = person.get("after_work_short_chat", []) if kind == "chat" else person.get("after_work_companion_dialogue", {}).get(kind, [])
+	if lines.is_empty():
+		return ""
+	var seed_text := "%s:%s:%s" % [actor_id, active_after_work_walk.get("workday", 1), kind]
+	return str(lines[posmod(seed_text.hash(), lines.size())])
 
 func award_personal_nurse_outpatient_familiarity() -> void:
 	if not personal_nurse_system_unlocked:
@@ -5494,6 +5585,9 @@ func restore(data: Variant) -> bool:
 		preparation.set_known_staff(known_staff_ids(), true)
 		preparation.set_procedure_unlocks(unlocked_procedure_ids, true)
 	character_events = rebuilt_character_events
+	for restored_event in character_events.values():
+		if restored_event.completed and restored_event.definition.has("introduction_actor_ids"):
+			complete_introduction_cast(restored_event.definition)
 	character_event_order = rebuilt_character_event_order
 	active_character_event_id = rebuilt_active_character_event
 	micro_events = rebuilt_micro_events
@@ -5516,6 +5610,7 @@ func restore(data: Variant) -> bool:
 	discarded_overtime_minutes = rebuilt_discarded_overtime
 	story_time_advance_minutes = rebuilt_story_time_advance
 	archived_clinical_minutes = restored_archived_clinical_minutes
+	rumi_shiori_introduction_day()
 	pending_encounter_day_transition = rebuilt_pending_encounter_transition
 	pending_surgery_day_transition = rebuilt_pending_surgery_transition
 	campaign_seed = restored_campaign_seed

@@ -1,0 +1,1509 @@
+[
+  {
+    "id": "intro_ishigami_nurse_manager",
+    "actor_id": "nurse_ishigami",
+    "title": "护士长",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "day_start",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 20,
+    "teaser": "护士长",
+    "time_start": 540,
+    "time_end": 719,
+    "priority": 95,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "intro_ishigami_nurse_manager",
+      "caption": "护士长",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 8,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "ishi0_000",
+    "nodes": [
+      {
+        "id": "ishi0_000",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "护士站的上午比坂口预想中还忙。七瀬恋正核对交接记录，坂口把一份尚待确认的手术申请递给她。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_000",
+            "label": "继续",
+            "next": "ishi0_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_001",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「七瀬，明天上午手术室不是还有空档吗？我想问能不能把这台手术提前排进去。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_001",
+            "label": "继续",
+            "next": "ishi0_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "恋",
+        "actor_id": "nurse_haru",
+        "text": "「我看一下……手术室那边的确还有时间。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_002",
+            "label": "继续",
+            "next": "ishi0_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_003",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「那就可以安排了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_003",
+            "label": "继续",
+            "next": "ishi0_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "恋",
+        "actor_id": "nurse_haru",
+        "text": "「还不行。那张表只管手术室，不管护理人员。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_004",
+            "label": "继续",
+            "next": "ishi0_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "她将申请压在护理联络夹上。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_005",
+            "label": "继续",
+            "next": "ishi0_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "恋",
+        "actor_id": "nurse_haru",
+        "text": "「这件事我得先问护理部。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_006",
+            "label": "继续",
+            "next": "ishi0_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「……这么严格？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_007",
+            "label": "继续",
+            "next": "ishi0_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_008",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "恋点点头，拿着申请往护士站里面的办公区域走去。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_008",
+            "label": "继续",
+            "next": "ishi0_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口仍站在护士站的办公桌旁。刚才的七瀬恋已经拿着申请离开画面。镜头不换地点。短暂安静后，一个清冷的女性声音从坂口身后传来。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_009",
+            "label": "继续",
+            "next": "ishi0_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「需要我解释为什么吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_010",
+            "label": "继续",
+            "next": "ishi0_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_011",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口转过身。\n\n来人是一名身材修长的黑发女性。衣着干净利落，胸前的工作牌标着护理管理职务。她手里拿着两张不同的排班表和刚才那份申请，脸上没有明显的不悦，也没有半点要寒暄的意思。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_011",
+            "label": "继续",
+            "next": "ishi0_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「石神千鹤。护理部。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_013",
+            "label": "继续",
+            "next": "ishi0_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「坂口隆司。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_014",
+            "label": "继续",
+            "next": "ishi0_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「我知道。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_015",
+            "label": "继续",
+            "next": "ishi0_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "石神把两张表分别放在桌上，将手术申请压在一旁。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_016",
+            "label": "继续",
+            "next": "ishi0_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「这是手术室使用表。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_017",
+            "label": "继续",
+            "next": "ishi0_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "她指向另一张。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_018",
+            "label": "继续",
+            "next": "ishi0_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「这是护理人员配置表。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_019",
+            "label": "继续",
+            "next": "ishi0_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「你刚才看的是第一张。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_020",
+            "label": "继续",
+            "next": "ishi0_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_021",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「……第二张我确实没有确认。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_021",
+            "label": "继续",
+            "next": "ishi0_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「那就先不要说已经能安排。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_022",
+            "label": "继续",
+            "next": "ishi0_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口低头细看。手术室空档与护士交接时间并没有整齐地重合。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_023",
+            "label": "继续",
+            "next": "ishi0_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_024",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「原来这里空着的只是房间。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_024",
+            "label": "继续",
+            "next": "ishi0_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「正确。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_025",
+            "label": "继续",
+            "next": "ishi0_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_026",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "她将表格重新叠齐，语气依旧平淡。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_026",
+            "label": "继续",
+            "next": "ishi0_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「护士不是手术室里自动生成的。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_027",
+            "label": "继续",
+            "next": "ishi0_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_028",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口一时没接上话。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_028",
+            "label": "继续",
+            "next": "ishi0_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_029",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "石神没有催促，也没有借机训人，只是把护理交班的位置标给坂口看。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_029",
+            "label": "继续",
+            "next": "ishi0_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「明天上午这段时间，病区需要完成交接。下午的巡回人员也已经有安排。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_030",
+            "label": "继续",
+            "next": "ishi0_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_031",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「如果临时调整一下呢？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_031",
+            "label": "继续",
+            "next": "ishi0_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「可以讨论。先确认谁被调整，原来的工作交给谁。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_032",
+            "label": "继续",
+            "next": "ishi0_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_033",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「我本来只想让患者少等一天。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_033",
+            "label": "继续",
+            "next": "ishi0_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「这个理由我接受。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_034",
+            "label": "继续",
+            "next": "ishi0_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口稍稍抬头。她却没有就此答应。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_035",
+            "label": "继续",
+            "next": "ishi0_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「但不能让患者少等一天，就让护士多上一班。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_036",
+            "label": "继续",
+            "next": "ishi0_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_037",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「我没有要她们加班的意思。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_037",
+            "label": "继续",
+            "next": "ishi0_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「意图不会自己变成排班。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_038",
+            "label": "继续",
+            "next": "ishi0_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "石神合上表格，看着坂口。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_039",
+            "label": "继续",
+            "next": "ishi0_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「我不是来阻止你做手术的。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_040",
+            "label": "继续",
+            "next": "ishi0_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_041",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「医生负责判断什么时候该做。护理部负责确认有没有人能够安全地接下这份工作。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_041",
+            "label": "继续",
+            "next": "ishi0_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_042",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「明白了。那我应该怎么申请？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_042",
+            "label": "继续",
+            "next": "ishi0_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_043",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "石神似乎对这个问题比对刚才的解释满意一些。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_043",
+            "label": "继续",
+            "next": "ishi0_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「预计用时、需要的器械护士和巡回护士、术后交接要求，提前交给护理部。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_044",
+            "label": "继续",
+            "next": "ishi0_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_045",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「能调整，我会答应。调整不了，我也会把原因告诉你。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_045",
+            "label": "继续",
+            "next": "ishi0_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_046",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「如果确实安排不开呢？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_046",
+            "label": "继续",
+            "next": "ishi0_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_047",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「一起找下一个合适的时间。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_047",
+            "label": "继续",
+            "next": "ishi0_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_048",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "她停了一瞬。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_048",
+            "label": "继续",
+            "next": "ishi0_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_049",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「这是医院。医生、护士、患者，都得等得到自己的那一份安排。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_049",
+            "label": "继续",
+            "next": "ishi0_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_050",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口把申请重新拿过来，翻到原先空着的护理协调栏。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_050",
+            "label": "继续",
+            "next": "ishi0_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_051",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「那这份我先补完整。没有得到护理部确认之前，不向患者保证具体时间。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_051",
+            "label": "继续",
+            "next": "ishi0_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_052",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「这样就对了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_052",
+            "label": "继续",
+            "next": "ishi0_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_053",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「以后临时加台，我会先通知护理部。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_053",
+            "label": "继续",
+            "next": "ishi0_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_054",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「不必等以后。这张先补完。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_054",
+            "label": "继续",
+            "next": "ishi0_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_055",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "坂口忍不住笑了一下。石神的神色没有变化。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_055",
+            "label": "继续",
+            "next": "ishi0_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_056",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「石神护士长，看来以后得经常麻烦您。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_056",
+            "label": "继续",
+            "next": "ishi0_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_057",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「把资料填清楚，不算麻烦。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_057",
+            "label": "继续",
+            "next": "ishi0_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_058",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "她拿起护理配置表，准备离开。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_058",
+            "label": "继续",
+            "next": "ishi0_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_059",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「还有一件事。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_059",
+            "label": "继续",
+            "next": "ishi0_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_060",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「是？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_060",
+            "label": "继续",
+            "next": "ishi0_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_061",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「病区忙的时候，请不要当着患者的面讨论谁不愿意加班。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_061",
+            "label": "继续",
+            "next": "ishi0_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「护理部会负责协调。患者只需要知道，医院有没有把她安排妥当。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_062",
+            "label": "继续",
+            "next": "ishi0_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_063",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_ishigami",
+        "text": "「我记住了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_063",
+            "label": "继续",
+            "next": "ishi0_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "ishi0_064",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "石神轻轻点头，带着排班表离开护士站。她没有笑，也没有额外说一句客套话。\n\n坂口看了看手中那份尚未填完的申请，拿起笔在护理协调栏里补上预计用时、人员需求和交接安排。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_064",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -387,3 +387,10 @@
 - 原生OpenGL生成16张中英文两季普通/深夜邀请及完成截图；抽查中文春夏邀请与英文冬夜同行，透明边缘正常、脸和眼镜无遮挡，两季位置稳定，裙摆按既有对话框布局遮挡。证据：`docs/qa/visiting_maya_casual_2026-10-12/`。
 - 本次全量`validate_data.py`未通过：患者`patient_yuko_asou`缺少术中立绘tense、pain、near_collapse、anesthetized四项。本次未修改该患者，问题独立于常服映射与运行时验收，保留当前工作区数据供对应工作处理，不宣称全量数据通过。
 - 21名角色两季常服补齐与接入完成；全量患者数据问题另列如上，未扩展常服表情差分。
+
+## 新护士留美、米田栞正式注册（2026-10-21）
+
+- 两人已批准的春夏/秋冬常服均导入`assets/characters/rumi_shiori_v1/<actor>/{casual,casual_winter}/neutral.png`，沿用3–8月/9–2月选择逻辑；常服仍只需neutral。
+- 当前正式注册23名医护，均有两季常服；这两名新护士初始未相识，需后续初见剧情解锁，不会提前进入同行池。
+- 本轮另完成20张制服/手术服表情差分、2张术中头像、6张岗位CG。详见`docs/rumi_shiori_registration_2026-10-21.md`及两份assets_manifest，记录来源、SHA-256和验证结果。
+- 中英文季节与同行界面运行测试已通过；截图存于`docs/qa/rumi_shiori_registration/`。联合初见正文待用户提供。

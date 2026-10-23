@@ -1111,7 +1111,7 @@ Relationship >= Lv2 均计入，不要求恰好 Lv2
 
 | 阶段 | Familiarity | 其他 Gate | 冷却 | Month Gate |
 |---|---:|---|---:|---|
-| Intro / Lv0 | — | 第一周 guaranteed introduction | — | 无 |
+| Intro / Lv0 | — | Day ≥8；其他已正式相识常驻护士 ≥6；城宮明日香已正式相识（Lv0 即可）；自动安全排队，无最晚期限 | — | 无 |
 | Lv1 | — | 其他护士中 ≥3 人 Relationship ≥Lv2 | ≥3天 | 无 |
 | Lv2 | — | 其他护士中 ≥5 人 Relationship ≥Lv2 | ≥3天 | 无 |
 | Lv3 | — | 其他护士中 ≥8 人 Relationship ≥Lv2 | ≥3天 | 无 |

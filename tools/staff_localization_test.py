@@ -35,6 +35,10 @@ def is_staff_dialogue_key(key: str) -> bool:
         or ".personal_nurse.diagnosis_corrections." in key
         or ".preop_graphic_wrapper." in key
         or ".crisis_callouts." in key
+        or ".team_assignment_replies." in key
+        or ".post_operation_replies." in key
+        or ".after_work_companion_dialogue." in key
+        or ".after_work_short_chat." in key
         or (key.startswith("collections.time_events.") and ".responses." in key)
     )
 

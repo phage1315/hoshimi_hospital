@@ -1,0 +1,2593 @@
+[
+  {
+    "id": "intro_kariya_megumi_june",
+    "actor_id": "nurse_kariya_megumi",
+    "title": "我算过了",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "day_start",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 30,
+    "teaser": "我算过了",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 90,
+    "category": "introduction",
+    "auto_start": true,
+    "introduction_actor_ids": [
+      "nurse_kariya_megumi"
+    ],
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "intro_kariya_megumi_june",
+      "caption": "我算过了",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 62,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "meg0_000",
+    "nodes": [
+      {
+        "id": "meg0_000",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "【护士站／上午】",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_000",
+            "label": "继续",
+            "next": "meg0_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "早晨的护士站已经忙碌起来。石神千鹤正在核对一叠实习登记资料，桌前站着一名陌生的年轻女孩。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_001",
+            "label": "继续",
+            "next": "meg0_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "女孩穿着整洁的护士制服，胸前还没有正式员工的名牌。她抱着一本写满便签的笔记本，面带笑容，却有些紧张地站得笔直。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_002",
+            "label": "继续",
+            "next": "meg0_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "石神从文件里抽出一张折得整整齐齐的纸。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_003",
+            "label": "继续",
+            "next": "meg0_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「狩谷，这张是什么？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_004",
+            "label": "继续",
+            "next": "meg0_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「啊，那是我自己整理的资料。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_005",
+            "label": "继续",
+            "next": "meg0_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「正式护士待遇、福利，还有其他医院的比较……？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_006",
+            "label": "继续",
+            "next": "meg0_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「对！我查了很久，想着既然要实习，当然应该先确认将来有没有机会留下来。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_007",
+            "label": "继续",
+            "next": "meg0_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_008",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "石神看了她一眼。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_008",
+            "label": "继续",
+            "next": "meg0_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「我并不反对你调查待遇。但这张不需要夹进病区交接资料里。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_009",
+            "label": "继续",
+            "next": "meg0_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「对、对不起！我刚才整理的时候放错了！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_010",
+            "label": "继续",
+            "next": "meg0_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_011",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她赶忙接过那张纸，夹回自己的笔记本。看得出来，纸上的字迹和表格都十分工整。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_011",
+            "label": "继续",
+            "next": "meg0_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_012",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "这时坂口隆司走进护士站。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_012",
+            "label": "继续",
+            "next": "meg0_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「坂口医生，正好。给您介绍一位今天报到的实习生。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_013",
+            "label": "继续",
+            "next": "meg0_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "女孩立刻转过身，向坂口认真鞠躬。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_014",
+            "label": "继续",
+            "next": "meg0_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「初次见面！我是狩谷惠，从今天开始在这里实习。请多关照！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_015",
+            "label": "继续",
+            "next": "meg0_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_016",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「你好，狩谷。第一天就这么有精神啊。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_016",
+            "label": "继续",
+            "next": "meg0_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「当然！我可是很期待这次实习的。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_017",
+            "label": "继续",
+            "next": "meg0_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「实习从六月一日开始，为期半年。十二月一日进行结束评审。具体工作由护理部安排，先熟悉各部门的日常。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_018",
+            "label": "继续",
+            "next": "meg0_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「是！我已经把发给我的注意事项都读过了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_019",
+            "label": "继续",
+            "next": "meg0_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_020",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "一旁整理病历的杉村弘子抬起头，微笑着看她。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_020",
+            "label": "继续",
+            "next": "meg0_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「听说你很希望毕业后到我们医院工作？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_021",
+            "label": "继续",
+            "next": "meg0_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「我想毕业以后留下来。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_022",
+            "label": "继续",
+            "next": "meg0_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「这么早就决定了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_023",
+            "label": "继续",
+            "next": "meg0_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「嗯。我比较过了，这里的待遇最好。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_024",
+            "label": "继续",
+            "next": "meg0_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_025",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她停了一下，赶紧补充。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_025",
+            "label": "继续",
+            "next": "meg0_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「……我是说，能学到很多东西！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_026",
+            "label": "继续",
+            "next": "meg0_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「第一句也没什么不能说的。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_027",
+            "label": "继续",
+            "next": "meg0_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「诶？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_028",
+            "label": "继续",
+            "next": "meg0_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「想靠自己的工作挣钱，是很正常的事呀。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_029",
+            "label": "继续",
+            "next": "meg0_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_030",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "惠的表情明显放松了一些。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_030",
+            "label": "继续",
+            "next": "meg0_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「太好了。我还怕第一天说这个，会给前辈留下不好的印象呢。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_031",
+            "label": "继续",
+            "next": "meg0_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「家里需要钱，我自己也想早一点独立。既然要努力念书、努力实习，我当然希望以后能有一份待遇不错的工作。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_032",
+            "label": "继续",
+            "next": "meg0_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_033",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「看来你真的做过不少功课。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_033",
+            "label": "继续",
+            "next": "meg0_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「是的！这方面我有信心。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_034",
+            "label": "继续",
+            "next": "meg0_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「那么接下来，就看看你在护理工作上做了多少功课。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_035",
+            "label": "继续",
+            "next": "meg0_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「……是！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_036",
+            "label": "继续",
+            "next": "meg0_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_037",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "护士站的电话响了。弘子正忙着核对交接材料，惠下意识伸出手，又停下来望向石神。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_037",
+            "label": "继续",
+            "next": "meg0_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「我可以接吗？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_038",
+            "label": "继续",
+            "next": "meg0_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "石神点头。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_039",
+            "label": "继续",
+            "next": "meg0_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「先听清楚对方的情况。不确定的事交给负责的人回答。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_040",
+            "label": "继续",
+            "next": "meg0_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_041",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "惠拿起电话。刚才有点窘迫的神情立刻变得认真。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_041",
+            "label": "继续",
+            "next": "meg0_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_042",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「您好，这里是护士站，我是狩谷。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_042",
+            "label": "继续",
+            "next": "meg0_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_043",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「……好的。您慢慢说，我记下来。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_043",
+            "label": "继续",
+            "next": "meg0_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_044",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她翻开笔记本，在空白页上记录，边听边轻轻点头。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_044",
+            "label": "继续",
+            "next": "meg0_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_045",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「您是想确认术前检查的时间，对吗？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_045",
+            "label": "继续",
+            "next": "meg0_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_046",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「这个我还不能直接回答您。我先向负责的前辈确认，再请她给您答复，好吗？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_046",
+            "label": "继续",
+            "next": "meg0_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_047",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "电话那头又说了几句。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_047",
+            "label": "继续",
+            "next": "meg0_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_048",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「嗯，我知道您有些担心。我会把问题转达清楚的。请您稍等。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_048",
+            "label": "继续",
+            "next": "meg0_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_049",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她放下电话，将记好的内容递给弘子。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_049",
+            "label": "继续",
+            "next": "meg0_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_050",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「杉村前辈，这位患者想确认术前检查安排。我记下了她的姓名、病房和问题，但是具体时间我不知道，不能随便回答。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_050",
+            "label": "继续",
+            "next": "meg0_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_051",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "弘子接过纸，扫了一眼。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_051",
+            "label": "继续",
+            "next": "meg0_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_052",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「谢谢，记得很清楚。我来联系负责的护士。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_052",
+            "label": "继续",
+            "next": "meg0_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_053",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「好！那我下次也这样记录。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_053",
+            "label": "继续",
+            "next": "meg0_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_054",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「还有一件事，狩谷。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_054",
+            "label": "继续",
+            "next": "meg0_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_055",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「是？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_055",
+            "label": "继续",
+            "next": "meg0_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_056",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「电话里不懂的事主动确认，这很好。但也不用第一天就把所有工作抢着做完。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_056",
+            "label": "继续",
+            "next": "meg0_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_057",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「啊……我是不是太心急了？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_057",
+            "label": "继续",
+            "next": "meg0_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_058",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「有一点。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_058",
+            "label": "继续",
+            "next": "meg0_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_059",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「明白了。我会注意的。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_059",
+            "label": "继续",
+            "next": "meg0_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_060",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她在笔记本上迅速添了一行字。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_060",
+            "label": "继续",
+            "next": "meg0_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_061",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "弘子把一份轮转安排放到她面前。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_061",
+            "label": "继续",
+            "next": "meg0_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「实习期间会接触不同部门的工作。病房、门诊，还有手术室的护理流程，都需要慢慢熟悉。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_062",
+            "label": "继续",
+            "next": "meg0_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_063",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「病房、门诊……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_063",
+            "label": "继续",
+            "next": "meg0_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_064",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她听到“手术室”时，笔尖突然停住。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_064",
+            "label": "继续",
+            "next": "meg0_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_065",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「……手术室也要去啊。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_065",
+            "label": "继续",
+            "next": "meg0_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_066",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「怎么？不喜欢手术室？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_066",
+            "label": "继续",
+            "next": "meg0_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_067",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「不是不喜欢。只是……我还没有真正站在旁边看过别人开刀。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_067",
+            "label": "继续",
+            "next": "meg0_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_068",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「学校里的照片我都能看。可是，真的看到的时候……我也不知道自己会怎么样。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_068",
+            "label": "继续",
+            "next": "meg0_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_069",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她努力维持着笑容，手指却不自觉地捏紧了笔记本的边缘。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_069",
+            "label": "继续",
+            "next": "meg0_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_070",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「如果那时候表现不好，会不会影响实习评价？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_070",
+            "label": "继续",
+            "next": "meg0_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_071",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「实习评价看的是这半年里你怎样学习和工作，不会只凭第一次的表现决定。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_071",
+            "label": "继续",
+            "next": "meg0_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_072",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「真觉得不舒服就及时告诉前辈。硬撑到连自己都照顾不好，帮不上患者的忙。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_072",
+            "label": "继续",
+            "next": "meg0_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_073",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「……好。我记住了。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_073",
+            "label": "继续",
+            "next": "meg0_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_074",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她低头又写了一行，重新抬起头。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_074",
+            "label": "继续",
+            "next": "meg0_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_075",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「那我也会继续预习的！昨天我把手术室准备的流程背了好久，总不能白背嘛。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_075",
+            "label": "继续",
+            "next": "meg0_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_076",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「有准备是好事。不过真正到了现场，还得学会判断自己的状态。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_076",
+            "label": "继续",
+            "next": "meg0_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_077",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「是，坂口医生。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_077",
+            "label": "继续",
+            "next": "meg0_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_078",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "这时，利根川安琪抱着整理好的病历走进护士站。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_078",
+            "label": "继续",
+            "next": "meg0_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_079",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "安琪",
+        "actor_id": "nurse_ange",
+        "text": "「石神前辈，病房的记录已经整理好了。接下来还有需要帮忙的吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_079",
+            "label": "继续",
+            "next": "meg0_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_080",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神",
+        "actor_id": "nurse_ishigami",
+        "text": "「正好。安琪，带今天报到的狩谷熟悉一下病房和护士站的动线。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_080",
+            "label": "继续",
+            "next": "meg0_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_081",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "安琪转向惠，露出友善的笑容。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_081",
+            "label": "继续",
+            "next": "meg0_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_082",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "安琪",
+        "actor_id": "nurse_ange",
+        "text": "「你好，我是利根川安琪。以后有不清楚的地方，可以问我。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_082",
+            "label": "继续",
+            "next": "meg0_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_083",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「你好！我叫狩谷惠。你看起来跟我差不多大呢。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_083",
+            "label": "继续",
+            "next": "meg0_084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_084",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "安琪",
+        "actor_id": "nurse_ange",
+        "text": "「嗯，我十八岁。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_084",
+            "label": "继续",
+            "next": "meg0_085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_085",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「真的？我也是十八岁！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_085",
+            "label": "继续",
+            "next": "meg0_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_086",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她忽然看见安琪的正式护士名牌。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_086",
+            "label": "继续",
+            "next": "meg0_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_087",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「咦，你已经是正式护士了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_087",
+            "label": "继续",
+            "next": "meg0_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_088",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "安琪",
+        "actor_id": "nurse_ange",
+        "text": "「是，不过我也还有很多东西要学。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_088",
+            "label": "继续",
+            "next": "meg0_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_089",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「这样啊……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_089",
+            "label": "继续",
+            "next": "meg0_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_090",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她盯着安琪的名牌看了一眼，随即笑起来。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_090",
+            "label": "继续",
+            "next": "meg0_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_091",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「那我可要努力追上你了。半年以后，我也想戴上那种名牌。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_091",
+            "label": "继续",
+            "next": "meg0_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_092",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "安琪",
+        "actor_id": "nurse_ange",
+        "text": "「那就一起加油吧。先跟我把病房认清楚。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_092",
+            "label": "继续",
+            "next": "meg0_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_093",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「好！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_093",
+            "label": "继续",
+            "next": "meg0_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_094",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "惠抱好笔记本，跟着安琪走向护士站出口。走了两步，又回头向坂口、弘子和石神郑重地鞠躬。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_094",
+            "label": "继续",
+            "next": "meg0_095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_095",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「今天开始，真的请大家多多指教！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_095",
+            "label": "继续",
+            "next": "meg0_096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_096",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「欢迎来到星见医院。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_096",
+            "label": "继续",
+            "next": "meg0_097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_097",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「不用急，一件一件学就好。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_097",
+            "label": "继续",
+            "next": "meg0_098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_098",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「我知道。不过……我已经算过了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_098",
+            "label": "继续",
+            "next": "meg0_099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_099",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「算过什么？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_099",
+            "label": "继续",
+            "next": "meg0_100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_100",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「如果能顺利留下来，我和家里的生活都能宽裕很多。为了这个目标，半年我会好好努力的。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_100",
+            "label": "继续",
+            "next": "meg0_101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_101",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她说得很认真，随后又恢复了明快的笑脸。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_101",
+            "label": "继续",
+            "next": "meg0_102",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_102",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「那么，我去工作了！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_102",
+            "label": "继续",
+            "next": "meg0_103",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_103",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "安琪在门口等她。两人并肩离开护士站。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_103",
+            "label": "继续",
+            "next": "meg0_104",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_104",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "走到门外时，惠悄悄翻了一下轮转表。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_104",
+            "label": "继续",
+            "next": "meg0_105",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_105",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「安琪……手术室是不是很容易看到血啊？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_105",
+            "label": "继续",
+            "next": "meg0_106",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_106",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "安琪",
+        "actor_id": "nurse_ange",
+        "text": "「嗯，手术室当然会见到。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_106",
+            "label": "继续",
+            "next": "meg0_107",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_107",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「……果然。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_107",
+            "label": "继续",
+            "next": "meg0_108",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_108",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她沉默了一瞬，随即合上笔记本。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_108",
+            "label": "继续",
+            "next": "meg0_109",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_109",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "惠",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "「没关系。先把今天学好！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_109",
+            "label": "继续",
+            "next": "meg0_110",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "meg0_110",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_kariya_megumi",
+        "text": "她加快脚步跟上安琪。护士站里，又响起了日常工作的电话铃声。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_110",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "benefit_id": ""
+  }
+]

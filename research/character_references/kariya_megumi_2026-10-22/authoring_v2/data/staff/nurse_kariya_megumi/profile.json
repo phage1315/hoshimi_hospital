@@ -1,0 +1,88 @@
+{
+  "_status": "AUTHORING_DRAFT_SCHEMA_MAPPING_REQUIRED",
+  "id": "nurse_kariya_megumi",
+  "name": "狩谷惠",
+  "names": {
+    "ja": "狩谷めぐみ",
+    "zh_CN": "狩谷惠",
+    "en": "Megumi Kariya"
+  },
+  "source_work": "真夜中のナースコール / Angel Call (Hoshimi AU)",
+  "age": 18,
+  "age_status": "USER_CONFIRMED_2026-10-22",
+  "adult": true,
+  "profession": "nurse",
+  "team_category": "nurse",
+  "department": "general_nursing",
+  "role_label_zh": "护士",
+  "skills": {
+    "surgery": 6,
+    "diagnostics": 39,
+    "teamwork": 49,
+    "patient_care": 55,
+    "instrument_handling": 26,
+    "calmness": 18
+  },
+  "skills_status": "PROPOSAL_NOT_USER_APPROVED",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "ward_nurse_role_available": true,
+  "team_eligibility": "USER_CONFIRMED_GENERAL_NURSE_ELIGIBILITY_NO_LEVEL_GATE",
+  "default_location_candidate": "station",
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge",
+      "rooftop"
+    ],
+    "staff_lounge_available": true,
+    "rooftop_available": true,
+    "after_work_companion_available": true,
+    "location_ids_status": "CANDIDATE_VERIFY_RUNTIME",
+    "not_fixed_to_or": true
+  },
+  "characterization": {
+    "profession_tension": "护理职业方向未确定，热心且会盘算津贴，晕血但愿意学",
+    "relationship_with_ange": "与利根川安琪互相陪伴的年轻初级护理同事，非师徒",
+    "difference_from_moe": "经济和职业探索优先，并不从小以护士为理想；不是每次犯错都道歉",
+    "blood_fainting": "ONE_OFF_CHARACTER_EVENT_CANDIDATE_NOT_RANDOM_PER_SURGERY",
+    "internship_wording_only": "护理学校实习生只通过剧情、台词和人物背景表现；与普通护士使用同一工作和手术队伍规则，无独立实习岗位机制。",
+    "surgical_fear_voice": "有见血时的紧张、怕看切口和腿软感，但可报告事实与完成交接；表现为可见括号心理活动，不变动手术概率。",
+    "internship_no_mechanical_penalty": true,
+    "department_id_status": "CANDIDATE_VERIFY_WITH_EXISTING_NURSE_PROFILE; do not create nursing_internship enum"
+  },
+  "art_status": {
+    "identity_anchors": "USER_ORIGINAL_IMAGES_REQUIRED",
+    "uniform": "PENDING",
+    "casual_spring_summer": "PENDING",
+    "casual_autumn_winter": "PENDING",
+    "scrubs": "PENDING",
+    "sterile_gown": "PENDING",
+    "hud": "PENDING",
+    "role_cgs": {
+      "ward_nurse": "PENDING",
+      "scrub_nurse": "PENDING",
+      "circulating_nurse": "PENDING"
+    }
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "requires_met": true,
+    "follows_global_unlock": true
+  },
+  "after_work": {
+    "eligible": true,
+    "romantic_date_equivalent": false
+  },
+  "preop_graphic_wrapper": {
+    "open": "「好、好的！我是实习护士惠。我按表给您讲一遍，要是哪里没说清楚，您可以马上问我。」",
+    "insert_a": "「这里听起来有点吓人吧？我第一次学的时候也吓了一跳……不过，顺序我核对过了。」",
+    "insert_b": "「如果不舒服或者害怕，您就说出来。我会记下来，马上转告负责的护士和医生。」",
+    "close": "「大概就是这些。还有想确认的吗？如果我解释得不够清楚，我会请前辈来一起说明。」"
+  }
+}

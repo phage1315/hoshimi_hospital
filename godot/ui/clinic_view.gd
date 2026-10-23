@@ -65,6 +65,9 @@ static func render(app: Control, visit: RefCounted) -> void:
 	app.scrollable_text_at(dialogue_text, Vector2(82, 612), Vector2(1100, 78), dialogue_font_size, Color("f4f0e6"), "ClinicDialogue")
 	app.button_at(app.tx("ui.common.save", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
 	app.button_at(app.tx("ui.common.load", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
+	var support: Dictionary = app.game.staff_record(app.game.resolve_outpatient_support_actor())
+	if not support.get("personal_nurse", {}).get("dialogue", {}).get("clinic_support", []).is_empty():
+		app.button_at(app.tx("ui.personal_nurse.support_report", "确认护理准备"), Vector2(590, 713), Vector2(200, 40), app.show_personal_nurse_chatter.bind("clinic_support")).name = "PersonalNurseSupport"
 	if app.game.personal_nurse_system_unlocked:
 		var chat_button: Button = app.button_at(app.tx("ui.personal_nurse.clinic_chat", "和专属护士聊两句"), Vector2(330, 713), Vector2(245, 40), app.show_personal_nurse_chatter)
 		chat_button.name = "PersonalNurseClinicChat"

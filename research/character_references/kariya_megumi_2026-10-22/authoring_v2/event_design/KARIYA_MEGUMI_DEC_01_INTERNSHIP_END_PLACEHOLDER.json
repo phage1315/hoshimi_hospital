@@ -1,0 +1,27 @@
+{
+  "_status": "PLACEHOLDER_ONLY_NOT_A_PLAYABLE_VN_EVENT",
+  "title_zh": "实习结束",
+  "actor_display_name": "狩谷惠",
+  "date_month_day": "12-01",
+  "event_scope": "once_for_this_internship_cycle",
+  "purpose": "半年实习期的结束评审，未来在此处演出是否留院以及学用患者隐藏职业抉择。",
+  "trigger_design": {
+    "on_or_after_dec_01_if_preempted": true,
+    "entry_context": "医院工作区域／护士站；最终地点未来由Lv0、评审剧本确定",
+    "not_blocked_by_lv3": "达到Lv3是留用邀请资格，不是此事件是否能看到的资格",
+    "no_intro_written_yet": "Lv0未完成前不可把角色自动标记为已相识或强行播空事件"
+  },
+  "branch_requirements_for_future_script": {
+    "below_lv3": "实习期满、正常告别（仅未来正式剧本定义）",
+    "lv3_or_lv4": "允许邀请成为正式护士；不自动留用",
+    "lv5_with_staff_as_patient_complete": "在正式护士邀请之外可提出一年期学用患者方案；须完整事件与本人选择",
+    "lv5_without_staff_as_patient_complete": "不开放学用患者选项；正常护士邀请规则仍可用"
+  },
+  "vn_script_zh_CN": null,
+  "vn_script_en": null,
+  "event_nodes": null,
+  "runtime_registration": false,
+  "effects": null,
+  "do_not_implement_before_script": "不得用空剧情自动改动角色状态、是否相识、离院、工资、关系等级、编队资格或学用患者身份。",
+  "authoring_rule": "This is metadata only. When the user later designs the event, replace with approved complete CN/EN VN script, then map to actual engine schema and test."
+}

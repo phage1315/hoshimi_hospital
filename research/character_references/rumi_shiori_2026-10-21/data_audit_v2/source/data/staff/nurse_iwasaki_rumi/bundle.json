@@ -1,0 +1,53 @@
+{
+  "_artifact_status": "AUTHORING_MANIFEST_NOT_RUNTIME_BUNDLE",
+  "_schema_note": "AUTHORIZING DESIGN DRAFT — not verified against data/schemas/content.schema.json (not found among accessible Library JSON files). Codex must map to actual current schema.",
+  "id": "nurse_iwasaki_rumi",
+  "profile": "profile.json",
+  "relationship": "relationship.json",
+  "entry": {
+    "kind": "joint_Lv0_introduction",
+    "event_design_id_candidate": "intro_rumi_shiori_hiroko_monday_0900",
+    "same_event_for": [
+      "nurse_iwasaki_rumi",
+      "nurse_yoneda_shiori"
+    ],
+    "introducer": "杉村弘子",
+    "requirement": "杉村弘子已经正式相识，不要求弘子 Lv1",
+    "scheduled_time": "first strictly subsequent Monday, 09:00 (in-game)",
+    "location_id_candidate": "station",
+    "trigger": "first eligible nurses-station visit after the scheduled Monday 09:00; must not be permanently missable",
+    "on_complete": "mark both women met=true, relationship level stays 0",
+    "earlier_intro_forbidden": true
+  },
+  "content_scope": {
+    "staff_roster": "PROPOSED",
+    "shared_intro": "SCRIPT_DRAFT_EXISTS_IN_CONVERSATION_NOT_CANONICAL_IMPL",
+    "Lv1_through_Lv5": "DISABLED_PENDING_WRITING",
+    "medical_roles": "USER_CONFIRMED_ALL_NURSE_OR_SLOTS_AVAILABLE_FOR_MANUAL_ASSIGNMENT",
+    "visual_assets": "BLOCKED_PENDING_ORIGINAL_REFERENCE_AND_APPROVED_OUTPUT",
+    "personal_nurse": "ENABLED_USER_CONFIRMED_GLOBAL_UNLESS_ISHIGAMI",
+    "staff_lounge": "ENABLED_USER_CONFIRMED_ALL_STAFF",
+    "rooftop": "ENABLED_USER_CONFIRMED_ALL_STAFF",
+    "after_work_companion": "ENABLED_USER_CONFIRMED_ALL_STAFF",
+    "crisis_attempt_callout": "ALL_8_FLAVORS_NORMAL_SEVERE_3_ATTEMPTS_BILINGUAL",
+    "joint_intro": "TEXT_PENDING_PER_USER_DIRECTION"
+  },
+  "required_engineering_work": [
+    "Verify actor IDs and real content.schema.json; do not assume candidate IDs registered",
+    "$defs/staff or staff bundle schema must be mapped",
+    "Register staff index and staff.json using actual loader",
+    "Check Hiroko-met trigger and Monday 09:00 scheduling",
+    "Preserve event until visited; avoid skipping on surgery day",
+    "Bind both met flags atomically without prematurely awarding Lv1",
+    "Verify roster/UI/localization/assets before enabling",
+    "User-confirmed nursing presence and selection rules: Rumi daily ward/nurse-station/circulating-related; Shiori daily ward/nurse-station and no natural OR spawn; BOTH can be manually assigned to scrub_nurse and circulating_nurse, without Relationship/skill/training qualification locks. Skills are performance only. Age Rumi=20, Shiori=18, familiarity multiplier=1.0 confirmed.",
+    "Do not confuse daily presence, preferred duty, and OR team selection. Sakura/Ishigami special exceptions are project-specific and do not apply to these two nurses.",
+    "Register actual CN/EN personal nurse correct/incorrect post-diagnosis replies and hints: preserve existing correct-advice resolver",
+    "Register 3 lounge + 3 rooftop idle entries in actual time_events schemas; do not disable either location",
+    "Allow after-work co-walking for every staff without auto-enabling Sunday romance dates; use included lines",
+    "Bind explicit three-attempt crisis texts to existing runtime crisis attempt/severity; confirm attempt 2/3 on failed resolution",
+    "Test personal-nurse selection, OR both nursing roles, and normal/severe crisis attempts with each woman."
+  ],
+  "dialogue_authoring": "dialogue_authoring.json",
+  "time_events_authoring": "time_events_authoring.json"
+}

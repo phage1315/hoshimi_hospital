@@ -1,0 +1,107 @@
+{
+  "_artifact_status": "AUTHORING_DRAFT_NOT_SCHEMA_VALIDATED",
+  "_schema_note": "AUTHORIZING DESIGN DRAFT — not verified against data/schemas/content.schema.json (not found among accessible Library JSON files). Codex must map to actual current schema.",
+  "id": "nurse_iwasaki_rumi",
+  "name": "岩崎留美",
+  "names": {
+    "ja": "岩崎留美",
+    "zh_CN": "岩崎留美",
+    "en": "Rumi Iwasaki"
+  },
+  "source_work": "淫内感染 / Innai Kansen (Hoshimi AU)",
+  "adult": true,
+  "age": 20,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "department": "nursing",
+  "role_label_zh": "年轻护士前辈；日常多在病房、护士站或巡回相关区域",
+  "seniority_note": "熟悉日常病房护理与同事协调，常参与巡回相关工作。她与其他普通护士一样可由玩家分配至器械护士或巡回护士岗位；能力表现由具体技能决定，不以日常岗位筛选资格。",
+  "default_location_candidate": "station",
+  "default_outfit_candidate": "uniform",
+  "skills": {
+    "surgery": 15,
+    "diagnostics": 44,
+    "teamwork": 72,
+    "patient_care": 66,
+    "instrument_handling": 52,
+    "calmness": 62
+  },
+  "skills_status": "REVIEWED_PROPOSAL_NOT_YET_USER_APPROVED",
+  "surgery_proficiency": "limited",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "role_status": "USER_CONFIRMED_TEAM_ROLES_NOT_GATED_BY_DAILY_DUTY",
+  "characterization": {
+    "first_impression": "开朗主动、敢于调笑、愿意帮忙，擅长使人融入护士站的工作氛围",
+    "professional_strength": "主动承担常规任务、同事间沟通和工作分工，能与米田栞协作",
+    "personal_growth_tension": "偶尔以为自己的热情或安排也是对方的意愿；后续学习倾听栞自己的选择",
+    "speech_pattern": "快而明朗，敢主动追问；工作时能明确说明，不靠无限夸张语尾"
+  },
+  "important_relation": {
+    "counterpart_id_candidate": "nurse_yoneda_shiori",
+    "description": "留美是栞的前辈，也是栞非常重视的人。原作有明确亲密关系线，星见当前感情状态待定",
+    "current_romance_status": "NOT_DECIDED"
+  },
+  "future_route_focus": "个人：从替人安排到尊重对方决定；共同：与栞真实的女性亲密关系、可能的双性恋主题",
+  "art_status": {
+    "official_identity_anchors": "USER_ORIGINAL_IMAGES_TO_BE_VERIFIED",
+    "uniform_portrait": "NOT_SUPPLIED_FOR_RUNTIME",
+    "spring_summer_casual": "NOT_SUPPLIED",
+    "autumn_winter_casual": "NOT_SUPPLIED",
+    "surgical_scrubs_portrait": "NOT_SUPPLIED",
+    "surgical_sterile_portrait": "NOT_SUPPLIED",
+    "intraoperative_hud": "NOT_SUPPLIED",
+    "nursing_role_cgs": {
+      "scrub_nurse": "NOT_SUPPLIED",
+      "circulating_nurse": "NOT_SUPPLIED",
+      "ward_nurse": "NOT_SUPPLIED"
+    }
+  },
+  "ward_nurse_role_confirmed": true,
+  "daily_duty_vs_team_role": {
+    "daily_duty_note": "以病房、护士站和巡回相关工作区域为日常工作重点；一般地点出场与团队编入资格分离",
+    "ordinary_daily_work_labels": [
+      "ward_nurse",
+      "circulating_nurse"
+    ],
+    "manual_team_selection": "ALL_COMPATIBLE_NURSE_SLOTS_AVAILABLE",
+    "eligible_or_roles": [
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "ward_preparation_available": true,
+    "requires_relationship_level_for_or_assignment": false,
+    "requires_training_unlock_for_or_assignment": false,
+    "skill_scores_affect_performance_not_eligibility": true,
+    "no_natural_or_idle_spawn": false
+  },
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge",
+      "rooftop"
+    ],
+    "no_natural_or_idle_spawn": false,
+    "staff_lounge_available": true,
+    "rooftop_available": true,
+    "after_work_accompaniment_available": true,
+    "_location_ids_note": "station/ward/lounge/rooftop are design candidates; verify exact runtime enum IDs. lounge and rooftop are user-enabled on all medical staff. Natural presence never gates surgery team assignment."
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "unlock_rule": "existing global personal_nurse_system_unlocked and staff met; no character relationship level required",
+    "dialogue_source": "dialogue_authoring.json#personal_nurse_dialogue",
+    "disabled_only_for_nursing_management_exception": "Ishigami (not either character)"
+  },
+  "after_work": {
+    "companion_available": true,
+    "not_equivalent_to_romance_date": true,
+    "dialogue_source": "dialogue_authoring.json#after_work_companion_dialogue"
+  }
+}

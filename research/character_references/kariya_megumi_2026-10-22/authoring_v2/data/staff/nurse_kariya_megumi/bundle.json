@@ -1,0 +1,41 @@
+{
+  "_status": "AUTHORING_MANIFEST_NOT_RUNTIME_BUNDLE",
+  "id": "nurse_kariya_megumi",
+  "profile": "profile.json",
+  "relationship": "relationship.json",
+  "dialogue_authoring": "dialogue_authoring.json",
+  "time_events_authoring": "time_events_authoring.json",
+  "entry": {
+    "fixed_date": "06-01",
+    "intro_full_script": "NOT_WRITTEN_USER_WILL_DESIGN_LATER",
+    "no_auto_met_before_intro": true,
+    "internship_end_event_placeholder": "event_design/KARIYA_MEGUMI_DEC_01_INTERNSHIP_END_PLACEHOLDER.json"
+  },
+  "content_scope": {
+    "skills": "SIX_VALUES_PROPOSED",
+    "character_age": "AGE_18_USER_CONFIRMED_2026-10-22",
+    "daily_nursing": "ACTUAL_BILINGUAL_LINES",
+    "all_or_nurse_roles": "ELIGIBLE_USER_CONFIRMED_GLOBAL",
+    "personal_nurse": "ELIGIBLE",
+    "lounge_rooftop_after_work": "ELIGIBLE",
+    "crisis": "EIGHT_FLAVORS_NORMAL_SEVERE_THREE_ATTEMPTS",
+    "preop": "FOUR_WRAPPERS_BILINGUAL",
+    "internship": "NARRATIVE_ONLY_NOT_A_GAMEPLAY_ROLE; JUNE_01_ENTRY_DEC_01_EVENT_DATE",
+    "regular_staff_retention": "LV3_COMPLETED_AND_CHOOSEN_BY_PLAYER",
+    "Lv0_through_Lv5": "SCRIPT_PENDING",
+    "Lv5_patient_career": "FUTURE_DESIGN_NOT_ACTIVE",
+    "visual_assets": "PENDING_APPROVED_REFERENCES",
+    "december_01_internship_end": "EVENT_PLACEHOLDER_EXISTS_NOT_PLAYABLE"
+  },
+  "engineering_requirements": [
+    "Map authoring fields into real schema, validate and localize.",
+    "Do not create placeholder Lv0 and mark met; await full script.",
+    "Track the internship start and expiry, only offer retention if actual Relationship level>=3 at evaluation.",
+    "Allow personal nurse, ordinary OR roles, rooftop/lounge and after-work under global eligibility; actor must be formally met.",
+    "Treat internship as narrative flavor only (dialogue and event scheduling); use ordinary nurse gameplay roles, no stat/OR/team penalties or internship-only profession/department enum. The Dec 1 internship-end event exists as an unplayable placeholder until fully scripted.",
+    "Set training-patient job only after a separately authored Lv5 event and player/character choice.",
+    "Supply missing assets from identity-anchored artwork; never generate specific identity from text alone.",
+    "All lines in fullwidth parentheses （…） are Megumi inner thoughts visible to player only; do not deliver them as spoken dialogue heard by other staff. Separate into adjacent thought/narration node if required by the VN engine.",
+    "At Dec 1, do not register an empty playable event, remove Megumi, automatically offer employment or branch into the patient career until the full event script is completed. The date is an event slot only for now."
+  ]
+}

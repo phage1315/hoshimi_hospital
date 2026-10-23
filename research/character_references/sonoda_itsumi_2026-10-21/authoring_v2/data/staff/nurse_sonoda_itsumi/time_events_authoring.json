@@ -1,0 +1,107 @@
+{
+  "_artifact_status": "DRAFT_FOR_CODEX_SCHEMA_MAPPING_NOT_DIRECT_RUNTIME_JSON",
+  "actor_id_candidate": "nurse_sonoda_itsumi",
+  "source": "Existing time_events.json location IDs; verify live registered IDs before writing final records",
+  "location_blocks": [
+    {
+      "id_candidate": "station_chat_nurse_sonoda_itsumi",
+      "location_id_candidate": "station",
+      "required_met": true,
+      "actor_id_candidate": "nurse_sonoda_itsumi",
+      "default_enabled": true,
+      "responses": [
+        {
+          "id_candidate": "station_chat_nurse_sonoda_itsumi_01",
+          "zh_CN": "愛実一边整理交班本，一边笑着说：「这位患者怕麻烦别人，问什么都说没事。还好后来愿意告诉我她真正担心的事。」",
+          "en": "Itsumi tidies the handover log and smiles. “That patient hated feeling like a bother and kept saying she was fine. I am glad she finally told me what was really worrying her.”"
+        },
+        {
+          "id_candidate": "station_chat_nurse_sonoda_itsumi_02",
+          "zh_CN": "愛実把便签夹进记录板：「我喜欢热闹，可交班还是要讲清楚。下一个班可没有时间猜我在说谁。」",
+          "en": "Itsumi slips a note into her clipboard. “I like a lively shift, but handovers need to be clear. The next team should not have to guess who I am talking about.”"
+        },
+        {
+          "id_candidate": "station_chat_nurse_sonoda_itsumi_03",
+          "zh_CN": "愛実朝远处打了个招呼，又转向坂口：「前辈们做事真快。我也不是只会跑腿哦，刚才那份病历已经核对好了。」",
+          "en": "Itsumi waves to a colleague, then turns to Sakaguchi. “The senior nurses are so quick. But I do more than run errands—I just finished checking that chart myself.”"
+        }
+      ],
+      "runtime_note": "Three independent random responses in existing time_events resolver; no sequential scripted event. Do not enable station/ward chats if actual runtime does not have an idle entrypoint."
+    },
+    {
+      "id_candidate": "ward_chat_nurse_sonoda_itsumi",
+      "location_id_candidate": "ward",
+      "required_met": true,
+      "actor_id_candidate": "nurse_sonoda_itsumi",
+      "default_enabled": true,
+      "responses": [
+        {
+          "id_candidate": "ward_chat_nurse_sonoda_itsumi_01",
+          "zh_CN": "愛実轻轻合上病房门：「她没有哪里更疼，只是睡不着。我陪她聊了几句，等会儿再来看看。」",
+          "en": "Itsumi gently closes the ward door. “Her pain is not worse; she just cannot sleep. I talked with her for a bit and will check on her again later.”"
+        },
+        {
+          "id_candidate": "ward_chat_nurse_sonoda_itsumi_02",
+          "zh_CN": "愛実拿着护理记录微笑：「她今天第一次主动问什么时候可以回家。能开始想出院以后的事，是件好事吧。」",
+          "en": "Itsumi smiles over the nursing notes. “She asked for the first time when she might go home. Thinking about life after discharge is a good sign, isn’t it?”"
+        },
+        {
+          "id_candidate": "ward_chat_nurse_sonoda_itsumi_03",
+          "zh_CN": "愛実俯身把床旁的呼叫按钮摆近些：「需要我就按铃呀。别担心会不会打扰我，工作不就是这个嘛。」",
+          "en": "Itsumi bends to place the call button within reach. “Ring if you need me. Do not worry about bothering me—that is what I am here for.”"
+        }
+      ],
+      "runtime_note": "Three independent random responses in existing time_events resolver; no sequential scripted event. Do not enable station/ward chats if actual runtime does not have an idle entrypoint."
+    },
+    {
+      "id_candidate": "lounge_chat_nurse_sonoda_itsumi",
+      "location_id_candidate": "lounge",
+      "required_met": true,
+      "actor_id_candidate": "nurse_sonoda_itsumi",
+      "default_enabled": true,
+      "responses": [
+        {
+          "id_candidate": "lounge_chat_nurse_sonoda_itsumi_01",
+          "zh_CN": "愛実把水杯放下，伸了个懒腰。「每次说只休息五分钟，聊着聊着就过了。今天不行，我还有一件事想亲自处理完呢。」",
+          "en": "Itsumi sets her cup down and stretches. “I always say I will rest for just five minutes, then I start chatting. Not today—I still have something I want to finish myself.”"
+        },
+        {
+          "id_candidate": "lounge_chat_nurse_sonoda_itsumi_02",
+          "zh_CN": "愛実翻着一本普通杂志，忽然笑起来。「弘子前辈连休息时都像很可靠的前辈。……嗯？我可不是每句话都要提她啦！」",
+          "en": "Itsumi flips through a magazine and laughs. “Hiroko always looks dependable, even on a break. ...What? I do not mention her in every conversation!”"
+        },
+        {
+          "id_candidate": "lounge_chat_nurse_sonoda_itsumi_03",
+          "zh_CN": "愛実向坂口展示一张空白的休假计划表。「我在想下次休息日该做点什么。一直照顾别人很好，可偶尔也得给自己安排一件开心事呀。」",
+          "en": "Itsumi shows Sakaguchi a blank day-off planner. “I am thinking about what to do on my next day off. Taking care of people is wonderful, but I ought to plan something fun just for myself sometimes.”"
+        }
+      ],
+      "runtime_note": "Three independent random responses in existing time_events resolver; no sequential scripted event. Do not enable station/ward chats if actual runtime does not have an idle entrypoint."
+    },
+    {
+      "id_candidate": "rooftop_chat_nurse_sonoda_itsumi",
+      "location_id_candidate": "rooftop",
+      "required_met": true,
+      "actor_id_candidate": "nurse_sonoda_itsumi",
+      "default_enabled": true,
+      "responses": [
+        {
+          "id_candidate": "rooftop_chat_nurse_sonoda_itsumi_01",
+          "zh_CN": "愛実扶着栏杆向楼下望了望。「在病房里总有人要找我，来这里可以把脑袋里的声音整理一下。……不过我也没有讨厌热闹啦。」",
+          "en": "Itsumi looks down from the railing. “Someone is always calling for me in the ward. Up here I can sort out the noise in my head. ...Not that I dislike a busy place!”"
+        },
+        {
+          "id_candidate": "rooftop_chat_nurse_sonoda_itsumi_02",
+          "zh_CN": "一阵风把愛実的发梢吹乱，她抬手理好。「有时候患者一句谢谢，比我讲十句话还管用。今天我就听到了这么一句。」",
+          "en": "A gust of wind tousles Itsumi’s hair. She brushes it back. “Sometimes one little ‘thank you’ from a patient means more than ten things I could say. I heard one today.”"
+        },
+        {
+          "id_candidate": "rooftop_chat_nurse_sonoda_itsumi_03",
+          "zh_CN": "愛実看了看天色，笑着对坂口说：「你不觉得这里很适合想事情吗？我刚刚想明白了：有时候我先别替别人回答，等她自己说完就好。」",
+          "en": "Itsumi looks at the sky and smiles at Sakaguchi. “Isn’t this a good place to think? I just realized something: sometimes I should stop answering for people and let them finish.”"
+        }
+      ],
+      "runtime_note": "Three independent random responses in existing time_events resolver; no sequential scripted event. Do not enable station/ward chats if actual runtime does not have an idle entrypoint."
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "_artifact_status": "AUTHORING_PROPOSAL_NOT_SCHEMA_VALIDATED",
+  "_schema_note": "Staff content.schema.json and actual staff loader absent from accessible Library; Codex must remap these authoring keys to runtime fields and validate.",
+  "id": "nurse_sonoda_itsumi",
+  "name": "薗田愛実",
+  "names": {
+    "ja": "薗田愛実",
+    "zh_CN": "薗田愛実",
+    "en": "Itsumi Sonoda"
+  },
+  "name_note": "Sonoda Itsumi is romanization used for authoring; Japanese source script uses 薗田愛実; do not substitute names or assume furigana confirmed.",
+  "source_work": "淫内感染2 / Innai Kansen 2 (Hoshimi AU)",
+  "adult": true,
+  "age": 20,
+  "age_status": "USER_CONFIRMED_2026-10-21",
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "department": "surgical_nursing",
+  "role_label_zh": "年轻外科护士；擅长与住院患者沟通，日常可做病房及外科护理工作",
+  "seniority_note": "已具备常规病房与围术期护理经验，能够独立接活。不是毫无经验、需要每件事都由弘子带教的新人；原作3AM单次器械托盘事故不能变成重复的低级失误梗。",
+  "default_location_candidate": "station",
+  "default_outfit_candidate": "uniform",
+  "skills": {
+    "surgery": 12,
+    "diagnostics": 48,
+    "teamwork": 67,
+    "patient_care": 78,
+    "instrument_handling": 61,
+    "calmness": 65
+  },
+  "skills_status": "REVIEWED_PROPOSAL_REQUIRES_USER_APPROVAL",
+  "skill_design_rationale": {
+    "surgery": "非外科医生，不代表护理能力",
+    "diagnostics": "能观察变化并如实汇报，不越权确诊",
+    "teamwork": "能主动合作、衔接病房与团队，但不等同弘子级别的老练组织者",
+    "patient_care": "角色强项：愿意回应小需求、记住患者的顾虑、长期住院照护",
+    "instrument_handling": "常规手术器械护理达到独立工作水平；不塑造成器械专家，也不复读原作一次失误",
+    "calmness": "在工作压力下能作出清楚报告；仍保留年轻护士的情绪和活力"
+  },
+  "surgery_proficiency": "limited",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "team_eligibility": "USER_CONFIRMED_STANDARD_NON_EXCEPTION_NURSE_ALL_RELEVANT_OR_ROLES_OPEN",
+  "ward_nurse_role_confirmed": true,
+  "characterization": {
+    "first_impression": "明亮有精神，主动向同事打招呼，亲切却有自己的边界",
+    "professional_strength": "在意患者个人的感受与习惯，能独立完成普通护理和交接",
+    "personal_growth_tension": "过度热心时可能替别人说出需要；逐渐学会等对方自己表达",
+    "speech_pattern": "节奏明快，喜欢自然聊天；认真报告时清楚直接，不连续惊叹或结巴",
+    "unlike_rumi": "留美擅长带动场面，愛実更常注意某个具体患者有没有被遗漏",
+    "unlike_moe": "萌恵担心自己做错，愛実更能主动承担，不需要反复求肯定"
+  },
+  "relationships_context": {
+    "nurse_hiroko": "护校前辈；尊敬且自然亲近，星见沿用这种同事关系",
+    "nurse_satsuki": "原作熟人，理解她不喜欢的谈话边界；具体同班关系不锁",
+    "sister_natsumi": "原作确认有妹妹薗田夏実；星见是否登场与年龄未定",
+    "patient_saeki_hozumi": "原作护理联系可供未来星见事件参考；未导入AU既往病危剧情",
+    "masahiro": "原作曾有男友正弘；星见是否沿用这段恋爱关系未决定，不能默认单身、分手或交往",
+    "sakaguchi": "星见坂口隆司独立于原作坂口晃；从正常同事合作开始"
+  },
+  "art_status": {
+    "official_identity_anchors": "USER_ORIGINAL_IMAGES_TO_BE_VERIFIED",
+    "uniform_portrait": "NOT_SUPPLIED_FOR_RUNTIME",
+    "spring_summer_casual": "NOT_SUPPLIED",
+    "autumn_winter_casual": "NOT_SUPPLIED",
+    "surgical_scrubs_portrait": "NOT_SUPPLIED",
+    "surgical_sterile_portrait": "NOT_SUPPLIED",
+    "intraoperative_hud": "NOT_SUPPLIED",
+    "nursing_role_cgs": {
+      "scrub_nurse": "NOT_SUPPLIED",
+      "circulating_nurse": "NOT_SUPPLIED",
+      "ward_nurse": "NOT_SUPPLIED"
+    }
+  },
+  "daily_duty_vs_team_role": {
+    "daily_duty_note": "外科病房、护理站及外科护理工作是日常重心，与手术团队可选资格无关",
+    "ordinary_daily_work_labels": [
+      "ward_nurse",
+      "surgical_nurse"
+    ],
+    "manual_team_selection": "ALL_COMPATIBLE_NURSE_SLOTS_AVAILABLE",
+    "eligible_or_roles": [
+      "scrub_nurse",
+      "circulating_nurse"
+    ],
+    "ward_preparation_available": true,
+    "requires_relationship_level_for_or_assignment": false,
+    "requires_training_unlock_for_or_assignment": false,
+    "skill_scores_affect_performance_not_eligibility": true,
+    "no_natural_or_idle_spawn": true
+  },
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge",
+      "rooftop"
+    ],
+    "no_natural_or_idle_spawn": true,
+    "or_event_or_team_scene_available": true,
+    "staff_lounge_available": true,
+    "rooftop_available": true,
+    "after_work_accompaniment_available": true,
+    "_location_ids_note": "station/ward/loung[e]/rooftop are design IDs from existing project usage; Codex must confirm live map IDs and spawn rules. No natural OR spawn is a provisional implementation simplification, not team exclusion."
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "unlock_rule": "global personal_nurse_system_unlocked + character formally met; no personal relationship Lv1 gate",
+    "dialogue_source": "dialogue_authoring.json#personal_nurse_dialogue"
+  },
+  "after_work": {
+    "companion_available": true,
+    "not_equivalent_to_romance_date": true,
+    "dialogue_source": "dialogue_authoring.json#after_work_companion_dialogue"
+  },
+  "preop_graphic_wrapper": {
+    "open": "「好，我把接下来的安排按顺序讲给你听。你有哪里不明白，就直接问我；别自己一个人紧张。」",
+    "insert_a": "「这一段听起来有点吓人吧？我知道。先把它弄明白，心里反而会有底一些。」",
+    "insert_b": "「你不用一直点头哦。担心什么、哪里不舒服，都可以直接说出来；需要的话我会帮你转告负责的同事。」",
+    "close": "「大致就是这些。还有哪一处想再听一次？我可以再慢慢讲给你听。」"
+  },
+  "_preop_wrapper_note": "These four fields are patient-facing interleaves around already available procedure-specific preoperative explanation; they do not replace it. Translations are in dialogue_authoring.json.",
+  "age_note": "Hoshimi AU age 20 set explicitly by the user on 2026-10-21; overrides V1 proposed 22. No claim of original-source age."
+}

@@ -1,0 +1,303 @@
+{
+  "id": "nurse_sonoda_itsumi",
+  "name": "薗田愛実",
+  "age": 20,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 12,
+    "diagnostics": 48,
+    "teamwork": 67,
+    "patient_care": 78,
+    "instrument_handling": 61,
+    "calmness": 65
+  },
+  "surgery_proficiency": "limited",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "preop_graphic_wrapper": {
+    "open": "「好，我把接下来的安排按顺序讲给你听。你有哪里不明白，就直接问我；别自己一个人紧张。」",
+    "insert_a": "「这一段听起来有点吓人吧？我知道。先把它弄明白，心里反而会有底一些。」",
+    "insert_b": "「你不用一直点头哦。担心什么、哪里不舒服，都可以直接说出来；需要的话我会帮你转告负责的同事。」",
+    "close": "「大致就是这些。还有哪一处想再听一次？我可以再慢慢讲给你听。」"
+  },
+  "specialty": "病房护理／外科护理",
+  "rank": "年轻外科护士；擅长与住院患者沟通，日常可做病房及外科护理工作",
+  "personality": "明亮有精神，主动向同事打招呼，亲切却有自己的边界",
+  "appearance": "红发双髻，绿色眼睛；身高158cm，体重43kg，三围80-56-83cm。",
+  "dialogue_style": "节奏明快，喜欢自然聊天；认真报告时清楚直接，不连续惊叹或结巴",
+  "flags": [
+    "introduction_pending",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.0,
+    "operations": []
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [
+        "坂口医生，我想再确认一项检查。她刚才说的那个不舒服，我有点在意。",
+        "现在下结论可能还早。先把剩下那项检查做好，好吗？"
+      ],
+      "insufficient_evidence": [
+        "我觉得资料还差一点。让患者再回答几个问题，会不会更稳妥？",
+        "检查结果还没对齐，我想再确认一下。"
+      ],
+      "sufficient_evidence": [
+        "嗯，资料已经齐了。坂口医生，现在可以由您来判断了。",
+        "刚才担心的地方也核对好了，结果已经足够支持您的判断。"
+      ],
+      "diagnosis_correct_reply": [
+        "太好了，检查结果和判断一致！我去把后续护理安排跟患者说明白。",
+        "嗯，这就说得通了。患者刚才还在担心，我去告诉她下一步怎么安排。"
+      ],
+      "diagnosis_incorrect_reply": [
+        "坂口医生，等等。她刚才描述的情况和这个结论好像还对不上，我们再看一遍好吗？",
+        "这一项检查结果让我有点在意。我们先重新核对，再向患者解释好吗？"
+      ],
+      "chatter": [
+        "她刚才说睡不好，不一定是疼。我想先问问她是不是担心明天的安排。",
+        "坂口医生，患者问得很仔细呢。我挺高兴的，问清楚总比一个人担心好。",
+        "今天病房里有人终于愿意笑了。就一点点，不过我看见了。"
+      ],
+      "clinic_support": [
+        "检查用的东西已经准备好了。我会先向患者说明要做什么。",
+        "她对这项检查有疑问。我先把问题记下来，让她直接问您。",
+        "门诊记录我补齐了，患者问过的几个问题也写在后面。"
+      ],
+      "preop_support": [
+        "术前准备都按记录核对过了。她还有一点紧张，我已经把问题传给负责的团队。",
+        "需要交接的事情都写好了，包括患者想提前知道的步骤。"
+      ]
+    },
+    "diagnosis_corrections": {
+      "diagnose_gastro": "坂口医生，等等。她刚才描述的情况和这个结论好像还对不上，我们再看一遍好吗？",
+      "diagnose_observe": "这一项检查结果让我有点在意。我们先重新核对，再向患者解释好吗？"
+    }
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "病房准备交给我吧。我会把患者关心的问题也一并交接清楚。",
+    "scrub_nurse": "好，我上器械位。清点和递械我负责，坂口医生放心。",
+    "circulating_nurse": "巡回是吧？交给我！监护、记录和外围协调我都会看好。"
+  },
+  "post_operation_replies": [
+    "完成啦！患者的交接我会继续跟进，大家辛苦了。",
+    "器械和记录都核对过了。辛苦了，坂口医生；我去确认患者的下一步安排。"
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      "坂口医生，下班后同路的话，要不要一起走一段？聊点工作以外的也好呀。"
+    ],
+    "acceptance": [
+      "好呀！我把手上的交接做完就来。",
+      "正好我也想出去透透气。等我拿一下东西！"
+    ],
+    "unavailable": [
+      "今天还有一项护理记录要交接，恐怕不能准时走。下次再一起走吧！"
+    ],
+    "farewell": [
+      "今天聊得真开心。坂口医生，路上小心，明天见！"
+    ]
+  },
+  "after_work_short_chat": [
+    "愛実拎着包笑起来：「白天一直听别人说想回家，轮到我自己下班，才发现这句话还真挺动听的。」",
+    "两人经过路边的小店，愛実放慢脚步。「下班后就不用一直想着工作啦。坂口医生，你平时都怎么让自己放松？」",
+    "愛実望着街上的灯光，轻轻呼出一口气。「照顾患者的时候我总想多说两句。现在倒想听听医生有什么好玩的事。」"
+  ],
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压比刚才低了。",
+          "血压还没回稳，我一直看着监护。",
+          "血压还是偏低，我又核对了一遍。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血压突然掉得很快！",
+          "血压还在掉，监护读数没有回升！",
+          "坂口医生，血压仍然没有稳住！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压升上去了。",
+          "血压仍然偏高，我继续核对读数。",
+          "还没有回落，血压仍然高于刚才。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血压突然升得很高！",
+          "血压还是很高，变化没有停下来！",
+          "监护还显示明显高血压，坂口医生！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率正在加快。",
+          "心率还是偏快，我在继续监看。",
+          "心率没有回到刚才的水平。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心率突然冲上去了！",
+          "心率仍然很快，没有缓下来！",
+          "心率还是过快，坂口医生！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率往下走了。",
+          "心率还是偏慢，我重新看过了。",
+          "监护显示心率仍然没有回稳。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心率突然掉得很低！",
+          "心率还在往下，情况没有缓和！",
+          "坂口医生，心率仍然很低！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护上的心律不规则。",
+          "心律还是不规则，我在继续确认。",
+          "节律还没恢复，监护仍然显示异常。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心律突然乱得很明显！",
+          "心律异常还在持续！",
+          "监护上的节律仍然很乱，坂口医生！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血氧开始往下降了。",
+          "血氧还没有回升，我继续盯着。",
+          "血氧仍然偏低，我又确认了监护。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血氧掉得很快！",
+          "血氧还在低位，没回升！",
+          "坂口医生，血氧仍然没有稳住！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，呼吸状态有点不稳定。",
+          "呼吸状态还不稳，我在继续监看。",
+          "呼吸方面的异常仍然没有消失。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，呼吸状态突然明显恶化！",
+          "呼吸监护还是很不稳定！",
+          "坂口医生，呼吸异常还在持续！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护上的状态出现变化了。",
+          "我又确认过了，监护仍然不稳定。",
+          "患者状态还没回稳，我会继续报告变化。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，监护上出现了明显异常！",
+          "异常还在持续，状态没有恢复！",
+          "坂口医生，患者状态仍然不稳定！"
+        ]
+      }
+    ]
+  },
+  "visuals": {
+    "color": "e45736",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "casual_winter"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/sterile/neutral.png",
+      "casual/neutral": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/casual_winter/neutral.png",
+      "uniform/smile": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/uniform/smile.png",
+      "uniform/closed_eye_smile": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/uniform/closed_eye_smile.png",
+      "uniform/serious": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/uniform/serious.png",
+      "uniform/worried": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/uniform/worried.png",
+      "scrubs/focused": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/scrubs/focused.png",
+      "scrubs/warm": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/scrubs/worried.png",
+      "sterile/focused": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/sterile/focused.png",
+      "sterile/warm": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/sterile/warm.png",
+      "sterile/worried": "assets/characters/sonoda_itsumi_v1/nurse_sonoda_itsumi/sterile/worried.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_sonoda_itsumi/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_sonoda_itsumi/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  }
+}

@@ -483,6 +483,12 @@ func complete_graphic_preop_dialogue() -> void:
 	feedback = ""
 	feedback_speaker = "narrator"
 	stage_id = "team"
+	var support: Array = roster.get(graphic_preop_explainer_id, {}).get("personal_nurse", {}).get("dialogue", {}).get("preop_support", [])
+	if not support.is_empty():
+		last_staff_id = graphic_preop_explainer_id
+		last_staff_role = "Pre-op Explanation" if english_mode() else "术前说明"
+		feedback = str(support[posmod(patient_name.hash(), support.size())])
+		feedback_speaker = "staff"
 	if not flags.has("preop_graphic_explanation_complete"):
 		flags.append("preop_graphic_explanation_complete")
 
@@ -1700,10 +1706,12 @@ func select_crisis_callout_variant(actor_id: String, flavor_id: String, roll: in
 			return str(variant.get("id", ""))
 	return str(variants.back().get("id", ""))
 
-func crisis_callout_lines(actor_id: String, flavor_id: String, variant_id: String) -> Array:
+func crisis_callout_lines(actor_id: String, flavor_id: String, variant_id: String, severity: String = "routine") -> Array:
 	var person: Dictionary = roster.get(actor_id, {})
 	for variant in person.get("crisis_callouts", {}).get(flavor_id, []):
 		if str(variant.get("id", "")) == variant_id:
+			if severity == "severe" and variant.has("severe_attempt_lines"):
+				return variant.severe_attempt_lines
 			return variant.get("attempt_lines", [])
 	var generic: Dictionary = GENERIC_CRISIS_CALLOUTS_EN if english_mode() else GENERIC_CRISIS_CALLOUTS_ZH
 	return generic.get(flavor_id, generic.get("generic_instability", []))
@@ -1712,7 +1720,7 @@ func crisis_callout_text() -> String:
 	if active_crisis.is_empty():
 		return ""
 	var flavor_id := str(active_crisis.get("flavor_id", "generic_instability"))
-	var lines := crisis_callout_lines(str(active_crisis.get("speaker_actor_id", "")), flavor_id, str(active_crisis.get("callout_variant_id", "")))
+	var lines := crisis_callout_lines(str(active_crisis.get("speaker_actor_id", "")), flavor_id, str(active_crisis.get("callout_variant_id", "")), str(active_crisis.get("severity", "routine")))
 	if lines.is_empty():
 		return ""
 	var attempt := clampi(int(active_crisis.get("attempt", 1)), 1, 3)
@@ -3019,6 +3027,9 @@ func assignment_response(role_id: String, staff_id: String = "") -> String:
 		var scoped_response := procedure_group_team_dialogue(staff_id, "assignment")
 		if not scoped_response.is_empty():
 			return scoped_response
+	var role_reply := str(roster.get(staff_id, {}).get("team_assignment_replies", {}).get(role_id, ""))
+	if not role_reply.is_empty():
+		return role_reply
 	if not staff_id.is_empty() and staff_has_low_surgery_proficiency(staff_id):
 		if str(roster.get(staff_id, {}).get("profession", "")) == "nurse":
 			var nurse_assignment := "“I am not experienced with surgical assistance, but I will try. Please explain each step clearly.”" if english_mode() else "「我不太擅长手术配合……既然需要，我会试试。请把每一步说清楚。」"

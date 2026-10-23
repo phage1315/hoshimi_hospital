@@ -1,0 +1,57 @@
+{
+  "_artifact_status": "DRAFT_FOR_CODEX_SCHEMA_MAPPING_NOT_DIRECT_RUNTIME_JSON",
+  "actor_id_candidate": "nurse_yoneda_shiori",
+  "source": "existing time_events.json staff event entries (actual schema to be inspected by Codex)",
+  "location_blocks": [
+    {
+      "id_candidate": "lounge_chat_nurse_yoneda_shiori",
+      "location_id_candidate": "lounge",
+      "default_enabled": true,
+      "required_met": true,
+      "actor_id_candidate": "nurse_yoneda_shiori",
+      "responses": [
+        {
+          "id_candidate": "lounge_chat_nurse_yoneda_shiori_01",
+          "zh_CN": "栞把杯子放到桌边，认真看了一遍排班表。「以前总是留美姐姐先说哪天有空。今天我想先看看自己的安排，再跟她商量。」",
+          "en": "Shiori sets her cup down and studies the duty roster. “Rumi always used to say which day she was free first. Today I want to check my own schedule before we talk about it.”"
+        },
+        {
+          "id_candidate": "lounge_chat_nurse_yoneda_shiori_02",
+          "zh_CN": "栞小心地把记事本合上，舒了口气。「今天病房的交接都核对好了。我想先休息一会儿……不是因为有人叫我，是我自己想休息。」",
+          "en": "Shiori closes her notebook carefully and exhales. “The ward handovers are all checked. I would like to take a little break... not because anyone told me to, but because I want to.”"
+        },
+        {
+          "id_candidate": "lounge_chat_nurse_yoneda_shiori_03",
+          "zh_CN": "栞看着桌上一包没有开封的饼干，轻轻笑了。「留美姐姐以前总会帮我挑口味。不过今天这包是我自己选的。其实也没那么难嘛。」",
+          "en": "Shiori looks at an unopened packet of biscuits and smiles. “Rumi used to choose the flavors for me. I picked this one myself today. It was not so hard after all.”"
+        }
+      ],
+      "runtime_note": "each response is one single-speaker idle response; do not create 3-step scene"
+    },
+    {
+      "id_candidate": "rooftop_chat_nurse_yoneda_shiori",
+      "location_id_candidate": "rooftop",
+      "default_enabled": true,
+      "required_met": true,
+      "actor_id_candidate": "nurse_yoneda_shiori",
+      "responses": [
+        {
+          "id_candidate": "rooftop_chat_nurse_yoneda_shiori_01",
+          "zh_CN": "栞站在栏杆前，双手握着热饮。「这里比护士站安静。刚才有件工作上的事，我想自己想明白，再去和留美姐姐商量。」",
+          "en": "Shiori stands by the railing with a warm drink. “It is quieter here than at the station. There is something about work I want to think through myself before I ask Rumi.”"
+        },
+        {
+          "id_candidate": "rooftop_chat_nurse_yoneda_shiori_02",
+          "zh_CN": "栞看了看远处的云，笑得有些不好意思。「以前我总觉得一个人休息很无聊。可是偶尔这样站一会儿，好像也挺舒服的。」",
+          "en": "Shiori looks at the distant clouds and smiles shyly. “I used to think taking a break alone would be boring. But standing here for a little while feels nice too.”"
+        },
+        {
+          "id_candidate": "rooftop_chat_nurse_yoneda_shiori_03",
+          "zh_CN": "栞把吹乱的护士服衣角抚平。「坂口医生，今天我有件事想亲自报告。……不是很重要的大事，不过是我自己完成的，所以想说出来。」",
+          "en": "Shiori smooths the windblown hem of her uniform. “Doctor Sakaguchi, there is something I want to report myself today. ...It is not a big deal, but I handled it on my own, so I wanted to tell someone.”"
+        }
+      ],
+      "runtime_note": "each response is one single-speaker idle response; do not create 3-step scene"
+    }
+  ]
+}

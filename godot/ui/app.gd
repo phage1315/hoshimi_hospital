@@ -2536,10 +2536,12 @@ func choose_personal_nurse(actor_id: String) -> void:
 	show_notice(tx("ui.personal_nurse.changed", "以后门诊就一起工作了。请多关照。"))
 	show_office_personal_nurse()
 
-func show_personal_nurse_chatter() -> void:
+func show_personal_nurse_chatter(kind: String = "chatter") -> void:
 	var actor_id: String = game.resolve_outpatient_support_actor()
 	var person: Dictionary = content.find_record("staff", actor_id)
-	var line: String = tx("ui.personal_nurse.chatter_default", game.personal_nurse_dialogue("chatter"))
+	var line: String = game.personal_nurse_dialogue(kind)
+	if person.get("personal_nurse", {}).get("dialogue", {}).get(kind, []).is_empty():
+		line = tx("ui.personal_nurse.chatter_default", line)
 	show_notice("%s：\n%s" % [person.get("name", tx("ui.personal_nurse.title", "专属护士")), line])
 
 func show_office_cases() -> void:
@@ -2782,6 +2784,8 @@ func show_character_event() -> void:
 	var node: Dictionary = event.current()
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
 	var actor_name := str(definition.get("actor_alias", actor.name))
+	if str(definition.id) == "intro_ishigami_nurse_manager" and str(node.id) < "ishi0_010":
+		actor_name = str(definition.title)
 	var location: Dictionary = content.find_record("locations", definition.location_id)
 	var location_name := str(definition.get("location_label", location.name))
 	var event_label := tx("ui.auto.2a5a8f45f76f", "第%s章") % definition.chapter
@@ -2958,6 +2962,10 @@ func choose_character_event(choice_id: String) -> void:
 				show_map()
 			return
 		game.settle_overtime(before_elapsed, int(event.definition.minutes))
+		if str(event.definition.id) == "intro_rumi_shiori_hiroko_monday_0900":
+			game.finish_character_event()
+			show_location("station")
+			return
 		var follow_up: Dictionary = event.definition.get("auto_follow_up", {})
 		if not follow_up.is_empty():
 			game.advance_story_to_day(int(event.completed_day) + int(follow_up.day_offset), int(follow_up.absolute_clock))
@@ -3535,7 +3543,7 @@ func show_event_gallery(return_location: String = "") -> void:
 		var definition: Dictionary = definitions[i]
 		var unlocked := game.character_event_done(definition.id)
 		var actor: Dictionary = content.find_record("staff", definition.actor_id)
-		var caption := "%s　%s" % [actor.name, definition.title] if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
+		var caption := "%s　%s" % [definition.get("actor_alias", actor.name), definition.title] if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
 		var column := i % 2
 		var row := i / 2
 		var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_gallery_entry.bind(definition.id))
@@ -3709,7 +3717,7 @@ func show_gallery_entry(event_id: String) -> void:
 	var definition: Dictionary = game.character_event_definitions[event_id]
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
 	var gallery: Dictionary = definition.gallery
-	base(definition.title, "%s / EVENT MEMORY" % actor.name, true, definition.background_id)
+	base(definition.title, "%s / EVENT MEMORY" % definition.get("actor_alias", actor.name), true, definition.background_id)
 	if not str(gallery.path).is_empty() and FileAccess.file_exists("res://" + str(gallery.path)):
 		var cg := TextureRect.new()
 		cg.name = "GalleryCG"
@@ -3721,6 +3729,9 @@ func show_gallery_entry(event_id: String) -> void:
 		page.add_child(cg)
 	else:
 		var opening: Dictionary = definition.nodes[0]
+		var opening_actor := content.find_record("staff", str(opening.get("actor_id", definition.actor_id)))
+		if not opening_actor.is_empty():
+			actor = opening_actor
 		add_portrait(actor, opening.expression, definition.outfit)
 		var portrait = page.get_node_or_null("CharacterPortrait")
 		if portrait != null:
@@ -3760,8 +3771,14 @@ func show_gallery_replay() -> void:
 	var node: Dictionary = gallery_replay_event.current()
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
 	var actor_name := str(definition.get("actor_alias", actor.name))
+	if str(definition.id) == "intro_ishigami_nurse_manager" and str(node.id) < "ishi0_010":
+		actor_name = str(definition.title)
 	base((tx("ui.gallery.test_prefix", "测试 · ") if gallery_replay_is_test else tx("ui.gallery.replay_prefix", "回想 · ")) + str(definition.title), tx("ui.gallery.replay_subtitle", "%s / 不影响当前进度") % actor_name, true, definition.background_id)
-	add_character_event_visual(actor, node, definition.outfit)
+	var visual_actor := actor
+	var supporting_actor := content.find_record("staff", str(node.get("actor_id", definition.actor_id)))
+	if not supporting_actor.is_empty():
+		visual_actor = supporting_actor
+	add_character_event_visual(visual_actor, node, str(node.get("outfit", definition.outfit)))
 	var source_role := str(node.get("speaker", "actor"))
 	var speaker: String = str(node.get("speaker_label", {"actor": actor_name, "player": protagonist_name(), "narrator": tx("ui.common.narrator", "旁白")}.get(source_role, actor_name)))
 	var dialogue := dialogue_page("character_replay:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)))
@@ -5105,7 +5122,8 @@ func show_after_work_walk() -> void:
 	var phase := str(walk.get("phase", "offer"))
 	if phase == "offer":
 		var encounter_text := tx("ui.after_work.night_encounter", "医院已经安静下来。%s也刚刚结束工作，独自走向出口。") % actor.name if is_night else tx("ui.after_work.normal_encounter", "离开医院时，%s也正准备下班。") % actor.name
-		vn_dialogue_box(tx("ui.common.narrator", "旁白"), encounter_text, "AfterWorkDialogue")
+		var invitation := game.after_work_dialogue("invitation")
+		vn_dialogue_box(str(actor.name) if not invitation.is_empty() else tx("ui.common.narrator", "旁白"), invitation if not invitation.is_empty() else encounter_text, "AfterWorkDialogue")
 		var invite := button_at(tx("ui.after_work.invite", "要一起走去车站吗？"), Vector2(60, vn_choice_y(2, 0)), Vector2(655, 54), choose_after_work_walk.bind(true))
 		invite.name = "AfterWorkInvite"
 		var skip := button_at(tx("ui.after_work.skip", "打个招呼，各自回去"), Vector2(60, vn_choice_y(2, 1)), Vector2(655, 54), choose_after_work_walk.bind(false))
@@ -5120,13 +5138,34 @@ func show_after_work_walk() -> void:
 			text_value = tx("ui.after_work.night_decline", "\"谢谢，不过我已经约好车了。你也早点回去。\"") if is_night else tx("ui.after_work.normal_decline", "\"今天还有一点私事。下次吧。\"")
 		else:
 			text_value = tx("ui.after_work.skipped", "你们在医院门口互相道别，各自踏上回程。")
-		vn_dialogue_box(str(actor.name) if outcome != "skipped" else tx("ui.common.narrator", "旁白"), text_value, "AfterWorkDialogue")
+		var authored_reply := game.after_work_dialogue("acceptance" if outcome == "completed" else "unavailable" if outcome == "declined" else "farewell")
+		if not authored_reply.is_empty():
+			text_value = authored_reply
+		vn_dialogue_box(str(actor.name) if outcome != "skipped" or not authored_reply.is_empty() else tx("ui.common.narrator", "旁白"), text_value, "AfterWorkDialogue")
 		var reward := int(walk.get("reward", 0))
 		if outcome == "completed":
 			label_at(tx("ui.after_work.reward", "同行结束 · %s熟悉度 +%s") % [actor.name, reward], Vector2(65, 430), 20, Color("9ee2c8"), 650)
-		var finish := button_at(tx("ui.after_work.finish", "结束同行，回家  →"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), complete_after_work_walk)
+		var has_chat := outcome == "completed" and not game.after_work_dialogue("chat").is_empty()
+		var finish := button_at(tx("ui.after_work.continue_chat", "继续同行  →") if has_chat else tx("ui.after_work.finish", "结束同行，回家  →"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), show_after_work_authored_chat if has_chat else complete_after_work_walk)
 		finish.name = "AfterWorkFinish"
 		register_dialogue_continue(finish, text_value, 0.5)
+	add_dialogue_playback_controls()
+
+func show_after_work_authored_chat(farewell: bool = false) -> void:
+	var walk: Dictionary = game.active_after_work_walk
+	var actor: Dictionary = content.find_record("staff", str(walk.get("actor_id", "")))
+	base(tx("ui.after_work.normal_title", "下班时刻"), str(actor.get("name", "")), false, after_work_background_id(walk))
+	add_portrait(actor, "neutral", after_work_outfit(actor, walk))
+	var portrait = page.get_node_or_null("CharacterPortrait")
+	if portrait != null:
+		portrait.position = Vector2(785, 150)
+		portrait.size = Vector2(405, 485)
+	var text_value := game.after_work_dialogue("farewell" if farewell else "chat")
+	vn_dialogue_box(str(actor.name) if farewell else tx("ui.common.narrator", "旁白"), text_value, "AfterWorkDialogue")
+	var next_action := complete_after_work_walk if farewell or game.after_work_dialogue("farewell").is_empty() else show_after_work_authored_chat.bind(true)
+	var finish := button_at(tx("ui.after_work.finish", "结束同行，回家  →") if farewell else tx("ui.after_work.continue_chat", "继续同行  →"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), next_action)
+	finish.name = "AfterWorkFinish"
+	register_dialogue_continue(finish, text_value, 0.5)
 	add_dialogue_playback_controls()
 
 func choose_after_work_walk(invite: bool) -> void:

@@ -1,0 +1,42 @@
+{
+  "_artifact_status": "AUTHORING_MANIFEST_NOT_RUNTIME_BUNDLE",
+  "_schema_note": "Missing live content.schema.json: exact production structure must be verified with Codex.",
+  "id": "nurse_sonoda_itsumi",
+  "profile": "profile.json",
+  "relationship": "relationship.json",
+  "entry": {
+    "kind": "single_Lv0_introduction",
+    "event_design": "event_design/itsumi_lv0_candidate_cn_en.json",
+    "status": "TEXT_CANDIDATE_TRIGGER_PENDING_APPROVAL",
+    "on_complete": "set character met true and leave Lv0"
+  },
+  "content_scope": {
+    "staff_roster": "PROPOSED_NEW_ENTRY",
+    "Lv0_introduction": "DRAFT_TEXT_EXISTS_BUT_NOT_AUTHORIZED_FOR_RUNTIME",
+    "Lv1_through_Lv5": "PLANNED_NOT_WRITTEN",
+    "manual_nurse_team_roles": "OPEN_ALL_NURSE_SLOTS_USER_CONFIRMED_PROJECT_RULE",
+    "personal_nurse": "ENABLED_PER_PROJECT_RULE_EXCEPT_ISHIGAMI",
+    "staff_lounge": "ENABLED_ALL_STAFF",
+    "rooftop": "ENABLED_ALL_STAFF",
+    "after_work_companion": "ENABLED_ALL_STAFF",
+    "crisis_attempt_callout": "8_FLAVORS_X_2_SEVERITIES_X_3_ATTEMPTS_CN_EN",
+    "preop_graphic_wrapper": "4_ENTRIES_CN_EN",
+    "visual_assets": "NOT_SUPPLIED"
+  },
+  "dialogue_authoring": "dialogue_authoring.json",
+  "time_events_authoring": "time_events_authoring.json",
+  "preop_graphic_wrapper_source": "profile.json#preop_graphic_wrapper for Chinese and dialogue_authoring.json for both languages",
+  "required_engineering_work": [
+    "Find actual content.schema.json and staff bundle loader; do not infer schema from this authoring manifest.",
+    "Check whether candidate actor ID collides in live roster and assign true ID before integration.",
+    "Confirm age=22, six skill ratings and familiarity multiplier=1.0 with author before marking canonical.",
+    "Decide actual Lv0 trigger time and whether optional intro draft is approved; do not set met before playing full event.",
+    "Register normal nurse ward/scrub/circulating slots without training, familiarity or duty-location restriction.",
+    "Personal nurse, lounge, rooftop, and after-work everyday accompaniment must all be enabled by confirmed universal rules.",
+    "Wire post-diagnosis right/wrong replies and always-correct nurse hint flow separately; do not mislead the player.",
+    "Wire crisis flavor/severity/attempt to assigned circulating nurse, preserving existing crisis probabilities and 3-attempt abort logic.",
+    "Use source profile for personal story continuity; Masahiro status not determined, Natsumi and Hozumi must not be auto-spawned.",
+    "Obtain original artwork identity anchors and required nurse sprites/3 role CGs before claiming runtime ready.",
+    "Register and validate Chinese and English lines with real localization paths, time event IDs, and post-op callsites."
+  ]
+}

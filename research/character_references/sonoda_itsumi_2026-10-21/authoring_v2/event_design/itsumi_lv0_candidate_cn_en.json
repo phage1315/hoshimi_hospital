@@ -1,0 +1,110 @@
+{
+  "_status": "OPTIONAL_AUTHORING_CANDIDATE_NOT_USER_LOCKED_NOT_PLAYABLE_WITHOUT_APPROVAL",
+  "title_zh": "第一次见面，薗田愛実",
+  "title_en": "A First Meeting with Itsumi",
+  "actor_id_candidate": "nurse_sonoda_itsumi",
+  "location_candidate": "station",
+  "appearance": "uniform",
+  "trigger_candidate": "player meets her naturally at nurses station after Hiroko introduction; requires live scheduler and user review",
+  "no_strict_day_or_09h_gate": "do not reuse Rumi+Shiori Monday 09:00 schedule; Itsumu trigger needs decision",
+  "narrative_nodes": [
+    {
+      "index": 1,
+      "speaker": "narrator",
+      "zh_CN": "护士站里，弘子正和一名年轻护士核对交接记录。那名护士一边听，一边把患者提出的问题认真记在旁边。",
+      "en": "At the nurses’ station, Hiroko is reviewing handover records with a young nurse. The nurse listens carefully and writes down a patient’s questions in the margin."
+    },
+    {
+      "index": 2,
+      "speaker": "杉村弘子",
+      "zh_CN": "坂口医生，正好。给您介绍一下，薗田愛実。她以前在护理学校就是我的后辈。",
+      "en": "Doctor Sakaguchi, perfect timing. Let me introduce Itsumi Sonoda. She was my junior at nursing school."
+    },
+    {
+      "index": 3,
+      "speaker": "薗田愛実",
+      "zh_CN": "初次见面！我是薗田愛実，主要在外科和病房做护理。以后请多关照！",
+      "en": "Nice to meet you! I am Itsumi Sonoda. I mostly work with surgical patients and on the ward. I look forward to working with you!"
+    },
+    {
+      "index": 4,
+      "speaker": "坂口隆司",
+      "zh_CN": "请多关照。听起来你和弘子很熟悉。",
+      "en": "Likewise. Sounds like you and Hiroko know each other well."
+    },
+    {
+      "index": 5,
+      "speaker": "薗田愛実",
+      "zh_CN": "嗯！在学校时就很佩服弘子前辈。可不是因为前辈在这里，我才想好好工作的哦。",
+      "en": "Yes! I admired Hiroko even at school. But that does not mean I only want to work hard because she is here!"
+    },
+    {
+      "index": 6,
+      "speaker": "杉村弘子",
+      "zh_CN": "我可没说你会偷懒。",
+      "en": "I never said you were going to slack off."
+    },
+    {
+      "index": 7,
+      "speaker": "薗田愛実",
+      "zh_CN": "呵呵，那就好。",
+      "en": "Hehe, good!"
+    },
+    {
+      "index": 8,
+      "speaker": "narrator",
+      "zh_CN": "愛実看了一眼手中的交接单，把其中一张翻到正面。",
+      "en": "Itsumi glances at her handover form and turns one sheet face up."
+    },
+    {
+      "index": 9,
+      "speaker": "薗田愛実",
+      "zh_CN": "我先去看看那位住院患者。她不是有什么急事，只是有几个问题想当面问清楚。",
+      "en": "I should go and see a patient on the ward. It is not urgent, but she has a few questions she wants to ask in person."
+    },
+    {
+      "index": 10,
+      "speaker": "坂口隆司",
+      "zh_CN": "你已经问过了吗？",
+      "en": "Have you already spoken with her?"
+    },
+    {
+      "index": 11,
+      "speaker": "薗田愛実",
+      "zh_CN": "问过啦。不过她刚才还没想好怎么说，我答应一会儿再去。",
+      "en": "I did! She was not quite ready to put it into words, so I said I would come back."
+    },
+    {
+      "index": 12,
+      "speaker": "杉村弘子",
+      "zh_CN": "去吧。回来把交接补全。",
+      "en": "Go ahead. Finish the handover when you return."
+    },
+    {
+      "index": 13,
+      "speaker": "薗田愛実",
+      "zh_CN": "明白！坂口医生，下次我再慢慢向您介绍病房的情况！",
+      "en": "Got it! Doctor Sakaguchi, next time I will tell you more about the ward!"
+    },
+    {
+      "index": 14,
+      "speaker": "narrator",
+      "zh_CN": "愛実笑着向两人挥手，快步走向病房。她离开以后，弘子才重新拿起交接表。",
+      "en": "Itsumi waves cheerfully and heads toward the ward. After she leaves, Hiroko picks up the handover form again."
+    },
+    {
+      "index": 15,
+      "speaker": "杉村弘子",
+      "zh_CN": "她做事很有精神。不过病人的事，她倒是肯放慢脚步听人说完。",
+      "en": "She is energetic. But when it comes to patients, she knows how to slow down and listen."
+    },
+    {
+      "index": 16,
+      "speaker": "坂口隆司",
+      "zh_CN": "看得出来。是个很愿意和患者打交道的护士。",
+      "en": "I can see that. She seems to enjoy caring for patients."
+    }
+  ],
+  "on_complete": "met=true, level remains 0, no stat effect",
+  "notes": "This script is an optional first draft, not authorized/locked as canonical; do not implement automatically. Does not require Rumi/Shiori and does not advance Hiroko relation."
+}

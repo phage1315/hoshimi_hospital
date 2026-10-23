@@ -1,0 +1,303 @@
+{
+  "id": "nurse_kariya_megumi",
+  "name": "狩谷惠",
+  "age": 18,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 6,
+    "diagnostics": 39,
+    "teamwork": 49,
+    "patient_care": 55,
+    "instrument_handling": 26,
+    "calmness": 18
+  },
+  "surgery_proficiency": "limited",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "preop_graphic_wrapper": {
+    "open": "「好、好的！我是实习护士惠。我按表给您讲一遍，要是哪里没说清楚，您可以马上问我。」",
+    "insert_a": "「这里听起来有点吓人吧？我第一次学的时候也吓了一跳……不过，顺序我核对过了。」",
+    "insert_b": "「如果不舒服或者害怕，您就说出来。我会记下来，马上转告负责的护士和医生。」",
+    "close": "「大概就是这些。还有想确认的吗？如果我解释得不够清楚，我会请前辈来一起说明。」"
+  },
+  "specialty": "护理",
+  "rank": "实习护士",
+  "personality": "护理职业方向未确定，热心且会盘算津贴，晕血但愿意学",
+  "appearance": "紫蓝色短发，棕色眼睛，脸颊轻描斜线。",
+  "dialogue_style": "紧张时仍报告事实；括号内为只对玩家可见的内心活动。",
+  "flags": [
+    "introduction_pending",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.1,
+    "operations": []
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [
+        "我觉得还要按流程补一项检查。我先确认一下是哪一项。",
+        "医生，患者刚才说的那个细节，是不是还需要再查一下？"
+      ],
+      "insufficient_evidence": [
+        "现在的数据好像还不够。我先把缺的检查记下来。",
+        "我想再核对一下结果。现在就下结论，我有点不放心。"
+      ],
+      "sufficient_evidence": [
+        "嗯，已经核对齐了！坂口医生，现在可以由您判断。",
+        "需要的检查结果都到了，我把它们排在一起方便您看。"
+      ],
+      "diagnosis_correct_reply": [
+        "太好了，结论和检查结果一致！那我去确认接下来的护理安排。",
+        "看来判断正确。我把患者的疑问再整理一遍。"
+      ],
+      "diagnosis_incorrect_reply": [
+        "医生，等等，这个结论和刚才那项结果似乎对不上。我们再核对一次好吗？",
+        "我可能还不够熟练，但这里有个结果让我在意。请您再看一眼。"
+      ],
+      "chatter": [
+        "今天我终于独立做完一份记录了！……虽然前辈复核了两遍。",
+        "正式护士的工资是不是比实习津贴高不少呀？……我只是做职业规划！",
+        "患者说我解释得挺容易懂。我听了特别开心。"
+      ],
+      "clinic_support": [
+        "检查需要的东西我准备好了，请前辈确认后再开始。",
+        "这份记录我补充了患者的问题，没擅自写诊断。",
+        "坂口医生，您问完之后我会把护理说明再讲给她听。"
+      ],
+      "preop_support": [
+        "准备清单还剩一项，我已经标出来，请负责的护士确认。",
+        "她说有点紧张，我先把想问的问题记下来，交给负责团队。"
+      ]
+    },
+    "diagnosis_corrections": {
+      "diagnose_gastro": "医生，等等，这个结论和刚才那项结果似乎对不上。我们再核对一次好吗？",
+      "diagnose_observe": "我可能还不够熟练，但这里有个结果让我在意。请您再看一眼。"
+    }
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "我来负责病房准备！做完请前辈复核一下。",
+    "scrub_nurse": "器械位是吧？我准备好了，您需要什么请说清楚一点！（等会儿真的要下刀了……眼睛看器械台，别看患者。）",
+    "circulating_nurse": "我来巡回！监护和记录我会盯好，有问题立刻报告。（只要把注意力放在屏幕上，我就能撑住……应该。）"
+  },
+  "post_operation_replies": [
+    "辛苦了！清点和记录我都核过了，请前辈做最后确认。",
+    "患者已经交接好了。……呼，我还得慢慢习惯手术室。（刚才看到血的那一瞬间，腿差点一软。幸好没耽误交接。）"
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      "坂口医生，今天下班要不要同路走一段？我正想问问正式护士平时怎么安排工作和生活。"
+    ],
+    "acceptance": [
+      "好呀！等我把实习记录交上去就来。",
+      "可以可以！我刚好也想出去透透气。"
+    ],
+    "unavailable": [
+      "今天前辈还要帮我复核记录，我可能走不了那么早。下次好吗？"
+    ],
+    "farewell": [
+      "今天谢谢您！晚饭我决定买点好吃的……嗯，预算以内的。"
+    ]
+  },
+  "after_work_short_chat": [
+    "安琪说她从一开始就想成为护士。我其实还在想，自己究竟最擅长什么。",
+    "正式护士的待遇真的不错啊。不过我也想找一份自己能长久做下去的工作。",
+    "今天患者夸我说话亲切。那一刻我是真的觉得，来医院实习挺值得的。"
+  ],
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压在下降。 （别慌，先把看到的说清楚。）",
+          "还在确认：血压还没有回稳。",
+          "报告：血压继续偏低。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血压下降得很快！ （声音别抖！这不是学校里的模拟练习……）",
+          "报告：血压还在快速下降！",
+          "报告：血压始终没稳住！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压升高了。",
+          "还在确认：血压仍然偏高。",
+          "报告：血压还是没有回落。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血压突然升得很高！",
+          "报告：血压仍然非常高！ （手心都湿了，可不能把报告吞回去。）",
+          "报告：血压还没有稳定！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率明显加快。",
+          "还在确认：心率还是很快。",
+          "报告：心率没有降下来。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心率突然变得很快！",
+          "报告：心率仍在加快！ （先看监护，别盯着术野……）",
+          "报告：心率一直没有降下来！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率慢下来了。",
+          "还在确认：心率还是偏慢。",
+          "报告：心率仍然没有回升。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心率突然掉得很低！",
+          "报告：心率还在往下！",
+          "报告：心率没有恢复！ （怎么还没有回升……我不能停下报告。）"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护显示心律不齐。",
+          "还在确认：心律还是不规则。 （我核对过了，不是我紧张看错。）",
+          "报告：心律一直没有恢复正常。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心律突然明显乱了！",
+          "报告：心律异常还在持续！",
+          "报告：心律仍然明显不规则！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血氧下降了。",
+          "还在确认：血氧还没有回升。",
+          "报告：血氧还是偏低。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血氧突然掉得很快！ （再害怕也要把情况说清楚！）",
+          "报告：血氧还在往下掉！",
+          "报告：血氧仍然没有回升！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，呼吸状态变得不稳定。",
+          "还在确认：呼吸还是不稳定。",
+          "报告：呼吸状态仍没有恢复。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，呼吸状态突然明显不对！",
+          "报告：呼吸还是很不稳定！ （腿有点软……稳住，说话别含糊。）",
+          "报告：呼吸状态持续异常！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护出现异常变化。",
+          "还在确认：患者状态还不稳定。",
+          "报告：监护异常还在持续。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，患者状态突然明显不稳！",
+          "报告：监护变化还在持续！",
+          "报告：患者状态始终没稳住！ （我真的快站不稳了……可现在不能移开视线。）"
+        ]
+      }
+    ]
+  },
+  "visuals": {
+    "color": "30205b",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "casual_winter"
+    ],
+    "portraits": {
+      "uniform/neutral": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/uniform/neutral.png",
+      "scrubs/neutral": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/sterile/neutral.png",
+      "casual/neutral": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/casual_winter/neutral.png",
+      "uniform/smile": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/uniform/smile.png",
+      "uniform/closed_eye_smile": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/uniform/closed_eye_smile.png",
+      "uniform/serious": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/uniform/serious.png",
+      "uniform/worried": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/uniform/worried.png",
+      "scrubs/focused": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/scrubs/focused.png",
+      "scrubs/warm": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/scrubs/worried.png",
+      "sterile/focused": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/sterile/focused.png",
+      "sterile/warm": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/sterile/warm.png",
+      "sterile/worried": "assets/characters/kariya_megumi_v1/nurse_kariya_megumi/sterile/worried.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_kariya_megumi/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_kariya_megumi/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  }
+}

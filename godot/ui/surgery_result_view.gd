@@ -22,6 +22,15 @@ static func render(app: Control, prep: RefCounted) -> void:
 	var record: String = prep.surgery_display_text(str(prep.feedback)).replace("{patient}", prep.patient_name)
 	if not prep.surgery_state_summary().is_empty():
 		record += "\n" + prep.surgery_state_summary()
+	var seen_staff := {}
+	for actor_id in prep.team.values():
+		if seen_staff.has(actor_id):
+			continue
+		seen_staff[actor_id] = true
+		var person: Dictionary = prep.roster.get(actor_id, {})
+		var replies: Array = person.get("post_operation_replies", [])
+		if not replies.is_empty():
+			record += "\n" + str(person.get("name", actor_id)) + "：" + str(replies[posmod(prep.patient_name.hash(), replies.size())])
 	app.scrollable_text_at(record, Vector2(75, 608), Vector2(1120, 78), 18, Color("f4f0e6"), "PreopRecordText")
 	app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(55, 715), Vector2(120, 40), app.request_load)
 

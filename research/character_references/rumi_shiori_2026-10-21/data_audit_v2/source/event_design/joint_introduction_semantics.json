@@ -1,0 +1,39 @@
+{
+  "_artifact_status": "EVENT_SEMANTICS_DRAFT_NOT_ENGINE_EVENT_JSON",
+  "event_design_id_candidate": "intro_rumi_shiori_hiroko_monday_0900",
+  "characters": [
+    "杉村弘子",
+    "岩崎留美",
+    "米田栞",
+    "坂口隆司"
+  ],
+  "existing_hiroko_meeting_required": true,
+  "hiroko_Lv1_required": false,
+  "calculate_trigger_day": "the next Monday strictly after the in-game date on which Hiroko is formally met",
+  "in_game_time": "09:00",
+  "location_id_candidate": "station",
+  "trigger_behavior": "not before Monday 09:00; after that use first eligible visit to nurses station, carry pending eligibility across days if first window missed",
+  "one_shot": true,
+  "on_completion": {
+    "nurse_iwasaki_rumi": {
+      "met": true,
+      "level": 0
+    },
+    "nurse_yoneda_shiori": {
+      "met": true,
+      "level": 0
+    }
+  },
+  "script_status": "The prior conversational Lv0 scene is a review draft, not a finalized runtime event. Do not invent further dialogue in data loader.",
+  "requires_portraits": [
+    "Rumi nurse uniform",
+    "Shiori nurse uniform",
+    "Hiroko existing nurse portrait"
+  ],
+  "does_not_trigger": [
+    "Hiroko Lv1",
+    "Asakura Lv1",
+    "any Lv1 for Rumi/Shiori",
+    "romance or date unlock"
+  ]
+}

@@ -1,0 +1,2094 @@
+[
+  {
+    "id": "itsumi_lv0_c_corridor",
+    "actor_id": "nurse_sonoda_itsumi",
+    "actor_alias": "手术室值班护士",
+    "title": "第5台后：走廊转角",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "hallway",
+    "outfit": "scrubs",
+    "minutes": 2,
+    "teaser": "第5台后：走廊转角",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 10,
+    "category": "contextual",
+    "auto_start": true,
+    "allow_unmet_actor": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "itsumi_lv0_c_corridor",
+      "caption": "第5台后：走廊转角",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "completed_surgeries",
+          "minimum": 5
+        }
+      ]
+    },
+    "nodes": [
+      {
+        "id": "its_c_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "手术结束后，坂口走出手术室，沿着手术部走廊向更衣区走去。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_001",
+            "label": "继续",
+            "next": "its_c_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "走廊另一头，一名年轻护士抱着交接资料快步走来。她戴着完全遮住头发和耳朵的手术帽，系带口罩遮住了大半张脸。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_002",
+            "label": "继续",
+            "next": "its_c_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "两人在转角处同时绕开一辆停放的推车，肩膀轻轻碰在了一起。护士急忙停住脚步，先扶稳手里的资料。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_003",
+            "label": "继续",
+            "next": "its_c_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「啊！对不起！您没事吧？」",
+        "expression": "worried",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_004",
+            "label": "继续",
+            "next": "its_c_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_005",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「没事。你呢？」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_005",
+            "label": "继续",
+            "next": "its_c_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「我也没事。刚才拐弯太急了，真不好意思！」",
+        "expression": "worried",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_006",
+            "label": "继续",
+            "next": "its_c_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_007",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "她向坂口点头致歉，又低头看了一眼夹在资料最上面的手术安排表。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_007",
+            "label": "继续",
+            "next": "its_c_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_008",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「赶下一台？」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_008",
+            "label": "继续",
+            "next": "its_c_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「是！那边已经在等我了。不好意思，我先走啦！」",
+        "expression": "warm",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_009",
+            "label": "继续",
+            "next": "its_c_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_010",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「路上小心。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_010",
+            "label": "继续",
+            "next": "its_c_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「知道啦！谢谢您！」",
+        "expression": "warm",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_011",
+            "label": "继续",
+            "next": "its_c_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_012",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "年轻护士朝他轻轻挥手，便快步走向另一间手术室。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_012",
+            "label": "继续",
+            "next": "its_c_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_c_013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "坂口望了眼她离开的方向，随后继续朝更衣区走去。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_c_013",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "preop_stage_id": "post_surgery_return",
+    "start": "its_c_001",
+    "benefit_id": ""
+  },
+  {
+    "id": "itsumi_lv0_d_instrument_tray",
+    "actor_id": "nurse_sonoda_itsumi",
+    "actor_alias": "手术室值班护士",
+    "title": "第10台后：器械盘",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "hallway",
+    "outfit": "scrubs",
+    "minutes": 5,
+    "teaser": "第10台后：器械盘",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 10,
+    "category": "contextual",
+    "auto_start": true,
+    "allow_unmet_actor": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "itsumi_lv0_d_instrument_tray",
+      "caption": "第10台后：器械盘",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "itsumi_lv0_c_corridor"
+      ],
+      "special_requirements": [
+        {
+          "type": "completed_surgeries",
+          "minimum": 10
+        }
+      ]
+    },
+    "nodes": [
+      {
+        "id": "its_d_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "又一台手术结束。坂口走到手术部走廊时，前方一名戴着手术帽和系带口罩的年轻护士正在推送术后器械车。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_001",
+            "label": "继续",
+            "next": "its_d_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "推车拐过转角时，上层一只没有放稳的器械盘突然滑向边缘。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_002",
+            "label": "继续",
+            "next": "its_d_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "哐啷一声，器械盘落到地上，几件器械散在走廊里。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_003",
+            "label": "继续",
+            "next": "its_d_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「呀！」",
+        "expression": "worried",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_004",
+            "label": "继续",
+            "next": "its_d_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "护士立即停下推车，稳住车身，先确认周围没人被砸到。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_005",
+            "label": "继续",
+            "next": "its_d_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_006",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「没砸到脚吧？」",
+        "expression": "worried",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_006",
+            "label": "继续",
+            "next": "its_d_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「没有，我没受伤。是我转弯的时候没把盘子放稳……」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_007",
+            "label": "继续",
+            "next": "its_d_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「糟糕……这下又得重新核对一遍了。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_008",
+            "label": "继续",
+            "next": "its_d_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_009",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「我帮你吧。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_009",
+            "label": "继续",
+            "next": "its_d_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「真的？太感谢了！我刚才还在想，一个人得收拾到什么时候呢。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_010",
+            "label": "继续",
+            "next": "its_d_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「不过这是刚用过的器械，您先别直接碰散落的那些。能帮我扶住推车吗？」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_011",
+            "label": "继续",
+            "next": "its_d_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_012",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「好。旁边这只空盘要挪开吗？」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_012",
+            "label": "继续",
+            "next": "its_d_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「麻烦您放到车旁边。掉到地上的器械要单独记录，再按规定回收处理。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_013",
+            "label": "继续",
+            "next": "its_d_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "坂口扶稳推车，把备用空盘放到一旁。护士戴好防护手套，按规定收集落地的术后器械，并对照清单逐项核对。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_014",
+            "label": "继续",
+            "next": "its_d_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_015",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "她核对完最后一件器械，在清单上做了标记。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_015",
+            "label": "继续",
+            "next": "its_d_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「……数量对上了。太好了，没有少。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_016",
+            "label": "继续",
+            "next": "its_d_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_017",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「这种时候还能核对得这么仔细，不错。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_017",
+            "label": "继续",
+            "next": "its_d_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「出了错，就更得把后面的事做好嘛。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_018",
+            "label": "继续",
+            "next": "its_d_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "她抬起头，眼角又有了方才那股明快的笑意。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_019",
+            "label": "继续",
+            "next": "its_d_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「谢谢您！这次真是帮了大忙。」",
+        "expression": "warm",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_020",
+            "label": "继续",
+            "next": "its_d_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_021",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「下次转弯慢一点。」",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_021",
+            "label": "继续",
+            "next": "its_d_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "手术室值班护士",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「是！我记住了！啊，负责回收的同事还在等着，我得先走啦！」",
+        "expression": "warm",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_022",
+            "label": "继续",
+            "next": "its_d_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_d_023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "她把器械车重新推稳，朝坂口点头致谢，沿着走廊离开。",
+        "expression": "focused",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_its_d_023",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "preop_stage_id": "post_surgery_return",
+    "start": "its_d_001",
+    "benefit_id": ""
+  },
+  {
+    "id": "itsumi_lv0_e_hiroko_invitation",
+    "actor_id": "nurse_sonoda_itsumi",
+    "actor_alias": "杉村弘子",
+    "title": "第15台后：弘子的邀请",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "hallway",
+    "outfit": "uniform",
+    "minutes": 3,
+    "teaser": "第15台后：弘子的邀请",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 10,
+    "category": "contextual",
+    "auto_start": true,
+    "allow_unmet_actor": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "itsumi_lv0_e_hiroko_invitation",
+      "caption": "第15台后：弘子的邀请",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "itsumi_lv0_c_corridor",
+        "itsumi_lv0_d_instrument_tray"
+      ],
+      "special_requirements": [
+        {
+          "type": "completed_surgeries",
+          "minimum": 15
+        },
+        {
+          "type": "staff_unlocked",
+          "actor_id": "nurse_hiroko"
+        }
+      ]
+    },
+    "nodes": [
+      {
+        "id": "its_e_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hiroko",
+        "text": "手术结束后，坂口从手术区出来，在走廊遇见了拿着交接文件的杉村弘子。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_001",
+            "label": "继续",
+            "next": "its_e_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「坂口医生，您最近手术真不少呢。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_002",
+            "label": "继续",
+            "next": "its_e_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_003",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「是啊，忙得连休息的时间都不太有了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_003",
+            "label": "继续",
+            "next": "its_e_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「呵呵，其实有件事想拜托您。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_004",
+            "label": "继续",
+            "next": "its_e_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_005",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「什么事？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_005",
+            "label": "继续",
+            "next": "its_e_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「我有个以前护理学校的后辈，最近一直跟我打听您。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_006",
+            "label": "继续",
+            "next": "its_e_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「打听我？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_007",
+            "label": "继续",
+            "next": "its_e_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「她听说您最近在手术室很活跃，一直想找机会正式认识您。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_008",
+            "label": "继续",
+            "next": "its_e_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_009",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「是哪位护士？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_009",
+            "label": "继续",
+            "next": "its_e_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「外科的。她说在手术区遇见过您几次，还说您帮过她的忙。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_010",
+            "label": "继续",
+            "next": "its_e_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「帮过忙……好像有点印象。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_011",
+            "label": "继续",
+            "next": "its_e_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「她一直想亲自向您道谢，可每回遇见都忙着赶下一件事。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_012",
+            "label": "继续",
+            "next": "its_e_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「您有空的时候，去护士站见见她吧。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_013",
+            "label": "继续",
+            "next": "its_e_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「当然。既然是弘子小姐的后辈，我也想认识。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_014",
+            "label": "继续",
+            "next": "its_e_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「谢谢。她知道以后，一定会很高兴的。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_015",
+            "label": "继续",
+            "next": "its_e_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_e_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hiroko",
+        "text": "弘子微笑着收起文件，继续去处理交接。坂口记下了她的邀请。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_e_016",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "preop_stage_id": "post_surgery_return",
+    "start": "its_e_001",
+    "benefit_id": ""
+  },
+  {
+    "id": "intro_itsumi_lv0_f_station",
+    "actor_id": "nurse_sonoda_itsumi",
+    "actor_alias": "护士站的年轻护士",
+    "title": "护士站正式相识",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 10,
+    "teaser": "护士站正式相识",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 10,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "gallery": {
+      "cg_id": "intro_itsumi_lv0_f_station",
+      "caption": "护士站正式相识",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "itsumi_lv0_c_corridor",
+        "itsumi_lv0_d_instrument_tray",
+        "itsumi_lv0_e_hiroko_invitation"
+      ],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "its_f_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hiroko",
+        "text": "坂口走进护士站。弘子站在工作台旁，正和一名年轻护士核对病房交接记录。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_001",
+            "label": "继续",
+            "next": "its_f_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "那名护士穿着整齐的白色工作制服，没有戴手术帽和口罩。红色的头发露在外面，笑起来十分明朗。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_002",
+            "label": "继续",
+            "next": "its_f_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「啊，坂口医生。您真的来了。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_003",
+            "label": "继续",
+            "next": "its_f_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_004",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_hiroko",
+        "text": "「你说的那位后辈，在吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_004",
+            "label": "继续",
+            "next": "its_f_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「在呀，就在这里。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_005",
+            "label": "继续",
+            "next": "its_f_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "听见弘子的声音，年轻护士放下笔，转过身来。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_006",
+            "label": "继续",
+            "next": "its_f_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「这位是薗田愛実，外科护士。以前在护理学校时，是我的后辈。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_007",
+            "label": "继续",
+            "next": "its_f_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「您好！我是薗田愛実。终于能正式跟您打招呼了！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_008",
+            "label": "继续",
+            "next": "its_f_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "愛実笑着微微鞠躬。坂口看着她，一时没把这张满是笑意的脸和走廊里的某个人联系起来。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_009",
+            "label": "继续",
+            "next": "its_f_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_010",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「坂口隆司。请多指教。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_010",
+            "label": "继续",
+            "next": "its_f_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「不过……我们以前是不是在哪里见过？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_011",
+            "label": "继续",
+            "next": "its_f_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「诶，坂口医生，您真的不记得我啦？」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_012",
+            "label": "继续",
+            "next": "its_f_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_013",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「……我们以前见过？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_013",
+            "label": "继续",
+            "next": "its_f_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「见过呀！之前在手术区走廊，我拐弯太急，差点撞到您。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_014",
+            "label": "继续",
+            "next": "its_f_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_015",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "她抬起双手，做了个匆忙刹住脚步的动作。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_015",
+            "label": "继续",
+            "next": "its_f_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_016",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「啊，原来是你！」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_016",
+            "label": "继续",
+            "next": "its_f_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「还有后来那次！我推着器械车，把盘子弄掉了，您帮我扶住车，还替我挪开了空盘。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_017",
+            "label": "继续",
+            "next": "its_f_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_018",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「……那也是你？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_018",
+            "label": "继续",
+            "next": "its_f_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「嘿嘿，都是我。不好意思，让您记住的好像净是些丢脸的事。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_019",
+            "label": "继续",
+            "next": "its_f_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_020",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "坂口看着她露出的红发，又想起那两次隔着手术帽和口罩望过来的眼睛。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_020",
+            "label": "继续",
+            "next": "its_f_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_021",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「难怪没认出来。那两次你把帽子和口罩都戴得严严实实的。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_021",
+            "label": "继续",
+            "next": "its_f_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「当然啦！手术区可不能顶着这一头头发跑来跑去嘛。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_022",
+            "label": "继续",
+            "next": "its_f_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「她跟我提过器械盘的事。事后的清点和交接，她都认真处理好了。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_023",
+            "label": "继续",
+            "next": "its_f_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「弘子前辈……连这个也要跟坂口医生说呀？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_024",
+            "label": "继续",
+            "next": "its_f_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「不是你自己先说的吗？」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_025",
+            "label": "继续",
+            "next": "its_f_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_026",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hiroko",
+        "text": "愛実眨了眨眼，随即忍不住笑出声来。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_026",
+            "label": "继续",
+            "next": "its_f_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「啊哈哈，倒也是。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_027",
+            "label": "继续",
+            "next": "its_f_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「不过，那天您肯停下来帮忙，我真的很高兴。一直没能好好说一句谢谢。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_028",
+            "label": "继续",
+            "next": "its_f_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_029",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「举手之劳。后面的器械处理，你自己也做得很好。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_029",
+            "label": "继续",
+            "next": "its_f_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「谢谢！听您这么说，我放心多了。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_030",
+            "label": "继续",
+            "next": "its_f_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「那现在总算可以正式认识了吧？」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_031",
+            "label": "继续",
+            "next": "its_f_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「是！坂口医生，以后有机会一起上台的话，请多多关照！病房那边需要帮忙，也可以随时叫我。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_032",
+            "label": "继续",
+            "next": "its_f_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_033",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「好。以后合作愉快，薗田护士。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_033",
+            "label": "继续",
+            "next": "its_f_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「我也是！今天终于不是在走廊里匆匆打招呼了。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_034",
+            "label": "继续",
+            "next": "its_f_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "its_f_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "打印机发出轻响，新一页交接记录送了出来。愛実转身将文件整理好，又朝坂口笑着点了点头。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_its_f_035",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "start": "its_f_001",
+    "benefit_id": ""
+  }
+]

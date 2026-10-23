@@ -1,0 +1,549 @@
+{
+  "_status": "ACTUAL_CN_EN_DIALOGUES_COMPLETE_AUTHORING_DRAFT_NOT_ENGINE_SCHEMA_VALIDATED",
+  "_provenance": "2026-10-21 new character-specific CN/EN dialogue; based on user-approved roles and HOSHIMI_INNAI_NURSE_ENSEMBLE_CHARACTER_BIBLE.md; not original licensed dialogue.",
+  "actor_id_candidate": "nurse_yoneda_shiori",
+  "actor_name": "米田栞",
+  "work_responses": {
+    "nurse_station": [
+      {
+        "zh_CN": "早上的交班我核对好了。还有一份修改记录，我正准备送过去。",
+        "en": "I have checked the morning handover. There is one revised record I am about to deliver."
+      },
+      {
+        "zh_CN": "坂口医生，这张是更新后的版本。旧的我已经标注作废了。",
+        "en": "Doctor Sakaguchi, this is the updated version. I have marked the old one as superseded."
+      },
+      {
+        "zh_CN": "这件事我可以自己处理。……如果遇到不确定的地方，我会及时问的。",
+        "en": "I can handle this myself. If anything is unclear, I will ask promptly."
+      },
+      {
+        "zh_CN": "留美前辈在忙别的事，这份交接先由我负责。",
+        "en": "Rumi is busy with something else, so I will handle this handover."
+      }
+    ],
+    "ward_nurse": [
+      {
+        "zh_CN": "患者身份和交班记录，我都核对过了。准备情况在这里。",
+        "en": "I have checked the patient identity and handover record. Here is the preparation status."
+      },
+      {
+        "zh_CN": "她刚才说有点担心，我先让她把问题说完了。",
+        "en": "She said she was worried, so I let her finish telling me what was on her mind."
+      },
+      {
+        "zh_CN": "有一项还没有确认。我已经标出来了，不会当成完成。",
+        "en": "One item is still unconfirmed. I have marked it and will not count it as complete."
+      },
+      {
+        "zh_CN": "病房这边准备好了，坂口医生。请您再确认下一步安排。",
+        "en": "The ward preparation is complete, Doctor Sakaguchi. Please confirm the next step."
+      }
+    ],
+    "scrub_nurse": [
+      {
+        "zh_CN": "器械台核对完毕。坂口医生，我准备好了。",
+        "en": "The instrument table is checked. I am ready, Doctor Sakaguchi."
+      },
+      {
+        "zh_CN": "您要的器械，我已经放在手边。",
+        "en": "The instrument you requested is within reach."
+      },
+      {
+        "zh_CN": "收到。这件器械已经递给您了。",
+        "en": "Understood. I have handed you the instrument."
+      },
+      {
+        "zh_CN": "我会按顺序记录器械和纱布数量。",
+        "en": "I will track the instrument and gauze counts in order."
+      },
+      {
+        "zh_CN": "这里我会保持无菌。外侧需要联络的话，请巡回护士处理。",
+        "en": "I will maintain sterility here. The circulating nurse can handle outside communication."
+      }
+    ],
+    "circulating_nurse": [
+      {
+        "zh_CN": "监护已经确认。我会一直注意患者状态。",
+        "en": "The monitors are checked. I will keep watching the patient's condition."
+      },
+      {
+        "zh_CN": "外围耗材已经补齐，需要再添的话请告诉我。",
+        "en": "The peripheral supplies are replenished. Please tell me if more are needed."
+      },
+      {
+        "zh_CN": "关键时间已记录。交班时我会一起核对。",
+        "en": "The key time is recorded. I will check it again at handover."
+      },
+      {
+        "zh_CN": "标本标签和记录是一致的。",
+        "en": "The specimen label matches the record."
+      },
+      {
+        "zh_CN": "坂口医生，我会及时报告监护变化。",
+        "en": "Doctor Sakaguchi, I will report any changes in the monitoring readings promptly."
+      }
+    ]
+  },
+  "team_assignment_replies": {
+    "ward_nurse": {
+      "zh_CN": "这次病房准备由我负责。我会逐项确认，不确定的地方再向您汇报。",
+      "en": "I will handle the ward preparation this time. I will check each item and report anything unclear."
+    },
+    "scrub_nurse": {
+      "zh_CN": "器械护士……好的。我会把台上的东西核对清楚。",
+      "en": "Scrub nurse... understood. I will make sure everything on the table is accounted for."
+    },
+    "circulating_nurse": {
+      "zh_CN": "这次让我负责巡回吧。我会注意监护，也会按时记录。",
+      "en": "Let me handle circulating this time. I will watch the monitors and keep the records up to date."
+    }
+  },
+  "post_operation_replies": [
+    {
+      "zh_CN": "手术结束了。记录已经齐了，我再核一次就可以交班。",
+      "en": "The operation is over. The records are complete; I will check them once more before handover."
+    },
+    {
+      "zh_CN": "今天我负责的部分已经完成。……嗯，是我自己完成的。",
+      "en": "I have finished the part assigned to me today. Yes... I completed it myself."
+    }
+  ],
+  "implementation_notes": [
+    "All six nursing contexts in this draft map to existing system roles; do not assume keys in this draft match the production dialogue schema.",
+    "Crisis callout only if actor is the assigned circulating nurse (or primary circulating in a future Grand OR). When assigned scrub nurse, generic scrub filler applies; do not preempt the circulating nurse callout.",
+    "Exactly the 8 existing crisis flavors are covered. Flavor is presentation only. Do not add new medical diagnosis, causes, hidden success hints or numerical physiology.",
+    "Daily idle location presence never gates manual team assignment. Shiori does not naturally appear in the OR but all nursing OR roles are available if the player assigns her.",
+    "Joint introduction actual dialogue remains pending by explicit user direction; never substitute these work replies for a Lv0 VN introduction.",
+    "Both languages are human-authored first-pass and still require localization review before game deployment.",
+    "NEW USER RULE: All medical staff can appear in staff lounge and rooftop and use non-romantic after-work accompaniment after being formally met. Both locations are enabled for these two staff. Do not gate on relationship romance.",
+    "NEW USER RULE: All nurses except Ishigami may be chosen as personal nurses after global probation/personal-nurse-system unlock. Both these nurses eligible regardless of relationship level. Keep independent from OR team selection.",
+    "Rooftop and lounge idle chats: 3 standalone full CN/EN responses each, one speaker per existing time_events UI; do not interpret as a multi-node VN.",
+    "Outpatient nurse advice remains always correct; personal_nurse_dialogue.diagnosis_correct_reply and diagnosis_incorrect_reply are *after physician diagnosis* reactions, not erroneous nurse hints.",
+    "Crisis progression uses explicit flavor×severity×attempt1/2/3 CN/EN matrix. Do not directly map the obsolete normal 2+ severe 1 layout to runtime. Failed attempts preserve crisis and severity; do not invent new medical cause or player solution.",
+    "After-work accompaniment is a normal colleague feature, not a Sunday romantic date or Free H scheduling. Accept/decline based on generic availability if used.",
+    "Lv0 joint intro fully written text is still pending per user instruction; do not mark both met before successful event."
+  ],
+  "crisis_attempt_callout": {
+    "hypotension": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，血压正在下降。",
+          "en": "Doctor Sakaguchi, the blood pressure is falling."
+        },
+        "2": {
+          "zh_CN": "我又确认了一遍，血压还没回稳。",
+          "en": "I checked again. The blood pressure has not stabilized."
+        },
+        "3": {
+          "zh_CN": "坂口医生，血压还是偏低。",
+          "en": "Doctor Sakaguchi, the pressure is still low."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "血压下降得很快！",
+          "en": "The blood pressure is dropping very quickly!"
+        },
+        "2": {
+          "zh_CN": "我确认了监护，血压还是很低！",
+          "en": "I checked the monitor. The blood pressure is still very low!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，血压一直没有恢复！",
+          "en": "Doctor Sakaguchi, the pressure still has not recovered!"
+        }
+      }
+    },
+    "hypertension": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，血压升高了。",
+          "en": "Doctor Sakaguchi, the blood pressure has risen."
+        },
+        "2": {
+          "zh_CN": "血压仍然偏高，我一直在核对读数。",
+          "en": "The pressure remains high. I have been checking the readings."
+        },
+        "3": {
+          "zh_CN": "血压没有回落，监护显示还是偏高。",
+          "en": "The pressure has not fallen; the monitor still shows it is high."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "血压突然升得很高！",
+          "en": "The blood pressure has suddenly risen very high!"
+        },
+        "2": {
+          "zh_CN": "读数我又确认了，血压还是很高！",
+          "en": "I confirmed the readings again. The blood pressure is still very high!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，血压一直没有恢复稳定！",
+          "en": "Doctor Sakaguchi, the blood pressure still has not stabilized!"
+        }
+      }
+    },
+    "tachycardia": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，心率在加快。",
+          "en": "Doctor Sakaguchi, the heart rate is increasing."
+        },
+        "2": {
+          "zh_CN": "心率仍然偏快，我又确认了一遍。",
+          "en": "The heart rate is still high. I checked it again."
+        },
+        "3": {
+          "zh_CN": "心率还没回稳。",
+          "en": "The heart rate has not stabilized yet."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "心率升得太快了！",
+          "en": "The heart rate is rising too fast!"
+        },
+        "2": {
+          "zh_CN": "我确认了，心率还是明显过快！",
+          "en": "I checked. The heart rate is still much too fast!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，心率一直没有缓下来！",
+          "en": "Doctor Sakaguchi, the heart rate still has not eased!"
+        }
+      }
+    },
+    "bradycardia": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，心率正在下降。",
+          "en": "Doctor Sakaguchi, the heart rate is falling."
+        },
+        "2": {
+          "zh_CN": "心率还是偏慢，我在继续监看。",
+          "en": "The heart rate remains low. I am continuing to monitor it."
+        },
+        "3": {
+          "zh_CN": "我重新核对了监护，心率仍然偏低。",
+          "en": "I checked the monitor again. The heart rate is still low."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "心率突然降得很低！",
+          "en": "The heart rate has suddenly dropped very low!"
+        },
+        "2": {
+          "zh_CN": "心率还是太慢，没恢复！",
+          "en": "The heart rate is still too slow. It has not recovered!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，心率始终没有回稳！",
+          "en": "Doctor Sakaguchi, the heart rate still has not stabilized!"
+        }
+      }
+    },
+    "arrhythmia": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，心律变得不规则了。",
+          "en": "Doctor Sakaguchi, the rhythm has become irregular."
+        },
+        "2": {
+          "zh_CN": "心律还是不规则，我在继续确认。",
+          "en": "The rhythm remains irregular. I am continuing to check."
+        },
+        "3": {
+          "zh_CN": "监护上的节律仍然没有恢复。",
+          "en": "The rhythm on the monitor still has not recovered."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "心律突然明显不规则！",
+          "en": "The rhythm has suddenly become very irregular!"
+        },
+        "2": {
+          "zh_CN": "我核对了监护，心律还是不稳！",
+          "en": "I checked the monitor. The rhythm is still unstable!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，心律异常还在持续！",
+          "en": "Doctor Sakaguchi, the abnormal rhythm is still ongoing!"
+        }
+      }
+    },
+    "desaturation": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，血氧正在下降。",
+          "en": "Doctor Sakaguchi, oxygen saturation is falling."
+        },
+        "2": {
+          "zh_CN": "血氧仍然偏低，我又确认了一次。",
+          "en": "Oxygen saturation remains low. I checked again."
+        },
+        "3": {
+          "zh_CN": "血氧还没有回到稳定水平。",
+          "en": "Oxygen saturation has not returned to a stable level."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "血氧下降得很快！",
+          "en": "Oxygen saturation is falling very quickly!"
+        },
+        "2": {
+          "zh_CN": "我确认了，血氧还是很低！",
+          "en": "I checked. Oxygen saturation is still very low!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，血氧一直没有恢复！",
+          "en": "Doctor Sakaguchi, oxygen saturation still has not recovered!"
+        }
+      }
+    },
+    "respiratory_instability": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，呼吸状态不稳定。",
+          "en": "Doctor Sakaguchi, respiratory status is unstable."
+        },
+        "2": {
+          "zh_CN": "呼吸状态还是不稳，我在监看。",
+          "en": "Respiratory status is still unstable. I am monitoring it."
+        },
+        "3": {
+          "zh_CN": "监护上的呼吸异常仍然持续。",
+          "en": "The respiratory abnormality on the monitor is still present."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "呼吸状态突然变得很不稳定！",
+          "en": "Respiratory status has suddenly become very unstable!"
+        },
+        "2": {
+          "zh_CN": "我再次确认了监护，呼吸还是不稳！",
+          "en": "I checked the monitor again. Respiration remains unstable!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，呼吸状态始终没有恢复！",
+          "en": "Doctor Sakaguchi, respiratory status still has not recovered!"
+        }
+      }
+    },
+    "generic_instability": {
+      "normal": {
+        "1": {
+          "zh_CN": "坂口医生，监护显示状态异常。",
+          "en": "Doctor Sakaguchi, the monitor shows an abnormal change."
+        },
+        "2": {
+          "zh_CN": "我又确认了一遍，监护状态还不稳。",
+          "en": "I checked again. The monitor readings are still unstable."
+        },
+        "3": {
+          "zh_CN": "患者状态还没回稳，我在继续看着。",
+          "en": "The patient’s condition has not stabilized. I am keeping watch."
+        }
+      },
+      "severe": {
+        "1": {
+          "zh_CN": "监护突然出现明显异常！",
+          "en": "The monitor has suddenly shown a major abnormality!"
+        },
+        "2": {
+          "zh_CN": "我核对过了，监护异常还在继续！",
+          "en": "I checked. The abnormal readings are persisting!"
+        },
+        "3": {
+          "zh_CN": "坂口医生，患者状态仍然没稳住！",
+          "en": "Doctor Sakaguchi, the patient’s condition still has not stabilized!"
+        }
+      }
+    }
+  },
+  "crisis_attempt_mapping": {
+    "severity_source": "existing runtime crisis severity; map ordinary to normal, severe to severe, never infer from attempt",
+    "attempt_index": "1=crisis first shown; 2=first attempt failed and current crisis persists; 3=second attempt failed and current crisis persists",
+    "on_third_failure": "existing abort/fail logic; do not display attempt 4",
+    "no_new_mechanics": true,
+    "fallback": "character flavor+severity+attempt -> character flavor+severity+1 -> character generic_instability with same severity and attempt -> generic nurse callout",
+    "caller": "assigned circulating nurse only; do not call from scrub role"
+  },
+  "personal_nurse_dialogue": {
+    "next_test_hint": [
+      {
+        "zh_CN": "坂口医生，我想再确认一项检查结果。现在的资料好像还不够。",
+        "en": "Doctor Sakaguchi, I would like to confirm one more test result. I do not think we have enough information yet."
+      },
+      {
+        "zh_CN": "这一项还没有核对过。如果可以的话，我想先把它查清楚。",
+        "en": "We have not checked this item yet. If possible, I would like to confirm it first."
+      }
+    ],
+    "insufficient_evidence": [
+      {
+        "zh_CN": "还差一项没有确认。我已经标出来了，可以再看一遍吗？",
+        "en": "There is still one item we have not confirmed. I marked it. Could we check it again?"
+      },
+      {
+        "zh_CN": "我认真核对过了，现有的结果还不足以确定。",
+        "en": "I checked carefully. The results so far are not quite enough for a firm decision."
+      }
+    ],
+    "sufficient_evidence": [
+      {
+        "zh_CN": "嗯……我核对过了，检查资料现在应该足够了。",
+        "en": "Yes... I checked the records, and we should have enough information now."
+      },
+      {
+        "zh_CN": "目前的结果已经齐全，坂口医生可以做判断了。",
+        "en": "The findings are complete now. You can make the decision, Doctor Sakaguchi."
+      }
+    ],
+    "diagnosis_correct_reply": [
+      {
+        "zh_CN": "检查结果和您的判断一致。我把后续的护理说明整理好。",
+        "en": "The findings match your decision. I will organize the follow-up nursing instructions."
+      },
+      {
+        "zh_CN": "嗯，已经核对过了，没有遗漏。接下来我来配合您。",
+        "en": "Yes, I have checked it. Nothing is missing. I will help with the next steps."
+      }
+    ],
+    "diagnosis_incorrect_reply": [
+      {
+        "zh_CN": "坂口医生，抱歉，我想再确认一次。现有的检查结果好像和这个结论不太一致。",
+        "en": "Doctor Sakaguchi, excuse me, but I would like to check once more. The findings do not seem to match this conclusion."
+      },
+      {
+        "zh_CN": "我核对了刚才的记录……这个判断是否需要重新考虑？",
+        "en": "I checked the records again... should we reconsider this decision?"
+      }
+    ],
+    "chatter": [
+      {
+        "zh_CN": "下一位患者的资料已经整理好。我把需要注意的地方放在最上面了。",
+        "en": "The next patient’s records are ready. I put the important items on top."
+      },
+      {
+        "zh_CN": "门诊比我想的要忙一点，不过我已经把要做的事都记下来了。",
+        "en": "The clinic is a little busier than I expected, but I have written down what we need to do."
+      },
+      {
+        "zh_CN": "留美姐姐说我不用什么都先问她。……所以这次我想先把自己的判断说清楚。",
+        "en": "Rumi told me I do not have to ask her about everything first. ...So this time I want to explain my own thinking."
+      }
+    ],
+    "clinic_support": [
+      {
+        "zh_CN": "检查用的东西已经备好了。这一项还没确认，我不会先标完成。",
+        "en": "The examination supplies are ready. This item is still unconfirmed, so I have not marked it complete."
+      },
+      {
+        "zh_CN": "患者刚才问了接下来会做什么。我已经记下来，想请医生再说明一次。",
+        "en": "The patient asked what would happen next. I noted the question and would like you to explain it again."
+      },
+      {
+        "zh_CN": "这部分是我核对的，记录在这里。有什么不对我会再查一次。",
+        "en": "I checked this part myself, and the record is here. If anything seems wrong, I will check again."
+      }
+    ],
+    "preop_support": [
+      {
+        "zh_CN": "病房准备项目我逐项核对过了，完成的和待确认的都分开记录。",
+        "en": "I checked each preparation item in the ward and recorded completed and pending steps separately."
+      },
+      {
+        "zh_CN": "她还有一点紧张。我已经告诉她哪些问题可以当场问医生。",
+        "en": "She is still a little nervous. I have told her which questions she can ask the doctor directly."
+      }
+    ],
+    "_note": "correct/incorrect diagnosis replies are post-submission responses only; advice remains 100% correct and never directly names disease"
+  },
+  "lounge_idle": [
+    {
+      "id_candidate": "lounge_chat_nurse_yoneda_shiori_01",
+      "zh_CN": "栞把杯子放到桌边，认真看了一遍排班表。「以前总是留美姐姐先说哪天有空。今天我想先看看自己的安排，再跟她商量。」",
+      "en": "Shiori sets her cup down and studies the duty roster. “Rumi always used to say which day she was free first. Today I want to check my own schedule before we talk about it.”"
+    },
+    {
+      "id_candidate": "lounge_chat_nurse_yoneda_shiori_02",
+      "zh_CN": "栞小心地把记事本合上，舒了口气。「今天病房的交接都核对好了。我想先休息一会儿……不是因为有人叫我，是我自己想休息。」",
+      "en": "Shiori closes her notebook carefully and exhales. “The ward handovers are all checked. I would like to take a little break... not because anyone told me to, but because I want to.”"
+    },
+    {
+      "id_candidate": "lounge_chat_nurse_yoneda_shiori_03",
+      "zh_CN": "栞看着桌上一包没有开封的饼干，轻轻笑了。「留美姐姐以前总会帮我挑口味。不过今天这包是我自己选的。其实也没那么难嘛。」",
+      "en": "Shiori looks at an unopened packet of biscuits and smiles. “Rumi used to choose the flavors for me. I picked this one myself today. It was not so hard after all.”"
+    }
+  ],
+  "rooftop_idle": [
+    {
+      "id_candidate": "rooftop_chat_nurse_yoneda_shiori_01",
+      "zh_CN": "栞站在栏杆前，双手握着热饮。「这里比护士站安静。刚才有件工作上的事，我想自己想明白，再去和留美姐姐商量。」",
+      "en": "Shiori stands by the railing with a warm drink. “It is quieter here than at the station. There is something about work I want to think through myself before I ask Rumi.”"
+    },
+    {
+      "id_candidate": "rooftop_chat_nurse_yoneda_shiori_02",
+      "zh_CN": "栞看了看远处的云，笑得有些不好意思。「以前我总觉得一个人休息很无聊。可是偶尔这样站一会儿，好像也挺舒服的。」",
+      "en": "Shiori looks at the distant clouds and smiles shyly. “I used to think taking a break alone would be boring. But standing here for a little while feels nice too.”"
+    },
+    {
+      "id_candidate": "rooftop_chat_nurse_yoneda_shiori_03",
+      "zh_CN": "栞把吹乱的护士服衣角抚平。「坂口医生，今天我有件事想亲自报告。……不是很重要的大事，不过是我自己完成的，所以想说出来。」",
+      "en": "Shiori smooths the windblown hem of her uniform. “Doctor Sakaguchi, there is something I want to report myself today. ...It is not a big deal, but I handled it on my own, so I wanted to tell someone.”"
+    }
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      {
+        "zh_CN": "坂口医生，您下班后走哪边？如果同路的话……能一起走吗？",
+        "en": "Doctor Sakaguchi, which way are you heading after work? If it is the same direction... may I walk with you?"
+      }
+    ],
+    "acceptance": [
+      {
+        "zh_CN": "好，我收拾一下就来。今天的工作我已经交接好了。",
+        "en": "Okay, I will get my things. I have finished handing over my work."
+      },
+      {
+        "zh_CN": "我也正想找人聊一聊。……谢谢您愿意一起走。",
+        "en": "I was hoping to talk to someone too. ...Thank you for walking with me."
+      }
+    ],
+    "unavailable": [
+      {
+        "zh_CN": "今天我还得把交接核对完，可能要晚一些。下次再一起走，可以吗？",
+        "en": "I still need to double-check the handover today, so I may be late. Could we walk together next time?"
+      }
+    ],
+    "farewell": [
+      {
+        "zh_CN": "谢谢您陪我走这一段，坂口医生。明天见。",
+        "en": "Thank you for walking with me, Doctor Sakaguchi. See you tomorrow."
+      }
+    ]
+  },
+  "after_work_short_chat": [
+    {
+      "id_candidate": "after_work_nurse_yoneda_shiori_01",
+      "zh_CN": "栞整理好包，向坂口点点头。「如果医生也是这个方向……能一起走一段吗？我刚好有点事想跟您聊聊。」",
+      "en": "Shiori picks up her bag and nods to Sakaguchi. “If you are heading this way too... may we walk together for a while? There is something I would like to talk about.”"
+    },
+    {
+      "id_candidate": "after_work_nurse_yoneda_shiori_02",
+      "zh_CN": "栞走到医院门口，朝里面回望一眼。「今天交接的时候，有一件事是我自己确认的。我已经告诉留美姐姐了……她还夸我呢。」",
+      "en": "At the hospital gate, Shiori looks back. “I checked one part of the handover all by myself today. I told Rumi... and she praised me for it.”"
+    },
+    {
+      "id_candidate": "after_work_nurse_yoneda_shiori_03",
+      "zh_CN": "栞在路口停住，微笑着挥手。「我就从这边走了。谢谢医生陪我聊天。下次如果您有空，我们再一起走吧。」",
+      "en": "At the junction, Shiori stops and waves. “I will go this way. Thank you for the conversation, Doctor. If you have time, let us walk together again.”"
+    }
+  ]
+}

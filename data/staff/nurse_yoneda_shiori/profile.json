@@ -1,0 +1,303 @@
+{
+  "id": "nurse_yoneda_shiori",
+  "name": "米田栞",
+  "age": 18,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 10,
+    "diagnostics": 46,
+    "teamwork": 60,
+    "patient_care": 68,
+    "instrument_handling": 45,
+    "calmness": 57
+  },
+  "surgery_proficiency": "novice",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "specialty": "病房护理／手术室支援",
+  "rank": "资历较浅的成年护士；日常以病房、护士站为主",
+  "personality": "亲近的人面前也能活泼说笑；对于重要的人较依赖，常先顾及其态度",
+  "appearance": "粉色双辫，绿色眼睛；身高153cm，体重39kg，三围73-55-76cm。",
+  "dialogue_style": "工作报告尽量完整，犹豫主要出现在表达个人意见时；对留美可自然使用「姐姐」",
+  "flags": [
+    "introduction_pending",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.0,
+    "operations": []
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [
+        "坂口医生，我想再确认一项检查结果。现在的资料好像还不够。",
+        "这一项还没有核对过。如果可以的话，我想先把它查清楚。"
+      ],
+      "insufficient_evidence": [
+        "还差一项没有确认。我已经标出来了，可以再看一遍吗？",
+        "我认真核对过了，现有的结果还不足以确定。"
+      ],
+      "sufficient_evidence": [
+        "嗯……我核对过了，检查资料现在应该足够了。",
+        "目前的结果已经齐全，坂口医生可以做判断了。"
+      ],
+      "diagnosis_correct_reply": [
+        "检查结果和您的判断一致。我把后续的护理说明整理好。",
+        "嗯，已经核对过了，没有遗漏。接下来我来配合您。"
+      ],
+      "diagnosis_incorrect_reply": [
+        "坂口医生，抱歉，我想再确认一次。现有的检查结果好像和这个结论不太一致。",
+        "我核对了刚才的记录……这个判断是否需要重新考虑？"
+      ],
+      "chatter": [
+        "下一位患者的资料已经整理好。我把需要注意的地方放在最上面了。",
+        "门诊比我想的要忙一点，不过我已经把要做的事都记下来了。",
+        "留美姐姐说我不用什么都先问她。……所以这次我想先把自己的判断说清楚。"
+      ],
+      "clinic_support": [
+        "检查用的东西已经备好了。这一项还没确认，我不会先标完成。",
+        "患者刚才问了接下来会做什么。我已经记下来，想请医生再说明一次。",
+        "这部分是我核对的，记录在这里。有什么不对我会再查一次。"
+      ],
+      "preop_support": [
+        "病房准备项目我逐项核对过了，完成的和待确认的都分开记录。",
+        "她还有一点紧张。我已经告诉她哪些问题可以当场问医生。"
+      ]
+    },
+    "diagnosis_corrections": {
+      "diagnose_gastro": "坂口医生，抱歉，我想再确认一次。现有的检查结果好像和这个结论不太一致。",
+      "diagnose_observe": "我核对了刚才的记录……这个判断是否需要重新考虑？"
+    }
+  },
+  "preop_graphic_wrapper": {
+    "open": "「好的。我会按照实际安排，一步一步向您说明。哪一处不清楚，您可以随时问我。」",
+    "insert_a": "「这一段可能让人有些不安。不过您不用一下子记住全部步骤，没听清楚的地方，我可以再解释一遍。」",
+    "insert_b": "「如果哪一步让您紧张，或者身体有不舒服的地方，请直接告诉我们。我会把您提出的问题认真记下来。」",
+    "close": "「说明到这里。我再确认一次：有没有哪一步让您还不放心？您说出来，我们可以再一起核对。」"
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "这次病房准备由我负责。我会逐项确认，不确定的地方再向您汇报。",
+    "scrub_nurse": "器械护士……好的。我会把台上的东西核对清楚。",
+    "circulating_nurse": "这次让我负责巡回吧。我会注意监护，也会按时记录。"
+  },
+  "post_operation_replies": [
+    "手术结束了。记录已经齐了，我再核一次就可以交班。",
+    "今天我负责的部分已经完成。……嗯，是我自己完成的。"
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      "坂口医生，您下班后走哪边？如果同路的话……能一起走吗？"
+    ],
+    "acceptance": [
+      "好，我收拾一下就来。今天的工作我已经交接好了。",
+      "我也正想找人聊一聊。……谢谢您愿意一起走。"
+    ],
+    "unavailable": [
+      "今天我还得把交接核对完，可能要晚一些。下次再一起走，可以吗？"
+    ],
+    "farewell": [
+      "谢谢您陪我走这一段，坂口医生。明天见。"
+    ]
+  },
+  "after_work_short_chat": [
+    "栞整理好包，向坂口点点头。「如果医生也是这个方向……能一起走一段吗？我刚好有点事想跟您聊聊。」",
+    "栞走到医院门口，朝里面回望一眼。「今天交接的时候，有一件事是我自己确认的。我已经告诉留美姐姐了……她还夸我呢。」",
+    "栞在路口停住，微笑着挥手。「我就从这边走了。谢谢医生陪我聊天。下次如果您有空，我们再一起走吧。」"
+  ],
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压正在下降。",
+          "我又确认了一遍，血压还没回稳。",
+          "坂口医生，血压还是偏低。"
+        ],
+        "severe_attempt_lines": [
+          "血压下降得很快！",
+          "我确认了监护，血压还是很低！",
+          "坂口医生，血压一直没有恢复！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压升高了。",
+          "血压仍然偏高，我一直在核对读数。",
+          "血压没有回落，监护显示还是偏高。"
+        ],
+        "severe_attempt_lines": [
+          "血压突然升得很高！",
+          "读数我又确认了，血压还是很高！",
+          "坂口医生，血压一直没有恢复稳定！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率在加快。",
+          "心率仍然偏快，我又确认了一遍。",
+          "心率还没回稳。"
+        ],
+        "severe_attempt_lines": [
+          "心率升得太快了！",
+          "我确认了，心率还是明显过快！",
+          "坂口医生，心率一直没有缓下来！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率正在下降。",
+          "心率还是偏慢，我在继续监看。",
+          "我重新核对了监护，心率仍然偏低。"
+        ],
+        "severe_attempt_lines": [
+          "心率突然降得很低！",
+          "心率还是太慢，没恢复！",
+          "坂口医生，心率始终没有回稳！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心律变得不规则了。",
+          "心律还是不规则，我在继续确认。",
+          "监护上的节律仍然没有恢复。"
+        ],
+        "severe_attempt_lines": [
+          "心律突然明显不规则！",
+          "我核对了监护，心律还是不稳！",
+          "坂口医生，心律异常还在持续！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血氧正在下降。",
+          "血氧仍然偏低，我又确认了一次。",
+          "血氧还没有回到稳定水平。"
+        ],
+        "severe_attempt_lines": [
+          "血氧下降得很快！",
+          "我确认了，血氧还是很低！",
+          "坂口医生，血氧一直没有恢复！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，呼吸状态不稳定。",
+          "呼吸状态还是不稳，我在监看。",
+          "监护上的呼吸异常仍然持续。"
+        ],
+        "severe_attempt_lines": [
+          "呼吸状态突然变得很不稳定！",
+          "我再次确认了监护，呼吸还是不稳！",
+          "坂口医生，呼吸状态始终没有恢复！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护显示状态异常。",
+          "我又确认了一遍，监护状态还不稳。",
+          "患者状态还没回稳，我在继续看着。"
+        ],
+        "severe_attempt_lines": [
+          "监护突然出现明显异常！",
+          "我核对过了，监护异常还在继续！",
+          "坂口医生，患者状态仍然没稳住！"
+        ]
+      }
+    ]
+  },
+  "visuals": {
+    "color": "ed83ab",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "casual_winter"
+    ],
+    "portraits": {
+      "uniform/smile": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/uniform/smile.png",
+      "scrubs/neutral": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/sterile/neutral.png",
+      "casual/neutral": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/casual_winter/neutral.png",
+      "uniform/neutral": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/uniform/neutral.png",
+      "uniform/serious": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/uniform/serious.png",
+      "uniform/worried": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/uniform/worried.png",
+      "uniform/closed_eye_smile": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/uniform/closed_eye_smile.png",
+      "scrubs/focused": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/scrubs/focused.png",
+      "scrubs/warm": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/scrubs/worried.png",
+      "sterile/focused": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/sterile/focused.png",
+      "sterile/warm": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/sterile/warm.png",
+      "sterile/worried": "assets/characters/rumi_shiori_v1/nurse_yoneda_shiori/sterile/worried.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_yoneda_shiori/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_yoneda_shiori/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  }
+}

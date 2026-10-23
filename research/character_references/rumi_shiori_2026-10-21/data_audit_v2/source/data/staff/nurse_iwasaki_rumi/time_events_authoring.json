@@ -1,0 +1,57 @@
+{
+  "_artifact_status": "DRAFT_FOR_CODEX_SCHEMA_MAPPING_NOT_DIRECT_RUNTIME_JSON",
+  "actor_id_candidate": "nurse_iwasaki_rumi",
+  "source": "existing time_events.json staff event entries (actual schema to be inspected by Codex)",
+  "location_blocks": [
+    {
+      "id_candidate": "lounge_chat_nurse_iwasaki_rumi",
+      "location_id_candidate": "lounge",
+      "default_enabled": true,
+      "required_met": true,
+      "actor_id_candidate": "nurse_iwasaki_rumi",
+      "responses": [
+        {
+          "id_candidate": "lounge_chat_nurse_iwasaki_rumi_01",
+          "zh_CN": "留美把两张排班表摊开，对着空白处画了个圈。「这天要是真能把大家凑齐，我请喝饮料。……咦，怎么又只剩两个有空？两个人也算聚会啦。」",
+          "en": "Rumi spreads two duty rosters out and circles an empty slot. “If I can get everyone together that day, drinks are on me. ...Wait, only two of us are free again? Two still count as a get-together!”"
+        },
+        {
+          "id_candidate": "lounge_chat_nurse_iwasaki_rumi_02",
+          "zh_CN": "留美靠在椅背上，把鞋尖轻轻往前伸了伸。「休息五分钟就得回去啦。坂口医生，等会儿你要是看见我又在护士站聊天，可别忘了我先把记录都整理好了。」",
+          "en": "Rumi leans back and stretches her feet. “Five more minutes and I have to go back. If you see me chatting at the station again, Doctor Sakaguchi, remember I did finish the records first.”"
+        },
+        {
+          "id_candidate": "lounge_chat_nurse_iwasaki_rumi_03",
+          "zh_CN": "留美从袋子里掏出两包小点心，犹豫片刻，又放回一包。「栞说她想自己挑，我就没替她拿。……我真能忍住不替别人做决定耶。」",
+          "en": "Rumi takes two snacks from a bag, hesitates, then puts one back. “Shiori said she wanted to pick her own, so I did not choose for her. ...Look at me, resisting the urge to decide for someone else!”"
+        }
+      ],
+      "runtime_note": "each response is one single-speaker idle response; do not create 3-step scene"
+    },
+    {
+      "id_candidate": "rooftop_chat_nurse_iwasaki_rumi",
+      "location_id_candidate": "rooftop",
+      "default_enabled": true,
+      "required_met": true,
+      "actor_id_candidate": "nurse_iwasaki_rumi",
+      "responses": [
+        {
+          "id_candidate": "rooftop_chat_nurse_iwasaki_rumi_01",
+          "zh_CN": "留美倚着栏杆，眯眼迎着风。「护士站一直有人进进出出，来这里就安静多了。医生，你也别一直板着脸，休息时间不用给谁写交班单。」",
+          "en": "Rumi leans on the railing and squints into the breeze. “People are constantly coming and going at the station. It is quieter up here. You can relax too, Doctor. No one needs a handover sheet for a break.”"
+        },
+        {
+          "id_candidate": "rooftop_chat_nurse_iwasaki_rumi_02",
+          "zh_CN": "留美望着医院外面的街道。「大家下班时间总对不上。我原本想约六个人喝饮料，结果只凑到两个。……后来发现，两个也聊得挺开心的。」",
+          "en": "Rumi looks out over the streets. “Our shifts never line up. I tried to get six people together for drinks and ended up with two. ...Turns out, two people can have a great time too.”"
+        },
+        {
+          "id_candidate": "rooftop_chat_nurse_iwasaki_rumi_03",
+          "zh_CN": "留美把被风吹乱的刘海拨好。「栞说想自己决定休息日去哪里。我差点就把路线安排完了，还好想起来先问她。她选的地方其实挺不错。」",
+          "en": "Rumi fixes her bangs after a gust of wind. “Shiori said she wanted to choose where to go on our day off. I nearly made the whole plan before remembering to ask her. Her choice was actually pretty good.”"
+        }
+      ],
+      "runtime_note": "each response is one single-speaker idle response; do not create 3-step scene"
+    }
+  ]
+}

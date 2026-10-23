@@ -1,0 +1,79 @@
+{
+  "source": "/Users/ningye/Downloads/HOSHIMI_RUMI_SHIORI_FULL_DIALOGUES_V2_2026-10-21.zip",
+  "sha256": "00eef543e0d418b704042371bb84782eeb19fbeb4eb5ad698a0bc32d7d951e9c",
+  "status": "runtime_registered_introduction_script_pending",
+  "skills_status": "confirmed_by_user_in_chat_overrides_stale_zip_status",
+  "characters": [
+    {
+      "actor": "nurse_iwasaki_rumi",
+      "crisis_lines_per_language": 48,
+      "bilingual_entries_checked_including_duplicate_idle_sources": 109,
+      "missing_or_blank_bilingual_entries": [],
+      "personal_nurse_counts": {
+        "next_test_hint": 2,
+        "insufficient_evidence": 2,
+        "sufficient_evidence": 2,
+        "diagnosis_correct_reply": 2,
+        "diagnosis_incorrect_reply": 2,
+        "chatter": 3,
+        "clinic_support": 3,
+        "preop_support": 2
+      },
+      "lounge_and_rooftop_duplicate_sources_match": true
+    },
+    {
+      "actor": "nurse_yoneda_shiori",
+      "crisis_lines_per_language": 48,
+      "bilingual_entries_checked_including_duplicate_idle_sources": 109,
+      "missing_or_blank_bilingual_entries": [],
+      "personal_nurse_counts": {
+        "next_test_hint": 2,
+        "insufficient_evidence": 2,
+        "sufficient_evidence": 2,
+        "diagnosis_correct_reply": 2,
+        "diagnosis_incorrect_reply": 2,
+        "chatter": 3,
+        "clinic_support": 3,
+        "preop_support": 2
+      },
+      "lounge_and_rooftop_duplicate_sources_match": true
+    }
+  ],
+  "content_gaps": [
+    "Joint introduction final script intentionally deferred"
+  ],
+  "mapping_items": [],
+  "runtime_modified": true,
+  "json_files_parsed": 13,
+  "preop_graphic_wrapper_supplement": {
+    "status": "registered_in_runtime_profile_top_level",
+    "source": "User message: eight exact Chinese lines",
+    "chinese_lines": 8,
+    "english_lines": 8,
+    "keys_per_character": [
+      "close",
+      "insert_a",
+      "insert_b",
+      "open"
+    ],
+    "source_file": "preop_graphic_wrapper_user_source.json",
+    "profile_patch": "preop_graphic_wrapper_profile_patch.json",
+    "localization_patch": "preop_graphic_wrapper_localization_patch.json",
+    "validation": "Both characters have exactly four nonempty fields; Chinese profile patch equals source verbatim."
+  },
+  "runtime_mapping": [
+    "Incorrect diagnosis reply 1 -> diagnose_gastro; reply 2 -> diagnose_observe; exact prose preserved.",
+    "Correct diagnosis replies read after diagnose_appendix; existing nurses without authored replies retain original behavior.",
+    "Normal/severe crisis lines selected using active_crisis.severity, independently of attempt.",
+    "Work responses registered as station/ward/OR time events; operation-specific medical instructions remain in the existing shared flow.",
+    "Post-operation replies appended to scrollable operation record.",
+    "clinic_support via nursing-preparation report; preop_support after graphic explanation.",
+    "Companion invitation/acceptance/decline/chat/farewell use original speaker/narration context."
+  ],
+  "art": {
+    "expression_variants": 20,
+    "approved_base_portraits": 10,
+    "hud_avatars": 2,
+    "role_cgs": 6
+  }
+}

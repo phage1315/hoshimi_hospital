@@ -1,0 +1,60 @@
+{
+  "_status": "AUTHORING_DRAFT_NOT_RUNTIME_VALIDATED",
+  "id": "nurse_kariya_megumi",
+  "initial_state": {
+    "met": false,
+    "level": 0,
+    "familiarity": 0,
+    "route": "colleague"
+  },
+  "familiarity_gain_multiplier": 1.1,
+  "familiarity_gain_multiplier_status": "PROPOSAL_NOT_USER_APPROVED",
+  "entry": {
+    "fixed_date": "06-01",
+    "intro_script": "PENDING_USER_FUTURE_DESIGN",
+    "reschedule_if_blocked": true
+  },
+  "internship": {
+    "start_month_day": "06-01",
+    "evaluation_month_day": "12-01",
+    "last_regular_day": "11-30",
+    "duration_months": 6,
+    "status": "USER_CONFIRMED_NARRATIVE_IDENTITY_NO_SEPARATE_ROLE_MECHANICS",
+    "mechanics_note": "叙事身份仅在角色背景/台词出现；6月1日登场和12月1日实习结束是日期剧情节点，不新增实习职业类别、属性扣减、编队限制、报酬公式或技能倍率。",
+    "end_event_placeholder": {
+      "title_zh": "实习结束",
+      "date": "12-01",
+      "path": "event_design/KARIYA_MEGUMI_DEC_01_INTERNSHIP_END_PLACEHOLDER.json",
+      "status": "PLACEHOLDER_NOT_PLAYABLE",
+      "full_script": "NOT_WRITTEN",
+      "allow_auto_state_changes": false
+    }
+  },
+  "milestones": {
+    "Lv1": "SCRIPT_PENDING_FAM10_PROPOSED",
+    "Lv2": "SCRIPT_PENDING_FAM25_PROPOSED",
+    "Lv3": "SCRIPT_PENDING_FAM40_PROPOSED",
+    "Lv4": "SCRIPT_PENDING",
+    "Lv5": "SCRIPT_PENDING"
+  },
+  "retention": {
+    "eligible_when": "relationship_level>=3 and Lv3 event completed by evaluation",
+    "offer_only": true,
+    "regular_nurse_path": "CHOICE_PENDING_FULL_SCRIPT",
+    "training_patient_one_year_path": "REQUIRES_LV5_AND_STAFF_AS_PATIENT_EVENT_COMPLETED_AND_CHOICE",
+    "training_patient_term": "12-01 through following 11-30",
+    "salary": "HIGH_AMOUNT_NOT_SET",
+    "never_automatically_convert_to_patient": true
+  },
+  "romance": {
+    "current": "NOT_DEFINED",
+    "free_h": "NOT_ENABLED_PENDING_ROUTE"
+  },
+  "staff_as_patient": {
+    "future_special_event": "PROPOSED_LV5",
+    "initial_playable": false
+  },
+  "personal_nurse_eligible": true,
+  "go_home_companion_enabled": true,
+  "lounge_rooftop_enabled": true
+}
