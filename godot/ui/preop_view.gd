@@ -87,6 +87,16 @@ static func background_id_for(stage: Dictionary, flags: Array, operative_scene: 
 	return str(stage.background_id)
 
 static func render(app: Control, prep: RefCounted) -> void:
+	if prep.assistant_anesthesia_pending:
+		var assistant: Dictionary = prep.presentation_staff()
+		app.base(str(assistant.name), app.tx("ui.auto.7ec1097aa6ab", "团队处理回应"), false, "operating_room")
+		app.add_portrait(assistant, prep.assistant_presentation_expression(), "sterile")
+		app.scrollable_text_at(prep.feedback, Vector2(65, 195), Vector2(630, 390), 22, Color("f4f0e6"), "AssistantAnesthesiaReaction")
+		app.button_at(app.tx("ui.takemi.continue_preparation", "继续术前准备  →"), Vector2(65, 620), Vector2(630, 48), func():
+			prep.apply({"kind":"assistant_anesthesia_ack"})
+			app.show_preop(str(prep.definition.id))
+		)
+		return
 	var patient: Dictionary = app.game.patient_definition(prep.definition.patient_id)
 	var stage: Dictionary = prep.current()
 	if stage.kind in ["or_table_palpation", "anesthesia_sensory_test"]:
@@ -146,6 +156,10 @@ static func render(app: Control, prep: RefCounted) -> void:
 		elif prep.staff_has_low_surgery_proficiency(str(speaking_staff.id)) and staff_portraits.has(staff_outfit + "/worried"):
 			staff_expression = "worried"
 		var use_hud_avatar: bool = field_visual_visible and app.operative_field_hud_enabled and staff_portraits.has("intraoperative_avatar/neutral")
+		var assistant_expression: String = prep.assistant_presentation_expression()
+		if assistant_expression != "neutral":
+			staff_expression = assistant_expression
+			use_hud_avatar = false
 		app.add_portrait(speaking_staff, "neutral" if use_hud_avatar else staff_expression, "intraoperative_avatar" if use_hud_avatar else staff_outfit)
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
 		var tall_staff_portrait: bool = stage.scene == "operating_room" and not (field_visual_visible and app.operative_field_hud_enabled)

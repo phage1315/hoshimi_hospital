@@ -1,0 +1,45 @@
+{
+  "event_id": "manami_lv1_sneeze",
+  "date": "2026-10-24",
+  "source": "docs/source/manami_lv1/HOSHIMI_IIMURA_MANAMI_LV1_SNEEZE_CODEX_HANDOFF_V2.md",
+  "status": "implemented_and_tested",
+  "content": {
+    "dialogue_nodes": 160,
+    "stage_and_action_nodes": 83,
+    "cg_files": 4,
+    "cg_import": "byte-identical copies; no content edits or cropping",
+    "launch_portraits": 8,
+    "portrait_selection": "first generated set, retained as confirmed by user; alternate background-removal candidates not integrated",
+    "staff_portraits": "existing registered staff expressions reused unchanged",
+    "audio": "authored written sound effects, per user approval",
+    "minutes": 30,
+    "locales": ["zh_CN", "en"]
+  },
+  "tests": {
+    "manami_lv1_source_audit.py": "PASS: exact Chinese dialogue, narration, speaker labels, punctuation, order, CG boundaries and checksums",
+    "validate_data.py": "PASS: 881 records",
+    "narrative_localization_test.py": "PASS: 13069 checks, 0 failures",
+    "localization_audit.py": "PASS: 21076/21076 authored fields and 737/737 referenced English UI keys",
+    "manami_lv1_test.gd": "PASS: 5101 checks, 0 failures; Godot 4.5.1 actual OpenGL/Metal window, both locales",
+    "boundary_save_test.gd": "PASS: 900 checks, 0 failures",
+    "character_event_test.gd": "PASS: 180 checks, 0 failures",
+    "git_diff_check": "PASS"
+  },
+  "verified": [
+    "Lv0 completion and existing familiarity10 gate; old Lv1 saves do not retrigger",
+    "No extra afternoon time gate, no surgery prerequisite, no added NPC roster entry",
+    "Door voices remain offscreen; four CG runs occur in source order without portrait overlays",
+    "Gold-to-blue transformation; blanket scene hides the uncovered bust afterwards",
+    "Authored long turns paginate without text changes or repeated visual effects",
+    "Final black screen precedes the sole Lv1 and 30-minute settlement",
+    "No mid-event saves; temporary disk saves contain only boundary business facts",
+    "Gallery staging does not change time or rewards; leaving cancels pending timers",
+    "Editing or removing internal script nodes cannot alter settled time or repeat rewards",
+    "Real player save slots not overwritten"
+  ],
+  "presentation_notes": [
+    "CG01 exits after L015 per the detailed source, which takes precedence over the abbreviated beat table",
+    "Launch uses approved shoulder-bust framing only; no body extension",
+    "Existing Manami source sprites retain their original rectangular background; no changes to those assets"
+  ]
+}

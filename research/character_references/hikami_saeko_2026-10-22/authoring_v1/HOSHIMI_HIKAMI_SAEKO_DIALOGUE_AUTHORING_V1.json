@@ -1,0 +1,237 @@
+{
+  "_status": "ACTUAL_BILINGUAL_STAFF_AUTHORING_NOT_RUNTIME_SCHEMA",
+  "character": "氷上冴子",
+  "language": ["zh_CN", "en"],
+  "work_responses": {
+    "nurse_station": [
+      {"zh_CN": "本班用药和交接事项已经核对。需要补记的部分我放在最上面。", "en": "I checked this shift's medications and handover items. Anything that needs an update is on top."},
+      {"zh_CN": "这份记录和昨天的不一致。我已经向当班人员确认过，不是抄写错误。", "en": "This record differs from yesterday's. I checked with the staff on duty; it is not a transcription error."},
+      {"zh_CN": "新医院的习惯还在熟悉，不过交班时该确认的事情是一样的。", "en": "I'm still learning this hospital's habits, but the essentials of handover don't change."},
+      {"zh_CN": "杉村前辈给我的排班很清楚。只是……这里偶尔会出现一些意料之外的工作安排。", "en": "Ms. Sugimura gave me a clear schedule. It's just that... some assignments here are rather unexpected."}
+    ],
+    "ward_nurse": [
+      {"zh_CN": "患者的意识和生命体征都记录了，交接时我会把变化单独说明。", "en": "I documented her consciousness and vital signs. I'll point out any changes at handover."},
+      {"zh_CN": "她说术前说明听懂了，但还有几个问题。我请她慢慢讲完。", "en": "She understood the pre-op explanation but still had questions. I let her finish asking them."},
+      {"zh_CN": "床位、姓名、手术项目已经逐项确认。别因为今天忙就省掉核对。", "en": "I verified the bed, name, and planned procedure one by one. Being busy isn't a reason to skip checks."},
+      {"zh_CN": "患者醒来后第一句是问手术结束了没有。……我如实告诉她结束了，她才肯松开被子。", "en": "Her first question on waking was whether the surgery was over. ...I told her it was, and only then did she loosen her grip on the blanket."}
+    ],
+    "scrub_nurse": [
+      {"zh_CN": "器械和敷料已经清点。追加物品时，请告诉我名称和数量。", "en": "Instruments and dressings are counted. Please tell me the item and quantity for any additions."},
+      {"zh_CN": "持针器准备好了。……您这边的节奏比我以前的医院快一些。", "en": "The needle holder is ready. ...Your pace is a little faster than at my previous hospital."},
+      {"zh_CN": "请稍等，这件器械的规格要再确认一次。拿错了再换，反而浪费时间。", "en": "One moment. I need to verify this instrument's size. Replacing the wrong one would take longer."},
+      {"zh_CN": "清点数目相符。手术场面再怎么出人意料，这一项也不能含糊。", "en": "The count matches. However surprising the operation becomes, this part cannot be vague."}
+    ],
+    "circulating_nurse": [
+      {"zh_CN": "监护记录已开始。任何趋势变化，我会直接报告给您。", "en": "Monitoring records are started. I'll report any trends directly to you."},
+      {"zh_CN": "备用物品已经取来，包装和有效期都确认过。", "en": "I've brought the spare supplies and checked their packaging and expiration dates."},
+      {"zh_CN": "患者刚才有反应，我记下了发生的时间和当时的监测值。", "en": "The patient reacted just now. I recorded the time and her monitor readings."},
+      {"zh_CN": "转运和术后观察已经联系好。请别在最后一刻再给我一个完全不同的安排。", "en": "Transport and postoperative observation are arranged. Please don't give me an entirely different plan at the last minute."}
+    ]
+  },
+  "team_assignment_replies": {
+    "ward_nurse": {"zh_CN": "病房准备由我负责。交接项目和完成时间请一起告诉我。", "en": "I'll handle ward preparation. Please give me both the handover items and the completion time."},
+    "scrub_nurse": {"zh_CN": "我进器械位。先把清点单给我，临时变更请当面说明。", "en": "I'll take the scrub position. Please give me the count sheet and tell me about any last-minute changes in person."},
+    "circulating_nurse": {"zh_CN": "巡回由我负责。我会盯住监护、记录和补给，请按需要直接叫我。", "en": "I'll circulate. I'll cover the monitors, records, and supplies. Call me directly when needed."}
+  },
+  "post_operation_replies": [
+    {"zh_CN": "器械清点相符，标本和交接文件也已经核对。辛苦了。", "en": "The instrument count matches, and I've checked the specimen and handover paperwork. Good work."},
+    {"zh_CN": "患者已经送去观察。……我承认，刚才那个过程和结果之间的反差让我很难适应。", "en": "The patient is in observation. ...I'll admit that I'm having trouble reconciling what just happened with the outcome."},
+    {"zh_CN": "收尾记录没问题。请容我确认一下：今天这台手术，在这里算常规情况吗？", "en": "The closing records are in order. May I confirm something? Is today's operation considered routine here?"}
+  ],
+  "crisis_attempt_callout": {
+    "hypotension": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，血压比刚才低，下降趋势已经记录。", "en": "Doctor Sakaguchi, blood pressure is lower than before. I've recorded the downward trend."},
+        "2": {"zh_CN": "复查后血压仍低，还没有回到先前的水平。", "en": "On recheck, pressure remains low and has not returned to its earlier level."},
+        "3": {"zh_CN": "第三次报告：血压仍未稳定。", "en": "Third report: blood pressure has still not stabilized."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，血压正在急剧下降！", "en": "Doctor Sakaguchi, blood pressure is dropping sharply!"},
+        "2": {"zh_CN": "血压继续下降，情况没有缓解！", "en": "Pressure continues to fall. There's been no improvement!"},
+        "3": {"zh_CN": "第三次报告：严重低血压持续！", "en": "Third report: severe hypotension persists!"}
+      }
+    },
+    "hypertension": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，血压上升了，我正在核对读数。", "en": "Doctor Sakaguchi, blood pressure has risen. I'm verifying the reading."},
+        "2": {"zh_CN": "复查结果一致，血压仍高于先前水平。", "en": "The recheck agrees. Blood pressure is still above its previous level."},
+        "3": {"zh_CN": "第三次报告：血压依然偏高。", "en": "Third report: blood pressure remains elevated."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，血压突然升得很高！", "en": "Doctor Sakaguchi, blood pressure has suddenly climbed very high!"},
+        "2": {"zh_CN": "严重高血压还在持续，数值没有回落！", "en": "Severe hypertension persists. The reading hasn't come down!"},
+        "3": {"zh_CN": "第三次报告：血压持续处于危险高值！", "en": "Third report: blood pressure remains dangerously high!"}
+      }
+    },
+    "tachycardia": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，心率加快，已经超过刚才的范围。", "en": "Doctor Sakaguchi, heart rate has increased beyond its earlier range."},
+        "2": {"zh_CN": "心率仍然偏快，没有恢复。", "en": "Heart rate is still elevated and hasn't recovered."},
+        "3": {"zh_CN": "第三次报告：心动过速仍在持续。", "en": "Third report: tachycardia continues."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，心率突然升得很快！", "en": "Doctor Sakaguchi, heart rate has suddenly accelerated sharply!"},
+        "2": {"zh_CN": "严重心动过速持续，监护趋势还没转好！", "en": "Severe tachycardia persists. The monitor trend hasn't improved!"},
+        "3": {"zh_CN": "第三次报告：心率仍处于异常高值！", "en": "Third report: heart rate remains abnormally high!"}
+      }
+    },
+    "bradycardia": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，心率正在变慢，我已确认监护读数。", "en": "Doctor Sakaguchi, heart rate is slowing. I've confirmed the monitor reading."},
+        "2": {"zh_CN": "心率仍低，和上一轮记录一致。", "en": "Heart rate remains low, consistent with the previous check."},
+        "3": {"zh_CN": "第三次报告：心率仍没有回升。", "en": "Third report: heart rate has still not recovered."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，心率骤降！", "en": "Doctor Sakaguchi, heart rate has dropped abruptly!"},
+        "2": {"zh_CN": "心率依然非常低，情况还在持续！", "en": "Heart rate remains extremely low. The problem continues!"},
+        "3": {"zh_CN": "第三次报告：严重心动过缓尚未解除！", "en": "Third report: severe bradycardia has not resolved!"}
+      }
+    },
+    "arrhythmia": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，心律出现不规则变化，请看监护记录。", "en": "Doctor Sakaguchi, the rhythm has become irregular. Please review the monitor record."},
+        "2": {"zh_CN": "不规则心律仍可见，刚才的异常不是一次性波动。", "en": "The irregular rhythm is still present. That wasn't a one-time fluctuation."},
+        "3": {"zh_CN": "第三次报告：心律尚未恢复规律。", "en": "Third report: the rhythm has not returned to regularity."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，监护出现明显心律失常！", "en": "Doctor Sakaguchi, the monitor shows a marked arrhythmia!"},
+        "2": {"zh_CN": "严重心律异常仍在持续！", "en": "The severe rhythm abnormality is continuing!"},
+        "3": {"zh_CN": "第三次报告：心律失常没有缓解！", "en": "Third report: the arrhythmia has not resolved!"}
+      }
+    },
+    "desaturation": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，血氧饱和度下降了。", "en": "Doctor Sakaguchi, oxygen saturation has fallen."},
+        "2": {"zh_CN": "血氧仍偏低，复测结果一致。", "en": "Oxygen saturation remains low; the repeat reading agrees."},
+        "3": {"zh_CN": "第三次报告：血氧尚未恢复。", "en": "Third report: oxygen saturation has not recovered."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，血氧正在快速下降！", "en": "Doctor Sakaguchi, oxygen saturation is falling rapidly!"},
+        "2": {"zh_CN": "血氧继续处于危险低值！", "en": "Oxygen saturation remains dangerously low!"},
+        "3": {"zh_CN": "第三次报告：严重血氧下降仍未缓解！", "en": "Third report: the severe desaturation remains unresolved!"}
+      }
+    },
+    "respiratory_instability": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，呼吸节律发生变化，我正在持续记录。", "en": "Doctor Sakaguchi, the breathing pattern has changed. I'm documenting it continuously."},
+        "2": {"zh_CN": "呼吸状况还不稳定，变化仍在持续。", "en": "Respiration remains unstable; the changes are continuing."},
+        "3": {"zh_CN": "第三次报告：呼吸状态尚未平稳。", "en": "Third report: respiratory status has not stabilized."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，患者呼吸状态突然明显恶化！", "en": "Doctor Sakaguchi, the patient's respiratory status has suddenly deteriorated markedly!"},
+        "2": {"zh_CN": "严重呼吸不稳仍在持续！", "en": "Severe respiratory instability persists!"},
+        "3": {"zh_CN": "第三次报告：患者呼吸状况依然危险！", "en": "Third report: the patient's breathing remains critically unstable!"}
+      }
+    },
+    "generic_instability": {
+      "normal": {
+        "1": {"zh_CN": "坂口医生，监护指标出现变化，患者状态不稳定。", "en": "Doctor Sakaguchi, the monitor readings have shifted and the patient is unstable."},
+        "2": {"zh_CN": "刚才的异常仍在持续，我已经更新记录。", "en": "The earlier abnormality is continuing. I've updated the record."},
+        "3": {"zh_CN": "第三次报告：患者状态仍未稳定。", "en": "Third report: the patient has still not stabilized."}
+      },
+      "severe": {
+        "1": {"zh_CN": "坂口医生，患者状态突然严重不稳！", "en": "Doctor Sakaguchi, the patient has suddenly become severely unstable!"},
+        "2": {"zh_CN": "严重异常仍在持续，请注意监护变化！", "en": "The severe abnormality continues. Please watch the monitor trend!"},
+        "3": {"zh_CN": "第三次报告：患者状态始终没稳住！", "en": "Third report: the patient remains severely unstable!"}
+      }
+    }
+  },
+  "personal_nurse_dialogue": {
+    "next_test_hint": [
+      {"zh_CN": "如果按刚才的症状继续判断，下一项检查应该能帮我们排除一种可能。", "en": "Based on those symptoms, the next test should help us rule out one possibility."},
+      {"zh_CN": "这项结果有些关键，但单独看还不够。我建议把相关检查一起看。", "en": "This result matters, but not by itself. I'd review it alongside the related tests."}
+    ],
+    "insufficient_evidence": [
+      {"zh_CN": "现在下结论还早。缺少的检查结果我已经列出来了。", "en": "It's too early to conclude. I've listed the missing test results."},
+      {"zh_CN": "我理解这个判断，不过现有证据还支持不了那么肯定的说法。", "en": "I understand the reasoning, but the available evidence doesn't justify that much certainty."}
+    ],
+    "sufficient_evidence": [
+      {"zh_CN": "所需数据已经齐了。坂口医生，可以开始判断。", "en": "The necessary data are in. Doctor Sakaguchi, you can make the assessment now."},
+      {"zh_CN": "我把异常值和患者主诉放在一起，方便您核对。", "en": "I put the abnormal values next to the patient's complaints for easy review."}
+    ],
+    "diagnosis_correct_reply": [
+      {"zh_CN": "这个诊断和检查结果吻合。我去安排后续护理。", "en": "That diagnosis matches the findings. I'll arrange the follow-up nursing care."},
+      {"zh_CN": "判断成立。请把后续处理时间也告诉我，我需要交接给病房。", "en": "The conclusion holds. Please give me the timing of the next steps so I can hand them over to the ward."}
+    ],
+    "diagnosis_incorrect_reply": [
+      {"zh_CN": "坂口医生，恕我打断。有一项结果和这个结论对不上。", "en": "Doctor Sakaguchi, excuse the interruption. One of the findings doesn't fit that conclusion."},
+      {"zh_CN": "请再确认一下。现在这份检查记录不能支持刚才的诊断。", "en": "Please review that again. The current test record doesn't support the diagnosis you gave."}
+    ],
+    "chatter": [
+      {"zh_CN": "这里的病例种类比我预计的多。……我的意思是，学习机会很多。", "en": "This hospital handles more kinds of cases than I expected. ...I mean, there is a lot to learn."},
+      {"zh_CN": "您总说以后再说。具体是哪一天？我想提前把工作安排好。", "en": "You often say we'll discuss it later. Which day, exactly? I'd like to plan my work."},
+      {"zh_CN": "折川护士向我解释了这里的交班习惯。我觉得她比自己说的更能干。", "en": "Nurse Orikawa explained the handover customs here. I think she's more capable than she gives herself credit for."}
+    ],
+    "clinic_support": [
+      {"zh_CN": "检查用品已备好。患者提出的问题，我写在问诊记录末尾了。", "en": "The examination supplies are ready. I added the patient's questions to the end of the consultation record."},
+      {"zh_CN": "这项检查结束后，我会核对患者的反应和后续注意事项。", "en": "After the examination, I'll check the patient's response and the follow-up instructions."},
+      {"zh_CN": "坂口医生，需要额外协助的话，请现在告诉我。我不想在检查中途才猜。", "en": "Doctor Sakaguchi, if you need extra assistance, tell me now. I'd rather not guess halfway through the exam."}
+    ],
+    "preop_support": [
+      {"zh_CN": "术前准备单我核对过了。由您亲自执行的项目，我也会按实记录。", "en": "I've checked the pre-op list. I'll document the steps you perform personally, too."},
+      {"zh_CN": "患者说她明白手术会怎么进行，只是害怕。我会把这点写进交接记录。", "en": "The patient understands what the operation involves but says she's afraid. I'll include that in handover."},
+      {"zh_CN": "最后一个准备步骤完成后，请告诉我时间。……不，我不是在催，只是记录需要。", "en": "Please tell me when the last preparation step is complete. ...I'm not rushing you; the record needs a time."}
+    ]
+  },
+  "station_idle": [
+    {"zh_CN": "冴子正翻看一份交班资料，察觉坂口走近便合上文件夹。「今天的交班没有问题。……您看什么？」", "en": "Saeko reviews a handover sheet, then closes her folder as Sakaguchi approaches. “Today's handover is in order. ...Why are you looking at me?”"},
+    {"zh_CN": "「杉村前辈很会安排工作。她说过几天再教我其他部分，我特意问了是哪一天。」", "en": "“Ms. Sugimura is good at organizing work. She said she'd show me the rest in a few days, so I asked which day.”"},
+    {"zh_CN": "「我在上一家医院也见过忙乱的日子。但这里的问题……似乎不在于忙不忙。」", "en": "“I've seen chaotic days at my previous hospital, too. But the issue here... doesn't seem to be how busy we are.”"}
+  ],
+  "ward_idle": [
+    {"zh_CN": "「这位患者刚才一边抱怨术前准备，一边问下次能不能预约同一名医生。……我正在适应。」", "en": "“That patient complained about the preparations, then asked whether she could book the same surgeon next time. ...I'm adjusting.”"},
+    {"zh_CN": "冴子把病历夹回架上。「交接清楚，患者恢复也很顺利。可是我总觉得自己漏问了一个关键问题。」", "en": "Saeko shelves a chart. “The handover was clear, and she's recovering well. Yet I feel I forgot one crucial question.”"},
+    {"zh_CN": "「患者说她怕开刀。我不会告诉她‘没什么可怕的’。手术台不是我的位置，我说这种话没说服力。」", "en": "“She says she's afraid of surgery. I won't tell her there's nothing to fear. I'm not the one on the table.”"}
+  ],
+  "lounge_idle": [
+    {"zh_CN": "冴子把一叠便签塞回私人笔记本。「只是工作心得。……您不用特意看标题。」", "en": "Saeko slips a stack of notes into her private notebook. “Just observations about work. ...No need to read the heading.”"},
+    {"zh_CN": "「大家下班以后相处得还真亲密。……不，我没有在评价谁，只是此前没见过这样的医院。」", "en": "“Everyone is surprisingly close after hours. ...I'm not judging. I've just never seen a hospital like this.”"},
+    {"zh_CN": "「折川护士让我放松一点。可是她说完又给我讲了一段手术室里的逸闻，效果正好相反。」", "en": "“Nurse Orikawa told me to relax, then shared a story from the operating room. It had precisely the opposite effect.”"}
+  ],
+  "rooftop_idle": [
+    {"zh_CN": "冴子站在天台边，似乎在组织措辞。「如果一件事确实发生了，却完全不符合预期，该怎么写才算准确？」", "en": "Saeko stands on the rooftop, searching for words. “If something really happened but defies every expectation, how do you describe it accurately?”"},
+    {"zh_CN": "「这地方适合想事情。只要没人突然问我在想什么。」", "en": "“This is a good place to think. As long as nobody suddenly asks what I'm thinking about.”"},
+    {"zh_CN": "「我以为进来一段时间，就能看明白星见是什么样的医院。现在不太敢这么说了。」", "en": "“I thought I'd understand what kind of hospital Hoshimi is after spending some time here. I'm no longer so sure.”"}
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      {"zh_CN": "坂口医生，今天如果顺路，可以一起走一段吗？我还有几个关于医院的问题。", "en": "Doctor Sakaguchi, if we're going the same way, may we walk together? I still have some questions about the hospital."}
+    ],
+    "acceptance": [
+      {"zh_CN": "可以。请把大概出发时间告诉我，我先完成交接。", "en": "Of course. Tell me roughly when we're leaving so I can finish handover first."},
+      {"zh_CN": "好。正好我也想在医院外面换个环境说话。", "en": "All right. I'd like a change of setting for our conversation, too."}
+    ],
+    "unavailable": [
+      {"zh_CN": "抱歉，今天还有一份记录要交。改天的话，能不能先约个具体时间？", "en": "Sorry, I still have a report to hand in. If we try another day, could we agree on a specific time?"}
+    ],
+    "farewell": [
+      {"zh_CN": "今天谢谢您。……不必送到门口了，我认得路。", "en": "Thank you for today. ...You don't have to walk me to the door. I know the way."}
+    ],
+    "walking_chat": [
+      {"zh_CN": "我以前的医院，医生很少亲自插手那么多护理准备。星见到底是怎样分工的？", "en": "At my previous hospital, doctors rarely handled so much nursing preparation themselves. How exactly are duties divided at Hoshimi?"},
+      {"zh_CN": "如果我说有些事不太正常，您会生气吗？……我只是想先弄清事实。", "en": "Would you be offended if I said some things here aren't quite normal? ...I'm only trying to establish the facts."},
+      {"zh_CN": "患者对手术抱怨得很厉害，第二天却认真地夸护理团队。这两件事原来可以同时成立。", "en": "A patient complained bitterly about surgery, then sincerely praised the nursing team the next day. Apparently both can be true."}
+    ]
+  },
+  "preop_graphic_wrapper": {
+    "zh_CN": {
+      "open": "「接下来我按术前准备单逐项说明。您如果有问题，请在开始前提出来。」",
+      "insert_a": "「这一项可能会让您不舒服。我先把步骤和负责人员说清楚，不会用‘很快就好’来敷衍您。」",
+      "insert_b": "「是的，准备过程中可能需要调整体位或暂时暴露检查部位。具体范围以已签署的手术安排为准。」",
+      "close": "「准备事项说明完毕。还有问题请现在问我，没必要等到躺上手术台才猜。」"
+    },
+    "en": {
+      "open": "I'll explain the preoperative checklist item by item. If you have questions, please ask before we begin.",
+      "insert_a": "This part may be uncomfortable. I'll explain the steps and who's responsible; I won't brush you off with 'it'll be quick.'",
+      "insert_b": "Yes, preparation may require repositioning or briefly exposing the area being examined. The scope follows your agreed surgical plan.",
+      "close": "That completes the preparation briefing. If you have questions, ask now. There's no reason to be left guessing once you're on the table."
+    }
+  },
+  "notes_for_codex": [
+    "所有危机报告仅供循环护士针对对应监护指标报读；不擅自建议具体医学处置。",
+    "普通/严重×第一次/第二次/第三次共48条完整中英对照，不应在失败重试时重复同一句。",
+    "闲聊中对于医院怪异的观察可保留；不在普通工作回应中曝光委托人、偷拍病历或传递患者隐私。",
+    "术前说明4段为固定包裹，可与通用医疗说明组合；没有患者特定术式时不得凭空补术式。",
+    "脚本存储须映射工程真实角色、岗位、地点和语言字段；此JSON是内容输入，不是已验证的运行时schema。"
+  ]
+}

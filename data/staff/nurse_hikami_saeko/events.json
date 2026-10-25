@@ -1,0 +1,681 @@
+[
+  {
+    "id": "intro_hikami_saeko_six_months",
+    "actor_id": "nurse_hikami_saeko",
+    "title": "请不要说以后",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 15,
+    "teaser": "请不要说以后",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 90,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "intro_hikami_saeko_six_months",
+      "caption": "请不要说以后",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 184,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "saeko0_000",
+    "nodes": [
+      {
+        "id": "saeko0_000",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "护士站里，弘子正向一名陌生护士交代工作。对方将几张交接资料整齐地收进文件夹，听见脚步声，抬头看向坂口。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_000",
+            "label": "继续",
+            "next": "saeko0_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_001",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「先生，正好。给您介绍一下。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_001",
+            "label": "继续",
+            "next": "saeko0_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「这是新调来的氷上冴子，今后在内科工作。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_002",
+            "label": "继续",
+            "next": "saeko0_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「氷上冴子。请多关照。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_003",
+            "label": "继续",
+            "next": "saeko0_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "她稍稍欠身，声音平稳。比起紧张，更像是已经把报到时该说的话准备好了。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_004",
+            "label": "继续",
+            "next": "saeko0_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_005",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「已经开始交接了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_005",
+            "label": "继续",
+            "next": "saeko0_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「是。病区和排班正在请杉村前辈带我熟悉。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_006",
+            "label": "继续",
+            "next": "saeko0_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「手续都办好了。剩下的事情，可以一边工作一边教她。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_007",
+            "label": "继续",
+            "next": "saeko0_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_008",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "坂口点点头，又看了冴子一眼。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_008",
+            "label": "继续",
+            "next": "saeko0_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_009",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「氷上……听说你来这里，还有别的目的？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_009",
+            "label": "继续",
+            "next": "saeko0_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「人物简介是这么写的。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_010",
+            "label": "继续",
+            "next": "saeko0_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「……什么？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_011",
+            "label": "继续",
+            "next": "saeko0_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「没什么。您继续。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_012",
+            "label": "继续",
+            "next": "saeko0_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "她的表情没有变化。坂口看向弘子，弘子低头翻过一页排班表。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_013",
+            "label": "继续",
+            "next": "saeko0_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「总之，先熟悉工作吧。你的事情，以后再说。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_014",
+            "label": "继续",
+            "next": "saeko0_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「请不要说以后。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_015",
+            "label": "继续",
+            "next": "saeko0_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "这次回答得很快。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_016",
+            "label": "继续",
+            "next": "saeko0_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_017",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「怎么了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_017",
+            "label": "继续",
+            "next": "saeko0_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「上次也是这么等的。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_018",
+            "label": "继续",
+            "next": "saeko0_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_019",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「上次？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_019",
+            "label": "继续",
+            "next": "saeko0_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「说我另有目的，背景很神秘，后面应该有戏份。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_020",
+            "label": "继续",
+            "next": "saeko0_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「结果等到系列腰斩，伏笔没交代，我只能去打麻将。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_021",
+            "label": "继续",
+            "next": "saeko0_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_022",
+            "label": "继续",
+            "next": "saeko0_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「所以，这次能先把我的剧情排上吗？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_023",
+            "label": "继续",
+            "next": "saeko0_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "弘子抽出一张纸，递给她。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_024",
+            "label": "继续",
+            "next": "saeko0_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「我先给你排了明天的早班。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_025",
+            "label": "继续",
+            "next": "saeko0_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_026",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "冴子接过排班表，低头看了一会儿，又确认了一遍上面的名字。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_026",
+            "label": "继续",
+            "next": "saeko0_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "saeko0_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "冴子",
+        "actor_id": "nurse_hikami_saeko",
+        "text": "「……至少这次是护士的工作了。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_027",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

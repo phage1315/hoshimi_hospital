@@ -1,0 +1,957 @@
+[
+  {
+    "id": "intro_satsuki_new_nurse",
+    "actor_id": "nurse_satsuki",
+    "title": "新来的护士",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 20,
+    "teaser": "新来的护士",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 90,
+    "category": "introduction",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "intro_satsuki_new_nurse",
+      "caption": "新来的护士",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 8,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "sat0_000",
+    "nodes": [
+      {
+        "id": "sat0_000",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "坂口经过护士站时，看见杉村弘子正在和一名戴黑框眼镜的年轻护士核对交班资料。女孩的声音不大，却把每个项目说得很清楚。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_000",
+            "label": "继续",
+            "next": "sat0_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_001",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「七号床的患者，术前检查都完成了。她说自己不是想取消手术，只是希望有人告诉她，接下来什么时候会来接她。」",
+        "expression": "focused",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_001",
+            "label": "继续",
+            "next": "sat0_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「嗯。那就把预计的转运时间也确认好，别只写‘已说明’。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_002",
+            "label": "继续",
+            "next": "sat0_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「是，我已经向手术室问过了。她听完时间，终于肯把那张说明书放下了。」",
+        "expression": "focused",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_003",
+            "label": "继续",
+            "next": "sat0_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「很好。你还记得患者真正担心什么，这比把表格填满重要。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_004",
+            "label": "继续",
+            "next": "sat0_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「谢谢前辈。其实我还差得远……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_005",
+            "label": "继续",
+            "next": "sat0_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「我一直都很仰慕弘子前辈。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_006",
+            "label": "继续",
+            "next": "sat0_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「我也想成为像前辈一样，让患者安心的护士。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_007",
+            "label": "继续",
+            "next": "sat0_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「那就从今天的交班开始。你已经做得不错了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_008",
+            "label": "继续",
+            "next": "sat0_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "坂口走近柜台。弘子抬起头，皐月也跟着转身；看清来人的瞬间，她扶住镜框的手停在半空。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_009",
+            "label": "继续",
+            "next": "sat0_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_010",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_satsuki",
+        "text": "「早上好，弘子。这份转运安排是在你这里确认吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_010",
+            "label": "继续",
+            "next": "sat0_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「是，先生。正好，介绍一下。这是折川皐月，最近开始跟着我熟悉工作。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_011",
+            "label": "继续",
+            "next": "sat0_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「皐月，这位是外科的坂口隆司医生。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_012",
+            "label": "继续",
+            "next": "sat0_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「坂、坂口……医、医生……！」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_013",
+            "label": "继续",
+            "next": "sat0_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_satsuki",
+        "text": "「你好，折川。刚才听你交班，资料整理得很清楚。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_014",
+            "label": "继续",
+            "next": "sat0_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「谢、谢谢！不、不对，我还……那个……」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_015",
+            "label": "继续",
+            "next": "sat0_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "皐月越说声音越小，下意识往弘子身后挪了半步，手指仍紧紧捏着交班夹。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_016",
+            "label": "继续",
+            "next": "sat0_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「皐月，先把文件放下来。先生只是和你打招呼。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_017",
+            "label": "继续",
+            "next": "sat0_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「对、对不起！我知道的……」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_018",
+            "label": "继续",
+            "next": "sat0_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_019",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_satsuki",
+        "text": "「没关系。以后如果有转运和交接上的问题，直接问我就行。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_019",
+            "label": "继续",
+            "next": "sat0_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「以、以后直接……问您？」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_020",
+            "label": "继续",
+            "next": "sat0_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_021",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_satsuki",
+        "text": "「当然。你不用隔着弘子传话。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_021",
+            "label": "继续",
+            "next": "sat0_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「……是！」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_022",
+            "label": "继续",
+            "next": "sat0_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "皐月确认坂口没有再看向自己，才慢慢松开文件夹，低头向弘子道歉。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_023",
+            "label": "继续",
+            "next": "sat0_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「弘子前辈……我刚才是不是特别失礼？」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_024",
+            "label": "继续",
+            "next": "sat0_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「你向先生问好了，也没有耽误交班。就是紧张得太明显了一点。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_025",
+            "label": "继续",
+            "next": "sat0_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「呜……我也知道。明明脑子里准备好了，看到男医生走过来，就全忘了。」",
+        "expression": "shy",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_026",
+            "label": "继续",
+            "next": "sat0_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「刚才谈患者的时候，你可没有忘记要说什么。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_027",
+            "label": "继续",
+            "next": "sat0_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「那、那是工作嘛。患者在等，我当然得把事情说清楚……」",
+        "expression": "focused",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_028",
+            "label": "继续",
+            "next": "sat0_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_029",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "她说到这里，低头翻了翻手里的值班表，指尖在外科与妇科两个栏目之间停了一会儿。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_029",
+            "label": "继续",
+            "next": "sat0_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「我本来真的很想像弘子前辈一样做外科护士……」",
+        "expression": "focused",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_030",
+            "label": "继续",
+            "next": "sat0_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「可是我还是申请了妇科。」",
+        "expression": "focused",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_031",
+            "label": "继续",
+            "next": "sat0_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「因为男性患者比较少？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_032",
+            "label": "继续",
+            "next": "sat0_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「……因为没有男性患者。」",
+        "expression": "focused",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_033",
+            "label": "继续",
+            "next": "sat0_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_034",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "弘子看了看她，又看了看手里的病区说明，像是终于发现两个人从一开始就在谈不同的问题。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_034",
+            "label": "继续",
+            "next": "sat0_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「皐月，你不知道吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_035",
+            "label": "继续",
+            "next": "sat0_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "杉村弘子",
+        "actor_id": "nurse_hiroko",
+        "text": "「这家医院只接受女性患者啊。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_036",
+            "label": "继续",
+            "next": "sat0_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_037",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「……诶？」",
+        "expression": "surprised",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_037",
+            "label": "继续",
+            "next": "sat0_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_038",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "皐月猛地抬起头，黑框眼镜顺着鼻梁滑下来一点。她扶住镜框，盯着弘子，显然正在重新理解自己的岗位申请。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_038",
+            "label": "继续",
+            "next": "sat0_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "sat0_039",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「诶？？？？？」",
+        "expression": "surprised",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_039",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

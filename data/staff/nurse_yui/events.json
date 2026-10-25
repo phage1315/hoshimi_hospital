@@ -100,5 +100,1044 @@
       }
     ],
     "benefit_id": ""
+  },
+  {
+    "id": "miyuki_lv1_not_that_kind_of_inexperienced",
+    "actor_id": "nurse_yui",
+    "title": "不是这种没经验",
+    "chapter": 1,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "uniform",
+    "minutes": 20,
+    "teaser": "不是这种没经验",
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 50,
+    "category": "bond",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "miyuki_lv1_not_that_kind_of_inexperienced",
+      "caption": "不是这种没经验",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "a1_001",
+    "nodes": [
+      {
+        "id": "a1_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "护士站里，朝仓正把几份交班资料整理成一叠。看见坂口走近，她抬起头，笑着向他点了点头。",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_001",
+            "label": "继续",
+            "next": "a1_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「坂口医生，来得正好。今天手术部那边的交接单，我刚整理到一半——」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_002",
+            "label": "继续",
+            "next": "a1_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "一名年轻护士抱着两张纸快步走来，几乎撞上护士站的柜台。",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_003",
+            "label": "继续",
+            "next": "a1_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「朝仓小姐，不好了！下一台手术临时提前了，手术室催着送人，病房那边却还按原来的安排准备！」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_004",
+            "label": "继续",
+            "next": "a1_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_005",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「手术时间改了？」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_005",
+            "label": "继续",
+            "next": "a1_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「两张给我看看。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_006",
+            "label": "继续",
+            "next": "a1_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_007",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "朝仓接过纸，先看日期，再看两张单据上的修订时间。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_007",
+            "label": "继续",
+            "next": "a1_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「这一张是原排程，另一张刚改过，对吗？病房收到新安排了吗？患者的术前准备现在完成到哪一步？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_008",
+            "label": "继续",
+            "next": "a1_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「是。手术室说他们都准备好了，一直催着送人。可是病房应该还没收到……准备情况我也还没核完。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_009",
+            "label": "继续",
+            "next": "a1_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「那就先别推。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_010",
+            "label": "继续",
+            "next": "a1_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「咦？可他们说已经在等了……」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_011",
+            "label": "继续",
+            "next": "a1_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「他们等的是准备妥当的患者，不是你手里这张改过时间的纸。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_012",
+            "label": "继续",
+            "next": "a1_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "她说得很平静，却已把刚才的笑容收了起来。年轻护士下意识站直了。",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_013",
+            "label": "继续",
+            "next": "a1_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「先和病房确认患者本人、术式和术前准备的交接状态。没有确认完的就说没有确认完，别用『应该』两个字顶上去。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_014",
+            "label": "继续",
+            "next": "a1_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「明、明白。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_015",
+            "label": "继续",
+            "next": "a1_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「手术室我来联系。你负责病房，核完再来告诉我。别两边一起打电话，越打越乱。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_016",
+            "label": "继续",
+            "next": "a1_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「好！我这就去！」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_017",
+            "label": "继续",
+            "next": "a1_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "年轻护士抱着资料走向护士站另一侧的电话。朝仓拿起桌上的听筒，迅速拨了号码。",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_018",
+            "label": "继续",
+            "next": "a1_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「喂，手术室吗？我是朝仓。关于刚才提前的那位患者——病房还没有完成新的交接确认。对，暂时不能转运。排程要改当然可以，但病房也得收到同一份消息。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_019",
+            "label": "继续",
+            "next": "a1_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「我知道你们在等。可是催得再急，也不能把没确认的事情当作确认过了。我们核好以后马上回电。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_020",
+            "label": "继续",
+            "next": "a1_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_021",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "朝仓放下听筒，把两张单据并排摊在柜台上。坂口站在一旁，看她用笔标出需要重新确认的部分。",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_021",
+            "label": "继续",
+            "next": "a1_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「需要我去跟手术室说明吗？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_022",
+            "label": "继续",
+            "next": "a1_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「不用，现在是交接的问题。坂口医生先把这份最新的记录给我好吗？左边那张。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_023",
+            "label": "继续",
+            "next": "a1_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "坂口递过纸。她看了一眼，发现拿到的是旧版，立刻又伸出手。",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_024",
+            "label": "继续",
+            "next": "a1_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「不是这张。日期是今天的那张。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_025",
+            "label": "继续",
+            "next": "a1_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_026",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「……抱歉，是这张吧。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_026",
+            "label": "继续",
+            "next": "a1_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「对，谢谢。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_027",
+            "label": "继续",
+            "next": "a1_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「确认好了！患者那边的准备还需要一点时间，病房已经把情况说明清楚。手术室也同意按重新确认的时间接收。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_028",
+            "label": "继续",
+            "next": "a1_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「好。现在双方拿的是同一版安排吧？」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_029",
+            "label": "继续",
+            "next": "a1_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「是！旧的那张也已经标注作废了。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_030",
+            "label": "继续",
+            "next": "a1_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「交给下一班的人也说一声，别让这件事下午再来一次。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_031",
+            "label": "继续",
+            "next": "a1_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "年轻护士",
+        "text": "「好的。朝仓小姐，真是谢谢你！刚才我完全不知道该先找谁。」",
+        "expression": "serious",
+        "outfit": "uniform",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_032",
+            "label": "继续",
+            "next": "a1_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a1_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「呵呵，下次先把两张单子放在一起看。跑得快不一定有用，跑错方向才是真的累。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_033",
+            "label": "继续",
+            "next": "a1_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_034",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "text": "年轻护士松了口气，向两人鞠了一躬，抱着整理好的资料离开。",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_034",
+            "label": "继续",
+            "next": "a1_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_035",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「朝仓小姐，你刚才处理得真熟练。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_035",
+            "label": "继续",
+            "next": "a1_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「哎呀，被坂口医生看见我使唤人了。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_036",
+            "label": "继续",
+            "next": "a1_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_037",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「第一次见面时，你还说第一天有点紧张。我以为你对医院工作也不太熟悉。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_037",
+            "label": "继续",
+            "next": "a1_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「我说的是来星见的第一天嘛。又不是今天才开始当护士。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_038",
+            "label": "继续",
+            "next": "a1_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_039",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「原来如此。刚才那种语气，倒很像以前负责过不少人。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_039",
+            "label": "继续",
+            "next": "a1_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「呵呵，医生观察得真仔细。不过以前的事情，以后有机会再说吧。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_040",
+            "label": "继续",
+            "next": "a1_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_041",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「好。那我以后遇到交接问题，就先来请教你。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_041",
+            "label": "继续",
+            "next": "a1_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_042",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「可以呀。不过我可不会因为你是医生，就把『应该没问题』当成答案哦。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_042",
+            "label": "继续",
+            "next": "a1_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_043",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「这一点，我刚才已经见识过了。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_043",
+            "label": "继续",
+            "next": "a1_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      },
+      {
+        "id": "a1_044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "text": "「那就好。以后也请多关照啦，坂口医生。」",
+        "expression": "smile",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_044",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "actor_id": "nurse_yui"
+      }
+    ]
   }
 ]

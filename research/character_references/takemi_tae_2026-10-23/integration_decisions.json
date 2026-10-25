@@ -1,0 +1,31 @@
+{
+  "actor_id": "doc_takemi",
+  "skills_confirmed_by_user": {
+    "surgery": 94,
+    "diagnostics": 90,
+    "teamwork": 73,
+    "patient_care": 60,
+    "instrument_handling": 93,
+    "calmness": 95
+  },
+  "age": null,
+  "adult": true,
+  "future_presence_disabled": {
+    "primary_office": "地下研究室",
+    "other_low_frequency_locations": [
+      "手术室",
+      "员工休息室",
+      "天台"
+    ],
+    "schedule_weights": "CODEX_AUDIT_EXISTING_LOCATION_SCHEDULE_SYSTEM; do not invent percentages",
+    "map_ids": "CODEX_RESOLVE_ACTUAL_IDS",
+    "enabled_in_this_pack": false,
+    "note": "角色名与工作地点等资源可提前注册，但相识前不进入普通可互动地图/邀请池；地下研究室的三态地图和解锁动作由将来另行审阅的Lv0包负责。"
+  },
+  "dialogue_count": 60,
+  "relationship_progression_locked_until_future_authoring": true,
+  "user_art_revision": {
+    "white_coat": "雪白色医院白大褂，避免米黄和旧污感",
+    "choker": "全部立绘、术中头像及助手CG保留黑色铆钉项圈；星见医院允许妆容首饰入手术室"
+  }
+}

@@ -23,7 +23,7 @@ TARGETS = {
 FIELDS = {
     "name", "family_name", "given_name", "professional_name", "title", "subtitle",
     "description", "label", "text", "prompt", "response", "teaser", "caption",
-    "announcement", "location_label", "speaker_label", "specialty", "personality",
+    "announcement", "location_label", "speaker_label", "scene_caption", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "chapters",
     "correction", "responses",
 }

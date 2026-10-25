@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_sakurai_mayumi",
+    "name": "樱井真弓",
+    "age": 27,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/ward/smile.png",
+        "ward/brave": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/ward/brave.png",
+        "ward/worried": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/ward/crying.png",
+        "examination/shy": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/examination/shy.png",
+        "operating_table/awake": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_sakurai_mayumi_v1/patient_sakurai_mayumi/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_sakurai_mayumi/general.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "strong_front",
+      "secondary": "impulsive_defiant",
+      "stress_response": "becomes_irritable"
+    },
+    "dialogue_profile": "strong_front_expressive_irritable",
+    "traits": {
+      "baseline_anxiety": 47,
+      "pain_sensitivity": 74,
+      "privacy_sensitivity": 87,
+      "trust_baseline": 43,
+      "control_need": 92,
+      "expressiveness": 94,
+      "health_literacy": 30,
+      "compliance_tendency": 69
+    },
+    "fear_profile": {
+      "pain_fear": 76,
+      "procedure_fear": 71,
+      "diagnosis_fear": 47,
+      "loss_control_fear": 93
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院？不是……医生，先告诉我为什么非留不可。局里还有勤务等着交接呢。」",
+      "hospitalization_response": "「行，我办住院。别误会，我不是没话讲，是知道什么时候该听专业的。」",
+      "procedure_mismatch": "「等一下！刚才确认的可不是这项手术。先把病历核对清楚，再谈下一步！」",
+      "explain_plan": "「这才叫说明。步骤和理由讲清楚，我也不是专门来找茬的。」",
+      "brief_plan": "「一句‘照流程’就想打发我？我开张罚单都要写理由，你们总该告诉我下一步做什么吧。」",
+      "last_reassure": "「……我知道你们是专业的。开刀前再提醒我一声，行吗？至少让我有个心理准备。」",
+      "choose_general": "「全麻？那之后我可什么都掌握不了……啧，不喜欢这种感觉。不过需要这么做的话，就交给你们。」",
+      "choose_epidural": "「意识清醒，下面却动不了？……听着就别扭。麻醉起效了记得告诉我。」",
+      "choose_local": "「局麻是吧。要是里面有牵拉或者疼，我会说。你们别把报告不适当成我找麻烦。」",
+      "choose_none": "「等等！一点麻醉都不打就开刀？开什么玩笑，我这身体又不是给你们练刀的！」",
+      "induction_reassure": "「……好。等我醒来，请直接告诉我手术结果，别拿一句‘没事’糊弄过去。」",
+      "insist_without_anesthesia": "「哈……！还要继续？你们到底知不知道有多疼……先让我把话说完！」",
+      "assistant_stabilize_none": "「别只顾着让我别动！我知道会影响手术，可痛成这样，我哪能说不挣就不挣啊！」",
+      "assistant_stabilize_local": "「知道了，我没打算乱动……嘶，里面刚才扯了一下。让我缓一口气。」",
+      "assistant_stabilize_epidural": "「腿已经动不了，还让我放松？说得轻巧……好，我会尽量别绷着肩膀。」",
+      "incise_epidural": "「……已经开始切了吗？不怎么刺痛，可里面那股被压着的感觉……还真是动刀了啊。」",
+      "incise_local": "「嘶——！外面麻了，怎么里面还会这么牵着疼？医生，刚才做到哪里了？」",
+      "incise_none": "「啊——！！疼！等、等一下！我知道要躺着，可你们先别把我的话当空气啊！」",
+      "contact_pause": "「……停下来了？呼。好，给我几秒……等我把呼吸稳住。」",
+      "contact_command": "「知道！不准乱动，我听得懂！……可疼得我手都在抖，你们也看见了吧！」",
+      "contact_continue": "「要继续就先说一声。别突然来一下，我就是反应再快也受不了。」",
+      "ongoing_narrate": "「嗯，你讲进度，我就配合。只是拜托，别把十分钟说成‘马上’。」",
+      "ongoing_eye_contact": "「看着我干什么……？……算了，至少还有人注意我。继续说吧。」",
+      "ongoing_silent": "「喂？怎么突然谁也不吭声了？你们在做什么，至少回我一句！」",
+      "closure_reassure": "「……真的快结束了？别随便安慰我，这句话我可认真记下了。」",
+      "closure_coach": "「呼……好，按你说的呼吸、别绷紧……护士小姐，你平时就是这样管不听话的人的吗？」",
+      "closure_silent": "「……我没劲再顶嘴了。收尾的时候叫我一声……拜托。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠？喂，这个也算术前准备？……知道了，别在走廊那么大声地讲行不行。」",
+        "「我是来治病的，又不是来接受新兵训练……行啦，我配合。开始前跟我说一声。」",
+        "「等等，连这个都得由护士来做？……啧，我自己发命令的时候可没觉得这么难堪。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「不用灌肠？……很好，这一项我完全没有意见。」",
+        "「能省就省。……看什么看，我只是觉得流程合理，又不是怕了。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……连那里也要处理？等等，先把帘子拉好！」",
+        "「别突然伸手啊！我知道这是医疗准备，先告诉我要动哪边不行吗？」",
+        "「我平时检查别人证件，没想到今天得让人这样检查自己……动作麻烦轻点。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「不需要备皮？你们早说啊，我刚才白紧张了半天。」",
+        "「这项省略是因为术式不需要吧？……好，明白了。」"
+      ],
+      "ward_surgical_cap": [
+        "「这帽子得把头发全收进去？……我戴警帽可没这么费劲。」",
+        "「好了好了，耳边的头发也塞好了。护士小姐，这回总算合格了吧？」"
+      ],
+      "operative_positioning_awake": [
+        "「这个姿势我能摆，别两边护士一起发口令！一个一个说。」",
+        "「手抬起来、肩膀放松……知道了。你们带病人倒是真有一套。」",
+        "「我可以自己调整，别急着按住我……好，照这个角度对吧？」"
+      ],
+      "operative_positioning_none": [
+        "「等一下！连麻醉都没有，还要这样固定？我疼得受不了时怎么办！」",
+        "「你们说保持不动就能做到吗……至少先把姿势摆舒服点啊！」",
+        "「喂，光说‘别乱动’谁都会。真下刀以后你们可得听我喊停！」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿……？知道是手术准备！可你们能别当着一屋子人把这件事说得那么响吗！」",
+        "「我会配合，行了吧……护士小姐，你动手前先告诉我一声。」",
+        "「嘶，真别扭……我在单位训人训惯了，轮到自己就连抬头都不好意思。」"
+      ],
+      "urinary_catheterization_none": [
+        "「没有麻醉也要导尿？……等一下，让我先把气喘匀。」",
+        "「我知道不能乱动，可我现在紧张得腿都绷住了……别催！」",
+        "「先说好，这不是我故意不配合……我只是怕下一下会疼。」"
+      ],
+      "skin_disinfection_awake": [
+        "「嘶，消毒液真凉……要碰哪里先说，别冷不防来一下！」",
+        "「这么大一片都要消毒？……好吧，看样子真要在这里开刀了。」"
+      ],
+      "skin_disinfection_none": [
+        "「冷得我一哆嗦……喂，这是不是代表下一步就要下刀了？」",
+        "「我可还完全清醒着。消毒完准备开始的话，必须先告诉我！」",
+        "「只是擦消毒液我都紧张成这样……等会儿要真切下去，怎么办啊……」"
+      ],
+      "incision_marking_awake": [
+        "「这条线就是切口？……画在自己身上，感觉比在说明图上吓人多了。」",
+        "「标记好了就告诉我，别让我只能低头猜到底会从哪儿切。」"
+      ],
+      "incision_marking_none": [
+        "「等等，你们真的打算沿着这里切？……我还一点麻醉都没有啊！」",
+        "「现在只是画线，我的心跳就快得不行……谁也别跟我说‘一点都不疼’！」",
+        "「喂，别光顾着划记号。动刀之前让我先做好准备，好吗……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，先听我把情况说明白。刚才执勤时身体突然不对劲：{line}",
+      "primary": "最明显的情况是：{line} 我没打算夸大，一字一句都是真的。",
+      "secondary": "还有这一项，也记进病历里：{line} 别因为我能说话就觉得我不难受。",
+      "background": "刚才正处理违章停车，突然身体不舒服，结果同事直接把我送来了。平时都是我叫别人停下，今天倒被他们命令来看医生。工作忙得连约会都没空，偏偏有时间进医院……真是气人。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "樱井真弓的门诊检查",
+    "full_undress": {
+      "prompt": "「等一下，要把衣服全部脱掉？先把检查范围说清楚！……我说话冲不代表不配合，别误会。」",
+      "responses": {
+        "abandon_full_undress": "「这项先不做？……呼，省一步是挺好。不过，真要检查的地方可别漏了。」",
+        "authoritative_full_undress": "「行，要求我听见了。帘子拉好，我自己会脱……护士小姐，不用站旁边指挥到最后一步吧。」",
+        "gentle_full_undress": "「……你说清楚了，我就不会乱发火。给我一点时间，别一直看着我。」",
+        "threaten_full_undress": "「威胁患者？这话我可记下了。需要检查就讲专业理由，少拿口气压人！」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "樱井真弓的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「手术排今天？……我知道得治，局里的勤务让同事顶一顶就行。你们把安排讲清楚，别让我像被临时抓来的。」",
+      "graphic_preop_question": "「我问具体一点。等会儿上台以后，从摆体位、消毒到真的下刀，会按什么顺序来？别替我省略……我宁可先听清楚，也不想临时傻眼。」",
+      "graphic_preop_dialogue": "真弓起初抱着手臂，像核查一份现场报告般认真听着，听到关键处还会插话确认。医护将术前固定、消毒、切开以及后续操作逐项讲清，她却渐渐不再反驳。她这才意识到，等会儿必须躺着、听从安排、亲身承受每一步的人，正是自己。",
+      "team": "你将担任樱井真弓本次手术的主刀。请确认助手医生、器械护士和巡回护士的岗位职责。",
+      "preparation": "请为樱井真弓安排病房准备护士，并根据当前病例决定必要术前准备与可选照护项目。",
+      "prepared": "「准备都做完了？……刚才护士一句句叫我配合，差点让我忘了自己平时才是下指令的人。行，没问题了。」",
+      "changing": "你与手术团队按既有流程更衣、刷手并完成无菌准备，即将进入手术室。",
+      "operating_room": "「这灯也太亮了……喂，护士小姐，我手放哪儿说一遍就行，我听得见！……别误会，我是紧张，不是找茬。」",
+      "team_confirmations": "手术团队逐项核对樱井真弓的身份、当前病例所选术式与人员分工。她目光紧盯正在说明的医护，尽力不显出不安。",
+      "procedure_select": "请核对当前病例已经确认的手术方案，并选择相应术式。",
+      "procedure_mismatch": "「等一下，这和刚才确认的术式不一样！先把病历拿出来重新核对，谁也别急着往下做！」",
+      "ready": "樱井真弓已完成本次病例必要的术前准备，并在手术台上等待。请确认麻醉方式与正式开始手术的条件。",
+      "general_induction": "「……行，接下来就交给你们了。等我醒来，直接告诉我结果。……拜托。」",
+      "surgery_start_general": "樱井真弓已进入全身麻醉状态，不会作出清醒的术中回应。团队确认麻醉监护与手术条件后准备开始。",
+      "surgery_start_epidural": "「腿真的不听使唤了……嗯，是药效，我知道。开始前先叫我一声，我还醒着呢。」",
+      "surgery_start_local": "「局部已经麻了吧？好，我会尽量不动。要是里面疼，我可会直说。」",
+      "surgery_start_none": "「喂，真的不打麻醉？……手术刀都准备好了，我可是从头到尾都清醒着啊！」",
+      "instrument_handoff": "主刀发出器械要求，器械护士根据本次术式与当前操作阶段递交所需器械。",
+      "assistant_ready": "助手医生协助建立并维持当前术野暴露，等待主刀确认下一步操作。",
+      "incision_ready": "切口位置与麻醉状态已经核对。助手维持暴露，器械护士备好手术刀，等待第一刀指令。",
+      "general_operation": "全身麻醉中的樱井真弓不产生清醒患者对白。手术团队持续监护，并按当前术式推进操作。",
+      "operative_contact": "切口已建立。若樱井真弓保持清醒，她会用强硬语气报告压力、牵拉或疼痛；反应强度依照现有麻醉模式与患者状态决定。",
+      "ongoing_interaction": "手术仍在进行。若樱井真弓清醒，她会要求医护及时回应自己的报告；随着不适加重，原本强硬的语气可能逐渐失去底气。",
+      "closure_interaction": "主要操作进入收尾阶段。若樱井真弓保持清醒，她仍然嘴硬，却会迫切等待医护明确告知何时结束。",
+      "procedure_flow": "进入当前已选择术式的标准阶段流程，请按该术式既定步骤继续。",
+      "procedure_execute": "主要操作完成。团队复核手术区域与必要技术结果，继续最终处理和缝合。",
+      "surgery_result": "手术结束。团队按既定流程完成切口处理、器械清点与术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经开始切了吗？不怎么刺痛，可里面那股被压着的感觉……还真是动刀了啊。」",
+      "incise_local": "「嘶——！外面麻了，怎么里面还会这么牵着疼？医生，刚才做到哪里了？」",
+      "incise_none": "「啊——！！疼！等、等一下！我知道要躺着，可你们先别把我的话当空气啊！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 病房准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/skin_prep.png"],
+        "caption": "樱井真弓按照当前术前准备安排接受备皮。"
+      },
+      {
+        "id": "ward_enema_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 病房准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/enema.png"],
+        "caption": "樱井真弓按照当前术前安排完成灌肠准备。"
+      },
+      {
+        "id": "ward_surgical_cap_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 病房准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_surgical_cap"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/surgical_cap.png"],
+        "caption": "樱井真弓戴好手术帽，准备完成病房阶段的术前准备。"
+      },
+      {
+        "id": "stretcher_transfer_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 病房准备 · 担架车交接",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/stretcher_transfer.png"],
+        "caption": "病房准备结束后，樱井真弓在担架车上等待团队交接转运。"
+      },
+      {
+        "id": "urinary_catheterization_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 手术室准备 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/urinary_catheterization.png"],
+        "caption": "樱井真弓在手术室准备阶段接受导尿。"
+      },
+      {
+        "id": "operative_positioning_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 手术室准备 · 体位固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["operative_positioning"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/operative_positioning.png"],
+        "caption": "手术团队为樱井真弓调整并固定手术体位。"
+      },
+      {
+        "id": "sterile_draping_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 手术室准备 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ack_disinfection"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/sterile_draping.png"],
+        "caption": "完成消毒后，团队为樱井真弓铺设无菌巾。"
+      },
+      {
+        "id": "skin_disinfection_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/skin_disinfection.png"],
+        "caption": "手术团队为樱井真弓的手术区域进行消毒。"
+      },
+      {
+        "id": "incision_ready_patient_sakurai_mayumi",
+        "label": "樱井真弓 · 手术下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_sakurai_mayumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_sakurai_mayumi/scalpel_ready.png"],
+        "caption": "器械护士递上手术刀，樱井真弓等待主刀确认后开始切开。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

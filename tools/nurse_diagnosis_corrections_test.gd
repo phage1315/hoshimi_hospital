@@ -39,7 +39,7 @@ func check_page(actor_id: String, text: String) -> void:
 
 func run() -> void:
 	source = JSON.parse_string(FileAccess.get_file_as_string("res://tools/fixtures/nurse_diagnosis_corrections_zh.json"))
-	expect(source.size() == 7, "Approved source contains seven nurses")
+	expect(source.size() == 8 and source.has("nurse_hikami_saeko"), "Approved source includes Saeko and the seven original nurses")
 	app = load("res://godot/scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame

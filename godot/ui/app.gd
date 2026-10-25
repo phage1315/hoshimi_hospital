@@ -9,6 +9,7 @@ const PreopView = preload("res://godot/ui/preop_view.gd")
 const ClinicView = preload("res://godot/ui/clinic_view.gd")
 const PlayerOfficeView = preload("res://godot/ui/player_office_view.gd")
 const CharacterEvent = preload("res://godot/systems/character_event_session.gd")
+const CharacterStage = preload("res://godot/ui/character_stage.gd")
 const SpecialEvent = preload("res://godot/systems/special_event_session.gd")
 const HProfileSession = preload("res://godot/systems/h_profile_v1_session.gd")
 const HProfileContent = preload("res://godot/systems/h_profile_v1_content.gd")
@@ -91,6 +92,8 @@ var character_event_from_test := false
 var gallery_replay_event: RefCounted
 var gallery_replay_is_test := false
 var gallery_replay_return_actor := ""
+var last_character_sound_key := ""
+var last_character_stage_key := ""
 var gallery_return_location := ""
 var special_event_pending_id := ""
 var special_event_return_location := ""
@@ -205,13 +208,13 @@ func configure_game_content() -> void:
 func switch_locale() -> void:
 	var next_locale: String = "en" if str(content.localizer.locale) == "zh_CN" else "zh_CN"
 	var had_game_content: bool = not game.definitions.is_empty()
-	var snapshot: Dictionary = game.snapshot() if had_game_content else {}
+	var snapshot: Dictionary = game.runtime_snapshot() if had_game_content else {}
 	var dialogue_id: String = str(session.current_id)
 	if not content.load_all(next_locale):
 		show_notice("\n".join(content.errors))
 		return
 	configure_game_content()
-	if had_game_content and not game.restore(snapshot):
+	if had_game_content and not game.restore_runtime_snapshot(snapshot):
 		show_notice(game.last_error)
 		return
 	if not dialogue_id.is_empty():
@@ -1803,10 +1806,10 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	location_feedback = ""
 	location_feedback_location = ""
 	base(tx("ui.map.sunday_title", "周日医院") if sunday_hospital_browsing else tx("ui.map.title", "医院导览"), tx("ui.map.sunday_subtitle", "普通门诊与择期手术休止；可以探视、串门或找值班同事聊聊。") if sunday_hospital_browsing else tx("ui.map.subtitle", "选择地点，了解今天的医院。  /  HOSPITAL DIRECTORY"), false, "lobby")
-	var map_locations: Array = content.collections.locations
+	var map_locations: Array = content.collections.locations.filter(func(location: Dictionary): return str(location.id) != "basement_research" or game.story_flag("takemi_research_discovered"))
 	if sunday_hospital_browsing:
 		var sunday_ids := ["ward", "station", "imaging", "or", "lounge", "rooftop", "player_office"]
-		map_locations = content.collections.locations.filter(func(location: Dictionary): return str(location.id) in sunday_ids)
+		map_locations = map_locations.filter(func(location: Dictionary): return str(location.id) in sunday_ids or str(location.id) == "basement_research")
 	for i in range(map_locations.size()):
 		var location: Dictionary = map_locations[i]
 		var pos := Vector2(40 + (i % 4) * 305, 155 + (i / 4) * 130)
@@ -2152,6 +2155,8 @@ func show_time_log(return_location: String = "") -> void:
 		var first := maxi(0, history.size() - 7)
 		for i in range(first, history.size()):
 			var event: Dictionary = history[i]
+			if event.minutes == null:
+				event.minutes = tx("ui.time_log.unknown_minutes", "未知")
 			var entry := label_at(tx("ui.time_log.entry", "DAY %02d　%s　%s　%s　·　%s 分钟") % [event.day, localized_calendar_text(int(event.day), true), event.clock, event.label, event.minutes], Vector2(70, 255 + (i - first) * 56), 20, Color("f4f0e6"), 1080)
 			entry.name = "TimeLogEntry_" + str(i)
 	label_at(tx("ui.time_log.current", "当前：%s · %s · %s　今日剩余 %s 分钟") % [game.day_text(), localized_calendar_text(), game.clock_text(), game.shift_remaining()], Vector2(65, 665), 20, Color("e8cfaa"), 850)
@@ -2265,6 +2270,10 @@ func case_training_value_is_low(case_data: Dictionary) -> bool:
 	return game.surgery_learning_efficiency(effective_difficulty - current_level) <= 0.10
 
 func show_location(id: String, preserve_random: bool = false, allow_micro_event: bool = true) -> void:
+	if id == "basement_research" and not game.story_flag("takemi_research_open"):
+		if game.story_flag("takemi_research_discovered"):
+			show_notice(tx("ui.takemi.locked", "门锁着，里面没有回应。"))
+		return
 	if game.special_event_in_progress():
 		show_special_event()
 		return
@@ -2282,6 +2291,16 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 	if not natural_event.is_empty():
 		start_character_event_from_location(str(natural_event.id), id)
 		return
+	if not preserve_random:
+		var corridor_event: Dictionary = game.next_hospital_corridor_event()
+		if not corridor_event.is_empty():
+			character_event_from_test = false
+			character_event_return_location = id
+			character_event_return_preop_id = ""
+			reset_dialogue_page()
+			if game.start_character_event(str(corridor_event.id)) != null:
+				show_character_event()
+				return
 	if id == "player_office":
 		show_player_office()
 		return
@@ -2331,7 +2350,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 			var met: bool = game.staff_is_met(staff_id)
 			# Location rows are action selectors. Keep characterization on the staff
 			# profile page so long English biographies cannot overflow into Chat.
-			var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, int(person.age)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
+			var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, person.get("public_age_label", person.age)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
 			var profile_action: Callable = show_staff.bind(staff_id, id) if met else introduce_staff_at_location.bind(staff_id, id)
 			var profile_pos := Vector2(60, 315 + row * 137) if id == "rooftop" else Vector2(60, 269 + row * 77)
 			var profile_size := Vector2(700, 55) if id == "rooftop" else Vector2(840, 63)
@@ -2427,7 +2446,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 func location_uses_staff_drawer(location_id: String) -> bool:
 	# Hourly placement can put more than four colleagues in the lounge or
 	# another work area. Reuse the scrollable roster instead of overflowing.
-	return location_id in ["clinic", "ward", "or"] or (location_id != "rooftop" and game.staff_present_at(location_id).size() > 4)
+	return location_id in ["clinic", "ward", "or", "imaging"] or (location_id != "rooftop" and game.staff_present_at(location_id).size() > 4)
 
 func toggle_location_staff_drawer(location_id: String) -> void:
 	location_staff_drawer_open = "" if location_staff_drawer_open == location_id else location_id
@@ -2482,7 +2501,7 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 		row_box.custom_minimum_size = Vector2(450, 58)
 		row_box.add_theme_constant_override("separation", 5)
 		list.add_child(row_box)
-		var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, int(person.age)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
+		var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, person.get("public_age_label", person.age)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
 		var profile := Button.new()
 		profile.name = "LocationStaff_" + staff_id
 		profile.text = caption
@@ -2497,6 +2516,26 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 		profile.add_theme_stylebox_override("focus", panel_style(Color("365963"), Color("f3dbac")))
 		profile.pressed.connect(show_staff.bind(staff_id, location_id) if met else introduce_staff_at_location.bind(staff_id, location_id))
 		row_box.add_child(profile)
+		if met and staff_id == "doc_serika":
+			var radiology = preload("res://godot/systems/serika_radiology.gd")
+			var next_discussion: String = radiology.event_id(radiology.next_index(game))
+			if radiology.eligible(game, next_discussion):
+				var discussion := Button.new()
+				discussion.name = "SerikaRadiologyDiscussion"
+				discussion.text = tx("ui.serika.radiology_discussion", "讨论影像／病例 · 60 分钟")
+				discussion.custom_minimum_size = Vector2(450, 42)
+				discussion.pressed.connect(start_serika_radiology.bind(next_discussion))
+				row_box.add_child(discussion)
+			for action in chats:
+				if str(action.actor_id) != staff_id:
+					continue
+				var action_button := Button.new()
+				action_button.name = "TimeEvent_" + str(action.id)
+				action_button.text = "%s · %s min" % [action.label, action.minutes]
+				action_button.custom_minimum_size = Vector2(450, 42)
+				action_button.pressed.connect(perform_time_event.bind(str(action.id), location_id))
+				row_box.add_child(action_button)
+			continue
 		var matching_chat: Dictionary = {}
 		if met:
 			for chat in chats:
@@ -2592,6 +2631,15 @@ func start_location_micro_event(location_id: String) -> void:
 		return
 	show_micro_event()
 
+func start_serika_radiology(event_id: String) -> void:
+	if game.start_character_event(event_id) == null:
+		return
+	character_event_return_location = "imaging"
+	character_event_return_preop_id = ""
+	character_event_from_test = false
+	reset_dialogue_page()
+	show_character_event()
+
 func perform_time_event(event_id: String, location_id: String) -> void:
 	var before_elapsed := game.elapsed()
 	var before_day := game.day_number()
@@ -2609,7 +2657,7 @@ func perform_time_event(event_id: String, location_id: String) -> void:
 			return
 		location_feedback = tx("ui.auto.d74916abf216", "%s\n现在是 %s · 今日还剩 %s 分钟。") % [game.last_time_event_response, game.clock_text(), game.shift_remaining()]
 	else:
-		location_feedback = game.last_error
+		location_feedback = tx("ui.serika.discussion_unavailable", "今日讨论已完成，或剩余工作时间不足。") if game.last_error == "serika_imaging_discussion_unavailable" else game.last_error
 	location_feedback_location = location_id
 	var next_view := show_location.bind(location_id, true)
 	if game.day_number() > before_day:
@@ -2659,14 +2707,14 @@ func show_time_event_result(event_id: String, location_id: String, crossed_day: 
 	var location: Dictionary = content.find_record("locations", location_id)
 	base(tx("ui.auto.3046323cd799", "片刻闲谈"), "%s / %s" % [actor.name, location.name], true, location.background_id)
 	var outfit := chat_outfit_for_location(actor, location_id)
-	var expression := chat_expression_for_outfit(actor, outfit)
+	var expression := "neutral" if str(actor.id) == "doc_serika" else chat_expression_for_outfit(actor, outfit)
 	add_portrait(actor, expression, outfit)
 	var portrait = page.get_node_or_null("CharacterPortrait")
 	if portrait != null:
 		portrait.position = Vector2(760, 150)
 		portrait.size = Vector2(450, 380)
 	var dialogue := dialogue_page("time_event:%s:%s" % [event_id, game.day_number()], game.last_time_event_response, false, true)
-	var dialogue_widgets := vn_dialogue_box(actor.name, str(dialogue.text), "TimeEventDialogue")
+	var dialogue_widgets := vn_dialogue_box("" if str(definition.id) == "serika_imaging_discussion" else actor.name, str(dialogue.text), "TimeEventDialogue")
 	dialogue_widgets[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	dialogue_widgets[2].position.y = 594
 	dialogue_widgets[2].size.y = 98
@@ -2784,6 +2832,8 @@ func show_character_event() -> void:
 	var node: Dictionary = event.current()
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
 	var actor_name := str(definition.get("actor_alias", actor.name))
+	if bool(node.get("reveal_identity", false)):
+		actor_name = str(actor.name)
 	if str(definition.id) == "intro_ishigami_nurse_manager" and str(node.id) < "ishi0_010":
 		actor_name = str(definition.title)
 	var location: Dictionary = content.find_record("locations", definition.location_id)
@@ -2813,8 +2863,14 @@ func show_character_event() -> void:
 		if not supporting_actor.is_empty():
 			visual_actor = supporting_actor
 	add_character_event_visual(visual_actor, node, event_outfit)
+	if node.has("scene_caption"):
+		label_at(str(node.scene_caption), Vector2(60, 140), 23, Color("f4f0e6"), 600).name = "EventSceneCaption"
+	if CharacterStage.present(self, node, choose_character_event):
+		return
 	var source_role := str(node.get("speaker", "actor"))
 	var speaker: String = str(node.get("speaker_label", {"actor": actor_name, "player": protagonist_name(), "narrator": tx("ui.auto.ed1d855fc574", "旁白")}.get(source_role, actor_name)))
+	if bool(node.get("anonymous_unmet", false)) and source_role == "actor" and not game.staff_is_met(visual_actor_id):
+		speaker = tx("ui.takemi.nurse", "护士")
 	var dialogue := dialogue_page("character:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
 	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
 	if str(node.get("presentation", "")) in ["authored", "sms"]:
@@ -2874,12 +2930,27 @@ func character_event_message(sender: String, text: String, outgoing: bool) -> vo
 	body.size.y = 115
 
 func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: String) -> void:
+	var sound_path := str(node.get("sound_path", ""))
+	var sound_key := screen + ":" + str(node.id)
+	if sound_key != last_character_sound_key:
+		last_character_sound_key = sound_key
+		if not sound_path.is_empty() and FileAccess.file_exists("res://" + sound_path):
+			var sound := AudioStreamPlayer.new()
+			sound.stream = load("res://" + sound_path)
+			sound.volume_db = -12.0
+			page.add_child(sound)
+			sound.play()
 	var cg_path := str(node.get("cg_path", ""))
 	if not cg_path.is_empty() and FileAccess.file_exists("res://" + cg_path):
 		var cg := TextureRect.new()
 		cg.name = "CharacterEventCG"
 		cg.texture = load("res://" + cg_path)
-		cg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		if str(node.get("cg_fit", "cover")) == "inset":
+			cg.position = Vector2(710, 180) if screen == "gallery_replay" else Vector2(350, 175)
+			cg.size = Vector2(520, 326) if screen == "gallery_replay" else Vector2(580, 326)
+		else:
+			cg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED if str(node.get("cg_fit", "cover")) == "cover" else TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		cg.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -2887,6 +2958,25 @@ func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: Str
 		if not bool(node.get("cg_portrait_overlay", false)):
 			return
 	if bool(node.get("hide_portrait", false)):
+		return
+	if node.has("event_portraits"):
+		CharacterStage.portraits(self, node)
+		return
+	if node.has("cast_actor_ids"):
+		var cast_ids: Array = node.cast_actor_ids
+		for i in range(cast_ids.size()):
+			var person := content.find_record("staff", str(cast_ids[i]))
+			var speaking := str(person.id) == str(node.get("actor_id", ""))
+			add_portrait(person, str(node.expression) if speaking else "neutral", str(person.visuals.default_outfit))
+			var portrait := page.get_node_or_null("CharacterPortrait")
+			if portrait != null:
+				portrait.name = "EventCast_" + str(person.id)
+				portrait.size = Vector2(300, 400)
+				portrait.position = Vector2(490 + (i - (cast_ids.size() - 1) / 2.0) * 320, 145)
+				if screen == "gallery_replay":
+					portrait.size = Vector2(170, 300)
+					portrait.position = Vector2(900 + (i - (cast_ids.size() - 1) / 2.0) * 170, 180)
+				portrait.modulate = Color.WHITE if speaking else Color(0.68, 0.68, 0.68)
 		return
 	var portrait_path := str(node.get("portrait_path", ""))
 	if not portrait_path.is_empty() and FileAccess.file_exists("res://" + portrait_path):
@@ -2961,8 +3051,20 @@ func choose_character_event(choice_id: String) -> void:
 			else:
 				show_map()
 			return
+		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)):
+			game.finish_character_event()
+			show_location("imaging", true)
+			return
+		if str(event.definition.id).begins_with("serika_lv0_"):
+			game.finish_character_event()
+			show_location(character_event_return_location, true)
+			return
 		game.settle_overtime(before_elapsed, int(event.definition.minutes))
-		if str(event.definition.id) == "intro_rumi_shiori_hiroko_monday_0900":
+		if str(event.definition.id) == "manami_lv1_sneeze":
+			game.finish_character_event()
+			show_map(false)
+			return
+		if str(event.definition.id) in ["intro_rumi_shiori_hiroko_monday_0900", "intro_satsuki_new_nurse", "intro_hikami_saeko_six_months", "miyuki_lv1_not_that_kind_of_inexperienced"]:
 			game.finish_character_event()
 			show_location("station")
 			return
@@ -3032,7 +3134,7 @@ func show_character_event_complete() -> void:
 		return
 	screen = "character_event_complete"
 	var actor: Dictionary = content.find_record("staff", event.definition.actor_id)
-	var actor_name := str(event.definition.get("actor_alias", actor.name))
+	var actor_name := str(actor.name) if str(event.definition.id) == "takemi_lv0_t6" else str(event.definition.get("actor_alias", actor.name))
 	var relation: Dictionary = game.relation_for(actor.id)
 	base(tx("ui.auto.9f66bcb3b7ff", "事件结束"), "%s / %s" % [actor_name, event.definition.title], true, event.definition.background_id)
 	if game.staff_is_met(str(actor.id)) and not bool(event.definition.get("hide_completion_portrait", false)):
@@ -3515,7 +3617,7 @@ func show_event_gallery(return_location: String = "") -> void:
 	gallery_replay_is_test = false
 	special_event_gallery_replay = null
 	base(tx("ui.gallery.title", "事件鉴赏"), tx("ui.gallery.subtitle", "人物事件、特殊活动与首次岗位担当回忆 / EVENT MEMORIES"), false, "staff_lounge")
-	var definitions: Array = game.character_event_definitions.values()
+	var definitions: Array = game.character_event_definitions.values().filter(func(item: Dictionary): return not preload("res://godot/systems/serika_radiology.gd").owns(str(item.id)))
 	definitions.sort_custom(func(a: Dictionary, b: Dictionary):
 		if a.actor_id != b.actor_id:
 			return a.actor_id < b.actor_id
@@ -3732,13 +3834,14 @@ func show_gallery_entry(event_id: String) -> void:
 		var opening_actor := content.find_record("staff", str(opening.get("actor_id", definition.actor_id)))
 		if not opening_actor.is_empty():
 			actor = opening_actor
-		add_portrait(actor, opening.expression, definition.outfit)
+		add_portrait(actor, opening.expression, str(opening.get("outfit", definition.outfit)))
 		var portrait = page.get_node_or_null("CharacterPortrait")
 		if portrait != null:
 			portrait.position = Vector2(720, 175)
 			portrait.size = Vector2(475, 470)
-		label_at("CG SLOT / " + str(gallery.cg_id), Vector2(65, 235), 18, Color("cbbc9c"), 570)
-		label_at(tx("ui.gallery.cg_pending", "专属CG素材待制作"), Vector2(65, 275), 30, Color("f4f0e6"), 570)
+		if not preload("res://godot/systems/takemi_introduction.gd").owns(event_id):
+			label_at("CG SLOT / " + str(gallery.cg_id), Vector2(65, 235), 18, Color("cbbc9c"), 570)
+			label_at(tx("ui.gallery.cg_pending", "专属CG素材待制作"), Vector2(65, 275), 30, Color("f4f0e6"), 570)
 	var gallery_caption := label_at(gallery.caption, Vector2(65, 365), 23, Color("e8cfaa"), 500)
 	gallery_caption.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
 	gallery_caption.size = Vector2(500, 58)
@@ -3749,6 +3852,8 @@ func show_gallery_entry(event_id: String) -> void:
 	button_at(tx("ui.gallery.return", "← 返回鉴赏"), Vector2(350, 520), Vector2(240, 55), show_event_gallery.bind(gallery_return_location))
 
 func replay_gallery_entry(event_id: String) -> void:
+	if preload("res://godot/systems/serika_radiology.gd").owns(event_id):
+		return
 	if not game.character_event_done(event_id):
 		return
 	gallery_replay_event = CharacterEvent.new(game.character_event_definitions[event_id])
@@ -3773,22 +3878,40 @@ func show_gallery_replay() -> void:
 	var actor_name := str(definition.get("actor_alias", actor.name))
 	if str(definition.id) == "intro_ishigami_nurse_manager" and str(node.id) < "ishi0_010":
 		actor_name = str(definition.title)
-	base((tx("ui.gallery.test_prefix", "测试 · ") if gallery_replay_is_test else tx("ui.gallery.replay_prefix", "回想 · ")) + str(definition.title), tx("ui.gallery.replay_subtitle", "%s / 不影响当前进度") % actor_name, true, definition.background_id)
+	if bool(node.get("reveal_identity", false)):
+		actor_name = str(actor.name)
+	base((tx("ui.gallery.test_prefix", "测试 · ") if gallery_replay_is_test else tx("ui.gallery.replay_prefix", "回想 · ")) + str(definition.title), tx("ui.gallery.replay_subtitle", "%s / 不影响当前进度") % actor_name, true, str(node.get("background_id", definition.background_id)))
 	var visual_actor := actor
 	var supporting_actor := content.find_record("staff", str(node.get("actor_id", definition.actor_id)))
 	if not supporting_actor.is_empty():
 		visual_actor = supporting_actor
 	add_character_event_visual(visual_actor, node, str(node.get("outfit", definition.outfit)))
+	if node.has("scene_caption"):
+		label_at(str(node.scene_caption), Vector2(60, 140), 23, Color("f4f0e6"), 600)
+	if CharacterStage.present(self, node, choose_gallery_replay):
+		return
 	var source_role := str(node.get("speaker", "actor"))
 	var speaker: String = str(node.get("speaker_label", {"actor": actor_name, "player": protagonist_name(), "narrator": tx("ui.common.narrator", "旁白")}.get(source_role, actor_name)))
-	var dialogue := dialogue_page("character_replay:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)))
+	if bool(node.get("anonymous_unmet", false)) and source_role == "actor" and not game.staff_is_met(str(node.get("actor_id", definition.actor_id))):
+		speaker = tx("ui.takemi.nurse", "护士")
+	var dialogue := dialogue_page("character_replay:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
 	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
-	label_at(str(presentation.speaker), Vector2(65, 205), 22, Color("e8cfaa"), 640)
-	var replay_text := scrollable_text_at(str(presentation.text), Vector2(65, 253), Vector2(655, 170), 24, Color("f4f0e6"), "GalleryReplayDialogue")
-	replay_text.scroll_active = bool(dialogue.allow_scroll)
+	if str(node.get("presentation", "")) in ["authored", "sms"]:
+		presentation = {"speaker": speaker, "text": str(dialogue.text)}
+	var cinematic := bool(definition.get("cinematic", false))
+	if cinematic:
+		var widgets := vn_dialogue_box(str(presentation.speaker), str(presentation.text), "GalleryReplayDialogue", bool(dialogue.allow_scroll))
+		widgets[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		widgets[2].position.y = 594
+		widgets[2].size.y = 98
+	else:
+		label_at(str(presentation.speaker), Vector2(65, 205), 22, Color("e8cfaa"), 640)
+		var replay_text := scrollable_text_at(str(presentation.text), Vector2(65, 253), Vector2(655, 170), 24, Color("f4f0e6"), "GalleryReplayDialogue")
+		replay_text.scroll_active = bool(dialogue.allow_scroll)
+	var action_y := VN_SINGLE_ACTION_Y if cinematic else 445.0
 	var exit_action: Callable = show_character_events.bind(gallery_replay_return_actor, character_event_return_location) if gallery_replay_is_test else show_gallery_entry.bind(definition.id)
 	if bool(dialogue.has_more):
-		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, 445), Vector2(655, 54), advance_dialogue_page.bind(show_gallery_replay))
+		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, action_y), Vector2(655, 54), advance_dialogue_page.bind(show_gallery_replay))
 		continue_button.name = "ReplayDialogueContinue"
 		register_dialogue_continue(continue_button, str(presentation.text))
 		button_at(tx("ui.gallery.exit_test", "退出测试") if gallery_replay_is_test else tx("ui.gallery.exit_replay", "退出回想"), Vector2(60, 713), Vector2(180, 40), exit_action)
@@ -3797,7 +3920,7 @@ func show_gallery_replay() -> void:
 	var only_choice_button: Button
 	for i in range(node.choices.size()):
 		var choice: Dictionary = node.choices[i]
-		var choice_button := button_at(choice.label, Vector2(60, 445 + i * 66), Vector2(655, 54), choose_gallery_replay.bind(choice.id))
+		var choice_button := button_at(choice.label, Vector2(60, action_y + i * 66), Vector2(655, 54), choose_gallery_replay.bind(choice.id))
 		choice_button.name = "ReplayChoice_" + choice.id
 		only_choice_button = choice_button
 	if node.choices.size() == 1:
@@ -4394,7 +4517,7 @@ func write_save_slot(slot: int) -> void:
 
 func load_progress(slot: int = 1) -> void:
 	if not saves.read_slot(game, slot):
-		show_notice(saves.last_error)
+		show_notice(tx(saves.last_error_key, saves.last_error) if not saves.last_error_key.is_empty() else saves.last_error)
 		return
 	active_save_slot = slot
 	reset_clinic_view()
@@ -4524,6 +4647,9 @@ func show_preop(id: String) -> void:
 		or_table_tool_stage_id = current_stage_id
 	# Clear the tool cursor before returning to a character event. Otherwise the
 	# event may take over the page before the ordinary pre-op render can reset it.
+	if preparation.assistant_anesthesia_pending:
+		PreopView.render(self, preparation)
+		return
 	if start_character_event_from_preop_stage(str(preparation.stage_id)):
 		return
 	screen = "preop"
@@ -4836,7 +4962,9 @@ func settle_surgery_return() -> void:
 	finish_surgery_return_destination(false)
 
 func finish_surgery_return_destination(settled: bool) -> void:
-	if settled and start_character_event_from_preop_stage("post_surgery_return"):
+	var started := settled and start_character_event_from_preop_stage("post_surgery_return")
+	game.takemi_postop_opportunity = false
+	if started:
 		return
 	if not game.pending_departure_context().is_empty():
 		show_day_transition(show_map)

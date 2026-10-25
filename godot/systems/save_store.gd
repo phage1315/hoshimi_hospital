@@ -11,6 +11,7 @@ const DEFAULT_SLOT_ONE_PATH := "user://clinic_slot_1.json"
 var path := DEFAULT_SLOT_ONE_PATH
 var last_error := ""
 var last_warning := ""
+var last_error_key := ""
 
 func slot_path(slot: int) -> String:
 	if slot == 1:
@@ -52,13 +53,16 @@ func write_slot(state: RefCounted, slot: int = 1) -> bool:
 	if state.has_method("can_save_progress") and not state.can_save_progress():
 		last_error = str(state.save_block_reason())
 		return false
+	var snapshot: Dictionary = state.snapshot()
+	if snapshot.is_empty():
+		last_error = str(state.last_error) if not str(state.last_error).is_empty() else str(state.save_block_reason())
+		return false
 	var destination := slot_path(slot)
 	var temporary := destination + ".tmp"
 	var file := FileAccess.open(temporary, FileAccess.WRITE)
 	if file == null:
 		last_error = "无法写入存档，现有存档未改变。"
 		return false
-	var snapshot: Dictionary = state.snapshot()
 	snapshot["_slot_metadata"] = _metadata_for_state(state, snapshot)
 	file.store_string(JSON.stringify(snapshot, "\t"))
 	file.flush()
@@ -110,6 +114,7 @@ func slot_summary(slot: int) -> Dictionary:
 
 func read_slot(state: RefCounted, slot: int = 1) -> bool:
 	last_error = ""
+	last_error_key = ""
 	last_warning = ""
 	if not valid_slot(slot):
 		last_error = "存档位置不存在。"
@@ -123,8 +128,10 @@ func read_slot(state: RefCounted, slot: int = 1) -> bool:
 		return false
 	if not state.restore(data):
 		last_error = state.last_error
+		var key: Variant = state.get("last_restore_error_key")
+		last_error_key = str(key) if key is String else ""
 		return false
 	var warnings: Variant = state.get("restore_warnings")
 	if warnings is Array and not warnings.is_empty():
-		last_warning = "存档已按当前内容兼容恢复；新增角色已初始化默认状态，无法匹配的旧记录已跳过。"
+		last_warning = "\n".join(warnings)
 	return true

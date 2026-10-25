@@ -630,3 +630,15 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 ## 深山佳织 Lv0 相识表情差分（2026-10-20）
 
 经用户确认，将 ImageGen 按现有佳织白大褂 `smile` 立绘生成的 `competitive_smile` 差分接入 `assets/characters/portrait_pack_v20/doc_rei/white_coat/competitive_smile.png`，仅新增表情，不覆盖原图。PNG 1159×1358，RGBA；SHA-256：`74103977368d9d6fd4890d27e347c0eaafa84ee04209ed73469ef229cbf01ab0`。运行时键登记于 `data/staff/doc_rei/profile.json`，用于 Lv0 相识事件的自信、略带挑战感的笑容。
+
+## 琪里耶·卡南 SFW 患者立绘（2026-10-25）
+
+经用户授权，以三张种子图生成并导入 17 张 SFW 患者图，含门诊、病房六态、查体、仰卧手术台四态、术中头像四态及全麻 splash。数据映射和英文 locale 已登记。完整来源、文件类型与覆盖缺口见 `docs/patient_kyrie_canaan_asset_record.md`。21 张矩阵所需的4张截石位差分被图像服务拦截，未尝试规避；当前运行时按既有逻辑回退至仰卧位立绘。
+
+## 琪里耶·卡南 SFW 立绘重制（2026-10-25）
+
+用户否定上一批种子图并明确要求删除/替换上一批琪里耶立绘；本轮将新提供的四张种子另存为参考文件，旧种子保留。基于新参考重新生成同路径17张SFW图并覆盖旧运行时图，不改患者数据、英文文本或CG池。逐项映射、来源及矩阵缺口见 `docs/patient_kyrie_canaan_asset_record.md`。
+
+## 琪里耶·卡南手术相关立绘修正（2026-10-25）
+
+用户复核后，仅重制查体、仰卧手术台四态、术中头像四态及全麻 splash，共10张；门诊和病房7张保留。手术帽统一为包住大部分头发的弹性一次性无纺布帽；手术台图不穿衣并由手术单遮盖身体，术中头像裸露肩颈、不带衣领。使用原资源路径和映射，患者数据与文本未改。细节见 `docs/patient_kyrie_canaan_asset_record.md`。

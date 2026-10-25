@@ -1,0 +1,43 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)
+ERROR: Nausea cue did not create a temporary condition
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:165)
+ERROR: Nausea condition did not expose four handling routes and severity
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:167)
+ERROR: Assistant nausea delegation failed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:168)
+ERROR: Assistant delegation did not use the assigned staff member
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:169)
+ERROR: Assistant delegation did not add time and clear nausea
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:170)
+ERROR: Handled nausea did not advance the surgery flow
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:171)
+ERROR: Ignoring nausea failed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/preop_test.gd:17)
+       [1] run (res://tools/preop_test.gd:180)
+SCRIPT ERROR: Invalid access to property or key 'nausea' on a base object of type 'Dictionary'.
+          at: run (res://tools/preop_test.gd:181)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/preop_test.gd:181)

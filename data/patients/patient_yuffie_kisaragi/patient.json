@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_yuffie_kisaragi",
+    "name": "尤菲·如月",
+    "age": 18,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/outpatient/neutral.png",
+        "examination/shy": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/examination/shy.png",
+        "ward/neutral": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/ward/smile.png",
+        "ward/brave": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/ward/brave.png",
+        "ward/worried": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_yuffie_kisaragi_v1/patient_yuffie_kisaragi/intraoperative/anesthetized.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "strong_front",
+      "secondary": "impulsive_defiant",
+      "stress_response": "becomes_irritable"
+    },
+    "dialogue_profile": "strong_front_expressive_irritable",
+    "traits": {
+      "baseline_anxiety": 49,
+      "pain_sensitivity": 73,
+      "privacy_sensitivity": 76,
+      "trust_baseline": 48,
+      "control_need": 91,
+      "expressiveness": 95,
+      "health_literacy": 26,
+      "compliance_tendency": 64
+    },
+    "fear_profile": {
+      "pain_fear": 79,
+      "procedure_fear": 67,
+      "diagnosis_fear": 41,
+      "loss_control_fear": 90
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院？！我本来今天还有事要办呢！……医生，真的不能先处理完让我回去吗？」",
+      "hospitalization_response": "「行啦，住就住！不过有新安排得立刻告诉我，本小姐可不喜欢被蒙在鼓里。」",
+      "procedure_mismatch": "「喂喂，刚才说好的不是这台手术吧！别趁我分神就换任务内容，先核对清楚啊！」",
+      "explain_plan": "「哦——原来要按这个顺序来啊。你早这样讲不就好了？我知道要怎么配合了。」",
+      "brief_plan": "「一句“按流程”就结束了？这算什么任务说明！至少告诉我下一步要做什么吧！」",
+      "last_reassure": "「哼，我当然没怕！……只是心跳有点快。你们答应过会照顾好我的，可别食言哦。」",
+      "choose_general": "「全身麻醉……等于我睡过去以后，什么都不知道？忍者最不喜欢把后背交给别人……好吧，这次拜托你们。」",
+      "choose_epidural": "「硬膜外麻醉？我还醒着，下面却动不了？……这感觉也太奇怪了吧！开始前要提醒我啊。」",
+      "choose_local": "「局部麻醉啊……好，我会尽量不动。但里面要是还疼，我会直接说，别当我在开玩笑。」",
+      "choose_none": "「哈？！完全不麻醉就开刀？我练的是忍术，又不是清醒挨手术刀的绝技！」",
+      "induction_reassure": "「……知道啦，我会好好闭上眼睛。等我醒来就告诉我结果，别让我自己瞎猜……拜托。」",
+      "insist_without_anesthesia": "「不行，真的不行！这不是靠逞强就能熬过去的！医生，先停一下，我疼得快控制不住自己了！」",
+      "assistant_stabilize_none": "「别、别一下子按那么紧！我知道不能乱动，可刚才那一下疼得我本能就想躲啊！」",
+      "assistant_stabilize_local": "「我会稳住啦……嘶，里面突然被牵了一下。你们提前说一声，我比较好忍。」",
+      "assistant_stabilize_epidural": "「下半身已经不听使唤了，还叫我放松……好啦，我把肩膀放松，别一直催嘛。」",
+      "incise_epidural": "「……已经切了吗？没有刚才想的那种尖痛，可这股压力……呜，真的开始了啊。」",
+      "incise_local": "「嘶——等一下！皮肤是麻了，可里面怎么还会被扯得难受？医生，能告诉我做到哪了吗？」",
+      "incise_none": "「啊啊——！！好疼！医生，等一下！我知道不能动，可真的好疼……先停一下啊！」",
+      "contact_pause": "「停、停下来了？呼……给我几秒就好。别一声不响又开始，吓死人了。」",
+      "contact_command": "「听见啦！不许缩、不许动，我都懂！可疼起来身体就是会自己躲啊！」",
+      "contact_continue": "「还要继续？……好、好吧。你先提醒一声，我会尽量配合，别突然来一下。」",
+      "ongoing_narrate": "「嗯，你讲下一步，我就知道该等什么了……不过可别拿“马上就好”敷衍我哦。」",
+      "ongoing_eye_contact": "「干嘛一直看着我……？……算啦，至少还有人在留意我。我没事，继续说吧。」",
+      "ongoing_silent": "「喂？怎么突然都不说话了？不会是出了什么状况吧？！医生，回答我一下啊！」",
+      "closure_reassure": "「真的快结束了？这次没骗我吧……？那我可要当真了哦。」",
+      "closure_coach": "「呼……好，照你说的慢慢呼吸。可恶，堂堂忍者还得让护士教怎么放松……」",
+      "closure_silent": "「……我真的没力气嘴硬了。弄完以后叫我一声……拜托你们。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌、灌肠？！这个也是手术准备？喂，先把门关好再说啦！」",
+        "「……好，我知道不是在捉弄我。可是别一边准备一边跟我闲聊，真的很难为情啊！」",
+        "「忍者也会遇到这种事吗……行啦，我配合！你们开始前记得提醒我。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「咦，不用灌肠？好！这项决定本小姐举双手赞成！」",
+        "「省掉了？呼……我刚才还以为马上要做呢。那下一项呢？」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……连这种位置也要处理啊？！等一下，先让我把心情整理好！」",
+        "「我知道是为了手术啦……可你们说得也太轻松了吧。帘子拉好了没有？」",
+        "「行行行，我不会乱动。只是这种准备我以前连想都没想过……脸都快烧起来了！」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「不用备皮？太好了！……咳，我是说，流程合理就好。」",
+        "「诶，这项不需要？那你们早说啊，我刚才白紧张那么久！」"
+      ],
+      "ward_surgical_cap": [
+        "「连头发和耳朵都要全包进去？喂，这样我的忍者发型可就完全没了！」",
+        "「等等，这边还有一点头发没收进去……好啦，我自己弄，别像抓小孩一样抓我。」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂放这里、腿摆那里……知道啦。我平时摆过更难的姿势，可躺着被指挥还真不习惯。」",
+        "「好，照你说的调整。可是这手术台有点冷，能不能先告诉我还要怎么摆？」",
+        "「这边再挪一点？没问题。……喂，别看我一直嘴硬，其实心跳快得不行啦。」"
+      ],
+      "operative_positioning_none": [
+        "「等等！连麻醉都不用，就要这样固定着开刀？我疼起来真的不会想躲吗？！」",
+        "「要我从头到尾不动？说得容易……我可是清醒的啊！你们至少得听我说话！」",
+        "「现在只是摆好姿势就够紧张了。等一下真的下刀，我要是忍不住怎么办……？」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿？！这也要做吗……呜，我宁可再潜入一次敌方基地，也不想被一屋子人盯着啊！」",
+        "「我知道啦，是正常护理……护士小姐，拜托动作前先提醒我，别让我吓得一缩。」",
+        "「等一下，别说得这么响啊……我、我不是拒绝，就是有点丢脸嘛！」"
+      ],
+      "urinary_catheterization_none": [
+        "「没麻醉就要导尿？等、等等，让我先把腿放松……我现在全身都绷着！」",
+        "「我会配合的……不过你碰之前一定要说一声。我真的怕自己突然乱动。」",
+        "「这都还没开始开刀呢，我就紧张成这样……接下来可怎么办啊！」"
+      ],
+      "skin_disinfection_awake": [
+        "「噫，好凉！消毒液怎么一下子擦这么大一片啊？」",
+        "「啊，消毒到这里啦……好，我会躺好。你们开始下一步前告诉我一声。」",
+        "「……范围比我想的还大。看着这些准备，突然有点不像在做梦了。」"
+      ],
+      "skin_disinfection_none": [
+        "「好凉……等等，消毒完就真的要直接动刀了？我可还是完全清醒着啊！」",
+        "「光是消毒我都紧张得发抖了。医生，没麻醉的话，第一刀前一定要说啊！」",
+        "「这不是演习啊……我知道。可我真的还没想好要怎么撑住。」"
+      ],
+      "incision_marking_awake": [
+        "「这条线就是准备切开的地方？……画在自己身上，看起来比说明图吓人多啦。」",
+        "「画完了吗？好，等真正开始前叫我一声。别让我一直猜着等。」",
+        "「哇……这记号还挺明显的。呃，我不是在夸奖啦，就是……有点紧张。」"
+      ],
+      "incision_marking_none": [
+        "「等等，真的要沿着这里切下去？一点麻醉都没有……你们可别突然动手啊！」",
+        "「只是画线就让我心跳这么快了……等会儿那把刀真的碰上来怎么办？！」",
+        "「喂，医生，开始前再跟我说一遍吧……我现在可不是在逞强。」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生！本小姐本来还能到处跑呢，可现在身体突然不对劲了：{line}",
+      "primary": "好啦，我认真说。最明显的状况是：{line} 这次可不是我故意夸张！",
+      "secondary": "还有这个也要记上哦：{line} 我不是想找麻烦，只是想把情况讲清楚。",
+      "background": "我叫尤菲，从五台来的忍者！平时为了魔晶石四处跑任务，动作可利索了。就是坐车容易晕……不过今天是来认真看病的，别把我当成只会闹腾的人。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "尤菲·如月的门诊检查",
+    "full_undress": {
+      "prompt": "「哈？要把衣服全部脱掉才能检查？！我平时穿什么都能自在行动，可在医生面前这样……等一下啦，先告诉我要检查哪些部位！」",
+      "responses": {
+        "abandon_full_undress": "「啊，这项先不做？呼……太好了！不过真的该查的可别因为我嚷嚷就漏掉啊。」",
+        "authoritative_full_undress": "「知、知道了啦！不用像对新兵一样发号施令。我会配合的……先把帘子拉好。」",
+        "gentle_full_undress": "「……好吧，你这样解释我就明白了。给我一点时间准备，别一直看着我嘛。」",
+        "threaten_full_undress": "「喂，别用吓人的口气！我知道检查很重要，你说清楚理由我自然会配合！」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "尤菲·如月的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「医生，今天就要做手术？……我本来想轻松搞定的。先把计划告诉我吧，别让我躺到台上才发现漏听了什么。」",
+      "graphic_preop_question": "「那个……我想问清楚，等下进手术室以后，摆好姿势、消毒、真正切开，是怎么一步步来的？别只说“忍忍就好”啊，我想知道真的会发生什么。」",
+      "graphic_preop_dialogue": "尤菲原本抱着胳膊，像听一次潜入任务简报那样兴致勃勃，还不时插话确认。随着医护把待会儿的体位、消毒、切开及手术操作解释得越来越具体，她的笑容一点点僵住。她意识到这些步骤不是让自己灵巧地躲开，而是要由自己躺在台上亲身接受，终于没再开玩笑。",
+      "team": "你将担任尤菲·如月本次手术的主刀。请确认助手医生、器械护士和巡回护士的岗位职责。",
+      "preparation": "请为尤菲·如月安排病房准备护士，并根据当前病例确认实际需要的术前准备与照护项目。",
+      "prepared": "「呼，准备终于结束了？我都照你们说的做啦！……下一步要上手术台了吧？突然有点紧张呢。」",
+      "changing": "你与本次手术团队按照既有流程更衣、刷手并完成无菌准备，即将进入手术室。",
+      "operating_room": "「哇，这里比想象中还亮……护士小姐，我手放哪儿？等、等等，你别一口气下那么多指令啦！」",
+      "team_confirmations": "手术团队逐项核对尤菲·如月的身份、当前病例所选术式与人员分工。尤菲听得很仔细，努力保持一副镇定的表情。",
+      "procedure_select": "请根据当前病例及既定治疗安排核对本次所用术式，不得依据患者身份预设疾病。",
+      "procedure_mismatch": "「喂！你们刚才确认的明明不是这个术式吧？先停一下重新核对，可别把本小姐当成走错任务的人啊！」",
+      "ready": "尤菲·如月已完成本次病例所需的准备并躺在手术台上。请核对麻醉方式、体位与开始手术的条件。",
+      "general_induction": "「……好吧，那我闭眼了。下次睁开眼睛可要告诉我已经结束了哦……拜托。」",
+      "surgery_start_general": "尤菲·如月已进入全身麻醉状态，不会作出清醒的术中回应。团队完成监护与术前确认，准备按本次术式开始操作。",
+      "surgery_start_epidural": "「咦，我的腿真的不听使唤了……好奇怪。医生，我还醒着，开始前叫我一声哦。」",
+      "surgery_start_local": "「局部已经麻好了吧？那我不动。可是里面如果疼，我一定会说，你们要听啊！」",
+      "surgery_start_none": "「等下！真的完全不麻醉？……我现在连心跳声都听得见了，你们要下刀前一定先告诉我！」",
+      "instrument_handoff": "主刀发出器械要求，器械护士根据本次术式与当前操作阶段递交相应器械。",
+      "assistant_ready": "助手医生确认暴露与牵引条件，并等待主刀发出下一步操作指令。",
+      "incision_ready": "团队核对切口位置与麻醉状态。助手维持术野，器械护士备好所需器械，等待开始切开。",
+      "general_operation": "在全身麻醉状态下，尤菲·如月不作出清醒反应。团队持续监护并依当前术式推进手术。",
+      "operative_contact": "手术进入需要患者回应的阶段时，仅在尤菲保持清醒的麻醉模式下调用其专属交流反应；实际不适程度依现有患者状态与术式规则判定。",
+      "ongoing_interaction": "当前术式继续推进。若尤菲保持清醒，她起初试图靠玩笑掩饰紧张，随后可能因疼痛或不确定感变得急躁，要求医护明确回应。",
+      "closure_interaction": "手术进入收尾阶段。若尤菲清醒，她会迫切确认还剩多少步骤；若已处于全麻状态，则只显示团队操作与交接叙述。",
+      "procedure_flow": "进入当前已选择术式的既定阶段流程，按已有手术规则继续。",
+      "procedure_execute": "主要操作完成。团队复核术野与必要技术结果，继续进行本次术式规定的处理。",
+      "surgery_result": "手术结束。团队完成相应的止血、切口处理、器械清点与术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切了吗？没有刚才想的那种尖痛，可这股压力……呜，真的开始了啊。」",
+      "incise_local": "「嘶——等一下！皮肤是麻了，可里面怎么还会被扯得难受？医生，能告诉我做到哪了吗？」",
+      "incise_none": "「啊啊——！！好疼！医生，等一下！我知道不能动，可真的好疼……先停一下啊！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 术前准备 · 备皮",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/skin_prep.png"],
+        "caption": "尤菲·如月按当前术前准备安排完成备皮。"
+      },
+      {
+        "id": "ward_enema_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 术前准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/enema.png"],
+        "caption": "尤菲·如月按当前术前安排完成灌肠准备。"
+      },
+      {
+        "id": "ward_surgical_cap_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 病房准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_surgical_cap"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/surgical_cap.png"],
+        "caption": "尤菲·如月戴好手术帽，准备转运至手术室。"
+      },
+      {
+        "id": "stretcher_transfer_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 病房准备 · 转运担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/stretcher_transfer.png"],
+        "caption": "病房准备结束后，尤菲·如月躺上担架车，准备转运。"
+      },
+      {
+        "id": "urinary_catheterization_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 手术室准备 · 留置导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/urinary_catheterization.png"],
+        "caption": "尤菲·如月在手术室准备阶段接受留置导尿。"
+      },
+      {
+        "id": "skin_disinfection_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/skin_disinfection.png"],
+        "caption": "手术团队按预定范围为尤菲·如月完成术野消毒。"
+      },
+      {
+        "id": "operative_positioning_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 手术室准备 · 体位摆放与固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["operative_positioning"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/operative_positioning.png"],
+        "caption": "团队依照当前术式为尤菲·如月完成体位摆放与固定。"
+      },
+      {
+        "id": "sterile_draping_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 手术室准备 · 铺设无菌单",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ack_disinfection"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/sterile_draping.png"],
+        "caption": "消毒完成后，团队为尤菲·如月铺设无菌单并保留预定术野。"
+      },
+      {
+        "id": "incision_ready_patient_yuffie_kisaragi",
+        "label": "尤菲·如月 · 手术准备 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_yuffie_kisaragi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_yuffie_kisaragi/scalpel_ready.png"],
+        "caption": "器械护士递上手术刀，尤菲·如月在正式开始前等待主刀确认。"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

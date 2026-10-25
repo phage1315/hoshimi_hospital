@@ -125,7 +125,7 @@ func load_staff_bundles(config: Dictionary) -> void:
 				collections.character_events.append(_compile_event_script(row))
 
 func _compile_event_script(source: Dictionary) -> Dictionary:
-	if not (source.get("script", []) is Array):
+	if not source.has("script") or not (source["script"] is Array):
 		return source
 	var result := source.duplicate(true)
 	var beats: Array = result.get("script", [])

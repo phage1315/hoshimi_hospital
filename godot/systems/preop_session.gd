@@ -87,6 +87,11 @@ var fear := 35
 var pain := 0
 var dignity := 100
 var cooperation_base := 70
+# Presentation-only state, never part of the durable save contract.
+var assistant_anesthesia_reacted := false
+var assistant_anesthesia_pending := false
+var assistant_attitude_event := -1
+var assistant_attitude := "neutral"
 var anesthesia := "未选择"
 var procedure_id := ""
 var procedure_name := ""
@@ -167,6 +172,7 @@ func snapshot_state() -> Dictionary:
 	# New saves store durable state directly. `events` remains an in-memory
 	# runtime history only and is intentionally not serialized.
 	var fields := [
+		"assistant_anesthesia_reacted", "assistant_anesthesia_pending", "assistant_attitude_event", "assistant_attitude",
 		"stage_id", "event_count", "team", "selected_preparations", "flags", "done",
 		"minutes", "anxiety", "fear", "pain", "dignity", "cooperation_base", "anesthesia",
 		"procedure_id", "procedure_name", "procedure_minutes", "procedure_extra_minutes",
@@ -207,6 +213,7 @@ func restore_state(state: Dictionary) -> bool:
 	if saved_stage.is_empty() or not stages.has(saved_stage):
 		return false
 	var fields := [
+		"assistant_anesthesia_reacted", "assistant_anesthesia_pending", "assistant_attitude_event", "assistant_attitude",
 		"stage_id", "event_count", "team", "selected_preparations", "flags", "done",
 		"minutes", "anxiety", "fear", "pain", "dignity", "cooperation_base", "anesthesia",
 		"procedure_id", "procedure_name", "procedure_minutes", "procedure_extra_minutes",
@@ -1162,6 +1169,8 @@ func qualified(id: String, role: Dictionary) -> bool:
 	if restrict_to_known_staff and id not in known_staff_ids:
 		return false
 	var person: Dictionary = roster[id]
+	if str(role.get("id", "")) == "primary_surgeon" and "primary_surgeon" not in person.get("surgical_roles", []):
+		return false
 	return str(person.get("team_category", person.profession)) == str(role.profession)
 
 func candidates(role_id: String) -> Array:
@@ -1850,6 +1859,9 @@ func apply_crisis_rescue(option_id: String, roll: int) -> bool:
 	feedback_speaker = "narrator"
 	last_staff_id = ""
 	last_staff_role = ""
+	var assistant_reply := assistant_completion_line(false)
+	if not assistant_reply.is_empty():
+		feedback += "\n" + str(roster[team.assistant_surgeon].name) + "：" + assistant_reply
 	stage_id = "surgery_abort"
 	clamp_procedure_state()
 	return true
@@ -2402,6 +2414,14 @@ func action_visible(action: Dictionary) -> bool:
 	return true
 
 func apply(event: Variant) -> bool:
+	if event is Dictionary and event.get("kind", "") == "assistant_anesthesia_ack":
+		if event.size() != 1 or not assistant_anesthesia_pending:
+			return false
+		assistant_anesthesia_pending = false
+		assistant_attitude_event = -1
+		return true
+	if assistant_anesthesia_pending:
+		return false
 	last_error = "这项操作当前不可用。"
 	if not event is Dictionary or not event.get("kind") is String:
 		return false
@@ -2934,6 +2954,7 @@ func apply(event: Variant) -> bool:
 				var stabilization_reaction_id := "assistant_stabilize_none" if operative_without_effective_analgesia() else "assistant_stabilize_local" if flags.has("local_anesthesia") else "assistant_stabilize_epidural"
 				var stabilization_fallback := "“Do not press there—it hurts! I will try not to move, but please do not use sudden force...!”" if english_mode() and stabilization_reaction_id.ends_with("none") else "“I can feel you holding that area steady... Please tell me before the incision.”" if english_mode() else "「别按那里——很痛！我会努力不动，可是请不要突然用力……！」" if stabilization_reaction_id.ends_with("none") else "「我感觉到你们固定住那里了……请告诉我什么时候会下刀。」"
 				feedback += "\n%s：%s" % [patient_name, patient_reaction(stabilization_reaction_id, stabilization_fallback)]
+			present_assistant_anesthesia_reaction(str(action.id))
 			if action.next != null:
 				var action_next: String = str(action.next)
 				if action.id == "acknowledge_procedure_mismatch":
@@ -3002,6 +3023,10 @@ func intraoperative_response(staff_id: String, response_id: String, authored: St
 	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(response_id + (":correction" if correction else ""), ""))
 	if not custom_response.is_empty():
 		return patient_dialogue_text(custom_response)
+	if staff_id == str(team.get("assistant_surgeon", "")):
+		var line := assistant_line("crisis_observation" if correction else "routine_assist")
+		if not line.is_empty():
+			return line
 	var scoped_dialogue_key := "intraoperative_correction" if correction else "intraoperative"
 	var scoped_response := procedure_group_team_dialogue(staff_id, scoped_dialogue_key)
 	if not scoped_response.is_empty():
@@ -3023,6 +3048,10 @@ func assignment_response(role_id: String, staff_id: String = "") -> String:
 	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get("assignment:" + role_id, ""))
 	if not custom_response.is_empty():
 		return patient_dialogue_text(custom_response)
+	if role_id == "assistant_surgeon":
+		var line := authored_staff_line(staff_id, "surgical_assistant_dialogue.offer_accept")
+		if not line.is_empty():
+			return line
 	if not staff_id.is_empty():
 		var scoped_response := procedure_group_team_dialogue(staff_id, "assignment")
 		if not scoped_response.is_empty():
@@ -3064,6 +3093,11 @@ func staff_action_response(staff_id: String, action_id: String, authored: String
 	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(action_id, ""))
 	if not custom_response.is_empty():
 		return patient_dialogue_text(custom_response)
+	if staff_id == str(team.get("assistant_surgeon", "")):
+		var pool := "before_incision" if action_id in ["confirm_team", "confirm_assistant_role"] else "patient_responding_awake" if action_id == "assistant_stabilize" and not flags.has("anesthetized") else "routine_assist"
+		var line := assistant_line(pool)
+		if not line.is_empty():
+			return line
 	if str(roster.get(staff_id, {}).get("profession", "")) == "nurse" and staff_has_low_surgery_proficiency(staff_id):
 		var nurse_fallback := "“I am not familiar with this step. Please verify it once more, Dr. Sakaguchi.”" if english_mode() else "「这个步骤我不太熟，请坂口医生再确认一次。」"
 		return inexperienced_nurse_response(staff_id, action_id, nurse_fallback)
@@ -3079,6 +3113,49 @@ func staff_action_response(staff_id: String, action_id: String, authored: String
 		return scoped_response
 	var custom := str(roster.get(staff_id, {}).get("team_dialogue", {}).get(dialogue_key, ""))
 	return authored if custom.is_empty() else custom
+
+func authored_staff_line(staff_id: String, pool: String) -> String:
+	var lines: Array = roster.get(staff_id, {}).get("authored_dialogue", {}).get(pool, [])
+	if lines.is_empty():
+		return ""
+	var line: Variant = lines[posmod(hash("%s:%s:%s:%s" % [patient_name, procedure_id, pool, event_count]), lines.size())]
+	if line is Dictionary:
+		return str(line.get("en" if english_mode() else "zh_CN", ""))
+	return str(line)
+
+func assistant_line(pool: String) -> String:
+	return authored_staff_line(str(team.get("assistant_surgeon", "")), "surgical_assistant_dialogue." + pool)
+
+func present_assistant_anesthesia_reaction(action_id: String) -> void:
+	# Deferring 'none' until the explicit confirmation avoids reacting to an
+	# abandoned provisional selection. An ineffective epidural is still anesthesia.
+	if assistant_anesthesia_reacted or action_id not in ["choose_general", "choose_local", "choose_epidural", "insist_without_anesthesia"]:
+		return
+	var without_anesthesia := action_id == "insist_without_anesthesia"
+	var line := assistant_line("anesthesia_selected." + ("none" if without_anesthesia else "with_anesthesia"))
+	if line.is_empty():
+		return
+	assistant_anesthesia_reacted = true
+	assistant_anesthesia_pending = true
+	assistant_attitude = "pleased" if without_anesthesia else "bored"
+	assistant_attitude_event = event_count + 1
+	last_staff_id = str(team.get("assistant_surgeon", ""))
+	last_staff_role = "assistant_surgeon"
+	# Keep the patient's authored reaction, including its speaker, intact.
+	if feedback_speaker == "patient":
+		feedback = patient_name + "：" + feedback
+	feedback += "\n" + str(roster[last_staff_id].name) + "：" + line
+	feedback_speaker = "staff"
+
+func assistant_presentation_expression() -> String:
+	if assistant_attitude_event == event_count and last_staff_id == str(team.get("assistant_surgeon", "")) and not surgery_success and not surgery_aborted and active_crisis.is_empty():
+		return assistant_attitude
+	return "neutral"
+
+func assistant_completion_line(success: bool) -> String:
+	if not success:
+		return assistant_line("after_abort_or_failure")
+	return assistant_line("after_success_no_anesthesia" if anesthesia == "未麻醉" else "after_success_with_anesthesia")
 
 func presentation_staff() -> Dictionary:
 	return roster.get(last_staff_id, {})

@@ -22,6 +22,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 	var record: String = prep.surgery_display_text(str(prep.feedback)).replace("{patient}", prep.patient_name)
 	if not prep.surgery_state_summary().is_empty():
 		record += "\n" + prep.surgery_state_summary()
+	var assistant_reply: String = prep.assistant_completion_line(true)
+	if not assistant_reply.is_empty():
+		record += "\n" + str(prep.roster[prep.team.assistant_surgeon].name) + "：" + assistant_reply
 	var seen_staff := {}
 	for actor_id in prep.team.values():
 		if seen_staff.has(actor_id):

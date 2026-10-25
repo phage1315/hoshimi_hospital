@@ -1,0 +1,141 @@
+{
+  "id": "doc_serika",
+  "name": "御園芹香",
+  "age": 25,
+  "profession": "doctor",
+  "specialty": "影像／放射诊断科",
+  "rank": "影像诊断科医生",
+  "personality": "疏离、戒心强；对病例认真，临床谨慎可靠",
+  "appearance": "棕色长发；身高164厘米，三围88／57／87厘米，C罩杯",
+  "skills": {
+    "surgery": 86,
+    "diagnostics": 94,
+    "teamwork": 62,
+    "patient_care": 64,
+    "instrument_handling": 78,
+    "calmness": 89
+  },
+  "surgical_roles": [
+    "assistant_surgeon"
+  ],
+  "visuals": {
+    "color": "987343",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "white_coat",
+      "casual",
+      "casual_winter",
+      "scrubs",
+      "sterile"
+    ],
+    "portraits": {
+      "white_coat/neutral": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+      "casual/neutral": "assets/characters/misono_serika_v1/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/misono_serika_v1/casual_winter/neutral.png",
+      "scrubs/neutral": "assets/characters/misono_serika_v1/scrubs/neutral.png",
+      "sterile/neutral": "assets/characters/misono_serika_v1/sterile/neutral.png",
+      "white_coat/cold": "assets/characters/misono_serika_v1/white_coat/cold.png",
+      "white_coat/focused": "assets/characters/misono_serika_v1/white_coat/focused.png",
+      "white_coat/impatient": "assets/characters/misono_serika_v1/white_coat/impatient.png",
+      "casual/sad": "assets/characters/misono_serika_v1/casual/sad.png",
+      "casual/shy": "assets/characters/misono_serika_v1/casual/shy.png",
+      "casual/soft_smile": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+      "casual/surprised": "assets/characters/misono_serika_v1/casual/surprised.png",
+      "casual/talking": "assets/characters/misono_serika_v1/casual/talking.png",
+      "casual_winter/sad": "assets/characters/misono_serika_v1/casual_winter/sad.png",
+      "casual_winter/shy": "assets/characters/misono_serika_v1/casual_winter/shy.png",
+      "casual_winter/soft_smile": "assets/characters/misono_serika_v1/casual_winter/soft_smile.png",
+      "casual_winter/surprised": "assets/characters/misono_serika_v1/casual_winter/surprised.png",
+      "casual_winter/talking": "assets/characters/misono_serika_v1/casual_winter/talking.png",
+      "casual_winter/wry_smile": "assets/characters/misono_serika_v1/casual_winter/wry_smile.png",
+      "casual/wry_smile": "assets/characters/misono_serika_v1/casual/wry_smile.png",
+      "scrubs/focused": "assets/characters/misono_serika_v1/scrubs/focused.png",
+      "scrubs/surprised": "assets/characters/misono_serika_v1/scrubs/surprised.png",
+      "scrubs/talking": "assets/characters/misono_serika_v1/scrubs/talking.png",
+      "scrubs/worried": "assets/characters/misono_serika_v1/scrubs/worried.png",
+      "sterile/focused": "assets/characters/misono_serika_v1/sterile/focused.png",
+      "sterile/stern": "assets/characters/misono_serika_v1/sterile/stern.png",
+      "sterile/surprised": "assets/characters/misono_serika_v1/sterile/surprised.png",
+      "sterile/worried": "assets/characters/misono_serika_v1/sterile/worried.png",
+      "white_coat/angry": "assets/characters/misono_serika_v1/white_coat/angry.png",
+      "white_coat/sad": "assets/characters/misono_serika_v1/white_coat/sad.png",
+      "white_coat/shy": "assets/characters/misono_serika_v1/white_coat/shy.png",
+      "white_coat/soft_smile": "assets/characters/misono_serika_v1/white_coat/soft_smile.png",
+      "white_coat/surprised": "assets/characters/misono_serika_v1/white_coat/surprised.png",
+      "white_coat/talking": "assets/characters/misono_serika_v1/white_coat/talking.png",
+      "white_coat/worried": "assets/characters/misono_serika_v1/white_coat/worried.png",
+      "white_coat/wry_smile": "assets/characters/misono_serika_v1/white_coat/wry_smile.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_serika/neutral.png",
+      "white_coat/smile": "assets/characters/misono_serika_v1/white_coat/soft_smile.png",
+      "casual/smile": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+      "casual_winter/smile": "assets/characters/misono_serika_v1/casual_winter/soft_smile.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_serika/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "dialogue_style": "语言短、干净、精确；偶有干涩幽默，私人交流保持距离",
+  "flags": [
+    "serika_intro_pending",
+    "after_work_disabled"
+  ],
+  "event_history": [],
+  "gender": "female",
+  "team_category": "doctor",
+  "surgery_proficiency": "advanced",
+  "presence": {
+    "fixed_locations": [
+      "imaging"
+    ],
+    "random_locations": [],
+    "rooftop_enabled": false
+  },
+  "team_dialogue": {
+    "assignment": "「助手位可以。主刀的事不要问我。」",
+    "confirmation": "「影像和手术计划我看过了，关键位置已经记住。」",
+    "intraoperative": "「视野够了。接下来的步骤按你的节奏。」",
+    "stabilize": "「听见她的反应了吗？先告诉她现在做到哪一步。」",
+    "role_confirmation": "「影像和手术计划我看过了，关键位置已经记住。」",
+    "intraoperative_correction": "「左侧再看一眼。片子上那条血管不是画给你装饰用的。」"
+  },
+  "familiarity_rules": {
+    "base": 0.5,
+    "operations": [
+      {
+        "input": "relationship_level",
+        "mode": "replace",
+        "bands": [
+          {
+            "maximum": 2,
+            "value": 0.5
+          },
+          {
+            "minimum": 3,
+            "maximum": 3,
+            "value": 0.8
+          },
+          {
+            "minimum": 4,
+            "value": 1.0
+          }
+        ]
+      }
+    ],
+    "source_overrides": {
+      "surgery": {
+        "minimum_reward": 4
+      },
+      "imaging_discussion": {
+        "fixed_reward": 3
+      }
+    }
+  },
+  "post_operation_replies": [
+    "「术后复查我会再看。今天的配合……没有问题。」"
+  ]
+}

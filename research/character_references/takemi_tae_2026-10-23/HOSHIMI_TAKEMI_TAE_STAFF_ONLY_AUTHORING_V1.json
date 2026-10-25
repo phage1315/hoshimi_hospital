@@ -1,0 +1,97 @@
+{
+  "_status": "CODEX_STAFF_AND_DIALOGUE_ONLY_AUTHORING_V1_NOT_RUNTIME_VALIDATED",
+  "_scope": "Character data, staff roles, ordinary location/dialogue assets. NO LV0 EVENT IMPLEMENTATION.",
+  "character": {
+    "name_zh_CN": "武見妙",
+    "name_ja": "武見 妙",
+    "name_en": "Tae Takemi",
+    "origin": "ATLUS Persona 5 / Persona 5 Royal; Hoshimi Hospital AU",
+    "adult": true,
+    "age_exact": null,
+    "age_category": "mature_adult",
+    "public_age_label": "??",
+    "profession": "physician",
+    "specialization": "外科／临床研究",
+    "employment_status": "ALREADY_AFFILIATED_WITH_HOSPITAL",
+    "character_voice": "初见高冷；熟悉后慵懒而疏离；遇到临床关键问题立刻敏锐。不要写成全天候冷酷反派。"
+  },
+  "skills_proposed_0_to_100": {
+    "surgery": 94,
+    "diagnostics": 90,
+    "teamwork": 73,
+    "patient_care": 60,
+    "instrument_handling": 93,
+    "calmness": 95
+  },
+  "skills_confirmation": {
+    "numbers": "AUTHOR_REVIEW_PENDING",
+    "confirmed_relative_surgery": "与御堂江美子同档、不相上下",
+    "confirmed_relative_teamwork": "略低于御堂江美子；因为术式难以预测，不是她拒绝合作",
+    "validation": "Codex须从当前工程读御堂真实数值，发现相对约束不符时回报并请作者确认；不得无声覆盖已确认的其他医生数值。"
+  },
+  "roles": {
+    "regular_primary_surgeon": false,
+    "ordinary_surgical_assistant": true,
+    "ward_nurse": false,
+    "scrub_nurse": false,
+    "circulating_nurse": false,
+    "personal_nurse": false,
+    "role_access": "助手仅在未来正式相识Lv0完成后开放；不是本批自动解锁",
+    "director_restriction": "城宮明日香禁止她独立常规主刀，不限制她参与普通手术的医生助手位",
+    "special_script_primary_surgeon": "后续固定剧情可另行授权；本批不得开放"
+  },
+  "relationship_initial_state": {
+    "met": false,
+    "relationship_level": 0,
+    "familiarity": 0,
+    "familiarity_multiplier": "USE_EXISTING_PROJECT_DEFAULT_UNLESS_FUTURE_CANON_OVERRIDES",
+    "do_not_auto_unblock_character": true
+  },
+  "presence_after_future_lv0": {
+    "primary_office": "地下研究室",
+    "other_low_frequency_locations": ["手术室", "员工休息室", "天台"],
+    "schedule_weights": "CODEX_AUDIT_EXISTING_LOCATION_SCHEDULE_SYSTEM; do not invent percentages",
+    "map_ids": "CODEX_RESOLVE_ACTUAL_IDS",
+    "enabled_in_this_pack": false,
+    "note": "角色名与工作地点等资源可提前注册，但相识前不进入普通可互动地图/邀请池；地下研究室的三态地图和解锁动作由将来另行审阅的Lv0包负责。"
+  },
+  "surgery_assistant_anesthesia_tone": {
+    "only_when_currently_assigned_as_assistant": true,
+    "trigger_semantics": "AFTER_ACTUAL_ANESTHESIA_CHOICE",
+    "none": "明显开心、很有兴趣；短句里带轻微笑意",
+    "any_anesthesia": "意兴阑珊，觉得少了观察价值；保持专业",
+    "local_regional_general_are_anesthetized": true,
+    "maximum_reaction_per_surgery": 1,
+    "mechanical_effect_on_skills": false,
+    "mechanical_effect_on_crisis_or_success": false,
+    "mechanical_effect_on_reputation_or_familiarity": false,
+    "existing_no_anesthesia_reputation_penalty_unchanged": true,
+    "dialogue_file": "HOSHIMI_TAKEMI_TAE_DIALOGUE_AUTHORING_V1.json"
+  },
+  "art_policy": {
+    "identity_reference": "用户指定的原作/官方锚点图，非后续AI生成图",
+    "asset_paths": "CODEX_VERIFY_ACTUAL_PROJECT_RESOURCES",
+    "preserve_character_age_body_proportions": true,
+    "surgical_costume": "完整遮发遮耳手术帽、系带式口罩、长袖手术袍、手套"
+  },
+  "implementation_scope": {
+    "register_character_profile": true,
+    "register_existing_staff_dialogue": true,
+    "prepare_disabled_assistant_role": true,
+    "register_post_intro_location_candidates_without_exposing_them": true,
+    "register_lv0_events": false,
+    "register_lv0_gate_counters_or_stage_flags": false,
+    "unlock_character_or_assistant_during_this_import": false,
+    "unlock_underground_lab_map": false,
+    "implement_lv1_to_lv5": false,
+    "create_h_runner_location_or_event": false
+  },
+  "integration_warnings": [
+    "当前只有医护与对白资料，Lv0全文未获作者审阅；不可从角色设定或旧ZIP顺手生成或注册Lv0事件。",
+    "不能为了使角色立刻可选，把正式相识状态改为true；可使用既有开发测试fixture覆盖，不新增面向玩家的临时解锁按钮。",
+    "武見在助手位置有两种麻醉态度，但无论兴奋或无聊，她的专业能力、合作行为与手术危机处理都稳定可靠。",
+    "医生助手工作对白不可接管器械／巡回护士的危机播报或护士岗位。",
+    "目前六维整数是待确认提案；整合真实御堂数据后向作者回报。",
+    "运行时内部actor_id、麻醉枚举、角色头像、地点、语言索引不可凭本文臆造。"
+  ]
+}

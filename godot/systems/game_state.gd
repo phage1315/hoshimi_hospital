@@ -10,8 +10,12 @@ const PresenceResolver = preload("res://godot/systems/presence_resolver.gd")
 const FixedCalendar = preload("res://godot/systems/fixed_calendar.gd")
 const Progression = preload("res://godot/systems/progression_config.gd")
 const StaffPatient = preload("res://godot/systems/staff_patient_registry.gd")
-const SAVE_VERSION := 36
-const MIN_SUPPORTED_SAVE_VERSION := 35
+const BoundarySave = preload("res://godot/systems/boundary_save.gd")
+const SAVE_VERSION := 37
+# Derived accounting offset; elapsed_minutes in the save is authoritative.
+var settled_clock_offset := 0
+var last_restore_error_key := ""
+const MIN_SUPPORTED_SAVE_VERSION := 36
 const CONTENT_VERSION := 1
 const STATE_DICTIONARY_SAVE_FORMAT := "state_dictionary_v1"
 const SHIFT_START_MINUTE := 9 * 60
@@ -52,6 +56,8 @@ var leadership_xp_history: Array[Dictionary] = []
 var staff_skill_levels: Dictionary = {}
 var staff_training_credits: Dictionary = {}
 var successful_no_anesthesia_surgeries := 0
+# Ephemeral post-settlement opportunity. Never saved or restored.
+var takemi_postop_opportunity := false
 var reported_surgeries := 0
 var unlocked_procedure_ids: Array[String] = []
 var archived_player_effects: Dictionary = {"charm": 0, "presence": 0, "reputation": 0}
@@ -194,6 +200,7 @@ func configure(data: Array, preop_data: Array = [], staff_data: Array = [], time
 	reset()
 
 func reset() -> void:
+	settled_clock_offset = 0
 	active_staff_patient.clear()
 	staff_patient_practice_counts.clear()
 	campaign_seed = randi_range(1, 2147483646)
@@ -215,6 +222,7 @@ func reset() -> void:
 	staff_training_credits.clear()
 	restore_base_staff_skills()
 	successful_no_anesthesia_surgeries = 0
+	takemi_postop_opportunity = false
 	reported_surgeries = 0
 	unlocked_procedure_ids = starting_procedure_ids()
 	archived_player_effects = zero_player_effects()
@@ -916,12 +924,11 @@ func elapsed() -> int:
 	for preparation in preops.values():
 		total += preparation.minutes
 	for event in time_log:
-		var definition: Dictionary = time_event_definitions.get(event.id, {})
-		total += int(definition.get("minutes", 0))
+		total += int(event.minutes) if event.get("minutes") != null else 0
 	for event in character_events.values():
 		if event.completed:
-			total += int(event.definition.minutes)
-	return maxi(0, total + story_time_advance_minutes - discarded_overtime_minutes)
+			total += int(event.settled_minutes) if event.settled_minutes != null else 0
+	return maxi(0, settled_clock_offset + total + story_time_advance_minutes - discarded_overtime_minutes)
 
 func current_absolute_clock() -> int:
 	return int(schedule_at(elapsed()).absolute_clock)
@@ -991,12 +998,14 @@ func free_h_unlocked(actor_id: String) -> bool:
 		if str(candidate.id) == actor_id:
 			person = candidate
 	var flags: Array = person.get("flags", [])
-	if int(person.get("age", 0)) < 18 or "professional_friendship_only" in flags or "relationship_progression_locked" in flags:
+	if not (person.get("adult", false) or (person.get("age") != null and int(person.age) >= 18)) or "professional_friendship_only" in flags or "relationship_progression_locked" in flags:
 		return false
 	return character_event_done(str(config.completion_event)) and story_flag(str(config.completion_flag)) and relation_for(actor_id).get("unlocked_benefits", []).has("unlock_intimacy_events")
 
 func free_h_known_conflict() -> bool:
 	for definition in character_event_definitions.values():
+		if preload("res://godot/systems/takemi_introduction.gd").owns(str(definition.id)):
+			continue # Rumors defer to bookings; they never prevent making one.
 		if character_event_trigger_mode(definition) == "after_work" and character_event_available(definition):
 			return true
 	return false
@@ -1143,6 +1152,8 @@ func known_staff_ids() -> Array[String]:
 	return result
 
 func staff_can_join_surgery_team(actor_id: String) -> bool:
+	if actor_id == "doc_serika" and (relationship_level(actor_id) < 2 or not preload("res://godot/systems/serika_radiology.gd").milestone_complete(self, 2)):
+		return false
 	if actor_id == str(active_staff_patient.get("staff_id", "")):
 		return false
 	if not staff_is_met(actor_id):
@@ -1380,7 +1391,7 @@ func relationship_rank_gate_evaluation(actor_id: String, target_level: int) -> D
 	result.cooldown_met = latest_milestone_day <= 0 or int(result.cooldown_remaining) == 0
 	var rank_requirements: Array = slot.get("special_requirements", []).duplicate(true)
 	var person := staff_record(actor_id)
-	if target_level >= 5 and actor_id != "doc_sayaka" and int(person.get("age", 0)) >= 18:
+	if target_level >= 5 and actor_id != "doc_sayaka" and (person.get("adult", false) or (person.get("age") != null and int(person.age) >= 18)):
 		rank_requirements.append({"type": "story_flag", "flag": "staff_as_patient_program_authorized"})
 	result.requirements = requirements_evaluation(rank_requirements, {"actor_id": actor_id})
 	result.met = result.familiarity_met and result.cooldown_met and bool(result.requirements.met)
@@ -1564,10 +1575,27 @@ func staff_present_at(location_id: String) -> Array[String]:
 			eligible_actor_ids.append(actor_id)
 	if presence_resolver != null:
 		result = presence_resolver.staff_at(location_id, day_number(), int(schedule_at(elapsed()).absolute_clock), eligible_actor_ids)
+	# Radiology presence is a daily business fact, not an hourly reroll.
+	result.erase("doc_serika")
+	if location_id == "imaging" and staff_is_met("doc_serika") and str(active_staff_patient.get("staff_id", "")) != "doc_serika":
+		var presence_key := "serika_imaging_present:%s" % day_number()
+		if not story_flags.has(presence_key):
+			set_story_flag(presence_key, absi(hash("%s:serika_imaging:%s" % [campaign_seed, day_number()])) % 100 < 70)
+		if story_flag(presence_key):
+			result.append("doc_serika")
 	# A currently available personal event also places its actor at the event site.
 	for event in character_events_at(location_id):
+		if str(event.id).begins_with("serika_lv0_"):
+			continue
 		if event.actor_id not in result and str(event.actor_id) != str(active_staff_patient.get("staff_id", "")):
 			result.append(event.actor_id)
+	# Kaori leaves for surgery in her introduction. Keep that departure for the
+	# remainder of this day, including after loading; tomorrow uses her schedule.
+	var kaori_intro = character_events.get("intro_doc_rei")
+	if kaori_intro != null and kaori_intro.completed and int(kaori_intro.completed_day) == day_number():
+		result.erase("doc_rei")
+		if location_id == "or" and "doc_rei" in eligible_actor_ids:
+			result.append("doc_rei")
 	return result
 
 func micro_event_done(id: String) -> bool:
@@ -1682,7 +1710,7 @@ func character_event_done(id: String) -> bool:
 
 func character_event_trigger_mode(definition: Dictionary) -> String:
 	var authored := str(definition.get("trigger_mode", ""))
-	if authored in ["day_start", "location", "preop_stage", "sunday", "after_work"]:
+	if authored in ["day_start", "location", "preop_stage", "sunday", "after_work", "interaction"]:
 		return authored
 	# Compatibility for authored content predating explicit trigger modes.
 	if bool(definition.get("consumes_sunday", false)):
@@ -1701,9 +1729,33 @@ func consume_day_start_character_event() -> void:
 	set_story_flag("__day_start_character_event__%s" % day_number(), true)
 
 func character_event_available(definition: Dictionary) -> bool:
+	if preload("res://godot/systems/serika_radiology.gd").owns(str(definition.id)) and not preload("res://godot/systems/serika_radiology.gd").eligible(self, str(definition.id)):
+		return false
 	if not active_staff_patient.is_empty() and str(definition.get("actor_id", "")) == str(active_staff_patient.staff_id):
 		return false
 	var event_id := str(definition.get("id", ""))
+	if preload("res://godot/systems/takemi_introduction.gd").owns(event_id) and not preload("res://godot/systems/takemi_introduction.gd").eligible(self, definition):
+		return false
+	if event_id.begins_with("serika_lv0_"):
+		if staff_is_met("doc_serika") or active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
+	if event_id in ["miyuki_lv1_not_that_kind_of_inexperienced", "manami_lv1_sneeze"]:
+		if active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
+	if event_id == "intro_hikami_saeko_six_months":
+		# Use calendar months relative to the actual campaign start, not 180 days.
+		var start_date := calendar_date(1)
+		var now := calendar_date()
+		var months := (int(now.year) - int(start_date.year)) * 12 + int(now.month) - int(start_date.month)
+		if months < 6 or (months == 6 and int(now.date) < int(start_date.date)):
+			return false
+		if active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
+	if event_id == "intro_satsuki_new_nurse":
+		if not staff_is_met("nurse_hiroko") or not staff_is_met("doc_aqua"):
+			return false
+		if active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
 	if event_id == "intro_ishigami_nurse_manager":
 		if not staff_is_met("doc_asuka") or staff_is_met("nurse_ishigami"):
 			return false
@@ -1814,6 +1866,8 @@ func character_events_at(location_id: String) -> Array:
 		# events are owned by their dedicated schedulers.
 		if character_event_trigger_mode(definition) != "location":
 			continue
+		if str(definition.id) == "serika_lv0_a":
+			continue # Owned by the normal hospital-navigation corridor hook.
 		if definition.location_id != location_id or not character_event_available(definition):
 			continue
 		if clock < int(definition.time_start) or clock > int(definition.time_end):
@@ -1824,6 +1878,10 @@ func character_events_at(location_id: String) -> Array:
 			return int(a.priority) > int(b.priority)
 		return a.id < b.id)
 	return result
+
+func next_hospital_corridor_event() -> Dictionary:
+	var definition: Dictionary = character_event_definitions.get("serika_lv0_a", {})
+	return definition if not definition.is_empty() and character_event_available(definition) else {}
 
 func next_character_event_at(location_id: String) -> Dictionary:
 	var candidates := character_events_at(location_id)
@@ -1944,6 +2002,13 @@ func start_character_event(id: String) -> RefCounted:
 		return null
 	if not character_event_definitions.has(id):
 		return null
+	if preload("res://godot/systems/serika_radiology.gd").owns(id):
+		if not preload("res://godot/systems/serika_radiology.gd").eligible(self, id):
+			return null
+		# An abandoned in-memory performance restarts at OPEN, never mid-scene.
+		if character_events.has(id) and not character_events[id].completed:
+			character_events.erase(id)
+			character_event_order.erase(id)
 	if character_event_done(id):
 		return null
 	if not character_events.has(id):
@@ -2085,10 +2150,16 @@ func choose_character_event(choice_id: String) -> bool:
 	if event.completed and not relation.event_history.has(event.definition.id):
 		event.completed_day = event_day
 		relation.event_history.append(event.definition.id)
+		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)):
+			preload("res://godot/systems/serika_radiology.gd").completed(self, event_day)
+		if preload("res://godot/systems/takemi_introduction.gd").owns(str(event.definition.id)):
+			preload("res://godot/systems/takemi_introduction.gd").completed(self, str(event.definition.id))
 		if str(event.definition.id) in ["itsumi_lv0_c_corridor", "itsumi_lv0_d_instrument_tray", "itsumi_lv0_e_hiroko_invitation"]:
 			set_story_flag("itsumi_lv0_postop_seen:%s" % completed_surgeries_total)
 		if event.definition.category == "introduction":
 			complete_introduction_cast(event.definition)
+			if str(event.definition.id) == "intro_satsuki_new_nurse":
+				set_story_flag("satsuki_lv0_complete")
 		elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, relation):
 			complete_rank_up(str(event.definition.actor_id), str(event.definition.id), int(event.definition.target_level), str(event.definition.get("benefit_id", "")))
 	elif event.completed:
@@ -3386,7 +3457,7 @@ func after_work_candidates(workday: int) -> Array[String]:
 	var result: Array[String] = []
 	for person in staff:
 		var actor_id := str(person.get("id", ""))
-		if actor_id.is_empty() or not staff_is_met(actor_id):
+		if actor_id.is_empty() or not staff_is_met(actor_id) or "after_work_disabled" in person.get("flags", []):
 			continue
 		if workday - after_work_last_offer_day(actor_id) < AFTER_WORK_COOLDOWN_WORKDAYS:
 			continue
@@ -3485,11 +3556,16 @@ func time_event_done(id: String) -> bool:
 	return false
 
 func spend_time(id: String) -> bool:
+	if id == "serika_imaging_discussion":
+		last_error = "serika_imaging_discussion_unavailable"
+		return false
 	last_error = "这个时间行动当前不可用。"
 	if special_event_in_progress():
 		last_error = "特殊活动进行中，不能安排其他行动。"
 		return false
 	if not time_event_definitions.has(id):
+		return false
+	if id.begins_with("serika_imaging_") and (not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress()):
 		return false
 	var definition: Dictionary = time_event_definitions[id]
 	if definition.actor_id != null and (not staff_is_met(str(definition.actor_id)) or str(definition.actor_id) not in staff_present_at(str(definition.location_id))):
@@ -3505,7 +3581,7 @@ func spend_time(id: String) -> bool:
 	var variant := randi_range(0, responses.size() - 1)
 	last_time_event_response = responses[variant]
 	var start_time := elapsed()
-	time_log.append({"id": id, "start": start_time, "variant": variant})
+	time_log.append({"id": id, "start": start_time, "variant": variant, "minutes": int(definition.minutes)})
 	var effects: Dictionary = definition.get("effects", {})
 	if not effects.is_empty():
 		for metric in archived_player_effects:
@@ -3523,19 +3599,19 @@ func spend_time(id: String) -> bool:
 func time_history() -> Array:
 	var result: Array = []
 	for event in time_log:
-		var definition: Dictionary = time_event_definitions[event.id]
+		var definition: Dictionary = time_event_definitions.get(event.id, {})
 		var timing := schedule_at(int(event.start))
-		var responses: Array = definition.responses
+		var responses: Array = definition.get("responses", [])
 		var variant := int(event.get("variant", 0))
 		result.append({
 			"id": event.id,
-			"label": definition.label,
-			"minutes": definition.minutes,
+			"label": definition.get("label", event.id),
+			"minutes": event.get("minutes"),
 			"day": timing.day,
 			"date": calendar_iso(int(timing.day)),
 			"calendar": calendar_compact_text(int(timing.day)),
 			"clock": "%02d:%02d" % [timing.absolute_clock / 60, timing.absolute_clock % 60],
-			"response": responses[variant]
+			"response": responses[variant] if event.has("variant") and variant >= 0 and variant < responses.size() else ""
 		})
 	return result
 
@@ -3880,6 +3956,9 @@ func finish_active_surgery() -> bool:
 		var counts: Dictionary = staff_patient_practice_counts.get(actor_id, {})
 		counts[surgery_id] = staff_patient_practice_count(actor_id, surgery_id) + 1
 		staff_patient_practice_counts[actor_id] = counts
+	takemi_postop_opportunity = not preparation.is_staff_patient() and str(preparation.anesthesia) == "未麻醉" and preparation.flags.has("no_anesthesia_confirmed") # localization-invariant: anesthesia state ID
+	if takemi_postop_opportunity:
+		successful_no_anesthesia_surgeries += 1
 	completed_surgeries_total += 1
 	completed_surgeries_by_procedure[preparation.procedure_id] = int(completed_surgeries_by_procedure.get(preparation.procedure_id, 0)) + 1
 	var completed_group := surgery_procedure_group(str(preparation.procedure_id))
@@ -3900,6 +3979,7 @@ func finish_active_surgery() -> bool:
 	return true
 
 func finish_active_surgery_abort() -> bool:
+	takemi_postop_opportunity = false
 	if active_preop_id.is_empty() or not preops.has(active_preop_id):
 		return false
 	var preparation = preops[active_preop_id]
@@ -4059,7 +4139,6 @@ func award_surgery_reputation(surgery_id: String, procedure_name: String = "", p
 	if deliberately_wrong:
 		penalty += Progression.WRONG_PROCEDURE_REPUTATION_PENALTY
 	if preparation != null and preparation.flags.has("no_anesthesia_confirmed"):
-		successful_no_anesthesia_surgeries += 1
 		penalty += Progression.NO_ANESTHESIA_REPUTATION_PENALTY
 	if penalty != 0:
 		add_player_attribute_effect("reputation", penalty, "surgery_penalty_%s_%s" % [surgery_id, completed_surgeries_total + 1], "%s · 手术处置影响 %s" % [procedure_name if not procedure_name.is_empty() else surgery_id, penalty])
@@ -4460,6 +4539,10 @@ func player_attribute_history() -> Array[Dictionary]:
 	return result
 
 func snapshot() -> Dictionary:
+	return BoundarySave.new().capture(self)
+
+func runtime_snapshot() -> Dictionary:
+	# In-memory language switching only. Never pass this to SaveStore.
 	var progress := {}
 	var diagnosis_shock_visit_variants := {}
 	for id in visits:
@@ -4481,8 +4564,9 @@ func snapshot() -> Dictionary:
 	if active_adult_intimacy != null:
 		active_adult_intimacy_snapshot = active_adult_intimacy.snapshot()
 		active_adult_intimacy_snapshot["return_mode"] = adult_intimacy_return_mode
-	return {"version": SAVE_VERSION, "content_version": CONTENT_VERSION,
-		"save_format": STATE_DICTIONARY_SAVE_FORMAT,
+	return {"version": 36, "content_version": CONTENT_VERSION,
+		"_runtime_clock_offset": settled_clock_offset,
+		"save_format": "runtime_memory_only_v1",
 		"active_id": "", "progress": progress, "preops": preparation_logs,
 		"active_preop_id": "", "active_mode": "encounter",
 		"patient_cases": patient_cases.duplicate(true),
@@ -4742,12 +4826,38 @@ func migrate_operative_preparation_events(source: Array) -> Array:
 	return migrated
 
 func restore(data: Variant) -> bool:
+	last_restore_error_key = "ui.save.invalid_business"
+	var codec = BoundarySave.new()
+	var facts: Dictionary = codec.decode(data)
+	if facts.is_empty():
+		last_error = codec.error
+		last_restore_error_key = codec.error_key
+		restore_warnings.clear()
+		return false
+	if not _restore_state(facts):
+		return false
+	restore_warnings.append_array(codec.warnings)
+	last_restore_error_key = ""
+	return true
+
+func restore_runtime_snapshot(data: Dictionary) -> bool:
+	if data.get("save_format") != "runtime_memory_only_v1":
+		return false
+	var memory := data.duplicate(true)
+	memory.save_format = STATE_DICTIONARY_SAVE_FORMAT
+	memory._memory_only = true
+	return _restore_state(memory)
+
+func _restore_state(data: Variant) -> bool:
 	# Restore into temporary objects; live progress is replaced only after all
-	# required global state has been validated. New saves restore state directly;
-	# only pre-state-dictionary saves use the legacy event-log compatibility path.
+	# required global state has been validated. Only BoundarySave facts or the
+	# explicit in-memory channel may enter here; no disk log replay is allowed.
 	last_error = "存档格式不正确，当前进度未改变。"
 	restore_warnings.clear()
 	if not data is Dictionary:
+		return false
+	var boundary := bool(data.get("_boundary_facts", false))
+	if not boundary and not bool(data.get("_memory_only", false)):
 		return false
 	var version := int(data.get("version", -1))
 	if version < MIN_SUPPORTED_SAVE_VERSION or version > SAVE_VERSION or data.get("content_version") != CONTENT_VERSION:
@@ -4758,7 +4868,7 @@ func restore(data: Variant) -> bool:
 	if save_format not in ["legacy_event_log_v1", STATE_DICTIONARY_SAVE_FORMAT]:
 		last_error = "存档格式不兼容，当前进度未改变。"
 		return false
-	if state_dictionary_save and version < SAVE_VERSION:
+	if state_dictionary_save and version < 36:
 		last_error = "存档状态字典版本不兼容，当前进度未改变。"
 		return false
 	var migration_seed := 1
@@ -5066,7 +5176,20 @@ func restore(data: Variant) -> bool:
 				return false
 			restored_definitions[id] = restored_visit_definition
 		var visit = Encounter.new(restored_visit_definition, false)
-		if state_dictionary_save:
+		if boundary:
+			var fact: Dictionary = data.progress[id]
+			if not fact.get("admitted") is bool or not fact.get("notes", {}) is Dictionary or not fact.get("diagnosis", "") is String or not BoundarySave.integer(fact.get("mistakes", 0)):
+				return false
+			visit.admitted = fact.admitted
+			visit.minutes = int(fact.minutes)
+			visit.mistakes = int(fact.get("mistakes", 0))
+			visit.diagnosis = str(fact.get("diagnosis", ""))
+			visit.notes = fact.get("notes", {}).duplicate(true)
+			visit.player_effects = fact.player_effects.duplicate(true)
+			visit.player_effect_history.assign(fact.player_effect_history)
+			if visit.admitted:
+				visit.stage_id = str(visit.definition.completion)
+		elif state_dictionary_save:
 			if not data.progress[id] is Dictionary or not visit.restore_state(data.progress[id]):
 				last_error = "存档中的病例状态无效，当前进度未改变。"
 				return false
@@ -5119,7 +5242,20 @@ func restore(data: Variant) -> bool:
 				prep_patients.append(patient_definition(str(definition.staff_patient_id)))
 			var prep = Preop.new(definition, staff, surgery_definitions, prep_patients, [], false, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, [], false, palpation_profile_definitions, awake_special_bark_definitions)
 			var preop_events: Array = []
-			if state_dictionary_save:
+			if boundary:
+				var fact: Dictionary = data.preops[id]
+				if not fact.get("surgery_success") is bool or not fact.get("surgery_aborted") is bool or not fact.get("team") is Dictionary or not fact.get("procedure_id") is String:
+					return false
+				prep.minutes = int(fact.minutes)
+				prep.player_effects = fact.player_effects.duplicate(true)
+				prep.player_effect_history.assign(fact.player_effect_history)
+				prep.surgery_success = fact.surgery_success
+				prep.surgery_aborted = fact.surgery_aborted
+				if prep.surgery_success or prep.surgery_aborted:
+					prep.procedure_id = fact.procedure_id
+					prep.team = fact.team.duplicate(true)
+					prep.stage_id = str(prep.definition.completion)
+			elif state_dictionary_save:
 				if not data.preops[id] is Dictionary or not prep.restore_state(data.preops[id]):
 					last_error = "存档中的术前状态无效，当前进度未改变。"
 					return false
@@ -5219,37 +5355,31 @@ func restore(data: Variant) -> bool:
 				if not saved.has(key):
 					return false
 			restored_relationship_state[actor_id] = saved.duplicate(true)
-	var retired_sayaka_minutes := 0
-	var retired_sayaka_event := false
 	if version >= 6:
 		if not data.get("character_events") is Array or not data.get("active_character_event_id") is String:
 			return false
 		for record in data.character_events:
+			if boundary or (bool(data.get("_memory_only", false)) and record.get("state", {}).get("completed", false)):
+				if rebuilt_character_events.has(record.id):
+					return false
+				var fact: Dictionary = record if boundary else record.state
+				var definition: Dictionary = character_event_definitions.get(record.id, {"id": record.id, "actor_id": record.get("actor_id", ""), "category": "retired", "nodes": [], "start": "", "minutes": 0})
+				var completed_event = CharacterEvent.new(definition)
+				completed_event.completed = true
+				completed_event.completed_day = int(fact.completed_day)
+				completed_event.settled_minutes = fact.get("minutes" if boundary else "settled_minutes")
+				completed_event.node_id = ""
+				rebuilt_character_events[record.id] = completed_event
+				rebuilt_character_event_order.append(record.id)
+				continue
 			if not record is Dictionary or not record.get("id") is String or not character_event_definitions.has(record.id) or rebuilt_character_events.has(record.id):
 				if state_dictionary_save:
 					return false
 				restore_warnings.append("跳过无法解析的旧人物事件节点。")
 				continue
 			var event = CharacterEvent.new(character_event_definitions[record.id])
-			# The approved V2 retires exactly the old completed C failure, not
-			# arbitrary Lv0 relationships. Preserve its paid time and all numeric
-			# rewards; do not replay choices or silently grant a rank.
-			var legacy_state := sayaka_v2_completed_state(record)
-			var saved_sayaka: Dictionary = restored_relationship_state.get("doc_sayaka", {})
-			if str(record.id) == "sayaka_lv1_first_date" and bool(legacy_state.get("failed_date", false)) and int(saved_sayaka.get("level", -1)) == 0 and saved_sayaka.get("flags", []).has("sayaka_first_date_retry_pending"):
-				retired_sayaka_minutes += 120
-				retired_sayaka_event = true
-				saved_sayaka.flags.erase("sayaka_first_date_retry_pending")
-				saved_sayaka.event_history.erase("sayaka_lv1_first_date")
-				restore_warnings.append("旧版小夜香未成功约会已恢复为未触发；此前耗时与数值保留。")
-				continue
 			if state_dictionary_save:
-				if not record.get("state") is Dictionary or not event.restore_state(legacy_state.get("state", record.state)):
-					return false
-			elif version >= 19 and legacy_state.has("state"):
-				# v19-v35 already persist authoritative relationships. Translate
-				# completed old endpoints without replaying obsolete choice IDs.
-				if not event.restore_state(legacy_state.state):
+				if not record.get("state") is Dictionary or not event.restore_state(record.state):
 					return false
 			else:
 				var expected_character_event_record_size := 3 if version >= 20 else 2
@@ -5283,17 +5413,24 @@ func restore(data: Variant) -> bool:
 			rebuilt_character_events[record.id] = event
 			rebuilt_character_event_order.append(record.id)
 		rebuilt_active_character_event = data.active_character_event_id
-		if retired_sayaka_event and rebuilt_active_character_event == "sayaka_lv1_first_date":
-			rebuilt_active_character_event = ""
 		if not rebuilt_active_character_event.is_empty() and not rebuilt_character_events.has(rebuilt_active_character_event):
 			if state_dictionary_save:
 				return false
 			restore_warnings.append("旧存档的当前人物事件无法恢复，已返回医院导览。")
 			rebuilt_active_character_event = ""
 	if version >= 10:
-		if not data.get("micro_events") is Array or not data.get("active_micro_event_id") is String or data.micro_events.size() > micro_event_definitions.size():
+		if not data.get("micro_events") is Array or not data.get("active_micro_event_id") is String or (not boundary and data.micro_events.size() > micro_event_definitions.size()):
 			return false
 		for record in data.micro_events:
+			if boundary:
+				if rebuilt_micro_events.has(record.id):
+					return false
+				var definition: Dictionary = micro_event_definitions.get(record.id, {"id": record.id, "actor_id": record.get("actor_id", "")})
+				var completed_event = MicroEvent.new(definition, int(record.trigger_day))
+				completed_event.completed = true
+				rebuilt_micro_events[record.id] = completed_event
+				rebuilt_micro_event_order.append(record.id)
+				continue
 			if not record is Dictionary or not record.get("id") is String or not micro_event_definitions.has(record.id) or rebuilt_micro_events.has(record.id):
 				if state_dictionary_save:
 					return false
@@ -5345,7 +5482,7 @@ func restore(data: Variant) -> bool:
 			rebuilt_story_flags[flag] = data.story_flags[flag]
 		for event_id in data.special_event_completion_counts:
 			var raw_count: Variant = data.special_event_completion_counts[event_id]
-			if not event_id is String or not special_event_definitions.has(event_id) or not (raw_count is int or raw_count is float) or float(raw_count) != floorf(float(raw_count)) or int(raw_count) < 1:
+			if not event_id is String or (not boundary and not special_event_definitions.has(event_id)) or not (raw_count is int or raw_count is float) or float(raw_count) != floorf(float(raw_count)) or int(raw_count) < 1:
 				return false
 			rebuilt_special_completion_counts[event_id] = int(raw_count)
 			var raw_day: Variant = data.special_event_completion_days.get(event_id)
@@ -5465,7 +5602,10 @@ func restore(data: Variant) -> bool:
 		var previous_end := 0
 		var used_nonrepeatable := {}
 		for event in data.time_log:
-			if not event is Dictionary or event.size() not in [2, 3] or not event.get("id") is String:
+			if boundary or bool(data.get("_memory_only", false)):
+				rebuilt_time_log.append(event.duplicate(true))
+				continue
+			if not event is Dictionary or event.size() not in [2, 3, 4] or not event.get("id") is String:
 				return false
 			var raw_start: Variant = event.get("start")
 			if not (raw_start is int or raw_start is float) or float(raw_start) != floorf(float(raw_start)):
@@ -5480,7 +5620,7 @@ func restore(data: Variant) -> bool:
 			if not definition.repeatable and used_nonrepeatable.has(event.id):
 				return false
 			used_nonrepeatable[event.id] = true
-			rebuilt_time_log.append({"id": event.id, "start": event_start, "variant": variant})
+			rebuilt_time_log.append(event.duplicate(true))
 			previous_end = event_start + int(definition.minutes)
 		var reconstructed_total := restored_archived_clinical_minutes
 		for visit in rebuilt.values():
@@ -5488,21 +5628,21 @@ func restore(data: Variant) -> bool:
 		for preparation in rebuilt_preops.values():
 			reconstructed_total += preparation.minutes
 		for event in rebuilt_time_log:
-			reconstructed_total += int(time_event_definitions[event.id].minutes)
+			reconstructed_total += int(event.minutes) if event.get("minutes") != null else 0
 		for event in rebuilt_character_events.values():
 			if event.completed:
-				reconstructed_total += int(event.definition.minutes)
+				reconstructed_total += int(event.settled_minutes) if event.settled_minutes != null else 0
 		if version >= 21:
 			var raw_story_advance: Variant = data.get("story_time_advance_minutes")
 			if not (raw_story_advance is int or raw_story_advance is float) or float(raw_story_advance) != floorf(float(raw_story_advance)) or int(raw_story_advance) < 0 or int(raw_story_advance) > 100000:
 				return false
-			rebuilt_story_time_advance = int(raw_story_advance) + retired_sayaka_minutes
+			rebuilt_story_time_advance = int(raw_story_advance)
 			reconstructed_total += rebuilt_story_time_advance
-		if previous_end > reconstructed_total:
+		if not boundary and previous_end > reconstructed_total:
 			return false
 		if version >= 5:
 			var raw_discarded: Variant = data.get("discarded_overtime_minutes")
-			if not (raw_discarded is int or raw_discarded is float) or float(raw_discarded) != floorf(float(raw_discarded)) or int(raw_discarded) < 0 or int(raw_discarded) > reconstructed_total:
+			if not (raw_discarded is int or raw_discarded is float) or float(raw_discarded) != floorf(float(raw_discarded)) or int(raw_discarded) < 0 or (not boundary and int(raw_discarded) > reconstructed_total):
 				return false
 			rebuilt_discarded_overtime = int(raw_discarded)
 	if version >= 8:
@@ -5571,6 +5711,7 @@ func restore(data: Variant) -> bool:
 	leadership_xp_history = restored_leadership_xp_history
 	staff_skill_levels = restored_staff_skill_levels
 	staff_training_credits = restored_staff_training_credits
+	takemi_postop_opportunity = false
 	successful_no_anesthesia_surgeries = restored_successful_no_anesthesia_surgeries
 	reported_surgeries = restored_reported_surgeries
 	apply_staff_skill_levels()
@@ -5586,7 +5727,7 @@ func restore(data: Variant) -> bool:
 		preparation.set_procedure_unlocks(unlocked_procedure_ids, true)
 	character_events = rebuilt_character_events
 	for restored_event in character_events.values():
-		if restored_event.completed and restored_event.definition.has("introduction_actor_ids"):
+		if not boundary and restored_event.completed and restored_event.definition.has("introduction_actor_ids"):
 			complete_introduction_cast(restored_event.definition)
 	character_event_order = rebuilt_character_event_order
 	active_character_event_id = rebuilt_active_character_event
@@ -5610,6 +5751,18 @@ func restore(data: Variant) -> bool:
 	discarded_overtime_minutes = rebuilt_discarded_overtime
 	story_time_advance_minutes = rebuilt_story_time_advance
 	archived_clinical_minutes = restored_archived_clinical_minutes
+	settled_clock_offset = int(data.get("_runtime_clock_offset", 0))
+	if boundary:
+		var accounted := archived_clinical_minutes + story_time_advance_minutes - discarded_overtime_minutes
+		for visit in visits.values():
+			accounted += visit.minutes
+		for preparation in preops.values():
+			accounted += preparation.minutes
+		for record in time_log:
+			accounted += int(record.minutes) if record.get("minutes") != null else 0
+		for event in character_events.values():
+			accounted += int(event.settled_minutes) if event.completed and event.settled_minutes != null else 0
+		settled_clock_offset = int(data.elapsed_minutes) - accounted
 	rumi_shiori_introduction_day()
 	pending_encounter_day_transition = rebuilt_pending_encounter_transition
 	pending_surgery_day_transition = rebuilt_pending_surgery_transition
@@ -5644,34 +5797,6 @@ func restore(data: Variant) -> bool:
 	ensure_waiting_patient()
 	last_error = ""
 	return true
-
-func sayaka_v2_completed_state(record: Dictionary) -> Dictionary:
-	# Narrow content-version bridge for completed endpoints only. Active-scene
-	# restoration is intentionally not introduced by this narrative update.
-	var endpoints := {
-		"sayaka_week1_phone_exchange": {"nodes": ["tail_a", "tail_b", "tail_c"], "choices": ["phone_end_a", "phone_end_b", "phone_end_c"], "target": "v2_192"},
-		"sayaka_lv1_first_date": {"nodes": ["walk_home", "only_meal_reply"], "choices": ["date_success_end", "only_meal_end"], "target": "v2_655"},
-		"sayaka_lv1_monday_callback": {"nodes": ["callback_reply"], "choices": ["callback_end"], "target": "v2_696"},
-		"sayaka_lv2_working_hours": {"nodes": ["ending"], "choices": ["lv2_complete"], "target": "ending"},
-		"sayaka_lv3_relationship": {"nodes": ["scene_12"], "choices": ["finish_lv3"], "target": "scene_12"},
-	}
-	var mapping: Dictionary = endpoints.get(str(record.get("id", "")), {})
-	if mapping.is_empty():
-		return {}
-	var state: Dictionary = record.get("state", {}).duplicate(true) if record.get("state") is Dictionary else {}
-	var choices: Variant = state.get("choices", record.get("choices", []))
-	if not choices is Array or choices.is_empty():
-		return {}
-	var ending := str(choices.back())
-	if not mapping.choices.has(ending):
-		return {}
-	if not state.is_empty():
-		if not bool(state.get("completed", false)) or not mapping.nodes.has(str(state.get("node_id", ""))):
-			return {}
-	else:
-		state = {"choices": choices.duplicate(), "completed": true, "completed_day": int(record.get("completed_day", 1)), "last_choice": {}}
-	state.node_id = mapping.target
-	return {"state": state, "failed_date": ending == "only_meal_end"}
 
 func open_preop(id: String) -> RefCounted:
 	if special_event_in_progress():

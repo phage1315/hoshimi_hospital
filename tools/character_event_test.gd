@@ -173,6 +173,7 @@ func run() -> void:
 	expect(asuka_game.staff_is_met("doc_asuka") and asuka_relation.flags.has("asuka_identity_known") and not asuka_relation.flags.has("asuka_identity_unknown"), "Asuka identity flags did not settle after the reveal")
 	asuka_game.preops.erase("test_preop")
 	asuka_game.active_preop_id = ""
+	asuka_game.finish_character_event()
 	var asuka_snapshot: Dictionary = asuka_game.snapshot()
 	var asuka_clone = new_game()
 	expect(asuka_clone.restore(JSON.parse_string(JSON.stringify(asuka_snapshot))) and asuka_clone.relation_for("doc_asuka").flags == asuka_relation.flags, "Asuka reveal state did not survive save/load")
@@ -271,6 +272,7 @@ func run() -> void:
 	expect(finish_event(aqua_game, "aqua_lv1_gyne_obsession"), "Aqua Lv1 gynecology event could not complete")
 	expect(aqua_game.relationship_level("doc_aqua") == 1 and "doc_aqua" in aqua_game.known_staff_ids(), "Aqua Lv1 did not unlock her surgical-team role")
 	expect(aqua_game.relation_for("doc_aqua").unlocked_benefits.has("unlock_aqua_surgical_team"), "Aqua team-unlock benefit was not recorded")
+	aqua_game.finish_character_event()
 	var aqua_snapshot: Dictionary = aqua_game.snapshot()
 	var aqua_clone = new_game()
 	expect(aqua_clone.restore(JSON.parse_string(JSON.stringify(aqua_snapshot))) and aqua_clone.character_progress_counter("", "gynecology_case_count") == 5, "Aqua specialty progress did not survive save restore")

@@ -1,0 +1,64 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "transparent_background": true,
+  "selection": "First generated set retained following user confirmation; later background-removal candidates are not used.",
+  "prompt_common": "Use case: identity-preserve / background-extraction. Edit target: attached reference. Produce ONE transparent PNG visual novel head-and-shoulders portrait, not a sheet. Remove only gray background to actual alpha transparency. [expression] Preserve original character identity, drawing style, hair color, eye color, surgical cap, earrings if present, lighting and pose. Keep EXACT reference head/shoulder framing; do not extend image below original crop, do not add body, props or clothing. Bare shoulders are as in reference, crop above chest. Keep all existing cap contours visible, no text, no shadows outside silhouette, no checkerboard backdrop. Consistent face size and anchor with reference; only background and requested facial expression may change.",
+  "images": [
+    {
+      "name": "blue_smile",
+      "reference": "Screenshot 2026-10-24 at 12.45.33 AM.png",
+      "expression": "Keep the existing gentle closed-mouth smile unchanged.",
+      "output": "assets/characters/launch_event_v1/blue_smile.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c3cbf1a9-490e-4d6d-88e6-eac28b8a2a1e.png"
+    },
+    {
+      "name": "blue_confused",
+      "reference": "Screenshot 2026-10-24 at 12.45.33 AM.png",
+      "expression": "Change ONLY facial expression to confused, slightly raised eyebrows, small questioning open mouth.",
+      "output": "assets/characters/launch_event_v1/blue_confused.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eb67f62a-344d-4a5d-8ec9-8ae7a8c8af39.png"
+    },
+    {
+      "name": "blue_shy",
+      "reference": "Screenshot 2026-10-24 at 12.45.33 AM.png",
+      "expression": "Change ONLY facial expression to shy embarrassment, averted gaze and lightly blushing cheeks, small reserved mouth.",
+      "output": "assets/characters/launch_event_v1/blue_shy.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-54e4d94c-c842-41a5-a937-78b72684d6ad.png"
+    },
+    {
+      "name": "blue_worried",
+      "reference": "Screenshot 2026-10-24 at 12.45.33 AM.png",
+      "expression": "Change ONLY facial expression to mild worry, inward raised eyebrows and hesitant mouth.",
+      "output": "assets/characters/launch_event_v1/blue_worried.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-929c8b7b-b5d6-425b-9804-9ae47cb67903.png"
+    },
+    {
+      "name": "gold_angry",
+      "reference": "Screenshot 2026-10-24 at 12.45.45 AM.png",
+      "expression": "Keep existing angry gritted teeth expression unchanged.",
+      "output": "assets/characters/launch_event_v1/gold_angry.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-a301cc0b-780d-4e45-9e99-9b6a8ac778e6.png"
+    },
+    {
+      "name": "gold_shout",
+      "reference": "Screenshot 2026-10-24 at 12.45.45 AM.png",
+      "expression": "Change ONLY facial expression to angry shouting, wide open mouth and knitted eyebrows.",
+      "output": "assets/characters/launch_event_v1/gold_shout.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-b4cf8706-06a1-46c3-8db2-128b7f040646.png"
+    },
+    {
+      "name": "gold_confused",
+      "reference": "Screenshot 2026-10-24 at 12.45.45 AM.png",
+      "expression": "Change ONLY facial expression to suspicious confusion, slightly asymmetrical raised eyebrows and questioning mouth.",
+      "output": "assets/characters/launch_event_v1/gold_confused.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-43cb8bf0-35ca-4852-94f2-b4b7e357c550.png"
+    },
+    {
+      "name": "gold_sneeze",
+      "reference": "Screenshot 2026-10-24 at 12.45.45 AM.png",
+      "expression": "Change ONLY facial expression to about to sneeze: eyes tightly shut, nose slightly wrinkled and mouth about to open.",
+      "output": "assets/characters/launch_event_v1/gold_sneeze.png",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-1c2db0fa-af76-4a09-83e8-2d0e933f4018.png"
+    }
+  ]
+}

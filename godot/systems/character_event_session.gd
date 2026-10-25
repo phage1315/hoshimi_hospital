@@ -1,11 +1,12 @@
 extends RefCounted
-## Runtime for one authored character event. Choice IDs are the save format.
+## In-memory performance state only; saves use event completion facts.
 var definition: Dictionary
 var nodes: Dictionary = {}
 var node_id := ""
 var choices: Array[String] = []
 var completed := false
 var completed_day := 0
+var settled_minutes: Variant = null
 var last_choice: Dictionary = {}
 var last_error := ""
 
@@ -15,6 +16,7 @@ func snapshot_state() -> Dictionary:
 		"choices": choices.duplicate(),
 		"completed": completed,
 		"completed_day": completed_day,
+		"settled_minutes": settled_minutes,
 		"last_choice": last_choice.duplicate(true),
 	}
 
@@ -30,6 +32,7 @@ func restore_state(state: Dictionary) -> bool:
 		choices.append(choice_id)
 	completed = bool(state.get("completed", false))
 	completed_day = int(state.get("completed_day", 0))
+	settled_minutes = state.get("settled_minutes")
 	last_choice = state.get("last_choice", {}).duplicate(true) if state.get("last_choice", {}) is Dictionary else {}
 	last_error = ""
 	return true
@@ -65,6 +68,7 @@ func apply(choice_id: String) -> bool:
 	last_choice = selected
 	if target == "@end":
 		completed = true
+		settled_minutes = int(definition.get("minutes", 0))
 	else:
 		node_id = target
 	last_error = ""

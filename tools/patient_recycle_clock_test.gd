@@ -94,7 +94,7 @@ func test_case_lifecycle(app) -> void:
 	check(game.restore(old_save) and game.elapsed() == before and game.archived_clinical_minutes == 0, "Existing v36 saves without archive field remain compatible")
 	old_save.version = 35
 	old_save.erase("save_format")
-	check(game.restore(old_save) and game.elapsed() == before, "Legacy v35 save without archive field remains compatible")
+	check(not game.restore(old_save) and game.elapsed() == before, "Unverifiable legacy log format is rejected without replay or time mutation")
 	game.reset()
 	game.patient_cases.patient_sora = "template_breast_tumor"
 	game.rebuild_patient_content(game.patient_cases)
@@ -105,7 +105,8 @@ func test_case_lifecycle(app) -> void:
 	var first_text: String = visit.presentation().text
 	check(not game.apply_clinic_action("explain"), "Same-case reaction cannot be repeated")
 	before = game.elapsed()
-	check(game.restore(JSON.parse_string(JSON.stringify(game.snapshot()))), "Current diagnosis response restores")
+	check(game.snapshot().is_empty(), "Diagnosis dialogue cannot enter a persistent save")
+	check(game.restore_runtime_snapshot(game.runtime_snapshot()), "Current diagnosis response survives memory-only locale change")
 	check(game.visits.visit_sora.presentation().text == first_text, "Same-case reload preserves exact dialogue")
 	game.meet_staff("doc_asuka")
 	game.patient_queue.erase("patient_sora")
@@ -153,7 +154,7 @@ func test_case_lifecycle(app) -> void:
 	check(game.restore(JSON.parse_string(JSON.stringify(game.snapshot()))), "Overnight admission restores")
 	check(game.admitted_patient("patient_sora") and game.visits.visit_sora.notes.get("test_case_note") == "same admission", "Overnight admission retains notes")
 	check(game.preops.preop_sora.minutes == 17 and game.patient_cases.patient_sora == case_id and game.elapsed() == before, "Overnight preparation and time remain intact")
-	check(game.first_surgery_diagnosis_shock_state.has("patient_sora"), "Overnight save retains same-case diagnosis state")
+	check(not game.first_surgery_diagnosis_shock_state.has("patient_sora") and game.visits.visit_sora.completed(), "Overnight admission resumes after diagnosis without retaining its performance state")
 	check(not game.refer_current_patient("doc_asuka"), "Admitted case cannot be referred via outpatient exit")
 	game.reset()
 	for id in game.case_templates:
@@ -251,7 +252,19 @@ func run() -> void:
 			check(str(app.page.get_node("CalendarHeader").text).contains("2025.04.07"), "Visible calendar must remain Monday")
 			stamp(app, "After second referral")
 			print("VISIBLE HEADER: ", app.page.get_node("CalendarHeader").text)
-			check(app.game.restore(JSON.parse_string(JSON.stringify(app.game.snapshot()))), "Date and recycled cases restore")
+			# Clinic entry can start the Monday callback. It must finish before a
+			# persistent save; the clock assertions above still cover both referrals.
+			if app.game.character_event_in_progress():
+				check(app.game.snapshot().is_empty(), "Pending callback blocks persistent save")
+				var callback = app.game.character_events[app.game.active_character_event_id]
+				for step in range(callback.definition.nodes.size() + 1):
+					if callback.completed:
+						break
+					check(app.game.choose_character_event(str(callback.current().choices[0].id)), "Finish pending callback before saving")
+			app.game.finish_character_event()
+			before = app.game.elapsed()
+			var checkpoint: Dictionary = app.game.snapshot()
+			check(app.game.restore(JSON.parse_string(JSON.stringify(checkpoint))), "Date and recycled cases restore: " + app.game.save_block_reason() + " / " + app.game.last_error)
 			check(app.game.elapsed() == before and app.game.day_number() == 7, "Reload after referrals must remain Monday")
 			for child in app.get_children():
 				if child is AcceptDialog:

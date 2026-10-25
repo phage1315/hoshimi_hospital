@@ -91,9 +91,11 @@ def main() -> None:
             content = content[1:-1]
         if content.startswith("「") and content.endswith("」"):
             content = content[1:-1]
-        row = {"id": node_id, "speaker": speaker, "text": content}
+        row = {"id": node_id, "speaker": speaker, "presentation": "authored", "text": content}
         if label: row["speaker_label"] = label
-        if node_id in {"m0_0043", "m0_0046", "m0_0048"}: row["hide_portrait"] = True
+        if node_id in {"m0_0043", "m0_0046", "m0_0048"}:
+            row.update({"hide_portrait": False, "actor_id": "nurse_sonoda_itsumi", "outfit": "scrubs"})
+        if node_id in {"m0_0055", "m0_0056"}: row["hide_portrait"] = True
         rows.append(row)
     if len(rows) != 58:
         raise ValueError(f"Expected 58 authored dialogue nodes (54 shared plus 4 branch alternatives), parsed {len(rows)}")
@@ -129,7 +131,7 @@ def main() -> None:
             label = {"zh_CN":"继续  ▷", "en":"Continue  ▷"} if next_id != "@end" else {"zh_CN":"结束  ▷", "en":"Finish  ▷"}
             node["choices"] = [{"id":("continue_" if next_id != "@end" else "finish_")+node["id"],"label":label,"next":next_id,"effects":{"affection":0,"familiarity":0},"flags":[]}]
         nodes.append(node)
-    current.update({"title":"先把事实说全","teaser":"深山佳織从检查结果上抬起头。","start":"m0_0001","nodes":nodes})
+    current.update({"title":"先把事实说全","teaser":"深山佳織从检查结果上抬起头。","start":"m0_0001","hide_completion_portrait":True,"nodes":nodes})
     current.pop("script", None)
     current["gallery"]["caption"] = "先把事实说全"
     EVENTS.write_text(json.dumps(event, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

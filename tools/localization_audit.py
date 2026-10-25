@@ -23,7 +23,7 @@ CHINESE_LITERAL = re.compile(r'"(?:\\.|[^"\\])*[\u3400-\u9fff](?:\\.|[^"\\])*"')
 TRANSLATABLE_FIELDS = {
     "name", "family_name", "given_name", "professional_name", "title", "subtitle", "description",
     "label", "text", "prompt", "response", "teaser", "caption", "lines",
-    "announcement", "completion_hint", "location_label", "speaker_label", "actor_alias", "specialty", "personality",
+    "announcement", "completion_hint", "location_label", "speaker_label", "scene_caption", "actor_alias", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "correction", "chapters",
     "transition_text", "operative_record", "player_hint", "variants",
 }

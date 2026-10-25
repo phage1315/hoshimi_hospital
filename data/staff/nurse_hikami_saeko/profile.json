@@ -1,0 +1,303 @@
+{
+  "id": "nurse_hikami_saeko",
+  "name": "氷上冴子",
+  "age": 24,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 10,
+    "diagnostics": 68,
+    "teamwork": 70,
+    "patient_care": 72,
+    "instrument_handling": 54,
+    "calmness": 79
+  },
+  "surgery_proficiency": "trained",
+  "surgical_roles": [
+    "scrub_nurse",
+    "circulating_nurse"
+  ],
+  "specialty": "内科",
+  "rank": "护士",
+  "personality": "认真、客气、可靠；对星见的制度保持好奇与疑问。",
+  "appearance": "深灰黑色侧分短发，狭长深色眼睛，脸颊保留轻描斜线。身高167厘米，三围82／55／85厘米，B型血。",
+  "dialogue_style": "工作时认真客气，说明具体；普通工作对白不揭露受托调查身份。",
+  "flags": [
+    "introduction_pending"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.2,
+    "operations": []
+  },
+  "personal_nurse": {
+    "eligible": true,
+    "dialogue": {
+      "next_test_hint": [
+        "如果按刚才的症状继续判断，下一项检查应该能帮我们排除一种可能。",
+        "这项结果有些关键，但单独看还不够。我建议把相关检查一起看。"
+      ],
+      "insufficient_evidence": [
+        "现在下结论还早。缺少的检查结果我已经列出来了。",
+        "我理解这个判断，不过现有证据还支持不了那么肯定的说法。"
+      ],
+      "sufficient_evidence": [
+        "所需数据已经齐了。坂口医生，可以开始判断。",
+        "我把异常值和患者主诉放在一起，方便您核对。"
+      ],
+      "diagnosis_correct_reply": [
+        "这个诊断和检查结果吻合。我去安排后续护理。",
+        "判断成立。请把后续处理时间也告诉我，我需要交接给病房。"
+      ],
+      "diagnosis_incorrect_reply": [
+        "坂口医生，恕我打断。有一项结果和这个结论对不上。",
+        "请再确认一下。现在这份检查记录不能支持刚才的诊断。"
+      ],
+      "chatter": [
+        "这里的病例种类比我预计的多。……我的意思是，学习机会很多。",
+        "您总说以后再说。具体是哪一天？我想提前把工作安排好。",
+        "折川护士向我解释了这里的交班习惯。我觉得她比自己说的更能干。"
+      ],
+      "clinic_support": [
+        "检查用品已备好。患者提出的问题，我写在问诊记录末尾了。",
+        "这项检查结束后，我会核对患者的反应和后续注意事项。",
+        "坂口医生，需要额外协助的话，请现在告诉我。我不想在检查中途才猜。"
+      ],
+      "preop_support": [
+        "术前准备单我核对过了。由您亲自执行的项目，我也会按实记录。",
+        "患者说她明白手术会怎么进行，只是害怕。我会把这点写进交接记录。",
+        "最后一个准备步骤完成后，请告诉我时间。……不，我不是在催，只是记录需要。"
+      ]
+    },
+    "diagnosis_corrections": {
+      "diagnose_gastro": "坂口医生，恕我打断。有一项结果和这个结论对不上。",
+      "diagnose_observe": "请再确认一下。现在这份检查记录不能支持刚才的诊断。"
+    }
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "病房准备由我负责。交接项目和完成时间请一起告诉我。",
+    "scrub_nurse": "我进器械位。先把清点单给我，临时变更请当面说明。",
+    "circulating_nurse": "巡回由我负责。我会盯住监护、记录和补给，请按需要直接叫我。"
+  },
+  "post_operation_replies": [
+    "器械清点相符，标本和交接文件也已经核对。辛苦了。",
+    "患者已经送去观察。……我承认，刚才那个过程和结果之间的反差让我很难适应。",
+    "收尾记录没问题。请容我确认一下：今天这台手术，在这里算常规情况吗？"
+  ],
+  "after_work_companion_dialogue": {
+    "invitation": [
+      "坂口医生，今天如果顺路，可以一起走一段吗？我还有几个关于医院的问题。"
+    ],
+    "acceptance": [
+      "可以。请把大概出发时间告诉我，我先完成交接。",
+      "好。正好我也想在医院外面换个环境说话。"
+    ],
+    "unavailable": [
+      "抱歉，今天还有一份记录要交。改天的话，能不能先约个具体时间？"
+    ],
+    "farewell": [
+      "今天谢谢您。……不必送到门口了，我认得路。"
+    ]
+  },
+  "after_work_short_chat": [
+    "我以前的医院，医生很少亲自插手那么多护理准备。星见到底是怎样分工的？",
+    "如果我说有些事不太正常，您会生气吗？……我只是想先弄清事实。",
+    "患者对手术抱怨得很厉害，第二天却认真地夸护理团队。这两件事原来可以同时成立。"
+  ],
+  "preop_graphic_wrapper": {
+    "open": "「接下来我按术前准备单逐项说明。您如果有问题，请在开始前提出来。」",
+    "insert_a": "「这一项可能会让您不舒服。我先把步骤和负责人员说清楚，不会用‘很快就好’来敷衍您。」",
+    "insert_b": "「是的，准备过程中可能需要调整体位或暂时暴露检查部位。具体范围以已签署的手术安排为准。」",
+    "close": "「准备事项说明完毕。还有问题请现在问我，没必要等到躺上手术台才猜。」"
+  },
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压比刚才低，下降趋势已经记录。",
+          "复查后血压仍低，还没有回到先前的水平。",
+          "第三次报告：血压仍未稳定。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血压正在急剧下降！",
+          "血压继续下降，情况没有缓解！",
+          "第三次报告：严重低血压持续！"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血压上升了，我正在核对读数。",
+          "复查结果一致，血压仍高于先前水平。",
+          "第三次报告：血压依然偏高。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血压突然升得很高！",
+          "严重高血压还在持续，数值没有回落！",
+          "第三次报告：血压持续处于危险高值！"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率加快，已经超过刚才的范围。",
+          "心率仍然偏快，没有恢复。",
+          "第三次报告：心动过速仍在持续。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心率突然升得很快！",
+          "严重心动过速持续，监护趋势还没转好！",
+          "第三次报告：心率仍处于异常高值！"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心率正在变慢，我已确认监护读数。",
+          "心率仍低，和上一轮记录一致。",
+          "第三次报告：心率仍没有回升。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，心率骤降！",
+          "心率依然非常低，情况还在持续！",
+          "第三次报告：严重心动过缓尚未解除！"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，心律出现不规则变化，请看监护记录。",
+          "不规则心律仍可见，刚才的异常不是一次性波动。",
+          "第三次报告：心律尚未恢复规律。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，监护出现明显心律失常！",
+          "严重心律异常仍在持续！",
+          "第三次报告：心律失常没有缓解！"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，血氧饱和度下降了。",
+          "血氧仍偏低，复测结果一致。",
+          "第三次报告：血氧尚未恢复。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，血氧正在快速下降！",
+          "血氧继续处于危险低值！",
+          "第三次报告：严重血氧下降仍未缓解！"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，呼吸节律发生变化，我正在持续记录。",
+          "呼吸状况还不稳定，变化仍在持续。",
+          "第三次报告：呼吸状态尚未平稳。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，患者呼吸状态突然明显恶化！",
+          "严重呼吸不稳仍在持续！",
+          "第三次报告：患者呼吸状况依然危险！"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "坂口医生，监护指标出现变化，患者状态不稳定。",
+          "刚才的异常仍在持续，我已经更新记录。",
+          "第三次报告：患者状态仍未稳定。"
+        ],
+        "severe_attempt_lines": [
+          "坂口医生，患者状态突然严重不稳！",
+          "严重异常仍在持续，请注意监护变化！",
+          "第三次报告：患者状态始终没稳住！"
+        ]
+      }
+    ]
+  },
+  "visuals": {
+    "color": "45434f",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "sterile",
+      "casual",
+      "casual_winter"
+    ],
+    "portraits": {
+      "casual/neutral": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/casual/neutral.png",
+      "casual_winter/neutral": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/casual_winter/neutral.png",
+      "scrubs/focused": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/scrubs/focused.png",
+      "scrubs/neutral": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/scrubs/neutral.png",
+      "scrubs/warm": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/scrubs/worried.png",
+      "sterile/focused": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/sterile/focused.png",
+      "sterile/neutral": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/sterile/neutral.png",
+      "sterile/warm": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/sterile/warm.png",
+      "sterile/worried": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/sterile/worried.png",
+      "uniform/closed_eye_smile": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/uniform/closed_eye_smile.png",
+      "uniform/neutral": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/uniform/neutral.png",
+      "uniform/serious": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/uniform/serious.png",
+      "uniform/smile": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/uniform/smile.png",
+      "uniform/worried": "assets/characters/hikami_saeko_v1/nurse_hikami_saeko/uniform/worried.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/nurse_hikami_saeko/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/nurse_hikami_saeko/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  }
+}

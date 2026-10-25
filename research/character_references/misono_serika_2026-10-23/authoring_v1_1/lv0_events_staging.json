@@ -1,0 +1,1622 @@
+[
+  {
+    "id": "serika_lv0_a",
+    "actor_id": "doc_serika",
+    "title": "连招呼都没有",
+    "chapter": 0,
+    "location_id": "clinic",
+    "trigger_mode": "location",
+    "background_id": "hallway",
+    "outfit": "white_coat",
+    "minutes": 0,
+    "teaser": "连招呼都没有",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 50,
+    "category": "story",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "serika_lv0_a",
+      "caption": "连招呼都没有",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "reputation",
+          "minimum": 50
+        }
+      ]
+    },
+    "start": "a_01",
+    "nodes": [
+      {
+        "id": "a_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "午后的走廊里，一名穿白大褂的女医生正低头翻看影像报告，步子很快。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_02",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「咦？之前好像没见过你……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_03",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那个，能打扰一下吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_04",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她像是没听见一样，径直从坂口身边走了过去。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_05",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「……还真是彻底地没听见啊。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_06",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "路过的护士",
+        "actor_id": "doc_serika",
+        "text": "「您在叫御園医生？她是影像科的御園芹香医生。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_07",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「她一直这么忙吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_08",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "路过的护士",
+        "actor_id": "doc_serika",
+        "text": "「报告总是准时出来。至于人嘛……您刚才也见到了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "a_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "a_09",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "女医生已经消失在走廊尽头。坂口回想了一下，发现自己连自我介绍的机会都没有。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "serika_lv0_b",
+    "actor_id": "doc_serika",
+    "title": "请走正式流程",
+    "chapter": 0,
+    "location_id": "lounge",
+    "trigger_mode": "location",
+    "background_id": "staff_lounge",
+    "outfit": "white_coat",
+    "minutes": 0,
+    "teaser": "请走正式流程",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 50,
+    "category": "story",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "serika_lv0_b",
+      "caption": "请走正式流程",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "serika_lv0_a"
+      ],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "reputation",
+          "minimum": 100
+        }
+      ]
+    },
+    "start": "b_01",
+    "nodes": [
+      {
+        "id": "b_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "休息室的一角，御園芹香正一个人研究影像资料。桌上的饮料放得很近，她却连碰都没碰。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_02",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「御園医生吧？上次在走廊见过。我是外科的坂口隆司。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_04",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你是负责我们科影像会诊的？我一直想找机会——」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「报告在系统里。片子、所见、结论，全部写了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_06",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「我是想先认识一下同事。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「需要补充判断，请走正式会诊流程。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_08",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「总不能连喝杯茶都得填会诊单吧？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「那不是我的会诊范围。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "b_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "b_10",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她已经把谈话结束了。尽管两个人面对面坐着，距离似乎比上次那条走廊还远。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "serika_lv0_c",
+    "actor_id": "doc_serika",
+    "title": "你可以问她本人",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "nurses_station",
+    "outfit": "white_coat",
+    "minutes": 0,
+    "teaser": "你可以问她本人",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 50,
+    "category": "story",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "serika_lv0_c",
+      "caption": "你可以问她本人",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "serika_lv0_a",
+        "serika_lv0_b"
+      ],
+      "special_requirements": [
+        {
+          "type": "relationship_level",
+          "actor_id": "nurse_yui",
+          "minimum": 1
+        }
+      ]
+    },
+    "start": "c_01",
+    "nodes": [
+      {
+        "id": "c_01",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「朝仓，问你一个人。影像科的御園芹香，你认识吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「认识呀。我们以前就在一起工作过。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_03",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「她对所有人都那么冷淡？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「御園医生的报告有问题吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_05",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那倒没有。内容很仔细，标注也很清楚。就是本人完全不想和我讲话。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「那她大概已经把该说的都写在报告里了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_07",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「……你这是在帮她解释，还是在笑我？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「两边都有一点吧。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「不过，她不是讨厌认真工作的医生。只是有些事，最好让她自己决定要不要讲。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_10",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你和她以前，到底发生过什么？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「医生。这句话应该去问御園医生，不是问我。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_12",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「有时候她会去天台透透气。如果真想和她说话……先想好要问什么，别再拿『喝杯茶』当开场白啦。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_13",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你怎么连这个都知道？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_14",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "朝倉美幸",
+        "actor_id": "nurse_yui",
+        "text": "「这里可是护士站。消息比检验报告传得还快。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "c_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "c_15",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "朝仓笑着转身继续工作。坂口没问到旧事，却得到了一个比敲会诊系统更有用的地点。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "serika_lv0_d",
+    "actor_id": "doc_serika",
+    "title": "只有工作上的问题",
+    "chapter": 0,
+    "location_id": "rooftop",
+    "trigger_mode": "location",
+    "background_id": "rooftop",
+    "outfit": "white_coat",
+    "minutes": 0,
+    "teaser": "只有工作上的问题",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 50,
+    "category": "introduction",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "serika_lv0_d",
+      "caption": "只有工作上的问题",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "serika_lv0_a",
+        "serika_lv0_b",
+        "serika_lv0_c"
+      ],
+      "special_requirements": []
+    },
+    "start": "d_01",
+    "nodes": [
+      {
+        "id": "d_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "天台上的风比楼下凉一些。御園芹香独自站在栏杆旁，手里没有影像报告。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……你又来了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_03",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「原来你认得我。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「你在走廊叫过我，在休息室里也来找过我。我总不至于连这种事都记不住。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_05",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「这么说，上次你真的听见了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「嗯。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_07",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「……回答得还真干脆。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「如果还是来问我喝不喝茶，你可以现在回去。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_09",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「不，这次是工作上的事。我看了你写的术后影像报告。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「哪一份？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_11",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你特别标出了术野附近血管走向的那份。正文只有几行，附图倒是做得很细。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_12",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「外科会不会真的去看，是另外一回事。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_13",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「我看了。那条血管如果按一般位置处理，很容易看错。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_14",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「既然看出来了，手术时就别弄错。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_15",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你说话真不留情面。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「片子不需要我留情面。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_17",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「说起来，星见的术后复查是不是经常漂亮得有点过分？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_18",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我刚来这里时，以为有人把术前和术后的片子贴反了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_19",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「然后？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_20",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「重新核对病历、时间、患者编号。全部对得上。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_21",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_21",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那不是很好吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_22",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_22",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「从医疗结果来说，很好。从影像科医生的精神健康来说，有点难评价。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_23",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_23",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她终于把目光转向坂口。这次既没有绕开他，也没有立刻结束谈话。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_24",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_24",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「御園芹香。你知道我的名字了，但我还是正式说一次。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_25",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_25",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「坂口隆司，外科。以后影像有不明白的地方，可以直接来问你吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_26",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_26",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「可以。工作上的问题，我会回答。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_27",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_27",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那工作以外——」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_28",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_28",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「不用问。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "d_29",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "d_29",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "芹香转回视线，仿佛刚才只是完成了一次简短会诊。可这回，她至少没有把坂口当成走廊里的空气。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

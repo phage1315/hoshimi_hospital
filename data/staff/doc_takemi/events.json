@@ -1,0 +1,4971 @@
+[
+  {
+    "id": "takemi_lv0_t1",
+    "actor_id": "doc_takemi",
+    "actor_alias": "院内传闻",
+    "title": "不准拿刀的医生",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "location",
+    "background_id": "hallway",
+    "outfit": "white_coat",
+    "minutes": 5,
+    "teaser": "不准拿刀的医生",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 0,
+    "category": "contextual",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "takemi_lv0_t1",
+      "caption": "不准拿刀的医生",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "t1_01",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "米田栞",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「……那位医生，真的有那么厉害？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_01",
+            "label": "继续",
+            "next": "t1_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「嘘，小点声。她以前可是顶尖研究机构的人。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_02",
+            "label": "继续",
+            "next": "t1_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "米田栞",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「可是，我怎么从来没见她主刀过……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_03",
+            "label": "继续",
+            "next": "t1_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「听说不是不能开，是院长一直不太让她开。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_04",
+            "label": "继续",
+            "next": "t1_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "米田栞",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「……为什么？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_05",
+            "label": "继续",
+            "next": "t1_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_06",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「你们在说哪位医生？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_06",
+            "label": "继续",
+            "next": "t1_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「啊，坂口医生！……没什么，只是在讲以前的事。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_07",
+            "label": "继续",
+            "next": "t1_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_08",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「医院里还有不让主刀的外科医生？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_08",
+            "label": "继续",
+            "next": "t1_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "米田栞",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「那个……听说，她的技术真的很好。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_09",
+            "label": "继续",
+            "next": "t1_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_10",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_yoneda_shiori",
+        "text": "「那不是更奇怪了吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_10",
+            "label": "继续",
+            "next": "t1_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「就是因为奇怪，大家才会一直讲呀。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_11",
+            "label": "继续",
+            "next": "t1_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t1_12",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "岩崎把交班记录合上，拉着米田回到护士站里。门没有关严，后面却再也听不到刚才的话题。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_yoneda_shiori"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t1_12",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "start": "t1_01",
+    "target_level": 1,
+    "benefit_id": ""
+  },
+  {
+    "id": "takemi_lv0_t2",
+    "actor_id": "doc_takemi",
+    "actor_alias": "院内传闻",
+    "title": "报废的手术台",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "location",
+    "background_id": "hallway",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "报废的手术台",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 0,
+    "category": "contextual",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "takemi_lv0_t2",
+      "caption": "报废的手术台",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "takemi_lv0_t1"
+      ],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "t2_01",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「石神护士长，这台真的要报废了吗？外表看上去还挺新的。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_01",
+            "label": "继续",
+            "next": "t2_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神千鶴",
+        "actor_id": "nurse_ishigami",
+        "text": "「不能用的东西，再新也不能上台。编号确认好了就交给设备科。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_02",
+            "label": "继续",
+            "next": "t2_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「上次听前辈说，这不是普通的机械故障……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_03",
+            "label": "继续",
+            "next": "t2_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神千鶴",
+        "actor_id": "nurse_ishigami",
+        "text": "「别多说没用的传言。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_04",
+            "label": "继续",
+            "next": "t2_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_05",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_ishigami",
+        "text": "「……这怎么弄的？被刀切开的？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_05",
+            "label": "继续",
+            "next": "t2_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/damaged_table.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t2_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「听说是以前有位医生做手术的时候……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_06",
+            "label": "继续",
+            "next": "t2_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/damaged_table.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t2_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「刀下得太深，连手术台的皮面都切开了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_07",
+            "label": "继续",
+            "next": "t2_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/damaged_table.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t2_08",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「……开刀开到手术台上去了？！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_08",
+            "label": "继续",
+            "next": "t2_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/damaged_table.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t2_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「所以我也想知道啊！到底得开多深，才能把手术台都切开？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_09",
+            "label": "继续",
+            "next": "t2_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/damaged_table.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t2_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神千鶴",
+        "actor_id": "nurse_ishigami",
+        "text": "「爱実，搬运确认完了吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_10",
+            "label": "继续",
+            "next": "t2_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「啊！好了！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_11",
+            "label": "继续",
+            "next": "t2_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_12",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "石神千鶴",
+        "actor_id": "nurse_ishigami",
+        "text": "「那就不要耽误工作。坂口医生，这张旧台不在可用设备清单里。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_12",
+            "label": "继续",
+            "next": "t2_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_13",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_ishigami",
+        "text": "「我倒不是想拿去用……」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_13",
+            "label": "继续",
+            "next": "t2_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_14",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_ishigami",
+        "text": "石神把布罩重新盖好。手术台只剩下一个模糊的轮廓，推走时发出短促的金属摩擦声。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_14",
+            "label": "继续",
+            "next": "t2_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t2_15",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_ishigami",
+        "text": "「……到底是哪位医生啊。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_sonoda_itsumi",
+          "nurse_ishigami"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t2_15",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "start": "t2_01",
+    "target_level": 1,
+    "benefit_id": ""
+  },
+  {
+    "id": "takemi_lv0_t3",
+    "actor_id": "doc_takemi",
+    "actor_alias": "院内传闻",
+    "title": "手术室的幽灵",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "after_work",
+    "background_id": "or_entrance",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "手术室的幽灵",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 0,
+    "category": "contextual",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "takemi_lv0_t3",
+      "caption": "手术室的幽灵",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "takemi_lv0_t1",
+        "takemi_lv0_t2"
+      ],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "t3_01",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「咦……皐月，今天最后一台，不是已经结束了吗？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_01",
+            "label": "继续",
+            "next": "t3_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「嗯。这里的交班记录已经签完了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_02",
+            "label": "继续",
+            "next": "t3_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「那里面……为什么还亮着灯？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_03",
+            "label": "继续",
+            "next": "t3_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_04",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_moe",
+        "text": "灯光照在空手术台上。一个身影俯身站在台边，像是在仔细看着什么。",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_04",
+            "label": "继续",
+            "next": "t3_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_shadow.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「等一下。我先确认一下……今天没有追加病例。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_05",
+            "label": "继续",
+            "next": "t3_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_shadow.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「可是，里面有人呀……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_06",
+            "label": "继续",
+            "next": "t3_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_shadow.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……！」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_07",
+            "label": "继续",
+            "next": "t3_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_shadow.png",
+        "cg_fit": "inset",
+        "sound_path": "assets/audio/takemi_lv0/metal_clink.wav"
+      },
+      {
+        "id": "t3_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「先、先去找值班医生。不要擅自进去。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_08",
+            "label": "继续",
+            "next": "t3_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_09",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_satsuki",
+        "text": "「怎么了？你们两个跑得这么急。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_09",
+            "label": "继续",
+            "next": "t3_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「手术室里……明明没有手术，却有人站在台边！」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_10",
+            "label": "继续",
+            "next": "t3_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「最后一台已经交接结束了。我核对过排程。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_11",
+            "label": "继续",
+            "next": "t3_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_12",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_satsuki",
+        "text": "「是值班的医生进去检查设备吧？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_12",
+            "label": "继续",
+            "next": "t3_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「可、可是……刚才的影子，站了好久都没动……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_13",
+            "label": "继续",
+            "next": "t3_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t3_14",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_moe",
+        "text": "玻璃里面只剩下走廊照明的反光。手术室安静得像从来没有亮过灯。",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_14",
+            "label": "继续",
+            "next": "t3_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_empty.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_15",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_moe",
+        "text": "「……现在什么都没有啊。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_15",
+            "label": "继续",
+            "next": "t3_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_empty.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「我真的看到了……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_16",
+            "label": "继续",
+            "next": "t3_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_empty.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_17",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "折川皐月",
+        "actor_id": "nurse_satsuki",
+        "text": "「我也看到了。……至少，灯亮过。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_17",
+            "label": "继续",
+            "next": "t3_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_empty.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t3_18",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_satsuki",
+        "text": "坂口再次朝空手术台望去。无影灯下面什么都没有，却让人不太想继续往里看。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_satsuki",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t3_18",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/takemi_lv0_v1/or_empty.png",
+        "cg_fit": "inset"
+      }
+    ],
+    "start": "t3_01",
+    "target_level": 1,
+    "benefit_id": ""
+  },
+  {
+    "id": "takemi_lv0_t4",
+    "actor_id": "doc_takemi",
+    "actor_alias": "院内传闻",
+    "title": "地下室里的一扇门",
+    "chapter": 0,
+    "location_id": "station",
+    "trigger_mode": "after_work",
+    "background_id": "staff_lounge",
+    "outfit": "white_coat",
+    "minutes": 20,
+    "teaser": "地下室里的一扇门",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 0,
+    "category": "contextual",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "takemi_lv0_t4",
+      "caption": "地下室里的一扇门",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "takemi_lv0_t1",
+        "takemi_lv0_t2",
+        "takemi_lv0_t3"
+      ],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "t4_a01",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「说起来，你们知道我们医院其实还有地下层吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a01",
+            "label": "继续",
+            "next": "t4_a02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「当然有啦。不过，我来这里以后好像一次也没下去过。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a02",
+            "label": "继续",
+            "next": "t4_a03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「地下层……？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a03",
+            "label": "继续",
+            "next": "t4_a04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「我记得，好像灵安室就在下面吧？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a04",
+            "label": "继续",
+            "next": "t4_a05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「灵、灵安室？！不要再讲下去了啊啊啊！！」",
+        "expression": "surprised",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a05",
+            "label": "继续",
+            "next": "t4_a06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「什么嘛。医院有灵安室不是很正常的吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a06",
+            "label": "继续",
+            "next": "t4_a07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「正常是正常……可是，地下室的灵安室什么的……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a07",
+            "label": "继续",
+            "next": "t4_a08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「不过话说回来……我来这里工作这么久，好像真的从来没见过有人把遗体推到地下室去呢。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a08",
+            "label": "继续",
+            "next": "t4_a09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「咦？那不是很好吗？说明我们医院的医生都很厉害，患者都能好好治愈出院呀。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a09",
+            "label": "继续",
+            "next": "t4_a10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「问题不在这里啦！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a10",
+            "label": "继续",
+            "next": "t4_a11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「那问题在哪里？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a11",
+            "label": "继续",
+            "next": "t4_a12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a12",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「电梯间后面不是有一道门吗？听说那里可以通到地下层。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a12",
+            "label": "继续",
+            "next": "t4_a13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……啊？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a13",
+            "label": "继续",
+            "next": "t4_a14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a14",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「反正我们都没去过。今天下班人少的时候，去看看怎么样？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a14",
+            "label": "继续",
+            "next": "t4_a15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a15",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「啊……啊……什、什么？！」",
+        "expression": "surprised",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a15",
+            "label": "继续",
+            "next": "t4_a16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_a16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "薗田愛実",
+        "actor_id": "nurse_sonoda_itsumi",
+        "text": "「哈哈哈，萌恵的脸都白了！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_sonoda_itsumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_a16",
+            "label": "继续",
+            "next": "t4_01",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "当天稍早"
+      },
+      {
+        "id": "t4_01",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「坂口医生，今晚正好有空吧？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_01",
+            "label": "继续",
+            "next": "t4_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_02",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「你这句开场白怎么听起来不太妙。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_02",
+            "label": "继续",
+            "next": "t4_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「白天不是说了吗？电梯间后面那道门，可能通往地下层。正好今晚来看看嘛。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_03",
+            "label": "继续",
+            "next": "t4_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「留美前辈……我们还是别去了吧。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_04",
+            "label": "继续",
+            "next": "t4_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「你不是也想知道上次手术室里看到的是什么吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_05",
+            "label": "继续",
+            "next": "t4_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「想知道是一回事……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_06",
+            "label": "继续",
+            "next": "t4_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_07",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_moe",
+        "text": "「为什么一定要叫上我？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_07",
+            "label": "继续",
+            "next": "t4_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「有医生同行，比较有医院正式巡视的感觉嘛。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_08",
+            "label": "继续",
+            "next": "t4_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_09",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「……哪里正式了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_09",
+            "label": "继续",
+            "next": "t4_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "nurses_station",
+        "scene_caption": "当夜"
+      },
+      {
+        "id": "t4_10",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "楼梯越往下越安静。走到底时，连楼上的空调声都几乎听不见。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_10",
+            "label": "继续",
+            "next": "t4_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement_stairs",
+        "scene_caption": "当夜",
+        "cg_path": "assets/events/takemi_lv0_v1/basement_stairs.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……这边真的还有人在用吗？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_11",
+            "label": "继续",
+            "next": "t4_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement_stairs",
+        "scene_caption": "当夜",
+        "cg_path": "assets/events/takemi_lv0_v1/basement_stairs.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_12",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「看，前面的门牌写着『霊安室』。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_12",
+            "label": "继续",
+            "next": "t4_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_13",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「这地方……我还真没来过。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_13",
+            "label": "继续",
+            "next": "t4_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_14",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "灵安室里空空荡荡。地面干净，推车整齐地靠在墙边，房间里闻不到有人久留的气息。",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_14",
+            "label": "继续",
+            "next": "t4_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_15",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……什么都没有。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_15",
+            "label": "继续",
+            "next": "t4_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「我听说，这里好多年都没有用过了。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_16",
+            "label": "继续",
+            "next": "t4_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_17",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「一家医院的灵安室这么多年没用过……倒也是件了不起的事。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_17",
+            "label": "继续",
+            "next": "t4_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_18",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「可是深更半夜站在这里，一点也高兴不起来……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_18",
+            "label": "继续",
+            "next": "t4_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_morgue",
+        "scene_caption": "当夜 · 霊安室",
+        "cg_path": "assets/events/takemi_lv0_v1/morgue.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_19",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「咦？这里怎么还有一间房间？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_19",
+            "label": "继续",
+            "next": "t4_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_20",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「地下研究室？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_20",
+            "label": "继续",
+            "next": "t4_21",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_21",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「门锁住了……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_21",
+            "label": "继续",
+            "next": "t4_22",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_22",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_moe",
+        "text": "「确实锁着。看来今天只能看到这里。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_22",
+            "label": "继续",
+            "next": "t4_23",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_23",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「……说不定里面什么都没有。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_23",
+            "label": "继续",
+            "next": "t4_24",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_24",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「那、那我们回去吧。现在就回去，好不好？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_24",
+            "label": "继续",
+            "next": "t4_25",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t4_25",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_moe",
+        "text": "三个人转身走向楼梯。留在走廊尽头的只有那扇门，和门上冷冰冰的锁。",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_iwasaki_rumi",
+          "nurse_moe"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t4_25",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "background_id": "takemi_basement",
+        "scene_caption": "当夜 · 地下研究室",
+        "cg_path": "assets/events/takemi_lv0_v1/research_door.png",
+        "cg_fit": "inset"
+      }
+    ],
+    "start": "t4_a01",
+    "target_level": 1,
+    "benefit_id": ""
+  },
+  {
+    "id": "takemi_lv0_t5",
+    "actor_id": "doc_takemi",
+    "actor_alias": "院内传闻",
+    "title": "生体解剖",
+    "chapter": 0,
+    "location_id": "lounge",
+    "trigger_mode": "location",
+    "background_id": "staff_lounge",
+    "outfit": "white_coat",
+    "minutes": 10,
+    "teaser": "生体解剖",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 0,
+    "category": "contextual",
+    "allow_unmet_actor": true,
+    "auto_start": true,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "takemi_lv0_t5",
+      "caption": "生体解剖",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "takemi_lv0_t1",
+        "takemi_lv0_t2",
+        "takemi_lv0_t3",
+        "takemi_lv0_t4"
+      ],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "t5_01",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「留美前辈，上次那间地下研究室……你后来打听过了吗？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_01",
+            "label": "继续",
+            "next": "t5_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「问过爱実了。她说器械室有人知道那间房是谁在用。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_02",
+            "label": "继续",
+            "next": "t5_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「是谁？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_03",
+            "label": "继续",
+            "next": "t5_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「就是以前被院长禁止主刀的那位医生。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_04",
+            "label": "继续",
+            "next": "t5_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……咦？！把手术台都切坏的那位？！」",
+        "expression": "surprised",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_05",
+            "label": "继续",
+            "next": "t5_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「嘘！小点声。听说她以前特别喜欢做一些跟别人不太一样的手术。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_06",
+            "label": "继续",
+            "next": "t5_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「跟别人不一样……？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_07",
+            "label": "继续",
+            "next": "t5_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「嗯。听说她对……活着的身体里面是什么样子的，特别有兴趣。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_08",
+            "label": "继续",
+            "next": "t5_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……活、活着的身体？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_09",
+            "label": "继续",
+            "next": "t5_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「……你知道地下室那位医生，最喜欢做什么吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_10",
+            "label": "继续",
+            "next": "t5_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……什么？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_11",
+            "label": "继续",
+            "next": "t5_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_12",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「听说……是生体解剖。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_12",
+            "label": "继续",
+            "next": "t5_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「……生体解剖？」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_13",
+            "label": "继续",
+            "next": "t5_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_14",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「嗯。听到这个词的时候，我也吓了一跳。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_14",
+            "label": "继续",
+            "next": "t5_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_15",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「可是，上次，地下那个房间明明是锁住的啊！！」",
+        "expression": "surprised",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_15",
+            "label": "继续",
+            "next": "t5_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「那一定是里面掩藏了生体解剖的证据！！」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_16",
+            "label": "继续",
+            "next": "t5_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_17",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「……你们两个是不是越说越可怕了？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_17",
+            "label": "继续",
+            "next": "t5_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_18",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「医生！你怎么进来了！」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_18",
+            "label": "继续",
+            "next": "t5_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_19",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_moe",
+        "text": "「这是休息室吧。我正准备来倒杯水。」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_19",
+            "label": "继续",
+            "next": "t5_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_20",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「我们上次可是和医生一起下去的。您也见过那扇门呀。」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_20",
+            "label": "继续",
+            "next": "t5_21",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_21",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「见过是见过。可锁着门……就说明里面藏着生体解剖的证据？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_21",
+            "label": "继续",
+            "next": "t5_22",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_22",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "岩崎留美",
+        "actor_id": "nurse_iwasaki_rumi",
+        "text": "「这不是更让人好奇了吗？」",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_22",
+            "label": "继续",
+            "next": "t5_23",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_23",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "本庄萌恵",
+        "actor_id": "nurse_moe",
+        "text": "「我已经一点都不好奇了……」",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_23",
+            "label": "继续",
+            "next": "t5_24",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t5_24",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "nurse_moe",
+        "text": "喝水前，坂口忽然想起：这些天听到的传言，似乎都指向同一个从未露面的医生。",
+        "expression": "worried",
+        "outfit": "uniform",
+        "cast_actor_ids": [
+          "nurse_moe",
+          "nurse_iwasaki_rumi"
+        ],
+        "anonymous_unmet": true,
+        "choices": [
+          {
+            "id": "continue_t5_24",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "start": "t5_01",
+    "target_level": 1,
+    "benefit_id": ""
+  },
+  {
+    "id": "takemi_lv0_t6",
+    "actor_id": "doc_takemi",
+    "actor_alias": "陌生女医",
+    "title": "第三台",
+    "chapter": 0,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "background_id": "or_entrance",
+    "outfit": "white_coat",
+    "minutes": 20,
+    "teaser": "第三台",
+    "time_start": 0,
+    "time_end": 1440,
+    "priority": 0,
+    "category": "introduction",
+    "auto_start": true,
+    "hide_completion_portrait": false,
+    "gallery": {
+      "cg_id": "takemi_lv0_t6",
+      "caption": "第三台",
+      "path": "assets/events/takemi_lv0_v1/first_meeting.png",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [
+        "takemi_lv0_t1",
+        "takemi_lv0_t2",
+        "takemi_lv0_t3",
+        "takemi_lv0_t4",
+        "takemi_lv0_t5"
+      ],
+      "special_requirements": []
+    },
+    "nodes": [
+      {
+        "id": "t6_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_takemi",
+        "text": "手术结束后，坂口从手术室出来。走廊边站着一名没见过的女医生，手里拿着一叠记录。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_01",
+            "label": "继续",
+            "next": "t6_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「……第三台了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_02",
+            "label": "继续",
+            "next": "t6_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_03",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……什么？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_03",
+            "label": "继续",
+            "next": "t6_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「我特意留下来看完的。第三台。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_04",
+            "label": "继续",
+            "next": "t6_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_05",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「你在看我的手术？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_05",
+            "label": "继续",
+            "next": "t6_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「嗯。之前两次也看了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_06",
+            "label": "继续",
+            "next": "t6_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_07",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「为什么？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_07",
+            "label": "继续",
+            "next": "t6_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「你已经做了不少无麻醉手术吧？本来以为只是传闻，结果还真能把场面控制得像样。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_08",
+            "label": "继续",
+            "next": "t6_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_09",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……这是夸奖吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_09",
+            "label": "继续",
+            "next": "t6_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「算是吧。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_10",
+            "label": "继续",
+            "next": "t6_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「你对这方面有兴趣？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_11",
+            "label": "继续",
+            "next": "t6_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_12",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……只要能把手术完成，我都愿意试试。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_12",
+            "label": "继续",
+            "next": "t6_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "陌生女医",
+        "actor_id": "doc_takemi",
+        "text": "「呵……原来你也有这种兴趣。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_13",
+            "label": "继续",
+            "next": "t6_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_14",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「先等一下。我们是不是应该互相介绍一下？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_14",
+            "label": "继续",
+            "next": "t6_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "t6_15",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「武見妙。医生。平时在地下研究室。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_15",
+            "label": "继续",
+            "next": "t6_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true,
+        "cg_path": "assets/events/takemi_lv0_v1/first_meeting.png",
+        "cg_fit": "inset"
+      },
+      {
+        "id": "t6_16",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……地下研究室？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_16",
+            "label": "继续",
+            "next": "t6_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_17",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「怎么了？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_17",
+            "label": "继续",
+            "next": "t6_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_18",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「原来你就是大家说的那位……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_18",
+            "label": "继续",
+            "next": "t6_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_19",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「嗯？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_19",
+            "label": "继续",
+            "next": "t6_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_20",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「听说你以前的手术……连手术台都弄坏过。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_20",
+            "label": "继续",
+            "next": "t6_21",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_21",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「啊。那件事啊。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_21",
+            "label": "继续",
+            "next": "t6_22",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_22",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「是真的？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_22",
+            "label": "继续",
+            "next": "t6_23",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_23",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「手术台后来换了。不是挺好吗？」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_23",
+            "label": "继续",
+            "next": "t6_24",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_24",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_24",
+            "label": "继续",
+            "next": "t6_25",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_25",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「还有……有人说，深夜手术室里看见过一个奇怪的人影。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_25",
+            "label": "继续",
+            "next": "t6_26",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_26",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「晚上安静，比较容易想事情。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_26",
+            "label": "继续",
+            "next": "t6_27",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_27",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「果然是你？！」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_27",
+            "label": "继续",
+            "next": "t6_28",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_28",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「我有这么说吗？」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_28",
+            "label": "继续",
+            "next": "t6_29",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_29",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「那地下室……灵安室还就在旁边。你不觉得那地方有点可怕？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_29",
+            "label": "继续",
+            "next": "t6_30",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_30",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「有什么可怕的。这家医院从我来到现在，灵安室从来就没用过。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_30",
+            "label": "继续",
+            "next": "t6_31",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_31",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……从来没用过？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_31",
+            "label": "继续",
+            "next": "t6_32",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_32",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「嗯。白白占着那么大一间。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_32",
+            "label": "继续",
+            "next": "t6_33",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_33",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「这医院的医生到底有多厉害啊……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_33",
+            "label": "继续",
+            "next": "t6_34",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_34",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「谁知道。也许只是运气好。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_34",
+            "label": "继续",
+            "next": "t6_35",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_35",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「我还有个问题，可能有点失礼。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_35",
+            "label": "继续",
+            "next": "t6_36",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_36",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「问吧。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_36",
+            "label": "继续",
+            "next": "t6_37",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_37",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「听说……你的终极爱好是生体解剖？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_37",
+            "label": "继续",
+            "next": "t6_38",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_38",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「嗯。是啊。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_38",
+            "label": "继续",
+            "next": "t6_39",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_39",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「我们是医生啊！怎么可以生体解剖？！」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_39",
+            "label": "继续",
+            "next": "t6_40",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_40",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「生体解剖哪里不对了？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_40",
+            "label": "继续",
+            "next": "t6_41",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_41",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「患者会死诶！」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_41",
+            "label": "继续",
+            "next": "t6_42",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_42",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「谁说生体解剖一定会死的？」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_42",
+            "label": "继续",
+            "next": "t6_43",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_43",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……啊？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_43",
+            "label": "继续",
+            "next": "t6_44",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_44",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「我初中生物课解剖青蛙，就完成所有解剖观察，缝好翻过来，它自己跳着走了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_44",
+            "label": "继续",
+            "next": "t6_45",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_45",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「…………」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_45",
+            "label": "继续",
+            "next": "t6_46",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_46",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「……对了，你下次还做类似的手术吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_46",
+            "label": "继续",
+            "next": "t6_47",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_47",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「排程里应该还有。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_47",
+            "label": "继续",
+            "next": "t6_48",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_48",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「缺助手的话可以叫我。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_48",
+            "label": "继续",
+            "next": "t6_49",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_49",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「咦？可不是说，院长不准你主刀吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_49",
+            "label": "继续",
+            "next": "t6_50",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_50",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「不准我主刀。又没说不准我当助手。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_50",
+            "label": "继续",
+            "next": "t6_51",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_51",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……这个限制还真是分得很清楚。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_51",
+            "label": "继续",
+            "next": "t6_52",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_52",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「明日香规定的。你有意见去找她。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_52",
+            "label": "继续",
+            "next": "t6_53",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_53",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「没有没有。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_53",
+            "label": "继续",
+            "next": "t6_54",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_54",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「平时有事就来地下室。现在知道是哪扇门了吧？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_54",
+            "label": "继续",
+            "next": "t6_55",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_55",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……原来上次那扇锁着的门，是你的办公室啊。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_55",
+            "label": "继续",
+            "next": "t6_56",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_56",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「嗯。要进来的话，直接找我。别半夜带着手电筒乱晃。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_56",
+            "label": "继续",
+            "next": "t6_57",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_57",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……你连那个都知道啊？！」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_57",
+            "label": "继续",
+            "next": "t6_58",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_58",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "武見妙",
+        "actor_id": "doc_takemi",
+        "text": "「地下室很安静。有人来的时候，听得特别清楚。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_58",
+            "label": "继续",
+            "next": "t6_59",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_59",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_takemi",
+        "text": "她像是没什么兴趣继续解释，抱着记录离开了。坂口站在走廊里，忽然觉得自己前些天听来的怪谈，好像也没有一句真正被否认。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_59",
+            "label": "继续",
+            "next": "t6_60",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      },
+      {
+        "id": "t6_60",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_takemi",
+        "text": "「……总觉得，认识了一个不得了的人。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "cast_actor_ids": [
+          "doc_takemi"
+        ],
+        "anonymous_unmet": false,
+        "choices": [
+          {
+            "id": "continue_t6_60",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "reveal_identity": true
+      }
+    ],
+    "start": "t6_01",
+    "preop_stage_id": "post_surgery_return",
+    "target_level": 1,
+    "benefit_id": ""
+  }
+]

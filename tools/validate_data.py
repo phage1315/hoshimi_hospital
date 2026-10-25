@@ -1268,7 +1268,7 @@ for event in collections['character_events']:
             pass
         elif cg_path:
             check((ROOT / cg_path).is_file(), prefix + node['id'] + ': node CG missing')
-            check(node.get('cg_fit') in {'cover', 'contain'}, prefix + node['id'] + ': node CG fit missing')
+            check(node.get('cg_fit') in {'cover', 'contain', 'inset'}, prefix + node['id'] + ': node CG fit missing')
         elif portrait_path:
             check((ROOT / portrait_path).is_file(), prefix + node['id'] + ': node portrait missing')
             check(png_has_alpha_channel(ROOT / portrait_path),

@@ -1,0 +1,75 @@
+{
+  "_status": "CODEX_AUTHORING_DRAFT_NOT_IMPLEMENTED_OR_RUNTIME_VALIDATED",
+  "character": {
+    "name_zh_CN": "氷上冴子",
+    "name_ja": "氷上冴子",
+    "name_en": "Saeko Hikami",
+    "source": "淫内感染 麻将篇 / Hoshimi AU",
+    "age": 24,
+    "age_status": "USER_CONFIRMED_2026-10-22",
+    "adult": true,
+    "profession": "nurse",
+    "department_label": "内科",
+    "employment_note": "其他医院调入的经验护士；到星见是新人，护理行业不是新人。没有单独的间谍职业机制。"
+  },
+  "skills": {
+    "surgery": 10,
+    "diagnostics": 68,
+    "teamwork": 70,
+    "patient_care": 72,
+    "instrument_handling": 54,
+    "calmness": 79
+  },
+  "skills_status": "PROPOSED_FOR_USER_REVIEW_NOT_YET_CONFIRMED",
+  "skills_design_rationale": "内科经验使诊断观察与临床沉着较强；术中器械较弱于专职器械护士；间谍调查笨拙不等于护理技术差。",
+  "roles": {
+    "ward_nurse": true,
+    "scrub_nurse": true,
+    "circulating_nurse": true,
+    "personal_nurse": true,
+    "after_work_companion": true,
+    "note": "三类普通护理岗位按现有全局规则均可编队，不新增入职等待、等级限制或间谍惩罚。"
+  },
+  "presence_authoring": {
+    "first_normal_location": "护士站",
+    "natural_location_candidates": ["护士站", "病房", "休息室", "天台"],
+    "location_ids": "CODEX_VERIFY_EXISTING_IDS",
+    "art_required": ["护士制服", "春夏便服", "秋冬便服", "刷手服", "手术袍及系带口罩", "HUD", "病房护士岗位CG", "器械护士岗位CG", "巡回护士岗位CG"],
+    "art_status": "PENDING_OFFICIAL_IDENTITY_ANCHORED_ASSETS"
+  },
+  "initial_relationship": {
+    "met": false,
+    "relationship_level": 0,
+    "familiarity": 0,
+    "route": "colleague",
+    "familiarity_gain_multiplier": 1.2,
+    "multiplier_status": "USER_CONFIRMED",
+    "application_and_rounding": "USE_AND_VERIFY_EXISTING_GLOBAL_FAMILIARITY_RULE; DO_NOT_INVENT"
+  },
+  "entry": {
+    "time_gate": "游戏开始满六个日历月，最早第七个月",
+    "timing_semantics": "相对游戏开局日期按日历月份判定；不是第六个月开始，也不要擅自改为180天。",
+    "location": "护士站",
+    "type": "Lv0正式相识，单次VN事件",
+    "reschedule_if_busy": true,
+    "no_auto_met_before_completion": true,
+    "event_script_file": "HOSHIMI_HIKAMI_SAEKO_LV0_CODEX_READY_V1.md"
+  },
+  "future_relationship_special_gates": {
+    "Lv1": "她正式相识后，坂口亲自完成患者术前准备累计5次",
+    "Lv2": "她正式相识后，至少共同参与无麻醉手术1次",
+    "Lv3": "她作为护士参与其他成年医护的Staff-as-Patient手术至少1次",
+    "Lv4": "她正式相识后，玩家与高关系成年医护在手术室、妇科检查室、病房、诊室各完成H至少1次",
+    "Lv5": "她正式相识后，与她共同参与公开教学手术至少1次，再进入她本人的Staff-as-Patient剧情",
+    "status": "USER_APPROVED_DESIGN_DIRECTION; LV1-LV5_SCRIPTS_AND_RUNTIME_GATES_NOT_IMPLEMENTED",
+    "do_not_weaken_when_feature_absent": true
+  },
+  "characterization_rules": [
+    "日常护理认真、客气、可靠。工作对白不泄露其受托侦查身份。",
+    "秘密任务是剧情叙述层，与职业能力和技能随机数无关。",
+    "调查星见怪异制度，同时客观承认临床成效良好；保持黑色医疗喜剧。",
+    "神秘委托人身份可以永远不揭晓，Lv0不得提前揭露真实任务。",
+    "不与中井美佳的隐藏过去人设混同；不新增重大阴谋剧情。"
+  ],
+  "art_and_implementation_warning": "本文件供Codex映射现有Staff Schema；所有运行时actor_id、enum、资源路径、触发函数应从工程查证，不能把此作者草案当作已通过验证的运行时JSON。"
+}
