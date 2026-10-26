@@ -161,7 +161,7 @@
         "gentle_full_undress": "「谢谢您先告诉我理由……我会照做。……只是这种事，我还不太习惯。」",
         "threaten_full_undress": "「……请别用那种方式催我。我知道自己需要接受检查……但这样说，只会让我更难平静。」"
       },
-      "visual_pool_id": ""
+      "visual_pool_id": "full_undress_basic_exam_patient_doa_kasumi"
     }
   },
   "preop": {
@@ -209,8 +209,113 @@
     }
   },
   "exclusive_cg_pools": {
-    "examination": [],
-    "ward_preparation": [],
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_doa_kasumi",
+        "label": "霞 · 基础查体全裸检查",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": ["assets/examinations/patient_doa_kasumi/full_undress_basic_exam.png"],
+        "caption": "霞完成脱衣，准备接受基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_doa_kasumi",
+        "label": "霞 · 术前准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/enema.png"],
+        "caption": "霞按当前术前安排完成灌肠准备。"
+      },
+      {
+        "id": "ward_skin_prep_patient_doa_kasumi",
+        "label": "霞 · 术前准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/skin_prep.png"],
+        "caption": "霞按当前术前准备范围完成备皮。"
+      },
+      {
+        "id": "ward_surgical_cap_patient_doa_kasumi",
+        "label": "霞 · 病房准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_surgical_cap"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/surgical_cap.png"],
+        "caption": "霞戴好手术帽，准备转运至手术室。"
+      },
+      {
+        "id": "stretcher_transfer_patient_doa_kasumi",
+        "label": "霞 · 病房准备 · 转运担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/stretcher_transfer.png"],
+        "caption": "病房准备结束后，霞躺上担架车，准备转运。"
+      },
+      {
+        "id": "urinary_catheterization_patient_doa_kasumi",
+        "label": "霞 · 手术室准备 · 留置导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/urinary_catheterization.png"],
+        "caption": "霞在手术室准备阶段接受留置导尿。"
+      },
+      {
+        "id": "skin_disinfection_patient_doa_kasumi",
+        "label": "霞 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/skin_disinfection.png"],
+        "caption": "手术团队按预定范围为霞完成术野消毒。"
+      },
+      {
+        "id": "operative_positioning_patient_doa_kasumi",
+        "label": "霞 · 手术室准备 · 体位摆放与固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["operative_positioning"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/operative_positioning.png"],
+        "caption": "团队依照当前术式为霞完成体位摆放与固定。"
+      },
+      {
+        "id": "sterile_draping_patient_doa_kasumi",
+        "label": "霞 · 手术室准备 · 铺设无菌单",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ack_disinfection"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/sterile_draping.png"],
+        "caption": "消毒完成后，团队为霞铺设无菌单并保留预定术野。"
+      },
+      {
+        "id": "incision_ready_patient_doa_kasumi",
+        "label": "霞 · 手术准备 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_doa_kasumi"],
+        "procedure_groups": ["general_abdominal", "female_pelvic"],
+        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/scalpel_ready.png"],
+        "caption": "器械护士递上手术刀，霞在正式开始前等待主刀确认。"
+      }
+    ],
     "surgery": []
   },
   "diagnosis_reactions": []

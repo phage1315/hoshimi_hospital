@@ -1790,8 +1790,16 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	if not awaiting_departure and game.is_sunday() and not game.sunday_activity_done() and not sunday_hospital_browsing:
 		show_sunday_menu()
 		return
-	var auto_special_event := game.next_auto_special_event() if resolve_day_start_events and not awaiting_departure else {}
+	var auto_special_event := game.next_auto_special_event() if not awaiting_departure else {}
+	# Mandatory appointments must also resolve after the ordinary next-day screen,
+	# whose map callback deliberately suppresses optional morning offers.
+	if not resolve_day_start_events and not bool(auto_special_event.get("mandatory_auto_start", false)):
+		auto_special_event = {}
 	if not auto_special_event.is_empty():
+		if bool(auto_special_event.get("mandatory_auto_start", false)):
+			special_event_pending_id = str(auto_special_event.id)
+			begin_special_event()
+			return
 		confirm_special_event(str(auto_special_event.id))
 		return
 	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events and not awaiting_departure else {}
@@ -2270,6 +2278,11 @@ func case_training_value_is_low(case_data: Dictionary) -> bool:
 	return game.surgery_learning_efficiency(effective_difficulty - current_level) <= 0.10
 
 func show_location(id: String, preserve_random: bool = false, allow_micro_event: bool = true) -> void:
+	var scheduled: Dictionary = game.next_auto_special_event()
+	if not scheduled.is_empty() and bool(scheduled.get("mandatory_auto_start", false)):
+		special_event_pending_id = str(scheduled.id)
+		begin_special_event()
+		return
 	if id == "basement_research" and not game.story_flag("takemi_research_open"):
 		if game.story_flag("takemi_research_discovered"):
 			show_notice(tx("ui.takemi.locked", "门锁着，里面没有回应。"))
@@ -3312,6 +3325,9 @@ func special_event_speaker(node: Dictionary, actor: Dictionary, step_id: String 
 		_: return tx("ui.auto.ed1d855fc574", "旁白")
 
 func add_special_event_visual(node: Dictionary) -> void:
+	if node.has("event_portraits"):
+		add_character_event_visual({}, node, "")
+		return
 	if not str(node.get("cg_path", "")).is_empty() or not str(node.get("portrait_path", "")).is_empty():
 		add_character_event_visual({}, node, "")
 		return
@@ -3590,6 +3606,8 @@ func show_special_event_complete() -> void:
 	base(tx("ui.auto.fda784039855", "特殊活动完成"), special_event_localized_title(event.definition), false, event.current_step().get("background_id", "lobby"))
 	label_at(tx("ui.auto.4a39afe64504", "活动的全部日程已经完成。"), Vector2(110, 260), 34, Color("f4f0e6"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var time_summary := tx("ui.special_event.zero_time_complete", "不消耗游戏时间　/　现在是 %s %s") % [game.day_text(), game.clock_text()] if not bool(event.definition.get("consumes_full_day", true)) else tx("ui.auto.4c7e14cb5767", "耗时 %s 天　/　现在是 %s %s") % [event.definition.duration_days, game.day_text(), game.clock_text()]
+	if not bool(event.definition.get("consumes_full_day", true)) and int(event.definition.get("settled_minutes", 0)) > 0:
+		time_summary = tx("ui.special_event.partial_day_complete", "耗时 %s 分钟　/　现在是 %s %s") % [int(event.definition.settled_minutes), game.day_text(), game.clock_text()]
 	label_at(time_summary, Vector2(110, 350), 22, Color("e8cfaa"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if bool(event.definition.gallery_unlock):
 		label_at(tx("ui.auto.779b69fdeeb5", "已收录至事件鉴赏。"), Vector2(110, 410), 20, Color("c2d2cc"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

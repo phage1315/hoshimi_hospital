@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-25",
+  "asset_count": 39,
+  "groups": {
+    "casual": 10,
+    "ward": 11,
+    "postop": 6,
+    "intraoperative": 9,
+    "operating_table": 3
+  },
+  "checks": {
+    "png_dimensions_and_unique_pixels": "39 passed, 0 failures",
+    "rgba_transparency": "36 sprites passed; 3 operating-room scenes intentionally opaque",
+    "godot_headless_resource_load": "39 textures, 0 failures",
+    "godot_gui_resource_load_and_render": "39 textures, 0 failures",
+    "visual_review": "All five rendered sheets reviewed on split light/dark backgrounds; no visible background rectangle or outer glow; consistent per-group pose and framing",
+    "git_diff_check": "passed"
+  },
+  "previews": [
+    "casual.png",
+    "ward.png",
+    "postop.png",
+    "intraoperative.png",
+    "operating_table.png"
+  ],
+  "scope": "Art prepared only; no runtime character registration, event connection, surgery runner, dialogue, patient queue, save or romance unlock changes.",
+  "environment_notes": [
+    "Headless Godot emitted system certificate warning.",
+    "Editor import could not save external editor settings due sandbox permission; all39 texture imports and both load tests succeeded."
+  ]
+}

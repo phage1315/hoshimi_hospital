@@ -1888,6 +1888,8 @@ func next_character_event_at(location_id: String) -> Dictionary:
 	return {} if candidates.is_empty() else candidates[0]
 
 func next_day_start_character_event() -> Dictionary:
+	if preload("res://godot/systems/chihaya_second_surgery.gd").reserved_today(self):
+		return {}
 	if active_surgery_in_progress() or special_event_in_progress() or is_sunday() or day_start_character_event_consumed():
 		return {}
 	var clock: int = int(schedule_at(elapsed()).absolute_clock)
@@ -2612,6 +2614,12 @@ func special_event_base_requirements_met(definition: Dictionary) -> bool:
 	return special_requirements_met(definition.get("unlock_requirements", []))
 
 func special_event_timing_status(definition: Dictionary) -> Dictionary:
+	var chihaya = preload("res://godot/systems/chihaya_second_surgery.gd")
+	var event_id := str(definition.get("id", ""))
+	if chihaya.owns(event_id):
+		var target: int = chihaya.target_day(self, event_id)
+		if event_id != chihaya.A or target != day_number():
+			return {"status": "available" if target == day_number() else "future", "trigger_day": target, "effective_day": target}
 	var timing: Dictionary = definition.get("timing", {})
 	var trigger_day := special_event_trigger_day(definition)
 	var priority := int(timing.get("priority", 0))
@@ -2657,6 +2665,9 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	return {"status": "available", "trigger_day": trigger_day, "effective_day": planned_start}
 
 func special_event_trigger_day(definition: Dictionary) -> int:
+	if preload("res://godot/systems/chihaya_second_surgery.gd").owns(str(definition.get("id", ""))):
+		var target: int = preload("res://godot/systems/chihaya_second_surgery.gd").scheduled_day(self, str(definition.id))
+		return target if target > 0 else GAME_DURATION_DAYS + 1
 	var timing: Dictionary = definition.get("timing", {})
 	if not str(timing.get("trigger_date", "")).is_empty():
 		return maxi(1, day_number_for_date(str(timing.trigger_date)))
@@ -2664,6 +2675,12 @@ func special_event_trigger_day(definition: Dictionary) -> int:
 
 func special_event_available(definition: Dictionary) -> bool:
 	if not active_special_event_id.is_empty() or active_surgery_in_progress():
+		return false
+	var chihaya = preload("res://godot/systems/chihaya_second_surgery.gd")
+	if chihaya.owns(str(definition.get("id", ""))):
+		if not chihaya.eligible(self, str(definition.id)):
+			return false
+	elif chihaya.reserved_today(self) or chihaya.conflicts_with_reservation(self, definition):
 		return false
 	var timing: Dictionary = definition.get("timing", {})
 	if bool(timing.get("exact_day_start_only", false)):
@@ -3334,6 +3351,9 @@ func choose_special_event(choice_id: String) -> Dictionary:
 			advance_story_to_future_day(1, SHIFT_START_MINUTE)
 	if active_special_event.completed:
 		var id := active_special_event_id
+		# Settle an atomic partial-day event exactly once, independently of nodes.
+		if not consumes_full_day:
+			story_time_advance_minutes += maxi(0, int(active_special_event.definition.get("settled_minutes", 0)))
 		special_event_completion_counts[id] = int(special_event_completion_counts.get(id, 0)) + 1
 		var completion_day: int = int(active_special_event.started_day) + int(active_special_event.step_index) if special_event_trigger_mode(active_special_event.definition) == "after_work" else int(day_number())
 		special_event_completion_days[id] = completion_day

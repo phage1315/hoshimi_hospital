@@ -1,0 +1,410 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-25",
+  "character": "支手瑞穗 / Mizuho",
+  "scope": "SFW art preparation only. No event, dialogue, patient case, schedule, save, score or unlock changed.",
+  "user_references": [
+    "identity_reference.png",
+    "outfit_reference.png"
+  ],
+  "jobs": [
+    {
+      "key": "casual/neutral",
+      "prompt": "Use case: identity-preserve. Asset type: clean transparent visual-novel standing character sprite, 1024x1536 portrait canvas.\nInput1 identity reference, input2 outfit/color reference. Create a polished single front-facing sprite of the same adult Mizuho, not a character sheet. Early 2000s Japanese visual novel cel-shaded anime artwork. Preserve her distinctive golden honey-blonde long waves swept back from a center part, blue eyes, warm distinctly wheat-tan skin, facial structure and confident friendly personality. Natural upright standing position, head to knees framing, whole head/hair and both arms inside canvas with clear side margins. One hand relaxed on hip, other arm hanging naturally. Soft closed-mouth neutral expression.\nClothing exactly inspired by input2: white long sleeve button blouse, burgundy thin ribbon at collar, light yellow-green knitted V-neck vest with dark green trim, green plaid pleated skirt. Fully clothed, ordinary standing portrait, no exaggerated pose, no props. No navy blazer. Consistent clean thin dark lineart, subtle cell shading and soft highlights, not photographic or 3D.\nGenuinely transparent alpha background, crisp clean silhouette, no backdrop, NO glow, NO halo, NO shadow around figure, no vignette, no text, no watermark, no border. Do not lighten her tan. This is the master aligned base for later face-only expression changes.",
+      "references": [
+        "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-1228368d-47e3-4c14-90f7-949d0fbe80af.png",
+        "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d88fc56d-dea1-4fad-af75-58d1702ccec0.png"
+      ],
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png",
+      "transparent": true,
+      "project_path": "assets/characters/mizuho_story_v1/casual/neutral.png"
+    },
+    {
+      "key": "intraoperative/neutral",
+      "transparent": true,
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png",
+        "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/assets/characters/patient_chihaya_second_surgery_v1/intraoperative/neutral.png"
+      ],
+      "prompt": "Use case: identity-preserve. Generate one transparent 1536x1024 head-and-shoulders dialogue avatar. Image1 is Mizuho identity: same adult woman, blue eyes, distinctive face and distinctly wheat-tan complexion. Image2 is composition reference ONLY for surgical cap and portrait scale; do NOT copy its pale skin, brown eyes or face. Mizuho faces camera, composed neutral expression, closed relaxed mouth. Pale blue disposable surgical bouffant cap fully encloses ALL her long blonde hair and ears, forehead visible, no dangling hair, no earrings. Crop exactly at collarbones/upper shoulders like image2; no breasts or torso. Center face and cap, generous side margins and35px headroom. Same clean early2000 anime cel shading. Genuine transparent alpha background, clean edge, no halo, no glow, no scene, no text, no watermark.",
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/neutral.png"
+    },
+    {
+      "key": "ward/neutral",
+      "transparent": true,
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png",
+        "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/assets/characters/patient_chihaya_second_surgery_v1/ward/neutral.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create one transparent 1024x1536 portrait sprite. Image1 is Mizuho identity reference: keep the same adult woman, golden honey blonde long waved hair swept back, vivid blue eyes and distinctly wheat-tan skin. Image2 is framing/pose reference ONLY: seated upright, head to knees, relaxed hands on lap. Do NOT copy image2's face, brown hair, pale complexion or yellow cat pajamas. Dress Mizuho in modest fully buttoned pale mint-green long-sleeved hospital pajamas with matching long pants, white collar piping and cuffs, opaque loose cotton. Expression composed neutral, mouth relaxed closed, looking toward viewer. Early2000 Japanese VN cel-shaded artwork consistent with image1. All hair inside image with 35px top margin, generous clear side margins. No bed/chair/background rendered. Genuinely transparent alpha clean silhouette, no glow, no halo, no backdrop, no text. All body remains covered by pajamas; no exposed chest or abdomen.",
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/neutral.png"
+    },
+    {
+      "key": "operating_table/awake",
+      "transparent": false,
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png",
+        "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/assets/characters/patient_chihaya_second_surgery_v1/operating_table/awake.png"
+      ],
+      "prompt": "Use case: identity-preserve. Image1 Mizuho identity reference, Image2 EDIT TARGET scene. Replace ONLY the patient in image2 with adult Mizuho from image1: blue eyes, same face, distinctive warm wheat-tan skin. Keep the exact1536x1024 composition, top-down operating table framing, background equipment, lighting, drape and pose. Calm awake neutral expression. All her long blonde hair and ears are fully enclosed inside the pale blue bouffant surgical cap; no hanging strands or jewelry. Opaque teal drape covers chest fully and entire torso, pelvis and legs to calves; only head, shoulders, arms and lower legs/feet visible, same non-explicit medical preparation as reference. No incision, wound or blood. Keep clean VN cel-shaded illustration. Preserve table and equipment geometry; no extra persons, objects, text or watermarks. Normal opaque scene background.",
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-2cb1a9e6-c9bd-46b7-aa70-b3b78f41a109.png",
+      "project_path": "assets/characters/mizuho_story_v1/operating_table/awake.png"
+    },
+    {
+      "key": "postop/relieved",
+      "prompt": "Use case: identity-preserve. Image1 edit target. Create a postoperative recovery dialogue sprite of exactly this same Mizuho. Change ONLY her arms/hands and expression: both hands rest gently one over the other over her lower abdomen OVER the closed mint pajama fabric, protective relaxed recovery posture, shoulders slightly relaxed. Expression a small relieved closed-mouth smile, slightly tired soft blue eyes. Keep her distinctive warm tan complexion, golden blonde hair, same face, all pajamas fully closed opaque, same seated pose, proportions,1024x1536 canvas, exact head position/scale and hair outline, all clothing colors and folds except where hand position requires local changes. No wound, bandage, medical hardware or background. Preserve genuine alpha transparency, no halo, no glow, no shadows around silhouette. A single image, no text.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-51f38f01-0194-4f8a-9104-3f59eff75201.png",
+      "transparent": true,
+      "project_path": "assets/characters/mizuho_story_v1/postop/relieved.png"
+    },
+    {
+      "key": "casual/smile",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: warm friendly open-mouth smile, cheerful blue eyes, eyebrows relaxed. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-66b9dffe-30c7-4a91-ac06-31c8de958aca.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/smile.png"
+    },
+    {
+      "key": "casual/teasing",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: knowing playful asymmetric smirk, one eyebrow slightly raised, eyes narrowed with friendly wit. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-8c731006-5a90-46b2-b582-90f6dc184536.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/teasing.png"
+    },
+    {
+      "key": "casual/worried",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: concerned sympathetic expression, inner eyebrows lifted and drawn together, mouth slightly downturned. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-263dd208-6268-4577-9c79-874b3cf341e2.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/worried.png"
+    },
+    {
+      "key": "casual/surprised",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: eyes noticeably wide, eyebrows raised, small open mouth in surprise. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-bd1c1548-6867-4437-b164-66f92f344483.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/surprised.png"
+    },
+    {
+      "key": "casual/serious",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: attentive serious expression, eyebrows subtly drawn together, lips closed straight, no smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-3e41f080-4877-430f-8456-4d4fbdc0afa0.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/serious.png"
+    },
+    {
+      "key": "casual/touched",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: soft affectionate grateful eyes, gently lifted inner eyebrows, tender closed-mouth smile, not crying. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-48512de6-3800-48e4-88d9-498ac8fbe440.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/touched.png"
+    },
+    {
+      "key": "casual/happy",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: bright laughing face, eyes closed in happy curved arcs, mouth open in a joyful natural laugh. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-63bc7149-c8af-42e3-aaf2-5f5e4ca83721.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/happy.png"
+    },
+    {
+      "key": "ward/angry",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: angry frown, brows sharply furrowed, firmly open mouth speaking assertively, not comedic. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-36f9c614-2169-4fa9-845b-d5c9c2106d87.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/angry.png"
+    },
+    {
+      "key": "casual/annoyed",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: irritated skeptical expression, eyebrows furrowed, lips forming a small annoyed pout, not screaming. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-d3ef7f6a-4c35-44d0-af3b-6d9bab2466fd.png",
+      "project_path": "assets/characters/mizuho_story_v1/casual/annoyed.png"
+    },
+    {
+      "key": "ward/brave",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: determined composed expression, focused blue eyes, brows set confidently, firm small closed-mouth smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-bc5bf5de-847e-467b-9aec-27edb7cbbe25.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/brave.png"
+    },
+    {
+      "key": "ward/afraid",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: visibly anxious fearful eyes, raised inner eyebrows, small slightly trembling open mouth, no smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-bb97f63a-f6e1-4561-b0a3-03b465a26da9.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/afraid.png"
+    },
+    {
+      "key": "ward/crying",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: sad distressed face, eyes watery with two small tear trails, trembling downturned mouth; no injury. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-4243e88f-ec15-4c97-b722-d7a99f105dad.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/crying.png"
+    },
+    {
+      "key": "ward/happy",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: bright laughing face, eyes closed in happy curved arcs, mouth open in a joyful natural laugh. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-5f822e47-1496-4334-a8bc-1efc92be9b6d.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/happy.png"
+    },
+    {
+      "key": "ward/shy",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: bashful mild blush over her still-tan cheeks, eyes a little averted, small hesitant closed-mouth smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c1b94622-060c-4dc8-b9b7-65903e2ff6ce.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/shy.png"
+    },
+    {
+      "key": "ward/smile",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: warm friendly open-mouth smile, cheerful blue eyes, eyebrows relaxed. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-e5784f6d-cc85-4339-b215-53dd9542ed53.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/smile.png"
+    },
+    {
+      "key": "ward/tired",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: fatigued expression, eyelids lowered, brows softened, slightly parted relaxed mouth, no smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-bbd5abdc-bcaf-47a1-b05f-463ad88e73b3.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/tired.png"
+    },
+    {
+      "key": "ward/surprised",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: eyes noticeably wide, eyebrows raised, small open mouth in surprise. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-3435613b-7d96-417b-940a-8cca0495a95e.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/surprised.png"
+    },
+    {
+      "key": "postop/angry",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: postop master Mizuho artwork. Make ONE expression variant: angry frown, brows sharply furrowed, firmly open mouth speaking assertively, not comedic. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-51f38f01-0194-4f8a-9104-3f59eff75201.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-e6a587ca-55b6-4e8f-b161-e69c7eb0dc5f.png",
+      "project_path": "assets/characters/mizuho_story_v1/postop/angry.png"
+    },
+    {
+      "key": "ward/worried",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: ward master Mizuho artwork. Make ONE expression variant: concerned sympathetic expression, inner eyebrows lifted and drawn together, mouth slightly downturned. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-eecf781f-4472-480f-a0b8-ad287ee1f4d4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-0dc47721-c22c-4d4b-b7e6-7e4650656d0c.png",
+      "project_path": "assets/characters/mizuho_story_v1/ward/worried.png"
+    },
+    {
+      "key": "postop/pain",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: postop master Mizuho artwork. Make ONE expression variant: restrained physical discomfort, eyes squeezed shut, eyebrows pulled together, clenched teeth visible in a small grimace, no tears or blood. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-51f38f01-0194-4f8a-9104-3f59eff75201.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-e8170170-0bc0-4870-87ba-c7031561d045.png",
+      "project_path": "assets/characters/mizuho_story_v1/postop/pain.png"
+    },
+    {
+      "key": "postop/shy",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: postop master Mizuho artwork. Make ONE expression variant: bashful mild blush over her still-tan cheeks, eyes a little averted, small hesitant closed-mouth smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-51f38f01-0194-4f8a-9104-3f59eff75201.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-302deb56-92fe-4946-916f-91a46c6a33d9.png",
+      "project_path": "assets/characters/mizuho_story_v1/postop/shy.png"
+    },
+    {
+      "key": "postop/smile",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: postop master Mizuho artwork. Make ONE expression variant: warm friendly open-mouth smile, cheerful blue eyes, eyebrows relaxed. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-51f38f01-0194-4f8a-9104-3f59eff75201.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-41177b45-bb5a-4338-9f8b-30527d09438b.png",
+      "project_path": "assets/characters/mizuho_story_v1/postop/smile.png"
+    },
+    {
+      "key": "postop/tired",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: postop master Mizuho artwork. Make ONE expression variant: fatigued expression, eyelids lowered, brows softened, slightly parted relaxed mouth, no smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-51f38f01-0194-4f8a-9104-3f59eff75201.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-d1f52fbe-8cfb-41f0-9aa5-4e3f159c880e.png",
+      "project_path": "assets/characters/mizuho_story_v1/postop/tired.png"
+    },
+    {
+      "key": "intraoperative/relieved",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: relief and relaxation, softened half-open blue eyes, gentle closed-mouth smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-ca91328e-145a-4e14-b9a6-e037a2e06576.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/relieved.png"
+    },
+    {
+      "key": "intraoperative/angry",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: angry frown, brows sharply furrowed, firmly open mouth speaking assertively, not comedic. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-7204b144-e15d-42d2-b143-27e5c550c401.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/angry.png"
+    },
+    {
+      "key": "intraoperative/shy",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: bashful mild blush over her still-tan cheeks, eyes a little averted, small hesitant closed-mouth smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-65938bb4-3814-40cd-865d-42488c17a439.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/shy.png"
+    },
+    {
+      "key": "intraoperative/crying",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: sad distressed face, eyes watery with two small tear trails, trembling downturned mouth; no injury. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-76b8ded7-acd8-429d-8250-dec7cf148a92.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/crying.png"
+    },
+    {
+      "key": "intraoperative/surprised",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: eyes noticeably wide, eyebrows raised, small open mouth in surprise. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-2ee6ed1a-a064-44d5-8b94-f839ae137587.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/surprised.png"
+    },
+    {
+      "key": "intraoperative/tense",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: tense uneasy expression, slightly furrowed brows, attentive widened blue eyes, tight closed lips. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-674da70f-926c-47f0-a84e-45dbee9da04f.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/tense.png"
+    },
+    {
+      "key": "intraoperative/pain",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: restrained physical discomfort, eyes squeezed shut, eyebrows pulled together, clenched teeth visible in a small grimace, no tears or blood. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c4ab999a-a064-49f1-a104-ffadb1449f97.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/pain.png"
+    },
+    {
+      "key": "intraoperative/tired",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: intraoperative master Mizuho artwork. Make ONE expression variant: fatigued expression, eyelids lowered, brows softened, slightly parted relaxed mouth, no smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character. Keep the entire head inside the surgical cap, all hair and ears enclosed, exact collarbone crop, no torso added. Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-c643fe34-42da-45d7-aa99-e5a6aea286e2.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-fb41dbac-ed37-472c-869f-e3ace8d31585.png",
+      "project_path": "assets/characters/mizuho_story_v1/intraoperative/tired.png"
+    },
+    {
+      "key": "operating_table/tense",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: operating_table master Mizuho artwork. Make ONE expression variant: tense uneasy expression, slightly furrowed brows, attentive widened blue eyes, tight closed lips. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Keep the whole opaque operating-room scene, teal drape fully covering chest/torso/pelvis/legs, and all equipment completely unchanged. No blood, injuries or procedure depiction.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-2cb1a9e6-c9bd-46b7-aa70-b3b78f41a109.png"
+      ],
+      "transparent": false,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-6878d295-2d87-4961-b777-54262d75c30c.png",
+      "project_path": "assets/characters/mizuho_story_v1/operating_table/tense.png"
+    },
+    {
+      "key": "operating_table/afraid",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: operating_table master Mizuho artwork. Make ONE expression variant: visibly anxious fearful eyes, raised inner eyebrows, small slightly trembling open mouth, no smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Keep the whole opaque operating-room scene, teal drape fully covering chest/torso/pelvis/legs, and all equipment completely unchanged. No blood, injuries or procedure depiction.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-2cb1a9e6-c9bd-46b7-aa70-b3b78f41a109.png"
+      ],
+      "transparent": false,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-db8882c7-b7de-4cf0-b5fa-cb2d92c610fd.png",
+      "project_path": "assets/characters/mizuho_story_v1/operating_table/afraid.png"
+    },
+    {
+      "key": "casual/shy",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET: casual master Mizuho artwork. Make ONE expression variant: bashful mild blush over her still-tan cheeks, eyes a little averted, small hesitant closed-mouth smile. Change ONLY face features (eyebrows, eyelids, pupils/gaze, mouth, and small blush/tears if requested). Preserve exactly the same character identity, golden hair or enclosing cap, distinct wheat-tan skin tone, blue eye color, head angle, head location and size, silhouette, clothing, hands, body, pose, crop, lighting, outlines, colors and canvas dimensions. Do NOT move or scale the head, repaint clothes, change skin tone, add accessories, or redesign. Preserve genuine transparent alpha background and crisp silhouette; no backdrop, no halo, no glow, no shadow around character.  Clean early2000 Japanese VN cel-shaded art. No text or watermark.",
+      "references": [
+        "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-f602c84d-a893-44b0-82ff-ea70b694f2f4.png"
+      ],
+      "transparent": true,
+      "generated_path": "/Users/ningye/.codex/generated_images/01a11776-2d26-7c81-bffa-406a1a7bd3ce/exec-8801041f-7a31-420f-9761-aef8b979dac9.png",
+      "retry": true,
+      "project_path": "assets/characters/mizuho_story_v1/casual/shy.png"
+    }
+  ],
+  "generation_notes": [
+    "casual/shy first attempt rejected at output by service; unchanged request succeeded on retry."
+  ]
+}

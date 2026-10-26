@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_lust_actress",
+    "name": "拉丝特",
+    "age": 29,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_lust_actress/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_lust_actress/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_lust_actress/ward/smile.png",
+        "ward/brave": "assets/characters/patient_lust_actress/ward/brave.png",
+        "ward/worried": "assets/characters/patient_lust_actress/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_lust_actress/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_lust_actress/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_lust_actress/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_lust_actress/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_lust_actress/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_lust_actress/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_lust_actress/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_lust_actress/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_lust_actress/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_lust_actress/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_lust_actress/splash/general_anesthesia.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "self_possessed",
+      "secondary": "strategic_charm",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "enigmatic_self_possessed_detail",
+    "traits": {
+      "baseline_anxiety": 48,
+      "pain_sensitivity": 73,
+      "privacy_sensitivity": 72,
+      "trust_baseline": 45,
+      "control_need": 88,
+      "expressiveness": 82,
+      "health_literacy": 36,
+      "compliance_tendency": 73
+    },
+    "fear_profile": {
+      "pain_fear": 80,
+      "procedure_fear": 70,
+      "diagnosis_fear": 53,
+      "loss_control_fear": 90
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院？呵……我本来以为今晚还能照常工作呢。医生，这次可不像拍摄，说一句『再来一条』就能重头开始吧？」",
+      "hospitalization_response": "「好，我住院。接下来准备怎么做，请提前说清楚。我不喜欢到了现场才发现剧本临时改了。」",
+      "procedure_mismatch": "「……等一下。你现在说的手术，和之前确认的不是同一项吧？呵，想让我放心交出身体，至少先把病历核对正确。」",
+      "explain_plan": "「嗯，终于讲清楚了。你愿意把事情告诉我，我也就不必一直猜你的下一步。」",
+      "brief_plan": "「一句『按流程』就结束说明了？真冷淡呢，医生。至少让我知道待会儿第一步要做什么。」",
+      "last_reassure": "「听你这么说，倒有点安心了……呵呵。只不过，我的手心似乎没有这张笑脸那么镇定。」",
+      "choose_general": "「全身麻醉呀……像是把最重要的一幕交给别人演。听起来轻松，可那段完全没有记忆的时间……我有些害怕呢。」",
+      "choose_epidural": "「硬膜外麻醉……意识还在，下半身却渐渐不听指挥。呵，这次连站起来摆个姿势都由不得我了。」",
+      "choose_local": "「局部麻醉？好，我会如实告诉你还有哪里难受。别因为我在笑，就以为我的疼痛评分是零哦。」",
+      "choose_none": "「一点麻醉都不用？呵呵……多么疯狂的提议。我演过不死的人造人，可我本人只有这副普通的身体。」",
+      "induction_reassure": "「……药已经准备好了？好。这一次我不说笑了。等我醒来，请你亲口告诉我手术结束了。」",
+      "insist_without_anesthesia": "「医生……我答应的是治疗，不是说每一下疼痛我都受得住。现在已经很疼了……你听见我在说什么吗？」",
+      "assistant_stabilize_none": "「啊……！别突然按住我……！我知道身体不能动，可真的疼起来，我会不由自主地躲啊！」",
+      "assistant_stabilize_local": "「扶稳就好……呼。手在发抖而已，不是我故意乱动。……别这样盯着看，我也会害怕的。」",
+      "assistant_stabilize_epidural": "「腿真的没有力气了……麻烦替我保持姿势。呵，平时总爱掌控场面，今天倒只能拜托别人了。」",
+      "incise_epidural": "「……已经切开了？没有刚才想象的刺痛，可里面那股压力……啊，我知道你们真的在做手术了。」",
+      "incise_local": "「嘶……！皮肤那里没那么疼，可里面刚刚被牵动那一下……等一下，真的很难受！」",
+      "incise_none": "「啊——！！好疼！等、等一下！这不是拍戏……我真的受不了！医生，先停下来……求你了！」",
+      "contact_pause": "「……谢谢，真的谢谢。让我喘口气……我居然连刚才那种笑都挤不出来了。」",
+      "contact_command": "「好，不动……我听见了。可是如果下一步会疼，求你先告诉我，我怕身体自己缩起来。」",
+      "contact_continue": "「……我会试着配合。只是我说疼的时候，请你们别当作台词，是真的疼。」",
+      "ongoing_narrate": "「继续告诉我吧……你们每说清楚一步，我就能少想象一种可怕的事。」",
+      "ongoing_eye_contact": "「终于抬头看我了？呵……抱歉，我不是在逗你。我只是想知道你们还在留意我的反应。」",
+      "ongoing_silent": "「……怎么都不说话了？医生？别让我只听见器械声……回答我一声，好吗？」",
+      "closure_reassure": "「最难的部分已经过去了吗……？呵……刚才那个样子，可一点也不像我演的那位不死女人。」",
+      "closure_coach": "「慢慢呼吸……好。呼……我照做。接下来要我怎么配合，你们说，我听。」",
+      "closure_silent": "「……已经在收尾了吗？我不需要漂亮的安慰话，只想听你们说一句快结束了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠也在准备项目里？……呵，今天的工作内容真够特别。抱歉，我开玩笑的……先把帘子拉好，可以吗？」",
+        "「要侧躺接受灌肠啊……我演过多少难堪的场面，轮到自己当患者，还是觉得脸上发烫呢。」",
+        "「我会配合。只是开始之前请说一声……刚才那副若无其事的样子，大概装不了多久。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「如果并不需要，为什么还要灌肠呢？呵，我喜欢出人意料的剧情，可不喜欢理由不明的护理。」",
+        "「真正必要的准备我会做。多出来的部分，请医生先解释清楚，别只说这是惯例。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮要到这里……？呵呵，我还以为自己已经很习惯在镜头前换装了。……看来检查室真是另一回事。」",
+        "「连这里也要剃吗？我知道是为了手术……先告诉我范围，别突然就开始，好吗？」",
+        "「……好，我不躲。只是让人这样照顾身体，比穿上角色服装还难适应呢。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「这块区域不是必要的备皮范围吧？医生，别因为我没有马上抗议，就当作可以随意增加步骤。」",
+        "「如果不是为了这台手术，请说明为什么还要处理。呵，我可以很好说话的——只要理由讲得通。」"
+      ],
+      "ward_surgical_cap": [
+        "「头发和耳朵都要遮住呀……没有那一头黑发，我还真不像自己了。呵，不过今天本来也不是演出。」",
+        "「帽子戴好了？一根头发都不能露出来……明白。剩下的，你们安排吧。」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂放这里，身体转到这个角度……好。呵，和片场摆姿势很像，只不过今天麻醉以后也未必完全没有感觉呢。」",
+        "「我会配合体位。调整的时候先告诉我一声好吗？我还醒着，会紧张，也会不舒服。」"
+      ],
+      "operative_positioning_none": [
+        "「完全不麻醉还要这样固定？……医生，我知道术野不能乱，可疼起来我的身体会不会自己挣动？」",
+        "「别把我当成摆好就不会动的人偶呀……呵。抱歉，我是真的在害怕，能再说明一下吗？」",
+        "「……等一下，让我先喘口气。这样躺着，连想躲一下都做不到了。」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿管要从尿道放进去……是这样吧？我听懂了。可轮到自己，还是没法笑着说没关系呢。」",
+        "「要开始了吗？请先说一声……明明平时擅长控制表情，现在脸都快僵住了。」"
+      ],
+      "urinary_catheterization_none": [
+        "「呀……！等、等一下……完全没有麻醉就放导尿管，感觉真的太清楚了……！」",
+        "「嘶……我知道是护理……可是这实在不舒服。请慢一点，先告诉我下一步！」"
+      ],
+      "skin_disinfection_awake": [
+        "「消毒液好凉……嗯，我不会乱动。原来麻醉以后，冷的感觉还是这么清楚。」",
+        "「已经消毒到这里了吗？……下一步是铺巾吧。正式开始之前，请确认麻醉有效，好吗？」"
+      ],
+      "skin_disinfection_none": [
+        "「……真凉。等这里擦完，就要在没有麻醉的情况下切开了……对吗？」",
+        "「呵……刚才还想说一句漂亮的台词呢。可我一想到手术刀，连笑都变得勉强了。」",
+        "「医生，消毒快完成了吗？……请别突然下刀。我需要知道什么时候开始。」"
+      ],
+      "incision_marking_awake": [
+        "「这就是切口的位置呀……看起来只是一条线。可一想到等下真的会切开，手就有点发冷。」",
+        "「好，我看到了。正式开始以前，麻烦先核对麻醉是否起效。」"
+      ],
+      "incision_marking_none": [
+        "「这条线……就是待会儿不麻醉也要切开的地方？……呵，原来害怕会这么具体啊。」",
+        "「别、别画完马上开始……医生，请给我一点心理准备的时间。这里没有人会喊卡的。」",
+        "「我知道你们已经准备好了……可是我还没准备好真的挨那一刀。」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，先别被我的笑容骗了……今天来，是因为身体出了这样的状况：{line}",
+      "primary": "最明显的问题？……让我认真说吧：{line}",
+      "secondary": "还有一件事，最好也请你记下来：{line}",
+      "background": "我是演员，曾在以《钢之炼金术师 FA》为蓝本的影视作品中扮演拉丝特。观众后来干脆用角色名叫我，我也沿用它当艺名。戏里她受伤能再生；现实里的我可没有那种本事。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "拉丝特的病历",
+    "full_undress": {
+      "prompt": "「要把衣服全部脱掉接受检查呀……呵，看来今天的观众是医生和护士。……抱歉，我只是有点紧张。能先告诉我会检查哪些地方吗？」",
+      "responses": {
+        "abandon_full_undress": "「这次不需要全部脱衣检查了？……呵，算是松了口气。不过该确认的问题，还是要认真确认呀。」",
+        "authoritative_full_undress": "「……好，我配合。医生，您说话还真不留余地呢。至少先告诉我检查范围，可以吗？」",
+        "gentle_full_undress": "「谢谢你说得这么清楚。呵……我通常很会控制表情，不过这次大概还是会脸红呢。」",
+        "threaten_full_undress": "「……用威胁的口气可没办法让我更安心。必要的检查我会配合，但请把理由和范围说清楚。」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "拉丝特的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「今天就要手术了，是吗？……呵，平常都是别人等我登场。今天这出戏的安排，先由医生告诉我吧。」",
+      "graphic_preop_question": "「医生，我可以再问得具体一点吗？待会儿从摆体位、消毒到真正切开，会依次发生些什么？别只说『按流程』……我想知道自己到底要经历什么。」",
+      "graphic_preop_dialogue": "拉丝特起初仍带着那种令人捉摸不透的微笑，像在听一段有关别人的戏。随着医护把待会儿的体位、消毒、切开和深部操作逐一讲清，她渐渐停止了插话。她很熟悉镜头中人造人受伤后立刻恢复的场面，却忽然意识到，一会儿真正躺在手术台上的自己既不会再生，也不能要求重拍。",
+      "team": "你担任拉丝特本次手术的主刀。请确认助手医生、器械护士及巡回护士的分工。",
+      "preparation": "请安排拉丝特的病房准备护士，并根据当前病例和术式完成必要的准备项目。",
+      "prepared": "「准备都完成了？……呵，真有效率。接下来我要躺在手术台上了，对吧？……突然有点紧张呢。」",
+      "changing": "手术团队按既定流程更衣、刷手并完成无菌准备，随后进入手术室。",
+      "operating_room": "「无影灯……真亮啊。呵，比片场的灯还让人没处躲。医生，我就在这里躺好，是吗？」",
+      "team_confirmations": "团队逐项核对拉丝特的身份、当前病例对应的手术计划及岗位分工。她最初仍带着微笑，听到自己的姓名和术式被正式念出时，却不自觉地握紧了手。",
+      "procedure_select": "请根据已确认的病例与手术方案，选择实际需要进行的术式。",
+      "procedure_mismatch": "「稍等。刚刚念出的术式不对吧？呵，医生，真正的手术可不像戏里，临场换台词也能继续演。」",
+      "ready": "拉丝特已完成术前准备并躺在手术台上。团队须确认麻醉方式和正式开始手术的条件。",
+      "general_induction": "「……真的要睡着了呀。好吧，剩下的交给你们。请别让我醒来时才发现自己担心了半天。」",
+      "surgery_start_general": "拉丝特已进入全身麻醉状态。团队确认监护、手术条件及当前术式，不播放清醒患者对白。",
+      "surgery_start_epidural": "「意识还这么清楚，下面却不太听使唤了……呵，这倒是我从没演过的感觉。开始前先说一声。」",
+      "surgery_start_local": "「局部麻醉已经起效了吗？……好。我会告诉你哪里还有感觉，别把我的微笑当作不会疼。」",
+      "surgery_start_none": "「……真的不麻醉就要开始？我说过的那些不死人造人的台词，今天一句也帮不了我呀……」",
+      "instrument_handoff": "主刀发出器械指令，器械护士依照当前术式及操作阶段递交相应器械。",
+      "assistant_ready": "助手医生确认术野暴露和体位维持条件，按主刀要求准备配合下一步操作。",
+      "incision_ready": "切口位置及麻醉状态完成核对。器械护士备好手术刀，助手维持术野，等待主刀确认开始。",
+      "general_operation": "拉丝特处于全身麻醉状态，没有清醒术中的主观反应。团队继续监护并按既定术式推进。",
+      "operative_contact": "切口已经建立。若拉丝特保持清醒，她起初试图用轻笑掩饰紧张；实际切开、牵拉及深部操作引起的不适，会逐渐令她的语气从戏谑变得急促。具体反应由现有状态和麻醉分支决定。",
+      "ongoing_interaction": "手术仍在进行。若拉丝特清醒，她会努力听懂团队的通报，借此维持镇定；恐惧和疼痛累积时，平时惯有的挑逗和戏谑会慢慢消失。",
+      "closure_interaction": "主要操作进入收尾阶段。若拉丝特仍清醒，她等待医护明确告知进度，终于不再强撑出那副充满把握的笑容。",
+      "procedure_flow": "进入当前选定术式的标准流程，按既定阶段、麻醉条件及技术选项继续执行。",
+      "procedure_execute": "主要操作完成，团队复核术野与必要技术结果，准备最终处理及缝合。",
+      "surgery_result": "手术结束。团队依照既定流程完成切口处理、器械清点及术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切开了？没有刚才想象的刺痛，可里面那股压力……啊，我知道你们真的在做手术了。」",
+      "incise_local": "「嘶……！皮肤那里没那么疼，可里面刚刚被牵动那一下……等一下，真的很难受！」",
+      "incise_none": "「啊——！！好疼！等、等一下！这不是拍戏……我真的受不了！医生，先停下来……求你了！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

@@ -1,0 +1,63 @@
+{
+  "event_chain": ["chihaya_second_surgery_a", "chihaya_second_surgery_b", "chihaya_second_surgery_c"],
+  "source": "docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1.md",
+  "source_audit": {
+    "paragraphs": 703,
+    "per_phase": {"a": 122, "b": 416, "c": 165},
+    "chinese_body_speakers_order_punctuation": "exact match",
+    "formatting_only": "Markdown bold around the final narration is not displayed; its text is unchanged.",
+    "english": "703 translated paragraphs plus speakers, choices, titles and gallery text"
+  },
+  "user_clarifications": {
+    "chihaya_age": 18,
+    "mizuho_age": 18,
+    "itsumi_name": "Shown regardless of introduction completion; no relation unlock",
+    "first_surgery": "Established by completed hiroko_patient_escape; not a Surgery Runner outcome"
+  },
+  "schedule": {
+    "earliest_start": "2025-05-19 09:00",
+    "prerequisites": ["hiroko_patient_escape", "aqua_lv1_gyne_obsession"],
+    "delayed_start": "First Monday after both prerequisite completion dates, no earlier than 2025-05-19",
+    "phase_minutes": [120, 300, 60],
+    "normal_completion_clocks": ["11:00", "14:00", "10:00"],
+    "reservations": "A completion reserves Tuesday and Wednesday mornings; later overlapping multi-day events cannot displace them",
+    "third_surgery_earliest": "Actual B completion day + 42; future event not implemented"
+  },
+  "scope": {
+    "presentation": "Existing backgrounds, authored portrait state changes and unchanged narration; no dedicated CG supplied or generated for this import",
+    "surgery_runner": false,
+    "score_or_relationship_rewards": false,
+    "staff_or_romance_unlock": false,
+    "player_save_slots_modified": false,
+    "persistent_inner_state_added": false
+  },
+  "validation": {
+    "godot_version": "4.5.1",
+    "event_runtime_with_screenshots": {"checks": 6703, "failures": 0},
+    "special_event_framework": {"checks": 128, "failures": 0},
+    "boundary_save": {"checks": 910, "failures": 0},
+    "narrative_save_lock": {"checks": 6, "failures": 0},
+    "narrative_localization": {"checks": 15987, "failures": 0},
+    "localization_audit": {
+      "ui_english_keys": "739/739",
+      "ui_hardcoded_chinese_candidates": 0,
+      "global_authored_coverage": "24388/24589; pre-existing unrelated fallback gaps remain, not a claim of full-project translation"
+    },
+    "coverage": [
+      "Chinese and English runtime loading",
+      "Missing prerequisites, numeric rank without milestone, delayed or Monday unlock",
+      "Conflicting Monday morning postponement; no rewind after 09:00",
+      "Tuesday and Wednesday reservations and cross-day referral deferral",
+      "Actual ordinary end-workday and next-day UI auto-dispatch",
+      "Single time settlement and idempotent final action",
+      "Itsumi real name with and without her introduction",
+      "Mid-event save denied; between-stage safe save allowed",
+      "Restore after removing completed internal nodes and changing current duration",
+      "Time and relationship facts unchanged by restore; repeated saves stable",
+      "Gallery replay without rewards or state changes"
+    ],
+    "screenshots": "runtime_images/{zh_CN,en}_{a2_005,b4_042,c1_038}.png",
+    "visual_review": ["zh_CN_a2_005.png", "en_b4_042.png", "zh_CN_c1_038.png"],
+    "environment_note": "Sandboxed headless runs report an unrelated macOS certificate lookup warning; GUI verification passed with native rendering."
+  }
+}

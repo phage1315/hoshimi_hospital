@@ -3,7 +3,7 @@
     "id": "patient_chihaya",
     "canonical_name": "仓本千早",
     "public_name": "女患者",
-    "age": 22,
+    "age": 18,
     "debut_event_id": "hiroko_patient_escape",
     "identity_reveal_flag": "chihaya_identity_revealed",
     "identity_revealed_by_default": false,
@@ -12,7 +12,22 @@
       "shy": "assets/events/character_events/hiroko/chihaya_shy.png",
       "restrained": "assets/events/character_events/hiroko/chihaya_restrained_portrait.png"
     },
-    "notes": "本阶段只以‘女患者’身份登场；仓本千早这一姓名必须由未来的专属事件通过 identity_reveal_flag 解锁。"
+    "notes": "弘子相识事件中以女患者身份登场，第一次手术成功为已完成的背景事实；第二次手术为独立三日纯剧情事件，不进入 Surgery Runner，不解锁医护或攻略身份。"
+  },
+  {
+    "id": "guest_mizuho",
+    "canonical_name": "支手瑞穗",
+    "public_name": "支手瑞穗",
+    "age": 18,
+    "debut_event_id": "chihaya_second_surgery_c",
+    "identity_reveal_flag": "mizuho_identity_revealed",
+    "identity_revealed_by_default": false,
+    "visuals": {
+      "casual_neutral": "assets/characters/mizuho_story_v1/casual/neutral.png",
+      "casual_smile": "assets/characters/mizuho_story_v1/casual/smile.png",
+      "casual_teasing": "assets/characters/mizuho_story_v1/casual/teasing.png"
+    },
+    "notes": "千早第二次手术翌日探病的好友，18岁；本事件仅为剧情人物，不加入医院职员、不开放攻略或患者流程。"
   },
   {
     "id": "guest_ayako",

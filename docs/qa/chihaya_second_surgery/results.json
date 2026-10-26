@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-25",
+  "asset_count": 29,
+  "groups": {
+    "ward": 11,
+    "postop": 6,
+    "intraoperative": 9,
+    "operating_table": 3
+  },
+  "checks": {
+    "png_dimensions_alpha_and_unique_pixels": {
+      "passed": 29,
+      "failures": 0
+    },
+    "godot_headless_resource_loading": {
+      "passed": 29,
+      "failures": 0
+    },
+    "godot_gui_resource_loading_and_compositing": {
+      "passed": 29,
+      "failures": 0
+    },
+    "visual_review": "Reviewed four Godot-rendered sheets on light/dark backgrounds. Transparent portraits show no surrounding glow or opaque background; face variants, cap coverage, protective postop pose and sheet coverage checked."
+  },
+  "render_sheets": [
+    "ward.png",
+    "postop.png",
+    "intraoperative.png",
+    "operating_table.png"
+  ],
+  "scope": {
+    "runtime_event_wiring": false,
+    "surgery_runner_wiring": false,
+    "dialogue_modified": false,
+    "player_saves_modified": false
+  },
+  "environment_notes": [
+    "Headless editor reported unavailable system CA certificates and sandbox-protected editor-settings save. PNG import completed; subsequent headless and GUI texture-loading tests exited successfully."
+  ]
+}
