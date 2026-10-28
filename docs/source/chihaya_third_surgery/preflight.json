@@ -1,0 +1,37 @@
+{
+  "source": "docs/source/chihaya_third_surgery/HOSHIMI_CHIHAYA_THIRD_SURGERY_CODEX_READY_CN_V1.md",
+  "sha256": "9369100fd1594b16873e9548dba612c934c47147519be48968dc7774e6a23de2",
+  "source_paragraphs": 487,
+  "scene_counts": {
+    "a01": 26,
+    "a02": 24,
+    "a03": 34,
+    "a04": 18,
+    "a05": 36,
+    "b01": 39,
+    "b02": 50,
+    "b03": 13,
+    "b04": 67,
+    "b05": 91,
+    "b06": 26,
+    "c01": 53,
+    "c02": 10
+  },
+  "excluded_developer_notes": [
+    "【开发条件说明，不显示给玩家：通常路线已完成留美与栞的联合相识，使用第一句；极少数尚未相识的玩家使用第二句。两句互斥，演员均为岩崎留美，不触发相识。】",
+    "【阶段 A 结束：本次实际触发日期 D（周一）11:00。自当日09:00消耗2小时，不写死为2025-07-07，不倒拨游戏时间。】",
+    "【阶段 B 结束：实际手术日期 D+1（周二）15:00。自当日09:00消耗6小时，不能硬编码为2025-07-08。记录第三次手术成功；**立即完成芹香 Lv2，开放她此后担任普通手术助手的资格**。不等待次日查房或共同出院，不触发芹香 Lv3。】",
+    "【阶段 C 结束：实际查房日期 D+2（周三）10:00。自当日09:00消耗1小时，不能硬编码为2025-07-09。第三次手术**整条三日事件链完成**，千早仍在病房。瑞穗已预约本周五入院、下周一接受第一次手术；共同出院与正式致谢留给之后的双人尾声。】"
+  ],
+  "status": "implemented_and_validated_continuous_three_days",
+  "confirmed_revisions": {
+    "gates": "Lv2 Surgery>=60; Lv3 removes Surgery; familiarity/cooldown/prerequisites retained",
+    "a03_033": "User approved treating final medical-review sentence as developer-only",
+    "a05_028": "Markdown bold delimiters rendered as plain text; wording retained",
+    "schedule": "User confirmed uninterrupted Monday09:00 to Wednesday10:00, automatic day transitions, no business/save between episodes"
+  },
+  "validation_record": "docs/chihaya_third_surgery_integration_2026-10-27.md",
+  "previous_asset_gap": "Serika existing nonsterile scrubs portraits lack a mask; retain same-character fallback permitted by source. Masked scrubs variant not generated.",
+  "asset_gap": null,
+  "resolved_asset_gap_record": "research/imports/serika_masked_scrubs_2026-10-27.json"
+}

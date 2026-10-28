@@ -39,3 +39,17 @@ Generated 11 requested portrait differences using the accepted Kasumi base image
 - All 15 currently mapped patient portraits resolve to readable image files. The four images created in the earlier base pass plus these 11 differences are registered in `data/patients/patient_doa_kasumi/patient.json`.
 - Godot runtime/import validation was not run because no Godot executable is available in this environment.
 - The previously reported English localization gap is unchanged; this art-only pass did not translate or edit authored text.
+
+
+## Follow-up: lithotomy set completed (2026-10-26)
+
+The user accepted the four supplied lithotomy images as the usable base set and requested the second image be edited into a tense expression. The first image maps to `awake`; the generated tense image maps to `tense`; supplied image 3 maps to `afraid`; supplied image 4 maps to `anesthetized`. Only the facial expression was requested to change for `tense`; body, pose, drape, supports, camera, lighting, and room remain matched to the base.
+
+| Runtime key | Final asset | Canvas / color | SHA-256 | Source / check |
+|---|---|---|---|---|
+| `operating_table_lithotomy/awake` | `assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/awake.png` | 1448×1086 RGB | `24492c4e3f7ed2f7081e3a6f16d8b6160a0676ad609b77dec8a7d96279fd4004` | User-supplied image 1; accepted by user. |
+| `operating_table_lithotomy/tense` | `assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/tense.png` | 1448×1086 RGB | `d9b231764f28ec18d989daab8e3496f980a92ea1a969be90dd587dff10064a3d` | ImageGen edit of user-supplied image 2; expression-only tense change; reviewed. |
+| `operating_table_lithotomy/afraid` | `assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/afraid.png` | 1448×1086 RGB | `4862a371b1c3b7ebe987c24e0877cf552455d9d0b50c774e4f8eb2546af835c6` | User-supplied image 3; accepted by user. |
+| `operating_table_lithotomy/anesthetized` | `assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/anesthetized.png` | 1448×1086 RGB | `965719c4ad112a9c85b6978db630f76411609ac2c43150a2dc2fb3c64c603d27` | User-supplied image 4; accepted by user. |
+
+All four mapped assets are RGB, opaque PNGs at the class target size. The set is now complete. Earlier unfilled-slot notes above describe the state before this follow-up.

@@ -642,3 +642,40 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 ## 琪里耶·卡南手术相关立绘修正（2026-10-25）
 
 用户复核后，仅重制查体、仰卧手术台四态、术中头像四态及全麻 splash，共10张；门诊和病房7张保留。手术帽统一为包住大部分头发的弹性一次性无纺布帽；手术台图不穿衣并由手术单遮盖身体，术中头像裸露肩颈、不带衣领。使用原资源路径和映射，患者数据与文本未改。细节见 `docs/patient_kyrie_canaan_asset_record.md`。
+
+## 拉丝特用户提供的裸体立绘与术前 CG（2026-10-26）
+
+按用户附件顺序原样导入10张：裸体透明立绘映射到 `examination/shy`；剃毛、灌肠、手术帽、担架车、导尿、固定、铺巾、消毒、下刀前 CG 分别绑定现有病房/术前准备动作。术前 CG 进入 `patient_lust_actress` 专属 fullscreen pool，腹部手术室动作限制为 `general_abdominal`；“铺巾”绑定消毒后的 `ack_disinfection`，“下刀”绑定递刀后的 `request_scalpel`。未裁切、缩放或改写源图。来源路径、尺寸、透明通道、SHA-256、pool 与 action 映射见 `research/imports/patient_lust_actress_nsfw_cgs_2026-10-26.json`。
+
+## 御園芹香 Lv1 SFW CG（2026-10-26）
+
+用户确认后，将已生成的影像室冷峻半身肖像原样复制到 `assets/events/serika_lv1_v1/cross_out_my_name.png`（1672×941，未缩放或改绘）。接入《请把我的名字划掉》S01-17至S01-20，并登记为该事件画廊图；第二幕恢复既有双人立绘。来源、SHA256与节点映射见 `research/imports/serika_lv1_cg_2026-10-26.json`，生成提示词保留在 `research/cg_candidates/serika_lv1/cold_portrait_v1.prompt.txt`。
+
+- 芹香Lv1后续：用户确认眉形更平和的v2后，原运行时路径已替换为 `research/cg_candidates/serika_lv1/cold_portrait_v2.png` 的原样副本；1672×941，SHA256 `b2facf53ab0a005287722641265a120df0e20b90cb0d026c1e2a76ce32065691`。v1候选保留，当前来源及版本历史见同一导入记录。
+
+
+### 樱井沙雾：基础立绘与表情差分
+
+用户提供三张种子图，并确认六张基础图后授权 ImageGen 表情差分。共 20 张独立生成图片已映射至 `patient_sagiri_sakurai`；原图、提示词及哈希保存在 `research/patient_candidates/patient_sagiri_sakurai/`，详见 `docs/patient_sagiri_sakurai_asset_record.md`。
+
+## 芹香Lv3《落下半拍》环境背景（2026-10-27）
+
+为本事件补齐御茶水乐器街白天／傍晚及乐器店试奏区，共3张1672×941环境图，使用内置imagegen生成并原样保存于 `assets/backgrounds/serika_lv3_v1/`。参考既有咖啡馆的环境绘画风格；傍晚版以白天版为修改目标。原图、提示词、尺寸、SHA256见 `research/imports/serika_lv3_backgrounds.json`。复用原咖啡馆背景和芹香深色外套立绘，未覆盖旧美术。
+
+## 芹香Lv3《落下半拍》角色CG（2026-10-27）
+
+用户确认后，原样复制3张内置imagegen生成图：试奏笑容v2、停奏差分v1、傍晚微笑v2，分别为 `assets/events/serika_lv3_v1/trial_smile.png`、`half_beat_pause.png`、`evening_smile.png`。全部1672×941，无本轮裁切、改绘或压缩；候选、历次提示词及旧版本保留于 `research/cg_candidates/serika_lv3/`。实际节点映射及逐字节SHA256见 `research/imports/serika_lv3_cgs_2026-10-27.json`。
+
+
+## 芹香戴口罩刷手服表情差分（2026-10-27）
+
+用户授权制作并接入，以既有 `misono_serika_v1/scrubs/focused.png` 为参考，用内置imagegen生成专注、温和、迟疑、紧绷4张1024×1536 RGBA透明立绘。原样复制至 `assets/characters/misono_serika_v1/scrubs_masked_v1/`，不覆盖旧未戴口罩立绘；用于千早第三次手术B阶段48个芹香节点。完整提示词见 `research/serika_masked_scrubs_2026-10-27.prompts.json`，原图路径、SHA256、透明通道及节点映射见 `research/imports/serika_masked_scrubs_2026-10-27.json`。
+
+## Sagiri supplied patient assets — 2026-10-27
+
+User-supplied examination portrait and nine preparation CGs, locally copied byte-for-byte. Original paths, runtime mappings, SHA-256 and image metadata: `research/imports/patient_sagiri_sakurai_supplied_2026-10-27/manifest.json`. No generation, image modification or upload. Original dialogue preserved; bilingual neutral index labels only.
+
+
+## 千早第三次手术CG（2026-10-27）
+
+用户确认并授权导入5张：千早入室使用用户上传的 `codex-clipboard-1aa62100-5fc5-402d-b58e-8b59c6d073dc.png`；头侧陪伴使用加入失焦术野的v2；贝斯回忆柔和／目光收紧双差分、影像会诊使用确认候选v1。全部原样复制至 `assets/events/chihaya_third_surgery_v1/`，无裁切、缩放、像素加工或素材替换。用户上传入室图仅作文件格式、尺寸、哈希、引用和加载技术检查，未额外进行内容分析。5图45节点映射、原始路径及SHA256见 `research/imports/chihaya_third_surgery_cgs_2026-10-27.json`。历史SFW入室候选和头侧陪伴v1继续保留。

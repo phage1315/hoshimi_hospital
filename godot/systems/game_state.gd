@@ -1451,6 +1451,14 @@ func familiarity_rule_input(actor_id: String, operation: Dictionary) -> int:
 			return int(player_attributes().get(str(operation.get("attribute", "")), 0))
 		"relationship_level":
 			return relationship_level(actor_id)
+		"completed_relationship_milestone":
+			var highest := 0
+			var relation := relation_for(actor_id)
+			for slot in relation.get("rank_slots", []):
+				var event_id := str(slot.get("event_id", ""))
+				if str(slot.get("content_status", "")) == "authored" and not event_id.is_empty() and relation.get("rank_history", []).has(event_id) and (character_event_done(event_id) or special_event_done(event_id)):
+					highest = maxi(highest, int(slot.get("target_level", 0)))
+			return highest
 		"progress_counter":
 			return character_progress_counter(str(operation.get("actor_id", actor_id)), str(operation.get("counter_id", "")))
 	return 0
@@ -1577,12 +1585,8 @@ func staff_present_at(location_id: String) -> Array[String]:
 		result = presence_resolver.staff_at(location_id, day_number(), int(schedule_at(elapsed()).absolute_clock), eligible_actor_ids)
 	# Radiology presence is a daily business fact, not an hourly reroll.
 	result.erase("doc_serika")
-	if location_id == "imaging" and staff_is_met("doc_serika") and str(active_staff_patient.get("staff_id", "")) != "doc_serika":
-		var presence_key := "serika_imaging_present:%s" % day_number()
-		if not story_flags.has(presence_key):
-			set_story_flag(presence_key, absi(hash("%s:serika_imaging:%s" % [campaign_seed, day_number()])) % 100 < 70)
-		if story_flag(presence_key):
-			result.append("doc_serika")
+	if location_id == "imaging" and preload("res://godot/systems/serika_radiology.gd").naturally_present(self):
+		result.append("doc_serika")
 	# A currently available personal event also places its actor at the event site.
 	for event in character_events_at(location_id):
 		if str(event.id).begins_with("serika_lv0_"):
@@ -1729,6 +1733,10 @@ func consume_day_start_character_event() -> void:
 	set_story_flag("__day_start_character_event__%s" % day_number(), true)
 
 func character_event_available(definition: Dictionary) -> bool:
+	if str(definition.id) == preload("res://godot/systems/serika_lv3.gd").ID and not preload("res://godot/systems/serika_lv3.gd").eligible(self):
+		return false
+	if str(definition.id) == preload("res://godot/systems/serika_radiology.gd").LV1 and not preload("res://godot/systems/serika_radiology.gd").lv1_entry_allowed(self):
+		return false
 	if preload("res://godot/systems/serika_radiology.gd").owns(str(definition.id)) and not preload("res://godot/systems/serika_radiology.gd").eligible(self, str(definition.id)):
 		return false
 	if not active_staff_patient.is_empty() and str(definition.get("actor_id", "")) == str(active_staff_patient.staff_id):
@@ -2004,6 +2012,19 @@ func start_character_event(id: String) -> RefCounted:
 		return null
 	if not character_event_definitions.has(id):
 		return null
+	if id == preload("res://godot/systems/serika_lv3.gd").ID:
+		if not character_event_available(character_event_definitions[id]):
+			return null
+		if character_events.has(id) and not character_events[id].completed:
+			character_events.erase(id)
+			character_event_order.erase(id)
+	if id == preload("res://godot/systems/serika_radiology.gd").LV1:
+		if not character_event_available(character_event_definitions[id]):
+			return null
+		# An interrupted performance has no persistent progress or partial reward.
+		if character_events.has(id) and not character_events[id].completed:
+			character_events.erase(id)
+			character_event_order.erase(id)
 	if preload("res://godot/systems/serika_radiology.gd").owns(id):
 		if not preload("res://godot/systems/serika_radiology.gd").eligible(self, id):
 			return null
@@ -2164,6 +2185,8 @@ func choose_character_event(choice_id: String) -> bool:
 				set_story_flag("satsuki_lv0_complete")
 		elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, relation):
 			complete_rank_up(str(event.definition.actor_id), str(event.definition.id), int(event.definition.target_level), str(event.definition.get("benefit_id", "")))
+			if str(event.definition.id) == preload("res://godot/systems/serika_lv3.gd").ID:
+				preload("res://godot/systems/serika_lv3.gd").completed(self)
 	elif event.completed:
 		event.completed_day = event_day
 	if event.completed and test_save_target_character_event_id() == str(event.definition.id):
@@ -2251,6 +2274,8 @@ func stable_sunday_roll(actor_id: String, purpose: String, for_day: int = -1) ->
 	return value % 100
 
 func sunday_date_eligible(actor_id: String) -> bool:
+	if actor_id == "doc_serika" and not preload("res://godot/systems/serika_radiology.gd").milestone_complete(self, 3):
+		return false
 	var profile: Dictionary = date_profile_definitions.get(actor_id, {})
 	var relation := relation_for(actor_id)
 	if not bool(profile.get("can_date", false)) or relation.is_empty() or not bool(relation.get("met", false)):
@@ -2354,7 +2379,9 @@ func can_start_regular_sunday_date(actor_id: String) -> bool:
 	var profile: Dictionary = date_profile_definitions.get(actor_id, {})
 	if relationship_level(actor_id) == 0 and not str(profile.get("first_date_event_id", "")).is_empty():
 		return false
-	return not profile.get("dialogue", {}).is_empty()
+	# Serika's dedicated regular-date lines are not authored yet. Her unlocked
+	# ordinary outing uses existing system narration, without invented dialogue.
+	return not profile.get("dialogue", {}).is_empty() or (actor_id == "doc_serika" and preload("res://godot/systems/serika_radiology.gd").milestone_complete(self, 3))
 
 func sunday_date_response(actor_id: String, location_id: String) -> String:
 	var dialogue: Dictionary = date_profile_definitions.get(actor_id, {}).get("dialogue", {})
@@ -2597,6 +2624,13 @@ func special_event_gallery_unlocked(id: String) -> bool:
 func special_event_base_requirements_met(definition: Dictionary) -> bool:
 	if definition.is_empty():
 		return false
+	var third = preload("res://godot/systems/chihaya_third_surgery.gd")
+	var third_id := str(definition.get("id", ""))
+	if third.owns(third_id):
+		# Only A is offered by the scheduler. B/C are continuous internal
+		# follow-ups, never independently gated or advertised as appointments.
+		if third_id != third.A or not third.entry_facts_met(self):
+			return false
 	if not bool(definition.get("repeatable", false)) and special_event_done(str(definition.get("id", ""))):
 		return false
 	for actor_id in definition.get("required_characters", []):
@@ -2614,6 +2648,11 @@ func special_event_base_requirements_met(definition: Dictionary) -> bool:
 	return special_requirements_met(definition.get("unlock_requirements", []))
 
 func special_event_timing_status(definition: Dictionary) -> Dictionary:
+	var third = preload("res://godot/systems/chihaya_third_surgery.gd")
+	if str(definition.get("id", "")) == third.A:
+		var target: int = third.target_day(self)
+		if target != day_number():
+			return {"status": "future", "trigger_day": target, "effective_day": target}
 	var chihaya = preload("res://godot/systems/chihaya_second_surgery.gd")
 	var event_id := str(definition.get("id", ""))
 	if chihaya.owns(event_id):
@@ -2623,7 +2662,7 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	var timing: Dictionary = definition.get("timing", {})
 	var trigger_day := special_event_trigger_day(definition)
 	var priority := int(timing.get("priority", 0))
-	var duration := maxi(1, int(definition.get("duration_days", 1)))
+	var duration: int = third.occupied_days(str(definition.get("id", "")), maxi(1, int(definition.get("duration_days", 1))))
 	var today := day_number()
 	if today < trigger_day:
 		return {"status": "future", "trigger_day": trigger_day, "effective_day": trigger_day}
@@ -2650,7 +2689,7 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 		var higher_start := maxi(today, special_event_trigger_day(higher))
 		if str(calendar_date(higher_start).weekday_id) == "sun" and not bool(higher_timing.get("sunday_start_allowed", false)):
 			higher_start += 1
-		var higher_end := higher_start + maxi(1, int(higher.get("duration_days", 1))) - 1
+		var higher_end: int = higher_start + third.occupied_days(str(higher.get("id", "")), maxi(1, int(higher.get("duration_days", 1)))) - 1
 		if higher_end > GAME_DURATION_DAYS:
 			continue
 		if not bool(higher_timing.get("final_week_allowed", false)) and higher_end >= FINAL_WEEK_START_DAY:
@@ -2665,6 +2704,10 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	return {"status": "available", "trigger_day": trigger_day, "effective_day": planned_start}
 
 func special_event_trigger_day(definition: Dictionary) -> int:
+	var third = preload("res://godot/systems/chihaya_third_surgery.gd")
+	if third.owns(str(definition.get("id", ""))):
+		var target: int = third.target_day(self) if str(definition.id) == third.A else -1
+		return target if target > 0 else GAME_DURATION_DAYS + 1
 	if preload("res://godot/systems/chihaya_second_surgery.gd").owns(str(definition.get("id", ""))):
 		var target: int = preload("res://godot/systems/chihaya_second_surgery.gd").scheduled_day(self, str(definition.id))
 		return target if target > 0 else GAME_DURATION_DAYS + 1
@@ -2675,6 +2718,9 @@ func special_event_trigger_day(definition: Dictionary) -> int:
 
 func special_event_available(definition: Dictionary) -> bool:
 	if not active_special_event_id.is_empty() or active_surgery_in_progress():
+		return false
+	var third = preload("res://godot/systems/chihaya_third_surgery.gd")
+	if third.owns(str(definition.get("id", ""))) and not third.eligible(self, str(definition.id)):
 		return false
 	var chihaya = preload("res://godot/systems/chihaya_second_surgery.gd")
 	if chihaya.owns(str(definition.get("id", ""))):
@@ -3292,7 +3338,7 @@ func apply_special_event_completion_effects(definition: Dictionary) -> void:
 		var group := str(surgery.get("procedure_group", ""))
 		if not group.is_empty():
 			completed_surgeries_by_group[group] = int(completed_surgeries_by_group.get(group, 0)) + 1
-	var xp_bonus := int(effects.get("surgery_xp_bonus", 0))
+	var xp_bonus := mini(int(effects.get("surgery_xp_bonus", 0)), maxi(0, surgery_xp_for_level(100) - surgery_xp))
 	if xp_bonus > 0:
 		var before_level := surgery_level()
 		surgery_xp += xp_bonus
@@ -3381,6 +3427,11 @@ func choose_special_event(choice_id: String) -> Dictionary:
 				add_familiarity(actor_id, relationship_event_familiarity_reward(actor_id, target_level))
 		if test_save_target_event_id() == id:
 			clear_test_save_target()
+		if preload("res://godot/systems/chihaya_third_surgery.gd").continue_chain(self, id):
+			result.event_finished = false
+			result.day_finished = true
+			result.continuous_transition = true
+			result.episode_end_clock = 660 if id == "chihaya_third_surgery_a" else 900
 	return result
 
 func finish_special_event() -> void:
@@ -4492,7 +4543,7 @@ func surgery_xp_award_for(preparation: RefCounted) -> int:
 
 func award_surgery_xp(preparation: RefCounted) -> int:
 	var before_level := surgery_level()
-	var award := surgery_xp_award_for(preparation)
+	var award := mini(surgery_xp_award_for(preparation), maxi(0, surgery_xp_for_level(100) - surgery_xp))
 	if award <= 0:
 		return 0
 	surgery_xp += award
@@ -5004,11 +5055,11 @@ func _restore_state(data: Variant) -> bool:
 			restored_sunday_history.append(record.duplicate(true))
 	if version >= 28:
 		var raw_surgery_xp: Variant = data.get("surgery_xp")
-		if not (raw_surgery_xp is int or raw_surgery_xp is float) or float(raw_surgery_xp) != floorf(float(raw_surgery_xp)) or int(raw_surgery_xp) < 0 or int(raw_surgery_xp) > surgery_xp_for_level(100):
+		if not (raw_surgery_xp is int or raw_surgery_xp is float) or not is_finite(float(raw_surgery_xp)) or float(raw_surgery_xp) != floorf(float(raw_surgery_xp)) or float(raw_surgery_xp) < 0:
 			return false
 		if not data.get("surgery_xp_history") is Array or not data.get("unlocked_procedure_ids") is Array:
 			return false
-		restored_surgery_xp = int(raw_surgery_xp)
+		restored_surgery_xp = int(minf(float(raw_surgery_xp), float(surgery_xp_for_level(100))))
 		restored_surgery_xp_history.clear()
 		for record in data.surgery_xp_history:
 			var raw_record_xp: Variant = record.get("xp") if record is Dictionary else null
@@ -5024,9 +5075,9 @@ func _restore_state(data: Variant) -> bool:
 				return false
 			restored_unlocked_procedure_ids.append(surgery_id)
 		var raw_leadership_xp: Variant = data.get("leadership_xp")
-		if not (raw_leadership_xp is int or raw_leadership_xp is float) or float(raw_leadership_xp) < 0.0 or float(raw_leadership_xp) > leadership_xp_for_level(100):
+		if not (raw_leadership_xp is int or raw_leadership_xp is float) or not is_finite(float(raw_leadership_xp)) or float(raw_leadership_xp) < 0.0:
 			return false
-		restored_leadership_xp = float(raw_leadership_xp)
+		restored_leadership_xp = minf(float(raw_leadership_xp), leadership_xp_for_level(100))
 		if not data.get("leadership_xp_history") is Array or not data.get("staff_skill_levels") is Dictionary or not data.get("staff_training_credits") is Dictionary:
 			return false
 		for record in data.leadership_xp_history:

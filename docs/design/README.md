@@ -74,3 +74,7 @@
 
 - `HOSHIMI_SATSUKI_LV1_REAL_PATIENT_TEST_V1.md`：折川皐月 Lv1《真人测试》正式事件稿；运行时实现与可选 CG 缺口见 `../satsuki_lv1_real_patient_test.md`。
 - `HOSHIMI_ORIKAWA_SATSUKI_LV2_PATIENT_TRANSPORT_EVENT.md`：折川皐月 Lv2《陪我去一次》正式事件稿；运行时实现、固定患者资料与素材缺口见 `../satsuki_lv2_patient_transport.md`。
+
+## 待讨论场景
+
+- [医生共同办公区提案](SHARED_DOCTORS_OFFICE_PROPOSAL.md)：2026-10-26已授权并开放地图入口，六位医生／访问研究医可随机出现；也为芹香Lv1第二幕提供背景，事件尚未实装。

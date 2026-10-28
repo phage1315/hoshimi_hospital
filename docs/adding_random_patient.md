@@ -289,7 +289,7 @@ loader 会从 `data/patients/templates/encounter.json` 与 `preop.json` 自动�
 
 `diagnosis_reactions` 必须为乳腺、腹部、妇科盆腔、胸心和通用五个 `site_group` 各写一组首次得知需要手术时的反应。运行时优先使用本患者的数据；`data/patients/first_surgery_diagnosis_reactions.json` 只为旧数据或缺项提供通用回退。
 
-`reaction_lines` 必须完整包含以下27个键，不能缺少、重复或只复制另一名患者的内容：
+`reaction_lines` 必须完整包含以下28个键，不能缺少、重复或只复制另一名患者的内容。`incision_ready` 是切口位置确认、手术刀已备好但尚未开始切开时，清醒患者对即将下刀的惊恐回应；它必须和实际下刀后的 `incise_epidural`、`incise_local`、`incise_none` 分开写。全麻患者在此处不写患者台词。若患者专属下刀 CG 的 caption 同时显示这句回应，台词仍须保存在患者数据的 `reaction_lines.incision_ready` 中，避免写作交接只在图片说明里找到它。
 
 ```text
 hospitalization_question
@@ -307,6 +307,7 @@ insist_without_anesthesia
 assistant_stabilize_none
 assistant_stabilize_local
 assistant_stabilize_epidural
+incision_ready
 incise_epidural
 incise_local
 incise_none
@@ -455,7 +456,7 @@ docs/<patient_id>_asset_record.md
 - [ ] 全麻 splash 为带面罩和呼吸管的独立横向场景。
 - [ ] `pain` 与 `near_collapse` 明显不同且仍像原角色。
 - [ ] `patient.json` 数据包字段和17个图片键完整，并已加入 `patients/index.json`。
-- [ ] 27条 `reaction_lines` 齐全且互不重复。
+- [ ] 28条 `reaction_lines` 齐全且互不重复；`incision_ready` 明确是下刀前惊恐，且与下刀后的三种 `incise_*` 反应分开。
 - [ ] 13组 `reaction_variants` 齐全，每组2—3条。
 - [ ] 4条 `outpatient_lines` 齐全，且保留需要的 `{line}` 占位符。
 - [ ] `diagnosis_reactions` 覆盖五种 `site_group`。

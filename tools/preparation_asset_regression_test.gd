@@ -22,6 +22,7 @@ const EXPECTED_OR_POOLS := {
 	"patient_iwai_yoshimi": ["operative_positioning", "urinary_catheterization", "incision_ready"],
 	"patient_shimizu_iraiza": ["ward_skin_prep", "ward_enema", "stretcher_transfer", "urinary_catheterization", "sterile_draping", "incision_ready"],
 	"patient_yuko_asou": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "sterile_draping", "incision_ready"],
+	"patient_lust_actress": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "operative_positioning", "sterile_draping", "skin_disinfection", "incision_ready"],
 }
 var checks := 0
 var failures := 0

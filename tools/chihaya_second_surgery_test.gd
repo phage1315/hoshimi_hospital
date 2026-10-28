@@ -106,23 +106,56 @@ func run() -> void:
 					regex.compile("[\\x{3400}-\\x{9fff}]")
 					expect(regex.search(app.special_event_localized_text(step,node)) == null, "No Chinese in English node")
 				# Render each staging transition, checking all referenced textures.
-				if node.id.ends_with("001") or node.id in ["a2_005","b1_013","b4_042","c1_038","c1_117"]:
+				if node.id.ends_with("001") or node.id in ["a2_005","a2_011","a2_012","a2_084","a2_085","a2_090","a2_091","b1_013","b2_045","b2_049","b2_050","b3_030","b3_031","b3_040","b3_041","b4_042","b4_047","b4_048","b4_060","b5_015","b5_016","b5_021","b5_022","b6_099","b6_100","b6_106","b6_107","c1_037","c1_038","c1_041","c1_042","c1_085","c1_086","c1_090","c1_091","c1_117"]:
 					app.show_special_event()
+					var cg = app.page.get_node_or_null("CharacterEventCG")
+					var has_cg: bool = not str(node.get("cg_path", "")).is_empty()
+					expect((cg != null) == has_cg, "CG entry/exit " + str(node.id))
+					if has_cg:
+						expect(cg.texture != null and cg.texture.resource_path == "res://" + str(node.cg_path), "Approved CG loaded")
+						expect(cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_CENTERED, "CG preserved without cropping")
 					for portrait in node.event_portraits:
-						expect(app.page.get_node_or_null("EventPortrait_" + str(portrait.id)) != null, "Runtime portrait " + str(portrait.id))
-					if OS.get_cmdline_user_args().has("--screenshots") and DisplayServer.get_name() != "headless" and node.id in ["a2_005", "b4_042", "c1_038"]:
-						var output := "res://docs/qa/chihaya_second_surgery/runtime_images/"
+						expect((app.page.get_node_or_null("EventPortrait_" + str(portrait.id)) != null) == not has_cg, "Runtime portrait/CG isolation " + str(portrait.id))
+					if OS.get_cmdline_user_args().has("--screenshots") and DisplayServer.get_name() != "headless" and node.id in ["a2_005", "a2_085", "b2_045", "b3_031", "b4_048", "b5_016", "b6_100", "c1_038", "c1_086"]:
+						var output := "res://docs/qa/chihaya_second_surgery/runtime_images/cg_final_2026-10-26/"
 						DirAccess.make_dir_recursive_absolute(output)
 						await process_frame
 						await RenderingServer.frame_post_draw
 						expect(root.get_texture().get_image().save_png(output + locale + "_" + str(node.id) + ".png") == OK, "Save runtime screenshot")
-				if str(node.get("actor_id", "")) == "nurse_sonoda_itsumi":
-					var relation: Dictionary = g.relation_for("nurse_sonoda_itsumi")
+				if node.has("unmet_variant"):
+					var relation: Dictionary = g.relation_for("nurse_iwasaki_rumi")
 					var old_met: bool = bool(relation.met)
 					for met in [false, true]:
 						relation.met = met
-						expect(app.special_event_speaker(node, app.special_event_actor(node), step.id) == ("Itsumi Sonoda" if locale == "en" else "薗田爱实"), "Itsumi real name regardless of introduction unlock")
-					relation.met = old_met
+						var displayed_text: String = app.special_event_localized_text(step, node)
+						var speaker: String = app.special_event_speaker(node, app.special_event_actor(node), step.id)
+						if str(node.get("actor_id", "")) == "nurse_iwasaki_rumi":
+							expect(speaker == (("Rumi Iwasaki" if locale == "en" else "岩崎留美") if met else ("OR Duty Nurse" if locale == "en" else "手术室值班护士")), "Rumi name follows existing met fact")
+							expect(displayed_text == str(node.text), "Rumi dialogue retained in both identity states")
+						else:
+							expect(displayed_text == str(node.text if met else node.unmet_variant.text), "Authored direct-address variant")
+						if not met:
+							expect(not displayed_text.contains("留美") and not displayed_text.contains("Rumi"), "Unmet dialogue does not reveal name")
+						app.show_special_event()
+						var shown_speaker := false
+						for child in app.page.get_children():
+							if child is Label and child.position.y == 558:
+								shown_speaker = child.text == (app.protagonist_name() if str(node.speaker) == "player" else speaker)
+						expect(shown_speaker, "Actual VN nameplate uses identity variant")
+						if not str(node.get("cg_path", "")).is_empty():
+							expect(app.page.get_node_or_null("CharacterEventCG") != null, "Approved CG remains on revised nurse line")
+						elif str(node.get("actor_id", "")) == "nurse_iwasaki_rumi":
+							var portrait = app.page.get_node_or_null("EventPortrait_nurse_iwasaki_rumi")
+							var staged: bool = node.event_portraits.any(func(art: Dictionary): return str(art.id) == "nurse_iwasaki_rumi")
+							expect((portrait != null) == staged, "Rumi portrait follows original cast layout")
+							if staged:expect(portrait.texture.resource_path.contains("rumi_shiori_v1/nurse_iwasaki_rumi/"), "Rumi artwork replaces Itsumi")
+						if OS.get_cmdline_user_args().has("--rumi-screenshots") and DisplayServer.get_name() != "headless" and node.id in ["b2_017","b4_002","b4_045","b4_058"]:
+							var output := "res://docs/qa/chihaya_second_surgery/rumi_revision/"
+							DirAccess.make_dir_recursive_absolute(output)
+							await process_frame
+							await RenderingServer.frame_post_draw
+							expect(root.get_texture().get_image().save_png(output + locale + "_" + str(node.id) + ("_known" if met else "_unmet") + ".png") == OK, "Save Rumi identity screenshot")
+						relation.met = old_met
 				var result: Dictionary = g.choose_special_event("continue")
 				expect(result.accepted and not result.day_finished, "Continuous partial-day VN")
 			var duration: int = [120,300,60][i]
@@ -167,7 +200,22 @@ func run() -> void:
 		expect(g.relation_for("guest_mizuho").is_empty(), "Mizuho remains cameo, not staff")
 		var before: Dictionary = g.snapshot()
 		var replay = Replay.new(g.special_event_definitions[Flow.B], g.special_event_step_definitions, 50)
-		while not replay.completed: replay.apply("continue")
+		app.special_event_gallery_replay = replay
+		while not replay.completed:
+			var replay_node: Dictionary = replay.current()
+			if replay_node.has("unmet_variant"):
+				var rumi: Dictionary = g.relation_for("nurse_iwasaki_rumi")
+				var old_met: bool = bool(rumi.met)
+				for met in [true, false]:
+					rumi.met = met
+					app.show_special_gallery_replay()
+					var label: String = app.special_event_speaker(replay_node, app.special_event_actor(replay_node), replay.current_step().id)
+					var nameplate_matches := false
+					for child in app.page.get_children():
+						if child is Label and child.position.y == 558:nameplate_matches = child.text == (app.protagonist_name() if str(replay_node.speaker) == "player" else label)
+					expect(nameplate_matches, "Gallery nameplate uses current identity fact")
+					rumi.met = old_met
+			replay.apply("continue")
 		expect(g.snapshot() == before, "Gallery replay changes no game state")
 		# Drive the real ordinary departure / next-day UI, without set_test_time
 		# between episodes. This catches map(false) skipping 09:00 dispatch.
@@ -190,4 +238,5 @@ func run() -> void:
 				expect(g.day_number() == 50+i and g.current_absolute_clock() == 540, "One calendar day only; next morning 09:00")
 	print("CHIHAYA SECOND SURGERY: %s checks; %s failure(s)" % [checks, failures])
 	app.queue_free()
+	await process_frame
 	quit(1 if failures else 0)

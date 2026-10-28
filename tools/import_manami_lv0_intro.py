@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = Path("/Users/ningye/Downloads/HOSHIMI_IIMURA_MANAMI_LV0_PHARMACY_INTRO_CN_REVIEW.md")
+SOURCE = ROOT / "docs/source/lv0_introductions/HOSHIMI_IIMURA_MANAMI_LV0_PHARMACY_INTRO_CN_REVIEW.md"
 EVENTS = ROOT / "data/staff/pharmacist_manami/events.json"
 PROFILE = ROOT / "data/staff/pharmacist_manami/profile.json"
 EVENT_ID = "intro_pharmacist_manami"
@@ -98,6 +98,7 @@ def main() -> None:
         speaker = {"旁白": "narrator", "坂口隆司": "player", "飯村真奈美": "actor"}[role]
         node = {
             "id": node_id,
+            "presentation": "authored",
             "speaker": speaker,
             "actor_id": "pharmacist_manami",
             "outfit": "pharmacist",

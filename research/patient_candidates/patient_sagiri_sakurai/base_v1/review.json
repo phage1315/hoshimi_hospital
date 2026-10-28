@@ -1,0 +1,253 @@
+{
+  "tool": "built-in image_gen",
+  "generation_failures": 0,
+  "correction_passes": 1,
+  "outputs": [
+    {
+      "key": "outpatient/neutral",
+      "path": "research/patient_candidates/patient_sagiri_sakurai/base_v1/outpatient_neutral_v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "sha256": "fd737124ed71576f3bd98f9a0ac0f04f27b753d6de08a10c3042c1ee2947d858",
+      "visual_review": "identity, expression, clothing/draping and framing checked; light/dark alpha composites checked for cutouts",
+      "technical_status": "dimensions and format checked",
+      "user_approval": "approved by user: 基础图很好！！请制作各种表情差分。",
+      "runtime_mapping": "integrated"
+    },
+    {
+      "key": "ward/neutral",
+      "path": "research/patient_candidates/patient_sagiri_sakurai/base_v1/ward_neutral_v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "sha256": "746e1137f519e63a6102785e939a6ec4b27ea7d5436e586b0375c7e596e51c3c",
+      "visual_review": "identity, expression, clothing/draping and framing checked; light/dark alpha composites checked for cutouts",
+      "technical_status": "dimensions and format checked",
+      "user_approval": "approved by user: 基础图很好！！请制作各种表情差分。",
+      "runtime_mapping": "integrated"
+    },
+    {
+      "key": "operating_table/awake",
+      "path": "research/patient_candidates/patient_sagiri_sakurai/base_v1/operating_table_awake.png",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "sha256": "c23467be4055f74d8b6570be951e71691c7c508183fc83c7db362245793cd477",
+      "visual_review": "identity, expression, clothing/draping and framing checked; light/dark alpha composites checked for cutouts",
+      "technical_status": "dimensions and format checked",
+      "user_approval": "approved by user: 基础图很好！！请制作各种表情差分。",
+      "runtime_mapping": "integrated"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "path": "research/patient_candidates/patient_sagiri_sakurai/base_v1/operating_table_lithotomy_awake_v2.png",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "sha256": "c9611e39a46be12209a57584a2142d5f61ec999f386ae6ff6ed23cc68570588a",
+      "visual_review": "identity, expression, clothing/draping and framing checked; light/dark alpha composites checked for cutouts",
+      "technical_status": "dimensions and format checked",
+      "user_approval": "approved by user: 基础图很好！！请制作各种表情差分。",
+      "runtime_mapping": "integrated"
+    },
+    {
+      "key": "intraoperative/tense",
+      "path": "research/patient_candidates/patient_sagiri_sakurai/base_v1/intraoperative_tense_v2.png",
+      "dimensions": [
+        1447,
+        1087
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "d057d1a2f4a0ef7397339c0399750da2cbfe6043a071acef8c7605b3558acacd",
+      "visual_review": "identity, expression, clothing/draping and framing checked; light/dark alpha composites checked for cutouts",
+      "technical_status": "approved native canvas retained; <=1 px within-class tolerance verified in tools/portrait_test.gd",
+      "user_approval": "approved by user: 基础图很好！！请制作各种表情差分。",
+      "runtime_mapping": "integrated"
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "path": "research/patient_candidates/patient_sagiri_sakurai/base_v1/general_anesthesia_v2.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "sha256": "a4df34ce73ab2bc018f2b8d57b0e503505f94e5484880818e181c3e52d6ca212",
+      "visual_review": "identity, expression, clothing/draping and framing checked; light/dark alpha composites checked for cutouts",
+      "technical_status": "dimensions and format checked",
+      "user_approval": "approved by user: 基础图很好！！请制作各种表情差分。",
+      "runtime_mapping": "integrated"
+    }
+  ],
+  "future_portrait_checklist": [
+    {
+      "key": "outpatient/neutral",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "base generated; user review pending",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/outpatient/neutral.png"
+    },
+    {
+      "key": "ward/neutral",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "base generated; user review pending",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/ward/neutral.png"
+    },
+    {
+      "key": "ward/smile",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/ward/smile.png"
+    },
+    {
+      "key": "ward/brave",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/ward/brave.png"
+    },
+    {
+      "key": "ward/worried",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/ward/worried.png"
+    },
+    {
+      "key": "ward/afraid",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/ward/afraid.png"
+    },
+    {
+      "key": "ward/crying",
+      "consumer": "godot/ui/app.gd: add_portrait and patient preview",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/ward/crying.png"
+    },
+    {
+      "key": "operating_table/awake",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "base generated; user review pending",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table/awake.png"
+    },
+    {
+      "key": "operating_table/tense",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table/tense.png"
+    },
+    {
+      "key": "operating_table/afraid",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table/afraid.png"
+    },
+    {
+      "key": "operating_table/anesthetized",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table/anesthetized.png"
+    },
+    {
+      "key": "intraoperative/tense",
+      "consumer": "godot/ui/preop_view.gd: intraoperative_patient_expression",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "base generated; user review pending",
+      "reference": "assets/characters/intraoperative_portraits_v1/patient_ann/tense.png"
+    },
+    {
+      "key": "intraoperative/pain",
+      "consumer": "godot/ui/preop_view.gd: intraoperative_patient_expression",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/intraoperative_portraits_v1/patient_ann/pain.png"
+    },
+    {
+      "key": "intraoperative/near_collapse",
+      "consumer": "godot/ui/preop_view.gd: intraoperative_patient_expression",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/intraoperative_portraits_v1/patient_ann/near_collapse.png"
+    },
+    {
+      "key": "intraoperative/anesthetized",
+      "consumer": "godot/ui/preop_view.gd: intraoperative_patient_expression",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/intraoperative_portraits_v1/patient_ann/anesthetized.png"
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "consumer": "godot/ui/app.gd: show_anesthesia_splash",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "base generated; user review pending",
+      "reference": "assets/events/anesthesia_v1/patient_ann/general.png"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "base generated; user review pending",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table_lithotomy/awake.png"
+    },
+    {
+      "key": "operating_table_lithotomy/tense",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table_lithotomy/tense.png"
+    },
+    {
+      "key": "operating_table_lithotomy/afraid",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table_lithotomy/afraid.png"
+    },
+    {
+      "key": "operating_table_lithotomy/anesthetized",
+      "consumer": "godot/ui/preop_view.gd: operating_table_outfit/expression_for_patient",
+      "reason": "ordinary random-case patient; outpatient, ward, supine/lithotomy and anesthesia paths reachable",
+      "status": "deferred expression variant; await base approval",
+      "reference": "assets/characters/patient_ann_v1/patient_ann/operating_table_lithotomy/anesthetized.png"
+    }
+  ],
+  "excluded": {
+    "examination/shy": "user-supplied separately, not requested",
+    "splash/general_anesthesia_pre_induction": "optional, not requested",
+    "splash/epidural_anesthesia": "optional, not requested"
+  }
+}

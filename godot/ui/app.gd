@@ -442,21 +442,8 @@ func dialogue_beat_chunks(text: String) -> Array[String]:
 	return chunks
 
 func dialogue_hard_wrap(text: String) -> Array[String]:
-	var chunks: Array[String] = []
-	var current := ""
-	var current_units := 0.0
-	var maximum_units := DIALOGUE_PAGE_COLUMNS * DIALOGUE_PAGE_LINES
-	for character in text:
-		var units := 0.55 if character.unicode_at(0) < 128 else 1.0
-		if current_units + units > maximum_units and not current.is_empty():
-			chunks.append(current.strip_edges())
-			current = ""
-			current_units = 0.0
-		current += character
-		current_units += units
-	if not current.strip_edges().is_empty():
-		chunks.append(current.strip_edges())
-	return chunks
+	# Preserve characters and prefer word boundaries for English long turns.
+	return authored_dialogue_pages(text)
 
 func dialogue_pages(text: String, allow_scroll: bool = false) -> Array[String]:
 	if allow_scroll:
@@ -507,6 +494,21 @@ func dialogue_pages(text: String, allow_scroll: bool = false) -> Array[String]:
 		pages.append(text)
 	return pages
 
+func authored_dialogue_fits(text: String) -> bool:
+	# Both renderers use WORD_SMART. Measure explicit/blank lines as well as
+	# wrapped words; character totals alone cannot detect vertical overflow.
+	var font: Font = theme.default_font
+	var flags := TextServer.BREAK_MANDATORY | TextServer.BREAK_WORD_BOUND | TextServer.BREAK_ADAPTIVE
+	for layout in [Vector3(1100, 98, 22), Vector3(655, 180, 24)]:
+		var font_size := int(layout.z)
+		var measured := font.get_multiline_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, layout.x, font_size, -1, flags)
+		var lines := maxi(1, ceili(measured.y / font.get_height(font_size)))
+		# RichTextLabel adds the theme's line separation to shaped font lines.
+		var separation := get_theme_constant("line_separation", "RichTextLabel")
+		if measured.y + lines * separation > layout.y:
+			return false
+	return true
+
 func authored_dialogue_pages(text: String) -> Array[String]:
 	# Explicitly owned turns need no quote/speaker heuristics. Preserve every
 	# character, and prefer English word boundaries when a long turn needs pages.
@@ -516,7 +518,7 @@ func authored_dialogue_pages(text: String) -> Array[String]:
 	# the older character-wrap estimate, so English never clips a fourth line.
 	var maximum_units := (DIALOGUE_PAGE_COLUMNS - 4.0) * DIALOGUE_PAGE_LINES
 	for character in text:
-		if dialogue_visual_units(current + character) > maximum_units and not current.is_empty():
+		if not current.is_empty() and (dialogue_visual_units(current + character) > maximum_units or not authored_dialogue_fits(current + character)):
 			var split_at := current.rfind(" ")
 			if split_at > current.length() / 2:
 				pages.append(current.left(split_at + 1))
@@ -539,7 +541,34 @@ func dialogue_page(key: String, text: String, allow_scroll: bool = false, explic
 		"text": pages[dialogue_page_index],
 		"has_more": dialogue_page_index + 1 < pages.size(),
 		"allow_scroll": allow_scroll,
+		"quote_index": dialogue_quote_index(pages, dialogue_page_index),
 	}
+
+func dialogue_quote_index(pages: Array[String], selected_page: int) -> int:
+	var quote_index := -1
+	var closing_quote := ""
+	var pairs := {"「": "」", "『": "』", "“": "”", "\"": "\""}
+	for i in range(selected_page + 1):
+		var page_quote := quote_index if not closing_quote.is_empty() else -1
+		for character in pages[i]:
+			if not closing_quote.is_empty():
+				if character == closing_quote:
+					closing_quote = ""
+			elif pairs.has(character):
+				quote_index += 1
+				page_quote = quote_index
+				closing_quote = pairs[character]
+		if i == selected_page:
+			return page_quote
+	return -1
+
+func event_dialogue_presentation(node: Dictionary, dialogue: Dictionary, speaker: String, actor_name: String) -> Dictionary:
+	var text := str(dialogue.text)
+	# Explicit node ownership includes unquoted inner speech and NPC labels.
+	if str(node.get("presentation", "")) in ["authored", "sms"] or node.has("speaker_label"):
+		return {"speaker": speaker, "text": text}
+	var quote_index := int(dialogue.get("quote_index", -1))
+	return dialogue_page_presentation(speaker, str(node.get("speaker", "narrator")), text, actor_name, quote_index >= 0)
 
 func vn_choice_y(choice_count: int, index: int) -> float:
 	var start_y := VN_SINGLE_ACTION_Y if choice_count == 1 else VN_CHOICE_LIST_Y
@@ -553,7 +582,7 @@ func vn_choice_label(label: String, choice_count: int) -> String:
 		return common_continue
 	return label
 
-func dialogue_page_presentation(default_speaker: String, source_role: String, page_text: String, actor_speaker: String = "") -> Dictionary:
+func dialogue_page_presentation(default_speaker: String, source_role: String, page_text: String, actor_speaker: String = "", quoted_page: bool = false) -> Dictionary:
 	var shown_text := page_text.strip_edges()
 	var colon_index := shown_text.find("：")
 	if colon_index < 0:
@@ -573,7 +602,7 @@ func dialogue_page_presentation(default_speaker: String, source_role: String, pa
 			}
 	if source_role == "player":
 		return {"speaker": protagonist_name(), "text": shown_text}
-	var begins_with_quote := shown_text.begins_with("「") or shown_text.begins_with("『") or shown_text.begins_with("“") or shown_text.begins_with("\"")
+	var begins_with_quote := quoted_page or shown_text.begins_with("「") or shown_text.begins_with("『") or shown_text.begins_with("“") or shown_text.begins_with("\"")
 	if source_role == "actor" and begins_with_quote:
 		return {"speaker": default_speaker, "text": shown_text}
 	if source_role == "narrator" and begins_with_quote:
@@ -798,8 +827,9 @@ func vn_dialogue_box(speaker: String, text: String, dialogue_name: String = "Eve
 	box.add_theme_stylebox_override("panel", panel_style(Color(0.06, 0.15, 0.20, 0.96), Color("819593")))
 	page.add_child(box)
 	var speaker_label := label_at(speaker, Vector2(82, 558), 22, Color("e8cfaa"), 1100)
-	var dialogue_text := scrollable_text_at(text, Vector2(82, 598), Vector2(1100, 91), 22, Color("f4f0e6"), dialogue_name)
+	var dialogue_text := scrollable_text_at(text, Vector2(82, 594), Vector2(1100, 98), 22, Color("f4f0e6"), dialogue_name)
 	dialogue_text.scroll_active = allow_scroll
+	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	return [box, speaker_label, dialogue_text]
 
 func title_screen() -> void:
@@ -1816,13 +1846,16 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	base(tx("ui.map.sunday_title", "周日医院") if sunday_hospital_browsing else tx("ui.map.title", "医院导览"), tx("ui.map.sunday_subtitle", "普通门诊与择期手术休止；可以探视、串门或找值班同事聊聊。") if sunday_hospital_browsing else tx("ui.map.subtitle", "选择地点，了解今天的医院。  /  HOSPITAL DIRECTORY"), false, "lobby")
 	var map_locations: Array = content.collections.locations.filter(func(location: Dictionary): return str(location.id) != "basement_research" or game.story_flag("takemi_research_discovered"))
 	if sunday_hospital_browsing:
-		var sunday_ids := ["ward", "station", "imaging", "or", "lounge", "rooftop", "player_office"]
+		var sunday_ids := ["ward", "station", "imaging", "or", "lounge", "rooftop", "player_office", "shared_doctors_office"]
 		map_locations = map_locations.filter(func(location: Dictionary): return str(location.id) in sunday_ids or str(location.id) == "basement_research")
+	var map_row_count := ceili(float(map_locations.size()) / 4.0)
+	var map_row_spacing := minf(130.0, 525.0 / maxf(1.0, map_row_count))
+	var map_card_height := minf(110.0, map_row_spacing - 15.0)
 	for i in range(map_locations.size()):
 		var location: Dictionary = map_locations[i]
-		var pos := Vector2(40 + (i % 4) * 305, 155 + (i / 4) * 130)
+		var pos := Vector2(40 + (i % 4) * 305, 155 + (i / 4) * map_row_spacing)
 		var location_button := button_at("%02d   %s
-		   %s" % [i + 1, location.name, location.subtitle], pos, Vector2(285, 110), show_location.bind(location.id))
+		   %s" % [i + 1, location.name, location.subtitle], pos, Vector2(285, map_card_height), show_location.bind(location.id))
 		location_button.name = "Location_" + str(location.id)
 		# English location names are often longer than their Japanese/Chinese
 		# counterparts. Keep the two-line cards readable and leave room for the
@@ -1830,7 +1863,7 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 		location_button.add_theme_font_size_override("font_size", 17 if content.localizer.locale == "en" else 19)
 		location_button.add_theme_font_size_override("font_hover_font_size", 17 if content.localizer.locale == "en" else 19)
 		if content.localizer.locale == "en":
-			preload("res://godot/ui/button_text.gd").fit(location_button, Vector2(285, 110), 17)
+			preload("res://godot/ui/button_text.gd").fit(location_button, Vector2(285, map_card_height), 17)
 		if has_pending_story_event_at(str(location.id)):
 			add_story_event_badge(location_button)
 	var profile_button := button_at(tx("ui.common.doctor_profile", "医生属性"), Vector2(865, 88), Vector2(190, 44), show_player_profile)
@@ -1863,9 +1896,16 @@ func show_sunday_menu() -> void:
 		add_story_event_badge(hospital_button)
 	button_at(tx("ui.sunday.visit_office", "在自己办公室待一会儿"), Vector2(85, 420), Vector2(500, 62), show_sunday_office_menu).name = "SundayOffice"
 	button_at(tx("ui.sunday.rest_home", "在家休息"), Vector2(635, 420), Vector2(500, 62), finish_sunday_activity.bind("rest_home", tx("ui.sunday.rest_result", "坂口难得睡到自然醒。窗外的光线移动得很慢，医院也没有打来电话。"))).name = "SundayRest"
-	label_at(tx("ui.sunday.note", "周日活动不会增加手术经验。去医院仍可自由串门和社交。"), Vector2(85, 555), 19, Color("c2d2cc"), 1000)
+	var serika_lv3: Dictionary = game.character_event_definitions.get(preload("res://godot/systems/serika_lv3.gd").ID, {})
+	var walk_available := not serika_lv3.is_empty() and game.character_event_available(serika_lv3)
+	if walk_available:
+		add_serika_lv3_sunday_choice()
+	label_at(tx("ui.sunday.note", "周日活动不会增加手术经验。去医院仍可自由串门和社交。"), Vector2(85, 595 if walk_available else 555), 19, Color("c2d2cc"), 1000)
 	button_at(tx("ui.common.save_progress", "保存进度"), Vector2(85, 650), Vector2(170, 45), save_progress)
 	button_at(tx("ui.common.load_game", "读取存档"), Vector2(275, 650), Vector2(170, 45), request_load)
+
+func add_serika_lv3_sunday_choice() -> void:
+	button_at(tx("ui.serika.lv3.walk_alone", "独自去走走"), Vector2(85, 510), Vector2(500, 62), start_sunday_character_event.bind(preload("res://godot/systems/serika_lv3.gd").ID)).name = "SerikaLv3WalkAlone"
 
 func show_sunday_hospital_map() -> void:
 	sunday_hospital_browsing = true
@@ -1971,7 +2011,9 @@ func show_sunday_date_acceptance(actor_id: String) -> void:
 	screen = "sunday_date"
 	base(tx("ui.sunday.location_title", "选择外出地点"), "", false, "lobby")
 	add_portrait(actor, "neutral", after_work_outfit(actor))
-	vn_dialogue_box(str(actor.name), str(game.date_profile_definitions[actor_id].dialogue.accepted.text), "SundayAcceptedDialogue", true)[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var accepted_text := str(game.date_profile_definitions[actor_id].get("dialogue", {}).get("accepted", {}).get("text", ""))
+	if not accepted_text.is_empty():
+		vn_dialogue_box(str(actor.name), accepted_text, "SundayAcceptedDialogue", true)[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button_at(tx("ui.sunday.location_title", "选择外出地点"), Vector2(940, 713), Vector2(280, 40), show_sunday_date_locations.bind(actor_id)).name = "SundayDateChooseLocation"
 	button_at(tx("ui.sunday.change_invitee", "← 更换邀请对象"), Vector2(60, 713), Vector2(230, 40), show_sunday_invites)
 
@@ -2063,7 +2105,8 @@ func begin_sunday_date(actor_id: String, location_id: String) -> void:
 	var narration := tx("ui.sunday.date_result", "和%s在%s度过了星期日。") % [actor.name, location.name]
 	base(str(location.name), narration, false, str(location.background_id))
 	add_portrait(actor, "neutral", after_work_outfit(actor))
-	vn_dialogue_box(str(actor.name), game.sunday_date_response(actor_id, location_id), "SundaySatisfiedDialogue", true)[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var response := game.sunday_date_response(actor_id, location_id)
+	vn_dialogue_box(str(actor.name) if not response.is_empty() else tx("ui.auto.ed1d855fc574", "旁白"), response if not response.is_empty() else narration, "SundaySatisfiedDialogue", true)[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button_at(tx("ui.sunday.end_date", "结束约会 →"), Vector2(940, 713), Vector2(280, 40), finish_sunday_date.bind(actor_id, location_id, narration)).name = "SundayDateFinish"
 
 func finish_sunday_date(actor_id: String, location_id: String, narration: String) -> void:
@@ -2090,6 +2133,9 @@ func finish_sunday_activity(activity_id: String, narration: String, actor_id: St
 	if not game.complete_sunday_activity(activity_id, actor_id, location_id):
 		show_sunday_menu()
 		return
+	show_sunday_activity_complete(narration)
+
+func show_sunday_activity_complete(narration: String) -> void:
 	sunday_hospital_browsing = false
 	screen = "sunday_complete"
 	base(tx("ui.sunday.complete_title", "星期日结束"), narration, false, "hospital_night")
@@ -2877,7 +2923,7 @@ func show_character_event() -> void:
 			visual_actor = supporting_actor
 	add_character_event_visual(visual_actor, node, event_outfit)
 	if node.has("scene_caption"):
-		label_at(str(node.scene_caption), Vector2(60, 140), 23, Color("f4f0e6"), 600).name = "EventSceneCaption"
+		label_at(str(node.scene_caption), Vector2(60, 175), 23, Color("f4f0e6"), 600).name = "EventSceneCaption"
 	if CharacterStage.present(self, node, choose_character_event):
 		return
 	var source_role := str(node.get("speaker", "actor"))
@@ -2885,7 +2931,7 @@ func show_character_event() -> void:
 	if bool(node.get("anonymous_unmet", false)) and source_role == "actor" and not game.staff_is_met(visual_actor_id):
 		speaker = tx("ui.takemi.nurse", "护士")
 	var dialogue := dialogue_page("character:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
-	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
+	var presentation := event_dialogue_presentation(node, dialogue, speaker, actor_name)
 	if str(node.get("presentation", "")) in ["authored", "sms"]:
 		# V2 nodes carry explicit ownership. Do not infer a different speaker
 		# from a quotation inside narration or the wording of an English line.
@@ -2989,6 +3035,9 @@ func add_character_event_visual(actor: Dictionary, node: Dictionary, outfit: Str
 				if screen == "gallery_replay":
 					portrait.size = Vector2(170, 300)
 					portrait.position = Vector2(900 + (i - (cast_ids.size() - 1) / 2.0) * 170, 180)
+				if cast_ids == ["doc_takemi"]:
+					portrait.size = Vector2(450, 500)
+					portrait.position = Vector2(760, 165)
 				portrait.modulate = Color.WHITE if speaking else Color(0.68, 0.68, 0.68)
 		return
 	var portrait_path := str(node.get("portrait_path", ""))
@@ -3042,6 +3091,10 @@ func choose_character_event(choice_id: String) -> void:
 		show_notice(event.last_error)
 		return
 	if event.completed:
+		if str(event.definition.id) == preload("res://godot/systems/serika_lv3.gd").ID:
+			game.finish_character_event()
+			show_sunday_activity_complete(tx("ui.serika.lv3.complete", "【御園芹香 Relationship Lv3 达成】\n【解锁：芹香的正常周日约会】"))
+			return
 		if str(event.definition.get("id", "")) == "sayaka_lv4_hotel_date":
 			if not game.settle_sayaka_lv4_hotel_event():
 				show_notice("Sayaka Lv4 settlement failed; the event state was not advanced.")
@@ -3064,7 +3117,7 @@ func choose_character_event(choice_id: String) -> void:
 			else:
 				show_map()
 			return
-		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)):
+		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)) or str(event.definition.id) == preload("res://godot/systems/serika_radiology.gd").LV1:
 			game.finish_character_event()
 			show_location("imaging", true)
 			return
@@ -3258,6 +3311,8 @@ func show_special_events() -> void:
 			var title := special_event_localized_title(definition)
 			var category := tx("ui.special_event.category." + str(definition.get("category", "")), str(definition.get("category", "")))
 			var caption := tx("ui.special_event.zero_time_caption", "%s\n%s · 不消耗游戏时间") % [title, category] if not bool(definition.get("consumes_full_day", true)) else tx("ui.auto.9337056caa0d", "%s\n%s · 连续占用 %s 天") % [title, category, days]
+			if str(definition.id) == "chihaya_third_surgery_a":
+				caption = tx("ui.auto.9337056caa0d", "%s\n%s · 连续占用 %s 天") % [title, category, 3]
 			var button := button_at(caption, Vector2.ZERO, Vector2(1110, 72), confirm_special_event.bind(str(definition.id)))
 			page.remove_child(button)
 			event_content.add_child(button)
@@ -3312,9 +3367,17 @@ func begin_special_event() -> void:
 
 func special_event_actor(node: Dictionary) -> Dictionary:
 	var actor_id := str(node.get("actor_id", ""))
-	return content.find_record("staff", actor_id) if not actor_id.is_empty() else {}
+	if actor_id.is_empty():
+		return {}
+	var actor: Dictionary = content.find_record("staff", actor_id)
+	return content.find_record("cameo_patients", actor_id) if actor.is_empty() else actor
 
 func special_event_speaker(node: Dictionary, actor: Dictionary, step_id: String = "") -> String:
+	var unmet_variant := special_event_unmet_variant(node)
+	if unmet_variant.has("speaker_label"):
+		if step_id.is_empty() and game.active_special_event != null:
+			step_id = str(game.active_special_event.current_step().id)
+		return tx("collections.special_event_steps.%s.nodes.%s.unmet_variant.speaker_label" % [step_id, str(node.id)], str(unmet_variant.speaker_label))
 	if node.has("speaker_label"):
 		if step_id.is_empty() and game.active_special_event != null:
 			step_id = str(game.active_special_event.current_step().id)
@@ -3369,7 +3432,24 @@ func add_special_event_visual(node: Dictionary) -> void:
 					portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
 					page.add_child(portrait)
 
+func special_event_unmet_variant(node: Dictionary) -> Dictionary:
+	# Display-only authored variants. Never mark the supporting actor as met or
+	# store a branch/cursor in the save; the existing relationship fact decides.
+	var variant: Dictionary = node.get("unmet_variant", {})
+	if variant.is_empty():
+		return {}
+	var required_event := str(variant.get("required_event_id", ""))
+	if not required_event.is_empty():
+		return {} if game.character_event_done(required_event) else variant
+	if game.staff_is_met(str(variant.get("actor_id", ""))):
+		return {}
+	return variant
+
 func special_event_localized_text(step: Dictionary, node: Dictionary) -> String:
+	var unmet_variant := special_event_unmet_variant(node)
+	if unmet_variant.has("text"):
+		var variant_key := "collections.special_event_steps.%s.nodes.%s.unmet_variant.text" % [str(step.id), str(node.id)]
+		return tx(variant_key, str(unmet_variant.text))
 	var key := "collections.special_event_steps.%s.nodes.%s.text" % [str(step.id), str(node.id)]
 	return tx(key, str(node.get("text", "")))
 
@@ -3423,6 +3503,8 @@ func show_special_event() -> void:
 	var definition: Dictionary = event.definition
 	var step: Dictionary = event.current_step()
 	var node: Dictionary = event.current()
+	if preload("res://godot/ui/miyama_story_palpation.gd").open_if_needed(self, event, false):
+		return
 	if str(node.get("presentation", "narrative")) in ["advanced_referral_summary", "advanced_surgery"]:
 		show_advanced_referral_node(event, step, node)
 		return
@@ -3430,6 +3512,9 @@ func show_special_event() -> void:
 	var localized_title := special_event_localized_title(definition)
 	var localized_step_title := tx("collections.special_event_steps.%s.title" % str(step.id), str(step.title))
 	var subtitle := localized_step_title
+	var third = preload("res://godot/systems/chihaya_third_surgery.gd")
+	if third.owns(str(definition.id)):
+		subtitle = tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [localized_step_title, [third.A, third.B, third.C].find(str(definition.id)) + 1, 3]
 	if bool(definition.get("consumes_full_day", true)):
 		subtitle = tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [localized_step_title, event.step_index + 1, definition.duration_days]
 	base(localized_title, subtitle, true, node.get("background_id", step.background_id))
@@ -3440,9 +3525,16 @@ func show_special_event() -> void:
 	var actor := special_event_actor(node)
 	var source_role := str(node.get("speaker", "narrator"))
 	var default_speaker := special_event_speaker(node, actor, str(step.id))
-	var dialogue := dialogue_page("special:%s:%s:%s" % [str(definition.id), str(step.id), str(node.id)], special_event_localized_text(step, node), bool(node.get("allow_dialogue_scroll", false)))
-	var presentation := dialogue_page_presentation(default_speaker, source_role, str(dialogue.text), str(actor.get("name", "")))
+	var authored_turn := str(node.get("presentation", "")) == "authored"
+	var dialogue := dialogue_page("special:%s:%s:%s" % [str(definition.id), str(step.id), str(node.id)], special_event_localized_text(step, node), bool(node.get("allow_dialogue_scroll", false)), authored_turn)
+	var presentation := event_dialogue_presentation(node, dialogue, default_speaker, str(actor.get("name", "")))
+	if authored_turn:
+		presentation = {"speaker": default_speaker, "text": str(dialogue.text)}
 	var dialogue_items := vn_dialogue_box(str(presentation.speaker), str(presentation.text), "SpecialEventDialogue", bool(dialogue.allow_scroll))
+	if authored_turn:
+		dialogue_items[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		dialogue_items[2].position.y = 593
+		dialogue_items[2].size.y = 103
 	var action_buttons: Array = []
 	if bool(dialogue.has_more):
 		var page_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_special_event))
@@ -3547,6 +3639,9 @@ func choose_special_event(choice_id: String) -> void:
 		show_map(false)
 		return
 	if bool(result.day_finished):
+		if bool(result.get("continuous_transition", false)):
+			render_day_transition(show_special_event, {"workday": int(scene_schedule_before.day), "clock": int(result.episode_end_clock)})
+			return
 		var next_action: Callable = show_special_event_complete if bool(result.event_finished) else show_special_event
 		show_day_transition(next_action, day_end_display_override)
 	else:
@@ -3608,6 +3703,8 @@ func show_special_event_complete() -> void:
 	var time_summary := tx("ui.special_event.zero_time_complete", "不消耗游戏时间　/　现在是 %s %s") % [game.day_text(), game.clock_text()] if not bool(event.definition.get("consumes_full_day", true)) else tx("ui.auto.4c7e14cb5767", "耗时 %s 天　/　现在是 %s %s") % [event.definition.duration_days, game.day_text(), game.clock_text()]
 	if not bool(event.definition.get("consumes_full_day", true)) and int(event.definition.get("settled_minutes", 0)) > 0:
 		time_summary = tx("ui.special_event.partial_day_complete", "耗时 %s 分钟　/　现在是 %s %s") % [int(event.definition.settled_minutes), game.day_text(), game.clock_text()]
+	if str(event.definition.id) == "chihaya_third_surgery_c":
+		time_summary = tx("ui.chihaya_third_surgery.complete_time", "连续三日事件完成　/　现在是 %s %s") % [game.day_text(), game.clock_text()]
 	label_at(time_summary, Vector2(110, 350), 22, Color("e8cfaa"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if bool(event.definition.gallery_unlock):
 		label_at(tx("ui.auto.779b69fdeeb5", "已收录至事件鉴赏。"), Vector2(110, 410), 20, Color("c2d2cc"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -3777,6 +3874,8 @@ func show_special_gallery_replay() -> void:
 	var event = special_event_gallery_replay
 	var step: Dictionary = event.current_step()
 	var node: Dictionary = event.current()
+	if preload("res://godot/ui/miyama_story_palpation.gd").open_if_needed(self, event, true):
+		return
 	screen = "special_gallery_replay"
 	var localized_title := special_event_localized_title(event.definition)
 	var localized_step_title := tx("collections.special_event_steps.%s.title" % str(step.id), str(step.title))
@@ -3788,9 +3887,16 @@ func show_special_gallery_replay() -> void:
 	var actor := special_event_actor(node)
 	var source_role := str(node.get("speaker", "narrator"))
 	var default_speaker := special_event_speaker(node, actor, str(step.id))
-	var dialogue := dialogue_page("special_replay:%s:%s:%s" % [str(event.definition.id), str(step.id), str(node.id)], special_event_localized_text(step, node), bool(node.get("allow_dialogue_scroll", false)))
-	var presentation := dialogue_page_presentation(default_speaker, source_role, str(dialogue.text), str(actor.get("name", "")))
+	var authored_turn := str(node.get("presentation", "")) == "authored"
+	var dialogue := dialogue_page("special_replay:%s:%s:%s" % [str(event.definition.id), str(step.id), str(node.id)], special_event_localized_text(step, node), bool(node.get("allow_dialogue_scroll", false)), authored_turn)
+	var presentation := event_dialogue_presentation(node, dialogue, default_speaker, str(actor.get("name", "")))
+	if authored_turn:
+		presentation = {"speaker": default_speaker, "text": str(dialogue.text)}
 	var dialogue_items := vn_dialogue_box(str(presentation.speaker), str(presentation.text), "SpecialEventReplayDialogue", bool(dialogue.allow_scroll))
+	if authored_turn:
+		dialogue_items[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		dialogue_items[2].position.y = 593
+		dialogue_items[2].size.y = 103
 	var action_buttons: Array = []
 	if bool(dialogue.has_more):
 		var page_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_special_gallery_replay))
@@ -3841,10 +3947,12 @@ func show_gallery_entry(event_id: String) -> void:
 	if not str(gallery.path).is_empty() and FileAccess.file_exists("res://" + str(gallery.path)):
 		var cg := TextureRect.new()
 		cg.name = "GalleryCG"
+		# Ignore the source minimum before assigning the preview rectangle.
+		# Otherwise a large CG expands the control beyond the gallery panel.
+		cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		cg.texture = load("res://" + str(gallery.path))
 		cg.position = Vector2(625, 175)
 		cg.size = Vector2(570, 455)
-		cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		page.add_child(cg)
 	else:
@@ -3905,7 +4013,7 @@ func show_gallery_replay() -> void:
 		visual_actor = supporting_actor
 	add_character_event_visual(visual_actor, node, str(node.get("outfit", definition.outfit)))
 	if node.has("scene_caption"):
-		label_at(str(node.scene_caption), Vector2(60, 140), 23, Color("f4f0e6"), 600)
+		label_at(str(node.scene_caption), Vector2(60, 175), 23, Color("f4f0e6"), 600)
 	if CharacterStage.present(self, node, choose_gallery_replay):
 		return
 	var source_role := str(node.get("speaker", "actor"))
@@ -3913,7 +4021,7 @@ func show_gallery_replay() -> void:
 	if bool(node.get("anonymous_unmet", false)) and source_role == "actor" and not game.staff_is_met(str(node.get("actor_id", definition.actor_id))):
 		speaker = tx("ui.takemi.nurse", "护士")
 	var dialogue := dialogue_page("character_replay:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
-	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
+	var presentation := event_dialogue_presentation(node, dialogue, speaker, actor_name)
 	if str(node.get("presentation", "")) in ["authored", "sms"]:
 		presentation = {"speaker": speaker, "text": str(dialogue.text)}
 	var cinematic := bool(definition.get("cinematic", false))
@@ -3924,8 +4032,9 @@ func show_gallery_replay() -> void:
 		widgets[2].size.y = 98
 	else:
 		label_at(str(presentation.speaker), Vector2(65, 205), 22, Color("e8cfaa"), 640)
-		var replay_text := scrollable_text_at(str(presentation.text), Vector2(65, 253), Vector2(655, 170), 24, Color("f4f0e6"), "GalleryReplayDialogue")
+		var replay_text := scrollable_text_at(str(presentation.text), Vector2(65, 253), Vector2(655, 180), 24, Color("f4f0e6"), "GalleryReplayDialogue")
 		replay_text.scroll_active = bool(dialogue.allow_scroll)
+		replay_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var action_y := VN_SINGLE_ACTION_Y if cinematic else 445.0
 	var exit_action: Callable = show_character_events.bind(gallery_replay_return_actor, character_event_return_location) if gallery_replay_is_test else show_gallery_entry.bind(definition.id)
 	if bool(dialogue.has_more):

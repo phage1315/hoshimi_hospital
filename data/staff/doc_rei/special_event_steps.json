@@ -9345,7 +9345,42 @@
       {
         "id": "wake",
         "speaker": "actor",
-        "text": "「佳織。」\n\n佳織睁眼，看见两人，又看见自己的手腕：“……实验还没有结束。”",
+        "text": "「佳織。」",
+        "expression": "neutral",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_wake_turn",
+            "label": "继续",
+            "next": "wake_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored",
+        "speaker_label": "城宮 明日香"
+      },
+      {
+        "id": "wake_turn_2",
+        "speaker": "narrator",
+        "text": "佳織睁眼，看见两人，又看见自己的手腕：",
+        "expression": "neutral",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_wake_turn_2_turn",
+            "label": "继续",
+            "next": "wake_turn_3",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "wake_turn_3",
+        "speaker": "actor",
+        "text": "“……实验还没有结束。”",
         "expression": "neutral",
         "actor_id": "doc_asuka",
         "outfit": "white_coat",
@@ -9356,7 +9391,9 @@
             "next": "ange",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織"
       },
       {
         "id": "ange",
@@ -9410,7 +9447,24 @@
       {
         "id": "nude_command_cg",
         "speaker": "narrator",
-        "text": "佳織只戴上手术帽和口罩，赤身冲进手术室的非无菌侧。她没有触碰无菌器械，已经指向监护屏和准备区下达指令。\n\n「安琪，复述生命体征和抗菌药时间。本庄，核对器械。小夜香先接台。」",
+        "text": "佳織只戴上手术帽和口罩，赤身冲进手术室的非无菌侧。她没有触碰无菌器械，已经指向监护屏和准备区下达指令。",
+        "expression": "neutral",
+        "cg_path": "assets/events/character_events/rei/lv3/emergency_command_nude.png",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nude_command_cg_turn",
+            "label": "继续",
+            "next": "nude_command_cg_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "nude_command_cg_turn_2",
+        "speaker": "actor",
+        "text": "「安琪，复述生命体征和抗菌药时间。本庄，核对器械。小夜香先接台。」",
         "expression": "neutral",
         "cg_path": "assets/events/character_events/rei/lv3/emergency_command_nude.png",
         "hide_portrait": true,
@@ -9421,7 +9475,10 @@
             "next": "clear_case",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織",
+        "actor_id": "doc_rei"
       },
       {
         "id": "clear_case",
@@ -9456,8 +9513,60 @@
       },
       {
         "id": "why",
+        "speaker": "narrator",
+        "text": "明日香问：",
+        "expression": "neutral",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_why_turn",
+            "label": "继续",
+            "next": "why_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "why_turn_2",
         "speaker": "actor",
-        "text": "明日香问：“为什么？”\n\n佳織低声说：“你知道原因。”",
+        "text": "“为什么？”",
+        "expression": "neutral",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_why_turn_2_turn",
+            "label": "继续",
+            "next": "why_turn_3",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored",
+        "speaker_label": "城宮 明日香"
+      },
+      {
+        "id": "why_turn_3",
+        "speaker": "narrator",
+        "text": "佳織低声说：",
+        "expression": "neutral",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_why_turn_3_turn",
+            "label": "继续",
+            "next": "why_turn_4",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "why_turn_4",
+        "speaker": "actor",
+        "text": "“你知道原因。”",
         "expression": "neutral",
         "actor_id": "doc_asuka",
         "outfit": "white_coat",
@@ -9468,7 +9577,9 @@
             "next": "trust",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織"
       },
       {
         "id": "trust",
@@ -9534,8 +9645,60 @@
       },
       {
         "id": "comment",
+        "speaker": "narrator",
+        "text": "本庄低声说：",
+        "expression": "worried",
+        "actor_id": "nurse_moe",
+        "outfit": "sterile",
+        "choices": [
+          {
+            "id": "continue_comment_turn",
+            "label": "继续",
+            "next": "comment_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "comment_turn_2",
         "speaker": "actor",
-        "text": "本庄低声说：“深山医生。手术袍不是衣服。”\n\n佳織回答：“我知道。患者先上台。”",
+        "text": "“深山医生。手术袍不是衣服。”",
+        "expression": "worried",
+        "actor_id": "nurse_moe",
+        "outfit": "sterile",
+        "choices": [
+          {
+            "id": "continue_comment_turn_2_turn",
+            "label": "继续",
+            "next": "comment_turn_3",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored",
+        "speaker_label": "本庄 萌惠"
+      },
+      {
+        "id": "comment_turn_3",
+        "speaker": "narrator",
+        "text": "佳織回答：",
+        "expression": "worried",
+        "actor_id": "nurse_moe",
+        "outfit": "sterile",
+        "choices": [
+          {
+            "id": "continue_comment_turn_3_turn",
+            "label": "继续",
+            "next": "comment_turn_4",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "comment_turn_4",
+        "speaker": "actor",
+        "text": "“我知道。患者先上台。”",
         "expression": "worried",
         "actor_id": "nurse_moe",
         "outfit": "sterile",
@@ -9546,7 +9709,9 @@
             "next": "cg",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織"
       },
       {
         "id": "cg",
@@ -9651,8 +9816,60 @@
       },
       {
         "id": "pattern",
+        "speaker": "narrator",
+        "text": "明日香问：",
+        "expression": "smile",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_pattern_turn",
+            "label": "继续",
+            "next": "pattern_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "pattern_turn_2",
         "speaker": "actor",
-        "text": "明日香问：“现在，规律还成立吗？”\n\n佳織回答：“样本量变成三。结论是——不成立。”",
+        "text": "“现在，规律还成立吗？”",
+        "expression": "smile",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_pattern_turn_2_turn",
+            "label": "继续",
+            "next": "pattern_turn_3",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored",
+        "speaker_label": "城宮 明日香"
+      },
+      {
+        "id": "pattern_turn_3",
+        "speaker": "narrator",
+        "text": "佳織回答：",
+        "expression": "smile",
+        "actor_id": "doc_asuka",
+        "outfit": "white_coat",
+        "choices": [
+          {
+            "id": "continue_pattern_turn_3_turn",
+            "label": "继续",
+            "next": "pattern_turn_4",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "pattern_turn_4",
+        "speaker": "actor",
+        "text": "“样本量变成三。结论是——不成立。”",
         "expression": "smile",
         "actor_id": "doc_asuka",
         "outfit": "white_coat",
@@ -9663,12 +9880,65 @@
             "next": "god",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織"
       },
       {
         "id": "god",
+        "speaker": "narrator",
+        "text": "坂口问：",
+        "expression": "warm",
+        "actor_id": "doc_rei",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_god_turn",
+            "label": "继续",
+            "next": "god_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "god_turn_2",
+        "speaker": "player",
+        "text": "“手术室之神接受解释了？”",
+        "expression": "warm",
+        "actor_id": "doc_rei",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_god_turn_2_turn",
+            "label": "继续",
+            "next": "god_turn_3",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "god_turn_3",
+        "speaker": "narrator",
+        "text": "佳織回答：",
+        "expression": "warm",
+        "actor_id": "doc_rei",
+        "outfit": "scrubs",
+        "choices": [
+          {
+            "id": "continue_god_turn_3_turn",
+            "label": "继续",
+            "next": "god_turn_4",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "god_turn_4",
         "speaker": "actor",
-        "text": "坂口问：“手术室之神接受解释了？”\n\n佳織回答：“不。是实验设计有问题。”",
+        "text": "“不。是实验设计有问题。”",
         "expression": "warm",
         "actor_id": "doc_rei",
         "outfit": "scrubs",
@@ -9679,7 +9949,9 @@
             "next": "rank3",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織"
       },
       {
         "id": "rank3",
@@ -9699,8 +9971,60 @@
       },
       {
         "id": "end3",
+        "speaker": "narrator",
+        "text": "离开前，本庄把衣物袋递还给她：",
+        "expression": "warm",
+        "actor_id": "nurse_moe",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_end3_turn",
+            "label": "继续",
+            "next": "end3_turn_2",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "end3_turn_2",
         "speaker": "actor",
-        "text": "离开前，本庄把衣物袋递还给她：“下次排除变量，请先穿好衣服。”\n\n佳織接过袋子：“下次不会有这种变量。”",
+        "text": "“下次排除变量，请先穿好衣服。”",
+        "expression": "warm",
+        "actor_id": "nurse_moe",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_end3_turn_2_turn",
+            "label": "继续",
+            "next": "end3_turn_3",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored",
+        "speaker_label": "本庄 萌惠"
+      },
+      {
+        "id": "end3_turn_3",
+        "speaker": "narrator",
+        "text": "佳織接过袋子：",
+        "expression": "warm",
+        "actor_id": "nurse_moe",
+        "outfit": "uniform",
+        "choices": [
+          {
+            "id": "continue_end3_turn_3_turn",
+            "label": "继续",
+            "next": "end3_turn_4",
+            "requirements": []
+          }
+        ],
+        "presentation": "authored"
+      },
+      {
+        "id": "end3_turn_4",
+        "speaker": "actor",
+        "text": "“下次不会有这种变量。”",
         "expression": "warm",
         "actor_id": "nurse_moe",
         "outfit": "uniform",
@@ -9711,7 +10035,9 @@
             "next": "@day_end",
             "requirements": []
           }
-        ]
+        ],
+        "presentation": "authored",
+        "speaker_label": "深山 佳織"
       }
     ]
   }

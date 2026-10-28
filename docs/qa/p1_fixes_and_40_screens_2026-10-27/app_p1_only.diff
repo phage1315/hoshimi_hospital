@@ -1,0 +1,33 @@
+--- app.gd before this task
++++ app.gd after P1 fix
+@@ -494,6 +494,21 @@
+ 		pages.append(text)
+ 	return pages
+ 
++func authored_dialogue_fits(text: String) -> bool:
++	# Both renderers use WORD_SMART. Measure explicit/blank lines as well as
++	# wrapped words; character totals alone cannot detect vertical overflow.
++	var font: Font = theme.default_font
++	var flags := TextServer.BREAK_MANDATORY | TextServer.BREAK_WORD_BOUND | TextServer.BREAK_ADAPTIVE
++	for layout in [Vector3(1100, 98, 22), Vector3(655, 180, 24)]:
++		var font_size := int(layout.z)
++		var measured := font.get_multiline_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, layout.x, font_size, -1, flags)
++		var lines := maxi(1, ceili(measured.y / font.get_height(font_size)))
++		# RichTextLabel adds the theme's line separation to shaped font lines.
++		var separation := get_theme_constant("line_separation", "RichTextLabel")
++		if measured.y + lines * separation > layout.y:
++			return false
++	return true
++
+ func authored_dialogue_pages(text: String) -> Array[String]:
+ 	# Explicitly owned turns need no quote/speaker heuristics. Preserve every
+ 	# character, and prefer English word boundaries when a long turn needs pages.
+@@ -503,7 +518,7 @@
+ 	# the older character-wrap estimate, so English never clips a fourth line.
+ 	var maximum_units := (DIALOGUE_PAGE_COLUMNS - 4.0) * DIALOGUE_PAGE_LINES
+ 	for character in text:
+-		if dialogue_visual_units(current + character) > maximum_units and not current.is_empty():
++		if not current.is_empty() and (dialogue_visual_units(current + character) > maximum_units or not authored_dialogue_fits(current + character)):
+ 			var split_at := current.rfind(" ")
+ 			if split_at > current.length() / 2:
+ 				pages.append(current.left(split_at + 1))

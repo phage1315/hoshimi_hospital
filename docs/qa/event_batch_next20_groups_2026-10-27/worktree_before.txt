@@ -1,0 +1,212 @@
+ M data/backgrounds.json
+ M data/events/special_event_steps/chihaya_second_surgery.json
+ M data/events/special_event_steps/index.json
+ M data/events/special_events/index.json
+ M data/localization/en.json
+ M data/locations.json
+ M data/patients/index.json
+ M data/patients/patient_aerith/patient.json
+ M data/patients/patient_amate_yuzuriha/patient.json
+ M data/patients/patient_ann/patient.json
+ M data/patients/patient_comoli_harcourt/patient.json
+ M data/patients/patient_doa_kasumi/patient.json
+ M data/patients/patient_emi/patient.json
+ M data/patients/patient_emi_higashikawa/patient.json
+ M data/patients/patient_emi_koda/patient.json
+ M data/patients/patient_gigi/patient.json
+ M data/patients/patient_iwai_yoshimi/patient.json
+ M data/patients/patient_iwato_tamaki/patient.json
+ M data/patients/patient_kocho_shinobu/patient.json
+ M data/patients/patient_kyrie_canaan/patient.json
+ M data/patients/patient_lust_actress/patient.json
+ M data/patients/patient_makimura_kaori/patient.json
+ M data/patients/patient_miki/patient.json
+ M data/patients/patient_miyamizu_mitsuha/patient.json
+ M data/patients/patient_mouri_ran/patient.json
+ M data/patients/patient_nogami_saeko/patient.json
+ M data/patients/patient_nyaan/patient.json
+ M data/patients/patient_rie/patient.json
+ M data/patients/patient_sakurai_mayumi/patient.json
+ M data/patients/patient_sepha/patient.json
+ M data/patients/patient_shimizu_iraiza/patient.json
+ M data/patients/patient_sora/patient.json
+ M data/patients/patient_tifa/patient.json
+ M data/patients/patient_yuffie_kisaragi/patient.json
+ M data/patients/patient_yuko_asou/patient.json
+ M data/schemas/content.schema.json
+ M data/staff/doc_aoi/profile.json
+ M data/staff/doc_minato/profile.json
+ M data/staff/doc_rei/profile.json
+ M data/staff/doc_rei/special_event_steps.json
+ M data/staff/doc_sayaka/profile.json
+ M data/staff/doc_serika/assets_manifest.json
+ M data/staff/doc_serika/bundle.json
+ M data/staff/doc_serika/date_profiles.json
+ M data/staff/doc_serika/profile.json
+ M data/staff/doc_serika/relationship.json
+ M data/staff/doc_shiori/profile.json
+ M data/staff/pharmacist_manami/events.json
+ M data/staff/visiting_futaba/profile.json
+ M data/staff/visiting_maya/profile.json
+ M data/ward_preparation_cg_pools.json
+ M docs/adding_random_patient.md
+ M docs/architecture.md
+ M docs/asset_sources.md
+ M docs/design/HOSHIMI_CHARACTER_RELATIONSHIP_GATE_MATRIX.md
+ M docs/design/README.md
+ M docs/qa/chihaya_second_surgery/event_import_validation.json
+ M docs/qa/manami_lv1/results.json
+ M docs/qa/patient_doa_kasumi/expression_differences_2026-10-25.md
+ M docs/sayaka_staff_as_patient_dialogue_fill_list.md
+ M docs/serika_integration_2026-10-23.md
+ M godot/systems/game_state.gd
+ M godot/systems/serika_radiology.gd
+ M godot/ui/app.gd
+ M tools/chihaya_second_surgery_test.gd
+ M tools/chihaya_source_audit.py
+ M tools/dialogue_layout_audit.py
+ M tools/fixtures/chihaya_second_surgery_en.json
+ M tools/fixtures/chihaya_second_surgery_staging.json
+ M tools/import_chihaya_second_surgery.py
+ M tools/import_kaori_lv0_event.py
+ M tools/import_manami_lv0_intro.py
+ M tools/import_sayaka_lv5.py
+ M tools/preparation_asset_regression_test.gd
+ M tools/serika_integration_test.gd
+ M tools/serika_radiology_test.gd
+ M tools/validate_data.py
+?? assets/backgrounds/narumi_office_v1/
+?? assets/backgrounds/serika_lv3_v1/
+?? assets/backgrounds/shared_doctors_office_v1/
+?? assets/characters/misono_serika_v1/scrubs_masked_v1/
+?? assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/
+?? assets/characters/patient_lust_actress/examination/
+?? assets/characters/patient_sagiri_sakurai_v1/
+?? assets/events/chihaya_second_surgery_v1/
+?? assets/events/serika_lv1_v1/
+?? assets/events/serika_lv3_v1/
+?? assets/events/ward_preparation_v1/patient_lust_actress/
+?? assets/events/ward_preparation_v1/patient_sagiri_sakurai/
+?? data/events/special_event_steps/chihaya_third_surgery.json
+?? data/events/special_events/chihaya_third_surgery.json
+?? data/patients/patient_sagiri_sakurai/
+?? data/staff/doc_serika/lv1_events.json
+?? data/staff/doc_serika/lv3_events.json
+?? docs/HOSHIMI_AFTER_WORK_WALK_IMPLEMENTATION_CURRENT.md
+?? docs/HOSHIMI_PERSONAL_NURSE_SYSTEM_CURRENT.md
+?? docs/chihaya_second_surgery_rumi_revision.md
+?? docs/chihaya_third_surgery_integration_2026-10-27.md
+?? docs/design/SHARED_DOCTORS_OFFICE_PROPOSAL.md
+?? docs/development_handoff_2026-10-26.md
+?? docs/patient_sagiri_sakurai_asset_record.md
+?? docs/qa/chihaya_second_surgery/rumi_revision/
+?? docs/qa/chihaya_second_surgery/runtime_images/cg_final_2026-10-26/
+?? docs/qa/chihaya_third_surgery/
+?? docs/qa/event_batch_first20_rows_2026-10-27/
+?? docs/qa/event_rendering_fixes_2026-10-27/
+?? docs/qa/experience_cap_2026-10-27/
+?? docs/qa/serika_lv1_2026-10-26/
+?? docs/qa/serika_lv3_2026-10-27/
+?? docs/qa/shared_doctors_office_2026-10-26/
+?? docs/serika_lv1_integration_2026-10-26.md
+?? docs/serika_lv3_integration_2026-10-27.md
+?? docs/source/HOSHIMI_AFTER_WORK_WALK_IMPLEMENTATION_V1.md
+?? docs/source/HOSHIMI_PERSONAL_NURSE_SYSTEM_V1.md
+?? docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1_RUMI_REVISION.md
+?? docs/source/chihaya_second_surgery/rumi_revision_record.json
+?? docs/source/chihaya_third_surgery/
+?? docs/source/incision_cg_dialogue_2026-10-26.json
+?? docs/source/lv0_introductions/
+?? docs/source/sayaka_patient_history/
+?? docs/source/serika_lv1/
+?? docs/source/serika_lv3/
+?? godot/systems/chihaya_third_surgery.gd
+?? godot/systems/chihaya_third_surgery.gd.uid
+?? godot/systems/serika_lv3.gd
+?? godot/systems/serika_lv3.gd.uid
+?? research/cg_candidates/
+?? research/character_references/patient_sagiri_sakurai/
+?? research/imports/chihaya_draping_cg_2026-10-26.json
+?? research/imports/chihaya_epidural_cg_2026-10-26.json
+?? research/imports/chihaya_escape_cg_2026-10-26.json
+?? research/imports/chihaya_friendship_cg_2026-10-26.json
+?? research/imports/chihaya_mizuho_visit_cg_2026-10-26.json
+?? research/imports/chihaya_promise_cg_2026-10-26.json
+?? research/imports/chihaya_relief_cg_2026-10-26.json
+?? research/imports/chihaya_scalpel_cg_2026-10-26.json
+?? research/imports/patient_lust_actress_nsfw_cgs_2026-10-26.json
+?? research/imports/patient_sagiri_sakurai_en_v1.json
+?? research/imports/patient_sagiri_sakurai_registration_v1.json
+?? research/imports/patient_sagiri_sakurai_supplied_2026-10-27/
+?? research/imports/patient_sagiri_sakurai_validation_v1.json
+?? research/imports/serika_lv1_cg_2026-10-26.json
+?? research/imports/serika_lv3_backgrounds.json
+?? research/imports/serika_lv3_cgs_2026-10-27.json
+?? research/imports/serika_masked_scrubs_2026-10-27.json
+?? research/narumi_office_2026-10-26.prompt.txt
+?? research/patient_candidates/
+?? research/serika_lv3_music_shop.prompt.txt
+?? research/serika_lv3_street_day.prompt.txt
+?? research/serika_lv3_street_evening.prompt.txt
+?? research/serika_masked_scrubs_2026-10-27.prompts.json
+?? research/shared_doctors_office_2026-10-26.prompt.txt
+?? tools/chihaya_third_source_audit.py
+?? tools/chihaya_third_surgery_test.gd
+?? tools/chihaya_third_surgery_test.gd.uid
+?? tools/event_batch_boundaries_qa.gd
+?? tools/event_batch_boundaries_qa.gd.uid
+?? tools/event_batch_clinical_entry_qa.gd
+?? tools/event_batch_clinical_entry_qa.gd.uid
+?? tools/event_batch_entry_qa.gd
+?? tools/event_batch_entry_qa.gd.uid
+?? tools/event_batch_extra_qa.gd
+?? tools/event_batch_extra_qa.gd.uid
+?? tools/event_batch_hiroko_recheck.gd
+?? tools/event_batch_hiroko_recheck.gd.uid
+?? tools/event_batch_miyama_lv3_source_repro.gd
+?? tools/event_batch_miyama_lv3_source_repro.gd.uid
+?? tools/event_batch_native_qa.gd
+?? tools/event_batch_native_qa.gd.uid
+?? tools/event_batch_observation_audit.py
+?? tools/event_batch_report.py
+?? tools/event_batch_reproduction_qa.gd
+?? tools/event_batch_reproduction_qa.gd.uid
+?? tools/event_batch_source_qa.py
+?? tools/event_batch_visual_audit.py
+?? tools/event_rendering_content_audit.py
+?? tools/event_rendering_max_skill_repro.gd
+?? tools/event_rendering_max_skill_repro.gd.uid
+?? tools/event_rendering_native_qa.gd
+?? tools/event_rendering_native_qa.gd.uid
+?? tools/event_rendering_page_audit.py
+?? tools/event_rendering_regression_test.gd
+?? tools/event_rendering_regression_test.gd.uid
+?? tools/event_rendering_reproduction_qa.gd
+?? tools/event_rendering_reproduction_qa.gd.uid
+?? tools/event_rendering_save_boundary_test.gd
+?? tools/event_rendering_save_boundary_test.gd.uid
+?? tools/event_rendering_text_overflow_test.gd
+?? tools/event_rendering_text_overflow_test.gd.uid
+?? tools/experience_cap_test.gd
+?? tools/experience_cap_test.gd.uid
+?? tools/fixtures/chihaya_second_surgery_cgs.json
+?? tools/fixtures/chihaya_second_surgery_unmet_variants.json
+?? tools/fixtures/chihaya_third_serika_masked.json
+?? tools/fixtures/chihaya_third_surgery_en.json
+?? tools/fixtures/chihaya_third_surgery_en.txt
+?? tools/fixtures/chihaya_third_surgery_staging.json
+?? tools/import_chihaya_third_surgery.py
+?? tools/sagiri_portrait_test.gd
+?? tools/sagiri_portrait_test.gd.uid
+?? tools/sagiri_supplied_assets_test.gd
+?? tools/sagiri_supplied_assets_test.gd.uid
+?? tools/serika_lv1_source_audit.py
+?? tools/serika_lv1_test.gd
+?? tools/serika_lv1_test.gd.uid
+?? tools/serika_lv3_native_input_test.gd
+?? tools/serika_lv3_native_input_test.gd.uid
+?? tools/serika_lv3_source_audit.py
+?? tools/serika_lv3_test.gd
+?? tools/serika_lv3_test.gd.uid
+?? tools/shared_doctors_office_test.gd
+?? tools/shared_doctors_office_test.gd.uid

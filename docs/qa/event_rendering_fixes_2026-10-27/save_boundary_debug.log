@@ -1,0 +1,43 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)
+RESTORE_DEBUG_LINE 5059
+RESTORE_DEBUG_LINE 4909
+DEBUG_RESTORE false
+ERROR: Old completion facts failed with split nodes: 存档格式不正确，当前进度未改变。
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:44)
+ERROR: Restore changed settled time
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:45)
+ERROR: Restore changed relationship rewards
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:46)
+ERROR: Restore changed stable flags
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:47)
+ERROR: Restore repeated surgery reward
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:48)
+ERROR: Restore repeated event completion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:49)
+ERROR: Repeated restore changed settled results
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tools/event_rendering_save_boundary_test.gd:6)
+       [1] run (res://tools/event_rendering_save_boundary_test.gd:51)
+EVENT RENDERING SAVE BOUNDARY 780 checks; 7 failures; no files written

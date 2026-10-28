@@ -1,0 +1,47 @@
+--- before/godot/systems/game_state.gd
++++ after/godot/systems/game_state.gd
+@@ -3338,7 +3338,7 @@
+ 		var group := str(surgery.get("procedure_group", ""))
+ 		if not group.is_empty():
+ 			completed_surgeries_by_group[group] = int(completed_surgeries_by_group.get(group, 0)) + 1
+-	var xp_bonus := int(effects.get("surgery_xp_bonus", 0))
++	var xp_bonus := mini(int(effects.get("surgery_xp_bonus", 0)), maxi(0, surgery_xp_for_level(100) - surgery_xp))
+ 	if xp_bonus > 0:
+ 		var before_level := surgery_level()
+ 		surgery_xp += xp_bonus
+@@ -4543,7 +4543,7 @@
+ 
+ func award_surgery_xp(preparation: RefCounted) -> int:
+ 	var before_level := surgery_level()
+-	var award := surgery_xp_award_for(preparation)
++	var award := mini(surgery_xp_award_for(preparation), maxi(0, surgery_xp_for_level(100) - surgery_xp))
+ 	if award <= 0:
+ 		return 0
+ 	surgery_xp += award
+@@ -5055,11 +5055,11 @@
+ 			restored_sunday_history.append(record.duplicate(true))
+ 	if version >= 28:
+ 		var raw_surgery_xp: Variant = data.get("surgery_xp")
+-		if not (raw_surgery_xp is int or raw_surgery_xp is float) or float(raw_surgery_xp) != floorf(float(raw_surgery_xp)) or int(raw_surgery_xp) < 0 or int(raw_surgery_xp) > surgery_xp_for_level(100):
++		if not (raw_surgery_xp is int or raw_surgery_xp is float) or not is_finite(float(raw_surgery_xp)) or float(raw_surgery_xp) != floorf(float(raw_surgery_xp)) or float(raw_surgery_xp) < 0:
+ 			return false
+ 		if not data.get("surgery_xp_history") is Array or not data.get("unlocked_procedure_ids") is Array:
+ 			return false
+-		restored_surgery_xp = int(raw_surgery_xp)
++		restored_surgery_xp = int(minf(float(raw_surgery_xp), float(surgery_xp_for_level(100))))
+ 		restored_surgery_xp_history.clear()
+ 		for record in data.surgery_xp_history:
+ 			var raw_record_xp: Variant = record.get("xp") if record is Dictionary else null
+@@ -5075,9 +5075,9 @@
+ 				return false
+ 			restored_unlocked_procedure_ids.append(surgery_id)
+ 		var raw_leadership_xp: Variant = data.get("leadership_xp")
+-		if not (raw_leadership_xp is int or raw_leadership_xp is float) or float(raw_leadership_xp) < 0.0 or float(raw_leadership_xp) > leadership_xp_for_level(100):
+-			return false
+-		restored_leadership_xp = float(raw_leadership_xp)
++		if not (raw_leadership_xp is int or raw_leadership_xp is float) or not is_finite(float(raw_leadership_xp)) or float(raw_leadership_xp) < 0.0:
++			return false
++		restored_leadership_xp = minf(float(raw_leadership_xp), leadership_xp_for_level(100))
+ 		if not data.get("leadership_xp_history") is Array or not data.get("staff_skill_levels") is Dictionary or not data.get("staff_training_credits") is Dictionary:
+ 			return false
+ 		for record in data.leadership_xp_history:

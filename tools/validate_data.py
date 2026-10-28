@@ -714,14 +714,17 @@ for step in collections['special_event_steps']:
         check(not node.get('requirements') or bool(node.get('fallback_next')),
               prefix + node['id'] + ': conditional node needs fallback_next')
         actor_id = node.get('actor_id', '')
+        known_actors = {**by['staff'], **by['cameo_patients']}
         if node['speaker'] == 'actor':
-            check(actor_id in by['staff'], prefix + node['id'] + ': actor speaker needs a known actor_id')
+            check(actor_id in known_actors, prefix + node['id'] + ': actor speaker needs a known actor_id')
         if actor_id:
-            check(actor_id in by['staff'], prefix + node['id'] + ': unknown visual actor')
-            actor = by['staff'].get(actor_id, {})
+            check(actor_id in known_actors, prefix + node['id'] + ': unknown visual actor')
+            actor = known_actors.get(actor_id, {})
             outfit = node.get('outfit', actor.get('visuals', {}).get('default_outfit', ''))
-            if not node.get('hide_portrait') and not node.get('cg_path') and not node.get('portrait_path'):
+            if not node.get('hide_portrait') and not node.get('cg_path') and not node.get('portrait_path') and not node.get('event_portraits'):
                 check(outfit + '/' + node['expression'] in actor.get('visuals', {}).get('portraits', {}), prefix + node['id'] + ': missing actor portrait')
+        for portrait in node.get('event_portraits', []):
+            check((ROOT / portrait['path']).is_file(), prefix + node['id'] + ': staged portrait missing')
         if node.get('cg_path') or node.get('portrait_path'):
             path = node.get('cg_path') or node.get('portrait_path')
             check((ROOT / path).is_file(), prefix + node['id'] + ': visual asset missing')
@@ -781,7 +784,7 @@ required_patient_reactions = {
     'choose_general', 'choose_epidural', 'choose_local', 'choose_none',
     'induction_reassure', 'insist_without_anesthesia',
     'assistant_stabilize_none', 'assistant_stabilize_local', 'assistant_stabilize_epidural',
-    'incise_epidural',
+    'incision_ready', 'incise_epidural',
     'incise_local', 'incise_none', 'contact_pause', 'contact_command',
     'contact_continue', 'ongoing_narrate', 'ongoing_eye_contact',
     'ongoing_silent', 'closure_reassure', 'closure_coach', 'closure_silent'

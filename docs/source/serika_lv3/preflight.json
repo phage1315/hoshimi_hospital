@@ -1,0 +1,47 @@
+{
+  "status": "content_implemented_and_validated_entry_disconnected",
+  "source": "docs/source/serika_lv3/HOSHIMI_MISONO_SERIKA_LV3_OCHANO_MIZU_HALF_BEAT_CN_REVIEW_V2.md",
+  "source_sha256": "baec183b5985642a0206ffc20c71799108ac7f743c51c2ee815d8c4c4ffe88b6",
+  "source_records": 208,
+  "sunday_entry_choice": {
+    "source_id": "S01-01",
+    "text": "「独自去走走」"
+  },
+  "vn_text_nodes": 207,
+  "source_completion_messages": [
+    "【御園芹香 Relationship Lv3 达成】",
+    "【解锁：芹香的正常周日约会】"
+  ],
+  "missing_real_prerequisites": [
+    "Completed full Mizuho first surgery chain"
+  ],
+  "existing_lv3_requirements": {
+    "target_level": 3,
+    "event_id": "",
+    "content_status": "planned",
+    "benefit_id": "",
+    "special_requirements": [
+      {
+        "type": "player_attribute",
+        "attribute": "skill",
+        "minimum": 60
+      }
+    ],
+    "min_familiarity": 40,
+    "cooldown_days": 3
+  },
+  "implementation_changes": true,
+  "user_decision": "Implement Lv3 now; keep normal entry locked until real Lv2 and Mizuho first surgery chain are connected.",
+  "translation_authorized": "English counterpart required by project implementation rules; original Chinese unchanged.",
+  "validation_record": "docs/serika_lv3_integration_2026-10-27.md",
+  "confirmed_gate_decision": {
+    "date": "2026-10-27",
+    "user_answer": "LV2设成60，LV3移除手术技巧的要求",
+    "special_requirements": []
+  },
+  "prior_confirmed_gate_decision": {
+    "date": "2026-10-27",
+    "user_answer": "保留现行 Surgery≥60",
+    "requirements": "Real Lv2 complete; full Mizuho first surgery chain complete; familiarity>=40; player skill>=60; existing cooldown and Sunday availability."
+  }
+}

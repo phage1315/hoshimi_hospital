@@ -68,18 +68,19 @@ def beat_chunks(text: str) -> list[str]:
 def hard_wrap(text: str) -> list[str]:
     pages: list[str] = []
     current = ""
-    units = 0.0
-    maximum = COLUMNS * LINES
+    maximum = (COLUMNS - 4.0) * LINES
     for char in text:
-        char_units = 1.0 if unicodedata.east_asian_width(char) in "WFA" else 0.55
-        if current and units + char_units > maximum:
-            pages.append(current.strip())
-            current = ""
-            units = 0.0
+        if current and visual_units(current + char) > maximum:
+            split_at = current.rfind(" ")
+            if split_at > len(current) / 2:
+                pages.append(current[:split_at + 1])
+                current = current[split_at + 1:]
+            else:
+                pages.append(current)
+                current = ""
         current += char
-        units += char_units
-    if current.strip():
-        pages.append(current.strip())
+    if current:
+        pages.append(current)
     return pages
 
 

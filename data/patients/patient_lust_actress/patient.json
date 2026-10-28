@@ -25,7 +25,8 @@
         "intraoperative/pain": "assets/characters/patient_lust_actress/intraoperative/pain.png",
         "intraoperative/near_collapse": "assets/characters/patient_lust_actress/intraoperative/near_collapse.png",
         "intraoperative/anesthetized": "assets/characters/patient_lust_actress/intraoperative/anesthetized.png",
-        "splash/general_anesthesia": "assets/characters/patient_lust_actress/splash/general_anesthesia.png"
+        "splash/general_anesthesia": "assets/characters/patient_lust_actress/splash/general_anesthesia.png",
+        "examination/shy": "assets/characters/patient_lust_actress/examination/shy.png"
       }
     },
     "admission_status": "outpatient",
@@ -79,7 +80,8 @@
       "ongoing_silent": "「……怎么都不说话了？医生？别让我只听见器械声……回答我一声，好吗？」",
       "closure_reassure": "「最难的部分已经过去了吗……？呵……刚才那个样子，可一点也不像我演的那位不死女人。」",
       "closure_coach": "「慢慢呼吸……好。呼……我照做。接下来要我怎么配合，你们说，我听。」",
-      "closure_silent": "「……已经在收尾了吗？我不需要漂亮的安慰话，只想听你们说一句快结束了。」"
+      "closure_silent": "「……已经在收尾了吗？我不需要漂亮的安慰话，只想听你们说一句快结束了。」",
+      "incision_ready": "「等等……不要！我装不下去了……求你先停一下！」"
     },
     "reaction_variants": {
       "ward_enema": [
@@ -210,7 +212,103 @@
   },
   "exclusive_cg_pools": {
     "examination": [],
-    "ward_preparation": [],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_lust_actress",
+        "label": "拉丝特 · 术前准备 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+        "patient_ids": ["patient_lust_actress"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/skin_prep.png"],
+        "caption": "拉丝特按当前术前准备范围完成备皮。"
+      },
+{
+        "id": "ward_enema_patient_lust_actress",
+        "label": "拉丝特 · 术前准备 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+        "patient_ids": ["patient_lust_actress"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/enema.png"],
+        "caption": "拉丝特按当前术前安排完成灌肠准备。"
+      },
+{
+        "id": "ward_surgical_cap_patient_lust_actress",
+        "label": "拉丝特 · 病房准备 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ward_surgical_cap"],
+        "patient_ids": ["patient_lust_actress"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/surgical_cap.png"],
+        "caption": "拉丝特戴好手术帽，准备转运至手术室。"
+      },
+{
+        "id": "stretcher_transfer_patient_lust_actress",
+        "label": "拉丝特 · 病房准备 · 转运担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["complete_manual_ward_preparation"],
+        "patient_ids": ["patient_lust_actress"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/stretcher_transfer.png"],
+        "caption": "病房准备结束后，拉丝特躺上担架车，准备转运。"
+      },
+{
+        "id": "urinary_catheterization_patient_lust_actress",
+        "label": "拉丝特 · 手术室准备 · 留置导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["urinary_catheterization"],
+        "patient_ids": ["patient_lust_actress"],
+        "procedure_groups": ["general_abdominal"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/urinary_catheterization.png"],
+        "caption": "拉丝特在手术室准备阶段接受留置导尿。"
+      },
+{
+        "id": "operative_positioning_patient_lust_actress",
+        "label": "拉丝特 · 手术室准备 · 体位摆放与固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["operative_positioning"],
+        "patient_ids": ["patient_lust_actress"],
+        "procedure_groups": ["general_abdominal"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/operative_positioning.png"],
+        "caption": "团队依照当前术式为拉丝特完成体位摆放与固定。"
+      },
+{
+        "id": "sterile_draping_patient_lust_actress",
+        "label": "拉丝特 · 手术室准备 · 铺设无菌单",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["ack_disinfection"],
+        "patient_ids": ["patient_lust_actress"],
+        "procedure_groups": ["general_abdominal"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/sterile_draping.png"],
+        "caption": "消毒完成后，团队为拉丝特铺设无菌单并保留预定术野。"
+      },
+{
+        "id": "skin_disinfection_patient_lust_actress",
+        "label": "拉丝特 · 手术室准备 · 术野消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["skin_disinfection"],
+        "patient_ids": ["patient_lust_actress"],
+        "procedure_groups": ["general_abdominal"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/skin_disinfection.png"],
+        "caption": "手术团队按预定范围为拉丝特完成术野消毒。"
+      },
+{
+        "id": "incision_ready_patient_lust_actress",
+        "label": "拉丝特 · 手术准备 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": ["request_scalpel"],
+        "patient_ids": ["patient_lust_actress"],
+        "procedure_groups": ["general_abdominal"],
+        "paths": ["assets/events/ward_preparation_v1/patient_lust_actress/scalpel_ready.png"],
+        "caption": "器械护士递上手术刀，拉丝特在正式开始前等待主刀确认。"
+      }
+    ],
     "surgery": []
   },
   "diagnosis_reactions": []

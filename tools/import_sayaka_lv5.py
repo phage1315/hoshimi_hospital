@@ -4,6 +4,10 @@
 The Markdown remains the canonical Chinese source. This is a mechanical adapter:
 it extracts only player-visible node text and authored branch text, while
 discarding editor-only staging directions.
+
+Historical V3 importer, not a reconstruction of the current final event:
+V3.2 A02/A03 and later user-approved expression changes are not reapplied here.
+See docs/development_handoff_2026-10-26.md before rerunning this writer.
 """
 
 from __future__ import annotations

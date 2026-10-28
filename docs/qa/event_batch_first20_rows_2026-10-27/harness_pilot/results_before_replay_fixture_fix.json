@@ -1,0 +1,160 @@
+{
+  "display_server": "macOS",
+  "inputs": {
+    "auto": 4,
+    "enter": 4,
+    "mouse": 28,
+    "space": 4
+  },
+  "issues": [
+    {
+      "detail": "EventDialogueContinue",
+      "event": "intro_nurse_rin",
+      "kind": "input_stall",
+      "locale": "en",
+      "node": "opening",
+      "replay": false,
+      "route": 0
+    },
+    {
+      "detail": "EventDialogueContinue",
+      "event": "intro_nurse_rin",
+      "kind": "input_stall",
+      "locale": "en",
+      "node": "opening",
+      "replay": false,
+      "route": 1
+    },
+    {
+      "detail": "EventDialogueContinue",
+      "event": "intro_nurse_rin",
+      "kind": "input_stall",
+      "locale": "en",
+      "node": "opening",
+      "replay": false,
+      "route": 2
+    },
+    {
+      "detail": "ReplayDialogueContinue",
+      "event": "intro_nurse_rin",
+      "kind": "input_stall",
+      "locale": "en",
+      "node": "opening",
+      "replay": true,
+      "route": 0
+    }
+  ],
+  "pages": 32,
+  "player_slots_accessed": false,
+  "routes": [
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "zh_CN",
+      "nodes_observed": [
+        "opening",
+        "reply_0"
+      ],
+      "outcome": "completed",
+      "pages": 7,
+      "replay": false,
+      "return_screen": "character_event_complete",
+      "route": 0
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "zh_CN",
+      "nodes_observed": [
+        "opening",
+        "reply_0"
+      ],
+      "outcome": "completed",
+      "pages": 7,
+      "replay": false,
+      "return_screen": "character_event_complete",
+      "route": 1
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "zh_CN",
+      "nodes_observed": [
+        "opening",
+        "reply_1"
+      ],
+      "outcome": "completed",
+      "pages": 7,
+      "replay": false,
+      "return_screen": "character_event_complete",
+      "route": 2
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "zh_CN",
+      "nodes_observed": [
+        "opening",
+        "reply_0"
+      ],
+      "outcome": "completed",
+      "pages": 7,
+      "replay": true,
+      "return_screen": "gallery_replay",
+      "route": 0
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "en",
+      "nodes_observed": [
+        "opening"
+      ],
+      "outcome": "input_stall",
+      "pages": 1,
+      "replay": false,
+      "return_screen": "character_event",
+      "route": 0
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "en",
+      "nodes_observed": [
+        "opening"
+      ],
+      "outcome": "input_stall",
+      "pages": 1,
+      "replay": false,
+      "return_screen": "character_event",
+      "route": 1
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "en",
+      "nodes_observed": [
+        "opening"
+      ],
+      "outcome": "input_stall",
+      "pages": 1,
+      "replay": false,
+      "return_screen": "character_event",
+      "route": 2
+    },
+    {
+      "entry": "isolated_memory_content_only",
+      "event": "intro_nurse_rin",
+      "locale": "en",
+      "nodes_observed": [
+        "opening"
+      ],
+      "outcome": "input_stall",
+      "pages": 1,
+      "replay": true,
+      "return_screen": "gallery_replay",
+      "route": 0
+    }
+  ],
+  "screenshots": 9
+}

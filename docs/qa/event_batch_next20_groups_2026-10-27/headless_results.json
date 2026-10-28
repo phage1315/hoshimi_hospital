@@ -1,0 +1,92 @@
+[
+  {
+    "test": "sayaka_v2_test",
+    "exit": 0,
+    "tail": "ictionary'.\n          at: check_legacy_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:209)\n          GDScript backtrace (most recent call first):\n              [0] check_legacy_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:209)\n              [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:132)\n              [2] check_rendering (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:178)\nSCRIPT ERROR: Invalid access to property or key 'character_events' on a base object of type 'Dictionary'.\n          at: check_legacy_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:209)\n          GDScript backtrace (most recent call first):\n              [0] check_legacy_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:209)\n              [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:132)\n              [2] check_rendering (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_v2_test.gd:178)\n"
+  },
+  {
+    "test": "sayaka_lv2_pacing_test",
+    "exit": 0,
+    "tail": "26-10-27 14:00:32.725 Godot[5963:66641289] XType: Using static font registry.\nSCRIPT ERROR: Invalid access to property or key 'character_events' on a base object of type 'Dictionary'.\n          at: check_old_completed_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv2_pacing_test.gd:196)\n          GDScript backtrace (most recent call first):\n              [0] check_old_completed_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv2_pacing_test.gd:196)\n              [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv2_pacing_test.gd:111)\nSCRIPT ERROR: Invalid access to property or key 'character_events' on a base object of type 'Dictionary'.\n          at: check_old_completed_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv2_pacing_test.gd:196)\n          GDScript backtrace (most recent call first):\n              [0] check_old_completed_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv2_pacing_test.gd:196)\n              [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv2_pacing_test.gd:111)\n"
+  },
+  {
+    "test": "sayaka_lv3_pacing_test",
+    "exit": 1,
+    "tail": "ute (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:128)\nSCRIPT ERROR: Invalid access to property or key 'patient_cases' on a base object of type 'Dictionary'.\n          at: check_route (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:128)\n          GDScript backtrace (most recent call first):\n              [0] check_route (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:128)\nSCRIPT ERROR: Invalid access to property or key 'character_events' on a base object of type 'Dictionary'.\n          at: check_old_completed_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:280)\n          GDScript backtrace (most recent call first):\n              [0] check_old_completed_saves (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:280)\n              [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:69)\n              [2] check_route (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_lv3_pacing_test.gd:128)\n"
+  },
+  {
+    "test": "sayaka_lv5_event_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSAYAKA LV5 EVENT TEST: 671 checks; 0 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n"
+  },
+  {
+    "test": "sayaka_lv5_departure_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSAYAKA LV5 DEPARTURE: 332 checks; 0 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:16.382 Godot[6028:66642363] XType: Using static font registry.\n"
+  },
+  {
+    "test": "sayaka_callback_event_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSCRIPT ERROR: Parse Error: Function \"finish()\" not found in base self.\n          at: GDScript::reload (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_callback_event_test.gd:57)\nSCRIPT ERROR: Parse Error: Function \"finish()\" not found in base self.\n          at: GDScript::reload (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_callback_event_test.gd:117)\nERROR: Failed to load script \"res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/sayaka_callback_event_test.gd\" with error \"Parse error\".\n   at: load (modules/gdscript/gdscript.cpp:3041)\n"
+  },
+  {
+    "test": "satsuki_lv1_event_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSATSUKI LV1 EVENT: 415 checks; 0 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:20.607 Godot[6035:66642494] XType: Using static font registry.\n"
+  },
+  {
+    "test": "satsuki_lv2_event_test",
+    "exit": 1,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSATSUKI LV2 EVENT: 740 checks; 1 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\nERROR: Satsuki Lv2 invitation chance is not the authored 35 percent\n   at: push_error (core/variant/variant_utility.cpp:1024)\n   GDScript backtrace (most recent call first):\n       [0] expect (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/satsuki_lv2_event_test.gd:14)\n       [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/satsuki_lv2_event_test.gd:144)\n"
+  },
+  {
+    "test": "satsuki_lv3_event_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSATSUKI LV3 EVENT: 3547 checks; 0 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n"
+  },
+  {
+    "test": "ishigami_intro_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nISHIGAMI INTRO: 326 checks; 0 failures\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:27.227 Godot[6061:66642799] XType: Using static font registry.\n"
+  },
+  {
+    "test": "megumi_intro_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nMEGUMI INTRO: 520 checks; 0 failures\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:30.384 Godot[6072:66642963] XType: Using static font registry.\n"
+  },
+  {
+    "test": "rumi_shiori_intro_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nJoint introduction: 300 checks, 0 failures\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:33.886 Godot[6086:66643151] XType: Using static font registry.\n"
+  },
+  {
+    "test": "itsumi_intro_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nItsumi introduction: 856 checks, 0 failures\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:37.507 Godot[6103:66643338] XType: Using static font registry.\n"
+  },
+  {
+    "test": "serika_radiology_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSERIKA RADIOLOGY: 2648 checks; 0 failures\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:41.209 Godot[6116:66643490] XType: Using static font registry.\n"
+  },
+  {
+    "test": "minato_intro_event_test",
+    "exit": 1,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nMINATO INTRO EVENT: 198 checks; 2 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\nERROR: Minato intro skipped authored beat minato_response_sunday\n   at: push_error (core/variant/variant_utility.cpp:1024)\n   GDScript backtrace (most recent call first):\n       [0] expect (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/minato_intro_event_test.gd:14)\n       [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/minato_intro_event_test.gd:90)\nERROR: Minato intro skipped authored beat minato_response_identity\n   at: push_error (core/variant/variant_utility.cpp:1024)\n   GDScript backtrace (most recent call first):\n       [0] expect (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/minato_intro_event_test.gd:14)\n       [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/minato_intro_event_test.gd:90)\n"
+  },
+  {
+    "test": "maya_character_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nMAYA CHARACTER: 15 checks; 0 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n"
+  },
+  {
+    "test": "futaba_character_test",
+    "exit": 1,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nFUTABA CHARACTER: 13 checks; 1 failure(s)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\nERROR: Adult Futaba profile missing\n   at: push_error (core/variant/variant_utility.cpp:1024)\n   GDScript backtrace (most recent call first):\n       [0] expect (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/futaba_character_test.gd:14)\n       [1] run (res://docs/qa/event_batch_next20_groups_2026-10-27/isolated_tests/futaba_character_test.gd:27)\n"
+  },
+  {
+    "test": "saeko_intro_test",
+    "exit": 0,
+    "tail": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org\n\nSAEKO INTRO: 180 checks; 0 failures\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)\n2026-10-27 14:01:50.160 Godot[6142:66643889] XType: Using static font registry.\n"
+  }
+]

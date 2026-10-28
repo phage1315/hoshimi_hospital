@@ -1,9 +1,17 @@
 {
-  "event_chain": ["chihaya_second_surgery_a", "chihaya_second_surgery_b", "chihaya_second_surgery_c"],
-  "source": "docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1.md",
+  "event_chain": [
+    "chihaya_second_surgery_a",
+    "chihaya_second_surgery_b",
+    "chihaya_second_surgery_c"
+  ],
+  "source": "docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1_RUMI_REVISION.md",
   "source_audit": {
     "paragraphs": 703,
-    "per_phase": {"a": 122, "b": 416, "c": 165},
+    "per_phase": {
+      "a": 122,
+      "b": 416,
+      "c": 165
+    },
     "chinese_body_speakers_order_punctuation": "exact match",
     "formatting_only": "Markdown bold around the final narration is not displayed; its text is unchanged.",
     "english": "703 translated paragraphs plus speakers, choices, titles and gallery text"
@@ -11,20 +19,33 @@
   "user_clarifications": {
     "chihaya_age": 18,
     "mizuho_age": 18,
-    "itsumi_name": "Shown regardless of introduction completion; no relation unlock",
-    "first_surgery": "Established by completed hiroko_patient_escape; not a Surgery Runner outcome"
+    "first_surgery": "Established by completed hiroko_patient_escape; not a Surgery Runner outcome",
+    "historical_itsumi_name_rule_superseded_by_rumi_revision": "Shown regardless of introduction completion; no relation unlock",
+    "circulating_nurse": "Rumi Iwasaki; use existing met fact for nameplate. Unmet uses OR Duty Nurse and two authored direct-address variants; no new gate or introduction unlock.",
+    "serika_lv2": "Keep current implementation. Attached revision gate notes do not authorize changing Serika conditions."
   },
   "schedule": {
     "earliest_start": "2025-05-19 09:00",
-    "prerequisites": ["hiroko_patient_escape", "aqua_lv1_gyne_obsession"],
+    "prerequisites": [
+      "hiroko_patient_escape",
+      "aqua_lv1_gyne_obsession"
+    ],
     "delayed_start": "First Monday after both prerequisite completion dates, no earlier than 2025-05-19",
-    "phase_minutes": [120, 300, 60],
-    "normal_completion_clocks": ["11:00", "14:00", "10:00"],
+    "phase_minutes": [
+      120,
+      300,
+      60
+    ],
+    "normal_completion_clocks": [
+      "11:00",
+      "14:00",
+      "10:00"
+    ],
     "reservations": "A completion reserves Tuesday and Wednesday mornings; later overlapping multi-day events cannot displace them",
     "third_surgery_earliest": "Actual B completion day + 42; future event not implemented"
   },
   "scope": {
-    "presentation": "Existing backgrounds, authored portrait state changes and unchanged narration; no dedicated CG supplied or generated for this import",
+    "presentation": "Nine user-approved CGs integrated across 63 nodes, with contain fit and portrait restoration; source narration unchanged.",
     "surgery_runner": false,
     "score_or_relationship_rewards": false,
     "staff_or_romance_unlock": false,
@@ -33,15 +54,33 @@
   },
   "validation": {
     "godot_version": "4.5.1",
-    "event_runtime_with_screenshots": {"checks": 6703, "failures": 0},
-    "special_event_framework": {"checks": 128, "failures": 0},
-    "boundary_save": {"checks": 910, "failures": 0},
-    "narrative_save_lock": {"checks": 6, "failures": 0},
-    "narrative_localization": {"checks": 15987, "failures": 0},
+    "event_runtime_with_screenshots": {
+      "date": "2026-10-26",
+      "checks": 7031,
+      "failures": 0,
+      "renderer": "Native Godot 4.5.1 OpenGL Compatibility / Apple M2",
+      "mode": "Automated real main-scene execution, both locales, all three phases; not manual click-through of every dialogue page."
+    },
+    "special_event_framework": {
+      "checks": 128,
+      "failures": 0
+    },
+    "boundary_save": {
+      "checks": 910,
+      "failures": 0
+    },
+    "narrative_save_lock": {
+      "checks": 6,
+      "failures": 0
+    },
+    "narrative_localization": {
+      "checks": 15987,
+      "failures": 0
+    },
     "localization_audit": {
       "ui_english_keys": "739/739",
       "ui_hardcoded_chinese_candidates": 0,
-      "global_authored_coverage": "24388/24589; pre-existing unrelated fallback gaps remain, not a claim of full-project translation"
+      "global_authored_coverage": "24406/24635; existing project-wide fallback gaps remain; not a full-project translation completion claim."
     },
     "coverage": [
       "Chinese and English runtime loading",
@@ -54,10 +93,235 @@
       "Mid-event save denied; between-stage safe save allowed",
       "Restore after removing completed internal nodes and changing current duration",
       "Time and relationship facts unchanged by restore; repeated saves stable",
-      "Gallery replay without rewards or state changes"
+      "Gallery replay without rewards or state changes",
+      "All nine approved CG textures and contain fit; entry/exit and portrait isolation checks",
+      "18 native rendered screenshots reviewed, nine per locale"
     ],
-    "screenshots": "runtime_images/{zh_CN,en}_{a2_005,b4_042,c1_038}.png",
-    "visual_review": ["zh_CN_a2_005.png", "en_b4_042.png", "zh_CN_c1_038.png"],
-    "environment_note": "Sandboxed headless runs report an unrelated macOS certificate lookup warning; GUI verification passed with native rendering."
+    "screenshots": "runtime_images/cg_final_2026-10-26/{zh_CN,en}_{a2_005,a2_085,b2_045,b3_031,b4_048,b5_016,b6_100,c1_038,c1_086}.png",
+    "visual_review": [
+      "zh_CN_a2_005.png",
+      "zh_CN_a2_085.png",
+      "zh_CN_b2_045.png",
+      "zh_CN_b3_031.png",
+      "zh_CN_b4_048.png",
+      "zh_CN_b5_016.png",
+      "zh_CN_b6_100.png",
+      "zh_CN_c1_038.png",
+      "zh_CN_c1_086.png",
+      "en_a2_005.png",
+      "en_a2_085.png",
+      "en_b2_045.png",
+      "en_b3_031.png",
+      "en_b4_048.png",
+      "en_b5_016.png",
+      "en_b6_100.png",
+      "en_c1_038.png",
+      "en_c1_086.png"
+    ],
+    "environment_note": "Initial sandboxed GUI launch exited 134; approved outside-sandbox native GUI execution completed with zero test failures. ObjectDB instances leaked at exit warning remains; no player save slots written.",
+    "historical_pre_cg_validation": {
+      "event_runtime_with_screenshots": {
+        "checks": 6703,
+        "failures": 0
+      },
+      "special_event_framework": {
+        "checks": 128,
+        "failures": 0
+      },
+      "boundary_save": {
+        "checks": 910,
+        "failures": 0
+      },
+      "narrative_save_lock": {
+        "checks": 6,
+        "failures": 0
+      },
+      "screenshots": "runtime_images/{zh_CN,en}_{a2_005,b4_042,c1_038}.png",
+      "visual_review": [
+        "zh_CN_a2_005.png",
+        "en_b4_042.png",
+        "zh_CN_c1_038.png"
+      ],
+      "environment_note": "Sandboxed headless runs report an unrelated macOS certificate lookup warning; GUI verification passed with native rendering."
+    },
+    "visual_findings": [
+      {
+        "status": "open",
+        "nodes": [
+          "c1_038",
+          "c1_086"
+        ],
+        "finding": "Normal dialogue overlay obscures much of the magazine bag and the joined hands respectively in both locales. Assets are intact; this is UI overlap, not image cropping. No asset or UI changes made in this verification."
+      },
+      {
+        "status": "open",
+        "nodes": [
+          "b5_016",
+          "b6_100"
+        ],
+        "finding": "English body text can wrap mid-word under current shared dialogue layout. Long English b4_048 narration uses existing pagination; first screenshot is only page one, not missing source text."
+      },
+      {
+        "status": "retained_user_asset",
+        "nodes": [
+          "b2_045"
+        ],
+        "finding": "Original embedded Chinese speech balloon remains in English locale as previously documented; no authorized replacement image supplied."
+      }
+    ]
+  },
+  "cg_integration": {
+    "date": "2026-10-26",
+    "count": 9,
+    "mapped_nodes": 63,
+    "mapping_fixture": "tools/fixtures/chihaya_second_surgery_cgs.json",
+    "assets": [
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg01_ward_reunion.png",
+        "nodes": [
+          "a2_005",
+          "a2_006",
+          "a2_007",
+          "a2_008",
+          "a2_009",
+          "a2_010",
+          "a2_011"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg02_escape.png",
+        "nodes": [
+          "b2_045",
+          "b2_046",
+          "b2_047",
+          "b2_048",
+          "b2_049"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg03_no_running_promise.png",
+        "nodes": [
+          "a2_085",
+          "a2_086",
+          "a2_087",
+          "a2_088",
+          "a2_089",
+          "a2_090"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg04_epidural.png",
+        "nodes": [
+          "b3_031",
+          "b3_032",
+          "b3_033",
+          "b3_034",
+          "b3_035",
+          "b3_036",
+          "b3_037",
+          "b3_038",
+          "b3_039",
+          "b3_040"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg05_draping_patient_pov.png",
+        "nodes": [
+          "b4_048",
+          "b4_049",
+          "b4_050",
+          "b4_051",
+          "b4_052",
+          "b4_053",
+          "b4_054",
+          "b4_055",
+          "b4_056",
+          "b4_057",
+          "b4_058",
+          "b4_059",
+          "b4_060"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg06_scalpel_handoff.png",
+        "nodes": [
+          "b5_016",
+          "b5_017",
+          "b5_018",
+          "b5_019",
+          "b5_020",
+          "b5_021"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg07_finished_relief.png",
+        "nodes": [
+          "b6_100",
+          "b6_101",
+          "b6_102",
+          "b6_103",
+          "b6_104",
+          "b6_105",
+          "b6_106"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg08_mizuho_visit.png",
+        "nodes": [
+          "c1_038",
+          "c1_039",
+          "c1_040",
+          "c1_041"
+        ]
+      },
+      {
+        "path": "assets/events/chihaya_second_surgery_v1/cg09_friendship_handhold.png",
+        "nodes": [
+          "c1_086",
+          "c1_087",
+          "c1_088",
+          "c1_089",
+          "c1_090"
+        ]
+      }
+    ],
+    "latest_visual_acceptance": "All nine assets render in both locales; full-asset contain rendering confirmed. Visual acceptance has open dialogue-overlay and English wrapping findings; not an unqualified final visual pass.",
+    "embedded_text_note": "User-supplied escape CG retains original embedded Chinese text in both locales."
+  },
+  "previous_source": "docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1.md",
+  "circulating_nurse_revision": {
+    "source": "docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1_RUMI_REVISION.md",
+    "record": "docs/source/chihaya_second_surgery/rumi_revision_record.json",
+    "paragraphs": 703,
+    "changed_text_nodes": 49,
+    "rumi_speaking_nodes": 31,
+    "unmet_variants": 33,
+    "narrative_localization": {
+      "checks": 16277,
+      "failures": 0
+    },
+    "headless": {
+      "checks": 7703,
+      "failures": 0
+    },
+    "native": {
+      "checks": 7719,
+      "failures": 0,
+      "screenshots": 16,
+      "reviewed": true
+    },
+    "schedule_changed": false,
+    "cg_mapping_changed": false,
+    "serika_lv2_gate_changed": false,
+    "player_save_slots_touched": false,
+    "warnings": [
+      "macOS headless CA certificate warning",
+      "ObjectDB leak warning at script exit; no assertion failures"
+    ],
+    "validation_record": "docs/chihaya_second_surgery_rumi_revision.md",
+    "special_event_framework": {
+      "checks": 128,
+      "failures": 0
+    }
   }
 }

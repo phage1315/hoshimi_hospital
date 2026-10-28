@@ -1658,6 +1658,7 @@
                     "enum": [
                       "player_attribute",
                       "relationship_level",
+                      "completed_relationship_milestone",
                       "progress_counter"
                     ]
                   },
@@ -2774,6 +2775,10 @@
               "minLength": 1
             },
             "assistant_stabilize_epidural": {
+              "type": "string",
+              "minLength": 1
+            },
+            "incision_ready": {
               "type": "string",
               "minLength": 1
             },
@@ -7006,6 +7011,20 @@
     "special_event_node": {
       "type": "object",
       "properties": {
+        "event_portraits": {
+          "$ref": "#/$defs/character_event_node/properties/event_portraits"
+        },
+        "unmet_variant": {
+          "type": "object",
+          "required": ["actor_id"],
+          "properties": {
+            "actor_id": {"type": "string"},
+            "required_event_id": {"type": "string", "minLength": 1},
+            "speaker_label": {"type": "string"},
+            "text": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
         "exit_blackout_seconds": {
           "description": "Pure-black, input-locked presentation after advancing this node; does not advance game time or grant rewards.",
           "type": "number",
@@ -7123,6 +7142,7 @@
         "presentation": {
           "enum": [
             "narrative",
+            "authored",
             "advanced_referral_summary",
             "advanced_surgery"
           ]
@@ -7482,6 +7502,14 @@
           "maximum": 30
         },
         "consumes_full_day": {
+          "type": "boolean"
+        },
+        "settled_minutes": {
+          "description": "Fixed partial-day duration, charged once when the episode completes.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "mandatory_auto_start": {
           "type": "boolean"
         },
         "cg_dialogue_delay_seconds": {

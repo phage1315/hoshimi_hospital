@@ -453,7 +453,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 	app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
 	app.label_at(app.tx("ui.auto.dc0675ddad6a", "场景占位 · 本段用时 %s 分钟") % prep.minutes, Vector2(795, 723), 16, Color("c2d2cc"), 420)
 
-static func render_or_table_palpation(app: Control, prep: RefCounted, patient: Dictionary) -> void:
+static func render_or_table_palpation(app: Control, prep: RefCounted, patient: Dictionary, story: RefCounted = null) -> void:
 	app.screen = "or_table_palpation"
 	var sensory_test: bool = str(prep.current().get("kind", "")) == "anesthesia_sensory_test"
 	var title: String
@@ -464,7 +464,12 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 	else:
 		title = str(app.tx("ui.or_palpation.title", "手术台术前触诊"))
 		subtitle = str(app.tx("ui.or_palpation.subtitle", "%s / 麻醉选择前") % patient.name)
+	if story != null:
+		title = app.tx("ui.miyama_palpation.title", "术前触诊")
+		subtitle = app.special_event_localized_title(story.event.definition)
 	app.base(title, subtitle, false, "operating_room")
+	if story != null:
+		app.page.set_meta("story_palpation_controller", story)
 	app.apply_or_table_tool_cursor()
 	var image_rect: Rect2 = Rect2(330, 68, 620, 626)
 	var image_panel: Panel = UI.panel(app, image_rect.position - Vector2(4, 4), image_rect.size + Vector2(8, 8))
@@ -487,6 +492,8 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 		instruction = str(app.tx("ui.anesthesia_test.instruction", "选择工具，再点击身体区域确认感觉。\n测试可随时跳过，不会改变麻醉效果。"))
 	else:
 		instruction = str(app.tx("ui.or_palpation.instruction", "选择工具和力度，再点击身体区域。\n触诊可以跳过；每次操作会累积患者反应。"))
+	if story != null:
+		instruction = app.tx("ui.miyama_palpation.instruction", "点击身体区域进行触诊，也可以直接继续剧情。")
 	app.label_at(instruction, Vector2(55, 158), 17, Color("e1e4db"), 245)
 	app.label_at(app.tx("ui.or_palpation.tools", "检查工具"), Vector2(55, 235), 20, Color("e8cfaa"), 245)
 	var tools: Array = [
@@ -498,8 +505,9 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 		var tool: Dictionary = tools[i]
 		var selected: bool = str(app.or_table_palpation_tool) == str(tool.id)
 		var prefix: String = "●  " if selected else "○  "
-		var tool_button: Button = app.button_at(prefix + str(tool.label), Vector2(55, 270 + i * 58), Vector2(245, 50), app.set_or_table_palpation_tool.bind(str(tool.id)))
+		var tool_button: Button = app.button_at(prefix + str(tool.label), Vector2(55, 270 + i * 58), Vector2(245, 50), (app.set_or_table_palpation_tool if story == null else story.select_tool).bind(str(tool.id)))
 		tool_button.name = "PalpationTool_" + ("hand" if str(tool.id) == "palpation" else str(tool.id))
+		tool_button.disabled = story != null and str(tool.id) != "palpation"
 		tool_button.icon = load(str(tool.icon))
 		tool_button.expand_icon = true
 		tool_button.mouse_default_cursor_shape = Control.CURSOR_ARROW
@@ -520,7 +528,7 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 			var intensity: Dictionary = intensities[i]
 			var selected: bool = str(app.or_table_palpation_intensity) == str(intensity.id)
 			var prefix: String = "● " if selected else "○ "
-			var strength_button: Button = app.button_at(prefix + str(intensity.label), Vector2(55 + i * 82, 487), Vector2(78, 48), app.set_or_table_palpation_intensity.bind(str(intensity.id)))
+			var strength_button: Button = app.button_at(prefix + str(intensity.label), Vector2(55 + i * 82, 487), Vector2(78, 48), (app.set_or_table_palpation_intensity if story == null else story.select_intensity).bind(str(intensity.id)))
 			strength_button.name = "PalpationStrength_" + str(intensity.id)
 			strength_button.add_theme_font_size_override("font_size", 16)
 			for style_name in ["normal", "hover", "focus", "pressed"]:
@@ -548,11 +556,12 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 			scalpel_note = str(app.tx("ui.or_palpation.scalpel_warning", "手术刀已选中。点击身体会立即下刀。"))
 		app.label_at(scalpel_note, Vector2(55, 452), 16, Color("e9b3aa"), 245)
 
-	var metrics_panel: Panel = UI.panel(app, Vector2(975, 155), Vector2(250, 195))
-	metrics_panel.name = "PalpationMetricsPanel"
-	app.label_at(app.tx("ui.or_palpation.patient_state", "患者状态"), Vector2(995, 172), 20, Color("e8cfaa"), 210)
-	app.label_at(app.tx("ui.or_palpation.metrics", "恐惧 %s\n痛苦 %s\n尊严 %s\n配合 %s") % [prep.fear, prep.pain, prep.dignity, prep.cooperation_value()], Vector2(995, 209), 18, Color("f4f0e6"), 210)
-	app.label_at(app.tx("ui.or_palpation.pending_xp", "待结算手术经验 +%s") % prep.sensory_interaction_xp_bonus, Vector2(995, 323), 15, Color("9ee2c8"), 210)
+	if story == null:
+		var metrics_panel: Panel = UI.panel(app, Vector2(975, 155), Vector2(250, 195))
+		metrics_panel.name = "PalpationMetricsPanel"
+		app.label_at(app.tx("ui.or_palpation.patient_state", "患者状态"), Vector2(995, 172), 20, Color("e8cfaa"), 210)
+		app.label_at(app.tx("ui.or_palpation.metrics", "恐惧 %s\n痛苦 %s\n尊严 %s\n配合 %s") % [prep.fear, prep.pain, prep.dignity, prep.cooperation_value()], Vector2(995, 209), 18, Color("f4f0e6"), 210)
+		app.label_at(app.tx("ui.or_palpation.pending_xp", "待结算手术经验 +%s") % prep.sensory_interaction_xp_bonus, Vector2(995, 323), 15, Color("9ee2c8"), 210)
 
 	var feedback_panel: Panel = UI.panel(app, Vector2(975, 370), Vector2(250, 215))
 	feedback_panel.name = "PalpationFeedbackPanel"
@@ -567,7 +576,9 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 	if response.is_empty():
 		response = app.tx("ui.anesthesia_test.waiting", "患者等待你确认麻醉覆盖，也可以直接跳过。") if sensory_test else app.tx("ui.or_palpation.waiting", "患者仰卧在手术台上；你也可以直接跳过触诊。")
 	var feedback_height := 122.0 if not str(prep.last_palpation_confirmation).is_empty() and not sensory_test else 150.0
-	app.scrollable_text_at(response, Vector2(995, 427), Vector2(205, feedback_height), 19, Color("f4f0e6"), "PalpationFeedbackText")
+	var feedback_text: RichTextLabel = app.scrollable_text_at(response, Vector2(995, 427), Vector2(205, feedback_height), 19 if story == null else 17, Color("f4f0e6"), "PalpationFeedbackText")
+	if story != null:
+		feedback_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	if not sensory_test and not str(prep.last_palpation_confirmation).is_empty():
 		var confirmation: Label = app.label_at(app.tx("ui.or_palpation.confirmed", "术区反应已确认"), Vector2(995, 558), 17, Color("9ee2c8"), 210)
 		confirmation.name = "PalpationFindingConfirmed"
@@ -583,10 +594,12 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 		"genital": [app.tx("ui.or_palpation.region.genital", "阴部")],
 	}
 	for region in ["breast", "nipple", "chest", "abdomen", "genital"]:
+		if story != null and region not in ["breast", "abdomen", "genital"]:
+			continue
 		var region_rects: Array = hotspot_layout.get(region, [])
 		var region_tooltips: Array = hotspot_tooltips.get(region, [])
 		for index in range(region_rects.size()):
-			add_palpation_hotspot(app, region_rects[index], region, str(region_tooltips[min(index, region_tooltips.size() - 1)]), str(index))
+			add_palpation_hotspot(app, region_rects[index], region, str(region_tooltips[min(index, region_tooltips.size() - 1)]), str(index), Callable() if story == null else story.touch)
 
 	var complete_label: String
 	if sensory_test:
@@ -594,13 +607,17 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 	else:
 		complete_label = str(app.tx("ui.or_palpation.complete", "完成或跳过触诊  →"))
 	var complete_kind := "anesthesia_sensory_test_complete" if sensory_test else "or_table_palpation_complete"
-	var complete_button: Button = app.button_at(complete_label, Vector2(55, 635), Vector2(245, 58), app.preop_event.bind({"kind": complete_kind}))
+	var complete_button: Button = app.button_at(complete_label, Vector2(55, 635), Vector2(245, 58), app.preop_event.bind({"kind": complete_kind}) if story == null else story.finish)
 	complete_button.name = "AnesthesiaTestComplete" if sensory_test else "PalpationComplete"
-	var save_button: Button = app.button_at(app.tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(990, 650), Vector2(105, 42), app.save_progress)
-	if not app.game.can_save_progress():
-		save_button.disabled = true
-		save_button.tooltip_text = app.game.save_block_reason()
-	app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(1110, 650), Vector2(105, 42), app.request_load)
+	if story == null:
+		var save_button: Button = app.button_at(app.tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(990, 650), Vector2(105, 42), app.save_progress)
+		if not app.game.can_save_progress():
+			save_button.disabled = true
+			save_button.tooltip_text = app.game.save_block_reason()
+		app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(1110, 650), Vector2(105, 42), app.request_load)
+	elif story.replay:
+		app.button_at(app.tx("ui.gallery.exit_replay", "退出回想"), Vector2(990, 650), Vector2(230, 42), story.exit_replay)
+
 	# Apply after every child control has been created. Otherwise the control
 	# under the mouse can restore the default arrow after the page is rebuilt.
 	app.refresh_or_table_tool_cursor()
@@ -620,8 +637,8 @@ static func palpation_hotspot_layout(cg_id: String, image_rect: Rect2) -> Dictio
 		result[region] = scaled_rects
 	return result
 
-static func add_palpation_hotspot(app: Control, rect: Rect2, region: String, tooltip: String, slot: String = "0") -> void:
-	var hotspot: Button = app.button_at("", rect.position, rect.size, app.or_table_palpation_click.bind(region))
+static func add_palpation_hotspot(app: Control, rect: Rect2, region: String, tooltip: String, slot: String = "0", touch: Callable = Callable()) -> void:
+	var hotspot: Button = app.button_at("", rect.position, rect.size, (app.or_table_palpation_click if not touch.is_valid() else touch).bind(region))
 	hotspot.name = "PalpationHotspot_" + region + "_" + slot
 	hotspot.tooltip_text = tooltip
 	hotspot.mouse_default_cursor_shape = Control.CURSOR_ARROW

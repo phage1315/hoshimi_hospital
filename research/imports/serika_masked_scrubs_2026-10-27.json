@@ -1,0 +1,150 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-27",
+  "authorization": "User requested making and integrating all four masked-scrubs expressions and rerunning tests.",
+  "prompts": "research/serika_masked_scrubs_2026-10-27.prompts.json",
+  "reference": "assets/characters/misono_serika_v1/scrubs/focused.png",
+  "images": [
+    {
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-7e491fe9-bfc9-4465-89ca-3d7e613e68ab.png",
+      "target": "assets/characters/misono_serika_v1/scrubs_masked_v1/masked_focused.png",
+      "portrait_key": "scrubs/masked_focused",
+      "sha256": "7fa880556d3b1b2ea3441bab8c3cc15f2218c853bc36a0969873efa6a745663f",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "alpha_bbox": [
+        0,
+        0,
+        988,
+        1536
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-ba42228f-98dc-4d9e-805a-229e289dbd88.png",
+      "target": "assets/characters/misono_serika_v1/scrubs_masked_v1/masked_warm.png",
+      "portrait_key": "scrubs/masked_warm",
+      "sha256": "e63a9b591e29334cc41d59675454adbf9181b1be8d33ba3ba15c25512247162f",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "alpha_bbox": [
+        0,
+        0,
+        1014,
+        1536
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-79be3042-8ce8-4660-bc25-8260137773fb.png",
+      "target": "assets/characters/misono_serika_v1/scrubs_masked_v1/masked_hesitant.png",
+      "portrait_key": "scrubs/masked_hesitant",
+      "sha256": "796a5da57e98ee12624cf63910d84bd8eff98776c196d37e0be24c9cd21db637",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "alpha_bbox": [
+        0,
+        0,
+        1012,
+        1536
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-90eede36-30fa-4c55-80ea-a6e3a7755732.png",
+      "target": "assets/characters/misono_serika_v1/scrubs_masked_v1/masked_tense.png",
+      "portrait_key": "scrubs/masked_tense",
+      "sha256": "0f066981bccaed82dc5f80a3d954950d4c3d8365124df8ab955117b112560692",
+      "width": 1024,
+      "height": 1536,
+      "png_color_type": 6,
+      "alpha_bbox": [
+        177,
+        0,
+        1004,
+        1536
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    }
+  ],
+  "event_id": "chihaya_third_surgery_b",
+  "node_expressions": {
+    "b03_004": "masked_focused",
+    "b03_010": "masked_focused",
+    "b03_012": "masked_focused",
+    "b04_005": "masked_focused",
+    "b04_007": "masked_focused",
+    "b04_016": "masked_focused",
+    "b04_066": "masked_focused",
+    "b05_004": "masked_focused",
+    "b05_006": "masked_focused",
+    "b05_011": "masked_hesitant",
+    "b05_013": "masked_warm",
+    "b05_016": "masked_warm",
+    "b05_018": "masked_warm",
+    "b05_020": "masked_warm",
+    "b05_022": "masked_warm",
+    "b05_024": "masked_hesitant",
+    "b05_026": "masked_warm",
+    "b05_028": "masked_warm",
+    "b05_029": "masked_warm",
+    "b05_031": "masked_warm",
+    "b05_033": "masked_warm",
+    "b05_035": "masked_warm",
+    "b05_037": "masked_warm",
+    "b05_039": "masked_warm",
+    "b05_041": "masked_warm",
+    "b05_046": "masked_warm",
+    "b05_048": "masked_warm",
+    "b05_050": "masked_warm",
+    "b05_052": "masked_warm",
+    "b05_055": "masked_hesitant",
+    "b05_057": "masked_warm",
+    "b05_059": "masked_warm",
+    "b05_061": "masked_warm",
+    "b05_064": "masked_warm",
+    "b05_066": "masked_warm",
+    "b05_068": "masked_warm",
+    "b05_070": "masked_warm",
+    "b05_072": "masked_warm",
+    "b05_075": "masked_hesitant",
+    "b05_077": "masked_tense",
+    "b05_079": "masked_tense",
+    "b05_086": "masked_tense",
+    "b05_088": "masked_hesitant",
+    "b05_090": "masked_warm",
+    "b06_011": "masked_warm",
+    "b06_013": "masked_warm",
+    "b06_022": "masked_hesitant",
+    "b06_025": "masked_warm"
+  },
+  "processing": "Exact byte copies; no resizing, cropping, alpha processing or pixel edits.",
+  "validation": {
+    "record": "docs/chihaya_third_surgery_integration_2026-10-27.md",
+    "qa_directory": "docs/qa/chihaya_third_surgery/masked_scrubs",
+    "headless_checks": 17843,
+    "native_checks": 17869,
+    "pages": 987,
+    "screenshots": 26,
+    "failures": 0,
+    "serika_regression_checks": 1994,
+    "lv3_regression_checks": 7539,
+    "narrative_localization_checks": 18383,
+    "story_and_english_unchanged": true
+  }
+}

@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_sagiri_sakurai",
+    "name": "樱井沙雾",
+    "age": 27,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/ward/neutral.png",
+        "operating_table/awake": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table/awake.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table_lithotomy/awake.png",
+        "intraoperative/tense": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/intraoperative/tense.png",
+        "splash/general_anesthesia": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/splash/general_anesthesia.png",
+        "ward/smile": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/ward/smile.png",
+        "ward/brave": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/ward/brave.png",
+        "ward/worried": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/ward/crying.png",
+        "operating_table/tense": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table/anesthetized.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/pain": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/intraoperative/anesthetized.png",
+        "examination/shy": "assets/characters/patient_sagiri_sakurai_v1/patient_sagiri_sakurai/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "bold",
+    "personality": {
+      "primary": "strong_front",
+      "secondary": "protective_caring",
+      "stress_response": "bravado_then_embarrassment"
+    },
+    "dialogue_profile": "strong_front_expressive_irritable",
+    "traits": {
+      "baseline_anxiety": 43,
+      "pain_sensitivity": 70,
+      "privacy_sensitivity": 64,
+      "trust_baseline": 60,
+      "control_need": 78,
+      "expressiveness": 84,
+      "health_literacy": 36,
+      "compliance_tendency": 80
+    },
+    "fear_profile": {
+      "pain_fear": 71,
+      "procedure_fear": 64,
+      "diagnosis_fear": 47,
+      "loss_control_fear": 85
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院？哎呀，这下得认真请病假了。医生，预计几天？我得赶紧把交接和请假手续安排好。」",
+      "hospitalization_response": "「行，身体出了问题就不能硬撑。我把工作交给同事，治疗这边就拜托你们了。」",
+      "procedure_mismatch": "「等等，刚才确认的不是这个术式吧？我开试验机都要复核清单，手术可不能跳过这一步。」",
+      "explain_plan": "「这就清楚了。你负责医疗判断，我负责好好配合——分工明确，我喜欢。」",
+      "brief_plan": "「只有一句‘照流程’呀？我平时也不爱看长报告，但总得告诉我接下来要做什么吧。」",
+      "last_reassure": "「放心，我一向擅长把任务交给可靠的人……话是这么说，心跳比我想的快多了呢。」",
+      "choose_general": "「全麻啊……直接把控制权全部交出去，还真是头一回。醒来以后请第一时间告诉我结果。」",
+      "choose_epidural": "「硬膜外……人清醒，下面却动不了？听懂归听懂，亲身体验可真不想轻易尝试。」",
+      "choose_local": "「局麻的话我还能跟你们说话，对吧？好。万一有哪里疼得不对劲，我会立刻告诉你。」",
+      "choose_none": "「什么？完全不麻醉？我能驾驶试验机，可没练过躺着让人开刀！医生，你是认真的吗？」",
+      "induction_reassure": "「好，我不再逞强了。就当这次把操作杆交给你们……等醒来，再让我知道一切顺利就好。」",
+      "insist_without_anesthesia": "「等一下！我说愿意配合，不是说我不会疼啊！医生，先听我把话说完……！」",
+      "assistant_stabilize_none": "「别、别突然按住我！我知道要稳，可手术刀就在这里……至少告诉我你们下一步做什么！」",
+      "assistant_stabilize_local": "「好，我尽量不动。只是被这样扶稳的时候，反而更清楚自己真的躺在手术台上了。」",
+      "assistant_stabilize_epidural": "「腿明明还在，却像不是自己的……我不会乱动的，麻烦告诉我你们还在旁边。」",
+      "incision_ready": "「行，交给你们——等、等等！那把刀别落下来……我、我真的怕了！」",
+      "incise_epidural": "「……已经开始切了吗？没有尖锐的痛，可里面像被推开一样……原来真的已经开始了。」",
+      "incise_local": "「嘶……！表面还好，可刚才那一下往里牵扯得好难受……医生，我要说出来才行。」",
+      "incise_none": "「啊——！！疼！真的好疼！等、等等……我受不了了！医生，求你先停一下！」",
+      "contact_pause": "「……谢谢，先让我喘口气。刚才我还以为自己能轻松应付呢……看来高估自己了。」",
+      "contact_command": "「别动，对吧……我听见了。我会努力，可我现在真的很想躲，拜托你们盯紧我。」",
+      "contact_continue": "「嗯……我听着。你们继续前能再说一声吗？这样我至少知道该怎么撑过去。」",
+      "ongoing_narrate": "「谢谢你告诉我做到哪一步。听着还是害怕，可总比让我一个人乱猜好。」",
+      "ongoing_eye_contact": "「啊……你一直看着我，是怕我忍不住乱动吗？……好吧，那就别移开视线。」",
+      "ongoing_silent": "「医生……？怎么突然都不说话了？你们工作专心我明白，可至少告诉我一声还顺利吧……」",
+      "closure_reassure": "「真的快结束了？太好了……这次我可没法装作一切都在掌控之中。谢谢你。」",
+      "closure_coach": "「好，照你说的慢慢呼吸……呼……我能做到。只剩最后一点了，对吧？」",
+      "closure_silent": "「……不用勉强我聊天了。等全部结束，轻轻叫我一声就好……谢谢。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠也在准备项目里？唉，平时再难的任务都没让我这么尴尬……先把流程告诉我吧。」",
+        "「明白，这是术前准备。可我真的没想到，今天最难开口说的会是这种事……」",
+        "「哎呀，看来病房不是我能谈条件的地方。必要的话我会配合，拜托别让我手忙脚乱。」"
+      ],
+      "ward_enema_unnecessary": [
+        "「这项不用做？呼，那我先把刚才那点紧张收回去……一点点就好。」",
+        "「哦，灌肠不在今天的准备里。太好了，我可以把精力留给真正的手术。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮？……原来要处理到这个范围。嗯，知道是为手术准备，可还是有点不好意思。」",
+        "「我连驾驶舱里的安全检查都不怕，偏偏躺着让护士备皮就这么别扭……真没想到。」",
+        "「好啦，我不乱动。麻烦先告诉我需要露出哪里，这样我心里有数。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「今天不需要备皮啊……看来也不是每一项准备都得做齐呢。」",
+        "「省去这一步？那就听专业人员的判断吧。呼，我确实松了口气。」"
+      ],
+      "ward_surgical_cap": [
+        "「哎呀，发型就这样全收进帽子里了？看来今天没有形象分可拿了。」",
+        "「好，手术帽戴好。现在还真有点像要执行任务……只不过我才是被安排的那个。」"
+      ],
+      "operative_positioning_awake": [
+        "「好，手臂放这里，腿这样摆……明白。我平时总在调驾驶姿势，今天倒由你们来调了。」",
+        "「这姿势比想象中难保持。嗯，我会配合，你们调整之前先告诉我一声。」",
+        "「被固定在台上还是挺不习惯的……不过如果这样能保证操作稳定，我理解。」"
+      ],
+      "operative_positioning_none": [
+        "「等等，不麻醉还要这样固定？我知道是为了安全，可我怕自己疼起来会忍不住躲啊！」",
+        "「别急着让我说没问题……我连待会儿疼到什么程度都不知道，现在真的有点慌了。」",
+        "「好，我尽量照做。可要是我喊出声，千万别当我在开玩笑……」"
+      ],
+      "urinary_catheterization_awake": [
+        "「导尿也得做啊……我懂是护理流程，可听见自己要接受这项操作还是会脸热。」",
+        "「护士小姐，麻烦先告诉我什么时候开始。平时我很会说笑，这会儿可笑不出来了。」",
+        "「好，我配合。只是……真的很不自在，能让我先调整一下呼吸吗？」"
+      ],
+      "urinary_catheterization_none": [
+        "「没有麻醉，还要这样准备？我、我知道有必要，可别什么都不说就开始呀！」",
+        "「等一下……导尿结束以后就要直接开刀了？不行，我现在越想越害怕。」",
+        "「好……我会尽量放松，可身体根本不听话。麻烦你们慢一点告诉我每一步。」"
+      ],
+      "skin_disinfection_awake": [
+        "「嘶，消毒液好凉……知道是正常准备，可这一下才让我觉得真的要开刀了。」",
+        "「嗯，继续吧。我会躺好……只要别突然不出声，给我点心理准备就行。」"
+      ],
+      "skin_disinfection_none": [
+        "「这里都消毒好了……那下一步就是切开？等一下，能不能再给我一点时间……」",
+        "「好凉……明明只是消毒，我已经紧张得浑身发僵了。不麻醉真的要开始吗？」",
+        "「我知道不该乱动，可现在每碰一下都让我想到那把手术刀……」"
+      ],
+      "incision_marking_awake": [
+        "「这是要下刀的位置吧……原来用笔画出来以后，看着会这么真实。」",
+        "「好，我不动。只是看着这条线，心里突然有点发毛……」"
+      ],
+      "incision_marking_none": [
+        "「等一下，连切口都画好了……真要一点麻醉都不用，就沿着这里切吗？」",
+        "「别、别急着拿刀！我知道线只是标记，可看见它我已经快撑不住了……」",
+        "「我刚才还说自己不怕呢……可是你们一画好位置，我突然不敢看了。」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，我本来想把工作做完再来，可身体突然开始抗议了：{line}",
+      "primary": "最明显的问题是这样：{line}。我可以按顺序把经过说清楚。",
+      "secondary": "对，还有一项得补进报告：{line}。哎呀，职业习惯，别介意。",
+      "background": "我叫樱井沙雾，在VTX Union特务三课担任主任，也是试验机的主驾驶员。平时常把事情说得很轻松，不过我可不是拿工作开玩笑的人。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "樱井沙雾的门诊检查",
+    "full_undress": {
+      "prompt": "「需要把衣服全部脱下接受检查？哎呀，医生，你们这套入场手续比驾驶舱还严格呢……开玩笑的。可以先说清检查范围吗？」",
+      "responses": {
+        "abandon_full_undress": "「这项先不做？呼，我还真松了口气。不过该确认的问题，你们可别因为我开玩笑就略过去。」",
+        "authoritative_full_undress": "「好，知道了，我会配合。只是请先把检查范围讲清楚，也给我一点准备时间。」",
+        "gentle_full_undress": "「谢谢你说得这么明白。那就交给你们了……别看我平时大大咧咧，轮到自己还真会害羞呢。」",
+        "threaten_full_undress": "「哎，先别用这种口气。必要的检查我会配合，但你越催，我反而越难放松啊。」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "樱井沙雾的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「坂口医生，今天就要上台了吧？我把手头工作交接好了，病房这边还有什么需要我配合的？」",
+      "graphic_preop_question": "「可以再说具体一点吗？一会儿上台后，从摆体位、消毒，到刀真正落下来，你们会按什么顺序做？……我平时不怕听细节，可这回有点怕自己想得太多。」",
+      "graphic_preop_dialogue": "沙雾最初像听项目简报一样，轻松地询问各步骤的先后。医护越仔细说明待会儿的体位、固定、切开与后续操作，她脸上的笑意越难维持。她终于意识到，这次不是隔着操纵杆应对风险，而是自己的身体将接受刚刚听见的一切。",
+      "team": "你将担任樱井沙雾本次手术的主刀。请确认助手医生、器械护士和巡回护士的岗位职责及当前病例需要的配置。",
+      "preparation": "请根据当前病例安排樱井沙雾的术前准备，确认所需护理项目及负责护士，不得依据她的职业改变医疗流程。",
+      "prepared": "「准备都做完了？好，接下来就是手术室……我已经没办法再靠工作话题分心了呢。」",
+      "changing": "你和本次手术团队完成更衣、刷手及必要的无菌准备，按照既有流程进入手术室。",
+      "operating_room": "「哇，灯还真亮……平时都是我坐在驾驶位上看着屏幕。今天被这么多人围着，感觉完全不同啊。」",
+      "team_confirmations": "团队逐项核对樱井沙雾的身份、当前病例、手术方案、麻醉状态与人员分工。她试图用轻松语气回应，握紧的手却暴露了紧张。",
+      "procedure_select": "请根据樱井沙雾当前随机病例及既定治疗安排选择和复核术式，不得把人物职业背景当成固定诊断。",
+      "procedure_mismatch": "「等一下，这个手术名字和刚才说的不同吧？请先核对清楚。我平时也不能拿不一致的清单直接开机呀。」",
+      "ready": "樱井沙雾已完成当前病例要求的术前准备，并在手术台上就位。请确认麻醉方式、体位与开始操作所需条件。",
+      "general_induction": "「嗯，交给你们啦……我平时最讨厌把控制权让出去，可今天只能相信各位了。」",
+      "surgery_start_general": "樱井沙雾已进入全身麻醉状态，不作出清醒的手术回应。团队完成最终确认并按当前术式开始操作。",
+      "surgery_start_epidural": "「腿真的麻了啊……明明脑袋还醒着，身体却没法自己调整。医生，开始前请叫我一声。」",
+      "surgery_start_local": "「局麻已经起作用了吗？好，我会配合……不过如果里面疼得不对，我一定会说。」",
+      "surgery_start_none": "「等等……真的就这样开始？我知道之前说过要配合，可我现在一点都不觉得自己准备好了！」",
+      "instrument_handoff": "主刀按当前术式提出器械要求，器械护士完成递交，并依据既有流程确认操作条件。",
+      "assistant_ready": "助手医生确认术野暴露及牵引条件，等待主刀指示下一步，不改变已选麻醉路径。",
+      "incision_ready": "团队复核预定切口与当前麻醉状态。器械护士将所需手术刀交至主刀手中，主刀即将沿预定切口开始操作。",
+      "general_operation": "全身麻醉状态下，樱井沙雾没有清醒患者对白。团队继续监护并按既定术式进行操作。",
+      "operative_contact": "在需要患者回应的操作环节，医护确认樱井沙雾的意识与配合情况；若她已进入全身麻醉，则继续按监护要求操作。",
+      "ongoing_interaction": "若樱井沙雾保持清醒，她先以轻松的语气掩饰紧张；当疼痛和失控感增加，笑容逐渐消失并开始直接求助。若她处于全身麻醉状态，医护则继续监护与操作。",
+      "closure_interaction": "手术进入收尾阶段。若她仍清醒，使用相应专属收尾回应；全麻状态只展示团队处理及交接旁白。",
+      "procedure_flow": "团队根据当前病例已经选定的术式进入后续步骤，助手及护士各自完成职责。",
+      "procedure_execute": "团队完成当前术式的主要处理并复核后续必要步骤，按原有规则继续操作。",
+      "surgery_result": "手术结束。团队完成必要的切口处理、器械清点、记录与术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经开始切了吗？没有尖锐的痛，可里面像被推开一样……原来真的已经开始了。」",
+      "incise_local": "「嘶……！表面还好，可刚才那一下往里牵扯得好难受……医生，我要说出来才行。」",
+      "incise_none": "「啊——！！疼！真的好疼！等、等等……我受不了了！医生，求你先停一下！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_enema_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/ward_enema.png"
+        ],
+        "caption": "樱井沙雾 · 灌肠"
+      },
+      {
+        "id": "ward_skin_prep_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/ward_skin_prep.png"
+        ],
+        "caption": "樱井沙雾 · 剃毛"
+      },
+      {
+        "id": "ward_surgical_cap_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/ward_surgical_cap.png"
+        ],
+        "caption": "樱井沙雾 · 戴手术帽"
+      },
+      {
+        "id": "operative_positioning_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/operative_positioning.png"
+        ],
+        "caption": "樱井沙雾 · 固定"
+      },
+      {
+        "id": "skin_disinfection_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/skin_disinfection.png"
+        ],
+        "caption": "樱井沙雾 · 消毒"
+      },
+      {
+        "id": "urinary_catheterization_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/urinary_catheterization.png"
+        ],
+        "caption": "樱井沙雾 · 导尿"
+      },
+      {
+        "id": "stretcher_transfer_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/stretcher_transfer.png"
+        ],
+        "caption": "樱井沙雾 · 担架车"
+      },
+      {
+        "id": "incision_ready_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/incision_ready.png"
+        ],
+        "caption": "樱井沙雾 · 下刀前"
+      },
+      {
+        "id": "sterile_draping_patient_sagiri_sakurai",
+        "label": "樱井沙雾 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_sagiri_sakurai"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_sagiri_sakurai/sterile_draping.png"
+        ],
+        "caption": "樱井沙雾 · 铺巾"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

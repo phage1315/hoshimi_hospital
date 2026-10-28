@@ -123,10 +123,27 @@ func run() -> void:
   expect(found,"Found present day")
   for level in [0,1,2,3,4]:
    g.relation_for(ACTOR).level=level
-   expect(is_equal_approx(g.familiarity_gain_multiplier(ACTOR),0.5 if level<3 else 0.8 if level==3 else 1.0),"Milestone multiplier")
+   expect(is_equal_approx(g.familiarity_gain_multiplier(ACTOR),0.5),"Numeric rank cannot replace completed milestone")
    expect(not g.staff_can_join_surgery_team(ACTOR),"Numeric rank never replaces actual milestone")
   expect(g.staff_record(ACTOR).surgical_roles==["assistant_surgeon"],"Never ordinary primary")
+  var multiplier_fixture_ids:Array[String]=[]
+  for level in [3,4]:
+   var id:String="test_serika_growth_%s"%level
+   var definition:Dictionary=defs.serika_lv0_d.duplicate(true)
+   definition.id=id
+   g.character_event_definitions[id]=definition
+   var completed=preload("res://godot/systems/character_event_session.gd").new(definition)
+   completed.completed=true;completed.completed_day=1;completed.settled_minutes=0
+   g.character_events[id]=completed
+   g.relationship_rank_slot(ACTOR,level).event_id=id
+   g.relationship_rank_slot(ACTOR,level).content_status="authored"
+   g.relation_for(ACTOR).rank_history.append(id)
+   multiplier_fixture_ids.append(id)
+   expect(is_equal_approx(g.familiarity_gain_multiplier(ACTOR),0.8 if level==3 else 1.0),"Completed milestone controls growth")
   expect(g.surgery_familiarity_reward(ACTOR,"routine")==5,"Lv4 surgery")
+  for id in multiplier_fixture_ids:
+   g.character_events.erase(id)
+   g.relation_for(ACTOR).rank_history.erase(id)
   g.relation_for(ACTOR).level=2
   expect(g.surgery_familiarity_reward(ACTOR,"routine")==4,"Surgery floor4")
   g.award_surgery_team_familiarity({"assistant_surgeon":ACTOR})

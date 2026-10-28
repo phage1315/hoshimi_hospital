@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-27",
+  "authorization": "User explicitly requested integrating all five approved CGs.",
+  "processing": "Exact byte copies, no cropping, scaling or pixel editing; user-supplied entry image not visually inspected.",
+  "images": [
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-1aa62100-5fc5-402d-b58e-8b59c6d073dc.png",
+      "target": "assets/events/chihaya_third_surgery_v1/cg01_walk_in.png",
+      "origin": "user-supplied",
+      "sha256": "345106a50eb82e41abdc5d1070c444362d2c16bd28fb39759cdbfc79aecb9bef",
+      "size": [
+        1664,
+        960
+      ],
+      "nodes": [
+        "b01_024",
+        "b01_025",
+        "b01_026",
+        "b01_027",
+        "b01_028",
+        "b01_029",
+        "b01_030",
+        "b01_031",
+        "b01_032",
+        "b01_033",
+        "b01_034",
+        "b01_035",
+        "b01_036",
+        "b01_037",
+        "b01_038"
+      ]
+    },
+    {
+      "source": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/cg_candidates/chihaya_third_surgery_v1/cg02_i_am_here_v2.png",
+      "target": "assets/events/chihaya_third_surgery_v1/cg02_i_am_here.png",
+      "origin": "approved generated v2",
+      "sha256": "5f7ef74320ca66428a37e0dc46db430921ff224233ba23163d74161158458e3f",
+      "size": [
+        1672,
+        941
+      ],
+      "nodes": [
+        "b05_012",
+        "b05_013",
+        "b05_014",
+        "b05_015",
+        "b05_016",
+        "b05_017"
+      ]
+    },
+    {
+      "source": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/cg_candidates/chihaya_third_surgery_v1/cg03a_bass_memory_warm_v1.png",
+      "target": "assets/events/chihaya_third_surgery_v1/cg03a_bass_memory_warm.png",
+      "origin": "approved generated v1",
+      "sha256": "8160b7d8fe62a5ed29079e19f33c56ed92de2442917b9c9f830e1d5b95127bb2",
+      "size": [
+        1672,
+        941
+      ],
+      "nodes": [
+        "b05_063",
+        "b05_064",
+        "b05_065",
+        "b05_066",
+        "b05_067",
+        "b05_068",
+        "b05_069",
+        "b05_070",
+        "b05_071",
+        "b05_072"
+      ]
+    },
+    {
+      "source": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/cg_candidates/chihaya_third_surgery_v1/cg03b_glance_tense_v1.png",
+      "target": "assets/events/chihaya_third_surgery_v1/cg03b_glance_tense.png",
+      "origin": "approved generated v1",
+      "sha256": "420dab03b09d91a35941877f79ba6fdc60440280293bd1a9d031218844442a69",
+      "size": [
+        1672,
+        941
+      ],
+      "nodes": [
+        "b05_082",
+        "b05_083",
+        "b05_084"
+      ]
+    },
+    {
+      "source": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/cg_candidates/chihaya_third_surgery_v1/cg04_imaging_consultation_v1.png",
+      "target": "assets/events/chihaya_third_surgery_v1/cg04_imaging_consultation.png",
+      "origin": "approved generated v1",
+      "sha256": "15afbfb18f7938114032578d6e29d5cba209b562ebfdb640ad015fef188b1bbb",
+      "size": [
+        1672,
+        941
+      ],
+      "nodes": [
+        "a02_002",
+        "a02_003",
+        "a02_004",
+        "a02_005",
+        "a02_006",
+        "a02_007",
+        "a02_008",
+        "a02_009",
+        "a02_010",
+        "a02_011",
+        "a02_012"
+      ]
+    }
+  ],
+  "gallery": "Existing A/B special-event full replay uses the same CG nodes; C unchanged.",
+  "candidate_prompts": "research/cg_candidates/chihaya_third_surgery_v1/prompts_and_sources.json",
+  "companion_v2_prompt": "research/cg_candidates/chihaya_third_surgery_v1/cg02_i_am_here_v2.prompt.txt",
+  "unchanged_english_sha256": "1d5fa4085c7cd257c36c0c2c3b2a603a3506a963173bae48bc42bec4cc50b9d8",
+  "node_diff": "45 nodes add cg_path and cg_fit only; all prior node fields identical.",
+  "qa_directory": "docs/qa/chihaya_third_surgery/cg_approved",
+  "validation": {
+    "headless": {
+      "checks": 20012,
+      "failures": 0,
+      "native": false,
+      "pages": 987,
+      "render_driver": "gl_compatibility"
+    },
+    "native": {
+      "checks": 20058,
+      "failures": 0,
+      "native": true,
+      "pages": 987,
+      "render_driver": "gl_compatibility"
+    },
+    "screenshots": 46,
+    "narrative_localization_checks": 18431,
+    "narrative_localization_failures": 0,
+    "ui_english_keys": "746/746",
+    "source_audit": "passed",
+    "native_final_warnings": 0,
+    "test_cleanup": "Wait for CG reveal timers before disposing test app; no runtime change."
+  }
+}

@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = Path("/Users/ningye/Downloads/HOSHIMI_MIYAMA_KAORI_LV0_INTRO_WHITECOAT_SHARP_CN_REVIEW.md")
+SOURCE = ROOT / "docs/source/lv0_introductions/HOSHIMI_MIYAMA_KAORI_LV0_INTRO_WHITECOAT_SHARP_CN_REVIEW.md"
 EVENTS = ROOT / "data/staff/doc_rei/events.json"
 EN = {
 "m0_0001":"The examination room is temporarily empty. The reports on the desk are stacked in date order, and the screen still shows the imaging she just finished checking.",

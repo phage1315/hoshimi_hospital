@@ -3,6 +3,22 @@ extends RefCounted
 ## event facts; no dialogue cursor or in-progress session enters a save.
 const ACTOR := "doc_serika"
 const PREFIX := "serika_radiology_d"
+const LV1 := "serika_lv1_cross_out_my_name"
+static func naturally_present(g: RefCounted) -> bool:
+ if not g.staff_is_met(ACTOR) or str(g.active_staff_patient.get("staff_id", "")) == ACTOR:
+  return false
+ var key := "serika_imaging_present:%s" % g.day_number()
+ if not g.story_flags.has(key):
+  g.set_story_flag(key, absi(hash("%s:serika_imaging:%s" % [g.campaign_seed, g.day_number()])) % 100 < 70)
+ return g.story_flag(key)
+static func lv1_entry_allowed(g: RefCounted) -> bool:
+ # Remaining rank/intro requirements use the shared character-event gate.
+ # Do not ask staff_present_at here: personal events themselves place actors.
+ if g.active_surgery_in_progress() or not g.active_character_event_id.is_empty() or not g.active_special_event_id.is_empty() or not g.active_micro_event_id.is_empty() or not g.active_preop_id.is_empty() or g.active_encounter_in_progress() or not g.active_after_work_walk.is_empty() or not g.active_free_h_departure.is_empty():
+  return false
+ if g.shift_remaining() < 30 or g.current_absolute_clock() < 540 or g.current_absolute_clock() + 30 > 1020:
+  return false
+ return naturally_present(g)
 static func owns(id: String) -> bool:
  return id.begins_with(PREFIX)
 static func event_id(index: int) -> String:

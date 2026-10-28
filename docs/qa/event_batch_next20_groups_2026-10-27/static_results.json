@@ -1,0 +1,72 @@
+[
+  {
+    "script": "sayaka_v2_source_audit.py",
+    "exit": 0,
+    "tail": "SAYAKA V2 SOURCE AUDIT: 2509 checks; 0 failures; 230 beats, 7 authorized time edits\n"
+  },
+  {
+    "script": "sayaka_lv2_source_audit.py",
+    "exit": 0,
+    "tail": "SAYAKA LV2 SOURCE AUDIT: 1466 checks; 0 failures; 146 explicit beats; 3 routes\n"
+  },
+  {
+    "script": "sayaka_lv3_source_audit.py",
+    "exit": 0,
+    "tail": "LV3 SOURCE ROUTE haru/answer_a: 98 turns\nLV3 SOURCE ROUTE haru/answer_b: 98 turns\nLV3 SOURCE ROUTE hiroko/answer_a: 92 turns\nLV3 SOURCE ROUTE hiroko/answer_b: 92 turns\nLV3 SOURCE ROUTE fallback/answer_a: 92 turns\nLV3 SOURCE ROUTE fallback/answer_b: 92 turns\nSAYAKA LV3 SOURCE AUDIT: 1980 checks; 0 failures; 112 source beats; 115 nodes; 6 routes\n"
+  },
+  {
+    "script": "sayaka_lv4_event_test.py",
+    "exit": 0,
+    "tail": "SAYAKA LV4 EVENT: PASS (95 main lines, 12 callback lines, source order/speakers/routes/assets verified)\n"
+  },
+  {
+    "script": "sayaka_lv5_source_test.py",
+    "exit": 1,
+    "tail": "Traceback (most recent call last):\n  File \"/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/tools/sayaka_lv5_source_test.py\", line 51, in <module>\n    expect(node[\"text\"] == text, f\"Text/punctuation changed at {key}\")\n  File \"/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/tools/sayaka_lv5_source_test.py\", line 20, in expect\n    assert condition, message\nAssertionError: Text/punctuation changed at a03_0072\n"
+  },
+  {
+    "script": "satsuki_intro_audit.py",
+    "exit": 0,
+    "tail": "PASS: 40 CN/EN nodes; exact dialogue, speakers, order; only specified narrator delimiters removed; final punchline unchanged\n"
+  },
+  {
+    "script": "ishigami_intro_audit.py",
+    "exit": 0,
+    "tail": "PASS: 66 original paragraphs in 64 nodes; no text or speaker changes; two consecutive narration pairs joined with blank lines; complete English\n"
+  },
+  {
+    "script": "rumi_shiori_intro_audit.py",
+    "exit": 0,
+    "tail": "PASS: 35 original lines, speakers and order preserved; only 2 authorized opening variants added.\n"
+  },
+  {
+    "script": "megumi_intro_audit.py",
+    "exit": 0,
+    "tail": "PASS: 111 CN lines, speakers, punctuation and order unchanged; full EN translation; offscreen exit; only Megumi introduced\n"
+  },
+  {
+    "script": "saeko_authoring_audit.py",
+    "exit": 0,
+    "tail": "PASS: 113 bilingual dialogue pairs; 28 exact CN/EN VN nodes with speakers/order/punctuation; 19 unchanged art files; confirmed stats, future ranks planned.\n"
+  },
+  {
+    "script": "serika_source_audit.py",
+    "exit": 1,
+    "tail": "Traceback (most recent call last):\n  File \"/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/tools/serika_source_audit.py\", line 38, in <module>\n    assert len(read(D/'assets_manifest.json')['sources'])==38\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+  },
+  {
+    "script": "serika_radiology_source_audit.py",
+    "exit": 0,
+    "tail": "PASS: 221 exact dialogue lines/speakers/order; 15 exact opening fallbacks; 253 bilingual text nodes; 2 timed expression beats; existing assets; final-only +3/60-minute contract.\n"
+  },
+  {
+    "script": "narrative_localization_test.py",
+    "exit": 0,
+    "tail": "NARRATIVE LOCALIZATION: 18431 checks; 0 failure(s)\n"
+  },
+  {
+    "script": "localization_audit.py",
+    "exit": 0,
+    "tail": "en: 27872 translations; authored coverage 26991/27220\nzh_CN: source fallback (27220 active authored text fields)\nUI: 742/742 referenced English keys translated\nUI hard-coded Chinese candidates: 0 lines (none)\nLOCALIZATION AUDIT: 32496 translations; source-language fallback enabled\n"
+  }
+]

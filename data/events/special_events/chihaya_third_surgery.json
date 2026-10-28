@@ -1,0 +1,128 @@
+[
+  {
+    "id": "chihaya_third_surgery_a",
+    "title": "这次真的不会有第四次了吧？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 120,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "chihaya_third_surgery_a_main"
+    ],
+    "completion_flags": [
+      "chihaya_third_surgery_a_complete",
+      "chihaya_third_surgery_scheduled",
+      "mizuho_voluntary_surgery_consent_signed",
+      "mizuho_no_anesthesia_plan_agreed",
+      "mizuho_revised_no_anesthesia_quote_half_prepaid",
+      "mizuho_first_surgery_booked"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "chihaya_third_surgery_a",
+      "title": "这次真的不会有第四次了吧？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_date": "2025-07-07",
+      "priority": 610,
+      "final_week_allowed": true,
+      "sunday_start_allowed": true
+    },
+    "announcement": "连续三天演出：周一09:00至周三10:00。期间无法进行普通活动或保存。"
+  },
+  {
+    "id": "chihaya_third_surgery_b",
+    "title": "这次真的不会有第四次了吧？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 360,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "chihaya_third_surgery_b_main"
+    ],
+    "completion_flags": [
+      "chihaya_third_surgery_b_complete",
+      "chihaya_third_surgery_success"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "chihaya_third_surgery_b",
+      "title": "这次真的不会有第四次了吧？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_date": "2025-07-07",
+      "priority": 610,
+      "final_week_allowed": true,
+      "sunday_start_allowed": true
+    },
+    "relationship_rewards": [
+      {
+        "actor_id": "doc_serika",
+        "target_level": 2,
+        "benefit_id": "",
+        "award_event_familiarity": false,
+        "allow_level_skip": false
+      }
+    ]
+  },
+  {
+    "id": "chihaya_third_surgery_c",
+    "title": "这次真的不会有第四次了吧？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 60,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "chihaya_third_surgery_c_main"
+    ],
+    "completion_flags": [
+      "chihaya_third_surgery_c_complete",
+      "chihaya_third_surgery_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "chihaya_third_surgery_c",
+      "title": "这次真的不会有第四次了吧？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_date": "2025-07-07",
+      "priority": 610,
+      "final_week_allowed": true,
+      "sunday_start_allowed": true
+    },
+    "completion_hint": "御園芹香 Lv2 已达成，可邀请担任手术助手。千早继续住院恢复；瑞穗的后续预约另行安排。"
+  }
+]

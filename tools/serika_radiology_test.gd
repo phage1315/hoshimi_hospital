@@ -42,6 +42,10 @@ func run() -> void:
   app.configure_game_content()
   var g = app.game
   g.reset()
+  # This suite isolates all fifteen discussions with synthetic milestone
+  # fixtures below. The real Lv1 and its natural map entry have their own
+  # bilingual end-to-end coverage in serika_lv1_test.gd.
+  g.character_event_definitions.erase(Flow.LV1)
   expect(Flow.next_index(g) == 1, "New game starts D01")
   expect(not Flow.eligible(g, Flow.event_id(1)), "Unmet blocked")
   g.meet_staff(Flow.ACTOR)

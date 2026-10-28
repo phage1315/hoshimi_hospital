@@ -1,0 +1,3089 @@
+[
+  {
+    "id": "serika_lv1_cross_out_my_name",
+    "actor_id": "doc_serika",
+    "title": "请把我的名字划掉",
+    "chapter": 1,
+    "location_id": "imaging",
+    "trigger_mode": "location",
+    "background_id": "diagnostics",
+    "outfit": "white_coat",
+    "minutes": 30,
+    "teaser": "请把我的名字划掉",
+    "time_start": 540,
+    "time_end": 990,
+    "priority": 50,
+    "category": "bond",
+    "target_level": 1,
+    "benefit_id": "",
+    "auto_start": false,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "serika_lv1_cross_out_my_name",
+      "caption": "请把我的名字划掉",
+      "path": "assets/events/serika_lv1_v1/cross_out_my_name.png",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [
+        "serika_lv0_a",
+        "serika_lv0_b",
+        "serika_lv0_c",
+        "serika_lv0_d"
+      ],
+      "special_requirements": []
+    },
+    "start": "s01_01",
+    "nodes": [
+      {
+        "id": "s01_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「芹香没有像往常一样先调出影像。她把一份电子文档推到屏幕正中，指尖停在最后一行。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_01",
+            "label": "继续",
+            "next": "s01_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「坂口医生。这份术前讨论纪要，你看过吗？」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_02",
+            "label": "继续",
+            "next": "s01_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_03",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「早上刚发的那份？我还没来得及细看。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_03",
+            "label": "继续",
+            "next": "s01_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「那现在看。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_04",
+            "label": "继续",
+            "next": "s01_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_05",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「屏幕上的一行字被她选中。字句清清楚楚地显示出来。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_05",
+            "label": "继续",
+            "next": "s01_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_06",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "画面内会议记录",
+        "actor_id": "doc_serika",
+        "text": "「经影像科御園芹香医生确认，既定胆囊切除方案可按原计划实施。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_06",
+            "label": "继续",
+            "next": "s01_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_07",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「……这句话是谁写的？」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_07",
+            "label": "继续",
+            "next": "s01_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我也想知道。因为我从来没说过。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_08",
+            "label": "继续",
+            "next": "s01_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_09",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你的报告我看过。你提醒过胆管走行可能有变异，还要求术中重新核对。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_09",
+            "label": "继续",
+            "next": "s01_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「右后叶胆管的走行与常见解剖不太一样。它和胆囊管的关系，单靠这组影像还不能完全确定。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_10",
+            "label": "继续",
+            "next": "s01_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我写的是‘术中必须确认胆道解剖，必要时调整手术策略’。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_11",
+            "label": "继续",
+            "next": "s01_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_12",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「到了纪要里，怎么就成了‘按原计划实施’？」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_12",
+            "label": "继续",
+            "next": "s01_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「而且是‘经我确认’。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_13",
+            "label": "继续",
+            "next": "s01_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_14",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「她伸手去拿桌上的笔。笔尖几乎碰到打印出来的纪要，却停住了。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_14",
+            "label": "继续",
+            "next": "s01_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_15",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「影像科负责说明看见了什么、还不能确定什么。是否手术、怎么做，那是外科要作的决定。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_15",
+            "label": "继续",
+            "next": "s01_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_16",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「这一点我同意。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_16",
+            "label": "继续",
+            "next": "s01_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_17",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「那就请把我的名字划掉。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "cold",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/cold.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_17",
+            "label": "继续",
+            "next": "s01_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/serika_lv1_v1/cross_out_my_name.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s01_18",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「芹香终于抬起头。她的语气不高，却比坂口以往听过的任何一句拒绝都更硬。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "angry",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/angry.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_18",
+            "label": "继续",
+            "next": "s01_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/serika_lv1_v1/cross_out_my_name.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s01_19",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「我先把原始报告和会议记录对一下。这件事不能只删一个名字就算完。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "angry",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/angry.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_19",
+            "label": "继续",
+            "next": "s01_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/serika_lv1_v1/cross_out_my_name.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s01_20",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……随你。明天的手术，别让那句话跟着进手术室就行。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "angry",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/angry.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s01_20",
+            "label": "继续",
+            "next": "s02_01",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/serika_lv1_v1/cross_out_my_name.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "s02_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「小夜香正把几份检查资料按顺序夹好。看见坂口和芹香一起过来，她先露出一个习惯性的笑容。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/smile.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_01",
+            "label": "继续",
+            "next": "s02_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_02",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「两位医生一起找我？什么事这么正式？」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/smile.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_02",
+            "label": "继续",
+            "next": "s02_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_03",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「是昨天的术前讨论纪要。最后一段，能跟我们核对一下吗？」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/smile.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_03",
+            "label": "继续",
+            "next": "s02_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_04",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「当然。那份是我整理的。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/smile.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_04",
+            "label": "继续",
+            "next": "s02_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_05",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「坂口把屏幕转向她。小夜香看了两遍，笑容一点点收了起来。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_05",
+            "label": "继续",
+            "next": "s02_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_06",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「……啊。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_06",
+            "label": "继续",
+            "next": "s02_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「这句话的‘确认’，指什么？」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_07",
+            "label": "继续",
+            "next": "s02_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_08",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「我本来是想写：御園医生已经确认了影像上的异常走行，我们可以据此把手术计划讨论下去。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_08",
+            "label": "继续",
+            "next": "s02_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「整理成摘要的时候，我把前面那句缩掉了。结果……意思完全变了。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_09",
+            "label": "继续",
+            "next": "s02_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_10",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「这不是省字。这是换了一个作决定的人。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_10",
+            "label": "继续",
+            "next": "s02_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「你说得对。责任在我。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_11",
+            "label": "继续",
+            "next": "s02_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_12",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「我记得会议上讨论得很详细。为什么最后变成了这样？」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_12",
+            "label": "继续",
+            "next": "s02_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「因为大家都在说御園医生那份影像标注做得好。我当时一心想把结论写得清楚，反而把不同人的意见并到了一起。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_13",
+            "label": "继续",
+            "next": "s02_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_14",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「御堂医生说，这份报告连变异胆管可能影响术野的地方都标清楚了，不是光画出一条漂亮的管道。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_14",
+            "label": "继续",
+            "next": "s02_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_15",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「阿尔托莉雅医生说，有了这些提醒，外科就该把应对方案提前准备好，不能等上台才临时想办法。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_15",
+            "label": "继续",
+            "next": "s02_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「两个人都那么肯定她的判断，我脑子里就把‘影像评估很充分’和‘手术方案已经通过’连成了一件事。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_16",
+            "label": "继续",
+            "next": "s02_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_17",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「她们肯定的是报告。不是让你拿我的名字给术式盖章。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_17",
+            "label": "继续",
+            "next": "s02_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_18",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「是。我明白了。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_18",
+            "label": "继续",
+            "next": "s02_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_19",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「小夜香抽出原始报告，直接翻到芹香最后一段意见。她没再试着解释自己当时的想法。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_19",
+            "label": "继续",
+            "next": "s02_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_20",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「我重新写。影像提示右侧胆管走行可能存在变异，术中必须核实胆道解剖。这是御園医生的报告意见。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_20",
+            "label": "继续",
+            "next": "s02_21",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_21",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「还有，影像没法替术中确认。这句不能丢。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_21",
+            "label": "继续",
+            "next": "s02_22",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_22",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「嗯。手术范围、处理方法，以及遇到变异时是否改变方案，由主刀医生确认。这是外科组的决定。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_22",
+            "label": "继续",
+            "next": "s02_23",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_23",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「就这么写。请负责这台手术的主刀重新核对并确认，不要沿用旧版。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_23",
+            "label": "继续",
+            "next": "s02_24",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_24",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「我现在就把更正说明发给参与会诊的人和手术室。已打印的术前交接单，我会去逐份换掉。原版按流程保留更正记录。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_24",
+            "label": "继续",
+            "next": "s02_25",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_25",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_25",
+            "label": "继续",
+            "next": "s02_26",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_26",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「御園医生，对不起。我让你的专业意见变成了你没作过的承诺。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_26",
+            "label": "继续",
+            "next": "s02_27",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_27",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「先把记录改对。病人明天就要上台。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_27",
+            "label": "继续",
+            "next": "s02_28",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_28",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "南条小夜香",
+        "actor_id": "doc_sayaka",
+        "text": "「好。改完我会亲自再核一遍。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_28",
+            "label": "继续",
+            "next": "s02_29",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s02_29",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「芹香看着她重新打开文档，没再说什么。走出办公区时，脚步却比来时慢了一点。」",
+        "background_id": "shared_doctors_office",
+        "outfit": "white_coat",
+        "expression": "focused",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/focused.png",
+            "x": 900,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          },
+          {
+            "id": "doc_sayaka",
+            "path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/serious.png",
+            "x": 1140,
+            "bottom": 560,
+            "width": 310,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s02_29",
+            "label": "继续",
+            "next": "s03_01",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_01",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「影像室里只剩下键盘和鼠标的轻响。坂口把一份更新后的术前资料放在桌边。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_01",
+            "label": "继续",
+            "next": "s03_02",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_02",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「小夜香把更正送出去了。负责这台手术的主刀也确认了修改后的方案。手术室收到的是新版。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_02",
+            "label": "继续",
+            "next": "s03_03",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_03",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……她动作倒快。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_03",
+            "label": "继续",
+            "next": "s03_04",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_04",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「她知道问题出在哪儿，也愿意自己收拾干净。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_04",
+            "label": "继续",
+            "next": "s03_05",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_05",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我刚才对她说得太重了。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_05",
+            "label": "继续",
+            "next": "s03_06",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_06",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那句话确实不能留。你没有无缘无故发火。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_06",
+            "label": "继续",
+            "next": "s03_07",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_07",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我没有说我不该生气。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_07",
+            "label": "继续",
+            "next": "s03_08",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_08",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「她终于转过椅子。视线落在更正后的记录上，停了很久。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_08",
+            "label": "继续",
+            "next": "s03_09",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_09",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……我只是讨厌别人替我说话。尤其是写进正式记录以后。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_09",
+            "label": "继续",
+            "next": "s03_10",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_10",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那就把原话留下。说了什么，是一回事；谁来决定，是另一回事。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_10",
+            "label": "继续",
+            "next": "s03_11",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_11",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「你不是把我的名字删了吗？」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_11",
+            "label": "继续",
+            "next": "s03_12",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_12",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「没有。影像意见还是你的，里面每一处提醒都保留了。决定怎么做手术的那一栏，写的是外科医生的名字。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_12",
+            "label": "继续",
+            "next": "s03_13",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_13",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……这样才对。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_13",
+            "label": "继续",
+            "next": "s03_14",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_14",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「我不想抹掉你的判断，更不想让你的名字替我们承担本来不属于你的责任。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_14",
+            "label": "继续",
+            "next": "s03_15",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_15",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「芹香把新旧两份记录叠在一起。她没有再去找那支笔。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_15",
+            "label": "继续",
+            "next": "s03_16",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_16",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我能接受自己的判断错了。错了，有证据就改。可一句没说过的话……连从哪里改起都很难。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_16",
+            "label": "继续",
+            "next": "s03_17",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_17",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「至少这一份已经改回来了。以后再遇到同样的事，我会先问你本人。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_17",
+            "label": "继续",
+            "next": "s03_18",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_18",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「你最好记住。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_18",
+            "label": "继续",
+            "next": "s03_19",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_19",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「记在心里。不会写成‘经御園医生确认，坂口今后绝不犯错’。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_19",
+            "label": "继续",
+            "next": "s03_20",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_20",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「芹香愣了一下。她低下眼睛，嘴角短暂地扬起，又很快收住。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "soft_smile",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/soft_smile.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_20",
+            "label": "继续",
+            "next": "s03_21",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_21",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……那句话也不归我确认。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_21",
+            "label": "继续",
+            "next": "s03_22",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_22",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「确实。申请大概会被退回来。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_22",
+            "label": "继续",
+            "next": "s03_23",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_23",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「以后如果要把我的影像意见写进术前讨论，就把原始资料带来。哪里拿不准，当面问。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_23",
+            "label": "继续",
+            "next": "s03_24",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_24",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你愿意多参与一点术前讨论了？」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_24",
+            "label": "继续",
+            "next": "s03_25",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_25",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「我说的是影像。别得寸进尺。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_25",
+            "label": "继续",
+            "next": "s03_26",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_26",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「好。影像的事，直接来问你。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_26",
+            "label": "继续",
+            "next": "s03_27",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_27",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「还有，替我跟南条医生说一句。更正版写得很清楚。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_27",
+            "label": "继续",
+            "next": "s03_28",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_28",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「你不自己告诉她？」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_28",
+            "label": "继续",
+            "next": "s03_29",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_29",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「……等她下次来问片子的时候再说。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_29",
+            "label": "继续",
+            "next": "s03_30",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_30",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「那我先把这一句转达了。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_30",
+            "label": "继续",
+            "next": "s03_31",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_31",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「要原话。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_31",
+            "label": "继续",
+            "next": "s03_32",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_32",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「一个字也不省。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_32",
+            "label": "继续",
+            "next": "s03_33",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_33",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「芹香重新面向屏幕。这一次，她没有等坂口开口，就把下一组影像调了出来。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_33",
+            "label": "继续",
+            "next": "s03_34",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_34",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "御園芹香",
+        "actor_id": "doc_serika",
+        "text": "「既然来了，顺便看看这个。你上次问的那条血管，我找到更清楚的层面了。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_34",
+            "label": "继续",
+            "next": "s03_35",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_35",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "actor_id": "doc_serika",
+        "text": "「好。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_35",
+            "label": "继续",
+            "next": "s03_36",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s03_36",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "「显示器亮起。芹香把自己的椅子朝旁边挪了一点，给坂口腾出看屏幕的位置。」",
+        "background_id": "diagnostics",
+        "outfit": "white_coat",
+        "expression": "neutral",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/white_coat/neutral.png",
+            "x": 1000,
+            "bottom": 560,
+            "width": 390,
+            "height": 440
+          }
+        ],
+        "choices": [
+          {
+            "id": "continue_s03_36",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ],
+    "cinematic": true
+  }
+]

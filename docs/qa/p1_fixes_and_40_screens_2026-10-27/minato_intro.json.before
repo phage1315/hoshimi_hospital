@@ -1,0 +1,42 @@
+[
+  {
+    "id": "minato_intro_sunday_cholecystectomy",
+    "title": "今天不是星期日吗？",
+    "category": "character_special_event",
+    "duration_days": 1,
+    "consumes_full_day": true,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "announcement": "星期日早晨，一名患者已经被按排程推进术前准备。遥凑的周末手术即将开始。",
+    "unlock_requirements": [
+      {
+        "type": "weekday",
+        "days": ["sun"]
+      }
+    ],
+    "required_characters": ["PLAYER"],
+    "prerequisite_events": [],
+    "event_chain": ["minato_intro_sunday_cholecystectomy_main"],
+    "completion_flags": [
+      "minato_intro_armed",
+      "minato_intro_complete",
+      "minato_intro_sunday_walk_complete",
+      "met_minato"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "minato_intro_sunday_cholecystectomy",
+      "title": "今天不是星期日吗？",
+      "chapters": ["完整回放"]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 235,
+      "final_week_allowed": false,
+      "sunday_start_allowed": true
+    },
+    "trigger_mode": "day_start",
+    "completion_hint": "“今天不是星期日吗？”事件已完成。"
+  }
+]

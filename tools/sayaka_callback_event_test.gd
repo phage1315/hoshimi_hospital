@@ -54,7 +54,7 @@ func _initialize() -> void:
 func run() -> void:
 	expect(content.load_all(), "Content loader failed: " + str(content.errors))
 	if failures > 0:
-		finish()
+		quit(1)
 		return
 	var game := GameState.new()
 	configure_game(game)
@@ -114,4 +114,4 @@ func run() -> void:
 	expect(bool(third_definition.get("completion_flags", []).has("sayaka_staff_patient_callback_complete")), "Callback 03 does not persist the chain completion flag")
 
 	print("Sayaka callback scheduling: %s checks, %s failure(s)" % [checks, failures])
-	finish(1 if failures > 0 else 0)
+	quit(1 if failures > 0 else 0)

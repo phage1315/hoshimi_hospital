@@ -9,15 +9,15 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1.md'
+SOURCE = ROOT / 'docs/source/chihaya_second_surgery/HOSHIMI_CHIHAYA_SECOND_SURGERY_CODEX_READY_V1_RUMI_REVISION.md'
 PREFIX = 'chihaya_second_surgery_'
 ART = 'assets/characters/patient_chihaya_second_surgery_v1'
 MIZUHO = 'assets/characters/mizuho_story_v1'
 ACTORS = {'阿库娅': 'doc_aqua', '七濑恋': 'nurse_haru',
-          '薗田爱实': 'nurse_sonoda_itsumi', '利根川安琪': 'nurse_ange'}
+          '岩崎留美': 'nurse_iwasaki_rumi', '利根川安琪': 'nurse_ange'}
 NAMES = {'旁白': 'Narrator', '坂口': 'Ryuji Sakaguchi', '千早': 'Chihaya Kuramoto',
          '瑞穗': 'Mizuho Shite', '阿库娅': 'Aqua Mizuki', '七濑恋': 'Ren Nanase',
-         '薗田爱实': 'Itsumi Sonoda', '利根川安琪': 'Ange Tonegawa'}
+         '岩崎留美': 'Rumi Iwasaki', '利根川安琪': 'Ange Tonegawa'}
 
 def read(path):
     return json.loads((ROOT / path).read_text())
@@ -55,6 +55,8 @@ def build():
     source = rows()
     translations = read('tools/fixtures/chihaya_second_surgery_en.json')
     staging = read('tools/fixtures/chihaya_second_surgery_staging.json')
+    approved_cgs = read('tools/fixtures/chihaya_second_surgery_cgs.json')
+    unmet_variants = read('tools/fixtures/chihaya_second_surgery_unmet_variants.json')
     assert set(translations) == {r['id'] for r in source}, 'English must cover every source paragraph'
     profiles = {a: read(f'data/staff/{a}/profile.json') for a in ACTORS.values()}
     state = {}
@@ -87,6 +89,9 @@ def build():
             node['actor_id'] = ACTORS[base]
         # A present-but-empty cast must still reach CharacterStage's renderer.
         node['hide_portrait'] = not cast
+        node.update(approved_cgs.get(sid, {}))
+        if sid in unmet_variants:
+            node['unmet_variant'] = unmet_variants[sid]
         all_nodes.append(node)
     definitions, steps = [], []
     en = read('data/localization/en.json')

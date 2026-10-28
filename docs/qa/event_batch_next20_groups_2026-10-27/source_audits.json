@@ -1,0 +1,67 @@
+[
+  {
+    "script": "sayaka_v2_source_audit.py",
+    "error": "",
+    "stdout": "SAYAKA V2 SOURCE AUDIT: 2509 checks; 0 failures; 230 beats, 7 authorized time edits\n"
+  },
+  {
+    "script": "sayaka_lv2_source_audit.py",
+    "error": "",
+    "stdout": "SAYAKA LV2 SOURCE AUDIT: 1466 checks; 0 failures; 146 explicit beats; 3 routes\n"
+  },
+  {
+    "script": "sayaka_lv3_source_audit.py",
+    "error": "",
+    "stdout": "LV3 SOURCE ROUTE haru/answer_a: 98 turns\nLV3 SOURCE ROUTE haru/answer_b: 98 turns\nLV3 SOURCE ROUTE hiroko/answer_a: 92 turns\nLV3 SOURCE ROUTE hiroko/answer_b: 92 turns\nLV3 SOURCE ROUTE fallback/answer_a: 92 turns\nLV3 SOURCE ROUTE fallback/answer_b: 92 turns\nSAYAKA LV3 SOURCE AUDIT: 1980 checks; 0 failures; 112 source beats; 115 nodes; 6 routes\n"
+  },
+  {
+    "script": "sayaka_lv4_event_test.py",
+    "error": "",
+    "stdout": ""
+  },
+  {
+    "script": "sayaka_lv5_source_test.py",
+    "error": "AssertionError: Text/punctuation changed at a03_0072",
+    "stdout": ""
+  },
+  {
+    "script": "satsuki_intro_audit.py",
+    "error": "",
+    "stdout": "PASS: 40 CN/EN nodes; exact dialogue, speakers, order; only specified narrator delimiters removed; final punchline unchanged\n"
+  },
+  {
+    "script": "ishigami_intro_audit.py",
+    "error": "",
+    "stdout": "PASS: 66 original paragraphs in 64 nodes; no text or speaker changes; two consecutive narration pairs joined with blank lines; complete English\n"
+  },
+  {
+    "script": "megumi_intro_audit.py",
+    "error": "",
+    "stdout": "PASS: 111 CN lines, speakers, punctuation and order unchanged; full EN translation; offscreen exit; only Megumi introduced\n"
+  },
+  {
+    "script": "rumi_shiori_intro_audit.py",
+    "error": "",
+    "stdout": "PASS: 35 original lines, speakers and order preserved; only 2 authorized opening variants added.\n"
+  },
+  {
+    "script": "saeko_authoring_audit.py",
+    "error": "",
+    "stdout": "PASS: 113 bilingual dialogue pairs; 28 exact CN/EN VN nodes with speakers/order/punctuation; 19 unchanged art files; confirmed stats, future ranks planned.\n"
+  },
+  {
+    "script": "serika_source_audit.py",
+    "error": "AssertionError: ",
+    "stdout": ""
+  },
+  {
+    "script": "serika_radiology_source_audit.py",
+    "error": "",
+    "stdout": "PASS: 221 exact dialogue lines/speakers/order; 15 exact opening fallbacks; 253 bilingual text nodes; 2 timed expression beats; existing assets; final-only +3/60-minute contract.\n"
+  },
+  {
+    "script": "itsumi_intro_audit.py",
+    "error": "",
+    "stdout": "PASS: 87 CN/EN nodes, speakers and order; only approved F004 wording changed; F ordinary uniform\n"
+  }
+]

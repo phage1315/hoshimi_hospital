@@ -10,6 +10,7 @@
     "auto_schedule": true,
     "announcement": "星期日早晨，一名患者已经被按排程推进术前准备。遥凑的周末手术即将开始。",
     "unlock_requirements": [
+      {"type": "completed_surgeries", "minimum": 10},
       {
         "type": "weekday",
         "days": ["sun"]

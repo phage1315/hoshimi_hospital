@@ -1,0 +1,1190 @@
+--- before/godot/ui/app.gd
++++ after/godot/ui/app.gd
+@@ -442,21 +442,8 @@
+ 	return chunks
+ 
+ func dialogue_hard_wrap(text: String) -> Array[String]:
+-	var chunks: Array[String] = []
+-	var current := ""
+-	var current_units := 0.0
+-	var maximum_units := DIALOGUE_PAGE_COLUMNS * DIALOGUE_PAGE_LINES
+-	for character in text:
+-		var units := 0.55 if character.unicode_at(0) < 128 else 1.0
+-		if current_units + units > maximum_units and not current.is_empty():
+-			chunks.append(current.strip_edges())
+-			current = ""
+-			current_units = 0.0
+-		current += character
+-		current_units += units
+-	if not current.strip_edges().is_empty():
+-		chunks.append(current.strip_edges())
+-	return chunks
++	# Preserve characters and prefer word boundaries for English long turns.
++	return authored_dialogue_pages(text)
+ 
+ func dialogue_pages(text: String, allow_scroll: bool = false) -> Array[String]:
+ 	if allow_scroll:
+@@ -539,7 +526,34 @@
+ 		"text": pages[dialogue_page_index],
+ 		"has_more": dialogue_page_index + 1 < pages.size(),
+ 		"allow_scroll": allow_scroll,
++		"quote_index": dialogue_quote_index(pages, dialogue_page_index),
+ 	}
++
++func dialogue_quote_index(pages: Array[String], selected_page: int) -> int:
++	var quote_index := -1
++	var closing_quote := ""
++	var pairs := {"「": "」", "『": "』", "“": "”", "\"": "\""}
++	for i in range(selected_page + 1):
++		var page_quote := quote_index if not closing_quote.is_empty() else -1
++		for character in pages[i]:
++			if not closing_quote.is_empty():
++				if character == closing_quote:
++					closing_quote = ""
++			elif pairs.has(character):
++				quote_index += 1
++				page_quote = quote_index
++				closing_quote = pairs[character]
++		if i == selected_page:
++			return page_quote
++	return -1
++
++func event_dialogue_presentation(node: Dictionary, dialogue: Dictionary, speaker: String, actor_name: String) -> Dictionary:
++	var text := str(dialogue.text)
++	# Explicit node ownership includes unquoted inner speech and NPC labels.
++	if str(node.get("presentation", "")) in ["authored", "sms"] or node.has("speaker_label"):
++		return {"speaker": speaker, "text": text}
++	var quote_index := int(dialogue.get("quote_index", -1))
++	return dialogue_page_presentation(speaker, str(node.get("speaker", "narrator")), text, actor_name, quote_index >= 0)
+ 
+ func vn_choice_y(choice_count: int, index: int) -> float:
+ 	var start_y := VN_SINGLE_ACTION_Y if choice_count == 1 else VN_CHOICE_LIST_Y
+@@ -553,7 +567,7 @@
+ 		return common_continue
+ 	return label
+ 
+-func dialogue_page_presentation(default_speaker: String, source_role: String, page_text: String, actor_speaker: String = "") -> Dictionary:
++func dialogue_page_presentation(default_speaker: String, source_role: String, page_text: String, actor_speaker: String = "", quoted_page: bool = false) -> Dictionary:
+ 	var shown_text := page_text.strip_edges()
+ 	var colon_index := shown_text.find("：")
+ 	if colon_index < 0:
+@@ -573,7 +587,7 @@
+ 			}
+ 	if source_role == "player":
+ 		return {"speaker": protagonist_name(), "text": shown_text}
+-	var begins_with_quote := shown_text.begins_with("「") or shown_text.begins_with("『") or shown_text.begins_with("“") or shown_text.begins_with("\"")
++	var begins_with_quote := quoted_page or shown_text.begins_with("「") or shown_text.begins_with("『") or shown_text.begins_with("“") or shown_text.begins_with("\"")
+ 	if source_role == "actor" and begins_with_quote:
+ 		return {"speaker": default_speaker, "text": shown_text}
+ 	if source_role == "narrator" and begins_with_quote:
+@@ -798,8 +812,9 @@
+ 	box.add_theme_stylebox_override("panel", panel_style(Color(0.06, 0.15, 0.20, 0.96), Color("819593")))
+ 	page.add_child(box)
+ 	var speaker_label := label_at(speaker, Vector2(82, 558), 22, Color("e8cfaa"), 1100)
+-	var dialogue_text := scrollable_text_at(text, Vector2(82, 598), Vector2(1100, 91), 22, Color("f4f0e6"), dialogue_name)
++	var dialogue_text := scrollable_text_at(text, Vector2(82, 594), Vector2(1100, 98), 22, Color("f4f0e6"), dialogue_name)
+ 	dialogue_text.scroll_active = allow_scroll
++	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+ 	return [box, speaker_label, dialogue_text]
+ 
+ func title_screen() -> void:
+@@ -2893,7 +2908,7 @@
+ 			visual_actor = supporting_actor
+ 	add_character_event_visual(visual_actor, node, event_outfit)
+ 	if node.has("scene_caption"):
+-		label_at(str(node.scene_caption), Vector2(60, 140), 23, Color("f4f0e6"), 600).name = "EventSceneCaption"
++		label_at(str(node.scene_caption), Vector2(60, 175), 23, Color("f4f0e6"), 600).name = "EventSceneCaption"
+ 	if CharacterStage.present(self, node, choose_character_event):
+ 		return
+ 	var source_role := str(node.get("speaker", "actor"))
+@@ -2901,7 +2916,7 @@
+ 	if bool(node.get("anonymous_unmet", false)) and source_role == "actor" and not game.staff_is_met(visual_actor_id):
+ 		speaker = tx("ui.takemi.nurse", "护士")
+ 	var dialogue := dialogue_page("character:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
+-	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
++	var presentation := event_dialogue_presentation(node, dialogue, speaker, actor_name)
+ 	if str(node.get("presentation", "")) in ["authored", "sms"]:
+ 		# V2 nodes carry explicit ownership. Do not infer a different speaker
+ 		# from a quotation inside narration or the wording of an English line.
+@@ -3492,7 +3507,7 @@
+ 	var default_speaker := special_event_speaker(node, actor, str(step.id))
+ 	var authored_turn := str(node.get("presentation", "")) == "authored"
+ 	var dialogue := dialogue_page("special:%s:%s:%s" % [str(definition.id), str(step.id), str(node.id)], special_event_localized_text(step, node), bool(node.get("allow_dialogue_scroll", false)), authored_turn)
+-	var presentation := dialogue_page_presentation(default_speaker, source_role, str(dialogue.text), str(actor.get("name", "")))
++	var presentation := event_dialogue_presentation(node, dialogue, default_speaker, str(actor.get("name", "")))
+ 	if authored_turn:
+ 		presentation = {"speaker": default_speaker, "text": str(dialogue.text)}
+ 	var dialogue_items := vn_dialogue_box(str(presentation.speaker), str(presentation.text), "SpecialEventDialogue", bool(dialogue.allow_scroll))
+@@ -3852,7 +3867,7 @@
+ 	var default_speaker := special_event_speaker(node, actor, str(step.id))
+ 	var authored_turn := str(node.get("presentation", "")) == "authored"
+ 	var dialogue := dialogue_page("special_replay:%s:%s:%s" % [str(event.definition.id), str(step.id), str(node.id)], special_event_localized_text(step, node), bool(node.get("allow_dialogue_scroll", false)), authored_turn)
+-	var presentation := dialogue_page_presentation(default_speaker, source_role, str(dialogue.text), str(actor.get("name", "")))
++	var presentation := event_dialogue_presentation(node, dialogue, default_speaker, str(actor.get("name", "")))
+ 	if authored_turn:
+ 		presentation = {"speaker": default_speaker, "text": str(dialogue.text)}
+ 	var dialogue_items := vn_dialogue_box(str(presentation.speaker), str(presentation.text), "SpecialEventReplayDialogue", bool(dialogue.allow_scroll))
+@@ -3976,7 +3991,7 @@
+ 		visual_actor = supporting_actor
+ 	add_character_event_visual(visual_actor, node, str(node.get("outfit", definition.outfit)))
+ 	if node.has("scene_caption"):
+-		label_at(str(node.scene_caption), Vector2(60, 140), 23, Color("f4f0e6"), 600)
++		label_at(str(node.scene_caption), Vector2(60, 175), 23, Color("f4f0e6"), 600)
+ 	if CharacterStage.present(self, node, choose_gallery_replay):
+ 		return
+ 	var source_role := str(node.get("speaker", "actor"))
+@@ -3984,7 +3999,7 @@
+ 	if bool(node.get("anonymous_unmet", false)) and source_role == "actor" and not game.staff_is_met(str(node.get("actor_id", definition.actor_id))):
+ 		speaker = tx("ui.takemi.nurse", "护士")
+ 	var dialogue := dialogue_page("character_replay:%s:%s" % [str(definition.id), str(node.id)], str(node.text), bool(node.get("allow_dialogue_scroll", false)), node.has("presentation"))
+-	var presentation := dialogue_page_presentation(speaker, source_role, str(dialogue.text), actor_name)
++	var presentation := event_dialogue_presentation(node, dialogue, speaker, actor_name)
+ 	if str(node.get("presentation", "")) in ["authored", "sms"]:
+ 		presentation = {"speaker": speaker, "text": str(dialogue.text)}
+ 	var cinematic := bool(definition.get("cinematic", false))
+@@ -3995,8 +4010,9 @@
+ 		widgets[2].size.y = 98
+ 	else:
+ 		label_at(str(presentation.speaker), Vector2(65, 205), 22, Color("e8cfaa"), 640)
+-		var replay_text := scrollable_text_at(str(presentation.text), Vector2(65, 253), Vector2(655, 170), 24, Color("f4f0e6"), "GalleryReplayDialogue")
++		var replay_text := scrollable_text_at(str(presentation.text), Vector2(65, 253), Vector2(655, 180), 24, Color("f4f0e6"), "GalleryReplayDialogue")
+ 		replay_text.scroll_active = bool(dialogue.allow_scroll)
++		replay_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+ 	var action_y := VN_SINGLE_ACTION_Y if cinematic else 445.0
+ 	var exit_action: Callable = show_character_events.bind(gallery_replay_return_actor, character_event_return_location) if gallery_replay_is_test else show_gallery_entry.bind(definition.id)
+ 	if bool(dialogue.has_more):
+--- before/data/staff/pharmacist_manami/events.json
++++ after/data/staff/pharmacist_manami/events.json
+@@ -47,7 +47,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0002",
+@@ -67,7 +68,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0003",
+@@ -87,7 +89,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0004",
+@@ -107,7 +110,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0005",
+@@ -127,7 +131,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0006",
+@@ -147,7 +152,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0007",
+@@ -167,7 +173,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0008",
+@@ -187,7 +194,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0009",
+@@ -207,7 +215,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0010",
+@@ -227,7 +236,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0011",
+@@ -247,7 +257,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0012",
+@@ -267,7 +278,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0013",
+@@ -287,7 +299,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0014",
+@@ -307,7 +320,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0015",
+@@ -327,7 +341,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0016",
+@@ -347,7 +362,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0017",
+@@ -367,7 +383,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0018",
+@@ -387,7 +404,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0019",
+@@ -407,7 +425,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0020",
+@@ -427,7 +446,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0021",
+@@ -447,7 +467,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0022",
+@@ -467,7 +488,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0023",
+@@ -487,7 +509,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0024",
+@@ -507,7 +530,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0025",
+@@ -527,7 +551,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0026",
+@@ -547,7 +572,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0027",
+@@ -567,7 +593,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0028",
+@@ -587,7 +614,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0029",
+@@ -607,7 +635,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0030",
+@@ -627,7 +656,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0031",
+@@ -647,7 +677,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0032",
+@@ -667,7 +698,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0033",
+@@ -687,7 +719,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0034",
+@@ -707,7 +740,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0035",
+@@ -727,7 +761,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0036",
+@@ -747,7 +782,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0037",
+@@ -767,7 +803,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0038",
+@@ -787,7 +824,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0039",
+@@ -807,7 +845,8 @@
+             },
+             "flags": []
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       },
+       {
+         "id": "im0_0040",
+@@ -829,7 +868,8 @@
+               "met_pharmacist_manami"
+             ]
+           }
+-        ]
++        ],
++        "presentation": "authored"
+       }
+     ],
+     "benefit_id": "",
+--- before/data/staff/doc_rei/special_event_steps.json
++++ after/data/staff/doc_rei/special_event_steps.json
+@@ -9345,18 +9345,55 @@
+       {
+         "id": "wake",
+         "speaker": "actor",
+-        "text": "「佳織。」\n\n佳織睁眼，看见两人，又看见自己的手腕：“……实验还没有结束。”",
++        "text": "「佳織。」",
+         "expression": "neutral",
+         "actor_id": "doc_asuka",
+         "outfit": "white_coat",
+         "choices": [
+           {
++            "id": "continue_wake_turn",
++            "label": "继续",
++            "next": "wake_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored",
++        "speaker_label": "城宮 明日香"
++      },
++      {
++        "id": "wake_turn_2",
++        "speaker": "narrator",
++        "text": "佳織睁眼，看见两人，又看见自己的手腕：",
++        "expression": "neutral",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
++            "id": "continue_wake_turn_2_turn",
++            "label": "继续",
++            "next": "wake_turn_3",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "wake_turn_3",
++        "speaker": "actor",
++        "text": "“……实验还没有结束。”",
++        "expression": "neutral",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
+             "id": "continue_wake",
+             "label": "继续",
+             "next": "ange",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織"
+       },
+       {
+         "id": "ange",
+@@ -9410,18 +9447,38 @@
+       {
+         "id": "nude_command_cg",
+         "speaker": "narrator",
+-        "text": "佳織只戴上手术帽和口罩，赤身冲进手术室的非无菌侧。她没有触碰无菌器械，已经指向监护屏和准备区下达指令。\n\n「安琪，复述生命体征和抗菌药时间。本庄，核对器械。小夜香先接台。」",
++        "text": "佳織只戴上手术帽和口罩，赤身冲进手术室的非无菌侧。她没有触碰无菌器械，已经指向监护屏和准备区下达指令。",
+         "expression": "neutral",
+         "cg_path": "assets/events/character_events/rei/lv3/emergency_command_nude.png",
+         "hide_portrait": true,
+         "choices": [
+           {
++            "id": "continue_nude_command_cg_turn",
++            "label": "继续",
++            "next": "nude_command_cg_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "nude_command_cg_turn_2",
++        "speaker": "actor",
++        "text": "「安琪，复述生命体征和抗菌药时间。本庄，核对器械。小夜香先接台。」",
++        "expression": "neutral",
++        "cg_path": "assets/events/character_events/rei/lv3/emergency_command_nude.png",
++        "hide_portrait": true,
++        "choices": [
++          {
+             "id": "continue_nude_command_cg",
+             "label": "继续",
+             "next": "clear_case",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織",
++        "actor_id": "doc_rei"
+       },
+       {
+         "id": "clear_case",
+@@ -9456,19 +9513,73 @@
+       },
+       {
+         "id": "why",
+-        "speaker": "actor",
+-        "text": "明日香问：“为什么？”\n\n佳織低声说：“你知道原因。”",
++        "speaker": "narrator",
++        "text": "明日香问：",
+         "expression": "neutral",
+         "actor_id": "doc_asuka",
+         "outfit": "white_coat",
+         "choices": [
+           {
++            "id": "continue_why_turn",
++            "label": "继续",
++            "next": "why_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "why_turn_2",
++        "speaker": "actor",
++        "text": "“为什么？”",
++        "expression": "neutral",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
++            "id": "continue_why_turn_2_turn",
++            "label": "继续",
++            "next": "why_turn_3",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored",
++        "speaker_label": "城宮 明日香"
++      },
++      {
++        "id": "why_turn_3",
++        "speaker": "narrator",
++        "text": "佳織低声说：",
++        "expression": "neutral",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
++            "id": "continue_why_turn_3_turn",
++            "label": "继续",
++            "next": "why_turn_4",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "why_turn_4",
++        "speaker": "actor",
++        "text": "“你知道原因。”",
++        "expression": "neutral",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
+             "id": "continue_why",
+             "label": "继续",
+             "next": "trust",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織"
+       },
+       {
+         "id": "trust",
+@@ -9534,19 +9645,73 @@
+       },
+       {
+         "id": "comment",
+-        "speaker": "actor",
+-        "text": "本庄低声说：“深山医生。手术袍不是衣服。”\n\n佳織回答：“我知道。患者先上台。”",
++        "speaker": "narrator",
++        "text": "本庄低声说：",
+         "expression": "worried",
+         "actor_id": "nurse_moe",
+         "outfit": "sterile",
+         "choices": [
+           {
++            "id": "continue_comment_turn",
++            "label": "继续",
++            "next": "comment_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "comment_turn_2",
++        "speaker": "actor",
++        "text": "“深山医生。手术袍不是衣服。”",
++        "expression": "worried",
++        "actor_id": "nurse_moe",
++        "outfit": "sterile",
++        "choices": [
++          {
++            "id": "continue_comment_turn_2_turn",
++            "label": "继续",
++            "next": "comment_turn_3",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored",
++        "speaker_label": "本庄 萌惠"
++      },
++      {
++        "id": "comment_turn_3",
++        "speaker": "narrator",
++        "text": "佳織回答：",
++        "expression": "worried",
++        "actor_id": "nurse_moe",
++        "outfit": "sterile",
++        "choices": [
++          {
++            "id": "continue_comment_turn_3_turn",
++            "label": "继续",
++            "next": "comment_turn_4",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "comment_turn_4",
++        "speaker": "actor",
++        "text": "“我知道。患者先上台。”",
++        "expression": "worried",
++        "actor_id": "nurse_moe",
++        "outfit": "sterile",
++        "choices": [
++          {
+             "id": "continue_comment",
+             "label": "继续",
+             "next": "cg",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織"
+       },
+       {
+         "id": "cg",
+@@ -9651,35 +9816,142 @@
+       },
+       {
+         "id": "pattern",
+-        "speaker": "actor",
+-        "text": "明日香问：“现在，规律还成立吗？”\n\n佳織回答：“样本量变成三。结论是——不成立。”",
++        "speaker": "narrator",
++        "text": "明日香问：",
+         "expression": "smile",
+         "actor_id": "doc_asuka",
+         "outfit": "white_coat",
+         "choices": [
+           {
++            "id": "continue_pattern_turn",
++            "label": "继续",
++            "next": "pattern_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "pattern_turn_2",
++        "speaker": "actor",
++        "text": "“现在，规律还成立吗？”",
++        "expression": "smile",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
++            "id": "continue_pattern_turn_2_turn",
++            "label": "继续",
++            "next": "pattern_turn_3",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored",
++        "speaker_label": "城宮 明日香"
++      },
++      {
++        "id": "pattern_turn_3",
++        "speaker": "narrator",
++        "text": "佳織回答：",
++        "expression": "smile",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
++            "id": "continue_pattern_turn_3_turn",
++            "label": "继续",
++            "next": "pattern_turn_4",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "pattern_turn_4",
++        "speaker": "actor",
++        "text": "“样本量变成三。结论是——不成立。”",
++        "expression": "smile",
++        "actor_id": "doc_asuka",
++        "outfit": "white_coat",
++        "choices": [
++          {
+             "id": "continue_pattern",
+             "label": "继续",
+             "next": "god",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織"
+       },
+       {
+         "id": "god",
+-        "speaker": "actor",
+-        "text": "坂口问：“手术室之神接受解释了？”\n\n佳織回答：“不。是实验设计有问题。”",
++        "speaker": "narrator",
++        "text": "坂口问：",
+         "expression": "warm",
+         "actor_id": "doc_rei",
+         "outfit": "scrubs",
+         "choices": [
+           {
++            "id": "continue_god_turn",
++            "label": "继续",
++            "next": "god_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "god_turn_2",
++        "speaker": "player",
++        "text": "“手术室之神接受解释了？”",
++        "expression": "warm",
++        "actor_id": "doc_rei",
++        "outfit": "scrubs",
++        "choices": [
++          {
++            "id": "continue_god_turn_2_turn",
++            "label": "继续",
++            "next": "god_turn_3",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "god_turn_3",
++        "speaker": "narrator",
++        "text": "佳織回答：",
++        "expression": "warm",
++        "actor_id": "doc_rei",
++        "outfit": "scrubs",
++        "choices": [
++          {
++            "id": "continue_god_turn_3_turn",
++            "label": "继续",
++            "next": "god_turn_4",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "god_turn_4",
++        "speaker": "actor",
++        "text": "“不。是实验设计有问题。”",
++        "expression": "warm",
++        "actor_id": "doc_rei",
++        "outfit": "scrubs",
++        "choices": [
++          {
+             "id": "continue_god",
+             "label": "继续",
+             "next": "rank3",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織"
+       },
+       {
+         "id": "rank3",
+@@ -9699,19 +9971,73 @@
+       },
+       {
+         "id": "end3",
+-        "speaker": "actor",
+-        "text": "离开前，本庄把衣物袋递还给她：“下次排除变量，请先穿好衣服。”\n\n佳織接过袋子：“下次不会有这种变量。”",
++        "speaker": "narrator",
++        "text": "离开前，本庄把衣物袋递还给她：",
+         "expression": "warm",
+         "actor_id": "nurse_moe",
+         "outfit": "uniform",
+         "choices": [
+           {
++            "id": "continue_end3_turn",
++            "label": "继续",
++            "next": "end3_turn_2",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "end3_turn_2",
++        "speaker": "actor",
++        "text": "“下次排除变量，请先穿好衣服。”",
++        "expression": "warm",
++        "actor_id": "nurse_moe",
++        "outfit": "uniform",
++        "choices": [
++          {
++            "id": "continue_end3_turn_2_turn",
++            "label": "继续",
++            "next": "end3_turn_3",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored",
++        "speaker_label": "本庄 萌惠"
++      },
++      {
++        "id": "end3_turn_3",
++        "speaker": "narrator",
++        "text": "佳織接过袋子：",
++        "expression": "warm",
++        "actor_id": "nurse_moe",
++        "outfit": "uniform",
++        "choices": [
++          {
++            "id": "continue_end3_turn_3_turn",
++            "label": "继续",
++            "next": "end3_turn_4",
++            "requirements": []
++          }
++        ],
++        "presentation": "authored"
++      },
++      {
++        "id": "end3_turn_4",
++        "speaker": "actor",
++        "text": "“下次不会有这种变量。”",
++        "expression": "warm",
++        "actor_id": "nurse_moe",
++        "outfit": "uniform",
++        "choices": [
++          {
+             "id": "finish_lv3",
+             "label": "结束今天",
+             "next": "@day_end",
+             "requirements": []
+           }
+-        ]
++        ],
++        "presentation": "authored",
++        "speaker_label": "深山 佳織"
+       }
+     ]
+   }
+--- before/data/localization/en.json
++++ after/data/localization/en.json
+@@ -8595,26 +8595,21 @@
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.cg.text": "Kaori takes the lead-surgeon position, with Sayaka temporarily assisting across the table and Honjo guarding the instrument table. From the front she is simply a focused surgeon. Only from a rear three-quarter angle is it apparent that she has no scrubs under the gown.",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.clear_case.choices.continue_clear_case.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.clear_case.text": "This time, patient identity, diagnosis, and procedure are all clear. She truly needs immediate surgery.",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment.choices.continue_comment.label": "Continue",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment.text": "Honjo says quietly, “Dr. Miyama. A surgical gown is not clothing.”\n\nKaori answers, “I know. The patient comes first.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment.text": "Honjo says quietly,",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.complete.choices.continue_complete.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.complete.text": "After the hardest stage, the monitoring trend stabilizes.\n\n“The critical step is complete. Nothing has been missed. We can close.”",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.consent.choices.continue_consent.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.consent.text": "“Correct. Empty room, no invasive procedure, no anesthesia. I am only ruling out an... irrational variable.”",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3.choices.finish_lv3.label": "End the day",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3.text": "Before they leave, Honjo returns the clothing bag. “The next time you rule out a variable, please put your clothes on first.”\n\nKaori takes the bag. “There will not be such a variable next time.”",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.god.choices.continue_god.label": "Continue",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.god.text": "Sakaguchi asks, “The operating-room god accepted your explanation?”\n\nKaori answers, “No. The experimental design was flawed.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3.text": "Before they leave, Honjo returns the clothing bag.",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god.text": "Sakaguchi asks,",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.gown.choices.continue_gown.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.gown.text": "Sayaka accompanies the patient into the operating room first, completes the preoperative verification, and temporarily takes the first-assistant position. Kaori scrubs, caps, masks, and enters the operating room to put on a sterile gown. She did not return to the changing room and is not wearing scrubs. This is not standard procedure; it is her personal priority error under emergency pressure.",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.moe.choices.continue_moe.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.moe.text": "“I am confirming once more: this is your own request. Your wrists and ankles will use only quick-release safety restraints. If you say stop, I release them.”",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg.choices.continue_nude_command_cg.label": "Continue",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg.text": "Wearing only a surgical cap and mask, Kaori rushes into the nonsterile side of the operating room. Without touching the sterile instruments, she is already pointing toward the monitors and preparation area and issuing orders.\n\n“Angie, restate the vital signs and antibiotic time. Honjo, verify the instruments. Sayaka, cover the table first.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg.text": "Wearing only a surgical cap and mask, Kaori rushes into the nonsterile side of the operating room. Without touching the sterile instruments, she is already pointing toward the monitors and preparation area and issuing orders.",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.opening.choices.continue_opening.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.opening.text": "On an off-duty evening, only one bank of lights is on in an empty operating room. Kaori explains her proposed “empirical exclusion” to Moe Honjo.",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern.choices.continue_pattern.label": "Continue",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern.text": "Asuka asks, “Does the pattern still hold?”\n\nKaori answers, “The sample size is now three. The conclusion is: no.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern.text": "Asuka asks,",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.prayer.choices.continue_prayer.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.prayer.text": "“If this so-called operating-room god was merely displeased with my last two judgments, it has at least heard my explanation now.”",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.rank3.choices.continue_rank3.label": "Continue",
+@@ -8638,10 +8633,8 @@
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.table.text": "Kaori removes all of her clothing herself and lies on the table wearing only a surgical cap. As agreed, Honjo secures her wrists and ankles and checks the skin, tension, and every quick-release buckle.",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.trust.choices.continue_trust.label": "Continue",
+     "collections.special_event_steps.miyama_03_or_god_main.nodes.trust.text": "“I only know that the previous two operations did not prove that you cannot operate.”",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake.choices.continue_wake.label": "Continue",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake.text": "“Kaori.”\n\nKaori opens her eyes, sees them, then looks at her wrist. “...The experiment is not finished.”",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.why.choices.continue_why.label": "Continue",
+-    "collections.special_event_steps.miyama_03_or_god_main.nodes.why.text": "Asuka asks, “Why?”\n\nKaori says quietly, “You know the reason.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake.text": "“Kaori.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why.text": "Asuka asks,",
+     "collections.special_event_steps.miyama_03_or_god_main.title": "The God of the Operating Room",
+     "collections.special_event_steps.or_acceptance_training_01_main.nodes.act1_open.choices.act1_open_next.label": "continue",
+     "collections.special_event_steps.or_acceptance_training_01_main.nodes.act1_open.text": "[Act 1: Before activation]\nNo patients have yet been scheduled for the new operating room. The shadowless lamps, anesthesia machines and monitoring equipment all have their standby lights on, and there is only the smell of new equipment, disinfectant and plastic packaging materials in the air.",
+@@ -27807,6 +27800,61 @@
+     "collections.special_events.chihaya_third_surgery_c.gallery_entry.chapters.0": "Full Replay",
+     "ui.chihaya_third_surgery.complete_time": "Continuous three-day event complete / Now %s %s",
+     "collections.special_events.chihaya_third_surgery_a.announcement": "A continuous three-day story: Monday 09:00 to Wednesday 10:00. Normal activities and saving are unavailable during the event.",
+-    "collections.special_events.chihaya_third_surgery_c.completion_hint": "Serika Misono Lv2 reached: she can now be invited as an assistant surgeon. Chihaya remains hospitalized for recovery; Mizuho’s later appointments are handled separately."
++    "collections.special_events.chihaya_third_surgery_c.completion_hint": "Serika Misono Lv2 reached: she can now be invited as an assistant surgeon. Chihaya remains hospitalized for recovery; Mizuho’s later appointments are handled separately.",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake.speaker_label": "Asuka Shiromiya",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake.choices.continue_wake_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake_turn_2.text": "Kaori opens her eyes, sees them, then looks at her wrist.",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake_turn_2.choices.continue_wake_turn_2_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake_turn_3.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake_turn_3.text": "“...The experiment is not finished.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.wake_turn_3.choices.continue_wake.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg.choices.continue_nude_command_cg_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg_turn_2.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg_turn_2.text": "“Angie, restate the vital signs and antibiotic time. Honjo, verify the instruments. Sayaka, cover the table first.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.nude_command_cg_turn_2.choices.continue_nude_command_cg.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why.choices.continue_why_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_2.speaker_label": "Asuka Shiromiya",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_2.text": "“Why?”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_2.choices.continue_why_turn_2_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_3.text": "Kaori says quietly,",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_3.choices.continue_why_turn_3_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_4.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_4.text": "“You know the reason.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.why_turn_4.choices.continue_why.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment.choices.continue_comment_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_2.speaker_label": "Moe Honjo",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_2.text": "“Dr. Miyama. A surgical gown is not clothing.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_2.choices.continue_comment_turn_2_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_3.text": "Kaori answers,",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_3.choices.continue_comment_turn_3_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_4.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_4.text": "“I know. The patient comes first.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.comment_turn_4.choices.continue_comment.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern.choices.continue_pattern_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_2.speaker_label": "Asuka Shiromiya",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_2.text": "“Does the pattern still hold?”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_2.choices.continue_pattern_turn_2_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_3.text": "Kaori answers,",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_3.choices.continue_pattern_turn_3_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_4.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_4.text": "“The sample size is now three. The conclusion is: no.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.pattern_turn_4.choices.continue_pattern.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god.choices.continue_god_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_2.text": "“The operating-room god accepted your explanation?”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_2.choices.continue_god_turn_2_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_3.text": "Kaori answers,",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_3.choices.continue_god_turn_3_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_4.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_4.text": "“No. The experimental design was flawed.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.god_turn_4.choices.continue_god.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3.choices.continue_end3_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_2.speaker_label": "Moe Honjo",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_2.text": "“The next time you rule out a variable, please put your clothes on first.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_2.choices.continue_end3_turn_2_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_3.text": "Kaori takes the bag.",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_3.choices.continue_end3_turn_3_turn.label": "Continue",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_4.speaker_label": "Kaori Miyama",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_4.text": "“There will not be such a variable next time.”",
++    "collections.special_event_steps.miyama_03_or_god_main.nodes.end3_turn_4.choices.finish_lv3.label": "End the day"
+   }
+ }
+--- before/tools/dialogue_layout_audit.py
++++ after/tools/dialogue_layout_audit.py
+@@ -68,18 +68,19 @@
+ def hard_wrap(text: str) -> list[str]:
+     pages: list[str] = []
+     current = ""
+-    units = 0.0
+-    maximum = COLUMNS * LINES
++    maximum = (COLUMNS - 4.0) * LINES
+     for char in text:
+-        char_units = 1.0 if unicodedata.east_asian_width(char) in "WFA" else 0.55
+-        if current and units + char_units > maximum:
+-            pages.append(current.strip())
+-            current = ""
+-            units = 0.0
++        if current and visual_units(current + char) > maximum:
++            split_at = current.rfind(" ")
++            if split_at > len(current) / 2:
++                pages.append(current[:split_at + 1])
++                current = current[split_at + 1:]
++            else:
++                pages.append(current)
++                current = ""
+         current += char
+-        units += char_units
+-    if current.strip():
+-        pages.append(current.strip())
++    if current:
++        pages.append(current)
+     return pages
+ 
+ 
+--- before/tools/import_manami_lv0_intro.py
++++ after/tools/import_manami_lv0_intro.py
+@@ -98,6 +98,7 @@
+         speaker = {"旁白": "narrator", "坂口隆司": "player", "飯村真奈美": "actor"}[role]
+         node = {
+             "id": node_id,
++            "presentation": "authored",
+             "speaker": speaker,
+             "actor_id": "pharmacist_manami",
+             "outfit": "pharmacist",

@@ -1,0 +1,255 @@
+{
+  "source": "User-approved Chinese draft in this chat, 2026-10-26. Existing five patient captions remain unchanged.",
+  "scope": "Every indexed patient bundle stores the pre-incision line in reaction_lines.incision_ready. Where a matching CG exists, its caption also shows the same line. Three CG assets remain pending; no new CG or trigger was created.",
+  "entries": [
+    {
+      "patient_id": "patient_gigi",
+      "zh": "「等等……别靠过来！我、我没办法看着这个……！」",
+      "en": "Wait... Don't bring it closer! I-I can't watch this...!",
+      "status": "dialogue_in_patient_data_asset_pending"
+    },
+    {
+      "patient_id": "patient_emi_higashikawa",
+      "zh": "「不……不行！对不起，求您先把刀移开……！」",
+      "en": "No... I can't! I'm sorry, please move the knife away...!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_emi_higashikawa",
+      "source": "data/patients/patient_emi_higashikawa/patient.json",
+      "english_key": "patient_bundles.patient_emi_higashikawa.exclusive_cg_pools.ward_preparation.incision_ready_patient_emi_higashikawa.caption",
+      "original_caption": "器械已经递到手中，手术刀停在东川杏子预定切口的上方。",
+      "original_english_caption": "The instrument has been passed over, and the scalpel is poised above Kyoko Higashikawa's planned incision site."
+    },
+    {
+      "patient_id": "patient_emi_koda",
+      "zh": "「那、那把刀……不要！我还没准备好啊……！」",
+      "en": "Th-that knife... No! I'm not ready yet...!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_emi_koda",
+      "source": "data/patients/patient_emi_koda/patient.json",
+      "english_key": "patient_bundles.patient_emi_koda.exclusive_cg_pools.ward_preparation.incision_ready_patient_emi_koda.caption",
+      "original_caption": "器械已经递到坂口医生手中，手术刀停在香田映见预定切口的上方。",
+      "original_english_caption": "The instrument has been passed to Dr. Sakaguchi, and the scalpel is poised above Emi Koda's planned incision site."
+    },
+    {
+      "patient_id": "patient_tifa",
+      "zh": "「我会……不、不行！医生，我真的好怕……！」",
+      "en": "I'll... N-no, I can't! Doctor, I'm so scared...!",
+      "status": "integrated",
+      "pool_id": "scalpel_ready_patient_tifa",
+      "source": "data/patients/patient_tifa/patient.json",
+      "english_key": "patient_bundles.patient_tifa.exclusive_cg_pools.ward_preparation.scalpel_ready_patient_tifa.caption",
+      "original_caption": "手术刀已经准备就绪，停在蒂法·洛克哈特预定切口的上方。",
+      "original_english_caption": "The scalpel is ready, poised above Tifa Lockhart's planned incision site."
+    },
+    {
+      "patient_id": "patient_aerith",
+      "zh": "「等、等等！我没在开玩笑……先别切，求你！」",
+      "en": "W-wait! I'm not joking... Don't cut yet, please!",
+      "status": "integrated",
+      "pool_id": "incision_patient_aerith",
+      "source": "data/patients/patient_aerith/patient.json",
+      "english_key": "patient_bundles.patient_aerith.exclusive_cg_pools.ward_preparation.incision_patient_aerith.caption",
+      "original_caption": "爱丽丝·盖恩斯巴勒 · 下刀瞬间",
+      "original_english_caption": "Aerith Gainsborough · Incision"
+    },
+    {
+      "patient_id": "patient_amate_yuzuriha",
+      "zh": "「别过来！等一下啊！我说了等一下……！」",
+      "en": "Don't come closer! Wait! I said wait...!",
+      "status": "integrated",
+      "pool_id": "incision_patient_amate_yuzuriha",
+      "source": "data/patients/patient_amate_yuzuriha/patient.json",
+      "english_key": "patient_bundles.patient_amate_yuzuriha.exclusive_cg_pools.ward_preparation.incision_patient_amate_yuzuriha.caption",
+      "original_caption": "手术刀沿预定切口落下，天手让叶进入正式手术阶段。",
+      "original_english_caption": "The scalpel follows the planned incision as Amate Yuzuriha enters the formal operative phase."
+    },
+    {
+      "patient_id": "patient_nyaan",
+      "zh": "「……不要。不要……！求你，先别切……！」",
+      "en": "...No. No...! Please, don't cut yet...!",
+      "status": "integrated",
+      "pool_id": "incision_patient_nyaan",
+      "source": "data/patients/patient_nyaan/patient.json",
+      "english_key": "patient_bundles.patient_nyaan.exclusive_cg_pools.ward_preparation.incision_patient_nyaan.caption",
+      "original_caption": "手术刀沿预定切口落下，妮安进入正式手术阶段。",
+      "original_english_caption": "The scalpel descends along the planned incision as Nyaan enters the operation proper."
+    },
+    {
+      "patient_id": "patient_comoli_harcourt",
+      "zh": "「明、明白……不，等等！我现在没办法……！」",
+      "en": "U-understood... No, wait! I can't do this right now...!",
+      "status": "dialogue_in_patient_data_asset_pending"
+    },
+    {
+      "patient_id": "patient_sepha",
+      "zh": "「刀已经……等等！我听不进去了，先别开始！」",
+      "en": "The knife's already... Wait! I can't take any of this in. Don't start yet!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_sepha",
+      "source": "data/patients/patient_sepha/patient.json",
+      "english_key": "patient_bundles.patient_sepha.exclusive_cg_pools.ward_preparation.incision_ready_patient_sepha.caption",
+      "original_caption": "瑟法 · 下刀前",
+      "original_english_caption": "Sepha · Before incision"
+    },
+    {
+      "patient_id": "patient_makimura_kaori",
+      "zh": "「我没……啊！别、别切！我怕了，真的怕了！」",
+      "en": "I'm not... Ah! D-don't cut! I'm scared, I'm really scared!",
+      "status": "integrated",
+      "pool_id": "incision_patient_makimura_kaori",
+      "source": "data/patients/patient_makimura_kaori/patient.json",
+      "english_key": "patient_bundles.patient_makimura_kaori.exclusive_cg_pools.ward_preparation.incision_patient_makimura_kaori.caption",
+      "original_caption": "槇村香 · 下刀",
+      "original_english_caption": "Kaori Makimura · Incision"
+    },
+    {
+      "patient_id": "patient_nogami_saeko",
+      "zh": "「等一下……先把刀移开。求你，我没在说笑……！」",
+      "en": "Wait... Move the knife away first. Please, I'm not joking...!",
+      "status": "integrated",
+      "pool_id": "incision_patient_nogami_saeko",
+      "source": "data/patients/patient_nogami_saeko/patient.json",
+      "english_key": "patient_bundles.patient_nogami_saeko.exclusive_cg_pools.ward_preparation.incision_patient_nogami_saeko.caption",
+      "original_caption": "手术刀来到预定切口处，野上冴子等待团队开始手术。",
+      "original_english_caption": "The scalpel reaches the planned incision site as Saeko Nogami waits for the team to begin."
+    },
+    {
+      "patient_id": "patient_kocho_shinobu",
+      "zh": "「我知道……可是、可是先别切！让我缓一下……！」",
+      "en": "I know... But-but don't cut yet! Give me a moment...!",
+      "status": "integrated",
+      "pool_id": "incision_patient_kocho_shinobu",
+      "source": "data/patients/patient_kocho_shinobu/patient.json",
+      "english_key": "patient_bundles.patient_kocho_shinobu.exclusive_cg_pools.ward_preparation.incision_patient_kocho_shinobu.caption",
+      "original_caption": "手术刀来到预定切口处，蝴蝶忍等待手术开始。",
+      "original_english_caption": "The scalpel reaches the planned incision site as Shinobu Kocho waits for the operation to begin."
+    },
+    {
+      "patient_id": "patient_iwai_yoshimi",
+      "zh": "「对不起！我控制不住……先别切，求您了！」",
+      "en": "I'm sorry! I can't help it... Don't cut yet, please!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_iwai_yoshimi",
+      "source": "data/patients/patient_iwai_yoshimi/patient.json",
+      "english_key": "patient_bundles.patient_iwai_yoshimi.exclusive_cg_pools.ward_preparation.incision_ready_patient_iwai_yoshimi.caption",
+      "original_caption": "麻醉状态核对完成，手术刀来到岩井善美预定切口上方。",
+      "original_english_caption": "After the anesthesia check, the scalpel is poised above Yoshimi Iwai's planned incision site."
+    },
+    {
+      "patient_id": "patient_miyamizu_mitsuha",
+      "zh": "「真的要切进来了……？不要！等一下，等一下啊！」",
+      "en": "You're really going to cut into me...? No! Wait, please wait!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_miyamizu_mitsuha",
+      "source": "data/patients/patient_miyamizu_mitsuha/patient.json",
+      "english_key": "patient_bundles.patient_miyamizu_mitsuha.exclusive_cg_pools.ward_preparation.incision_ready_patient_miyamizu_mitsuha.caption",
+      "original_caption": "手术刀已递交，团队完成最后确认，手术即将开始。",
+      "original_english_caption": "The scalpel is ready, the final checks are complete, and the operation is about to begin."
+    },
+    {
+      "patient_id": "patient_iwato_tamaki",
+      "zh": "「医生！医生……先别动刀，我真的撑不住……！」",
+      "en": "Doctor! Doctor... Don't use the knife yet. I really can't handle this...!",
+      "status": "integrated",
+      "pool_id": "incision_patient_iwato_tamaki",
+      "source": "data/patients/patient_iwato_tamaki/patient.json",
+      "english_key": "patient_bundles.patient_iwato_tamaki.exclusive_cg_pools.ward_preparation.incision_patient_iwato_tamaki.caption",
+      "original_caption": "在患者保持清醒的麻醉路径中，团队依照既定切口开始手术。",
+      "original_english_caption": "While the patient remains conscious under a non-general anesthesia pathway, the team begins the planned incision."
+    },
+    {
+      "patient_id": "patient_shimizu_iraiza",
+      "zh": "「啊、不行不行！那是真的刀……先拿开，拜托！」",
+      "en": "Ah, no, no! That's a real knife... Move it away, please!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_shimizu_iraiza",
+      "source": "data/patients/patient_shimizu_iraiza/patient.json",
+      "english_key": "patient_bundles.patient_shimizu_iraiza.exclusive_cg_pools.ward_preparation.incision_ready_patient_shimizu_iraiza.caption",
+      "original_caption": "器械护士递上手术刀，清水伊莱莎在正式下刀前等待主刀确认。",
+      "original_english_caption": "The scrub nurse hands over the scalpel, and Iraiza Shimizu waits for the surgeon's confirmation before the incision."
+    },
+    {
+      "patient_id": "patient_yuko_asou",
+      "zh": "「不要……！我以为自己可以的……求你，等一下！」",
+      "en": "No...! I thought I could do this... Please, wait!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_yuko_asou",
+      "source": "data/patients/patient_yuko_asou/patient.json",
+      "english_key": "patient_bundles.patient_yuko_asou.exclusive_cg_pools.ward_preparation.incision_ready_patient_yuko_asou.caption",
+      "original_caption": "器械护士递上手术刀，麻生优子等待主刀确认后开始切开。",
+      "original_english_caption": "The scrub nurse hands over the scalpel, and Yuko Asou waits for the lead surgeon's confirmation before the incision."
+    },
+    {
+      "patient_id": "patient_mouri_ran",
+      "zh": "「我、我会不动……啊！先别切！我好害怕……！」",
+      "en": "I-I'll stay still... Ah! Don't cut yet! I'm so scared...!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_mouri_ran",
+      "source": "data/patients/patient_mouri_ran/patient.json",
+      "english_key": "patient_bundles.patient_mouri_ran.exclusive_cg_pools.ward_preparation.incision_ready_patient_mouri_ran.caption",
+      "original_caption": "器械护士递上手术刀，毛利兰等待主刀确认后开始切开。",
+      "original_english_caption": "The scrub nurse hands over the scalpel, and Ran Mouri waits for the lead surgeon's confirmation before the incision."
+    },
+    {
+      "patient_id": "patient_sakurai_mayumi",
+      "zh": "「停！先停一下！我不是闹……我真的怕了！」",
+      "en": "Stop! Just stop a moment! I'm not making a scene... I'm really scared!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_sakurai_mayumi",
+      "source": "data/patients/patient_sakurai_mayumi/patient.json",
+      "english_key": "patient_bundles.patient_sakurai_mayumi.exclusive_cg_pools.ward_preparation.incision_ready_patient_sakurai_mayumi.caption",
+      "original_caption": "器械护士递上手术刀，樱井真弓等待主刀确认后开始切开。",
+      "original_english_caption": "The scrub nurse hands over the scalpel as Mayumi Sakurai waits for the lead surgeon's confirmation before the incision."
+    },
+    {
+      "patient_id": "patient_yuffie_kisaragi",
+      "zh": "「啊！别拿过来！我不敢看……也不敢闭眼啊！」",
+      "en": "Ah! Don't bring it closer! I'm scared to look... but I'm scared to close my eyes too!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_yuffie_kisaragi",
+      "source": "data/patients/patient_yuffie_kisaragi/patient.json",
+      "english_key": "patient_bundles.patient_yuffie_kisaragi.exclusive_cg_pools.ward_preparation.incision_ready_patient_yuffie_kisaragi.caption",
+      "original_caption": "器械护士递上手术刀，尤菲·如月在正式开始前等待主刀确认。",
+      "original_english_caption": "The scrub nurse passes the scalpel, and Yuffie Kisaragi waits for the lead surgeon's confirmation before the operation begins."
+    },
+    {
+      "patient_id": "patient_kyrie_canaan",
+      "zh": "「不行，我不行！求你先拿开……我不逞强了！」",
+      "en": "I can't, I can't! Please move it away... I'm done pretending to be brave!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_kyrie_canaan",
+      "source": "data/patients/patient_kyrie_canaan/patient.json",
+      "english_key": "patient_bundles.patient_kyrie_canaan.exclusive_cg_pools.ward_preparation.incision_ready_patient_kyrie_canaan.caption",
+      "original_caption": "器械护士递上手术刀，琪里耶·卡南在正式开始前等待主刀确认。",
+      "original_english_caption": "The scrub nurse passes the scalpel, and Kyrie Canaan waits for the lead surgeon's confirmation before the operation begins."
+    },
+    {
+      "patient_id": "patient_doa_kasumi",
+      "zh": "「……别动，我不能动……啊！医生，先别切……！」",
+      "en": "...Stay still. I mustn't move... Ah! Doctor, don't cut yet...!",
+      "status": "integrated",
+      "pool_id": "incision_ready_patient_doa_kasumi",
+      "source": "data/patients/patient_doa_kasumi/patient.json",
+      "english_key": "patient_bundles.patient_doa_kasumi.exclusive_cg_pools.ward_preparation.incision_ready_patient_doa_kasumi.caption",
+      "original_caption": "器械护士递上手术刀，霞在正式开始前等待主刀确认。",
+      "original_english_caption": "The scrub nurse passes the scalpel, and Kasumi waits for the lead surgeon's confirmation before the operation begins."
+    },
+    {
+      "patient_id": "patient_lust_actress",
+      "zh": "「等等……不要！我装不下去了……求你先停一下！」",
+      "en": "Wait... No! I can't keep up the act... Please stop a moment!",
+      "status": "dialogue_in_patient_data_asset_pending"
+    },
+    {
+      "patient_id": "doc_sayaka",
+      "zh": "「坂口！等、等等……我知道，可我还是怕！先别切！」",
+      "en": "Sakaguchi! W-wait... I know, but I'm still scared! Don't cut yet!",
+      "status": "integrated",
+      "pool_id": "scalpel_ready_doc_sayaka",
+      "source": "data/ward_preparation_cg_pools.json",
+      "english_key": "collections.ward_preparation_cg_pools.scalpel_ready_doc_sayaka.caption",
+      "original_caption": "器械护士递上手术刀，南条小夜香在正式下刀前等待主刀确认。",
+      "original_english_caption": "The scrub nurse hands over the scalpel, and Sayaka Nanjo waits for the surgeon's confirmation before the incision."
+    }
+  ]
+}

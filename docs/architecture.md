@@ -1,5 +1,7 @@
 # 架构与决策
 
+开发主对话的原稿索引、最终修订和未完成事项见 [2026-10-26 交接记录](development_handoff_2026-10-26.md)。该记录用于接续开发，不替代下述现行存档契约或各事件原文。
+
 ## 当前存档契约（2026-10-23，v37）
 
 本节取代下文历史版本中关于动作重放、节点快照、对白序号及中途恢复的描述；那些段落只记录当时实现，不是当前存档规范。协作约束见根目录 `agents.md`。
@@ -12,6 +14,20 @@
 - 语言切换使用 `runtime_snapshot()` / `restore_runtime_snapshot()` 内存通道，标记 `runtime_memory_only_v1`；文件导入拒绝此格式。加载不执行选项、不重发奖励、不改写来源文件，失败不替换当前世界。
 
 格式、兼容边界和测试命令见 `docs/save_boundary_v37.md`。
+
+## 下班同行与专属护士：现行说明（2026-10-26）
+
+- [下班同行：当前实现与原稿差异](HOSHIMI_AFTER_WORK_WALK_IMPLEMENTATION_CURRENT.md)：离院时间、概率、候选人、冷却、收益、季节演出及验证结果。
+- [专属护士：当前实现与原稿差异](HOSHIMI_PERSONAL_NURSE_SYSTEM_CURRENT.md)：职业解锁、指派、门诊表现、奖励结算、尚未接通的提示及旧测试限制。
+- 两份 2026-10-05 原始设计分别完整归档于 [同行原稿](source/HOSHIMI_AFTER_WORK_WALK_IMPLEMENTATION_V1.md) 与 [专属护士原稿](source/HOSHIMI_PERSONAL_NURSE_SYSTEM_V1.md)。原稿不覆盖现行存档契约，也不能直接当作所有功能均已实现的证明。
+
+以上说明以 `f95636a` 代码为核验基线，明确区分实际行为与设计差异；本次仅补齐文档，没有将差异自动转为代码修改或新的设计决定。
+
+## 千早第三次手术：连续三天（2026-10-27现行修订）
+
+`chihaya_third_surgery.gd`将三个已著作VN阶段连接为一次不可中断的周一09:00至周三10:00演出。入口只检查一次门槛、实际手术间隔及三日占用冲突；阶段间复用既有跨日演出，不回到导览或经营，不开放中途保存。阶段B结算真实芹香Lv2；仅阶段C完成后返回安全边界。存档仍只保存已完成事件级事实、数值和语义flags，无节点或续播进度。
+
+特殊事件的`presentation: authored`复用明确说话人分页，正文中的引号不改变身份；主线与回想使用相同规则。`actor_id`可以引用现有cameo患者注册对象，不为剧情人物创建医护身份；`unmet_variant.required_event_id`用于需要真实相识事件完成的姓名牌／一句互斥正文。详见[实装记录](chihaya_third_surgery_integration_2026-10-27.md)。
 
 ## 内容 → 会话 → 表现
 `data/manifest.json` 是加载入口。`ContentLoader` 使用 FileAccess / JSON 读取只读定义并检查顶层结构、重复 ID 与解析错误。运行时失败会显示错误页面，而不是悄悄生成空数据。完整字段和引用校验由 `tools/validate_data.py` 在开发阶段完成；发布前必须运行它。运行时加载器不是完整 Schema 解释器，暂不支持不受信任的模组。
