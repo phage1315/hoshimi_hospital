@@ -1,0 +1,81 @@
+[
+  {
+    "id": "miyuki_lv2_preop_evening",
+    "title": "明天开刀的事",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": true,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [],
+    "event_chain": [
+      "miyuki_lv2_preop_evening_main"
+    ],
+    "completion_flags": [],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "miyuki_lv2_preop_evening",
+      "title": "明天由你主演",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 700,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "miyuki_lv2_preop_morning",
+    "title": "明天开刀的事",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 240,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "miyuki_lv2_preop_evening"
+    ],
+    "event_chain": [
+      "miyuki_lv2_preop_morning_main"
+    ],
+    "completion_flags": [],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "miyuki_lv2_preop_morning",
+      "title": "怎么已经到九点了？！",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 700,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "relationship_rewards": [
+      {
+        "actor_id": "nurse_yui",
+        "target_level": 2,
+        "benefit_id": "",
+        "award_event_familiarity": false,
+        "allow_level_skip": false
+      }
+    ]
+  }
+]

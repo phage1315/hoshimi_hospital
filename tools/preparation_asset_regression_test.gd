@@ -10,6 +10,9 @@ const OR_ACTIONS := ["operative_positioning", "urinary_catheterization", "skin_d
 const PREPARATION_CG_ACTIONS := ["ward_enema", "ward_enema_unnecessary", "ward_skin_prep", "ward_skin_prep_unnecessary", "ward_surgical_cap", "complete_manual_ward_preparation", "urinary_catheterization", "skin_disinfection", "ack_disinfection", "request_scalpel"]
 # Minimum inventory prevents a deleted bundle/pool from silently reducing coverage.
 const EXPECTED_OR_POOLS := {
+	"patient_amis_ernest": ["operative_positioning", "sterile_draping", "ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "incision_ready"],
+	"patient_meryl_spaanna": ["incision_ready", "operative_positioning", "sterile_draping", "ward_skin_prep", "ward_enema", "ward_surgical_cap", "urinary_catheterization", "skin_disinfection", "stretcher_transfer"],
+	"patient_rami_amasaki": ["ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "operative_positioning", "sterile_draping", "incision_ready", "ward_enema", "ward_skin_prep"],
 	"patient_aerith": ["sterile_draping", "incision"],
 	"patient_tifa": ["urinary_catheterization", "skin_disinfection", "scalpel_ready"],
 	"patient_emi_koda": ["incision_ready"],
@@ -138,7 +141,8 @@ func check_event(app, patient_id: String, pool: Dictionary, action_id: String, g
 	expect(app.screen == "ward_preparation_cg" and texture_matches(app.page.get_node_or_null("WardPreparationCG"), pool.paths), "Fullscreen dispatch/texture failed: " + context)
 	var cg = app.page.get_node_or_null("WardPreparationCG")
 	if cg is TextureRect:
-		expect(cg.anchor_right == 1.0 and cg.anchor_bottom == 1.0 and cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_COVERED, "CG is not fullscreen: " + context)
+		var expected_fit := TextureRect.STRETCH_KEEP_ASPECT_CENTERED if pool.get("image_fit", "cover") == "contain" else TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		expect(cg.anchor_right == 1.0 and cg.anchor_bottom == 1.0 and cg.stretch_mode == expected_fit, "CG fullscreen/fit mismatch: " + context)
 	var next_button = app.page.get_node_or_null("WardPreparationCGContinue")
 	expect(next_button is Button, "Missing fullscreen continuation: " + context)
 	if next_button is Button:

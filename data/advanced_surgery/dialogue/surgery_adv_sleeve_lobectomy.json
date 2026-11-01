@@ -1,0 +1,288 @@
+{
+  "schema_version": "advanced_day2_dialogue_v1",
+  "procedure_id": "surgery_adv_sleeve_lobectomy",
+  "stages": {
+    "T01": {
+      "stage_entry": [
+        {
+          "id": "T01_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "确认开胸位置，开始进入胸腔。",
+          "text_en": "Confirm the thoracotomy site and begin entering the chest."
+        },
+        {
+          "id": "T01_E2",
+          "speaker_role": "anesthesia",
+          "text": "单肺通气参数正在监测，手术侧暴露可以继续。",
+          "text_en": "One-lung ventilation is being monitored. Exposure on the operative side can proceed."
+        }
+      ]
+    },
+    "T02": {
+      "stage_entry": [
+        {
+          "id": "T02_E1",
+          "speaker_role": "assistant_1",
+          "text": "肺门组织已经进入视野，先辨认支气管与血管分支。",
+          "text_en": "The pulmonary hilum is in view. Identify the bronchus and vascular branches first."
+        },
+        {
+          "id": "T02_E2",
+          "speaker_role": "assistant_2",
+          "text": "调整肺叶牵引，保持肺门根部暴露。",
+          "text_en": "Adjust lobar traction to maintain exposure of the hilar root."
+        }
+      ]
+    },
+    "T03": {
+      "stage_entry": [
+        {
+          "id": "T03_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "这里是肺动脉分支，分离时保持清楚的血管外膜界面。",
+          "text_en": "These are pulmonary artery branches. Maintain a clear perivascular plane during dissection."
+        },
+        {
+          "id": "T03_E2",
+          "speaker_role": "assistant_1",
+          "text": "注意分支与肺叶支气管之间的空间关系。",
+          "text_en": "Pay attention to the spatial relationship between the branches and the lobar bronchus."
+        },
+        {
+          "id": "T03_E3",
+          "speaker_role": "scrub_primary",
+          "text": "血管控制与缝合器械已经备好。",
+          "text_en": "The instruments for vascular control and repair are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T03_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "这条肺动脉分支的界面不够明确，需要重新辨认。",
+          "text_en": "The plane around this pulmonary artery branch is not clear enough. Reidentify it."
+        },
+        {
+          "id": "T03_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先调整分离方向，不能在血管边界不清时推进。",
+          "text_en": "Adjust the dissection direction before advancing along an unclear vessel boundary."
+        }
+      ]
+    },
+    "T04": {
+      "stage_entry": [
+        {
+          "id": "T04_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "现在分离肺叶支气管周围组织，留意邻近血管。",
+          "text_en": "We are dissecting the tissue around the lobar bronchus. Watch the adjacent vessels."
+        },
+        {
+          "id": "T04_E2",
+          "speaker_role": "assistant_2",
+          "text": "先保证支气管上下缘都能看清，再继续分离。",
+          "text_en": "Ensure both bronchial borders are visible before continuing."
+        },
+        {
+          "id": "T04_E3",
+          "speaker_role": "assistant_1",
+          "text": "支气管壁的牵拉需要均匀，避免扭转。",
+          "text_en": "Keep traction on the bronchial wall even and avoid twisting."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T04_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "支气管周围的组织层次尚未分清，需要修正。",
+          "text_en": "The peribronchial tissue planes are not clearly separated. Correct this step."
+        },
+        {
+          "id": "T04_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先撤回这一步，重新确认要保留的支气管边界。",
+          "text_en": "Step back and reconfirm the bronchial boundary we need to preserve."
+        }
+      ]
+    },
+    "T05": {
+      "stage_entry": [
+        {
+          "id": "T05_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "复核病变范围与预定切缘，保留结构必须明确。",
+          "text_en": "Reassess the disease extent and planned margins. The structures to preserve must be clear."
+        },
+        {
+          "id": "T05_E2",
+          "speaker_role": "assistant_1",
+          "text": "把肺动脉和支气管的重建计划再核对一遍。",
+          "text_en": "Review the pulmonary artery and bronchial reconstruction plans once more."
+        }
+      ]
+    },
+    "T06": {
+      "stage_entry": [
+        {
+          "id": "T06_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "进一步确认切缘位置，避免把正常支气管切除得过多。",
+          "text_en": "Confirm the margin position without removing more healthy bronchus than necessary."
+        },
+        {
+          "id": "T06_E2",
+          "speaker_role": "assistant_2",
+          "text": "保留侧组织需要稳定支撑，别影响后续吻合。",
+          "text_en": "Keep the preserved tissue supported to avoid compromising the later anastomosis."
+        },
+        {
+          "id": "T06_E3",
+          "speaker_role": "scrub_primary",
+          "text": "切缘处理和后续吻合的器械已依次备好。",
+          "text_en": "The instruments for margin work and the subsequent anastomosis are prepared in sequence."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T06_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "这一处切缘与计划有偏差，先重新核对。",
+          "text_en": "This margin differs from the plan. Recheck it first."
+        },
+        {
+          "id": "T06_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "保留结构的边界还不理想，需要调整。",
+          "text_en": "The boundary of the preserved structure is not satisfactory. Adjust it."
+        }
+      ]
+    },
+    "T07": {
+      "stage_entry": [
+        {
+          "id": "T07_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备完成肺叶切除，随后整理支气管重建区域。",
+          "text_en": "Prepare to complete the lobectomy, then organize the bronchial reconstruction area."
+        },
+        {
+          "id": "T07_E2",
+          "speaker_role": "assistant_2",
+          "text": "标本移出后先重新建立稳定的肺门暴露。",
+          "text_en": "After specimen removal, reestablish stable hilar exposure."
+        }
+      ]
+    },
+    "T08": {
+      "stage_entry": [
+        {
+          "id": "T08_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "进入支气管袖式吻合，先核对两端口径与方向。",
+          "text_en": "Begin the bronchial sleeve anastomosis. Check the calibre and orientation of both ends."
+        },
+        {
+          "id": "T08_E2",
+          "speaker_role": "assistant_1",
+          "text": "保持吻合口张力均匀，避免接口旋转。",
+          "text_en": "Maintain even anastomotic tension and avoid rotational misalignment."
+        },
+        {
+          "id": "T08_E3",
+          "speaker_role": "scrub_primary",
+          "text": "支气管吻合的细缝线已准备就绪。",
+          "text_en": "Fine sutures for the bronchial anastomosis are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T08_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "支气管吻合处的对位不充分，需要重新修正。",
+          "text_en": "The bronchial anastomosis is not adequately aligned. It needs correction."
+        },
+        {
+          "id": "T08_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这段吻合的张力不理想，先调整再继续。",
+          "text_en": "The tension across this part of the anastomosis is unsatisfactory. Adjust it before continuing."
+        }
+      ]
+    },
+    "T09": {
+      "stage_entry": [
+        {
+          "id": "T09_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "接下来复核肺动脉重建段，注意血流通路的方向。",
+          "text_en": "Next, review the reconstructed pulmonary artery segment and its alignment with the flow path."
+        },
+        {
+          "id": "T09_E2",
+          "speaker_role": "assistant_1",
+          "text": "血管接口需要保持自然走行，避免扭曲与受压。",
+          "text_en": "Keep the vascular junction in a natural alignment without kinking or compression."
+        },
+        {
+          "id": "T09_E3",
+          "speaker_role": "scrub_primary",
+          "text": "血管吻合用器械及缝线保持待命。",
+          "text_en": "The instruments and sutures for vascular anastomosis remain ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T09_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "血管重建段的接口不够平顺，需要纠正。",
+          "text_en": "The reconstructed vessel junction is not sufficiently smooth. Correct it."
+        },
+        {
+          "id": "T09_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先别进入复查阶段，这里的血管对位还需调整。",
+          "text_en": "Do not proceed to reassessment. The vascular alignment needs adjustment."
+        }
+      ]
+    },
+    "T10": {
+      "stage_entry": [
+        {
+          "id": "T10_E1",
+          "speaker_role": "anesthesia",
+          "text": "可以配合进行通气检查，相关监测持续进行。",
+          "text_en": "We are ready to assist with ventilation testing. Monitoring continues."
+        },
+        {
+          "id": "T10_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "依次复查支气管吻合口与肺部灌注状态。",
+          "text_en": "Review the bronchial anastomosis and pulmonary perfusion in sequence."
+        },
+        {
+          "id": "T10_E3",
+          "speaker_role": "assistant_2",
+          "text": "再看一遍肺门重建区，确认没有遗漏的渗血。",
+          "text_en": "Inspect the reconstructed hilar area again for overlooked oozing."
+        }
+      ]
+    },
+    "T11": {
+      "stage_entry": [
+        {
+          "id": "T11_E1",
+          "speaker_role": "scrub_primary",
+          "text": "胸腔引流和关闭所需器械已经就位。",
+          "text_en": "Chest drainage and closure instruments are ready."
+        },
+        {
+          "id": "T11_E2",
+          "speaker_role": "circulating_primary",
+          "text": "关闭前复核器械清点和术中记录。",
+          "text_en": "Recheck the instrument count and operative record before closure."
+        }
+      ]
+    }
+  }
+}

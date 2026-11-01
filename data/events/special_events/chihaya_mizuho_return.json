@@ -1,0 +1,84 @@
+[
+  {
+    "id": "chihaya_mizuho_joint_discharge",
+    "title": "一起出院",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 60,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "chihaya_third_surgery_a",
+      "chihaya_third_surgery_b",
+      "chihaya_third_surgery_c",
+      "mizuho_first_surgery_a",
+      "mizuho_first_surgery_s",
+      "mizuho_first_surgery_b",
+      "mizuho_first_surgery_c"
+    ],
+    "event_chain": [
+      "chihaya_mizuho_joint_discharge_main"
+    ],
+    "completion_flags": [
+      "chihaya_mizuho_joint_discharge_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "chihaya_mizuho_joint_discharge",
+      "title": "一起出院",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 620,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "chihaya_mizuho_nurse_return",
+    "title": "怎么又在医院？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 120,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "chihaya_mizuho_joint_discharge"
+    ],
+    "event_chain": [
+      "chihaya_mizuho_nurse_return_main"
+    ],
+    "completion_flags": [
+      "chihaya_mizuho_nurse_return_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "chihaya_mizuho_nurse_return",
+      "title": "怎么又在医院？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 620,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  }
+]

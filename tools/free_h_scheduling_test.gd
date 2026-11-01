@@ -190,7 +190,7 @@ func run() -> void:
 	expect(app.game.cancel_free_h_booking() and app.game.free_h_booking.is_empty(), "Cancellation failed")
 	app.show_staff("doc_sayaka", "clinic")
 	expect(app.page.get_node_or_null("FreeHBooking") != null, "Normal character menu has no invitation")
-	app._confirm_free_h_booking("doc_sayaka", "clinic", "")
+	app._confirm_free_h_booking("doc_sayaka", "clinic", "hotel", "")
 	dismiss_notices()
 	app.show_player_office()
 	expect(app.page.get_node_or_null("FreeHBookingSummary") != null, "Office is missing schedule hint")

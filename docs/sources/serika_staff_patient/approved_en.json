@@ -1,0 +1,138 @@
+{
+  "note": "Faithful translation authorized by user on 2026-10-30; author review remains available.",
+  "invitations": [
+    "“{procedure_name}... I understand. You want me to experience it from the patient’s side, is that it? ...I agree. But please give me the usual preoperative explanation. I don’t want any steps skipped just because I used to be a surgeon.”",
+    "“If it’s {procedure_name}, I know roughly what to expect. But knowing is one thing... Once I’m actually lying there, I doubt I’ll be as composed as I am now. ...It’s all right. I’m willing.”",
+    "“...So you chose {procedure_name}. Have you made the arrangements? All right. I’ll review the procedure again before I sign. ...Don’t be too surprised later. I get scared too.”",
+    "“Major surgery... You know I understand better than anyone how much preparation and operating time that means. ...I’ve thought it through. Since I’ve agreed, please see it through properly.”",
+    "“A total hysterectomy... Hearing those words and thinking of undergoing it myself really are completely different things. I’ve already reviewed the postoperative recovery arrangements. ...Yes, I accept. I still want the detailed explanation.”",
+    "“Pelvic surgery... I’ve seen so many of those surgical fields before. Now that it’s my turn, I find I don’t want to imagine the steps too precisely. ...I’ll cooperate. Just explain the extent clearly.”",
+    "“A total mastectomy... Please let me read this consent form again. ...It isn’t that I doubt your skill. I need a little time to accept that today, we’re talking about my own body. ...All right. I agree.”",
+    "“Removal of an entire organ... I know this isn’t comparable to an ordinary minor operation. I understand both the procedure and the recovery. ...Entrusting myself to you doesn’t mean I’m not afraid at all.”"
+  ],
+  "reaction_lines": {
+    "hospitalization_question": "“...I have to fill out the admission paperwork too? All right. It’s just that the name in the patient field today is actually my own.”",
+    "hospitalization_response": "“I’ll cooperate with the paperwork. ...I walk down this corridor every day, yet heading toward the ward today feels completely different.”",
+    "procedure_mismatch": "“...Wait. This isn’t the procedure we confirmed beforehand. Please explain the changes and their extent first. Right now, I’m not a doctor participating in the discussion. I’m a patient who needs to understand.”",
+    "explain_plan": "“That was very clear. ...I used to explain it to others that way too. Now that I’m hearing you describe those same steps to me, I realize some words are harder to bear than I imagined.”",
+    "brief_plan": "“Just saying ‘as planned’ isn’t enough. ...Please tell me what you’ll do first. Hearing the steps clearly will help me feel a little more at ease.”",
+    "last_reassure": "“I don’t doubt any of you... I just feel I should have asked a little more earlier. ...All right. I’ll cooperate.”",
+    "choose_general": "“General anesthesia. That means I can only leave what happens next to all of you... When I wake up, please tell me the outcome yourself.”",
+    "choose_epidural": "“Epidural anesthesia... I know the extent of the block, and I know I may remain awake. But thinking about being unable to move my body... makes me a little uneasy.”",
+    "choose_local": "“Local anesthesia... Understood. Not feeling the surface doesn’t mean every tug will be comfortable. If something feels wrong, I’ll tell you directly.”",
+    "choose_none": "“...No anesthesia. I know what that means. Please don’t assume that being a former surgeon means I’m experienced at enduring pain.”",
+    "induction_reassure": "“...Dr. Sakaguchi. Soon I won’t be able to hear you anymore, will I? ...It’s all right. I trust you. I’ll leave the rest in your hands.”",
+    "insist_without_anesthesia": "“I understand that I have no anesthesia right now. ...But knowing how pain works and actually enduring it are completely different things. Please take what I say seriously.”",
+    "assistant_stabilize_none": "“...Ah! I know I mustn’t move... But that just made my body curl up on its own. Please hold me steady... I really am trying.”",
+    "assistant_stabilize_local": "“I’ll hold my position... My hands are shaking. I’m sorry. I’m not refusing to cooperate. Just hold me steady.”",
+    "assistant_stabilize_epidural": "“My legs... aren’t doing what I want. Please help adjust my position. ...I used to give those instructions for other people. I never imagined I’d feel so helpless when it was my turn.”",
+    "incision_ready": "“W-wait...! D-don’t cut yet... I know... but I... I’m really scared... Dr. Sakaguchi... please, give me a moment...!”",
+    "incise_epidural": "“...You’ve already made the incision? It doesn’t hurt the way I imagined... But I can feel you working. ...So it really has begun.”",
+    "incise_local": "“Hh...! W-wait... I know this layer is numb, but that feeling inside... I can’t stay as calm as I could standing beside the table.”",
+    "incise_none": "“Aah—! It hurts...! W-wait... You really cut me...! I know I agreed... But it hurts so much...!”",
+    "contact_pause": "“...Thank you. Let me catch my breath... Did I sound awful just then? ...Never mind. Just give me a moment.”",
+    "contact_command": "“...Understood. I won’t move. ...I’ll do my best. Please give me a little time to keep up.”",
+    "contact_continue": "“All right... Go on. I’ll bear it... If I can’t help reacting again, please don’t think I’m trying to cause trouble.”",
+    "ongoing_narrate": "“...So that’s how far you’ve got. I understand. Please keep telling me what comes next... I’m a little afraid to guess how far along we are now.”",
+    "ongoing_eye_contact": "“...You finally looked at me. ...It’s nothing. I just wanted to be sure you knew I was still here... still listening.”",
+    "ongoing_silent": "“...Why has everyone suddenly gone quiet? Dr. Sakaguchi... Could you tell me something... When all I hear is the instruments, I can’t help imagining things.”",
+    "closure_reassure": "“...I-is it really almost over...? ...Hh... Then... please... I’m already... almost at my limit...”",
+    "closure_coach": "“Hah... B-breathe slowly... I’m listening... B-but... Hh... I’m really... so tired now...”",
+    "closure_silent": "“...Hh... I-isn’t it over yet...? I... I’ve been holding on... I really... have been trying so hard... Hh... Please... I-I really can’t take any more...”"
+  },
+  "reaction_variants": {
+    "ward_enema": [
+      "“An enema... I saw it on the preparation sheet. ...I know what it’s for. I just never imagined that lying here on my side, I’d find it so hard even to look up at my nursing colleagues.”",
+      "“...Please close the door properly first. ...You don’t need to explain the steps again. I’ve explained them to patients before. Knowing exactly what comes next... only makes it more embarrassing.”"
+    ],
+    "ward_enema_unnecessary": [
+      "“This isn’t necessary? ...Then please tell me why it’s still being arranged. As a patient, I’d like you to check that carefully too.”",
+      "“...It can be omitted, can’t it? Let me think... I don’t want to agree to every preparation just because ‘a doctor shouldn’t be afraid.’”"
+    ],
+    "ward_skin_prep": [
+      "“...The skin preparation goes this far? I understand the surgical field requires it. ...Please tell me the boundaries. Don’t call me Dr. Serika while making me lie here like this...”",
+      "“I used to only check whether the skin preparation was complete... I never thought about how embarrassed the person being checked might feel. ...Could you let me look away first?”"
+    ],
+    "ward_skin_prep_unnecessary": [
+      "“That area isn’t part of the necessary surgical field, is it? ...I’m not blaming you. I just want to confirm. Today I really don’t want any more unnecessary handling.”",
+      "“If it can be omitted, just explain why first. ...Please don’t assume that my silence means I don’t care about anything.”"
+    ],
+    "ward_surgical_cap": [
+      "“My hair... Please tuck all of it in. I know. ...It’s just that once the cap is on, even I feel I’m no longer the person who usually stands here.”",
+      "“Is that all right? ...Thank you. ...Strange. It’s only a surgical cap, yet I’ve suddenly started fearing the next step.”"
+    ],
+    "operative_positioning_awake": [
+      "“Put my hands here, relax my shoulders... I heard all of it. ...I’m sorry. I instinctively tried to adjust myself again. You’re the ones positioning me now.”",
+      "“...I’ll cooperate. Please don’t keep calling me ‘Dr. Serika’... Hearing that only makes it harder to stay composed.”"
+    ],
+    "operative_positioning_none": [
+      "“Once I’m secured, I can’t move freely anymore... I know. We have to be even more careful without anesthesia. ...I just suddenly realized that I can’t even move away now.”",
+      "“W-wait... I’m not trying to break free. ...Could I steady my breathing first? Knowing I’m about to undergo this while awake makes my hands shake uncontrollably.”"
+    ],
+    "urinary_catheterization_awake": [
+      "“...Catheterization too, then? I know the indications and the steps. ...Please don’t explain them to me one by one again. Right now... I just want to get the preparation over with.”",
+      "“...I’ll hold my position. Follow the procedure. ...It’s just that when I return to the department, I’ll have to face these same colleagues. Thinking about that makes me so... Never mind. Go ahead.”"
+    ],
+    "urinary_catheterization_none": [
+      "“...I know the operation hasn’t started yet. But having to experience every preparation so fully awake... I never imagined I’d want to hide my face this badly.”",
+      "“Please... please go slowly. ...I’m sorry. I know that doesn’t sound professional. Right now I really can’t act as though nothing is happening, the way I normally would.”"
+    ],
+    "skin_disinfection_awake": [
+      "“...That’s cold. ...It’s nothing. I couldn’t help reacting. Go on. I know the antiseptic has to dry.”",
+      "“Disinfection, draping, checks... I know. But while you’re busy preparing, all I can do is lie here looking at the lights. ...I never realized this wait was so long.”"
+    ],
+    "skin_disinfection_none": [
+      "“...It’s only disinfection. I know you haven’t cut yet... But my heart is already racing terribly. ...Dr. Sakaguchi, don’t look at my face.”",
+      "“Once the antiseptic dries, it’s the final check... And then you really will cut. ...A moment ago I thought I could bear it, but now I’m a little afraid even to think about it.”"
+    ],
+    "incision_marking_awake": [
+      "“...The line is drawn already. I used to only check whether the position was accurate... Now, looking at my own skin, I can’t find a single word.”",
+      "“...Here, is it? Understood. ...Dr. Sakaguchi, when you’re really about to cut... tell me first. Please.”"
+    ],
+    "incision_marking_none": [
+      "“W-wait... This is only marking, isn’t it...? I know, I know you haven’t started... But when that pen touched me just now, I almost cried out.”",
+      "“...The marking is confirmed. Next comes the scalpel... right? ...Please let me catch my breath. Just a moment ago, I thought I was ready...”"
+    ]
+  },
+  "callback": [
+    "Sakaguchi enters the imaging room. Serika stands before the viewing screen, with several examination images in front of her. Compared with her usual self, she seems unusually quiet.",
+    "“Serika? What’s wrong? You don’t look quite yourself.”",
+    "“...Close the door first.”",
+    "“Hm? What happened?”",
+    "Serika turns abruptly, her cheeks bright red and a little defiant moisture still at the corners of her eyes.",
+    "“Ryuji!!”",
+    "She strides up and gives Sakaguchi two thumps on the chest with her fists. They aren’t hard; it is as if she has finally found someone to vent to after holding it in for a long time.",
+    "“H-hey! What’s wrong?!”",
+    "“Do you know how embarrassing surgical preparation is?! Those nurses who normally work alongside me... They were the ones who had to prepare me...!”",
+    "“And... having you operate on me yourself... W-was so embarrassing too!!”",
+    "“...So that’s what’s been on your mind all this time.”",
+    "“Don’t answer me so calmly! I-I was... It was all for you!!”",
+    "“I know. Even the preparation that day had you so nervous. ...I couldn’t stop worrying about you either.”",
+    "“...Of course you had to stay calm. You were the surgeon... I know that.”",
+    "“But that day I couldn’t do anything. I could only lie there... Even though I understood every step, when it was actually my turn, I was still that frightened. ...It’s so frustrating.”",
+    "As if suddenly remembering something else, she turns back to the viewing screen and picks up one of her follow-up images.",
+    "“And this! Come look!”",
+    "“Look... I knew I would recover quickly, but I’ve looked at this follow-up image over and over, and I can’t find a single trace of the operation! In the image, it’s as though nothing ever happened... But I remember so clearly lying on the operating table that day, having you operate on me with your own hands... Aah, the more I think about it, the stranger it feels, and the more embarrassing it gets!!”",
+    "Serika puts the image back on the desk and covers her flushed face with both hands, refusing to look at Sakaguchi for quite a while.",
+    "“You know better than anyone how recovery at Hoshimi works, don’t you?”",
+    "“Of course I do! ...Knowing it as a doctor is one thing. Actually being the person lying on the table... is something else entirely.”",
+    "“...Do you regret it?”",
+    "“...No.”",
+    "She slowly lowers the hands covering her face. This time, the earlier anger is gone; instead, she looks a little bashful.",
+    "“...But actually, I rather liked having you operate on me.”",
+    "“...Weren’t you just hitting me?”",
+    "“Those two things don’t contradict each other!”",
+    "Having said that, she cannot help laughing a little herself. Then she steps closer and gently leans into Sakaguchi’s arms.",
+    "“...I’m not saying the preparation wasn’t embarrassing, or that I wasn’t scared when you operated. ...I was really scared.”",
+    "“But... that day you kept taking your work seriously. I knew that everything I had entrusted to you was truly being taken care of.”",
+    "“Being with you is so strange... My feelings are all tangled up. I feel uneasy, and frightened... yet I also feel so safe.”",
+    "“To think those two feelings can exist at the same time... It’s so strange...”",
+    "“...Ryuji. Wherever I go in the future, I hope you’ll stay with me... always stay with me...”",
+    "“...Yes. I’ll be there for you. Whenever anything worries you, tell me, all right? You don’t have to bear it alone.”",
+    "Serika nods softly in his arms. After a while, she raises her face and puts on a little of her usual cool expression again.",
+    "“...And one more thing. Don’t tell anyone what happened here today.”",
+    "“You mean those two thumps you gave me?”",
+    "“...All of it.”",
+    "Sakaguchi smiles and nods. Serika rests her forehead against his chest again. The camera lingers on the image on the viewing screen, now completely normal, then fades out."
+  ]
+}

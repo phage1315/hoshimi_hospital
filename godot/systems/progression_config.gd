@@ -37,7 +37,21 @@ const PRESENCE_TIERS := [
 	{"minimum": 60, "label": "强势型"},
 	{"minimum": 170, "label": "威压型"},
 ]
-const PRESENCE_PHASE_CLAMPS := {"encounter": 1, "preop": 1, "or": 2}
+const PRESENCE_PHASE_CLAMPS := {"encounter": 3, "preop": 2, "or": 5}
+
+static func action_presence_delta(action: Dictionary) -> int:
+	return int(action.get("presence_delta", 0)) + int(action.get("player_effects", {}).get("presence", 0))
+
+static func record_presence_effect(history: Array, phase: String, delta: int) -> void:
+	# Persist a settled numerical ledger, never the choices that produced it.
+	if delta == 0:
+		return
+	var ledger_id := "clinical_presence_" + phase
+	for record in history:
+		if str(record.get("id", "")) == ledger_id:
+			record.effects.presence = int(record.effects.presence) + delta
+			return
+	history.append({"id": ledger_id, "label": "Clinical Presence", "effects": {"presence": delta}})
 
 const REPUTATION_PROFILES := {
 	"simple": {"label": "简单", "award": 2, "soft_cap": 80, "cap": 100},

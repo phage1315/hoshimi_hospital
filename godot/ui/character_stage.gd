@@ -17,6 +17,22 @@ static func portraits(app, node: Dictionary) -> void:
 		app.page.add_child(art)
 
 static func present(app, node: Dictionary, advance: Callable) -> bool:
+	if str(node.get("presentation", "")) == "choice":
+		# Authored choice markers contain no spoken text or extra click page.
+		# Use the same guarded rendering path for live events and gallery replay.
+		app.pause_dialogue_for_choice()
+		var replay: bool = str(app.screen) == "gallery_replay"
+		for i in range(node.choices.size()):
+			var c: Dictionary = node.choices[i]
+			var button: Button = app.button_at(app.vn_choice_label(str(c.label), node.choices.size()), Vector2(60, app.vn_choice_y(node.choices.size(), i)), Vector2(1100, 54), advance.bind(str(c.id)))
+			button.name = ("ReplayChoice_" if replay else "EventChoice_") + str(c.id)
+		if replay:
+			var exit_action: Callable = app.show_character_events.bind(app.gallery_replay_return_actor, app.character_event_return_location) if app.gallery_replay_is_test else app.show_gallery_entry.bind(app.gallery_replay_event.definition.id)
+			app.button_at(app.tx("ui.gallery.exit_test", "退出测试") if app.gallery_replay_is_test else app.tx("ui.gallery.exit_replay", "退出回想"), Vector2(60, 713), Vector2(180, 40), exit_action)
+		else:
+			app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
+		app.add_dialogue_playback_controls()
+		return true
 	var stage := str(node.get("presentation", "")) == "stage"
 	var effect := str(node.get("stage_effect", ""))
 	var key := str(app.screen) + ":" + str(node.id)

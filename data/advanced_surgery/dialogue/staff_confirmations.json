@@ -1,0 +1,102 @@
+{
+  "schema_version": "advanced_staff_dialogues_v1",
+  "procedure_ids": [
+    "surgery_open_whipple",
+    "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction",
+    "surgery_adv_sleeve_lobectomy",
+    "surgery_adv_ebstein_cone_reconstruction"
+  ],
+  "lines": [
+    {
+      "character_id": "doc_rei",
+      "trigger": "timeout",
+      "role": "assistant",
+      "text": "「助手位确认。术前计划我又核对了一遍，关键风险点都标好了。哪里与预期不符，我会立即指出。」",
+      "text_en": "“Assistant position confirmed. I have checked the preoperative plan again and marked all the key risks. I will point out any deviation immediately.”"
+    },
+    {
+      "character_id": "doc_emiko",
+      "trigger": "timeout",
+      "role": "assistant",
+      "text": "「助手位确认。风险点和备选方案都已经核过。今天你是主刀，我会盯住你看不到的地方。」",
+      "text_en": "“Assistant position confirmed. The risks and backup plans have all been checked. You are the lead surgeon today; I will watch the areas you cannot see.”"
+    },
+    {
+      "character_id": "doc_asuka",
+      "trigger": "timeout",
+      "role": "assistant",
+      "text": "「助手位确认。我会留意术野和团队衔接。今天在手术台上，我就是你的助手，有需要请直接说。」",
+      "text_en": "“Assistant position confirmed. I will watch the operative field and team coordination. At the operating table today, I am your assistant. Tell me directly if you need anything.”"
+    },
+    {
+      "character_id": "doc_minato",
+      "trigger": "timeout",
+      "role": "assistant",
+      "text": "「助手位确认。患者是谁、为什么要做这台手术，我都记得清清楚楚。其他安排，等我们把她平安送出去再说。」",
+      "text_en": "“Assistant position confirmed. I remember exactly who the patient is and why we are performing this operation. Everything else can wait until we get her out safely.”"
+    },
+    {
+      "character_id": "nurse_rin",
+      "trigger": "timeout",
+      "role": "scrub",
+      "text": "「器械位确认。无菌台和清点记录都已经复核。临时需要调整什么，记得第一时间通知我。」",
+      "text_en": "“Scrub position confirmed. The sterile table and count records have been checked again. Let me know immediately if anything needs to change.”"
+    },
+    {
+      "character_id": "nurse_ange",
+      "trigger": "timeout",
+      "role": "scrub",
+      "text": "「器械位确认。器械和清点表我已经逐项核对过了。不确定的地方，我会及时向前辈确认。」",
+      "text_en": "“Scrub position confirmed. I have checked the instruments and count sheet item by item. If I am unsure about anything, I will promptly check with a senior colleague.”"
+    },
+    {
+      "character_id": "nurse_ange",
+      "trigger": "timeout",
+      "role": "circulating",
+      "text": "「巡回位确认。监护设备、备用物品和记录表都已经就位。有异常我会马上报告。」",
+      "text_en": "“Circulating position confirmed. Monitoring equipment, backup supplies, and record sheets are all in place. I will report any abnormality immediately.”"
+    },
+    {
+      "character_id": "nurse_hiroko",
+      "trigger": "timeout",
+      "role": "scrub",
+      "text": "「器械位确认。台上清点无误，常用和备用器械都准备好了。坂口医生，放心按计划开始吧。」",
+      "text_en": "“Scrub position confirmed. The table count is correct, and both routine and backup instruments are ready. Dr. Sakaguchi, you can begin as planned.”"
+    },
+    {
+      "character_id": "nurse_hiroko",
+      "trigger": "timeout",
+      "role": "circulating",
+      "text": "「巡回位确认。交接、监护和台外物品都核对完了。有什么需要协调的，随时告诉我。」",
+      "text_en": "“Circulating position confirmed. The handover, monitoring, and supplies outside the sterile field have all been checked. Let me know whenever anything needs coordinating.”"
+    },
+    {
+      "character_id": "nurse_moe",
+      "trigger": "timeout",
+      "role": "scrub",
+      "text": "「器械位确认。清点完成了，顺序也照清单摆好了。……不明白的地方，我会马上问清楚。」",
+      "text_en": "“Scrub position confirmed. The count is complete, and everything is arranged according to the checklist. ...If I do not understand something, I will ask right away.”"
+    },
+    {
+      "character_id": "nurse_moe",
+      "trigger": "timeout",
+      "role": "circulating",
+      "text": "「巡回位确认。记录和补给我都逐项检查过了。遇到不熟悉的情况，我会先确认，不会自己猜。」",
+      "text_en": "“Circulating position confirmed. I have checked the records and supplies item by item. If I encounter something unfamiliar, I will check first rather than guess.”"
+    },
+    {
+      "character_id": "doc_sakura_anesthesiology",
+      "trigger": "terminal_success",
+      "role": "anesthesia_outcome",
+      "text": "「手术完成确认。循环和呼吸仍由我继续监护。等患者安全交接了，才算真正收工。」",
+      "text_en": "“Operation completion confirmed. I will continue monitoring circulation and breathing. We are only truly finished once the patient has been handed over safely.”"
+    },
+    {
+      "character_id": "doc_sakura_anesthesiology",
+      "trigger": "terminal_failure",
+      "role": "anesthesia_outcome",
+      "text": "「手术终止确认。先别急着下结论。患者当前的呼吸循环由我继续负责；下一步怎么处置，我们看数据说话。」",
+      "text_en": "“Operation termination confirmed. Do not rush to conclusions. I remain responsible for the patient’s breathing and circulation; the data will guide what we do next.”"
+    }
+  ]
+}

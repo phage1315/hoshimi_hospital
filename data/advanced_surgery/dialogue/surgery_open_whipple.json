@@ -1,0 +1,322 @@
+{
+  "schema_version": "advanced_day2_dialogue_v1",
+  "procedure_id": "surgery_open_whipple",
+  "stages": {
+    "W01": {
+      "stage_entry": [
+        {
+          "id": "W01_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "开始上腹部切口，先建立稳定的进入路径。",
+          "text_en": "Begin the upper abdominal incision. Establish a stable entry route first."
+        },
+        {
+          "id": "W01_E2",
+          "speaker_role": "scrub_primary",
+          "text": "切开和止血需要的器械已经就位。",
+          "text_en": "The instruments for incision and haemostasis are ready."
+        }
+      ]
+    },
+    "W02": {
+      "stage_entry": [
+        {
+          "id": "W02_E1",
+          "speaker_role": "assistant_1",
+          "text": "先完成腹腔探查，再确认接下来的暴露范围。",
+          "text_en": "Complete the abdominal exploration before confirming how much exposure we need next."
+        },
+        {
+          "id": "W02_E2",
+          "speaker_role": "assistant_2",
+          "text": "需要把上腹部的术野再充分暴露出来。",
+          "text_en": "We need fuller exposure of the upper abdominal field."
+        }
+      ]
+    },
+    "W03": {
+      "stage_entry": [
+        {
+          "id": "W03_E1",
+          "speaker_role": "assistant_1",
+          "text": "粘连范围比较广，先确认分离层次。",
+          "text_en": "The adhesions are extensive. Let us identify the dissection plane first."
+        },
+        {
+          "id": "W03_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "这里的组织层次不清楚，分离要仔细。",
+          "text_en": "The tissue planes are unclear here. Dissect carefully."
+        },
+        {
+          "id": "W03_E3",
+          "speaker_role": "assistant_2",
+          "text": "先把术野暴露稳定，再继续分离。",
+          "text_en": "Let us establish stable exposure before continuing the dissection."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "W03_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "……这个分离层次需要重新调整。",
+          "text_en": "...We need to adjust this dissection plane."
+        },
+        {
+          "id": "W03_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先停一下，这一处还需要修正。",
+          "text_en": "Pause here. This area still needs correction."
+        }
+      ]
+    },
+    "W04": {
+      "stage_entry": [
+        {
+          "id": "W04_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "先确认主要血管的走行，再决定分离路径。",
+          "text_en": "Identify the course of the major vessels before deciding the dissection route."
+        },
+        {
+          "id": "W04_E2",
+          "speaker_role": "assistant_1",
+          "text": "这一步要把术前影像和实际术野对照清楚。",
+          "text_en": "Compare the preoperative images carefully with the actual field at this step."
+        }
+      ]
+    },
+    "W05": {
+      "stage_entry": [
+        {
+          "id": "W05_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "门静脉就在附近，控制好牵拉。",
+          "text_en": "The portal vein is nearby. Keep traction controlled."
+        },
+        {
+          "id": "W05_E2",
+          "speaker_role": "assistant_1",
+          "text": "血管边界已经看到了，接下来要细一点。",
+          "text_en": "The vessel boundary is visible now. We need to proceed more delicately."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "W05_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "这里的处理不够稳妥，需要调整。",
+          "text_en": "This was not handled securely enough. It needs adjustment."
+        },
+        {
+          "id": "W05_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "暂缓继续，这一步还没有处理到位。",
+          "text_en": "Hold off on continuing. This step is not yet satisfactory."
+        }
+      ]
+    },
+    "W06": {
+      "stage_entry": [
+        {
+          "id": "W06_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "进入胰头深部了，注意邻近血管的牵拉。",
+          "text_en": "We are entering the deep pancreatic head. Watch the traction on nearby vessels."
+        },
+        {
+          "id": "W06_E2",
+          "speaker_role": "assistant_2",
+          "text": "钩突附近的空间有限，先稳住暴露。",
+          "text_en": "Space around the uncinate process is limited. Stabilize exposure first."
+        },
+        {
+          "id": "W06_E3",
+          "speaker_role": "assistant_1",
+          "text": "深部的分离层次要逐步确认，不能急。",
+          "text_en": "Confirm the deep dissection plane gradually. Do not rush."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "W06_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "深部组织还没有分离到位，需要修正。",
+          "text_en": "The deep tissue has not been fully separated. We need to correct it."
+        },
+        {
+          "id": "W06_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这一处没有按计划分开，先停下调整。",
+          "text_en": "This area did not separate as planned. Stop and adjust it first."
+        }
+      ]
+    },
+    "W07": {
+      "stage_entry": [
+        {
+          "id": "W07_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备取出标本，之后要重新整理术野。",
+          "text_en": "Prepare to remove the specimen. Then we need to reorganize the field."
+        },
+        {
+          "id": "W07_E2",
+          "speaker_role": "assistant_2",
+          "text": "切除阶段接近结束，接下来转入重建。",
+          "text_en": "Resection is nearly complete. Reconstruction comes next."
+        }
+      ]
+    },
+    "W08": {
+      "stage_entry": [
+        {
+          "id": "W08_E1",
+          "speaker_role": "scrub_primary",
+          "text": "胰肠吻合需要的缝线已经准备好了。",
+          "text_en": "The sutures for the pancreaticojejunostomy are ready."
+        },
+        {
+          "id": "W08_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "接下来是胰肠重建，先确认吻合位置。",
+          "text_en": "Next is pancreaticoenteric reconstruction. Let us confirm the anastomosis site first."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "W08_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "吻合还没有达到要求，需要重新处理。",
+          "text_en": "The anastomosis is not yet satisfactory. It needs to be redone."
+        },
+        {
+          "id": "W08_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先不要继续下一步，这里必须修正。",
+          "text_en": "Do not move on yet. This must be corrected first."
+        }
+      ]
+    },
+    "W09": {
+      "stage_entry": [
+        {
+          "id": "W09_E1",
+          "speaker_role": "scrub_primary",
+          "text": "胆肠吻合需要的缝线已经备齐。",
+          "text_en": "The sutures for the biliary-enteric anastomosis are ready."
+        },
+        {
+          "id": "W09_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "现在重建胆道通路，先确认吻合位置。",
+          "text_en": "We are reconstructing the biliary pathway now. Confirm the anastomosis site first."
+        },
+        {
+          "id": "W09_E3",
+          "speaker_role": "assistant_2",
+          "text": "把胆管断端和肠袢的关系保持清楚。",
+          "text_en": "Keep the relationship between the bile duct stump and the bowel loop clear."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "W09_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "胆肠吻合尚需调整，先别推进下一步。",
+          "text_en": "The biliary-enteric anastomosis needs adjustment. Do not move on yet."
+        },
+        {
+          "id": "W09_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这里的吻合还不理想，需要修正。",
+          "text_en": "This anastomosis is not satisfactory yet. It needs correction."
+        }
+      ]
+    },
+    "W10": {
+      "stage_entry": [
+        {
+          "id": "W10_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "接下来进行胃肠通路的重建。",
+          "text_en": "Next, we will reconstruct the gastrointestinal pathway."
+        },
+        {
+          "id": "W10_E2",
+          "speaker_role": "assistant_1",
+          "text": "确认胃和空肠的位置，再继续吻合。",
+          "text_en": "Confirm the positions of the stomach and jejunum before continuing the anastomosis."
+        },
+        {
+          "id": "W10_E3",
+          "speaker_role": "assistant_2",
+          "text": "保持重建区稳定，注意不要过度牵拉。",
+          "text_en": "Keep the reconstruction area stable. Avoid excessive traction."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "W10_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "胃肠吻合的状态不理想，需要调整。",
+          "text_en": "The gastrointestinal anastomosis is not satisfactory. We need to adjust it."
+        },
+        {
+          "id": "W10_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这一处尚未完成到预定标准，先修正。",
+          "text_en": "This area has not reached the intended standard yet. Correct it first."
+        }
+      ]
+    },
+    "W11": {
+      "stage_entry": [
+        {
+          "id": "W11_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备逐一复核重建区域，再做最终止血。",
+          "text_en": "Prepare to review each reconstruction area before final haemostasis."
+        },
+        {
+          "id": "W11_E2",
+          "speaker_role": "assistant_1",
+          "text": "几处吻合都要检查，尤其注意交界部位。",
+          "text_en": "Check every anastomosis, paying particular attention to the junctions."
+        }
+      ]
+    },
+    "W12": {
+      "stage_entry": [
+        {
+          "id": "W12_E1",
+          "speaker_role": "scrub_primary",
+          "text": "现在核对器械和纱布的最终清点记录。",
+          "text_en": "Now check the final instrument and swab count records."
+        },
+        {
+          "id": "W12_E2",
+          "speaker_role": "circulating_primary",
+          "text": "我再核对一次清点结果和手术记录。",
+          "text_en": "I will check the counts and operative record once more."
+        }
+      ]
+    },
+    "W13": {
+      "stage_entry": [
+        {
+          "id": "W13_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备关闭切口，确认可以结束手术。",
+          "text_en": "Prepare to close the incision. Confirm that we can finish the operation."
+        },
+        {
+          "id": "W13_E2",
+          "speaker_role": "scrub_primary",
+          "text": "关闭需要的器械和缝线已经就位。",
+          "text_en": "The instruments and sutures for closure are ready."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "outputs": [
+    {
+      "key": "outpatient/neutral",
+      "source": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-83a0c2f5-58ab-4d89-9d9e-eb12d9328a1a.png",
+      "saved_path": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/patient_candidates/patient_amis_ernest/base_v1/outpatient_neutral.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "a2fb7c18db7c602d21f7983c9acf33088e214681b3357d8d592a8aae3c1b2413",
+      "status": "awaiting_user_review",
+      "runtime_mapped": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_pixels": 927882
+    },
+    {
+      "key": "ward/neutral",
+      "source": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-e1d8e80d-4c37-417d-b990-f3fabf88d330.png",
+      "saved_path": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/patient_candidates/patient_amis_ernest/base_v1/ward_neutral.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "992b7bc170a3392e44592e464b39018f05fd09ccb5a2b0d8617ad977c499d929",
+      "status": "awaiting_user_review",
+      "runtime_mapped": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "transparent_pixels": 853414
+    },
+    {
+      "key": "operating_table/awake",
+      "source": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-7f1a9b9c-8152-4abe-950b-cd23194e3000.png",
+      "saved_path": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/patient_candidates/patient_amis_ernest/base_v1/operating_table_awake.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGB",
+      "sha256": "19c61be34d3a4a57b72627b8d6b95f9413c4c666ea3b8cd28c606c321c5cc764",
+      "status": "awaiting_user_review",
+      "runtime_mapped": false
+    },
+    {
+      "key": "intraoperative/tense",
+      "source": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-57b8e0a9-54a5-43cb-ab6c-5938577b0654.png",
+      "saved_path": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/patient_candidates/patient_amis_ernest/base_v1/intraoperative_tense.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "sha256": "de0e713bc7699819149bee184fc97533b8898ca08a110279483f23ad041fd32f",
+      "status": "awaiting_user_review",
+      "runtime_mapped": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_pixels": 906206
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "source": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-292c01d3-40b9-43b0-8008-7db77f3685c9.png",
+      "saved_path": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/patient_candidates/patient_amis_ernest/base_v1/splash_general_anesthesia.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "906004a57dc9fbabfee996f8389f6d85e073fe9b554f8e16908af6db318c04c5",
+      "status": "awaiting_user_review",
+      "runtime_mapped": false
+    }
+  ],
+  "attempts": [
+    {
+      "key": "outpatient/neutral",
+      "status": "fulfilled"
+    },
+    {
+      "key": "ward/neutral",
+      "status": "fulfilled"
+    },
+    {
+      "key": "operating_table/awake",
+      "status": "fulfilled"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID addd8d16-b62c-4ff4-b788-1f932e8643ef.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    },
+    {
+      "key": "intraoperative/tense",
+      "status": "fulfilled"
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "status": "fulfilled"
+    }
+  ],
+  "retries": [
+    {
+      "key": "operating_table_lithotomy/awake",
+      "attempt": 1,
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 7bbd55ad-3e06-44b3-8cfb-abe891910e34.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "attempt": 2,
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 1a9dc023-449d-4650-bb22-efef13fe0364.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "attempt": 3,
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 5731882f-0c84-4586-8f26-67c2abcef9cc.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "attempt": 4,
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID c58b3f2c-c8ee-41a2-8f7e-a8a0c0f715eb.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "attempt": 5,
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID b0f39cff-74d3-4513-be5c-723e170eb202.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ TARGETS = {
     "temporary_conditions": ROOT / "data/surgeries/temporary_conditions.json",
     "time_events": None,  # Staff idle-chat bundles, not unrelated solo activities.
     "date_profiles": None,
+    "case_templates": ROOT / "data/cases/surgery_case_templates.json",
     "character_events": ROOT / "data/events/character_events/index.json",
     "micro_events": ROOT / "data/events/micro_events.json",
     "special_events": ROOT / "data/events/special_events/index.json",
@@ -25,7 +26,7 @@ FIELDS = {
     "description", "label", "text", "prompt", "response", "teaser", "caption",
     "announcement", "location_label", "speaker_label", "scene_caption", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "chapters",
-    "correction", "responses",
+    "correction", "responses", "reveal_text", "exploratory_surgery_reaction", "treatment_reaction", "safe_resolution", "dialogue", "outcome",
 }
 HAN = re.compile(r"[\u3400-\u9fff]")
 FORMAT = re.compile(r"%(?:0?\d+)?[sdif]")
@@ -82,6 +83,36 @@ def main() -> int:
                 failures.append(f"Chinese remains: {key}")
             elif FORMAT.findall(source) != FORMAT.findall(translated):
                 failures.append(f"placeholder mismatch: {key}")
+    for path in sorted((ROOT / "data/advanced_surgery/dialogue").glob("*.json")):
+        pack = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(pack, dict) and pack.get("schema_version") == "advanced_staff_dialogues_v1":
+            lines = [{**row, "id": f"{row['character_id']}:{row['trigger']}:{row['role']}"} for row in pack["lines"]]
+        else:
+            lines = pack if isinstance(pack, list) else [row for stage in pack["stages"].values() for group in stage.values() for row in group]
+        for row in lines:
+            checked += 1
+            text = row.get("text_en", "")
+            if not text.strip() or HAN.search(text) or FORMAT.findall(row["text"]) != FORMAT.findall(text):
+                failures.append(f"invalid advanced dialogue English: {path.name}/{row['id']}")
+    for path in sorted((ROOT / "data/advanced_surgery/stories").glob("*.json")):
+        pack = json.loads(path.read_text(encoding="utf-8"))
+        pairs = [(pack["patient"][key], pack["patient"].get(key + "_en", "")) for key in ("name", "diagnosis")]
+        for chapter in ("day1", "day3"):
+            pairs.append((pack[chapter]["title"], pack[chapter].get("title_en", "")))
+            pairs.extend((row["text"], row.get("text_en", "")) for row in pack[chapter]["lines"])
+        for source, translated in pairs:
+            checked += 1
+            if not translated.strip() or HAN.search(translated) or FORMAT.findall(source) != FORMAT.findall(translated):
+                failures.append(f"invalid advanced first-case English: {path.name}/{source}")
+    for procedure in json.loads((ROOT / "data/advanced_surgery/procedures.json").read_text(encoding="utf-8")):
+        for stage in procedure["steps"]:
+            for option in stage.get("options", []):
+                for field in ("label", "description"):
+                    checked += 1
+                    source = option.get(field, "")
+                    translated = option.get(field + "_en", "")
+                    if not source.strip() or not translated.strip() or HAN.search(translated) or FORMAT.findall(source) != FORMAT.findall(translated):
+                        failures.append(f"invalid advanced strategy English: {procedure['id']}/{stage['id']}/{option['id']}/{field}")
     if failures:
         print("\n".join(failures))
         print(f"NARRATIVE LOCALIZATION: {checked} checks; {len(failures)} failure(s)")

@@ -19,8 +19,18 @@
         "response_speaker": "patient",
         "delegate_role": "",
         "minutes": 3,
-        "effects": {"fear": -8, "pain": -2, "dignity": 4, "cooperation": 5},
-        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+        "effects": {
+          "fear": -8,
+          "pain": -2,
+          "dignity": 4,
+          "cooperation": 5
+        },
+        "condition_effect": {
+          "severity_delta": 0,
+          "remaining_steps_delta": 0,
+          "clear": true
+        },
+        "presence_delta": -2
       },
       {
         "id": "delegate_nausea_assistant",
@@ -29,8 +39,18 @@
         "response_speaker": "staff",
         "delegate_role": "assistant_surgeon",
         "minutes": 2,
-        "effects": {"fear": -6, "pain": -1, "dignity": 3, "cooperation": 4},
-        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+        "effects": {
+          "fear": -6,
+          "pain": -1,
+          "dignity": 3,
+          "cooperation": 4
+        },
+        "condition_effect": {
+          "severity_delta": 0,
+          "remaining_steps_delta": 0,
+          "clear": true
+        },
+        "presence_delta": -1
       },
       {
         "id": "delegate_nausea_circulating",
@@ -39,8 +59,18 @@
         "response_speaker": "staff",
         "delegate_role": "circulating_nurse",
         "minutes": 2,
-        "effects": {"fear": -7, "pain": -1, "dignity": 4, "cooperation": 4},
-        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+        "effects": {
+          "fear": -7,
+          "pain": -1,
+          "dignity": 4,
+          "cooperation": 4
+        },
+        "condition_effect": {
+          "severity_delta": 0,
+          "remaining_steps_delta": 0,
+          "clear": true
+        },
+        "presence_delta": -1
       },
       {
         "id": "ignore_nausea",
@@ -49,8 +79,18 @@
         "response_speaker": "patient",
         "delegate_role": "",
         "minutes": 0,
-        "effects": {"fear": 6, "pain": 2, "dignity": -3, "cooperation": -5},
-        "condition_effect": {"severity_delta": 1, "remaining_steps_delta": 1, "clear": false}
+        "effects": {
+          "fear": 6,
+          "pain": 2,
+          "dignity": -3,
+          "cooperation": -5
+        },
+        "condition_effect": {
+          "severity_delta": 1,
+          "remaining_steps_delta": 1,
+          "clear": false
+        },
+        "presence_delta": 2
       }
     ]
   },
@@ -74,8 +114,18 @@
         "response_speaker": "patient",
         "delegate_role": "",
         "minutes": 2,
-        "effects": {"fear": -4, "pain": 0, "dignity": 3, "cooperation": 6},
-        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 3,
+          "cooperation": 6
+        },
+        "condition_effect": {
+          "severity_delta": 0,
+          "remaining_steps_delta": 0,
+          "clear": true
+        },
+        "presence_delta": -2
       },
       {
         "id": "delegate_drowsiness_assistant",
@@ -84,8 +134,18 @@
         "response_speaker": "staff",
         "delegate_role": "assistant_surgeon",
         "minutes": 2,
-        "effects": {"fear": -3, "pain": 0, "dignity": 2, "cooperation": 5},
-        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+        "effects": {
+          "fear": -3,
+          "pain": 0,
+          "dignity": 2,
+          "cooperation": 5
+        },
+        "condition_effect": {
+          "severity_delta": 0,
+          "remaining_steps_delta": 0,
+          "clear": true
+        },
+        "presence_delta": -1
       },
       {
         "id": "delegate_drowsiness_circulating",
@@ -94,8 +154,18 @@
         "response_speaker": "staff",
         "delegate_role": "circulating_nurse",
         "minutes": 2,
-        "effects": {"fear": -4, "pain": 0, "dignity": 3, "cooperation": 5},
-        "condition_effect": {"severity_delta": 0, "remaining_steps_delta": 0, "clear": true}
+        "effects": {
+          "fear": -4,
+          "pain": 0,
+          "dignity": 3,
+          "cooperation": 5
+        },
+        "condition_effect": {
+          "severity_delta": 0,
+          "remaining_steps_delta": 0,
+          "clear": true
+        },
+        "presence_delta": -1
       },
       {
         "id": "ignore_drowsiness",
@@ -104,8 +174,18 @@
         "response_speaker": "narrator",
         "delegate_role": "",
         "minutes": 0,
-        "effects": {"fear": 2, "pain": 0, "dignity": -2, "cooperation": -5},
-        "condition_effect": {"severity_delta": 1, "remaining_steps_delta": 1, "clear": false}
+        "effects": {
+          "fear": 2,
+          "pain": 0,
+          "dignity": -2,
+          "cooperation": -5
+        },
+        "condition_effect": {
+          "severity_delta": 1,
+          "remaining_steps_delta": 1,
+          "clear": false
+        },
+        "presence_delta": 2
       }
     ]
   }

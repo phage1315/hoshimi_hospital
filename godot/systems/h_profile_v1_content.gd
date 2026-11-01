@@ -1,5 +1,5 @@
 extends RefCounted
-## Adapts authored H profile V1.3.2 data and its flow sidecar to the shared
+## Adapts authored schema 1.3 profiles and 1.3.2/1.3.4 flow sidecars to the shared
 ## V1 interaction session. This is a data adapter, not a second system.
 
 const EXPRESSION_IDS := ["neutral", "annoyed", "pleased", "flustered", "delighted", "peak"]
@@ -8,7 +8,7 @@ const H_STAGE_IMAGE := "res://assets/characters/h_profile_v1/doc_sayaka/h_stage_
 const AFTERCARE_IMAGE := "res://assets/characters/h_profile_v1/doc_sayaka/after_cg_v1.png"
 
 static func normalize(raw: Dictionary, flow_raw: Dictionary = {}, finish_labels_raw: Dictionary = {}, finish_actor_raw: Dictionary = {}, context_raw: Dictionary = {}) -> Dictionary:
-	if str(raw.get("schema_version", "")) != "1.3" or str(raw.get("actor_id", "")) != "doc_sayaka" or not bool(raw.get("adult_confirmed", false)):
+	if str(raw.get("schema_version", "")) != "1.3" or str(raw.get("actor_id", "")).is_empty() or not bool(raw.get("adult_confirmed", false)):
 		return {}
 	var normalized_flow := normalize_flow(flow_raw, raw, finish_labels_raw, finish_actor_raw)
 	if normalized_flow.is_empty():
@@ -52,16 +52,37 @@ static func normalize(raw: Dictionary, flow_raw: Dictionary = {}, finish_labels_
 	if not reactions.get("tier_fallback") is Dictionary or not reactions.get("zone_tier") is Dictionary or not reactions.get("action_tier") is Dictionary or not reactions.get("combo") is Dictionary:
 		return {}
 	var expressions := {}
-	for expression_id in EXPRESSION_IDS:
-		expressions[expression_id] = EXPRESSION_ATLAS
+	var atlas_path := ""
 	var normalized_base: Dictionary = base_context.duplicate(true)
 	var normalized_base_assets: Dictionary = base_assets.duplicate(true)
-	normalized_base_assets.merge({
-		"body_map": {"path": "res://assets/characters/h_profile_v1/doc_sayaka/bodymap_base_v1.png", "layout_id": "doc_sayaka_front_bodymap_v1", "width": 1024, "height": 1536},
-		"h_stage": {"path": H_STAGE_IMAGE},
-		"after_cg": {"path": AFTERCARE_IMAGE},
-		"background": {"id": "date_hotel"},
-	}, false)
+	if str(raw.actor_id) == "doc_sayaka":
+		atlas_path = EXPRESSION_ATLAS
+		for expression_id in EXPRESSION_IDS:
+			expressions[expression_id] = atlas_path
+		normalized_base_assets.merge({
+			"body_map": {"path": "res://assets/characters/h_profile_v1/doc_sayaka/bodymap_base_v1.png", "layout_id": "doc_sayaka_front_bodymap_v1", "width": 1024, "height": 1536},
+			"h_stage": {"path": H_STAGE_IMAGE},
+			"after_cg": {"path": AFTERCARE_IMAGE},
+			"background": {"id": "date_hotel"},
+		}, false)
+	else:
+		# New actors supply their own images and layout metadata; never borrow Sayaka.
+		var supplied_expressions: Variant = assets.get("portrait_expressions", {})
+		if not supplied_expressions is Dictionary:
+			return {}
+		for expression_id in EXPRESSION_IDS:
+			var path := str(supplied_expressions.get(expression_id, ""))
+			if path.is_empty(): return {}
+			expressions[expression_id] = path
+		for slot in ["body_map", "background"]:
+			if not normalized_base_assets.get(slot) is Dictionary: return {}
+		normalized_base_assets.merge({
+			"h_stage": {"path": str(assets.get("scene_cg", ""))},
+			"after_cg": {"path": str(assets.get("aftercare_cg", ""))},
+		}, false)
+	var body: Dictionary = normalized_base_assets.body_map
+	if str(body.get("path", "")).is_empty() or str(body.get("layout_id", "")).is_empty() or int(body.get("width", 0)) <= 0 or int(body.get("height", 0)) <= 0:
+		return {}
 	normalized_base["assets"] = normalized_base_assets
 	return {
 		"schema_version": 1,
@@ -72,14 +93,15 @@ static func normalize(raw: Dictionary, flow_raw: Dictionary = {}, finish_labels_
 		"action_zone_overrides": combos,
 		"reactions": reactions,
 		"expressions": expressions,
-		"expression_atlas": EXPRESSION_ATLAS,
+		"expression_atlas": atlas_path,
 		"location_entry": source_dialogue.get("location_entry", {}),
 		"scene": source_dialogue.get("scene", {}),
 		"flow": normalized_flow,
-		"h_stage_image": H_STAGE_IMAGE,
-		"after_cg_image": AFTERCARE_IMAGE,
-		"body_map_image": "res://assets/characters/h_profile_v1/doc_sayaka/bodymap_base_v1.png",
-		"body_map_layout": {"layout_id": "doc_sayaka_front_bodymap_v1", "width": 1024, "height": 1536},
+		"h_stage_image": str(normalized_base_assets.h_stage.path),
+		"after_cg_image": str(normalized_base_assets.after_cg.path),
+		"body_map_image": str(body.path),
+		"body_map_layout": {"layout_id": str(body.layout_id), "width": int(body.width), "height": int(body.height)},
+		"entry_random_one": bool(context_raw.get("entry_random_one", false)),
 		"context_overrides": {
 			"base": normalized_base,
 			"locations": locations.duplicate(true),
@@ -89,7 +111,8 @@ static func normalize(raw: Dictionary, flow_raw: Dictionary = {}, finish_labels_
 	}
 
 static func normalize_flow(raw: Dictionary, profile: Dictionary, finish_labels_raw: Dictionary = {}, finish_actor_raw: Dictionary = {}) -> Dictionary:
-	if str(raw.get("patch_version", "")) != "1.3.2" or str(raw.get("actor_id", "")) != str(profile.get("actor_id", "")):
+	var manual_flow := str(raw.get("patch_version", "")) == "1.3.4"
+	if str(raw.get("patch_version", "")) not in ["1.3.2", "1.3.4"] or str(raw.get("actor_id", "")) != str(profile.get("actor_id", "")):
 		return {}
 	var max_config: Variant = raw.get("excitement_max", null)
 	var style_config: Variant = raw.get("entry_style", null)
@@ -122,6 +145,9 @@ static func normalize_flow(raw: Dictionary, profile: Dictionary, finish_labels_r
 		return {}
 	var expected_kinds := ["style_line", "profile_scene_pool", "style_line", "profile_scene_pool", "profile_scene_pool"]
 	var expected_refs := ["entry_style.openings", "dialogue.scene.start", "entry_style.midpoints", "dialogue.scene.middle", "dialogue.scene.finish"]
+	if manual_flow:
+		expected_kinds[4] = "wait_for_player_finish"
+		expected_refs[4] = ""
 	var draw_plan: Array[Dictionary] = []
 	for index in range(playback_value.size()):
 		var item_value: Variant = playback_value[index]
@@ -130,6 +156,9 @@ static func normalize_flow(raw: Dictionary, profile: Dictionary, finish_labels_r
 		var item: Dictionary = item_value
 		if str(item.get("kind", "")) != expected_kinds[index] or str(item.get("ref", "")) != expected_refs[index]:
 			return {}
+		if manual_flow and index == 4:
+			if str(item.get("action_id", "")) != "h_finish" or not bool(item.get("do_not_auto_complete", false)): return {}
+			continue
 		if expected_kinds[index] == "style_line":
 			var style_field := "openings" if index == 0 else "midpoints"
 			for style_id in ["gentle", "intense"]:
@@ -145,6 +174,21 @@ static func normalize_flow(raw: Dictionary, profile: Dictionary, finish_labels_r
 			# automatic playback with the explicit V1.3.4 finish action.
 			if section != "finish":
 				draw_plan.append({"kind": "scene_pool", "section": section, "draw": 2})
+	if manual_flow:
+		var manual: Dictionary = phase_config.get("manual_finish", {})
+		var on_click: Dictionary = manual.get("on_click", {})
+		var completion: Dictionary = phase_config.get("completion", {})
+		if str(manual.get("button_action_id", "")) != "h_finish" or str(manual.get("button_label_selection", "")) != "uniform_random_1_of_5_at_phase2_enter" or not bool(manual.get("button_label_stable_for_session", false)) or not bool(manual.get("button_shown_only_after_initial_playback", false)) or not bool(manual.get("button_shown_until_clicked", false)):
+			return {}
+		for flag in ["one_shot", "disable_button_immediately", "prevent_other_phase2_lines_after_click", "choose_one_response_uniformly", "selection_independent_of_button_label", "play_selected_response_once", "wait_until_response_advanced"]:
+			if not bool(on_click.get(flag, false)): return {}
+		if str(on_click.get("then", "")) != "phase2.completion" or str(completion.get("trigger", "")) != "after_h_finish_reaction_acknowledged" or str(completion.get("set_result", "")) != "h_event_completed" or not bool(completion.get("value", false)) or not bool(completion.get("one_shot", false)) or not bool(completion.get("no_other_exit_from_normal_phase2_playback", false)):
+			return {}
+		finish_actor_raw = {
+			"spec_version": "1.3.4", "actor_id": str(profile.actor_id), "action_id": "h_finish",
+			"response_pool": on_click.get("response_pool", []),
+			"selection": {"method": "uniform_random", "draw_count": 1, "independent_of_button_label": true, "play_once": true, "wait_until_response_advanced": true},
+		}
 	var label_variants: Variant = finish_labels_raw.get("label_variants", null)
 	var label_selection: Dictionary = finish_labels_raw.get("selection", {})
 	var response_pool: Variant = finish_actor_raw.get("response_pool", null)

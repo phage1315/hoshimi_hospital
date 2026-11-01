@@ -1,0 +1,422 @@
+{
+  "id": "guest_mizuho",
+  "name": "支手瑞穗",
+  "age": 18,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 0,
+    "diagnostics": 0,
+    "teamwork": 7,
+    "patient_care": 6,
+    "instrument_handling": 3,
+    "calmness": 5
+  },
+  "surgery_proficiency": "novice",
+  "surgical_roles": [
+    "circulating_nurse"
+  ],
+  "specialty": "病房准备／非无菌巡回",
+  "rank": "临时护理辅助人员",
+  "personality": "外向、爽快，愿意承认不懂并向前辈求助",
+  "appearance": "沿用支手瑞穗本人形象",
+  "dialogue_style": "明快而直接",
+  "flags": [
+    "introduction_pending",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient",
+    "after_work_disabled"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.8,
+    "operations": []
+  },
+  "allowed_team_roles": [
+    "ward_nurse",
+    "circulating_nurse"
+  ],
+  "staff_unlock_event": "chihaya_mizuho_nurse_return",
+  "personal_nurse": {
+    "eligible": false,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  },
+  "visuals": {
+    "color": "b4c4c4",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "casual"
+    ],
+    "portraits": {
+      "casual/happy": "assets/characters/mizuho_story_v1/casual/happy.png",
+      "casual/neutral": "assets/characters/mizuho_story_v1/casual/neutral.png",
+      "casual/surprised": "assets/characters/mizuho_story_v1/casual/surprised.png",
+      "casual/touched": "assets/characters/mizuho_story_v1/casual/touched.png",
+      "casual/teasing": "assets/characters/mizuho_story_v1/casual/teasing.png",
+      "casual/shy": "assets/characters/mizuho_story_v1/casual/shy.png",
+      "casual/serious": "assets/characters/mizuho_story_v1/casual/serious.png",
+      "casual/annoyed": "assets/characters/mizuho_story_v1/casual/annoyed.png",
+      "casual/worried": "assets/characters/mizuho_story_v1/casual/worried.png",
+      "casual/smile": "assets/characters/mizuho_story_v1/casual/smile.png",
+      "uniform/neutral": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/uniform/neutral.png",
+      "uniform/surprised": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/uniform/surprised.png",
+      "uniform/serious": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/uniform/serious.png",
+      "uniform/tired": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/uniform/tired.png",
+      "uniform/worried": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/uniform/worried.png",
+      "uniform/smile": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/uniform/smile.png",
+      "scrubs/neutral": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/scrubs/neutral.png",
+      "scrubs/focused": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/scrubs/focused.png",
+      "scrubs/worried": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/scrubs/worried.png",
+      "scrubs/warm": "assets/characters/chihaya_mizuho_nurses_v1/guest_mizuho/scrubs/warm.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/guest_mizuho/neutral.png"
+    },
+    "offscreen_outfits": [],
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/guest_mizuho/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "authored_dialogue": {
+    "work.NS_01": [
+      {
+        "zh_CN": "「坂口医生！今天有什么要帮忙的？跑腿、送单子、找人，我都来！」",
+        "en": "\"Dr. Sakaguchi! What needs doing today? Errands, delivering forms, finding people—I'm ready!\""
+      }
+    ],
+    "work.NS_02": [
+      {
+        "zh_CN": "「我把交接表送到了！……只是表格上的缩写还得让前辈再教我一次。」",
+        "en": "\"I've delivered the handover form! ...Though I'll need someone to teach me the abbreviations again.\""
+      }
+    ],
+    "work.NS_03": [
+      {
+        "zh_CN": "「千早说，在护士站工作不能只靠气势。哎呀，我知道啦，我有认真看记录的！」",
+        "en": "\"Chihaya says enthusiasm alone won't get you through work at the nurses' station. I know! I am reading the records properly!\""
+      }
+    ],
+    "work.NS_04": [
+      {
+        "zh_CN": "「有人问我为什么来星见工作。我就实话说：起初是为了还医疗费，没想到跟大家一起做事也挺有意思！」",
+        "en": "\"Someone asked why I came to work at Hoshimi. I told the truth: at first it was to pay my medical bill, but working with everyone turned out to be pretty interesting!\""
+      }
+    ],
+    "work.NS_05": [
+      {
+        "zh_CN": "「嗯？拿东西先看标签？当然啦！我以前才不会想到医院连同一种东西都有好几个规格。」",
+        "en": "\"Hm? Read the labels before taking supplies? Of course! I never used to realize hospitals had several specifications for even the same kind of item.\""
+      }
+    ],
+    "work.NS_06": [
+      {
+        "zh_CN": "「今天我负责送两层楼的物品。运动量还不错嘛，至少比躺在病床上有意思！」",
+        "en": "\"I'm delivering supplies to two floors today. It's a decent workout, and at least it's more interesting than lying in a hospital bed!\""
+      }
+    ],
+    "work.WD_01": [
+      {
+        "zh_CN": "「交给我吧！……我会先看清单，再动手。千早已经提醒过我了。」",
+        "en": "\"Leave it to me! ...I'll read the checklist before I start. Chihaya's already reminded me.\""
+      }
+    ],
+    "work.WD_02": [
+      {
+        "zh_CN": "「您好，我是支手瑞穗！今天帮忙做准备，哪里不舒服就跟我们说哦。」",
+        "en": "\"Hello, I'm Mizuho Shite! I'm helping with preparation today. Tell us if anything feels wrong.\""
+      }
+    ],
+    "work.WD_03": [
+      {
+        "zh_CN": "「用品拿齐了！型号和数量都请前辈看过，没擅自挑一个就算。」",
+        "en": "\"All the supplies are here! The nurse checked the types and quantities. I didn't just pick any old ones.\""
+      }
+    ],
+    "work.WD_04": [
+      {
+        "zh_CN": "「怕手术？唔……其实我也怕过。您现在紧张，完全正常啦。」",
+        "en": "\"Scared of surgery? Well... I was scared too. It's completely normal to feel nervous right now.\""
+      }
+    ],
+    "work.WD_05": [
+      {
+        "zh_CN": "「我以前还大言不惭说过『有什么好怕的』。嗯，后来才知道这话最好别随便讲。」",
+        "en": "\"I once boasted, 'What's so scary about it?' Yes, afterward I learned it's best not to say that so casually.\""
+      }
+    ],
+    "work.WD_06": [
+      {
+        "zh_CN": "「还有这项没完成。我先记着，不会为了赶时间就打勾的。」",
+        "en": "\"This item still isn't done. I'll note it down. I won't tick it off just to hurry things along.\""
+      }
+    ],
+    "work.WD_07": [
+      {
+        "zh_CN": "「转运床到了？等一下，交接记录我再跟前辈核一次！」",
+        "en": "\"The transport trolley's here? Wait, let me check the handover record with the nurse once more!\""
+      }
+    ],
+    "work.WD_08": [
+      {
+        "zh_CN": "「患者说她最担心等会儿的准备，我已经告诉接班护士了。还有问题也会继续问的。」",
+        "en": "\"The patient said she's most worried about the preparation coming up. I've told the nurse taking over. We'll keep asking if she has more questions.\""
+      }
+    ],
+    "work.WD_09": [
+      {
+        "zh_CN": "「病房这边完成啦！刚才跑来跑去那么忙，原来以前也有人替我做过这些呀。」",
+        "en": "\"Ward preparation's finished! After all that running around, I realize someone used to do all this for me too.\""
+      }
+    ],
+    "work.OR_01": [
+      {
+        "zh_CN": "「我来负责巡回辅助！要找东西还是要联络人，尽管叫我！」",
+        "en": "\"I'll handle circulating support! If you need something fetched or someone contacted, just call me!\""
+      }
+    ],
+    "work.OR_02": [
+      {
+        "zh_CN": "「外围用品和记录表都送齐了！我跟负责护士核对过，随时听安排！」",
+        "en": "\"The peripheral supplies and forms are all here! I've checked them with the responsible nurse and I'm ready for instructions!\""
+      }
+    ],
+    "work.OR_03": [
+      {
+        "zh_CN": "「监护我盯着呢。有不对劲的变化，我立刻报告！」",
+        "en": "\"I'm watching the monitor. If anything changes in a worrying way, I'll report it immediately!\""
+      }
+    ],
+    "work.OR_04": [
+      {
+        "zh_CN": "「需要补的东西我拿来了。哎，停在这里交接，对吧？」",
+        "en": "\"I've brought the extra supplies. Oh, stop here to hand them over, right?\""
+      }
+    ],
+    "work.OR_05": [
+      {
+        "zh_CN": "「时间记上了！原来手术时要记录的事情这么多啊。」",
+        "en": "\"Time recorded! I never realized how many things need recording during surgery.\""
+      }
+    ],
+    "work.OR_06": [
+      {
+        "zh_CN": "「她入室的时候好像有点紧张。我会问问她是不是想跟护士说话。」",
+        "en": "\"She seemed a little nervous when she came in. I'll ask whether she wants to talk to a nurse.\""
+      }
+    ],
+    "work.OR_07": [
+      {
+        "zh_CN": "「那台子上的东西我可不碰。上次亲眼见过，知道你们有多认真！」",
+        "en": "\"I'm not touching anything on that table. I saw last time how seriously you take it!\""
+      }
+    ],
+    "work.OR_08": [
+      {
+        "zh_CN": "「转运和记录我跟前辈对过了。下一班需要知道的我也会交代。」",
+        "en": "\"I've checked transport and records with the nurse. I'll tell the next shift what they need to know too.\""
+      }
+    ],
+    "work.OR_09": [
+      {
+        "zh_CN": "「结束啦！呼……手术台旁边忙归忙，总比自己躺在上面强！」",
+        "en": "\"Finished! Phew... Working beside the operating table is busy, but it's better than lying on it myself!\""
+      }
+    ],
+    "work.END_01": [
+      {
+        "zh_CN": "「辛苦啦，坂口医生！我再把剩下的交接做完！」",
+        "en": "\"Good work, Dr. Sakaguchi! I'll finish the remaining handover!\""
+      }
+    ],
+    "work.END_02": [
+      {
+        "zh_CN": "「这台做完啦！当巡回真不是只要跑得快就行呢。」",
+        "en": "\"That's this one done! Being a circulating nurse takes more than running fast.\""
+      }
+    ],
+    "work.END_03": [
+      {
+        "zh_CN": "「记录交好了！患者转运那边也有人接应，放心吧。」",
+        "en": "\"Records handed over! Someone's ready to receive the patient for transport too, so don't worry.\""
+      }
+    ],
+    "work.INVALID": [
+      {
+        "zh_CN": "「器械位啊？这个我可不敢随便上！让我做外围辅助吧。」",
+        "en": "\"Scrub duties? I wouldn't dare jump into those! Let me help outside the sterile area.\""
+      }
+    ]
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "「交给我吧！……我会先看清单，再动手。千早已经提醒过我了。」",
+    "circulating_nurse": "「我来负责巡回辅助！要找东西还是要联络人，尽管叫我！」"
+  },
+  "post_operation_replies": [
+    "「辛苦啦，坂口医生！我再把剩下的交接做完！」",
+    "「这台做完啦！当巡回真不是只要跑得快就行呢。」",
+    "「记录交好了！患者转运那边也有人接应，放心吧。」"
+  ],
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「坂口医生，血压往下掉了！」",
+          "「血压还在降，没停下来。」",
+          "「血压还是偏低，我又看了一遍监护！」"
+        ],
+        "severe_attempt_lines": [
+          "「血压掉得很快！」",
+          "「血压还在往下，没回升！」",
+          "「坂口医生，血压一直没稳住！」"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「血压升高了，坂口医生！」",
+          "「刚才还没这么高，正在往上升。」",
+          "「还是很高，没有降回去！」"
+        ],
+        "severe_attempt_lines": [
+          "「血压突然升得很高！」",
+          "「血压还是很高，继续在升！」",
+          "「血压没有回落，坂口医生！」"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「心率加快了！」",
+          "「坂口医生，心率一直在往上。」",
+          "「心率还没有降下来！」"
+        ],
+        "severe_attempt_lines": [
+          "「心率一下子升得很快！」",
+          "「心率还是这么快！」",
+          "「坂口医生，心率还没有缓下来！」"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「心率变慢了。」",
+          "「坂口医生，心跳又比刚才慢了一些。」",
+          "「心率依然偏慢，我继续盯着！」"
+        ],
+        "severe_attempt_lines": [
+          "「心率还在迅速下降！」",
+          "「心率没有回升！」",
+          "「坂口医生，心率仍然很低！」"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「心律不太规则了！」",
+          "「坂口医生，监护上的心律变了。」",
+          "「节律还是乱的，我看着呢！」"
+        ],
+        "severe_attempt_lines": [
+          "「心律突然乱了！」",
+          "「这种不规则的心律还在持续！」",
+          "「坂口医生，节律仍然明显异常！」"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「血氧开始下降了！」",
+          "「血氧还在往下，坂口医生。」",
+          "「血氧还是没有恢复！」"
+        ],
+        "severe_attempt_lines": [
+          "「血氧掉得太快了！」",
+          "「血氧没有升回来！」",
+          "「血氧还在低位，坂口医生！」"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「呼吸情况和刚才不一样！」",
+          "「坂口医生，呼吸状态越来越不稳。」",
+          "「呼吸状态还没稳定下来！」"
+        ],
+        "severe_attempt_lines": [
+          "「呼吸状态突然恶化了！」",
+          "「呼吸监护一直不稳定！」",
+          "「坂口医生，呼吸异常还在持续！」"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「坂口医生，监护状态不对！」",
+          "「患者的状态有变化，我在继续观察。」",
+          "「监护还是不稳定，我又核对了一遍！」"
+        ],
+        "severe_attempt_lines": [
+          "「监护一下子变得很不稳定！」",
+          "「异常没有消失，状态还在变化！」",
+          "「坂口医生，患者状态还是没有回稳！」"
+        ]
+      }
+    ]
+  }
+}

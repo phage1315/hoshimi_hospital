@@ -1,0 +1,54 @@
+[
+  {
+    "id": "serika_lv4_stay",
+    "title": "留下来",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": true,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [],
+    "required_characters": [
+      "doc_serika",
+      "nurse_yui"
+    ],
+    "prerequisite_events": [
+      "serika_lv3_half_beat"
+    ],
+    "event_chain": [
+      "serika_lv4_stay_main"
+    ],
+    "completion_flags": [],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "serika_lv4_stay",
+      "title": "留下来",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 500,
+      "final_week_allowed": false,
+      "sunday_start_allowed": true,
+      "time_start": 960,
+      "time_end": 1379
+    },
+    "relationship_rewards": [
+      {
+        "actor_id": "doc_serika",
+        "target_level": 4,
+        "benefit_id": "unlock_intimacy_events",
+        "award_event_familiarity": false,
+        "allow_level_skip": false
+      }
+    ],
+    "announcement": "下班后连续演出至第三天后的09:00；期间无法进行普通活动或保存。",
+    "completion_hint": "御園芹香 Lv4 达成，恋人关系成立，熟悉度成长倍率恢复为1.00。"
+  }
+]

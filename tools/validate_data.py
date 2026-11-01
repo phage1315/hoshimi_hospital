@@ -5,6 +5,7 @@ from datetime import date
 from pathlib import Path
 from jsonschema import Draft202012Validator, RefResolver
 from patient_bundles import load_patient_bundles
+from patient_anesthesia_contract import anesthesia_asset_errors
 from staff_bundles import load_staff_bundles
 from staff_idle_chat_contract import staff_idle_chat_errors
 ROOT = Path(__file__).resolve().parents[1]
@@ -289,6 +290,8 @@ legacy_role_cg_backlog = {
     'doc_asuka', 'doc_artoria', 'visiting_maya',
     'visiting_futaba', 'doc_sakura_anesthesiology',
     'nurse_ishigami', 'nurse_satsuki',
+    # User deferred the return-chain CG production until after implementation.
+    'patient_chihaya', 'guest_mizuho',
 }
 # These older doctors predate the unified dating-data contract. New female
 # doctors with a relationship route must provide a date profile unless they
@@ -321,7 +324,7 @@ for relation in collections['relationships']:
     for slot in slots:
         content_status = slot['content_status']
         # Aqua's first team unlock depends only on introduction + five cases.
-        expected_cooldown = 0 if relation['target_id'] == 'doc_aqua' and slot['target_level'] == 1 else 3
+        expected_cooldown = 0 if (relation['target_id'], slot['target_level']) in [('doc_aqua', 1), ('guest_mizuho', 4)] else 3
         check(slot['cooldown_days'] == expected_cooldown,
               prefix + f"Lv{slot['target_level']}: relationship milestone cooldown must be {expected_cooldown} days")
         check(0 <= slot['min_familiarity'] <= 100,
@@ -716,7 +719,20 @@ for step in collections['special_event_steps']:
         actor_id = node.get('actor_id', '')
         known_actors = {**by['staff'], **by['cameo_patients']}
         if node['speaker'] == 'actor':
-            check(actor_id in known_actors, prefix + node['id'] + ': actor speaker needs a known actor_id')
+            voice_only = (not actor_id and node.get('presentation') == 'authored' and
+                          node.get('hide_portrait') is True and node.get('event_portraits') == [] and
+                          bool(node.get('speaker_label')) and not node.get('portrait_path') and not node.get('secondary_actor_id'))
+            # Authored story-only guests can speak with their own explicitly
+            # supplied sprite without becoming staff or a real patient Bundle.
+            guest_portraits = node.get('event_portraits', [])
+            named_visual_guest = (not actor_id and node.get('presentation') == 'authored' and
+                                  bool(node.get('speaker_label')) and not node.get('hide_portrait') and
+                                  len(guest_portraits) == 1 and
+                                  guest_portraits[0].get('id', '').startswith('story_guest_') and
+                                  bool(guest_portraits[0].get('path')) and
+                                  not node.get('secondary_actor_id'))
+            check(actor_id in known_actors or voice_only or named_visual_guest,
+                  prefix + node['id'] + ': actor needs known identity or explicitly named guest staging')
         if actor_id:
             check(actor_id in known_actors, prefix + node['id'] + ': unknown visual actor')
             actor = known_actors.get(actor_id, {})
@@ -800,6 +816,7 @@ required_preparation_reaction_variants = {
 }
 personality_pairs = {}
 for patient in collections['patients']:
+    errors.extend(anesthesia_asset_errors(patient, ROOT))
     prefix = patient['id'] + ': '
     check(patient['age'] >= 18, prefix + 'ordinary surgery-pool patients must be adults')
     override_id = patient.get('first_surgery_diagnosis_shock_override_id', '')
@@ -844,6 +861,10 @@ for template in collections['case_templates']:
         check(len(option_ids) >= 2, prefix + variant['id'] + ': at least two decision options required')
         check(len(option_ids) == len(set(option_ids)), prefix + variant['id'] + ': duplicate decision option')
         check(any(option.get('requires_consent') for option in variant.get('decision_options', [])), prefix + variant['id'] + ': continuation must require consent')
+        if variant.get('runtime_enabled', False):
+            enabled = variant.get('runtime_options', [])
+            check(len(enabled) >= 2 and len(enabled) == len(set(enabled)), prefix + variant['id'] + ': at least two unique runtime options required')
+            check(set(enabled).issubset(option_ids), prefix + variant['id'] + ': unknown runtime option')
         coerced_options = [option for option in variant.get('decision_options', []) if option.get('consent_state') == 'coerced']
         for option in coerced_options:
             check(option.get('effects', {}).get('presence', 0) > 0, prefix + option['id'] + ': coerced option must raise clinical presence')
@@ -979,8 +1000,9 @@ check(moe.get('visuals', {}).get('portraits', {}).get('operating_patient/nervous
       'nurse_moe: changing portrait must also be registered for future Lv4 operating-room patient play')
 check('sterile' in moe.get('visuals', {}).get('outfits', []),
       'nurse_moe: ordinary operating-room appearances must support sterile clothing')
-check('scrubs/neutral' not in moe.get('visuals', {}).get('portraits', {}),
-      'nurse_moe: short-sleeve scrubs must remain exclusive to the changing-room event')
+check(moe.get('visuals', {}).get('portraits', {}).get('scrubs/neutral') ==
+      'assets/characters/moe_circulating_v1/neutral.png',
+      'nurse_moe: circulating role must use the new standing sprite, not the changing-room close-up')
 check(any(event.get('id') == 'clinic_chat_nurse_moe' for event in collections['time_events']) and
       any(event.get('id') == 'or_chat_nurse_moe' for event in collections['time_events']),
       'nurse_moe: outpatient and occasional operating-room small talk are required')
@@ -1235,7 +1257,7 @@ for event in collections['time_events']:
             chat_outfit = 'scrubs' if 'scrubs/neutral' in portraits else 'sterile'
         else:
             chat_outfit = actor['visuals']['default_outfit']
-        check(f'{chat_outfit}/neutral' in portraits,
+        check(f'{chat_outfit}/neutral' in portraits or chat_outfit in actor['visuals'].get('offscreen_outfits', []),
               event['id'] + ': missing location-appropriate small-talk portrait ' + chat_outfit + '/neutral')
 for event in collections['character_events']:
     prefix = event['id'] + ': '

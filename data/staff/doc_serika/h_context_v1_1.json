@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.0",
+  "actor_id": "doc_serika",
+  "entry_random_one": true,
+  "base": {
+    "assets": {
+      "body_map": {
+        "path": "res://assets/h/doc_serika/body_map.png",
+        "layout_id": "doc_serika_front_bodymap_v1",
+        "width": 1024,
+        "height": 1536
+      },
+      "h_stage": {
+        "path": "res://assets/h/doc_serika/scene_cg.png"
+      },
+      "after_cg": {
+        "path": "res://assets/h/doc_serika/aftercare_cg.png"
+      },
+      "background": {
+        "id": "serika_home_bedroom_night"
+      }
+    },
+    "dialogue": {
+      "en": {
+        "reaction.tier_fallback:low": [
+          "Ah... that was a little sudden...",
+          "Mm... I’m not used to that...",
+          "...I-I prefer it a little gentler...",
+          "Mm... c-could you try something else...?"
+        ],
+        "reaction.tier_fallback:mild": [
+          "Mm... okay...",
+          "...That tickles a little...",
+          "Hah... slowly...",
+          "...Mm, just like that..."
+        ],
+        "reaction.tier_fallback:strong": [
+          "Ah...!",
+          "...Mm... you...",
+          "...Ah... so, so hot...",
+          "...Hah... my heart..."
+        ],
+        "reaction.tier_fallback:favorite": [
+          "...I-I want more...",
+          "Mm... once more...",
+          "...Don’t stop yet...",
+          "...Mm... Sakaguchi..."
+        ],
+        "reaction.zone_tier:lips|favorite": [
+          "...Mm... so close...",
+          "...My lips... feel a little hot..."
+        ],
+        "reaction.zone_tier:cheeks|strong": [
+          "Ah... my face... feels so hot...",
+          "...D-don’t look at me like that..."
+        ],
+        "reaction.zone_tier:neck|strong": [
+          "...Ah... my neck...!",
+          "Mm... that t-tickles too much..."
+        ],
+        "reaction.zone_tier:breasts|strong": [
+          "...Hah... d-don’t look at me...",
+          "Ah... th-there...!"
+        ],
+        "reaction.zone_tier:nipples|strong": [
+          "Ah...! ...So sudden...",
+          "...Mm... so, so sensitive..."
+        ],
+        "reaction.zone_tier:navel|mild": [
+          "...Oh... there too...?",
+          "Mm... that tickles..."
+        ],
+        "reaction.zone_tier:torso_other|mild": [
+          "...Hah... so warm...",
+          "...Mm... so gentle..."
+        ],
+        "reaction.zone_tier:genitals|strong": [
+          "Ah...! ...Sakaguchi...",
+          "...Mm... th-there..."
+        ],
+        "reaction.zone_tier:thighs|mild": [
+          "...Ah... my legs feel a little weak...",
+          "...Mm... a little gentler..."
+        ],
+        "reaction.combo:caress|cheeks": [
+          "...Mm... your hand...",
+          "...A-a little longer..."
+        ],
+        "reaction.combo:kiss|lips": [
+          "...Mm... k-kiss me again...",
+          "...Mm... don’t pull away..."
+        ],
+        "reaction.combo:caress|neck": [
+          "...Hah... that feels good...",
+          "...Mm... gently... just like that..."
+        ],
+        "reaction.combo:kiss|neck": [
+          "Ah... w-why are you kissing me there...",
+          "...One... more time... please...?"
+        ],
+        "reaction.combo:caress|torso_other": [
+          "...Your hand... is so warm...",
+          "...Mm... take your time..."
+        ],
+        "reaction.combo:caress|thighs": [
+          "Ah...! ...My legs...",
+          "...Mm... my whole body..."
+        ],
+        "reaction.combo:lick|cheeks": [
+          "Ah... wh-what...?",
+          "...Why so suddenly..."
+        ],
+        "reaction.combo:light_bite|lips": [
+          "Mm...! ...You startled me...",
+          "...A-a little... gentler..."
+        ],
+        "reaction.combo:light_bite|neck": [
+          "Ah...!",
+          "...Mm... just then..."
+        ],
+        "reaction.combo:light_bite|genitals": [
+          "Ah...! ...Th-there...",
+          "...Mm... too, too sudden..."
+        ],
+        "scene.start": [
+          "...A little... closer...",
+          "...D-don’t keep staring...",
+          "...Mm... give me your hand..."
+        ],
+        "scene.middle": [
+          "Ah... S-Sakaguchi...",
+          "...Hah... don’t... don’t let go...",
+          "...I... ah...!"
+        ],
+        "scene.finish": [
+          "...I still... want to stay like this...",
+          "...Don’t get up yet...",
+          "...Mm... good night..."
+        ],
+        "max_prompt": [
+          "...I... hah... could you come a little closer...?"
+        ],
+        "style.opening.gentle": [
+          "Mm... h-hold me close..."
+        ],
+        "style.opening.intense": [
+          "Ah...! ...Sakaguchi..."
+        ],
+        "style.midpoint.gentle": [
+          "...Mm... don’t let go..."
+        ],
+        "style.midpoint.intense": [
+          "Ah...! ...I-I..."
+        ],
+        "finish.responses": [
+          "...Ah...!",
+          "...Sakaguchi...!",
+          "Mm... ah...!",
+          "...I-I love you...!"
+        ],
+        "aftercare": [
+          "...Will you hold me a little longer?",
+          "...Hearing you breathe... makes me want to stay still."
+        ],
+        "finish.labels": [
+          "I’m coming!",
+          "It’s coming...!",
+          "I can’t hold back...!",
+          "Right now!",
+          "Let’s come together!"
+        ]
+      }
+    }
+  },
+  "locations": {
+    "hotel": {
+      "dialogue": {
+        "en": {
+          "entry": [
+            "...I feel... more at ease at home."
+          ]
+        }
+      }
+    },
+    "home": {
+      "dialogue": {
+        "en": {
+          "entry": [
+            "...Come in. The slippers are here.",
+            "Your coat... you can hang it by the door.",
+            "...You’re here. Come on in.",
+            "...Now that the door is closed... I suddenly don’t know what to say."
+          ]
+        }
+      }
+    },
+    "ward": {
+      "dialogue": {
+        "en": {
+          "entry": [
+            "...There really... isn’t anyone here, is there?"
+          ]
+        }
+      }
+    },
+    "operating_room": {
+      "dialogue": {
+        "en": {
+          "entry": [
+            "...Being here... reminds me of being on duty."
+          ]
+        }
+      }
+    }
+  },
+  "events": {}
+}

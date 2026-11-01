@@ -3,15 +3,15 @@ extends RefCounted
 const VERSION := 37
 const FORMAT := "boundary_facts_v1"
 const GLOBAL_FIELDS := [
-	"patient_cases", "patient_queue", "patient_referrals", "active_staff_patient",
-	"staff_patient_practice_counts", "recent_patient_ids", "completed_surgeries_total",
+	"advanced_referral_facts", "patient_cases", "patient_queue", "patient_referrals", "active_staff_patient",
+	"staff_patient_practice_counts", "staff_patient_first_completion_days", "recent_patient_ids", "completed_surgeries_total",
 	"completed_surgeries_by_group", "completed_surgeries_by_procedure", "character_progress_counters",
 	"surgery_xp", "leadership_xp", "staff_skill_levels", "staff_training_credits",
 	"successful_no_anesthesia_surgeries", "reported_surgeries", "unlocked_procedure_ids",
 	"archived_player_effects", "campaign_seed", "intraoperative_crisis_enabled",
 	"discarded_overtime_minutes", "story_time_advance_minutes", "archived_clinical_minutes",
 	"story_flags", "probation_complete", "personal_nurse_system_unlocked", "personal_nurse_id",
-	"special_event_completion_counts", "special_event_completion_days", "adult_intimacy_unlocks", "free_h_booking"
+	"staff_contracts", "special_event_completion_counts", "special_event_completion_days", "adult_intimacy_unlocks", "free_h_booking"
 ]
 const VISIT_FIELDS := ["admitted", "minutes", "mistakes", "diagnosis", "notes", "player_effects"]
 const OPERATION_FIELDS := ["minutes", "surgery_success", "surgery_aborted", "procedure_id", "team", "player_effects"]
@@ -59,6 +59,7 @@ static func quality(source: Dictionary) -> Dictionary:
 func capture(game: RefCounted) -> Dictionary:
 	if not game.can_save_progress():
 		return {}
+	if not preload("res://godot/systems/advanced_referral_facts.gd").valid(game.advanced_referral_facts): return {}
 	var result := fields(game, GLOBAL_FIELDS)
 	result.merge({"version": VERSION, "content_version": 1, "save_format": FORMAT,
 		"elapsed_minutes": game.elapsed(), "clinical_visits": {}, "surgery_outcomes": {},
@@ -112,6 +113,7 @@ func decode(source: Variant) -> Dictionary:
 		return {}
 	if source.get("content_version") != 1:
 		return {}
+	if not preload("res://godot/systems/advanced_referral_facts.gd").valid(source.get("advanced_referral_facts", {})): return {}
 	var result: Dictionary = source.duplicate(true)
 	if legacy:
 		# Only the slot clock is authoritative in v36. Old per-action durations were

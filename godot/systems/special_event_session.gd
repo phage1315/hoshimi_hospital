@@ -1,6 +1,6 @@
 extends RefCounted
 ## Runtime for one full-day or multi-day special event.
-## Only authored choice IDs are persisted; world-state rewards live in GameState.
+## Cursors and choices exist only in memory; completed facts live in GameState.
 
 var definition: Dictionary
 var steps: Dictionary = {}
@@ -42,11 +42,13 @@ func presentation_schedule(fallback: Dictionary) -> Dictionary:
 	# Scene time is presentation only; atomic-event settlement owns the ledger.
 	if completed or cancelled:
 		return fallback
-	var scene: Dictionary = current_step().get("scene_schedule", {}).get(node_id.get_slice("_", 0), {})
+	var schedule: Dictionary = current_step().get("scene_schedule", {})
+	var scene: Dictionary = schedule.get(node_id, schedule.get(node_id.get_slice("_", 0), {}))
 	if scene.is_empty():
 		return fallback
 	var result := fallback.duplicate(true)
-	result.day = int(fallback.day) + int(scene.get("day_offset", 0))
+	var anchor_day := started_day if str(definition.id) == "serika_lv4_stay" else int(fallback.day)
+	result.day = anchor_day + int(scene.get("day_offset", 0))
 	result.absolute_clock = int(scene.clock)
 	return result
 

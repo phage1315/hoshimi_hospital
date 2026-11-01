@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-28",
+  "native": {
+    "checks": 36704,
+    "failures": 0,
+    "rendered_source_nodes": 4188,
+    "locales": [
+      "zh_CN",
+      "en"
+    ],
+    "includes_full_gallery": true,
+    "native_mouse_input": true,
+    "screenshots": [
+      "en_a02_012.png",
+      "en_b01_033.png",
+      "en_b03_002.png",
+      "en_b05_025.png",
+      "en_b06_039.png",
+      "en_b07_002.png",
+      "en_b08_008.png",
+      "en_b10_065.png",
+      "en_c01_067.png",
+      "en_c02_060.png",
+      "en_s01_023.png",
+      "zh_CN_a02_012.png",
+      "zh_CN_b01_033.png",
+      "zh_CN_b03_002.png",
+      "zh_CN_b05_025.png",
+      "zh_CN_b06_039.png",
+      "zh_CN_b07_002.png",
+      "zh_CN_b08_008.png",
+      "zh_CN_b10_065.png",
+      "zh_CN_c01_067.png",
+      "zh_CN_c02_060.png",
+      "zh_CN_s01_023.png"
+    ]
+  },
+  "source": {
+    "dialogue": 885,
+    "narration": 162,
+    "approved_revision": "a02_012: 下周→下下周一",
+    "other_text_or_speaker_changes": 0,
+    "english_nodes": 1047
+  },
+  "headless_initial": {
+    "checks": 35891,
+    "failures": 0
+  },
+  "narrative_localization": {
+    "checks": 21989,
+    "failures": 0
+  },
+  "regressions": {
+    "chihaya_third_surgery": 20012,
+    "serika_lv3": 7557,
+    "postoperative_departure_ui": 186,
+    "boundary_save_fresh_fixture": 918,
+    "special_event_framework": 135,
+    "narrative_save_lock": 6
+  },
+  "all_passed_regression_failures": 0,
+  "known_incomplete_tests": {
+    "free_h_scheduling_test": "Existing three-argument call to four-argument _confirm_free_h_booking at line 193; script error, not counted as passed."
+  },
+  "full_validation": {
+    "passed": false,
+    "new_errors": [],
+    "removed_baseline_errors": [
+      "cameo_patients[1] $.visuals.casual_smile: 'assets/characters/mizuho_story_v1/casual/smile.png' does not match '^assets/events/.+\\\\.png$'",
+      "cameo_patients[1] $.visuals.casual_neutral: 'assets/characters/mizuho_story_v1/casual/neutral.png' does not match '^assets/events/.+\\\\.png$'",
+      "cameo_patients[1] $.visuals.casual_teasing: 'assets/characters/mizuho_story_v1/casual/teasing.png' does not match '^assets/events/.+\\\\.png$'"
+    ]
+  },
+  "save_policy": "Only event-level completion/date/flags and settled numbers. No node/path/callback persisted. Tests write isolated /tmp files only.",
+  "remaining_story": "D+14 joint discharge, future debt and nurse identities are separate, not implemented here."
+}

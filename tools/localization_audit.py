@@ -21,7 +21,7 @@ PLACEHOLDER = re.compile(r"%(?:0?\d+)?[sdif]")
 TX_CALL = re.compile(r'(?:app\.)?tx\("(?P<key>[^"]+)",\s*"(?P<fallback>(?:\\.|[^"\\])*)"')
 CHINESE_LITERAL = re.compile(r'"(?:\\.|[^"\\])*[\u3400-\u9fff](?:\\.|[^"\\])*"')
 TRANSLATABLE_FIELDS = {
-    "name", "family_name", "given_name", "professional_name", "title", "subtitle", "description",
+    "rank", "appearance", "dialogue_style", "name", "family_name", "given_name", "professional_name", "title", "subtitle", "description",
     "label", "text", "prompt", "response", "teaser", "caption", "lines",
     "announcement", "completion_hint", "location_label", "speaker_label", "scene_caption", "actor_alias", "specialty", "personality",
     "presenting_complaint", "diagnosis", "intake_notes", "result", "summary", "section", "correction", "chapters",
@@ -45,7 +45,8 @@ def collect_keys(value: object, path: str, result: set[str]) -> None:
         for field, child in value.items():
             child_path = f"{path}.{field}"
             condition_prompt = path.startswith("collections.temporary_conditions.") and path.endswith(".prompts")
-            if isinstance(child, str) and child.strip() and (field in TRANSLATABLE_FIELDS or path.endswith(".outpatient_lines") or condition_prompt):
+            case_prose = path.startswith("collections.case_templates.") and ".rare_variants." in path and field in {"reveal_text", "treatment_reaction", "exploratory_surgery_reaction", "safe_resolution", "dialogue", "outcome"}
+            if isinstance(child, str) and child.strip() and (field in TRANSLATABLE_FIELDS or path.endswith(".outpatient_lines") or condition_prompt or case_prose):
                 result.add(child_path)
             collect_keys(child, child_path, result)
     elif isinstance(value, list):
@@ -115,6 +116,13 @@ def authored_keys() -> set[str]:
     for collection, relative_path in manifest["collections"].items():
         rows = read_collection(relative_path)
         collect_keys(rows, f"collections.{collection}", result)
+        if collection == "surgery_team_dialogue_profiles":
+            # Runtime localize_tree also translates response arrays whose keys
+            # describe actions rather than generic fields such as text/lines.
+            for row in rows:
+                if isinstance(row, dict) and row.get("id"):
+                    collect_han_leaf_keys(row.get("responses", {}),
+                        f"collections.{collection}.{row['id']}.responses", result)
     staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     for collection, rows in staff_collections.items():
         collect_keys(rows, f"collections.{collection}", result)

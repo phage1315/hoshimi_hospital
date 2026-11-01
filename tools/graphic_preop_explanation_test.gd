@@ -129,11 +129,11 @@ func run() -> void:
 	var locked = new_prep("surgery_appendix")
 	game.preops["atomic_test"] = locked
 	game.active_preop_id = "atomic_test"
-	expect(game.can_save_progress(), "Ordinary pre-op stage unexpectedly blocked saving")
+	expect(not game.can_save_progress(), "Saving must remain blocked throughout ordinary preparation")
 	expect(locked.apply({"kind": "action", "id": "explain_plan"}), "Could not enter atomic pre-op explanation")
-	expect(not game.can_save_progress() and game.save_block_reason().contains("术前说明"), "Atomic pre-op explanation did not block saving")
+	expect(not game.can_save_progress() and game.snapshot().is_empty(), "Pre-op explanation cannot create a persistent mid-event snapshot")
 	expect(locked.apply({"kind": "action", "id": "appropriate_answer"}), "Could not finish atomic appropriate answer")
-	expect(game.can_save_progress(), "Saving did not reopen after the pre-op answer")
+	expect(not game.can_save_progress(), "Answering a pre-op question must not reopen saving")
 
 	print("GRAPHIC PREOP EXPLANATION: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

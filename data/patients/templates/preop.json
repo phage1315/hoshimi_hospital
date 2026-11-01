@@ -51,21 +51,24 @@
       "label": "再解释一遍流程",
       "response": "患者把担心的问题问清楚了。",
       "minutes": 3,
-      "calm": 1
+      "calm": 1,
+      "presence_delta": -1
     },
     {
       "id": "family_call",
       "label": "留时间联系家人",
       "response": "通话结束，她轻轻松了一口气。",
       "minutes": 4,
-      "calm": 1
+      "calm": 1,
+      "presence_delta": -1
     },
     {
       "id": "company",
       "label": "陪伴片刻",
       "response": "有人陪着，等待也没那么难熬。",
       "minutes": 3,
-      "calm": 1
+      "calm": 1,
+      "presence_delta": -1
     }
   ],
   "stages": [
@@ -92,7 +95,8 @@
           "execute_preparation": false,
           "response_role": "",
           "response_by_staff": {},
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": -1
         },
         {
           "id": "brief_plan",
@@ -109,7 +113,8 @@
           "execute_preparation": false,
           "response_role": "",
           "response_by_staff": {},
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": 1
         }
       ],
       "background_id": "ward"
@@ -142,7 +147,8 @@
             "pain": 0,
             "dignity": 0,
             "cooperation": 0
-          }
+          },
+          "presence_delta": -1
         },
         {
           "id": "graphic_answer",
@@ -163,7 +169,8 @@
             "pain": 0,
             "dignity": 0,
             "cooperation": 0
-          }
+          },
+          "presence_delta": 1
         }
       ]
     },
@@ -380,7 +387,8 @@
           "execute_preparation": false,
           "response_role": "",
           "response_by_staff": {},
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": -1
         },
         {
           "id": "team_check",
@@ -691,7 +699,8 @@
             "dignity": 5,
             "cooperation": 20
           },
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": -1
         },
         {
           "id": "induction_brief",
@@ -716,7 +725,8 @@
             "dignity": -5,
             "cooperation": 20
           },
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": 1
         }
       ],
       "background_id": "operating_room"
@@ -863,7 +873,8 @@
           "anesthesia": "未选择",
           "hide_if_flags": [
             "anesthesia_reconsidered"
-          ]
+          ],
+          "presence_delta": -1
         },
         {
           "id": "insist_without_anesthesia",
@@ -1132,7 +1143,8 @@
             "dignity": 10,
             "cooperation": 5
           },
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": -2
         },
         {
           "id": "contact_command",
@@ -1155,7 +1167,8 @@
             "dignity": -10,
             "cooperation": 10
           },
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": 1
         },
         {
           "id": "contact_continue",
@@ -1178,7 +1191,8 @@
             "dignity": -15,
             "cooperation": 0
           },
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": 2
         }
       ],
       "background_id": "operating_room"
@@ -1212,7 +1226,8 @@
             "dignity": 5,
             "cooperation": 5
           },
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": -1
         },
         {
           "id": "ongoing_eye_contact",
@@ -1235,7 +1250,8 @@
             "dignity": 10,
             "cooperation": 0
           },
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": -1
         },
         {
           "id": "ongoing_silent",
@@ -1258,7 +1274,8 @@
             "dignity": -10,
             "cooperation": 0
           },
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": 1
         }
       ],
       "background_id": "operating_room"
@@ -1294,7 +1311,8 @@
             "dignity": 10,
             "cooperation": 5
           },
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": -1
         },
         {
           "id": "closure_coach",
@@ -1319,7 +1337,8 @@
             "dignity": 0,
             "cooperation": 10
           },
-          "response_speaker": "patient"
+          "response_speaker": "patient",
+          "presence_delta": 1
         },
         {
           "id": "closure_silent",
@@ -1344,7 +1363,8 @@
             "dignity": -5,
             "cooperation": 0
           },
-          "response_speaker": "narrator"
+          "response_speaker": "narrator",
+          "presence_delta": 1
         }
       ],
       "background_id": "operating_room"

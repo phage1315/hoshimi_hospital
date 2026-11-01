@@ -1,0 +1,346 @@
+{
+  "schema_version": "advanced_day2_dialogue_v1",
+  "procedure_id": "surgery_adv_ebstein_cone_reconstruction",
+  "stages": {
+    "C01": {
+      "stage_entry": [
+        {
+          "id": "C01_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备正中胸骨切开，进入心脏重建阶段。",
+          "text_en": "Prepare for median sternotomy and entry into the cardiac reconstruction."
+        },
+        {
+          "id": "C01_E2",
+          "speaker_role": "scrub_primary",
+          "text": "胸骨切开和止血器械已经准备完毕。",
+          "text_en": "The instruments for sternotomy and haemostasis are ready."
+        }
+      ]
+    },
+    "C02": {
+      "stage_entry": [
+        {
+          "id": "C02_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "核对体外循环准备状态，随后建立右心房暴露。",
+          "text_en": "Confirm bypass readiness, then establish right atrial exposure."
+        },
+        {
+          "id": "C02_E2",
+          "speaker_role": "anesthesia",
+          "text": "循环及氧合指标持续监测，准备配合体外循环转换。",
+          "text_en": "Circulatory and oxygenation parameters are under continuous monitoring. We are ready for bypass transition."
+        },
+        {
+          "id": "C02_E3",
+          "speaker_role": "assistant_1",
+          "text": "右心房的暴露范围需要满足瓣叶评估。",
+          "text_en": "The right atrial exposure must be sufficient for leaflet assessment."
+        }
+      ]
+    },
+    "C03": {
+      "stage_entry": [
+        {
+          "id": "C03_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "先判断三尖瓣前叶的活动范围，再逐步游离组织。",
+          "text_en": "Assess the mobility of the anterior tricuspid leaflet before progressively mobilizing the tissue."
+        },
+        {
+          "id": "C03_E2",
+          "speaker_role": "assistant_1",
+          "text": "瓣叶可用组织需要保留，分离不要过深。",
+          "text_en": "Preserve usable leaflet tissue and avoid overly deep dissection."
+        },
+        {
+          "id": "C03_E3",
+          "speaker_role": "scrub_primary",
+          "text": "细致瓣叶游离所需的器械已经就位。",
+          "text_en": "The instruments for delicate leaflet mobilization are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "C03_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "前叶的游离层次偏离了计划，需要重新辨认。",
+          "text_en": "The anterior leaflet mobilization has strayed from the intended plane. Reidentify it."
+        },
+        {
+          "id": "C03_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这段瓣叶组织的活动度还没达到要求，先调整。",
+          "text_en": "The leaflet tissue does not yet have the required mobility. Adjust it first."
+        }
+      ]
+    },
+    "C04": {
+      "stage_entry": [
+        {
+          "id": "C04_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "处理后叶和隔叶，特别注意隔叶附近的重要结构。",
+          "text_en": "Work on the posterior and septal leaflets, paying particular attention to critical nearby structures."
+        },
+        {
+          "id": "C04_E2",
+          "speaker_role": "assistant_2",
+          "text": "后叶组织的活动度还需要逐段确认。",
+          "text_en": "Posterior leaflet mobility still needs to be assessed segment by segment."
+        },
+        {
+          "id": "C04_E3",
+          "speaker_role": "assistant_1",
+          "text": "保持隔侧结构的辨认清楚，再继续游离。",
+          "text_en": "Keep the septal anatomy clearly identified before continuing mobilization."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "C04_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "隔叶附近的组织界面仍不清楚，暂缓推进。",
+          "text_en": "The tissue plane near the septal leaflet remains unclear. Pause before proceeding."
+        },
+        {
+          "id": "C04_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "后叶游离范围不足，需要重新检查。",
+          "text_en": "Posterior leaflet mobilization remains insufficient. Reassess the area."
+        }
+      ]
+    },
+    "C05": {
+      "stage_entry": [
+        {
+          "id": "C05_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "复核可用瓣叶面积，确定 Cone 的重建方向。",
+          "text_en": "Reassess the available leaflet area and determine the direction of cone reconstruction."
+        },
+        {
+          "id": "C05_E2",
+          "speaker_role": "assistant_1",
+          "text": "瓣环和游离瓣叶的对应关系需要再核对。",
+          "text_en": "Recheck the relationship between the annulus and the mobilized leaflets."
+        }
+      ]
+    },
+    "C06": {
+      "stage_entry": [
+        {
+          "id": "C06_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "开始将游离瓣叶组织旋转组合，逐步形成漏斗样瓣叶结构。",
+          "text_en": "Begin rotating and combining the mobilized leaflet tissue to form the cone."
+        },
+        {
+          "id": "C06_E2",
+          "speaker_role": "assistant_2",
+          "text": "保持瓣叶边缘方向一致，避免旋转时折叠。",
+          "text_en": "Keep the leaflet edges aligned and avoid folding during rotation."
+        },
+        {
+          "id": "C06_E3",
+          "speaker_role": "scrub_primary",
+          "text": "Cone 重建用细缝线已备妥。",
+          "text_en": "Fine sutures for cone reconstruction are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "C06_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "Cone 的组织方向尚未对齐，不能进入固定。",
+          "text_en": "The cone tissue is not aligned yet. We cannot proceed to fixation."
+        },
+        {
+          "id": "C06_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "瓣叶边缘出现不理想的折叠，需要重新整理。",
+          "text_en": "The leaflet edge has folded undesirably. It needs to be repositioned."
+        }
+      ]
+    },
+    "C07": {
+      "stage_entry": [
+        {
+          "id": "C07_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "接下来处理心房化右室，并调整瓣环的几何关系。",
+          "text_en": "Next, address the atrialized right ventricle and adjust annular geometry."
+        },
+        {
+          "id": "C07_E2",
+          "speaker_role": "assistant_1",
+          "text": "折叠范围要和最终瓣叶活动空间相协调。",
+          "text_en": "Coordinate the plication extent with the final space needed for leaflet movement."
+        },
+        {
+          "id": "C07_E3",
+          "speaker_role": "assistant_2",
+          "text": "先核对右室壁与瓣环的相对位置。",
+          "text_en": "Recheck the relationship between the right ventricular wall and the annulus."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "C07_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "右室折叠与瓣环调整的关系还不理想，需要修正。",
+          "text_en": "The relationship between ventricular plication and annular adjustment is unsatisfactory. Correct it."
+        },
+        {
+          "id": "C07_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先重新检查这一处张力，再继续下一步。",
+          "text_en": "Reassess the tension at this site before moving to the next step."
+        }
+      ]
+    },
+    "C08": {
+      "stage_entry": [
+        {
+          "id": "C08_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备把形成的 Cone 重新附着到解剖瓣环。",
+          "text_en": "Prepare to reattach the reconstructed cone at the anatomical annulus."
+        },
+        {
+          "id": "C08_E2",
+          "speaker_role": "assistant_1",
+          "text": "沿瓣环保持均匀对位，避免局部牵拉。",
+          "text_en": "Maintain even alignment along the annulus and avoid localized traction."
+        },
+        {
+          "id": "C08_E3",
+          "speaker_role": "scrub_primary",
+          "text": "瓣环附着所需的缝线已经递上。",
+          "text_en": "The sutures for annular attachment are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "C08_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "Cone 与瓣环的附着对位还不符合要求。",
+          "text_en": "Alignment between the cone and annulus does not yet meet the intended standard."
+        },
+        {
+          "id": "C08_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "局部瓣叶张力不均，需要修正固定位置。",
+          "text_en": "Local leaflet tension is uneven. Revise the attachment position."
+        }
+      ]
+    },
+    "C09": {
+      "stage_entry": [
+        {
+          "id": "C09_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "进行瓣叶对合测试，寻找仍需修正的边缘。",
+          "text_en": "Test leaflet coaptation and identify any edges that still need adjustment."
+        },
+        {
+          "id": "C09_E2",
+          "speaker_role": "assistant_2",
+          "text": "检查接合线的连续性，特别是隔侧区域。",
+          "text_en": "Review the continuity of the coaptation line, especially near the septal side."
+        },
+        {
+          "id": "C09_E3",
+          "speaker_role": "assistant_1",
+          "text": "保留足够的瓣叶活动度，不能只追求静态贴合。",
+          "text_en": "Preserve adequate leaflet mobility; static apposition alone is not enough."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "C09_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "瓣叶对合仍存在间隙，需要针对性调整。",
+          "text_en": "A gap remains in leaflet coaptation. Targeted adjustment is needed."
+        },
+        {
+          "id": "C09_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这处对合线不连续，先修正再复核。",
+          "text_en": "The coaptation line is discontinuous here. Correct it before retesting."
+        }
+      ]
+    },
+    "C10": {
+      "stage_entry": [
+        {
+          "id": "C10_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "对合复核完成后整理右心房，再进入关闭阶段。",
+          "text_en": "Once the coaptation review is complete, prepare the right atrium for closure."
+        },
+        {
+          "id": "C10_E2",
+          "speaker_role": "scrub_primary",
+          "text": "右心房关闭所需的缝线已就位。",
+          "text_en": "The sutures for right atrial closure are ready."
+        }
+      ]
+    },
+    "C11": {
+      "stage_entry": [
+        {
+          "id": "C11_E1",
+          "speaker_role": "anesthesia",
+          "text": "准备配合脱离体外循环，持续观察循环反应。",
+          "text_en": "We are ready to assist with weaning from bypass and to monitor the circulatory response."
+        },
+        {
+          "id": "C11_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "复核三尖瓣功能与右心室表现，再决定后续步骤。",
+          "text_en": "Review tricuspid valve function and right ventricular performance before proceeding."
+        },
+        {
+          "id": "C11_E3",
+          "speaker_role": "assistant_1",
+          "text": "重点关注瓣叶对合状态和残余反流。",
+          "text_en": "Focus on leaflet coaptation and any residual regurgitation."
+        }
+      ]
+    },
+    "C12": {
+      "stage_entry": [
+        {
+          "id": "C12_E1",
+          "speaker_role": "scrub_primary",
+          "text": "开始最终清点，器械和纱布记录正在复核。",
+          "text_en": "Final counts are under way. Instrument and swab records are being checked."
+        },
+        {
+          "id": "C12_E2",
+          "speaker_role": "assistant_2",
+          "text": "检查术野和胸腔引流准备情况。",
+          "text_en": "Review the operative field and chest drainage preparation."
+        }
+      ]
+    },
+    "C13": {
+      "stage_entry": [
+        {
+          "id": "C13_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "确认可以完成胸骨关闭，结束重建流程。",
+          "text_en": "Confirm readiness for sternal closure and completion of the reconstruction."
+        },
+        {
+          "id": "C13_E2",
+          "speaker_role": "circulating_primary",
+          "text": "最终器械清点与手术记录已核对。",
+          "text_en": "The final instrument count and operative record have been checked."
+        }
+      ]
+    }
+  }
+}

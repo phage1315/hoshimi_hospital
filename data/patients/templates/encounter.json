@@ -44,7 +44,8 @@
           "diagnosis": "",
           "admit": false,
           "mistake": false,
-          "summary": "患者的担心已记下"
+          "summary": "患者的担心已记下",
+          "presence_delta": -1
         }
       ],
       "auto_record": false,
@@ -215,7 +216,8 @@
           "admit": false,
           "mistake": false,
           "summary": "有限查体完成 · 无针对性发现",
-          "consent_state": "informed"
+          "consent_state": "informed",
+          "presence_delta": -1
         }
       ],
       "auto_record": false,
@@ -248,7 +250,8 @@
           "mistake": false,
           "summary": "尊重拒绝 · 查体未完成",
           "player_effects": {},
-          "consent_state": "none"
+          "consent_state": "none",
+          "presence_delta": -1
         },
         {
           "id": "authoritative_full_undress",
@@ -270,7 +273,8 @@
           "mistake": false,
           "summary": "患者配合脱衣 · 查体完成",
           "player_effects": {},
-          "consent_state": "informed"
+          "consent_state": "informed",
+          "presence_delta": 1
         },
         {
           "id": "gentle_full_undress",
@@ -292,7 +296,8 @@
           "mistake": false,
           "summary": "患者自愿配合 · 查体完成",
           "player_effects": {},
-          "consent_state": "informed"
+          "consent_state": "informed",
+          "presence_delta": -1
         },
         {
           "id": "threaten_full_undress",

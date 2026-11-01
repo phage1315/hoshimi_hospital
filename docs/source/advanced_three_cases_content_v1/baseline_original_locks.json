@@ -1,0 +1,261 @@
+{
+  "source": "2026-10-31 uploaded advanced_surgery.zip",
+  "procedures": [
+    {
+      "id": "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction",
+      "crisis_checkpoints": [
+        6,
+        9
+      ],
+      "crisis_chances": [
+        0.29,
+        0.2
+      ],
+      "steps": [
+        {
+          "id": "P01",
+          "name": "切口与进入",
+          "name_en": "Incision and entry",
+          "kind": "F",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "P02",
+          "name": "盆壁暴露",
+          "name_en": "Expose the pelvic sidewall",
+          "kind": "L",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "P03",
+          "name": "广泛盆腔粘连分离",
+          "name_en": "Extensive pelvic adhesiolysis",
+          "kind": "P",
+          "hp_base": 4,
+          "difficulty": 90,
+          "specialty_tag": "adhesion",
+          "hp_failed_extra": 13
+        },
+        {
+          "id": "P04",
+          "name": "神经与输尿管邻近关系辨认",
+          "name_en": "Identify relations to nerves and ureter",
+          "kind": "P",
+          "hp_base": 5,
+          "difficulty": 95,
+          "specialty_tag": "neural",
+          "hp_failed_extra": 15
+        },
+        {
+          "id": "P05",
+          "name": "血管处理策略确认",
+          "name_en": "Confirm vascular strategy",
+          "kind": "S",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "P06",
+          "name": "髂血管周围精细分离",
+          "name_en": "Precision dissection around iliac vessels",
+          "kind": "P",
+          "hp_base": 5,
+          "difficulty": 96,
+          "specialty_tag": "vascular",
+          "hp_failed_extra": 16
+        },
+        {
+          "id": "P07",
+          "name": "肿瘤深部边界分离",
+          "name_en": "Dissect the deep tumour boundary",
+          "kind": "P",
+          "hp_base": 5,
+          "difficulty": 94,
+          "specialty_tag": "microdissection",
+          "hp_failed_extra": 15
+        },
+        {
+          "id": "P08",
+          "name": "完整切除、整理术野",
+          "name_en": "Complete resection and organise field",
+          "kind": "F",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "P09",
+          "name": "髂血管重建",
+          "name_en": "Iliac vascular reconstruction",
+          "kind": "P",
+          "hp_base": 6,
+          "difficulty": 98,
+          "specialty_tag": "reconstruction",
+          "hp_failed_extra": 18
+        },
+        {
+          "id": "P10",
+          "name": "盆壁神经与固定点复核",
+          "name_en": "Review pelvic nerves and fixation points",
+          "kind": "P",
+          "hp_base": 4,
+          "difficulty": 92,
+          "specialty_tag": "pelvic",
+          "hp_failed_extra": 13
+        },
+        {
+          "id": "P11",
+          "name": "灌注与最终止血评估",
+          "name_en": "Assess perfusion and final haemostasis",
+          "kind": "S",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "P12",
+          "name": "关闭",
+          "name_en": "Closure",
+          "kind": "F",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        }
+      ]
+    },
+    {
+      "id": "surgery_adv_sleeve_lobectomy",
+      "crisis_checkpoints": [
+        7,
+        9
+      ],
+      "crisis_chances": [
+        0.25,
+        0.23
+      ],
+      "steps": [
+        {
+          "id": "T01",
+          "name": "开胸与进入",
+          "name_en": "Thoracotomy and entry",
+          "kind": "F",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "T02",
+          "name": "肺门区域暴露",
+          "name_en": "Expose the pulmonary hilum",
+          "kind": "L",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "T03",
+          "name": "肺动脉分支解剖",
+          "name_en": "Dissect pulmonary artery branches",
+          "kind": "P",
+          "hp_base": 5,
+          "difficulty": 94,
+          "specialty_tag": "vascular",
+          "hp_failed_extra": 15
+        },
+        {
+          "id": "T04",
+          "name": "支气管周围精细分离",
+          "name_en": "Precision peribronchial dissection",
+          "kind": "P",
+          "hp_base": 4,
+          "difficulty": 91,
+          "specialty_tag": "thoracic",
+          "hp_failed_extra": 12
+        },
+        {
+          "id": "T05",
+          "name": "病变切除范围确认",
+          "name_en": "Confirm extent of resection",
+          "kind": "S",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "T06",
+          "name": "保留结构与切缘处理",
+          "name_en": "Preserve structures and manage margins",
+          "kind": "P",
+          "hp_base": 4,
+          "difficulty": 93,
+          "specialty_tag": "microdissection",
+          "hp_failed_extra": 13
+        },
+        {
+          "id": "T07",
+          "name": "完成肺叶切除",
+          "name_en": "Complete lobectomy",
+          "kind": "F",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "T08",
+          "name": "支气管重建吻合",
+          "name_en": "Bronchial reconstruction",
+          "kind": "P",
+          "hp_base": 6,
+          "difficulty": 97,
+          "specialty_tag": "airway",
+          "hp_failed_extra": 17
+        },
+        {
+          "id": "T09",
+          "name": "血管重建及复核",
+          "name_en": "Vascular reconstruction and review",
+          "kind": "P",
+          "hp_base": 5,
+          "difficulty": 96,
+          "specialty_tag": "reconstruction",
+          "hp_failed_extra": 16
+        },
+        {
+          "id": "T10",
+          "name": "通气与灌注复查",
+          "name_en": "Review ventilation and perfusion",
+          "kind": "S",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        },
+        {
+          "id": "T11",
+          "name": "关闭",
+          "name_en": "Closure",
+          "kind": "F",
+          "hp_base": 2,
+          "difficulty": 0,
+          "specialty_tag": "",
+          "hp_failed_extra": 0
+        }
+      ]
+    }
+  ]
+}

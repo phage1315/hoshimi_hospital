@@ -1,0 +1,61 @@
+{
+  "outputs": [
+    {
+      "key": "outpatient/neutral",
+      "path": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-3fe17565-c157-4356-87ae-19e9a4023eef.png"
+    },
+    {
+      "key": "ward/neutral",
+      "path": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-6ac3c8fd-a4d1-4472-b47f-8143c3f876e3.png"
+    },
+    {
+      "key": "operating_table/awake",
+      "path": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-dc03657a-b297-4516-ab1f-5bdc4847a2c5.png"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "path": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-ac898745-6d83-4369-b94f-b2145cc5c6a6.png"
+    },
+    {
+      "key": "intraoperative/tense",
+      "path": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-9f516221-dd0f-4470-a456-04b0584c179e.png"
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "path": "/Users/ningye/.codex/generated_images/01a17acc-9285-7743-9e47-adde79c33b42/exec-09684d2d-a97b-43f9-a6d5-49c227d52e12.png"
+    }
+  ],
+  "attempts": [
+    {
+      "key": "outpatient/neutral",
+      "status": "fulfilled"
+    },
+    {
+      "key": "ward/neutral",
+      "status": "fulfilled"
+    },
+    {
+      "key": "operating_table/awake",
+      "status": "fulfilled"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "status": "rejected",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID d335f3fc-d80b-452e-ae76-2d139a52d9d4.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+    },
+    {
+      "key": "intraoperative/tense",
+      "status": "fulfilled"
+    },
+    {
+      "key": "splash/general_anesthesia",
+      "status": "fulfilled"
+    },
+    {
+      "key": "operating_table_lithotomy/awake",
+      "retry": 1,
+      "status": "fulfilled",
+      "request_unchanged": true
+    }
+  ]
+}

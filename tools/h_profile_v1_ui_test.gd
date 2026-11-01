@@ -133,6 +133,7 @@ func _run_ui_flow() -> void:
 	var sayaka: Dictionary = app.content.find_record("staff", "doc_sayaka")
 	app.base("", "", false, "date_hotel")
 	app.add_character_event_visual(sayaka, {
+		"id": "fixture_sayaka_aftercare",
 		"cg_path": "assets/events/character_events/sayaka/lv4_aftercare_rest_v3.png",
 		"cg_portrait_overlay": true,
 		"portrait_scale": 0.5,

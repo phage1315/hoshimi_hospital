@@ -16,6 +16,25 @@ const ACTORS := {
 		"bodymap": "res://data/staff/doc_sayaka/h_bodymap_v1.draft.json",
 		"context": "res://data/staff/doc_sayaka/h_context_overrides_v1.json",
 	},
+	"doc_serika": {
+		"content_status": "ready",
+		"location_id": "home",
+		"fixed_location": true,
+		"location_label_key": "ui.free_h.location.doc_serika_home",
+		"location_label": "芹香家",
+		"booking_response_key": "ui.free_h.doc_serika.booking_response",
+		"booking_response": "那今晚去我家吧。",
+		"completion_kind": "special_event",
+		"completion_event": "serika_lv4_stay",
+		"completion_flag": "",
+		"adapter": "authored_v1_3",
+		"profile": "res://data/staff/doc_serika/h_profile_v1_1.json",
+		"flow": "res://data/staff/doc_serika/h_flow_v1_1.json",
+		"finish_labels": "res://data/h_finish_button_labels_v1_3_4.json",
+		"finish_actor": "",
+		"bodymap": "res://data/h/doc_serika/h_bodymap.json",
+		"context": "res://data/staff/doc_serika/h_context_v1_1.json",
+	},
 }
 
 static func definition(actor_id: String) -> Dictionary:
@@ -32,12 +51,17 @@ static func load_bundle(actor_id: String, locale: String = "zh_CN") -> Dictionar
 	var config := definition(actor_id)
 	if config.is_empty():
 		return {"error": "Unregistered actor: " + actor_id}
+	if str(config.get("content_status", "ready")) != "ready":
+		return {"error": "Character assets are not complete: " + actor_id}
 	var sources: Dictionary = {}
 	for key in ["profile", "flow", "finish_labels", "finish_actor", "bodymap", "context"]:
+		if key == "finish_actor" and str(config.get(key, "")).is_empty():
+			sources[key] = {}
+			continue
 		sources[key] = read_json(str(config[key]))
 		if sources[key].is_empty():
 			return {"error": "Missing or invalid resource: " + str(config[key])}
-	if str(config.adapter) != "sayaka_v1" or str(sources.profile.get("actor_id", "")) != actor_id or not bool(sources.profile.get("adult_confirmed", false)):
+	if str(config.adapter) not in ["sayaka_v1", "authored_v1_3"] or str(sources.profile.get("actor_id", "")) != actor_id or not bool(sources.profile.get("adult_confirmed", false)):
 		return {"error": "Unsupported profile adapter or actor: " + actor_id}
 	var profile := Content.normalize(sources.profile, sources.flow, sources.finish_labels, sources.finish_actor, sources.context)
 	if profile.is_empty():
@@ -63,7 +87,13 @@ static func validate_bundle(actor_id: String, location_id: String, source_profil
 	var aftercare: Array = session.aftercare_lines(profile.flow.get("free_aftercare_lines", []))
 	if entry.is_empty() or aftercare.is_empty():
 		return {"error": "Missing entry or ordinary completion text: " + actor_id}
-	var images := [session.body_map_image(), session.h_stage_image(), session.after_cg_image(), str(profile.expression_atlas)]
+	var images := [session.body_map_image(), session.h_stage_image(), session.after_cg_image()]
+	var atlas := str(profile.get("expression_atlas", ""))
+	if atlas.is_empty():
+		for expression in Session.EXPRESSION_IDS:
+			images.append(str(profile.get("expressions", {}).get(expression, "")))
+	else:
+		images.append(atlas)
 	var background_id: String = session.background_id("")
 	var background_file := FileAccess.open("res://data/backgrounds.json", FileAccess.READ)
 	var backgrounds: Variant = JSON.parse_string(background_file.get_as_text()) if background_file != null else null

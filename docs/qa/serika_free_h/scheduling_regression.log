@@ -1,0 +1,13 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:991)
+2026-10-29 13:23:30.931 Godot[66210:68188187] XType: Using static font registry.
+WARNING: Booking eligibility changed: doc_sayaka
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _try_free_h_departure (res://godot/ui/app.gd:1488)
+         [1] request_end_workday (res://godot/ui/app.gd:5377)
+         [2] run (res://tools/free_h_scheduling_test.gd:255)
+         [3] finish_ui_session (res://tools/free_h_scheduling_test.gd:103)
+FREE H SCHEDULING: 108 checks; 0 failures

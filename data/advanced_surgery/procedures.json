@@ -1,0 +1,1328 @@
+[
+  {
+    "id": "surgery_open_whipple",
+    "name": "胰十二指肠切除 / Whipple",
+    "name_en": "Open pancreaticoduodenectomy",
+    "duration_minutes": 480,
+    "base_difficulty": 95,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "prototype",
+    "patient_notice": "演示病例，使用随机池患者形象；不改变其普通病例资料。",
+    "patient_notice_en": "Demonstration case using an existing random-pool patient; her ordinary case data is unchanged.",
+    "steps": [
+      {
+        "id": "W01",
+        "name": "切口与进入",
+        "name_en": "Incision and entry",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 15,
+          "visibility": -4,
+          "bleeding": 2,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "W02",
+        "name": "腹腔探查、建立暴露",
+        "name_en": "Abdominal exploration and exposure",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 6,
+          "bleeding": 0,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "W03",
+        "name": "复杂粘连分离",
+        "name_en": "Complex adhesiolysis",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 88,
+        "specialty_tag": "adhesion",
+        "hp_failed_extra": 12,
+        "strategic_effects": {
+          "elapsed_time": 45,
+          "visibility": -12,
+          "bleeding": 4,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "W04",
+        "name": "主要血管关系与切除路径评估",
+        "name_en": "Assess major vessels and resection route",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 20,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "按既定路线确认关键结构",
+            "label_en": "Confirm key structures along the planned route",
+            "description": "保持既定节奏，完成重点暴露与止血确认。",
+            "description_en": "Maintain the planned pace and confirm targeted exposure and haemostasis.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "扩大暴露后再次核对血管关系",
+            "label_en": "Expand exposure and recheck vascular relationships",
+            "description": "多用10分钟，获得更清楚的术野并进一步控制出血。",
+            "description_en": "Spend 10 more minutes improving visibility and controlling bleeding.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -5
+            }
+          }
+        ]
+      },
+      {
+        "id": "W05",
+        "name": "门静脉周围组织分离",
+        "name_en": "Dissection around the portal vein",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 60,
+          "visibility": -10,
+          "bleeding": 5,
+          "blood_loss": 12,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 8
+            },
+            "strategic_effects": {
+              "blood_loss": 4,
+              "stability": -2
+            }
+          }
+        ]
+      },
+      {
+        "id": "W06",
+        "name": "胰头深部精细分离",
+        "name_en": "Deep precision dissection of the pancreatic head",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "specialty_tag": "microdissection",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -8,
+          "bleeding": 3,
+          "blood_loss": 10,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 80
+            },
+            "strategic_effects": {
+              "blood_loss": 3,
+              "stability": -2
+            }
+          }
+        ]
+      },
+      {
+        "id": "W07",
+        "name": "标本取出、整理术野",
+        "name_en": "Remove specimen and organise field",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 15,
+          "visibility": 8,
+          "bleeding": -3,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "W08",
+        "name": "胰肠重建",
+        "name_en": "Pancreaticoenteric reconstruction",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 97,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 75,
+          "visibility": -6,
+          "bleeding": 2,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "W09",
+        "name": "胆肠重建",
+        "name_en": "Bilioenteric reconstruction",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 92,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -4,
+          "bleeding": 1,
+          "blood_loss": 5,
+          "stability": -1
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "W10",
+        "name": "胃肠重建",
+        "name_en": "Gastroenteric reconstruction",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 90,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 12,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -4,
+          "bleeding": 1,
+          "blood_loss": 5,
+          "stability": -1
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "W11",
+        "name": "重建区复核及止血",
+        "name_en": "Review reconstructions and haemostasis",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "重点复核吻合口与活动性出血",
+            "label_en": "Focus on anastomoses and active bleeding",
+            "description": "完成重点检查并处理可见出血点。",
+            "description_en": "Complete targeted checks and address visible bleeding.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -8,
+              "stability": 2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "系统复核全术野与各处重建",
+            "label_en": "Systematically review the field and all reconstructions",
+            "description": "多用10分钟，扩大复核范围并充分整理术野。",
+            "description_en": "Spend 10 more minutes on a wider review and field preparation.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 14,
+              "bleeding": -14,
+              "stability": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "W12",
+        "name": "最终清点与评估",
+        "name_en": "Final count and assessment",
+        "kind": "L",
+        "hp_base": 1,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 15,
+          "visibility": 2,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "W13",
+        "name": "关闭",
+        "name_en": "Closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 0,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      5,
+      10
+    ],
+    "crisis_chances": [
+      0.27,
+      0.18
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
+  },
+  {
+    "id": "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction",
+    "name": "盆壁肿瘤切除（髂血管重建）",
+    "name_en": "Pelvic sidewall tumour resection with iliac vascular reconstruction",
+    "duration_minutes": 480,
+    "base_difficulty": 97,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "prototype",
+    "patient_notice": "演示病例，使用随机池患者形象；不改变其普通病例资料。",
+    "patient_notice_en": "Demonstration case using an existing random-pool patient; her ordinary case data is unchanged.",
+    "steps": [
+      {
+        "id": "P01",
+        "name": "切口与进入",
+        "name_en": "Incision and entry",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 15,
+          "visibility": -4,
+          "bleeding": 2,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "P02",
+        "name": "盆壁暴露",
+        "name_en": "Expose the pelvic sidewall",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 8,
+          "bleeding": 0,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "P03",
+        "name": "广泛盆腔粘连分离",
+        "name_en": "Extensive pelvic adhesiolysis",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 90,
+        "specialty_tag": "adhesion",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -12,
+          "bleeding": 4,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "P04",
+        "name": "神经与输尿管邻近关系辨认",
+        "name_en": "Identify relations to nerves and ureter",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 95,
+        "specialty_tag": "neural",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -10,
+          "bleeding": 3,
+          "blood_loss": 8,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "P05",
+        "name": "血管处理策略确认",
+        "name_en": "Confirm vascular strategy",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "按既定血管路径确认切除范围",
+            "label_en": "Confirm resection along the planned vascular route",
+            "description": "按照已确认的血管关系推进，保持手术节奏。",
+            "description_en": "Proceed along the confirmed vascular anatomy without extending the operative time.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "扩大暴露并复核髂血管走行",
+            "label_en": "Expand exposure and reassess iliac vessels",
+            "description": "额外花费10分钟，充分检查复杂的血管交界区域。",
+            "description_en": "Spend 10 additional minutes reviewing the complex vascular interfaces.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -4
+            }
+          }
+        ]
+      },
+      {
+        "id": "P06",
+        "name": "髂血管周围精细分离",
+        "name_en": "Precision dissection around iliac vessels",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 60,
+          "visibility": -12,
+          "bleeding": 5,
+          "blood_loss": 13,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 9
+            },
+            "strategic_effects": {
+              "blood_loss": 4,
+              "stability": -2
+            }
+          }
+        ]
+      },
+      {
+        "id": "P07",
+        "name": "肿瘤深部边界分离",
+        "name_en": "Dissect the deep tumour boundary",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "microdissection",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -8,
+          "bleeding": 4,
+          "blood_loss": 11,
+          "stability": -2
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 75
+            },
+            "strategic_effects": {
+              "blood_loss": 3,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "P08",
+        "name": "完整切除、整理术野",
+        "name_en": "Complete resection and organise field",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 20,
+          "visibility": 7,
+          "bleeding": -3,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "P09",
+        "name": "髂血管重建",
+        "name_en": "Iliac vascular reconstruction",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 98,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 18,
+        "strategic_effects": {
+          "elapsed_time": 75,
+          "visibility": -7,
+          "bleeding": 4,
+          "blood_loss": 11,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 10
+            },
+            "strategic_effects": {
+              "blood_loss": 4,
+              "stability": -2
+            }
+          }
+        ]
+      },
+      {
+        "id": "P10",
+        "name": "盆壁神经与固定点复核",
+        "name_en": "Review pelvic nerves and fixation points",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 92,
+        "specialty_tag": "pelvic",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 6,
+          "stability": -1
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "P11",
+        "name": "灌注与最终止血评估",
+        "name_en": "Assess perfusion and final haemostasis",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "重点复核重建血管与出血点",
+            "label_en": "Review reconstructed vessels and bleeding points",
+            "description": "检查血流恢复情况，处理可见出血。",
+            "description_en": "Check restored flow and address visible bleeding.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -8,
+              "stability": 2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长灌注观察与盆壁止血复核",
+            "label_en": "Extend perfusion observation and pelvic haemostasis review",
+            "description": "额外花费10分钟扩大检查范围。",
+            "description_en": "Spend 10 additional minutes on a broader review.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 14,
+              "bleeding": -13,
+              "stability": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "P12",
+        "name": "关闭",
+        "name_en": "Closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 20,
+          "visibility": 0,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      6,
+      9
+    ],
+    "crisis_chances": [
+      0.29,
+      0.2
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
+  },
+  {
+    "id": "surgery_adv_sleeve_lobectomy",
+    "name": "开胸袖式肺叶切除",
+    "name_en": "Open sleeve lobectomy",
+    "duration_minutes": 480,
+    "base_difficulty": 94,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "prototype",
+    "patient_notice": "演示病例，使用随机池患者形象；不改变其普通病例资料。本演示病例需要血管重建。",
+    "patient_notice_en": "Demonstration case using an existing random-pool patient; her ordinary case data is unchanged. This demonstration case requires vascular reconstruction.",
+    "steps": [
+      {
+        "id": "T01",
+        "name": "开胸与进入",
+        "name_en": "Thoracotomy and entry",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": -3,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T02",
+        "name": "肺门区域暴露",
+        "name_en": "Expose the pulmonary hilum",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": 8,
+          "bleeding": 0,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T03",
+        "name": "肺动脉分支解剖",
+        "name_en": "Dissect pulmonary artery branches",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 60,
+          "visibility": -10,
+          "bleeding": 4,
+          "blood_loss": 10,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "T04",
+        "name": "支气管周围精细分离",
+        "name_en": "Precision peribronchial dissection",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 91,
+        "specialty_tag": "thoracic",
+        "hp_failed_extra": 12,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -8,
+          "bleeding": 3,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "T05",
+        "name": "病变切除范围确认",
+        "name_en": "Confirm extent of resection",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 20,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "按既定肺叶与支气管边界推进",
+            "label_en": "Proceed along the planned lobar and bronchial boundaries",
+            "description": "复核支气管切缘与需保留的结构。",
+            "description_en": "Recheck bronchial margins and the structures to preserve.",
+            "strategic_effects": {
+              "visibility": 7,
+              "bleeding": -2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "扩大肺门暴露并再次核对切缘",
+            "label_en": "Expand hilar exposure and reassess margins",
+            "description": "额外花费10分钟核对肺动脉、支气管的空间关系。",
+            "description_en": "Spend 10 additional minutes reviewing the pulmonary artery and bronchial anatomy.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -4
+            }
+          }
+        ]
+      },
+      {
+        "id": "T06",
+        "name": "保留结构与切缘处理",
+        "name_en": "Preserve structures and manage margins",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 93,
+        "specialty_tag": "microdissection",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -7,
+          "bleeding": 3,
+          "blood_loss": 9,
+          "stability": -2
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 75
+            },
+            "strategic_effects": {
+              "blood_loss": 3,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "T07",
+        "name": "完成肺叶切除",
+        "name_en": "Complete lobectomy",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 6,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T08",
+        "name": "支气管重建吻合",
+        "name_en": "Bronchial reconstruction",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 97,
+        "specialty_tag": "airway",
+        "hp_failed_extra": 17,
+        "strategic_effects": {
+          "elapsed_time": 75,
+          "visibility": -9,
+          "bleeding": 2,
+          "blood_loss": 9,
+          "stability": -3
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "T09",
+        "name": "血管重建及复核",
+        "name_en": "Vascular reconstruction and review",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -6,
+          "bleeding": 4,
+          "blood_loss": 11,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 8
+            },
+            "strategic_effects": {
+              "blood_loss": 4,
+              "stability": -2
+            }
+          }
+        ]
+      },
+      {
+        "id": "T10",
+        "name": "通气与灌注复查",
+        "name_en": "Review ventilation and perfusion",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "重点核对支气管通气与血管灌注",
+            "label_en": "Check bronchial ventilation and vascular perfusion",
+            "description": "完成重点检查并处理出血点。",
+            "description_en": "Complete focused checks and address visible bleeding.",
+            "strategic_effects": {
+              "visibility": 7,
+              "bleeding": -8,
+              "stability": 2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长通气测试与重建区检查",
+            "label_en": "Extend ventilation testing and reconstruction review",
+            "description": "额外花费10分钟，复核吻合口及重建血管。",
+            "description_en": "Spend 10 additional minutes reviewing the anastomosis and reconstructed vessels.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 11,
+              "bleeding": -13,
+              "stability": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "T11",
+        "name": "关闭",
+        "name_en": "Closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": 0,
+          "bleeding": -2,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      7,
+      9
+    ],
+    "crisis_chances": [
+      0.25,
+      0.23
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
+  },
+  {
+    "id": "surgery_adv_ebstein_cone_reconstruction",
+    "name": "Ebstein 畸形三尖瓣 Cone 重建术",
+    "name_en": "Cone reconstruction of the tricuspid valve for Ebstein anomaly",
+    "duration_minutes": 540,
+    "base_difficulty": 98,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "prototype",
+    "patient_notice": "演示病例，使用随机池患者形象；不改变其普通病例资料。本术式包含体外循环和三尖瓣 Cone 重建。",
+    "patient_notice_en": "Demonstration case using an existing random-pool patient; her ordinary case data is unchanged. This procedure includes cardiopulmonary bypass and cone reconstruction of the tricuspid valve.",
+    "steps": [
+      {
+        "id": "C01",
+        "name": "正中胸骨切开与进入",
+        "name_en": "Median sternotomy and entry",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": -4,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "C02",
+        "name": "建立体外循环与右心房暴露",
+        "name_en": "Establish cardiopulmonary bypass and expose the right atrium",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 45,
+          "visibility": 7,
+          "bleeding": 1,
+          "blood_loss": 3,
+          "stability": -1
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "C03",
+        "name": "三尖瓣前叶组织游离",
+        "name_en": "Mobilize the anterior tricuspid leaflet",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 90,
+        "specialty_tag": "microdissection",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 45,
+          "visibility": -8,
+          "bleeding": 3,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "C04",
+        "name": "后叶及隔叶组织游离",
+        "name_en": "Mobilize posterior and septal leaflet tissue",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "microdissection",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -9,
+          "bleeding": 4,
+          "blood_loss": 9,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "C05",
+        "name": "可用瓣叶组织与重建路径评估",
+        "name_en": "Assess leaflet tissue and the reconstruction plan",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "按已游离瓣叶范围规划 Cone",
+            "label_en": "Plan the cone with the mobilized leaflet tissue",
+            "description": "以当前可用瓣叶组织确定重建方向。",
+            "description_en": "Determine the reconstruction route using the leaflet tissue assessed so far.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "扩大瓣叶评估并再次核对瓣环",
+            "label_en": "Extend leaflet assessment and reassess the annulus",
+            "description": "额外花费10分钟，确认瓣叶活动度与瓣环对应关系。",
+            "description_en": "Spend 10 additional minutes reviewing leaflet mobility and the annular anatomy.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 13,
+              "bleeding": -4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C06",
+        "name": "旋转瓣叶、构建 Cone",
+        "name_en": "Rotate mobilized leaflets to form a cone",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 97,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 17,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -10,
+          "bleeding": 3,
+          "blood_loss": 8,
+          "stability": -3
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "C07",
+        "name": "心房化右室折叠与瓣环调整",
+        "name_en": "Plicate the atrialized right ventricle and adjust the annulus",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -8,
+          "bleeding": 3,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "C08",
+        "name": "Cone 于解剖瓣环重新附着",
+        "name_en": "Reattach the cone at the anatomical annulus",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 98,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 18,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -9,
+          "bleeding": 4,
+          "blood_loss": 10,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 75
+            },
+            "strategic_effects": {
+              "blood_loss": 3,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C09",
+        "name": "瓣叶对合试验与精细修正",
+        "name_en": "Test leaflet coaptation and make fine adjustments",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 96,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 40,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 5,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "C10",
+        "name": "右心房整理与关闭",
+        "name_en": "Complete right atrial repair and closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 20,
+          "visibility": 5,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "C11",
+        "name": "脱离体外循环、功能评估",
+        "name_en": "Wean from bypass and assess valve function",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 40,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "重点评估三尖瓣对合与循环",
+            "label_en": "Assess tricuspid coaptation and circulation",
+            "description": "围绕瓣膜功能和循环状态进行重点复核。",
+            "description_en": "Perform focused checks of valve function and circulation.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -7,
+              "stability": 2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长功能评估与止血复核",
+            "label_en": "Extend functional assessment and haemostasis review",
+            "description": "额外花费10分钟，扩大对合及术野复核范围。",
+            "description_en": "Spend 10 additional minutes on a broader review of coaptation and the operative field.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -10,
+              "stability": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C12",
+        "name": "最终止血与器械清点",
+        "name_en": "Final haemostasis and instrument count",
+        "kind": "L",
+        "hp_base": 1,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 15,
+          "visibility": 4,
+          "bleeding": -5,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "C13",
+        "name": "胸骨关闭与手术结束",
+        "name_en": "Sternal closure and completion",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": 0,
+          "bleeding": -2,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      8,
+      11
+    ],
+    "crisis_chances": [
+      0.28,
+      0.22
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
+  }
+]

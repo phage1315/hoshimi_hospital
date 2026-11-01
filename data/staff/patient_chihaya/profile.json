@@ -1,0 +1,418 @@
+{
+  "id": "patient_chihaya",
+  "name": "仓本千早",
+  "age": 18,
+  "gender": "female",
+  "profession": "nurse",
+  "team_category": "nurse",
+  "skills": {
+    "surgery": 0,
+    "diagnostics": 0,
+    "teamwork": 8,
+    "patient_care": 8,
+    "instrument_handling": 4,
+    "calmness": 7
+  },
+  "surgery_proficiency": "novice",
+  "surgical_roles": [
+    "circulating_nurse"
+  ],
+  "specialty": "病房准备／非无菌巡回",
+  "rank": "临时护理辅助人员",
+  "personality": "小心、认真，能理解患者的恐惧",
+  "appearance": "沿用仓本千早本人形象",
+  "dialogue_style": "认真而亲近",
+  "flags": [
+    "introduction_pending",
+    "exclude_adult_intimacy",
+    "exclude_clinical_practice_patient",
+    "after_work_disabled"
+  ],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "station"
+    ],
+    "random_locations": [
+      "ward",
+      "lounge"
+    ],
+    "rooftop_enabled": true
+  },
+  "team_dialogue": {
+    "assignment": "",
+    "intraoperative": ""
+  },
+  "familiarity_rules": {
+    "base": 1.8,
+    "operations": []
+  },
+  "allowed_team_roles": [
+    "ward_nurse",
+    "circulating_nurse"
+  ],
+  "staff_unlock_event": "chihaya_mizuho_nurse_return",
+  "personal_nurse": {
+    "eligible": false,
+    "dialogue": {
+      "next_test_hint": [],
+      "insufficient_evidence": [],
+      "sufficient_evidence": [],
+      "chatter": []
+    }
+  },
+  "visuals": {
+    "color": "b4c4c4",
+    "default_outfit": "uniform",
+    "outfits": [
+      "uniform",
+      "scrubs",
+      "casual"
+    ],
+    "portraits": {
+      "scrubs/neutral": "assets/characters/chihaya_scrubs_v1/standing.png",
+      "scrubs/warm": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/scrubs/warm.png",
+      "scrubs/worried": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/scrubs/worried.png",
+      "uniform/neutral": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/uniform/neutral.png",
+      "uniform/surprised": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/uniform/surprised.png",
+      "uniform/serious": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/uniform/serious.png",
+      "uniform/tired": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/uniform/tired.png",
+      "uniform/worried": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/uniform/worried.png",
+      "uniform/smile": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/uniform/smile.png",
+      "casual/neutral": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/casual/neutral.png",
+      "casual/surprised": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/casual/surprised.png",
+      "casual/serious": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/casual/serious.png",
+      "casual/tired": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/casual/tired.png",
+      "casual/worried": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/casual/worried.png",
+      "casual/smile": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/casual/smile.png",
+      "scrubs/focused": "assets/characters/chihaya_mizuho_nurses_v1/patient_chihaya/scrubs/focused.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/patient_chihaya/neutral.png"
+    },
+    "offscreen_outfits": [],
+    "intraoperative_avatar": {
+      "status": "ready",
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/patient_chihaya/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ]
+    }
+  },
+  "authored_dialogue": {
+    "work.NS_01": [
+      {
+        "zh_CN": "「坂口医生，这几份是今天的病房准备记录。我按病房顺序放好了。」",
+        "en": "\"Dr. Sakaguchi, these are today's ward preparation records. I've put them in ward order.\""
+      }
+    ],
+    "work.NS_02": [
+      {
+        "zh_CN": "「这一栏还没确认，我做了记号。等负责的护士看过，再补上就好。」",
+        "en": "\"This field hasn't been confirmed yet, so I've marked it. We can fill it in once the responsible nurse has checked it.\""
+      }
+    ],
+    "work.NS_03": [
+      {
+        "zh_CN": "「我以前在这里等的是检查结果，现在等的是前辈派工作。心情还真不一样呢。」",
+        "en": "\"I used to wait here for test results. Now I wait for work assignments from the experienced nurses. It feels quite different.\""
+      }
+    ],
+    "work.NS_04": [
+      {
+        "zh_CN": "「病房用品的编号好多……还好有人教我整理。我先把确认过的送过去。」",
+        "en": "\"There are so many supply numbers... I'm glad someone's teaching me how to organize them. I'll deliver the ones we've checked first.\""
+      }
+    ],
+    "work.NS_05": [
+      {
+        "zh_CN": "「坂口医生，你要找的那份交接表在最上面。我猜到你会先问那张，就顺手放好了。」",
+        "en": "\"Dr. Sakaguchi, the handover form you're looking for is on top. I guessed you'd ask for it first, so I put it there.\""
+      }
+    ],
+    "work.NS_06": [
+      {
+        "zh_CN": "「瑞穗刚才一口气揽了三件事。我去提醒她先看清楚是哪三件。」",
+        "en": "\"Mizuho just took on three things at once. I'll remind her to check what those three things actually are.\""
+      }
+    ],
+    "work.WD_01": [
+      {
+        "zh_CN": "「今天的病房准备由我帮忙。嗯，我会照着前辈确认过的清单做。」",
+        "en": "\"I'll help with ward preparation today. Yes, I'll follow the checklist the experienced nurses have confirmed.\""
+      }
+    ],
+    "work.WD_02": [
+      {
+        "zh_CN": "「您好，我是仓本千早。先帮您核对基本资料，有不舒服的地方请告诉我。」",
+        "en": "\"Hello, I'm Chihaya Kuramoto. I'll start by checking your basic details. Please tell me if anything feels uncomfortable.\""
+      }
+    ],
+    "work.WD_03": [
+      {
+        "zh_CN": "「更换用的用品和记录表都拿来了。我先让负责护士确认一遍。」",
+        "en": "\"I've brought the replacement supplies and record sheet. I'll have the responsible nurse check them first.\""
+      }
+    ],
+    "work.WD_04": [
+      {
+        "zh_CN": "「要进手术室了，会紧张吧……我懂。您想问什么，可以慢慢说。」",
+        "en": "\"Going into the operating room can make you nervous... I understand. Take your time asking whatever you need to.\""
+      }
+    ],
+    "work.WD_05": [
+      {
+        "zh_CN": "「如果有点害怕，也不用勉强自己装作没事。医生和护士都会听您说的。」",
+        "en": "\"If you're scared, you don't need to pretend you're fine. The doctors and nurses will listen.\""
+      }
+    ],
+    "work.WD_06": [
+      {
+        "zh_CN": "「这一项还没做完，我标在表上了。等前辈处理好，再进行下一步。」",
+        "en": "\"This item isn't finished yet. I've marked it on the form. We'll move on once the nurse has dealt with it.\""
+      }
+    ],
+    "work.WD_07": [
+      {
+        "zh_CN": "「准备记录核对好了。接送的时间我再跟负责护士确认一下。」",
+        "en": "\"The preparation record has been checked. I'll confirm the transport time with the responsible nurse again.\""
+      }
+    ],
+    "work.WD_08": [
+      {
+        "zh_CN": "「患者刚才说过的担心，我也写在交接里了。麻烦接下来的护士留意一下。」",
+        "en": "\"I've included the patient's concerns in the handover too. Please ask the next nurse to keep an eye on them.\""
+      }
+    ],
+    "work.WD_09": [
+      {
+        "zh_CN": "「这边的辅助准备结束了。……从床边这一侧看，真的跟以前完全不同呢。」",
+        "en": "\"My part of the preparation is finished. ...It really does feel different from this side of the bed.\""
+      }
+    ],
+    "work.OR_01": [
+      {
+        "zh_CN": "「巡回辅助，明白。我先核对外围交接，再听下一步安排。」",
+        "en": "\"Circulating support, understood. I'll check the peripheral handover first, then wait for the next instructions.\""
+      }
+    ],
+    "work.OR_02": [
+      {
+        "zh_CN": "「外围用品和记录表准备好了。请负责护士再确认一次。」",
+        "en": "\"The peripheral supplies and record forms are ready. Please have the responsible nurse check them again.\""
+      }
+    ],
+    "work.OR_03": [
+      {
+        "zh_CN": "「监护数据我在看。有变化的话，我会马上告诉大家。」",
+        "en": "\"I'm watching the monitor readings. I'll tell everyone immediately if anything changes.\""
+      }
+    ],
+    "work.OR_04": [
+      {
+        "zh_CN": "「需要的物品已经找到了。我从外侧交给负责护士。」",
+        "en": "\"I've found the supplies we need. I'll pass them to the responsible nurse from outside the sterile area.\""
+      }
+    ],
+    "work.OR_05": [
+      {
+        "zh_CN": "「手术的关键时间记下了。下一步请继续指示。」",
+        "en": "\"I've recorded the key operating times. Please give me the next instructions.\""
+      }
+    ],
+    "work.OR_06": [
+      {
+        "zh_CN": "「患者入室时好像很紧张。我会留意她有没有什么想问的。」",
+        "en": "\"The patient seemed nervous on arrival. I'll watch for anything she wants to ask.\""
+      }
+    ],
+    "work.OR_07": [
+      {
+        "zh_CN": "「那边是无菌区，我把需要的东西交给能接手的人。」",
+        "en": "\"That's the sterile area. I'll pass the supplies to someone who can receive them.\""
+      }
+    ],
+    "work.OR_08": [
+      {
+        "zh_CN": "「记录已经整理好，我跟负责护士一起核对转运交接。」",
+        "en": "\"The records are organized. I'll check the transfer handover together with the responsible nurse.\""
+      }
+    ],
+    "work.OR_09": [
+      {
+        "zh_CN": "「手术结束了……呼。记录我会再仔细核对一遍，然后去交接。」",
+        "en": "\"The operation's over... Phew. I'll check the records carefully once more, then hand over.\""
+      }
+    ],
+    "work.END_01": [
+      {
+        "zh_CN": "「我负责的辅助部分已经完成。坂口医生，辛苦了。」",
+        "en": "\"My support duties are complete. Thank you for your work, Dr. Sakaguchi.\""
+      }
+    ],
+    "work.END_02": [
+      {
+        "zh_CN": "「记录和物品交接好了。如果还有需要核对的，我就在护士站。」",
+        "en": "\"The records and supplies have been handed over. I'll be at the nurses' station if anything else needs checking.\""
+      }
+    ],
+    "work.END_03": [
+      {
+        "zh_CN": "「……每次听见『手术结束』，都还是会松一口气。」",
+        "en": "\"...I still breathe a sigh of relief every time I hear, 'The operation is over.'\""
+      }
+    ],
+    "work.INVALID": [
+      {
+        "zh_CN": "「器械护士要负责无菌器械。我现在只能做病房准备或者非无菌巡回哦。」",
+        "en": "\"Scrub nurses handle sterile instruments. Right now, I can only do ward preparation or nonsterile circulating work.\""
+      }
+    ]
+  },
+  "team_assignment_replies": {
+    "ward_nurse": "「今天的病房准备由我帮忙。嗯，我会照着前辈确认过的清单做。」",
+    "circulating_nurse": "「巡回辅助，明白。我先核对外围交接，再听下一步安排。」"
+  },
+  "post_operation_replies": [
+    "「我负责的辅助部分已经完成。坂口医生，辛苦了。」",
+    "「记录和物品交接好了。如果还有需要核对的，我就在护士站。」",
+    "「……每次听见『手术结束』，都还是会松一口气。」"
+  ],
+  "crisis_callouts": {
+    "hypotension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「坂口医生，血压比刚才低了。」",
+          "「血压还在下降，我继续看着监护。」",
+          "「血压仍没回到先前水平，我又核对了一遍。」"
+        ],
+        "severe_attempt_lines": [
+          "「血压突然明显下降了！」",
+          "「血压下降的趋势还在持续！」",
+          "「坂口医生，血压仍然没有稳住！」"
+        ]
+      }
+    ],
+    "hypertension": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「坂口医生，血压升高了。」",
+          "「血压比刚才高了不少。」",
+          "「血压依旧偏高，我会继续记录变化。」"
+        ],
+        "severe_attempt_lines": [
+          "「血压正在快速升高！」",
+          "「血压还在升，没有回落！」",
+          "「血压仍然维持在高位，坂口医生！」"
+        ]
+      }
+    ],
+    "tachycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「心率开始加快了。」",
+          "「坂口医生，心率还在往上走。」",
+          "「心率还是偏快，没有回到先前的水平。」"
+        ],
+        "severe_attempt_lines": [
+          "「心率升得很快！」",
+          "「心率持续偏快，没有缓下来！」",
+          "「坂口医生，心率仍然过快！」"
+        ]
+      }
+    ],
+    "bradycardia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「心率正在下降。」",
+          "「坂口医生，心跳比刚才慢了。」",
+          "「心率仍然偏慢，我重新核对了读数。」"
+        ],
+        "severe_attempt_lines": [
+          "「心率突然降得很低！」",
+          "「心率没有回升，情况还在持续！」",
+          "「坂口医生，心率仍然很低！」"
+        ]
+      }
+    ],
+    "arrhythmia": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「监护显示心律有些不规则。」",
+          "「坂口医生，心律和刚才不一样了。」",
+          "「节律还没恢复，我继续看着监护。」"
+        ],
+        "severe_attempt_lines": [
+          "「心律突然明显紊乱！」",
+          "「心律异常仍在持续！」",
+          "「监护仍显示明显的心律紊乱！」"
+        ]
+      }
+    ],
+    "desaturation": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「坂口医生，血氧在下降。」",
+          "「血氧还没稳住，数值继续往下。」",
+          "「血氧依旧偏低，我再次确认了监护。」"
+        ],
+        "severe_attempt_lines": [
+          "「血氧下降得很快！」",
+          "「血氧没有回升，仍在低位！」",
+          "「血氧一直没稳住，坂口医生！」"
+        ]
+      }
+    ],
+    "respiratory_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「患者的呼吸状态有变化。」",
+          "「呼吸比刚才不稳定了。」",
+          "「呼吸状况仍然没有恢复平稳。」"
+        ],
+        "severe_attempt_lines": [
+          "「呼吸状态突然明显不稳！」",
+          "「呼吸监护依然很不稳定！」",
+          "「坂口医生，呼吸异常还在持续！」"
+        ]
+      }
+    ],
+    "generic_instability": [
+      {
+        "id": "standard",
+        "tone": "character",
+        "weight": 1,
+        "attempt_lines": [
+          "「坂口医生，监护指标有变化。」",
+          "「患者的状态正在变得不稳定。」",
+          "「监护仍然不稳，我再确认一遍读数。」"
+        ],
+        "severe_attempt_lines": [
+          "「监护突然出现明显异常！」",
+          "「异常读数还在持续！」",
+          "「坂口医生，患者状态仍然没有回稳！」"
+        ]
+      }
+    ]
+  }
+}

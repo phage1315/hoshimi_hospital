@@ -135,7 +135,9 @@ func test_saves_and_overrides() -> void:
 	prep.patient_dialogue_overrides.clear()
 	var open_save: Dictionary = JSON.parse_string(JSON.stringify(clone.snapshot()))
 	var open_clone = new_game()
-	expect(open_clone.restore(open_save), "Open ward state restore failed: " + open_clone.last_error)
+	expect(open_save.is_empty() and not clone.can_save_progress(), "Open ward flow must not be saveable")
+	expect(not open_clone.restore(open_save), "Empty mid-flow save must be rejected")
+	expect(open_clone.restore(saved), "Safe admission fact restore failed: " + open_clone.last_error)
 	expect(open_clone.open_preop(Registry.PREOP_ID) != null, "Cannot reopen restored preop")
 	var invalid: Dictionary = saved.duplicate(true)
 	invalid.staff_patient_practice_counts = {"doc_sayaka": {"surgery_appendix": -1}}

@@ -1,0 +1,6093 @@
+[
+  {
+    "id": "serika_lv5_lay_down_burden",
+    "actor_id": "doc_serika",
+    "title": "卸下重担",
+    "chapter": 5,
+    "location_id": "imaging",
+    "trigger_mode": "location",
+    "background_id": "diagnostics",
+    "outfit": "white_coat",
+    "minutes": 60,
+    "teaser": "卸下重担",
+    "time_start": 540,
+    "time_end": 960,
+    "priority": 110,
+    "category": "rank_up",
+    "auto_start": true,
+    "target_level": 5,
+    "benefit_id": "unlock_clinical_practice_patient",
+    "cinematic": true,
+    "gallery": {
+      "cg_id": "serika_lv5_lay_down_burden",
+      "caption": "卸下重担",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 75,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "s01_001",
+    "nodes": [
+      {
+        "id": "s01_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "影像诊断室里只亮着工作台一侧的灯。芹香坐在阅片屏前，逐行检查一份报告。",
+        "expression": "focused",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_001",
+            "label": "继续",
+            "next": "s01_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s01_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她确认最后一行，按下保存，才注意到站在门边的坂口。",
+        "expression": "focused",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_002",
+            "label": "继续",
+            "next": "s01_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s01_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「坂口君。稍等一下，我马上好。」",
+        "expression": "focused",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_003",
+            "label": "继续",
+            "next": "s01_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_004",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「不急。我只是路过，想看看你忙完没有。」",
+        "expression": "focused",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_004",
+            "label": "继续",
+            "next": "s01_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「难得有人在影像室说『不急』。」",
+        "expression": "focused",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_005",
+            "label": "继续",
+            "next": "s01_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香把报告送出，摘下眼镜放到桌角。旁边压着一个已经拆开的文件袋。",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_006",
+            "label": "继续",
+            "next": "s01_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s01_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「今天有别的事？」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_007",
+            "label": "继续",
+            "next": "s01_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「上午去了趟警察那里。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_008",
+            "label": "继续",
+            "next": "s01_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_009",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「……关于潮崎？」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_009",
+            "label": "继续",
+            "next": "s01_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「嗯。我把自己知道的事情都说了。需要核对的地方还很多，以后可能还要再去。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_010",
+            "label": "继续",
+            "next": "s01_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「如果将来需要我出庭，我也会去。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_011",
+            "label": "继续",
+            "next": "s01_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_012",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她把文件袋边缘压平，动作像整理一份复杂的影像报告。",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_012",
+            "label": "继续",
+            "next": "s01_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s01_013",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「辛苦了。」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_013",
+            "label": "继续",
+            "next": "s01_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「其实比想象中平静。问到什么，我就尽量准确地回答什么。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_014",
+            "label": "继续",
+            "next": "s01_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「有些话说出口之后，才发现我已经在心里反复说过很多遍了。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_015",
+            "label": "继续",
+            "next": "s01_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_016",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「奈奈美她们怎么样？」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_016",
+            "label": "继续",
+            "next": "s01_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「奈奈美还在慢慢恢复。她今天还给我发了消息，说那边的几个人已经安全离开旧医院了。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_017",
+            "label": "继续",
+            "next": "s01_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「亚矢、弥生、惠理……大家以后想在哪里工作，还是等她们自己决定吧。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_018",
+            "label": "继续",
+            "next": "s01_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「如果她们愿意来星见，我很高兴。但我不想把『为了她们好』又变成替她们做决定。」",
+        "expression": "sad",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_019",
+            "label": "继续",
+            "next": "s01_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_020",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她收起文件袋，手机屏幕随之亮起。芹香看了一眼来电记录，迟迟没有锁屏。",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_020",
+            "label": "继续",
+            "next": "s01_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s01_021",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「是你父亲？」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_021",
+            "label": "继续",
+            "next": "s01_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……嗯。早上打来过一次，我没接。今天我想亲自打回去。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_022",
+            "label": "继续",
+            "next": "s01_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「但现在，我有点不想一个人走过去。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_023",
+            "label": "继续",
+            "next": "s01_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_024",
+        "presentation": "choice",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "s01_024a",
+            "label": "「我陪你走到庭院。要一个人说话时，我再离开。」",
+            "next": "s01_024a_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "s01_024b",
+            "label": "「我就在附近等你。你不用急着说。」",
+            "next": "s01_024b_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "s01_024a_1",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我陪你走到庭院。要一个人说话时，我再离开。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_024a_1",
+            "label": "继续",
+            "next": "s01_024a_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_024a_2",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……好。你总知道什么时候该站近一点。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_024a_2",
+            "label": "继续",
+            "next": "s01_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_024b_1",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我就在附近等你。你不用急着说。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_024b_1",
+            "label": "继续",
+            "next": "s01_024b_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_024b_2",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「明明我还什么都没说……你已经替我留好了退路。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_024b_2",
+            "label": "继续",
+            "next": "s01_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_025",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香换下白大褂，拿起手提包，与坂口一起离开影像诊断室。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_025",
+            "label": "继续",
+            "next": "s01_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s01_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「打完电话，我还约了美幸喝咖啡。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_026",
+            "label": "继续",
+            "next": "s01_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s01_027",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「那看来，今天是你很忙的一天。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_027",
+            "label": "继续",
+            "next": "s01_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s01_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……是我自己安排的。光是想到这一点，就觉得有些不可思议。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "diagnostics",
+        "choices": [
+          {
+            "id": "continue_s01_028",
+            "label": "继续",
+            "next": "s02_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "傍晚的庭院里，长椅的一半被树影盖住。芹香停在椅旁，握着手机。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_001",
+            "label": "继续",
+            "next": "s02_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她低头看着屏幕上的号码，拇指悬在拨号键上方。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_002",
+            "label": "继续",
+            "next": "s02_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……刚才还觉得自己已经准备好了呢。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_003",
+            "label": "继续",
+            "next": "s02_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「坂口君，你在那边等我一下，好吗？」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_004",
+            "label": "继续",
+            "next": "s02_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_005",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「好。我就在连廊那边。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_005",
+            "label": "继续",
+            "next": "s02_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s02_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "坂口走开后，芹香坐下，重新找到父亲的号码。她深吸一口气，拨了出去。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_006",
+            "label": "继续",
+            "next": "s02_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……芹香？」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_007",
+            "label": "继续",
+            "next": "s02_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「是我。早上的电话，我看到了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_008",
+            "label": "继续",
+            "next": "s02_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「你终于打来了。我还以为……算了。你最近身体怎么样？」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_009",
+            "label": "继续",
+            "next": "s02_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「很好。我还在星见工作。今天也照常看了一天的影像。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_010",
+            "label": "继续",
+            "next": "s02_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「听说你去配合调查了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_011",
+            "label": "继续",
+            "next": "s02_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「嗯。以后还会去。我知道的事情，不准备再瞒着了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_012",
+            "label": "继续",
+            "next": "s02_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……我也在回想以前医院里发生过的事。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_013",
+            "label": "继续",
+            "next": "s02_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「那时候，我只顾着看医院有没有正常运转，连你每天过得怎么样都没认真问。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_014",
+            "label": "继续",
+            "next": "s02_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「父亲。我今天打来，不是要把全部责任推给你。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_015",
+            "label": "继续",
+            "next": "s02_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「有一件事……我一定要亲口告诉你。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_016",
+            "label": "继续",
+            "next": "s02_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_017",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她的另一只手慢慢攥紧裙摆。手机贴在耳边，却好一会儿没有声音。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_017",
+            "label": "继续",
+            "next": "s02_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「潮崎曾经逼我伤害你。甚至……想让我在你的药里下毒。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_018",
+            "label": "继续",
+            "next": "s02_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……什么？」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_019",
+            "label": "继续",
+            "next": "s02_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我没有做。最后是美幸把我带出了那里。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_020",
+            "label": "继续",
+            "next": "s02_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「可是有一段时间，我真的差点连自己会不会照他说的做，都不敢确定。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_021",
+            "label": "继续",
+            "next": "s02_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我不想让你从别人的口供里，第一次听到这件事。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_022",
+            "label": "继续",
+            "next": "s02_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……芹香。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_023",
+            "label": "继续",
+            "next": "s02_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "电话那边沉默了很久。芹香没有催促，只是垂着眼睛等。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_024",
+            "label": "继续",
+            "next": "s02_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我一时不知道该说什么。我没想到，你那时候已经被逼到了这种地步。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_025",
+            "label": "继续",
+            "next": "s02_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我也不是打来要求你立刻原谅我。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_026",
+            "label": "继续",
+            "next": "s02_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我想先听你把话说完。这次，至少让我好好听。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_027",
+            "label": "继续",
+            "next": "s02_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……嗯。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_028",
+            "label": "继续",
+            "next": "s02_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「医院的事，我也会自己处理。你不用今天就在电话里回答要不要回来接手。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_029",
+            "label": "继续",
+            "next": "s02_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我还没有决定。现在，我想继续留在星见。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_030",
+            "label": "继续",
+            "next": "s02_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「好。那就先在那里好好生活。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_031",
+            "label": "继续",
+            "next": "s02_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「有时间的话，回家吃顿饭吧。只是回家吃饭，不是去开会。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_032",
+            "label": "继续",
+            "next": "s02_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_033",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香抬起头。阳光已经从长椅另一端移开了。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_033",
+            "label": "继续",
+            "next": "s02_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……好。等我排得出时间，再给你打电话。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_034",
+            "label": "继续",
+            "next": "s02_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「爸爸。今天，谢谢你听我说。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_035",
+            "label": "继续",
+            "next": "s02_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……我也谢谢你肯打来。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_036",
+            "label": "继续",
+            "next": "s02_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "父亲（电话）"
+      },
+      {
+        "id": "s02_037",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "电话挂断。芹香把手机放在膝上，安静坐了一会儿，才用手指擦去眼角一点湿意。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_037",
+            "label": "继续",
+            "next": "s02_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_038",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "坂口从连廊走回来，在离她一步的地方停下。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_038",
+            "label": "继续",
+            "next": "s02_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s02_039",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「芹香，结束了吗？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_039",
+            "label": "继续",
+            "next": "s02_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s02_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「嗯。……我们终于能好好说话了。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_040",
+            "label": "继续",
+            "next": "s02_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_041",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「但我想，今天还要再和一个人把话说完。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_041",
+            "label": "继续",
+            "next": "s02_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_042",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「美幸？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_042",
+            "label": "继续",
+            "next": "s02_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s02_043",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「是。今晚我想自己去见她。等结束了，再来找你。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_043",
+            "label": "继续",
+            "next": "s02_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香"
+      },
+      {
+        "id": "s02_044",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「好。晚一点见。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_044",
+            "label": "继续",
+            "next": "s02_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司"
+      },
+      {
+        "id": "s02_045",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香站起身，向坂口轻轻点头。走出几步后，她的脚步比刚来时安稳了许多。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_courtyard_evening",
+        "choices": [
+          {
+            "id": "continue_s02_045",
+            "label": "继续",
+            "next": "s03_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白"
+      },
+      {
+        "id": "s03_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "咖啡馆靠窗的位置，朝仓美幸已经坐下。桌上放着两杯饮料，她正低头研究一小盘点心。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_001",
+            "label": "继续",
+            "next": "s03_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「美幸。让你久等了。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_002",
+            "label": "继续",
+            "next": "s03_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「没有呀。我今天特意早到了。是不是很值得表扬？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_003",
+            "label": "继续",
+            "next": "s03_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「你今天居然比我先到了？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_004",
+            "label": "继续",
+            "next": "s03_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「所以才说值得表扬嘛。坐吧，甜点还没吃呢。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_005",
+            "label": "继续",
+            "next": "s03_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香在她对面坐下，接过递来的菜单。她看了一眼桌上的饮料，露出一点意外的表情。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_006",
+            "label": "继续",
+            "next": "s03_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「你还记得我喝什么？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_007",
+            "label": "继续",
+            "next": "s03_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「记得呀。以前一起上班那么久，这点事总不会忘。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_008",
+            "label": "继续",
+            "next": "s03_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "两人端起杯子。朝仓先尝了口点心，芹香却只是用指腹摩挲杯沿。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_009",
+            "label": "继续",
+            "next": "s03_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「你今天去警察那里了？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_010",
+            "label": "继续",
+            "next": "s03_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「嗯。我已经把能说的都说了。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_011",
+            "label": "继续",
+            "next": "s03_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「辛苦了。以后如果轮到我，我也会去。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_012",
+            "label": "继续",
+            "next": "s03_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「奈奈美告诉我，亚矢她们几个都离开旧医院了。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_013",
+            "label": "继续",
+            "next": "s03_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「我也听说了。先让她们好好休息吧，工作的事不必现在就决定。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_014",
+            "label": "继续",
+            "next": "s03_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/neutral.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我以前总觉得，只要能把大家带回去，一切就能重新开始。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_015",
+            "label": "继续",
+            "next": "s03_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「被带回去的人，未必就想重新开始呀。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_016",
+            "label": "继续",
+            "next": "s03_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……嗯。所以我想，先问问每个人自己的意愿。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_017",
+            "label": "继续",
+            "next": "s03_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "朝仓点头，放下叉子。芹香把杯子放回碟上，抬眼直视她。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_018",
+            "label": "继续",
+            "next": "s03_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「美幸。我今天也给父亲打电话了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_019",
+            "label": "继续",
+            "next": "s03_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「真的？你不是一直不敢打吗？」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_020",
+            "label": "继续",
+            "next": "s03_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「还是很害怕。但这次……我们真的像父女一样说了会儿话。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_021",
+            "label": "继续",
+            "next": "s03_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「那就好。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_022",
+            "label": "继续",
+            "next": "s03_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「而且，我终于觉得，可以和你把以前的事情说清楚了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_023",
+            "label": "继续",
+            "next": "s03_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_serious.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "朝仓的笑意慢慢收起。她放下手里的叉子，坐直身体。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_024",
+            "label": "继续",
+            "next": "s03_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「在那家医院的时候，你也曾按照潮崎的意思逼过我。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_025",
+            "label": "继续",
+            "next": "s03_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「你明明知道我害怕。有一阵子，只要看见你走过来，我就会想，是不是又有什么事要发生了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_026",
+            "label": "继续",
+            "next": "s03_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「……我知道。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_027",
+            "label": "继续",
+            "next": "s03_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我真的恨过你，美幸。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_028",
+            "label": "继续",
+            "next": "s03_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「嗯。你有理由恨我。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_029",
+            "label": "继续",
+            "next": "s03_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「我那时候也在害怕，也想保护自己。可那不等于我做的事就能算了。对不起，芹香。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_030",
+            "label": "继续",
+            "next": "s03_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_031",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香没有立刻回答。她看向玻璃窗外经过的行人，过了一会儿才重新转过脸。",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_031",
+            "label": "继续",
+            "next": "s03_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「可最后，也是你把我带走的。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_032",
+            "label": "继续",
+            "next": "s03_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我一直记得那天。你叫住我，抓着我的手，告诉我不必再听他的话。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_033",
+            "label": "继续",
+            "next": "s03_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「我那时只是……不想再看着你被他拖下去了。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_034",
+            "label": "继续",
+            "next": "s03_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我知道。所以我又一直觉得，自己欠了你一辈子。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_035",
+            "label": "继续",
+            "next": "s03_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「芹香，你不用为了感谢我，就当作以前的那些事没有发生。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_036",
+            "label": "继续",
+            "next": "s03_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_037",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「而且，我也不是为了让你还人情，才带你离开的。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_037",
+            "label": "继续",
+            "next": "s03_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……我花了很久才明白，两件事原来可以同时是真的。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_038",
+            "label": "继续",
+            "next": "s03_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_039",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我受过你的伤害，也真的很感谢你。」",
+        "expression": "sad",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_039",
+            "label": "继续",
+            "next": "s03_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/sad.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「嗯。那就都记着吧。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_040",
+            "label": "继续",
+            "next": "s03_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_apologetic.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_041",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我们现在都已经离开那里了。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_041",
+            "label": "继续",
+            "next": "s03_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_042",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「对。现在我们好好的，坐在这里喝咖啡。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_042",
+            "label": "继续",
+            "next": "s03_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_043",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……能这样坐在一起，我就很高兴。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_043",
+            "label": "继续",
+            "next": "s03_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_044",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "朝仓伸出手，轻轻覆在芹香放在桌上的手背上。芹香没有躲开。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_044",
+            "label": "继续",
+            "next": "s03_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_045",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「美幸。如果有一天，我真的决定回旧医院……你愿不愿意跟我一起回去，当护士长？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_045",
+            "label": "继续",
+            "next": "s03_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_046",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「哎呀，这就开始挖星见的人了？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_046",
+            "label": "继续",
+            "next": "s03_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_047",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我只是问问。你一直比我更懂怎么照顾一整个团队。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_047",
+            "label": "继续",
+            "next": "s03_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_048",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「先等等。你自己还没决定，先不用替我安排工作。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_048",
+            "label": "继续",
+            "next": "s03_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_049",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「我现在在星见多轻松呀。待遇不差，同事们也挺有趣，没人非要我当什么大人物。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_049",
+            "label": "继续",
+            "next": "s03_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_050",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……你说得对。我不应该因为舍不得你，就先替你决定。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_050",
+            "label": "继续",
+            "next": "s03_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「等你哪天真的想清楚了，再来认真问我。我也会认真考虑的。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_051",
+            "label": "继续",
+            "next": "s03_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_052",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「好。我会等你的回答。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_052",
+            "label": "继续",
+            "next": "s03_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_053",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「还有，护士长的事我可没答应哦。真要让我回去，工资得开高一点。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_053",
+            "label": "继续",
+            "next": "s03_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_054",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……我会记下你的报价。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_054",
+            "label": "继续",
+            "next": "s03_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_055",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「现在就记？你这人真是一点都没变。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_055",
+            "label": "继续",
+            "next": "s03_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "朝仓美幸",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_056",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香终于笑了。她拿起已经有些凉的咖啡，和朝仓一起慢慢喝完。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_056",
+            "label": "继续",
+            "next": "s03_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s03_057",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "离开咖啡馆时，两人并肩走到路口。朝仓挥手往医院方向走去，芹香则沿另一条街去赴自己的约。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "date_cafe",
+        "choices": [
+          {
+            "id": "continue_s03_057",
+            "label": "继续",
+            "next": "s04_001",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "event_portraits": [
+          {
+            "id": "doc_serika",
+            "path": "assets/characters/misono_serika_v1/casual/soft_smile.png",
+            "x": 430,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          },
+          {
+            "id": "nurse_yui",
+            "path": "assets/characters/miyuki_lv3_v1/miyuki_casual_playful.png",
+            "x": 900,
+            "bottom": 600,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "s04_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "夜色已经落下。坂口站在医院外的路灯旁，看见芹香从街角走过来。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_001",
+            "label": "继续",
+            "next": "s04_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_002",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「聊得怎么样？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_002",
+            "label": "继续",
+            "next": "s04_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……和美幸喝了杯咖啡，讲了很多以前不敢讲的话。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_003",
+            "label": "继续",
+            "next": "s04_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_004",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「听起来很累。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_004",
+            "label": "继续",
+            "next": "s04_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「有一点。可是，比一直藏着那些话轻松。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_005",
+            "label": "继续",
+            "next": "s04_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她主动挽住坂口的手臂。两人沿着人行道慢慢走，经过一排已经拉下卷帘门的小店。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_006",
+            "label": "继续",
+            "next": "s04_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「父亲让我有空回家吃顿饭。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_007",
+            "label": "继续",
+            "next": "s04_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_008",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「回旧医院？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_008",
+            "label": "继续",
+            "next": "s04_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「不是。只是回家。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_009",
+            "label": "继续",
+            "next": "s04_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「他还特别说了，不是叫我回去开会。……我差点在电话里笑出来。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_010",
+            "label": "继续",
+            "next": "s04_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「那他很了解你担心什么。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_011",
+            "label": "继续",
+            "next": "s04_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「以前未必。今天，他至少肯听我把话说完了。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_012",
+            "label": "继续",
+            "next": "s04_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香把手臂挽得更紧了一点，步子却没有停。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_013",
+            "label": "继续",
+            "next": "s04_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「美幸也一样。我们终于说起了在旧医院互相伤害的事。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_014",
+            "label": "继续",
+            "next": "s04_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我原来以为，只要她救过我，我就不应该再怨她。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_015",
+            "label": "继续",
+            "next": "s04_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「她说，两件事都可以记得。……我想，她是对的。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_016",
+            "label": "继续",
+            "next": "s04_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_017",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「那你们现在呢？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_017",
+            "label": "继续",
+            "next": "s04_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「还是朋友。或许比以前更能好好做朋友了。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_018",
+            "label": "继续",
+            "next": "s04_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我甚至问她，将来要不要跟我回去做护士长。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_019",
+            "label": "继续",
+            "next": "s04_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_020",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「她答应了？」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_020",
+            "label": "继续",
+            "next": "s04_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「没有。她先给我开了一个很高的价。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_021",
+            "label": "继续",
+            "next": "s04_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「……听起来像美幸。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_022",
+            "label": "继续",
+            "next": "s04_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「而且她说得没错。我自己还不知道要不要回去，凭什么先替别人安排未来。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_023",
+            "label": "继续",
+            "next": "s04_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「坂口君。你会不会觉得，我还是太犹豫了？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_024",
+            "label": "继续",
+            "next": "s04_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_025",
+        "presentation": "choice",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "s04_025a",
+            "label": "「你现在想留下，就安心留下。以后想法变了，我们再谈。」",
+            "next": "s04_025a_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "s04_025b",
+            "label": "「我想知道你自己想做什么，不想替你作决定。」",
+            "next": "s04_025b_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_025a_1",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「你现在想留下，就安心留下。以后想法变了，我们再谈。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_025a_1",
+            "label": "继续",
+            "next": "s04_025a_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_025a_2",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……原来不急着作出承诺，也能被这样认真地听着。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_025a_2",
+            "label": "继续",
+            "next": "s04_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_025b_1",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我想知道你自己想做什么，不想替你作决定。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_025b_1",
+            "label": "继续",
+            "next": "s04_025b_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_025b_2",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……这话从别人嘴里说出来也许会很冷淡。从你嘴里说出来，却让人安心。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_025b_2",
+            "label": "继续",
+            "next": "s04_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我现在想继续留在星见。做影像诊断，也可以在需要的时候作为助手参加手术。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_026",
+            "label": "继续",
+            "next": "s04_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「也许哪天，我会想回去看看旧医院究竟能不能重新开始。也许不会。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_027",
+            "label": "继续",
+            "next": "s04_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「但至少，不需要今晚就给任何人答复。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_028",
+            "label": "继续",
+            "next": "s04_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_029",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「嗯。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_029",
+            "label": "继续",
+            "next": "s04_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「而且……如果真的有那一天，我也想先听听你的想法。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_030",
+            "label": "继续",
+            "next": "s04_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_031",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「你想说的时候，我会听。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_031",
+            "label": "继续",
+            "next": "s04_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_032",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香停下脚步，转身面向坂口，抬眼看了他一会儿。",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_032",
+            "label": "继续",
+            "next": "s04_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……龙司。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_033",
+            "label": "继续",
+            "next": "s04_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_034",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「……嗯？」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_034",
+            "label": "继续",
+            "next": "s04_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「怎么了？我们不是恋人吗。这样叫，不可以？」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_035",
+            "label": "继续",
+            "next": "s04_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_036",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「当然可以。只是第一次听你这样叫，有点意外。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_036",
+            "label": "继续",
+            "next": "s04_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_037",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……不习惯的话，我可以——」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_037",
+            "label": "继续",
+            "next": "s04_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_038",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我很喜欢。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_038",
+            "label": "继续",
+            "next": "s04_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香怔了一下，随即别开脸。路灯下，她的耳尖微微发红。",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_039",
+            "label": "继续",
+            "next": "s04_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……那就慢慢习惯。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_040",
+            "label": "继续",
+            "next": "s04_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_041",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "两人重新向前走了一小段。芹香忽然抬头，像想起了一件正经工作似的。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_041",
+            "label": "继续",
+            "next": "s04_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_042",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「对了。你一直在做的那个……让院内职工自愿报名、作为患者参加手术的练习。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_042",
+            "label": "继续",
+            "next": "s04_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_043",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「你说院内的手术练习？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_043",
+            "label": "继续",
+            "next": "s04_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「嗯。我以前觉得很荒唐。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_044",
+            "label": "继续",
+            "next": "s04_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_045",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「以前？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_045",
+            "label": "继续",
+            "next": "s04_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_046",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「现在也觉得……有点荒唐。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_046",
+            "label": "继续",
+            "next": "s04_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_047",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她说完自己也轻轻笑了一下，随即认真看着坂口。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_047",
+            "label": "继续",
+            "next": "s04_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_048",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「不过，如果你愿意的话，以后我也可以参加。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_048",
+            "label": "继续",
+            "next": "s04_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_049",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「芹香，你是认真的？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_049",
+            "label": "继续",
+            "next": "s04_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_050",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「我知道。我以前站在手术台的另一边。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_050",
+            "label": "继续",
+            "next": "s04_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「该准备什么、术前要说明什么，我都知道。可这不代表我真的躺上去以后，就一点都不会害怕。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_051",
+            "label": "继续",
+            "next": "s04_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_052",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……我想试着相信自己的选择，也相信你。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_052",
+            "label": "继续",
+            "next": "s04_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_053",
+        "presentation": "choice",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "s04_053a",
+            "label": "「到时候我会按正式患者流程，仔细向你说明和确认。」",
+            "next": "s04_053a_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "s04_053b",
+            "label": "「等你真的想安排那一天，我们再认真谈。现在不用急。」",
+            "next": "s04_053b_1",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_053a_1",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「到时候我会按正式患者流程，仔细向你说明和确认。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_053a_1",
+            "label": "继续",
+            "next": "s04_053a_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_053a_2",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「那就好。别因为我懂，就把该讲的话省掉。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_053a_2",
+            "label": "继续",
+            "next": "s04_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_053b_1",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「等你真的想安排那一天，我们再认真谈。现在不用急。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_053b_1",
+            "label": "继续",
+            "next": "s04_053b_2",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_053b_2",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……你倒是越来越清楚，该把决定留给谁了。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_053b_2",
+            "label": "继续",
+            "next": "s04_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_054",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「不过先说好。我是自愿的，不是为了赎罪，也不是要向谁证明我还配当医生。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_054",
+            "label": "继续",
+            "next": "s04_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_055",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我明白。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_055",
+            "label": "继续",
+            "next": "s04_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_056",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「要做什么手术、什么时候做、具体怎么准备，等以后我真的提出申请时再谈。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_056",
+            "label": "继续",
+            "next": "s04_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_057",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「而且——如果那时候我紧张得不像样，你不许笑。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_057",
+            "label": "继续",
+            "next": "s04_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_058",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我尽量。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_058",
+            "label": "继续",
+            "next": "s04_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_059",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……『尽量』？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_059",
+            "label": "继续",
+            "next": "s04_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_060",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「我会认真对待你，跟对待其他患者一样。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_060",
+            "label": "继续",
+            "next": "s04_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_061",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……那就好。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_061",
+            "label": "继续",
+            "next": "s04_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「不过，到时候如果我连话都说不利索了，你可别拿『御園医生不是很懂吗』来挤兑我。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_062",
+            "label": "继续",
+            "next": "s04_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_063",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「不会。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_063",
+            "label": "继续",
+            "next": "s04_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_064",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「真的？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_064",
+            "label": "继续",
+            "next": "s04_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_065",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「真的，芹香。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_065",
+            "label": "继续",
+            "next": "s04_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_066",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "芹香看着坂口，脸上那点故作严肃的神色终于松开。她轻轻靠在他的肩旁。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_066",
+            "label": "继续",
+            "next": "s04_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_067",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「真奇怪。以前我觉得，什么都得自己扛下来，才算是做得对。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_067",
+            "label": "继续",
+            "next": "s04_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_068",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「现在只是这样和你一起走着，就觉得……明天可以慢慢再想。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_068",
+            "label": "继续",
+            "next": "s04_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_069",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_serika",
+        "text": "「那明天再想。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_069",
+            "label": "继续",
+            "next": "s04_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "坂口隆司",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_070",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「……龙司。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_070",
+            "label": "继续",
+            "next": "s04_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_071",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_serika",
+        "text": "她抬起手与坂口十指相扣。两个人没有急着赶路，沿着亮着路灯的街道继续向前。",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_071",
+            "label": "继续",
+            "next": "s04_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "旁白",
+        "seasonal_street": true
+      },
+      {
+        "id": "s04_072",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_serika",
+        "text": "「今晚，再陪我走一会儿吧。」",
+        "expression": "soft_smile",
+        "outfit": "casual",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_s04_072",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "speaker_label": "御園芹香",
+        "seasonal_street": true
+      }
+    ]
+  }
+]

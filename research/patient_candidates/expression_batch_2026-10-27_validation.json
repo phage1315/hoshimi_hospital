@@ -1,0 +1,30 @@
+{
+  "ids": [
+    "patient_rami_amasaki",
+    "patient_meryl_spaanna",
+    "patient_amis_ernest"
+  ],
+  "new_variants": 42,
+  "integrated_keys_per_patient": 20,
+  "patient_loader": "all three passed",
+  "patient_text_and_other_fields": "unchanged",
+  "new_validator_messages": [],
+  "resolved_validator_messages": [
+    "patient_amis_ernest: missing intraoperative portrait anesthetized",
+    "patient_amis_ernest: missing intraoperative portrait near_collapse",
+    "patient_amis_ernest: missing intraoperative portrait pain",
+    "patient_amis_ernest: missing intraoperative portrait tense",
+    "patient_meryl_spaanna: missing intraoperative portrait anesthetized",
+    "patient_meryl_spaanna: missing intraoperative portrait near_collapse",
+    "patient_meryl_spaanna: missing intraoperative portrait pain",
+    "patient_meryl_spaanna: missing intraoperative portrait tense",
+    "patient_rami_amasaki: missing intraoperative portrait anesthetized",
+    "patient_rami_amasaki: missing intraoperative portrait near_collapse",
+    "patient_rami_amasaki: missing intraoperative portrait pain",
+    "patient_rami_amasaki: missing intraoperative portrait tense"
+  ],
+  "repository_validator": "existing unrelated errors remain",
+  "godot_texture_ui_test": "not run: Godot unavailable on PATH or checked application locations",
+  "visual_acceptance": "42 variants passed; full images, face detail and alpha composites checked",
+  "native_canvas_exception": "Amis lithotomy variants 1459x1078 vs supplied awake base 1472x1088 retained without processing"
+}

@@ -2,6 +2,20 @@
 
 开发主对话的原稿索引、最终修订和未完成事项见 [2026-10-26 交接记录](development_handoff_2026-10-26.md)。该记录用于接续开发，不替代下述现行存档契约或各事件原文。
 
+## 高级手术独立原型（2026-10-30）
+
+三病例的高级Runner与普通Runner分离，正式入口复用医护／日历／生理危机／奖励函数；原有普通手术概率语义不变。测试入口为标题页事件测试中心的“高级手术 · 三台独立测试”。Dev现采用真实医护编队与能力、独立测试主刀技巧88和日期，不写入真实人物／存档；旧模拟阵容只供显式数值QA。Whipple首次病例使用山内樱良专属病房／术后立绘与全麻splash，返场及其他病例复用随机池资源，演出内存状态不持久化。
+
+`advanced_referral_facts`只保存病例、预约、日期、首通／失败、冷却及奖励事实；HP、节点、随机种子、助手次数、危机等只存在内存，严格遵守下述安全边界。御堂／阿尔托莉雅的高级专科映射已补齐，其他医护映射、其余两台首诊患者内容／专属策略及双评价仍待补；Quick关闭。接线与验证详见[原型实装记录](advanced_surgery_prototype_2026-10-30.md)。术式岗位对白独立于判定，Whipple已接完整13阶段、30条入场变体与12条精细失败变体；轮换取既有完成病例数，变体及播放状态仅在内存，详见[Day2对白接口](advanced_operative_dialogue_2026-10-30.md)与[Whipple内容包验收](whipple_content_integration_2026-10-31.md)。
+
+### 2026-10-30 Whipple 生理桥后续验收
+
+默认独立试玩与正式 Advanced Session 都保留普通生理对象；只有显式数值 fixture 可使用 HP-only。Whipple 的13阶段和W04/W11选项通过原 `apply_surgery_option_effects` 结算，Precision失败不追加生理惩罚。阶段效果／Time／危机抽取与HP成本均一次；抢救走普通resolver，普通手术本身未修改。仅Whipple数值获授权，标记 `P0_TUNING_PENDING_GAMEPLAY_APPROVAL`。详见[数值与实机验收](advanced_whipple_physiology_2026-10-30.md)。Day2稳定事实记录实际已结算分钟数，临时体征／阶段／选择／去重状态均不保存。
+
+### 2026-10-31 决策界面与助手专科
+
+`advanced_operation_panel.gd`只呈现会话数据，概率与剩余额度取原Model，动作仍交给Session。术野保持比例放大25%，HP与五项生理指标独立显示，增减提示只保留在View内存；F/L、S、P、危机分别使用对应操作卡。御堂登记为universal expert，阿尔托莉雅登记腹部相关四项专科；原技巧≥90且当前节点匹配才可第二次介入、全手术最多两次、委托与救援共享额度的规则不变。详见[UI验收记录](advanced_decision_ui_2026-10-31.md)。
+
 ## 当前存档契约（2026-10-23，v37）
 
 本节取代下文历史版本中关于动作重放、节点快照、对白序号及中途恢复的描述；那些段落只记录当时实现，不是当前存档规范。协作约束见根目录 `agents.md`。
@@ -14,6 +28,13 @@
 - 语言切换使用 `runtime_snapshot()` / `restore_runtime_snapshot()` 内存通道，标记 `runtime_memory_only_v1`；文件导入拒绝此格式。加载不执行选项、不重发奖励、不改写来源文件，失败不替换当前世界。
 
 格式、兼容边界和测试命令见 `docs/save_boundary_v37.md`。
+
+## 病房准备护理惩罚（2026-10-28现行修订）
+
+- 按用户最终修订采用分档，替代讨论中的线性递减及60点门槛：`patient_care ≤20` 时恐惧+20／尊严−20；21–30为+15／−15；31–40为+10／−10；41–50为+5／−5；超过50为0。没有独立的羞耻字段，使用尊严下降表达。
+- 规则适用于所有实际承担病房准备的护士，不绑定千早／瑞穗姓名。仅 `perform_preparation` 成功时结算一次，数值限制在0–100；准备选项数量不叠加惩罚，玩家亲手准备的完成动作不触发。保留现有护理≥85降低一档旧紧张度的收益，不改耗时、能力成长或岗位权限。
+- 非零惩罚保留护士原回应，并另附用户原文旁白“患者似乎被折腾得够呛。。。”及英文。混合记录使用“术前记事”标题，护士回应保留姓名，避免旁白被误认成护士发言。
+- 无新增持久字段，无事件中保存或恢复能力。验证脚本：`tools/ward_care_penalty_test.gd`，覆盖分档边界、中英实际界面文本、不同护士、数值截断、重复动作、选项数量、亲手准备及旧高护理收益。
 
 ## 下班同行与专属护士：现行说明（2026-10-26）
 
@@ -28,6 +49,28 @@
 `chihaya_third_surgery.gd`将三个已著作VN阶段连接为一次不可中断的周一09:00至周三10:00演出。入口只检查一次门槛、实际手术间隔及三日占用冲突；阶段间复用既有跨日演出，不回到导览或经营，不开放中途保存。阶段B结算真实芹香Lv2；仅阶段C完成后返回安全边界。存档仍只保存已完成事件级事实、数值和语义flags，无节点或续播进度。
 
 特殊事件的`presentation: authored`复用明确说话人分页，正文中的引号不改变身份；主线与回想使用相同规则。`actor_id`可以引用现有cameo患者注册对象，不为剧情人物创建医护身份；`unmet_variant.required_event_id`用于需要真实相识事件完成的姓名牌／一句互斥正文。详见[实装记录](chihaya_third_surgery_integration_2026-10-27.md)。
+
+## 瑞穗首次手术：四次固定预约（2026-10-28）
+
+`mizuho_first_surgery.gd`从已完成千早第三次A的实际周一日期取得D，四次VN分别固定在D+4周五入院、D+5周六离院插入探视、D+7周一手术、D+8周二查房。阶段间恢复正常经营与安全存档。A/C各一次60分钟；S零额外时间并恢复原离院／有效私人预约；B用实际剩余工作时段及既有加班离院接口结算。预约优先于清晨人物事件，并阻止其他跨日事件吞掉预约日；不独立顺延其中一段。
+
+事件不进入Surgery Runner、不发普通手术数值奖励。B只记录成功，C才写入现有`mizuho_first_surgery_chain_complete`，芹香Lv3继续独立检查真实Lv2、Fam≥40、冷却及周日。两名患者不提前出院或成为医护。存档只保存阶段完成事实、实际日期、全局flags和已结算时间，离院继续回调只留内存。详见[实装与验收](mizuho_first_surgery_integration_2026-10-28.md)。
+
+## 芹香Lv4《留下来》（2026-10-29）
+
+- 固定547句中英VN，作为下班事件在16:00≤实际离院时钟<23:00触发，检查芹香真实Lv3、Fam55、3日冷却及朝仓真实Lv3；朝仓Lv3正式A入口已接通，正常流程仍须真实完成Lv3。
+- 连续D0 23:00至D3 09:00，节点场景时钟仅在内存中展示，最后一句才结算日历和Lv4／恋人／倍率1.00／亲密资格。不存在中途存档、手术Runner或H Runner。实际Free H预约等待专属内容，不能把资格当作可运行内容。
+- 详见[实装与美术缺口](serika_lv4_integration_2026-10-29.md)。
+
+### 芹香重复互动数据（2026-10-29）
+
+独立Free H V1.1 Profile／1.3.4 Flow及用户提供的二阶段、事后CG已接入共用适配器；以真实`serika_lv4_stay`完成事实及已有亲密资格为前置，地点固定为芹香家。触摸底图、九区坐标及六种头像已齐备；注册状态为`ready`。原生macOS窗口中英文完整流程、六种表情及存档边界已验证，具备真实Lv4完成事实与亲密资格后可正式预约。没有修改Lv4固定剧情或扩大存档边界。中英文内容、实际CG资源和既有小夜香流程的检查见[接入记录](serika_free_h_integration_2026-10-29.md)。
+
+## 职业气场与病例复核（2026-10-27现行规则）
+
+门诊／术前／术中气场净累计上限改为±3／±2／±5，总范围−200～200不变。选择显示温柔或强势标识，强度+／++对应1／2；无麻醉最终开台+++对应+5，只结算一次且受术中上限约束。可选额外照顾在实际执行准备时计入，不在勾选时计入。新气场历史按阶段聚合为数值账目，禁止保存选择路径；既有结算不按新上限重算。
+
+大开腹探查的8%罕见变体在首次进入术前会话时抽取，使用原模板正文，只开放“解释确认后继续”和“最坏预期施压后继续”。抽取／节点／选择仅在会话内存中，不扩展安全存档边界；后续医护钩子尚未制作。详细规则、全文核对、数值清单与测试见[实装记录](clinical_presence_2026-10-27.md)。
 
 ## 内容 → 会话 → 表现
 `data/manifest.json` 是加载入口。`ContentLoader` 使用 FileAccess / JSON 读取只读定义并检查顶层结构、重复 ID 与解析错误。运行时失败会显示错误页面，而不是悄悄生成空数据。完整字段和引用校验由 `tools/validate_data.py` 在开发阶段完成；发布前必须运行它。运行时加载器不是完整 Schema 解释器，暂不支持不受信任的模组。
@@ -155,3 +198,37 @@ Field reference and override examples: [`docs/test_save_generator.md`](test_save
 ### Save boundary and format migration
 
 Player saves are state-dictionary checkpoints created only from the hospital directory or the Sunday menu. Loading never resumes a surgery, consultation, or narrative node; it rebuilds world state and returns to the appropriate hospital entry screen. The current format is `state_dictionary_v1` (save version 36). Version 35 event-log saves remain readable temporarily through a best-effort compatibility path: unrecognized records are skipped and warnings are reported, rather than blocking the entire load. Once the old-save migration window is closed, that replay path can be removed.
+
+
+## 2026-10-28 当前补充：双人返院与短篇医护闲谈
+
+`chihaya_mizuho_return.gd`负责共同出院与返院的日期计算、预约冲突和完成结算；`staff_unlock_event`将已登记角色数据与实际员工解锁分离，`allowed_team_roles`在派工层限制病房准备／非无菌巡回。`time_events.dialogue_variants`用于多说话人完整闲谈，`required_actor_ids`要求双人真实同场；每段只结算一次耗时，实际姓名框和uniform立绘按当前发言者切换。闲谈variant与app内turn仅运行中存在，不能写入安全边界存档。
+
+v37安全边界契约不变：`staff_contracts`仅持久化每名员工start_day/end_day，与事件完成日期校验；不包含演出节点、合同剧情进度或选择路径。两人同一合同结果要求原子一致，非法记录拒绝恢复且不改变当前进度。当前支持本次运行内的闲谈语言切换，不能据此支持关程序后恢复闲谈。详见 `chihaya_mizuho_return_integration_2026-10-28.md`。本节是当前规则补充，不采用文末之前的历史v36重放说明。
+
+### 朝仓 Lv2 两幕日终事件（2026-10-30）
+
+`miyuki_lv2.gd` 复用事件级完成事实调度前夜 A／次晨 B。A 插入手动或延期日终、先于同行及 splash，零耗时；完成日期+1预约 B09:00，B完成结算240分钟和Lv2。仅朝仓退出当晚同行候选。次日冲突预检在内存投影中调用现行调度器，不序列化会话。赖子为显式头像的具名剧情客串，不建立病例或员工。存档边界不扩大，详见 `miyuki_lv2_integration_2026-10-30.md`。
+
+### 朝仓 Lv3 两段关系事件（2026-10-30）
+
+`miyuki_lv3.gd` 调度零耗时A前奏和后续周日主动B；A正式自动入口已接通：已相识狩谷在开局当年6月1日至11月30日出演，其余情况米田兜底；不自动结算狩谷离职或留院。A两套演员内容及B共410个数据节点，单次完整阅读328节。完成事实使用既有角色事件记录，B经一次Sunday ledger推进周一09:00；不走普通约会奖励、不保存内部进度。中文逐句、英文和隔离实机／回想已验证。详细状态见 `miyuki_lv3_integration_2026-10-30.md`。
+
+### 芹香 Staff-as-Patient 与首次完成回调（2026-10-30）
+
+`StaffPatientRegistry` 可复用普通患者 locale-aware 性格对白，再叠加明确角色覆盖。芹香 Profile 已接入26条可用核心回应、13组准备变体及邀约；2条住院回应保留，未新增场景。首次真实手术完成日独立于训练经验次数，以 v37 可选业务字典持久化；独立影像室回调 `serika_first_staff_surgery_callback` 15分钟、一次性、双语，首个后续工作日起保留可看资格。生产资格继续要求真实已著作并完成的 Lv5，目前 planned 槽不会开放。详见 `serika_staff_patient_integration_2026-10-30.md`；美术与原生窗口验收仍待后续。
+
+
+### 2026-10-30：芹香Lv5与无正文选择
+
+`serika_lv5_lay_down_burden` 是60分钟的既有角色rank_up事件，`serika_lv5.gd`检查真实Lv4和现有全院授权，shared rank gate保留Fam75／skill75／leadership65及3天冷却。仅末句确认结算Lv5与患者资格，不启动诊疗。`presentation: choice` 允许空text与至少两个按钮；CharacterStage为正式演出和回想共用选择界面，禁止自动播放替玩家选择、禁止显示制作标记。节点与分支仅运行期内存；持久化仍为v37已结算事实。详见 `serika_lv5_integration_2026-10-30.md`。
+
+### 2026-10-31 高级手术 Day 1 编组展示层
+
+`advanced_team_panel.gd` 只组织真实岗位卡、患者资料和HP-only估算；候选、技能、专科额度与日期继续读取既有控制器／Model。新术式数据与素材交付以[当前清单](advanced_surgery_content_checklist_v1.md)为准，不假定存在统一全包JSON Schema。高级首次剧情结束返回`advanced_board`，不能在编组或复盘页保存；只有实际退出到医院导览才恢复安全边界。详见[一屏编组验收](advanced_team_ui_2026-10-31.md)。
+
+## 2026-10-31：发行包媒体检查与验收门禁
+
+事件立绘、CG、音效及画廊资源须通过 `ResourceLoader.exists()` 判断可加载性，不使用原文件存在性作为导入资源门槛。导出包中原PNG可不存在，但导入映射有效；JSON与存档仍按普通文件读取。
+
+编辑器内测试不能替代发布验收。交付流程使用 `tools/export_release_checked.py` 实际构建、隔离启动PCK，与本地原生测试逐项对照，失败不交付。命令、覆盖与目标平台限制见 [导出验收规范](export_validation.md)。

@@ -121,11 +121,12 @@ func find_action(id: String) -> Dictionary:
 	return {}
 
 func blocked_reason(action: Dictionary) -> String:
+	var english := str(definition.get("_locale", "zh_CN")) == "en"
 	if action_log.has(action.id):
-		return "已完成"
+		return "Completed." if english else "已完成"
 	for required in action.requires:
 		if not notes.has(required):
-			return "请先完成本阶段的信息收集"
+			return "Complete this stage's information gathering first." if english else "请先完成本阶段的信息收集"
 	return ""
 
 func apply(id: String) -> bool:
@@ -162,7 +163,7 @@ func apply_single(id: String) -> bool:
 		var applied := after - before
 		player_effects.presence = int(player_effects.get("presence", 0)) + applied
 		if applied != 0:
-			player_effect_history.append({"id": action.id, "label": action.label, "effects": {"presence": applied}})
+			Progression.record_presence_effect(player_effect_history, "encounter", applied)
 	if not action.diagnosis.is_empty():
 		diagnosis = action.diagnosis
 	admitted = admitted or action.admit

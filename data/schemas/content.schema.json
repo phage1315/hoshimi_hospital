@@ -150,7 +150,7 @@
         },
         "path": {
           "type": "string",
-          "pattern": "^assets/backgrounds/.+\\.png$"
+          "pattern": "^assets/backgrounds/.+\\.(png|svg)$"
         },
         "notes": {
           "type": "string",
@@ -211,6 +211,11 @@
                         "rooftop"
                       ]
                     }
+                  },
+                  "not": {
+                    "required": [
+                      "dialogue_variants"
+                    ]
                   }
                 },
                 "then": {
@@ -364,6 +369,62 @@
             "brief_chat",
             "daily_discussion"
           ]
+        },
+        "required_actor_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "dialogue_variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "speaker": {
+                  "enum": [
+                    "actor",
+                    "player",
+                    "narrator"
+                  ]
+                },
+                "actor_id": {
+                  "type": "string"
+                },
+                "speaker_label": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "expression": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "outfit": {
+                  "type": "string",
+                  "enum": [
+                    "uniform",
+                    "casual",
+                    "scrubs",
+                    "white_coat"
+                  ]
+                }
+              },
+              "required": [
+                "speaker",
+                "actor_id",
+                "speaker_label",
+                "text"
+              ],
+              "additionalProperties": false
+            }
+          }
         }
       },
       "required": [
@@ -550,7 +611,8 @@
           "enum": [
             "authored",
             "sms",
-            "stage"
+            "stage",
+            "choice"
           ]
         },
         "action": {
@@ -792,17 +854,44 @@
             }
           },
           "else": {
-            "properties": {
-              "text": {
-                "not": {
-                  "const": ""
+            "if": {
+              "properties": {
+                "presentation": {
+                  "const": "choice"
                 }
+              },
+              "required": [
+                "presentation"
+              ]
+            },
+            "then": {
+              "properties": {
+                "text": {
+                  "const": ""
+                },
+                "choices": {
+                  "minItems": 2
+                }
+              },
+              "not": {
+                "required": [
+                  "auto_seconds"
+                ]
               }
             },
-            "not": {
-              "required": [
-                "auto_seconds"
-              ]
+            "else": {
+              "properties": {
+                "text": {
+                  "not": {
+                    "const": ""
+                  }
+                }
+              },
+              "not": {
+                "required": [
+                  "auto_seconds"
+                ]
+              }
             }
           }
         }
@@ -1147,7 +1236,7 @@
           "type": "object",
           "additionalProperties": {
             "type": "string",
-            "pattern": "^assets/events/.+\\.png$"
+            "pattern": "^assets/(events|characters)/.+\\.png$"
           }
         },
         "notes": {
@@ -1873,6 +1962,13 @@
                 "required_for"
               ],
               "additionalProperties": false
+            },
+            "offscreen_outfits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
             }
           },
           "required": [
@@ -2400,6 +2496,23 @@
               "additionalProperties": false
             }
           }
+        },
+        "allowed_team_roles": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ward_nurse",
+              "circulating_nurse",
+              "scrub_nurse",
+              "assistant_surgeon",
+              "primary_surgeon"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "staff_unlock_event": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "required": [
@@ -3511,6 +3624,17 @@
               "safe_resolution": {
                 "type": "string",
                 "minLength": 1
+              },
+              "runtime_enabled": {
+                "type": "boolean"
+              },
+              "runtime_options": {
+                "type": "array",
+                "minItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
@@ -5420,6 +5544,11 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 3
+        },
+        "presence_delta": {
+          "type": "integer",
+          "minimum": -2,
+          "maximum": 2
         }
       },
       "required": [
@@ -7016,12 +7145,23 @@
         },
         "unmet_variant": {
           "type": "object",
-          "required": ["actor_id"],
+          "required": [
+            "actor_id"
+          ],
           "properties": {
-            "actor_id": {"type": "string"},
-            "required_event_id": {"type": "string", "minLength": 1},
-            "speaker_label": {"type": "string"},
-            "text": {"type": "string"}
+            "actor_id": {
+              "type": "string"
+            },
+            "required_event_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "speaker_label": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
           },
           "additionalProperties": false
         },
@@ -7074,7 +7214,8 @@
         "cg_fit": {
           "enum": [
             "cover",
-            "contain"
+            "contain",
+            "inset"
           ]
         },
         "cg_dialogue_delay_seconds": {
@@ -7189,7 +7330,7 @@
       "type": "object",
       "properties": {
         "scene_schedule": {
-          "description": "Presentation-only time by node ID scene prefix; never advances the workday ledger.",
+          "description": "Presentation-only time by exact node ID, falling back to scene prefix, relative to session start day; never advances the workday ledger.",
           "type": "object",
           "additionalProperties": {
             "type": "object",

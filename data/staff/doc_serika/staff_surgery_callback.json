@@ -1,0 +1,959 @@
+[
+  {
+    "id": "serika_first_staff_surgery_callback",
+    "actor_id": "doc_serika",
+    "title": "影像上的自己",
+    "chapter": 5,
+    "location_id": "imaging",
+    "trigger_mode": "location",
+    "background_id": "diagnostics",
+    "outfit": "white_coat",
+    "minutes": 15,
+    "teaser": "影像上的自己",
+    "time_start": 540,
+    "time_end": 1005,
+    "priority": 100,
+    "category": "contextual",
+    "auto_start": true,
+    "target_level": 5,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "serika_first_staff_surgery_callback",
+      "caption": "影像上的自己",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 0,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "cb_001",
+    "nodes": [
+      {
+        "id": "cb_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "坂口走进影像室。芹香站在阅片屏前，面前放着几张检查影像。与平时相比，她似乎过于安静。",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_001",
+            "label": "继续",
+            "next": "cb_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_002",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「芹香？怎么了？你的脸色好像不太对。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_002",
+            "label": "继续",
+            "next": "cb_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……先把门关上。」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_003",
+            "label": "继续",
+            "next": "cb_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_004",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「嗯？发生什么事了？」",
+        "expression": "worried",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_004",
+            "label": "继续",
+            "next": "cb_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "scene_caption": "关门"
+      },
+      {
+        "id": "cb_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "芹香猛地转身，脸颊通红，眼角还有一点不服气的湿意。",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_005",
+            "label": "继续",
+            "next": "cb_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「龙司！！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_006",
+            "label": "继续",
+            "next": "cb_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_007",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她快步上前，握着拳头在坂口胸前捶了两下。不重，像是憋了很久终于找到可以发脾气的对象。",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_007",
+            "label": "继续",
+            "next": "cb_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_008",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「喂、喂！怎么了？！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_008",
+            "label": "继续",
+            "next": "cb_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「你知道手术准备有多羞耻吗？！那些平时和我一起工作的护士……居然要由她们来替我做准备……！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_009",
+            "label": "继续",
+            "next": "cb_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「还有……被你亲自开刀……也、也好羞耻！！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_010",
+            "label": "继续",
+            "next": "cb_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「……原来你一直在想这些啊。」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_011",
+            "label": "继续",
+            "next": "cb_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「不要这么平静地回答我！我、我可是……都是为了你呢！！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_012",
+            "label": "继续",
+            "next": "cb_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_013",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「我知道。那天光是做准备，你就已经很紧张了。……我也一直放心不下。」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_013",
+            "label": "继续",
+            "next": "cb_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……你当然得冷静。你是主刀医生……我知道的。」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_014",
+            "label": "继续",
+            "next": "cb_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「可那天我什么也做不了，只能躺在那里……明明每一步我都懂，真正轮到自己的时候，居然还是怕成那样。……真不甘心。」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_015",
+            "label": "继续",
+            "next": "cb_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她忽然又想起什么似的，转身回到阅片屏前，拿起一张自己的复查影像。",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_016",
+            "label": "继续",
+            "next": "cb_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「还有这个！你过来看！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_017",
+            "label": "继续",
+            "next": "cb_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「你看……我明明知道恢复得很快，可这张复查影像我反反复复看了好几遍，竟然一点手术痕迹也找不出来！影像上就像什么都没发生过一样……可我记得清清楚楚，自己那天躺在手术台上，被你亲手开刀……啊啊，越想越奇怪、越想越羞耻！！」",
+        "expression": "angry",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_018",
+            "label": "继续",
+            "next": "cb_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "芹香把影像放回桌上，双手捂住通红的脸，好一会儿没肯看坂口。",
+        "expression": "shy",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_019",
+            "label": "继续",
+            "next": "cb_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_020",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「你比谁都清楚星见的恢复是怎么回事吧。」",
+        "expression": "shy",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_020",
+            "label": "继续",
+            "next": "cb_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「我当然知道！……作为医生知道是一回事。结果躺在台上的人就是我自己……又是另一回事。」",
+        "expression": "shy",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_021",
+            "label": "继续",
+            "next": "cb_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「……你后悔了？」",
+        "expression": "shy",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_022",
+            "label": "继续",
+            "next": "cb_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……不。」",
+        "expression": "shy",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_023",
+            "label": "继续",
+            "next": "cb_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她慢慢放下遮脸的手。这次脸上没有方才的怒气，反而显得有些不好意思。",
+        "expression": "shy",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_024",
+            "label": "继续",
+            "next": "cb_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……不过，被你开刀，其实我还蛮喜欢的呢。」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_025",
+            "label": "继续",
+            "next": "cb_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_026",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「……你刚刚不是还在打我吗？」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_026",
+            "label": "继续",
+            "next": "cb_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「两件事又不矛盾！」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_027",
+            "label": "继续",
+            "next": "cb_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_028",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "她说完自己也忍不住笑了一下，随即向前靠近，轻轻倚进坂口怀里。",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_028",
+            "label": "继续",
+            "next": "cb_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……不是说准备不难堪，也不是说开刀的时候不怕。……我真的很怕。」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_029",
+            "label": "继续",
+            "next": "cb_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「可是……那天你一直在认真做你的事。我知道自己交出去的那些事，确实被你好好接住了。」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_030",
+            "label": "继续",
+            "next": "cb_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「和你在一起，真的好奇怪……心里乱糟糟的，明明会不安，会害怕……又觉得很安全。」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_031",
+            "label": "继续",
+            "next": "cb_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「两种感觉竟然能同时存在……真是太奇怪了……」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_032",
+            "label": "继续",
+            "next": "cb_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……龙司。以后不管我去哪里，都希望你能陪着我……一直陪着我……」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_033",
+            "label": "继续",
+            "next": "cb_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_034",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「……嗯。我会好好陪着你。以后有什么不安，都告诉我，好吗？你不用一个人忍着。」",
+        "expression": "soft_smile",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_034",
+            "label": "继续",
+            "next": "cb_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "芹香在他怀里轻轻点头，过了片刻才抬起脸，重新摆出一点平时的冷淡神色。",
+        "expression": "cold",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_035",
+            "label": "继续",
+            "next": "cb_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……还有。今天在这里的事，不许告诉别人。」",
+        "expression": "cold",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_036",
+            "label": "继续",
+            "next": "cb_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_037",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口",
+        "actor_id": "doc_serika",
+        "text": "「你是说捶我那两下？」",
+        "expression": "cold",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_037",
+            "label": "继续",
+            "next": "cb_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "芹香",
+        "actor_id": "doc_serika",
+        "text": "「……是全部。」",
+        "expression": "cold",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_038",
+            "label": "继续",
+            "next": "cb_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "坂口笑着点头。芹香又把额头贴回他胸前。镜头停在阅片屏上那张已经恢复正常的影像，随后淡出。",
+        "expression": "cold",
+        "outfit": "white_coat",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_cb_039",
+            "label": "继续",
+            "next": "cb_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "cb_040",
+        "presentation": "stage",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "actor_id": "doc_serika",
+        "text": "",
+        "expression": "cold",
+        "outfit": "white_coat",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_cb_040",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "auto_seconds": 0.1
+      }
+    ]
+  }
+]

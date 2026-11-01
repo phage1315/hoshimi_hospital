@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.3",
+  "actor_id": "doc_serika",
+  "adult_confirmed": true,
+  "assets": {
+    "body_map_image": "res://assets/h/doc_serika/body_map.png",
+    "body_map_regions": "res://data/h/doc_serika/h_bodymap.json",
+    "portrait_expressions": {
+      "neutral": "res://assets/h/doc_serika/portrait_neutral.png",
+      "annoyed": "res://assets/h/doc_serika/portrait_annoyed.png",
+      "pleased": "res://assets/h/doc_serika/portrait_pleased.png",
+      "flustered": "res://assets/h/doc_serika/portrait_flustered.png",
+      "delighted": "res://assets/h/doc_serika/portrait_delighted.png",
+      "peak": "res://assets/h/doc_serika/portrait_peak.png"
+    },
+    "scene_cg": "res://assets/h/doc_serika/scene_cg.png",
+    "aftercare_cg": "res://assets/h/doc_serika/aftercare_cg.png"
+  },
+  "preferences": {
+    "zone_defaults": {
+      "lips": "favorite",
+      "cheeks": "strong",
+      "neck": "strong",
+      "breasts": "strong",
+      "nipples": "strong",
+      "navel": "mild",
+      "torso_other": "mild",
+      "genitals": "strong",
+      "thighs": "mild"
+    },
+    "action_overrides": {
+      "light_bite": "low"
+    },
+    "combo_overrides": {
+      "caress:cheeks": "favorite",
+      "kiss:lips": "favorite",
+      "caress:neck": "favorite",
+      "kiss:neck": "favorite",
+      "caress:torso_other": "strong",
+      "caress:thighs": "strong",
+      "lick:cheeks": "low",
+      "light_bite:lips": "mild",
+      "light_bite:neck": "mild",
+      "light_bite:genitals": "low"
+    }
+  },
+  "dialogue": {
+    "tier_fallback": {
+      "low": [
+        "呀……有点突然……",
+        "唔……不太习惯……",
+        "……我、我更喜欢轻一点……",
+        "嗯……换、换个方式，好吗……"
+      ],
+      "mild": [
+        "嗯……好……",
+        "……有点痒……",
+        "呼……慢一点……",
+        "……嗯，就这样……"
+      ],
+      "strong": [
+        "啊……！",
+        "……唔……你……",
+        "……啊……好、好热……",
+        "……呼……心跳……"
+      ],
+      "favorite": [
+        "……还、还想……",
+        "嗯……再一下……",
+        "……先别停……",
+        "……唔……坂口君……"
+      ]
+    },
+    "zone_tier": {
+      "lips:favorite": [
+        "……嗯……好近……",
+        "……嘴唇……有点发烫……"
+      ],
+      "cheeks:strong": [
+        "呀……脸……好热……",
+        "……别、别这样看我……"
+      ],
+      "neck:strong": [
+        "……呀……脖子……！",
+        "唔……太、太痒了……"
+      ],
+      "breasts:strong": [
+        "……呼……别、别看我……",
+        "啊……那、那里……！"
+      ],
+      "nipples:strong": [
+        "呀……！……这么突然……",
+        "……唔……好、好敏感……"
+      ],
+      "navel:mild": [
+        "……咦……这里也……？",
+        "嗯……好痒……"
+      ],
+      "torso_other:mild": [
+        "……呼……好暖……",
+        "……嗯……轻轻的……"
+      ],
+      "genitals:strong": [
+        "啊……！……坂口君……",
+        "……唔……那、那里……"
+      ],
+      "thighs:mild": [
+        "……啊……腿有点发软……",
+        "……嗯……再轻一点……"
+      ]
+    },
+    "action_tier": {},
+    "combo": {
+      "caress:cheeks": [
+        "……嗯……你的手……",
+        "……再、再摸一会儿……"
+      ],
+      "kiss:lips": [
+        "……嗯……再、再亲一下……",
+        "……唔……别离开……"
+      ],
+      "caress:neck": [
+        "……呼……好舒服……",
+        "……嗯……轻一点……就这样……"
+      ],
+      "kiss:neck": [
+        "呀……怎、怎么亲这里……",
+        "……再……一次……好吗……"
+      ],
+      "caress:torso_other": [
+        "……手……好暖……",
+        "……嗯……慢慢来……"
+      ],
+      "caress:thighs": [
+        "啊……！……腿……",
+        "……唔……整个人都……"
+      ],
+      "lick:cheeks": [
+        "呀……什、什么……？",
+        "……怎么突然这样……"
+      ],
+      "light_bite:lips": [
+        "唔……！……吓一跳……",
+        "……稍、稍微……轻些……"
+      ],
+      "light_bite:neck": [
+        "呀……！",
+        "……唔……刚才那下……"
+      ],
+      "light_bite:genitals": [
+        "啊……！……那、那里……",
+        "……唔……太、太突然了……"
+      ]
+    },
+    "location_entry": {
+      "hotel": [
+        "……还是在家里……更安心些。"
+      ],
+      "home": [
+        "……请进。拖鞋在这里。",
+        "外套……挂门边就好。",
+        "……你来了。快进来吧。",
+        "……关上门以后……忽然不知道说什么了。"
+      ],
+      "ward": [
+        "……这里……真的没有人了吧？"
+      ],
+      "operating_room": [
+        "……在这里……会让我想起值班的。"
+      ]
+    },
+    "scene": {
+      "start": [
+        "……再……靠近一点……",
+        "……你、你别一直看……",
+        "……嗯……把手给我……"
+      ],
+      "middle": [
+        "啊……坂、坂口君……",
+        "……呼……别……别松开……",
+        "……我……啊……！"
+      ],
+      "finish": [
+        "……还……想这样待着……",
+        "……先别起身……",
+        "……嗯……晚安……"
+      ]
+    }
+  }
+}

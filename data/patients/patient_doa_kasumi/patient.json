@@ -9,27 +9,28 @@
     "case_id": "case_abdomen",
     "visuals": {
       "state": "outpatient",
-    "portraits": {
-      "outpatient/neutral": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/outpatient/neutral.png",
-      "ward/neutral": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/neutral.png",
-      "ward/smile": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/smile.png",
-      "ward/brave": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/brave.png",
-      "ward/worried": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/worried.png",
-      "ward/afraid": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/afraid.png",
-      "ward/crying": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/crying.png",
-      "operating_table/awake": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/awake_v2.png",
-      "operating_table/tense": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/tense.png",
-      "operating_table/afraid": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/afraid.png",
-      "operating_table/anesthetized": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/anesthetized.png",
-      "operating_table_lithotomy/awake": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/awake.png",
-      "operating_table_lithotomy/tense": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/tense.png",
-      "operating_table_lithotomy/afraid": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/afraid.png",
-      "operating_table_lithotomy/anesthetized": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/anesthetized.png",
-      "intraoperative/tense": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/tense.png",
-      "intraoperative/pain": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/pain.png",
-      "intraoperative/near_collapse": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/near_collapse.png",
-      "intraoperative/anesthetized": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/anesthetized.png"
-    }
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/smile.png",
+        "ward/brave": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/brave.png",
+        "ward/worried": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/awake_v2.png",
+        "operating_table/tense": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_doa_kasumi_v1/patient_doa_kasumi/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/events/anesthesia_v1/patient_doa_kasumi/general.png"
+      }
     },
     "admission_status": "outpatient",
     "voice_style": "soft",
@@ -220,7 +221,9 @@
         "label": "霞 · 基础查体全裸检查",
         "test_ids": [],
         "surgery_ids": [],
-        "paths": ["assets/examinations/patient_doa_kasumi/full_undress_basic_exam.png"],
+        "paths": [
+          "assets/examinations/patient_doa_kasumi/full_undress_basic_exam.png"
+        ],
         "caption": "霞完成脱衣，准备接受基础查体。"
       }
     ],
@@ -230,9 +233,16 @@
         "label": "霞 · 术前准备 · 灌肠",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["ward_enema", "ward_enema_unnecessary"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/enema.png"],
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/enema.png"
+        ],
         "caption": "霞按当前术前安排完成灌肠准备。"
       },
       {
@@ -240,9 +250,16 @@
         "label": "霞 · 术前准备 · 剃毛",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/skin_prep.png"],
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/skin_prep.png"
+        ],
         "caption": "霞按当前术前准备范围完成备皮。"
       },
       {
@@ -250,9 +267,15 @@
         "label": "霞 · 病房准备 · 戴手术帽",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["ward_surgical_cap"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/surgical_cap.png"],
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/surgical_cap.png"
+        ],
         "caption": "霞戴好手术帽，准备转运至手术室。"
       },
       {
@@ -260,9 +283,15 @@
         "label": "霞 · 病房准备 · 转运担架车",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["complete_manual_ward_preparation"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/stretcher_transfer.png"],
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/stretcher_transfer.png"
+        ],
         "caption": "病房准备结束后，霞躺上担架车，准备转运。"
       },
       {
@@ -270,10 +299,19 @@
         "label": "霞 · 手术室准备 · 留置导尿",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["urinary_catheterization"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "procedure_groups": ["general_abdominal", "female_pelvic"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/urinary_catheterization.png"],
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/urinary_catheterization.png"
+        ],
         "caption": "霞在手术室准备阶段接受留置导尿。"
       },
       {
@@ -281,10 +319,19 @@
         "label": "霞 · 手术室准备 · 术野消毒",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["skin_disinfection"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "procedure_groups": ["general_abdominal", "female_pelvic"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/skin_disinfection.png"],
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/skin_disinfection.png"
+        ],
         "caption": "手术团队按预定范围为霞完成术野消毒。"
       },
       {
@@ -292,10 +339,19 @@
         "label": "霞 · 手术室准备 · 体位摆放与固定",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["operative_positioning"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "procedure_groups": ["general_abdominal", "female_pelvic"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/operative_positioning.png"],
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/operative_positioning.png"
+        ],
         "caption": "团队依照当前术式为霞完成体位摆放与固定。"
       },
       {
@@ -303,10 +359,19 @@
         "label": "霞 · 手术室准备 · 铺设无菌单",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["ack_disinfection"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "procedure_groups": ["general_abdominal", "female_pelvic"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/sterile_draping.png"],
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/sterile_draping.png"
+        ],
         "caption": "消毒完成后，团队为霞铺设无菌单并保留预定术野。"
       },
       {
@@ -314,10 +379,19 @@
         "label": "霞 · 手术准备 · 下刀前",
         "priority": 100,
         "presentation": "fullscreen",
-        "action_ids": ["request_scalpel"],
-        "patient_ids": ["patient_doa_kasumi"],
-        "procedure_groups": ["general_abdominal", "female_pelvic"],
-        "paths": ["assets/events/ward_preparation_v1/patient_doa_kasumi/scalpel_ready.png"],
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_doa_kasumi"
+        ],
+        "procedure_groups": [
+          "general_abdominal",
+          "female_pelvic"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_doa_kasumi/scalpel_ready.png"
+        ],
         "caption": "器械护士递上手术刀，霞在正式开始前等待主刀确认。\n「……别动，我不能动……啊！医生，先别切……！」"
       }
     ],

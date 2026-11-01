@@ -1,8 +1,10 @@
 extends RefCounted
+const PresenceHint = preload("res://godot/ui/presence_hint.gd")
 const ResultView = preload("res://godot/ui/surgery_result_view.gd")
 const StageArt = preload("res://godot/ui/preop_stage_art.gd")
 const UI = preload("res://godot/ui/clinic_view.gd")
 const OR_TABLE_PALPATION_IMAGES := {
+	"mizuho_v1": "res://assets/surgeries/palpation/or_table_torso_mizuho_v1.png",
 	"prototype_v1": "res://assets/surgeries/palpation/or_table_torso_prototype_v1.png",
 	"body_type_02": "res://assets/surgeries/palpation/or_table_torso_body_type_02.png",
 	"body_type_03": "res://assets/surgeries/palpation/or_table_torso_body_type_03.png",
@@ -12,6 +14,14 @@ const OR_TABLE_PALPATION_HOTSPOT_REFERENCE_SIZE := Vector2(620, 626)
 # Hotspots are authored in local coordinates inside the 620x626 palpation image.
 # Each CG needs its own map because body proportions and source-image cropping vary.
 const OR_TABLE_PALPATION_HOTSPOTS := {
+	# Mizuho: source 2176x1660, centered cover into 620x626; see import manifest.
+	"mizuho_v1": {
+		"breast": [Rect2(188.19, 90.51, 118.79, 118.79), Rect2(308.87, 90.51, 120.67, 118.79)],
+		"nipple": [Rect2(201.39, 118.79, 37.71, 37.71), Rect2(376.75, 118.79, 37.71, 37.71)],
+		"chest": [Rect2(291.9, 26.4, 35.83, 156.5)],
+		"abdomen": [Rect2(220.25, 213.07, 177.24, 241.35)],
+		"genital": [Rect2(276.81, 454.42, 69.77, 60.34)],
+	},
 	"prototype_v1": {
 		"breast": [Rect2(140, 80, 160, 170), Rect2(320, 80, 160, 170)],
 		"nipple": [Rect2(178, 132, 48, 48), Rect2(372, 132, 48, 48)],
@@ -227,6 +237,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 				check.disabled = not check.button_pressed and prep.selected_preparations.size() >= prep.definition.max_optional_preparations
 				check.toggled.connect(func(_pressed: bool): app.preop_event({"kind": "toggle", "id": item.id}))
 				app.page.add_child(check)
+				PresenceHint.decorate(app, check, item, "preop")
 			var instruction: String = app.tx("ui.auto.d3195ea0e42b", "额外照顾 %s / %s · 选择由护士完成，或由你亲手执行") % [prep.selected_preparations.size(), prep.definition.max_optional_preparations]
 			if not prep.team.has(prep.definition.ward_role.id):
 				instruction = app.tx("ui.auto.7fb2f6e70921", "请先在上方指派病房准备护士，才能执行准备。")
@@ -343,6 +354,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 					var patient_action: Button = app.button_at(action.label, Vector2(60, action_y), Vector2(655, 50), app.preop_event.bind({"kind": "patient_interaction_action", "id": action.id}))
 					patient_action.name = "PatientInteraction_" + action.id
 					emphasize_flow_button(app, patient_action)
+					PresenceHint.decorate(app, patient_action, action, "or")
 					action_y += action_spacing
 			elif prep.awaiting_patient_acknowledgement:
 				var transition_prompt: String = app.tx("ui.auto.2c23c06dc24f", "先确认患者的这次回应，再进入下一项操作。") if prep.feedback_speaker == "patient" else app.tx("ui.auto.f9c3d4bcb60a", "确认团队成员的处理，再进入下一项操作。") if prep.feedback_speaker == "staff" else app.tx("ui.auto.75c84a2d5594", "确认本阶段记录，再进入下一项操作。")
@@ -409,6 +421,8 @@ static func render(app: Control, prep: RefCounted) -> void:
 				action_size = Vector2(211, 54)
 		var button: Button = app.button_at(action.label, action_position, action_size, app.preop_event.bind({"kind": "action", "id": action.id}))
 		button.name = "PreopAction_" + action.id
+		if stage.get("ward_opening", false):
+			app.register_dialogue_continue(button, str(stage.prompt))
 		if stage.kind == "preparation" and app.content.localizer.locale == "en":
 			# The two side-by-side preparation actions are much longer in English
 			# than their Chinese source labels. Keep them on one line inside the
@@ -418,6 +432,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 		button.tooltip_text = reason
 		button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
 		button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
+		PresenceHint.decorate(app, button, action, prep.presence_phase_for_stage())
 		action_index += 1
 	if not preparation_sweep_id.is_empty():
 		var early_sweep_button: Button = app.button_at(app.tx("ui.surgery.sweep", "一键扫荡"), Vector2(500, action_y), Vector2(215, 54), app.sweep_surgery.bind(preparation_sweep_id))
@@ -429,6 +444,12 @@ static func render(app: Control, prep: RefCounted) -> void:
 	UI.panel(app, Vector2(55, 558), Vector2(1170, 142))
 	var note_name: String = app.tx("ui.auto.4d549b32477a", "术中记录") if stage.kind == "surgery_flow" else app.tx("ui.auto.77a3ebc10ddf", "互动记录") if stage.kind in ["interaction", "surgery_complete"] else app.tx("ui.auto.159ea794a181", "术前记事")
 	var speaker_name: String = speaking_staff.name if not speaking_staff.is_empty() else prep.crisis_callout_speaker_name() if not prep.active_crisis.is_empty() and prep.feedback_speaker == "staff" else patient.name if prep.feedback_speaker == "patient" or stage.speaker == "patient" else note_name
+	if prep.showing_ward_care_penalty():
+		# This record contains the named nurse's original reply plus narration.
+		speaker_name = note_name
+	if stage.kind == "case_review" or stage.get("ward_opening", false):
+		var review_speaker: String = prep.feedback_speaker if not prep.feedback.is_empty() else str(stage.speaker)
+		speaker_name = app.protagonist_name() if review_speaker == "player" else patient.name if review_speaker == "patient" else app.tx("ui.common.narrator", "旁白")
 	var record_speaker: Label = app.label_at(prep.surgery_display_text(speaker_name), Vector2(82, 570), 20, Color("e8cfaa"), 1100)
 	record_speaker.name = "PreopRecordSpeaker"
 	var choosing_flow_option: bool = stage.kind == "surgery_flow" and prep.active_crisis.is_empty() and not prep.awaiting_flow_acknowledgement and not prep.awaiting_patient_choice and not prep.awaiting_patient_acknowledgement
@@ -438,9 +459,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 		text = str(flow_step.get("transition_text", "")).strip_edges()
 	else:
 		text = default_prompt if prep.feedback.is_empty() else prep.feedback
-	if not speaking_staff.is_empty() and text.begins_with(speaking_staff.name + "："):
+	if not prep.showing_ward_care_penalty() and not speaking_staff.is_empty() and text.begins_with(speaking_staff.name + "："):
 		text = text.substr((speaking_staff.name + "：").length())
-	elif not prep.feedback.is_empty() and prep.feedback_speaker == "player":
+	elif not prep.feedback.is_empty() and prep.feedback_speaker == "player" and stage.kind != "case_review":
 		text = app.protagonist_name() + "：" + text
 	var record_font_size := 18 if text.length() > 110 else 20 if text.length() > 65 else 22
 	var record_name := "GraphicPreopDialogueText" if stage.kind == "graphic_preop_dialogue" else "PreopRecordText"
@@ -648,6 +669,8 @@ static func add_palpation_hotspot(app: Control, rect: Rect2, region: String, too
 	hotspot.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 	hotspot.add_theme_stylebox_override("hover", app.panel_style(Color(0.35, 0.75, 0.72, 0.18), Color(0.75, 0.94, 0.91, 0.72)))
 	hotspot.add_theme_stylebox_override("pressed", app.panel_style(Color(0.74, 0.46, 0.50, 0.25), Color(0.95, 0.82, 0.68, 0.9)))
+	# Empty hotspot buttons must not retain the localized text-button padding size.
+	hotspot.size = rect.size
 
 static func operative_field_overlay_pool(prep: RefCounted) -> Array:
 	var surgery: Dictionary = prep.current_surgery()

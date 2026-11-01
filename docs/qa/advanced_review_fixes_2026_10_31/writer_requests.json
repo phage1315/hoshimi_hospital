@@ -1,0 +1,123 @@
+{
+  "format": "authoring_handoff_draft_v1",
+  "warning": "仅作者交付清单，不是已支持的运行时 schema；null 是待作者填写，不会加载进游戏。",
+  "requests": [
+    {
+      "character_id": "doc_rei",
+      "character_name": "深山 佳織",
+      "trigger": "timeout",
+      "role": "assistant",
+      "priority": "required",
+      "reason": "无角色专属文本，普通助手通用兜底。",
+      "text_zh": null
+    },
+    {
+      "character_id": "doc_emiko",
+      "character_name": "御堂 江美子",
+      "trigger": "timeout",
+      "role": "assistant",
+      "priority": "required",
+      "reason": "只有角色接受岗位的旁白，无直接确认对白。",
+      "text_zh": null
+    },
+    {
+      "character_id": "doc_asuka",
+      "character_name": "城宮 明日香",
+      "trigger": "timeout",
+      "role": "assistant",
+      "priority": "required",
+      "reason": "只有角色接受岗位的旁白，无直接确认对白。",
+      "text_zh": null
+    },
+    {
+      "character_id": "doc_minato",
+      "character_name": "遥凑",
+      "trigger": "timeout",
+      "role": "assistant",
+      "priority": "required",
+      "reason": "现有 role_confirmation 明确说“主刀确认”，与助手位冲突；现保留原 assignment 旁白。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_rin",
+      "character_name": "中井 美佳",
+      "trigger": "timeout",
+      "role": "scrub",
+      "priority": "required",
+      "reason": "现有角色确认专指巡回；当前 assignment 为病房交接／转运，不是器械位确认。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_ange",
+      "character_name": "利根川 安琪",
+      "trigger": "timeout",
+      "role": "scrub",
+      "priority": "required",
+      "reason": "无角色专属文本，使用普通岗位通用兜底。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_ange",
+      "character_name": "利根川 安琪",
+      "trigger": "timeout",
+      "role": "circulating",
+      "priority": "required",
+      "reason": "无角色专属文本，使用普通岗位通用兜底。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_hiroko",
+      "character_name": "杉村 弘子",
+      "trigger": "timeout",
+      "role": "scrub",
+      "priority": "required",
+      "reason": "无角色专属文本，使用普通岗位通用兜底。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_hiroko",
+      "character_name": "杉村 弘子",
+      "trigger": "timeout",
+      "role": "circulating",
+      "priority": "required",
+      "reason": "无角色专属文本，使用普通岗位通用兜底。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_moe",
+      "character_name": "本庄 萌惠",
+      "trigger": "timeout",
+      "role": "scrub",
+      "priority": "required",
+      "reason": "无角色专属文本，使用低熟练度护士通用回复池。",
+      "text_zh": null
+    },
+    {
+      "character_id": "nurse_moe",
+      "character_name": "本庄 萌惠",
+      "trigger": "timeout",
+      "role": "circulating",
+      "priority": "required",
+      "reason": "无角色专属文本，使用低熟练度护士通用回复池。",
+      "text_zh": null
+    },
+    {
+      "character_id": "doc_sakura_anesthesiology",
+      "character_name": "樱花",
+      "trigger": "terminal_success",
+      "role": "anesthesia",
+      "priority": "required",
+      "reason": "Day2 手术完成后的麻醉医生结束确认；不要等同已出院或已完全苏醒。",
+      "text_zh": null
+    },
+    {
+      "character_id": "doc_sakura_anesthesiology",
+      "character_name": "樱花",
+      "trigger": "terminal_failure",
+      "role": "anesthesia",
+      "priority": "required",
+      "reason": "Day2 手术失败／终止后的麻醉医生确认；不得一概宣布死亡，须兼容 HP 耗尽和生理失败。",
+      "text_zh": null
+    }
+  ]
+}

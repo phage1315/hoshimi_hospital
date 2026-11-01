@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_rami_amasaki",
+    "name": "天崎拉美",
+    "age": 22,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/ward/smile.png",
+        "ward/brave": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/ward/brave.png",
+        "ward/worried": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/splash/general_anesthesia.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/operating_table_lithotomy/anesthetized.png",
+        "examination/shy": "assets/characters/patient_rami_amasaki_v1/patient_rami_amasaki/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "anxious",
+      "secondary": "analytical",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "anxious_analytical_detail",
+    "traits": {
+      "baseline_anxiety": 72,
+      "pain_sensitivity": 70,
+      "privacy_sensitivity": 72,
+      "trust_baseline": 55,
+      "control_need": 84,
+      "expressiveness": 61,
+      "health_literacy": 37,
+      "compliance_tendency": 87
+    },
+    "fear_profile": {
+      "pain_fear": 76,
+      "procedure_fear": 80,
+      "diagnosis_fear": 61,
+      "loss_control_fear": 88
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院……？请、请等一下，我想先确认预计的天数。特务三课那边要交接的事情很多……我不是想逃避治疗！」",
+      "hospitalization_response": "「明白，我接受住院安排。工作方面会有人接手……只是我总忍不住想，有没有哪项准备还没做好。」",
+      "procedure_mismatch": "「等一下！刚才确认的术式和现在说的不同。也许只是记录问题……但请先核对，不能抱着侥幸心理继续呀！」",
+      "explain_plan": "「原来如此……那我再复述一下：先完成准备，然后按确认过的方案进行，对吗？嗯，步骤清楚就好多了。」",
+      "brief_plan": "「只说『按流程』……？抱歉，我知道你们很熟悉，可我越不知道细节，就越会往坏处想。请至少告诉我下一步。」",
+      "last_reassure": "「我相信各位的专业。真的……只是脑子一直停不下来。能再告诉我一次，开始前会有人确认我的状态吗？」",
+      "choose_general": "「全身麻醉的话，之后就什么也不知道了吧……药物和监护都会有人看着，对吗？好，我会尽量安心交给你们。」",
+      "choose_epidural": "「硬膜外麻醉……意识还是清楚，身体的一部分却不能自由活动。理论上我明白，但实际感觉到时会不会很害怕呢……」",
+      "choose_local": "「局部麻醉可以让我保持清醒……明白。只是如果里面牵扯得难受，我可以立刻报告，对吗？」",
+      "choose_none": "「完、完全不麻醉？！这和我以为的方案差太远了！不是说我不配合……可这种状态怎么能让我不紧张啊！」",
+      "induction_reassure": "「嗯……呼吸，慢慢来……我已经把该问的都问完了。剩下的事情，就拜托你们……」",
+      "insist_without_anesthesia": "「等等！我知道已经说过会配合，可真的太疼了！不能只让我忍着……请听我把话说完！」",
+      "assistant_stabilize_none": "「我、我会尽量不动！可是我连麻醉都没有……万一痛得躲开怎么办？先、先告诉我你们还在旁边！」",
+      "assistant_stabilize_local": "「知道了，保持这个姿势……我会照做。只是刚才那一下牵得我发抖，麻烦再确认一下好吗？」",
+      "assistant_stabilize_epidural": "「身体已经麻得不听指挥了……我知道你们会帮我保持位置，可我还是很不习惯。请跟我说一声。」",
+      "incision_ready": "「等、等等！我明明都确认过了……可那把刀真的要落下来了！不行……求你，先别切！」",
+      "incise_epidural": "「……已经下刀了吗？没有想象中那种刺痛，可里面的压力好明显……我、我还是会害怕。」",
+      "incise_local": "「嘶……！表面好像麻了，可刚才里面那一下牵得好难受！医生，这个感觉正常吗……？」",
+      "incise_none": "「啊——！！好疼！真的切下去了……！我知道不能乱动，可我受不了！医生，先停一下！」",
+      "contact_pause": "「停、停下了吗……？谢谢。我再缓一口气……刚才脑袋里只有疼，什么都想不起来了。」",
+      "contact_command": "「……明白，不能动。我努力……可是请别突然不说话，那样我会更慌！」",
+      "contact_continue": "「还要继续……好。我知道我得配合，麻烦你们每做一步都告诉我，好吗？」",
+      "ongoing_narrate": "「现在是在进行下一步，对吗？……谢谢，我听见进度就没那么容易胡思乱想。」",
+      "ongoing_eye_contact": "「医生……你还在看着我吧？……好，有人回应，我就知道自己没有被丢在这里。」",
+      "ongoing_silent": "「……医生？怎么忽然没人说话了？我知道你们在工作，可请告诉我是不是有什么问题……！」",
+      "closure_reassure": "「已经接近结束了……？太好了。对不起，我刚才问了那么多遍……谢谢你们一直回答我。」",
+      "closure_coach": "「好……跟着你的声音呼吸。再坚持一会儿就好了，对吧？……嗯，我做得到。」",
+      "closure_silent": "「……快结束了的话，让我安静一下吧。我不是不信任你们……只是终于能放松一点了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌肠也是这次术前准备的一部分吗？……好，我知道了。能先让我确认一下什么时候开始吗？」",
+        "「我以为准备只需要检查和更衣……没想到还有这一项。请稍等，我得做一下心理准备。」",
+        "「我会配合的！只是想到具体会是什么感觉，就忍不住一直想……护士小姐，能提醒我怎么做吗？」"
+      ],
+      "ward_enema_unnecessary": [
+        "「这一项不需要？……明白了。是根据我这次的方案判断不需要，对吗？那我记住了。」",
+        "「不用灌肠啊……呼。抱歉，我刚才连可能发生的步骤都想得太仔细了。」"
+      ],
+      "ward_skin_prep": [
+        "「备皮……需要处理到哪个范围？抱歉，我不是要质疑，只是突然觉得非常不好意思。」",
+        "「连这里也要准备吗……？我明白是为了手术，可知道归知道，轮到自己还是会脸红啊……」",
+        "「等、等一下，我配合。只是请先说一声再掀开被单……这比我想的紧张多了。」"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「不需要备皮吗？明白，我差点还以为遗漏了什么……原来是这次用不到。」",
+        "「这一项可以跳过？太好了……呃，我不是想偷懒，只是真的有点害羞。」"
+      ],
+      "ward_surgical_cap": [
+        "「手术帽要把头发都收进去……好的。只是戴上以后，突然觉得手术离我很近了。」",
+        "「这就算准备完成了吗？……平时戴工作耳机不会紧张，换成手术帽却完全不同呢。」"
+      ],
+      "operative_positioning_awake": [
+        "「手臂要放在这里、身体保持正中……我记住了。若位置不对，请马上告诉我。」",
+        "「需要摆成这个姿势吗……？我知道是为了操作方便，可躺着被大家调整，还是很不自在。」",
+        "「别、别同时说两边的要求！我会紧张得记不住……请按顺序告诉我，我会配合。」"
+      ],
+      "operative_positioning_none": [
+        "「没有麻醉的话，我真的能一直保持这个姿势吗……？不，我会努力，只是有点害怕。」",
+        "「我已经躺好了……可是只要想到接下来会疼，身体就自己绷紧了。怎么办……？」",
+        "「请、请先确认我摆对了！一会儿真疼起来，我怕自己根本顾不上调整。」"
+      ],
+      "urinary_catheterization_awake": [
+        "「还需要导尿吗……？我明白这也是准备，可可以把帘子拉好吗？我、我会配合。」",
+        "「护士小姐，请先告诉我什么时候开始……我知道你们很熟练，可轮到自己真的好难为情。」",
+        "「嗯……嘶，等一下……我尽量放松。抱歉，越提醒自己放松，反而越紧张了……」"
+      ],
+      "urinary_catheterization_none": [
+        "「没、没有麻醉也要做导尿准备？……我知道这不是手术切口，可还是好害怕，能慢一点吗？」",
+        "「请别突然开始！我会努力不动……只是想到后面还有真正的开刀，我就已经在发抖了。」",
+        "「这一步就这么完成了吗……？我一直在想接下来那一项……对不起，我控制不了自己胡思乱想。」"
+      ],
+      "skin_disinfection_awake": [
+        "「好凉……这是在消毒，对吗？嗯，我知道了。接下来就是标记和下刀……啊，我又想太远了。」",
+        "「消毒范围比我想的大……我知道手术需要这样，只是突然觉得自己一点藏身的地方都没有。」"
+      ],
+      "skin_disinfection_none": [
+        "「这就是下刀前的消毒吗……？等一下，我还醒着，也没有麻醉……我现在有点喘不过气。」",
+        "「好冷……明明只是消毒，我却一直在想下一步的刀。医生，真的会马上开始吗……？」",
+        "「请告诉我还有哪些步骤！我知道自己问得太多……可不问我就忍不住一直想。」"
+      ],
+      "incision_marking_awake": [
+        "「这里就是预定切口吗……？我明白了。只是看见那个位置被画出来，心里突然一沉。」",
+        "「这条标记要跟手术方案一致，对吧？好……我确认过了，可眼睛还是不敢再往下看。」"
+      ],
+      "incision_marking_none": [
+        "「你们真的要沿这条线切……还一点麻醉都没有吗？我、我知道刚才已经说明过，可现在好怕……」",
+        "「等一下，请先让我看清楚……不，不用了！我其实不敢看……医生，先别把刀拿过来！」",
+        "「标记已经完成了……接下来不会立刻就下刀吧？对不起，我明明一直问细节，现在却不敢听答案了。」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，我本来想先把工作交接完再来……可是身体的情况是：{line}",
+      "primary": "最明显的一项是：{line}。我可以按时间顺序再说明一次，免得漏掉细节。",
+      "secondary": "还有一件事也请记下来：{line}。抱歉，我总觉得遗漏一项就会影响后面的判断。",
+      "background": "我叫天崎拉美，是VTX Union特务三课的新人，在试验机Tiranedo担任副驾驶。军事大学毕业以后，我一直习惯反复核对步骤……可自己的身体出了问题，越想弄明白，反而越容易紧张。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "天崎拉美的门诊检查",
+    "full_undress": {
+      "prompt": "「全、全部脱下才能检查吗……？我明白必要性，只是……能先告诉我每一步的范围吗？我不是要拖延，真的！」",
+      "responses": {
+        "abandon_full_undress": "「这项检查先不做？……呼，我松了口气。不过如果是必要项目，请不要因为我犹豫就漏掉。」",
+        "authoritative_full_undress": "「明、明白，我会配合。只是请先把帘子拉好，也给我一点准备时间……一下子下指令，我反而会慌。」",
+        "gentle_full_undress": "「谢谢你先解释清楚……这样我就能按顺序做。只是被人看着检查身体，还是比我想象中害羞。」",
+        "threaten_full_undress": "「对、对不起……可是请不要这么催！我会配合检查，只是你越凶，我越没办法整理好思绪……」"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "天崎拉美的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「坂口医生……我已经把特务三课的工作交接了。今天的手术安排，能再和我核对一次吗？我担心自己漏听了什么。」",
+      "graphic_preop_question": "「我还想问得具体一点……待会儿上台以后，从体位、消毒到开始切开，究竟按什么顺序？如果不提前弄清楚，我怕自己会一直想最坏的情况。」",
+      "graphic_preop_dialogue": "拉美起初像核对试验机的流程清单那样逐项听完说明，还小声追问了几个步骤。可当医护说到待会儿的切口、牵开和实际操作时，她终于停下记录似的追问，双手抓紧被角。原本用来让自己安心的细节，反而把即将发生的事情描绘得过分清楚。",
+      "team": "你将担任天崎拉美本次手术的主刀。请按当前病例和既定岗位条件，确认助手医生、器械护士与巡回护士的分工。",
+      "preparation": "请根据当前病例安排天崎拉美需要的术前准备，逐项确认护理要求及完成情况。她的战术专业背景不改变医疗步骤。",
+      "prepared": "「已经都准备好了……？好。我确认了这么多次，还是觉得有一项最重要的事情没准备好……就是我自己。」",
+      "changing": "你与手术团队依照既有流程完成更衣、刷手和必要的无菌准备，然后进入手术室。",
+      "operating_room": "「这盏灯……比我想的还亮。平时我在副驾驶座上看状态显示，今天却好像自己变成了需要监测的对象……」",
+      "team_confirmations": "团队核对天崎拉美的身份、当前病例、术式、麻醉方式和岗位安排。她试图跟上每一项确认，回答却比平时慢了半拍。",
+      "procedure_select": "请依据天崎拉美当前生成的病例和既定治疗安排选择并复核术式，不得依据人物工作背景固定诊断。",
+      "procedure_mismatch": "「等一下，刚才说的术式和现在不一样吧？请先核对病历……我知道这很麻烦，可这种差异不能跳过去！」",
+      "ready": "天崎拉美已完成当前病例所需的术前准备，并已按规定在手术台上就位。请确认麻醉路径、体位及开始操作的条件。",
+      "general_induction": "「好，我不再重复核对了……至少这一回，我要相信别人会替我守好每一步。拜托你们……」",
+      "surgery_start_general": "天崎拉美进入全身麻醉状态，不再发出清醒患者对白。团队完成最终确认，按已选术式开始操作。",
+      "surgery_start_epidural": "「下半身真的麻了……我能听见大家说话，却没办法自己调整姿势。要开始的话，请提前告诉我。」",
+      "surgery_start_local": "「局部麻醉已经起效了吗？好……我会保持不动。若感觉不对，我会马上说出来。」",
+      "surgery_start_none": "「真的不麻醉就开始……？等等，我知道已经确认过，可我现在一想起那把刀，脑子就乱了！」",
+      "instrument_handoff": "主刀根据当前术式提出器械要求，器械护士完成递交，团队继续按现有流程确认操作条件。",
+      "assistant_ready": "助手医生确认术野暴露与牵引准备，并等待主刀下达下一步指示。",
+      "incision_ready": "团队再次确认当前麻醉状态与预定切口，器械护士把手术刀交到主刀手中。刀尖即将来到天崎拉美的切口位置。",
+      "general_operation": "天崎拉美处于全身麻醉中，不作出清醒回应。医护持续监护并依照既定术式操作。",
+      "operative_contact": "对清醒的天崎拉美，医护按照既有互动节点确认其意识与配合情况；全麻状态则只进行相应监护与操作。",
+      "ongoing_interaction": "若保持清醒，天崎拉美会努力依次报告感觉，但随着疼痛和恐惧增加，她开始反复请求确认进度。全麻时仅显示团队监护与手术操作。",
+      "closure_interaction": "手术进入收尾阶段。清醒时采用对应的患者专属收尾台词；全麻时仅显示团队处理及交接的旁白。",
+      "procedure_flow": "团队依据当前病例已经选定的术式进入后续步骤，助手与护士继续完成对应岗位职责。",
+      "procedure_execute": "团队完成当前术式的主要处理，依既有规则复核必要步骤并继续执行。",
+      "surgery_result": "手术结束。团队按既有流程完成术区处理、器械清点、记录及术后交接。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经下刀了吗？没有想象中那种刺痛，可里面的压力好明显……我、我还是会害怕。」",
+      "incise_local": "「嘶……！表面好像麻了，可刚才里面那一下牵得好难受！医生，这个感觉正常吗……？」",
+      "incise_none": "「啊——！！好疼！真的切下去了……！我知道不能乱动，可我受不了！医生，先停一下！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_surgical_cap_patient_rami_amasaki",
+        "label": "天崎拉美 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/ward_surgical_cap.png"
+        ],
+        "caption": "天崎拉美 · 戴手术帽"
+      },
+      {
+        "id": "stretcher_transfer_patient_rami_amasaki",
+        "label": "天崎拉美 · 担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/stretcher_transfer.png"
+        ],
+        "caption": "天崎拉美 · 担架车"
+      },
+      {
+        "id": "urinary_catheterization_patient_rami_amasaki",
+        "label": "天崎拉美 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/urinary_catheterization.png"
+        ],
+        "caption": "天崎拉美 · 导尿"
+      },
+      {
+        "id": "skin_disinfection_patient_rami_amasaki",
+        "label": "天崎拉美 · 消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/skin_disinfection.png"
+        ],
+        "caption": "天崎拉美 · 消毒"
+      },
+      {
+        "id": "operative_positioning_patient_rami_amasaki",
+        "label": "天崎拉美 · 固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/operative_positioning.png"
+        ],
+        "caption": "天崎拉美 · 固定"
+      },
+      {
+        "id": "sterile_draping_patient_rami_amasaki",
+        "label": "天崎拉美 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/sterile_draping.png"
+        ],
+        "caption": "天崎拉美 · 铺巾"
+      },
+      {
+        "id": "incision_ready_patient_rami_amasaki",
+        "label": "天崎拉美 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/incision_ready.png"
+        ],
+        "caption": "天崎拉美 · 下刀前"
+      },
+      {
+        "id": "ward_enema_patient_rami_amasaki",
+        "label": "天崎拉美 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/ward_enema.png"
+        ],
+        "caption": "天崎拉美 · 灌肠"
+      },
+      {
+        "id": "ward_skin_prep_patient_rami_amasaki",
+        "label": "天崎拉美 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_rami_amasaki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_rami_amasaki/ward_skin_prep.png"
+        ],
+        "caption": "天崎拉美 · 剃毛"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": []
+}

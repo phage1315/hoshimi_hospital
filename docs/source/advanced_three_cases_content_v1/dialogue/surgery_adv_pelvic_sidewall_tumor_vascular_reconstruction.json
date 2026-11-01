@@ -1,0 +1,324 @@
+{
+  "schema_version": "advanced_day2_dialogue_v1",
+  "procedure_id": "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction",
+  "stages": {
+    "P01": {
+      "stage_entry": [
+        {
+          "id": "P01_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "按术前标记进入盆腔，先确认切口范围。",
+          "text_en": "Enter the pelvis along the preoperative markings. Confirm the incision extent first."
+        },
+        {
+          "id": "P01_E2",
+          "speaker_role": "scrub_primary",
+          "text": "暴露与初步止血器械已准备完毕。",
+          "text_en": "The exposure and initial haemostasis instruments are ready."
+        }
+      ]
+    },
+    "P02": {
+      "stage_entry": [
+        {
+          "id": "P02_E1",
+          "speaker_role": "assistant_1",
+          "text": "肠袢已经轻轻移开，盆壁的层次可以逐步显露。",
+          "text_en": "The bowel loops have been gently displaced. We can expose the pelvic sidewall in stages."
+        },
+        {
+          "id": "P02_E2",
+          "speaker_role": "assistant_2",
+          "text": "深部视野还受限，先调整牵开方向。",
+          "text_en": "The deep view is still limited. Adjust the direction of retraction first."
+        }
+      ]
+    },
+    "P03": {
+      "stage_entry": [
+        {
+          "id": "P03_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "粘连牵涉盆壁多个层次，先找连续的安全分离面。",
+          "text_en": "The adhesions cross several pelvic sidewall planes. Identify a consistent dissection plane first."
+        },
+        {
+          "id": "P03_E2",
+          "speaker_role": "assistant_1",
+          "text": "这里的组织边界不够清楚，牵拉先放轻。",
+          "text_en": "The tissue boundary is indistinct here. Reduce traction for now."
+        },
+        {
+          "id": "P03_E3",
+          "speaker_role": "scrub_primary",
+          "text": "精细分离所需的器械已经递上。",
+          "text_en": "The instruments for delicate dissection are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "P03_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "这处粘连的分离层次偏离了计划，需要重新辨认。",
+          "text_en": "The dissection has strayed from the intended adhesion plane. Reidentify it."
+        },
+        {
+          "id": "P03_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先停一下，当前的组织界面还不能继续推进。",
+          "text_en": "Pause. We cannot advance safely through this tissue interface yet."
+        }
+      ]
+    },
+    "P04": {
+      "stage_entry": [
+        {
+          "id": "P04_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "先确认输尿管及盆壁神经的相对位置。",
+          "text_en": "Identify the relative positions of the ureter and pelvic nerves first."
+        },
+        {
+          "id": "P04_E2",
+          "speaker_role": "assistant_2",
+          "text": "要保留的结构与切除边界非常接近。",
+          "text_en": "The structures to preserve lie very close to the resection boundary."
+        },
+        {
+          "id": "P04_E3",
+          "speaker_role": "assistant_1",
+          "text": "调整暴露，让深部走行始终在视野内。",
+          "text_en": "Adjust exposure so the deeper anatomical course remains visible."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "P04_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "重要结构的边界没有辨认充分，必须重新确认。",
+          "text_en": "The boundaries of critical structures were not identified clearly enough. Reassess them."
+        },
+        {
+          "id": "P04_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这一处不能凭估计分离，先纠正组织定位。",
+          "text_en": "We cannot dissect this area by estimation. Correct the anatomical orientation first."
+        }
+      ]
+    },
+    "P05": {
+      "stage_entry": [
+        {
+          "id": "P05_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "进入血管处理阶段，先复核髂血管与病灶的关系。",
+          "text_en": "Before handling the vessels, reassess their relationship to the lesion."
+        },
+        {
+          "id": "P05_E2",
+          "speaker_role": "assistant_1",
+          "text": "当前暴露范围和术前影像要对应起来。",
+          "text_en": "We need to match the current exposure to the preoperative imaging."
+        }
+      ]
+    },
+    "P06": {
+      "stage_entry": [
+        {
+          "id": "P06_E1",
+          "speaker_role": "assistant_1",
+          "text": "髂血管壁就在分离面旁边，牵拉幅度要受控。",
+          "text_en": "The iliac vessel wall is adjacent to the dissection plane. Control the traction."
+        },
+        {
+          "id": "P06_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "逐步辨认血管分支，再处理周围组织。",
+          "text_en": "Identify the vascular branches progressively before working through the surrounding tissue."
+        },
+        {
+          "id": "P06_E3",
+          "speaker_role": "scrub_primary",
+          "text": "血管缝合和临时控制器械保持待命。",
+          "text_en": "Vascular sutures and temporary control instruments are on standby."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "P06_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "血管周围的分离还不够稳妥，需要修正。",
+          "text_en": "The perivascular dissection is not secure enough. It needs correction."
+        },
+        {
+          "id": "P06_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先恢复清楚的血管边界，再继续下一段。",
+          "text_en": "Reestablish a clear vessel boundary before moving to the next section."
+        }
+      ]
+    },
+    "P07": {
+      "stage_entry": [
+        {
+          "id": "P07_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "现在处理肿瘤深部边界，注意与正常组织的交界。",
+          "text_en": "We are working along the deep tumour margin. Watch the interface with normal tissue."
+        },
+        {
+          "id": "P07_E2",
+          "speaker_role": "assistant_2",
+          "text": "深部空间狭窄，先稳住暴露再分离。",
+          "text_en": "The deep space is narrow. Stabilize exposure before dissecting."
+        },
+        {
+          "id": "P07_E3",
+          "speaker_role": "assistant_1",
+          "text": "确认切除平面与保留结构之间的距离。",
+          "text_en": "Confirm the distance between the resection plane and preserved structures."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "P07_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "深部切除平面不符合预定边界，需要调整。",
+          "text_en": "The deep resection plane does not match the intended boundary. Adjust it."
+        },
+        {
+          "id": "P07_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这里的组织分离还不够完整，暂时不能继续。",
+          "text_en": "The tissue separation is incomplete here. We should not proceed yet."
+        }
+      ]
+    },
+    "P08": {
+      "stage_entry": [
+        {
+          "id": "P08_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "准备移除标本，并重新评估盆壁术野。",
+          "text_en": "Prepare to remove the specimen and reassess the pelvic sidewall field."
+        },
+        {
+          "id": "P08_E2",
+          "speaker_role": "assistant_2",
+          "text": "切除区需要重新整理，接下来还要进行血管重建。",
+          "text_en": "The resection area needs reorganizing before vascular reconstruction."
+        },
+        {
+          "id": "P08_E3",
+          "speaker_role": "scrub_primary",
+          "text": "标本容器及重建所需器械已就位。",
+          "text_en": "The specimen container and reconstruction instruments are ready."
+        }
+      ]
+    },
+    "P09": {
+      "stage_entry": [
+        {
+          "id": "P09_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "进入髂血管重建，先核对两端的走行与长度。",
+          "text_en": "We are beginning iliac vessel reconstruction. Check the orientation and length of both ends."
+        },
+        {
+          "id": "P09_E2",
+          "speaker_role": "assistant_1",
+          "text": "保持血管端口稳定，避免重建时产生扭曲。",
+          "text_en": "Keep the vessel ends stable to avoid twisting during reconstruction."
+        },
+        {
+          "id": "P09_E3",
+          "speaker_role": "scrub_primary",
+          "text": "血管吻合用缝线已准备好。",
+          "text_en": "The sutures for the vascular anastomosis are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "P09_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "重建接口的对位不够理想，需要重新调整。",
+          "text_en": "The reconstructed vessel ends are not aligned satisfactorily. Readjust them."
+        },
+        {
+          "id": "P09_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "先别恢复流程，血管重建这一处还需修正。",
+          "text_en": "Do not resume the sequence. This part of the vascular reconstruction needs correction."
+        }
+      ]
+    },
+    "P10": {
+      "stage_entry": [
+        {
+          "id": "P10_E1",
+          "speaker_role": "assistant_2",
+          "text": "再次确认盆壁神经走行与固定点关系。",
+          "text_en": "Recheck the course of the pelvic nerves and their relationship to the fixation points."
+        },
+        {
+          "id": "P10_E2",
+          "speaker_role": "lead_surgeon",
+          "text": "重建完成后还要排除局部牵拉对邻近结构的影响。",
+          "text_en": "After reconstruction, we still need to check for traction on adjacent structures."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "P10_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "这里的定位关系还没核对充分，需要再看一次。",
+          "text_en": "The anatomical relationships have not been verified sufficiently. Review them again."
+        },
+        {
+          "id": "P10_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "固定点附近仍有不确定的组织边界，先修正。",
+          "text_en": "The tissue boundary near the fixation point is still uncertain. Correct it first."
+        }
+      ]
+    },
+    "P11": {
+      "stage_entry": [
+        {
+          "id": "P11_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "检查重建血管的灌注，再完成最终止血评估。",
+          "text_en": "Check perfusion through the reconstructed vessel, then complete the final haemostasis review."
+        },
+        {
+          "id": "P11_E2",
+          "speaker_role": "anesthesia",
+          "text": "循环数据持续监测中，准备配合最后的灌注评估。",
+          "text_en": "Haemodynamic monitoring continues. We are ready to assist with the final perfusion assessment."
+        },
+        {
+          "id": "P11_E3",
+          "speaker_role": "assistant_1",
+          "text": "不要遗漏盆壁深处和重建接口附近的渗血点。",
+          "text_en": "Do not overlook oozing deep in the pelvic sidewall or near the reconstruction."
+        }
+      ]
+    },
+    "P12": {
+      "stage_entry": [
+        {
+          "id": "P12_E1",
+          "speaker_role": "scrub_primary",
+          "text": "器械与纱布清点记录准备复核。",
+          "text_en": "The instrument and swab count is ready for review."
+        },
+        {
+          "id": "P12_E2",
+          "speaker_role": "circulating_primary",
+          "text": "关闭前再次确认清点与手术记录。",
+          "text_en": "Recheck the counts and operative record before closure."
+        }
+      ]
+    }
+  }
+}

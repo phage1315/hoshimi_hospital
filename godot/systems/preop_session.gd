@@ -1,10 +1,23 @@
 extends RefCounted
+const CaseReview = preload("res://godot/systems/case_variant_review.gd")
 const Progression = preload("res://godot/systems/progression_config.gd")
 const NumericCalibration = preload("res://godot/systems/surgery_numeric_calibration.gd")
 ## Preoperative narrative state. Authored data owns dialogue, tasks and transitions.
 const OperativeBackgrounds = preload("res://godot/systems/operative_backgrounds.gd")
 const POSTOPERATIVE_WRAP_UP_MINUTES := 30
 const OR_TABLE_PALPATION_CG_IDS := ["prototype_v1", "body_type_02", "body_type_03", "body_type_04"]
+const PATIENT_PALPATION_CGS := {"guest_mizuho": "mizuho_v1"}
+
+func patient_palpation_cg_id() -> String:
+	return str(PATIENT_PALPATION_CGS.get(str(definition.get("staff_patient_id", definition.get("patient_id", ""))), ""))
+
+func valid_palpation_cg_id(cg_id: String) -> bool:
+	return cg_id in OR_TABLE_PALPATION_CG_IDS or (not cg_id.is_empty() and cg_id == patient_palpation_cg_id())
+
+func resolve_palpation_cg_id(fallback: String = "prototype_v1") -> String:
+	var exclusive := patient_palpation_cg_id()
+	return exclusive if not exclusive.is_empty() else fallback
+
 const CRISIS_FLAVOR_IDS := [
 	"hypotension",
 	"hypertension",
@@ -151,6 +164,7 @@ var last_staff_id := ""
 var last_staff_role := ""
 var player_effects := {"charm": 0, "presence": 0, "reputation": 0}
 var player_effect_history: Array[Dictionary] = []
+var case_review_checked := false
 var presence_preop_raw := 0
 var presence_or_raw := 0
 var or_table_palpation_counts: Dictionary = {}
@@ -191,7 +205,7 @@ func snapshot_state() -> Dictionary:
 		"operative_background_id", "patient_name", "patient_personality", "patient_traits",
 		"patient_reactions", "patient_reaction_variants", "feedback", "feedback_speaker",
 		"last_staff_id", "last_staff_role", "player_effects", "player_effect_history",
-		"presence_preop_raw", "presence_or_raw", "or_table_palpation_counts", "or_table_needle_counts",
+		"case_review_checked", "presence_preop_raw", "presence_or_raw", "or_table_palpation_counts", "or_table_needle_counts",
 		"anesthesia_test_counts", "sensory_interaction_xp_bonus", "or_table_palpation_cg_id",
 		"palpation_findings_confirmed", "last_palpation_confirmation", "active_crisis",
 		"awaiting_crisis_acknowledgement", "crisis_history", "graphic_preop_explainer_id",
@@ -232,7 +246,7 @@ func restore_state(state: Dictionary) -> bool:
 		"operative_background_id", "patient_name", "patient_personality", "patient_traits",
 		"patient_reactions", "patient_reaction_variants", "feedback", "feedback_speaker",
 		"last_staff_id", "last_staff_role", "player_effects", "player_effect_history",
-		"presence_preop_raw", "presence_or_raw", "or_table_palpation_counts", "or_table_needle_counts",
+		"case_review_checked", "presence_preop_raw", "presence_or_raw", "or_table_palpation_counts", "or_table_needle_counts",
 		"anesthesia_test_counts", "sensory_interaction_xp_bonus", "or_table_palpation_cg_id",
 		"palpation_findings_confirmed", "last_palpation_confirmation", "active_crisis",
 		"awaiting_crisis_acknowledgement", "crisis_history", "graphic_preop_explainer_id",
@@ -276,6 +290,10 @@ func restore_state(state: Dictionary) -> bool:
 			if initialize_graphic_preop_dialogue():
 				graphic_preop_node_index = clampi(saved_node_index, 0, graphic_preop_nodes.size() - 1)
 				show_graphic_preop_node()
+	if str(current().get("kind", "")) == "case_review":
+		# Rebuild presentation from the current locale, without replaying effects.
+		feedback = ""
+		feedback_speaker = str(current().speaker)
 	last_error = ""
 	historical_replay_mode = false
 	return true
@@ -373,6 +391,7 @@ func runtime_english(value: Variant) -> Variant:
 
 func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_data: Array = [], known_staff: Array[String] = [], restrict_known: bool = false, surgery_team_dialogue_data: Array = [], patient_interaction_data: Array = [], temporary_condition_data: Array = [], unlocked_procedures: Array[String] = [], enforce_unlocks: bool = false, palpation_profile_data: Array = [], awake_special_bark_data: Array = []) -> void:
 	definition = data
+	or_table_palpation_cg_id = resolve_palpation_cg_id()
 	surgery_team_dialogue_profiles = surgery_team_dialogue_data
 	patient_interactions = patient_interaction_data
 	awake_special_barks = awake_special_bark_data
@@ -408,6 +427,8 @@ func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_dat
 	stages["anesthesia_test_scalpel_incident"] = anesthesia_test_scalpel_incident_stage()
 	stages["ineffective_epidural_warning"] = ineffective_epidural_warning_stage()
 	stages["surgery_abort"] = surgery_abort_stage()
+	for review_stage in CaseReview.stages_for(data):
+		stages[review_stage.id] = review_stage
 	stage_id = data.start
 	anxiety = int(data.initial_anxiety)
 	var interaction: Dictionary = data.get("initial_interaction", {})
@@ -415,6 +436,22 @@ func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_dat
 	pain = int(interaction.get("pain", 0))
 	dignity = int(interaction.get("dignity", 100))
 	cooperation_base = int(interaction.get("cooperation", 70))
+
+func begin_case_review(rng: RandomNumberGenerator = null) -> void:
+	if case_review_checked:
+		return
+	case_review_checked = true
+	if rng == null:
+		rng = RandomNumberGenerator.new()
+		rng.randomize()
+	var roll := rng.randf()
+	for variant in CaseReview.enabled_variants(definition):
+		roll -= float(variant.probability)
+		if roll < 0.0:
+			stage_id = CaseReview.entry_id(variant)
+			feedback = ""
+			feedback_speaker = "narrator"
+			return
 
 func set_known_staff(ids: Array[String], restrict_known: bool = true) -> void:
 	known_staff_ids = ids.duplicate()
@@ -514,6 +551,13 @@ func procedure_lock_reason(id: String) -> String:
 	return ""
 
 func current() -> Dictionary:
+	# The staff profile's pre-incision line belongs to the existing awake
+	# incision window, not to the cut response or an additional medical step.
+	if stage_id == "incision_ready" and is_staff_patient() and not flags.has("anesthetized") and patient_reactions.has("incision_ready"):
+		var result: Dictionary = stages[stage_id].duplicate(true)
+		result.prompt = patient_reaction("incision_ready", "")
+		result.speaker = "patient"
+		return result
 	return stages[stage_id]
 
 func or_table_palpation_stage() -> Dictionary:
@@ -607,7 +651,7 @@ func ineffective_epidural_warning_stage() -> Dictionary:
 		"background_id": "operating_room",
 		"actions": [
 			{
-				"id": "continue_ineffective_epidural",
+				"id": "continue_ineffective_epidural", "presence_delta": 2,
 				"label": "Continue with the epidural" if english_mode() else "仍然使用硬膜外麻醉",
 				"response": "“Understood. I will document that the planned operative site is not covered.”" if english_mode() else "「明白。我会记录计划术区没有被这次硬膜外覆盖。」",
 				"next": "anesthesia_sensory_test", "requires": [], "flags": ["ineffective_epidural_confirmed"],
@@ -1015,7 +1059,7 @@ func operative_preparation_stages() -> Array:
 			"id": "surgery_start_none_confirmed", "title": "开始手术", "scene": "operating_room", "kind": "interaction",
 			"prompt": "四项术前准备已经完成。患者仍在清醒状态下明显抗拒，团队等待你的最终命令。",
 			"speaker": "narrator", "background_id": "operating_room", "actions": [{
-				"id": "start_none_surgery", "label": "坚持继续，命令：“开始手术。手术刀。”",
+				"id": "start_none_surgery", "presence_delta": 5, "label": "坚持继续，命令：“开始手术。手术刀。”",
 				"response": "你再次确认决定，随即向团队下令：「开始手术。手术刀。」",
 				"next": "instrument_handoff", "requires": ["no_anesthesia_confirmed", "incision_marked"], "flags": ["surgery_started"],
 				"calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "player", "effects": {}
@@ -1054,7 +1098,7 @@ func ward_preparation_stages() -> Array:
 		})
 	else:
 		enema_actions.append({
-			"id": "ward_enema_unnecessary", "label": "仍然执行灌肠",
+			"id": "ward_enema_unnecessary", "presence_delta": 1, "label": "仍然执行灌肠",
 			"response": "「这次不是腹部手术，为什么还要灌肠……？」",
 			"next": "ward_enema_response", "requires": ["manual_ward_preparation"], "flags": ["ward_enema_complete", "unnecessary_enema_performed"],
 			"calm": 0, "minutes": 8, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
@@ -1086,7 +1130,7 @@ func ward_preparation_stages() -> Array:
 		})
 	else:
 		skin_prep_actions.append({
-			"id": "ward_skin_prep_unnecessary", "label": "仍然进行下腹及会阴备皮",
+			"id": "ward_skin_prep_unnecessary", "presence_delta": 1, "label": "仍然进行下腹及会阴备皮",
 			"response": "「明明不是腹部手术，为什么要把下面也处理掉……？」",
 			"next": "ward_skin_prep_response", "requires": ["ward_enema_complete"], "flags": ["ward_skin_prep_complete", "unnecessary_skin_prep_performed"],
 			"calm": 0, "minutes": 5, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
@@ -1169,6 +1213,7 @@ func qualified(id: String, role: Dictionary) -> bool:
 	if restrict_to_known_staff and id not in known_staff_ids:
 		return false
 	var person: Dictionary = roster[id]
+	if person.has("allowed_team_roles") and str(role.get("id", "")) not in person.allowed_team_roles: return false
 	if str(role.get("id", "")) == "primary_surgeon" and "primary_surgeon" not in person.get("surgical_roles", []):
 		return false
 	return str(person.get("team_category", person.profession)) == str(role.profession)
@@ -2182,8 +2227,8 @@ func resolve_patient_intrusion_for_stage(flow_step: Dictionary) -> bool:
 				"id": "intrusion_dignity_break_%s" % stage_key,
 				"prompt": "「等一下……我不想再继续了。至少先告诉我接下来要做什么。」",
 				"actions": [
-					{"id": "intrusion_break_explain", "label": "暂停并向患者说明下一步", "response": "「好……这样我能配合。」", "response_speaker": "patient", "minutes": 2, "effects": {"dignity": 6, "cooperation": 8, "fear": -3, "pain": 0}},
-					{"id": "intrusion_break_continue", "label": "要求患者继续配合", "response": "「……我会尽量不动。」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": -4, "cooperation": -12, "fear": 6, "pain": 2}},
+					{"id": "intrusion_break_explain", "presence_delta": -2, "label": "暂停并向患者说明下一步", "response": "「好……这样我能配合。」", "response_speaker": "patient", "minutes": 2, "effects": {"dignity": 6, "cooperation": 8, "fear": -3, "pain": 0}},
+					{"id": "intrusion_break_continue", "presence_delta": 2, "label": "要求患者继续配合", "response": "「……我会尽量不动。」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": -4, "cooperation": -12, "fear": 6, "pain": 2}},
 				]
 			})
 		"cooperation_disruption":
@@ -2192,8 +2237,8 @@ func resolve_patient_intrusion_for_stage(flow_step: Dictionary) -> bool:
 				"id": "intrusion_cooperation_%s" % stage_key,
 				"prompt": "「我有点撑不住了……能不能先停一下？」",
 				"actions": [
-					{"id": "intrusion_cooperation_stabilize", "label": "先稳定患者，再继续操作", "response": "「好，我会尽量保持不动。」", "response_speaker": "patient", "minutes": 2, "effects": {"cooperation": 10, "fear": -4, "pain": -2, "dignity": 0}},
-					{"id": "intrusion_cooperation_continue", "label": "维持当前操作，要求患者继续", "response": "「……我知道了。」", "response_speaker": "patient", "minutes": 0, "effects": {"cooperation": -8, "fear": 4, "pain": 4, "dignity": -2}},
+					{"id": "intrusion_cooperation_stabilize", "presence_delta": -2, "label": "先稳定患者，再继续操作", "response": "「好，我会尽量保持不动。」", "response_speaker": "patient", "minutes": 2, "effects": {"cooperation": 10, "fear": -4, "pain": -2, "dignity": 0}},
+					{"id": "intrusion_cooperation_continue", "presence_delta": 2, "label": "维持当前操作，要求患者继续", "response": "「……我知道了。」", "response_speaker": "patient", "minutes": 0, "effects": {"cooperation": -8, "fear": 4, "pain": 4, "dignity": -2}},
 				]
 			})
 		"dignity_intrusion":
@@ -2202,8 +2247,8 @@ func resolve_patient_intrusion_for_stage(flow_step: Dictionary) -> bool:
 				"id": "intrusion_dignity_%s" % stage_key,
 				"prompt": "「……这样暴露着，我还是有点不舒服。」",
 				"actions": [
-					{"id": "intrusion_dignity_acknowledge", "label": "确认必要范围，并尽快继续", "response": "「嗯……知道了。」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": 5, "cooperation": 3, "fear": -2, "pain": 0}},
-					{"id": "intrusion_dignity_dismiss", "label": "不作解释，直接继续", "response": "「……」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": -8, "cooperation": -3, "fear": 5, "pain": 0}},
+					{"id": "intrusion_dignity_acknowledge", "presence_delta": -1, "label": "确认必要范围，并尽快继续", "response": "「嗯……知道了。」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": 5, "cooperation": 3, "fear": -2, "pain": 0}},
+					{"id": "intrusion_dignity_dismiss", "presence_delta": 2, "label": "不作解释，直接继续", "response": "「……」", "response_speaker": "patient", "minutes": 0, "effects": {"dignity": -8, "cooperation": -3, "fear": 5, "pain": 0}},
 				]
 			})
 	feedback = str(active_patient_interaction.prompt)
@@ -2335,7 +2380,7 @@ func surgery_settlement_total_minutes() -> int:
 func presence_phase_for_stage(stage: String = stage_id) -> String:
 	var operative_stages := [
 		"general_induction", "surgery_start_general", "surgery_start_epidural",
-		"surgery_start_local", "surgery_start_none", "instrument_handoff",
+		"surgery_start_local", "surgery_start_none", "surgery_start_none_confirmed", "instrument_handoff",
 		"assistant_ready", "incision_ready", "general_operation", "operative_contact",
 		"ongoing_interaction", "closure_interaction", "procedure_flow",
 		"procedure_execute", "surgery_result",
@@ -2440,7 +2485,7 @@ func apply(event: Variant) -> bool:
 			temporary_conditions_enabled = false
 		"procedure":
 			var procedure_event_keys := ["kind", "id", "palpation_cg_id", "surgery_rng_seed", "case_variant_id"]
-			if event.keys().any(func(key: Variant): return str(key) not in procedure_event_keys) or not event.get("id") is String or (event.has("palpation_cg_id") and (not event.get("palpation_cg_id") is String or str(event.palpation_cg_id) not in OR_TABLE_PALPATION_CG_IDS)) or (event.has("surgery_rng_seed") and not (event.get("surgery_rng_seed") is int or event.get("surgery_rng_seed") is float)) or (event.has("case_variant_id") and not event.get("case_variant_id") is String) or current().kind != "surgery_select" or not procedure_id.is_empty():
+			if event.keys().any(func(key: Variant): return str(key) not in procedure_event_keys) or not event.get("id") is String or (event.has("palpation_cg_id") and (not event.get("palpation_cg_id") is String or not valid_palpation_cg_id(str(event.palpation_cg_id)))) or (event.has("surgery_rng_seed") and not (event.get("surgery_rng_seed") is int or event.get("surgery_rng_seed") is float)) or (event.has("case_variant_id") and not event.get("case_variant_id") is String) or current().kind != "surgery_select" or not procedure_id.is_empty():
 				return false
 			if not surgeries.has(event.id):
 				return false
@@ -2451,7 +2496,7 @@ func apply(event: Variant) -> bool:
 			last_staff_id = ""
 			last_staff_role = ""
 			procedure_id = surgery.id
-			or_table_palpation_cg_id = str(event.get("palpation_cg_id", OR_TABLE_PALPATION_CG_IDS[0]))
+			or_table_palpation_cg_id = resolve_palpation_cg_id(str(event.get("palpation_cg_id", OR_TABLE_PALPATION_CG_IDS[0])))
 			or_table_palpation_counts.clear()
 			or_table_needle_counts.clear()
 			anesthesia_test_counts.clear()
@@ -2717,7 +2762,7 @@ func apply(event: Variant) -> bool:
 			var interaction_effects: Dictionary = selected_action.get("effects", {})
 			var patient_applied_presence := apply_presence_delta(int(selected_action.get("presence_delta", 0)), "or")
 			if patient_applied_presence != 0:
-				player_effect_history.append({"id": selected_action.id, "label": selected_action.label, "effects": {"presence": patient_applied_presence}})
+				Progression.record_presence_effect(player_effect_history, "or", patient_applied_presence)
 			fear = clampi(fear + int(interaction_effects.get("fear", 0)), 0, 100)
 			pain = clampi(pain + int(interaction_effects.get("pain", 0)), 0, 100)
 			dignity = clampi(dignity + int(interaction_effects.get("dignity", 0)), 0, 100)
@@ -2839,7 +2884,7 @@ func apply(event: Variant) -> bool:
 				flags.erase(flag)
 			if action.get("reset_procedure", false):
 				procedure_id = ""
-				or_table_palpation_cg_id = OR_TABLE_PALPATION_CG_IDS[0]
+				or_table_palpation_cg_id = resolve_palpation_cg_id()
 				or_table_palpation_counts.clear()
 				or_table_needle_counts.clear()
 				anesthesia_test_counts.clear()
@@ -2902,7 +2947,7 @@ func apply(event: Variant) -> bool:
 					player_effect_history.append({"id": action.id, "label": action.label, "effects": recorded_profile_effects})
 			var action_applied_presence := apply_presence_delta(int(profile_effects.get("presence", 0)) + int(action.get("presence_delta", 0)), action_presence_phase)
 			if action_applied_presence != 0:
-				player_effect_history.append({"id": action.id, "label": action.label, "effects": {"presence": action_applied_presence}})
+				Progression.record_presence_effect(player_effect_history, action_presence_phase, action_applied_presence)
 			if action.has("anesthesia"):
 				anesthesia = str(action.anesthesia)
 			var effects: Dictionary = action.get("effects", {})
@@ -2939,9 +2984,17 @@ func apply(event: Variant) -> bool:
 					var item := preparation(id)
 					minutes += int(item.minutes)
 					anxiety = clampi(anxiety - int(item.calm), 0, 3)
+					var preparation_presence := apply_presence_delta(Progression.action_presence_delta(item), "preop")
+					Progression.record_presence_effect(player_effect_history, "preop", preparation_presence)
 				var nurse: Dictionary = roster[team[definition.ward_role.id]]
 				if nurse.skills.patient_care >= definition.care_reassurance_threshold:
 					anxiety = maxi(0, anxiety - 1)
+				# The manual route also executes preparation bookkeeping, but the
+				# player performed the care and must not inherit the nurse's penalty.
+				if action.id == "perform_preparation":
+					var care_penalty := ward_care_penalty(int(nurse.skills.patient_care))
+					fear = clampi(fear + care_penalty, 0, 100)
+					dignity = clampi(dignity - care_penalty, 0, 100)
 			var response_role: String = action.get("response_role", "")
 			if team.has(response_role):
 				var actor_id: String = team[response_role]
@@ -2950,6 +3003,8 @@ func apply(event: Variant) -> bool:
 				var authored_response := str(action.get("response_by_staff", {}).get(actor_id, feedback))
 				feedback = roster[actor_id].name + "：" + staff_action_response(actor_id, str(action.id), authored_response)
 				feedback_speaker = "staff"
+			if action.id == "perform_preparation" and ward_care_penalty(int(roster[team[definition.ward_role.id]].skills.patient_care)) > 0:
+				feedback += "\n[The patient seems quite worn out by the ordeal...]" if english_mode() else "\n【患者似乎被折腾得够呛。。。】"
 			if action.id == "assistant_stabilize" and not flags.has("anesthetized"):
 				var stabilization_reaction_id := "assistant_stabilize_none" if operative_without_effective_analgesia() else "assistant_stabilize_local" if flags.has("local_anesthesia") else "assistant_stabilize_epidural"
 				var stabilization_fallback := "“Do not press there—it hurts! I will try not to move, but please do not use sudden force...!”" if english_mode() and stabilization_reaction_id.ends_with("none") else "“I can feel you holding that area steady... Please tell me before the incision.”" if english_mode() else "「别按那里——很痛！我会努力不动，可是请不要突然用力……！」" if stabilization_reaction_id.ends_with("none") else "「我感觉到你们固定住那里了……请告诉我什么时候会下刀。」"
@@ -2988,6 +3043,23 @@ func apply(event: Variant) -> bool:
 	last_error = ""
 	return true
 
+static func ward_care_penalty(patient_care: int) -> int:
+	if patient_care <= 20:
+		return 20
+	if patient_care <= 30:
+		return 15
+	if patient_care <= 40:
+		return 10
+	if patient_care <= 50:
+		return 5
+	return 0
+
+func showing_ward_care_penalty() -> bool:
+	if stage_id != "prepared" or not done.has("perform_preparation"):
+		return false
+	var nurse: Dictionary = roster.get(str(team.get(definition.ward_role.id, "")), {})
+	return ward_care_penalty(int(nurse.get("skills", {}).get("patient_care", 60))) > 0
+
 func staff_has_low_surgery_proficiency(staff_id: String) -> bool:
 	return str(roster.get(staff_id, {}).get("surgery_proficiency", "trained")) in ["novice", "limited"]
 
@@ -3023,6 +3095,11 @@ func intraoperative_response(staff_id: String, response_id: String, authored: St
 	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(response_id + (":correction" if correction else ""), ""))
 	if not custom_response.is_empty():
 		return patient_dialogue_text(custom_response)
+	if not correction and staff_id == str(team.get("circulating_nurse", "")):
+		var work_key := str({"check_circulation":"OR_02", "final_check_team":"OR_02", "check_monitoring":"OR_03", "validate_cautious":"OR_03", "close_steady":"OR_08"}.get(response_id,""))
+		if not work_key.is_empty():
+			var work_line := authored_staff_line(staff_id,"work." + work_key)
+			if not work_line.is_empty(): return work_line
 	if staff_id == str(team.get("assistant_surgeon", "")):
 		var line := assistant_line("crisis_observation" if correction else "routine_assist")
 		if not line.is_empty():
@@ -3093,6 +3170,11 @@ func staff_action_response(staff_id: String, action_id: String, authored: String
 	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(action_id, ""))
 	if not custom_response.is_empty():
 		return patient_dialogue_text(custom_response)
+	# Authored work responses are bound to real actions, never the idle pool.
+	var work_key := str({"perform_preparation":"WD_09", "complete_manual_ward_preparation":"WD_07", "confirm_circulating_role":"OR_02"}.get(action_id,""))
+	if not work_key.is_empty():
+		var work_line := authored_staff_line(staff_id,"work." + work_key)
+		if not work_line.is_empty(): return work_line
 	if staff_id == str(team.get("assistant_surgeon", "")):
 		var pool := "before_incision" if action_id in ["confirm_team", "confirm_assistant_role"] else "patient_responding_awake" if action_id == "assistant_stabilize" and not flags.has("anesthetized") else "routine_assist"
 		var line := assistant_line(pool)

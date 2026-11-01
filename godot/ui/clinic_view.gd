@@ -1,4 +1,5 @@
 extends RefCounted
+const PresenceHint = preload("res://godot/ui/presence_hint.gd")
 ## VN presentation: brief dialogue, contextual choices, on-demand medical record.
 static func render(app: Control, visit: RefCounted) -> void:
 	var patient: Dictionary = app.content.find_record("patients", visit.definition.patient_id)
@@ -56,8 +57,11 @@ static func render(app: Control, visit: RefCounted) -> void:
 			button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 			if not reason.is_empty():
 				app.label_at(app.tx("ui.clinic.missing_clues", "待补齐线索"), Vector2(555, 266 + i * 67), 16, Color("a0b1b5"), 140)
-			elif action.get("minutes", 0) > 0:
+			elif action.get("minutes", 0) > 0 and PresenceHint.Progression.action_presence_delta(action) == 0:
 				app.label_at(app.tx("ui.common.minutes", "%s 分钟") % action.minutes, Vector2(590, 266 + i * 67), 16, Color("b9cecb"), 110)
+			if action.get("minutes", 0) > 0:
+				button.tooltip_text += ("\n" if not button.tooltip_text.is_empty() else "") + app.tx("ui.common.minutes", "%s 分钟") % action.minutes
+			PresenceHint.decorate(app, button, action, "encounter")
 	panel(app, Vector2(55, 558), Vector2(1170, 142))
 	app.label_at(speaker_name, Vector2(82, 576), 22, Color("e8cfaa"), 1100)
 	var dialogue_text := str(line.text)

@@ -1,0 +1,221 @@
+{
+  "version": "v1-content-handoff",
+  "status": "ART_NOT_INCLUDED",
+  "notes_cn": "这些为素材槽位而非已存在路径；图像未提供前禁止将任何占位路径写入运行时field_windows.json或patient.visuals。",
+  "notes_en": "These are required asset slots, not existing paths; do not register placeholders in runtime field_windows.json or patient.visuals before real assets arrive.",
+  "procedures": [
+    {
+      "procedure_id": "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction",
+      "field_window": {
+        "after_stage": "P01",
+        "before_stage": "P12",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "path": null,
+        "incision_path": null,
+        "closure_path": null
+      },
+      "patient_portrait_slots": [
+        "ward",
+        "postop",
+        "team_confirmation",
+        "intraoperative/anesthetized",
+        "splash/general_anesthesia"
+      ],
+      "requirements": [
+        {
+          "slot": "ward",
+          "suggested_file": "assets/characters/advanced_pelvic_sidewall/ward.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "postop",
+          "suggested_file": "assets/characters/advanced_pelvic_sidewall/postop.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "team_confirmation",
+          "suggested_file": "assets/characters/advanced_pelvic_sidewall/team_confirmation.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "intraoperative/anesthetized",
+          "suggested_file": "assets/characters/advanced_pelvic_sidewall/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "splash/general_anesthesia",
+          "suggested_file": "assets/characters/advanced_pelvic_sidewall/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "incision_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/pelvic_sidewall_incision.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/pelvic_sidewall.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "closure_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/pelvic_sidewall_closure.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        }
+      ]
+    },
+    {
+      "procedure_id": "surgery_adv_sleeve_lobectomy",
+      "field_window": {
+        "after_stage": "T01",
+        "before_stage": "T11",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "path": null,
+        "incision_path": null,
+        "closure_path": null
+      },
+      "patient_portrait_slots": [
+        "ward",
+        "postop",
+        "team_confirmation",
+        "intraoperative/anesthetized",
+        "splash/general_anesthesia"
+      ],
+      "requirements": [
+        {
+          "slot": "ward",
+          "suggested_file": "assets/characters/advanced_sleeve_lobectomy/ward.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "postop",
+          "suggested_file": "assets/characters/advanced_sleeve_lobectomy/postop.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "team_confirmation",
+          "suggested_file": "assets/characters/advanced_sleeve_lobectomy/team_confirmation.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "intraoperative/anesthetized",
+          "suggested_file": "assets/characters/advanced_sleeve_lobectomy/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "splash/general_anesthesia",
+          "suggested_file": "assets/characters/advanced_sleeve_lobectomy/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "incision_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/sleeve_lobectomy_incision.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/sleeve_lobectomy.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "closure_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/sleeve_lobectomy_closure.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        }
+      ]
+    },
+    {
+      "procedure_id": "surgery_adv_ebstein_cone_reconstruction",
+      "field_window": {
+        "after_stage": "C01",
+        "before_stage": "C13",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "path": null,
+        "incision_path": null,
+        "closure_path": null
+      },
+      "patient_portrait_slots": [
+        "ward",
+        "postop",
+        "team_confirmation",
+        "intraoperative/anesthetized",
+        "splash/general_anesthesia"
+      ],
+      "requirements": [
+        {
+          "slot": "ward",
+          "suggested_file": "assets/characters/advanced_ebstein_cone/ward.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "postop",
+          "suggested_file": "assets/characters/advanced_ebstein_cone/postop.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "team_confirmation",
+          "suggested_file": "assets/characters/advanced_ebstein_cone/team_confirmation.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "intraoperative/anesthetized",
+          "suggested_file": "assets/characters/advanced_ebstein_cone/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "splash/general_anesthesia",
+          "suggested_file": "assets/characters/advanced_ebstein_cone/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "incision_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/ebstein_cone_incision.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/ebstein_cone.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "closure_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/ebstein_cone_closure.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        }
+      ]
+    }
+  ]
+}

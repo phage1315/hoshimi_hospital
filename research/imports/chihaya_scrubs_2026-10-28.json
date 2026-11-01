@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-28",
+  "tool": "built-in image_gen",
+  "character_id": "patient_chihaya",
+  "purpose": "Reusable masked nonsterile scrubs; current role remains recovering patient companion",
+  "prompts": {
+    "base": "Use case: identity-preserve. Create one high-definition transparent visual novel character sprite for Hoshimi Hospital. Image 1 is the identity reference: adult Chihaya Kuramoto (18 in project), preserve her recognizable short chestnut-red hair, large red-brown eyes, delicate face proportions and exact hand-drawn 2000s Japanese visual-novel cel shaded art style. Image 2 is ONLY the teal short-sleeved scrub uniform/cap/mask clothing and rendering reference, not the character identity. Chihaya now wears loose modest teal V-neck scrub top and matching trousers, a teal bouffant surgical cap containing the hair with a little identifying fringe, and a pale blue pleated surgical mask correctly covering nose and mouth. Nonsterile companion, bare clean hands, no gloves, no gown, no instruments, no badges. Seated comfortably upright, both hands resting loosely in lap; front three-quarter portrait from top of cap to mid thighs, whole head and hands contained, similar scale to reference 1. Warm reassuring expression in open eyes and relaxed eyebrows, slight smile suggested above mask. Genuine transparent alpha outside the figure, no glow, no background, no chair, no shadow backdrop, no text. Crisp clean lines, polished shading, match source identity and sprite quality. Portrait 1024x1536.",
+    "cleanup": "Edit this sprite only to clean its background and framing. Preserve Chihaya's identity, seated pose, warm open-eyed expression, chestnut-red hair, red-brown eyes, teal scrub uniform, cap, mask, bare hands, detailed cel shaded line art exactly. Remove ALL colored halo, glow, aura, vignette or background haze outside the character. Outside the silhouette must be fully transparent alpha 0, with only a narrow antialiased character edge. Add clear transparent padding above the surgical cap so the entire cap is visible, not cropped at the top. Fit whole cap, hands and mid-thigh portrait within a 1024x1536 canvas with clean space on sides. Do not add any object or background.",
+    "worried": "Edit only the eyebrows and eyes of this Chihaya visual-novel sprite to a worried, sympathetic expression: eyebrows lifted slightly at inner ends, open red-brown eyes conveying concern for her friend, not terror. Everything else must stay identical: character identity, face shape, surgical mask, chestnut-red hair fringe, teal cap and short-sleeved scrubs, seated pose, hands in lap, proportions, framing, clean detailed cel-shaded visual-novel art. Preserve transparent background. One portrait sprite, no text, no new props.",
+    "standing": "Create a standing version of this exact Chihaya character sprite. Preserve her face, short chestnut-red hair, red-brown eyes, teal bouffant cap, pale surgical mask over nose and mouth, teal short-sleeved scrub top and trousers, warm open-eyed expression and the same crisp hand-drawn cel shaded VN art style. Change only posture: now standing comfortably straight, bare hands loosely together in front of her lower abdomen, shoulders relaxed. Frame entire cap through mid thighs, centered, portrait 1024x1536. Entire surgical cap must have transparent padding above it, no cropping. Fully transparent background, no objects, no chair, no lettering, no gloves, no sterile gown, no background glow."
+  },
+  "images": [
+    {
+      "key": "scrubs/standing",
+      "path": "assets/characters/chihaya_scrubs_v1/standing.png",
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-9859323b-3d5e-4798-9616-881adf5dd42b.png",
+      "sha256": "243caa30ffc2c20abd4972d944b203e817f321b95548b6d2b135d7d50e7700e3",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "key": "scrubs/warm",
+      "path": "assets/characters/chihaya_scrubs_v1/warm.png",
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-20374b2d-50f0-4d18-95bc-7cb71d06a138.png",
+      "sha256": "504b89eb8078733bed8c11128315446cf3833d3f8ba2fc581e34e67c054bdf8c",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "key": "scrubs/worried",
+      "path": "assets/characters/chihaya_scrubs_v1/worried.png",
+      "source": "/Users/ningye/.codex/generated_images/01a179e6-9487-7af1-a600-7e9433c9154d/exec-71708d2f-2a12-4d0d-950e-eba83ea6642b.png",
+      "sha256": "780b444c51b9f5ddb8d4890d35349b4667a60fe1147d592dd200a0c334f5fdc0",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    }
+  ]
+}

@@ -35,7 +35,8 @@ func run() -> void:
 				long_history_cases += 1
 			var label: String = locale + "/" + str(template.id)
 			var definition: Dictionary = game.encounter_for_case(blueprint, template)
-			var visit = Encounter.new(definition)
+			# Compare history presentation, not two independently randomized menus.
+			var visit = Encounter.new(definition, false)
 			visit.stage_id = "history"
 			expect(visit.apply("basic_history"), label + ": history bundle succeeds")
 			expect(visit.presentation().text == expected, label + ": fixed primary and secondary appear exactly once")
@@ -45,7 +46,7 @@ func run() -> void:
 				expect(visit.presentation().text == expected, label + ": refresh does not duplicate dialogue")
 			expect(not visit.apply("basic_history"), label + ": repeated bundle is rejected")
 			expect(visit.snapshot_state() == state, label + ": refresh/repeated click preserves state")
-			var individual = Encounter.new(definition)
+			var individual = Encounter.new(definition, false)
 			individual.stage_id = "history"
 			for action_id in ["pain", "associated", "background"]:
 				expect(individual.apply(action_id), label + ": individual history action succeeds")

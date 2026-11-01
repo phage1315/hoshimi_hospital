@@ -1,5 +1,17 @@
 # 人物素材 / 本地占位测试
 
+### 瑞穗首次手术 CG03 用户定稿（2026-10-28）
+
+用户明确批准修订附件 `codex-clipboard-47ec2412-376f-406d-940b-3177529b45aa.png`，逐字节复制为 `assets/events/mizuho_first_surgery_v1/cg03_incision_marking.png`（1600×1088 PNG）。覆盖b03_023—030，b03_031退出，contain完整适配；未改图、裁切、生成或重新进行视觉内容分析。原文不为美术差异作修改。源文件、SHA256及授权映射见 `research/imports/mizuho_first_surgery_cg03_approved_2026-10-28.json`。
+
+### 瑞穗首次手术 CG02 用户定稿（2026-10-28）
+
+用户批准的修订附件 `codex-clipboard-d171b825-676a-4951-b2d8-55689e5935e7.png` 逐字节复制为 `assets/events/mizuho_first_surgery_v1/cg02_confident_on_table.png`（1600×1088 PNG）。覆盖b02_022—030，b02_031退出，contain完整适配。未改图或生成，未重新进行视觉内容检查。源文件、哈希及授权映射见 `research/imports/mizuho_first_surgery_cg02_approved_2026-10-28.json`。
+
+### 瑞穗首次手术 CG08 用户定稿（2026-10-28）
+
+用户提供并明确授权的 `codex-clipboard-43fca528-32be-4467-9793-10999e53391c.png` 原样复制为 `assets/events/mizuho_first_surgery_v1/cg08_brave_words_after_preparation.png`（1664×960），用于b01_001—b01_025，b01_026退出。仅技术集成，未生成、改图或重新视觉分析；contain显示不裁切。完整路径、SHA256、节点及授权记录：`research/imports/mizuho_first_surgery_cg08_approved_2026-10-28.json`。既有SFW候选保留。
+
 ### 人物立绘Lossy 0.90试玩（2026-10-13）
 
 - 用户反馈重新导出约1.64G，授权继续尝试立绘有损导入。范围为真实加载的医护／患者 `visuals.portraits`（排除已处理的麻醉splash）及剧情 `portrait_path`，去重830张，含人物状态图；其中2张与CG池共用、已是Lossy 0.90，本轮实际新增修改828张。不按目录处理未引用旧图或研究参考图。
@@ -679,3 +691,212 @@ User-supplied examination portrait and nine preparation CGs, locally copied byte
 ## 千早第三次手术CG（2026-10-27）
 
 用户确认并授权导入5张：千早入室使用用户上传的 `codex-clipboard-1aa62100-5fc5-402d-b58e-8b59c6d073dc.png`；头侧陪伴使用加入失焦术野的v2；贝斯回忆柔和／目光收紧双差分、影像会诊使用确认候选v1。全部原样复制至 `assets/events/chihaya_third_surgery_v1/`，无裁切、缩放、像素加工或素材替换。用户上传入室图仅作文件格式、尺寸、哈希、引用和加载技术检查，未额外进行内容分析。5图45节点映射、原始路径及SHA256见 `research/imports/chihaya_third_surgery_cgs_2026-10-27.json`。历史SFW入室候选和头侧陪伴v1继续保留。
+
+## Rami Amasaki — base candidates
+
+User data and three seeds preserved under `research/character_references/patient_rami_amasaki/`; original source paths and hashes in `research/imports/patient_rami_amasaki_intake_v1.json`. Six SFW base candidates generated with built-in ImageGen using Rami seeds for identity and patient_ann references for composition. Prompts, corrections, provenance, native sizes, hashes and alpha reviews in `research/patient_candidates/patient_rami_amasaki/base_v1/`. Awaiting user approval before runtime mapping and expression variants.
+
+## Meryl Spaanna — patient source and seeds
+
+User supplied patient bundle and four seed images preserved byte-for-byte under `research/character_references/patient_meryl_spaanna/`. Original paths and SHA-256 recorded in `research/imports/patient_meryl_spaanna_registration_v1.json`. Data-only import; no generated art, runtime portrait mapping or CG integration.
+
+## Meryl Spaanna — six generated base candidates
+
+Built-in ImageGen; four user seeds for identity and patient_ann same-class references for framing. Prompts, returned paths, SHA-256, dimensions, alpha checks and review: `research/patient_candidates/patient_meryl_spaanna/base_v1/`. Five requests succeeded initially; lithotomy input was rejected with category other, then succeeded on one identical retry. Supine native size 1447x1087 retained, other outputs match targets. All six remain candidates pending user approval, no runtime mappings or expression variants added.
+
+
+## Amis Ernest patient registration and base candidates — 2026-10-27
+
+User supplied patient_amis_ernest_complete_bundle_v1.json and four seeds, preserved byte-for-byte under research/character_references/patient_amis_ernest. Runtime patient JSON preserves the original; 104 English entries added. Provenance: research/imports/patient_amis_ernest_registration_v1.json; validation: patient_amis_ernest_validation_v1.json in the same directory. Five base candidates generated with built-in ImageGen from the supplied seeds and corresponding patient_ann framing references; original outputs, prompts, hashes, dimensions, alpha review and attempts are recorded under research/patient_candidates/patient_amis_ernest/base_v1. Lithotomy base failed on the initial request and five identical retries (moderation_blocked, other); no replacement generated. Candidates await user review and are not mapped at runtime. No original source images were edited.
+
+
+### Amis supplied lithotomy awake — 2026-10-27
+
+User supplied `codex-clipboard-e5575362-a389-45d7-afa9-6cdbd6687efe.png`, visually accepted and explicitly authorized integration. Copied byte-for-byte to `assets/characters/patient_amis_ernest_v1/patient_amis_ernest/operating_table_lithotomy/awake.png` and mapped only `operating_table_lithotomy/awake`. Native 1472×1088 RGB retained without edits. SHA-256: `52459b02a9137d1fca3f8a0334738f5b2a8e02048047e5f9f2c0602ba333a9aa`. Provenance and acceptance: `research/patient_candidates/patient_amis_ernest/base_v1/supplied_lithotomy_import.json`. Earlier failed generation records retained; this asset is user-supplied, not an ImageGen success. Other five candidate bases remain unmapped.
+
+
+## Rami, Meryl and Amis expression completion — 2026-10-27
+
+User approved continuing from all three base sets and requested every expression variant. Built-in ImageGen produced 42 standalone face-expression edits (14 per patient); Rami lithotomy anesthetized succeeded after one unchanged retry. All 42 were reviewed for identity, expression, composition, and light/dark alpha edges. The six approved base keys per patient plus 14 variants are now mapped, 20 keys each. Amis lithotomy awake remains the exact user-supplied asset. No dialogue or patient identity fields changed. Original generated files retained; runtime assets are byte-identical copies. Prompts/attempts: research/patient_candidates/expression_batch_2026-10-27_{prompts,results}.json. Per-image paths, hashes, alpha, dimensions and acceptance: each patient expressions_v1/integrated_assets.json. Amis lithotomy variants retain native 1459×1078 dimensions versus supplied 1472×1088 base; aspect-ratio deviation <0.05%, no crop/stretch. Runtime render test pending availability of Godot.
+
+
+## 千早刷手服陪同立绘（2026-10-28）
+
+用户授权生成并接入，内置 ImageGen 制作三张原生 1024×1536 RGBA：站姿、坐姿温和、坐姿担忧。参考千早现有病房立绘保持身份与画风，参考留美刷手服保持服装风格；短袖刷手服、手术帽与口罩，无手套、无无菌袍。原样复制到 `assets/characters/chihaya_scrubs_v1/{standing,warm,worried}.png`，登记 cameo visuals，用于瑞穗首次手术 B05—B10 的千早本人陪同发言。未来护士剧情可复用素材，未提前改变角色身份。完整提示词、原始路径、透明通道、尺寸与 SHA256 见 `research/imports/chihaya_scrubs_2026-10-28.json`；逐图清单见资源目录 `manifest.json`。未覆盖旧素材。
+
+
+## 千早／瑞穗护士系列与千早常服（2026-10-28）
+
+用户授权制作并接入护士系列，并要求从千早既有女校制服种子补回常服。内置ImageGen生成26张：护士服各6张、千早常服5张、刷手服7张（千早基础站姿复用已有文件）、HUD头像各1张。原样复制至 `assets/characters/chihaya_mizuho_nurses_v1/`，HUD按既有资源契约另复制至 `assets/characters/intraoperative_staff_avatars_v1/`。旧患者／陪同立绘均保留。千早常服serious生成失败未登记，其他五种常服可用；不以替代图冒充成功。提示词、参考源、结果见 `research/imports/chihaya_mizuho_nurse_art_jobs.json`，尺寸／alpha／SHA256见同目录 `chihaya_mizuho_nurse_art_2026-10-28.json`。护士服无正式名牌；返院N02—N04常服，N01/N05/N06护士服。Godot原生窗口已核对对应衣着与透明显示，详情见返院实装文档。
+
+
+### 2026-10-28 后续补齐
+
+千早常服serious重试成功，另新增瑞穗住处与千早住处两张背景；上述“serious失败”现为历史记录，三个明确素材缺口均已补齐。内置ImageGen生成，路径／提示词／原始输出／尺寸／alpha／SHA256见 `research/imports/chihaya_mizuho_missing_art_retry_2026-10-28_results.json`。素材原样复制，不覆盖原neutral或其他立绘；旧narrative_black资源保留。
+
+
+## Rami Amasaki supplied assets — 2026-10-28
+
+Ten user-supplied files copied byte-for-byte, ordered exactly as supplied: examination/shy portrait, cap, stretcher transfer, catheterization, disinfection, positioning, draping, before incision, enema, shaving. Nine fullscreen patient-exclusive preparation pools; examination portrait remains distinct from examination CG. No generation, image editing or visual content analysis performed. Source paths, runtime paths, hashes, format/dimensions, alpha and action mappings: `research/imports/patient_rami_amasaki_supplied_assets_2026-10-28.json`. Eighteen English pool label/caption fields added. Dialogue preserved. Runtime verification status is recorded separately.
+
+
+## Meryl Spaanna supplied assets — 2026-10-28
+
+Ten user-supplied files copied byte-for-byte, ordered exactly as supplied: examination/shy portrait, before incision, positioning, draping, shaving, enema, cap, catheterization, disinfection, stretcher transfer. Nine fullscreen patient-exclusive preparation pools; examination portrait remains distinct from examination CG. No generation, image editing or visual content analysis performed. Source paths, runtime paths, hashes, format/dimensions, alpha and action mappings: `research/imports/patient_meryl_spaanna_supplied_assets_2026-10-28.json`. Eighteen English pool label/caption fields added. Dialogue preserved. Runtime verification status is recorded separately.
+
+
+## Amis Ernest supplied assets — 2026-10-28
+
+Ten user-supplied files copied byte-for-byte, ordered exactly as supplied: examination/shy portrait, positioning, draping, shaving, enema, cap, stretcher transfer, catheterization, disinfection, before incision. Nine fullscreen patient-exclusive preparation pools; examination portrait remains distinct from examination CG. No generation, image editing or visual content analysis performed. Source paths, runtime paths, hashes, format/dimensions, alpha and action mappings: `research/imports/patient_amis_ernest_supplied_assets_2026-10-28.json`. Eighteen English pool label/caption fields added. Dialogue preserved. Runtime verification status is recorded separately.
+
+
+## 瑞穗首次手术 CG09 用户确认素材（2026-10-28）
+
+附件 `codex-clipboard-d447cae1-3e4e-4b7d-a06f-ce1f665927a0.png` 原样复制至 `assets/events/mizuho_first_surgery_v1/cg09_catheter_preparation.png`（1600×1088）。完整来源与SHA256见 `research/imports/mizuho_first_surgery_cg09_approved_2026-10-28.json`。接入b04_012—b04_016，b04_017退出；无改图、裁切或生成。用户另授权界面遮挡测试，原生中文正文／英文回想截图确认左上角头像完整可见、对白框局部遮挡下部。验收见瑞穗首次手术实装文档CG09小节。
+
+
+## 瑞穗专属手术台交互底图（2026-10-29）
+
+用户批准 Screenshot 2026-10-29 at 12.28.15 AM.png，2176×1660 PNG原样复制到 `assets/surgeries/palpation/or_table_torso_mizuho_v1.png`。来源、SHA256、原图坐标热区和显示变换见 `research/imports/mizuho_palpation_approved_2026-10-29.json`。原图未编辑；沿用620×626居中cover，缩放626/1660，水平偏移约−100.29，裁去两侧背景。七个矩形热区：双侧乳房、双侧乳头、胸骨、腹部、会阴。以原图坐标经同一缩放／偏移计算。
+
+`guest_mizuho`患者ID／staff_patient_id固定使用mizuho_v1；通用随机池仍只有原四张，其他患者不能提交瑞穗专属ID。触诊与麻醉感觉测试复用同一张图。未开放瑞穗staff-as-patient入口，未更改剧情、对白、数值或存档格式。修正空热区按钮受英文文本按钮padding撑宽的问题，确保两种语言点击矩形一致。
+
+Godot原生窗口专项255项0失败，中英触诊／局麻测试的七个按钮回调、中心点不被其他热区截获、纹理／裁切／热区定位、普通随机池隔离、正式入口保持锁定均通过。五张截图含热区叠加图及日志在 `docs/qa/mizuho_palpation/`。人工查看热区叠加图确认位置。未来入口尚不可用，测试通过独立内存夹具挂载，未使用玩家存档；不把通用测试对白当作已实装瑞穗专属台词。
+
+
+## 瑞穗首次手术CG收尾批次（2026-10-29）
+
+用户提供CG10医学照片原图，本地原样复制至 `assets/events/mizuho_first_surgery_v1/cg10_medical_record_photo.png`，以inset完整显示于对白上方，b09_042—043使用。未编辑原图或另加图像边框。此前认可的SFW CG01／04／05／07从候选目录原样复制并接入；各来源、尺寸、哈希、批准说明与节点见 `research/imports/mizuho_first_surgery_cg{01,04,05,07,10}_approved_2026-10-29.json`。CG06等待最终版本选择；验收与当前完成状态见瑞穗首次手术实装文档。
+
+
+## 瑞穗首次手术CG06修订版最终确认（2026-10-29）
+
+用户明确选择“疲惫含泪”v2。原样复制 `research/cg_candidates/mizuho_first_surgery_2026-10-28/06_daimon_doctor_v2.png` 至 `assets/events/mizuho_first_surgery_v1/cg06_daimon_doctor.png`，1672×941，SHA256与来源见 `research/imports/mizuho_first_surgery_cg06_approved_2026-10-29.json`。b10_063芹香触肩开始显示，覆盖至b10_074瑞穗回应，b10_075芹香收回手离开时退出。原v1和候选v2均保留。此前“CG06待选择／9张已接入”已成为历史状态；目前计划内10张全部接入，未改写任何剧情文本。
+
+## 2026-10-29 御園芹香 Free H V1.1
+
+- 用户ZIP的Profile、Flow和交接说明逐字节归档于 `docs/source/serika_free_h_v1_1/`；SHA256与来源映射见 `import_manifest.json`。运行Profile／Flow保持原文和资源引用。
+- 用户指定二阶段附件 `codex-clipboard-7ee4873d-d1dd-4085-a256-2fb15487aa49.png` → `assets/h/doc_serika/scene_cg.png`；事后附件 `codex-clipboard-7ef75d32-340e-405b-ac1b-9c68f0a70bf1.png` → `assets/h/doc_serika/aftercare_cg.png`。均1584×1056，原字节复制，无裁切或重绘。
+- 专属夜间卧室背景复用已生成的简朴住宅v2候选，复制到 `assets/backgrounds/serika_home_v1/bedroom_night.png`，未改动原候选和Lv4事件映射。
+- 触摸底图、九区坐标和六种头像尚缺，未生成替代素材，正式注册保持pending。完整状态见 `docs/serika_free_h_integration_2026-10-29.md`。
+
+### 2026-10-29 芹香互动底图与neutral
+
+用户提供的1024×1536触摸底图原样复制为 `assets/h/doc_serika/body_map.png`；用户已认可的1254×1254透明neutral复制为 `assets/h/doc_serika/portrait_neutral.png`。原文件路径与SHA256见 `docs/source/serika_free_h_v1_1/bodymap_import_manifest.json`。其余五种表情保持现有构图，由用户提供；本次不生成或替换。
+
+### 2026-10-29 芹香flustered透明差分
+
+用户指定的 `00027-1969242913-Picsart-BackgroundRemover.png` 原样导入为 `assets/h/doc_serika/portrait_flustered.png`，1280×1280 RGBA，未裁切或改变透明度。来源及SHA256见 `docs/source/serika_free_h_v1_1/flustered_import_manifest.json`。
+
+### 2026-10-29 芹香delighted／pleased／peak透明差分
+
+按用户指定顺序，`00029-2784212414-Picsart-BackgroundRemover.png`→delighted，`00028-3472653088-Picsart-BackgroundRemover.png`→pleased，`00030-3965239733-Picsart-BackgroundRemover.png`→peak。三张1280×1280 RGBA原样导入 `assets/h/doc_serika/portrait_<expression>.png`。原路径及SHA256见 `docs/source/serika_free_h_v1_1/expression_batch_import_manifest.json`。
+
+### 2026-10-29 芹香annoyed补入与Runner验收
+
+`/Users/ningye/Downloads/00025-551408964-Picsart-BackgroundRemover.png` 原样导入 `assets/h/doc_serika/portrait_annoyed.png`，1280×1280 RGBA，六种头像现已齐备。来源及SHA256见 `docs/source/serika_free_h_v1_1/annoyed_import_manifest.json`。原生窗口中英文完整流程与六种表情均已验证。
+
+## 2026-10-29 千早／瑞穗出院与返院 CG
+
+用户确认内置 imagegen 生成的两张候选，原像素复制到 `assets/events/chihaya_mizuho_return_v1/`：`cg01_discharge_farewell.png`（d03_134）、`cg02_first_day_training.png`（n05_038—n05_043）。两张均1672×941，以contain方式显示。角色及服装参考当前对应立绘，芹香按用户要求使用友善表情。
+
+生成提示词及参考路径：`assets/candidates/chihaya_mizuho_return_cg_2026_10_29/generation.json`。候选原件保留；正式路径、节点映射与SHA256：`research/imports/chihaya_mizuho_return_cg_2026-10-29.json`。未裁切、重绘或替换其他资源。
+
+## 2026-10-30：赖子剧情患者差分与夜间病房
+
+作者提供四张赖子原作种子图，并要求90年代赛璐璐风格。重做并接入 `assets/characters/yoriko_story_v1/` 共8张透明PNG；最初不符合画风的候选未接入。基于既有病房背景生成同场景夜景 `assets/backgrounds/ward_night_v1/ward_night.png`。来源、目标路径和SHA256详见 `docs/source/miyuki_lv2/art_manifest.json`；未删除源文件、未改变PNG像素或透明通道。
+
+- 2026-10-30：赖子手术室五张差分按作者“裸肩，无菌巾不入镜”修订，现行资源 `assets/characters/yoriko_story_v2/or_*.png`，由对应 v1 图片通过 imagegen 编辑，1536×1024 RGBA。旧版保留；来源、校验和和上一版记录见 `docs/source/miyuki_lv2/art_manifest.json`。病房素材不变。
+
+## 2026-10-30 朝仓 Lv3 SFW演出资源
+
+基于项目现有朝仓、狩谷、米田立绘由imagegen生成无帽刷手服／戴帽无口罩与表情、朝仓带小包的私服表情，以及独立午后广场背景。运行资源见 `assets/characters/miyuki_lv3_v1/`、`assets/backgrounds/miyuki_lv3_v1/`。生成原件保留；完整prompt／引用／来源在 `assets/candidates/miyuki_lv3_2026_10_30/manifest.json`，演出映射和验收在 `docs/miyuki_lv3_integration_2026-10-30.md`。
+
+2026-10-30 后续：按用户要求以朝仓现有常服发型修正无帽刷手服，新增`assets/characters/miyuki_lv3_v1/miyuki_uncapped_hair_v2.png`及`miyuki_uncapped_focused_hair_v2.png`（内置imagegen，1024×1536 RGBA）。原件与旧版保留，完整prompt／来源追加到上述manifest；事件节点及局部导入器同步指向修订版。仅本事件朝仓演出尺寸按不同画幅放大，未裁切原图。
+
+
+## 2026-10-30 医院傍晚庭院
+
+用户确认内置imagegen候选后，原样复制至 `assets/backgrounds/hospital_courtyard_v1/evening.png`（1672×941），注册 `hospital_courtyard_evening`。芹香Lv5 S02-001～045正式演出和回想共同引用；未修改正文、立绘或耗时。候选及生成prompt保留于 `assets/candidates/hospital_courtyard_evening_2026_10_30/`，校验和及映射见 `research/imports/hospital_courtyard_evening_2026-10-30.json`。
+
+## 2026-10-30 Whipple 静态术野
+
+用户指定附件原样导入 `assets/surgeries/advanced_fields_v1/whipple.png`，1280×1024（5:4）。注册于 `data/advanced_surgery/field_windows.json`，W01完成后至W13进入前显示。现有360×270窗口保持原图比例，内容约337.5×270，两侧留边；没有裁切、重绘或改变原图像素。来源与SHA256见 `research/imports/advanced_whipple_field_2026-10-30.json`。
+
+
+## 2026-10-31 Whipple 切皮术野
+
+用户提供 `/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-39a1b715-71ed-4be7-80f6-e4c0d220d1ba.png`，原样复制为 `assets/surgeries/advanced_fields_v1/whipple_incision.png`，1280×1024，SHA-256 `e90144f760df30157c99135c48395f4efceb38f1f28a491c230ec8229b452350`。用于W01切口与进入，完成操作后切换已有开腹术野；保留原比例，不裁剪。
+
+首次患者三张专属资源与生成来源见 `assets/characters/advanced_whipple_sakura_v1/generation_notes.md`。
+
+## 2026-10-31 Whipple 关腹术野
+
+用户提供 `/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d454028e-fe99-4a39-aeb0-896653982e76.png`，原样复制为 `assets/surgeries/advanced_fields_v1/whipple_closure.png`，1280×1024，SHA-256 `9eb1b4ad193020e19aeae455e83cdbe33d8c9ce980ed99b40a40f9ed703b145c`。W13关腹阶段取代原隐藏术野的行为，结束手术后隐藏；保留原比例，不裁剪。
+
+## 2026-10-31 Whipple 岗位确认图
+
+作者确认带锁骨心电监护电极的V2候选，原样复制到 `assets/characters/advanced_whipple_sakura_v1/team_confirmation.png`。仅首次病例患者档案绑定，返场随机患者不借用该图。生成来源及完整提示词见 `assets/candidates/whipple_team_table_2026_10_31/generation_notes.md`。
+
+## 2026-10-31 高级三术式技术占位
+
+用户明确授权患者、手术台与三阶段术野暂用placeholder。`assets/placeholders/advanced_surgery/` 七张PNG为本地程序绘制的中性技术面板，仅标记槽位／Artwork pending，不含任何具名角色或真实术野。三台共享占位文件，未来按各自资源映射替换，不能把共享文件直接换成某一患者。原始美术槽位清单保留于 `docs/source/advanced_three_cases_content_v1/art_manifest.json`。详见 [接入记录](advanced_three_cases_integration_2026-10-31.md)。
+
+
+## 2026-10-31 高级手术三名患者素材
+
+用户提供里见菜穗子、佐仓濑津美、秋庭里香种子图并授权生成；使用built-in imagegen，参照既有Whipple患者的赛璐璐画风与显示规格。各4张接入图位于assets/characters/advanced_nahoko_v1、advanced_setsumi_v1、advanced_rika_v1。每个目录generation_notes.md记录完整提示词、源文件与尺寸。未修改用户原图、故事文本及9个术野占位映射。
+
+
+### 2026-10-31 尤菲／霞全麻过场
+
+- `assets/events/anesthesia_v1/patient_yuffie_kisaragi/general.png`
+- `assets/events/anesthesia_v1/patient_doa_kasumi/general.png`
+
+作者明确要求补齐；built-in imagegen按各自已实装的全麻头像生成，1672×941 PNG。已登记对应患者 `splash/general_anesthesia`，各目录generation_notes.md记录完整提示词及生成源文件。全名册32名头像／全麻过场均通过文件检查与Godot中英加载。
+
+
+### 2026-10-31 作者替换里香手术台麻醉图
+
+- 原文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d2cb3f79-f0dd-4f22-ba33-b272953ccdff.png`
+- 接入文件：`assets/characters/advanced_rika_v1/team_confirmation_author_v3.png`
+- 尺寸：(1664, 960)
+- SHA-256：`100260ef5dfb23ece8d3d4b0377048deaa7d8ab973d1b0ab2f7fa9ee0945feed`
+- 原样复制，仅更新Ebstein首通患者的team_confirmation引用；旧v2保留。全麻头像与splash仍使用anesthesia.png。
+
+
+### 2026-10-31 盆壁肿瘤切除（髂血管重建）三类术野素材
+
+作者按附件1／2／3指定术野／切皮／缝合，全部原样复制，无裁切、重绘或压缩。
+
+- `assets/surgeries/advanced_fields_v1/pelvic_sidewall_iliac_field.png` → `path`；1280×1024；SHA-256 `0161c851697d5d0a429c4716c2619f79fd4a30c9650583c53dc30594b307955f`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-22230634-9591-464d-ae0a-bae38989393c.png`。
+- `assets/surgeries/advanced_fields_v1/pelvic_incision.png` → `incision_path`；1280×1024；SHA-256 `4c562fe97e14828454f9bdbaf617d75c1652470f799d84ec9a420a0db0bee6b5`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-165eacc7-fb5b-42fe-91cb-3123c08f6b00.png`。
+- `assets/surgeries/advanced_fields_v1/pelvic_closure.png` → `closure_path`；1280×1024；SHA-256 `f363e54507eb98c299b543e64183e1f2c3bfa75ccd13292ae8818328dcbec4dc`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-d23e1703-e83a-48e8-a4b2-7fa6730d164a.png`。
+
+复用授权：Whipple现有whipple_incision.png与whipple_closure.png可供普通腹部高级手术复用；pelvic_incision.png与pelvic_closure.png可供盆腔手术复用。pelvic_sidewall_iliac_field.png为本术式术野，不自动推广给其他术式。
+
+
+### 2026-10-31 Ebstein Cone重建三类术野素材
+
+作者附件1／2／3分别指定切皮／缝合／术野，全部原样复制，无裁切、重绘或压缩。
+
+- `assets/surgeries/advanced_fields_v1/thoracic_incision.png` → `incision_path`；1280×1024；SHA-256 `4c9dcad644eec46a3d70a079b344c5c7aafe6af39734769fceefe311081ac78b`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-3d88fa1a-51f6-4eb7-8ff2-82cbd1e20d52.png`。
+- `assets/surgeries/advanced_fields_v1/thoracic_closure.png` → `closure_path`；1280×1024；SHA-256 `61e8f84b512be1b807438ad4d0c00a68592da31c161b2f3f282c632d66b3f631`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-1e4a6f26-8a5e-4afd-b7c2-1f4c39863fb2.png`。
+- `assets/surgeries/advanced_fields_v1/ebstein_cone_field.png` → `path`；1280×1024；SHA-256 `7ed26970de9ab534e5c1847e29ba8578c319fe432599f775f445971c6d093f0c`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-9a66cb1d-80aa-4b33-ac3f-e5f7213c43fe.png`。
+
+作者授权thoracic_incision.png与thoracic_closure.png可复用于开胸手术。ebstein_cone_field.png仅用于本术式。当前仅替换Ebstein引用；其他术式映射保留。
+
+
+### 2026-10-31 开胸袖式肺叶切除三类术野素材
+
+作者附件1／2／3分别指定切皮／缝合／术野，全部原样复制，无裁切、重绘或压缩；仅替换本术式三个占位引用。
+
+- `assets/surgeries/advanced_fields_v1/sleeve_lobectomy_incision.png` → `incision_path`；1280×1024；SHA-256 `a63753d0a99224f21ac768d52d03f7d9950a2b4c16d25533c6a3fe9bd39f4732`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-880b24cb-efca-47c6-be68-b8e270bb4da0.png`。
+- `assets/surgeries/advanced_fields_v1/sleeve_lobectomy_closure.png` → `closure_path`；1280×1024；SHA-256 `fe74362ec0252bde0184cbfcb21bdec9c4ae6dbd4894b370286498021694b331`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-dd4ac171-a8f8-4ec6-b492-9cf74b67e448.png`。
+- `assets/surgeries/advanced_fields_v1/sleeve_lobectomy_field.png` → `path`；1280×1024；SHA-256 `e3e076c3ec5e4562569a7a22482aa079c344c3ee1dfc33895df3c0f965d80cc3`。源文件：`/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-944d2351-48dd-4a43-9092-eef7ae8bbefb.png`。
+
+作者追加授权：上列sleeve_lobectomy_incision.png与sleeve_lobectomy_closure.png可复用于侧卧位开胸手术，分别作为切皮／缝合图；沿用原文件与现有引用。
+
+## 本庄萌惠巡回护士立绘（2026-10-31）
+
+使用内置 image_gen，以本庄 v13 刷手服近景为身份参考、米田巡回护士立绘为站姿与着装参考，生成 1024×1536 RGBA 立绘。按用户纠正将蓬松大帽改为贴合短发的低矮系带帽。原样保存 `assets/characters/moe_circulating_v1/neutral.png`，登记 `scrubs/neutral`；旧更衣事件近景和 sterile 资源保留。生成提示、来源、修改说明与 SHA-256 见 `research/imports/nurse_moe_circulating_2026-10-31.json`。

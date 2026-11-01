@@ -27,7 +27,7 @@ func fixture(cg_id: String = "body_type_03", procedure_id: String = "surgery_app
 
 func run() -> void:
 	expect(content.load_all(), "Could not load content")
-	expect(PreopView.OR_TABLE_PALPATION_IMAGES.size() == 4, "Palpation body-type pool does not contain four images")
+	expect(Preop.OR_TABLE_PALPATION_CG_IDS.size() == 4, "Palpation body-type pool does not contain four images")
 	for cg_id in Preop.OR_TABLE_PALPATION_CG_IDS:
 		expect(PreopView.OR_TABLE_PALPATION_IMAGES.has(cg_id), "Palpation view omitted CG ID: " + cg_id)
 		expect(ResourceLoader.exists(str(PreopView.OR_TABLE_PALPATION_IMAGES[cg_id])), "Palpation CG asset is missing: " + cg_id)

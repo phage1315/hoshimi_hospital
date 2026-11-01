@@ -1,0 +1,159 @@
+[
+  {
+    "id": "mizuho_first_surgery_a",
+    "title": "这有什么好怕的？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 60,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "chihaya_third_surgery_a",
+      "chihaya_third_surgery_b",
+      "chihaya_third_surgery_c"
+    ],
+    "event_chain": [
+      "mizuho_first_surgery_a_main"
+    ],
+    "completion_flags": [
+      "mizuho_first_surgery_a_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "mizuho_first_surgery_a",
+      "title": "这有什么好怕的？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 620,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "mizuho_first_surgery_s",
+    "title": "这有什么好怕的？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": true,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "mizuho_first_surgery_a"
+    ],
+    "event_chain": [
+      "mizuho_first_surgery_s_main"
+    ],
+    "completion_flags": [
+      "mizuho_first_surgery_s_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "mizuho_first_surgery_s",
+      "title": "这有什么好怕的？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 620,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "mizuho_first_surgery_b",
+    "title": "这有什么好怕的？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "mizuho_first_surgery_a",
+      "mizuho_first_surgery_s"
+    ],
+    "event_chain": [
+      "mizuho_first_surgery_b_main"
+    ],
+    "completion_flags": [
+      "mizuho_first_surgery_b_complete",
+      "mizuho_first_surgery_success"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "mizuho_first_surgery_b",
+      "title": "这有什么好怕的？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 620,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "mizuho_first_surgery_c",
+    "title": "这有什么好怕的？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 60,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "unlock_requirements": [],
+    "required_characters": [],
+    "prerequisite_events": [
+      "mizuho_first_surgery_b"
+    ],
+    "event_chain": [
+      "mizuho_first_surgery_c_main"
+    ],
+    "completion_flags": [
+      "mizuho_first_surgery_c_complete",
+      "mizuho_first_surgery_chain_complete"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "mizuho_first_surgery_c",
+      "title": "这有什么好怕的？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 1,
+      "priority": 620,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  }
+]

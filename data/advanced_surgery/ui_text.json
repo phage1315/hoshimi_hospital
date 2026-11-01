@@ -1,0 +1,646 @@
+{
+  "title": [
+    "高级转诊 · 手术团队",
+    "Advanced referral · Surgical team"
+  ],
+  "dev": [
+    "独立测试：真实医护；主刀测试技巧88；不写入正式存档或角色数据",
+    "Isolated test: real staff, test surgeon skill 88; no campaign or staff changes"
+  ],
+  "prod": [
+    "正式进度 · 预约与结算仅在安全边界保存",
+    "Campaign · appointments and results save only at safe boundaries"
+  ],
+  "back": [
+    "返回医院导览",
+    "Return to hospital map"
+  ],
+  "exit": [
+    "退出独立测试",
+    "Exit isolated test"
+  ],
+  "gate": [
+    "需要手术技巧≥80、职业声望≥250，并完成高级转诊教程。",
+    "Requires Surgery 80+, Reputation 250+, and completion of the advanced referral tutorial."
+  ],
+  "first": [
+    "首发挑战",
+    "First attempt"
+  ],
+  "replay": [
+    "随机患者返场",
+    "Returning procedure / new patient"
+  ],
+  "warn": [
+    "首次挑战失败会永久锁定该术式；返场失败保留首通。",
+    "A failed first attempt permanently locks this procedure. Replay failure preserves its clearance."
+  ],
+  "quick": [
+    "Quick Advanced：暂未开放，等待完整生理模型一致性验收。",
+    "Quick Advanced is disabled pending full physiology-equivalence validation."
+  ],
+  "choose": [
+    "选择病例与编组",
+    "Choose case and team"
+  ],
+  "status": [
+    "首通 %s / 3 · 本轮永久失败 %s",
+    "Cleared %s / 3 · Permanently locked %s"
+  ],
+  "case": [
+    "病例：%s",
+    "Case: %s"
+  ],
+  "tags": [
+    "精细操作标签：%s",
+    "Precision tags: %s"
+  ],
+  "intro": [
+    "【高级转诊中心。外院病例资料送达。】",
+    "[Advanced referral centre. Records arrive from another hospital.]"
+  ],
+  "line1": [
+    "坂口：「是一台很复杂的手术。先把所有需要的医生和护士安排好。」",
+    "Sakaguchi: “This is a very complex operation. Let us arrange all the doctors and nurses we need first.”"
+  ],
+  "line2": [
+    "坂口：「每一步都得有人负责。准备好了，就按这个计划来。」",
+    "Sakaguchi: “Someone must take responsibility for each step. Once we are ready, we will follow this plan.”"
+  ],
+  "roles.first_assistant": [
+    "第一助手",
+    "First assistant"
+  ],
+  "roles.second_assistant": [
+    "第二助手",
+    "Second assistant"
+  ],
+  "roles.primary_scrub": [
+    "主器械护士",
+    "Primary scrub nurse"
+  ],
+  "roles.secondary_scrub": [
+    "副器械护士",
+    "Secondary scrub nurse"
+  ],
+  "roles.primary_circulating": [
+    "主巡回护士",
+    "Primary circulating nurse"
+  ],
+  "roles.secondary_circulating": [
+    "副巡回护士",
+    "Secondary circulating nurse"
+  ],
+  "roles.anesthesia": [
+    "麻醉科医生（全麻）",
+    "Anaesthetist (general anaesthesia)"
+  ],
+  "pick": [
+    "请选择",
+    "Select"
+  ],
+  "fixture": [
+    "测试阵容",
+    "Fixture team"
+  ],
+  "teaminfo": [
+    "主刀 %s · 助手 %s / %s · 器械 %s / %s · 巡回 %s / %s",
+    "Surgeon %s · Assistants %s / %s · Scrub %s / %s · Circulating %s / %s"
+  ],
+  "estimate": [
+    "HP层预计完成率（标准计划委托）：约%s%%\n尚未包含全部术中生理指标；实际结果取决于临场决策。",
+    "HP-only estimated completion (planned delegation): approximately %s%%\nNot all intraoperative physiology is included; actual outcomes depend on your decisions."
+  ],
+  "plan": [
+    "建议执行者（0=主刀，1/2=助手）：%s",
+    "Suggested operators (0=surgeon, 1/2=assistants): %s"
+  ],
+  "dates": [
+    "接诊第%s天 · 手术第%s天 · 复盘第%s天",
+    "Intake day %s · Operation day %s · Review day %s"
+  ],
+  "accept": [
+    "确认排程（接诊耗时60分钟）",
+    "Confirm booking (60-minute intake)"
+  ],
+  "calendar": [
+    "当前时间或未来日程冲突，暂不能接诊；病例仍保留。",
+    "The current time or future schedule conflicts. This case remains available."
+  ],
+  "team": [
+    "请选齐七名不同且具备岗位资格的医护；助手须在手术日结束冷却。",
+    "Select seven distinct, eligible staff members. Assistants must be off cooldown on the operation date."
+  ],
+  "unavailable": [
+    "当前不能接受该病例。",
+    "This case cannot be accepted now."
+  ],
+  "booked": [
+    "病例已预约；手术当日将从医院导览自动进入。",
+    "Case booked. The hospital map will open the operation on its scheduled date."
+  ],
+  "start": [
+    "开始 Day 2 手术（占用整日）",
+    "Begin Day 2 operation (full day)"
+  ],
+  "jump": [
+    "测试：前进至预约日期",
+    "Test: advance to appointment date"
+  ],
+  "stage": [
+    "阶段 %s / %s · %s · %s",
+    "Stage %s / %s · %s · %s"
+  ],
+  "hp": [
+    "手术储备 HP：%s / 100",
+    "Operative reserve HP: %s / 100"
+  ],
+  "uses": [
+    "助手已使用：%s / %s；通常一次，≥90且本节点专科匹配可二次。",
+    "Assistant uses: %s / %s; normally one, a matching specialty at Surgery 90+ permits a second."
+  ],
+  "operate": [
+    "由主刀执行",
+    "Operate personally"
+  ],
+  "delegate": [
+    "委托：%s（成功率%s%%）",
+    "Delegate: %s (%s%% success)"
+  ],
+  "standard": [
+    "按标准方案继续（策略占位）",
+    "Continue with standard approach (strategy placeholder)"
+  ],
+  "continue": [
+    "继续",
+    "Continue"
+  ],
+  "failure": [
+    "精细操作未成功。选择自行纠正或请尚有额度的助手援救。",
+    "Precision attempt failed. Correct it yourself or request an eligible assistant rescue."
+  ],
+  "correct": [
+    "自行纠正",
+    "Correct personally"
+  ],
+  "rescue": [
+    "请求援救：%s",
+    "Request rescue: %s"
+  ],
+  "result": [
+    "本次损耗 %s HP · 精细判定：%s",
+    "Action cost: %s HP · Precision outcome: %s"
+  ],
+  "pass": [
+    "成功／无需判定",
+    "Successful / no check required"
+  ],
+  "fail": [
+    "失败",
+    "Failed"
+  ],
+  "crisis": [
+    "生理危机处理中 · HP危机成本已结算一次",
+    "Physiological crisis · crisis HP cost has been applied once"
+  ],
+  "pause_and_stabilize": [
+    "暂停操作，全力稳定患者",
+    "Pause and stabilise the patient"
+  ],
+  "hold_field_team_rescue": [
+    "保持当前术野，让团队处理",
+    "Hold the field and let the team respond"
+  ],
+  "finish_critical_action": [
+    "先完成当前关键动作再处理",
+    "Finish the critical action before responding"
+  ],
+  "vitals": [
+    "稳定度 %s · 失血 %s · 术野 %s · 出血 %s · 手术用时 %s分钟",
+    "Stability %s · Blood loss %s · Visibility %s · Bleeding %s · Operating time %s min"
+  ],
+  "success": [
+    "手术完成",
+    "Operation completed"
+  ],
+  "aborted": [
+    "手术失败／终止",
+    "Operation failed / aborted"
+  ],
+  "finish": [
+    "完成手术日，等待复盘",
+    "Finish operation day and await review"
+  ],
+  "review": [
+    "Day 3 · 复盘与结算",
+    "Day 3 · Review and settlement"
+  ],
+  "settle": [
+    "确认结算（60分钟，仅一次）",
+    "Settle results (60 minutes, once only)"
+  ],
+  "reward": [
+    "手术经验 +%s · 领导经验 +%s · 声望 +%s",
+    "Surgery XP +%s · Leadership XP +%s · Reputation +%s"
+  ],
+  "summary": [
+    "最终HP %s · 精细失败 %s · 援救 %s · 危机 %s（仅本次内存显示）",
+    "Final HP %s · Precision failures %s · Rescues %s · Crises %s (current-session display only)"
+  ],
+  "limitations": [
+    "原型：正式患者、策略选项及术式级双评价待补齐；未据HP生成评级。",
+    "Prototype: authored patients, strategy choices and procedure-specific dual ratings remain pending. No grade is inferred from HP."
+  ],
+  "failxp": [
+    "失败不发声望；现有失败流程无训练奖励，本次不另行发奖。",
+    "Failure grants no reputation. The existing failure path grants no training rewards; no extra awards are added."
+  ],
+  "done": [
+    "结算完成",
+    "Settlement complete"
+  ],
+  "new": [
+    "返回病例板",
+    "Return to case board"
+  ],
+  "cooldown": [
+    "%s：高级助手可再出勤日 %s",
+    "%s: next eligible advanced-assistant day %s"
+  ],
+  "preview_ready": [
+    "选齐团队后显示风险预估。",
+    "Complete the team to see the risk estimate."
+  ],
+  "waiting": [
+    "预约尚未到日，请回到医院导览继续日常工作。",
+    "The appointment is in the future. Return to the map to continue normal work."
+  ],
+  "rebook": [
+    "重新排程（保留病例，不扣首次资格）",
+    "Reschedule (keep case and first-attempt eligibility)"
+  ],
+  "mode": [
+    "真实医护试玩使用普通生理危机系统；纯数值测试阵容保留独立HP危机模型。",
+    "Real-staff play uses the ordinary physiological crisis system; numerical fixtures retain the HP-only crisis model."
+  ],
+  "assistant_preview": [
+    "%s：专科 %s；第二次介入 %s",
+    "%s: specialties %s; second intervention %s"
+  ],
+  "none": [
+    "未登记",
+    "not registered"
+  ],
+  "universal": [
+    "全科专家",
+    "universal expert"
+  ],
+  "matching": [
+    "仅匹配专科",
+    "matching specialties only"
+  ],
+  "no_second": [
+    "不可用",
+    "unavailable"
+  ],
+  "unavailable_action": [
+    "额度耗尽，或第二次介入未满足技巧／专科条件。",
+    "No uses remain, or the second-use skill / specialty requirement is unmet."
+  ],
+  "confirm_rebook": [
+    "确认重新排程（不重复扣接诊时间）",
+    "Confirm reschedule (no additional intake time)"
+  ],
+  "stage_tag": [
+    "当前精细操作：%s",
+    "Current precision specialty: %s"
+  ],
+  "next_week": [
+    "测试：前进至下周一，刷新返场",
+    "Test: advance to next Monday and refresh replays"
+  ],
+  "test_day": [
+    "独立测试 · 第%02d天",
+    "TEST DAY %02d"
+  ],
+  "real_team": [
+    "测试开放已实装医护供选人，使用各自真实能力；岗位与冷却限制保留。",
+    "Implemented staff are available for testing with their actual skills; role and cooldown rules apply."
+  ],
+  "team_confirmation": [
+    "全麻完成 · 团队岗位确认",
+    "General anaesthesia complete · Team confirmation"
+  ],
+  "confirm_member": [
+    "确认岗位，继续 →",
+    "Confirm role and continue →"
+  ],
+  "induction": [
+    "全身麻醉诱导完成",
+    "General anaesthesia induction complete"
+  ],
+  "narration": [
+    "旁白",
+    "Narration"
+  ],
+  "patient_cast": [
+    "随机池患者素材 · 全麻病例演示",
+    "Random-pool patient assets · General-anaesthesia demonstration"
+  ],
+  "lead_surgeon": [
+    "主刀",
+    "Lead surgeon"
+  ],
+  "player_speaker": [
+    "坂口",
+    "Sakaguchi"
+  ],
+  "failure_next": [
+    "继续",
+    "Continue"
+  ],
+  "failure_skip": [
+    "跳过对白",
+    "Skip dialogue"
+  ],
+  "field_pending": [
+    "静态术野 · 素材待提供\n4:3 预留窗口",
+    "Static operative field · artwork pending\n4:3 preview"
+  ],
+  "operative_field": [
+    "术野",
+    "Operative field"
+  ],
+  "compact_dev": [
+    "DEV · 独立测试",
+    "DEV · Isolated test"
+  ],
+  "compact_exit": [
+    "退出测试",
+    "Exit test"
+  ],
+  "metric.hp": [
+    "手术储备 HP",
+    "Operative reserve HP"
+  ],
+  "metric.stability": [
+    "稳定度",
+    "Stability"
+  ],
+  "metric.visibility": [
+    "术野清晰度",
+    "Visibility"
+  ],
+  "metric.bleeding": [
+    "当前出血",
+    "Bleeding"
+  ],
+  "metric.blood_loss": [
+    "累计失血",
+    "Blood loss"
+  ],
+  "metric.elapsed_time": [
+    "手术用时",
+    "Operating time"
+  ],
+  "operation_F": [
+    "流程操作",
+    "Flow"
+  ],
+  "operation_L": [
+    "团队配合",
+    "Teamwork"
+  ],
+  "operation_S": [
+    "策略选择",
+    "Strategy"
+  ],
+  "operation_P": [
+    "精细操作",
+    "Precision"
+  ],
+  "current_action": [
+    "当前操作：%s",
+    "Current action: %s"
+  ],
+  "chance": [
+    "成功率 %s%%",
+    "Success chance %s%%"
+  ],
+  "remaining": [
+    "当前节点可用 %s 次",
+    "Available here: %s"
+  ],
+  "consume_one": [
+    "消耗1次助手额度",
+    "Costs 1 use"
+  ],
+  "no_quota": [
+    "不消耗助手额度",
+    "No assistant use"
+  ],
+  "quota_spent": [
+    "本台手术额度已耗尽",
+    "All interventions used"
+  ],
+  "skill_required": [
+    "第二次接手需要技巧≥90",
+    "Second use requires Surgery 90+"
+  ],
+  "specialty_required": [
+    "第二次接手需匹配本节点专科",
+    "Second use needs a matching specialty"
+  ],
+  "complete_step": [
+    "完成本步骤",
+    "Complete this step"
+  ],
+  "stage_result": [
+    "操作结果",
+    "Action result"
+  ],
+  "minutes_short": [
+    "%s 分钟",
+    "%s min"
+  ],
+  "field_not_open": [
+    "尚未进入开放术野阶段",
+    "Operative field not yet open"
+  ],
+  "field_closed": [
+    "术野已关闭",
+    "Operative field closed"
+  ],
+  "monitor": [
+    "生理监控",
+    "Patient monitor"
+  ],
+  "condition_active": [
+    "当前数值满足术式中的生理条件",
+    "Current value meets a procedure effect condition"
+  ],
+  "crisis_panel": [
+    "危机处理 · 优先稳定患者",
+    "Crisis response · Stabilize the patient"
+  ],
+  "rescue_panel": [
+    "精细操作未通过 · 选择一次补救",
+    "Precision failed · Choose one correction"
+  ],
+  "self_correct": [
+    "由主刀纠正",
+    "Surgeon correction"
+  ],
+  "help_uses": [
+    "每位助手通常可接手一次；技巧≥90且当前节点专科匹配（或全科专家）时可接手第二次。接手与补救共享额度。",
+    "Normally one intervention per assistant. Surgery 90+ plus a matching specialty (or universal expertise) permits a second. Delegation and rescue share the same allowance."
+  ],
+  "progress_help": [
+    "精细操作节点以蓝色标识；当前阶段以亮框标识。",
+    "Blue nodes indicate Precision stages; the bright border marks the current stage."
+  ],
+  "change_hint": [
+    "最近一次操作的数值变化",
+    "Changes from the latest action"
+  ],
+  "reconstruction": [
+    "重建（Reconstruction）",
+    "Reconstruction"
+  ],
+  "adhesion": [
+    "粘连分离（Adhesion）",
+    "Adhesion"
+  ],
+  "vascular": [
+    "血管操作（Vascular）",
+    "Vascular"
+  ],
+  "microdissection": [
+    "精细分离（Microdissection）",
+    "Microdissection"
+  ],
+  "neural": [
+    "神经分离（Neural）",
+    "Neural"
+  ],
+  "pelvic": [
+    "盆腔操作（Pelvic）",
+    "Pelvic"
+  ],
+  "thoracic": [
+    "胸腔操作（Thoracic）",
+    "Thoracic"
+  ],
+  "airway": [
+    "气道重建（Airway）",
+    "Airway"
+  ],
+  "remaining_max": [
+    "剩余最多 %s 次",
+    "Up to %s remaining"
+  ],
+  "patient_ready_title": [
+    "患者准备就绪",
+    "Patient ready for surgery"
+  ],
+  "patient_ready_text": [
+    "%s已经全身麻醉，固定在手术台上，准备好可以开刀了。",
+    "%s is under general anaesthesia and secured on the operating table, ready for the incision."
+  ],
+  "begin_timeout": [
+    "开始团队 Time-out →",
+    "Begin team time-out →"
+  ],
+  "team_day1": [
+    "Day 1 · 手术团队编成 / Grand OR",
+    "Day 1 · Grand OR team formation"
+  ],
+  "team_lead_fixed": [
+    "主刀医生 · 固定",
+    "Lead surgeon · Fixed"
+  ],
+  "team_skill_surgery": [
+    "手术",
+    "Surgery"
+  ],
+  "team_skill_instrument_handling": [
+    "器械操作",
+    "Instrument handling"
+  ],
+  "team_skill_teamwork": [
+    "团队协作",
+    "Teamwork"
+  ],
+  "team_skill_anesthesia": [
+    "麻醉",
+    "Anaesthesia"
+  ],
+  "team_case": [
+    "患者与病例",
+    "Patient & case"
+  ],
+  "team_estimate_title": [
+    "HP 层预计完成率",
+    "HP-only estimated completion"
+  ],
+  "team_estimate_note": [
+    "仅模拟 HP 层与标准委托计划，不代表完整生理模型成功率；实际结果取决于临场决策。",
+    "HP-only simulation with planned delegation, not a full-physiology success rate. Actual outcomes depend on your decisions."
+  ],
+  "team_first_warning": [
+    "首次挑战失败将永久锁定本术式。",
+    "First-attempt failure permanently locks this procedure."
+  ],
+  "team_replay_warning": [
+    "返场失败保留首通，不撤销已解锁内容。",
+    "Replay failure preserves the first clearance."
+  ],
+  "team_back": [
+    "返回病例板",
+    "Back to case board"
+  ],
+  "team_confirm": [
+    "确认排程",
+    "Confirm schedule"
+  ],
+  "team_rebook": [
+    "确认重新排程",
+    "Confirm reschedule"
+  ],
+  "team_incomplete": [
+    "请完成有效编组",
+    "Complete a valid team"
+  ],
+  "team_pick_hint": [
+    "七个岗位不可重复使用同一人。",
+    "Choose a different person for each of the seven roles."
+  ],
+  "team_percent": [
+    "约 %s%%",
+    "Approx. %s%%"
+  ],
+  "team_uses": [
+    "最多介入 %s 次",
+    "Up to %s uses"
+  ],
+  "team_specialist": [
+    "专科匹配时可二次介入",
+    "Second use on matching stages"
+  ],
+  "team_standard": [
+    "常规介入额度",
+    "Standard intervention allowance"
+  ],
+  "team_coverage": [
+    "专科覆盖 %s / %s 个精细节点 · 悬停查看",
+    "Specialty coverage: %s / %s Precision stages · Hover"
+  ],
+  "team_coverage_note": [
+    "专科覆盖不是额度分配；两位助手各自全程最多两次，第二次仍需技巧≥90且节点匹配。",
+    "Coverage is not a quota allocation. Each assistant has at most two uses; a second requires Surgery 90+ and a matching stage."
+  ],
+  "team_skill_calmness": [
+    "沉着",
+    "Calmness"
+  ]
+}

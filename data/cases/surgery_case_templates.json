@@ -277,7 +277,8 @@
             "effects": {
               "fear": 5,
               "trust": 5,
-              "dignity": 0
+              "dignity": 0,
+              "presence": 0
             },
             "event_flags": [
               "exploratory_surgery_informed_consent"
@@ -307,6 +308,11 @@
               "postoperative_ethics_confrontation"
             ]
           }
+        ],
+        "runtime_enabled": true,
+        "runtime_options": [
+          "explain_and_confirm",
+          "frighten_with_worst_case"
         ]
       }
     ],

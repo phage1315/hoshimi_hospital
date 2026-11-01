@@ -1,0 +1,27 @@
+{
+  "key": "operating_table_lithotomy/awake",
+  "source_type": "user_supplied",
+  "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-e5575362-a389-45d7-afa9-6cdbd6687efe.png",
+  "runtime_path": "assets/characters/patient_amis_ernest_v1/patient_amis_ernest/operating_table_lithotomy/awake.png",
+  "saved_path": "/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/research/patient_candidates/patient_amis_ernest/base_v1/operating_table_lithotomy_awake.png",
+  "size": [
+    1472,
+    1088
+  ],
+  "mode": "RGB",
+  "sha256": "52459b02a9137d1fca3f8a0334738f5b2a8e02048047e5f9f2c0602ba333a9aa",
+  "visual_review": "passed in preceding user-requested acceptance",
+  "size_exception": "Native supplied 1472x1088 preserved; no cropping or stretching",
+  "runtime_mapped": true,
+  "status": "accepted",
+  "consumer": "preop_view.gd:operating_table_outfit; patient portrait preview",
+  "runtime_render_test": "not run: Godot unavailable",
+  "validation": {
+    "patient_loader": "passed",
+    "source_hash_and_mapping": "passed; byte-identical copy",
+    "patient_fields": "only portraits mapping changed; all other fields unchanged",
+    "display_fit": "app.gd:add_portrait uses STRETCH_KEEP_ASPECT_CENTERED",
+    "repository_validator": "not globally passing; reports existing repository issues and four Amis intraoperative images not yet mapped",
+    "godot": "Unavailable on PATH and checked application locations; editor import and portrait_test.gd not run"
+  }
+}

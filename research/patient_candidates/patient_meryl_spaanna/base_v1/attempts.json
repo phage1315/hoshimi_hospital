@@ -1,0 +1,27 @@
+[
+  {
+    "key": "outpatient/neutral",
+    "status": "fulfilled"
+  },
+  {
+    "key": "ward/neutral",
+    "status": "fulfilled"
+  },
+  {
+    "key": "operating_table/awake",
+    "status": "fulfilled"
+  },
+  {
+    "key": "operating_table_lithotomy/awake",
+    "status": "rejected",
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID d335f3fc-d80b-452e-ae76-2d139a52d9d4.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+  },
+  {
+    "key": "intraoperative/tense",
+    "status": "fulfilled"
+  },
+  {
+    "key": "splash/general_anesthesia",
+    "status": "fulfilled"
+  }
+]
