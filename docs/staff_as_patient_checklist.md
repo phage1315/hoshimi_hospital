@@ -1,6 +1,6 @@
 # Staff-as-Patient / Lv5 交付清单
 
-现行核验：2026-11-01。新增可作为患者的医护、开放其 Lv5 患者资格时，须逐项检查；不能仅凭剧情或普通患者素材齐全就宣称全部完成。
+现行核验：2026-11-02。新增可作为患者的医护、开放其 Lv5 患者资格时，须逐项检查；不能仅凭剧情或普通患者素材齐全就宣称全部完成。
 
 ## 作者与数据交付
 
@@ -43,3 +43,23 @@
 相关：[高级术式交付清单](advanced_surgery_content_checklist_v1.md)、[医护术中头像清单](intraoperative_staff_avatar_checklist.md)、[本批实装与验收](advanced_staff_patient_integration_2026-11-01.md)。
 
 同日俯卧版本交付：两人的运行 `prone.png` 已更新为作者提供的1664×960版本，原SFW俯卧图保留于各自参考目录并记录哈希。开胸、俯卧运行版本均不得用作后续生成的基础参考。
+
+## Lv5 开放前的强制回归（2026-11-02）
+
+V2.3 的 24 人剧本已预置。预置正文与开放患者资格是独立状态：目前仅小夜香、芹香注册为正式患者。新增 Lv5 患者必须先补齐档案和素材，再运行以下检查；不得以数值关系等级设为 5 代替真实事件前置。
+
+```sh
+python3 tools/advanced_staff_patient_source_audit.py
+godot --headless --path . --script tools/staff_patient_lv5_readiness_test.gd
+godot --headless --path . --script tools/advanced_staff_patient_test.gd
+python3 tools/narrative_localization_test.py
+python3 tools/localization_audit.py
+```
+
+- Readiness 测试通过真实章节适配器遍历全部 24 人六个段落，检查非空双语、说话人和场景头像键；未开放角色仅预置，不要求提前制作全部素材。
+- 对患者注册表中的**每个人**，强制检查病房立绘、私密 neutral 头像、全麻头像、全部实际 portrait 引用以及腹部／胸部／侧卧／俯卧四种台面图；资源必须能由 Godot 加载为有尺寸的纹理，不能只验证路径字符串。已注册角色缺任何一项即失败。
+- 中英文患者展示映射均检查；真实 Lv5 事件完成事实与必要前置在内存中构造后，验证正式资格。缺章节、缺英文、缺各类头像和体位图均有负向测试。
+- 完整流程测试同样从患者注册表动态取人，覆盖首次、重复、跳过、成功、失败、100%／50%／0% 结算及全程禁存档。新增角色不应再只跑小夜香／芹香的硬编码名单。
+- 以上是自动化发布验收，不额外改变运行时解锁规则。通过后仍需图形模式逐段检查大小、裁切、对白遮挡及说话人与立绘对应，不能把无头资源加载当成全部视觉验收。
+
+原文映射工具：`tools/advanced_staff_patient_v23_source.py`，只更新 V2.3 的 actors，保留 common／repeat。不要运行旧 V1 导入器覆盖当前数据。原作者英文成美句中的 `揉` 已获用户授权仅补译为 `rub`；原始归档不变。其余正文按原文核对，夜间段落仅为切换头像分为 night／dark，顺序不变。

@@ -1022,8 +1022,11 @@ func expire_free_h_booking() -> void:
 		free_h_booking.clear()
 
 func free_h_unlocked(actor_id: String) -> bool:
+	return free_h_relationship_qualified(actor_id) and str(FreeHRegistry.definition(actor_id).get("content_status", "ready")) == "ready"
+
+func free_h_relationship_qualified(actor_id: String) -> bool:
 	var config := FreeHRegistry.definition(actor_id)
-	if config.is_empty() or str(config.get("content_status", "ready")) != "ready" or not staff_is_met(actor_id):
+	if config.is_empty() or not staff_is_met(actor_id):
 		return false
 	var person: Dictionary = {}
 	for candidate in staff:
@@ -2970,7 +2973,7 @@ func _complete_character_event_for_test(event_id: String, completed_day: int) ->
 		return false
 	var session := CharacterEvent.new(character_event_definitions[event_id])
 	var guard := 0
-	while not session.completed and guard < 200:
+	while not session.completed and guard < maxi(200, session.definition.get("nodes", []).size() * 2):
 		var node: Dictionary = session.current()
 		if node.is_empty() or node.get("choices", []).is_empty():
 			return false
@@ -3142,6 +3145,8 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 	var conditions: Dictionary = definition.get("conditions", {})
 	var target_day := clampi(int(conditions.get("min_day", 1)), 1, GAME_DURATION_DAYS)
 	var required_gap := int(conditions.get("days_after_required_events", 0))
+	if str(definition.get("category", "")) == "rank_up":
+		required_gap = maxi(required_gap, int(Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS))
 	for required_id in conditions.get("required_events", []):
 		var required_definition: Dictionary = character_event_definitions.get(str(required_id), {})
 		target_day = maxi(target_day, int(required_definition.get("conditions", {}).get("min_day", 1)) + required_gap)

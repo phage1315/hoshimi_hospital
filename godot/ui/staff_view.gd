@@ -47,6 +47,10 @@ static func render(app: Control, id: String, from_location: String, expression: 
 		var caption: String = app.tx("ui.free_h.cancel", "取消今晚的约定") if booked else app.tx("ui.free_h.invite", "约今晚下班后一起过夜")
 		var action: Callable = app.cancel_free_h_booking.bind(app.show_staff.bind(id, from_location)) if booked else app.request_free_h_booking.bind(id, from_location)
 		app.button_at(caption, Vector2(65, 160), Vector2(440 if app.game.staff_patient_unlocked(id) else 640, 42), action).name = "FreeHBooking"
+	elif app.game.free_h_relationship_qualified(id) and not app.game.free_h_unlocked(id):
+		var pending = app.button_at(app.tx("ui.free_h.pending_assets", "亲密事件已解锁 · 素材待补"), Vector2(65, 160), Vector2(440 if app.game.staff_patient_unlocked(id) else 640, 42), func(): pass)
+		pending.name = "FreeHBookingPendingAssets"
+		pending.disabled = true
 	if app.game.staff_patient_unlocked(id):
 		app.button_at(app.tx("ui.staff_patient.invite", "邀请手术"), Vector2(515, 160), Vector2(190, 42), StaffPatientView.invite.bind(app, id)).name = "StaffPatientInvite"
 	var portrait = app.page.get_node_or_null("CharacterPortrait")

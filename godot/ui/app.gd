@@ -889,7 +889,7 @@ func show_event_test_hub() -> void:
 	page.add_child(event_scroll)
 	var event_content := Control.new()
 	event_content.name = "EventTestList"
-	event_content.custom_minimum_size = Vector2(1170, max(500, (definitions.size() + 3) * 86 + 20))
+	event_content.custom_minimum_size = Vector2(1170, max(500, (definitions.size() + 6) * 86 + 20))
 	event_scroll.add_child(event_content)
 	var advanced_button := button_at("Advanced Surgery · Isolated Test" if content.localizer.locale == "en" else "高级手术 · 独立测试", Vector2.ZERO, Vector2(1110, 68), show_advanced_referral.bind(true)) # localization-invariant
 	page.remove_child(advanced_button)
@@ -904,6 +904,16 @@ func show_event_test_hub() -> void:
 		event_content.add_child(entry)
 		entry.position = Vector2(20, 10 + (actor_index + 1) * 86)
 		entry.name = "AdvancedStaffPatientTest_" + actor_id
+	var character_ids := ["miyuki_lv4_inspection", "ev_doc_takemi_lv1_vivisection_frog", "ev_doc_takemi_lv2_fujino_laparotomy"]
+	for character_index in range(character_ids.size()):
+		var character_id: String = character_ids[character_index]
+		var definition: Dictionary = game.character_event_definitions.get(character_id, {})
+		if definition.is_empty():continue
+		var entry := button_at(str(definition.get("title", character_id)), Vector2.ZERO, Vector2(1110, 68), begin_character_event_hub_test.bind(character_id))
+		page.remove_child(entry)
+		event_content.add_child(entry)
+		entry.position = Vector2(20, 10 + (character_index + 3) * 86)
+		entry.name = "CharacterEventTest_" + character_id
 	for i in range(definitions.size()):
 		var definition: Dictionary = definitions[i]
 		var event_id := str(definition.get("id", ""))
@@ -914,9 +924,16 @@ func show_event_test_hub() -> void:
 		var event_button := button_at(caption, Vector2.ZERO, Vector2(1110, 68), begin_special_event_test_from_title.bind(event_id))
 		page.remove_child(event_button)
 		event_content.add_child(event_button)
-		event_button.position = Vector2(20, 10 + (i + 3) * 86)
+		event_button.position = Vector2(20, 10 + (i + 6) * 86)
 		event_button.name = "EventTest_" + event_id
 	button_at(tx("ui.event_test.back", "← 返回标题"), Vector2(1030, 88), Vector2(185, 44), title_screen)
+
+func begin_character_event_hub_test(event_id: String) -> void:
+	if not game.prepare_character_event_test_save(event_id):return
+	var definition: Dictionary = game.character_event_definitions[event_id]
+	game.set_test_time(game.day_number(), int(definition.get("time_start", 540)))
+	if game.start_character_event(event_id) != null:
+		show_character_event()
 
 func begin_sayaka_lv4_event_test() -> void:
 	if not game.prepare_sayaka_lv4_event_test():

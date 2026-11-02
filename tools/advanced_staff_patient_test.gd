@@ -89,7 +89,15 @@ func episode(actor: String, prior: int, skip: bool, forced_failure: bool) -> voi
 	print("EPISODE ", actor, " prior=",prior," skip=",skip," success=",success," xp=",rewards-xp)
 
 func run() -> void:
-	for actor in ["doc_sayaka", "doc_serika"]:
+	# Any newly registered Lv5 patient must satisfy the same release requirements.
+	var readiness_game = new_game()
+	var readiness = preload("res://tools/staff_patient_lv5_readiness.gd")
+	var story_data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/staff_patient/stories.json"))
+	var pose_data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/staff_patient/assets.json"))
+	for actor in readiness.Registry.profiles():
+		var result: Dictionary = readiness.inspect_actor(readiness_game, actor, story_data, pose_data)
+		expect(result.ready, "Lv5 release readiness " + actor + ": " + str(result.missing))
+	for actor in preload("res://godot/systems/staff_patient_registry.gd").profiles():
 		for prior in [-1, 0, 1, 2]: episode(actor, prior, prior%2==0, false)
 		episode(actor, -1, true, true)
 	var g = new_game()
