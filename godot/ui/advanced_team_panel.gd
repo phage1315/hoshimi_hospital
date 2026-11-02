@@ -74,6 +74,7 @@ func draw() -> void:
 	text(patient_panel,view.tr_key("team_case"),Rect2(14,8,340,24),16)
 	text(patient_panel,str(patient.get("name","")),Rect2(14,32,326,36),20)
 	var diagnosis: String = str(patient.get("diagnosis_en" if view.english else "diagnosis",definition.patient_notice_en if view.english else definition.patient_notice))
+	if view.record.has("staff_patient_id"): diagnosis = view.tr_key("staff_pool")
 	# Author diagnoses can be longer than Whipple's. Keep the full source readable
 	# inside this fixed case card without scrolling the team controls or footer.
 	var diagnosis_box := RichTextLabel.new()
@@ -110,7 +111,7 @@ func draw() -> void:
 	back.name="new";back.position=Vector2(10,15);back.size=Vector2(210,44);back.text=view.tr_key("team_back");back.add_theme_font_size_override("font_size",18)
 	back.pressed.connect(func(): view.record = {};view.editing_booking=false;view.render())
 	footer.add_child(back)
-	var warning := text(footer,view.tr_key("team_replay_warning" if view.record.replay else "team_first_warning"),Rect2(236,8,630,58),16)
+	var warning := text(footer,view.tr_key("staff_warning" if view.record.has("staff_patient_id") else "team_replay_warning" if view.record.replay else "team_first_warning"),Rect2(236,8,630,58),16)
 	warning.add_theme_color_override("font_color",Color("ffd09b"))
 	confirm=Button.new()
 	confirm.name="accept";confirm.position=Vector2(880,15);confirm.size=Vector2(290,44)

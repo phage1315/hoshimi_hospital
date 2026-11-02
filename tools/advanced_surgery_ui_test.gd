@@ -16,6 +16,9 @@ func click(id: String) -> void:
 	var b = view().body.find_child(id, true, false)
 	expect(b is Button and not b.disabled, "Visible usable button: " + id)
 	if b is Button and not b.disabled: b.pressed.emit()
+	if not app.advanced_controller.day_transition.is_empty():
+		expect(view().get_node_or_null("AdvancedDayTransition") != null, "Production cross-day card visible")
+		view().finish_day_transition()
 	while not app.advanced_controller.story_phase.is_empty():
 		app.advanced_controller.advance_story();view().render()
 func capture(name: String) -> void:
@@ -43,11 +46,14 @@ func run() -> void:
 		await process_frame
 		await capture(locale + "_board")
 		for definition in Model.catalog():
+			if not preload("res://godot/systems/advanced_referral_rules.gd").procedure_ready(str(definition.id)): continue
+			app.advanced_controller.fixture_mode = not Model.fixtures(str(definition.id)).is_empty()
 			click("case_advanced_first_" + str(definition.id))
 			await process_frame
 			var v = view()
-			v.body.get_node("FixturePicker").select(2)
-			v.body.get_node("FixturePicker").item_selected.emit(2)
+			if app.advanced_controller.fixture_mode:
+				v.body.get_node("FixturePicker").select(2)
+				v.body.get_node("FixturePicker").item_selected.emit(2)
 			await process_frame
 			expect(not v.risk_label.text.is_empty(), "Localized risk preview populated")
 			await capture(locale + "_team_" + str(definition.id))
@@ -57,11 +63,18 @@ func run() -> void:
 			var s = app.advanced_controller.session
 			expect(s != null, "UI starts operation")
 			if s == null: break
+			if s.splash_pending:
+				app.page.get_node("GeneralAnesthesiaSplash").find_child("AnesthesiaSplashContinue", true, false).pressed.emit()
+				await process_frame
+			if s.patient_ready_pending: click("begin_timeout")
+			while s.team_intro_index >= 0:
+				click("confirm_member"); await process_frame
 			var choices: Array = Model.plan(s.definition, s.team)
 			var p := 0
 			for guard in range(120):
 				if s.finished: break
-				if s.pending_rescue: click("correct")
+				if s.in_crisis(): click("pause_and_stabilize")
+				elif s.pending_rescue: click("correct")
 				elif s.awaiting_ack: click("continue")
 				elif s.current().kind == "P":
 					await capture(locale + "_precision_" + str(definition.id)) if p == 0 else process_frame
@@ -73,6 +86,8 @@ func run() -> void:
 			expect(s.finished, "All stages reach result through UI controls")
 			click("finish"); await process_frame
 			click("settle"); await process_frame
+			while app.advanced_controller.failure_dialogue_index >= 0:
+				click("failure_next"); await process_frame
 			await capture(locale + "_settled_" + str(definition.id))
 			expect(app.game.snapshot() == before, "Dev flow leaves campaign values and saves unchanged")
 			click("new"); await process_frame
@@ -83,6 +98,8 @@ func run() -> void:
 	app.game.surgery_xp = app.game.surgery_xp_for_level(88)
 	app.game.archived_player_effects.reputation = 300
 	app.game.set_story_flag("advanced_referral_random_cases_enabled", true)
+	app.game.special_event_completion_counts["advanced_referral_tutorial_chisato"] = 1
+	app.game.special_event_completion_days["advanced_referral_tutorial_chisato"] = 3
 	for person in app.game.staff: app.game.relation_for(person.id).met = true
 	app.game.special_event_definitions.clear()
 	app.game.set_test_time(15, 540)

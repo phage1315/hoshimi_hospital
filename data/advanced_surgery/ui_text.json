@@ -35,17 +35,13 @@
     "首次挑战失败会永久锁定该术式；返场失败保留首通。",
     "A failed first attempt permanently locks this procedure. Replay failure preserves its clearance."
   ],
-  "quick": [
-    "Quick Advanced：暂未开放，等待完整生理模型一致性验收。",
-    "Quick Advanced is disabled pending full physiology-equivalence validation."
-  ],
   "choose": [
     "选择病例与编组",
     "Choose case and team"
   ],
   "status": [
-    "首通 %s / 3 · 本轮永久失败 %s",
-    "Cleared %s / 3 · Permanently locked %s"
+    "已首通 %s 台 · 首次失败锁定 %s 台",
+    "Cleared: %s · First-attempt failures locked: %s"
   ],
   "case": [
     "病例：%s",
@@ -248,8 +244,8 @@
     "Final HP %s · Precision failures %s · Rescues %s · Crises %s (current-session display only)"
   ],
   "limitations": [
-    "原型：正式患者、策略选项及术式级双评价待补齐；未据HP生成评级。",
-    "Prototype: authored patients, strategy choices and procedure-specific dual ratings remain pending. No grade is inferred from HP."
+    "术式级双评价尚未开放；手术储备 HP 不直接代表评级。",
+    "Procedure-specific dual ratings are not yet available. Operative reserve HP does not directly determine a grade."
   ],
   "failxp": [
     "失败不发声望；现有失败流程无训练奖励，本次不另行发奖。",
@@ -642,5 +638,85 @@
   "team_skill_calmness": [
     "沉着",
     "Calmness"
+  ],
+  "new_pool": [
+    "新病例（最多 3 例）",
+    "New cases (up to 3)"
+  ],
+  "replay_pool": [
+    "本周返场（周一抽取 2 例）",
+    "Weekly return cases (two drawn on Monday)"
+  ],
+  "empty_pool": [
+    "暂无可接诊病例。",
+    "No cases available."
+  ],
+  "activation_date_missing": [
+    "旧档缺少可靠的教学完成日期；已有进度保留，新病例发放暂缓，请联系开发者核对。",
+    "This save lacks a reliable tutorial completion date. Existing progress is preserved; new releases await developer verification."
+  ],
+  "tutorial_settlement_missing": [
+    "教学尚未最终结算；已保留旧进度，完成千束教学后开放新病例。",
+    "The tutorial has not been settled. Existing progress is preserved; new cases open after completing Chisato’s tutorial."
+  ],
+  "clear_date_missing": [
+    "部分旧首通记录缺少完成日期，保留首通与奖励，但暂不用于新一周返场抽取。",
+    "Some legacy clears lack completion dates. Clears and rewards are preserved, but those procedures are excluded from new weekly draws."
+  ],
+  "new_pool_dev": [
+    "开发预览：全部已实装新病例",
+    "DEV preview: all implemented first cases"
+  ],
+  "staff_title": [
+    "医护患者 · 高级手术",
+    "Staff Patient · Advanced Surgery"
+  ],
+  "staff_warning": [
+    "连续三日全程不可存档。经验按同一角色、同一术式成功次数递减：100% → 50% → 0%；声望不变，不改变普通高级首通状态。",
+    "No saving during this continuous three-day episode. XP per staff member and procedure: 100% → 50% → 0% on successive successes. Reputation and ordinary advanced clearance remain unchanged."
+  ],
+  "staff_watch": [
+    "观看术前夜",
+    "Watch the preoperative night"
+  ],
+  "staff_skip": [
+    "跳过术前夜（仍视为发生）",
+    "Skip the night (it still takes place)"
+  ],
+  "staff_booking_conflict": [
+    "今晚已有其他医护的亲密预约。取消本次邀请，或确认替换原预约。",
+    "An intimacy booking with another colleague already exists tonight. Cancel this invitation, or confirm replacement of that booking."
+  ],
+  "staff_replace": [
+    "替换原预约并开始",
+    "Replace booking and begin"
+  ],
+  "staff_pool": [
+    "已首通的普通高级术式",
+    "Cleared regular advanced procedures"
+  ],
+  "staff_night_clock": [
+    "第 1 天 · 夜间",
+    "Day 1 · Night"
+  ],
+  "staff_after_clock": [
+    "第 1 天 · 夜间 · 60 分钟后",
+    "Day 1 · Night · 60 minutes later"
+  ],
+  "day_transition_second": [
+    "第二天上午",
+    "The next morning"
+  ],
+  "day_transition_third": [
+    "第三天上午",
+    "The third morning"
+  ],
+  "day_transition_later": [
+    "第 %d 天上午",
+    "Morning · Day %d"
+  ],
+  "day_transition_continue": [
+    "空格 / 回车 / 点击继续",
+    "Space / Enter / Click to continue"
   ]
 }

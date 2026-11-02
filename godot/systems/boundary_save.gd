@@ -3,7 +3,7 @@ extends RefCounted
 const VERSION := 37
 const FORMAT := "boundary_facts_v1"
 const GLOBAL_FIELDS := [
-	"advanced_referral_facts", "patient_cases", "patient_queue", "patient_referrals", "active_staff_patient",
+	"advanced_staff_patient_facts", "advanced_referral_facts", "patient_cases", "patient_queue", "patient_referrals", "active_staff_patient",
 	"staff_patient_practice_counts", "staff_patient_first_completion_days", "recent_patient_ids", "completed_surgeries_total",
 	"completed_surgeries_by_group", "completed_surgeries_by_procedure", "character_progress_counters",
 	"surgery_xp", "leadership_xp", "staff_skill_levels", "staff_training_credits",
@@ -60,6 +60,7 @@ func capture(game: RefCounted) -> Dictionary:
 	if not game.can_save_progress():
 		return {}
 	if not preload("res://godot/systems/advanced_referral_facts.gd").valid(game.advanced_referral_facts): return {}
+	if not preload("res://godot/systems/advanced_staff_patient_facts.gd").valid(game.advanced_staff_patient_facts): return {}
 	var result := fields(game, GLOBAL_FIELDS)
 	result.merge({"version": VERSION, "content_version": 1, "save_format": FORMAT,
 		"elapsed_minutes": game.elapsed(), "clinical_visits": {}, "surgery_outcomes": {},
@@ -114,6 +115,7 @@ func decode(source: Variant) -> Dictionary:
 	if source.get("content_version") != 1:
 		return {}
 	if not preload("res://godot/systems/advanced_referral_facts.gd").valid(source.get("advanced_referral_facts", {})): return {}
+	if not preload("res://godot/systems/advanced_staff_patient_facts.gd").valid(source.get("advanced_staff_patient_facts", {})): return {}
 	var result: Dictionary = source.duplicate(true)
 	if legacy:
 		# Only the slot clock is authoritative in v36. Old per-action durations were

@@ -13,20 +13,26 @@
   "rank_slots": [
     {
       "target_level": 1,
-      "event_id": "",
-      "content_status": "unavailable",
+      "event_id": "ev_doc_takemi_lv1_vivisection_frog",
+      "content_status": "authored",
       "benefit_id": "",
       "special_requirements": [],
-      "min_familiarity": 0,
+      "min_familiarity": 10,
       "cooldown_days": 3
     },
     {
       "target_level": 2,
-      "event_id": "",
-      "content_status": "unavailable",
+      "event_id": "ev_doc_takemi_lv2_fujino_laparotomy",
+      "content_status": "authored",
       "benefit_id": "",
-      "special_requirements": [],
-      "min_familiarity": 0,
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 75
+        }
+      ],
+      "min_familiarity": 25,
       "cooldown_days": 3
     },
     {

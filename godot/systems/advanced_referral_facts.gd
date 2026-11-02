@@ -1,7 +1,7 @@
 extends RefCounted
 ## Exact persistence whitelist. This schema contains no runner or presentation state.
 static func fresh() -> Dictionary:
-	return {"version": 1, "procedures": {}, "cooldowns": {}, "week": -1, "replays": [], "appointment": {}, "outcome": {}, "completed": []}
+	return {"version": 2, "activated_day": 0, "unlocked": [], "new_board": [], "clear_days": {}, "successful_operation_days": {}, "procedures": {}, "cooldowns": {}, "week": -1, "replays": [], "appointment": {}, "outcome": {}, "completed": []}
 
 static func keys_only(d: Variant, keys: Array) -> bool:
 	if not d is Dictionary: return false
@@ -13,15 +13,29 @@ static func number(v: Variant, minimum: int = 0) -> bool:
 	return (v is int or v is float) and is_finite(float(v)) and float(v) == floorf(float(v)) and float(v) >= minimum
 
 static func case_valid(v: Variant) -> bool:
-	if not keys_only(v, ["id", "procedure_id", "patient_id", "replay"]): return false
+	if not keys_only(v, ["id", "procedure_id", "patient_id", "replay", "case_seed", "case_subtype"]): return false
+	if v.has("case_subtype") and (not v.case_subtype is String or v.case_subtype.is_empty()): return false
 	for key in ["id", "procedure_id", "patient_id"]:
 		if not v.get(key) is String or str(v[key]).is_empty(): return false
-	return v.get("replay") is bool
+	return v.get("replay") is bool and (not v.has("case_seed") or number(v.case_seed))
 
 static func valid(v: Variant) -> bool:
-	if not keys_only(v, ["version", "procedures", "cooldowns", "week", "replays", "appointment", "outcome", "completed"]): return false
+	if not keys_only(v, ["version", "procedures", "cooldowns", "week", "replays", "appointment", "outcome", "completed", "activated_day", "unlocked", "new_board", "clear_days", "successful_operation_days"]): return false
 	if v.is_empty(): return true # Older safe-boundary saves.
-	if v.get("version") != 1 or not number(v.get("week"), -1): return false
+	if not number(v.get("version"), 1) or int(v.version) not in [1, 2] or not number(v.get("week"), -1): return false
+	if v.version == 2:
+		if not number(v.get("activated_day")): return false
+		for key in ["unlocked", "new_board"]:
+			if not v.get(key) is Array: return false
+			var seen := []
+			for id in v[key]:
+				if not id is String or id.is_empty() or id in seen: return false
+				seen.append(id)
+		if v.new_board.size() > 3: return false
+		for key in ["clear_days", "successful_operation_days"]:
+			if not v.get(key) is Dictionary: return false
+			for id in v[key]:
+				if not id is String or id.is_empty() or not number(v[key][id], 1): return false
 	for key in ["procedures", "cooldowns", "appointment", "outcome"]:
 		if not v.get(key) is Dictionary: return false
 	for status in v.procedures.values():

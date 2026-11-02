@@ -10,7 +10,7 @@
 - 教学病例：`advanced_referral_tutorial_chisato_case`，成年 AU 锦木千束，术式为 `surgery_adv_artificial_heart_exchange`。
 - 固定 Grand OR 配置：主刀 1、助手 2、器械 2、巡回 2、麻醉 1，并由石神千鹤监督护理系统。
 - Day 2 有八个安全教学阶段。所有选择都可完成手术，但会记录谨慎、稳定、团队导向三类教学风格。
-- 术中存档保存具体事件节点与全部已选选项；读取后重放选项并重建教学风格，不重复发放世界状态奖励。
+- 仅医院导览／周日安全边界允许保存；教学演出中禁止保存，节点、选项和演出进度不进入持久文件。读档只恢复已结算数值与稳定事实。
 - 完成奖励：手术经验 360、专业声望 30、记录一次心脏手术，并开放高级转诊随机病例、Grand OR Team Builder 与教学术式。
 - Reputation 累计上限保持 999；高级病例是后期手术技术与声望的主要来源之一。
 
@@ -34,4 +34,8 @@
 
 ## 验证
 
-`tools/advanced_referral_tutorial_test.gd` 覆盖开发入口、三日推进、Day 2 八阶段、术中存档恢复、樱花相识、系统解锁、术式记录以及经验/声望奖励。2026-10-01 当前结果为 62 项检查、0 失败。
+`tools/advanced_referral_tutorial_test.gd` 覆盖开发入口、三日推进、Day 2 八阶段、演出中禁止保存、樱花相识、最终第三日系统解锁、术式记录以及经验/声望奖励。2026-11-01 结果为467项检查、0失败。
+
+## 2026-11-01：普通高级池现行规则
+
+千束最终结算后首发三台，次月起每月1／15日按显式manifest解锁一台；最多三格新病例，Day3首次成功／失败后FIFO补位。周一从已首通普通术式有放回抽两例，同周不补发。Advanced无扫荡，采用完整三阶段；首通和返场成功通过现有奖励resolver结算。现有四台的registry是 `data/advanced_surgery/procedures.json`，发布顺序是 `release_manifest.json`；其故事另存于stories目录，不应把早期教学cases表当作全部术式来源。详细合同、迁移与测试见[2026-11-01 V2实装与验收](advanced_referral_rules_v2_implementation_2026-11-01.md)。

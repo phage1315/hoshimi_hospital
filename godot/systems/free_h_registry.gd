@@ -35,6 +35,22 @@ const ACTORS := {
 		"bodymap": "res://data/h/doc_serika/h_bodymap.json",
 		"context": "res://data/staff/doc_serika/h_context_v1_1.json",
 	},
+	"nurse_yui": {
+		"content_status": "pending_assets",
+		"location_id": "clinic",
+		"fixed_location": true,
+		"location_label_key": "ui.free_h.location.nurse_yui_clinic",
+		"location_label": "私人诊所",
+		"completion_event": "miyuki_lv4_inspection",
+		"completion_flag": "",
+		"adapter": "authored_v1_3",
+		"profile": "res://data/staff/nurse_yui/h_profile_v1.json",
+		"flow": "res://data/staff/nurse_yui/h_flow_v1.json",
+		"finish_labels": "res://data/h_finish_button_labels_v1_3_4.json",
+		"finish_actor": "",
+		"bodymap": "res://data/h/nurse_yui/h_bodymap.json",
+		"context": "res://data/staff/nurse_yui/h_context_v1.json",
+	},
 }
 
 static func definition(actor_id: String) -> Dictionary:

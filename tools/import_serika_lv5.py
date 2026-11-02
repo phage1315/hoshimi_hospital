@@ -30,6 +30,10 @@ for row in cn:
   miyuki='apologetic' if 24<=number<=40 else 'serious' if 10<=number<=23 else 'playful'
   node['event_portraits']=[dict(id='doc_serika',path=f'assets/characters/misono_serika_v1/casual/{expr}.png',x=430,bottom=600,width=410,height=500),dict(id='nurse_yui',path=f'assets/characters/miyuki_lv3_v1/miyuki_casual_{miyuki}.png',x=900,bottom=600,width=410,height=500)]
  if scene=='S04':node['seasonal_street']=True
+ # Approved Lv5 CGs; preserve prose, cast metadata and all branch targets.
+ for cg_scene,first,last,filename in [('S02',37,44,'cg01_courtyard_call.png'),('S03',44,55,'cg02_cafe_reconciliation.png'),('S04',71,72,'cg03_night_walk.png')]:
+  if scene==cg_scene and first<=number<=last:
+   node.update(cg_path='assets/events/serika_lv5_v1/'+filename,cg_fit='contain',hide_portrait=True)
  if is_choice:
   node['choices']=[choice(k+b,lookup[k+b+'-1']['text'],k+b+'-1') for b in ['A','B']]
  else:

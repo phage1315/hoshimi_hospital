@@ -29,6 +29,12 @@ for row,n in zip(cn,e['nodes']):
   check(n['actor_id']==('nurse_yui' if row['speaker']=='朝仓美幸' else 'doc_serika'),'Actor '+row['id'])
  else:check(n['presentation']=='choice' and 'speaker_label' not in n and len(n['choices'])==2,'Choice-only no dev prose')
  check(n['background_id'] in bgs,'Background '+n['id'])
+ expected_cg=''
+ for scene,first,last,filename in [('s02',37,44,'cg01_courtyard_call.png'),('s03',44,55,'cg02_cafe_reconciliation.png'),('s04',71,72,'cg03_night_walk.png')]:
+  if n['id'].startswith(scene+'_') and n['id'][4:].isdigit() and first<=int(n['id'][4:])<=last:expected_cg='assets/events/serika_lv5_v1/'+filename
+ check(n.get('cg_path','')==expected_cg,'Exact CG range '+n['id'])
+ if expected_cg:
+  check((ROOT/expected_cg).is_file() and n.get('cg_fit')=='contain' and n.get('hide_portrait') is True,'CG resource, aspect ratio and portrait suppression '+n['id'])
  paths=[x['path'] for x in n['event_portraits']] if 'event_portraits' in n else [portraits[n['outfit']+'/'+n['expression']]]
  for p in paths:check((ROOT/p).is_file(),'Resource '+p)
  if n['id'].startswith('s03'):

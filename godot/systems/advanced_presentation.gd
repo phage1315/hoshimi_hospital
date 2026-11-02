@@ -1,5 +1,6 @@
 extends RefCounted
 ## Existing asset and dialogue references only. No authored text is rewritten.
+const ModelPose = preload("res://godot/systems/advanced_staff_patient_assets.gd")
 const LEGACY_PATIENTS := ["patient_sora", "patient_emi", "patient_miki"]
 
 static func random_patient_ids(game: RefCounted = null) -> Array:
@@ -19,7 +20,7 @@ static func random_patient_ids(game: RefCounted = null) -> Array:
 const DEFAULT_TEAM := {"first_assistant":"doc_emiko", "second_assistant":"doc_artoria", "primary_scrub":"nurse_haru", "secondary_scrub":"nurse_yui", "primary_circulating":"nurse_rin", "secondary_circulating":"nurse_ange", "anesthesia":"doc_sakura_anesthesiology"}
 const ROLES := ["first_assistant", "second_assistant", "primary_scrub", "secondary_scrub", "primary_circulating", "secondary_circulating", "anesthesia"]
 const BASIC_ROLES := {"first_assistant":"assistant_surgeon", "second_assistant":"assistant_surgeon", "primary_scrub":"scrub_nurse", "secondary_scrub":"scrub_nurse", "primary_circulating":"circulating_nurse", "secondary_circulating":"circulating_nurse"}
-const GROUPS := {"surgery_open_whipple":"general_abdominal", "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction":"female_pelvic", "surgery_adv_sleeve_lobectomy":"thoracic"}
+const GROUPS := {"surgery_open_whipple":"general_abdominal", "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction":"female_pelvic", "surgery_adv_sleeve_lobectomy":"thoracic", "surgery_adv_complex_abdominal_reconstruction":"general_abdominal", "surgery_adv_open_descending_thoracic_aortic_replacement":"thoracic"}
 var definition: Dictionary = {} # Proxy for the existing anesthesia splash renderer.
 static var staff_confirmations: Dictionary = {}
 
@@ -39,6 +40,7 @@ static func role_category(role: String) -> String:
 	return role
 
 static func patient_id(record: Dictionary, game: RefCounted = null) -> String:
+	if record.has("staff_patient_id"): return str(record.staff_patient_id)
 	var authored := preload("res://godot/systems/advanced_first_story.gd").patient(record, false)
 	if not authored.is_empty(): return str(authored.id)
 	var pending := pending_patient(record, false)
@@ -50,9 +52,34 @@ static func patient_id(record: Dictionary, game: RefCounted = null) -> String:
 	return LEGACY_PATIENTS[maxi(0, index)]
 
 static func patient(record: Dictionary, game: RefCounted, english: bool) -> Dictionary:
+	if record.has("staff_patient_id"):
+		var actor := str(record.staff_patient_id)
+		var person: Dictionary = game.staff_record(actor).duplicate(true)
+		if english:
+			var localized: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/localization/en.json"))
+			person.name = localized.strings.get("collections.staff.%s.name" % actor, person.name)
+		var result := preload("res://godot/systems/staff_patient_registry.gd").patient_record(person, "en" if english else "zh_CN")
+		var h_registry = preload("res://godot/systems/free_h_registry.gd")
+		var h_profile: Dictionary = h_registry.read_json(str(h_registry.definition(actor).get("profile", "")))
+		result.visuals.portraits["h_neutral"] = str(h_profile.get("assets", {}).get("portrait_expressions", {}).get("neutral", "")).trim_prefix("res://")
+		# Sayaka's production H adapter uses a shared expression atlas rather
+		# than the legacy placeholder paths in the author's source profile.
+		if str(h_registry.definition(actor).get("adapter", "")) == "sayaka_v1":
+			result.visuals.portraits["h_neutral"] = preload("res://godot/systems/h_profile_v1_content.gd").EXPRESSION_ATLAS.trim_prefix("res://")
+			result.visuals["portrait_regions"] = {"h_neutral": preload("res://godot/systems/h_profile_v1_session.gd").EXPRESSION_ATLAS_CELLS["neutral"]}
+		var assets: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/staff_patient/assets.json"))
+		var pose := str(ModelPose.procedure_pose(str(record.procedure_id)))
+		result.visuals.portraits["team_confirmation"] = assets.get(actor, {}).get(pose, {}).get("path", "")
+		return result
 	var authored := preload("res://godot/systems/advanced_first_story.gd").patient(record, english)
 	if authored.is_empty(): authored = pending_patient(record, english)
-	return game.patient_definition(patient_id(record, game)) if authored.is_empty() else authored
+	if not authored.is_empty(): return authored
+	var result: Dictionary = game.patient_definition(patient_id(record, game)).duplicate(true)
+	if bool(record.get("replay", false)):
+		var profile := preload("res://godot/systems/advanced_referral_rules.gd").replay_profile(str(record.get("procedure_id", "")))
+		for key in ["diagnosis", "diagnosis_en"]:
+			if profile.has(key): result[key] = profile[key]
+	return result
 
 static func pending_patient(record: Dictionary, english: bool) -> Dictionary:
 	if bool(record.get("replay",false)): return {}
@@ -109,3 +136,6 @@ static func line(game: RefCounted, actor: String, role: String, key: String, pro
 
 static func is_spoken(text: String) -> bool:
 	return text.begins_with("「") or text.begins_with("“") or text.begins_with('"')
+
+static func format_story(text: String, procedure_name: String) -> String:
+	return text.replace("〈本次术式〉", procedure_name)

@@ -1,4 +1,7 @@
 extends Control
+const TitleView = preload("res://godot/ui/title_view.gd")
+var title_preferences_path := "user://title_preferences.cfg"
+var title_notice_enabled := DisplayServer.get_name() != "headless"
 const Loader = preload("res://godot/scripts/content_loader.gd")
 const Session = preload("res://godot/systems/dialogue_session.gd")
 const Backdrop = preload("res://godot/ui/backdrop.gd")
@@ -89,6 +92,8 @@ var character_event_return_location := "lounge"
 var character_event_return_preop_id := ""
 var day_transition_display_schedule: Dictionary = {}
 var advanced_controller: RefCounted
+var advanced_staff_test_original_game: RefCounted
+var advanced_staff_test_original_slot := 0
 var character_event_from_test := false
 var gallery_replay_event: RefCounted
 var gallery_replay_is_test := false
@@ -243,6 +248,7 @@ func _ready() -> void:
 		return
 	configure_game_content()
 	title_screen()
+	TitleView.startup(self)
 
 func _process(_delta: float) -> void:
 	refresh_calendar_header()
@@ -766,6 +772,10 @@ func activate_dialogue_default() -> bool:
 	return true
 
 func _input(event: InputEvent) -> void:
+	if screen == "title" and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F10:
+		TitleView.developer(self)
+		get_viewport().set_input_as_handled()
+		return
 	if screen == "special_event_blackout":
 		get_viewport().set_input_as_handled()
 		return
@@ -841,28 +851,13 @@ func vn_dialogue_box(speaker: String, text: String, dialogue_name: String = "Eve
 
 func title_screen() -> void:
 	screen = "title"
-	base("", "", false, "lobby")
-	label_at(tx("ui.title.chapter", "春日序章"), Vector2(80, 222), 68)
-	label_at(tx("ui.title.subtitle", "星见医院的第一天"), Vector2(85, 325), 27, Color("d8d8c7"))
-	label_at(tx("ui.title.description", "在病历与日常之间，认识并肩工作的人。"), Vector2(85, 385), 19, Color("b9cecb"))
-	button_at(tx("ui.title.start", "开始游戏    →"), Vector2(85, 480), Vector2(330, 60), request_new_game).grab_focus()
-	var resume_button := button_at(tx("ui.title.continue", "继续游戏 · 选择存档"), Vector2(85, 554), Vector2(330, 60), show_save_slots.bind("load", true))
-	resume_button.disabled = not saves.any_exists()
-	if OS.is_debug_build() and not game.special_event_definitions.is_empty():
-		var save_builder_button := button_at(tx("ui.test_save.entry", "DEBUG：测试存档生成器"), Vector2(440, 480), Vector2(330, 60), show_test_save_generator)
-		save_builder_button.name = "TestSaveGeneratorEntry"
-		var event_test_button := button_at(tx("ui.event_test.entry", "DEBUG：事件测试中心"), Vector2(440, 554), Vector2(330, 60), show_event_test_hub)
-		event_test_button.name = "EventTestHubEntry"
-	button_at(tx("ui.title.directory", "医院导览"), Vector2(85, 628), Vector2(330, 60), show_map)
-	button_at(tx("ui.title.language", "语言 / Language：简体中文"), Vector2(440, 628), Vector2(330, 60), switch_locale)
-	label_at("HOSPITAL VISUAL NOVEL", Vector2(805, 536), 17, Color("cbbc9c"), 380)
-	label_at(tx("ui.title.steps", "01 / 入职\n02 / 相识\n03 / 新的日常"), Vector2(805, 575), 25, Color("dae1d9"), 380)
+	TitleView.render(self)
 
 func request_new_game() -> void:
 	if not game.visits.is_empty():
-		confirm_action(tx("ui.title.new_game_warning", "重新开始会清空当前未保存进度。已有存档会保留，直到你再次保存。"), start_story)
+		confirm_action(tx("ui.title.new_game_warning", "重新开始会清空当前未保存进度。已有存档会保留，直到你再次保存。"), TitleView.chapter.bind(self))
 	else:
-		start_story()
+		TitleView.chapter(self)
 
 func begin_advanced_referral_tutorial_debug_from_title() -> void:
 	begin_special_event_test_from_title("advanced_referral_tutorial_chisato")
@@ -894,13 +889,21 @@ func show_event_test_hub() -> void:
 	page.add_child(event_scroll)
 	var event_content := Control.new()
 	event_content.name = "EventTestList"
-	event_content.custom_minimum_size = Vector2(1170, max(500, (definitions.size() + 1) * 86 + 20))
+	event_content.custom_minimum_size = Vector2(1170, max(500, (definitions.size() + 3) * 86 + 20))
 	event_scroll.add_child(event_content)
 	var advanced_button := button_at("Advanced Surgery · Isolated Test" if content.localizer.locale == "en" else "高级手术 · 独立测试", Vector2.ZERO, Vector2(1110, 68), show_advanced_referral.bind(true)) # localization-invariant
 	page.remove_child(advanced_button)
 	event_content.add_child(advanced_button)
 	advanced_button.position = Vector2(20, 10)
 	advanced_button.name = "AdvancedSurgeryTestEntry"
+	for actor_index in range(2):
+		var actor_id := "doc_sayaka" if actor_index == 0 else "doc_serika"
+		var caption := ("Sayaka · Advanced Staff Patient Event" if actor_index == 0 else "Serika · Advanced Staff Patient Event") if content.localizer.locale == "en" else ("小夜香 · 高级手术患者事件测试" if actor_index == 0 else "芹香 · 高级手术患者事件测试") # localization-invariant
+		var entry := button_at(caption, Vector2.ZERO, Vector2(1110, 68), begin_advanced_staff_patient_test.bind(actor_id))
+		page.remove_child(entry)
+		event_content.add_child(entry)
+		entry.position = Vector2(20, 10 + (actor_index + 1) * 86)
+		entry.name = "AdvancedStaffPatientTest_" + actor_id
 	for i in range(definitions.size()):
 		var definition: Dictionary = definitions[i]
 		var event_id := str(definition.get("id", ""))
@@ -911,7 +914,7 @@ func show_event_test_hub() -> void:
 		var event_button := button_at(caption, Vector2.ZERO, Vector2(1110, 68), begin_special_event_test_from_title.bind(event_id))
 		page.remove_child(event_button)
 		event_content.add_child(event_button)
-		event_button.position = Vector2(20, 10 + (i + 1) * 86)
+		event_button.position = Vector2(20, 10 + (i + 3) * 86)
 		event_button.name = "EventTest_" + event_id
 	button_at(tx("ui.event_test.back", "← 返回标题"), Vector2(1030, 88), Vector2(185, 44), title_screen)
 
@@ -5678,6 +5681,31 @@ func next_staff_chat_turn(event_id: String, location_id: String, crossed_day: bo
 	else:
 		show_time_event_result(event_id,location_id,crossed_day)
 
+func begin_advanced_staff_patient_test(actor_id: String) -> void:
+	if not OS.is_debug_build() or actor_id not in ["doc_sayaka", "doc_serika"]: return
+	if advanced_staff_test_original_game != null: return
+	advanced_staff_test_original_game = game
+	advanced_staff_test_original_slot = active_save_slot
+	game = GameState.new()
+	configure_game_content()
+	active_save_slot = 0
+	var setup := preload("res://godot/systems/advanced_staff_patient_test_setup.gd")
+	setup.fixture(game, actor_id)
+	game.advanced_staff_patient_facts = preload("res://godot/systems/advanced_staff_patient_facts.gd").fresh()
+	game.advanced_referral_facts = preload("res://godot/systems/advanced_referral_facts.gd").fresh()
+	game.advanced_referral_facts.procedures["surgery_open_whipple"] = "CLEARED"
+	show_advanced_staff_patient(actor_id)
+	var offers: Array = advanced_controller.board()
+	if offers.is_empty() or not advanced_controller.accept(offers[0], setup.team(advanced_controller)):
+		exit_advanced_referral()
+		return
+	page.get_node("AdvancedReferralView").render()
+
+func show_advanced_staff_patient(actor_id: String) -> void:
+	if not game.active_advanced_staff_patient.is_empty(): return
+	advanced_controller = preload("res://godot/systems/advanced_staff_patient.gd").new(game, actor_id)
+	show_advanced_referral(false)
+
 func show_advanced_referral(testing: bool = false) -> void:
 	if testing and not OS.is_debug_build(): return
 	if advanced_controller == null or advanced_controller.dev != testing or advanced_controller.game != game:
@@ -5693,13 +5721,19 @@ func show_advanced_referral(testing: bool = false) -> void:
 	view.setup(self, advanced_controller, en)
 	var exit_button := button_at(str(texts["exit" if testing else "back"][1 if en else 0]), Vector2(960, 88), Vector2(270, 44), exit_advanced_referral)
 	exit_button.name = "ExitAdvancedReferral"
-	exit_button.disabled = not testing and (advanced_controller.session != null or preload("res://godot/systems/advanced_referral.gd").due(game))
+	exit_button.disabled = not testing and (not game.active_advanced_staff_patient.is_empty() or advanced_controller.session != null or preload("res://godot/systems/advanced_referral.gd").due(game))
 
 func exit_advanced_referral() -> void:
 	if advanced_controller == null: return
 	var testing: bool = advanced_controller.dev
-	if not testing and advanced_controller.session != null: return
+	if not testing and (advanced_controller.session != null or not game.active_advanced_staff_patient.is_empty()): return
 	advanced_controller = null
+	if advanced_staff_test_original_game != null:
+		game = advanced_staff_test_original_game
+		active_save_slot = advanced_staff_test_original_slot
+		advanced_staff_test_original_game = null
+		show_event_test_hub()
+		return
 	if testing: show_event_test_hub()
 	else:
 		game.active_mode = "encounter"

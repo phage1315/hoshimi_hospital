@@ -1,0 +1,1065 @@
+[
+  {
+    "id": "ev_doc_takemi_lv1_vivisection_frog",
+    "actor_id": "doc_takemi",
+    "title": "谁说生体解剖一定会死的？",
+    "chapter": 1,
+    "location_id": "basement_research",
+    "trigger_mode": "day_start",
+    "background_id": "operating_room",
+    "outfit": "white_coat",
+    "minutes": 180,
+    "teaser": "谁说生体解剖一定会死的？",
+    "time_start": 540,
+    "time_end": 540,
+    "priority": 110,
+    "category": "rank_up",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "cinematic": true,
+    "gallery": {
+      "cg_id": "ev_doc_takemi_lv1_vivisection_frog",
+      "caption": "谁说生体解剖一定会死的？",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [
+        "takemi_lv0_t6"
+      ],
+      "special_requirements": [],
+      "days_after_required_events": 3
+    },
+    "start": "l1_001",
+    "nodes": [
+      {
+        "id": "l1_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "上午九点，第二手术室。这是武見妙正式获准进入排班表后，由我主刀、她担任第一助手配合的一台清醒开腹手术。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_001",
+            "label": "继续",
+            "next": "l1_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "无影灯下，躺在手术台上的年轻女患者没有接受全身麻醉。随着我用圆刀片稳稳切开右侧腹直肌前鞘与腹膜，温润鲜活的腹腔内部结构随之暴露在视野中。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_002",
+            "label": "继续",
+            "next": "l1_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_moe",
+        "text": "「坂、坂口医生，拉钩和温盐水纱布已经准备好了……」",
+        "speaker_label": "本庄萌恵",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_003",
+            "label": "继续",
+            "next": "l1_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「别急着把纱布全垫进去嘛，坂口。你看这姑娘的肠系膜血管弓，在完全没有麻药降压抑制的状态下，搏动得简直像艺术品一样。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_004",
+            "label": "继续",
+            "next": "l1_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "站在我对面的武見妙眼神发亮，戴着无菌手套的双手握住腹壁牵开器，手腕熟练地向外侧一沉——原本只开了标准宽度的切口被她顺势撑开了整整一圈。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_005",
+            "label": "继续",
+            "next": "l1_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_generic",
+        "text": "「唔……！等、等一下，医生……肚子被往两边拉得好紧……虽、虽然刚才切开的时候忍住了，但这样撑开的话，里面感觉好奇怪……！」",
+        "speaker_label": "女患者",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_006",
+            "label": "继续",
+            "next": "l1_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l1_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「武見，现在的暴露视野已经够我操作了，不用把拉钩撑到最大。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_007",
+            "label": "继续",
+            "next": "l1_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「机会难得嘛。喂，那边端托盘的小护士——叫本庄是吧？把头探过来一点。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_008",
+            "label": "继续",
+            "next": "l1_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_moe",
+        "text": "「咦？我、我吗？是！」",
+        "speaker_label": "本庄萌恵",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_009",
+            "label": "继续",
+            "next": "l1_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_010",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "萌恵战战兢兢地往前凑了半步。武見用一把无损伤组织镊轻轻托起患者正在微微蠕动的回肠末端与系膜根部，像在大学讲堂里做示范一样指点起来：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_010",
+            "label": "继续",
+            "next": "l1_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「平时在护理课本上看的都是死气沉沉的插图吧？仔细看这里——清醒状态下，只要我的镊子稍微碰一下浆膜层，肠管就会自己收缩逃开，连边缘的小动脉都在一下一下跳动。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_011",
+            "label": "继续",
+            "next": "l1_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_moe",
+        "text": "「哇……真的在动……！原来活生生的内脏实际看起来是这样……比教材上的图清楚好多……」",
+        "speaker_label": "本庄萌恵",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_012",
+            "label": "继续",
+            "next": "l1_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_generic",
+        "text": "「呜……！那个，医生、护士小姐……请不要当着教材本人的面，一边翻我的肚子一边讨论教材质量啊……！」",
+        "speaker_label": "女患者",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_013",
+            "label": "继续",
+            "next": "l1_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l1_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「好了，武見教授的现场解剖课到此为止。萌恵，递弯血管钳给我；武見，帮我稳住拉钩，我们准备处理病灶。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_014",
+            "label": "继续",
+            "next": "l1_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「啧，真严格。不过你的刀口开得确实干净，连一滴多余的渗血都没有——给这种主刀打下手，倒也不算无聊。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l1_015",
+            "label": "继续",
+            "next": "l1_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "手术顺利结束、患者送回病房观察后，时间刚过十一点。我顺着楼梯来到医院最底层的地下研究室，推开门时，武見妙正翘着修长的双腿坐在转椅上，慢悠悠地喝着冰咖啡。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_016",
+            "label": "继续",
+            "next": "l1_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「哟，大主刀。怎么，是替城宮院长那个小丫头来训话的，还是来跟我算刚才在台上撑大拉钩的账？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_017",
+            "label": "继续",
+            "next": "l1_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_018",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「要算账的话，刚才在刷手池就说了。只是刚才萌恵脱口而出说你讲得比教材还细的时候，护士站那帮小姑娘看你的眼神，又多了一条医院怪谈素材。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_018",
+            "label": "继续",
+            "next": "l1_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「怪谈？让我猜猜，是不是又在传『地下室那个姓武見的女人，其实是个喜欢拿活人做生体解剖的疯子』？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "choose_l1_020a",
+            "label": "「那我直接问本人好了——你的终极爱好，该不会真的是生体解剖吧？」",
+            "next": "l1_020a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choose_l1_020b",
+            "label": "「刚才在台上看着患者清醒反应的时候，你比主刀的我还兴奋。」",
+            "next": "l1_020b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_020a",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「哈哈，全医院敢当着我的面直接问这句话的，除了城宮那丫头，你还是第一个。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_020a",
+            "label": "继续",
+            "next": "l1_021a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_021a",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「毕竟站在你对面配合了一整台手术，想装作没看出来都难。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_021a",
+            "label": "继续",
+            "next": "l1_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_020b",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「彼此彼此吧，坂口医生。你敢在不用麻药的情况下一刀切得那么稳，也没资格说我是怪人。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_020b",
+            "label": "继续",
+            "next": "l1_021b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_021b",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「我那是为了临床训练和特殊病例。你倒好，护士们私底下都在传你的终极爱好是『生体解剖』。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_021b",
+            "label": "继续",
+            "next": "l1_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「『生体解剖』这个词被外行弄得太难听了。好像只要一提起这四个字，就非得把实验对象折磨死在台子上不可一样。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_022",
+            "label": "继续",
+            "next": "l1_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "她放下咖啡杯，身体微微前倾，涂着暗色唇膏的嘴角勾起一抹理所当然的弧度：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_023",
+            "label": "继续",
+            "next": "l1_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「我上初中的时候，生物课有一次解剖青蛙的实验。全班同学都在那里大惊小怪，把青蛙肚子剪得稀巴烂。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_024",
+            "label": "继续",
+            "next": "l1_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「我就觉得很奇怪——明明我们只是想观察活体状态下的心脏跳动、肺叶张缩和肠管走向，为什么非要弄死它不可呢？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_025",
+            "label": "继续",
+            "next": "l1_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_026",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「……所以你当时做了什么？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_026",
+            "label": "继续",
+            "next": "l1_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「我避开大血管打开腹腔，把里面每一处跳动的脏器都仔仔细细看了一遍、画完了图；然后用我自己带去的最细的缝合针线，按解剖层次给它原样缝好，最后把它从蜡盘上翻了过来。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_027",
+            "label": "继续",
+            "next": "l1_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_028",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「然后呢？活下来了？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_028",
+            "label": "继续",
+            "next": "l1_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「它蹬了蹬腿，自己从实验桌上跳着走了。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_029",
+            "label": "继续",
+            "next": "l1_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_030",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "她说得极其平静，仿佛那只是一堂再普通不过的手工课。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_030",
+            "label": "继续",
+            "next": "l1_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_031",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「……生物老师当时的表情一定很精彩。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_031",
+            "label": "继续",
+            "next": "l1_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「老师吓得差点把教案扔出去。可是在星见医院不也是一样的道理吗？既然这里的医疗条件能保证无论开多大的口子、把里面翻得多彻底，最后缝起来都能完好无损地恢复——那趁着人还清醒、内脏还在鲜活搏动的时候多看两眼，有什么不对？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_032",
+            "label": "继续",
+            "next": "l1_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_033",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「原来上次城宮院长禁止你独立主刀，就是因为你想把患者当成那只青蛙？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_033",
+            "label": "继续",
+            "next": "l1_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「上次那台只是稍微开深了一点，谁知道第3手术室那张旧手术台的液压支架那么不结实，居然在半路卡死了。城宮那丫头大惊小怪，非说我再开下去要把人和手术台一起拆了。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_034",
+            "label": "继续",
+            "next": "l1_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "她懒洋洋地靠回椅背上，抬眼打量着我，眼神里多了一丝找到同类的饶有兴味：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_035",
+            "label": "继续",
+            "next": "l1_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「不过跟在你旁边当助手倒是挺省心的。至少我把切口撑开的时候，你的手一点都没抖，眼神甚至比我还专注。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_036",
+            "label": "继续",
+            "next": "l1_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_037",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「只要不耽误正经手术，让你顺便给新人讲两句解剖课我没意见。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_037",
+            "label": "继续",
+            "next": "l1_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「只是普通患者还是太娇气了点。哪怕不打麻药，只要拉钩稍微往两边多拉两公分、或者手伸进去翻一下肠管，她们就痛得直叫唤，吵得人没法静下心来细看。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_038",
+            "label": "继续",
+            "next": "l1_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "武見用食指轻轻抵着下巴，像是随口许愿般轻叹了一声：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_039",
+            "label": "继续",
+            "next": "l1_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「要是哪天能来一个**天生感觉不到痛的患者**就好了。不用打麻药，也不会因为切开而大喊大叫……那样的话，我一定去跟城宮申请一次特批主刀，拉上你当第一助手，把活生生的腹腔从上到下看个够。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_040",
+            "label": "继续",
+            "next": "l1_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_041",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「哪有那么巧的事。真有先天无痛症的患者，平时连自己生病都察觉不到，等你遇到的时候，肚子里指不定已经拖成什么样了。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_041",
+            "label": "继续",
+            "next": "l1_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l1_042",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「那不是更有趣了吗？既能看健康的活体结构，又能顺手收拾烂摊子。……行了，差不多到中午十二点了，去吃你的午饭吧，搭档。下午要是还有不打麻药的刀，记得叫我。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "takemi_research",
+        "choices": [
+          {
+            "id": "continue_l1_042",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

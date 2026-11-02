@@ -1324,5 +1324,658 @@
       "operator": ">=",
       "value": 100
     }
+  },
+  {
+    "id": "surgery_adv_complex_abdominal_reconstruction",
+    "name": "开腹复杂腹腔黏连松解及多脏器修复重建术",
+    "name_en": "Open complex abdominal adhesiolysis and multiorgan preservation-reconstruction",
+    "duration_minutes": 600,
+    "base_difficulty": 97,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "prototype",
+    "patient_notice": "随机返场病例：既往复杂腹部损伤及症状相关黏连，拟行限定范围的器官保留性修复。",
+    "patient_notice_en": "Repeat case: complex old abdominal injury with symptomatic adhesions requiring targeted organ-preserving repair.",
+    "steps": [
+      {
+        "id": "I01",
+        "name": "旧瘢痕评估与谨慎开腹",
+        "name_en": "Assess old scars and enter abdomen cautiously",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "I02",
+        "name": "幸存器官与黏连区地图",
+        "name_en": "Map preserved organs and adhesions",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": 8,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "I03",
+        "name": "腹壁与肠袢致密黏连的安全分离",
+        "name_en": "Safely separate adhesions between abdominal wall and bowel",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 91,
+        "specialty_tag": "adhesion",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -10,
+          "bleeding": 3,
+          "blood_loss": 7,
+          "stability": -1
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "I04",
+        "name": "目标性松解范围判断",
+        "name_en": "Determine the scope of targeted adhesiolysis",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "选择目标性松解范围",
+            "label_en": "Limit dissection to symptomatic adhesions",
+            "description": "只松解造成症状且已确认血供的牵拉区域。",
+            "description_en": "Release only symptom-producing adhesions after checking their blood supply.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长侧支血供评估",
+            "label_en": "Extend mapping of collateral circulation",
+            "description": "额外花费10分钟梳理侧支血管走行，再限定松解范围。",
+            "description_en": "Spend 10 extra minutes mapping collateral vessels before targeted adhesiolysis.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 13,
+              "bleeding": -4
+            }
+          }
+        ]
+      },
+      {
+        "id": "I05",
+        "name": "脆弱肠壁周围的精细松解",
+        "name_en": "Precision dissection around fragile bowel wall",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "microdissection",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -11,
+          "bleeding": 3,
+          "blood_loss": 9,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "I06",
+        "name": "肠系膜侧支血管辨认与保护",
+        "name_en": "Identify and preserve mesenteric collateral vessels",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 97,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 17,
+        "strategic_effects": {
+          "elapsed_time": 75,
+          "visibility": -12,
+          "bleeding": 5,
+          "blood_loss": 12,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 9
+            },
+            "strategic_effects": {
+              "blood_loss": 4,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "I07",
+        "name": "暴露症状相关旧伤段",
+        "name_en": "Expose the symptomatic old-injury segment",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": 6,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "I08",
+        "name": "残存消化道局部修补与重建",
+        "name_en": "Repair and reconstruct the preserved digestive tract",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 65,
+          "visibility": -8,
+          "bleeding": 3,
+          "blood_loss": 8,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "I09",
+        "name": "局部供血路径松解与稳定化",
+        "name_en": "Release and stabilize regional blood supply",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 98,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 18,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -10,
+          "bleeding": 4,
+          "blood_loss": 11,
+          "stability": -2
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 75
+            },
+            "strategic_effects": {
+              "blood_loss": 3,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "I10",
+        "name": "修补部位张力与连续性复核",
+        "name_en": "Review repair integrity and suture tension",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 95,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 7,
+          "stability": -1
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "I11",
+        "name": "血供、渗漏与止血总复核",
+        "name_en": "Review perfusion, leaks and hemostasis",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "完整复查血供与修补线",
+            "label_en": "Review perfusion and bowel repair integrity",
+            "description": "检查灌注、修补区连续性与已处理的出血点。",
+            "description_en": "Check perfusion, repair integrity and bleeding sites.",
+            "strategic_effects": {
+              "visibility": 7,
+              "bleeding": -8,
+              "stability": 2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长灌注与渗漏观察",
+            "label_en": "Extend perfusion and leakage monitoring",
+            "description": "额外花费10分钟进一步复核吻合张力与小范围渗漏。",
+            "description_en": "Spend 10 extra minutes reassessing repair tension and subtle leakage.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -11,
+              "stability": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "I12",
+        "name": "分层关闭与术后交接",
+        "name_en": "Layered closure and postoperative handoff",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 40,
+          "visibility": 0,
+          "bleeding": -3,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      6,
+      9
+    ],
+    "crisis_chances": [
+      0.26,
+      0.2
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
+  },
+  {
+    "id": "surgery_adv_open_descending_thoracic_aortic_replacement",
+    "name": "开胸降主动脉瘤切除及人工血管置换术",
+    "name_en": "Open descending thoracic aortic aneurysm resection and prosthetic graft replacement",
+    "duration_minutes": 690,
+    "base_difficulty": 98,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "prototype",
+    "patient_notice": "随机返场病例：胸段降主动脉瘤，拟行左开胸血管置换及必要灌注保护。",
+    "patient_notice_en": "Repeat case: descending thoracic aortic aneurysm requiring left thoracotomy, graft replacement and perfusion protection.",
+    "steps": [
+      {
+        "id": "M01",
+        "name": "左开胸与进入",
+        "name_en": "Left thoracotomy and entry",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 30,
+          "visibility": -4,
+          "bleeding": 2,
+          "blood_loss": 5,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "M02",
+        "name": "胸段降主动脉与邻近结构辨认",
+        "name_en": "Identify descending thoracic aorta and adjacent structures",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 40,
+          "visibility": 8,
+          "bleeding": 0,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "M03",
+        "name": "近远端安全控制区精细分离",
+        "name_en": "Dissect safe proximal and distal control zones",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 93,
+        "specialty_tag": "thoracic",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 60,
+          "visibility": -10,
+          "bleeding": 3,
+          "blood_loss": 8,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "M04",
+        "name": "远端灌注与脊髓保护方案确认",
+        "name_en": "Confirm distal perfusion and spinal cord protection plan",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 40,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "确认远端灌注准备就绪",
+            "label_en": "Confirm distal perfusion support",
+            "description": "确认左心旁路、脊髓供血保护与监测项目已就绪。",
+            "description_en": "Confirm left-heart bypass, spinal cord protection and monitoring.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长灌注与夹闭方案复核",
+            "label_en": "Extend perfusion and clamp-plan review",
+            "description": "额外花费10分钟复核主动脉两端控制点与灌注路线。",
+            "description_en": "Spend 10 more minutes reassessing clamp sites and the distal perfusion path.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -4
+            }
+          }
+        ]
+      },
+      {
+        "id": "M05",
+        "name": "主动脉控制与分阶段夹闭",
+        "name_en": "Secure aortic control and sequential clamping",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 97,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 17,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -8,
+          "bleeding": 4,
+          "blood_loss": 8,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "stability",
+              "op": "lte",
+              "value": 35
+            },
+            "strategic_effects": {
+              "stability": -2
+            }
+          }
+        ]
+      },
+      {
+        "id": "M06",
+        "name": "病变血管段处理与人工血管准备",
+        "name_en": "Manage diseased aortic segment and prepare prosthetic graft",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": 5,
+          "bleeding": 2,
+          "blood_loss": 6,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "M07",
+        "name": "人工血管近端精细吻合",
+        "name_en": "Create proximal graft anastomosis",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 96,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 16,
+        "strategic_effects": {
+          "elapsed_time": 85,
+          "visibility": -9,
+          "bleeding": 4,
+          "blood_loss": 11,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "M08",
+        "name": "重要肋间动脉血供保护与重接",
+        "name_en": "Preserve and reattach critical intercostal arteries",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 98,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 18,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -10,
+          "bleeding": 4,
+          "blood_loss": 10,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "M09",
+        "name": "人工血管远端精细吻合",
+        "name_en": "Create distal graft anastomosis",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 97,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 17,
+        "strategic_effects": {
+          "elapsed_time": 85,
+          "visibility": -8,
+          "bleeding": 4,
+          "blood_loss": 11,
+          "stability": -3
+        },
+        "physio_stress": "high",
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 9
+            },
+            "strategic_effects": {
+              "blood_loss": 4,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "M10",
+        "name": "分阶段复灌与吻合区止血处理",
+        "name_en": "Controlled reperfusion and anastomotic hemostasis",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 95,
+        "specialty_tag": "vascular",
+        "hp_failed_extra": 15,
+        "strategic_effects": {
+          "elapsed_time": 70,
+          "visibility": -7,
+          "bleeding": 5,
+          "blood_loss": 13,
+          "stability": -3
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "M11",
+        "name": "远端脉搏、脊髓保护与最终复核",
+        "name_en": "Review distal pulses and spinal cord protection",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "standard",
+            "label": "按计划复核远端灌注",
+            "label_en": "Review distal perfusion as planned",
+            "description": "检查移植物吻合口、远端灌注与关键神经监测。",
+            "description_en": "Review graft joins, distal perfusion and key neurological monitoring.",
+            "strategic_effects": {
+              "visibility": 8,
+              "bleeding": -8,
+              "stability": 2
+            }
+          },
+          {
+            "id": "extended",
+            "label": "延长脊髓灌注及止血复查",
+            "label_en": "Extend spinal perfusion and hemostasis review",
+            "description": "额外花费10分钟延长观察并逐处复查高风险吻合位置。",
+            "description_en": "Spend 10 more minutes observing perfusion and inspecting higher-risk suture lines.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 12,
+              "bleeding": -12,
+              "stability": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "M12",
+        "name": "胸腔引流与分层关胸",
+        "name_en": "Chest drainage and layered closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": 0,
+          "bleeding": -3,
+          "blood_loss": 2,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      5,
+      9
+    ],
+    "crisis_chances": [
+      0.29,
+      0.23
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
   }
 ]

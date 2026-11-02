@@ -1,0 +1,282 @@
+{
+  "schema_version": "advanced_day2_dialogue_v1",
+  "procedure_id": "surgery_adv_open_descending_thoracic_aortic_replacement",
+  "stages": {
+    "M01": {
+      "stage_entry": [
+        {
+          "id": "M01_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "体位、左开胸侧别和全麻状态已确认，开始进入。",
+          "text_en": "Position, left-sided thoracotomy, and general anesthesia are confirmed. Begin entry."
+        },
+        {
+          "id": "M01_E2",
+          "speaker_role": "anesthesia",
+          "text": "通气与血流动力学监测正常，继续按计划进行。",
+          "text_en": "Ventilation and hemodynamic monitoring are stable. Proceed as planned."
+        }
+      ]
+    },
+    "M02": {
+      "stage_entry": [
+        {
+          "id": "M02_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "先标记病变主动脉和周围组织的关系。",
+          "text_en": "Map the diseased aortic segment and its relationship to nearby structures."
+        },
+        {
+          "id": "M02_E2",
+          "speaker_role": "assistant_1",
+          "text": "食管与邻近神经区域已经辨认，维持保护。",
+          "text_en": "The esophageal and adjacent neural areas have been identified and protected."
+        }
+      ]
+    },
+    "M03": {
+      "stage_entry": [
+        {
+          "id": "M03_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "近远端控制区必须可靠，不能从脆弱的瘤壁直接牵拉。",
+          "text_en": "Proximal and distal control zones must be secure. Do not pull directly on the fragile aneurysm wall."
+        },
+        {
+          "id": "M03_E2",
+          "speaker_role": "assistant_2",
+          "text": "我保持瘤体外侧暴露，等待控制区确认。",
+          "text_en": "I'll maintain exposure outside the aneurysm while we verify the control zones."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "M03_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "近端控制区暴露不足，不能在这种条件下推进。",
+          "text_en": "The proximal control zone isn't exposed adequately. Do not advance under these conditions."
+        },
+        {
+          "id": "M03_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "分离界面靠近重要邻接结构，先重新确认边界。",
+          "text_en": "The dissection plane approaches a critical adjacent structure. Recheck the boundary."
+        }
+      ]
+    },
+    "M04": {
+      "stage_entry": [
+        {
+          "id": "M04_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "夹闭前先核对远端灌注与脊髓供血保护方案。",
+          "text_en": "Before clamping, recheck distal perfusion and spinal-cord protection."
+        },
+        {
+          "id": "M04_E2",
+          "speaker_role": "anesthesia",
+          "text": "灌注与循环监测已报告，继续复核关键项目。",
+          "text_en": "Perfusion and circulatory monitoring are reported. Continue the critical checks."
+        }
+      ]
+    },
+    "M05": {
+      "stage_entry": [
+        {
+          "id": "M05_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "远端支持已建立，按计划分阶段控制主动脉。",
+          "text_en": "Distal support is established. Control the aorta in planned stages."
+        },
+        {
+          "id": "M05_E2",
+          "speaker_role": "anesthesia",
+          "text": "近远端压力持续监测，任何波动会立即报告。",
+          "text_en": "Proximal and distal pressures are being monitored continuously. We will report any change."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "M05_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "夹闭阶段的压力反应不理想，先调整控制条件。",
+          "text_en": "The pressure response to clamping is unsatisfactory. Adjust the control conditions first."
+        },
+        {
+          "id": "M05_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "远端灌注指标不稳定，暂缓后续步骤。",
+          "text_en": "Distal perfusion is unstable. Delay the next stage."
+        }
+      ]
+    },
+    "M06": {
+      "stage_entry": [
+        {
+          "id": "M06_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "病变范围与人工血管规格再次确认，只处理胸降段。",
+          "text_en": "Confirm the diseased segment and graft size. The repair is confined to the descending thoracic aorta."
+        },
+        {
+          "id": "M06_E2",
+          "speaker_role": "scrub_primary",
+          "text": "人工血管、血管缝线和备用止血材料已就位。",
+          "text_en": "The graft, vascular sutures, and backup hemostatic materials are ready."
+        }
+      ]
+    },
+    "M07": {
+      "stage_entry": [
+        {
+          "id": "M07_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "近端吻合开始，重点看整圈对合和吻合线张力。",
+          "text_en": "Begin proximal anastomosis. Watch the circumferential alignment and suture tension."
+        },
+        {
+          "id": "M07_E2",
+          "speaker_role": "assistant_1",
+          "text": "我会保持吻合区稳定暴露，避免移植物扭转。",
+          "text_en": "I'll keep the anastomosis stable and avoid graft twisting."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "M07_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "近端吻合口张力不均，需要重新检查整圈对合。",
+          "text_en": "The proximal anastomosis has uneven tension. Recheck the full circumference."
+        },
+        {
+          "id": "M07_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "吻合处仍有渗漏风险，先调整缝合线。",
+          "text_en": "The anastomosis may still leak. Revise the suture line first."
+        }
+      ]
+    },
+    "M08": {
+      "stage_entry": [
+        {
+          "id": "M08_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "这组关键肋间动脉需要保护并按既定方案重接。",
+          "text_en": "These critical intercostal arteries must be protected and reattached according to the case plan."
+        },
+        {
+          "id": "M08_E2",
+          "speaker_role": "anesthesia",
+          "text": "神经监测与远端灌注指标持续记录中。",
+          "text_en": "Neuromonitoring and distal perfusion indicators are being recorded."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "M08_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "关键分支的灌注尚未确认，不能结束这一步。",
+          "text_en": "Perfusion through the critical branch isn't confirmed. This step isn't complete."
+        },
+        {
+          "id": "M08_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "神经监测提示需要复核分支重接与保护。",
+          "text_en": "Neuromonitoring calls for reassessment of branch reattachment and protection."
+        }
+      ]
+    },
+    "M09": {
+      "stage_entry": [
+        {
+          "id": "M09_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "远端吻合继续，确认移植物走向自然、没有过度张力。",
+          "text_en": "Continue the distal anastomosis. Verify natural graft alignment and no excessive tension."
+        },
+        {
+          "id": "M09_E2",
+          "speaker_role": "assistant_2",
+          "text": "远端血管缘已稳定暴露，可以逐段检查。",
+          "text_en": "The distal vessel edge is stably exposed for a segment-by-segment check."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "M09_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "远端吻合位置存在张力，先调整移植物走向。",
+          "text_en": "The distal anastomosis is under tension. Adjust the graft's orientation first."
+        },
+        {
+          "id": "M09_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "吻合线完整性有疑点，不能直接进入复灌。",
+          "text_en": "Anastomotic integrity is uncertain. Do not proceed directly to reperfusion."
+        }
+      ]
+    },
+    "M10": {
+      "stage_entry": [
+        {
+          "id": "M10_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "按计划逐步复灌，并复核两端吻合口。",
+          "text_en": "Restore flow in planned stages and inspect both anastomoses."
+        },
+        {
+          "id": "M10_E2",
+          "speaker_role": "anesthesia",
+          "text": "循环变化正在监测。请继续分阶段恢复血流。",
+          "text_en": "Hemodynamic changes are under observation. Continue staged reperfusion."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "M10_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "复灌时循环波动偏大，先稳定血流条件。",
+          "text_en": "Hemodynamic swings during reperfusion are excessive. Stabilize flow conditions first."
+        },
+        {
+          "id": "M10_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "吻合区出现新的出血疑点，重新检查后再继续。",
+          "text_en": "There is concern for new bleeding at the anastomosis. Inspect it before continuing."
+        }
+      ]
+    },
+    "M11": {
+      "stage_entry": [
+        {
+          "id": "M11_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "确认远端脉搏、相关神经指标、出血情况和清点结果。",
+          "text_en": "Confirm distal pulses, relevant neurologic measures, bleeding status, and instrument counts."
+        },
+        {
+          "id": "M11_E2",
+          "speaker_role": "circulating_primary",
+          "text": "记录与计数复核已进入最终确认。",
+          "text_en": "Documentation and final counts are being verified."
+        }
+      ]
+    },
+    "M12": {
+      "stage_entry": [
+        {
+          "id": "M12_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "安置引流，准备分层关胸并交接恢复团队。",
+          "text_en": "Place the drains, close the chest in layers, and prepare recovery handoff."
+        },
+        {
+          "id": "M12_E2",
+          "speaker_role": "scrub_primary",
+          "text": "关胸器械准备完成，交接清单包括远端灌注观察。",
+          "text_en": "Chest-closure instruments are ready. The handover includes distal perfusion monitoring."
+        }
+      ]
+    }
+  }
+}

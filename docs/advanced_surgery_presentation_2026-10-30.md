@@ -35,3 +35,7 @@ Dev只放开已相识／剧情出勤门槛供测试，保留岗位、七人不�
 - 原生窗口中英文三病例演出测试：1,757检查0失败。原生截图检查通过，证据见`qa/advanced_surgery_2026_10_30/presentation/`。测试由实际按钮事件驱动，并非人工鼠标逐按钮操作。
 
 入口仍为标题页 → DEBUG事件测试中心 → 高级手术 · 三台独立测试。`advanced_surgery_playtest.gd`可直接启动；测试窗口使用临时存档文件，不读写玩家存档。
+
+## 2026-11-01 发布与返场约束
+
+新内容必须在 `data/advanced_surgery/release_manifest.json` 追加固定release_order。第5伊兹米、第6美纱已预留，不得越过未ready项。普通新病例最多三格；教学完成次月起1／15发放资格；周一已首通普通术式固定有放回抽两例。Advanced不提供Quick，返场完整手动三日。独立DEV可展示全部内容，不能用来断言正式池全量已开放。见[2026-11-01 V2实装与验收](advanced_referral_rules_v2_implementation_2026-11-01.md)。

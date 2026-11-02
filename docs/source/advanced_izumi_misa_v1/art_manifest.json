@@ -1,0 +1,150 @@
+{
+  "version": "v1-content-handoff",
+  "status": "ART_NOT_INCLUDED",
+  "notes_cn": "全部是未来需要的素材槽位，不是已存在路径。正式图像到位前不得把建议路径写入运行时 field_windows.json 或 patient.visuals。美纱身份确认前不得擅自生成角色图。",
+  "notes_en": "These are future asset slots, not real paths. Do not register suggested paths in runtime field_windows.json or patient.visuals until assets exist. Do not generate Misa character assets before identity confirmation.",
+  "procedures": [
+    {
+      "procedure_id": "surgery_adv_complex_abdominal_reconstruction",
+      "field_window": {
+        "after_stage": "I01",
+        "before_stage": "I12",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "path": null,
+        "incision_path": null,
+        "closure_path": null
+      },
+      "patient_portrait_slots": [
+        "ward",
+        "postop",
+        "team_confirmation",
+        "intraoperative/anesthetized",
+        "splash/general_anesthesia"
+      ],
+      "requirements": [
+        {
+          "slot": "ward",
+          "suggested_file": "assets/characters/advanced_complex_abdomen/ward.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "postop",
+          "suggested_file": "assets/characters/advanced_complex_abdomen/postop.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "team_confirmation",
+          "suggested_file": "assets/characters/advanced_complex_abdomen/team_confirmation.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "intraoperative/anesthetized",
+          "suggested_file": "assets/characters/advanced_complex_abdomen/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "splash/general_anesthesia",
+          "suggested_file": "assets/characters/advanced_complex_abdomen/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "incision_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/complex_abdomen_incision.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/complex_abdomen.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "closure_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/complex_abdomen_closure.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        }
+      ]
+    },
+    {
+      "procedure_id": "surgery_adv_open_descending_thoracic_aortic_replacement",
+      "field_window": {
+        "after_stage": "M01",
+        "before_stage": "M12",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "path": null,
+        "incision_path": null,
+        "closure_path": null
+      },
+      "patient_portrait_slots": [
+        "ward",
+        "postop",
+        "team_confirmation",
+        "intraoperative/anesthetized",
+        "splash/general_anesthesia"
+      ],
+      "requirements": [
+        {
+          "slot": "ward",
+          "suggested_file": "assets/characters/advanced_descending_aorta/ward.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "postop",
+          "suggested_file": "assets/characters/advanced_descending_aorta/postop.png",
+          "resolution": "1024x1536",
+          "alpha": true
+        },
+        {
+          "slot": "team_confirmation",
+          "suggested_file": "assets/characters/advanced_descending_aorta/team_confirmation.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "intraoperative/anesthetized",
+          "suggested_file": "assets/characters/advanced_descending_aorta/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "splash/general_anesthesia",
+          "suggested_file": "assets/characters/advanced_descending_aorta/anesthesia.png",
+          "resolution": "1672x941",
+          "alpha": false
+        },
+        {
+          "slot": "incision_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/descending_aorta_incision.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/descending_aorta.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        },
+        {
+          "slot": "closure_path",
+          "suggested_file": "assets/surgeries/advanced_fields_v1/descending_aorta_closure.png",
+          "resolution": "1280x1024",
+          "alpha": false
+        }
+      ]
+    }
+  ]
+}

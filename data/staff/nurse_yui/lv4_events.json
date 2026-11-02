@@ -1,0 +1,2483 @@
+[
+  {
+    "id": "miyuki_lv4_inspection",
+    "actor_id": "nurse_yui",
+    "title": "今天由我来检查",
+    "chapter": 4,
+    "location_id": "station",
+    "trigger_mode": "after_work",
+    "background_id": "miyuki_private_clinic",
+    "outfit": "uniform",
+    "minutes": 120,
+    "teaser": "今天由我来检查",
+    "time_start": 1020,
+    "time_end": 1320,
+    "priority": 110,
+    "category": "rank_up",
+    "auto_start": true,
+    "target_level": 4,
+    "benefit_id": "unlock_intimacy_events",
+    "cinematic": true,
+    "gallery": {
+      "cg_id": "miyuki_lv4_inspection",
+      "caption": "今天由我来检查",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 55,
+      "required_events": [
+        "miyuki_lv3_afternoon_good_morning"
+      ],
+      "special_requirements": [
+        {
+          "type": "progress_counter",
+          "actor_id": "nurse_yui",
+          "counter_id": "assisted_player_ward_preparation",
+          "minimum": 5
+        }
+      ]
+    },
+    "start": "n001",
+    "nodes": [
+      {
+        "id": "n001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "结束医院白天的当班工作后，被朝仓用一句『有个无论如何想请坂口医生一起参观的院外研修场所』带出医院，我跟着她站在了一间装潢得酷似私人诊察室的主题包厢里。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n001",
+            "label": "继续",
+            "next": "n002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "墨绿色的皮革平躺检查床、角落里摆着一张带有弧形腿架的仿制电动妇科检查台，连不锈钢推车上的弯盘和消毒罐都一应俱全——只不过空气里没有医院刺鼻的含氯消毒水味，而是飘着一股淡淡的木质熏香。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n002",
+            "label": "继续",
+            "next": "n003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「久等啦，坂口医生。你看，这家的护士服尺寸是不是比我想象的还要合身？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n003",
+            "label": "继续",
+            "next": "n004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "更衣隔断的帘子被拉开。朝仓换上了一身比星见医院制式制服收腰更紧、裙摆也短了一截的粉红色连衣裙式护士服，脖颈间挂着一副银色双头听诊器，正站在不锈钢推车旁慢条斯理地拆着一双无菌乳胶检查手套的包装。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n004",
+            "label": "继续",
+            "next": "n005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n005",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「平时在医院里穿护士服还不够，一下班又拉我跑到这种医疗主题的角色扮演俱乐部来……你还真是喜欢医院啊。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n005",
+            "label": "继续",
+            "next": "n006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「在医院里那叫工作，下班以后来这里才叫私人爱好嘛。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n006",
+            "label": "继续",
+            "next": "n007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n007",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她嘴角弯起一抹温和的弧度，迈着轻巧无声的步子绕到我的身侧，手指顺手搭上了包厢门把——",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n007",
+            "label": "继续",
+            "next": "n008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n008",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "「咔哒。」包厢的反锁旋钮被她拧上，门框上方那盏仿制的『诊察中·请勿打扰』暗红色灯牌也随之亮起。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n008",
+            "label": "继续",
+            "next": "n009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n009",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「……朝仓？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n009",
+            "label": "继续",
+            "next": "n010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「算上前几天的病房排班，坂口医生已经带着我这个『新来的护士』，亲自在病房里做过好几次术前准备了呢。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n010",
+            "label": "继续",
+            "next": "n011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「每次站在帘子旁边给您打下手，看着坂口医生一本正经地戴上手套、让年轻女患者掀起病号服，用那么温和又让人没法拒绝的语气说『稍微有点凉，请把腿再分开一点哦』……我都觉得好厉害呀。啧啧，好几个女患者被你灌肠剃毛的时候脸红得发烫，但眼睛偷偷瞄你，我看她们下面都湿了，我当时就得狂忍着不笑出来。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n011",
+            "label": "继续",
+            "next": "n012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n012",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「那是标准的临床术前评估和消毒核对流程，你少用这种奇怪的总结方式。。。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n012",
+            "label": "继续",
+            "next": "n013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「我可是在很认真地向坂口医生学习呢。不过，光学不练的话，怎么知道我的手法到底合不合格？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n013",
+            "label": "继续",
+            "next": "n014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她捏着乳胶手套的腕口轻轻一拉，「啪」的一声轻响，乳白色的薄手套贴合地裹住她的五指。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n014",
+            "label": "继续",
+            "next": "n015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「所以今天的『院外特别练习』——我想先请坂口医生躺上这边这张平躺检查床，由我来为您做一套术前体格检查。等到检查做完之后……再换我去坐那边那张妇科检查台，怎么样？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "choose_n016a",
+            "label": "「先说好，既然是在这种地方玩角色扮演，得先把规则和范围定清楚。」",
+            "next": "n016a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choose_n016b",
+            "label": "「你那双手套一戴上，总觉得不像是普通体检那么简单。」",
+            "next": "n016b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n016a",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呵呵，不愧是严谨的坂口医生，连玩游戏都要先做术前知情同意呢。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n016a",
+            "label": "继续",
+            "next": "n017a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n017a",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「面对你这种平时最擅长笑着给人下套的家伙，不把边界问清楚可不行。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n017a",
+            "label": "继续",
+            "next": "n018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n016b",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「哎呀，明明平时在处置室里最擅长哄患者放松的就是坂口医生，怎么轮到自己要躺上去了，警惕心突然变得这么重？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n016b",
+            "label": "继续",
+            "next": "n017b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n017b",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「因为我太清楚你在温柔笑容底下藏着多少坏心眼了。在那之前，先把今天能做到哪一步说清楚。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n017b",
+            "label": "继续",
+            "next": "n018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「好呀。既然是两个人的私密诊察室，规矩当然由坂口医生来定。不管是不能碰的器械，还是想让我停下来的暗号，我全都听你的。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n018",
+            "label": "继续",
+            "next": "n019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n019",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「第一，推车上那些仿制的金属器械和导管只能拿来做样子，不准做真正侵入性的动作；第二，如果哪一边真的觉得不舒服或者喊停，必须立刻停手。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n019",
+            "label": "继续",
+            "next": "n020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「收到。不做真正会受伤的侵入操作，只要隆司认真说一声『停』，我保证一秒钟都不会多碰。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n020",
+            "label": "继续",
+            "next": "n021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n021",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她笑着竖起两根戴着乳胶手套的手指，眼神里带着恶作剧得逞的狡黠，却又让人莫名安心。紧接着，她话锋一转，声音压低了几分：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n021",
+            "label": "继续",
+            "next": "n022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n022",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「不过相对地——只要还在刚才约好的安全边界里面，哪怕患者先生半路嘴硬说『等一下』，负责任的护士小姐也是不会随便放过你的哦？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n022",
+            "label": "继续",
+            "next": "n023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "不等我再退后半步，朝仓已经微笑着贴近过来。她隔着薄薄的乳胶手套按住我的胸口，力道巧得出奇，轻轻一推就把我抵在了铺着白色床单的检查床沿上。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n023",
+            "label": "继续",
+            "next": "n024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "我的后背靠在微凉的墨绿色皮革床垫上。朝仓站在床侧，室内鹅颈灯从她肩头斜照下来，把她胸前收紧的护士服轮廓映得格外分明。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n024",
+            "label": "继续",
+            "next": "n025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「首先是胸部听诊和腹部触诊。患者坂口先生，请自己把外套和衬衫解开……还是说，您比较喜欢由护士亲手帮您一颗一颗解开扣子呢？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n025",
+            "label": "继续",
+            "next": "n026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n026",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「我自己来就行——」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n026",
+            "label": "继续",
+            "next": "n027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「动作太慢了，扣分哦。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n027",
+            "label": "继续",
+            "next": "n028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n028",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "我的手才刚抬到领口，朝仓戴着乳胶手套的指尖已经挤进我的指缝，顺势将我的手腕按回身侧的床单上。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n028",
+            "label": "继续",
+            "next": "n029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n029",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她的动作快得惊人——明明没有低头细看，指尖却像在手术台上打结一样利落，三两下便解开了我的衬衫排扣，将衣襟向两侧大幅度敞开。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n029",
+            "label": "继续",
+            "next": "n030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n030",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「……这种解衣服的速度，你敢说自己在来星见之前只是普通病房护士？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n030",
+            "label": "继续",
+            "next": "n031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「谁知道呢？也许只是因为我平时观察坂口医生穿衣服的样子太久了，连哪颗扣子稍微紧一点都记在脑子里了吧。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n031",
+            "label": "继续",
+            "next": "n032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n032",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "室内的空气接触到裸露的胸膛与腹部皮肤。朝仓从脖颈上取下那副挂在领口前的银色双头听诊器，故意没有像平时对待患者那样先在手心里焐热，而是直接将冰凉的金属胸件贴在了我的左胸心尖搏动处。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n032",
+            "label": "继续",
+            "next": "n033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n033",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「唔……！」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n033",
+            "label": "继续",
+            "next": "n034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n034",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「啊，抱歉抱歉，忘记帮坂口先生把听诊器焐热了呢。您平时对女孩子们说『稍微有点凉，忍耐一下哦』的时候，她们大概就是现在这种表情吧？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n034",
+            "label": "继续",
+            "next": "n035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "冰冷的金属圆盘紧贴着胸口皮肤，她微微俯下身，护士服前襟随着前倾的姿势几乎擦到我的手臂。听诊器的胶管垂落在我胸前，随着呼吸轻轻晃动。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n035",
+            "label": "继续",
+            "next": "n036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「咚、咚、咚……心率比刚进房间的时候快了差不多二十次呢，坂口先生。明明我们已经约好不动真格的器械了，怎么还是这么紧张呀？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n036",
+            "label": "继续",
+            "next": "n037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n037",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「你靠得这么近，领口都快贴到我脸上了，正常男人的心率都会变快吧。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n037",
+            "label": "继续",
+            "next": "n038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「是吗？那我可得好好鉴别一下，究竟是因为躺在检查床上被看的紧张，还是因为别的什么不规矩的反应呢。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n038",
+            "label": "继续",
+            "next": "n039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她摘下听诊器放到托盘里，戴着薄乳胶手套的右手掌心缓慢地覆上我的上腹部。乳胶特有的微涩阻尼感与她指腹的温度交织在一起，沿着剑突下方一点点向下按压、滑动。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n039",
+            "label": "继续",
+            "next": "n040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「腹壁稍微有点紧绷哦。请深呼吸——吸气……对，再慢慢吐出来。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n040",
+            "label": "继续",
+            "next": "n041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n041",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "趁着我吐气、腹肌放松的瞬间，她的指尖忽然收拢，用食指与中指的指腹顺着我的腹正中线，从肚脐上方一路缓慢而稳定地划向耻骨联合上方。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n041",
+            "label": "继续",
+            "next": "n042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n042",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "那道轨迹精准得让身为外科医生的我瞬间头皮发麻——那是标准下腹部正中开腹切口（Midline Laparotomy）的划线位置。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n042",
+            "label": "继续",
+            "next": "n043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n043",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呐，坂口医生……每次在手术室里给您递圆刀片的时候，我都在想哦。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n043",
+            "label": "继续",
+            "next": "n044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「如果躺在无影灯底下的人换成坂口医生……也是像这样把肚子全部露出来，由我拿着记号笔在这里画上一道黑线，再假装一寸一寸切开皮肤和筋膜的话，坂口医生会露出什么样的表情呢？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n044",
+            "label": "继续",
+            "next": "n045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n045",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「喂，美幸……这种假设对一个外科医生来说也太糟糕了。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n045",
+            "label": "继续",
+            "next": "n046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n046",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「嘴上说着糟糕，可刚才被我的手指顺着『刀口』划到底下的时候，小腹这里的肌肉明明用力收缩了一下呢。而且……你刚才是不是直接叫我『美幸』了？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n046",
+            "label": "继续",
+            "next": "n047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n047",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她没有给我掩饰的余地，手指已经顺着下腹边缘滑到了我的长裤腰扣上。金属皮带扣在她指尖发出一声轻响，拉链被拉下一半，露出内裤边缘与两侧紧绷的腹股沟线条。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n047",
+            "label": "继续",
+            "next": "n048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n048",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「按理说，下腹部手术的备皮检查范围，可是要一直确认到耻骨和双侧腹股沟下方的哦。虽然刚才答应了不做真正的插管操作……但隔着衣服检查一下局部有没有异常充血，完全在规则范围内吧？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n048",
+            "label": "继续",
+            "next": "n049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n049",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她另一只手拿起托盘里那支圆头记号笔，用微凉圆润的塑料笔帽尾端，隔着已经被体温烘热的贴身内裤布料，轻轻抵在了早已抬头的轮廓上方，由下至上缓慢地描摹了一圈。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n049",
+            "label": "继续",
+            "next": "n050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n050",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「……！你这家伙，检查得未免太仔细了一点……」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n050",
+            "label": "继续",
+            "next": "n051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「哎呀……这里顶得这么明显，作为患者在女护士检查的时候变成这样，是不是稍微太不老实了一点？不过——我的前半场护士体验，到这里就已经很满足了哦。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "choose_n052a",
+            "label": "握住她拿着记号笔的手腕：「前半场结束了的话，现在该轮到你去坐那边那张妇科检查台了。」",
+            "next": "n052a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choose_n052b",
+            "label": "顺势揽住她的腰站起身：「既然你说患者不够老实，那换你坐上妇科检查台示范一下什么叫乖巧的患者吧。」",
+            "next": "n052b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n052a",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呀……！明明还被我解开了衣服半躺在床上，抓住手腕的眼神却一下子变成主刀医生的样子了呢……」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n052a",
+            "label": "继续",
+            "next": "n053a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n053a",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「是你自己进门时说的，检查完我之后，就换你去那边躺下。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n053a",
+            "label": "继续",
+            "next": "n054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n052b",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「唔……！等一下，腰被你这么一揽，重心要不稳了啦……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n052b",
+            "label": "继续",
+            "next": "n053b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n053b",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「别躲了，朝仓护士。刚才检查得那么起劲，现在该轮到你坐上那张妇科检查台了。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n053b",
+            "label": "继续",
+            "next": "n054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n054",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "伴随着记号笔滚落在托盘里的轻响，我从平躺检查床上起身。刚才还游刃有余的朝仓没有挣扎，顺着我手腕带动的力道走到包厢内侧，自己提着护士裙坐上了那张仿制的电动妇科检查台。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n054",
+            "label": "继续",
+            "next": "n055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n055",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呵呵……这下真的轮到我了呢。不过坂口医生，既然是正规的妇科检查台……体位是不是应该由医生亲自来帮我摆好呀？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n055",
+            "label": "继续",
+            "next": "n056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n056",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「被一个周日睡到下午三点才跟我说『早安』的人催促，总觉得没什么说服力。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n056",
+            "label": "继续",
+            "next": "n057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n057",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「唔……那次睡过头的事，隆司打算记一辈子吗？明明平时在病房里配合得那么规矩，现在人都已经坐到检查台上了，就别光顾着翻旧账嘛……」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n057",
+            "label": "继续",
+            "next": "n058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n058",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她仰面靠在妇科检查台倾斜的靠背垫上，一直烧到耳根的红意怎么也藏不住。我站在检查台正前方，双手托住她裹着白色丝袜的脚踝，将她的双腿一左一右缓缓抬起，稳稳地安置在两侧弧形的软垫腿架上。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n058",
+            "label": "继续",
+            "next": "n059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n059",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "随着双腿被分开架在腿托上的标准截石位姿势成型，她身上的粉红色护士裙下摆自然滑落到大腿根部，腿间淡紫色的蕾丝内裤轮廓毫无遮掩地露在灯光下。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n059",
+            "label": "继续",
+            "next": "n060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n060",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「唔……平时在妇科和手术室里帮别的女孩子架过那么多次腿托，轮到自己被隆司亲手把腿分开放在这里……脚趾都忍不住蜷起来了呢……」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n060",
+            "label": "继续",
+            "next": "n061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n061",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她的呼吸比刚才急促了不少，却还是抬起戴着乳胶手套的双手，当着我的面「啪、啪、啪」地依次解开了护士服胸口的三颗按扣。挺括的粉红色领口向两侧敞开，露出了锁骨下方包裹在淡紫色蕾丝半杯文胸里、正随着呼吸起伏的胸口。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n061",
+            "label": "继续",
+            "next": "n062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「来吧，坂口医生。既然都已经坐上这张检查台了……今天不管是全身触诊，还是更里面的检查，我都听你的。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n062",
+            "label": "继续",
+            "next": "n063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n063",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「这可是你主动坐上来的。在你说出『停』之前，就算姿势再难为情也要乖乖配合。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n063",
+            "label": "继续",
+            "next": "n064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n064",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「嗯……请便哦，我的主治医生大人。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n064",
+            "label": "继续",
+            "next": "n065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n065",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "我俯身站在分开的腿架之间，单手按住她交叠在头顶枕边的手腕，低下头，直接吻上了她的唇瓣。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n065",
+            "label": "继续",
+            "next": "n066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n066",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「唔……嗯……哈啊……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n066",
+            "label": "继续",
+            "next": "n067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n067",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "嘴唇相贴的瞬间，朝仓鼻腔里溢出一声轻哼。双腿架在两侧腿托上的姿势让她无处借力，只能微微仰起脖子迎合，舌尖主动探过来，带着急促而滚烫的呼吸。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n067",
+            "label": "继续",
+            "next": "n068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n068",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "在深吻的间隙，我的另一只手顺着她敞开的护士服前襟探入，握住了被蕾丝托起的饱满弧度。指尖轻轻一拨便将半杯文胸向上推开，弹软的乳肉连同已经微微立起的淡粉色乳尖一同落入掌心。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n068",
+            "label": "继续",
+            "next": "n069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n069",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「啊……哈嗯……！隆司的手……比刚才的听诊器烫多了……」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n069",
+            "label": "继续",
+            "next": "n070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n070",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「患者朝仓小姐，右侧乳腺外上象限到乳晕周围的皮肤温度明显升高，连乳头都硬成这样了……这也是正常体征吗？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n070",
+            "label": "继续",
+            "next": "n071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n071",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「唔嗯……坏心眼……明明是你用拇指一直在那里打圈揉按……腿还被架在检查台上合不拢，被喜欢的人这样『触诊』，任谁都会起反应的呀……啊、那里不要用指甲轻轻刮……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n071",
+            "label": "继续",
+            "next": "n072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n072",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "我俯下身，含住她胸前的一侧尖端，舌尖绕着乳晕吮吸；腾出的右手则顺着她紧绷的小腹一路向下——沿着她刚才在我身上划过的那道下腹正中线轨迹，滑向检查台坐垫边缘，隔着已经被濡湿得发烫的蕾丝内裤，按住了因截石位而完全敞开的腿间。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n072",
+            "label": "继续",
+            "next": "n073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n073",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呀啊……！等、等一下……隆司，腿架在上面根本躲不开……下面还没做消毒准备就被直接摸上来……唔嗯！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n073",
+            "label": "继续",
+            "next": "n074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n074",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「刚才不知道是谁笑话我不够老实，结果轮到你自己坐上妇科检查台，裙子底下不是已经把内裤全都弄湿了吗？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n074",
+            "label": "继续",
+            "next": "n075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n075",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「那是因为……平时总是我站在台下看着别人害羞，现在自己被隆司亲手架起双腿、手腕还被你按在头顶……连最隐秘的地方都被你看光了，身体根本慢不下来嘛……哈啊……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n075",
+            "label": "继续",
+            "next": "n076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n076",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她的后颈仰靠在头枕上，长发散落在洁白的垫单间。我将她湿透的内裤底布拨向一侧，手指顺着湿滑泥泞的褶皱滑入半寸，指腹立刻感受到了内部紧实的收缩。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n076",
+            "label": "继续",
+            "next": "n077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n077",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "与此同时，朝仓被我松开的手腕顺势环上我的肩膀，那只还戴着无菌乳胶手套的手探到下方，隔着顺滑微凉的乳胶薄膜，握住了我早已滚烫坚硬的分身。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n077",
+            "label": "继续",
+            "next": "n078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n078",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「哈啊……戴着检查手套握住隆司这里的时候……连每一道脉搏跳动都传得好清楚……既然都已经在检查台上摆好姿势、准备得这么充分了，就请主治医生直接开始最深入的检查吧……？」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n078",
+            "label": "继续",
+            "next": "n079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n079",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她架在两侧腿托上的双腿轻轻颤抖着向两边分得更开，用戴着手套的指尖引导着前端抵住自己湿润微张的入口，随后仰起发烫的脸颊，迎接着我站在检查台前一寸一寸地沉入。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n079",
+            "label": "继续",
+            "next": "n080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n080",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「唔……啊啊……！进、进来了……好深……保持着妇科检查的姿势被隆司从正面这样一点点填满……连最深处的地方都好像被完全顶住了……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n080",
+            "label": "继续",
+            "next": "n081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n081",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "湿滑紧致的内壁瞬间将我严丝合缝地包裹住。半敞开的粉红色护士服铺展在妇科检查台靠背上，架在腿托上的白丝小腿随着我的动作轻轻摇晃，抓住坐垫边缘的手套指节也因为用力而微微绷紧。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n081",
+            "label": "继续",
+            "next": "n082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n082",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "我扶住她架在腿托内侧的大腿根部稳稳地向内抽送，朝仓则双手紧紧搂住我的脖颈，把发烫的脸颊贴在我的耳畔，每一次深处相贴时都会漏出毫无防备、急促而凌乱的鼻音与喘息。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n082",
+            "label": "继续",
+            "next": "n083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n083",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「嗯、唔嗯……隆司……再往里面一点……啊、就是那里……感觉连最里面的敏感深处都被你一下一下顶到了……脑袋里全都白了……好舒服……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n083",
+            "label": "继续",
+            "next": "n084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n084",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「美幸……抓紧我。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n084",
+            "label": "继续",
+            "next": "n085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n085",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「嗯……！不要停，隆司……不管是今天在这张检查台上，还是以后……全都交给你一个人了……一起……啊啊……！」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n085",
+            "label": "继续",
+            "next": "n086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n086",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "在连续数次直抵深处的紧密抽送后，朝仓架在腿托上的双脚脚背剧烈地绷紧弓起，戴着乳胶手套的五指死死抓紧了我的后背，在剧烈而绵长的收缩中，与我一同迎来了彻底释放的余韵。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n086",
+            "label": "继续",
+            "next": "n087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n087",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "片刻之后，包厢里只剩下两人逐渐平息的呼吸声。我先伸手将朝仓发软的双腿从两侧腿架上放下来，扶着她坐起身；她窝在我怀里缓了好一会儿，才拿过湿巾仔细清理干净两人身上的痕迹，再把那双已经皱巴巴的乳胶手套摘下来丢进垃圾桶里。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n087",
+            "label": "继续",
+            "next": "n088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n088",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呼……原来真正坐到妇科检查台上被隆司这么折腾的时候，是这种连指尖都会发麻的感觉呀。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n088",
+            "label": "继续",
+            "next": "n089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n089",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她环顾了一圈四周布置得颇为考究的主题包厢，伸手轻轻敲了敲身下这张仿制检查台的扶手，嘴角弯起一抹带着几分职业挑剔的俏皮弧度：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n089",
+            "label": "继续",
+            "next": "n090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n090",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「不过话说回来，这种店里的器械和检查台，其实跟真正的医院比起来还不够真实呢……不过嘛，在约会的时候，有时候太真实了也不好玩就是了。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n090",
+            "label": "继续",
+            "next": "n091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n091",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「都做到刚才那种程度了还嫌不够真实，刚才在检查台上不知道是谁比平时在医院里坦率了十倍。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n091",
+            "label": "继续",
+            "next": "n092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n092",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "朝仓噗嗤一笑，先伸手帮我把衬衫的扣子一颗颗重新系好，又顺手抚平了我的领口；接着她才慢条斯理地扣回自己护士服胸前的按扣，抬眼看向我的目光比平时任何时候都要亲昵。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n092",
+            "label": "继续",
+            "next": "n093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n093",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「因为对象是隆司嘛。不管是平时逗你玩，还是像刚才那样乖乖躺下来任你摆布，这种事我可只愿意跟隆司一个人做哦。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n093",
+            "label": "继续",
+            "next": "n094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n094",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「那明天回医院上班的时候，是谁的男朋友在处置室里给你打下手？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n094",
+            "label": "继续",
+            "next": "n095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n095",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「……呵呵，还能是谁的。不过上班时间要是敢在护士站这么叫，负责任的护士小姐可是会扣你分的哦，男朋友先生。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n095",
+            "label": "继续",
+            "next": "n096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n096",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "她眯起眼笑着凑过来，在我唇角轻轻印下一吻，随后靠在我肩头安静地待了片刻。像是从刚才的余韵里想起了什么真正令她着迷的事，她抬起眼轻声说道：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n096",
+            "label": "继续",
+            "next": "n097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n097",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呐，隆司……刚才躺在检查台上的时候，我突然在想一件事。以后如果医院里有真正的**无麻醉手术**——就是患者从头到尾都保持清醒的那种特殊手术，你一定要记得叫我参加哦。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n097",
+            "label": "继续",
+            "next": "n098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n098",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_yui",
+        "text": "「真正的无麻醉手术？那种手术对器械和台下安抚的要求都很苛刻，你怎么突然对这个感兴趣？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n098",
+            "label": "继续",
+            "next": "n099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n099",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「正因为患者在完全清醒的状态下把身体交给主刀医生，那种紧张感才最需要一个懂得分寸的护士在旁边握着她的手、帮她稳住情绪呀。说到患者——我认识的一位叫**相模大野千惠**的年轻女警，最近刚好因为身体上的小毛病，准备来咱们星见医院看门诊呢。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n099",
+            "label": "继续",
+            "next": "n100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n100",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_yui",
+        "text": "朝仓换回自己的日常便服，拿起手提包走到包厢门边拧开门锁，回头朝我露出了一个意味深长的微笑。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n100",
+            "label": "继续",
+            "next": "n101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "n101",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「那孩子平时在警署里总是一副要强的样子，万一正式诊查下来真的需要做手术、躺上手术台的话，肯定会很有趣吧？到时候不管是医院里的工作，还是我们两个人的下一次约会……我都拭目以待哦，隆司。」",
+        "speaker_label": "朝仓美幸",
+        "expression": "neutral",
+        "outfit": "uniform",
+        "background_id": "miyuki_private_clinic",
+        "choices": [
+          {
+            "id": "continue_n101",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [],
+            "route": "romance"
+          }
+        ]
+      }
+    ]
+  }
+]

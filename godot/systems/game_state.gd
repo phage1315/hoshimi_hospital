@@ -106,7 +106,12 @@ var base_staff_skills: Dictionary = {}
 var presence_resolver: RefCounted
 var preops: Dictionary = {}
 var active_preop_id := ""
+var _advanced_calendar_day := -1 # Runtime-only observation; never persisted.
+var _advanced_calendar_syncing := false
+var _advanced_restoring := false
 var advanced_referral_facts: Dictionary = {}
+var advanced_staff_patient_facts: Dictionary = {} # Final facts only.
+var active_advanced_staff_patient := "" # Volatile episode lock, never serialized.
 var advanced_runtime: RefCounted
 var active_mode := "encounter"
 var definitions: Dictionary = {}
@@ -205,7 +210,10 @@ func configure(data: Array, preop_data: Array = [], staff_data: Array = [], time
 	reset()
 
 func reset() -> void:
+	_advanced_calendar_day = -1
 	advanced_referral_facts.clear()
+	advanced_staff_patient_facts.clear()
+	active_advanced_staff_patient = ""
 	advanced_runtime = null
 	settled_clock_offset = 0
 	active_staff_patient.clear()
@@ -325,6 +333,7 @@ func finish_admission_for_day(encounter_id: String) -> bool:
 	return true
 
 func can_save_progress() -> bool:
+	if not active_advanced_staff_patient.is_empty(): return false
 	if not active_free_h_departure.is_empty():
 		return false
 	# Saves are boundary snapshots, never resumable UI/event positions. The
@@ -1001,6 +1010,7 @@ func advance_story_to_day(target_day: int, absolute_clock: int) -> void:
 	var target_total := target_day_index * SHIFT_MINUTES + target_shift_minute
 	story_time_advance_minutes += maxi(0, target_total - current_total)
 	expire_free_h_booking()
+	sync_advanced_referral_calendar()
 
 func current_workday() -> int:
 	if not active_free_h_departure.is_empty():
@@ -1180,6 +1190,7 @@ func known_staff_ids() -> Array[String]:
 	return result
 
 func staff_can_join_surgery_team(actor_id: String) -> bool:
+	if actor_id == active_advanced_staff_patient: return false
 	if actor_id == "doc_serika" and (relationship_level(actor_id) < 2 or not preload("res://godot/systems/serika_radiology.gd").milestone_complete(self, 2)):
 		return false
 	if actor_id == str(active_staff_patient.get("staff_id", "")):
@@ -1542,16 +1553,16 @@ func familiarity_reward(actor_id: String, base_amount: int, source: String = "st
 	var source_override: Dictionary = overrides.get(source, {})
 	if source_override.has("fixed_reward"):
 		return maxi(0, int(source_override.fixed_reward))
-	var reward := maxi(0, roundi(float(base_amount) * familiarity_gain_multiplier(actor_id, source)))
+	var reward := maxi(0, roundi(float(base_amount) * float(source_override.get("multiplier", familiarity_gain_multiplier(actor_id, source)))))
 	if source_override.has("minimum_reward"):
 		reward = maxi(reward, int(source_override.minimum_reward))
 	if source_override.has("maximum_reward"):
 		reward = mini(reward, int(source_override.maximum_reward))
 	return reward
 
-func surgery_familiarity_reward(actor_id: String, case_tier: String = "routine") -> int:
+func surgery_familiarity_reward(actor_id: String, case_tier: String = "routine", source: String = "surgery") -> int:
 	var base := int(Progression.FAMILIARITY_CASE_BASE.get(case_tier, Progression.FAMILIARITY_CASE_BASE.routine))
-	return familiarity_reward(actor_id, base, "surgery")
+	return familiarity_reward(actor_id, base, source)
 
 func date_location_familiarity_multiplier(actor_id: String, location_id: String) -> float:
 	var location: Dictionary = date_location_definitions.get(location_id, {})
@@ -1569,17 +1580,17 @@ func relationship_event_familiarity_reward(actor_id: String, target_level: int) 
 	var base := int(Progression.RELATIONSHIP_EVENT_FAMILIARITY_BASE.get(target_level, 0))
 	return familiarity_reward(actor_id, base, "relationship_event")
 
-func award_case_familiarity(participants: Dictionary, case_tier: String = "routine") -> void:
+func award_case_familiarity(participants: Dictionary, case_tier: String = "routine", source: String = "surgery") -> void:
 	var awarded: Dictionary = {}
 	for value in participants.values():
 		var actor_id := str(value)
 		if actor_id.is_empty() or awarded.has(actor_id) or not staff_is_met(actor_id):
 			continue
 		awarded[actor_id] = true
-		add_familiarity(actor_id, surgery_familiarity_reward(actor_id, case_tier))
+		add_familiarity(actor_id, surgery_familiarity_reward(actor_id, case_tier, source))
 
-func award_surgery_team_familiarity(team: Dictionary, case_tier: String = "routine") -> void:
-	award_case_familiarity(team, case_tier)
+func award_surgery_team_familiarity(team: Dictionary, case_tier: String = "routine", source: String = "surgery") -> void:
+	award_case_familiarity(team, case_tier, source)
 
 func complete_rank_up(actor_id: String, event_id: String, target_level: int, benefit_id: String = "") -> void:
 	var relation := relation_for(actor_id)
@@ -2225,6 +2236,8 @@ func choose_character_event(choice_id: String) -> bool:
 	if event.completed and not relation.event_history.has(event.definition.id):
 		event.completed_day = event_day
 		relation.event_history.append(event.definition.id)
+		if str(event.definition.id) == "ev_doc_takemi_lv2_fujino_laparotomy":
+			set_story_flag("takemi_fujino_cured_and_discharged")
 		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)):
 			preload("res://godot/systems/serika_radiology.gd").completed(self, event_day)
 		if preload("res://godot/systems/takemi_introduction.gd").owns(str(event.definition.id)):
@@ -3516,10 +3529,13 @@ func choose_special_event(choice_id: String) -> Dictionary:
 			completion_day = int(active_special_event.started_day)
 		if id == preload("res://godot/systems/serika_lv4.gd").ID:
 			completion_day = int(active_special_event.started_day) + 3
+		if id == "advanced_referral_tutorial_chisato":
+			completion_day = int(active_special_event.started_day) + int(active_special_event.step_index)
 		special_event_completion_days[id] = completion_day
 		for flag in active_special_event.definition.get("completion_flags", []):
 			set_story_flag(str(flag), true)
 		apply_special_event_completion_effects(active_special_event.definition)
+		if id == "advanced_referral_tutorial_chisato": sync_advanced_referral_calendar()
 		preload("res://godot/systems/chihaya_mizuho_return.gd").settle(self,id)
 		for reward in active_special_event.definition.get("relationship_rewards", []):
 			var actor_id := str(reward.get("actor_id", ""))
@@ -3816,8 +3832,19 @@ func schedule_at(total_minutes: int) -> Dictionary:
 		"absolute_clock": SHIFT_START_MINUTE + shift_minute
 	}
 
+func sync_advanced_referral_calendar() -> void:
+	if _advanced_calendar_syncing or _advanced_restoring: return
+	_advanced_calendar_syncing = true
+	var today := int(schedule_at(elapsed()).day)
+	_advanced_calendar_day = today
+	preload("res://godot/systems/advanced_referral_rules.gd").sync(self, today)
+	_advanced_calendar_syncing = false
+
 func day_number() -> int:
-	return int(schedule_at(elapsed()).day)
+	var today := int(schedule_at(elapsed()).day)
+	# All ledger-based time advances pass through this public calendar accessor.
+	if today != _advanced_calendar_day: sync_advanced_referral_calendar()
+	return today
 
 func display_schedule() -> Dictionary:
 	var schedule := world_display_schedule()
@@ -4136,7 +4163,7 @@ func finish_active_surgery() -> bool:
 	update_surgical_quality_record(preparation)
 	record_completed_surgery_progress(preparation, surgery_id)
 	persist_shared_surgery_counts(preparation.team)
-	award_surgery_team_familiarity(preparation.team, familiarity_case_tier(surgery_id))
+	award_surgery_team_familiarity(preparation.team, familiarity_case_tier(surgery_id), "surgery_no_anesthesia" if preparation.flags.has("no_anesthesia_confirmed") else "surgery")
 	unlock_procedure(str(preparation.procedure_id))
 	award_surgery_xp(preparation)
 	award_leadership_xp(preparation)
@@ -4196,6 +4223,7 @@ func set_intraoperative_crisis_enabled(enabled: bool) -> void:
 	intraoperative_crisis_enabled = enabled
 
 func procedure_sweep_unlocked(surgery_id: String) -> bool:
+	if preload("res://godot/systems/advanced_referral_rules.gd").is_advanced(surgery_id): return false
 	if not procedure_unlocked(surgery_id) or int(completed_surgeries_by_procedure.get(surgery_id, 0)) <= 0:
 		return false
 	if surgery_id not in ["surgery_appendix", "surgery_open_cholecystectomy", "surgery_open_inguinal_hernia"]:
@@ -4373,7 +4401,8 @@ func advanced_referral_eligible() -> bool:
 	return surgery_level() >= ADVANCED_REFERRAL_UNLOCK_SURGERY and int(attributes.get("reputation", 0)) >= ADVANCED_REFERRAL_UNLOCK_REPUTATION
 
 func advanced_referral_system_unlocked() -> bool:
-	return story_flag("advanced_referral_random_cases_enabled")
+	sync_advanced_referral_calendar()
+	return preload("res://godot/systems/advanced_referral_rules.gd").tutorial_settled(self) and int(advanced_referral_facts.get("activated_day", 0)) > 0
 
 func advanced_referral_case_available(definition: Dictionary) -> bool:
 	if definition.is_empty():
@@ -4524,13 +4553,13 @@ func leadership_level_progress() -> Dictionary:
 		return {"level": level, "current_xp": 0.0, "required_xp": 0.0, "total_xp": leadership_xp}
 	return {"level": level, "current_xp": leadership_xp - leadership_xp_for_level(level), "required_xp": leadership_xp_to_next_level(level), "total_xp": leadership_xp}
 
-func award_leadership_xp(preparation: RefCounted, explicit_tier: String = "") -> float:
+func award_leadership_xp(preparation: RefCounted, explicit_tier: String = "", reward_scale: float = 1.0) -> float:
 	if leadership_level() >= Progression.LEADERSHIP_MAX_LEVEL:
 		return 0.0
 	var tier := explicit_tier if not explicit_tier.is_empty() else surgery_case_tier(str(preparation.procedure_id))
 	var team_average := team_relevant_skill_average(preparation.team)
 	var team_class: Dictionary = Progression.leadership_team_class(team_average if team_average >= 0.0 else 70.0)
-	var award := float(Progression.LEADERSHIP_CASE_BASE.get(tier, 2.0)) * float(team_class.multiplier)
+	var award := float(Progression.LEADERSHIP_CASE_BASE.get(tier, 2.0)) * float(team_class.multiplier) * reward_scale
 	var cap := leadership_xp_for_level(Progression.LEADERSHIP_MAX_LEVEL)
 	award = minf(award, maxf(0.0, cap - leadership_xp))
 	if award <= 0.0:
@@ -4556,13 +4585,15 @@ func staff_training_credit_cost(skill_level: int) -> int:
 		return 4
 	return 0
 
-func train_surgery_team(team: Dictionary, surgery_id: String, explicit_tier: String = "") -> Array[Dictionary]:
+func train_surgery_team(team: Dictionary, surgery_id: String, explicit_tier: String = "", reward_scale: float = 1.0) -> Array[Dictionary]:
 	var tier := explicit_tier if not explicit_tier.is_empty() else surgery_case_tier(surgery_id)
 	var credits := 1
 	if tier == "advanced":
 		credits = 2
 	elif tier in ["extreme", "legendary"]:
 		credits = 3
+	credits = int(credits * reward_scale)
+	if credits <= 0: return []
 	var result: Array[Dictionary] = []
 	var trained := {}
 	for role_id in team:
@@ -4674,9 +4705,9 @@ func surgery_xp_award_for(preparation: RefCounted, explicit_procedure: Dictionar
 		return 0
 	return roundi(float(maxi(1, mini(raw_award, remaining_to_ceiling))) * practice_multiplier)
 
-func award_surgery_xp(preparation: RefCounted, explicit_procedure: Dictionary = {}) -> int:
+func award_surgery_xp(preparation: RefCounted, explicit_procedure: Dictionary = {}, reward_scale: float = 1.0) -> int:
 	var before_level := surgery_level()
-	var award := mini(surgery_xp_award_for(preparation, explicit_procedure), maxi(0, surgery_xp_for_level(100) - surgery_xp))
+	var award := mini(int(surgery_xp_award_for(preparation, explicit_procedure) * reward_scale), maxi(0, surgery_xp_for_level(100) - surgery_xp))
 	if award <= 0:
 		return 0
 	surgery_xp += award
@@ -4743,6 +4774,7 @@ func player_attribute_history() -> Array[Dictionary]:
 	return result
 
 func snapshot() -> Dictionary:
+	sync_advanced_referral_calendar()
 	return BoundarySave.new().capture(self)
 
 func runtime_snapshot() -> Dictionary:
@@ -4773,6 +4805,7 @@ func runtime_snapshot() -> Dictionary:
 		"save_format": "runtime_memory_only_v1",
 		"active_id": "", "progress": progress, "preops": preparation_logs,
 		"advanced_referral_facts": advanced_referral_facts.duplicate(true),
+		"advanced_staff_patient_facts": preload("res://godot/systems/advanced_staff_patient_facts.gd").clean(advanced_staff_patient_facts),
 		"active_preop_id": "", "active_mode": "staff_chat" if active_mode == "staff_chat" else "encounter",
 		"patient_cases": patient_cases.duplicate(true),
 		"patient_queue": patient_queue.duplicate(),
@@ -5056,6 +5089,19 @@ func restore_runtime_snapshot(data: Dictionary) -> bool:
 	return _restore_state(memory)
 
 func _restore_state(data: Variant) -> bool:
+	_advanced_restoring = true
+	var restored := _restore_state_checked(data)
+	_advanced_restoring = false
+	if restored:
+		sync_advanced_referral_calendar()
+		var issue := preload("res://godot/systems/advanced_referral_rules.gd").issue(self, advanced_referral_facts)
+		if not issue.is_empty():
+			var messages: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/ui_text.json"))
+			restore_warnings.append("%s / %s" % messages[issue])
+	return restored
+
+func _restore_state_checked(data: Variant) -> bool:
+	if not data is Dictionary or not preload("res://godot/systems/advanced_staff_patient_facts.gd").valid(data.get("advanced_staff_patient_facts", {})): return false
 	if not data is Dictionary or not preload("res://godot/systems/advanced_referral_facts.gd").valid(data.get("advanced_referral_facts", {})): return false
 	# Restore into temporary objects; live progress is replaced only after all
 	# required global state has been validated. Only BoundarySave facts or the
@@ -6007,6 +6053,8 @@ func _restore_state(data: Variant) -> bool:
 	intraoperative_crisis_enabled = restored_crisis_enabled
 	sunday_history = restored_sunday_history
 	advanced_referral_facts = data.get("advanced_referral_facts", {}).duplicate(true)
+	advanced_staff_patient_facts = preload("res://godot/systems/advanced_staff_patient_facts.gd").clean(data.get("advanced_staff_patient_facts", {}))
+	active_advanced_staff_patient = ""
 	advanced_runtime = null
 	# A save is a world-state checkpoint, not a resumable scene. Always return
 	# to the hospital directory (the UI will route Sunday to its Sunday menu).

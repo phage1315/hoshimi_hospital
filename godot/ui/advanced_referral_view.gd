@@ -18,6 +18,9 @@ var cast_panel: Control
 var scroll: ScrollContainer
 var operation_panel: RefCounted
 var team_panel: RefCounted
+var blackout_running := false
+var day_transition_panel: ColorRect
+var day_transition_serial := 0
 
 func setup(app: Control, service: RefCounted, en: bool) -> void:
 	host = app
@@ -90,7 +93,12 @@ func refresh_operation_chrome() -> void:
 		exit_button.text = tr_key("compact_exit" if active and controller.dev else "exit" if controller.dev else "back")
 		exit_button.add_theme_font_size_override("font_size",16 if active else 20)
 	var header: Label = host.page.get_node_or_null("CalendarHeader")
+	if header != null and staff_episode() and controller.episode_active and (controller.night_choice or controller.story_phase in ["night", "dark", "after"] or controller.transition_pending):
+		header.text = tr_key("staff_after_clock" if controller.story_phase == "after" else "staff_night_clock")
 	if header != null and controller.dev: header.text = tr_key("compact_dev") if active else tr_key("test_day")%controller.day()
+
+func staff_episode() -> bool:
+	return controller.get_script() == preload("res://godot/systems/advanced_staff_patient.gd")
 
 func render() -> void:
 	host.invalidate_dialogue_action()
@@ -105,23 +113,51 @@ func render() -> void:
 	var with_cast: bool = not (controller.dev and controller.fixture_mode) and (controller.session != null or not record.is_empty() or editing_booking or controller.failure_dialogue_index >= 0)
 	scroll.offset_right = -370 if operation_active() else -440 if with_cast else 0
 	var location := "operating_room" if controller.session != null else "ward" if not controller.state().outcome.is_empty() or controller.last_summary.has("case_id") else "player_office"
+	if staff_episode() and controller.night_choice: location = "ward_night"
 	var wash := host.page.get_node_or_null("BackgroundWash") as ColorRect
-	if wash != null: wash.color.a = 0.0 if location == "ward" or not controller.story_phase.is_empty() else 0.83
+	if wash != null: wash.color.a = 0.0 if location in ["ward", "ward_night"] or not controller.story_phase.is_empty() else 0.83
 	if host.background is TextureRect:
+		host.background.modulate = Color.WHITE
 		var path: String = host.background_path(location)
 		if not path.is_empty(): host.background.texture = load("res://" + path)
 	if controller.dev:
 		var header: Label = host.page.get_node_or_null("CalendarHeader")
 		if header != null: header.text = tr_key("compact_dev") if operation_active() else tr_key("test_day") % controller.day()
 	var exit_button: Button = host.page.get_node_or_null("ExitAdvancedReferral")
-	if exit_button != null: exit_button.disabled = not controller.dev and (controller.session != null or not controller.story_phase.is_empty() or controller.due(controller.game))
+	if exit_button != null: exit_button.disabled = not controller.game.active_advanced_staff_patient.is_empty() or (not controller.dev and (controller.session != null or not controller.story_phase.is_empty() or controller.due(controller.game)))
 	for node in body.get_children():
 		body.remove_child(node)
 		node.queue_free()
 	if controller.dev and controller.session == null and controller.story_phase.is_empty(): label(tr_key("mode"))
 	if not controller.error.is_empty(): label(tr_key(controller.error))
+	controller.refresh()
+	var migration_issue: String = preload("res://godot/systems/advanced_referral_rules.gd").issue(controller.game, controller.state()) if not controller.dev and not staff_episode() else ""
+	if not migration_issue.is_empty(): label(tr_key(migration_issue))
 	if not controller.eligible():
 		label(tr_key("gate"))
+		return
+	if not controller.day_transition.is_empty():
+		render_day_transition()
+		return
+	if staff_episode() and controller.transition_pending:
+		if blackout_running: return
+		blackout_running = true
+		var blackout := ColorRect.new()
+		blackout.color = Color.BLACK
+		blackout.position = -position
+		blackout.size = host.size
+		add_child(blackout)
+		get_tree().create_timer(0.8).timeout.connect(func():
+			if not is_instance_valid(self): return
+			blackout.queue_free()
+			blackout_running = false
+			controller.complete_night_transition()
+			render())
+		return
+	if staff_episode() and controller.night_choice:
+		label(tr_key("staff_title"), true)
+		button("staff_watch", func(): controller.choose_night(true); render())
+		button("staff_skip", func(): controller.choose_night(false); render())
 		return
 	if not controller.story_phase.is_empty():
 		render_first_story()
@@ -144,21 +180,34 @@ func render() -> void:
 		var summary: Dictionary = controller.last_summary
 		label(tr_key("reward") % [summary.surgery_xp, summary.leadership_xp, summary.reputation])
 		if not bool(summary.success): label(tr_key("failxp"))
-		button("new", func(): controller.last_summary.clear(); record = {}; render())
+		if staff_episode(): button("back", func(): host.exit_advanced_referral())
+		else: button("new", func(): controller.last_summary.clear(); record = {}; render())
 		return
 	if not record.is_empty():
 		render_team()
 		return
+	if staff_episode():
+		label(tr_key("staff_title"), true)
+		label(tr_key("staff_warning"))
+		var available: Array = controller.board()
+		if available.is_empty(): label(tr_key("empty_pool"))
+		for item in available:
+			button("case_" + str(item.id), func(): record = item.duplicate(true); selected.clear(); render(), true, title_of(Model.procedure(str(item.procedure_id))))
+		return
 	label(tr_key("status") % [s.procedures.values().count("CLEARED"), s.procedures.values().count("FAILED_LOCKED")], true)
 	label(tr_key("warn"))
-	for item in controller.board():
-		var definition := Model.procedure(str(item.procedure_id))
-		var caption := "%s · %s" % [tr_key("replay" if item.replay else "first"), title_of(definition)]
-		button("case_" + str(item.id), func(): record = item.duplicate(true); selected.clear(); controller.begin_story("day1",item); render(), true, caption)
+	var offers: Array = controller.board()
+	for replay in [false, true]:
+		label(tr_key("replay_pool" if replay else ("new_pool_dev" if controller.dev else "new_pool")), true)
+		var matching: Array = offers.filter(func(item): return bool(item.replay) == replay)
+		if matching.is_empty(): label(tr_key("empty_pool"))
+		for item in matching:
+			var definition := Model.procedure(str(item.procedure_id))
+			var caption := "%s · %s" % [tr_key("replay" if item.replay else "first"), title_of(definition)]
+			button("case_" + str(item.id), func(): record = item.duplicate(true); selected.clear(); controller.begin_story("day1",item); render(), true, caption)
 	for id in s.cooldowns:
-		label(tr_key("cooldown") % [id if controller.dev else actor_name(str(id)), s.cooldowns[id]])
+		label(tr_key("cooldown") % [actor_name(str(id)), s.cooldowns[id]])
 	if controller.dev: button("next_week", func(): controller.demo_day = (int(controller.day() / 7) + 1) * 7; render())
-	label(tr_key("quick"))
 	label(tr_key("limitations"))
 
 func render_team() -> void:
@@ -283,11 +332,71 @@ func update_preview() -> void:
 
 func accept_case() -> void:
 	if committing: return
+	if staff_episode():
+		var conflict: String = controller.booking_conflict()
+		if not conflict.is_empty() and conflict != controller.replacement_actor:
+			var dialog := ConfirmationDialog.new()
+			dialog.dialog_text = tr_key("staff_booking_conflict") + "\n" + actor_name(conflict)
+			dialog.ok_button_text = tr_key("staff_replace")
+			dialog.cancel_button_text = tr_key("back")
+			host.page.add_child(dialog)
+			dialog.confirmed.connect(func(): controller.replacement_actor = conflict; dialog.queue_free(); accept_case())
+			dialog.canceled.connect(func(): dialog.queue_free())
+			dialog.popup_centered(Vector2i(600,220))
+			return
 	committing = true
 	if editing_booking:
 		if controller.rebook(selected): editing_booking = false
 	else: controller.accept(record, selected)
 	committing = false
+	render()
+
+func render_day_transition() -> void:
+	if is_instance_valid(day_transition_panel): return
+	day_transition_serial += 1
+	var serial := day_transition_serial
+	day_transition_panel = ColorRect.new()
+	day_transition_panel.name = "AdvancedDayTransition"
+	day_transition_panel.color = Color("101b22")
+	day_transition_panel.position = -position
+	day_transition_panel.size = host.size
+	day_transition_panel.z_index = 100
+	add_child(day_transition_panel)
+	var title := Label.new()
+	title.name = "DayTransitionTitle"
+	var ordinal: int = controller.day_transition.ordinal
+	title.text = tr_key("day_transition_second" if ordinal == 2 else "day_transition_third") if ordinal in [2,3] else tr_key("day_transition_later") % ordinal
+	title.position = Vector2(0, host.size.y * 0.40)
+	title.size = Vector2(host.size.x, 60)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 38)
+	day_transition_panel.add_child(title)
+	var date := Label.new()
+	date.name = "DayTransitionDate"
+	date.text = str(controller.game.calendar_date(int(controller.day_transition.day)).iso)
+	date.position = Vector2(0, host.size.y * 0.40 + 70)
+	date.size.x = host.size.x
+	date.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	day_transition_panel.add_child(date)
+	var hint := Label.new()
+	hint.text = tr_key("day_transition_continue")
+	hint.position = Vector2(0, host.size.y * 0.75)
+	hint.size.x = host.size.x
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 16)
+	day_transition_panel.add_child(hint)
+	get_tree().create_timer(1.8).timeout.connect(func():
+		if is_instance_valid(self) and serial == day_transition_serial:
+			finish_day_transition())
+
+func finish_day_transition() -> void:
+	if controller.day_transition.is_empty(): return
+	day_transition_serial += 1
+	controller.dismiss_day_transition()
+	if is_instance_valid(day_transition_panel):
+		day_transition_panel.get_parent().remove_child(day_transition_panel)
+		day_transition_panel.queue_free()
+	day_transition_panel = null
 	render()
 
 func render_booking() -> void:
@@ -445,19 +554,32 @@ func render_first_story() -> void:
 	host.page.get_node("PageSubtitle").hide()
 	var line: Dictionary = chapter.lines[controller.story_index]
 	var patient: Dictionary = Presentation.patient(controller.story_record, controller.game, english)
-	var spoken: String = str(line.text_en if english else line.text)
+	var spoken: String = Presentation.format_story(str(line.text_en if english else line.text), title_of(Model.procedure(str(controller.story_record.procedure_id))))
 	if line.speaker == "patient":
-		make_cast(patient,str(patient.get("visuals",{}).get("portraits",{}).get(chapter.portrait,"")),str(patient.name),spoken,true)
+		var portraits: Dictionary = patient.get("visuals", {}).get("portraits", {})
+		var portrait_path := str(portraits.get(chapter.portrait, ""))
+		if portrait_path.is_empty() and chapter.portrait == "ward":
+			portrait_path = str(portraits.get("ward/neutral", ""))
+		make_cast(patient,portrait_path,str(patient.name),spoken,true)
 	else:
-		make_cast({"id":"PLAYER"},"",tr_key("player_speaker"),spoken,true)
+		make_cast({"id":"PLAYER"},"",tr_key("narration" if line.speaker == "narrator" else "player_speaker"),spoken,true)
 	cast_panel.set_meta("story_phase",controller.story_phase)
 	cast_panel.set_meta("story_index",controller.story_index)
 	cast_panel.position = Vector2(40,125)
 	cast_panel.size = Vector2(1200,630)
 	var art: TextureRect = cast_panel.get_node("AdvancedActorPortrait")
 	art.position = Vector2(440,-10);art.size = Vector2(400,450)
+	if line.speaker == "patient" and patient.get("visuals", {}).get("portrait_regions", {}).has(chapter.portrait) and art.texture != null:
+		var portrait := AtlasTexture.new()
+		portrait.atlas = art.texture
+		portrait.region = patient.visuals.portrait_regions[chapter.portrait]
+		art.texture = portrait
+	if chapter.get("dark", false): host.background.modulate = Color(0.02,0.02,0.02)
 	var panel: Panel = cast_panel.get_node("AdvancedDialoguePanel")
 	panel.position = Vector2(0,435);panel.size = Vector2(1200,135)
+	if chapter.portrait == "h_neutral":
+		art.size = Vector2(220,220)
+		art.position = Vector2(panel.size.x - art.size.x - 12, panel.position.y - art.size.y - 12)
 	var box: VBoxContainer = panel.get_child(0)
 	box.size = Vector2(1176,119)
 	cast_panel.find_child("AdvancedStaffDialogue",true,false).add_theme_font_size_override("normal_font_size",22)
@@ -543,6 +665,12 @@ func ignore_dialogue_children(node: Node) -> void:
 		ignore_dialogue_children(child)
 
 func _input(event: InputEvent) -> void:
+	if controller != null and not controller.day_transition.is_empty():
+		var confirm: bool = (event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]) or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT)
+		if confirm:
+			get_viewport().set_input_as_handled()
+			finish_day_transition()
+		return
 	if controller == null or (controller.story_phase.is_empty() and controller.failure_dialogue_index < 0): return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
 		if host.activate_dialogue_default(): get_viewport().set_input_as_handled()

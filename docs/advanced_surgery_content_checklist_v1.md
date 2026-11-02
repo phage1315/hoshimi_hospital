@@ -1,5 +1,7 @@
 # 高级术式数据与素材交付清单 V1
 
+医护作为患者的高级手术另须遵循 [Staff-as-Patient / Lv5交付清单](staff_as_patient_checklist.md)：每名新开放角色必备腹部仰卧、胸部仰卧、侧卧、俯卧四种全麻手术台图，术式显式映射体位。
+
 核验日期：2026-10-31。以当前 Whipple 已运行的内容包、Runner、资源映射为依据；这是新术式的作者／工程交付清单，不表示其他术式已经完成，也不是承诺仅放入 ZIP 就会自动导入。普通 Surgery 与 Advanced 分开，复用生理 effect／危机 resolver。
 
 ## 给写作 GPT 的简版
@@ -171,3 +173,7 @@ Day 1：首次患者VN → 一屏编组 → 确认排程。Day 2：全麻splash 
 - 只保存病例、预约、结果等稳定事实。禁止保存阶段、HP、随机种子、助手已用次数、剧情游标／选择路径；普通Surgery行为不变。
 
 现有工具参考：`tools/whipple_content_audit.py`（Whipple专用原稿核对，不能直接冒充新术式审计）、`tools/whipple_content_test.gd`、`tools/advanced_operative_dialogue_test.gd`、`tools/advanced_team_ui_test.gd`、`tools/advanced_surgery_test.gd`。所有叙事变更还须运行 `python3 tools/narrative_localization_test.py` 和 `python3 tools/localization_audit.py`。新术式需提供自己的原文基线与病例测试，不能只凭Whipple回归通过就宣称完成。
+
+## 2026-11-01 发布与返场约束
+
+新内容必须在 `data/advanced_surgery/release_manifest.json` 追加固定release_order。第5伊兹米、第6美纱已预留，不得越过未ready项。普通新病例最多三格；教学完成次月起1／15发放资格；周一已首通普通术式固定有放回抽两例。Advanced不提供Quick，返场完整手动三日。独立DEV可展示全部内容，不能用来断言正式池全量已开放。见[2026-11-01 V2实装与验收](advanced_referral_rules_v2_implementation_2026-11-01.md)。

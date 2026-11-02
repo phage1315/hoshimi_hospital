@@ -32,11 +32,15 @@ func _initialize() -> void:
 
 func run() -> void:
 	var hub_app = load("res://godot/scenes/main.tscn").instantiate()
+	hub_app.title_notice_enabled = false
 	root.add_child(hub_app)
 	await process_frame
 	hub_app.title_screen()
-	expect(hub_app.page.get_node_or_null("EventTestHubEntry") != null, "Debug title screen is missing the event-test hub entry")
-	hub_app.show_event_test_hub()
+	hub_app.TitleView.developer(hub_app)
+	var developer = hub_app.get_node("TitleDeveloperDialog")
+	var entry = developer.find_child("EventTestHubEntry", true, false)
+	expect(entry != null, "Developer menu is missing the event-test hub entry")
+	entry.pressed.emit()
 	expect(hub_app.screen == "event_test_hub" and hub_app.page.get_node_or_null("EventTestScroll") != null, "Event-test hub did not open")
 	expect(hub_app.page.find_child("EventTest_advanced_referral_tutorial_chisato", true, false) != null, "Event-test hub omitted the Chisato tutorial")
 	for event_id in hub_app.game.special_event_definitions:
@@ -46,6 +50,7 @@ func run() -> void:
 	expect(hub_app.screen == "special_event" and hub_app.game.active_special_event_id == "advanced_referral_tutorial_chisato", "Event-test hub could not launch the Chisato tutorial from a clean state")
 	hub_app.queue_free()
 	var app = load("res://godot/scenes/main.tscn").instantiate()
+	app.title_notice_enabled = false
 	root.add_child(app)
 	await process_frame
 	app.show_map()

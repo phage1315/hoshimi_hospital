@@ -104,6 +104,8 @@ func integration() -> void:
 	expect(not c.eligible(), "Production gate remains closed")
 	g.surgery_xp = g.surgery_xp_for_level(88)
 	g.archived_player_effects.reputation = 300
+	g.special_event_completion_counts["advanced_referral_tutorial_chisato"] = 1
+	g.special_event_completion_days["advanced_referral_tutorial_chisato"] = 3
 	g.set_story_flag("advanced_referral_random_cases_enabled", true)
 	for person in g.staff: g.relation_for(person.id).met = true
 	# No unrelated authored events in this independent scheduling fixture.
@@ -170,9 +172,10 @@ func integration() -> void:
 	# Replay drawing is weekly, stable and never counts repeated clears as new ones.
 	c = Referral.new(g)
 	c.state().procedures = {record.procedure_id: "CLEARED"}
+	c.state().clear_days[record.procedure_id] = 17
 	g.set_test_time(28, 540); c.refresh()
 	var replay: Array = c.state().replays.duplicate(true)
-	c.refresh(); expect(c.state().replays == replay and replay.size() == 1, "Weekly repeat draw stable")
+	c.refresh(); expect(c.state().replays == replay and replay.size() == 2, "Weekly repeat draw stable")
 	g.set_test_time(34, 540); c.refresh(); expect(c.state().replays == replay, "Sunday does not refresh Monday board")
 	g.set_test_time(35, 540); c.refresh(); expect(c.state().replays != replay, "Monday refresh")
 	expect(not g.story_flag("kaori_advanced_prerequisite_met") and not g.story_flag("ray_legendary_prerequisite_met"), "Three-case prototype does not unlock five/ten-clear quests")
@@ -210,6 +213,7 @@ func edge_cases() -> void:
 	c.demo_day = 35; c.refresh()
 	for offer in c.board(): expect(offer.procedure_id != record.procedure_id, "Locked procedure never returns")
 	c.state().procedures[record.procedure_id] = "CLEARED"
+	c.state().clear_days[record.procedure_id] = 35
 	c.demo_day = 42; c.refresh()
 	var replay: Dictionary = c.state().replays[0]
 	expect(replay.patient_id != record.patient_id and replay.replay, "Replay uses distinct placeholder patient")
@@ -218,7 +222,7 @@ func edge_cases() -> void:
 	c.finish_operation(); c.settle()
 	expect(c.state().procedures[record.procedure_id] == "CLEARED", "Replay failure preserves clearance")
 	c.demo_day = 49; c.refresh()
-	expect(c.state().replays.size() == 1, "Failed replay remains in next week's pool")
+	expect(c.state().replays.size() == 2, "Failed replay remains in next week's pool")
 	var d: Dictionary = Model.catalog()[0]
 	var t: Dictionary = Model.fixtures(d.id)[2]
 	var session := Session.new(d, t, 123, [], {}, true)
@@ -238,19 +242,16 @@ func edge_cases() -> void:
 		expect(s.used[0] == 1 and not s.rescue(2), "Successful or failed rescue consumes one use")
 		if rescue_results[0] and rescue_results[1]: break
 	expect(rescue_results[0] and rescue_results[1], "Both rescue branches exercised")
-	# Future quest thresholds count distinct cleared procedures, never repeats.
-	for count in [5, 10]:
-		g = new_game(); c = Referral.new(g)
-		for i in range(count - 1): c.state().procedures["future_fixture_%s" % i] = "CLEARED"
-		c.state().appointment = {"case": record, "team": roster, "intake_day": 1, "operation_day": 2, "review_day": 3, "intake_minutes": 60}
-		c.state().outcome = {"case_id": record.id, "success": true, "operation_day": 2, "minutes": 480}
-		g.set_test_time(3, 540)
-		expect(c.settle(), "Future distinct-clear fixture settles")
-		expect(g.story_flag("kaori_advanced_prerequisite_met"), "Five clears unlock prerequisite only")
-		expect(g.story_flag("ray_legendary_prerequisite_met") == (count == 10), "Ten distinct clears required for Ray")
+	# Unknown IDs must not inflate category-specific quest gates.
+	g = new_game(); c = Referral.new(g)
+	for i in range(10): c.state().procedures["future_fixture_%s" % i] = "CLEARED"
+	preload("res://godot/systems/advanced_referral_rules.gd").update_gates(g, c.state())
+	expect(not g.story_flag("kaori_advanced_prerequisite_met") and not g.story_flag("ray_legendary_prerequisite_met"), "Unregistered clears do not unlock quests")
 	# Calendar collision keeps candidate and clock; late booking can be rescheduled.
 	g = new_game(); c = Referral.new(g)
 	g.surgery_xp = g.surgery_xp_for_level(88); g.archived_player_effects.reputation = 300
+	g.special_event_completion_counts["advanced_referral_tutorial_chisato"] = 1
+	g.special_event_completion_days["advanced_referral_tutorial_chisato"] = 3
 	g.set_story_flag("advanced_referral_random_cases_enabled", true)
 	for person in g.staff: g.relation_for(person.id).met = true
 	g.special_event_definitions.clear(); g.set_test_time(15, 780)

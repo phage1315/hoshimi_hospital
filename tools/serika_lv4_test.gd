@@ -171,7 +171,7 @@ func run() -> void:
 		expect(g.completed_surgeries_total==0 and g.player_attributes()==attrs and g.relation_for("doc_serika").familiarity==55,"No additional clinical/date rewards")
 		for actor in nurses:expect(g.relation_for(actor)==nurses[actor],"Professional appearance never meets/unlocks nurse")
 		expect(g.active_adult_intimacy==null and g.free_h_booking.is_empty() and g.active_free_h_departure.is_empty(),"Fixed scene never calls H runner or booking")
-		expect(not g.free_h_unlocked("doc_serika"),"No fabricated Free H content")
+		expect(g.free_h_unlocked("doc_serika"),"Existing authored Free H becomes eligible after real Lv4 settlement")
 		expect(not g.choose_special_event("continue").accepted,"No duplicate settlement")
 		app.finish_special_event_and_return()
 		expect(app.screen=="map" and g.can_save_progress(),"D3 hospital safe boundary")

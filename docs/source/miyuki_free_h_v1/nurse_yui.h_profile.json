@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.3",
+  "actor_id": "nurse_yui",
+  "adult_confirmed": true,
+  "assets": {
+    "body_map_image": "res://assets/h/nurse_yui/body_map.png",
+    "body_map_regions": "res://data/h/nurse_yui/h_bodymap.json",
+    "portrait_expressions": {
+      "neutral": "res://assets/h/nurse_yui/portrait_neutral.png",
+      "annoyed": "res://assets/h/nurse_yui/portrait_annoyed.png",
+      "pleased": "res://assets/h/nurse_yui/portrait_pleased.png",
+      "flustered": "res://assets/h/nurse_yui/portrait_flustered.png",
+      "delighted": "res://assets/h/nurse_yui/portrait_delighted.png",
+      "peak": "res://assets/h/nurse_yui/portrait_peak.png"
+    },
+    "scene_cg": "res://assets/h/nurse_yui/scene_cg.png",
+    "aftercare_cg": "res://assets/h/nurse_yui/aftercare_cg.png"
+  },
+  "preferences": {
+    "zone_defaults": {
+      "lips": "favorite",
+      "cheeks": "strong",
+      "neck": "favorite",
+      "breasts": "strong",
+      "nipples": "strong",
+      "navel": "mild",
+      "torso_other": "mild",
+      "genitals": "strong",
+      "thighs": "strong"
+    },
+    "action_overrides": {
+      "light_bite": "mild"
+    },
+    "combo_overrides": {
+      "caress:cheeks": "favorite",
+      "kiss:lips": "favorite",
+      "kiss:neck": "favorite",
+      "light_bite:neck": "favorite",
+      "light_bite:nipples": "strong",
+      "caress:torso_other": "strong",
+      "lick:cheeks": "low",
+      "light_bite:lips": "low",
+      "light_bite:cheeks": "low",
+      "light_bite:genitals": "low",
+      "lick:navel": "low"
+    }
+  },
+  "dialogue": {
+    "tier_fallback": {
+      "low": [
+        "唔……隆司，你这算哪门子恶作剧呀？",
+        "哎呀……有点痒啦，别闹。",
+        "……哼，想拿这招逗我？还早呢。",
+        "嗯？……再这么胡闹，我可要扣分了哦。"
+      ],
+      "mild": [
+        "嗯……慢慢来嘛，我又不会跑。",
+        "呵……还挺会哄人的嘛，隆司。",
+        "唔……就这样……再贴近一点。",
+        "嗯……今天倒挺守规矩的嘛……"
+      ],
+      "strong": [
+        "啊……等、等一下……呼吸都乱了……",
+        "唔……偏偏挑我最没辙的地方……",
+        "嗯……别、别笑话我……是你太狡猾了……",
+        "哈啊……再这样下去……换我要招架不住了……"
+      ],
+      "favorite": [
+        "啊啊……隆司……你、你故意的吧……",
+        "嗯……坏心眼……明明知道我受不了这个……",
+        "唔……不、不许停……再多给我一点……",
+        "哈啊……真是败给你了……随你怎样都行啦……"
+      ]
+    },
+    "zone_tier": {
+      "lips:favorite": [
+        "唔……嗯……嘴唇……还要……",
+        "哈……连、连让我顶嘴的空档都不给呀……"
+      ],
+      "cheeks:strong": [
+        "唔……脸颊发烫了啦……别一直逗我。",
+        "嗯……总觉得被你当成小姑娘哄了……"
+      ],
+      "neck:favorite": [
+        "啊……脖子……唔、那里一碰就发软了……",
+        "哈啊……隆司……连声音都压不住了……"
+      ],
+      "breasts:strong": [
+        "唔……胸口……心跳快得都要被你察觉了……",
+        "嗯……别光顾着欺负这里嘛……"
+      ],
+      "nipples:strong": [
+        "呀……！……那、那里太敏锐了啦……",
+        "啊啊……唔……腰、腰都要麻掉了……"
+      ],
+      "navel:mild": [
+        "唔……肚子这边……痒痒的啦。",
+        "呵……连这里也不放过呀？"
+      ],
+      "torso_other:mild": [
+        "嗯……后背都跟着发热了……",
+        "呼……慢慢来……这样很舒服……"
+      ],
+      "genitals:strong": [
+        "啊……！……隆司，别突然这么欺负那里……",
+        "唔……等、等一下……那里已经一塌糊涂了……"
+      ],
+      "thighs:strong": [
+        "啊……大腿……力气都被你抽光了……",
+        "唔……再往上一点的话……我可不管了哦……"
+      ]
+    },
+    "action_tier": {},
+    "combo": {
+      "caress:cheeks": [
+        "嗯……手掌热乎乎的……还挺舒服嘛。",
+        "唔……干嘛突然这么温柔地摸我的脸呀……"
+      ],
+      "kiss:lips": [
+        "唔……嗯……再亲深一点嘛，隆司……",
+        "哈啊……刚才想逗你的话……全被你堵回去了……"
+      ],
+      "kiss:neck": [
+        "啊……别、别一直亲脖子……耳根都烫透了……",
+        "……唔，隆司……你越来越知道怎么收拾我了……"
+      ],
+      "light_bite:neck": [
+        "呀……！……咬、咬脖子算是犯规啦……！",
+        "啊……真敢下嘴呀……留印子了我可找你算账……"
+      ],
+      "light_bite:nipples": [
+        "呀啊……！那、那里不能咬得这么坏心眼……",
+        "唔……隆司……轻、轻一点……太刺激了……"
+      ],
+      "caress:torso_other": [
+        "嗯……顺着腰摸下来……身体都软了……",
+        "呼……你的手……比平时检查时还烫呢……"
+      ],
+      "lick:cheeks": [
+        "咦……怎、怎么突然舔脸颊呀，小狗吗？",
+        "哎呀……湿漉漉的，好痒啦！"
+      ],
+      "light_bite:lips": [
+        "痛……唔，连嘴唇也咬？你学坏了哦。",
+        "哼……这是在报复我平时逗你吗？"
+      ],
+      "light_bite:cheeks": [
+        "唔……咬脸颊干嘛呀，傻瓜。",
+        "哎呀……我脸皮可没你那么厚哦。"
+      ],
+      "light_bite:genitals": [
+        "呀……！等、等一下，那里可不兴用咬的！",
+        "唔……太乱来了啦，换个温柔点的！"
+      ],
+      "lick:navel": [
+        "唔……好痒！别拿舌头逗那边啦……",
+        "哎呀……肚子一直缩，你故意的吧？"
+      ]
+    },
+    "location_entry": {
+      "clinic": [
+        "门反锁好了？……哼哼，今晚的诊疗室归我们两个人了。",
+        "白大褂先别急着挂远嘛……过来，今天你想谁先检查谁？",
+        "嘘……外头走廊早没人了。过来，隆司，今晚不准按铃叫别人哦。",
+        "平时在这里替病人做准备，和你在里头锁上门胡闹……感觉还真不一样呢。"
+      ],
+      "ward": [
+        "嘘……门锁好了？平时在这儿查房，今天倒轮到我们关起门来胡闹了。",
+        "小声点哦，隆司……这儿可跟外头的俱乐部不一样。"
+      ],
+      "hotel": [
+        "哼哼……连医院都不用回，今晚可没借口逃跑了哦。",
+        "过来吧，隆司……今天你想怎么被我检查？"
+      ],
+      "home": [
+        "进来吧……先说好，乱丢的衣服不准笑话我哦。",
+        "唔……在自己房间里，反倒比在诊疗室里还要害羞一点呢。"
+      ],
+      "operating_room": [
+        "连无影灯下都敢拉我进来……你的胆子真是越来越大了。",
+        "嘘……别出声，让我看看主刀医生私底下有多不规矩。"
+      ]
+    },
+    "scene": {
+      "start": [
+        "啊……一上来就这么不客气……",
+        "唔……抱紧我，隆司……别光看着我笑……",
+        "哈啊……明明平时都是我逗你……今天全让你占上风了……"
+      ],
+      "middle": [
+        "啊……嗯……太、太深了……隆司……",
+        "唔……别、别停……我今天可不打算认输……",
+        "哈啊……等、等一下……连声音都管不住了……"
+      ],
+      "finish": [
+        "哈啊……浑身都没力气了……你得负责抱紧我……",
+        "唔……先别说话……让我靠着你缓一口气……",
+        "嗯……坏家伙……这下满意了吧……"
+      ]
+    }
+  }
+}

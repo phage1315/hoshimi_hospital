@@ -62,7 +62,10 @@ def build():
   if visible:n['event_portraits']=[dict(id=actor,path=path,x=880,width=400,height=410,bottom=550)]
   # User-provided event CGs. Keep them in the scoped importer so a future
   # rebuild preserves the authored H-section and aftercare image spans.
-  if sid.startswith('s06_h') and 26 <= int(sid.removeprefix('s06_h')) <= 44:
+  if sid.startswith('s06_') and sid[4:].isdigit() and 41 <= int(sid[4:]) <= 83:
+   n.update(cg_path='assets/events/serika_lv4_v1/cg01_living_embrace.png',cg_fit='contain',cg_dialogue_delay_seconds=0.7,hide_portrait=True,event_portraits=[])
+   visible=False
+  elif sid.startswith('s06_h') and 26 <= int(sid.removeprefix('s06_h')) <= 44:
    n.update(cg_path='assets/events/serika_lv4_v1/cg02_bedroom_intimacy.png',cg_fit='contain',cg_dialogue_delay_seconds=0.7)
   elif sid.startswith('s06_') and sid[4:].isdigit() and 91 <= int(sid[4:]) <= 113:
    n.update(cg_path='assets/events/serika_lv4_v1/cg03_aftercare.png',cg_fit='contain',cg_dialogue_delay_seconds=0.7)

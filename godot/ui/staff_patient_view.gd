@@ -40,6 +40,12 @@ static func invite(app: Control, actor_id: String) -> void:
 		note.text = dialog.ok_button_text
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(note)
+	var advanced := Button.new()
+	advanced.name = "AdvancedStaffPatientInvitation"
+	advanced.text = app.tx("ui.staff_patient.advanced_episode", "高级手术 · 三日特别事件")
+	advanced.disabled = not preload("res://godot/systems/advanced_staff_patient.gd").new(app.game, actor_id).eligible()
+	advanced.pressed.connect(func(): dialog.hide(); dialog.queue_free(); app.show_advanced_staff_patient(actor_id))
+	box.add_child(advanced)
 	var picker := OptionButton.new()
 	picker.name = "StaffPatientProcedurePicker"
 	picker.fit_to_longest_item = false

@@ -1,0 +1,282 @@
+{
+  "schema_version": "advanced_day2_dialogue_v1",
+  "procedure_id": "surgery_adv_complex_abdominal_reconstruction",
+  "stages": {
+    "I01": {
+      "stage_entry": [
+        {
+          "id": "I01_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "按术前标记进入。旧瘢痕下的层次可能与影像一致，也可能不一致。",
+          "text_en": "Proceed through the planned entry. The old scar planes may or may not match the imaging."
+        },
+        {
+          "id": "I01_E2",
+          "speaker_role": "scrub_primary",
+          "text": "精细分离器械已备好，先维持浅层暴露。",
+          "text_en": "Fine dissection instruments are ready. Maintain superficial exposure first."
+        }
+      ]
+    },
+    "I02": {
+      "stage_entry": [
+        {
+          "id": "I02_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "先建立残存肠段和黏连区的对应关系，不急着分离。",
+          "text_en": "Map the remaining bowel segments and adhesion zones before dissecting anything."
+        },
+        {
+          "id": "I02_E2",
+          "speaker_role": "assistant_1",
+          "text": "可见侧支先做标记，接下来避免牵动这些血管。",
+          "text_en": "Mark the visible collateral vessels so we can avoid disturbing them later."
+        }
+      ]
+    },
+    "I03": {
+      "stage_entry": [
+        {
+          "id": "I03_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "这里与肠浆膜贴得很紧。先确认真正的分离平面。",
+          "text_en": "This adhesion is firmly attached to the serosa. Identify a safe plane first."
+        },
+        {
+          "id": "I03_E2",
+          "speaker_role": "assistant_2",
+          "text": "我会稳定肠袢，别让牵拉集中在同一个点上。",
+          "text_en": "I'll stabilize the bowel loop so traction isn't concentrated at one point."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "I03_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "这一层组织没有安全分开。先重新稳定肠壁。",
+          "text_en": "That plane did not separate safely. Stabilize the bowel wall before trying again."
+        },
+        {
+          "id": "I03_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "牵拉过强了，需要退回并重新找层次。",
+          "text_en": "Traction was excessive. Step back and reassess the tissue planes."
+        }
+      ]
+    },
+    "I04": {
+      "stage_entry": [
+        {
+          "id": "I04_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "这一步只处理有明确症状关联的牵拉点。",
+          "text_en": "At this stage, address only the adhesions clearly linked to symptoms."
+        },
+        {
+          "id": "I04_E2",
+          "speaker_role": "assistant_1",
+          "text": "部分旧黏连承载侧支血供，扩大范围前要再核对。",
+          "text_en": "Some old adhesions carry collateral supply. Recheck before extending the field."
+        }
+      ]
+    },
+    "I05": {
+      "stage_entry": [
+        {
+          "id": "I05_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "这段肠壁太薄，动作要慢，保持组织层次可见。",
+          "text_en": "This bowel wall is very thin. Work slowly and keep the tissue planes visible."
+        },
+        {
+          "id": "I05_E2",
+          "speaker_role": "scrub_primary",
+          "text": "吸引与精细剪已就位，需要时可以更换。",
+          "text_en": "Suction and fine scissors are ready to exchange as needed."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "I05_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "脆弱肠壁受到牵动。先撤回，检查局部完整性。",
+          "text_en": "The fragile bowel wall moved under traction. Step back and check its integrity."
+        },
+        {
+          "id": "I05_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "分离方向不理想，调整暴露后再决定是否继续。",
+          "text_en": "The dissection direction is poor. Improve exposure before proceeding."
+        }
+      ]
+    },
+    "I06": {
+      "stage_entry": [
+        {
+          "id": "I06_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "先辨认每条侧支供应的方向，再推进松解。",
+          "text_en": "Identify the direction and supply of each collateral vessel before proceeding."
+        },
+        {
+          "id": "I06_E2",
+          "speaker_role": "assistant_1",
+          "text": "血管旁的牵拉已经减轻，我继续保持暴露。",
+          "text_en": "Traction around the vessels has eased. I'll maintain the exposure."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "I06_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "侧支边界尚未辨清，暂停这一步。",
+          "text_en": "The collateral vessel boundary is not clear. Pause this step."
+        },
+        {
+          "id": "I06_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "局部灌注出现疑点，需要重新核对血流路径。",
+          "text_en": "There is a perfusion concern. Recheck the collateral flow route."
+        }
+      ]
+    },
+    "I07": {
+      "stage_entry": [
+        {
+          "id": "I07_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "需要修复的旧伤段现在清楚了，其余组织暂不触碰。",
+          "text_en": "The old injury requiring repair is now visible. Leave the other tissue undisturbed."
+        },
+        {
+          "id": "I07_E2",
+          "speaker_role": "assistant_2",
+          "text": "局部肠段保持自然走向，准备重建。",
+          "text_en": "Maintain the bowel's natural orientation for reconstruction."
+        }
+      ]
+    },
+    "I08": {
+      "stage_entry": [
+        {
+          "id": "I08_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "对合时注意薄弱边缘和局部张力，不追求多余切除。",
+          "text_en": "Account for the fragile edges and local tension without unnecessary resection."
+        },
+        {
+          "id": "I08_E2",
+          "speaker_role": "scrub_primary",
+          "text": "精细缝线与备用修补材料已经准备好。",
+          "text_en": "Fine sutures and backup repair materials are ready."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "I08_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "对合边缘张力不均，必须重新整理修补线。",
+          "text_en": "The edges are under uneven tension. The repair line needs revision."
+        },
+        {
+          "id": "I08_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "这次缝合没有达到完整性要求，先检查薄弱组织。",
+          "text_en": "This repair does not meet integrity requirements. Examine the fragile tissue first."
+        }
+      ]
+    },
+    "I09": {
+      "stage_entry": [
+        {
+          "id": "I09_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "修补已经完成，但侧支灌注必须保持。",
+          "text_en": "The repair is complete, but collateral perfusion must be preserved."
+        },
+        {
+          "id": "I09_E2",
+          "speaker_role": "anesthesia",
+          "text": "循环指标已记录，局部血供变化请及时通报。",
+          "text_en": "Circulatory readings are documented. Please report any regional perfusion changes."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "I09_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "松解后局部血供不够稳定，先恢复可靠暴露。",
+          "text_en": "Regional supply is unstable after release. Restore reliable exposure first."
+        },
+        {
+          "id": "I09_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "不能用另一段肠管的灌注去换这一处的修复。",
+          "text_en": "We cannot compromise another bowel segment's perfusion for this repair."
+        }
+      ]
+    },
+    "I10": {
+      "stage_entry": [
+        {
+          "id": "I10_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "复核连续性、张力和肠段走行，不能只看表面止血。",
+          "text_en": "Check continuity, tension, and bowel alignment, not just surface hemostasis."
+        },
+        {
+          "id": "I10_E2",
+          "speaker_role": "assistant_2",
+          "text": "修补线已获得新的暴露角度，可以逐段检查。",
+          "text_en": "We have a new angle on the repair line for a segment-by-segment check."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "I10_F1",
+          "speaker_role": "acting_surgeon",
+          "text": "复核显示局部可能仍有牵拉，先修正张力。",
+          "text_en": "Review suggests residual traction. Correct the tension first."
+        },
+        {
+          "id": "I10_F2",
+          "speaker_role": "acting_surgeon",
+          "text": "连续性检查没有通过，这处对合需要重新检查。",
+          "text_en": "The continuity check failed. Re-examine this approximation."
+        }
+      ]
+    },
+    "I11": {
+      "stage_entry": [
+        {
+          "id": "I11_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "关腹前完成灌注、渗漏和止血复核。",
+          "text_en": "Before closing, complete the perfusion, leak, and bleeding checks."
+        },
+        {
+          "id": "I11_E2",
+          "speaker_role": "circulating_primary",
+          "text": "清点开始。修复部位与保留结构也会写入交接记录。",
+          "text_en": "Final count is underway. We'll document the repaired and preserved structures."
+        }
+      ]
+    },
+    "I12": {
+      "stage_entry": [
+        {
+          "id": "I12_E1",
+          "speaker_role": "lead_surgeon",
+          "text": "没有扩大处理范围的必要。准备分层关闭。",
+          "text_en": "There's no need to extend the procedure. Prepare for layered closure."
+        },
+        {
+          "id": "I12_E2",
+          "speaker_role": "scrub_primary",
+          "text": "关闭器械齐全，复杂腹部修复的交接项目已确认。",
+          "text_en": "Closure instruments are ready, and the complex-abdomen handover points are confirmed."
+        }
+      ]
+    }
+  }
+}

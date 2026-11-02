@@ -26,6 +26,7 @@ func _initialize() -> void:
 
 func run() -> void:
 	var app = load("res://godot/scenes/main.tscn").instantiate()
+	app.saves.path = "/tmp/advanced_tutorial_unused_%s.json" % OS.get_process_id()
 	root.add_child(app)
 	await process_frame
 	var game = app.game
@@ -176,7 +177,7 @@ func run() -> void:
 	expect(str(game.active_special_event.current().get("speaker_label", "")) == "锦木千束", "The dry-run exchange did not return to Chisato")
 	expect(game.active_special_event.jump_to("opening"), "Could not reset Day 1 after checking Sayaka continuity")
 
-	# Reach Day 2, then verify an in-progress save restores at the exact authored node.
+	# Reach Day 2 and verify that unsafe saves remain forbidden.
 	# Start a clean session after the direct-jump probes above.
 	game.active_special_event = null
 	game.active_special_event_id = ""
@@ -234,16 +235,10 @@ func run() -> void:
 		var prompt_font := prompt.get_theme_font("normal_font") as FontVariation
 		expect(prompt_font != null and prompt_font.variation_embolden >= 0.75, "Advanced-surgery question is not bold enough")
 	expect(first_stage_choice != null and first_stage_choice.get_theme_font_size("font_size") == 21, "Advanced-surgery choice text does not use the emphasized option style")
-	var saved: Dictionary = game.snapshot()
-	var clone = GameState.new()
-	configure_clone(clone, app)
-	var restored := clone.restore(JSON.parse_string(JSON.stringify(saved)))
-	expect(restored, "Tutorial mid-surgery save could not restore: %s" % clone.last_error)
-	if not restored:
-		print("ADVANCED REFERRAL TUTORIAL: %s checks; %s failure(s)" % [checks, failures])
-		quit(1)
-		return
-	expect(clone.active_special_event.step_index == 1 and str(clone.active_special_event.current().id) == "stage3", "Restore lost the advanced surgery stage")
+	expect(game.snapshot().is_empty(), "Tutorial mid-surgery save is forbidden")
+	var clone = game # Continue this in-memory session, never reconstruct an event from disk.
+	var tutorial_start: int = clone.active_special_event.started_day
+	expect(not clone.advanced_referral_system_unlocked(), "Day 2 cannot activate the regular pool")
 
 	guard = 0
 	while clone.special_event_in_progress() and guard < 320:
@@ -259,7 +254,10 @@ func run() -> void:
 	expect(clone.story_flag("advanced_referral_completed_advanced_referral_tutorial_chisato_case"), "Referral completion record is missing")
 	expect(clone.completed_surgeries_total == 1 and int(clone.completed_surgeries_by_group.get("cardiac", 0)) == 1, "Tutorial surgery was not recorded")
 	expect(clone.surgery_xp == 360 and int(clone.player_attributes().reputation) == 30, "Tutorial XP or reputation reward is wrong")
-	expect(not clone.active_special_event.dominant_tutorial_style().is_empty(), "Tutorial style was not reconstructed from saved choices")
+	expect(not clone.active_special_event.dominant_tutorial_style().is_empty(), "Tutorial in-memory style remains available")
 
+	expect(clone.advanced_referral_system_unlocked(), "Final tutorial settlement activates the pool")
+	expect(int(clone.advanced_referral_facts.activated_day) == tutorial_start + 2, "Activation uses actual Day 3, before next-morning advance")
+	expect(clone.advanced_referral_facts.new_board.size() == 3, "Final tutorial settlement issues first three cases")
 	print("ADVANCED REFERRAL TUTORIAL: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

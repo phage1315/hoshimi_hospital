@@ -25,6 +25,13 @@ for kind,records in [('special_event_step',[step]),('special_event',json.loads((
  for record in records:
   errors=list(Draft202012Validator({'$ref':'#/$defs/'+kind,'$defs':schema['$defs']}).iter_errors(record))
   assert not errors,[(e.json_path,e.message) for e in errors]
+# Living-room CG must end before the bedroom transition; preserve all authored text.
+embrace_ids={f's06_{i:03}' for i in range(41,84)}
+assert {n['id'] for n in step['nodes'] if n.get('cg_path','').endswith('cg01_living_embrace.png')}==embrace_ids
+for n in step['nodes']:
+ if n['id'] in embrace_ids:
+  assert (R/n['cg_path']).is_file() and n['cg_fit']=='contain'
+  assert n['hide_portrait'] and not n['event_portraits']
 h=[n for n in step['nodes'] if n['id'].startswith('s06_h')]
 assert len(h)==44 and h[-1]['exit_blackout_seconds']==1
 assert h[30]['choices'][0]['next']=='s06_h32'

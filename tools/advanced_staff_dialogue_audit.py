@@ -15,7 +15,10 @@ for actor, trigger, role, text in re.findall(r'character_id: (\w+)\ntrigger: (\w
     expected.append(dict(character_id=actor, trigger=trigger, role=role, text=text))
 assert len(expected) == 13
 assert pack['schema_version'] == 'advanced_staff_dialogues_v1'
-assert pack['procedure_ids'] == re.findall(r'^\d\. `(surgery_\w+)`', source.read_text(), re.M)
+assert pack['procedure_ids'] == re.findall(r'^\d\. `(surgery_\w+)`', source.read_text(), re.M) + [
+    'surgery_adv_complex_abdominal_reconstruction',
+    'surgery_adv_open_descending_thoracic_aortic_replacement',
+]
 actual = []
 for row in pack['lines']:
     assert set(row) == {'character_id','trigger','role','text','text_en'}
@@ -23,4 +26,4 @@ for row in pack['lines']:
     actual.append({k:v for k,v in row.items() if k != 'text_en'})
 assert actual == expected, 'Changed Chinese text, punctuation, speaker, role, trigger or ordering'
 assert len({(r['character_id'],r['trigger'],r['role']) for r in actual}) == 13
-print('ADVANCED STAFF DIALOGUE: 13/13 author lines and bindings exact; English complete; four procedures scoped.')
+print('ADVANCED STAFF DIALOGUE: 13/13 author lines and bindings exact; English complete; six procedures scoped (two held).')

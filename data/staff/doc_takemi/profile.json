@@ -77,7 +77,6 @@
   },
   "dialogue_style": "初识冷淡；逐渐熟识后慵懒、带轻微捉弄意味；医疗关键时刻短促准确、非常敏锐。绝不主动滔滔不绝说明自己的怪癖。",
   "flags": [
-    "relationship_progression_locked",
     "after_work_disabled"
   ],
   "event_history": [],
@@ -103,7 +102,12 @@
     "stabilize": "她有反应。先稳住，别让动作跟着乱了。"
   },
   "familiarity_rules": {
-    "base": 1.0
+    "base": 0.8,
+    "source_overrides": {
+      "surgery_no_anesthesia": {
+        "multiplier": 1.5
+      }
+    }
   },
   "adult": true,
   "public_age_label": "??",

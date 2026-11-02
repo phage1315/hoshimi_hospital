@@ -111,6 +111,15 @@ func capture(key: String) -> void:
 	await RenderingServer.frame_post_draw
 	var path:="res://docs/qa/serika_lv5/"+key+".png"
 	root.get_texture().get_image().save_png(path);captures[key]=path
+func check_cg(n: Dictionary) -> void:
+	var cg=app.page.get_node_or_null("CharacterEventCG")
+	var path:=str(n.get("cg_path", ""))
+	if path.is_empty():
+		expect(cg==null,"No stale CG "+str(n.id))
+	else:
+		expect(cg!=null and cg.texture.resource_path=="res://"+path,"Exact approved CG "+str(n.id))
+		if cg!=null:expect(cg.stretch_mode==TextureRect.STRETCH_KEEP_ASPECT_CENTERED,"CG uncropped aspect ratio")
+		expect(app.page.get_node_or_null("CharacterPortrait")==null and app.page.find_children("EventPortrait_*","TextureRect",true,false).is_empty(),"CG suppresses portrait overlays")
 func play_ui(locale: String) -> void:
 	fixture();var g=app.game
 	g.set_story_flag("serika_imaging_present:%s" % g.day_number(),false)
@@ -141,7 +150,10 @@ func play_ui(locale: String) -> void:
 			expect(app.current_dialogue_text()==str(pages[i]),"Rendered prose "+locale+str(n.id))
 			var labels:Array=app.page.find_children("*","Label",true,false)
 			expect(labels.any(func(l):return l.text==n.speaker_label),"Rendered exact speaker "+str(n.id))
-			if n.has("event_portraits"):
+			check_cg(n)
+			if not str(n.get("cg_path", "")).is_empty():
+				pass
+			elif n.has("event_portraits"):
 				for art in n.event_portraits:
 					var texture=app.page.get_node_or_null("EventPortrait_"+str(art.id))
 					expect(texture!=null and texture.texture.resource_path=="res://"+str(art.path),"Cafe cast costume/expression")
@@ -149,7 +161,7 @@ func play_ui(locale: String) -> void:
 				var texture=app.page.get_node_or_null("CharacterPortrait")
 				var path:String=app.content.find_record("staff",Flow.ACTOR).visuals.portraits[str(n.outfit)+"/"+str(n.expression)]
 				expect(texture!=null and texture.texture.resource_path=="res://"+path,"Serika exact costume/expression "+str(n.id))
-			if n.id in ["s01_003","s01_025","s02_018","s03_030","s04_033","s04_072"]:await capture(locale+"_"+str(n.id))
+			if n.id in ["s01_003","s01_025","s02_018","s03_030","s04_033","s02_037","s02_044","s02_045","s03_044","s03_055","s03_056","s04_070","s04_071","s04_072"]:await capture(locale+"_"+str(n.id))
 			var button:Button=app.dialogue_default_button
 			expect(button!=null,"Continue available")
 			if button:button.pressed.emit()
@@ -172,7 +184,11 @@ func play_ui(locale: String) -> void:
 			app.show_gallery_replay();await process_frame
 			expect(app.page.get_node_or_null("GalleryReplayDialogue")==null,"Replay choice has no fake text")
 			app.page.get_node("ReplayChoice_"+str(n.choices[1].id)).pressed.emit()
-		else:r.apply(n.choices[0].id)
+		else:
+			if not str(n.get("cg_path", "")).is_empty() or n.id in ["s02_045","s03_056","s04_070"]:
+				app.show_gallery_replay();await process_frame
+				check_cg(n)
+			r.apply(n.choices[0].id)
 	expect(g.snapshot()==snapshot,"Gallery replay has no persistent effects")
 	app.gallery_replay_event=null
 func run() -> void:

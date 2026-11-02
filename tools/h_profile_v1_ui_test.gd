@@ -18,10 +18,12 @@ func _initialize() -> void:
 
 func _run_ui_flow() -> void:
 	var app := AppScene.instantiate() as Control
+	app.title_notice_enabled = false
 	root.add_child(app)
 	await process_frame
 	expect(app.screen == "title", "Main scene did not initialize into the title screen")
-	var event_test_entry := app.page.get_node_or_null("EventTestHubEntry") as Button
+	app.TitleView.developer(app)
+	var event_test_entry := app.get_node("TitleDeveloperDialog").find_child("EventTestHubEntry", true, false) as Button
 	expect(event_test_entry != null, "The debug title screen does not expose the Event Test Hub")
 	var initial_elapsed: int = app.game.elapsed()
 	var initial_day: int = app.game.day_number()

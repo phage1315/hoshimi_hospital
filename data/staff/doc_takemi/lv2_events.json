@@ -1,0 +1,2673 @@
+[
+  {
+    "id": "ev_doc_takemi_lv2_fujino_laparotomy",
+    "actor_id": "doc_takemi",
+    "title": "开都开了，多看两眼",
+    "chapter": 2,
+    "location_id": "basement_research",
+    "trigger_mode": "day_start",
+    "background_id": "director_office",
+    "outfit": "white_coat",
+    "minutes": 540,
+    "teaser": "开都开了，多看两眼",
+    "time_start": 540,
+    "time_end": 540,
+    "priority": 110,
+    "category": "rank_up",
+    "auto_start": true,
+    "target_level": 2,
+    "benefit_id": "",
+    "cinematic": true,
+    "gallery": {
+      "cg_id": "ev_doc_takemi_lv2_fujino_laparotomy",
+      "caption": "开都开了，多看两眼",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 25,
+      "required_events": [
+        "ev_doc_takemi_lv1_vivisection_frog"
+      ],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 75
+        }
+      ],
+      "days_after_required_events": 3
+    },
+    "start": "l2_001",
+    "nodes": [
+      {
+        "id": "l2_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "早上九点，刚到医院打卡上班，我就被武見妙一通电话叫进了院长室。办公桌后，年轻的城宮明日香院长正捏着一份转诊病历，满脸警惕地盯着对面的武見。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_001",
+            "label": "继续",
+            "next": "l2_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_002",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "text": "「我再确认最后一次哦，武見医生。这位叫浅上藤乃的二十岁女大学生患者，是因为长期无痛症掩盖了慢性阑尾炎反复穿孔，导致右下腹形成了波及回盲部、大网膜和右侧附件的广泛炎性粘连包块，我才特批由你主刀、坂口医生担任第一助手的。」",
+        "speaker_label": "城宮明日香",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_002",
+            "label": "继续",
+            "next": "l2_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「我知道，病历就是我昨天从门诊筛出来的嘛。坂口现在的刀法够稳，有他在台对面帮我拉钩止血，你还有什么不放心的？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_003",
+            "label": "继续",
+            "next": "l2_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "text": "「我不放心的就是你本人！听好了——第一，普通地做。」",
+        "speaker_label": "城宮明日香",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_004",
+            "label": "继续",
+            "next": "l2_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「当然。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_005",
+            "label": "继续",
+            "next": "l2_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "text": "「第二，不准在手术台上临时拉小护士搞现场解剖教学。」",
+        "speaker_label": "城宮明日香",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_006",
+            "label": "继续",
+            "next": "l2_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「今天器械护士排的是朝仓，她比我还熟，不用我教。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_007",
+            "label": "继续",
+            "next": "l2_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "text": "「第三——**绝对不准借着患者没痛觉，额外扩大术野去翻看没生病的脏器！**」",
+        "speaker_label": "城宮明日香",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_008",
+            "label": "继续",
+            "next": "l2_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「……」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_009",
+            "label": "继续",
+            "next": "l2_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "text": "「你为什么突然沉默了？！回答我呀！坂口医生，今天你在台上除了当第一助手，还要负责给我盯紧她的手！」",
+        "speaker_label": "城宮明日香",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_010",
+            "label": "继续",
+            "next": "l2_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「放心吧，院长。我会确保手术按标准解剖层次安全完成的。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "director_office",
+        "choices": [
+          {
+            "id": "continue_l2_011",
+            "label": "继续",
+            "next": "l2_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_012",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "离开院长室后，我与武見一同来到第一诊察室。检查床边坐着一位留着及腰乌黑长发、气质温婉端庄的年轻女性——浅上藤乃。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_012",
+            "label": "继续",
+            "next": "l2_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「武見医生，坂口医生，早安。今天为了我的身体劳烦两位专家同台，实在非常感激。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_013",
+            "label": "继续",
+            "next": "l2_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "她微笑着欠了欠身，举手投足间透着名门闺秀特有的良好教养，丝毫看不出右下腹藏着一团足以让普通人痛到休克的严重化脓粘连病灶。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_014",
+            "label": "继续",
+            "next": "l2_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「客套话就免了，浅上小姐。术前最后做一次腹部触诊确认边界——躺到检查床上，把裙子腰扣松开，毛衣拉到胸口上面吧。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_015",
+            "label": "继续",
+            "next": "l2_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「好的，失礼了。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_016",
+            "label": "继续",
+            "next": "l2_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_017",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "浅上顺从地平躺在检查床上，纤白的手指将针织衫下摆向上卷起，露出一截平坦紧致、连一丝赘肉都没有的雪白腰腹。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_017",
+            "label": "继续",
+            "next": "l2_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_018",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「坂口，你也戴上手套来摸摸看。这种程度的右下腹炎性包块，放在普通女孩子身上，手指刚碰到肚皮她就该尖叫着弹起来了。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_018",
+            "label": "继续",
+            "next": "l2_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "我戴好检查手套走到床侧，将手掌轻轻覆在浅上微凉的右下腹皮肤上，随后并拢四指，向腹腔深处缓缓用力按压下去。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_019",
+            "label": "继续",
+            "next": "l2_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_020",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "指腹隔着柔软的腹壁肌层，清晰地触碰到了一团质地坚硬、与周围肠管和盆壁紧紧粘连在一起的深部包块。然而躺着的名门少女连眉头都没有皱一下，只是因为男性手掌深入按压小腹的动作，耳根渐渐浮起一层薄红。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_020",
+            "label": "继续",
+            "next": "l2_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「唔……坂口医生的手，比我想象的还要有力气呢……我可以很清楚地感觉到您的手指陷进了肚子最深处，正按着那团硬邦邦的东西……只是，真的完全感觉不到疼。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_021",
+            "label": "继续",
+            "next": "l2_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「正是因为你从小感觉通路受阻，阑尾反复发炎穿孔都被身体当成了普通的腹胀，才会把回盲部、大网膜甚至右侧卵巢输卵管周围全粘成了一团。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_022",
+            "label": "继续",
+            "next": "l2_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「而且根据我和影像科御园医生的读片结果，你右下腹深处那团瘢痕组织正好压迫了腹膜后的神经丛——换句话说，你现在的无痛症，很大一部分也是被这团陈旧病灶给锁住的。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_023",
+            "label": "继续",
+            "next": "l2_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「原来是这样……难怪这两年我连扭伤脚踝都没什么感觉。那么关于下午的手术方式……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_024",
+            "label": "继续",
+            "next": "l2_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「就像刚才跟你说明的一样，如果在全身麻醉下开刀，麻药会掩盖你神经功能的临界反应；既然你现在本来就没有痛觉，我们干脆采用**完全不打麻药的无麻醉开腹手术**。你敢签字吗？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_025",
+            "label": "继续",
+            "next": "l2_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「既然本来就不觉得疼，省去麻醉对身体反而更好吧？只是……听说一旦签了星见医院的手术同意书，上了手术台之后哪怕害怕也不能中途取消了，是吗？」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_026",
+            "label": "继续",
+            "next": "l2_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_027",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「是。一旦签字进入准备流程，直到我们把病变切干净、把肚子重新缝合好之前，手术都不会停下。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_027",
+            "label": "继续",
+            "next": "l2_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「我明白了。反正我也不会因为疼痛而哭闹，那就拜托武見医生和坂口医生了。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "exam_room",
+        "choices": [
+          {
+            "id": "continue_l2_028",
+            "label": "继续",
+            "next": "l2_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_029",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "中午十二点半，在病房由朝仓美幸替浅上做完全套备皮、肠道清洁与留置导尿准备后，这位一丝不挂的黑长直少女被推进了手术室，平躺在无影灯正下方的手术台上。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_029",
+            "label": "继续",
+            "next": "l2_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「双臂约束带已经固定好了，导尿管引流顺畅，腹部与会阴备皮区的碘伏消毒也已完成。浅上小姐从刚才在病房脱掉衣服插导尿管到现在，心跳才稍微快了一点点，真是个乖巧得让人心疼的患者呢。」",
+        "speaker_label": "朝倉美幸",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_030",
+            "label": "继续",
+            "next": "l2_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「因为……虽然感觉不到疼，但在完全清醒的状态下不穿衣服躺在这里，双腿间还插着管子被三位医护人员围着看……还是会觉得很难为情的……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_031",
+            "label": "继续",
+            "next": "l2_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「害羞说明你的触觉和情绪反应都很健康。来，朝仓，给我20号圆刀片；坂口，准备干纱布按压切口两侧。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_032",
+            "label": "继续",
+            "next": "l2_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_033",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "无菌洞巾铺好后，武見没有半点犹豫，锋利的刀尖沿着浅上平坦雪白的腹正中线偏右侧稳稳落下。皮肤与鹅黄色的皮下脂肪层应声分开，鲜红的血珠刚刚涌出，便被我用纱布精准拭去。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_033",
+            "label": "继续",
+            "next": "l2_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_034",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "紧接着是电刀切开腹直肌前鞘、钝性分离鲜红的腹直肌肌腹、提起半透明的腹膜剪开——整个开腹过程干净利落。令人惊叹的是，躺在台上的浅上除了在刀锋划开肚皮时轻轻颤了一下睫毛，呼吸竟依然保持着平稳。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_034",
+            "label": "继续",
+            "next": "l2_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「唔……刚才肚子上有一种被冰凉的刀片划开、然后向两边敞开的感觉……原来这就是肚子被切开的感觉吗？真的……一点都不疼呢。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_035",
+            "label": "继续",
+            "next": "l2_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_036",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "武見妙口罩上方的双眸瞬间亮得惊人。她把Balfour自动腹壁牵开器放进切口，咔哒几声将金属拉钩撑到最大，把浅上的腹腔大大方方地敞开在无影灯下，随后突然停下手里的动作，低头笑吟吟地看向清醒的浅上：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_036",
+            "label": "继续",
+            "next": "l2_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_037",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「呐，浅上小姐。你看，你的肚子现在已经完全打开了，而你又真的一点都不觉得痛。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_037",
+            "label": "继续",
+            "next": "l2_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「是……请问武見医生，有什么问题吗？」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_038",
+            "label": "继续",
+            "next": "l2_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_039",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「既然开都开了，机会这么难得……在切掉右下腹那团发炎粘连的烂摊子之前，我们顺便把你肚子里其他健康的脏器也从头到尾检查得细致一点，好不好？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_039",
+            "label": "继续",
+            "next": "l2_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_040",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「喂，武見，你忘了早上城宮院长第三条是怎么交代的了？」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_040",
+            "label": "继续",
+            "next": "l2_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_041",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呵呵，我就知道武見医生看到这么听话又不会喊疼的患者，绝对忍不了一上来就直接做正事呢。」",
+        "speaker_label": "朝倉美幸",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_041",
+            "label": "继续",
+            "next": "l2_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_042",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "然而躺在手术台上的浅上藤乃却眨了眨那双清澈的黑眸，极其认真地问出了一个让我们三个人同时愣住的问题：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_042",
+            "label": "继续",
+            "next": "l2_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_043",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「请问……如果顺便把肚子里其他地方也仔细检查一遍的话，手术费还是一样的吗？」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_043",
+            "label": "继续",
+            "next": "l2_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「噗……哈哈！一样的，一分钱都不多收，算本主刀附赠给你的全套活体内脏体检。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_044",
+            "label": "继续",
+            "next": "l2_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_045",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「既然手术费一样，我又感觉不到疼……那就随两位医生喜欢吧。请尽管仔细检查。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "choose_l2_046a",
+            "label": "「……患者本人都这么痛快地同意了，看来我也没法替院长拦着你了。」",
+            "next": "l2_046a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choose_l2_046b",
+            "label": "「先说好，只准用无损伤手法翻看，不准把手术时间拖得太长。」",
+            "next": "l2_046b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_046a",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「听到没有，朝仓？我们的第一助手也投赞成票了。把无菌温盐水拿过来，我们先把手套润湿。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_046a",
+            "label": "继续",
+            "next": "l2_047a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_047a",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「我只是怕你不看个过瘾，等会儿连正经剥离病灶都不专心。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_047a",
+            "label": "继续",
+            "next": "l2_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_046b",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「安啦，我的手法你还不清楚吗？比摸那只初中青蛙还要温柔十倍。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_046b",
+            "label": "继续",
+            "next": "l2_047b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_047b",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「别当着患者的面提你那只青蛙，浅上小姐会当真的。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_047b",
+            "label": "继续",
+            "next": "l2_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_048",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "得到浅上本人的许可后，武見妙彻底放开了手脚。她将浸泡过温热生理盐水的双手直接探入浅上完全敞开的腹腔深处，先从上腹部的胃大弯与横结肠开始，一寸一寸地托起、翻看那些粉润鲜活、正随着呼吸微微起伏的脏器。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_048",
+            "label": "继续",
+            "next": "l2_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_049",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「唔……！哈啊……等、等一下，武見医生……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_049",
+            "label": "继续",
+            "next": "l2_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_050",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「怎么？会痛吗？」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_050",
+            "label": "继续",
+            "next": "l2_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「不、不是痛……真的完全不痛……可是，您的手伸进我肚子里面把肠子托起来的时候……里面有一种说不出的下坠感和拉扯感……好像内脏要被整个端出来了一样……嗯、哈啊……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_051",
+            "label": "继续",
+            "next": "l2_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_052",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "无痛症只阻断了尖锐的痛觉，却没有夺走内脏系膜被牵拉时的深部本体感觉与迷走神经反射。随着武見戴着湿滑乳胶手套的手指沿着小肠系膜一节一节向盆腔方向捋过，浅上白皙的额头渗出细密的薄汗，呼吸变得越来越急促。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_052",
+            "label": "继续",
+            "next": "l2_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_053",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「坂口，别光在旁边看，把手伸进来帮我把这几段空肠和回肠轻轻往左上方托住。你看她盆腔左侧这边的卵巢和输卵管，完全没有被右侧的炎症波及，色泽多漂亮。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_053",
+            "label": "继续",
+            "next": "l2_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_054",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "我顺着武見的指示，将戴着无菌手套的双手探入浅上温热湿滑的腹腔内，掌心轻轻托住她柔软蠕动的肠管向一侧拨开；而武見的手指则顺着子宫底滑向左侧附件，用指腹轻轻捏了捏那枚健康的卵巢与伞端。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_054",
+            "label": "继续",
+            "next": "l2_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_055",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「呀啊……！唔、嗯……！坂口医生……武見医生……四只手同时在我肚子里面动来动去……太、太奇怪了……！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_055",
+            "label": "继续",
+            "next": "l2_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_056",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「忍耐一下，浅上小姐。我现在托着的是你的小肠，武見医生正在确认你左侧健康的子宫附件。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_056",
+            "label": "继续",
+            "next": "l2_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_057",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「哈啊……我、我知道你们是在做检查……可是明明不疼，为什么被坂口医生的手掌托着肠子、又被武見医生摸着小腹最深处的时候……身体里面会又酸又胀、连脚趾头都使不上力气了……呜、好奇怪……肚子里面被摸遍了……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_057",
+            "label": "继续",
+            "next": "l2_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_058",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「呵呵，脸色红得像发烧一样呢，浅上小姐。虽然没有痛觉，但女孩子最隐秘的肚子内部被主刀和助手一寸寸摸遍，这种羞耻感可是比疼痛还要厉害的哦。」",
+        "speaker_label": "朝倉美幸",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_058",
+            "label": "继续",
+            "next": "l2_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_059",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「唔嗯……请、请别说了，朝仓护士……连肠子在你们手心里蠕动的感觉都传到脑子里来了……还没检查完吗……？」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_059",
+            "label": "继续",
+            "next": "l2_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_060",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「好啦，健康的部位已经看够了，确实是一具非常漂亮的身体。——接下来该干正事了，坂口，把拉钩转向右下腹髂窝。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_060",
+            "label": "继续",
+            "next": "l2_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_061",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "玩够了的武見妙眼神瞬间变得锐利如鹰。刚才那种懒散戏谑的气息一扫而空，取而代之的是与御堂江美子不相上下的顶级外科统治力。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_061",
+            "label": "继续",
+            "next": "l2_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_062",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "在浅上的右下腹深处，慢性阑尾炎长年反复穿孔形成的浓稠脓腔与肉芽瘢痕，已经将盲肠下端、部分大网膜以及右侧输卵管壶腹部死死包裹成了一团坚硬的炎性包块，最深处的纤维索带更是直接压迫在腹膜后神经丛上。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_062",
+            "label": "继续",
+            "next": "l2_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_063",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「右侧输卵管和卵巢只是被炎性纤维膜粘连包裹住了，实质还没有坏死。如果精细剥离的话，右侧附件完全可以保住，只需要切除坏死的阑尾根部、部分回盲部炎性组织和受累大网膜。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_063",
+            "label": "继续",
+            "next": "l2_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_064",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「正合我意。我可不喜欢把女孩子有用的零件随便切掉。朝仓，换精细分离钳和双极电凝；坂口，帮我牵引住右侧卵巢韧带，一毫米都不准晃。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_064",
+            "label": "继续",
+            "next": "l2_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_065",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "无影灯下只剩下器械交接的清脆声响与电凝的轻微滋滋声。武見的刀法快而极准，在布满炎性充血血管的粘连带中游刃有余地穿行，先将浅上右侧完好的卵巢与输卵管毫发无损地从包块外壁剥离出来。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_065",
+            "label": "继续",
+            "next": "l2_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_066",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「唔……右边肚子深处被拉扯得更重了……像有一块石头正被你们一点点从肉上撕下来一样……哈啊、还是不疼的，请继续吧……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_066",
+            "label": "继续",
+            "next": "l2_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_067",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「马上就到最底下压迫神经丛的那层瘢痕根部了。坂口，夹住回盲部系膜血管，准备结扎切离——」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_067",
+            "label": "继续",
+            "next": "l2_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_068",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "随着我稳稳打好双重结扎线，武見妙手中的组织剪精准地探入腹膜后最深处，对准那道死死勒住感觉神经通路的致密炎性包块根部，干脆利落地一剪到底——",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_068",
+            "label": "继续",
+            "next": "l2_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_069",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "「咔嚓。」那团折磨、封锁了浅上藤乃身体知觉多年的黑红色炎性包块被彻底切下，落入了朝仓端着的弯盘里。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_069",
+            "label": "继续",
+            "next": "l2_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_070",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "就在病灶脱离腹膜后神经丛的同一秒钟——",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_070",
+            "label": "继续",
+            "next": "l2_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_071",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「——咦？」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_071",
+            "label": "继续",
+            "next": "l2_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_072",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "浅上原本只是因为牵拉而微蹙的眉头猛地一僵，瞳孔骤然收缩。下一瞬，被阻断了多年的痛觉信号如同决堤的洪水般，从敞开着整条切口、正在渗血的右下腹腔直接冲进了她的大脑皮层！",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_072",
+            "label": "继续",
+            "next": "l2_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_073",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「——呀啊啊啊啊啊啊啊啊啊——！！！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_073",
+            "label": "继续",
+            "next": "l2_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_074",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "一声凄厉到变调的惨叫瞬间响彻整个手术室！刚才还温婉端庄、任由我们在肚子里翻看内脏的名门千金，整个人在手术台上剧烈地弹动弓起，手腕将两侧约束带扯得啪啪作响，豆大的泪珠瞬间夺眶而出！",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_074",
+            "label": "继续",
+            "next": "l2_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_075",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「疼！！好疼啊啊啊——！！肚子、我的肚子为什么突然像被火烧、被刀割一样疼啊？！！呜啊啊啊——！！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_075",
+            "label": "继续",
+            "next": "l2_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_076",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「心率直接飙到一百三十了！朝仓，按住她的双肩别让她乱动把肠管挤出切口！看来刚才切下腹膜后包块的瞬间，压迫神经丛的阻滞被彻底解除了——她的痛觉当场恢复了！」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_076",
+            "label": "继续",
+            "next": "l2_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_077",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「武見医生！！坂口医生！！我不要不打麻药了！！好疼、肚子真的被切开了好疼啊！！快给我打麻药……求求你们现在给我打全身麻醉好不好？！！呜啊啊啊——！！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_077",
+            "label": "继续",
+            "next": "l2_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_078",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "面对在手术台上痛得泪流满面、拼命哭喊求麻药的浅上，主刀位上的武見妙不仅没有丝毫慌乱，反而慢条斯理地直起腰，在口罩上方弯起眼睛笑了起来：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_078",
+            "label": "继续",
+            "next": "l2_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_079",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「恭喜你啊，浅上小姐。看来手术非常成功，不仅把烂掉的包块切干净了，连你的无痛症也顺便彻底治好了。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_079",
+            "label": "继续",
+            "next": "l2_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_080",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「呜啊啊啊我不要现在恭喜啊！！疼死我了……连呼吸一下肚子里面都在抽着疼！！麻药……我现在加钱也可以，求求你们给我打麻药让我睡过去吧！！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_080",
+            "label": "继续",
+            "next": "l2_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_081",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「现在才求麻药？太晚啦，浅上小姐。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_081",
+            "label": "继续",
+            "next": "l2_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_082",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「最难的切除步骤已经做完了，接下来就剩用温盐水把腹腔冲干净、检查出血点，再一层一层给你缝合关腹。现在就算去叫樱花主任过来给你做全麻插管，等麻药起效的时候，我和坂口连最后一针皮肤线都打完结了。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_082",
+            "label": "继续",
+            "next": "l2_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_083",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「怎、怎么这样……？！那我接下来岂不是要活生生忍受着冲洗和缝肚子的疼，一直到手术结束吗？！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "choose_l2_084a",
+            "label": "按住她的腹壁边缘稳住切口：「虽然没法现在加全麻，但我会配合武見医生用最快、最稳的手法帮你关腹的。」",
+            "next": "l2_084a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choose_l2_084b",
+            "label": "对武見说：「别光顾着逗她了，人家刚恢复痛觉就面对大开腹切口，赶紧拿温盐水冲洗吧。」",
+            "next": "l2_084b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_084a",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「呜……坂口医生……您的手按在刀口边上的时候，连手套擦过肉里的疼都清楚得要命……拜托你们快一点……！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_084a",
+            "label": "继续",
+            "next": "l2_085a",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_085a",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「听见没有，大主刀？人家姑娘催我们了——不过清创冲洗可不能偷工减料，得慢条斯理地洗干净才不会留术后感染。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_085a",
+            "label": "继续",
+            "next": "l2_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_084b",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「这就心疼啦？能亲眼看到无痛症患者在自己刀下找回痛觉，这可是千金难买的临床瞬间呢。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_084b",
+            "label": "继续",
+            "next": "l2_085b",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_085b",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「对医生来说是奇迹，对躺在台上的浅上小姐来说可是实打实的酷刑。朝仓，递温生理盐水和吸引器。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_085b",
+            "label": "继续",
+            "next": "l2_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_086",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "接下来的四十分钟，成了这位名门大小姐人生中第一次真正的“痛觉洗礼”。当大量温生理盐水倾入敞开的腹盆腔、细致地冲洗刚才剥离包块留下的创面时，浅上咬紧下唇，眼泪顺着鬓角不停地滑落进手术帽边缘。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_086",
+            "label": "继续",
+            "next": "l2_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_087",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「唔嗯——！！哈啊、啊……水、水冲在肚子里面的伤口上了……好刺痛……连吸水管吸走血水的时候，里面都在一抽一抽地疼……呜呜……」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_087",
+            "label": "继续",
+            "next": "l2_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_088",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_yui",
+        "text": "「好孩子，再坚持一下下哦，浅上小姐。刚才把整个肚子翻过来检查的时候你都一声没吭，现在能这么大声地喊疼，说明你的身体已经彻底恢复正常了呢。」",
+        "speaker_label": "朝倉美幸",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_088",
+            "label": "继续",
+            "next": "l2_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_089",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "冲洗完毕、确认右侧附件与肠管复位无误后，武見与我开始一针一针地逐层关腹。每当弯针带着缝线穿过敏感的腹膜、拉拢腹直肌鞘并收紧线结时，浅上都会因为清晰的穿刺牵拉痛而浑身紧绷、漏出带着哭腔的抽气声。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_089",
+            "label": "继续",
+            "next": "l2_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_090",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「啊……！疼、这一针拉得好紧……肚子被一针一针缝起来了……呜、我再也不要相信『不打麻药也没关系』这种话了……！」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_090",
+            "label": "继续",
+            "next": "l2_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_091",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「最后一针皮内缝合——剪线。好了，伤口对合得非常漂亮，连疤痕都不会留。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "choices": [
+          {
+            "id": "continue_l2_091",
+            "label": "继续",
+            "next": "l2_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_092",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "傍晚五点，术后观察病房。得益于星见医院的恢复保障，下午刚经历了一场大开腹手术的浅上藤乃已经换上了整洁的病号服靠坐在床头，只是脸色还带着几分大哭过后的微红。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_092",
+            "label": "继续",
+            "next": "l2_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_093",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "当我与武見推门进来做下班前的最后一次查房时，浅上正低头用指尖隔着薄薄的纱布敷料，小心翼翼地碰了碰自己的右下腹，随即「嘶」地倒吸了一口凉气。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_093",
+            "label": "继续",
+            "next": "l2_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_094",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「别自己乱按刀口，刚缝合好的地方肯定还疼。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_094",
+            "label": "继续",
+            "next": "l2_095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_095",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「对不起，坂口医生，武見医生……刚才在手术台上，我最后哭叫得那么失态，还死缠烂打地求你们加麻药……实在让您二位见笑了。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_095",
+            "label": "继续",
+            "next": "l2_096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_096",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「不用道歉。要是刚把腹膜后神经丛的压迫解开、肚子还敞着口子的时候你都一声不吭，那才说明我的手术失败了呢。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_096",
+            "label": "继续",
+            "next": "l2_097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_097",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "浅上垂下眼帘，双手轻轻覆在腹部下方，眼角忽然又泛起了一点晶莹的泪光，但嘴角却弯起了一抹无比真实的温柔笑意：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_097",
+            "label": "继续",
+            "next": "l2_098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_098",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「其实……回到病房冷静下来之后，我摸着这里一跳一跳的钝痛，心里觉得特别不可思议。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_098",
+            "label": "继续",
+            "next": "l2_099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_099",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「以前不管身体里烂成什么样，我都像隔着一层毛玻璃活着一样，什么都感觉不到。刚才在手术台上虽然疼得要命，还被两位医生把肚子里面看了个遍……但现在能像普通女孩子一样感觉到疼、被坂口医生关心着叮嘱『别乱按刀口』，真的让我觉得自己还好好地活着。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_099",
+            "label": "继续",
+            "next": "l2_100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_100",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「你的右侧卵巢和输卵管也都完好无损地保住了，炎症包块已经彻底清理干净。好好休息一晚，明天就可以正常下床活动了。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_100",
+            "label": "继续",
+            "next": "l2_101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_101",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "patient_fujino",
+        "text": "「是，非常感谢两位医生。」",
+        "speaker_label": "浅上藤乃",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "ward",
+        "choices": [
+          {
+            "id": "continue_l2_101",
+            "label": "继续",
+            "next": "l2_102",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "l2_102",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "从病房出来时，窗外已经是傍晚六点的暮色。武見妙双手插在白大褂口袋里，慢悠悠地与我并肩走在通往地下室的走廊上。",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_102",
+            "label": "继续",
+            "next": "l2_103",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_103",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「呼……今天这一整天过得还真是充实。前半场安安静静地把活体腹盆腔摸了个遍，后半场又听到了那么精神的惨叫声。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_103",
+            "label": "继续",
+            "next": "l2_104",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_104",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_takemi",
+        "text": "「也就是浅上小姐脾气好，换做别的患者，知道你趁她没痛觉的时候附赠了一套『全腹腔手工翻看服务』，出院前非去院长室告你的状不可。」",
+        "speaker_label": "坂口隆司",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_104",
+            "label": "继续",
+            "next": "l2_105",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_105",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「她要是去告状，你这个把双手伸进人家肚子里帮我托着小肠的第一助手也是共犯，跑不掉的。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_105",
+            "label": "继续",
+            "next": "l2_106",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_106",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_takemi",
+        "text": "她停在地下室楼梯口，转过身看着我，向来慵懒戏谑的眼眸里难得流露出一分认真的赞许：",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_106",
+            "label": "继续",
+            "next": "l2_107",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_107",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「不过说真的，坂口……刚才她痛觉突然恢复、在台上挣扎的时候，换作普通助手早就慌了神，你却能一边稳稳帮我按住切口护住肠管，一边丝毫不乱地配合我把整台清创关腹做完。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_107",
+            "label": "继续",
+            "next": "l2_108",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "l2_108",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_takemi",
+        "text": "「在星见医院待了这么久，我还是第一次遇到能把我的节奏接得这么舒服的男人。……走吧，今天累了一整天，去我的地下室喝一杯，算本主刀犒劳你的。」",
+        "speaker_label": "武見妙",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "hospital_night",
+        "choices": [
+          {
+            "id": "continue_l2_108",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

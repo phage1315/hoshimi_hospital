@@ -1,5 +1,6 @@
 extends RefCounted
 const Model = preload("res://godot/systems/advanced_surgery_model.gd")
+const Rules = preload("res://godot/systems/advanced_referral_rules.gd")
 const Facts = preload("res://godot/systems/advanced_referral_facts.gd")
 const Session = preload("res://godot/systems/advanced_surgery_session.gd")
 const Settlement = preload("res://godot/systems/advanced_settlement.gd")
@@ -22,6 +23,15 @@ var story_phase := "" # Presentation cursors are memory-only, never facts.
 var story_index := 0
 var story_record: Dictionary = {}
 var story_content: Dictionary = {}
+var day_transition: Dictionary = {} # Presentation only; never persisted or replayed from facts.
+
+func queue_day_transition(target_day: int, intake_day: int) -> void:
+	if dev and fixture_mode: return
+	day_transition = {"day": target_day, "ordinal": target_day - intake_day + 1}
+
+func dismiss_day_transition() -> void:
+	day_transition.clear()
+
 
 func begin_story(phase: String, record: Dictionary) -> void:
 	if dev and fixture_mode: return
@@ -54,28 +64,15 @@ func state() -> Dictionary:
 func day() -> int:
 	return demo_day if dev else game.day_number()
 func eligible() -> bool:
-	return dev or (game.advanced_referral_eligible() and game.advanced_referral_system_unlocked())
+	return dev or not state().appointment.is_empty() or (game.advanced_referral_eligible() and game.advanced_referral_system_unlocked())
 
 func refresh() -> void:
-	var s := state()
-	var week := int(day() / 7) # Campaign starts Tuesday: first Monday is day 7.
-	if int(s.week) == week: return
-	var cleared: Array = s.procedures.keys().filter(func(id): return s.procedures[id] == "CLEARED" and not Model.procedure(str(id)).is_empty())
-	cleared.sort()
-	var random := RandomNumberGenerator.new()
-	random.seed = hash("advanced-board:%s:%s" % [20261030 if dev else game.campaign_seed, week])
-	s.week = week
-	s.replays = []
-	if cleared.is_empty(): return
-	var patient_ids := preload("res://godot/systems/advanced_presentation.gd").random_patient_ids(game)
-	if patient_ids.is_empty(): return
-	var count := random.randi_range(1, mini(3, cleared.size()))
-	for i in range(count):
-		var pick := random.randi_range(0, cleared.size() - 1)
-		var procedure_id := str(cleared.pop_at(pick))
-		var id := "advanced_replay_%s_%s" % [week, procedure_id]
-		var patient_id := str(patient_ids[random.randi_range(0, patient_ids.size() - 1)])
-		s.replays.append({"id": id, "procedure_id": procedure_id, "patient_id": patient_id, "replay": true})
+	if not dev:
+		game.sync_advanced_referral_calendar()
+		return
+	# DEV previews ready content only; art/content holds also apply to manual tests.
+	local_facts.activated_day = 1
+	Rules.update_pool(local_facts, day(), 20261030, preload("res://godot/systems/advanced_presentation.gd").random_patient_ids(game))
 
 func completed(id: String) -> bool:
 	for result in state().completed:
@@ -85,14 +82,17 @@ func completed(id: String) -> bool:
 func board() -> Array:
 	refresh()
 	var result: Array = []
-	for procedure in Model.catalog():
-		if not state().procedures.has(procedure.id):
+	var ids: Array = Rules.manifest().filter(Rules.ready).map(func(row): return row.procedure_id) if dev else state().get("new_board", [])
+	for id in ids:
+		if not Rules.procedure_ready(str(id)): continue
+		var procedure := Model.procedure(str(id))
+		if not procedure.is_empty() and not state().procedures.has(id):
 			var record := {"id": "advanced_first_" + str(procedure.id), "procedure_id": procedure.id, "patient_id": "placeholder_first_" + str(procedure.id), "replay": false}
 			var patient := FirstStory.patient(record, false)
 			if not patient.is_empty(): record.patient_id = patient.id
 			result.append(record)
 	for record in state().replays:
-		if not completed(str(record.id)): result.append(record.duplicate(true))
+		if Rules.procedure_ready(str(record.get("procedure_id", ""))) and Rules.replay_compatible(record) and not completed(str(record.get("id", ""))): result.append(record.duplicate(true))
 	return result
 
 func date_blocked(target: int) -> bool:
@@ -193,6 +193,7 @@ func rebook(selected: Dictionary) -> bool:
 func start_operation() -> bool:
 	var a: Dictionary = state().appointment
 	if a.is_empty() or not state().outcome.is_empty() or session != null or day() != int(a.operation_day): return false
+	if not Rules.procedure_ready(str(a.case.procedure_id)) or not Rules.replay_compatible(a.case): return false
 	if not dev and game.current_absolute_clock() != game.SHIFT_START_MINUTE:
 		error = "calendar"
 		return false
@@ -214,6 +215,7 @@ func start_operation() -> bool:
 	if not dev:
 		game.advanced_runtime = session
 		game.active_mode = "advanced_surgery"
+	queue_day_transition(int(a.operation_day), int(a.intake_day))
 	for role in ["first_assistant", "second_assistant"]: state().cooldowns[str(a.team[role])] = int(a.operation_day) + 14
 	return true
 
@@ -231,6 +233,7 @@ func finish_operation() -> bool:
 	return true
 
 func settle() -> bool:
+	refresh() # Freeze this week before recording a new clearance.
 	var s := state()
 	if s.appointment.is_empty() or s.outcome.is_empty(): return false
 	var a: Dictionary = s.appointment
@@ -241,20 +244,22 @@ func settle() -> bool:
 		"surgery_xp": 0, "leadership_xp": 0.0, "reputation": 0}
 	if bool(s.outcome.success):
 		s.procedures[str(a.case.procedure_id)] = "CLEARED"
+		if not s.clear_days.has(a.case.procedure_id): s.clear_days[a.case.procedure_id] = day()
+		if not s.successful_operation_days.has(a.case.procedure_id): s.successful_operation_days[a.case.procedure_id] = int(a.operation_day)
 		if not dev: result.merge(Settlement.new().settle(game, Model.procedure(str(a.case.procedure_id)), a.team), true)
 	elif not bool(a.case.replay): s.procedures[str(a.case.procedure_id)] = "FAILED_LOCKED"
 	if not dev:
 		game.time_log.append({"id": "advanced_review_" + str(a.case.id), "start": game.elapsed(), "minutes": 60})
-		var clears: int = s.procedures.values().count("CLEARED")
-		if clears >= 5: game.set_story_flag("kaori_advanced_prerequisite_met", true)
-		if clears >= 10: game.set_story_flag("ray_legendary_prerequisite_met", true)
+		Rules.update_gates(game, s)
 	s.completed.append(result)
 	review_roster = a.team.duplicate(true)
 	failure_dialogue_index = 0 if not bool(result.success) and not (dev and fixture_mode) else -1
 	s.appointment = {}
 	s.outcome = {}
+	refresh()
 	last_summary.merge(result, true)
 	if first_clear: begin_story("day3", a.case)
+	queue_day_transition(day(), int(a.intake_day))
 	return true
 
 static func due(g: RefCounted) -> bool:
