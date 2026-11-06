@@ -10,6 +10,10 @@ const SaveStore = preload("res://godot/systems/save_store.gd")
 const StaffView = preload("res://godot/ui/staff_view.gd")
 const PreopView = preload("res://godot/ui/preop_view.gd")
 const ClinicView = preload("res://godot/ui/clinic_view.gd")
+const DaydreamView = preload("res://godot/ui/daydream_view.gd")
+var daydream_view = DaydreamView.new()
+const Megumin = preload("res://godot/systems/megumin.gd")
+var megumin_view = preload("res://godot/ui/megumin_view.gd").new()
 const PlayerOfficeView = preload("res://godot/ui/player_office_view.gd")
 const CharacterEvent = preload("res://godot/systems/character_event_session.gd")
 const CharacterStage = preload("res://godot/ui/character_stage.gd")
@@ -325,6 +329,7 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 		"special_gallery_replay",
 		"character_event",
 		"gallery_replay",
+		"daydream_playback",
 		"micro_event",
 		"time_event_result",
 		"after_work_walk",
@@ -360,6 +365,8 @@ func refresh_calendar_header() -> void:
 		if advanced_view != null: header.text = advanced_view.tr_key("compact_dev") if advanced_view.operation_active() else advanced_view.tr_key("test_day") % advanced_controller.day()
 		return
 	var timing: Dictionary = day_transition_display_schedule if screen == "day_transition" and not day_transition_display_schedule.is_empty() else game.display_schedule()
+	if screen == "megumin_event" and game.megumin_active:
+		timing = {"day": megumin_view.started_day, "absolute_clock": megumin_view.started_clock}
 	if screen == "special_gallery_replay" and special_event_gallery_replay != null:
 		timing = special_event_gallery_replay.presentation_schedule(game.world_display_schedule())
 	var day := int(timing.day)
@@ -373,15 +380,16 @@ func refresh_calendar_header() -> void:
 
 func label_at(text: String, pos: Vector2, font_size: int = 20, color: Color = Color("f4f0e6"), width: float = 1100) -> Label:
 	var item := Label.new()
-	item.text = text
 	item.position = pos
-	item.size.x = minf(width, 1280.0 - pos.x - 30.0)
 	item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	item.add_theme_font_size_override("font_size", font_size)
 	item.add_theme_color_override("font_color", color)
 	item.add_theme_color_override("font_outline_color", Color(0.015, 0.04, 0.05, 0.94))
 	item.add_theme_constant_override("outline_size", 4)
 	page.add_child(item)
+	# Establish the wrapping width with the inherited theme before assigning text.
+	item.size.x = minf(width, 1280.0 - pos.x - 30.0)
+	item.text = text
 	return item
 
 func scrollable_text_at(text: String, pos: Vector2, dimensions: Vector2, font_size: int = 20, color: Color = Color("f4f0e6"), item_name: String = "ScrollableText") -> RichTextLabel:
@@ -708,8 +716,9 @@ func dialogue_speed_name() -> String:
 		tx("ui.dialogue.speed.normal", "标准"),
 		tx("ui.dialogue.speed.fast", "快速"),
 		tx("ui.dialogue.speed.very_fast", "极速"),
+		tx("ui.dialogue.speed.light_speed", "光速"),
 	]
-	return names[clampi(dialogue_auto_speed_index, 0, 3)]
+	return names[clampi(dialogue_auto_speed_index, 0, 4)]
 
 func dialogue_auto_delay(text: String, extra_delay: float = 0.0) -> float:
 	var speed_characters: Array[float] = [8.0, 14.0, 24.0, 40.0]
@@ -726,7 +735,10 @@ func dialogue_auto_delay(text: String, extra_delay: float = 0.0) -> float:
 	var delay := base_delays[speed_index] + reading_time + punctuation_delay + extra_delay
 	if text.strip_edges().begins_with("【"):
 		delay += 0.8
-	return clampf(delay, 0.45, maximum_delays[speed_index] + extra_delay)
+	# Light Speed scales the complete Very Fast delay, including punctuation,
+	# scene pauses and clamping; changing only character speed is not 4x faster.
+	var speed_multiplier := 4.0 if dialogue_auto_speed_index >= 4 else 1.0
+	return clampf(delay, 0.45, maximum_delays[speed_index] + extra_delay) / speed_multiplier
 
 func register_dialogue_continue(button: Button, text: String, extra_delay: float = 0.0) -> void:
 	dialogue_default_button = button
@@ -816,7 +828,7 @@ func toggle_dialogue_auto() -> void:
 		run_dialogue_auto_timer(dialogue_auto_generation, dialogue_auto_delay(current_dialogue_text(), 0.25))
 
 func cycle_dialogue_auto_speed() -> void:
-	dialogue_auto_speed_index = (dialogue_auto_speed_index + 1) % 4
+	dialogue_auto_speed_index = (dialogue_auto_speed_index + 1) % 5
 	content.localizer.save_dialogue_auto_speed(dialogue_auto_speed_index)
 	dialogue_auto_generation += 1
 	refresh_dialogue_playback_controls()
@@ -889,7 +901,7 @@ func show_event_test_hub() -> void:
 	page.add_child(event_scroll)
 	var event_content := Control.new()
 	event_content.name = "EventTestList"
-	event_content.custom_minimum_size = Vector2(1170, max(500, (definitions.size() + 6) * 86 + 20))
+	event_content.custom_minimum_size = Vector2(1170, max(500, (definitions.size() + 8) * 86 + 20))
 	event_scroll.add_child(event_content)
 	var advanced_button := button_at("Advanced Surgery · Isolated Test" if content.localizer.locale == "en" else "高级手术 · 独立测试", Vector2.ZERO, Vector2(1110, 68), show_advanced_referral.bind(true)) # localization-invariant
 	page.remove_child(advanced_button)
@@ -914,6 +926,11 @@ func show_event_test_hub() -> void:
 		event_content.add_child(entry)
 		entry.position = Vector2(20, 10 + (character_index + 3) * 86)
 		entry.name = "CharacterEventTest_" + character_id
+	var daydream_test := button_at(tx("ui.daydream.test_hub_entry", "白日梦 · 三事件测试"), Vector2.ZERO, Vector2(1110, 68), begin_daydream_event_test)
+	page.remove_child(daydream_test)
+	event_content.add_child(daydream_test)
+	daydream_test.position = Vector2(20, 10 + 6 * 86)
+	daydream_test.name = "DaydreamEventTestEntry"
 	for i in range(definitions.size()):
 		var definition: Dictionary = definitions[i]
 		var event_id := str(definition.get("id", ""))
@@ -924,16 +941,31 @@ func show_event_test_hub() -> void:
 		var event_button := button_at(caption, Vector2.ZERO, Vector2(1110, 68), begin_special_event_test_from_title.bind(event_id))
 		page.remove_child(event_button)
 		event_content.add_child(event_button)
-		event_button.position = Vector2(20, 10 + (i + 6) * 86)
+		event_button.position = Vector2(20, 10 + (i + 7) * 86)
 		event_button.name = "EventTest_" + event_id
+	var npc_test := button_at("Megumin · Content / Portrait Preview" if content.localizer.locale == "en" else "惠惠 · 内容／立绘预览",Vector2.ZERO,Vector2(1110,68),megumin_view.open_catalog.bind(self)) # localization-invariant
+	page.remove_child(npc_test)
+	event_content.add_child(npc_test)
+	npc_test.position=Vector2(20,10+(definitions.size()+7)*86)
+	npc_test.name="MeguminTestEntry"
 	button_at(tx("ui.event_test.back", "← 返回标题"), Vector2(1030, 88), Vector2(185, 44), title_screen)
 
 func begin_character_event_hub_test(event_id: String) -> void:
 	if not game.prepare_character_event_test_save(event_id):return
 	var definition: Dictionary = game.character_event_definitions[event_id]
-	game.set_test_time(game.day_number(), int(definition.get("time_start", 540)))
+	character_event_return_location = str(definition.get("location_id", ""))
+	character_event_return_preop_id = ""
+	character_event_from_test = false
 	if game.start_character_event(event_id) != null:
 		show_character_event()
+
+func begin_daydream_event_test() -> void:
+	if not OS.is_debug_build(): return
+	active_save_slot = 0
+	game.reset()
+	reset_clinic_view()
+	reset_dialogue_page()
+	daydream_view.open_test(self)
 
 func begin_sayaka_lv4_event_test() -> void:
 	if not game.prepare_sayaka_lv4_event_test():
@@ -1032,7 +1064,7 @@ func _show_sayaka_h_entry() -> void:
 	dialogue_box.add_theme_stylebox_override("panel", panel_style(Color(0.04, 0.11, 0.15, 0.94)))
 	page.add_child(dialogue_box)
 	label_at(str(h_profile_test_entry_lines[h_profile_test_entry_index]), Vector2(125, 578), 22, Color("f4f0e6"), 980)
-	button_at("继续" if not english else "Continue", Vector2(870, 700), Vector2(300, 44), _advance_sayaka_h_entry) # localization-invariant
+	button_at("继续" if not english else "Continue", Vector2(870, 700), Vector2(300, 44), _advance_sayaka_h_entry).name = "HProfileEntryAdvance" # localization-invariant
 	if h_profile_run_kind == "test":
 		button_at("退出测试" if not english else "Exit test", Vector2(80, 700), Vector2(240, 44), _exit_sayaka_h_test) # localization-invariant
 
@@ -1133,7 +1165,7 @@ func show_sayaka_h_profile_test() -> void:
 		if is_after:
 			var aftercare_lines: Array = h_profile_test_session.aftercare_lines(h_profile_test_session.profile.get("flow", {}).get("free_aftercare_lines", []))
 			var is_last_aftercare_line := h_profile_test_aftercare_index >= aftercare_lines.size() - 1
-			button_at(("完成自由H" if not english else "Complete free H") if is_last_aftercare_line else ("继续" if not english else "Continue"), Vector2(780, 700), Vector2(250, 44), _advance_sayaka_h_aftercare) # localization-invariant
+			button_at(("完成自由H" if not english else "Complete free H") if is_last_aftercare_line else ("继续" if not english else "Continue"), Vector2(780, 700), Vector2(250, 44), _advance_sayaka_h_aftercare).name = "HProfileAftercareAdvance" # localization-invariant
 		elif phase == "h_finish_wait":
 			var finish_button := button_at(h_profile_test_session.h_finish_label, Vector2(720, 700), Vector2(360, 48), _choose_sayaka_h_finish)
 			finish_button.name = "HProfileFinish"
@@ -1474,15 +1506,15 @@ func _confirm_free_h_booking(actor_id: String, source_location: String, selected
 
 func show_free_h_booking_response(actor_id: String, location_id: String, source_location: String) -> void:
 	var actor: Dictionary = content.find_record("staff", actor_id)
-	var place := tx("ui.free_h.location." + location_id, "Hotel")
+	var place := _free_h_place_label(actor_id, location_id)
 	var response_index := randi_range(0, 3)
 	var response_fallbacks := [
-		"The %s tonight? Sure. I’ll be there on time.",
-		"%s? All right, it’s a plan. See you tonight.",
-		"Okay, let’s go to the %s tonight.",
-		"The %s tonight… Sure, I’m looking forward to it.",
+		tx("ui.free_h.response.0", "今晚去%s？好啊，我会准时到的。"),
+		tx("ui.free_h.response.1", "%s吗？嗯，说好了，今晚见。"),
+		tx("ui.free_h.response.2", "好，那今晚就去%s吧。"),
+		tx("ui.free_h.response.3", "今晚去%s……好啊，我也很期待。"),
 	]
-	var response := tx("ui.free_h.response." + str(response_index), str(response_fallbacks[response_index])) % place
+	var response := str(response_fallbacks[response_index]) % place
 	var config := FreeHRegistry.definition(actor_id)
 	if config.has("booking_response_key"):
 		response = tx(str(config.booking_response_key), str(config.booking_response))
@@ -1858,7 +1890,13 @@ func begin_miyuki_lv3_prelude() -> bool:
 	return true
 
 func show_map(resolve_day_start_events: bool = true) -> void:
+	if game.megumin_active:
+		megumin_view.show_scene()
+		return
+	Megumin.synchronize(game)
+	if Megumin.busy(game): Megumin.postpone(game)
 	if preload("res://godot/systems/advanced_referral.gd").due(game) or game.advanced_runtime != null:
+		Megumin.postpone(game)
 		show_advanced_referral(false)
 		return
 	if not game.active_free_h_departure.is_empty():
@@ -1892,6 +1930,7 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	if not resolve_day_start_events and not bool(auto_special_event.get("mandatory_auto_start", false)):
 		auto_special_event = {}
 	if not auto_special_event.is_empty():
+		Megumin.postpone(game)
 		if bool(auto_special_event.get("mandatory_auto_start", false)):
 			special_event_pending_id = str(auto_special_event.id)
 			begin_special_event()
@@ -1900,8 +1939,11 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 		return
 	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events and not awaiting_departure else {}
 	if not day_start_character_event.is_empty():
+		Megumin.postpone(game)
 		start_mandatory_character_event(str(day_start_character_event.id))
 		return
+	if not awaiting_departure and not game.next_day_start_character_event().is_empty(): Megumin.postpone(game)
+	if not awaiting_departure and megumin_view.try_intro(self): return
 	if not awaiting_departure and begin_sayaka_lv4_callback(game.day_number(), game.current_absolute_clock()):
 		return
 	if begin_miyuki_lv3_prelude():
@@ -2199,6 +2241,7 @@ func show_sunday_office_menu() -> void:
 	]
 	for i in range(options.size()):
 		button_at(str(options[i][0]), Vector2(85 + (i % 2) * 550, 300 + (i / 2) * 90), Vector2(500, 60), finish_sunday_activity.bind("office_" + str(i), str(options[i][1]))).name = "SundayOfficeAction_%s" % i
+	button_at(tx("ui.daydream.title", "白日梦"), Vector2(85, 490), Vector2(500, 60), show_daydreams).name = "SundayDaydream"
 	button_at(tx("ui.common.return_sunday_arrow", "← 返回周日安排"), Vector2(60, 713), Vector2(230, 40), show_sunday_menu)
 
 func finish_sunday_activity(activity_id: String, narration: String, actor_id: String = "", location_id: String = "") -> void:
@@ -2396,6 +2439,9 @@ func case_training_value_is_low(case_data: Dictionary) -> bool:
 	return game.surgery_learning_efficiency(effective_difficulty - current_level) <= 0.10
 
 func show_location(id: String, preserve_random: bool = false, allow_micro_event: bool = true, allow_location_events: bool = true) -> void:
+	if game.megumin_active:
+		megumin_view.show_scene()
+		return
 	var scheduled: Dictionary = game.next_auto_special_event()
 	if not scheduled.is_empty() and bool(scheduled.get("mandatory_auto_start", false)):
 		special_event_pending_id = str(scheduled.id)
@@ -2462,6 +2508,8 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 		var micro_button_x := 785 if uses_staff_drawer else 875
 		var micro_button := button_at(tx("ui.location.micro_event", "日常片段"), Vector2(micro_button_x, 196), Vector2(150, 44), start_location_micro_event.bind(id))
 		micro_button.name = "LocationMicroEvent"
+	if id == "lobby" and Megumin.on_shift(game) and Megumin.met(game):
+		button_at("Talk to Megumin" if content.localizer.locale == "en" else "与惠惠交谈", Vector2(60, 260), Vector2(300, 48), megumin_view.talk.bind(self)).name = "MeguminTalk" # localization-invariant
 	var present_staff: Array[String] = game.staff_present_at(id)
 	if id == "rooftop":
 		rooftop_actor_id = "" if present_staff.is_empty() else present_staff[0]
@@ -2579,7 +2627,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 func location_uses_staff_drawer(location_id: String) -> bool:
 	# Hourly placement can put more than four colleagues in the lounge or
 	# another work area. Reuse the scrollable roster instead of overflowing.
-	return location_id in ["clinic", "ward", "or", "imaging"] or (location_id != "rooftop" and game.staff_present_at(location_id).size() > 4)
+	return location_id in ["lobby", "clinic", "ward", "or", "imaging"] or (location_id != "rooftop" and game.staff_present_at(location_id).size() > 4)
 
 func toggle_location_staff_drawer(location_id: String) -> void:
 	location_staff_drawer_open = "" if location_staff_drawer_open == location_id else location_id
@@ -2703,6 +2751,9 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 			chat_button.add_theme_stylebox_override("focus", panel_style(Color("365963"), Color("f3dbac")))
 			chat_button.pressed.connect(perform_time_event.bind(str(matching_chat.id), location_id))
 			row_box.add_child(chat_button)
+
+func show_daydreams() -> void:
+	daydream_view.open(self)
 
 func show_player_office() -> void:
 	PlayerOfficeView.render_main(self)
@@ -3015,6 +3066,15 @@ func show_character_event() -> void:
 	if node.has("presentation"):
 		location_name = str(content.find_record("backgrounds", event_background).get("label", location_name))
 	base(definition.title, "%s / %s / %s" % [actor_name, event_label, location_name], true, event_background)
+	var scene_tint := str(node.get("scene_tint", ""))
+	if not scene_tint.is_empty() and background is CanvasItem:
+		background.modulate = Color(scene_tint)
+	if bool(definition.get("hide_calendar_header", false)):
+		# Some authored scenes span midnight outside the compressed workday
+		# clock. Their scene captions supply the intended time on screen.
+		var calendar_header := page.get_node_or_null("CalendarHeader")
+		if calendar_header != null:
+			calendar_header.hide()
 	var visual_actor := actor
 	var visual_actor_id := str(node.get("actor_id", definition.actor_id))
 	if visual_actor_id != str(definition.actor_id):
@@ -3966,10 +4026,12 @@ func show_staff_role_gallery_entry(reward_id: String) -> void:
 	if not path.is_empty() and ResourceLoader.exists("res://" + path):
 		var cg := TextureRect.new()
 		cg.name = "StaffRoleGalleryCG"
+		# Set this before the texture and rectangle so the source image cannot
+		# clamp the requested preview size to its native dimensions.
+		cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		cg.texture = load("res://" + path)
 		cg.position = Vector2(560, 175)
 		cg.size = Vector2(635, 455)
-		cg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		cg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		page.add_child(cg)
 	label_at(tx("ui.gallery.first_role", "岗位首次担当"), Vector2(65, 235), 18, Color("cbbc9c"), 430)
@@ -4248,14 +4310,15 @@ func show_patient(id: String, outfit: String = "outpatient", expression: String 
 	if patient.visuals.portraits.has("operating_table/awake"):
 		button_at(tx("ui.auto.e123d23bbc11", "手术台"), Vector2(485, 400), Vector2(190, 44), show_patient.bind(id, "operating_table", "awake"))
 	if patient.visuals.portraits.has("operating_table_lithotomy/awake"):
-		button_at(tx("ui.auto.89d6df9f4cbc", "截石位"), Vector2(695, 400), Vector2(190, 44), show_patient.bind(id, "operating_table_lithotomy", "awake"))
+		button_at(tx("ui.auto.89d6df9f4cbc", "截石位"), Vector2(65, 450), Vector2(190, 44), show_patient.bind(id, "operating_table_lithotomy", "awake")).name = "PatientOutfitLithotomy"
+	var expression_top := 515 if patient.visuals.portraits.has("operating_table_lithotomy/awake") else 465
 	var expressions: Array[String] = []
 	for key in patient.visuals.portraits:
 		if key.get_slice("/", 0) == outfit:
 			expressions.append(key.get_slice("/", 1))
 	for i in range(expressions.size()):
 		var value := expressions[i]
-		var button := button_at(expression_names.get(value, value), Vector2(65 + (i % 3) * 205, 465 + (i / 3) * 50), Vector2(190, 40), show_patient.bind(id, outfit, value))
+		var button := button_at(expression_names.get(value, value), Vector2(65 + (i % 3) * 205, expression_top + (i / 3) * 50), Vector2(190, 40), show_patient.bind(id, outfit, value))
 		button.name = "PatientExpression_" + value
 		button.disabled = value == expression
 	button_at(tx("ui.auto.ee72d027cb68", "← 返回门诊"), Vector2(1020, 88), Vector2(195, 44), show_location.bind("clinic"))
@@ -5408,6 +5471,7 @@ func show_day_transition(next_action: Callable, display_override: Dictionary = {
 			return
 		if _try_free_h_departure(int(departure.workday), int(departure.clock), false, next_action):
 			return
+		if megumin_view.try_departure(self, int(departure.workday), int(departure.clock), Callable(self, "show_day_transition").bind(next_action, display_override)): return
 		game.clear_pending_departure_context()
 		if game.begin_after_work_departure(int(departure.workday), int(departure.clock), false):
 			day_transition_next = next_action
@@ -5429,7 +5493,7 @@ func render_day_transition(next_action: Callable, departure: Dictionary = {}) ->
 	label_at(tx("ui.auto.76205aa9b369", "一天结束了……"), Vector2(0, 285), 46, Color("f4f0e6"), 1280).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var next_day_line := tx("ui.auto.9aad20de509f", "夜色笼罩医院。明天是星期日，可以暂时离开平日的工作节奏。") if game.is_sunday() else tx("ui.auto.c0ea84cbb5ba", "夜色笼罩医院。新的工作日将从 09:00 开始。")
 	label_at(next_day_line, Vector2(0, 365), 22, Color("d7dfdf"), 1280).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	button_at(tx("ui.auto.5405675b4324", "进入下一天  →"), Vector2(475, 465), Vector2(330, 58), continue_after_day_transition)
+	button_at(tx("ui.auto.5405675b4324", "进入下一天  →"), Vector2(475, 465), Vector2(330, 58), continue_after_day_transition).name = "DayTransitionContinue"
 
 func request_end_workday() -> void:
 	if not game.active_free_h_departure.is_empty() or screen == "day_transition":
@@ -5455,6 +5519,7 @@ func request_end_workday() -> void:
 		return
 	if _try_free_h_departure(workday, departure_clock, true, show_map):
 		return
+	if megumin_view.try_departure(self, workday, departure_clock, Callable(self, "request_end_workday")): return
 	if game.begin_after_work_departure(workday, departure_clock, true):
 		day_transition_next = show_map
 		show_after_work_walk()

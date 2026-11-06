@@ -138,7 +138,8 @@ static func settings(app) -> void:
 	label.text = app.tx("ui.title.auto_speed", "对白自动播放速度")
 	list.add_child(label)
 	var speed := OptionButton.new()
-	for caption in [app.tx("ui.title.slow", "慢"), app.tx("ui.title.normal", "标准"), app.tx("ui.title.fast", "快"), app.tx("ui.title.faster", "很快")]: speed.add_item(caption)
+	speed.name = "DialogueSpeedSetting"
+	for caption in [app.tx("ui.title.slow", "慢"), app.tx("ui.title.normal", "标准"), app.tx("ui.title.fast", "快"), app.tx("ui.title.faster", "很快"), app.tx("ui.dialogue.speed.light_speed", "光速")]: speed.add_item(caption)
 	speed.select(app.dialogue_auto_speed_index)
 	speed.item_selected.connect(func(index: int): app.dialogue_auto_speed_index = index; app.content.localizer.save_dialogue_auto_speed(index))
 	list.add_child(speed)

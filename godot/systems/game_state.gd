@@ -95,6 +95,13 @@ var date_location_definitions: Dictionary = {}
 var special_event_completion_counts: Dictionary = {}
 var special_event_completion_days: Dictionary = {}
 var staff_contracts: Dictionary = {}
+var daydream_read_ids: Array = []
+# Presentation-only save lock; never part of the persistent save contract.
+var daydream_active := false
+var megumin_facts: Dictionary = {}
+var megumin_active := false
+var megumin_recent_barks: Array = []
+var megumin_recent_themes: Array = []
 var story_flags: Dictionary = {}
 var probation_complete := false
 var personal_nurse_system_unlocked := false
@@ -260,6 +267,12 @@ func reset() -> void:
 	special_event_completion_counts.clear()
 	special_event_completion_days.clear()
 	staff_contracts.clear()
+	megumin_facts.clear()
+	megumin_active = false
+	megumin_recent_barks.clear()
+	megumin_recent_themes.clear()
+	daydream_read_ids.clear()
+	daydream_active = false
 	story_flags.clear()
 	patient_cases = random_patient_cases(campaign_rng) if not case_templates.is_empty() else {}
 	rebuild_patient_content(patient_cases)
@@ -333,6 +346,7 @@ func finish_admission_for_day(encounter_id: String) -> bool:
 	return true
 
 func can_save_progress() -> bool:
+	if daydream_active or megumin_active: return false
 	if not active_advanced_staff_patient.is_empty(): return false
 	if not active_free_h_departure.is_empty():
 		return false
@@ -821,11 +835,11 @@ func encounter_for_case(blueprint: Dictionary, template: Dictionary, diagnosis_s
 		for action in stages[stage_id].actions:
 			actions[stage_id][action.id] = action
 	var english: bool = str(blueprint.get("_locale", "zh_CN")) == "en"
-	var symptoms: Array = ["Primary symptom", "Associated symptoms"] if english else template.symptoms
-	var history: Array = ["The symptoms began recently and have gradually become more noticeable.", "They are affecting daily life enough to seek specialist care."] if english else template.history
-	var findings: Array = ["The examination findings are consistent with the working diagnosis."] if english else template.examination_findings
+	var symptoms: Array = template.symptoms
+	var history: Array = template.history
+	var findings: Array = template.examination_findings
 	var tests: Array = template.tests
-	var differentials: Array = ["Alternative diagnosis", "Observation only"] if english else template.differential_diagnoses
+	var differentials: Array = template.differential_diagnoses
 	var patient_id: String = str(result.patient_id)
 	stages.reception.prompt = patient_spoken_line(patient_id, str(template.presenting_complaint), "complaint", english)
 	actions.reception.greet.response = patient_spoken_line(patient_id, str(history[0]), "primary", english)
@@ -1203,6 +1217,8 @@ func staff_can_join_surgery_team(actor_id: String) -> bool:
 	for person in staff:
 		if str(person.id) != actor_id:
 			continue
+		if "or_selectable_default_false" in person.get("flags", []):
+			return false
 		if "team_unlock_requires_lv1" not in person.get("flags", []):
 			return true
 		var relation := relation_for(actor_id)
@@ -2104,6 +2120,8 @@ func start_character_event(id: String) -> RefCounted:
 		var definition: Dictionary = character_event_definitions[id]
 		if not character_event_available(definition):
 			return null
+		if id == "miyuki_lv5_chie_operation":
+			definition = preload("res://godot/systems/miyuki_lv5.gd").cast_definition(self, definition)
 		character_events[id] = CharacterEvent.new(definition)
 		character_events[id].node_id = character_event_opening_node(definition)
 		character_event_order.append(id)
@@ -2239,6 +2257,10 @@ func choose_character_event(choice_id: String) -> bool:
 	if event.completed and not relation.event_history.has(event.definition.id):
 		event.completed_day = event_day
 		relation.event_history.append(event.definition.id)
+		if str(event.definition.id) == "aqua_intro_exam_chair":
+			preload("res://godot/systems/megumin.gd").record_aqua(self)
+		if preload("res://godot/systems/miyuki_lv5.gd").owns(str(event.definition.id)):
+			preload("res://godot/systems/miyuki_lv5.gd").completed(self, str(event.definition.id))
 		if str(event.definition.id) == "ev_doc_takemi_lv2_fujino_laparotomy":
 			set_story_flag("takemi_fujino_cured_and_discharged")
 		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)):
@@ -3175,7 +3197,12 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 		if requirement is Dictionary:
 			_apply_test_event_requirement(requirement, target_day, actor_id)
 	set_story_flag("__test_save_target_character_event__" + event_id, true)
-	set_test_time(target_day, clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1))
+	var test_clock := clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1)
+	set_test_time(target_day, test_clock)
+	# Completed prerequisite events have settled minutes. The isolated hub
+	# should still present the target event at its authored start clock.
+	var expected_elapsed := (target_day - 1) * SHIFT_MINUTES + test_clock - SHIFT_START_MINUTE
+	story_time_advance_minutes += expected_elapsed - elapsed()
 	if wait_for_one_surgery:
 		arm_test_save_one_surgery(event_id)
 	active_mode = "encounter"
@@ -3859,7 +3886,9 @@ func display_schedule() -> Dictionary:
 
 func world_display_schedule() -> Dictionary:
 	if not active_free_h_departure.is_empty():
-		return {"day": int(active_free_h_departure.workday), "absolute_clock": int(active_free_h_departure.clock)}
+		var departure_clock := int(active_free_h_departure.clock)
+		var scene_clock := int(FreeHRegistry.definition(str(active_free_h_departure.actor_id)).get("presentation_clock", departure_clock))
+		return {"day": int(active_free_h_departure.workday), "absolute_clock": maxi(departure_clock, scene_clock)}
 	# The workday ledger reserves tomorrow as soon as a shift overflows. The
 	# visible scene still takes place at the actual departure/overtime time.
 	if not active_after_work_walk.is_empty():
@@ -4313,6 +4342,12 @@ func surgery_procedure_group(surgery_id: String) -> String:
 		if str(surgery.get("id", "")) == surgery_id:
 			return str(surgery.get("procedure_group", ""))
 	return ""
+
+static func valid_surgery_history_id(value: Variant) -> bool:
+	# Settled facts outlive both surgery catalogs. Validate identity, not current
+	# executability: retired/advanced IDs must not erase XP or reject a save.
+	# Live selection still uses surgery_definition / procedure_unlocked.
+	return value is String and not value.strip_edges().is_empty()
 
 func surgery_definition(surgery_id: String) -> Dictionary:
 	for surgery in surgery_definitions:
@@ -4857,6 +4892,8 @@ func runtime_snapshot() -> Dictionary:
 		"personal_nurse_id": personal_nurse_id,
 		"special_event_completion_counts": special_event_completion_counts.duplicate(true),
 		"special_event_completion_days": special_event_completion_days.duplicate(true),
+		"megumin_facts": megumin_facts.duplicate(true),
+		"daydream_read_ids": daydream_read_ids.duplicate(),
 		"staff_contracts": staff_contracts.duplicate(true),
 		"active_special_event": active_special_event_snapshot,
 		"adult_intimacy_unlocks": adult_intimacy_unlocks.duplicate(true),
@@ -5115,6 +5152,8 @@ func _restore_state_checked(data: Variant) -> bool:
 	restore_warnings.clear()
 	if not data is Dictionary:
 		return false
+	if not preload("res://godot/systems/megumin.gd").valid_facts(data.get("megumin_facts", {})): return false
+	if not preload("res://godot/systems/daydream_catalog.gd").valid_read_ids(data.get("daydream_read_ids", [])): return false
 	var contracts: Variant = data.get("staff_contracts",{})
 	if not contracts is Dictionary: return false
 	for actor in contracts:
@@ -5267,16 +5306,15 @@ func _restore_state_checked(data: Variant) -> bool:
 		restored_surgery_xp_history.clear()
 		for record in data.surgery_xp_history:
 			var raw_record_xp: Variant = record.get("xp") if record is Dictionary else null
-			if not record is Dictionary or not record.get("id") is String or not record.get("label") is String or not record.get("effects") is Dictionary or not record.get("surgery_id") is String or surgery_definition(str(record.get("surgery_id", ""))).is_empty() or not (raw_record_xp is int or raw_record_xp is float) or float(raw_record_xp) != floorf(float(raw_record_xp)) or int(raw_record_xp) < 0:
+			if not record is Dictionary or not record.get("id") is String or not record.get("label") is String or not record.get("effects") is Dictionary or not valid_surgery_history_id(record.get("surgery_id")) or not BoundarySave.integer(raw_record_xp):
 				return false
 			restored_surgery_xp_history.append(record.duplicate(true))
 		restored_unlocked_procedure_ids.clear()
 		for surgery_id in data.unlocked_procedure_ids:
-			if not surgery_id is String or restored_unlocked_procedure_ids.has(surgery_id):
+			if not valid_surgery_history_id(surgery_id) or restored_unlocked_procedure_ids.has(surgery_id):
 				return false
-			var procedure := surgery_definition(surgery_id)
-			if procedure.is_empty() or str(procedure.get("status", "ready")) == "placeholder":
-				return false
+			# Preserve earned unlocks if a definition is retired or temporarily
+			# unavailable. procedure_unlocked still requires a live ready definition.
 			restored_unlocked_procedure_ids.append(surgery_id)
 		var raw_leadership_xp: Variant = data.get("leadership_xp")
 		if not (raw_leadership_xp is int or raw_leadership_xp is float) or not is_finite(float(raw_leadership_xp)) or float(raw_leadership_xp) < 0.0:
@@ -5322,14 +5360,14 @@ func _restore_state_checked(data: Variant) -> bool:
 			return false
 		for surgery_id in raw_procedure_counts:
 			var raw_count: Variant = raw_procedure_counts[surgery_id]
-			if not surgery_id is String or surgery_definition(surgery_id).is_empty() or not (raw_count is int or raw_count is float) or float(raw_count) != floorf(float(raw_count)) or int(raw_count) < 0:
+			if not valid_surgery_history_id(surgery_id) or not BoundarySave.integer(raw_count):
 				return false
 			restored_completed_surgeries_by_procedure[surgery_id] = int(raw_count)
 		var raw_quality_records: Variant = data.get("surgical_quality_records", {})
 		if not raw_quality_records is Dictionary:
 			return false
 		for surgery_id in raw_quality_records:
-			if not surgery_id is String or surgery_definition(surgery_id).is_empty() or not raw_quality_records[surgery_id] is Dictionary:
+			if not valid_surgery_history_id(surgery_id) or not raw_quality_records[surgery_id] is Dictionary:
 				return false
 			var quality_record: Dictionary = raw_quality_records[surgery_id]
 			if quality_record.has("best_score") and not (quality_record.best_score is int or quality_record.best_score is float):
@@ -5384,12 +5422,9 @@ func _restore_state_checked(data: Variant) -> bool:
 			var raw_group_counts: Variant = data.get("completed_surgeries_by_group")
 			if not raw_group_counts is Dictionary:
 				return false
-			var known_groups := {}
-			for surgery in surgery_definitions:
-				known_groups[str(surgery.get("procedure_group", ""))] = true
 			for group_id in raw_group_counts:
 				var raw_group_count: Variant = raw_group_counts[group_id]
-				if not group_id is String or not known_groups.has(group_id) or not (raw_group_count is int or raw_group_count is float) or float(raw_group_count) != floorf(float(raw_group_count)) or int(raw_group_count) < 0:
+				if not valid_surgery_history_id(group_id) or not BoundarySave.integer(raw_group_count):
 					return false
 				restored_completed_surgeries_by_group[group_id] = int(raw_group_count)
 		for metric in restored_archived_player_effects:
@@ -5428,7 +5463,7 @@ func _restore_state_checked(data: Variant) -> bool:
 			return false
 		for procedure in restored_practice_counts[actor_id]:
 			var count: Variant = restored_practice_counts[actor_id][procedure]
-			if surgery_definition(str(procedure)).is_empty() or not (count is int or count is float) or float(count) != floorf(float(count)) or count < 0 or count > 1000000:
+			if not valid_surgery_history_id(procedure) or not BoundarySave.integer(count) or count > 1000000:
 				return false
 	if not restored_staff_patient.is_empty():
 		if restored_staff_patient.size() != 2 or not restored_staff_patient.get("staff_id") is String or not restored_staff_patient.get("procedure_id") is String:
@@ -6021,6 +6056,12 @@ func _restore_state_checked(data: Variant) -> bool:
 	micro_events = rebuilt_micro_events
 	micro_event_order = rebuilt_micro_event_order
 	active_micro_event_id = rebuilt_active_micro_event
+	megumin_facts = preload("res://godot/systems/megumin.gd").clean_facts(data.get("megumin_facts", {}))
+	megumin_active = false
+	megumin_recent_barks.clear()
+	megumin_recent_themes.clear()
+	daydream_read_ids = data.get("daydream_read_ids", []).duplicate()
+	daydream_active = false
 	story_flags = rebuilt_story_flags
 	synchronize_story_locked_procedures()
 	probation_complete = rebuilt_probation_complete

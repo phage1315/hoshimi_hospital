@@ -21,6 +21,8 @@ var team_panel: RefCounted
 var blackout_running := false
 var day_transition_panel: ColorRect
 var day_transition_serial := 0
+var operative_auto := false
+var operative_auto_ticket := 0
 
 func setup(app: Control, service: RefCounted, en: bool) -> void:
 	host = app
@@ -82,7 +84,13 @@ func refresh_operation_chrome() -> void:
 		heading.text = title_of(controller.session.definition) if active else tr_key("title")
 		heading.position = Vector2(40,76) if active else Vector2(56,88)
 		heading.size.x = 810 if active else 1100
-		heading.add_theme_font_size_override("font_size",24 if active else 34)
+		var heading_font_size := 24 if active else 34
+		if active:
+			while heading_font_size > 13 and heading.get_theme_font("font").get_string_size(heading.text, HORIZONTAL_ALIGNMENT_LEFT, -1, heading_font_size).x > heading.size.x:
+				heading_font_size -= 1
+		heading.add_theme_font_size_override("font_size",heading_font_size)
+		heading.autowrap_mode = TextServer.AUTOWRAP_OFF if active else TextServer.AUTOWRAP_WORD_SMART
+		heading.clip_text = active
 	if subtitle != null:
 		subtitle.visible = not active
 		subtitle.text = tr_key("dev" if controller.dev else "prod")
@@ -101,7 +109,9 @@ func staff_episode() -> bool:
 	return controller.get_script() == preload("res://godot/systems/advanced_staff_patient.gd")
 
 func render() -> void:
+	operative_auto_ticket += 1
 	host.invalidate_dialogue_action()
+	operation_panel.hide_dialogue_toolbar()
 	team_panel = null
 	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	refresh_operation_chrome()
@@ -465,11 +475,45 @@ func render_operation() -> void:
 			else:
 				make_cast({}, "", tr_key("narration"), tr_key("success" if session.success else "aborted"), true)
 		elif session.in_crisis():
-			show_staff(str(roster.primary_circulating), "primary_circulating", session.physiology.crisis_callout_text())
+			var crisis_line: Dictionary = session.operative_dialogue.current(session) if session.operative_dialogue != null else {}
+			if crisis_line.is_empty(): show_staff(str(roster.primary_circulating), "primary_circulating", session.physiology.crisis_callout_text())
+			else: show_operative_line(crisis_line, roster, session.last_result)
 		elif session.operative_dialogue != null:
 			var line: Dictionary = session.operative_dialogue.current(session)
 			if not line.is_empty(): show_operative_line(line, roster, session.last_result)
 	operation_panel.draw(session)
+	var next: Button = find_child("dialogue_next", true, false)
+	if next != null and next.visible and not next.disabled and is_instance_valid(cast_panel): register_story_continue(next)
+	queue_operative_auto(session)
+
+func queue_operative_auto(session: RefCounted) -> void:
+	if not operative_auto or session.operative_dialogue == null: return
+	var line: Dictionary = session.operative_dialogue.current(session, session.suppress_operative_dialogue)
+	var next: Button = find_child("dialogue_next", true, false)
+	if line.is_empty() or next == null or not next.visible or next.disabled: return
+	var ticket := operative_auto_ticket
+	var expected := str(line.id)
+	get_tree().create_timer(1.35).timeout.connect(func():
+		if not is_instance_valid(self) or not operative_auto or operative_auto_ticket != ticket or controller.session != session: return
+		if str(session.operative_dialogue.current(session).get("id", "")) != expected: return
+		if session.operative_dialogue.advance_sequence(session): render())
+
+func show_operative_log(session: RefCounted) -> void:
+	var dialog := AcceptDialog.new()
+	dialog.title = tr_key("operative_log")
+	var entries := PackedStringArray()
+	var roster: Dictionary = controller.state().appointment.team
+	for item in session.operative_dialogue.history:
+		var row: Dictionary = item.line
+		var bound: Dictionary = Dialogue.bind_role(str(row.speaker_role), roster)
+		var speaker_name := tr_key("player_speaker") if bound.get("id", "") == "PLAYER" else actor_name(str(bound.id)) if bound.has("id") and not str(bound.id).is_empty() else tr_key("narration")
+		entries.append("%s · %s\n%s" % [item.stage, speaker_name, str(row.text_en if english else row.text)])
+	dialog.dialog_text = "\n\n".join(entries)
+	dialog.size = Vector2i(820, 500)
+	host.page.add_child(dialog)
+	dialog.visibility_changed.connect(func():
+		if not dialog.visible: dialog.queue_free())
+	dialog.popup_centered()
 
 func add_team_patient_table() -> void:
 	var patient := Presentation.patient(controller.state().appointment.case, controller.game, english)
@@ -671,6 +715,6 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			finish_day_transition()
 		return
-	if controller == null or (controller.story_phase.is_empty() and controller.failure_dialogue_index < 0): return
+	if controller == null or (controller.story_phase.is_empty() and controller.failure_dialogue_index < 0 and body.find_child("dialogue_next", true, false) == null): return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
 		if host.activate_dialogue_default(): get_viewport().set_input_as_handled()

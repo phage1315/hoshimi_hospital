@@ -1,0 +1,396 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_adv_ebstein_cone_reconstruction",
+  "stages": {
+    "C01": {
+      "before_action": [
+        {
+          "id": "C01_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "正中线和胸骨切开范围再核对一次，进入后需要足够的心包暴露。",
+          "text_en": "Recheck the midline and sternotomy extent. We'll need adequate pericardial exposure after entry."
+        },
+        {
+          "id": "C01_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胸骨锯、骨蜡和开胸牵开器按顺序准备。",
+          "text_en": "Sternal saw, bone wax, and sternotomy retractor are ready in sequence."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C01_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "胸骨进入已经完成，我先保护胸骨边缘并协助展开术野。",
+          "text_en": "Sternal entry is complete. I'll protect the sternal edges and help open the field."
+        }
+      ]
+    },
+    "C02": {
+      "before_action": [
+        {
+          "id": "C02_V2_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "准备配合抗凝与体外循环建立，循环转接的关键时间点请逐项通报。",
+          "text_en": "We're preparing anticoagulation and bypass. Please call out each critical step in the transition."
+        },
+        {
+          "id": "C02_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "插管器械、荷包缝线和右房牵开器都已经备齐。",
+          "text_en": "Cannulation instruments, purse-string sutures, and right atrial retractors are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C02_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "右心房暴露后先找解剖瓣环，不能拿下移的瓣叶附着处当作真正边界。",
+          "text_en": "With the right atrium exposed, identify the true annulus; the displaced leaflet attachment is not that boundary."
+        },
+        {
+          "id": "C02_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "体外循环相关耗材与时间记录已接手，备用管路保持待命。",
+          "text_en": "Bypass supply and timing records are being maintained. Backup tubing remains available."
+        }
+      ]
+    },
+    "C03": {
+      "before_action": [
+        {
+          "id": "C03_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "前叶活动范围很大，但异常附着点要逐段游离，保留可用的瓣叶组织。",
+          "text_en": "The anterior leaflet has substantial motion, but abnormal attachments must be released in stages to preserve useful tissue."
+        },
+        {
+          "id": "C03_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "心脏精细剪、无创镊和细小牵引缝线。",
+          "text_en": "Fine cardiac scissors, atraumatic forceps, and delicate traction sutures."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C03_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我把右室壁轻轻撑开，注意别把薄的心肌当成瓣叶继续拉。",
+          "text_en": "I'll gently support the right ventricular wall. Don't mistake thin myocardium for leaflet tissue."
+        },
+        {
+          "id": "C03_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "瓣叶游离时仍在循环支持阶段，我持续复核灌注与温度趋势。",
+          "text_en": "We're still on circulatory support during leaflet mobilization. I'll keep reviewing perfusion and temperature trends."
+        }
+      ]
+    },
+    "C04": {
+      "before_action": [
+        {
+          "id": "C04_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "后叶和隔叶靠近传导区域，先确认能安全松开的边界。",
+          "text_en": "The posterior and septal leaflets lie near conduction tissue. Identify the safely releasable boundaries."
+        },
+        {
+          "id": "C04_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "更细的剪和小钩式牵引器，准备局部操作。",
+          "text_en": "Finer scissors and a small hook retractor are ready for this localized work."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C04_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "瓣叶释放范围已经重新核对，关键的前隔交界要保留辨认标志。",
+          "text_en": "The leaflet-release extent is rechecked. Preserve the landmarks around the anteroseptal commissure."
+        },
+        {
+          "id": "C04_V2_POST02",
+          "speaker_role": "scrub_secondary",
+          "text": "细缝线和小棉片已经补到台面，换下一组器械不需停太久。",
+          "text_en": "Fine sutures and small pledgets are replenished. The next instrument change should be brief."
+        }
+      ]
+    },
+    "C05": {
+      "before_action": [
+        {
+          "id": "C05_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "现在看可用瓣叶能否围成连续的锥形，面积不够的部位必须提前标出来。",
+          "text_en": "Assess whether the usable leaflets can form a continuous cone. Mark any tissue deficit before reconstruction."
+        },
+        {
+          "id": "C05_V2_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "隔叶一侧的活动度较有限，我会维持位置供你判断重建路径。",
+          "text_en": "Mobility is more limited on the septal side. I'll hold the position while you select the repair path."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C05_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的瓣叶组合方向进行，所有针脚都要避开预计的传导组织区域。",
+          "text_en": "Proceed with the selected leaflet configuration. Keep every suture away from the expected conduction region."
+        },
+        {
+          "id": "C05_V2_POST02",
+          "speaker_role": "scrub_primary",
+          "text": "瓣叶成形用细线已分组放好，需要更换长度随时说。",
+          "text_en": "Fine sutures for leaflet construction are grouped and ready. Call for another length if needed."
+        }
+      ]
+    },
+    "C06": {
+      "before_action": [
+        {
+          "id": "C06_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "把游离后的瓣叶边缘顺着计划方向汇合，先保证一整圈连续性。",
+          "text_en": "Bring the freed leaflet edges together along the planned path, establishing circumferential continuity first."
+        },
+        {
+          "id": "C06_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "小持针器、细瓣膜缝线和无创镊。",
+          "text_en": "Small needle holder, fine valve sutures, and atraumatic forceps."
+        },
+        {
+          "id": "C06_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "腱索的空间我来撑开，旋转瓣叶时别把它们卷进缝合线。",
+          "text_en": "I'll hold the chordal space open so the rotating leaflets don't entangle them in the suture line."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C06_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我从内侧撑开新形成的 Cone，检查缝合线有没有卷到腱索。",
+          "text_en": "I'll open the newly formed cone from inside and check that no chordae are caught in the suture line."
+        },
+        {
+          "id": "C06_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "瓣膜成形所用针线正在逐项登记，备用精细线已留出。",
+          "text_en": "Valve-repair needles and sutures are being logged individually. Backup fine sutures are reserved."
+        }
+      ]
+    },
+    "C07": {
+      "before_action": [
+        {
+          "id": "C07_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "折叠心房化右室之前，先确认右冠状动脉所在的房室沟位置。",
+          "text_en": "Before plicating the atrialized right ventricle, confirm the right coronary artery's course in the atrioventricular groove."
+        },
+        {
+          "id": "C07_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "心肌折叠缝线和带小垫片的备用针组。",
+          "text_en": "Myocardial plication sutures and a backup pledgeted needle set."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C07_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "折叠线的走向已经看清，瓣环调整不能让右室余下的腔室受挤压。",
+          "text_en": "The plication line is visible. Annular adjustment must not compress the remaining right ventricular cavity."
+        },
+        {
+          "id": "C07_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "心室几何关系正在调整，后面功能评估时会重点核对右室表现。",
+          "text_en": "Ventricular geometry is changing. We'll focus on right ventricular performance during functional assessment."
+        }
+      ]
+    },
+    "C08": {
+      "before_action": [
+        {
+          "id": "C08_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "真正的瓣环就在这里，隔侧传导组织区域我会持续指出。",
+          "text_en": "Here's the true annulus. I'll keep identifying the conduction-sensitive septal region."
+        },
+        {
+          "id": "C08_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "瓣环再附着缝线、小持针器，针距标记也准备好了。",
+          "text_en": "Annular reattachment sutures and the small needle holder are ready, along with spacing markers."
+        },
+        {
+          "id": "C08_V2_PRE03",
+          "speaker_role": "assistant_1",
+          "text": "先按真正瓣环的弧度分配针脚，不能照下移的附着线原样缝回去。",
+          "text_en": "Space the sutures along the true annular arc; don't simply sew back to the displaced attachment line."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C08_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "Cone 已围绕解剖瓣环就位，接下来要看它开合而不是只看缝线漂亮。",
+          "text_en": "The cone is seated on the true annulus. Next, judge leaflet motion, not merely how neat the sutures look."
+        },
+        {
+          "id": "C08_V2_POST02",
+          "speaker_role": "scrub_secondary",
+          "text": "试水和精细补针用器械已单独放好。",
+          "text_en": "Leak-test and fine revision instruments are set aside separately."
+        }
+      ]
+    },
+    "C09": {
+      "before_action": [
+        {
+          "id": "C09_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "先用注水检查对合线，找出需要修正的短段，不要整体重新拉紧。",
+          "text_en": "Test coaptation with saline. Identify short segments needing revision rather than tightening everything."
+        },
+        {
+          "id": "C09_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "注水器、细持针器和修补缝线。",
+          "text_en": "Saline syringe, fine needle holder, and revision sutures."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C09_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "局部修正完成后再观察瓣叶接触，不能在右房关闭后才发现边缘问题。",
+          "text_en": "Reassess leaflet contact after the local corrections. Don't discover an edge problem after closing the atrium."
+        },
+        {
+          "id": "C09_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "解剖复核完成，血流动力学的最终判断仍要等脱离体外循环。",
+          "text_en": "The anatomical review is complete. Final hemodynamic judgment awaits separation from bypass."
+        }
+      ]
+    },
+    "C10": {
+      "before_action": [
+        {
+          "id": "C10_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "右心房关闭前，确认没有遗留的针线和游离组织挡住修复瓣膜。",
+          "text_en": "Before right atrial closure, ensure no loose suture or tissue obstructs the repaired valve."
+        },
+        {
+          "id": "C10_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "右房关闭缝线和标准心脏持针器。",
+          "text_en": "Right atrial closure sutures and the standard cardiac needle holder."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C10_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "右房缝合线已完成，我再检查一遍外侧是否被牵得过紧。",
+          "text_en": "The right atrial suture line is complete. I'll check externally for excessive tension."
+        },
+        {
+          "id": "C10_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "术中补用的细针线已追加入记录，复温用品保持可用。",
+          "text_en": "Additional fine needles and sutures are logged. Warming supplies remain available."
+        }
+      ]
+    },
+    "C11": {
+      "before_action": [
+        {
+          "id": "C11_V2_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "准备逐步评估脱离体外循环的条件，超声与循环趋势一起判断。",
+          "text_en": "We're preparing to assess readiness to separate from bypass, using echo and hemodynamic trends together."
+        },
+        {
+          "id": "C11_V2_PRE02",
+          "speaker_role": "assistant_1",
+          "text": "除了三尖瓣返流，还要看右室充盈和流出，不能只盯一项指标。",
+          "text_en": "Look beyond tricuspid regurgitation to right ventricular filling and outflow; no single measure is enough."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C11_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按照本阶段选择的评估和调整方案完成复核，再进入胸腔止血。",
+          "text_en": "Complete the review according to this stage's assessment and adjustment plan before chest hemostasis."
+        },
+        {
+          "id": "C11_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "体外循环阶段的关键数据会完整交接，继续监测功能变化。",
+          "text_en": "Key bypass data will be handed over in full. We'll continue monitoring functional changes."
+        }
+      ]
+    },
+    "C12": {
+      "before_action": [
+        {
+          "id": "C12_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "心包周围、插管部位和胸骨后方都要扫一遍，有些渗血会藏在牵开器下。",
+          "text_en": "Survey the pericardium, cannulation sites, and retrosternal space. Oozing can hide beneath retractors."
+        },
+        {
+          "id": "C12_V2_PRE02",
+          "speaker_role": "circulating_primary",
+          "text": "开始终末清点，纱布、针与器械分开回读。",
+          "text_en": "Starting final counts, with sponges, needles, and instruments read back separately."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C12_V2_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "无菌台物品核对完成，胸骨关闭器械可以接上。",
+          "text_en": "The sterile-table items are accounted for. We can switch to sternal closure instruments."
+        }
+      ]
+    },
+    "C13": {
+      "before_action": [
+        {
+          "id": "C13_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "胸骨两侧对位先看清，钢丝不能压到深部管路。",
+          "text_en": "Verify alignment of the sternal halves. Wires must not compress deeper tubing."
+        },
+        {
+          "id": "C13_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胸骨钢丝、持针器和皮肤关闭器械。",
+          "text_en": "Sternal wires, needle holders, and skin closure instruments."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "C13_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "胸骨与软组织关闭已完成，转运前再检查引流管固定。",
+          "text_en": "Sternal and soft-tissue closure is complete. Recheck drain fixation before transfer."
+        },
+        {
+          "id": "C13_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "终末清点及植入耗材记录完成，交接单移交复苏团队。",
+          "text_en": "Final counts and implant-supply records are complete. The handoff goes to the recovery team."
+        }
+      ]
+    }
+  }
+}

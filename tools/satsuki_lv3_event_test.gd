@@ -109,6 +109,11 @@ func run() -> void:
 	var mask_induction_cg_path := str(nodes_by_id.get("s08_003", {}).get("cg_path", ""))
 	expect(mask_induction_cg_path == "assets/events/character_events/satsuki/cg/lv3/cg_satsuki_lv3_17_yurika_mask_induction_v1.png", "Satsuki Lv3 Yurika mask-induction CG is not bound to the induction beat")
 	expect(FileAccess.file_exists("res://" + mask_induction_cg_path), "Satsuki Lv3 Yurika mask-induction CG file is missing")
+	var artoria_sterile_path := str(content.find_record("staff", "doc_artoria").get("visuals", {}).get("portraits", {}).get("sterile/neutral", ""))
+	expect(not artoria_sterile_path.is_empty() and FileAccess.file_exists("res://" + artoria_sterile_path), "Satsuki Lv3 Artoria sterile-gown portrait is unavailable")
+	for node_id in ["s08_008", "s08_011", "s08_013", "s08_015", "s08_017", "s08_019"]:
+		var artoria_node: Dictionary = nodes_by_id.get(node_id, {})
+		expect(str(artoria_node.get("actor_id", "")) == "doc_artoria" and str(artoria_node.get("outfit", "")) == "sterile", "Satsuki Lv3 Artoria is not in her sterile gown at " + node_id)
 	validate_satsuki_portraits(step)
 	validate_yurika_portraits(step)
 
@@ -158,9 +163,13 @@ func run() -> void:
 	var english = Loader.new()
 	expect(english.load_all("en"), "English content load failed")
 	var english_step: Dictionary = english.find_record("special_event_steps", "satsuki_lv3_wrong_patient_appendectomy_main")
+	var english_nodes_by_id: Dictionary = {}
 	for node in english_step.get("nodes", []):
+		english_nodes_by_id[str(node.get("id", ""))] = node
 		var text_value := str(node.get("text", ""))
 		expect(not text_value.contains("皐月") and not text_value.contains("百合香") and not text_value.contains("患者"), "Satsuki Lv3 retained Chinese prose in English at " + str(node.get("id", "")))
+	for node_id in ["s08_008", "s08_011", "s08_013", "s08_015", "s08_017", "s08_019"]:
+		expect(str(english_nodes_by_id.get(node_id, {}).get("outfit", "")) == "sterile", "English Satsuki Lv3 replay lost Artoria's sterile gown at " + node_id)
 
 	print("SATSUKI LV3 EVENT: %s checks; %s failure(s)" % [checks, failures])
 	quit(1 if failures else 0)

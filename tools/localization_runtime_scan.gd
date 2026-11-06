@@ -41,6 +41,9 @@ func scan(value: Variant, path: String) -> void:
 	elif value is Array:
 		for index in range(value.size()):
 			scan(value[index], path + "." + str(index))
+	elif value is String and path.ends_with(".anesthesia") and value == "局部麻醉":
+		# This is the internal anesthesia state ID, not text shown to the player.
+		return
 	elif value is String and han.search(value) != null:
 		failures.append(path + " = " + str(value).replace("\n", " ").left(140))
 

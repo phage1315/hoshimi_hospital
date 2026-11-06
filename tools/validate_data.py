@@ -1279,8 +1279,9 @@ for event in collections['character_events']:
               prefix + 'mandatory event needs a valid day window')
     if event.get('consumes_sunday'):
         check(event.get('date_location_id') in date_location_ids, prefix + 'Sunday event needs a known date location')
-    if event['gallery']['path']:
-        check((ROOT / event['gallery']['path']).is_file(), prefix + 'gallery CG missing')
+    gallery_path = event.get('gallery', {}).get('path', '')
+    if gallery_path:
+        check((ROOT / gallery_path).is_file(), prefix + 'gallery CG missing')
     portraits = by['staff'].get(event['actor_id'], {}).get('visuals', {}).get('portraits', {})
     for node in event['nodes']:
         cg_path = node.get('cg_path', '')

@@ -1,0 +1,5090 @@
+[
+  {
+    "id": "narumi_lv1_beyond_the_resume",
+    "actor_id": "doc_aoi",
+    "title": "履历之外",
+    "teaser": "履历之外",
+    "chapter": 1,
+    "location_id": "shared_doctors_office",
+    "trigger_mode": "location",
+    "background_id": "shared_doctors_office",
+    "outfit": "white_coat",
+    "minutes": 120,
+    "time_start": 780,
+    "time_end": 1020,
+    "priority": 95,
+    "category": "bond",
+    "target_level": 1,
+    "benefit_id": "",
+    "cinematic": true,
+    "auto_start": false,
+    "hide_calendar_header": false,
+    "gallery": {
+      "cg_id": "narumi_lv1_beyond_the_resume",
+      "caption": "履历之外",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [],
+      "special_requirements": [],
+      "days_after_required_events": 0
+    },
+    "start": "nar1_001",
+    "nodes": [
+      {
+        "id": "nar1_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【星见医院·外科办公室】",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_001",
+            "label": "继续",
+            "next": "nar1_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "下午的阳光斜斜地照进办公室。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_002",
+            "label": "继续",
+            "next": "nar1_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口正在查看当天的手术安排。下一台手术的主刀栏写着自己的名字，而第一助手栏里是神宮寺成美。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_003",
+            "label": "继续",
+            "next": "nar1_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美端着两杯茶走进来。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_004",
+            "label": "继续",
+            "next": "nar1_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「看来你已经看过排班了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_005",
+            "label": "继续",
+            "next": "nar1_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_006",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「是。今天由你担任我的第一助手？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_006",
+            "label": "继续",
+            "next": "nar1_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_007",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「有什么问题吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_007",
+            "label": "继续",
+            "next": "nar1_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_008",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「没有。我只是以为，这台手术原本会由你主刀。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_008",
+            "label": "继续",
+            "next": "nar1_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「原本是这样安排的。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_009",
+            "label": "继续",
+            "next": "nar1_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_010",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她把其中一杯茶放到坂口面前。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_010",
+            "label": "继续",
+            "next": "nar1_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「不过，院长给我看过你的履历。海外几家医院的工作经历，还有那些颇为漂亮的手术记录。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_011",
+            "label": "继续",
+            "next": "nar1_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_012",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「听起来不像是在夸奖。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_012",
+            "label": "继续",
+            "next": "nar1_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我是在夸奖啊。只是……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_013",
+            "label": "继续",
+            "next": "nar1_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她拖长了声音，露出一点笑意。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_014",
+            "label": "继续",
+            "next": "nar1_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我这个人，对写得太漂亮的履历，总有一点好奇。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_015",
+            "label": "继续",
+            "next": "nar1_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_016",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「所以想看看我究竟有多少真本事？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_016",
+            "label": "继续",
+            "next": "nar1_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「答对了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_017",
+            "label": "继续",
+            "next": "nar1_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_018",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「还真是毫不掩饰。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_018",
+            "label": "继续",
+            "next": "nar1_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「你也不必太在意。我已经核对过你的手术资格和患者的安排。这是正常排班，不是拿患者给我做考试题。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_019",
+            "label": "继续",
+            "next": "nar1_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_020",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她拿起病历，轻轻敲了敲桌面。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_020",
+            "label": "继续",
+            "next": "nar1_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「但既然有机会一起上台，我总得好好看看吧。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_021",
+            "label": "继续",
+            "next": "nar1_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「既然如此，我也想请教一下星见的前辈。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_022",
+            "label": "继续",
+            "next": "nar1_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「请教什么？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_023",
+            "label": "继续",
+            "next": "nar1_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_024",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「这里的主刀，如果不听第一助手的意见，会有什么后果？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_024",
+            "label": "继续",
+            "next": "nar1_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「哦？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_025",
+            "label": "继续",
+            "next": "nar1_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_026",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她笑了。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_026",
+            "label": "继续",
+            "next": "nar1_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「那得看他有多大的本事。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_027",
+            "label": "继续",
+            "next": "nar1_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_028",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「明白了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_028",
+            "label": "继续",
+            "next": "nar1_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「不过，你的海外资历在这里有一项不太占便宜。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_029",
+            "label": "继续",
+            "next": "nar1_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_030",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「哪一项？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_030",
+            "label": "继续",
+            "next": "nar1_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「星见的护士可不管你在国外拿过多少奖。器械要得含糊，她们一样会让你说清楚。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_031",
+            "label": "继续",
+            "next": "nar1_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_032",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「这倒让我放心了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_032",
+            "label": "继续",
+            "next": "nar1_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「为什么？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_033",
+            "label": "继续",
+            "next": "nar1_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_034",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「我比较喜欢敢纠正主刀的团队。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_034",
+            "label": "继续",
+            "next": "nar1_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美稍稍看了他一眼。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_035",
+            "label": "继续",
+            "next": "nar1_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「……这样啊。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_036",
+            "label": "继续",
+            "next": "nar1_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_037",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她没有继续开玩笑，而是把病历翻到了检查结果那一页。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_037",
+            "label": "继续",
+            "next": "nar1_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「那么，谈正事吧。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_038",
+            "label": "继续",
+            "next": "nar1_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【办公室·稍后】",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_039",
+            "label": "继续",
+            "next": "nar1_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「患者三十二岁。右侧卵巢囊肿，症状持续了一段时间。影像倾向良性，大小和位置让我们决定进行手术处理。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_040",
+            "label": "继续",
+            "next": "nar1_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_041",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口仔细查看检查资料。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_041",
+            "label": "继续",
+            "next": "nar1_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_042",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「计划是尽可能保留正常卵巢组织。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_042",
+            "label": "继续",
+            "next": "nar1_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_043",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「对。患者很在意这一点。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_043",
+            "label": "继续",
+            "next": "nar1_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_044",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「术前说明里提到了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_044",
+            "label": "继续",
+            "next": "nar1_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_045",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「她问过我好几次。如果术中情况允许，能不能只处理囊肿，把卵巢留下来。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_045",
+            "label": "继续",
+            "next": "nar1_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_046",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你怎么回答？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_046",
+            "label": "继续",
+            "next": "nar1_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_047",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我告诉她，我们会以此为目标，但不能在看清实际情况之前做绝对保证。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_047",
+            "label": "继续",
+            "next": "nar1_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_048",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「合理。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_048",
+            "label": "继续",
+            "next": "nar1_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_049",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「她听完之后，又问了一遍。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_049",
+            "label": "继续",
+            "next": "nar1_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_050",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「所以你把这句话单独记下来了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_050",
+            "label": "继续",
+            "next": "nar1_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「手术记录会告诉我们计划做什么。患者的话有时候会告诉我们，为什么一定要认真做。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_051",
+            "label": "继续",
+            "next": "nar1_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_052",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口停了一下。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_052",
+            "label": "继续",
+            "next": "nar1_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_053",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「我会记住。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_053",
+            "label": "继续",
+            "next": "nar1_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_054",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「不是记给我看的哦。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_054",
+            "label": "继续",
+            "next": "nar1_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_055",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「当然。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_055",
+            "label": "继续",
+            "next": "nar1_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_056",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美走到桌边，抽出一份装订得相当整齐的研究资料。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_056",
+            "label": "继续",
+            "next": "nar1_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_057",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口注意到封面上的作者名字。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_057",
+            "label": "继续",
+            "next": "nar1_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_058",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「比良坂竜二……」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_058",
+            "label": "继续",
+            "next": "nar1_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_059",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美的动作停了一瞬。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_059",
+            "label": "继续",
+            "next": "nar1_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_060",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「他关于女性盆腔解剖和术野处理的研究，我在海外也读过。论资料的细致程度，确实很出色。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_060",
+            "label": "继续",
+            "next": "nar1_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_061",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「……是吗。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_061",
+            "label": "继续",
+            "next": "nar1_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_062",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她把资料放回桌面。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_062",
+            "label": "继续",
+            "next": "nar1_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_063",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你认识他？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_063",
+            "label": "继续",
+            "next": "nar1_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_064",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「读过他的研究。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_064",
+            "label": "继续",
+            "next": "nar1_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_065",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "只是这样一句回答。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_065",
+            "label": "继续",
+            "next": "nar1_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_066",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她脸上的笑意不知什么时候淡了下来。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_066",
+            "label": "继续",
+            "next": "nar1_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_067",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口本来还想说些什么，但成美已经重新打开患者的影像资料。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_067",
+            "label": "继续",
+            "next": "nar1_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_068",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「这个位置，我比较在意。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_068",
+            "label": "继续",
+            "next": "nar1_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_069",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「嗯？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_069",
+            "label": "继续",
+            "next": "nar1_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_070",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「看这里。影像上的层次不一定和术中完全一样。万一有黏连，我们得先把术野整理好。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_070",
+            "label": "继续",
+            "next": "nar1_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_071",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「我也是这么想的。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_071",
+            "label": "继续",
+            "next": "nar1_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_072",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「哦？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_072",
+            "label": "继续",
+            "next": "nar1_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_073",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「如果一开始看不清，就没有必要急着完成剥离。先确认周围组织，再调整牵引。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_073",
+            "label": "继续",
+            "next": "nar1_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_074",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「很好。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_074",
+            "label": "继续",
+            "next": "nar1_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_075",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她的语气又恢复了平常的轻快。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_075",
+            "label": "继续",
+            "next": "nar1_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_076",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「至少讨论起来，不像是只有履历漂亮的医生。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_076",
+            "label": "继续",
+            "next": "nar1_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_077",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你的评价标准还真严格。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_077",
+            "label": "继续",
+            "next": "nar1_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_078",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我已经很客气了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_078",
+            "label": "继续",
+            "next": "nar1_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_079",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口看了一眼桌上那份被放到一旁的研究资料。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_079",
+            "label": "继续",
+            "next": "nar1_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_080",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "他隐约觉得，刚才的话题似乎让成美有些不快。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_080",
+            "label": "继续",
+            "next": "nar1_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_081",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "不过，也许只是她对那位研究者的观点有所保留。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_081",
+            "label": "继续",
+            "next": "nar1_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_082",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "此刻没有必要追问。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_082",
+            "label": "继续",
+            "next": "nar1_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_083",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【手术室】",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_083",
+            "label": "继续",
+            "next": "nar1_084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_084",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "患者已由成美依照术前方案完成麻醉，其他术前准备也已就绪。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_084",
+            "label": "继续",
+            "next": "nar1_085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_085",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "无影灯下，手术团队完成最后的核对。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_085",
+            "label": "继续",
+            "next": "nar1_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_086",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "circulating_nurse",
+        "speaker_label": "巡回护士",
+        "text": "「患者身份、手术名称、手术部位及同意书，确认一致。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_086",
+            "label": "继续",
+            "next": "nar1_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_087",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美核对监测数据。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_087",
+            "label": "继续",
+            "next": "nar1_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_088",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「麻醉状态稳定，可以开始。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_088",
+            "label": "继续",
+            "next": "nar1_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_089",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美站在坂口对面。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_089",
+            "label": "继续",
+            "next": "nar1_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_090",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她戴好了手术帽和口罩，平日柔和的面部轮廓只剩下一双专注的眼睛。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_090",
+            "label": "继续",
+            "next": "nar1_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_091",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「坂口医生。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_091",
+            "label": "继续",
+            "next": "nar1_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_092",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「嗯？」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_092",
+            "label": "继续",
+            "next": "nar1_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_093",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「这里的器械台和你习惯的医院可能不太一样。有需要就直接说，不必迁就我。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_093",
+            "label": "继续",
+            "next": "nar1_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_094",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「我也有一句话想说。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_094",
+            "label": "继续",
+            "next": "nar1_095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_095",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「请讲。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_095",
+            "label": "继续",
+            "next": "nar1_096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_096",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「如果我有什么没注意到的地方，请直接指出来。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_096",
+            "label": "继续",
+            "next": "nar1_097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_097",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「……那我可不会客气。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_097",
+            "label": "继续",
+            "next": "nar1_098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_098",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「正合我意。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_098",
+            "label": "继续",
+            "next": "nar1_099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_099",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【手术进行中】",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_099",
+            "label": "继续",
+            "next": "nar1_100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_100",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "手术起初十分顺利。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_100",
+            "label": "继续",
+            "next": "nar1_101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_101",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "但在逐渐暴露目标组织后，实际情况比术前影像稍微复杂。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_101",
+            "label": "继续",
+            "next": "nar1_102",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_102",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「这里的黏连比预计明显。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_102",
+            "label": "继续",
+            "next": "nar1_103",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_103",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「看到了。先不要向外牵得太紧。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_103",
+            "label": "继续",
+            "next": "nar1_104",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_104",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我调整一下方向。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_104",
+            "label": "继续",
+            "next": "nar1_105",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_105",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她熟练地改变牵引角度。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_105",
+            "label": "继续",
+            "next": "nar1_106",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_106",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "原本有些局促的术野顿时清楚许多。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_106",
+            "label": "继续",
+            "next": "nar1_107",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_107",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「这个角度很好。保持。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_107",
+            "label": "继续",
+            "next": "nar1_108",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_108",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「知道。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_108",
+            "label": "继续",
+            "next": "nar1_109",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_109",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "器械护士递上器械。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_109",
+            "label": "继续",
+            "next": "nar1_110",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_110",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "两人的配合逐渐流畅起来。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_110",
+            "label": "继续",
+            "next": "nar1_111",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_111",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美没有像考官一样盯着坂口的每一个动作。需要协助时，她准确地完成牵引；发现组织层次不够清楚时，则毫不迟疑地提出意见。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_111",
+            "label": "继续",
+            "next": "nar1_112",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_112",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「稍等。这里还有一层很薄的组织。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_112",
+            "label": "继续",
+            "next": "nar1_113",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_113",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口停止动作。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_113",
+            "label": "继续",
+            "next": "nar1_114",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_114",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「嗯，我看见了。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_114",
+            "label": "继续",
+            "next": "nar1_115",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_115",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「如果从另一侧继续，会不会更容易保留正常组织？」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_115",
+            "label": "继续",
+            "next": "nar1_116",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_116",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你说得对。从那一侧继续，能减少对正常组织的牵拉。就按你的建议来。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_116",
+            "label": "继续",
+            "next": "nar1_117",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_117",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「那我重新牵开。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_117",
+            "label": "继续",
+            "next": "nar1_118",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_118",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「麻烦你了。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_118",
+            "label": "继续",
+            "next": "nar1_119",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_119",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "片刻之后，剥离继续。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_119",
+            "label": "继续",
+            "next": "nar1_120",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_120",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「……不错。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_120",
+            "label": "继续",
+            "next": "nar1_121",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_121",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「什么？」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_121",
+            "label": "继续",
+            "next": "nar1_122",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_122",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「没什么。请继续。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_122",
+            "label": "继续",
+            "next": "nar1_123",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_123",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你刚才是不是在评价我？」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_123",
+            "label": "继续",
+            "next": "nar1_124",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_124",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「主刀在这种时候分心，可是要扣分的。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_124",
+            "label": "继续",
+            "next": "nar1_125",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_125",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「还真的有评分？」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_125",
+            "label": "继续",
+            "next": "nar1_126",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_126",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「也许吧。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_126",
+            "label": "继续",
+            "next": "nar1_127",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_127",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她的眼睛微微弯起。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_127",
+            "label": "继续",
+            "next": "nar1_128",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_128",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【稍后】",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_128",
+            "label": "继续",
+            "next": "nar1_129",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_129",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "囊肿处理完成，团队检查手术部位及止血情况。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_129",
+            "label": "继续",
+            "next": "nar1_130",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_130",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「正常卵巢组织保留的情况不错。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_130",
+            "label": "继续",
+            "next": "nar1_131",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_131",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「嗯。接下来按计划完成收尾。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_131",
+            "label": "继续",
+            "next": "nar1_132",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_132",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「了解。」",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_132",
+            "label": "继续",
+            "next": "nar1_133",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_133",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "手术结束前，团队再次确认实际完成的术式、标本和器械清点。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_133",
+            "label": "继续",
+            "next": "nar1_134",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_134",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "一切顺利。",
+        "expression": "neutral",
+        "outfit": "sterile",
+        "background_id": "operating_room",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_134",
+            "label": "继续",
+            "next": "nar1_135",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_135",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【外科办公室·傍晚】",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_135",
+            "label": "继续",
+            "next": "nar1_136",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_136",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口结束术后记录，回到外科办公室。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_136",
+            "label": "继续",
+            "next": "nar1_137",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_137",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美已经坐在那里。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_137",
+            "label": "继续",
+            "next": "nar1_138",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_138",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "桌上摆着下午那两杯茶。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_138",
+            "label": "继续",
+            "next": "nar1_139",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_139",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你还没喝？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_139",
+            "label": "继续",
+            "next": "nar1_140",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_140",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「忙起来就忘了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_140",
+            "label": "继续",
+            "next": "nar1_141",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_141",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口拿起自己的杯子。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_141",
+            "label": "继续",
+            "next": "nar1_142",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_142",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "茶已经彻底凉了。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_142",
+            "label": "继续",
+            "next": "nar1_143",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_143",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「看来我们都一样。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_143",
+            "label": "继续",
+            "next": "nar1_144",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_144",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我还以为从国外回来的医生会比较讲究休息时间。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_144",
+            "label": "继续",
+            "next": "nar1_145",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_145",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「在国外工作也一样。忙起来，哪顾得上休息时间。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_145",
+            "label": "继续",
+            "next": "nar1_146",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_146",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「说得也是。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_146",
+            "label": "继续",
+            "next": "nar1_147",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_147",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "短暂的沉默。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_147",
+            "label": "继续",
+            "next": "nar1_148",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_148",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「今天辛苦了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_148",
+            "label": "继续",
+            "next": "nar1_149",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_149",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你也是。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_149",
+            "label": "继续",
+            "next": "nar1_150",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_150",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「患者的情况，我刚才又确认了一遍。麻醉后恢复顺利。病理结果还需要等，不过这次手术达到了预定目标。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_150",
+            "label": "继续",
+            "next": "nar1_151",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_151",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「那就好。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_151",
+            "label": "继续",
+            "next": "nar1_152",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_152",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美端起茶杯，却又放下。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_152",
+            "label": "继续",
+            "next": "nar1_153",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_153",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我现在有点理解院长为什么那么积极地请你来星见了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_153",
+            "label": "继续",
+            "next": "nar1_154",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_154",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「因为我的履历？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_154",
+            "label": "继续",
+            "next": "nar1_155",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_155",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「一部分吧。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_155",
+            "label": "继续",
+            "next": "nar1_156",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_156",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她稍微偏了偏头。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_156",
+            "label": "继续",
+            "next": "nar1_157",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_157",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「你的手很稳，临场判断也不错。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_157",
+            "label": "继续",
+            "next": "nar1_158",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_158",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「谢谢。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_158",
+            "label": "继续",
+            "next": "nar1_159",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_159",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「不过我觉得更难得的，是你能在自己主刀的时候，认真听别人讲话。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_159",
+            "label": "继续",
+            "next": "nar1_160",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_160",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「有经验的第一助手提出意见，我为什么不听？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_160",
+            "label": "继续",
+            "next": "nar1_161",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_161",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「……有些医生可不会这么想。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_161",
+            "label": "继续",
+            "next": "nar1_162",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_162",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "这次她没有笑。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_162",
+            "label": "继续",
+            "next": "nar1_163",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_163",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "但那点严肃只停留了片刻。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_163",
+            "label": "继续",
+            "next": "nar1_164",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_164",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「那么，我也坦白一点好了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_164",
+            "label": "继续",
+            "next": "nar1_165",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_165",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「请说。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_165",
+            "label": "继续",
+            "next": "nar1_166",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_166",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「我今天本来想让你稍微吃点苦头。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_166",
+            "label": "继续",
+            "next": "nar1_167",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_167",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「这么诚实？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_167",
+            "label": "继续",
+            "next": "nar1_168",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_168",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「结果没找到什么机会。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_168",
+            "label": "继续",
+            "next": "nar1_169",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_169",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「真遗憾。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_169",
+            "label": "继续",
+            "next": "nar1_170",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_170",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「一点也不遗憾。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_170",
+            "label": "继续",
+            "next": "nar1_171",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_171",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她看向窗外。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_171",
+            "label": "继续",
+            "next": "nar1_172",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_172",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「毕竟，和一个真正有本事的医生一起工作，比证明自己眼光正确有意思多了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_172",
+            "label": "继续",
+            "next": "nar1_173",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_173",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「这句话，我可以理解成正式通过考核了吗？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_173",
+            "label": "继续",
+            "next": "nar1_174",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_174",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「谁知道呢。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_174",
+            "label": "继续",
+            "next": "nar1_175",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_175",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「神宮寺医生。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_175",
+            "label": "继续",
+            "next": "nar1_176",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_176",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「嗯？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_176",
+            "label": "继续",
+            "next": "nar1_177",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_177",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「我倒是有一个评价。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_177",
+            "label": "继续",
+            "next": "nar1_178",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_178",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「哦？对我？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_178",
+            "label": "继续",
+            "next": "nar1_179",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_179",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你是一位非常出色的第一助手。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_179",
+            "label": "继续",
+            "next": "nar1_180",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_180",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「谢谢。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_180",
+            "label": "继续",
+            "next": "nar1_181",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_181",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「不过，我觉得你应该也是一位很难对付的主刀。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_181",
+            "label": "继续",
+            "next": "nar1_182",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_182",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美笑出了声。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_182",
+            "label": "继续",
+            "next": "nar1_183",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_183",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「你这句话，说得比想象中还准确。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_183",
+            "label": "继续",
+            "next": "nar1_184",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_184",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她站起身，收起桌上的资料。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_184",
+            "label": "继续",
+            "next": "nar1_185",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_185",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「下次有机会，我们交换位置吧。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_185",
+            "label": "继续",
+            "next": "nar1_186",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_186",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「你主刀，我担任第一助手？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_186",
+            "label": "继续",
+            "next": "nar1_187",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_187",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「对。到时候换我看看，你能不能配合我的手术节奏。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_187",
+            "label": "继续",
+            "next": "nar1_188",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_188",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「我很期待。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_188",
+            "label": "继续",
+            "next": "nar1_189",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_189",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "成美走到门口，忽然回过头。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_189",
+            "label": "继续",
+            "next": "nar1_190",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_190",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「对了，坂口医生。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_190",
+            "label": "继续",
+            "next": "nar1_191",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_191",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「什么事？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_191",
+            "label": "继续",
+            "next": "nar1_192",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_192",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「欢迎来到星见医院。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_192",
+            "label": "继续",
+            "next": "nar1_193",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_193",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口",
+        "text": "「……我还以为这句话，刚来星见的时候就应该说了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_193",
+            "label": "继续",
+            "next": "nar1_194",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_194",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「那时候，我只看过你的履历。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_194",
+            "label": "继续",
+            "next": "nar1_195",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_195",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "她微笑着补上一句。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_195",
+            "label": "继续",
+            "next": "nar1_196",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_196",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "成美",
+        "text": "「今天总算见到本人了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar1_196",
+            "label": "继续",
+            "next": "nar1_197",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_197",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【成美离开】",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_197",
+            "label": "继续",
+            "next": "nar1_198",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_198",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "坂口望着桌上那杯已经凉透的茶。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_198",
+            "label": "继续",
+            "next": "nar1_199",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_199",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "他发现，自己似乎已经开始期待下一次与她共同手术了。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_199",
+            "label": "继续",
+            "next": "nar1_200",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_200",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "不是因为有人认可了他的资历。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_200",
+            "label": "继续",
+            "next": "nar1_201",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_201",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "而是因为这里确实有值得他认真对待的同行。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar1_201",
+            "label": "继续",
+            "next": "nar1_202",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar1_202",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_aoi",
+        "speaker_label": "旁白",
+        "text": "【神宮寺成美 Lv1 事件结束】",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "shared_doctors_office",
+        "scene_tint": "",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "finish_nar1_202",
+            "label": "结束",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1213,6 +1213,8 @@ func qualified(id: String, role: Dictionary) -> bool:
 	if restrict_to_known_staff and id not in known_staff_ids:
 		return false
 	var person: Dictionary = roster[id]
+	# Also enforce this with an unrestricted or stale known-staff list.
+	if "or_selectable_default_false" in person.get("flags", []): return false
 	if person.has("allowed_team_roles") and str(role.get("id", "")) not in person.allowed_team_roles: return false
 	if str(role.get("id", "")) == "primary_surgeon" and "primary_surgeon" not in person.get("surgical_roles", []):
 		return false

@@ -1977,5 +1977,304 @@
       "operator": ">=",
       "value": 100
     }
+  },
+  {
+    "id": "surgery_adv_posttraumatic_thoracolumbar_kyphosis_correction",
+    "name": "复杂创伤后胸腰椎后凸矫正、椎体切除及内固定融合术",
+    "name_en": "Complex Post-traumatic Thoracolumbar Kyphosis Correction with Posterior Vertebral Column Resection and Instrumented Fusion",
+    "duration_minutes": 480,
+    "base_difficulty": 98,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "draft_pending_assets_and_balance",
+    "patient_notice": "随机返场病例：陈旧胸腰椎骨折后固定性后凸，拟行后路椎体切除、前柱支撑与内固定融合。",
+    "patient_notice_en": "Repeat case: fixed kyphosis following an old thoracolumbar fracture, planned for posterior vertebral column resection, anterior column support and instrumented fusion.",
+    "steps": [
+      {
+        "id": "T01",
+        "name": "全麻俯卧定位与神经监测基线",
+        "name_en": "Prone Positioning and Neuromonitoring Baseline",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T02",
+        "name": "胸腰段后路暴露",
+        "name_en": "Posterior Thoracolumbar Exposure",
+        "kind": "L",
+        "hp_base": 3,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": 3,
+          "bleeding": 2,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T03",
+        "name": "椎弓根螺钉锚点建立",
+        "name_en": "Pedicle Screw Anchor Placement",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 86,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 7,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -3,
+          "bleeding": 0,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T04",
+        "name": "截骨前保护与暂时固定策略",
+        "name_en": "Neural Protection and Temporary Fixation Strategy",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 10,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "staged",
+            "label": "分侧固定与充分神经释放",
+            "label_en": "Alternate fixation sides with thorough neural release",
+            "description": "按计划先稳定一侧、分段释放后交换临时棒；更多显露和操作时间，降低后续突发失稳风险。",
+            "description_en": "Stabilize one side first, release in stages, then exchange the temporary rod. More exposure and time reduce the risk of sudden loss of stability.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 10,
+              "stability": 3
+            }
+          },
+          {
+            "id": "limited",
+            "label": "有限暴露下顺序交换临时棒",
+            "label_en": "Exchange temporary rods in sequence with limited exposure",
+            "description": "在当前影像认可范围内减少额外暴露，节省时间，但需要更仔细地监视临时支撑与后续操作区；语义效果：elapsed_time 较少、下一阶段 visibility 可能较低。不是“省掉安全固定直接截骨”。",
+            "description_en": "Reduce additional exposure within the imaging-approved area to save time, while monitoring temporary support and the next operative area more closely. This does not omit safe fixation before osteotomy.",
+            "strategic_effects": {
+              "visibility": -3,
+              "stability": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "T05",
+        "name": "椎板减压及硬膜神经保护",
+        "name_en": "Laminectomy and Dural-Neural Release",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 91,
+        "specialty_tag": "neural",
+        "hp_failed_extra": 9,
+        "strategic_effects": {
+          "elapsed_time": 55,
+          "visibility": -3,
+          "bleeding": 0,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T06",
+        "name": "临时连接棒稳定",
+        "name_en": "Temporary Rod Stabilization",
+        "kind": "L",
+        "hp_base": 3,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 20,
+          "visibility": 3,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T07",
+        "name": "T12 病变椎体切除",
+        "name_en": "T12 Vertebral Column Resection",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 98,
+        "specialty_tag": "neural",
+        "hp_failed_extra": 13,
+        "strategic_effects": {
+          "elapsed_time": 85,
+          "visibility": -3,
+          "bleeding": 2,
+          "blood_loss": 7,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "T08",
+        "name": "前柱支撑与矫形幅度规划",
+        "name_en": "Anterior Support and Correction Plan",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 10,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium",
+        "options": [
+          {
+            "id": "staged",
+            "label": "分段复位、逐次核对",
+            "label_en": "Correct in stages with repeated checks",
+            "description": "按术前矫形目标逐步恢复前柱支撑和后方排列，复核更多；增加时间，减少一次性牵拉负担。",
+            "description_en": "Restore anterior support and posterior alignment toward the preoperative correction target in stages, with more checks and time to reduce one-step traction.",
+            "strategic_effects": {
+              "elapsed_time": 10,
+              "visibility": 8,
+              "stability": 3
+            }
+          },
+          {
+            "id": "focused",
+            "label": "集中完成计划内复位",
+            "label_en": "Complete the planned correction in a focused sequence",
+            "description": "在已确认支撑充分的前提下减少棒的反复调整，减少耗时，但操作更依赖精确对合，后续 Stability/Visibility 的压力较高。",
+            "description_en": "With adequate support confirmed, reduce repeated rod adjustments and time, at the cost of greater dependence on precise alignment and later stability and visibility.",
+            "strategic_effects": {
+              "visibility": -3,
+              "stability": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "T09",
+        "name": "前柱融合笼植入",
+        "name_en": "Anterior Column Cage Reconstruction",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 94,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 10,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -3,
+          "bleeding": 0,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "T10",
+        "name": "渐进式后凸矫正与连接棒复位",
+        "name_en": "Gradual Kyphosis Reduction and Rod Seating",
+        "kind": "P",
+        "hp_base": 6,
+        "difficulty": 97,
+        "specialty_tag": "neural",
+        "hp_failed_extra": 12,
+        "strategic_effects": {
+          "elapsed_time": 50,
+          "visibility": -3,
+          "bleeding": 0,
+          "blood_loss": 3,
+          "stability": -2
+        },
+        "physio_stress": "high"
+      },
+      {
+        "id": "T11",
+        "name": "最终固定、植骨及完整性复查",
+        "name_en": "Final Fixation, Grafting and Integrity Check",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 89,
+        "specialty_tag": "reconstruction",
+        "hp_failed_extra": 8,
+        "strategic_effects": {
+          "elapsed_time": 35,
+          "visibility": -3,
+          "bleeding": 0,
+          "blood_loss": 3,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      },
+      {
+        "id": "T12",
+        "name": "止血、清点及分层关闭",
+        "name_en": "Hemostasis, Counts and Layered Closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "specialty_tag": "",
+        "hp_failed_extra": 0,
+        "strategic_effects": {
+          "elapsed_time": 25,
+          "visibility": 0,
+          "bleeding": -2,
+          "blood_loss": 1,
+          "stability": 0
+        },
+        "physio_stress": "medium"
+      }
+    ],
+    "crisis_checkpoints": [
+      7,
+      10
+    ],
+    "crisis_chances": [
+      0.25,
+      0.23
+    ],
+    "physiology_tuning_status": "P0_TUNING_PENDING_GAMEPLAY_APPROVAL",
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    }
   }
 ]

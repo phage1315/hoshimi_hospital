@@ -3,6 +3,7 @@ extends RefCounted
 const VERSION := 37
 const FORMAT := "boundary_facts_v1"
 const GLOBAL_FIELDS := [
+	"megumin_facts", "daydream_read_ids",
 	"advanced_staff_patient_facts", "advanced_referral_facts", "patient_cases", "patient_queue", "patient_referrals", "active_staff_patient",
 	"staff_patient_practice_counts", "staff_patient_first_completion_days", "recent_patient_ids", "completed_surgeries_total",
 	"completed_surgeries_by_group", "completed_surgeries_by_procedure", "character_progress_counters",
@@ -57,6 +58,8 @@ static func quality(source: Dictionary) -> Dictionary:
 	return result
 
 func capture(game: RefCounted) -> Dictionary:
+	if not preload("res://godot/systems/megumin.gd").valid_facts(game.megumin_facts): return {}
+	if not preload("res://godot/systems/daydream_catalog.gd").valid_read_ids(game.daydream_read_ids): return {}
 	if not game.can_save_progress():
 		return {}
 	if not preload("res://godot/systems/advanced_referral_facts.gd").valid(game.advanced_referral_facts): return {}
@@ -116,6 +119,7 @@ func decode(source: Variant) -> Dictionary:
 		return {}
 	if not preload("res://godot/systems/advanced_referral_facts.gd").valid(source.get("advanced_referral_facts", {})): return {}
 	if not preload("res://godot/systems/advanced_staff_patient_facts.gd").valid(source.get("advanced_staff_patient_facts", {})): return {}
+	if not preload("res://godot/systems/megumin.gd").valid_facts(source.get("megumin_facts", {})): return {}
 	var result: Dictionary = source.duplicate(true)
 	if legacy:
 		# Only the slot clock is authoritative in v36. Old per-action durations were

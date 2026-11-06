@@ -1,7 +1,7 @@
 extends RefCounted
 ## Lightweight localization service for authored JSON and hard-coded UI chrome.
-## Chinese source text remains the canonical fallback, so incomplete locales are
-## always playable while translations are added incrementally.
+## Chinese source text is canonical for zh_CN. A missing English translation
+## is reported visibly rather than silently showing Chinese in English mode.
 
 const DEFAULT_LOCALE: String = "zh_CN"
 const SUPPORTED_LOCALES: Array[String] = ["zh_CN", "en"]
@@ -55,17 +55,17 @@ func save_operative_field_hud_preference(enabled: bool) -> bool:
 	config.set_value("gameplay", "operative_field_hud_enabled", enabled)
 	return config.save(SETTINGS_PATH) == OK
 
-func preferred_dialogue_auto_speed() -> int:
+func preferred_dialogue_auto_speed(settings_path: String = SETTINGS_PATH) -> int:
 	var config: ConfigFile = ConfigFile.new()
-	if config.load(SETTINGS_PATH) != OK:
+	if config.load(settings_path) != OK:
 		return 1
-	return clampi(int(config.get_value("dialogue", "auto_speed", 1)), 0, 3)
+	return clampi(int(config.get_value("dialogue", "auto_speed", 1)), 0, 4)
 
-func save_dialogue_auto_speed(speed_index: int) -> bool:
+func save_dialogue_auto_speed(speed_index: int, settings_path: String = SETTINGS_PATH) -> bool:
 	var config: ConfigFile = ConfigFile.new()
-	config.load(SETTINGS_PATH)
-	config.set_value("dialogue", "auto_speed", clampi(speed_index, 0, 3))
-	return config.save(SETTINGS_PATH) == OK
+	config.load(settings_path)
+	config.set_value("dialogue", "auto_speed", clampi(speed_index, 0, 4))
+	return config.save(settings_path) == OK
 
 func load_locale(requested_locale: String = DEFAULT_LOCALE) -> bool:
 	errors.clear()
@@ -93,72 +93,27 @@ func load_locale(requested_locale: String = DEFAULT_LOCALE) -> bool:
 
 func text(key: String, fallback: String, replacements: Dictionary = {}) -> String:
 	var result: String = fallback
-	if locale != DEFAULT_LOCALE and strings.has(key) and not str(strings[key]).is_empty():
-		result = str(strings[key])
-	elif locale == "en":
-		# A few large authored collections were added before their English locale
-		# entries were completed.  Keep the English build readable while those
-		# entries are being filled in; this is deliberately limited to known
-		# semantic fields and never changes the Chinese source locale.
-		result = english_runtime_fallback(key, fallback)
+	if locale != DEFAULT_LOCALE:
+		if strings.has(key) and not str(strings[key]).strip_edges().is_empty() and not _contains_cjk(str(strings[key])):
+			result = str(strings[key])
+		elif _contains_cjk(fallback) or key.begins_with("ui."):
+			result = _missing_translation(key)
 	for name in replacements:
 		result = result.replace("{" + str(name) + "}", str(replacements[name]))
 	return result
 
-func english_runtime_fallback(key: String, fallback: String) -> String:
-	if key.ends_with(".actor_alias"):
-		return {
-			"手术室护士": "OR Nurse",
-			"年轻护士": "Young Nurse",
-			"护士": "Nurse",
-			"刷手池边的年轻女性": "Young Woman at the Scrub Sink",
-			"手术室护士长": "OR Nurse Supervisor",
-		}.get(fallback, "Staff")
-	if key == "collections.staff.doc_minato.name":
-		return "Minato Haruka"
-	if key == "collections.staff.doc_minato.personality":
-		return "Quiet, observant, and difficult to read"
-	if key == "collections.staff.doc_minato.specialty":
-		return "Anesthesiology"
-	if key == "collections.backgrounds.minato_riverside_walk.label":
-		return "Minato Riverside Walk"
-	if key.begins_with("collections.surgeries."):
-		return english_surgery_fallback(key, fallback)
-	if key.begins_with("collections.case_templates."):
-		return english_case_fallback(key, fallback)
-	return fallback
+func _contains_cjk(value: String) -> bool:
+	for index in range(value.length()):
+		var code := value.unicode_at(index)
+		if (code >= 0x3400 and code <= 0x9FFF) or (code >= 0x3040 and code <= 0x30FF):
+			return true
+	return false
 
-func english_case_fallback(key: String, fallback: String) -> String:
-	var parts := key.split(".")
-	var field := str(parts[parts.size() - 1])
-	var case_id := str(parts[2]) if parts.size() > 2 else "case"
-	var titles := {
-		"template_vaginal_hysterectomy": "Severe Uterine Prolapse (Suitable for Vaginal Hysterectomy)",
-		"template_distal_pancreatectomy": "Solid Pseudopapillary Tumor of the Pancreatic Tail",
-		"template_partial_nephrectomy": "Small Localized Renal Tumor (Nephron-Sparing Resection)",
-		"template_adrenalectomy": "Unilateral Aldosterone-Secreting Adrenal Adenoma",
-		"template_left_hemicolectomy": "Descending Colon Adenocarcinoma",
-		"template_low_anterior_resection": "Mid-to-Low Rectal Cancer (Sphincter-Preserving)",
-	}
-	if field == "title":
-		return titles.get(case_id, "Patient Case")
-	if field == "diagnosis":
-		return "The documented diagnosis for this surgical case."
-	if field == "presenting_complaint":
-		return "The patient presents with symptoms requiring the planned operation."
-	if field == "intake_notes":
-		return "The case history and operative indication are recorded for review."
-	if field == "label":
-		return "Diagnostic test"
-	if field == "result":
-		return "Findings are consistent with the documented diagnosis."
-	return fallback
-
-func english_surgery_fallback(_key: String, fallback: String) -> String:
-	# Preserve the source when a translation is absent. Never turn distinct
-	# surgical choices into the same generic sentence; the surgical locale
-	# coverage test makes missing English a release failure.
-	return fallback
+func _missing_translation(key: String) -> String:
+	var message := "Missing translation: " + key
+	if not errors.has(message):
+		errors.append(message)
+	return "[MISSING TRANSLATION: %s]" % key
 
 func identifier_title(identifier: String) -> String:
 	var words := identifier.trim_prefix("surgery_").replace("_", " ").split(" ")
@@ -171,8 +126,12 @@ func identifier_title(identifier: String) -> String:
 
 func localize_tree(value: Variant, key: String) -> Variant:
 	if value is Dictionary:
-		if value.has("zh_CN") and value.has("en") and value.zh_CN is String and value.en is String:
-			return str(value.get(locale, value.zh_CN))
+		if value.has("zh_CN") and value.zh_CN is String:
+			if locale == DEFAULT_LOCALE:
+				return str(value.zh_CN)
+			if value.has(locale) and value[locale] is String and not str(value[locale]).strip_edges().is_empty() and not _contains_cjk(str(value[locale])):
+				return str(value[locale])
+			return _missing_translation(key)
 		var localized: Dictionary = {}
 		for field in value:
 			localized[field] = localize_tree(value[field], key + "." + str(field))

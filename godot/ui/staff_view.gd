@@ -58,8 +58,13 @@ static func render(app: Control, id: String, from_location: String, expression: 
 		portrait.position = Vector2(740, 165)
 		portrait.size = Vector2(470, 500)
 	var personality_label: Label = app.label_at(person.personality, Vector2(65, 215), 19, Color("f4f0e6"), 640)
-	personality_label.size.y = 64
-	var skills_label: Label = app.label_at(skills_summary(app, person), Vector2(65, 290), 17, Color("d3dfd9"), 640)
+	personality_label.name = "StaffPersonality"
+	for font_size in [19,18,17,16,15]:
+		personality_label.add_theme_font_size_override("font_size",font_size)
+		if personality_label.get_minimum_size().y <= 90: break
+	personality_label.size.y = 90
+	var skills_label: Label = app.label_at(skills_summary(app, person), Vector2(65, 315), 17, Color("d3dfd9"), 640)
+	skills_label.name = "StaffSkills"
 	skills_label.size.y = 56
 	var relation: Dictionary = app.game.relation_for(id)
 	if not relation.is_empty():

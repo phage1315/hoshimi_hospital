@@ -1,0 +1,32 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+OpenGL API 4.1 Metal - 88.1 - Compatibility - Using Device: Apple - Apple M2
+
+TAKEMI START clock=540 target=540 elapsed=1440 story=1420 offset=0
+TAKEMI NATIVE zh_CN ev_doc_takemi_lv1_vivisection_frog nodes=42 pages=42 completed=true
+TAKEMI START clock=540 target=540 elapsed=1440 story=1260 offset=0
+TAKEMI NATIVE zh_CN ev_doc_takemi_lv2_fujino_laparotomy nodes=108 pages=108 completed=true
+TAKEMI START clock=540 target=540 elapsed=1440 story=1420 offset=0
+ERROR: Original speaker l1_007
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/takemi_lv12_native_test.gd:22)
+       [1] play (res://tools/takemi_lv12_native_test.gd:145)
+       [2] key_button (res://tools/takemi_lv12_native_test.gd:69)
+ERROR: Displayed speaker l1_007
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/takemi_lv12_native_test.gd:22)
+       [1] play (res://tools/takemi_lv12_native_test.gd:146)
+       [2] key_button (res://tools/takemi_lv12_native_test.gd:69)
+ERROR: Event completed ev_doc_takemi_lv1_vivisection_frog
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/takemi_lv12_native_test.gd:22)
+       [1] play (res://tools/takemi_lv12_native_test.gd:191)
+       [2] click (res://tools/takemi_lv12_native_test.gd:49)
+SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor.
+   at: play (res://tools/takemi_lv12_native_test.gd:192)
+   GDScript backtrace (most recent call first):
+       [0] play (res://tools/takemi_lv12_native_test.gd:192)
+       [1] click (res://tools/takemi_lv12_native_test.gd:49)
+TAKEMI LV1/LV2 NATIVE: 2337 checks; 3 failures; routes=2

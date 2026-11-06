@@ -900,3 +900,19 @@ Godot原生窗口专项255项0失败，中英触诊／局麻测试的七个按�
 ## 本庄萌惠巡回护士立绘（2026-10-31）
 
 使用内置 image_gen，以本庄 v13 刷手服近景为身份参考、米田巡回护士立绘为站姿与着装参考，生成 1024×1536 RGBA 立绘。按用户纠正将蓬松大帽改为贴合短发的低矮系带帽。原样保存 `assets/characters/moe_circulating_v1/neutral.png`，登记 `scrubs/neutral`；旧更衣事件近景和 sterile 资源保留。生成提示、来源、修改说明与 SHA-256 见 `research/imports/nurse_moe_circulating_2026-10-31.json`。
+
+## 瑞穗白日梦 CG（2026-11-04）
+
+用户指定附件作为瑞穗白日梦 `F03_006` 的 `mizuho_or_laparotomy_open`。原文件逐字节复制为 `assets/events/daydream_v1/mizuho_or_laparotomy_open.png`，未裁切、重绘、压缩或上传；1536×1024 RGBA，SHA-256 `19b19980b0948b659458fb1798687faecabdb50248ea52d092b655b78f62221a`。完整来源映射见 `research/imports/mizuho_daydream_cg_2026-11-04.json`。
+
+## 千早白日梦手术室 CG（2026-11-04）
+
+用户指定附件放在千早开始被插入以后。原文件逐字节复制为 `assets/events/daydream_v1/chihaya_or_after_penetration.png`，绑定 `F02_032`（紧接 `F02_031` 插入动作后的第一句反应）；未裁切、重绘、压缩或上传。1536×1024 RGBA，SHA-256 `2163ad39b2cde0c4685e93583606ddfdffb61b8cd19af017200998aeff292a31`。完整来源映射见 `research/imports/chihaya_daydream_cg_2026-11-04.json`。
+
+## 弘子×江美子白日梦 CG 与术中表情（2026-11-04）
+
+- 用户指定“被强拉进手术室”附件原样接入 `F01_013`，逐字节复制为 `assets/events/daydream_v1/hiroko_forced_into_or.png`。
+- 用户指定“开腹后”附件原样接入 `F01_042`，逐字节复制为 `assets/events/daydream_v1/hiroko_or_laparotomy_open.png`。
+- 用户提供 704×640 透明术中头像作为 `nervous`；按用户要求以该图为种子使用内置 imagegen 生成 `panic`、`indignant`、`crying`、`terrified`、`pain_scream`、`overwhelmed` 六态。生成只改变表情，输出机械缩放回 704×640 并保留透明背景。
+
+完整源文件、节点、生成约束和 SHA-256 见 `research/imports/hiroko_daydream_assets_2026-11-04.json`。

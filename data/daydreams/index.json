@@ -1,0 +1,3580 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "id": "FANTASY_HIROKO_EMIKO_OR_01",
+      "source_file": "HOSHIMI_FANTASY_01_HIROKO_EMIKO_OR_V1.md",
+      "source_status": "imported_verbatim",
+      "title": {
+        "zh_CN": "顺从的共犯与护士站的突袭练手手术",
+        "en": "An Obedient Accomplice and a Surprise Practice Surgery at the Nurses’ Station"
+      },
+      "cast": {
+        "zh_CN": "杉村 弘子、御堂 江美子",
+        "en": "Hiroko Sugimura, Emiko Mido"
+      },
+      "tags": {
+        "zh_CN": "办公室白日梦",
+        "en": "Office daydream"
+      },
+      "unlock_hint": {
+        "zh_CN": "与杉村 弘子、御堂 江美子相识即可解锁。",
+        "en": "Unlocks after meeting Hiroko Sugimura and Emiko Mido."
+      },
+      "level": "dark",
+      "actor_id": "nurse_hiroko",
+      "gate": {
+        "met": [
+          "nurse_hiroko",
+          "doc_emiko"
+        ]
+      },
+      "start": "F01_001",
+      "minutes": 0,
+      "nodes": [
+        {
+          "id": "F01_001",
+          "source_node_id": "F01_001",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "下班后的办公室里只亮着一盏台灯，桌面上摊开着明天那台高难度妇科盆腔手术的术前图谱。",
+            "en": "Only one desk lamp is on in the office after work. The preoperative diagrams for tomorrow’s difficult gynecological pelvic surgery are spread across the desk."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_002"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "quiet_clock_tick"
+        },
+        {
+          "id": "F01_002",
+          "source_node_id": "F01_002",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「光看图谱总觉得手感还差一点……要是现在能有个活生生的健康样本先让我开腹练练手就好了……」",
+            "en": "“Just looking at the diagrams still leaves me unsure of the feel of it... If only I had a living, healthy subject to practice opening an abdomen on right now...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_003"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F01_003",
+          "source_node_id": "F01_003",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "目光掠过走廊对面的护士站，又想起平时总是高高在上、挑剔严苛的御堂江美子。一个荒唐却极具诱惑力的白日梦顺着困意悄然蔓延开来——",
+            "en": "My gaze drifts toward the nurses’ station across the corridor, and I think of Emiko Mido, usually so superior and exacting. A ridiculous yet deeply tempting daydream quietly spreads through my drowsiness—"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_004"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F01_004",
+          "source_node_id": "F01_004",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "办公室的门被轻轻推开。平时盛气凌人的御堂江美子此刻竟微微垂着视线，双手交叠在白大褂身前，像个等待主人示下的顺从部下一样走到了我的办公桌旁。",
+            "en": "The office door opens softly. Emiko Mido, usually so imperious, now lowers her eyes slightly, hands folded in front of her white coat, and approaches my desk like an obedient subordinate waiting for instructions."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_005"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "heartbeat_low_hum",
+          "transition_key": "white_blur_fade -> player_office_fantasy"
+        },
+        {
+          "id": "F01_005",
+          "source_node_id": "F01_005",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「隆司……我听见你说，想在明天的正式手术前先找个活体练习一下妇科开腹探查？」",
+            "en": "“Ryuji... I heard you say you wanted a living subject for a practice gynecological laparotomy before tomorrow’s actual operation?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_006"
+            }
+          ],
+          "background_id": "player_office",
+          "expression": "submissive_blush"
+        },
+        {
+          "id": "F01_006",
+          "source_node_id": "F01_006",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「是啊，江美子。不过模型练起来没意思，我想直接去护士站把正在值班的杉村弘子抓进手术室，剥光了绑在手术台上，把她的肚子切开来仔细检查一遍子宫。你来当我的第一助手，帮我一起按住她，怎么样？」",
+            "en": "“I do, Emiko. A model is no fun. I want to go straight to the nurses’ station, seize Hiroko Sugimura while she’s on duty, strip her and tie her to the operating table, then open her abdomen and examine her uterus carefully. Be my first assistant and help me hold her down. What do you say?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_007"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F01_007",
+          "source_node_id": "F01_007",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「……是，只要是隆司想要做的事，无论多荒唐我都完全听从。我已经替你把中井美佳叫去一号手术室准备妇科开腹器械了，另外……我还特意把饭村真奈美也调过去当巡回护士。」",
+            "en": "“...Yes. Whatever you want to do, Ryuji, however absurd, I’ll obey completely. I’ve already called Mika Nakai to Operating Room One to prepare the gynecological laparotomy instruments. And... I specifically assigned Manami Iimura as circulating nurse.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_008"
+            }
+          ],
+          "background_id": "player_office",
+          "expression": "entranced_obedient"
+        },
+        {
+          "id": "F01_008",
+          "source_node_id": "F01_008",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「真奈美？她平时上手术台不都是做医生助手或者管药剂吗，而且她还是弘子最好的朋友吧。」",
+            "en": "“Manami? Doesn’t she usually assist the surgeon or handle medication when she’s in surgery? And she’s Hiroko’s best friend.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_009"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F01_009",
+          "source_node_id": "F01_009",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「正因为是挚友，让真奈美亲手剥光弘子的护士服、替她剃毛备皮、再眼睁睁看着我们把她的肚子切开检查子宫……隆司一定会觉得更有意思吧？走吧，我的主刀大人，我去替你把人抓过来。」",
+            "en": "“Precisely because they’re best friends. Having Manami strip off Hiroko’s nurse uniform herself, shave her for surgery, and then watch us open her abdomen to examine her uterus... You’d find that more interesting, wouldn’t you, Ryuji? Come, my chief surgeon. I’ll capture her for you.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_010"
+            }
+          ],
+          "background_id": "player_office",
+          "expression": "faint_smile_blush"
+        },
+        {
+          "id": "F01_010",
+          "source_node_id": "F01_010",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「咦？坂口医生，还有御堂医生？这么晚了你们两个怎么一起过来了，是有哪床重症患者的医嘱要改吗？」",
+            "en": "“Huh? Dr. Sakaguchi? Dr. Mido? Why are you two here together so late? Do you need to change the orders for a critically ill patient?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_011"
+            }
+          ],
+          "background_id": "nurses_station",
+          "sprite_key": "hiroko_normal",
+          "portrait_path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/uniform/neutral.png"
+        },
+        {
+          "id": "F01_011",
+          "source_node_id": "F01_011",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「不是改医嘱。弘子，明天有一台妇科盆腔手术，我现在需要用你的身体做一次现场开腹演练。跟我们进手术室吧。」",
+            "en": "“We’re not changing orders. Hiroko, there’s a gynecological pelvic operation tomorrow. I need to use your body for a live laparotomy rehearsal now. Come to the operating room with us.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_012"
+            }
+          ],
+          "background_id": "nurses_station"
+        },
+        {
+          "id": "F01_012",
+          "source_node_id": "F01_012",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「——哈啊？！开、开什么玩笑呀坂口医生！我又没病，也没签过什么手术同意书，怎么可能突然被拉去开刀当练习品——呀！！」",
+            "en": "“—What?! W-what kind of joke is that, Dr. Sakaguchi? I’m not sick, and I haven’t signed a surgical consent form. You can’t suddenly drag me off to be cut open as practice—ah!!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_013"
+            }
+          ],
+          "background_id": "nurses_station",
+          "expression": "shocked_blush"
+        },
+        {
+          "id": "F01_013",
+          "source_node_id": "F01_013",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "不等弘子把抗议说完，一旁对我言听计从的御堂江美子已经上前一步，干脆利落地从背后反剪住弘子的双臂；我则顺势托住她的膝弯，两人合力直接将惊慌挣扎的资深护士从护士站架进了走廊尽头的一号手术室。",
+            "en": "Before Hiroko can finish protesting, Emiko Mido, who obeys my every word, steps forward and swiftly pins Hiroko’s arms behind her back. I scoop up her knees, and together we carry the frightened, struggling senior nurse from the nurses’ station to Operating Room One at the end of the corridor."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_014"
+            }
+          ],
+          "background_id": "nurses_station",
+          "cg_key": "hiroko_forced_into_or",
+          "cg_path": "assets/events/daydream_v1/hiroko_forced_into_or.png",
+          "cg_fit": "contain"
+        },
+        {
+          "id": "F01_014",
+          "source_node_id": "F01_014",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「放、放开我！御堂医生你疯了吗？！怎么连你也完全听他的胡闹……咦？真奈美？！美佳？！你们两个怎么会在手术室里？！」",
+            "en": "“L-let me go! Have you lost your mind, Dr. Mido?! Why are you going along with his nonsense too... Huh? Manami?! Mika?! What are you two doing in the operating room?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_015"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "panic_blush",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/panic.png",
+          "bgm_key": "tense_heartbeat"
+        },
+        {
+          "id": "F01_015",
+          "source_node_id": "F01_015",
+          "actor_id": "pharmacist_manami",
+          "speaker_label": {
+            "zh_CN": "饭村真奈美",
+            "en": "Manami Iimura"
+          },
+          "text": {
+            "zh_CN": "「呃……那个，弘子……我也没办法呀，坂口医生和御堂医生点名让我今晚过来当巡回护士……」",
+            "en": "“Um... Hiroko... I couldn’t help it. Dr. Sakaguchi and Dr. Mido specifically called me in to be the circulating nurse tonight...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_016"
+            }
+          ],
+          "background_id": "operating_room",
+          "sprite_key": "manami_awkward_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_016",
+          "source_node_id": "F01_016",
+          "actor_id": "nurse_rin",
+          "speaker_label": {
+            "zh_CN": "中井美佳",
+            "en": "Mika Nakai"
+          },
+          "text": {
+            "zh_CN": "「杉、杉村前辈……器械台已经按开腹探查的标准铺好了……」",
+            "en": "“S-Senior Sugimura... I’ve set up the instrument table to the standard for an exploratory laparotomy...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_017"
+            }
+          ],
+          "background_id": "operating_room",
+          "sprite_key": "mika_nervous",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_017",
+          "source_node_id": "F01_017",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「连美佳和真奈美都在……！别开玩笑了，快让我出去！我是当班护士，不是你们的手术患者——唔！」",
+            "en": "“Even Mika and Manami are here...! Stop joking and let me out! I’m the nurse on duty, not your surgical patient—mmph!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_018"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "羞愤_blush",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/indignant.png"
+        },
+        {
+          "id": "F01_018",
+          "source_node_id": "F01_018",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「隆司，我已经把她按在手术台边了。请下令吧。」",
+            "en": "“Ryuji, I’ve held her against the operating table. Please give the order.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_019"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "cold_obedient",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_019",
+          "source_node_id": "F01_019",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「把她的护士服、丝袜和里面的内衣全部脱光，一根布条都别留。真奈美，你来动手，顺便帮你的好朋友把头发全部塞进无菌手术帽里。」",
+            "en": "“Take off her nurse uniform, stockings, and underwear. Don’t leave a scrap of cloth on her. Manami, you do it. And tuck all your best friend’s hair into a sterile surgical cap.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_020"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_020",
+          "source_node_id": "F01_020",
+          "actor_id": "pharmacist_manami",
+          "speaker_label": {
+            "zh_CN": "饭村真奈美",
+            "en": "Manami Iimura"
+          },
+          "text": {
+            "zh_CN": "「诶？！我、我来脱吗……对不起啦弘子，你稍微忍耐一下哦……」",
+            "en": "“What?! Y-you want me to undress her... Sorry, Hiroko. Bear with me for a moment...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_021"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "flustered_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_021",
+          "source_node_id": "F01_021",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「等、等一下真奈美！连你也帮着他们欺负我……别、别解我的扣子啊！美佳还在旁边看着呢……唔、连内衣和内裤都要扒掉吗？！不要啊啊……！」",
+            "en": "“W-wait, Manami! You’re helping them bully me too... D-don’t undo my buttons! Mika’s watching... Mmph, you’re even taking off my bra and panties?! Nooo...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_022"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "crying_blush",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/crying.png"
+        },
+        {
+          "id": "F01_022",
+          "source_node_id": "F01_022",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "在御堂毫不留情的钳制与真奈美熟练却略带窘迫的动作下，平时端庄稳重的杉村弘子转眼间就被剥得一丝不挂。微凉的空气包裹住她成熟丰满的赤裸躯体，一头长发也被真奈美严严实实地全部盘进了蓝色的一次性手术帽中，整个人瞬间从资深护士变成了无助的待术患者。",
+            "en": "With Mido restraining her mercilessly and Manami moving with practiced but embarrassed hands, the ordinarily dignified and composed Hiroko Sugimura is stripped completely naked in moments. Cool air surrounds her mature, full body, and Manami winds all her long hair tightly into a disposable blue surgical cap. The senior nurse is suddenly a helpless patient awaiting surgery."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_023"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_023",
+          "source_node_id": "F01_023",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我和御堂合力将赤裸挣扎的弘子抱上冰凉的手术台中央。真奈美顺从地拉过两侧的皮革腕带与踝带，将弘子的四肢呈大字形牢牢锁死在托架上。",
+            "en": "Mido and I lift the naked, struggling Hiroko onto the center of the cold operating table. Obediently, Manami pulls the leather wrist and ankle straps from either side and fastens all four of Hiroko’s limbs firmly to the supports, spreading them wide."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_024"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_024",
+          "source_node_id": "F01_024",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「手、手脚都动不了了……无影灯好亮……美佳，别看前辈的身体啊……！坂口医生，求你了，这种玩笑一点都不好笑，快让真奈美把我放下来！」",
+            "en": "“I c-can’t move my hands or feet... The surgical lights are so bright... Mika, don’t look at your senior’s body...! Dr. Sakaguchi, please, this joke isn’t funny at all. Tell Manami to let me down!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_025"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "panic_tears",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/panic.png"
+        },
+        {
+          "id": "F01_025",
+          "source_node_id": "F01_025",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「既然是练习明天的妇科下腹开腹，术前备皮和留置导尿当然一步都不能省。真奈美、江美子，把她的双腿再往两边拉开一点，现场替她剃毛和插导尿管。」",
+            "en": "“If we’re practicing tomorrow’s gynecological lower abdominal operation, we can’t skip shaving or a urinary catheter. Manami, Emiko, pull her legs a little farther apart and shave her and insert the catheter right here.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_026"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_026",
+          "source_node_id": "F01_026",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「遵命，隆司。只要是你吩咐的杂活，我也愿意亲手替你做。」",
+            "en": "“As you command, Ryuji. I’m even willing to do the small tasks myself if you ask.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_027"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "submissive_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_027",
+          "source_node_id": "F01_027",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「——呀啊啊！不、不要！在后辈美佳和挚友真奈美面前把腿分开剃毛什么的……太羞耻了！真奈美你别拿备皮刀过来啊……！」",
+            "en": "“—Aaah! N-no! Spreading my legs to be shaved in front of my junior Mika and my best friend Manami... It’s too humiliating! Manami, don’t come near me with that razor...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_028"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_blush_tears",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/panic.png"
+        },
+        {
+          "id": "F01_028",
+          "source_node_id": "F01_028",
+          "actor_id": "pharmacist_manami",
+          "speaker_label": {
+            "zh_CN": "饭村真奈美",
+            "en": "Manami Iimura"
+          },
+          "text": {
+            "zh_CN": "「唔……弘子你别乱动嘛，万一刮破了可就不好了……原来弘子平时下面打理得这么整齐呀，不过既然是妇科开腹标准，还是得全部剃光才行呢……」",
+            "en": "“Um... Hiroko, don’t move around, or I might nick you... So you usually keep yourself so neatly groomed down there. But for a standard gynecological laparotomy, I still have to shave everything...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_029"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "awkward_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_029",
+          "source_node_id": "F01_029",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "在真奈美小声的嘀咕与中井美佳面红耳赤的注视下，微凉的泡沫与刮刀滑过弘子敏感的下腹与腿根。很快，那里便变得光洁赤裸、毫无遮蔽地暴露在惨白的无影灯下。",
+            "en": "As Manami murmurs and Mika Nakai watches with a flushed face, cool foam and the razor slide across Hiroko’s sensitive lower abdomen and inner thighs. Soon the area is smooth and bare, exposed without cover beneath the harsh white surgical lights."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_030"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_030",
+          "source_node_id": "F01_030",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「呜……全、全被看光了……我以后还怎么在护士站带后辈啊……唔呀！！等一下……御堂医生，你在往哪里插管子啊……？！」",
+            "en": "“Ngh... E-everything’s on display... How am I supposed to lead the juniors at the nurses’ station after this... Ah!! Wait... Dr. Mido, where are you putting that tube...?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_031"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "crying_blush",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/crying.png"
+        },
+        {
+          "id": "F01_031",
+          "source_node_id": "F01_031",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「当然是留置导尿管。要是不把膀胱排空，待会儿隆司切开你腹腔探查子宫的时候，可是会挡住他视线的。」",
+            "en": "“It’s a urinary catheter, of course. If we don’t empty your bladder, it will block Ryuji’s view when he opens your abdomen to inspect your uterus.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_032"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "composed_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_032",
+          "source_node_id": "F01_032",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "涂满润滑凝胶的导尿管被御堂精准地推进尿道。弘子浑身剧烈一颤，修长的双腿在固定带里无助地绷紧，小腹因为强烈的异物酸胀感而阵阵抽搐。",
+            "en": "Mido carefully advances the catheter, coated in lubricating gel, into her urethra. Hiroko shudders violently. Her long legs strain helplessly against the restraints, and her lower abdomen spasms from the intense, unfamiliar pressure."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_033"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_033",
+          "source_node_id": "F01_033",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「消毒铺巾吧。为了让我看清活体脏器最真实的收缩反应，今天不用全麻，只做最表浅的局部镇痛处理。美佳，递碘伏棉球和柳叶刀。」",
+            "en": "“Disinfect and drape her. I want to see the true contractions of living organs, so no general anesthesia today—only the most superficial local pain relief. Mika, pass me the povidone-iodine swabs and the scalpel.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_034"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_034",
+          "source_node_id": "F01_034",
+          "actor_id": "nurse_rin",
+          "speaker_label": {
+            "zh_CN": "中井美佳",
+            "en": "Mika Nakai"
+          },
+          "text": {
+            "zh_CN": "「是、是的！给您，坂口医生！」",
+            "en": "“Y-yes! Here you are, Dr. Sakaguchi!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_035"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "nervous_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_035",
+          "source_node_id": "F01_035",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「不、不用全麻？！等一下……冰冰凉凉的消毒水涂在肚子上了……真奈美，救救我，他真的要切开我的肚子了……！」",
+            "en": "“N-no general anesthesia?! Wait... The cold disinfectant is on my abdomen... Manami, help me. He really is going to open my belly...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_036"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "terrified_blush",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/terrified.png"
+        },
+        {
+          "id": "F01_036",
+          "source_node_id": "F01_036",
+          "actor_id": "pharmacist_manami",
+          "speaker_label": {
+            "zh_CN": "饭村真奈美",
+            "en": "Manami Iimura"
+          },
+          "text": {
+            "zh_CN": "「那、那个……弘子，坂口医生的刀法稳得很，只是稍微打开看一下子宫和附件就会给你缝回去的，我就在头侧握着你的手陪你哦……」",
+            "en": "“Um... Hiroko, Dr. Sakaguchi has a steady hand. He’ll only open you briefly to look at the uterus and adnexa, then sew you back up. I’ll stay by your head and hold your hand...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_037"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "flustered_sympathy",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_037",
+          "source_node_id": "F01_037",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "墨绿色的无菌铺巾盖住了弘子的身体，只在平坦紧致的下腹部留出一道敞开的术野窗口。我伸出戴着无菌手套的左手按住她微微颤抖的肚皮，右手握紧手术刀，沿着下腹正中稳稳划下第一刀。",
+            "en": "Dark green sterile drapes cover Hiroko’s body, leaving only an open field over her taut lower abdomen. I press my gloved left hand against her faintly trembling skin and hold the scalpel firmly in my right, drawing the first steady cut down the lower midline."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_038"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_038",
+          "source_node_id": "F01_038",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「——唔啊啊啊！！切、切开了……！我能感觉到刀子划开肚皮……好烫、好胀……！」",
+            "en": "“—Aaah!! Y-you cut me open...! I can feel the blade slicing through my belly... It burns, it feels so swollen...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_039"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "pain_scream_blush",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/pain_scream.png"
+        },
+        {
+          "id": "F01_039",
+          "source_node_id": "F01_039",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "白皙的皮肤应声分开，露出淡黄色的皮下脂肪层与鲜红的腹直肌鞘。对面的御堂江美子极其乖巧地配合着我的每一个动作，无需我多言便主动用止血钳与纱布替我拭净视野，眼神里满是对我的痴迷与顺从。",
+            "en": "Her pale skin parts under the blade, exposing a light yellow layer of subcutaneous fat and the red rectus sheath. Across from me, Emiko Mido follows each movement with utter obedience; without a word from me, she wipes the field clear with hemostats and gauze, her eyes full of infatuation and submission."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_040"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_040",
+          "source_node_id": "F01_040",
+          "actor_id": "doc_emiko",
+          "speaker_label": {
+            "zh_CN": "御堂江美子",
+            "en": "Emiko Mido"
+          },
+          "text": {
+            "zh_CN": "「切口真漂亮，隆司……腹膜已经露出来了，要我现在替你把拉钩撑开吗？」",
+            "en": "“Such a beautiful incision, Ryuji... The peritoneum is exposed. Shall I spread the retractors for you now?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_041"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "submissive_admire",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_041",
+          "source_node_id": "F01_041",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「嗯，剪开腹膜，把下腹创口向两侧撑到最大。」",
+            "en": "“Yes. Cut through the peritoneum and retract the lower abdominal wound as wide as it will go.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_042"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_042",
+          "source_node_id": "F01_042",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "随着腹膜被挑开、金属自动拉钩将腹壁向左右两侧牢牢撑开，温热湿润的腹腔与盆腔深处彻底暴露在了无影灯下。弘子因为腹部被强行敞开的奇异牵拉感而急促地喘息着，眼角挂满了泪珠。",
+            "en": "As the peritoneum is opened and metal self-retaining retractors pull the abdominal wall firmly apart, the warm, damp abdominal cavity and deep pelvis are fully exposed under the surgical lights. Hiroko gasps at the strange tugging sensation of her abdomen being forced open, tears filling the corners of her eyes."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_043"
+            }
+          ],
+          "background_id": "operating_room",
+          "cg_key": "hiroko_or_laparotomy_open",
+          "cg_path": "assets/events/daydream_v1/hiroko_or_laparotomy_open.png",
+          "cg_fit": "contain"
+        },
+        {
+          "id": "F01_043",
+          "source_node_id": "F01_043",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「哈啊……哈啊……肚子里面……凉飕飕的……被撑得好开……真奈美、美佳……别往我肚子里面看啊……太羞耻了……！」",
+            "en": "“Hah... hah... Inside my belly... it feels cold... pulled so wide open... Manami, Mika... don’t look inside me... It’s too embarrassing...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_044"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "crying_shame",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/overwhelmed.png"
+        },
+        {
+          "id": "F01_044",
+          "source_node_id": "F01_044",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「这有什么好害羞的，大家都是专业的医护人员。来，江美子，把手伸进去帮我把肠管往上拨开一点，我要亲手检查一下弘子的子宫。」",
+            "en": "“What is there to be embarrassed about? We’re all medical professionals. Emiko, put your hand in and move the bowel upward a little. I want to examine Hiroko’s uterus myself.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_045"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_045",
+          "source_node_id": "F01_045",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "御堂顺从地将戴着湿润手套的手探入弘子腹腔上方轻轻挡开肠管；我则将右手径直伸进她温热的盆腔底部，五指合拢，直接将那团色泽粉润、饱满健康的子宫底与两侧输卵管卵巢附件托在了掌心里。",
+            "en": "Obediently, Mido reaches a wet-gloved hand into the upper part of Hiroko’s abdomen and gently holds the bowel aside. I extend my right hand deep into her warm pelvis, close my fingers, and lift her healthy, rosy uterine fundus, fallopian tubes, and ovaries into my palm."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_046"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_046",
+          "source_node_id": "F01_046",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「——呀啊啊啊！！不、不要用手抓那里……！那是子宫啊……！从肚子里面被人直接捏在手心里翻来覆去地摸……又酸又麻又胀……连腰都要软掉了……坂口医生，别捏了，快放开啊啊……！」",
+            "en": "“—Aaah!! D-don’t grab there with your hand...! That’s my uterus...! Having someone reach straight into my belly and turn it over in their palm... it aches, tingles, and swells... My back is going weak... Dr. Sakaguchi, stop squeezing and let go...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_047"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_tears_shame",
+          "portrait_path": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/overwhelmed.png"
+        },
+        {
+          "id": "F01_047",
+          "source_node_id": "F01_047",
+          "actor_id": "pharmacist_manami",
+          "speaker_label": {
+            "zh_CN": "饭村真奈美",
+            "en": "Manami Iimura"
+          },
+          "text": {
+            "zh_CN": "「哇……原来从腹腔里面直接托起弘子的子宫是这个样子的……难怪弘子叫得这么厉害，连脸都红透了呢。」",
+            "en": "“Wow... So that’s what Hiroko’s uterus looks like lifted directly from her abdomen... No wonder she’s crying out so loudly. Even her face is bright red.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_048"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "amazed_blush",
+          "outfit": "sterile"
+        },
+        {
+          "id": "F01_048",
+          "source_node_id": "F01_048",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「弹性很好，位置也很标准。江美子，你也来摸一下宫角和韧带的张力，明天上台的时候就按这个手感帮我牵引——」",
+            "en": "“Good elasticity and standard position. Emiko, feel the tension at the uterine horns and ligaments too. Tomorrow, use this same feel to help me retract—”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_049"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F01_049",
+          "source_node_id": "F01_049",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "“笃、笃、笃。”——办公室门外传来的温柔敲门声瞬间击碎了无影灯下的荒唐幻境。手术台、言听计从的御堂与敞开着小腹哭喘的弘子转眼间烟消云散。",
+            "en": "“Knock, knock, knock.” The gentle sound at the office door instantly shatters the absurd vision beneath the surgical lights. The operating table, the obedient Mido, and Hiroko sobbing with her abdomen open all vanish at once."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F01_050"
+            }
+          ],
+          "background_id": "operating_room",
+          "sfx_key": "knock_knock_gentle",
+          "transition_key": "shatter_to_office"
+        },
+        {
+          "id": "F01_050",
+          "source_node_id": "F01_050",
+          "actor_id": "nurse_hiroko",
+          "speaker_label": {
+            "zh_CN": "杉村弘子",
+            "en": "Hiroko Sugimura"
+          },
+          "text": {
+            "zh_CN": "「坂口医生，还在看明天妇科手术的图谱吗？看你盯着桌角发呆了好半天，我给你泡了杯热茶过来——怎么突然用这么心虚的眼神看着我呀？」",
+            "en": "“Dr. Sakaguchi, are you still studying the diagrams for tomorrow’s gynecological surgery? You’ve been staring at the corner of your desk for ages, so I brought you some hot tea—why are you suddenly looking at me so guiltily?”"
+          },
+          "choices": [
+            {
+              "id": "end",
+              "label": {
+                "zh_CN": "结束",
+                "en": "End"
+              },
+              "next": "@end"
+            }
+          ],
+          "background_id": "player_office",
+          "sprite_key": "hiroko_smile_clipboard",
+          "portrait_path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/uniform/smile.png"
+        }
+      ]
+    },
+    {
+      "id": "FANTASY_CHIHAYA_PREOP_OR_01",
+      "source_file": "HOSHIMI_FANTASY_02_CHIHAYA_PREOP_OR_V1_2.md",
+      "source_status": "imported_verbatim",
+      "title": {
+        "zh_CN": "临时提前的术前准备与空手术室的独占检查",
+        "en": "Suddenly Moved-Up Preoperative Preparation and a Private Examination in an Empty Operating Room"
+      },
+      "cast": {
+        "zh_CN": "仓本千早",
+        "en": "Chihaya Kuramoto"
+      },
+      "tags": {
+        "zh_CN": "办公室白日梦",
+        "en": "Office daydream"
+      },
+      "unlock_hint": {
+        "zh_CN": "与仓本千早相识即可解锁。",
+        "en": "Unlocks after meeting Chihaya Kuramoto."
+      },
+      "level": "intense",
+      "actor_id": "patient_chihaya",
+      "gate": {
+        "met": [
+          "patient_chihaya"
+        ]
+      },
+      "start": "F02_001",
+      "minutes": 0,
+      "nodes": [
+        {
+          "id": "F02_001",
+          "source_node_id": "F02_001",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "傍晚的余晖透过百叶窗斜斜地洒在办公桌上，空气里浮动着刚泡好的红茶香气。",
+            "en": "The evening sun slants through the blinds onto my desk, and the scent of freshly brewed black tea lingers in the air."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_002"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "quiet_clock_tick"
+        },
+        {
+          "id": "F02_002",
+          "source_node_id": "F02_002",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我低头整理着归档的旧住院病历与近期护理辅助人员的值班表，目光停留在「仓本千早」的名字上。",
+            "en": "I look down while sorting archived inpatient records and recent shifts for auxiliary nursing staff. My eyes settle on the name “Chihaya Kuramoto.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_003"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F02_003",
+          "source_node_id": "F02_003",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「平时总是爽朗活泼、热爱运动与自由，哪怕在走廊里遇见也敢大大方方跟我开玩笑的千早……要是突然发现自己又变回了待术患者、被剥夺行动自由推向手术台，露出六神无主的样子……」",
+            "en": "“Chihaya is always cheerful and energetic, in love with sports and freedom. She even jokes openly with me when we meet in the corridor... What would she look like if she suddenly found herself a surgical patient again, deprived of freedom and wheeled toward an operating table, utterly at a loss...?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_004"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F02_004",
+          "source_node_id": "F02_004",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "指尖轻轻点着她的名字，某种带着恶劣捉弄欲的念头忽然在脑海里生了根。如果在幻想里她还住在单人病房等待复查手术，而我突然去骗她说“手术计划临时改到今天”，由我亲自替慌乱无措的她做全套术前准备，再把她推进下班后空无一人的手术室……",
+            "en": "My fingertip taps her name, and a rather wicked urge to tease her takes root in my mind. Suppose that, in this fantasy, she were still waiting for a follow-up operation in a private room, and I suddenly lied that “the operation has been moved up to today.” I would personally handle all her preoperative preparation as she panicked, then wheel her into the empty operating room after everyone had gone home..."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_005"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F02_005",
+          "source_node_id": "F02_005",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "眼前的旧病历与值班表渐渐模糊，取而代之的是单人病房柔和却紧迫的灯光。",
+            "en": "The old records and shift schedule blur before my eyes, replaced by the soft yet urgent light of a private hospital room."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_006"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "heartbeat_low_hum",
+          "transition_key": "white_blur_fade -> single_ward_evening"
+        },
+        {
+          "id": "F02_006",
+          "source_node_id": "F02_006",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「——咦？！等、等一下啦隆司！明明说好是后天才做手术的，怎么突然变成今晚就要开刀了？！」",
+            "en": "“—Huh?! W-wait, Ryuji! You said the operation was the day after tomorrow. How did it suddenly become tonight?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_007"
+            }
+          ],
+          "background_id": "ward",
+          "sprite_key": "chihaya_pajamas_surprised",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/ward/surprised.png"
+        },
+        {
+          "id": "F02_007",
+          "source_node_id": "F02_007",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「手术室明后天的排期临时被急诊占满了，只能提前到今晚加台。来，千早，没时间等当班护士过来了，现在的术前准备由我亲自替你做。」",
+            "en": "“Emergency cases filled the operating-room schedule for the next two days, so we have to add your case tonight. Come on, Chihaya. There’s no time to wait for the nurse on duty; I’ll prepare you myself.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_008"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_008",
+          "source_node_id": "F02_008",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我顺手将单人病房的房门反锁，“咔哒”一声轻响让原本正活动着肩膀、神采奕奕的仓本千早瞬间僵住了，平日里那股爽朗自在的活力一下子散得干干净净，整个人肉眼可见地六神无主起来。",
+            "en": "I casually lock the private room door. The soft click makes Chihaya Kuramoto, who was stretching her shoulders so energetically, freeze. Her usual easy vitality drains away, and she visibly loses her composure."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_009"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_009",
+          "source_node_id": "F02_009",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「怎、怎么会这么突然……我连一点心理准备都没有啊！而且什么叫你亲自替我做术前准备……那、那不就是要在这里脱光衣服吗？！」",
+            "en": "“H-how can it be so sudden...? I haven’t prepared myself at all! And what do you mean, you’ll do my preoperative preparation yourself...? D-doesn’t that mean I have to undress completely right here?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_010"
+            }
+          ],
+          "background_id": "ward",
+          "expression": "panic_blush",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/ward/afraid.png"
+        },
+        {
+          "id": "F02_010",
+          "source_node_id": "F02_010",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「上手术台当然不能穿贴身内衣。乖，把手举起来，先把病号服和里面的内衣脱掉，再把这顶无菌手术帽戴好。」",
+            "en": "“You can’t wear underwear onto the operating table. Good girl, raise your arms. First take off your hospital gown and underwear, then put on this sterile surgical cap.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_011"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_011",
+          "source_node_id": "F02_011",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "千早被我一本正经的临床口吻唬得完全乱了方寸，连平时敢跟我斗嘴打趣的劲头都忘光了。她红着脸、手指发抖地解开病号服扣子，任由我将她温热匀称、充满运动活力的身体剥得一丝不挂，再把她的一头长发严严实实地全部盘进蓝色的一次性手术帽里。",
+            "en": "My earnest clinical tone throws Chihaya completely off balance; she even forgets how to tease me back. Blushing and trembling, she unbuttons her hospital gown and lets me strip her warm, athletic body bare. Then I tuck all her long hair firmly into a disposable blue surgical cap."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_012"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_012",
+          "source_node_id": "F02_012",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「唔……头发全部收进手术帽里、全身上下光着身子的样子好奇怪……隆司，别盯得那么仔细啦！患、患者袍呢？快给我穿上呀！」",
+            "en": "“Mm... It feels so strange to have all my hair inside a surgical cap and nothing on my body... Ryuji, stop staring so closely! W-where’s my patient gown? Let me put it on!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_013"
+            }
+          ],
+          "background_id": "ward",
+          "expression": "flustered_shy",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/shy.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_013",
+          "source_node_id": "F02_013",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「别急，备皮和导尿还没做呢。躺下来，千早，把膝盖屈起来向两边分开一点。」",
+            "en": "“Not yet. We still have to shave the operative area and place a catheter. Lie down, Chihaya. Bend your knees and open them a little.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_014"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_014",
+          "source_node_id": "F02_014",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「——哈啊？！备、备皮和导尿也要隆司亲手来吗？！不、不行啦！那种地方让既是男朋友又是主刀医生的你亲手剃掉什么的……我会羞死的！！」",
+            "en": "“—What?! Y-you’re doing the shaving and catheter yourself too, Ryuji?! N-no way! Having you—my boyfriend and my surgeon—shave a place like that yourself... I’ll die of embarrassment!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_015"
+            }
+          ],
+          "background_id": "ward",
+          "expression": "shocked_blush",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/surprised.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_015",
+          "source_node_id": "F02_015",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我戴上乳胶手套，不容分说地按住她试图并拢的修长双腿。微凉的备皮泡沫涂抹在小腹下方与腿根深处，随着刮刀轻柔而细致地滑过，千早羞得用双手死死捂住滚烫的脸颊，连脚趾都紧紧蜷缩了起来。",
+            "en": "I put on latex gloves and firmly hold her long legs as she tries to close them. Cool shaving foam spreads below her lower abdomen and along her inner thighs. As the razor glides gently and carefully, Chihaya covers her burning face with both hands, blushing so hard that even her toes curl."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_016"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_016",
+          "source_node_id": "F02_016",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「唔……冰冰凉凉的……好痒、好难为情……隆司的手指碰到最里面了啦……别、别拨开那里检查干不干净啊……！」",
+            "en": "“Mm... It’s cold... it tickles, it’s so embarrassing... Ryuji, your fingers touched the innermost part... D-don’t spread it apart to check whether it’s clean...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_017"
+            }
+          ],
+          "background_id": "ward",
+          "expression": "crying_blush",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_017",
+          "source_node_id": "F02_017",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「很干净。接下来是留置导尿管，稍微有点异物感，深呼吸，别夹腿。」",
+            "en": "“It’s clean. Next is an indwelling urinary catheter. You’ll feel a little pressure. Breathe deeply and don’t close your legs.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_018"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_018",
+          "source_node_id": "F02_018",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "涂满无菌润滑凝胶的软管精准地探入那处湿润敏感的细小开口。千早浑身猛地一颤，喉咙里溢出一声压抑不住的细碎鼻音，紧致的小腹随着软管滑入膀胱的酸胀感轻轻抽动。",
+            "en": "The soft tube, coated in sterile lubricant, enters the small, sensitive opening with precision. Chihaya shudders sharply. A muffled whimper escapes her throat, and her taut lower abdomen twitches at the uncomfortable pressure as the tube slips into her bladder."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_019"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_019",
+          "source_node_id": "F02_019",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「呀……！唔、进去了……好酸、好奇怪的感觉……明明不是想去厕所，却觉得下面一直被撑开着……隆司……我真的害怕起来了……」",
+            "en": "“Ah...! Mm, it’s in... It aches, it feels so strange... I don’t need the bathroom, but it feels like something is holding me open down there... Ryuji... now I really am getting scared...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_020"
+            }
+          ],
+          "background_id": "ward",
+          "expression": "teary_flustered",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_020",
+          "source_node_id": "F02_020",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我替眼角泛泪的她松松地披上一件背面敞开的患者袍，直接将双腿发软的她抱上移动平车，推着她穿过了空旷安静的走廊。",
+            "en": "I loosely drape an open-backed patient gown over her tearful shoulders, lift her as her legs give way, and place her on a transport stretcher. I wheel her through the empty, quiet corridor."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_021"
+            }
+          ],
+          "background_id": "ward"
+        },
+        {
+          "id": "F02_021",
+          "source_node_id": "F02_021",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "夜间的一号手术室里空无一人，只有中央的无影灯亮着刺目的白光。我将千早抱上冰凉的手术台，撤掉她身上那件形同虚设的患者袍，将她的双腕分别扣进两侧臂托的皮革固定带里，又将她的双腿架高固定在尾端的截石位腿架上。",
+            "en": "Operating Room One is deserted at night; only the overhead surgical light burns a glaring white. I lift Chihaya onto the cold operating table, remove her almost useless patient gown, fasten both wrists into the leather restraints on the arm supports, then raise and secure her legs in the lithotomy stirrups at the foot of the table."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_022"
+            }
+          ],
+          "background_id": "operating_room",
+          "bgm_key": "tense_heartbeat"
+        },
+        {
+          "id": "F02_022",
+          "source_node_id": "F02_022",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「等、等一下……！为什么手和脚都要绑起来？！连动都不能动了……而且怎么成这种两边大敞开的姿势了……器械护士和麻醉医生呢？怎么一个人都不在？！」",
+            "en": "“W-wait...! Why do my hands and feet have to be tied down?! I can’t move at all... Why are my legs spread so far apart...? Where’s the instrument nurse? The anesthesiologist? Why isn’t anyone here?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_023"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "panic_tears",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/tense.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_023",
+          "source_node_id": "F02_023",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「因为今晚这台手术，本来就不需要别人。」",
+            "en": "“Because tonight’s operation never needed anyone else.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_024"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_024",
+          "source_node_id": "F02_024",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我慢条斯理地走近手术台尾端，站在她毫无遮挡、因为刚做完备皮而显得格外娇嫩赤裸的双腿之间。没有去推器械车，我反而伸手解开了自己白大褂与长裤的系带。",
+            "en": "I stroll to the foot of the operating table and stand between her uncovered legs, freshly bare from shaving. Instead of moving the instrument cart, I reach to undo the ties on my white coat and trousers."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_025"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_025",
+          "source_node_id": "F02_025",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「……咦？隆、隆司……？你为什么在解裤子……手术刀呢？你不是说今晚临时加台要给我开刀吗？！」",
+            "en": "“...Huh? R-Ryuji...? Why are you undoing your pants...? Where’s the scalpel? Didn’t you say you’d moved my operation up to tonight?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_026"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "stunned_blush",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/surprised.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_026",
+          "source_node_id": "F02_026",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「骗你的。要是真开刀，怎么可能连护士都不叫？我只是想看看，平时总是活力十足、跑来跑去闲不住的千早，一旦被当成无助的患者剥光绑在手术台上不能动弹，会露出什么样的表情。」",
+            "en": "“I lied. If I were really going to operate, how could I do it without calling the nurses? I just wanted to see the face of Chihaya, who’s usually so full of energy and never sits still, when she’s stripped and tied to the operating table like a helpless patient.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_027"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_027",
+          "source_node_id": "F02_027",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「——哈啊啊？！你、你居然是骗我的？！害我刚才在病房里那么六神无主、连剃毛和插导尿管都乖乖让你做了……！你这个大骗子、大坏蛋！快把我放下来！！」",
+            "en": "“—What?! Y-you lied to me?! I was so frightened in the hospital room, and I even let you shave me and insert a catheter...! You huge liar! You awful man! Let me down!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_028"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_blush_angry",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/angry.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_028",
+          "source_node_id": "F02_028",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "发现自己被彻头彻尾捉弄了的千早又羞又恼，手腕在皮革腕带里挣得咔哒作响。然而当我的指腹顺着导尿管边缘轻轻抚过她早已湿透的秘处时，她的挣扎瞬间化作了触电般的轻颤。",
+            "en": "Chihaya, realizing she has been thoroughly fooled, struggles in anger and shame until the leather wrist straps click against their fastenings. Yet when my fingertip gently passes along the catheter and brushes the place already wet with arousal, her resistance turns into an electric shiver."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_029"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_029",
+          "source_node_id": "F02_029",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「嘴上骂我是骗子，可刚才在病房替你备皮的时候，这里就已经湿得一塌糊涂了吧？导尿管旁边全是你自己流出来的水。」",
+            "en": "“You call me a liar, but you were already soaking wet when I shaved you in the hospital room, weren’t you? There’s moisture from you all around the catheter.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_030"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_030",
+          "source_node_id": "F02_030",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「那、那是因为你用那么不容拒绝的医生口气命令我……人家脑子里乱糟糟的，又紧张又害羞才会变成那样的！唔……别、别在无影灯下面分开那里看啊……太亮了，全都被看光了……！」",
+            "en": "“T-that’s because you ordered me around in that impossible-to-refuse doctor voice... I was confused, nervous, and embarrassed! Mm... D-don’t spread me open under the surgical light... It’s too bright; you can see everything...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_031"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "melted_tears",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_031",
+          "source_node_id": "F02_031",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我俯下身，一手按住她因为羞耻而剧烈起伏的胸口，在导尿管仍然留置的状态下，直接挺身沉腰，闯入了那处滚烫泥泞的紧致深处。",
+            "en": "I bend over her, holding down her chest as it rises and falls with embarrassment. While the catheter remains in place, I lean forward and enter her tight, hot depths."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_032"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_032",
+          "source_node_id": "F02_032",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「——呀啊啊啊！！进、进来了……！唔……隆司笨蛋……！导尿管还在上面呢……两个地方同时被撑得好满……好奇怪啊啊……！」",
+            "en": "“—Aaah!! Y-you’re inside...! Mm... Ryuji, you idiot...! The catheter is still there... I’m stretched so full in both places... It feels so strange...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_033"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_scream",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/pain.png",
+          "portrait_y": 272.0,
+          "cg_key": "chihaya_or_after_penetration",
+          "cg_path": "assets/events/daydream_v1/chihaya_or_after_penetration.png",
+          "cg_fit": "contain"
+        },
+        {
+          "id": "F02_033",
+          "source_node_id": "F02_033",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "截石位腿架让她的腰臀完全无法后退分毫，只能严丝合缝地承受着每一次深入的撞击。留置导尿管的轻微摩擦与甬道深处被贯穿的滚烫快感交织在一起，激得她连声音都变了调。",
+            "en": "The lithotomy supports keep her hips from retreating at all, leaving her to take every deep thrust. The catheter’s slight friction mingles with the heated sensation of being penetrated deep within, drawing a different pitch from her voice."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_034"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_034",
+          "source_node_id": "F02_034",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「哈啊……啊、等一下……这里是手术台啊……！要是值班的护士看到手术室亮着灯推门进来怎么办……唔啊啊！别故意顶那么重啊……！」",
+            "en": "“Hah... ah, wait... This is an operating table...! What if a nurse on duty sees the light and walks in...? Ah! Don’t thrust so hard on purpose...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_035"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "crying_blush",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_035",
+          "source_node_id": "F02_035",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「那你就小声一点。刚才不是还委屈我骗你做术前准备吗？现在光着身子戴着手术帽在手术台上高潮，不是正好派上用场了？」",
+            "en": "“Then keep your voice down. Weren’t you upset that I tricked you into preoperative preparation? Now you’re naked in a surgical cap, climaxing on the operating table. It’s finally being put to use, isn’t it?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_036"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_036",
+          "source_node_id": "F02_036",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「坏心眼……隆司最坏了……明明把我吓得六神无主的……现在又把人家绑在这里欺负……啊、不行……每次你往里顶，连导尿管那边都会跟着一起发麻……腰要断掉了……！」",
+            "en": "“You’re so mean... Ryuji is the worst... You scared me half to death, and now you’ve tied me here to tease me... Ah, no... Every time you thrust inside, the place around the catheter tingles too... My back can’t take it...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_037"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_tears",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_037",
+          "source_node_id": "F02_037",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "千早死死咬着下唇想要压住哭腔，可悬在半空的双腿却不受控制地剧烈颤抖，紧致匀称的胸腹在无影灯下泛起一层诱人的粉红薄汗，内壁一阵紧过一阵地吸吮着侵入的炽热。",
+            "en": "Chihaya bites her lower lip hard to stifle a sob, but her raised legs shake uncontrollably. A thin sheen of pink sweat covers her toned chest and abdomen under the surgical lights, while her inner walls tighten again and again around the heat inside her."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_038"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_038",
+          "source_node_id": "F02_038",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「唔……哈啊……不、不要再欺负那里了……脑子里一片空白了……隆司、隆司……！手被绑着抱不到你……你快抱紧我……要、要去了——啊啊啊啊！！」",
+            "en": "“Mm... hah... D-don’t tease me there anymore... My mind’s going blank... Ryuji, Ryuji...! My hands are tied; I can’t hold you... Hold me tight... I-I’m coming—aaah!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_039"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "climax_tears",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_039",
+          "source_node_id": "F02_039",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我将她汗湿的肩膀紧紧搂进怀里，在她仰起脖颈发出甜腻失神的呜咽、全身在固定带中绷紧到极致的瞬间，将滚烫的脉冲尽数倾注进了她剧烈痉挛的最深处。",
+            "en": "I pull her sweat-damp shoulders close. As she throws back her head with a dazed, sweet whimper and every muscle strains against the restraints, I release all my heat into her spasming depths."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_040"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_040",
+          "source_node_id": "F02_040",
+          "actor_id": "patient_chihaya",
+          "speaker_label": {
+            "zh_CN": "仓本千早",
+            "en": "Chihaya Kuramoto"
+          },
+          "text": {
+            "zh_CN": "「哈啊……哈啊……唔……里面又热又胀……连腿都放不下来了……隆司你这个大骗子……居然拿开刀来骗我做这种事……」",
+            "en": "“Hah... hah... Mm... It’s so hot and full inside... I can’t even lower my legs... Ryuji, you huge liar... You used an operation to trick me into this...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_041"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "afterglow_dazed",
+          "portrait_path": "assets/characters/patient_chihaya_second_surgery_v1/intraoperative/tired.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F02_041",
+          "source_node_id": "F02_041",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「是我不好，这就帮你把固定带解开——」",
+            "en": "“I was wrong. Let me undo the restraints—”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_042"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F02_042",
+          "source_node_id": "F02_042",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "“咚、咚！”——两声干脆利落、带着明显压迫感的敲门声猛地将幻象震碎。",
+            "en": "“Thump, thump!” Two crisp, forceful knocks shatter the illusion."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_043"
+            }
+          ],
+          "background_id": "operating_room",
+          "sfx_key": "knock_knock_stern",
+          "transition_key": "shatter_to_office"
+        },
+        {
+          "id": "F02_043",
+          "source_node_id": "F02_043",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "空手术室、截石位腿架与满脸泪痕潮红的仓本千早瞬间消失得无影无踪。我一个激灵坐直身体，发现自己正坐在黄昏的办公室里，手底下还按着她以前的旧病历和这周的护理辅助排班表。",
+            "en": "The empty operating room, the lithotomy supports, and Chihaya Kuramoto’s flushed, tear-streaked face vanish in an instant. I jerk upright and find myself back in the office at dusk, my hand still resting on her old medical record and this week’s auxiliary nursing schedule."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_044"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "daily_warm_hospital"
+        },
+        {
+          "id": "F02_044",
+          "source_node_id": "F02_044",
+          "actor_id": "nurse_ishigami",
+          "speaker_label": {
+            "zh_CN": "石神千鹤",
+            "en": "Chizuru Ishigami"
+          },
+          "text": {
+            "zh_CN": "「坂口医生，下班前的一号手术室耗材清点单需要你签字。你在对着仓本的旧病历和排班表发什么呆？」",
+            "en": "“Dr. Sakaguchi, the supply count for Operating Room One needs your signature before you leave. Why are you staring at Kuramoto’s old record and the shift schedule?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_045"
+            }
+          ],
+          "background_id": "player_office",
+          "sprite_key": "chizuru_serious_clipboard",
+          "portrait_path": "assets/characters/portrait_pack_v22/nurse_ishigami/uniform/neutral.png"
+        },
+        {
+          "id": "F02_045",
+          "source_node_id": "F02_045",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "石神千鹤护士长推了推鼻梁上的眼镜，目光锐利地扫过我略显慌乱的脸和桌上的档案夹。",
+            "en": "Head Nurse Chizuru Ishigami adjusts her glasses. Her keen eyes sweep over my flustered face and the folder on the desk."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F02_046"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F02_046",
+          "source_node_id": "F02_046",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「咳……没什么，我只是在核对仓本以前的手术归档记录和下周的排班表，马上签字！」",
+            "en": "“Ahem... Nothing. I was checking Kuramoto’s old operative record against next week’s schedule. I’ll sign it now!”"
+          },
+          "choices": [
+            {
+              "id": "end",
+              "label": {
+                "zh_CN": "结束",
+                "en": "End"
+              },
+              "next": "@end"
+            }
+          ],
+          "background_id": "player_office"
+        }
+      ]
+    },
+    {
+      "id": "FANTASY_MIZUHO_OR_SOLO_01",
+      "source_file": "HOSHIMI_FANTASY_03_MIZUHO_OR_SOLO_V1.md",
+      "source_status": "imported_verbatim",
+      "title": {
+        "zh_CN": "敞开的腹腔与独享的手术台",
+        "en": "An Open Abdominal Cavity and a Surgical Table All to Ourselves"
+      },
+      "cast": {
+        "zh_CN": "支手瑞穗",
+        "en": "Mizuho Shite"
+      },
+      "tags": {
+        "zh_CN": "办公室白日梦",
+        "en": "Office daydream"
+      },
+      "unlock_hint": {
+        "zh_CN": "与支手瑞穗相识即可解锁。",
+        "en": "Unlocks after meeting Mizuho Shite."
+      },
+      "level": "dark",
+      "actor_id": "guest_mizuho",
+      "gate": {
+        "met": [
+          "guest_mizuho"
+        ]
+      },
+      "start": "F03_001",
+      "minutes": 0,
+      "nodes": [
+        {
+          "id": "F03_001",
+          "source_node_id": "F03_001",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "午休过后的办公室里静悄悄的，只有百叶窗缝隙漏进来的阳光落在桌案上。",
+            "en": "The office is quiet after lunch. Only sunlight slipping through the blinds falls across the desk."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_002"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "quiet_clock_tick"
+        },
+        {
+          "id": "F03_002",
+          "source_node_id": "F03_002",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我随手翻开手边归档的旧病历夹，指尖停在「瑞穗——自费无麻醉开腹探查术」那页签名栏上。",
+            "en": "I casually open an old medical folder beside me, stopping at the signature page for “Mizuho—Self-Funded Exploratory Laparotomy Without Anesthesia.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_003"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F03_003",
+          "source_node_id": "F03_003",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「那位高傲的大小姐，当时躺在手术台上死死咬着嘴唇不肯叫出声的样子……」",
+            "en": "“That proud young lady, lying on the operating table and biting her lip so hard she refused to cry out...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_004"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F03_004",
+          "source_node_id": "F03_004",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "指腹摩挲过纸页上她略显凌乱的字迹，困意与某种隐秘而荒唐的念头顺着脊背一点点漫了上来。如果在那场手术中途，手术室里只剩下我和她两个人……",
+            "en": "My fingertip brushes over her slightly untidy signature. Drowsiness and a secret, absurd thought creep up my spine. Suppose that, halfway through that operation, only she and I remained in the operating room..."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_005"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F03_005",
+          "source_node_id": "F03_005",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "视野在刺目的白光中晃了晃，消毒水与温热铁锈般的气息瞬间取代了办公室的茶香。",
+            "en": "My vision wavers in glaring white light. The scent of disinfectant and warm iron instantly replaces the office tea."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_006"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "heartbeat_low_hum",
+          "transition_key": "white_blur_fade -> operating_room_bright"
+        },
+        {
+          "id": "F03_006",
+          "source_node_id": "F03_006",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "无影灯惨白的光柱笔直地打在手术台中央。瑞穗赤裸着身体仰躺在墨绿色的无菌铺巾下，双腕松松地搭在两侧托架的固定带里，平坦的小腹正被金属撑开器向两侧拉开一道清晰的切口。",
+            "en": "A stark white surgical light shines straight onto the center of the table. Mizuho lies naked beneath dark green sterile drapes, her wrists resting loosely within the restraints on the arm supports. Metal retractors pull apart a clear incision in her flat lower abdomen."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_007"
+            }
+          ],
+          "background_id": "operating_room",
+          "cg_key": "mizuho_or_laparotomy_open",
+          "cg_path": "assets/events/daydream_v1/mizuho_or_laparotomy_open.png",
+          "cg_fit": "contain"
+        },
+        {
+          "id": "F03_007",
+          "source_node_id": "F03_007",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「哈啊……哈……隆司，你还要看多久啊……既然检查完了，就快点给我缝起来……」",
+            "en": "“Hah... hah... Ryuji, how much longer are you going to look...? If you’ve finished the examination, hurry up and sew me closed...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_008"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "flustered_pain",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/pain.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_008",
+          "source_node_id": "F03_008",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「别急，最深处还没确认完呢。——对了，这批二号可吸收线的张力批次好像有点问题，你们两个现在去器械库帮我重新核对一箱过来，顺便把温盐水也换一批新的。」",
+            "en": "“Not yet. I haven’t checked the deepest part. Oh, the tension rating on this batch of No. 2 absorbable sutures seems questionable. Go to the instrument store and check another box for me, both of you. Bring back fresh warm saline too.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_009"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_009",
+          "source_node_id": "F03_009",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "一助和巡回护士愣了一下，但看我神色笃定，还是顺从地点了点头。随着自动门“嗤”地一声合拢并落锁，原本忙碌的手术室瞬间陷入了死一般的寂静。",
+            "en": "The first assistant and circulating nurse pause, but my assured expression convinces them. They nod and obey. The automatic door hisses shut and locks, leaving the once-busy operating room deathly quiet."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_010"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_010",
+          "source_node_id": "F03_010",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「……咦？等、等一下！你把她们全支出去干什么？！我现在肚子还被你切开着呢，留我一个人在这里算怎么回事啊？！」",
+            "en": "“...Huh? W-wait! Why did you send them both out?! You still have my abdomen open. What am I supposed to do here alone?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_011"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "shocked_blush",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/surprised.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_011",
+          "source_node_id": "F03_011",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「怎么会是一个人？你的主刀医生兼男朋友，不是还站在这儿吗。」",
+            "en": "“How are you alone? Your surgeon and boyfriend is still standing right here.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_012"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_012",
+          "source_node_id": "F03_012",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我往前迈了半步，隔着口罩俯视着她因为紧张而剧烈起伏的胸口，戴着湿润无菌手套的右手没有去拿持针器，反而顺着敞开的腹壁切口，慢条斯理地重新探进了她温热的腹腔深处。",
+            "en": "I take half a step forward and look down over my mask at her chest heaving with nerves. Instead of picking up the needle holder, my right hand, still in a damp sterile glove, slowly reaches through the open abdominal incision and back into her warm abdominal cavity."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_013"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_013",
+          "source_node_id": "F03_013",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「呀……！唔、你干什么……！刚才不是已经摸过那边了吗……别、别再往盆腔下面伸了……！」",
+            "en": "“Ah...! Mm, what are you doing...?! You already felt that part earlier... D-don’t reach farther down into my pelvis...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_014"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "flustered_tears",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_014",
+          "source_node_id": "F03_014",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "手套滑过湿润蠕动的肠管，指腹径直探向盆腔底部，隔着薄薄的浆膜层，从她的身体内部直接将那团温热柔软的子宫底轻轻托在了掌心里。",
+            "en": "My glove slides past the moist, moving bowel. Through the thin serosal layer, my fingertips reach the pelvic floor and gently cradle the warm, soft fundus of her uterus from within her own body."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_015"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_015",
+          "source_node_id": "F03_015",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「啊啊……！不、不要……！好奇怪……有人直接从肚子里面攥住那里的感觉……又酸又胀……隆司你这个疯子，快把手拿出去……！」",
+            "en": "“Ah...! N-no...! It feels so strange... Someone gripping that part from inside my abdomen... It aches and swells... Ryuji, you madman, take your hand out...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_016"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_blush",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/shy.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_016",
+          "source_node_id": "F03_016",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「平时在外面哄你的时候，嘴不是挺硬的吗？你看，从里面轻轻捏一下，连腰都自己抬起来了。」",
+            "en": "“You always speak so defiantly when I try to comfort you outside. Look: one gentle squeeze from inside, and your hips lift on their own.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_017"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_017",
+          "source_node_id": "F03_017",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我用戴着手套的拇指隔着组织轻轻摩挲着她的子宫外壁与两侧附件。瑞穗死死咬着下唇，眼角生理性的泪珠顺着鬓角滑进手术帽里，未被约束的双腿在无菌单下羞耻地摩挲并拢，却被我空出的左手直接按住膝弯向两侧推开。",
+            "en": "With my gloved thumb, I gently rub the outer wall of her uterus and both adnexa through the tissue. Mizuho bites hard on her lower lip; involuntary tears slide from the corners of her eyes into her surgical cap. Her free legs rub together under the drape in embarrassment, until I catch her knees with my left hand and press them apart."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_018"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_018",
+          "source_node_id": "F03_018",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「——咦？！你、你站到我腿中间干什么？！为什么在解手术服的带子……等一下！不行的！我现在肚子还开着刀啊！！」",
+            "en": "“—Huh?! W-why are you standing between my legs?! Why are you undoing your surgical gown...? Wait! You can’t! My abdomen is still open!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_019"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "panic_blush",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/tense.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_019",
+          "source_node_id": "F03_019",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「就是因为还开着，才想让你试试看……从里面和外面同时被我占满是什么滋味。」",
+            "en": "“That’s exactly why I want you to find out... what it feels like when I fill you from the inside and the outside at once.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_020"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_020",
+          "source_node_id": "F03_020",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我摘下左手的无菌手套扔进污物桶，扶住她汗湿滚烫的大腿内侧，在右手依然虚拢着她盆腔深处的姿势下，对准那处早已因为极度紧张与内部爱抚而湿润泥泞的入口，毫不犹豫地沉腰顶了进去。",
+            "en": "I strip the sterile glove from my left hand and throw it in the waste bin. Holding the inside of her hot, sweat-damp thigh, my right hand still cupped deep in her pelvis, I line myself up with the opening already wet from her intense nerves and the touch within. Without hesitating, I lower my hips and thrust inside."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_021"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_021",
+          "source_node_id": "F03_021",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「——呀啊啊啊啊！！进、进来了……！唔啊啊……笨蛋、疯子……！怎么会有人在开腹的时候做这种事啊……！！」",
+            "en": "“—Aaah!! Y-you’re inside...! Ah... You idiot, you lunatic...! Who does something like this while someone’s abdomen is open?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_022"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_scream",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/pain.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_022",
+          "source_node_id": "F03_022",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "滚烫紧致的甬道瞬间死死箍住了侵入的异物，而更致命的是——每一次往深处的挺进，都会隔着薄薄的组织直接撞在自己还留在她腹腔内的右手掌心上。",
+            "en": "Her hot, tight passage clamps instantly around me. Worse, each movement deeper presses through thin tissue directly against my right palm, still inside her abdomen."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_023"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_023",
+          "source_node_id": "F03_023",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「哈啊……痛、好痛……！你每动一下，撑开器那边就跟着扯着疼……可是、可是里面又被你从两头夹着顶住……唔啊啊！」",
+            "en": "“Hah... It hurts, it hurts...! Every time you move, the retractors pull at the wound... But you’re pressing me from both sides inside... Ah!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_024"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "crying_blush",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_024",
+          "source_node_id": "F03_024",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「真的只是痛吗？瑞穗，你下面吸得比平时在床上还要紧得多，连肚子里面的子宫都在跟着一抽一抽地缩紧呢。」",
+            "en": "“Is it really only pain? Mizuho, you’re gripping me more tightly than you do in bed. Even your uterus inside your abdomen is contracting with every movement.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_025"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_025",
+          "source_node_id": "F03_025",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「胡、胡说……谁会因为这种变态的事……啊啊！别、别在顶到最深处的时候同时用手指按上面啊……！」",
+            "en": "“N-nonsense... Who would react to something so perverse... Ah! D-don’t press from above with your fingers when you thrust all the way in...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_026"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "melted_tears",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_026",
+          "source_node_id": "F03_026",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "切口边缘传来的清晰刺痛、内脏被牵拉的沉重坠胀，与最深处被反复研磨顶撞的酥麻快感彻底拧成了一股让人发疯的电流。",
+            "en": "The sharp pain at the incision, the heavy pull of her organs, and the tingling pleasure of repeated deep thrusts twist together into a maddening current."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_027"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_027",
+          "source_node_id": "F03_027",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「唔……哈啊……好奇怪……我的脑子要坏掉了……明明动一下肚子就好痛……可只要你往里顶，腰眼就麻得一点力气都没有……为什么会这么爽啊……隆司……！」",
+            "en": "“Mm... hah... It’s so strange... My mind’s falling apart... Moving at all makes my abdomen hurt, but whenever you thrust into me, my lower back goes numb and weak... Why does it feel so good, Ryuji...?!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_028"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_tears",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_028",
+          "source_node_id": "F03_028",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "原本还在抗拒挣扎的大小姐彻底溃不成军，双手死死抓紧了手术台的软垫边缘，纤细的脖颈向后仰起，原本高傲的声线化作了破碎而甜腻的哭喘。",
+            "en": "The proud young lady who had struggled against me is utterly overwhelmed. Her hands grip the padded edges of the operating table; her slender neck arches back, and her once-haughty voice breaks into sweet, ragged sobs."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_029"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_029",
+          "source_node_id": "F03_029",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「叫得这么好听，要是待会儿护士推门回来看到你一边敞着肚子一边高潮，你打算怎么解释？」",
+            "en": "“You sound beautiful. How will you explain it if the nurses come back and find you climaxing with your abdomen still open?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_030"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_030",
+          "source_node_id": "F03_030",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「不、不要提她们……！都怪你……全都是隆司把我弄成这样的……啊、慢一点……肚子里面要被你顶穿了……又痛又麻……要、要去了……！」",
+            "en": "“D-don’t mention them...! This is all your fault... Ryuji made me like this... Ah, slow down... You’ll pierce through me from inside... It hurts and tingles... I-I’m coming...!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_031"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "peak_blush",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/shy.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_031",
+          "source_node_id": "F03_031",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "我加快了腰间耸动的频率，每一次深重而密集的撞击都让手术台发出细微的金属摇晃声，敞开的腹壁随着她急促的喘息剧烈起伏。",
+            "en": "I quicken the movement of my hips. Each hard, rapid thrust draws a faint metallic rattle from the operating table, and her open abdominal wall heaves with her hurried breaths."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_032"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_032",
+          "source_node_id": "F03_032",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「啊啊——！不、不行了……刀口好痛……可是好舒服……隆司、隆司……！一起……给我……啊啊啊啊——！！」",
+            "en": "“Ah—! I-I can’t take it... The incision hurts... but it feels so good... Ryuji, Ryuji...! Together... give it to me... aaah!”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_033"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "climax_tears",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/crying.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_033",
+          "source_node_id": "F03_033",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "在瑞穗仰起头发出近乎失声的颤栗尖叫、整个人在手术台上剧烈弓起腰背的瞬间，滚烫的脉冲毫无保留地撞进最深处，将她紧缩痉挛的深处彻底灌满。",
+            "en": "Mizuho throws back her head in an almost voiceless scream and arches violently on the operating table. At that instant I release all my heat deep inside her, filling her contracting depths."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_034"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_034",
+          "source_node_id": "F03_034",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "哪怕隔着腹腔里的无菌手套，我都能清晰地感受到那团温热的脏器在掌心里剧烈地搏动、收缩，滚烫的温度仿佛顺着她的身体内部一路蔓延到了指尖。",
+            "en": "Even through the sterile glove inside her abdomen, I can clearly feel the warm organ in my palm pulsing and contracting. Its heat seems to travel through her body all the way to my fingertips."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_035"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_035",
+          "source_node_id": "F03_035",
+          "actor_id": "guest_mizuho",
+          "speaker_label": {
+            "zh_CN": "瑞穗",
+            "en": "Mizuho Shite"
+          },
+          "text": {
+            "zh_CN": "「哈啊……哈啊……唔……肚子里面……烫得要命……你这个彻头彻尾的大变态……快点给我洗干净缝起来啦……」",
+            "en": "“Hah... hah... Mm... It’s unbearably hot inside my abdomen... You absolute pervert... Hurry up and clean me out and stitch me closed...”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_036"
+            }
+          ],
+          "background_id": "operating_room",
+          "expression": "afterglow_dazed",
+          "portrait_path": "assets/characters/mizuho_story_v1/intraoperative/tired.png",
+          "portrait_y": 272.0
+        },
+        {
+          "id": "F03_036",
+          "source_node_id": "F03_036",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「好好好，这就替我的大小姐冲洗关腹——」",
+            "en": "“All right, all right. I’ll irrigate and close my young lady’s abdomen now—”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_037"
+            }
+          ],
+          "background_id": "operating_room"
+        },
+        {
+          "id": "F03_037",
+          "source_node_id": "F03_037",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "“笃、笃、笃！”——清脆的敲门声毫无征兆地在耳边炸响。",
+            "en": "“Knock, knock, knock!” Sharp knocks burst beside my ear without warning."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_038"
+            }
+          ],
+          "background_id": "operating_room",
+          "sfx_key": "knock_knock_loud",
+          "transition_key": "shatter_to_office"
+        },
+        {
+          "id": "F03_038",
+          "source_node_id": "F03_038",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "无影灯、手术台和满脸潮红的瑞穗在视野里瞬间消散。我猛地从办公桌前惊醒，手底下还按着那份摊开的旧病历。",
+            "en": "The surgical lights, operating table, and flushed Mizuho vanish from sight. I start awake at my desk, my hand still resting on the open medical record."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_039"
+            }
+          ],
+          "background_id": "player_office",
+          "bgm_key": "daily_warm_hospital"
+        },
+        {
+          "id": "F03_039",
+          "source_node_id": "F03_039",
+          "actor_id": "doc_sayaka",
+          "speaker_label": {
+            "zh_CN": "南条小夜香",
+            "en": "Sayaka Nanjo"
+          },
+          "text": {
+            "zh_CN": "「咦？隆司，我敲了三下门你都没反应，大白天的在办公室里做什么美梦呢？」",
+            "en": "“Huh? Ryuji, I knocked three times and you didn’t answer. What were you daydreaming about in the office in broad daylight?”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_040"
+            }
+          ],
+          "background_id": "player_office",
+          "sprite_key": "sayaka_smile_tease",
+          "portrait_path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/teasing.png"
+        },
+        {
+          "id": "F03_040",
+          "source_node_id": "F03_040",
+          "actor_id": "narrator",
+          "speaker_label": {
+            "zh_CN": "旁白",
+            "en": "Narration"
+          },
+          "text": {
+            "zh_CN": "南条小夜香抱着一摞刚签完字的会诊单推门走进来，狐疑地眨了眨眼，视线落在我有些发烫的脸上。",
+            "en": "Sayaka Nanjo enters with a stack of consultation forms she has just signed. She blinks suspiciously, her gaze settling on my heated face."
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_041"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F03_041",
+          "source_node_id": "F03_041",
+          "actor_id": "player",
+          "speaker_label": {
+            "zh_CN": "坂口隆司",
+            "en": "Ryuji Sakaguchi"
+          },
+          "text": {
+            "zh_CN": "「咳……没什么，刚才在复盘以前的开腹手术记录，不小心走神了。」",
+            "en": "“Ahem... Nothing. I was reviewing an old laparotomy record and got distracted for a moment.”"
+          },
+          "choices": [
+            {
+              "id": "continue",
+              "label": {
+                "zh_CN": "继续",
+                "en": "Continue"
+              },
+              "next": "F03_042"
+            }
+          ],
+          "background_id": "player_office"
+        },
+        {
+          "id": "F03_042",
+          "source_node_id": "F03_042",
+          "actor_id": "doc_sayaka",
+          "speaker_label": {
+            "zh_CN": "南条小夜香",
+            "en": "Sayaka Nanjo"
+          },
+          "text": {
+            "zh_CN": "「复盘手术记录能复盘得呼吸这么急促呀？哼哼，待会儿查房要是再心不在焉，我可要向护士长举报你咯。」",
+            "en": "“Reviewing a surgical record made you breathe that hard? Hmph. If you’re still distracted during rounds later, I’m telling the head nurse.”"
+          },
+          "choices": [
+            {
+              "id": "end",
+              "label": {
+                "zh_CN": "结束",
+                "en": "End"
+              },
+              "next": "@end"
+            }
+          ],
+          "background_id": "player_office",
+          "sprite_key": "sayaka_laugh",
+          "portrait_path": "assets/characters/portrait_pack_v19/doc_sayaka/white_coat/smile.png"
+        }
+      ]
+    }
+  ]
+}

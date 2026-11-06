@@ -1,0 +1,366 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_adv_open_descending_thoracic_aortic_replacement",
+  "stages": {
+    "M01": {
+      "before_action": [
+        {
+          "id": "M01_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "左侧开胸标记和肋间进入点已经核对，先保护胸壁的神经血管束。",
+          "text_en": "The left thoracotomy markings and intercostal entry point are confirmed. Protect the chest-wall neurovascular bundle."
+        },
+        {
+          "id": "M01_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "开胸器械、肋间牵开器和长吸引，准备进入。",
+          "text_en": "Thoracotomy instruments, a rib spreader, and long suction are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M01_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "胸腔进入完成，我维持肺组织向前牵开，给降主动脉留出视野。",
+          "text_en": "The chest is open. I'll retract the lung anteriorly to expose the descending aorta."
+        },
+        {
+          "id": "M01_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "右侧卧位的受压点和通气条件我会持续复核。",
+          "text_en": "I'll continue checking pressure points and ventilation conditions in the right lateral position."
+        }
+      ]
+    },
+    "M02": {
+      "before_action": [
+        {
+          "id": "M02_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "主动脉瘤壁不能当牵拉点，先从邻近正常组织判断边界。",
+          "text_en": "The aneurysm wall must not become a traction point. Define its margins from adjacent normal tissue."
+        },
+        {
+          "id": "M02_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "湿纱布、长无创牵开片和深部吸引已经换好。",
+          "text_en": "Moist pads, long atraumatic retractors, and deep suction are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M02_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "近远端正常血管与邻近组织的关系有了，下一步再去找可控制区。",
+          "text_en": "The proximal and distal normal aorta and nearby structures are defined. Next we identify control zones."
+        }
+      ]
+    },
+    "M03": {
+      "before_action": [
+        {
+          "id": "M03_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "近端控制区要离开脆弱瘤壁，远端也不能为了够到就硬拉主动脉。",
+          "text_en": "The proximal control zone must be away from the fragile aneurysm wall. Do not pull on the aorta to reach the distal zone."
+        },
+        {
+          "id": "M03_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "血管环、长直角钳和精细血管剪。",
+          "text_en": "Vessel loops, a long right-angle clamp, and fine vascular scissors."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M03_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我分别保留两端的暴露，夹闭器械进入时不会遮住另一侧。",
+          "text_en": "I'll preserve exposure at both ends so clamps do not obscure the opposite side."
+        },
+        {
+          "id": "M03_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "开始进入大血管操作窗口，失血与循环趋势会即时跟进。",
+          "text_en": "We're approaching major-vessel work. I'll track blood loss and hemodynamic trends in real time."
+        }
+      ]
+    },
+    "M04": {
+      "before_action": [
+        {
+          "id": "M04_V2_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "夹闭前需要对上远端灌注、体温和脊髓保护计划，我逐项复述。",
+          "text_en": "Before cross-clamping, let's read back distal perfusion, temperature, and spinal-cord protection plans."
+        },
+        {
+          "id": "M04_V2_PRE02",
+          "speaker_role": "assistant_1",
+          "text": "关键肋间动脉的预计位置也列入保护清单，之后不能只顾吻合速度。",
+          "text_en": "Include the expected key intercostal arteries in the protection checklist; anastomotic speed is not the only priority."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M04_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "采用刚确定的灌注与夹闭顺序，每次转换都要获得麻醉侧回应。",
+          "text_en": "We'll use the chosen perfusion and clamping sequence. Every transition requires an anesthesia response."
+        },
+        {
+          "id": "M04_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "灌注相关管路和备用接头已按团队确认清单准备。",
+          "text_en": "Perfusion tubing and backup connectors are prepared according to the team's checklist."
+        }
+      ]
+    },
+    "M05": {
+      "before_action": [
+        {
+          "id": "M05_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "近远端控制区都在眼前，夹具进入时我负责保持外侧空间。",
+          "text_en": "Both control zones are visible. I'll maintain lateral space as the clamps enter."
+        },
+        {
+          "id": "M05_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "大血管无损夹、血管环和备用夹已排好。",
+          "text_en": "Atraumatic aortic clamps, vessel loops, and backup clamps are arranged."
+        },
+        {
+          "id": "M05_V2_PRE03",
+          "speaker_role": "anesthesia",
+          "text": "夹闭动作请逐步报出，我会把远端灌注反应和当前压力趋势对应起来。",
+          "text_en": "Call out each clamping step so I can correlate distal perfusion responses with current pressure trends."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M05_V2_POST01",
+          "speaker_role": "anesthesia",
+          "text": "夹闭状态与远端支持需要对应核对，我正在复查灌注和压力趋势。",
+          "text_en": "Clamping and distal support must be assessed together. I'm reviewing perfusion and pressure trends."
+        },
+        {
+          "id": "M05_V2_POST02",
+          "speaker_role": "assistant_1",
+          "text": "控制区就位后先确认瘤段边界，后续切除别牵动夹闭点。",
+          "text_en": "With control established, confirm the aneurysmal segment boundaries. Do not pull on the clamp sites during resection."
+        }
+      ]
+    },
+    "M06": {
+      "before_action": [
+        {
+          "id": "M06_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "准备处理的是胸段降主动脉病变，不进入腹段分支重建范围。",
+          "text_en": "We're treating the descending thoracic segment, not undertaking abdominal branch reconstruction."
+        },
+        {
+          "id": "M06_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "人工血管本体、规格卡和修剪器械已经独立摆放。",
+          "text_en": "The prosthetic graft, size card, and trimming tools are laid out separately."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M06_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我维持两端血管对位，让下一步近端吻合有不扭曲的进针方向。",
+          "text_en": "I'll maintain alignment of both aortic ends for an untwisted proximal anastomosis."
+        }
+      ]
+    },
+    "M07": {
+      "before_action": [
+        {
+          "id": "M07_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "近端血管壁的厚薄不均，先规划针距，避免缝线把边缘割裂。",
+          "text_en": "The proximal aortic wall is uneven in thickness. Plan suture spacing to avoid cutting through the edge."
+        },
+        {
+          "id": "M07_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "大血管缝线、无创血管镊和长持针器。",
+          "text_en": "Aortic sutures, atraumatic vascular forceps, and a long needle holder."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M07_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "近端吻合完成后我守住缝合线，调整移植物方向时不会拿它受力。",
+          "text_en": "I'll protect the proximal suture line so it does not bear force while the graft is aligned."
+        },
+        {
+          "id": "M07_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "大血管吻合阶段继续监测失血和灌注，有变化会即时通报。",
+          "text_en": "I'll continue monitoring blood loss and perfusion during aortic reconstruction and report changes promptly."
+        }
+      ]
+    },
+    "M08": {
+      "before_action": [
+        {
+          "id": "M08_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "这组关键肋间动脉与脊髓供血有关，先辨认开口和可重接的组织边缘。",
+          "text_en": "These key intercostal arteries contribute to spinal-cord perfusion. Identify their ostia and reimplantable tissue margins."
+        },
+        {
+          "id": "M08_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "细血管剪、小血管钳和补片吻合缝线。",
+          "text_en": "Fine vascular scissors, small vascular clamps, and patch-anastomosis sutures."
+        },
+        {
+          "id": "M08_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "我先把这组开口与人工血管的预定窗口对齐，避免补片缝好后受扭。",
+          "text_en": "I'll align these ostia with the planned graft window so the patch is not twisted after suturing."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M08_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "重接区域先保护好，下面调整人工血管时别让这处开口受扭。",
+          "text_en": "Protect the reimplantation site. Do not twist this opening when positioning the graft."
+        },
+        {
+          "id": "M08_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "脊髓保护相关监测会继续结合远端灌注一起判断。",
+          "text_en": "Spinal-cord protection monitoring will continue alongside assessment of distal perfusion."
+        }
+      ]
+    },
+    "M09": {
+      "before_action": [
+        {
+          "id": "M09_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "远端连接要顺着主动脉自然走向，先确认长度，别留下折角。",
+          "text_en": "The distal connection must follow the aorta's natural course. Check graft length to avoid a kink."
+        },
+        {
+          "id": "M09_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "远端吻合用血管缝线和无损镊，备用止血针线也在手边。",
+          "text_en": "Distal vascular sutures and atraumatic forceps are ready, with backup hemostatic sutures nearby."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M09_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "两端吻合之间的移植物走向再确认，肋间动脉重接部也要一起检查。",
+          "text_en": "Recheck graft alignment between the two anastomoses, including the intercostal reimplantation site."
+        },
+        {
+          "id": "M09_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "备用吸引与冲洗供应已补充，复灌阶段的耗材准备完成。",
+          "text_en": "Backup suction and irrigation are replenished. Supplies for reperfusion are ready."
+        }
+      ]
+    },
+    "M10": {
+      "before_action": [
+        {
+          "id": "M10_V2_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "准备分阶段恢复血流，夹闭调整每一步请清楚报出。",
+          "text_en": "We're preparing staged reperfusion. Please announce each clamp adjustment clearly."
+        },
+        {
+          "id": "M10_V2_PRE02",
+          "speaker_role": "assistant_1",
+          "text": "我先看近端吻合，再看远端和肋间重接区，不能同时只盯一个出血点。",
+          "text_en": "I'll assess the proximal line, then distal and intercostal sites. We cannot watch only one bleeding point."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M10_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "复灌后的吻合区已经进入复查阶段，我继续保留深面吸引和暴露。",
+          "text_en": "The reperfused anastomoses are under review. I'll maintain deep suction and exposure."
+        },
+        {
+          "id": "M10_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "再灌注后的循环与灌注趋势正在核对，需要调整会立即通知。",
+          "text_en": "I'm checking hemodynamic and perfusion trends after reperfusion and will report any needed adjustments."
+        }
+      ]
+    },
+    "M11": {
+      "before_action": [
+        {
+          "id": "M11_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "远端通路、重接的肋间动脉和吻合线止血，按顺序一项项过。",
+          "text_en": "Review distal flow, reimplanted intercostal arteries, and anastomotic hemostasis one by one."
+        },
+        {
+          "id": "M11_V2_PRE02",
+          "speaker_role": "anesthesia",
+          "text": "脊髓保护不能只看一项结果，我会合并当前监测与循环信息报告。",
+          "text_en": "Spinal-cord protection cannot rely on one measure. I'll report combined monitoring and hemodynamic findings."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M11_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的最终复核路径完成确认，再安排引流与关胸。",
+          "text_en": "Complete confirmation along the selected final review path before drains and closure."
+        },
+        {
+          "id": "M11_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "人工血管与血管缝线的实用记录已核对，准备进入终末清点。",
+          "text_en": "The graft and vascular suture use records are checked. Preparing final counts."
+        }
+      ]
+    },
+    "M12": {
+      "before_action": [
+        {
+          "id": "M12_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "胸腔引流要避开人工血管和吻合线，我维持最后的深部视野。",
+          "text_en": "Chest drains must clear the graft and suture lines. I'll maintain the final deep view."
+        },
+        {
+          "id": "M12_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胸管固定线、肋间关闭线和皮下器械已换好。",
+          "text_en": "Chest-tube fixation sutures, intercostal closure sutures, and subcutaneous instruments are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "M12_V2_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "纱布、针和器械的终末清点完成，移植物识别信息随交接记录移交。",
+          "text_en": "Final sponge, needle, and instrument counts are complete. Graft identifiers accompany the handoff."
+        },
+        {
+          "id": "M12_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "复苏团队会收到远端灌注与脊髓保护的观察重点，继续围术期监测。",
+          "text_en": "The recovery team will receive priorities for distal perfusion and spinal-cord surveillance as monitoring continues."
+        }
+      ]
+    }
+  }
+}

@@ -20,7 +20,8 @@ func run() -> void:
 			for branch in range(4):
 				expect(g.prepare_character_event_test_save(id), "Fixture " + id)
 				var d: Dictionary = g.character_event_definitions[id]
-				g.set_test_time(g.day_number(), int(d.time_start))
+				if id.begins_with("ev_doc_takemi_"):
+					expect(g.current_absolute_clock() == int(d.time_start), "Fixture begins at authored event clock " + id)
 				var before: int = g.elapsed()
 				var surgical_count: int = g.completed_surgeries_total
 				var event = g.start_character_event(id)
@@ -57,7 +58,7 @@ func run() -> void:
 				expect(g.completed_surgeries_total == surgical_count, "Pure story, no surgery settlement")
 				if id == "miyuki_lv4_inspection":
 					expect(g.free_h_relationship_qualified("nurse_yui"), "Lv4 grants formal intimacy qualification")
-					expect(not g.free_h_unlocked("nurse_yui"), "Missing author images cannot launch incomplete runner")
+					expect(g.free_h_unlocked("nurse_yui"), "Completed Lv4 and formal intimacy qualification unlock ready Free H content")
 				g.finish_character_event()
 				expect(not g.character_event_available(d), "No replay " + id)
 		app.show_event_test_hub()

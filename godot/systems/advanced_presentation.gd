@@ -138,4 +138,4 @@ static func is_spoken(text: String) -> bool:
 	return text.begins_with("「") or text.begins_with("“") or text.begins_with('"')
 
 static func format_story(text: String, procedure_name: String) -> String:
-	return text.replace("〈本次术式〉", procedure_name)
+	return text.replace("〈本次术式〉", procedure_name).replace("{procedure_name}", procedure_name)

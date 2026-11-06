@@ -40,6 +40,23 @@ func run() -> void:
 			expect(not g.staff_patient_unlocked(actor) and not c.eligible(), "Preloading / numeric Lv5 cannot unlock unfinished route: " + actor)
 	for actor in profiles:
 		expect(texts.actors.has(actor), "Every registered patient has a preloaded script: " + actor)
+		expect(Ready.validate_dialogue(profiles[actor]).is_empty(), "Complete bilingual patient dialogue: " + actor)
+	var broken_profile: Dictionary = profiles.doc_serika.duplicate(true)
+	broken_profile.dialogue.en.erase("invitation_lines")
+	expect(not Ready.validate_dialogue(broken_profile).is_empty(), "Detect missing English dialogue group")
+	broken_profile = profiles.doc_serika.duplicate(true)
+	broken_profile.dialogue.en.invitation_lines[0] = ""
+	expect(not Ready.validate_dialogue(broken_profile).is_empty(), "Detect empty English patient line")
+	broken_profile = profiles.doc_serika.duplicate(true)
+	broken_profile.dialogue.en.invitation_lines[0] = broken_profile.dialogue.zh_CN.invitation_lines[0]
+	expect(not Ready.validate_dialogue(broken_profile).is_empty(), "Detect Chinese fallback in English patient line")
+	broken_profile = profiles.doc_serika.duplicate(true)
+	broken_profile.dialogue.en.invitation_lines[0] = str(broken_profile.dialogue.en.invitation_lines[0]).replace("{procedure_name}", "")
+	expect(not Ready.validate_dialogue(broken_profile).is_empty(), "Detect missing patient dialogue placeholder")
+	broken_profile = profiles.doc_serika.duplicate(true)
+	broken_profile.dialogue.zh_CN.invitation_lines.clear()
+	broken_profile.dialogue.en.invitation_lines.clear()
+	expect(not Ready.validate_dialogue(broken_profile).is_empty(), "Detect absent invitation in both locales")
 	# Negative controls: missing chapters, translation and each required image must fail.
 	var patient := preload("res://godot/systems/advanced_presentation.gd").patient({"staff_patient_id":"doc_serika", "procedure_id":"surgery_open_whipple"}, g, false)
 	var portraits: Dictionary = patient.visuals.portraits.duplicate(true)

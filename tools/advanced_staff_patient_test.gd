@@ -90,6 +90,7 @@ func episode(actor: String, prior: int, skip: bool, forced_failure: bool) -> voi
 
 func run() -> void:
 	# Any newly registered Lv5 patient must satisfy the same release requirements.
+	expect(Present.format_story("The procedure is {procedure_name}.", "Whipple") == "The procedure is Whipple.", "English procedure placeholder resolves")
 	var readiness_game = new_game()
 	var readiness = preload("res://tools/staff_patient_lv5_readiness.gd")
 	var story_data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/staff_patient/stories.json"))

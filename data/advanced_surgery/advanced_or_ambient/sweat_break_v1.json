@@ -1,0 +1,487 @@
+{
+  "schema_version": "advanced_or_ambient_sweat_v1",
+  "event_probability": 0.3,
+  "max_groups_per_stage_transition": 1,
+  "thresholds_minutes": {
+    "lead_surgeon": [
+      120,
+      300,
+      480,
+      600
+    ],
+    "assistant_1": [
+      150,
+      360,
+      510,
+      660
+    ],
+    "assistant_2": [
+      180,
+      420,
+      540,
+      630
+    ],
+    "scrub_primary": [
+      210,
+      450
+    ],
+    "scrub_secondary": [
+      270,
+      570
+    ]
+  },
+  "variants": {
+    "lead_surgeon": [
+      {
+        "id": "LEAD_01",
+        "lines": [
+          {
+            "id": "LEAD_01_01",
+            "speaker_role": "circulating_wiper",
+            "text": "坂口医生，额头已经有汗了。先向外侧转一下脸。",
+            "text_en": "Dr. Sakaguchi, you're sweating on your forehead. Please turn your face away from the field for a moment."
+          },
+          {
+            "id": "LEAD_01_02",
+            "speaker_role": "lead_surgeon",
+            "text": "嗯，麻烦你。手套现在可没法碰脸。",
+            "text_en": "Mm, thank you. I can't exactly touch my face with these gloves."
+          },
+          {
+            "id": "LEAD_01_03",
+            "speaker_role": "circulating_wiper",
+            "text": "好了。术野这边我没有碰到，可以继续。",
+            "text_en": "All done. I haven't touched the sterile field. You can continue."
+          }
+        ]
+      },
+      {
+        "id": "LEAD_02",
+        "lines": [
+          {
+            "id": "LEAD_02_01",
+            "speaker_role": "lead_surgeon",
+            "text": "巡回，给我擦一下汗。刚才一直没空抬头。",
+            "text_en": "Circulator, could you wipe my forehead? I haven't had a moment to look up."
+          },
+          {
+            "id": "LEAD_02_02",
+            "speaker_role": "circulating_wiper",
+            "text": "请稍微退开、把头转过来。……好了。",
+            "text_en": "Step back a little and turn toward me. ... All done."
+          }
+        ]
+      },
+      {
+        "id": "LEAD_03",
+        "lines": [
+          {
+            "id": "LEAD_03_01",
+            "speaker_role": "assistant_2",
+            "text": "坂口，额角那滴汗快掉下来了。先停一下，我看着这里。",
+            "text_en": "Sakaguchi, that drop by your temple is about to fall. Pause a second; I've got this area."
+          },
+          {
+            "id": "LEAD_03_02",
+            "speaker_role": "lead_surgeon",
+            "text": "你倒是比我先发现。巡回，拜托。",
+            "text_en": "You spotted it before I did. Circulator, please."
+          },
+          {
+            "id": "LEAD_03_03",
+            "speaker_role": "circulating_wiper",
+            "text": "头向右转一点。……擦好了。",
+            "text_en": "Turn a little to your right. ... There, all done."
+          }
+        ]
+      },
+      {
+        "id": "LEAD_04",
+        "lines": [
+          {
+            "id": "LEAD_04_01",
+            "speaker_role": "lead_surgeon",
+            "text": "我一直以为是灯太亮，现在看来是我真的在出汗。",
+            "text_en": "I thought the lights were just too bright. Apparently I'm actually sweating."
+          },
+          {
+            "id": "LEAD_04_02",
+            "speaker_role": "circulating_wiper",
+            "text": "先别研究原因，脸转过来，我处理一下。",
+            "text_en": "Let's not investigate why. Turn your face this way and I'll take care of it."
+          },
+          {
+            "id": "LEAD_04_03",
+            "speaker_role": "lead_surgeon",
+            "text": "……看来这件事还是得听你的。",
+            "text_en": "...Looks like I should listen to you on this one."
+          }
+        ]
+      }
+    ],
+    "assistant_1": [
+      {
+        "id": "ASSIST1_01",
+        "lines": [
+          {
+            "id": "ASSIST1_01_01",
+            "speaker_role": "assistant_1",
+            "text": "这边牵开先请第二助手接一下，我要擦个汗。",
+            "text_en": "Second assistant, could you take over the retraction here? I need my forehead wiped."
+          },
+          {
+            "id": "ASSIST1_01_02",
+            "speaker_role": "assistant_2",
+            "text": "接住了，术野位置不变。",
+            "text_en": "I've got it. The exposure won't change."
+          },
+          {
+            "id": "ASSIST1_01_03",
+            "speaker_role": "circulating_wiper",
+            "text": "请转向外侧。……好了，辛苦。",
+            "text_en": "Turn away from the field, please. ... There. Thanks for your hard work."
+          }
+        ]
+      },
+      {
+        "id": "ASSIST1_02",
+        "lines": [
+          {
+            "id": "ASSIST1_02_01",
+            "speaker_role": "circulating_wiper",
+            "text": "第一助手，额头的汗快流到眉毛了，需要帮忙吗？",
+            "text_en": "First assistant, that sweat is about to reach your eyebrows. Need a hand?"
+          },
+          {
+            "id": "ASSIST1_02_02",
+            "speaker_role": "assistant_1",
+            "text": "需要，不过等我先把手里的吸引交给第二助手。",
+            "text_en": "Yes, but let me pass the suction to the second assistant first."
+          },
+          {
+            "id": "ASSIST1_02_03",
+            "speaker_role": "circulating_wiper",
+            "text": "好。现在可以了，转过来一点。……擦好了。",
+            "text_en": "Of course. You're clear now—turn this way a little. ... All done."
+          }
+        ]
+      },
+      {
+        "id": "ASSIST1_03",
+        "lines": [
+          {
+            "id": "ASSIST1_03_01",
+            "speaker_role": "assistant_1",
+            "text": "下一段开始前，巡回，帮我擦一下额头。",
+            "text_en": "Before we start the next part, circulator, please wipe my forehead."
+          },
+          {
+            "id": "ASSIST1_03_02",
+            "speaker_role": "circulating_wiper",
+            "text": "好的，先远离术野半步。……擦好了。",
+            "text_en": "Of course. Step half a pace away from the field first. ... All done."
+          }
+        ]
+      },
+      {
+        "id": "ASSIST1_04",
+        "lines": [
+          {
+            "id": "ASSIST1_04_01",
+            "speaker_role": "lead_surgeon",
+            "text": "第一助手，你先把脸上的汗处理一下。这一段我等你。",
+            "text_en": "First assistant, take a moment to get that sweat off your face. I'll wait."
+          },
+          {
+            "id": "ASSIST1_04_02",
+            "speaker_role": "assistant_1",
+            "text": "好，我正想说。巡回，麻烦了。",
+            "text_en": "All right. I was just about to ask. Circulator, please."
+          },
+          {
+            "id": "ASSIST1_04_03",
+            "speaker_role": "circulating_wiper",
+            "text": "不用急，先转过来。……好了。",
+            "text_en": "No rush. Turn this way first. ... Done."
+          }
+        ]
+      }
+    ],
+    "assistant_2": [
+      {
+        "id": "ASSIST2_01",
+        "lines": [
+          {
+            "id": "ASSIST2_01_01",
+            "speaker_role": "assistant_2",
+            "text": "第一助手，帮我接一下这支牵开器，我眼前有汗了。",
+            "text_en": "First assistant, please take this retractor for a moment. Sweat is getting in my eyes."
+          },
+          {
+            "id": "ASSIST2_01_02",
+            "speaker_role": "assistant_1",
+            "text": "接好了，放心转过去。",
+            "text_en": "I've got it. Go ahead and turn away."
+          },
+          {
+            "id": "ASSIST2_01_03",
+            "speaker_role": "circulating_wiper",
+            "text": "擦好了。你回来时先看清牵开器的位置。",
+            "text_en": "All done. Check the retractor's position before you resume."
+          }
+        ]
+      },
+      {
+        "id": "ASSIST2_02",
+        "lines": [
+          {
+            "id": "ASSIST2_02_01",
+            "speaker_role": "assistant_1",
+            "text": "你额头那滴汗已经挂了半天了，先处理一下。",
+            "text_en": "That drop's been hanging on your forehead for ages. Better deal with it."
+          },
+          {
+            "id": "ASSIST2_02_02",
+            "speaker_role": "assistant_2",
+            "text": "我还以为能坚持到下一阶段。巡回，麻烦你。",
+            "text_en": "I thought I could make it to the next stage. Circulator, could you help?"
+          },
+          {
+            "id": "ASSIST2_02_03",
+            "speaker_role": "circulating_wiper",
+            "text": "往外侧转头。……好，回去吧。",
+            "text_en": "Turn away from the field. ... There, you can go back."
+          }
+        ]
+      },
+      {
+        "id": "ASSIST2_03",
+        "lines": [
+          {
+            "id": "ASSIST2_03_01",
+            "speaker_role": "circulating_wiper",
+            "text": "第二助手，需要擦汗吗？你可以等这段牵拉结束再过来。",
+            "text_en": "Second assistant, need your forehead wiped? We can wait until you've finished retracting."
+          },
+          {
+            "id": "ASSIST2_03_02",
+            "speaker_role": "assistant_2",
+            "text": "正好结束了。谢谢，麻烦帮我一下。",
+            "text_en": "I've just finished, actually. Thanks—I'd appreciate it."
+          },
+          {
+            "id": "ASSIST2_03_03",
+            "speaker_role": "circulating_wiper",
+            "text": "往外侧转一点。……好了。",
+            "text_en": "Turn outward a little. ... All done."
+          }
+        ]
+      },
+      {
+        "id": "ASSIST2_04",
+        "lines": [
+          {
+            "id": "ASSIST2_04_01",
+            "speaker_role": "assistant_2",
+            "text": "我没有累，就是额头这点汗有些碍事。",
+            "text_en": "I'm not tired. It's just that the sweat on my forehead is distracting."
+          },
+          {
+            "id": "ASSIST2_04_02",
+            "speaker_role": "circulating_wiper",
+            "text": "我没有问你累不累。把脸转过来就行。",
+            "text_en": "I didn't ask if you were tired. Just turn your face this way."
+          },
+          {
+            "id": "ASSIST2_04_03",
+            "speaker_role": "assistant_2",
+            "text": "……明白。谢谢。",
+            "text_en": "...Understood. Thanks."
+          }
+        ]
+      }
+    ],
+    "scrub_primary": [
+      {
+        "id": "SCRUB1_01",
+        "lines": [
+          {
+            "id": "SCRUB1_01_01",
+            "speaker_role": "scrub_primary",
+            "text": "副器械，帮我盯一下无菌台。我需要擦汗。",
+            "text_en": "Second scrub, watch the sterile table for me. I need my forehead wiped."
+          },
+          {
+            "id": "SCRUB1_01_02",
+            "speaker_role": "scrub_secondary",
+            "text": "台面和针数我接着，你可以转过去。",
+            "text_en": "I've got the table and the needle count. You can turn away."
+          },
+          {
+            "id": "SCRUB1_01_03",
+            "speaker_role": "circulating_wiper",
+            "text": "这边。……擦好了，可以接回。",
+            "text_en": "Over here. ... Done. You can take over again."
+          }
+        ]
+      },
+      {
+        "id": "SCRUB1_02",
+        "lines": [
+          {
+            "id": "SCRUB1_02_01",
+            "speaker_role": "scrub_primary",
+            "text": "下一组器械已经交接完，巡回，能帮我擦一下额头吗？",
+            "text_en": "The next instrument set is handed over. Circulator, could you wipe my forehead?"
+          },
+          {
+            "id": "SCRUB1_02_02",
+            "speaker_role": "circulating_wiper",
+            "text": "可以。先离开无菌台一点，头往我这边转。",
+            "text_en": "Certainly. Step away from the sterile table and turn toward me."
+          },
+          {
+            "id": "SCRUB1_02_03",
+            "speaker_role": "scrub_secondary",
+            "text": "我继续盯着台面，不会漏下一件。",
+            "text_en": "I'll keep an eye on the table. We won't miss the next instrument."
+          }
+        ]
+      },
+      {
+        "id": "SCRUB1_03",
+        "lines": [
+          {
+            "id": "SCRUB1_03_01",
+            "speaker_role": "circulating_wiper",
+            "text": "第一器械，你帽沿下面开始出汗了。等这组针数核对完，我帮你擦。",
+            "text_en": "First scrub, you're starting to sweat under the edge of your cap. I'll help once you've finished this needle count."
+          },
+          {
+            "id": "SCRUB1_03_02",
+            "speaker_role": "scrub_primary",
+            "text": "好，这组已经核对完，可以了。",
+            "text_en": "All right, the count's complete. I'm ready."
+          },
+          {
+            "id": "SCRUB1_03_03",
+            "speaker_role": "circulating_wiper",
+            "text": "先离开台面一点。……擦好了。",
+            "text_en": "Step away from the table a little. ... Done."
+          }
+        ]
+      },
+      {
+        "id": "SCRUB1_04",
+        "lines": [
+          {
+            "id": "SCRUB1_04_01",
+            "speaker_role": "scrub_primary",
+            "text": "副器械先接台。巡回，我需要十秒钟。",
+            "text_en": "Second scrub, take the table. Circulator, I need ten seconds."
+          },
+          {
+            "id": "SCRUB1_04_02",
+            "speaker_role": "circulating_wiper",
+            "text": "过来，脸向外。……好了。",
+            "text_en": "Over here. Face away from the field. ... All done."
+          },
+          {
+            "id": "SCRUB1_04_03",
+            "speaker_role": "scrub_primary",
+            "text": "谢谢。下一组缝线我来准备。",
+            "text_en": "Thank you. I'll prepare the next sutures."
+          }
+        ]
+      }
+    ],
+    "scrub_secondary": [
+      {
+        "id": "SCRUB2_01",
+        "lines": [
+          {
+            "id": "SCRUB2_01_01",
+            "speaker_role": "scrub_secondary",
+            "text": "这批备用器械已经排好，第一器械，台面先交还给你。",
+            "text_en": "The spare instruments are arranged. First scrub, the table's back in your hands."
+          },
+          {
+            "id": "SCRUB2_01_02",
+            "speaker_role": "scrub_primary",
+            "text": "收到，你去擦一下汗吧。",
+            "text_en": "Got it. Go get your forehead wiped."
+          },
+          {
+            "id": "SCRUB2_01_03",
+            "speaker_role": "circulating_wiper",
+            "text": "头转过来一点。……好了。",
+            "text_en": "Turn your head this way a little. ... All done."
+          }
+        ]
+      },
+      {
+        "id": "SCRUB2_02",
+        "lines": [
+          {
+            "id": "SCRUB2_02_01",
+            "speaker_role": "circulating_wiper",
+            "text": "第二器械，你额头出汗了，我等你做完这组清点。",
+            "text_en": "Second scrub, you're sweating. I'll wait until you've finished that count."
+          },
+          {
+            "id": "SCRUB2_02_02",
+            "speaker_role": "scrub_secondary",
+            "text": "还有最后两件……好了。第一器械帮我接台。",
+            "text_en": "Two items left... Done. First scrub, take the table for me."
+          },
+          {
+            "id": "SCRUB2_02_03",
+            "speaker_role": "circulating_wiper",
+            "text": "请转向外侧，我帮你擦一下。……好了。",
+            "text_en": "Turn away from the field, please. Let me wipe that. ... All done."
+          }
+        ]
+      },
+      {
+        "id": "SCRUB2_03",
+        "lines": [
+          {
+            "id": "SCRUB2_03_01",
+            "speaker_role": "scrub_secondary",
+            "text": "我还以为戴着手术帽，就不容易出汗了。",
+            "text_en": "I thought wearing a surgical cap would keep me from sweating so much."
+          },
+          {
+            "id": "SCRUB2_03_02",
+            "speaker_role": "scrub_primary",
+            "text": "那是手术帽，不是吸汗毛巾。台面我接着。",
+            "text_en": "It's a surgical cap, not a sweat towel. I've got the table."
+          },
+          {
+            "id": "SCRUB2_03_03",
+            "speaker_role": "circulating_wiper",
+            "text": "你先过来。……好了，下次别等到汗流下来。",
+            "text_en": "Come over here. ... Done. Next time don't wait until it's running down your face."
+          }
+        ]
+      },
+      {
+        "id": "SCRUB2_04",
+        "lines": [
+          {
+            "id": "SCRUB2_04_01",
+            "speaker_role": "scrub_secondary",
+            "text": "巡回，等我把备用线放好，帮我擦一下汗。",
+            "text_en": "Circulator, once I've set down the spare sutures, could you wipe my forehead?"
+          },
+          {
+            "id": "SCRUB2_04_02",
+            "speaker_role": "circulating_wiper",
+            "text": "可以。第一器械已经接手了，你往外转一点。……好了。",
+            "text_en": "Sure. The first scrub has taken over; turn outward a little. ... All done."
+          }
+        ]
+      }
+    ]
+  }
+}

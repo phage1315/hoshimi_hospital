@@ -61,7 +61,7 @@ func run() -> void:
 		# identical source entries: this must not become global text deduplication.
 		var fixture: Dictionary = content.collections.case_templates[0].duplicate(true)
 		fixture.history.append(fixture.history[1])
-		var history: Array = ["The symptoms began recently and have gradually become more noticeable.", "They are affecting daily life enough to seek specialist care."] if locale == "en" else fixture.history
+		var history: Array = fixture.history
 		for use_override in [true, false]:
 			var patient: Dictionary = game.patient_definition("patient_sora")
 			if not use_override:

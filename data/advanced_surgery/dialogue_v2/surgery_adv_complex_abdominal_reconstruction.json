@@ -1,0 +1,366 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_adv_complex_abdominal_reconstruction",
+  "stages": {
+    "I01": {
+      "before_action": [
+        {
+          "id": "I01_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "原有腹壁瘢痕下可能直接贴着肠袢，第一层不要盲目深入。",
+          "text_en": "Bowel loops may adhere directly beneath the old abdominal scar. Do not enter the first layer blindly."
+        },
+        {
+          "id": "I01_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "圆刀片、细剪和小吸引头，准备从浅层慢慢进入。",
+          "text_en": "Scalpel, fine scissors, and small suction tip, ready for a cautious superficial entry."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I01_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "切口下面的黏连边缘已经看到了，我维持腹壁上提，避免压住肠壁。",
+          "text_en": "The adhesion margins beneath the incision are visible. I'll lift the abdominal wall without compressing bowel."
+        }
+      ]
+    },
+    "I02": {
+      "before_action": [
+        {
+          "id": "I02_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "现有解剖不能照标准腹部地图猜，我先把可见肠段的走行逐段指出。",
+          "text_en": "We cannot rely on a standard abdominal map here. I'll trace the visible bowel loops one segment at a time."
+        },
+        {
+          "id": "I02_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "湿纱布和无创肠钳准备好，先做标记，不急着分离。",
+          "text_en": "Moist pads and atraumatic bowel graspers are ready. We'll mark structures before dissecting."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I02_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "残存组织、旧伤和主要黏连区有了对应关系，后面只处理真正相关的部分。",
+          "text_en": "The remaining tissues, old injuries, and major adhesions are mapped. We'll treat only what is relevant."
+        },
+        {
+          "id": "I02_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "复杂旧伤的操作时间不好用单一步骤估计，我持续复核体温与循环。",
+          "text_en": "The duration of work around old injuries is hard to predict from one step. I'll keep reviewing temperature and circulation."
+        }
+      ]
+    },
+    "I03": {
+      "before_action": [
+        {
+          "id": "I03_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "这条腹壁黏连直接牵着肠浆膜，先找不伤肠壁的可重复平面。",
+          "text_en": "This adhesion pulls directly on bowel serosa. Find a reproducible plane that spares the bowel wall."
+        },
+        {
+          "id": "I03_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "细剪、无创镊和双极，吸引先用低干扰的位置。",
+          "text_en": "Fine scissors, atraumatic forceps, and bipolar cautery. Keep suction out of the dissection plane."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I03_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "释放的肠袢我先托起来，检查表面后再移到安全位置。",
+          "text_en": "I'll support the released loops, inspect their surfaces, then move them to a protected position."
+        },
+        {
+          "id": "I03_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "备用湿垫已经补齐，长时间保护肠壁的用品够用。",
+          "text_en": "Backup moist pads are replenished. Supplies for prolonged bowel protection are available."
+        }
+      ]
+    },
+    "I04": {
+      "before_action": [
+        {
+          "id": "I04_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "几条黏连看起来都很严重，但并不是每一条都值得切开。",
+          "text_en": "Several adhesions look severe, but not every one should be divided."
+        },
+        {
+          "id": "I04_V2_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "这处牵拉与症状区域相符，另一边暂时没有必要为了好看而松解。",
+          "text_en": "This traction matches the symptomatic region. There's no need to release the other side for appearance alone."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I04_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的目标范围推进，不为了扩大术野而触碰稳定的残存结构。",
+          "text_en": "Proceed within the selected target area. Do not disturb stable remaining structures merely to widen the view."
+        },
+        {
+          "id": "I04_V2_POST02",
+          "speaker_role": "scrub_primary",
+          "text": "目标区的细分离组继续留台，其他器械暂时收回。",
+          "text_en": "Keep the fine dissection set for the target area. The other instruments can wait."
+        }
+      ]
+    },
+    "I05": {
+      "before_action": [
+        {
+          "id": "I05_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "这段肠壁又薄又脆，我把对侧牵拉放松，别用张力代替分离。",
+          "text_en": "This bowel wall is thin and fragile. I'll release countertraction; tension is no substitute for dissection."
+        },
+        {
+          "id": "I05_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "精细剪、无创镊和湿润小棉片。",
+          "text_en": "Fine scissors, atraumatic forceps, and small moist pledgets."
+        },
+        {
+          "id": "I05_V2_PRE03",
+          "speaker_role": "assistant_1",
+          "text": "先认清浆膜和瘢痕交界，视野不够就继续松开周围空间。",
+          "text_en": "Identify where serosa meets scar. If the view is insufficient, release more surrounding space first."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I05_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "危险黏连已经松开，先检查浆膜连续性，再看有没有局部修补需要。",
+          "text_en": "The hazardous adhesion is released. Check serosal continuity before deciding whether local repair is needed."
+        },
+        {
+          "id": "I05_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "这段需要持续慢操作，我会跟进体温和灌注支持。",
+          "text_en": "This phase requires sustained careful work. I'll monitor warming and perfusion support."
+        }
+      ]
+    },
+    "I06": {
+      "before_action": [
+        {
+          "id": "I06_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "这不是标准肠系膜供血分布，先弄清每条侧支真正供应哪段肠管。",
+          "text_en": "This is not a standard mesenteric vascular pattern. Trace what each collateral actually supplies."
+        },
+        {
+          "id": "I06_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "细血管环和血管剥离器已经替换到无菌台前排。",
+          "text_en": "Fine vessel loops and vascular dissectors are now at the front of the sterile table."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I06_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我保护侧支转折的位置，下一步牵拉别把它们拉直了。",
+          "text_en": "I'll protect the bends in the collateral vessels. Avoid stretching them straight during the next step."
+        },
+        {
+          "id": "I06_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "肠道灌注仍是这一段的重点，循环变化会随时反馈。",
+          "text_en": "Bowel perfusion remains the priority here. I'll report circulatory changes as they occur."
+        }
+      ]
+    },
+    "I07": {
+      "before_action": [
+        {
+          "id": "I07_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "旧伤段就在深面，我把旁边可用的肠管先隔开。",
+          "text_en": "The old injured segment lies deeper. I'll isolate the neighboring viable bowel first."
+        },
+        {
+          "id": "I07_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "无创肠钳、湿纱布和修补用针线先摆出来。",
+          "text_en": "Atraumatic bowel graspers, moist pads, and repair sutures are being laid out."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I07_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "待修复的局部已经清楚，附近未受累的残存组织不要再动。",
+          "text_en": "The repair target is clear. Leave adjacent unaffected remaining tissues alone."
+        }
+      ]
+    },
+    "I08": {
+      "before_action": [
+        {
+          "id": "I08_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "缝合边缘必须有足够血供，不能为了整齐把薄弱组织切掉太多。",
+          "text_en": "The repair edges need adequate blood supply. Don't remove excess fragile tissue for a neater line."
+        },
+        {
+          "id": "I08_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "细肠线、小持针器和无创镊，按顺序递。",
+          "text_en": "Fine bowel sutures, small needle holder, and atraumatic forceps, ready in order."
+        },
+        {
+          "id": "I08_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "我托住修补段的近远端，让你缝合时看见真实张力。",
+          "text_en": "I'll support both ends of the repair so you can judge the actual suture tension."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I08_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "修补附近的肠袢我维持自然位置，避免把缝线拉成绷紧的直线。",
+          "text_en": "I'll keep neighboring loops in a natural position so the repair line stays free of tension."
+        },
+        {
+          "id": "I08_V2_POST02",
+          "speaker_role": "scrub_secondary",
+          "text": "已用针线按组清点，下一步血供复核的器械正在替换。",
+          "text_en": "Used needles and sutures are counted by set. Instruments for vascular reassessment are being exchanged."
+        }
+      ]
+    },
+    "I09": {
+      "before_action": [
+        {
+          "id": "I09_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "侧支血管沿着这段修补区走，我先让牵开器离开它们。",
+          "text_en": "Collateral vessels run beside this repair. I'll move retractors away from them."
+        },
+        {
+          "id": "I09_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "细血管剥离器、湿棉片和双极，先不要上硬钳。",
+          "text_en": "Fine vascular dissector, moist pledgets, and bipolar cautery. No rigid clamps yet."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I09_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "供血路径的压迫点已经处理，回头再看修补段有没有受牵。",
+          "text_en": "The compression points along the blood supply have been addressed. Recheck tension on the repair."
+        },
+        {
+          "id": "I09_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "麻醉侧继续看灌注变化，单凭术野颜色不能替代整体判断。",
+          "text_en": "I'll continue assessing perfusion changes. Tissue color alone cannot replace the full assessment."
+        }
+      ]
+    },
+    "I10": {
+      "before_action": [
+        {
+          "id": "I10_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "这一步不是再做一次修补，而是核对连续性、张力和肠管方向。",
+          "text_en": "This is not another repair. We're checking continuity, tension, and bowel orientation."
+        },
+        {
+          "id": "I10_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "冲洗液、细无创镊和必要的补针器械都在这里。",
+          "text_en": "Irrigation, fine atraumatic forceps, and revision suturing tools are here."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I10_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我把肠袢放回自然走行，避免新形成的急弯。",
+          "text_en": "I'll return the bowel loops to their natural course and avoid creating a sharp kink."
+        },
+        {
+          "id": "I10_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "下一步复核要用的冲洗和止血材料已经补到手术间。",
+          "text_en": "Irrigation and hemostatic materials for the final review are replenished."
+        }
+      ]
+    },
+    "I11": {
+      "before_action": [
+        {
+          "id": "I11_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "分别复核修补点、侧支血供和可疑渗漏，别把三个检查混成一眼扫过。",
+          "text_en": "Review the repair, collateral perfusion, and possible leakage separately. Don't reduce three checks to one glance."
+        },
+        {
+          "id": "I11_V2_PRE02",
+          "speaker_role": "anesthesia",
+          "text": "需要结合术野观察灌注，我会把当前循环趋势及时通报。",
+          "text_en": "Perfusion needs correlation with the field. I'll report current hemodynamic trends promptly."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I11_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的复核路径完成检查，没有指征的区域不再扩大松解。",
+          "text_en": "Complete the review along the selected path. Do not extend adhesiolysis into areas without an indication."
+        },
+        {
+          "id": "I11_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "使用过的修补线材和止血用品已登记，开始准备最终清点。",
+          "text_en": "The repair sutures and hemostatic supplies used are logged. Preparing final counts."
+        }
+      ]
+    },
+    "I12": {
+      "before_action": [
+        {
+          "id": "I12_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "关闭时让肠管自然落回，别把残存血管压在筋膜边缘。",
+          "text_en": "Let the bowel settle naturally during closure. Don't trap surviving vessels against the fascial edge."
+        },
+        {
+          "id": "I12_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "筋膜缝线、皮下器械和最终清点单已经准备。",
+          "text_en": "Fascial sutures, subcutaneous instruments, and the final count sheet are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "I12_V2_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "纱布、针和器械完成终末核对，术后观察要点随交接单移交。",
+          "text_en": "Final sponge, needle, and instrument counts are complete. Postoperative priorities accompany the handoff."
+        },
+        {
+          "id": "I12_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "复苏团队会重点注意消化道修补与灌注观察，继续接手监测。",
+          "text_en": "The recovery team will focus on bowel repair and perfusion surveillance as monitoring continues."
+        }
+      ]
+    }
+  }
+}

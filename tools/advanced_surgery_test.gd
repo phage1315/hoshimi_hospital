@@ -37,6 +37,12 @@ func drive(s: RefCounted, planned: bool = true) -> void:
 	var p := 0
 	for _guard in range(150):
 		if s.finished: break
+		# The current runner presents V2 dialogue (and optional ambient lines)
+		# before accepting the next numerical operation. This logic fixture
+		# consumes presentation exactly as the UI's continue button does.
+		if s.operative_dialogue != null and not s.pending_rescue and not (s.awaiting_ack and bool(s.last_result.get("failed", false))):
+			for _line in range(5):
+				if s.operative_dialogue.current(s).is_empty() or not s.operative_dialogue.advance_sequence(s): break
 		if s.in_crisis():
 			expect(s.resolve_crisis("pause_and_stabilize"), "Crisis resolves through existing resolver")
 		elif s.pending_rescue:

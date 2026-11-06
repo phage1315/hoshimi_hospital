@@ -16,6 +16,8 @@
 
 后续作者交付：两人的 `chest.png`、`prone.png` 已按附件顺序原样更新为作者提供的1664×960开胸及俯卧图，其余四图不变。运行路径和术式映射保持不变，原SFW开胸及俯卧图独立保留在 `assets/references/advanced_staff_patient_sfw_v1/<actor_id>/`，用于未来生成参考；来源、运行图哈希与参考路径已更新登记。
 
+2026-11-03 修订：芹香的运行 `abdominal.png` 改为 1671×941 的腹部扩大开窗图，胸部保持铺巾覆盖，用于 Whipple 的患者准备及团队确认画面；原 1672×941 图独立保留在 `assets/references/advanced_staff_patient_sfw_v1/doc_serika/abdominal.png`。此前“其余四图不变”仅描述 11 月 1 日交付时的状态。
+
 | 术式 | 体位图 |
 |---|---|
 | Whipple | abdominal |

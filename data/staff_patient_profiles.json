@@ -1694,5 +1694,1018 @@
         ]
       }
     }
+  },
+  "nurse_yui": {
+    "required_completed_rank": 5,
+    "unlock_flags": [
+      "staff_as_patient_program_authorized"
+    ],
+    "dialogue_status": "cn_en_core_integrated_reserves_documented",
+    "dialogue_profile": "strong_front_expressive_irritable",
+    "reserved_reaction_ids": [
+      "hospitalization_question",
+      "hospitalization_response"
+    ],
+    "portrait_aliases": {
+      "examination/shy": "ward_preparation/shy"
+    },
+    "agreement_required_interaction_ids": [
+      "hysterectomy_signature_01",
+      "ovarian_cystectomy_signature_01",
+      "myomectomy_signature_01",
+      "breast_tumor_signature_01",
+      "mastectomy_signature_01",
+      "cabg_signature_01",
+      "pelvic_dignity_exposure_01",
+      "pelvic_dignity_default_01",
+      "breast_dignity_exposure_01",
+      "breast_dignity_default_01",
+      "breast_closure_fear_01"
+    ],
+    "dialogue_source": "research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_STAFF_AS_PATIENT_DIALOGUES_CN_EN_V1.md",
+    "dialogue": {
+      "zh_CN": {
+        "invitation_lines": [
+          "「`{procedure_name}`？行呀。只是我今天要躺在台上，不能顺手帮你检查器械清单了哦。」",
+          "「哎呀，终于轮到你开口请我上手术台了？呵呵，好呀，我答应。先说好，今天谁先脸红，可不一定是患者哦。」",
+          "「`{procedure_name}`？当然可以。就是不知道等我换上病号服，坂口医生还能不能一本正经地看着我说明流程呢。」"
+        ],
+        "invitation_by_procedure": {
+          "surgery_hysterectomy": [
+            "「`{procedure_name}`……我知道这和处理一颗肌瘤不是一回事。你把范围讲清楚，我会认真签字。玩笑留到术后再开。」"
+          ],
+          "surgery_vaginal_hysterectomy": [
+            "「`{procedure_name}`……我知道这和处理一颗肌瘤不是一回事。你把范围讲清楚，我会认真签字。玩笑留到术后再开。」"
+          ],
+          "surgery_total_mastectomy": [
+            "「我知道这是完整切除，不是普通的肿块处理。……好，我愿意。确认范围的时候，请给我一点认真听完的时间。」"
+          ]
+        },
+        "reaction_lines": {
+          "hospitalization_question": "「入院手续也要我自己签？当然啦。我就是看着自己的名字落在‘患者’那栏，有点想笑。」",
+          "hospitalization_response": "「好，今天起暂时不是值班护士。……怎么，不信我会乖乖待在病房？呵呵，你猜得也不算错。不过今天我会配合的。」",
+          "procedure_mismatch": "「慢着。刚才说的可不是这台手术。你以为给我换个名字，我就会像新来的护士一样点头？……说明白，我在听。」",
+          "explain_plan": "「流程我大概能背出来。不过今天请你认真讲一遍。以前我站着说这些话，从来不用想自己接下来要躺在哪里。」",
+          "brief_plan": "「‘照计划做’啊……这句话真耳熟。给我两句具体的，好吗？不然我会忍不住替你补充说明。」",
+          "last_reassure": "「我都检查过了，没什么可挑的。……呵呵，别松口气呀，我只是暂时不提问了。接下来就真的交给你们啦。」",
+          "choose_general": "「全麻？好。等药起效，我连一句‘那边的记录填错了’都说不了。……拜托你们别让我醒来还得查护理记录。」",
+          "choose_epidural": "「硬膜外……明白。人还醒着，身体却不能按自己的意思动。……原来光是想象，就比我当护士时觉得的难多了。」",
+          "choose_local": "「局麻我清楚。该说不舒服的时候我会说，可别指望我为了面子一直笑着。」",
+          "choose_none": "「不用麻醉……我知道会怎样。我以前让患者别逞强，现在可没资格装作自己不怕。……决定是我做的，我会尽力配合。」",
+          "induction_reassure": "「坂口医生，等一下。……不，没事。我只是第一次发现，‘放心，交给我们’这句话从枕头这边听起来这么远。」",
+          "insist_without_anesthesia": "「别又问我是不是知道自己选了什么。我知道。……只是接下来如果叫出声，你不许笑，也不许当成我改变主意了。」",
+          "assistant_stabilize_none": "「啊……！我知道不能乱动！……麻烦扶住我的肩膀。我嘴上很会指挥，身体现在不太听话。」",
+          "assistant_stabilize_local": "「抱歉，刚才是我自己绷紧了。支撑的位置没错……嗯，扶着就好，谢谢。」",
+          "assistant_stabilize_epidural": "「腿真的不太受控制了呢。……别笑，我知道这很正常。请替我确认一下支撑点，好吗？」",
+          "incision_ready": "「……喂，真、真的要下刀了？我知道流程，真的知道……可是等一下，让我把这口气喘完。坂口医生，你先看我一眼……」",
+          "incise_epidural": "「……切开了？啊……我知道没痛到想象中那样，可是我感觉到你们真的开始了。……我刚才还想开玩笑的。」",
+          "incise_local": "「嘶……！里面那一下……不是尖锐的痛，可真不好受。你们继续，我会把感觉说清楚。」",
+          "incise_none": "「啊——！疼、疼死了……！我、我知道刀已经下去了……别让我看！……对不起，我会忍住，先让我叫这一声……！」",
+          "contact_pause": "「……呼。谢谢。我平时总告诉患者，害怕不用道歉。可轮到自己，‘对不起’这三个字竟然也会不由自主地冒到嘴边……让我缓口气。」",
+          "contact_command": "「收到。我不动。……你用这种语气跟我说话，居然还挺管用的。」",
+          "contact_continue": "「好，继续。……我今天终于明白，‘继续吧’这三个字要鼓起多大勇气才能说。」",
+          "ongoing_narrate": "「原来到这里了。嗯……知道进度就没那么容易胡思乱想。接下来也告诉我，好吗？」",
+          "ongoing_eye_contact": "「……你看过来了啊。我还好。……好吧，不算太好。不过看见你还稳得住，我也就没那么想发脾气了。」",
+          "ongoing_silent": "「……怎么突然这么安静。你们忙就忙，可谁有空说句话吗？平时我也没发现，光听器械声会这么难熬。」",
+          "closure_reassure": "「真到收尾了？……那我暂时不骂你。等我能好好坐起来，再一条条算账。」",
+          "closure_coach": "「好……吸气，呼气。我会跟上。……不过坂口医生，你说的‘最后一点点’，怎么这么长啊……」",
+          "closure_silent": "「……还没完吗……我知道你们在做最后检查……可是我真的……连骂人的力气都快没了……坂口医生，拜托，快一点点……」"
+        },
+        "reaction_speakers": {
+          "procedure_mismatch": "patient",
+          "explain_plan": "patient",
+          "brief_plan": "patient",
+          "last_reassure": "patient",
+          "choose_general": "patient",
+          "choose_epidural": "patient",
+          "choose_local": "patient",
+          "choose_none": "patient",
+          "induction_reassure": "patient",
+          "insist_without_anesthesia": "patient",
+          "assistant_stabilize_none": "patient",
+          "assistant_stabilize_local": "patient",
+          "assistant_stabilize_epidural": "patient",
+          "incision_ready": "patient",
+          "incise_epidural": "patient",
+          "incise_local": "patient",
+          "incise_none": "patient",
+          "contact_pause": "patient",
+          "contact_command": "patient",
+          "contact_continue": "patient",
+          "ongoing_narrate": "patient",
+          "ongoing_eye_contact": "patient",
+          "ongoing_silent": "patient",
+          "closure_reassure": "patient",
+          "closure_coach": "patient",
+          "closure_silent": "patient"
+        },
+        "reaction_variants": {
+          "ward_enema": [
+            "「好，灌肠这项我知道。……以前教新人操作时我可神气了，轮到我就别叫我前辈，好吗？」",
+            "「麻烦把帘子拉好。……哎呀，你的表情怎么这么严肃？我现在可是普通患者哦。呵呵，别摆出一副要接受考核的脸嘛。」"
+          ],
+          "ward_enema_unnecessary": [
+            "「这项不是必需？那先把理由给我说清楚。今天我可以不当护士，可脑子还在上班。」",
+            "「确认不需要就好。……哎呀，怎么松了这么大一口气？呵呵，我还没打算考你呢。」"
+          ],
+          "ward_skin_prep": [
+            "「备皮范围确认好了？好。……怎么，我一抬眼你就紧张？放心，今天我只负责当个乖乖的患者……大概吧。呵呵。」",
+            "「剪刀声从这里听着还真近……哎呀，别突然看我，我不是在考你的手法。慢慢来就好。」"
+          ],
+          "ward_skin_prep_unnecessary": [
+            "「这里不在术野内吧？如果不是必要步骤，让我保留一点体面，拜托啦。」",
+            "「可以省略就说一声。……我现在才知道，多听见一句‘不用做’，能让人这么高兴。」"
+          ],
+          "ward_surgical_cap": [
+            "「头发都藏好啦？呵呵，现在是不是看起来特别乖？……可别信，手术帽没把我的坏心眼一起收进去哦。」",
+            "「别给我留一绺头发当装饰。我还要回来上班的……啊不，先把今天过完。」"
+          ],
+          "operative_positioning_awake": [
+            "「哎呀，今天轮到你指挥我的手脚了。呵呵，手别抖呀，我会好好配合的……只要你说得够温柔。」",
+            "「等一下，肩膀有一点绷……嗯，现在好多了。今天总算轮到我说‘这个姿势不舒服’了。」"
+          ],
+          "operative_positioning_none": [
+            "「没麻醉就摆位啊……知道了。请把支撑做稳一点，我可不想在刀下来前就被自己的紧张打败。」",
+            "「你们固定得很认真，我知道。……可是越不能自己动，我越忍不住想挪一下。讨厌。」"
+          ],
+          "urinary_catheterization_awake": [
+            "「要导尿啊。嗯，适应证我明白。……不过请先给我一点准备时间，不要因为我懂就省掉那句话。」",
+            "「轻一点，好吗。……哎呀，别紧张，我只是忍不住提醒一句。呵呵，今天换我当个有点难伺候的患者啦。」"
+          ],
+          "urinary_catheterization_none": [
+            "「连这项准备也要清醒着来啊……没事，我知道流程。……你让我先抓住床沿一下。」",
+            "「今天连说句‘照常操作’都这么费劲。……好，我不乱动，你们开始吧。」"
+          ],
+          "skin_disinfection_awake": [
+            "「嘶，好凉！……呵呵，别憋笑嘛。今天换你看我出丑，也算难得的机会呢。……不过真的好凉。」",
+            "「消毒液要等干，我知道。……说真的，这几分钟以前在我这边过得可快了。」"
+          ],
+          "skin_disinfection_none": [
+            "「刚才只是消毒，我就差点绷不住了。……等到真正动刀，我可能会很吵。先说声抱歉。」",
+            "「好冷……明明还没开刀，我心跳就这么快。……坂口医生，别让我自己猜什么时候开始。」"
+          ],
+          "incision_marking_awake": [
+            "「线画得挺准嘛。……哎呀，别露出被我监督的表情，我今天可是乖患者。呵呵……接下来真的拜托你了。」",
+            "「原来从这里看自己的切口线，会这么不真实。……等会儿真要开始时，提醒我一声。」"
+          ],
+          "incision_marking_none": [
+            "「等、等一下！这还是记号笔，对吧？我知道……我知道啊。可我的眼睛已经在找刀了。」",
+            "「标记好了？……那我是不是该把最后一句玩笑说完？……算了，我突然想不出来了。」"
+          ]
+        },
+        "interaction_overrides": {
+          "contact_pain_incision_01": {
+            "prompt": "「嘶……！刚才那一下不太对劲……真、真的已经切开了？我居然在自己该熟悉的步骤上吓了一跳。」",
+            "responses": {
+              "explain_contact": "「好，已经开始了……我听见了。呼吸，嗯，我会照做。」",
+              "brief_contact": "「就这么一句啊？……算啦，知道还在按计划就够了。」",
+              "continue_contact": "「知、知道了。我不乱动……你们可别把我平时的话原样还回来。」"
+            }
+          },
+          "contact_no_anesthesia_incision_01": {
+            "prompt": "「啊……！这么疼……我刚才居然还想给你们打分……！」",
+            "responses": {
+              "steady_unanesthetized_contact_01": "「好……慢一点……我跟着呼吸。谢谢你先让我把肩膀放松。」",
+              "continue_unanesthetized_contact_01": "「呜……知道了……我会忍，先别跟我讲大道理。」"
+            }
+          },
+          "contact_no_anesthesia_incision_02": {
+            "prompt": "「等、等……！我看不见你们的手，光感觉到动作……比想象中可怕多了！」",
+            "responses": {
+              "steady_unanesthetized_contact_02": "「……好，停一下就好。我还能配合，给我一口气。」",
+              "continue_unanesthetized_contact_02": "「啊……！好，我不躲……继续吧……！」"
+            }
+          },
+          "contact_no_anesthesia_incision_03": {
+            "prompt": "「不行，我刚才差点反射性地缩起来……！不过别误会，我没有叫你们加麻醉！」",
+            "responses": {
+              "steady_unanesthetized_contact_03": "「对，我还是不要追加麻醉。……谢谢，放慢一点就好。我会重新稳住。」",
+              "continue_unanesthetized_contact_03": "「我说了不追加……啊，疼！……你们继续，我会尽量控制住。」"
+            }
+          },
+          "contact_default_01": {
+            "prompt": "「哎呀，已经开始了？我还准备听听你第一步会不会紧张呢……等等，怎么紧张的反而是我？」",
+            "responses": {
+              "reassure_start": "「嗯，情况稳定我就放心了。……好吧，放心一半。」",
+              "brief_start": "「哎呀，就这么一句？你是不是怕多说两句就被我抓到紧张？……呵呵，好啦，我知道按计划就行。」",
+              "silent_start": "「……好，我安静。你要是听到我哼歌，就当没听见。」"
+            }
+          },
+          "contact_pain_incision_02": {
+            "prompt": "「嘶……又来了。……好奇怪，明知道你们会动到这里，真感觉到时还是吓人。」",
+            "responses": {
+              "acknowledge_second_contact": "「你确认过就好。……我不再擅自替你们猜下一步了。」",
+              "brief_second_contact": "「……好，继续。我这次先咬住嘴唇。」"
+            }
+          },
+          "contact_fear_incision_01": {
+            "prompt": "「等等，刚才那是什么？我不是要指挥……我只是突然很想知道你们做到哪儿了。」",
+            "responses": {
+              "orient_fearful_contact": "「……喔，原来已经过了那一步。我还以为才刚开始。」",
+              "steady_fearful_contact": "「你继续说，我听着。……对，听着你的声音比较好。」",
+              "dismiss_fearful_contact": "「哎呀，这么凶。……平时都是我用这种口气压住场面的呢。好啦，我不问了……可我真的有点怕。」"
+            }
+          },
+          "progress_fear_default_01": {
+            "prompt": "「坂口医生……我是不是又问过了？对不起，我现在对时间一点概念都没有。」",
+            "responses": {
+              "explain_progress": "「嗯，和计划一致。我记住了。……这次我尽量别每隔两分钟问一次。」",
+              "brief_progress": "「……还在做啊。好，我等。」",
+              "dismiss_progress": "「你是叫我别分心？……我倒想，可现在每个声音都听得清清楚楚。」"
+            }
+          },
+          "progress_default_01": {
+            "prompt": "「坂口医生，今天工作表现怎么样呀？……呵呵，别紧张，我现在可拿不到评分表。说正经的，进度还顺利吗？」",
+            "responses": {
+              "answer_progress": "「哦，已经到这个阶段啦。呵呵，汇报得这么详细，是怕我事后给你补一份手术记录吗？……放心，我都听清楚了。」",
+              "brief_answer_progress": "「好，明白。我再忍住不抢你的工作一会儿。」"
+            }
+          },
+          "cardiac_progress_fear_01": {
+            "prompt": "「心脏那边……现在是什么情况？别嫌我啰嗦，这次我真的不敢自己想象。」",
+            "responses": {
+              "explain_cardiac_progress": "「关键步骤还按计划，嗯……知道你们一直盯着监测，我安心一点了。」",
+              "brief_cardiac_progress": "「……按计划就好。我不会再假装一点都不紧张了。」"
+            }
+          },
+          "cardiac_progress_default_01": {
+            "prompt": "「这里是不是该进入下一阶段了？……我知道自己看不见，你就给我一个简短答案吧。」",
+            "responses": {
+              "answer_cardiac_progress": "「嗯，跟上了。你们讲得比我想象中清楚。」",
+              "brief_cardiac_answer": "「好，我听懂了。剩下的交给你们。」"
+            }
+          },
+          "progress_fear_fatigue_01": {
+            "prompt": "「……我怎么觉得过了好久。还要多久？不用给我一个好听的数字。」",
+            "responses": {
+              "explain_fatigue_progress": "「这样啊……知道还剩什么，比光等着强多了。谢谢。」",
+              "brief_fatigue_progress": "「还是按计划……好。我再试着撑一下。」"
+            }
+          },
+          "progress_fear_fatigue_02": {
+            "prompt": "「我有点累了……连想句挖苦你的话都要想半天。能告诉我一个明确的进度吗？」",
+            "responses": {
+              "mark_fatigue_milestone": "「哦，已经到这一步了。……好，那我把这个当成下一个小目标。」",
+              "encourage_fatigue_progress": "「重要部分做完了？……那我就先相信你的好消息。」"
+            }
+          },
+          "thoracic_progress_fatigue_01": {
+            "prompt": "「胸口这一边……到底做到哪了？我听见你们换了器械，心就跟着一跳。」",
+            "responses": {
+              "explain_thoracic_progress": "「嗯，胸腔这一步我明白了。……我不看器械了，专心听你讲。」",
+              "brief_thoracic_progress": "「关键部分还在照计划推进。好……我记住了。」"
+            }
+          },
+          "vascular_progress_deep_01": {
+            "prompt": "「你们刚才好像突然都紧张起来了。……血管那一步还在掌握中，对吧？」",
+            "responses": {
+              "explain_vascular_milestone": "「原来到了这个关键点。嗯……我相信你们会盯住所有变化。」",
+              "brief_vascular_milestone": "「变化在预期内。……好，听到这句我就够了。」"
+            }
+          },
+          "cabg_signature_01": {
+            "prompt": "「……这是开始重建的阶段了吗？明明以前看过手术记录，现在我连想它都觉得心跳加快。」",
+            "responses": {
+              "explain_cabg_milestone": "「好，已经进入计划中的重建步骤……我明白。谢谢你们还愿意跟我解释。」",
+              "brief_cabg_milestone": "「预定的关键步骤，嗯。……那我就不再追问细节了。」"
+            }
+          },
+          "strain_pain_default_01": {
+            "prompt": "「呜……！这个不是我刚才想象的痛法……别、别让我突然动起来……！」",
+            "responses": {
+              "pause_strain": "「……谢谢，停一下真的有用。我慢慢把肩膀松开。」",
+              "coach_strain": "「好，跟呼吸走……呼……我会试着不绷得那么紧。」",
+              "push_through_strain": "「要我坚持啊……行。可是我现在只能一小段一小段地撑。」"
+            }
+          },
+          "strain_default_01": {
+            "prompt": "「……这种牵拉感啊。我知道你们为什么要做，可从这里感觉完全不是一回事。」",
+            "responses": {
+              "explain_strain": "「原来是这个步骤引起的……好，我不再乱猜。」",
+              "brief_strain": "「很快会过去？……我记下了。以后不准笑我拿秒数算账。」"
+            }
+          },
+          "abdominal_strain_pain_01": {
+            "prompt": "「啊……腹部里面被牵了一下……！我说过我懂，可懂和挨这一遭真是两码事……！」",
+            "responses": {
+              "explain_abdominal_strain": "「嗯，你们在做腹腔里的这个阶段。我听懂了……请让我把呼吸稳住。」",
+              "coach_abdominal_strain": "「呼……吸……好……就这一会儿，我再坚持。」"
+            }
+          },
+          "strain_pain_traction_02": {
+            "prompt": "「啊……刚才那阵牵拉又来了！……我知道不能随便躲，可身体就是会发抖。」",
+            "responses": {
+              "pause_second_traction": "「……谢谢，先缓一下。呼……我会再把姿势稳住。」",
+              "coach_second_traction": "「好，慢慢呼气……我尽量让自己别绷得那么紧。」"
+            }
+          },
+          "strain_pain_pressure_01": {
+            "prompt": "「……这股压力一直没退。你们不是忘了我还有感觉吧？」",
+            "responses": {
+              "relieve_pressure": "「啊……好一些了。谢谢你肯停下来调整。」",
+              "explain_pressure": "「还会持续一会儿……明白。那麻烦你继续告诉我进度。」"
+            }
+          },
+          "urologic_strain_pressure_01": {
+            "prompt": "「……里面这种钝钝的感觉怎么还在？我知道这一步很细，可是真的不好忍。」",
+            "responses": {
+              "pause_urologic_strain": "「……嗯，这一下让我重新喘过气来了。谢谢。」",
+              "explain_urologic_strain": "「原来是这一步的深部操作……好，我明白了。」"
+            }
+          },
+          "dignity_low_exposure_01": {
+            "prompt": "「……喂，这个角度连我自己都觉得不像话。等一下，其他地方能不能再盖好一点？」",
+            "responses": {
+              "restore_cover": "「谢谢。只留必要的地方就好……我知道这样做不影响手术。」",
+              "explain_exposure": "「……嗯，我明白这范围是必须的。让我先把脸转过去一会儿。」",
+              "ignore_exposure": "「叫我别在意？……你这话我可记住了，下次培训拿来当反面例子。」"
+            }
+          },
+          "dignity_default_01": {
+            "prompt": "「呵呵，怎么突然都不敢往我这边看啦？刚才帮我摆位的时候可果断得很呢。……好吧，别笑，其实我也有点难为情。」",
+            "responses": {
+              "protect_dignity": "「嗯，盖好就好。……你们做得对，不用那么紧张地看我。」",
+              "brief_dignity": "「很快就结束这个步骤？……那就让我先装作看不见你们。」"
+            }
+          },
+          "pelvic_dignity_exposure_01": {
+            "prompt": "「……妇科这边要摆成这样，我当然知道。只是以前负责调支腿架的人是我……现在请别让我看见太多人。」",
+            "responses": {
+              "explain_pelvic_stage": "「嗯，这个阶段我听懂了。你们把无关区域遮好，我就安心些。」",
+              "brief_pelvic_stage": "「照术前计划……好。我相信你们。」"
+            }
+          },
+          "pelvic_dignity_default_01": {
+            "prompt": "「……我能问一句进度吗？……不，别笑，我是真的不太敢想现在做到哪里了。」",
+            "responses": {
+              "answer_pelvic_progress": "「嗯，还是原来那一步。……好，这个答案就够了。」",
+              "brief_pelvic_progress": "「明白。……我先专心呼吸。」"
+            }
+          },
+          "breast_dignity_exposure_01": {
+            "prompt": "「这里要露出来，我签字时就知道。……可跟认识的同事四目相对，还是有点……哎呀，别盯着我看啦。」",
+            "responses": {
+              "confirm_breast_scope": "「好，范围跟我们讲好的一样。我就当自己正在接受一堂特别的隐私保护示范。」",
+              "brief_breast_scope": "「在约定范围内……嗯。那我不再自己吓自己了。」"
+            }
+          },
+          "breast_dignity_default_01": {
+            "prompt": "「……请问现在到哪一层了？我本来准备说句俏皮话，结果全忘了。」",
+            "responses": {
+              "answer_breast_stage": "「嗯，跟术前讲的一样。……光是确认这一点就舒服多了。」",
+              "brief_breast_stage": "「按原计划做就好。……其他的，等你们做完再说。」"
+            }
+          },
+          "dignity_low_exposure_02": {
+            "prompt": "「……刚才我是不是问过遮盖？抱歉，可每次被单一动，我都觉得周围的人在看我。」",
+            "responses": {
+              "reduce_exposure_again": "「啊，谢谢。其实这一下就足够让我放心了。」",
+              "acknowledge_exposure_again": "「你说得对，我知道必要范围。……谢谢你至少认真听我抱怨。」"
+            }
+          },
+          "dignity_cooperation_exposure_01": {
+            "prompt": "「不是不配合！……我就是想知道，现在这里有多少人是必须留下的。」",
+            "responses": {
+              "limit_observers": "「嗯，这样我就安心了。谢谢，不用把我当成难缠的前辈。」",
+              "brief_privacy_confirmation": "「好，大家都在做必要的工作……我知道了。」"
+            }
+          },
+          "hysterectomy_signature_01": {
+            "prompt": "「……是按当时签下的完整子宫切除方案做的吧？我知道自己问得多，可那份同意书是我亲手签的。」",
+            "responses": {
+              "confirm_hysterectomy_scope": "「嗯，范围都确认过。……谢谢你们还愿意这样逐项解释。」",
+              "brief_hysterectomy_scope": "「没有超出同意范围，明白。……我不会再替自己想别的了。」"
+            }
+          },
+          "ovarian_cystectomy_signature_01": {
+            "prompt": "「……卵巢保留的计划没有变吧？你知道的，我是患者，问清楚也很合理。」",
+            "responses": {
+              "confirm_ovarian_preservation": "「嗯，还是以保留正常组织为目标。……好，我相信你的判断。」",
+              "brief_ovarian_preservation": "「明白。……我知道你们一直记着这项计划。」"
+            }
+          },
+          "myomectomy_signature_01": {
+            "prompt": "「……我知道这台是肌瘤剔除，不是全切。你们没有临时改计划，对吧？」",
+            "responses": {
+              "confirm_myomectomy_scope": "「好，术式没变。……嗯，今天我真的需要听你亲口确认。」",
+              "brief_myomectomy_scope": "「跟原计划一致就好。……我不抢你们的工作。」"
+            }
+          },
+          "breast_tumor_signature_01": {
+            "prompt": "「切除范围还是先前划定的那一块？……别嫌我婆婆妈妈，今天我就是想听你再确认一次。」",
+            "responses": {
+              "confirm_breast_tumor_scope": "「嗯，跟标记相符。谢谢，听见这个我就安心多了。」",
+              "brief_breast_tumor_scope": "「还在原定边界……好。那我继续乖乖躺着。」"
+            }
+          },
+          "mastectomy_signature_01": {
+            "prompt": "「……我知道自己答应了完整切除。可真到了这一步，还是会难过一下。……让我确认，你们记得说好的范围吧？」",
+            "responses": {
+              "acknowledge_mastectomy_loss": "「……谢谢你没拿玩笑搪塞我。范围我听清楚了，继续吧。」",
+              "confirm_mastectomy_plan": "「嗯，严格按同意范围。……我相信你们。别让我自己再吓自己了。」"
+            }
+          },
+          "ongoing_fear_default_01": {
+            "prompt": "「……怎么又这么安静。坂口医生，至少让我知道你们没有遇到麻烦，好吗？」",
+            "responses": {
+              "reassure_ongoing": "「嗯，还按计划……好，听到你说话就放心些。」",
+              "brief_ongoing": "「一切正常。……这四个字今天真好听。」"
+            }
+          },
+          "ongoing_default_01": {
+            "prompt": "「我这个患者表现得还乖吗？呵呵，平时都是我让别人保持不动，今天轮到你们盯着我啦。……说真的，这样躺着也不容易呢。」",
+            "responses": {
+              "coach_ongoing": "「知道啦。别看我现在乖乖躺着，就以为我听不懂指令。……呵呵，好，我不乱动。」",
+              "reassure_ongoing_default": "「这样就可以？……呵呵，今天被你表扬一句，我居然还有点得意。好，我保持不动。」"
+            }
+          },
+          "ongoing_fear_fatigue_01": {
+            "prompt": "「……好像又过了很长一段。以前我在旁边忙起来就忘了钟，现在只剩钟在脑子里走。」",
+            "responses": {
+              "maintain_running_update": "「这样好……哪怕只告诉我一个节点，我也不会一直乱想。」",
+              "brief_running_update": "「稳定就好。……我现在已经不奢望每一分钟都被报告了。」"
+            }
+          },
+          "ongoing_fear_fatigue_02": {
+            "prompt": "「我有点撑不住这种等法了……能不能告诉我接下来至少要完成哪一步？」",
+            "responses": {
+              "preview_next_milestone": "「好，下一个目标我听见了。……等做到那里，我要给自己记一分。」",
+              "encourage_next_milestone": "「快到下一阶段了？……你可真会鼓励人。今天轮到我信这套了。」"
+            }
+          },
+          "ongoing_pain_position_01": {
+            "prompt": "「……我是不是不能挪肩膀？这里压得好难受。支撑好像偏了一点……你们能帮我确认吗？我不自己动。」",
+            "responses": {
+              "adjust_pressure_points": "「谢谢……那个受压点调整以后好多了。巡回那边辛苦啦。」",
+              "coach_position_stillness": "「好，我不自己动……慢慢松一点。嗯，这样可以。」"
+            }
+          },
+          "abdominal_ongoing_pressure_01": {
+            "prompt": "「呼……腹部深处一直闷沉沉的。坂口医生，按计划还剩多久？……别让我光听着器械声自己乱猜啦。」",
+            "responses": {
+              "explain_abdominal_pressure": "「关键阶段啊……难怪感觉这么明显。好啦，指挥权暂时交给你们，我只负责好好呼吸。」",
+              "brief_abdominal_pressure": "「这种压力在预期内……嗯，知道就好。」"
+            }
+          },
+          "pelvic_ongoing_position_01": {
+            "prompt": "「……腰腿这样固定着，时间一长真的很累。你们能再看看支撑吗？我知道不能自己挪，可这个姿势真的好难熬……」",
+            "responses": {
+              "support_pelvic_position": "「啊，支撑重新调过了？好舒服一点……谢谢。」",
+              "coach_pelvic_position": "「嗯，腰先松，腿不要乱使劲……我跟着做。」"
+            }
+          },
+          "thoracic_ongoing_position_01": {
+            "prompt": "「肩背好麻……不是在说伤口，是这个姿势。……我知道不能自己翻过去，可我真的很想动。」",
+            "responses": {
+              "check_thoracic_support": "「嗯，背后舒服多了。还好你问得及时……不然我都快把被单抓出洞了。」",
+              "coach_thoracic_stillness": "「好，我只放松能放松的地方。……这种时候别让我证明我有多能忍。」"
+            }
+          },
+          "cardiac_ongoing_fatigue_01": {
+            "prompt": "「……你们是不是还在继续？我现在连器械的声音都分不太清了，怕自己胡思乱想。」",
+            "responses": {
+              "reassure_cardiac_ongoing": "「嗯，知道现在的进度了……我会跟上，不再自己乱猜。」",
+              "brief_cardiac_ongoing": "「还在照计划推进……好。谢谢你说这句。」"
+            }
+          },
+          "vascular_ongoing_pressure_01": {
+            "prompt": "「……刚才那种压力又来了。我知道你们盯着监测，可我自己也忍不住想问一句。」",
+            "responses": {
+              "separate_vascular_sensations": "「哦，这部分感觉和你们看的指标不是一回事……我明白了。谢谢解释。」",
+              "brief_vascular_pressure": "「还在严密监测……嗯，行。我就尽量听你们的。」"
+            }
+          },
+          "closure_default_01": {
+            "prompt": "「……你们是不是准备收了？……我这个患者已经没有精力再猜器械声了。」",
+            "responses": {
+              "confirm_closure": "「主要步骤完成了？……天啊，这句我从没觉得这么好听。」",
+              "brief_closure": "「最后检查……嗯，我等。……别让我睡着了又把我叫醒做问答。」"
+            }
+          },
+          "closure_fear_closure_01": {
+            "prompt": "「你们说‘收尾’了是不是……？别骗我，我现在连开玩笑都没力气了。」",
+            "responses": {
+              "confirm_closure_phase": "「嗯，真的进入关闭阶段了。……好……呼……我再等等。」",
+              "brief_closure_phase": "「最后处理……好。我现在只想听见你说‘完成’。」"
+            }
+          },
+          "closure_fear_closure_02": {
+            "prompt": "「……怎么还要检查啊……我知道检查很重要，可我真快撑不住了。」",
+            "responses": {
+              "explain_final_checks": "「一项项复核……好，我听清楚了。每完成一项就告诉我一声，好吗？……我真的快没力气了。」",
+              "confirm_final_checks": "「正在收尾……嗯。拜托，这次真的快结束吧。」"
+            }
+          },
+          "closure_pain_closure_01": {
+            "prompt": "「呜……最后这里怎么又难受起来了……我真不想在快结束时乱动……！」",
+            "responses": {
+              "pause_closure_discomfort": "「啊……缓了一点。谢谢你没因为快结束就催我。」",
+              "pace_closure_breathing": "「好……我跟着……吸、呼……嗯，继续。」"
+            }
+          },
+          "breast_closure_fear_01": {
+            "prompt": "「……胸前这边是不是已经完成了？我怕自己问得太早……可我真的想知道。」",
+            "responses": {
+              "answer_breast_closure": "「嗯，做完的范围跟术前说的一样……好，我安心了。」",
+              "brief_breast_closure": "「正在照计划收尾。……我等你们说最后那一句。」"
+            }
+          }
+        },
+        "stage_prompts": {
+          "graphic_preop_question": "「再详细讲一遍吧。我平时站在医护团队那边核对方案、配合手术，今天换成躺在这里听。……我想从患者的角度，把接下来每一步都听清楚。」"
+        }
+      },
+      "en": {
+        "invitation_lines": [
+          "“`{procedure_name}`? All right. But I'll be on the table today, so I can't casually double-check your instrument list for you.”",
+          "“Oh, so you're finally the one asking me onto the operating table? Hehe, all right, I accept. Just so you know, the patient might not be the first one to blush today.”",
+          "“`{procedure_name}`? Of course. I wonder if Dr. Sakaguchi will still manage to explain everything with that perfectly serious face once I'm in a patient gown.”"
+        ],
+        "invitation_by_procedure": {
+          "surgery_hysterectomy": [
+            "“`{procedure_name}`... I know that's not the same as removing a single fibroid. Explain the full scope, and I'll sign with a clear head. We can joke afterward.”"
+          ],
+          "surgery_vaginal_hysterectomy": [
+            "“`{procedure_name}`... I know that's not the same as removing a single fibroid. Explain the full scope, and I'll sign with a clear head. We can joke afterward.”"
+          ],
+          "surgery_total_mastectomy": [
+            "“I understand this means a complete removal, not just treating a lump. ...All right. I'm willing. Give me a little time to listen when we confirm the extent.”"
+          ]
+        },
+        "reaction_lines": {
+          "hospitalization_question": "“I have to sign my own admission papers? Of course I do. It's just funny seeing my name in the ‘patient’ column.”",
+          "hospitalization_response": "“All right, I'm officially off nursing duty for now. ...What, you don't believe I'll stay put like a good patient? Hehe, you're not entirely wrong. But I'll cooperate today.”",
+          "procedure_mismatch": "“Hold on. That's not the operation we agreed on. Did you think I'd nod along like a brand-new nurse if you changed the name? ...Explain it. I'm listening.”",
+          "explain_plan": "“I could probably recite the routine. But please explain it properly today. When I used to give that explanation, I never had to imagine where I'd be lying afterward.”",
+          "brief_plan": "“‘We'll proceed as planned,’ huh... That sounds awfully familiar. Give me a couple of specifics, will you? Otherwise I'll start filling in the explanation for you.”",
+          "last_reassure": "“I've checked everything I needed to. Nothing to complain about. ...Hehe, don't look so relieved. I'm only taking a break from asking questions. Now I'm really putting myself in your hands.”",
+          "choose_general": "“General anesthesia? Fine. Once it takes effect, I won't even be able to say, ‘That chart entry is wrong.’ ...Please don't make me audit the nursing records when I wake up.”",
+          "choose_epidural": "“An epidural... Understood. I'll be awake, but my body won't move the way I want. ...Just imagining it is harder than it ever seemed from the nurse's side.”",
+          "choose_local": "“I know how local anesthesia works. If something feels wrong, I'll tell you. Don't expect me to keep smiling just to save face.”",
+          "choose_none": "“No anesthesia... I know what that means. I used to tell patients not to act tough, so I have no right to pretend I'm fearless. ...It's my decision, and I'll do my best to cooperate.”",
+          "induction_reassure": "“Dr. Sakaguchi, wait a second. ...No, it's all right. I never realized how distant ‘Relax, leave it to us’ sounds from this side of the pillow.”",
+          "insist_without_anesthesia": "“Don't ask me again whether I know what I chose. I do. ...But if I cry out, you don't get to laugh, or assume it means I've changed my mind.”",
+          "assistant_stabilize_none": "“Ah...! I know I mustn't move! ...Please steady my shoulders. My mouth is good at giving orders, but my body isn't listening right now.”",
+          "assistant_stabilize_local": "“Sorry, I tensed up on my own. The support is in the right place... Yes, just steady me. Thank you.”",
+          "assistant_stabilize_epidural": "“My legs really aren't responding properly now. ...Don't laugh, I know that's expected. Would you check the support points for me?”",
+          "incision_ready": "“...Hey, y-you're really about to make the incision? I know the procedure, I do... Just wait a moment. Let me get one full breath in. Dr. Sakaguchi, look at me first...”",
+          "incise_epidural": "“...You've made the incision? Ah... It doesn't hurt the way I imagined, but I can feel that you've really started. ...I was going to make a joke just now.”",
+          "incise_local": "“Ngh...! That feeling deeper inside... Not a sharp pain, but it isn't pleasant. Keep going. I'll tell you exactly what I feel.”",
+          "incise_none": "“Ah—! It h-hurts...! I-I know the incision's been made... Don't make me look! ...Sorry, I'll try to hold still. Just let me cry out once...!”",
+          "contact_pause": "“...Phew. Thank you. I always tell patients they never need to apologize for being scared. But now that it's my turn, the words ‘I'm sorry’ come to my lips before I can help it... Let me catch my breath.”",
+          "contact_command": "“Understood. I won't move. ...You know, that tone actually works surprisingly well on me.”",
+          "contact_continue": "“All right, continue. ...Today I'm finally learning how much courage it takes to say those two words.”",
+          "ongoing_narrate": "“So that's where we are. Mm... Knowing the progress keeps my mind from wandering. Keep me informed, all right?”",
+          "ongoing_eye_contact": "“...There you are. I'm fine. ...Well, not exactly fine. But seeing how steady you are makes me a little less tempted to snap at everyone.”",
+          "ongoing_silent": "“...Why has it gone so quiet? I know you're busy, but can someone say something? I never noticed how hard it is to hear nothing but instruments.”",
+          "closure_reassure": "“We're really closing now? ...Then I won't scold you. I'll save my complaints until I can sit up properly.”",
+          "closure_coach": "“All right... In, out. I'll follow your pace. ...But Dr. Sakaguchi, how can your ‘just a little more’ last this long...?”",
+          "closure_silent": "“...Is it still not over...? I know you're doing the final checks... But I honestly... don't even have the strength left to complain... Dr. Sakaguchi, please, just a little sooner...”"
+        },
+        "reaction_speakers": {
+          "procedure_mismatch": "patient",
+          "explain_plan": "patient",
+          "brief_plan": "patient",
+          "last_reassure": "patient",
+          "choose_general": "patient",
+          "choose_epidural": "patient",
+          "choose_local": "patient",
+          "choose_none": "patient",
+          "induction_reassure": "patient",
+          "insist_without_anesthesia": "patient",
+          "assistant_stabilize_none": "patient",
+          "assistant_stabilize_local": "patient",
+          "assistant_stabilize_epidural": "patient",
+          "incision_ready": "patient",
+          "incise_epidural": "patient",
+          "incise_local": "patient",
+          "incise_none": "patient",
+          "contact_pause": "patient",
+          "contact_command": "patient",
+          "contact_continue": "patient",
+          "ongoing_narrate": "patient",
+          "ongoing_eye_contact": "patient",
+          "ongoing_silent": "patient",
+          "closure_reassure": "patient",
+          "closure_coach": "patient",
+          "closure_silent": "patient"
+        },
+        "reaction_variants": {
+          "ward_enema": [
+            "“All right, I know about the enema. ...I was so confident teaching it to new nurses. Just don't call me ‘senior’ when it's my turn, okay?”",
+            "“Please close the curtain properly. ...Oh my, why the serious face? I'm just an ordinary patient right now. Hehe, don't look as though you're about to sit an exam.”"
+          ],
+          "ward_enema_unnecessary": [
+            "“This isn't required? Then explain the reason first. I may be off nursing duty, but my brain hasn't clocked out.”",
+            "“Good, as long as you've confirmed it's unnecessary. ...Oh, what a huge sigh of relief! Hehe, I wasn't even planning to quiz you.”"
+          ],
+          "ward_skin_prep": [
+            "“The skin-preparation area is confirmed? Good. ...What, does one glance from me make you nervous? Relax, today I'm just going to be a perfectly good patient... probably. Hehe.”",
+            "“The scissors sound awfully close from down here... Oh, don't look at me like that. I'm not testing your technique. Just take your time.”"
+          ],
+          "ward_skin_prep_unnecessary": [
+            "“That area isn't part of the surgical field, is it? If it's not necessary, let me keep a little dignity, please.”",
+            "“If we can skip it, tell me. ...I never knew hearing ‘we don't need to do that’ could be such a relief.”"
+          ],
+          "ward_surgical_cap": [
+            "“Is all my hair tucked away? Hehe, don't I look wonderfully well-behaved now? ...Don't be fooled. That cap hasn't tucked away my mischievous streak.”",
+            "“Don't leave a strand out for decoration. I do intend to come back to work... Ah, no, let's get through today first.”"
+          ],
+          "operative_positioning_awake": [
+            "“Oh my, today you're the one telling me where to put my arms and legs. Hehe, don't let your hands shake. I'll cooperate nicely... provided you ask sweetly enough.”",
+            "“A moment, my shoulder's a little tense... Mm, that's better. For once, I get to say, ‘This position is uncomfortable.’”"
+          ],
+          "operative_positioning_none": [
+            "“Positioning me without anesthesia... Understood. Make sure the supports are secure. I don't want my nerves to defeat me before the incision.”",
+            "“I know you're securing me carefully. ...But the less I'm allowed to move, the more I want to fidget. How annoying.”"
+          ],
+          "urinary_catheterization_awake": [
+            "“A catheter, then. Yes, I understand why it's needed. ...But give me a moment to prepare, and don't skip the explanation just because I know.”",
+            "“Gently, please. ...Oh, don't be nervous. I just couldn't help reminding you. Hehe, looks like it's my turn to be a slightly fussy patient today.”"
+          ],
+          "urinary_catheterization_none": [
+            "“I'm staying fully awake for this preparation too... It's all right, I know the procedure. ...Just let me grip the edge of the bed for a moment.”",
+            "“Even saying ‘proceed as usual’ feels difficult today. ...All right, I'll hold still. Go ahead.”"
+          ],
+          "skin_disinfection_awake": [
+            "“Ah, that's cold! ...Hehe, don't hold back that laugh. You don't often get to see me make a fool of myself. ...But it really is cold.”",
+            "“The antiseptic has to dry, I know. ...Honestly, those few minutes used to fly by on my side of the table.”"
+          ],
+          "skin_disinfection_none": [
+            "“That was only the antiseptic, and I nearly lost my composure. ...When the incision comes, I might be noisy. Sorry in advance.”",
+            "“It's cold... We haven't even begun, and my heart's racing. ...Dr. Sakaguchi, please don't make me guess when you're starting.”"
+          ],
+          "incision_marking_awake": [
+            "“Those marks look pretty accurate. ...Oh, don't make that face like I'm inspecting your work. I'm a good patient today. Hehe... But seriously, I'm counting on you.”",
+            "“Seeing the incision marks on myself from this angle feels unreal. ...Tell me when you're really about to begin.”"
+          ],
+          "incision_marking_none": [
+            "“W-wait! That's still the marker, right? I know... I know it is. But my eyes are already looking for the scalpel.”",
+            "“Finished marking? ...Is this where I make my last joke? ...Forget it. I suddenly can't think of one.”"
+          ]
+        },
+        "interaction_overrides": {
+          "contact_pain_incision_01": {
+            "prompt": "“Ngh...! That felt wrong for a moment... H-have you really started cutting? I can't believe this familiar step startled me.”",
+            "responses": {
+              "explain_contact": "“All right, you've started... I heard you. Breathe, yes, I'll do that.”",
+              "brief_contact": "“That's all you're giving me? ...Fine. Knowing it's going as planned is enough.”",
+              "continue_contact": "“I-I know. I won't move... Please don't throw my own old instructions back at me.”"
+            }
+          },
+          "contact_no_anesthesia_incision_01": {
+            "prompt": "“Ah...! That hurts... And I was actually thinking of grading your technique a moment ago...!”",
+            "responses": {
+              "steady_unanesthetized_contact_01": "“Okay... Slower... I'll breathe with you. Thank you for letting me relax my shoulders first.”",
+              "continue_unanesthetized_contact_01": "“Ngh... I understand... I'll try to bear it. Just don't give me a lecture right now.”"
+            }
+          },
+          "contact_no_anesthesia_incision_02": {
+            "prompt": "“W-wait...! I can't see your hands. I can only feel what's happening... It's much scarier than I imagined!”",
+            "responses": {
+              "steady_unanesthetized_contact_02": "“...Yes, just a moment's pause. I can still cooperate. Give me one breath.”",
+              "continue_unanesthetized_contact_02": "“Ah...! All right, I won't pull away... Keep going...!”"
+            }
+          },
+          "contact_no_anesthesia_incision_03": {
+            "prompt": "“No, I nearly flinched without thinking...! But don't misunderstand me—I haven't asked you to add anesthesia!”",
+            "responses": {
+              "steady_unanesthetized_contact_03": "“Yes, I still decline additional anesthesia. ...Thank you. Just slow down a little. I'll steady myself again.”",
+              "continue_unanesthetized_contact_03": "“I said no additional anesthesia... Ah, that hurts! ...Keep going. I'll do my best to stay still.”"
+            }
+          },
+          "contact_default_01": {
+            "prompt": "“Oh my, we've started? I was all ready to hear whether you'd sound nervous during the first step... Wait, why am I the nervous one?”",
+            "responses": {
+              "reassure_start": "“Mm, if things are stable, that helps. ...All right, it helps halfway.”",
+              "brief_start": "“Oh, that's all I get? Afraid I'll catch you sounding nervous if you say any more? ...Hehe, all right. I know we're on plan.”",
+              "silent_start": "“...All right, I'll be quiet. If you hear me humming, pretend you didn't.”"
+            }
+          },
+          "contact_pain_incision_02": {
+            "prompt": "“Ngh... There it is again. ...Strange. Even knowing this part was coming doesn't make feeling it any less frightening.”",
+            "responses": {
+              "acknowledge_second_contact": "“As long as you've confirmed it. ...I'll stop trying to predict your next move.”",
+              "brief_second_contact": "“...All right, continue. I'll bite my lip this time.”"
+            }
+          },
+          "contact_fear_incision_01": {
+            "prompt": "“Wait, what was that just now? I'm not trying to take over... I suddenly really need to know where we are.”",
+            "responses": {
+              "orient_fearful_contact": "“...Oh, we're past that part already. I thought we were only just starting.”",
+              "steady_fearful_contact": "“Keep talking. I'm listening. ...Yes, it's better when I can hear your voice.”",
+              "dismiss_fearful_contact": "“Oh my, that's stern. ...Usually I'm the one who uses that tone to take charge. All right, I'll stop asking... But I really am a little scared.”"
+            }
+          },
+          "progress_fear_default_01": {
+            "prompt": "“Dr. Sakaguchi... Have I asked already? Sorry. I've completely lost track of time.”",
+            "responses": {
+              "explain_progress": "“Mm, still on schedule. I'll remember that. ...I'll try not to ask every two minutes.”",
+              "brief_progress": "“...Still working on it. All right, I'll wait.”",
+              "dismiss_progress": "“You're telling me not to get distracted? ...I'd love to, but right now I can hear every little sound.”"
+            }
+          },
+          "progress_default_01": {
+            "prompt": "“Dr. Sakaguchi, how would you rate your performance today? ...Hehe, relax, I can't reach a scorecard from here. Seriously, though, are we making good progress?”",
+            "responses": {
+              "answer_progress": "“Oh, we're at that stage already. Hehe, is that such a detailed report because you're afraid I'll add notes to the operative record afterward? ...Relax, I've got it all.”",
+              "brief_answer_progress": "“All right, understood. I'll keep myself from doing your job for another while.”"
+            }
+          },
+          "cardiac_progress_fear_01": {
+            "prompt": "“My heart... What's happening now? Don't call me a nag. This time I really don't dare picture it on my own.”",
+            "responses": {
+              "explain_cardiac_progress": "“The critical steps are still on schedule, yes... Knowing you're watching the monitors helps a little.”",
+              "brief_cardiac_progress": "“...As long as it's on schedule. I won't pretend I'm not nervous anymore.”"
+            }
+          },
+          "cardiac_progress_default_01": {
+            "prompt": "“Should we be moving to the next stage about now? ...I know I can't see. Just give me a short answer.”",
+            "responses": {
+              "answer_cardiac_progress": "“Mm, I follow. Your explanations are clearer than I expected.”",
+              "brief_cardiac_answer": "“All right, I understand. I'll leave the rest to you.”"
+            }
+          },
+          "progress_fear_fatigue_01": {
+            "prompt": "“...It feels like it's been ages. How much longer? Don't give me a pretty number just to make me feel better.”",
+            "responses": {
+              "explain_fatigue_progress": "“I see... Knowing what's left is much better than just waiting. Thank you.”",
+              "brief_fatigue_progress": "“Still on schedule... All right. I'll try to hang in there.”"
+            }
+          },
+          "progress_fear_fatigue_02": {
+            "prompt": "“I'm getting tired... It takes me forever to come up with a decent insult for you now. Can you give me a clear milestone?”",
+            "responses": {
+              "mark_fatigue_milestone": "“Oh, we've reached that point. ...All right, I'll make that my next little milestone.”",
+              "encourage_fatigue_progress": "“The important part's done? ...Then I'll believe your good news for now.”"
+            }
+          },
+          "thoracic_progress_fatigue_01": {
+            "prompt": "“This side of my chest... How far along are we? Every time I hear you change instruments, my heart jumps.”",
+            "responses": {
+              "explain_thoracic_progress": "“Mm, I understand this thoracic stage now. ...I'll stop watching the instruments and focus on listening to you.”",
+              "brief_thoracic_progress": "“The critical portion is still proceeding as planned. Good... I'll remember that.”"
+            }
+          },
+          "vascular_progress_deep_01": {
+            "prompt": "“You all sounded suddenly more focused just now. ...The vascular step is still under control, right?”",
+            "responses": {
+              "explain_vascular_milestone": "“So we've reached that crucial point. Mm... I trust you to keep a close watch on every change.”",
+              "brief_vascular_milestone": "“Within expectations. ...Good. That's all I needed to hear.”"
+            }
+          },
+          "cabg_signature_01": {
+            "prompt": "“...Are we at the reconstruction stage? I've read operative reports before, yet just thinking about this makes my heart race.”",
+            "responses": {
+              "explain_cabg_milestone": "“All right, we're at the planned reconstruction step... I understand. Thank you for still explaining it to me.”",
+              "brief_cabg_milestone": "“The planned critical step, yes. ...Then I won't press you for every detail.”"
+            }
+          },
+          "strain_pain_default_01": {
+            "prompt": "“Ngh...! This isn't the kind of pain I was expecting... D-don't let me move suddenly...!”",
+            "responses": {
+              "pause_strain": "“...Thank you. That little pause really helps. I'll slowly relax my shoulders.”",
+              "coach_strain": "“All right, breathe with you... Hah... I'll try not to tense up so much.”",
+              "push_through_strain": "“You want me to push through... Fine. But right now I can only manage it bit by bit.”"
+            }
+          },
+          "strain_default_01": {
+            "prompt": "“...That pulling sensation. I know why you're doing it, but feeling it from here is completely different.”",
+            "responses": {
+              "explain_strain": "“So this step is causing it... All right, I'll stop guessing.”",
+              "brief_strain": "“It'll pass soon? ...I'll hold you to that. Don't laugh when I start counting the seconds.”"
+            }
+          },
+          "abdominal_strain_pain_01": {
+            "prompt": "“Ah... Something pulled deep in my abdomen...! I said I understood, but knowing and feeling it are two entirely different things...!”",
+            "responses": {
+              "explain_abdominal_strain": "“Mm, you're working through this stage inside the abdomen. I understand... Let me steady my breathing.”",
+              "coach_abdominal_strain": "“In... out... Okay... I'll hang on a little longer.”"
+            }
+          },
+          "strain_pain_traction_02": {
+            "prompt": "“Ah... That pulling sensation is back! ...I know I can't pull away, but my body keeps trembling.”",
+            "responses": {
+              "pause_second_traction": "“...Thank you for pausing. Hah... I'll steady my position again.”",
+              "coach_second_traction": "“All right, breathe out slowly... I'll try not to tense up so much.”"
+            }
+          },
+          "strain_pain_pressure_01": {
+            "prompt": "“...That pressure hasn't let up. You haven't forgotten that I can still feel it, have you?”",
+            "responses": {
+              "relieve_pressure": "“Ah... That's better. Thank you for stopping to adjust it.”",
+              "explain_pressure": "“It'll last a little longer... Understood. Then please keep me updated.”"
+            }
+          },
+          "urologic_strain_pressure_01": {
+            "prompt": "“...Why is that dull feeling still there? I know this is delicate work, but it really is hard to endure.”",
+            "responses": {
+              "pause_urologic_strain": "“...Mm, that let me catch my breath again. Thank you.”",
+              "explain_urologic_strain": "“So it's the deep work at this stage... All right, I understand.”"
+            }
+          },
+          "dignity_low_exposure_01": {
+            "prompt": "“...Hey, even I think this is an embarrassing angle. Wait—could you cover the other areas a little better?”",
+            "responses": {
+              "restore_cover": "“Thank you. Just leave what's necessary exposed... I know that won't interfere with the operation.”",
+              "explain_exposure": "“...Mm, I understand that this area needs to stay exposed. Let me turn my face away for a moment.”",
+              "ignore_exposure": "“Just don't think about it? ...I'll remember that one. Next time I'm teaching, it's going on the list of things not to say.”"
+            }
+          },
+          "dignity_default_01": {
+            "prompt": "“Hehe, why has everyone suddenly gone shy about looking this way? You were all so decisive when positioning me. ...All right, don't laugh. I'm a little embarrassed myself, actually.”",
+            "responses": {
+              "protect_dignity": "“Mm, that's better covered. ...You're doing the right thing. You don't have to look so nervous around me.”",
+              "brief_dignity": "“This part will be over soon? ...Then I'll pretend I can't see any of you for a moment.”"
+            }
+          },
+          "pelvic_dignity_exposure_01": {
+            "prompt": "“...Of course I know this is how you position someone for pelvic surgery. I used to be the one adjusting the leg supports... Just please don't let too many people watch.”",
+            "responses": {
+              "explain_pelvic_stage": "“Mm, I understand this stage. Keep the unnecessary areas covered, and I'll feel a little better.”",
+              "brief_pelvic_stage": "“According to the preoperative plan... All right. I trust you.”"
+            }
+          },
+          "pelvic_dignity_default_01": {
+            "prompt": "“...Can I ask about the progress? ...No, don't laugh. I'm honestly afraid to imagine how far along you are.”",
+            "responses": {
+              "answer_pelvic_progress": "“Mm, still at the planned step. ...Good. That's enough of an answer.”",
+              "brief_pelvic_progress": "“Understood. ...I'll focus on breathing for now.”"
+            }
+          },
+          "breast_dignity_exposure_01": {
+            "prompt": "“I knew this area would have to be exposed when I signed. ...But making eye contact with coworkers I know still feels... Oh, stop staring at me.”",
+            "responses": {
+              "confirm_breast_scope": "“Good, the scope matches what we discussed. I'll treat this as a very personal demonstration of patient privacy.”",
+              "brief_breast_scope": "“Within the agreed scope... Mm. I'll stop scaring myself with guesses.”"
+            }
+          },
+          "breast_dignity_default_01": {
+            "prompt": "“...Can I ask which stage you're at now? I had a witty remark ready, but I've forgotten every word.”",
+            "responses": {
+              "answer_breast_stage": "“Mm, just as you explained beforehand. ...Knowing that makes me feel much better.”",
+              "brief_breast_stage": "“Just follow the original plan. ...We can talk about everything else when you're finished.”"
+            }
+          },
+          "dignity_low_exposure_02": {
+            "prompt": "“...Did I already ask about the drapes? Sorry, but every time a sheet moves, I feel as if everyone is looking at me.”",
+            "responses": {
+              "reduce_exposure_again": "“Ah, thank you. That small adjustment is enough to put me at ease.”",
+              "acknowledge_exposure_again": "“You're right. I know what's necessary. ...Thank you for at least taking my complaint seriously.”"
+            }
+          },
+          "dignity_cooperation_exposure_01": {
+            "prompt": "“I'm not refusing to cooperate! ...I just want to know how many people actually need to be here.”",
+            "responses": {
+              "limit_observers": "“Mm, that makes me feel better. Thank you. You don't have to treat me like some impossible senior nurse.”",
+              "brief_privacy_confirmation": "“All right, everyone is here for a necessary reason... I understand.”"
+            }
+          },
+          "hysterectomy_signature_01": {
+            "prompt": "“...You're following the full hysterectomy plan I signed, right? I know I'm asking a lot, but I signed that consent form myself.”",
+            "responses": {
+              "confirm_hysterectomy_scope": "“Mm, every part of the scope has been confirmed. ...Thank you for taking the time to explain it item by item.”",
+              "brief_hysterectomy_scope": "“Nothing beyond the consented scope. Understood. ...I'll try not to imagine anything else.”"
+            }
+          },
+          "ovarian_cystectomy_signature_01": {
+            "prompt": "“...The plan to preserve the ovary hasn't changed, has it? You know, I'm the patient. It's reasonable for me to ask.”",
+            "responses": {
+              "confirm_ovarian_preservation": "“Mm, the goal is still to preserve healthy tissue. ...All right, I trust your judgment.”",
+              "brief_ovarian_preservation": "“Understood. ...I know you've kept that plan in mind.”"
+            }
+          },
+          "myomectomy_signature_01": {
+            "prompt": "“...I know this is a myomectomy, not a hysterectomy. The plan hasn't changed, right?”",
+            "responses": {
+              "confirm_myomectomy_scope": "“Good, the procedure hasn't changed. ...Mm, today I really needed to hear you confirm that yourself.”",
+              "brief_myomectomy_scope": "“As long as it's still the original plan. ...I won't interfere with your work.”"
+            }
+          },
+          "breast_tumor_signature_01": {
+            "prompt": "“Is the removal area still the one we marked beforehand? ...Don't call me fussy. Today I just need to hear you confirm it again.”",
+            "responses": {
+              "confirm_breast_tumor_scope": "“Mm, it matches the markings. Thank you. I feel better hearing that.”",
+              "brief_breast_tumor_scope": "“Still within the original boundaries... Good. I'll keep lying still, then.”"
+            }
+          },
+          "mastectomy_signature_01": {
+            "prompt": "“...I know I agreed to the complete removal. But being at this point still hurts emotionally. ...Please confirm that you remember the scope we agreed on.”",
+            "responses": {
+              "acknowledge_mastectomy_loss": "“...Thank you for not brushing it aside with a joke. I've heard the scope clearly. Please continue.”",
+              "confirm_mastectomy_plan": "“Mm, strictly within the consented scope. ...I trust you. Don't let me frighten myself with guesses.”"
+            }
+          },
+          "ongoing_fear_default_01": {
+            "prompt": "“...It's gone so quiet again. Dr. Sakaguchi, could you at least let me know nothing's gone wrong?”",
+            "responses": {
+              "reassure_ongoing": "“Mm, still on plan... Good. Hearing you say it helps.”",
+              "brief_ongoing": "“Everything's normal. ...Those words sound wonderful today.”"
+            }
+          },
+          "ongoing_default_01": {
+            "prompt": "“Am I being a good patient? Hehe, usually I'm the one telling people to hold still. Today you get to keep an eye on me. ...Honestly, lying here isn't easy either.”",
+            "responses": {
+              "coach_ongoing": "“I know. Just because I'm lying here so obediently doesn't mean I've forgotten how to follow instructions. ...Hehe, all right, I'll hold still.”",
+              "reassure_ongoing_default": "“I'm doing fine like this? ...Hehe, I can't believe I'm a little pleased to get praise from you today. All right, I'll stay still.”"
+            }
+          },
+          "ongoing_fear_fatigue_01": {
+            "prompt": "“...Feels like another long stretch has passed. When I was working beside the table, I'd forget the clock. Now I can't think of anything but time.”",
+            "responses": {
+              "maintain_running_update": "“That's better... Even one small update keeps my mind from running away with me.”",
+              "brief_running_update": "“Stable is good. ...I no longer expect a report every minute.”"
+            }
+          },
+          "ongoing_fear_fatigue_02": {
+            "prompt": "“This waiting is getting to me... Can you tell me at least what the next milestone is?”",
+            "responses": {
+              "preview_next_milestone": "“All right, I've heard the next goal. ...When we reach it, I'm awarding myself a point.”",
+              "encourage_next_milestone": "“Almost at the next stage? ...You really do know how to encourage someone. Today it's my turn to believe it.”"
+            }
+          },
+          "ongoing_pain_position_01": {
+            "prompt": "“...I'm not supposed to move my shoulder, right? The pressure here is awful. I think the support's shifted a little... Could you check it for me? I won't move on my own.”",
+            "responses": {
+              "adjust_pressure_points": "“Thank you... That pressure point feels much better after the adjustment. Much appreciated, circulating nurse.”",
+              "coach_position_stillness": "“All right, I won't move on my own... I'll relax a little at a time. Mm, this works.”"
+            }
+          },
+          "abdominal_ongoing_pressure_01": {
+            "prompt": "“Hah... There's a constant heavy feeling deep in my abdomen. Dr. Sakaguchi, how much longer according to the plan? ...Don't leave me guessing from the instrument sounds alone.”",
+            "responses": {
+              "explain_abdominal_pressure": "“A critical stage, then... No wonder I can feel it so clearly. All right, I'll leave the team in charge for now and focus on breathing.”",
+              "brief_abdominal_pressure": "“That pressure is expected... Mm, good to know.”"
+            }
+          },
+          "pelvic_ongoing_position_01": {
+            "prompt": "“...Being positioned like this for so long is exhausting my lower back and legs. Could you check the supports again? I know I shouldn't shift by myself, but this position is so hard to bear...”",
+            "responses": {
+              "support_pelvic_position": "“Ah, you've adjusted the supports? That does feel a little better... Thank you.”",
+              "coach_pelvic_position": "“Mm, relax my lower back first, don't tense my legs... I'll follow your directions.”"
+            }
+          },
+          "thoracic_ongoing_position_01": {
+            "prompt": "“My shoulder and back feel so stiff... Not the incision, the position. ...I know I can't turn myself over, but I really want to.”",
+            "responses": {
+              "check_thoracic_support": "“Mm, my back feels much better. Good thing you asked when you did... I was about to grip a hole right through the sheet.”",
+              "coach_thoracic_stillness": "“All right, I'll relax only what I safely can. ...This isn't the time to make me prove how tough I am.”"
+            }
+          },
+          "cardiac_ongoing_fatigue_01": {
+            "prompt": "“...You're still working, aren't you? I can barely tell the instrument sounds apart anymore. I'm afraid I'll start imagining things.”",
+            "responses": {
+              "reassure_cardiac_ongoing": "“Mm, now I know where we are... I'll keep up and stop guessing.”",
+              "brief_cardiac_ongoing": "“Still proceeding as planned... Good. Thank you for saying so.”"
+            }
+          },
+          "vascular_ongoing_pressure_01": {
+            "prompt": "“...That pressure has come back. I know you're watching the monitors, but I can't stop myself from asking.”",
+            "responses": {
+              "separate_vascular_sensations": "“Oh, what I'm feeling isn't the same thing as the measurements you're watching... I understand. Thanks for explaining.”",
+              "brief_vascular_pressure": "“You're still monitoring everything closely... Mm, all right. I'll try to follow your lead.”"
+            }
+          },
+          "closure_default_01": {
+            "prompt": "“...Are you about to close? ...This patient of yours is out of energy for guessing instrument sounds.”",
+            "responses": {
+              "confirm_closure": "“The main steps are finished? ...Goodness, I've never heard anything so lovely.”",
+              "brief_closure": "“Final checks... Mm, I'll wait. ...Just don't wake me up for a quiz if I drift off.”"
+            }
+          },
+          "closure_fear_closure_01": {
+            "prompt": "“You said ‘closing,’ didn't you...? Don't tease me. I don't even have the energy to joke anymore.”",
+            "responses": {
+              "confirm_closure_phase": "“Mm, we're really in the closure phase. ...Good... Hah... I'll wait a bit longer.”",
+              "brief_closure_phase": "“The final work... All right. All I want to hear now is ‘finished.’”"
+            }
+          },
+          "closure_fear_closure_02": {
+            "prompt": "“...Why are there more checks...? I know they're important, but I'm almost at my limit.”",
+            "responses": {
+              "explain_final_checks": "“Checking each item... All right, I understand. Could you tell me whenever one is finished? ...I'm really running out of strength.”",
+              "confirm_final_checks": "“You're closing... Mm. Please, let this really be the end soon.”"
+            }
+          },
+          "closure_pain_closure_01": {
+            "prompt": "“Ngh... Why does this last part hurt again...? I really don't want to move when we're so close to finishing...!”",
+            "responses": {
+              "pause_closure_discomfort": "“Ah... A little better. Thank you for not rushing me just because we're nearly done.”",
+              "pace_closure_breathing": "“All right... I'll follow... In, out... Mm, continue.”"
+            }
+          },
+          "breast_closure_fear_01": {
+            "prompt": "“...Is the work on my breast finished now? I'm afraid I'm asking too soon... But I really want to know.”",
+            "responses": {
+              "answer_breast_closure": "“Mm, the completed work matches the scope we discussed... Good. That puts me at ease.”",
+              "brief_breast_closure": "“Closing as planned... I'll wait to hear you say that final word.”"
+            }
+          }
+        },
+        "stage_prompts": {
+          "graphic_preop_question": "“Please go through the details once more. I'm used to checking the plan and supporting the operation from the clinical team's side. Today I'm listening from the table instead. ...I'd like to hear every step from the patient's point of view.”"
+        }
+      }
+    }
   }
 }

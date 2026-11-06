@@ -1,0 +1,37 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+OpenGL API 4.1 Metal - 88.1 - Compatibility - Using Device: Apple - Apple M2
+
+TAKEMI START clock=540 target=540 elapsed=1440 story=1420 offset=0
+TAKEMI NATIVE zh_CN ev_doc_takemi_lv1_vivisection_frog nodes=42 pages=42 completed=true
+TAKEMI START clock=540 target=540 elapsed=1440 story=1260 offset=0
+TAKEMI NATIVE zh_CN ev_doc_takemi_lv2_fujino_laparotomy nodes=108 pages=108 completed=true
+TAKEMI START clock=540 target=540 elapsed=1440 story=1420 offset=0
+SCRIPT ERROR: Invalid access to property or key 'name' on a base object of type 'Dictionary'.
+   at: show_character_event_complete (res://godot/ui/app.gd:3367)
+   GDScript backtrace (most recent call first):
+       [0] show_character_event_complete (res://godot/ui/app.gd:3367)
+       [1] choose_character_event (res://godot/ui/app.gd:3289)
+       [2] activate_dialogue_default (res://godot/ui/app.gd:774)
+       [3] _unhandled_key_input (res://godot/ui/app.gd:802)
+       [4] key_button (res://tools/takemi_lv12_native_test.gd:65)
+ERROR: Visible button
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/takemi_lv12_native_test.gd:22)
+       [1] click (res://tools/takemi_lv12_native_test.gd:28)
+       [2] play (res://tools/takemi_lv12_native_test.gd:207)
+       [3] shot (res://tools/takemi_lv12_native_test.gd:85)
+ERROR: Return to safe hospital map ev_doc_takemi_lv1_vivisection_frog
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/takemi_lv12_native_test.gd:22)
+       [1] play (res://tools/takemi_lv12_native_test.gd:208)
+       [2] shot (res://tools/takemi_lv12_native_test.gd:85)
+ERROR: Session closed ev_doc_takemi_lv1_vivisection_frog
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/takemi_lv12_native_test.gd:22)
+       [1] play (res://tools/takemi_lv12_native_test.gd:209)
+       [2] shot (res://tools/takemi_lv12_native_test.gd:85)
+TAKEMI NATIVE en ev_doc_takemi_lv1_vivisection_frog nodes=42 pages=55 completed=true
+TAKEMI LV1/LV2 NATIVE: 2981 checks; 3 failures; routes=3

@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Dependency-free checks for Hoshimi locale files.
-
-This intentionally permits incomplete locales: untranslated keys use authored
-Chinese at runtime. It rejects malformed or blank translations and reports the
-current translated-string count so coverage can grow in reviewable batches.
-"""
+"""Dependency-free, release-blocking checks for every active Hoshimi locale key."""
 
 from __future__ import annotations
 
@@ -18,6 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 LOCALE_DIR = ROOT / "data" / "localization"
 KEY = re.compile(r"^[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)+$")
 PLACEHOLDER = re.compile(r"%(?:0?\d+)?[sdif]")
+BRACE_PLACEHOLDER = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*\}")
+HAN = re.compile(r"[\u3400-\u9fff]")
+CJK = re.compile(r"[\u3400-\u9fff\u3040-\u30ff]")
 TX_CALL = re.compile(r'(?:app\.)?tx\("(?P<key>[^"]+)",\s*"(?P<fallback>(?:\\.|[^"\\])*)"')
 CHINESE_LITERAL = re.compile(r'"(?:\\.|[^"\\])*[\u3400-\u9fff](?:\\.|[^"\\])*"')
 TRANSLATABLE_FIELDS = {
@@ -63,6 +61,9 @@ def collect_keys(value: object, path: str, result: set[str]) -> None:
 def collect_han_leaf_keys(value: object, path: str, result: set[str]) -> None:
     """Collect patient prose stored under semantic map keys rather than fields."""
     if isinstance(value, dict):
+        # Inline locale pairs are checked separately and are not en.json keys.
+        if isinstance(value.get("zh_CN"), str) and isinstance(value.get("en"), str):
+            return
         for field, child in value.items():
             collect_han_leaf_keys(child, f"{path}.{field}", result)
     elif isinstance(value, list):
@@ -106,6 +107,124 @@ def walk_scalar_strings(value: object, path: str):
         yield path, value
 
 
+def strict_patient_source_strings() -> dict[str, str]:
+    """Read all authored patient prose, including semantic reaction-map keys."""
+    config = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))["patient_bundles"]
+    result: dict[str, str] = {}
+    profiles = json.loads((ROOT / "data" / config["dialogue_profiles"]).read_text(encoding="utf-8"))["profiles"]
+    for profile_id, profile in profiles.items():
+        result.update((key, value) for key, value in walk_scalar_strings(profile, f"patient_dialogue_profiles.{profile_id}") if HAN.search(value))
+    for kind in ("encounter", "preop"):
+        template = json.loads((ROOT / "data" / config[f"{kind}_template"]).read_text(encoding="utf-8"))
+        result.update((key, value) for key, value in walk_scalar_strings(template, f"patient_templates.{kind}") if HAN.search(value))
+    index = json.loads((ROOT / "data" / config["index"]).read_text(encoding="utf-8"))
+    for relative_path in index:
+        bundle = json.loads((ROOT / "data/patients" / relative_path).read_text(encoding="utf-8"))
+        patient_id = bundle["patient"]["id"]
+        result.update((key, value) for key, value in walk_scalar_strings(bundle, f"patient_bundles.{patient_id}") if HAN.search(value))
+    return result
+
+
+def strict_patient_translation_failures(strings: dict[str, str]) -> list[str]:
+    failures: list[str] = []
+    for key, source in strict_patient_source_strings().items():
+        translated = strings.get(key, "")
+        if not isinstance(translated, str) or not translated.strip() or CJK.search(translated):
+            failures.append(f"en.json: patient translation missing or Chinese: {key}")
+        elif sorted(BRACE_PLACEHOLDER.findall(source)) != sorted(BRACE_PLACEHOLDER.findall(translated)):
+            failures.append(f"en.json: patient placeholder mismatch: {key}")
+    return failures
+
+
+def strict_staff_patient_dialogue_failures() -> list[str]:
+    failures: list[str] = []
+    profiles = json.loads((ROOT / "data/staff_patient_profiles.json").read_text(encoding="utf-8"))
+
+    def compare(source: object, translated: object, path: str) -> None:
+        if isinstance(source, dict):
+            if not isinstance(translated, dict):
+                failures.append(f"staff patient English group missing: {path}")
+                return
+            for field, value in source.items():
+                compare(value, translated.get(field), f"{path}.{field}")
+            for field in translated.keys() - source.keys():
+                failures.append(f"staff patient Chinese group missing: {path}.{field}")
+        elif isinstance(source, list):
+            if not isinstance(translated, list) or len(source) != len(translated):
+                failures.append(f"staff patient English list mismatch: {path}")
+                return
+            for index, value in enumerate(source):
+                compare(value, translated[index], f"{path}.{index}")
+        elif isinstance(source, str):
+            if not isinstance(translated, str) or (source and not translated.strip()):
+                failures.append(f"staff patient English line missing: {path}")
+            elif CJK.search(translated):
+                failures.append(f"staff patient English contains Chinese: {path}")
+            elif sorted(BRACE_PLACEHOLDER.findall(source) + PLACEHOLDER.findall(source)) != sorted(BRACE_PLACEHOLDER.findall(translated) + PLACEHOLDER.findall(translated)):
+                failures.append(f"staff patient placeholder mismatch: {path}")
+        elif type(source) is not type(translated):
+            failures.append(f"staff patient English type mismatch: {path}")
+
+    for actor, profile in profiles.items():
+        dialogue = profile.get("dialogue", {})
+        source, translated = dialogue.get("zh_CN"), dialogue.get("en")
+        if not isinstance(source, dict) or not isinstance(translated, dict):
+            failures.append(f"staff patient locale missing: {actor}")
+            continue
+        if not isinstance(source.get("invitation_lines"), list) or not source["invitation_lines"]:
+            failures.append(f"staff patient invitation missing: {actor}")
+        if not source.get("reaction_lines") and not profile.get("dialogue_profile"):
+            failures.append(f"staff patient reactions/profile missing: {actor}")
+        compare(source, translated, actor)
+    return failures
+
+
+def strict_inline_locale_failures() -> list[str]:
+    """Check localized pairs stored directly in data files outside en.json."""
+    failures: list[str] = []
+
+    def walk(value: object, path: str) -> None:
+        if isinstance(value, dict):
+            source = value.get("zh_CN")
+            if isinstance(source, str) and source.strip():
+                translated = value.get("en")
+                if not isinstance(translated, str) or not translated.strip():
+                    failures.append(f"inline English missing: {path}")
+                elif CJK.search(translated):
+                    failures.append(f"inline English contains Chinese: {path}")
+                elif sorted(BRACE_PLACEHOLDER.findall(source) + PLACEHOLDER.findall(source)) != sorted(BRACE_PLACEHOLDER.findall(translated) + PLACEHOLDER.findall(translated)):
+                    failures.append(f"inline English placeholder mismatch: {path}")
+            for field, source_text in value.items():
+                if field == "zh_CN" or field.endswith("_en") or not isinstance(source_text, str) or not HAN.search(source_text):
+                    continue
+                paired_field = field + "_en"
+                if paired_field not in value and not path.startswith("data/advanced_surgery/"):
+                    continue
+                translated = value.get(paired_field)
+                pair_path = f"{path}.{paired_field}"
+                if not isinstance(translated, str) or not translated.strip():
+                    failures.append(f"inline English missing: {pair_path}")
+                elif CJK.search(translated):
+                    failures.append(f"inline English contains Chinese: {pair_path}")
+                else:
+                    normalized_source = source_text.replace("〈本次术式〉", "{procedure_name}")
+                    source_slots = sorted(BRACE_PLACEHOLDER.findall(normalized_source) + PLACEHOLDER.findall(normalized_source))
+                    translated_slots = sorted(BRACE_PLACEHOLDER.findall(translated) + PLACEHOLDER.findall(translated))
+                    if source_slots != translated_slots:
+                        failures.append(f"inline English placeholder mismatch: {pair_path}")
+            for field, child in value.items():
+                walk(child, f"{path}.{field}")
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                walk(child, f"{path}.{index}")
+
+    for path in sorted((ROOT / "data").rglob("*.json")):
+        if path.parent == LOCALE_DIR:
+            continue
+        walk(json.loads(path.read_text(encoding="utf-8")), str(path.relative_to(ROOT)))
+    return failures
+
+
 def authored_keys() -> set[str]:
     manifest = json.loads((ROOT / "data" / "manifest.json").read_text(encoding="utf-8"))
     result: set[str] = set()
@@ -116,6 +235,7 @@ def authored_keys() -> set[str]:
     for collection, relative_path in manifest["collections"].items():
         rows = read_collection(relative_path)
         collect_keys(rows, f"collections.{collection}", result)
+        collect_han_leaf_keys(rows, f"collections.{collection}", result)
         if collection == "surgery_team_dialogue_profiles":
             # Runtime localize_tree also translates response arrays whose keys
             # describe actions rather than generic fields such as text/lines.
@@ -126,6 +246,7 @@ def authored_keys() -> set[str]:
     staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     for collection, rows in staff_collections.items():
         collect_keys(rows, f"collections.{collection}", result)
+        collect_han_leaf_keys(rows, f"collections.{collection}", result)
         collect_staff_dialogue_keys(rows, f"collections.{collection}", result)
     patient_config = manifest.get("patient_bundles", {})
     profile_source = json.loads((ROOT / "data" / patient_config["dialogue_profiles"]).read_text(encoding="utf-8"))
@@ -142,6 +263,33 @@ def authored_keys() -> set[str]:
         collect_keys(bundle, f"patient_bundles.{patient_id}", result)
         collect_han_leaf_keys(bundle, f"patient_bundles.{patient_id}", result)
     return result
+
+
+def authored_source_values(keys: set[str]) -> dict[str, str]:
+    """Resolve every active key to its Chinese source for placeholder checks."""
+    manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
+    values: dict[str, str] = {}
+
+    def add(value: object, prefix: str) -> None:
+        values.update((key, source) for key, source in walk_scalar_strings(value, prefix) if key in keys)
+
+    for kind in ("protagonist", "dialogue"):
+        add(json.loads((ROOT / "data" / manifest[kind]).read_text(encoding="utf-8")), kind)
+    for collection, relative_path in manifest["collections"].items():
+        add(read_collection(relative_path), f"collections.{collection}")
+    staff_collections, _ = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
+    for collection, rows in staff_collections.items():
+        add(rows, f"collections.{collection}")
+    patient_config = manifest["patient_bundles"]
+    profiles = json.loads((ROOT / "data" / patient_config["dialogue_profiles"]).read_text(encoding="utf-8"))["profiles"]
+    for profile_id, profile in profiles.items():
+        add(profile, f"patient_dialogue_profiles.{profile_id}")
+    for kind in ("encounter", "preop"):
+        add(json.loads((ROOT / "data" / patient_config[f"{kind}_template"]).read_text(encoding="utf-8")), f"patient_templates.{kind}")
+    for relative_path in json.loads((ROOT / "data" / patient_config["index"]).read_text(encoding="utf-8")):
+        bundle = json.loads((ROOT / "data/patients" / relative_path).read_text(encoding="utf-8"))
+        add(bundle, f"patient_bundles.{bundle['patient']['id']}")
+    return values
 
 
 def ui_sources() -> list[Path]:
@@ -176,6 +324,9 @@ def main() -> int:
     failures: list[str] = []
     total = 0
     source_keys = authored_keys()
+    source_values = authored_source_values(source_keys)
+    for key in sorted(source_keys - source_values.keys()):
+        failures.append(f"active authored source could not be resolved: {key}")
     ui_keys = ui_fallbacks()
     english_ui_coverage = 0
     for path in sorted(LOCALE_DIR.glob("*.json")):
@@ -202,6 +353,8 @@ def main() -> int:
             virtual_runtime_key = isinstance(key, str) and key.startswith("patient_templates.")
             if isinstance(key, str) and not key.startswith("ui.") and not virtual_runtime_key and key not in source_keys:
                 failures.append(f"{path.name}: key does not resolve to active authored content: {key}")
+            if path.stem != "zh_CN" and isinstance(value, str) and CJK.search(value):
+                failures.append(f"{path.name}: Chinese remains in translation: {key}")
             if path.stem != "zh_CN" and isinstance(key, str) and key in ui_keys and isinstance(value, str):
                 expected = PLACEHOLDER.findall(ui_keys[key])
                 actual = PLACEHOLDER.findall(value)
@@ -209,11 +362,23 @@ def main() -> int:
                     failures.append(f"{path.name}: placeholder mismatch for {key}: {expected} != {actual}")
         total += len(strings)
         if path.stem == "zh_CN":
-            print(f"{path.stem}: source fallback ({len(source_keys)} active authored text fields)")
+            print(f"{path.stem}: canonical source ({len(source_keys)} active authored text fields)")
         else:
             translated_authored = len(source_keys.intersection(strings))
             english_ui_coverage = len(set(ui_keys).intersection(strings)) if path.stem == "en" else english_ui_coverage
             print(f"{path.stem}: {len(strings)} translations; authored coverage {translated_authored}/{len(source_keys)}")
+            for key in sorted(source_keys - strings.keys()):
+                failures.append(f"{path.name}: active authored translation missing: {key}")
+            for key in source_keys.intersection(strings):
+                if key not in source_values or not isinstance(strings[key], str):
+                    continue
+                source_slots = sorted(BRACE_PLACEHOLDER.findall(source_values[key]) + PLACEHOLDER.findall(source_values[key]))
+                translated_slots = sorted(BRACE_PLACEHOLDER.findall(strings[key]) + PLACEHOLDER.findall(strings[key]))
+                if source_slots != translated_slots:
+                    failures.append(f"{path.name}: placeholder mismatch for {key}: {source_slots} != {translated_slots}")
+            if path.stem == "en":
+                failures.extend(strict_patient_translation_failures(strings))
+                failures.extend(strict_staff_patient_dialogue_failures())
     print(f"UI: {english_ui_coverage}/{len(ui_keys)} referenced English keys translated")
     candidates = hardcoded_ui_candidates()
     print(f"UI hard-coded Chinese candidates: {sum(candidates.values())} lines ({', '.join(f'{name}: {count}' for name, count in candidates.items()) or 'none'})")
@@ -222,10 +387,11 @@ def main() -> int:
         failures.append(f"en.json: UI coverage is {english_ui_coverage}/{len(ui_keys)}")
     if candidates:
         failures.append("UI scripts still contain unwrapped Chinese string literals")
+    failures.extend(strict_inline_locale_failures())
     if failures:
         print("\n".join(failures), file=sys.stderr)
         return 1
-    print(f"LOCALIZATION AUDIT: {total} translations; source-language fallback enabled")
+    print(f"LOCALIZATION AUDIT: {total} translations; all active authored and UI keys translated")
     return 0
 
 

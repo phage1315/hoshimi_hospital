@@ -1,0 +1,35 @@
+{
+	"checks": 26,
+	"failures": 4,
+	"inputs": {
+		"auto": 0,
+		"enter": 0,
+		"mouse": 1,
+		"space": 0
+	},
+	"native": true,
+	"observations": [
+		{
+			"english_source_fallback": false,
+			"locale": "zh_CN",
+			"node": "F02_001",
+			"page": 0,
+			"speaker": "",
+			"visuals": [
+				{
+					"name": "SceneBackground",
+					"path": "res://assets/backgrounds/v8/player_office.png",
+					"rect": "[P: (0.0, 0.0), S: (1280.0, 800.0)]"
+				}
+			]
+		}
+	],
+	"pages": 1,
+	"problems": [
+		"Displayed speaker F02_001",
+		"All 46 nodes played zh_CN",
+		"Completion returns office",
+		"Stable read fact only"
+	],
+	"scope": "Isolated Lv4; real office GUI entrance and full input playback; no natural unlock or independent source audit; English fallback reported"
+}

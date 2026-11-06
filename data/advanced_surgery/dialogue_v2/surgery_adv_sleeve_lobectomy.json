@@ -1,0 +1,336 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_adv_sleeve_lobectomy",
+  "stages": {
+    "T01": {
+      "before_action": [
+        {
+          "id": "T01_V2_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "单肺通气的安排正在复核。开胸后如果需要调整，我会直接通报。",
+          "text_en": "The one-lung ventilation plan is being checked. I'll report promptly if adjustments are needed after entry."
+        },
+        {
+          "id": "T01_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "开胸器械、肋间牵开器和长吸引准备好了。",
+          "text_en": "Thoracotomy instruments, a rib spreader, and long suction are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T01_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "胸壁进入完成，肋间组织已经保护，先不要把牵开撑得过大。",
+          "text_en": "Chest entry is complete. The intercostal tissues are protected; avoid excessive spreading."
+        }
+      ]
+    },
+    "T02": {
+      "before_action": [
+        {
+          "id": "T02_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "肺门的支气管和肺动脉贴得很近，先按照解剖关系逐一辨认。",
+          "text_en": "The bronchus and pulmonary artery lie close together at the hilum. Identify them one by one."
+        },
+        {
+          "id": "T02_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "无创肺钳、湿垫和深部吸引已接好。",
+          "text_en": "Atraumatic lung graspers, moist pads, and deep suction are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T02_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "肺叶牵拉由我维持，留出中央操作空间，别遮住血管分支。",
+          "text_en": "I'll maintain lung retraction and keep the central field clear without obscuring vessel branches."
+        },
+        {
+          "id": "T02_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "肺门操作可能影响通气配合，我会持续观察氧合趋势。",
+          "text_en": "Hilar work may affect ventilation. I'll keep watching oxygenation trends."
+        }
+      ]
+    },
+    "T03": {
+      "before_action": [
+        {
+          "id": "T03_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "这条肺动脉分支壁很薄，先确认远端走向，避免从分叉处硬拉。",
+          "text_en": "This pulmonary arterial branch is thin-walled. Confirm its distal course; do not pull at the bifurcation."
+        },
+        {
+          "id": "T03_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "血管环、直角钳和细血管剪，按顺序递。",
+          "text_en": "Vessel loop, right-angle clamp, and fine vascular scissors, ready in sequence."
+        },
+        {
+          "id": "T03_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "分叉后壁由我留出空间，血管环穿过时不会被牵拉器挡住。",
+          "text_en": "I'll clear the posterior side of the bifurcation so the vessel loop has room to pass."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T03_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "已辨认的分支我会单独保护，下一步支气管分离不能碰到它。",
+          "text_en": "I'll protect the identified branch separately during the upcoming bronchial dissection."
+        },
+        {
+          "id": "T03_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "备用细吸引和血管缝线都已核对，需要时可以追加上台。",
+          "text_en": "Backup fine suction and vascular sutures are checked and available if needed."
+        }
+      ]
+    },
+    "T04": {
+      "before_action": [
+        {
+          "id": "T04_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "支气管周围还有营养血管，松解范围别超过吻合所需。",
+          "text_en": "There are feeding vessels around the bronchus. Limit release to what the anastomosis requires."
+        },
+        {
+          "id": "T04_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "长柄精细剪、无创镊和湿纱布。",
+          "text_en": "Long fine scissors, atraumatic forceps, and moist pads."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T04_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "支气管近远端已经显露，接下来可以具体核对保留长度。",
+          "text_en": "The proximal and distal bronchial segments are exposed. We can assess the preserved lengths precisely."
+        },
+        {
+          "id": "T04_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "接下来涉及气道操作，通气配合由我保持即时沟通。",
+          "text_en": "Airway work is coming up. I'll keep ventilation coordination immediate."
+        }
+      ]
+    },
+    "T05": {
+      "before_action": [
+        {
+          "id": "T05_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "先看计划切缘有没有足够健康的支气管壁，不能为了省长度留下病变。",
+          "text_en": "Check that the planned margin contains adequate healthy bronchial wall. Do not preserve length at the expense of clearance."
+        },
+        {
+          "id": "T05_V2_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "肺动脉重建的空间也要预留，切除范围不能只从气道一侧判断。",
+          "text_en": "Leave room for pulmonary artery reconstruction too. The resection cannot be planned from the airway alone."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T05_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定边界继续，标本方向和保留结构都重新口头核对。",
+          "text_en": "Proceed along the selected margins. Read back specimen orientation and preserved structures."
+        },
+        {
+          "id": "T05_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "切缘标记与送检容器准备好了，病理交接按实际标本登记。",
+          "text_en": "Margin labels and specimen containers are ready. Pathology handoff will follow the actual specimen record."
+        }
+      ]
+    },
+    "T06": {
+      "before_action": [
+        {
+          "id": "T06_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "先保护保留侧的血供，再处理最后一段支气管周围连接。",
+          "text_en": "Protect the blood supply of the remaining lung before dividing the last peribronchial attachments."
+        },
+        {
+          "id": "T06_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "细刀片、弯剪和无创持组织钳。",
+          "text_en": "Fine blade, curved scissors, and atraumatic tissue forceps."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T06_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "保留端口径可以继续评估，下一步牵拉要避免损伤吻合缘。",
+          "text_en": "The preserved airway diameter can now be assessed. Avoid traction on the future anastomotic edge."
+        },
+        {
+          "id": "T06_V2_POST02",
+          "speaker_role": "scrub_secondary",
+          "text": "下一组支气管吻合线已经单独放好，暂不与血管线混用。",
+          "text_en": "The bronchial anastomotic sutures are set aside separately from the vascular sutures."
+        }
+      ]
+    },
+    "T07": {
+      "before_action": [
+        {
+          "id": "T07_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "取出病变肺叶时我护住肺门残端，别让标本重量牵拉吻合区。",
+          "text_en": "I'll protect the hilar stumps during lobar removal so the specimen weight does not pull on the reconstruction site."
+        },
+        {
+          "id": "T07_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "切除器械和标本袋准备接收肺叶。",
+          "text_en": "Resection instruments and a specimen bag are ready for the lobe."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T07_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "保留肺的支气管口现在完全可见，可以检查两端吻合方向。",
+          "text_en": "The remaining bronchial ends are fully visible. We can check their anastomotic alignment."
+        }
+      ]
+    },
+    "T08": {
+      "before_action": [
+        {
+          "id": "T08_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "两段支气管的口径和软骨环排列不同，缝合时要均匀分配张力。",
+          "text_en": "The bronchial ends differ in caliber and cartilage-ring alignment. Distribute suture tension evenly."
+        },
+        {
+          "id": "T08_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "支气管细缝线、小持针器和无创镊。",
+          "text_en": "Fine bronchial sutures, a small needle holder, and atraumatic forceps."
+        },
+        {
+          "id": "T08_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "我把保留肺叶的姿势先固定，缝合时别让气道端口来回转动。",
+          "text_en": "I'll steady the remaining lobe so the airway ends don't rotate during suturing."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T08_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我维持吻合口周围的空间，接下来操作血管时不要扭转这段气道。",
+          "text_en": "I'll preserve space around the bronchial anastomosis. Avoid twisting it during vascular work."
+        },
+        {
+          "id": "T08_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "气道吻合已进入待检状态，通气试验会在合适节点配合进行。",
+          "text_en": "The airway anastomosis is awaiting assessment. We'll coordinate the ventilation test at the appropriate stage."
+        }
+      ]
+    },
+    "T09": {
+      "before_action": [
+        {
+          "id": "T09_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "本例的肺动脉分支确实需要重建，先核对血管缺损长度和流出方向。",
+          "text_en": "This case requires pulmonary artery branch reconstruction. Confirm defect length and outflow direction."
+        },
+        {
+          "id": "T09_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "无损血管钳、血管缝线和小持针器，换血管组。",
+          "text_en": "Atraumatic vascular clamps, vascular sutures, and a small needle holder. Switching to the vascular set."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T09_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "检查吻合段与支气管之间的间隙，不能让两条重建线相互牵扯。",
+          "text_en": "Check the space between the vascular and bronchial anastomoses; neither should pull on the other."
+        },
+        {
+          "id": "T09_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "血管重建之后我会继续复核氧合和灌注表现，必要时随时协调。",
+          "text_en": "After vascular reconstruction, I'll keep reviewing oxygenation and perfusion and coordinate as needed."
+        }
+      ]
+    },
+    "T10": {
+      "before_action": [
+        {
+          "id": "T10_V2_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "准备按计划调整通气，复查漏气和剩余肺组织的复张表现。",
+          "text_en": "I'll adjust ventilation as planned to assess air leakage and expansion of the remaining lung."
+        },
+        {
+          "id": "T10_V2_PRE02",
+          "speaker_role": "assistant_1",
+          "text": "我盯支气管吻合，第二助手看血管通路；两边结果必须对应。",
+          "text_en": "I'll watch the bronchial anastomosis; the second assistant checks vascular flow. Both findings must agree."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T10_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的复查方案完成确认，有疑点就在关胸前处理。",
+          "text_en": "Complete the review according to the selected plan. Resolve concerns before chest closure."
+        },
+        {
+          "id": "T10_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "胸腔引流和备用吸引已备好，检查结束后可以切换器械。",
+          "text_en": "Chest drains and backup suction are ready. We can switch instruments after the assessment."
+        }
+      ]
+    },
+    "T11": {
+      "before_action": [
+        {
+          "id": "T11_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "引流位置和肺门止血最后再看一遍，我来守住暴露。",
+          "text_en": "One last look at drain positioning and hilar hemostasis. I'll maintain exposure."
+        },
+        {
+          "id": "T11_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胸管固定线、肋间关闭器械和皮肤缝线。",
+          "text_en": "Chest-tube fixation sutures, intercostal closure tools, and skin sutures."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T11_V2_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "终末器械、纱布和针数核对完成，胸管记录已并入交接。",
+          "text_en": "Final instrument, sponge, and needle counts are complete. Chest-tube details are in the handoff."
+        },
+        {
+          "id": "T11_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "复苏团队会收到单肺通气经过以及两处吻合的观察重点。",
+          "text_en": "The recovery team will receive the one-lung ventilation course and monitoring priorities for both anastomoses."
+        }
+      ]
+    }
+  }
+}

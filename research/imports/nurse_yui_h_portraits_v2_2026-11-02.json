@@ -1,0 +1,81 @@
+{
+  "actor_id": "nurse_yui",
+  "version": "portrait_expression_set_v2",
+  "supersedes": "research/imports/nurse_yui_h_portraits_2026-11-02.json",
+  "mode": "Two byte-identical user endpoint images plus four OpenAI built-in ImageGen identity-preserve edits",
+  "endpoints": [
+    {
+      "slot": "neutral",
+      "source": "/Users/ningye/Downloads/00002-1431959049-Picsart-BackgroundRemover.png",
+      "destination": "assets/h/nurse_yui/portrait_neutral.png",
+      "sha256": "41aec7eb4a8564d32fd0cb94b6f9e400335449656fee570eaad23a5503d59fef",
+      "size": [
+        1408,
+        1152
+      ],
+      "processing": "Byte-identical user-designated neutral."
+    },
+    {
+      "slot": "peak",
+      "source": "/Users/ningye/Downloads/00004-4259962131-Picsart-BackgroundRemover.png",
+      "destination": "assets/h/nurse_yui/portrait_peak.png",
+      "sha256": "31ec799593d7779ee426e0c4e0bde23355c58e7be7240f496da4db986f3fc100",
+      "size": [
+        1408,
+        1152
+      ],
+      "processing": "Byte-identical user-designated MAX/peak expression."
+    }
+  ],
+  "generated_portraits": [
+    {
+      "slot": "annoyed",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a19e2b-1625-7512-ba30-06949fdbd03a/exec-aecea290-a545-4c4c-8ea9-c03526d8601a.png",
+      "destination": "assets/h/nurse_yui/portrait_annoyed.png",
+      "sha256": "cba722d9a10c0fe4aecc19e8cc32b884a1e15d73a04a1569b94cac6fe6917e0a",
+      "size": [
+        1386,
+        1135
+      ]
+    },
+    {
+      "slot": "pleased",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a19e2b-1625-7512-ba30-06949fdbd03a/exec-6e9d2269-f3bc-4c99-8907-0ce239422f34.png",
+      "destination": "assets/h/nurse_yui/portrait_pleased.png",
+      "sha256": "635015bd728edde54cbabffc1ac68de74ac8b5d3ffbbb099b311c0eb39e11ec4",
+      "size": [
+        1386,
+        1135
+      ]
+    },
+    {
+      "slot": "flustered",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a19e2b-1625-7512-ba30-06949fdbd03a/exec-7f5b4c28-968c-4d62-a27c-dc38e1b377f5.png",
+      "destination": "assets/h/nurse_yui/portrait_flustered.png",
+      "sha256": "f165aa5ac44d4387b92f36833f179e606e52bf188e5d1cf4f0a9ccf59bba893c",
+      "size": [
+        1386,
+        1135
+      ]
+    },
+    {
+      "slot": "delighted",
+      "generated_source": "/Users/ningye/.codex/generated_images/01a19e2b-1625-7512-ba30-06949fdbd03a/exec-3b402857-141a-4b3b-ade2-bd1d99083851.png",
+      "destination": "assets/h/nurse_yui/portrait_delighted.png",
+      "sha256": "f59526ccd6fe63d59c4c52b918253887853c192eae0ee788a6fe11edbc960fd6",
+      "size": [
+        1386,
+        1135
+      ]
+    }
+  ],
+  "expression_contract": {
+    "annoyed": "low tier: controlled displeasure",
+    "pleased": "mild tier: small warm smile",
+    "flustered": "strong tier: embarrassed and losing composure, below peak",
+    "delighted": "favorite tier: affectionate happiness, below peak",
+    "peak": "excitement 100/MAX: breathless loss of composure"
+  },
+  "constraints": "Preserve the user-provided adult character identity, white nurse cap, golden hair, transparent background, portrait aspect ratio and bust framing; edit facial expression only.",
+  "processing": "No crop or resize after generation. No upload or publication."
+}

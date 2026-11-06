@@ -79,6 +79,62 @@ func chapter_ui() -> void:
 		await process_frame
 		expect(c.story_phase != phase or c.story_index == index+1,"One input advances exactly one row")
 		if c.story_phase == phase and c.story_index == index: c.advance_story()
+func click_operation(id: String) -> void:
+	var target: Button = app.page.find_child(id, true, false)
+	expect(target != null and target.is_visible_in_tree() and not target.disabled, "Whipple operation button usable: " + id)
+	if target == null or not target.is_visible_in_tree() or target.disabled: return
+	var point := target.get_global_rect().get_center()
+	var motion := InputEventMouseMotion.new()
+	motion.position = point
+	root.push_input(motion, true)
+	var click := InputEventMouseButton.new()
+	click.button_index = MOUSE_BUTTON_LEFT
+	click.position = point
+	click.pressed = true
+	root.push_input(click, true)
+	click.pressed = false
+	root.push_input(click, true)
+	await process_frame
+
+func drain_operation_dialogue() -> void:
+	for guard in range(4):
+		var next: Button = app.page.find_child("dialogue_next", true, false)
+		if next == null or not next.is_visible_in_tree() or next.disabled: break
+		await click_operation("dialogue_next")
+
+func test_whipple_failed_ack(c: RefCounted, locale: String) -> void:
+	var session: RefCounted = c.session
+	for member in range(7): await click_operation("confirm_member")
+	expect(session.team_intro_index == -1, "Whipple team confirmation reaches stage one")
+	for stage in range(2):
+		await drain_operation_dialogue()
+		expect(session.operative_dialogue.current(session).is_empty(), "Whipple pre-action dialogue exhausted at stage " + str(stage))
+		await click_operation("continue")
+		expect(session.awaiting_ack, "Whipple fixed action resolved at stage " + str(stage))
+		await drain_operation_dialogue()
+		await click_operation("continue")
+		expect(session.index == stage + 1 and not session.awaiting_ack, "Whipple advances after stage " + str(stage))
+	await drain_operation_dialogue()
+	expect(session.index == 2 and session.current().kind == "P" and session.operative_dialogue.current(session).is_empty(), "Whipple W03 selection reached")
+	# Force this one assistant roll to fail in memory, then use the real UI action.
+	session.team.assistants[0].skill = 0
+	for candidate in range(100):
+		var probe := RandomNumberGenerator.new()
+		probe.seed = candidate
+		if probe.randf() >= Model.probability(0, session.current(), session.team, session.variant):
+			session.rng.seed = candidate
+			break
+	await click_operation("delegate_1")
+	expect(session.index == 2 and session.awaiting_ack and not session.pending_rescue and bool(session.last_result.get("failed", false)), "W03 assistant failure awaits acknowledgement")
+	var failure_cue: Dictionary = session.operative_dialogue.current(session)
+	expect(not failure_cue.is_empty(), "W03 failure cue remains visible")
+	await capture("doc_serika_" + locale + "_whipple_w03_failure_ack")
+	var continue_button: Button = app.page.find_child("continue", true, false)
+	expect(continue_button != null and continue_button.is_visible_in_tree(), "W03 failure has a visible continue button")
+	await click_operation("continue")
+	expect(session.index == 3 and not session.awaiting_ack and session.current().id == "W04", "W03 continue advances to W04 after failed assistant action")
+	await capture("doc_serika_" + locale + "_whipple_w04_after_ack")
+
 func run() -> void:
 	native = "--native" in OS.get_cmdline_user_args()
 	app=load("res://godot/scenes/main.tscn").instantiate()
@@ -115,12 +171,43 @@ func run() -> void:
 			await process_frame
 			expect(not c.session.splash_pending,"Actual splash confirmation advances")
 			view().render();await capture(actor+"_"+locale+"_table")
+			var ready_table: TextureRect = view().find_child("AdvancedTeamPatientTable", true, false)
+			expect(ready_table != null and ready_table.texture != null and ready_table.texture.resource_path == "res://" + patient.visuals.portraits["team_confirmation"], "Patient-ready screen uses the procedure-specific exposed field")
+			if actor == "doc_serika" and ready_table != null and ready_table.texture != null:
+				var imported_image: Image = ready_table.texture.get_image()
+				expect(imported_image.get_width() >= 1600 and imported_image.get_pixel(700, 480).r > 0.55, "Rendered Whipple image contains the widened abdominal field, not the stale narrow-window texture")
+			var begin_timeout: Button = view().find_child("begin_timeout", true, false)
+			expect(begin_timeout != null and begin_timeout.is_visible_in_tree() and not begin_timeout.disabled, "Patient-ready confirmation is clickable")
+			if begin_timeout != null:
+				var click := InputEventMouseButton.new()
+				click.button_index = MOUSE_BUTTON_LEFT
+				click.position = begin_timeout.get_global_rect().get_center()
+				click.pressed = true; root.push_input(click, true)
+				click.pressed = false; root.push_input(click, true)
+				await process_frame
+			expect(not c.session.patient_ready_pending, "Click advances from ready screen to team confirmation")
+			var procedure_table: TextureRect = view().find_child("AdvancedTeamPatientTable", true, false)
+			expect(procedure_table != null and procedure_table.texture != null and procedure_table.texture.resource_path == "res://" + patient.visuals.portraits["team_confirmation"], "Team confirmation uses the procedure-specific pose")
+			await capture(actor+"_"+locale+"_procedure_pose")
 			var poses: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/staff_patient/procedure_poses.json"))
 			for procedure in poses:
 				var probe: Dictionary = c.state().appointment.case.duplicate(true)
 				probe.procedure_id=procedure
 				var mapped: Dictionary=Present.patient(probe,app.game,locale=="en")
 				expect(mapped.visuals.portraits.team_confirmation.ends_with("/"+poses[procedure]+".png"),"Procedure maps to correct patient pose")
+				if procedure == "surgery_adv_ebstein_cone_reconstruction":
+					expect(mapped.visuals.portraits.team_confirmation == "assets/characters/advanced_staff_patient_v1/" + actor + "/chest.png", "Chest operation uses the supplied production image")
+			if actor == "doc_serika":
+				var actual_procedure: String = c.state().appointment.case.procedure_id
+				c.state().appointment.case.procedure_id = "surgery_adv_ebstein_cone_reconstruction"
+				view().render();await process_frame
+				var chest_table: TextureRect = view().find_child("AdvancedTeamPatientTable", true, false)
+				expect(chest_table != null and chest_table.texture != null and chest_table.texture.resource_path == "res://assets/characters/advanced_staff_patient_v1/doc_serika/chest.png", "Rendered chest preview loads the supplied image, not its SFW reference")
+				await capture(actor+"_"+locale+"_chest_pose_preview")
+				c.state().appointment.case.procedure_id = actual_procedure
+				view().render();await process_frame
+				if actual_procedure == "surgery_open_whipple":
+					await test_whipple_failed_ack(c, locale)
 			c.session=Session.new(c.session.definition,Model.fixtures(c.session.definition.id)[0],8,[],{},true)
 			drive(c.session)
 			if actor=="doc_serika": c.session.success=false

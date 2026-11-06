@@ -326,7 +326,7 @@
         "text": "「武見医生，坂口医生，早安。今天为了我的身体劳烦两位专家同台，实在非常感激。」",
         "speaker_label": "浅上藤乃",
         "expression": "neutral",
-        "outfit": "white_coat",
+        "outfit": "exam",
         "background_id": "exam_room",
         "choices": [
           {
@@ -340,7 +340,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/exam/neutral.png"
       },
       {
         "id": "l2_014",
@@ -396,7 +396,7 @@
         "text": "「好的，失礼了。」",
         "speaker_label": "浅上藤乃",
         "expression": "neutral",
-        "outfit": "white_coat",
+        "outfit": "exam",
         "background_id": "exam_room",
         "choices": [
           {
@@ -410,7 +410,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/exam/neutral.png"
       },
       {
         "id": "l2_017",
@@ -512,7 +512,7 @@
         "text": "「唔……坂口医生的手，比我想象的还要有力气呢……我可以很清楚地感觉到您的手指陷进了肚子最深处，正按着那团硬邦邦的东西……只是，真的完全感觉不到疼。」",
         "speaker_label": "浅上藤乃",
         "expression": "neutral",
-        "outfit": "white_coat",
+        "outfit": "exam",
         "background_id": "exam_room",
         "choices": [
           {
@@ -526,7 +526,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/exam/neutral.png"
       },
       {
         "id": "l2_022",
@@ -582,7 +582,7 @@
         "text": "「原来是这样……难怪这两年我连扭伤脚踝都没什么感觉。那么关于下午的手术方式……」",
         "speaker_label": "浅上藤乃",
         "expression": "neutral",
-        "outfit": "white_coat",
+        "outfit": "exam",
         "background_id": "exam_room",
         "choices": [
           {
@@ -596,7 +596,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/exam/neutral.png"
       },
       {
         "id": "l2_025",
@@ -628,8 +628,8 @@
         "actor_id": "patient_fujino",
         "text": "「既然本来就不觉得疼，省去麻醉对身体反而更好吧？只是……听说一旦签了星见医院的手术同意书，上了手术台之后哪怕害怕也不能中途取消了，是吗？」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "white_coat",
+        "expression": "worried",
+        "outfit": "exam",
         "background_id": "exam_room",
         "choices": [
           {
@@ -643,7 +643,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/exam/worried.png"
       },
       {
         "id": "l2_027",
@@ -675,8 +675,8 @@
         "actor_id": "patient_fujino",
         "text": "「我明白了。反正我也不会因为疼痛而哭闹，那就拜托武見医生和坂口医生了。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "white_coat",
+        "expression": "worried",
+        "outfit": "exam",
         "background_id": "exam_room",
         "choices": [
           {
@@ -690,7 +690,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/exam/worried.png"
       },
       {
         "id": "l2_029",
@@ -745,8 +745,8 @@
         "actor_id": "patient_fujino",
         "text": "「因为……虽然感觉不到疼，但在完全清醒的状态下不穿衣服躺在这里，双腿间还插着管子被三位医护人员围着看……还是会觉得很难为情的……」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "shy",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -760,7 +760,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/shy.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_032",
@@ -838,8 +841,8 @@
         "actor_id": "patient_fujino",
         "text": "「唔……刚才肚子上有一种被冰凉的刀片划开、然后向两边敞开的感觉……原来这就是肚子被切开的感觉吗？真的……一点都不疼呢。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "shy",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -853,7 +856,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/shy.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_036",
@@ -908,8 +914,8 @@
         "actor_id": "patient_fujino",
         "text": "「是……请问武見医生，有什么问题吗？」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "shy",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -923,7 +929,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/shy.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_039",
@@ -1024,8 +1033,8 @@
         "actor_id": "patient_fujino",
         "text": "「请问……如果顺便把肚子里其他地方也仔细检查一遍的话，手术费还是一样的吗？」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "shy",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1039,7 +1048,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/shy.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_044",
@@ -1071,8 +1083,8 @@
         "actor_id": "patient_fujino",
         "text": "「既然手术费一样，我又感觉不到疼……那就随两位医生喜欢吧。请尽管仔细检查。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "shy",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1096,7 +1108,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/shy.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_046a",
@@ -1220,8 +1235,8 @@
         "actor_id": "patient_fujino",
         "text": "「唔……！哈啊……等、等一下，武見医生……」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "tense",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1235,7 +1250,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/tense.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_050",
@@ -1267,8 +1285,8 @@
         "actor_id": "patient_fujino",
         "text": "「不、不是痛……真的完全不痛……可是，您的手伸进我肚子里面把肠子托起来的时候……里面有一种说不出的下坠感和拉扯感……好像内脏要被整个端出来了一样……嗯、哈啊……」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "tense",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1282,7 +1300,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/tense.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_052",
@@ -1360,8 +1381,8 @@
         "actor_id": "patient_fujino",
         "text": "「呀啊……！唔、嗯……！坂口医生……武見医生……四只手同时在我肚子里面动来动去……太、太奇怪了……！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "tense",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1375,7 +1396,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/tense.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_056",
@@ -1407,8 +1431,8 @@
         "actor_id": "patient_fujino",
         "text": "「哈啊……我、我知道你们是在做检查……可是明明不疼，为什么被坂口医生的手掌托着肠子、又被武見医生摸着小腹最深处的时候……身体里面会又酸又胀、连脚趾头都使不上力气了……呜、好奇怪……肚子里面被摸遍了……」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "tense",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1422,7 +1446,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/tense.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_058",
@@ -1454,8 +1481,8 @@
         "actor_id": "patient_fujino",
         "text": "「唔嗯……请、请别说了，朝仓护士……连肠子在你们手心里蠕动的感觉都传到脑子里来了……还没检查完吗……？」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "tense",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1469,7 +1496,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/tense.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_060",
@@ -1616,8 +1646,8 @@
         "actor_id": "patient_fujino",
         "text": "「唔……右边肚子深处被拉扯得更重了……像有一块石头正被你们一点点从肉上撕下来一样……哈啊、还是不疼的，请继续吧……」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "tense",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1631,7 +1661,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/tense.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_067",
@@ -1732,8 +1765,8 @@
         "actor_id": "patient_fujino",
         "text": "「——咦？」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "surprised",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1747,7 +1780,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/surprised.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_072",
@@ -1779,8 +1815,8 @@
         "actor_id": "patient_fujino",
         "text": "「——呀啊啊啊啊啊啊啊啊啊——！！！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "pain",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1794,7 +1830,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/pain.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_074",
@@ -1826,8 +1865,8 @@
         "actor_id": "patient_fujino",
         "text": "「疼！！好疼啊啊啊——！！肚子、我的肚子为什么突然像被火烧、被刀割一样疼啊？！！呜啊啊啊——！！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "pain",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1841,7 +1880,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/pain.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_076",
@@ -1873,8 +1915,8 @@
         "actor_id": "patient_fujino",
         "text": "「武見医生！！坂口医生！！我不要不打麻药了！！好疼、肚子真的被切开了好疼啊！！快给我打麻药……求求你们现在给我打全身麻醉好不好？！！呜啊啊啊——！！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "crying",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1888,7 +1930,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/crying.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_078",
@@ -1943,8 +1988,8 @@
         "actor_id": "patient_fujino",
         "text": "「呜啊啊啊我不要现在恭喜啊！！疼死我了……连呼吸一下肚子里面都在抽着疼！！麻药……我现在加钱也可以，求求你们给我打麻药让我睡过去吧！！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "crying",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -1958,7 +2003,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/crying.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_081",
@@ -2013,8 +2061,8 @@
         "actor_id": "patient_fujino",
         "text": "「怎、怎么这样……？！那我接下来岂不是要活生生忍受着冲洗和缝肚子的疼，一直到手术结束吗？！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "crying",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -2038,7 +2086,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/crying.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_084a",
@@ -2047,8 +2098,8 @@
         "actor_id": "patient_fujino",
         "text": "「呜……坂口医生……您的手按在刀口边上的时候，连手套擦过肉里的疼都清楚得要命……拜托你们快一点……！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "crying",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -2062,7 +2113,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/crying.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_085a",
@@ -2163,8 +2217,8 @@
         "actor_id": "patient_fujino",
         "text": "「唔嗯——！！哈啊、啊……水、水冲在肚子里面的伤口上了……好刺痛……连吸水管吸走血水的时候，里面都在一抽一抽地疼……呜呜……」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "crying",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -2178,7 +2232,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/crying.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_088",
@@ -2233,8 +2290,8 @@
         "actor_id": "patient_fujino",
         "text": "「啊……！疼、这一针拉得好紧……肚子被一针一针缝起来了……呜、我再也不要相信『不打麻药也没关系』这种话了……！」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "sterile",
+        "expression": "crying",
+        "outfit": "intraoperative",
         "background_id": "operating_room",
         "choices": [
           {
@@ -2248,7 +2305,10 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/intraoperative/crying.png",
+        "portrait_scale": 1.25,
+        "portrait_right": 1230.0,
+        "portrait_y": 225.0
       },
       {
         "id": "l2_091",
@@ -2349,8 +2409,8 @@
         "actor_id": "patient_fujino",
         "text": "「对不起，坂口医生，武見医生……刚才在手术台上，我最后哭叫得那么失态，还死缠烂打地求你们加麻药……实在让您二位见笑了。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "white_coat",
+        "expression": "apologetic",
+        "outfit": "ward",
         "background_id": "ward",
         "choices": [
           {
@@ -2364,7 +2424,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/ward/apologetic.png"
       },
       {
         "id": "l2_096",
@@ -2419,8 +2479,8 @@
         "actor_id": "patient_fujino",
         "text": "「其实……回到病房冷静下来之后，我摸着这里一跳一跳的钝痛，心里觉得特别不可思议。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "white_coat",
+        "expression": "relieved",
+        "outfit": "ward",
         "background_id": "ward",
         "choices": [
           {
@@ -2434,7 +2494,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/ward/relieved.png"
       },
       {
         "id": "l2_099",
@@ -2443,8 +2503,8 @@
         "actor_id": "patient_fujino",
         "text": "「以前不管身体里烂成什么样，我都像隔着一层毛玻璃活着一样，什么都感觉不到。刚才在手术台上虽然疼得要命，还被两位医生把肚子里面看了个遍……但现在能像普通女孩子一样感觉到疼、被坂口医生关心着叮嘱『别乱按刀口』，真的让我觉得自己还好好地活着。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "white_coat",
+        "expression": "relieved",
+        "outfit": "ward",
         "background_id": "ward",
         "choices": [
           {
@@ -2458,7 +2518,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/ward/relieved.png"
       },
       {
         "id": "l2_100",
@@ -2490,8 +2550,8 @@
         "actor_id": "patient_fujino",
         "text": "「是，非常感谢两位医生。」",
         "speaker_label": "浅上藤乃",
-        "expression": "neutral",
-        "outfit": "white_coat",
+        "expression": "relieved",
+        "outfit": "ward",
         "background_id": "ward",
         "choices": [
           {
@@ -2505,7 +2565,7 @@
             "flags": []
           }
         ],
-        "hide_portrait": true
+        "portrait_path": "assets/characters/patient_fujino_v1/ward/relieved.png"
       },
       {
         "id": "l2_102",

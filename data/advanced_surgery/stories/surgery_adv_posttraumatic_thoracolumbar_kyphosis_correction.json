@@ -1,0 +1,278 @@
+{
+  "procedure_id": "surgery_adv_posttraumatic_thoracolumbar_kyphosis_correction",
+  "source_case_id": "ADV-FIRST-07",
+  "runtime_case_id": "advanced_first_surgery_adv_posttraumatic_thoracolumbar_kyphosis_correction",
+  "patient": {
+    "id": "patient_petra_itta_adult",
+    "name": "佩特拉·伊塔",
+    "name_en": "Petra Itta",
+    "setting": "adult_medical_AU",
+    "diagnosis": "成年医疗 AU：陈旧 T12 创伤后固定性后凸、机械性腰背痛与姿势负担；拟行后路椎体切除、前柱支撑及内固定融合。",
+    "diagnosis_en": "Adult medical AU: fixed post-traumatic kyphosis around T12 with mechanical back pain and postural burden; posterior vertebral column resection, anterior support and instrumented fusion are planned.",
+    "visuals": {
+      "portraits": {
+        "ward": "assets/characters/advanced_petra_v1/ward.png",
+        "postop": "assets/characters/advanced_petra_v1/postop.png",
+        "team_confirmation": "assets/characters/advanced_petra_v1/team_confirmation.png",
+        "intraoperative/anesthetized": "assets/characters/advanced_petra_v1/anesthesia.png",
+        "splash/general_anesthesia": "assets/characters/advanced_petra_v1/anesthesia.png"
+      },
+      "seed_references": {
+        "bust": "assets/characters/advanced_petra_v1/seeds/bust.png",
+        "full_body": "assets/characters/advanced_petra_v1/seeds/full_body.png",
+        "scene": "assets/characters/advanced_petra_v1/seeds/scene_reference.png"
+      }
+    }
+  },
+  "day1": {
+    "title": "已经修过一次的身体",
+    "title_en": "A Body Repaired Once Before",
+    "background": "clinic",
+    "portrait": "ward",
+    "lines": [
+      {
+        "speaker": "narrator",
+        "text": "高级转诊诊察室。佩特拉将一叠影像报告放在桌上，抽出最上面的一张。她站起身时动作很稳，只在重新坐下前短暂扶了一下椅背。",
+        "text_en": "In the advanced referral clinic, Petra places a stack of imaging reports on the desk and pulls out the top sheet. She rises steadily, only briefly touching the chair back before sitting again."
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「佩特拉小姐。你这次来诊，不是义肢本身的问题，对吧？」",
+        "text_en": "“Ms. Petra. This visit isn't about the prosthetics themselves, is it?”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「不是。它们已经帮了我很多。我现在不想每走一段路就因为背痛停下来。」",
+        "text_en": "“No. They've already helped me a great deal. I just don't want to stop every time I've walked a while because my back hurts.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「这是几年前胸腰椎的旧骨折。脊椎已经愈合，但在第十二胸椎附近留下了固定的后凸角度。」",
+        "text_en": "“This is an old fracture in the thoracolumbar spine from several years ago. It healed, but left a fixed kyphotic angle near the twelfth thoracic vertebra.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「那时候大家忙着把我从瓦砾里救出来。说实话，我没想过还有哪个部位会在几年后出来抗议。」",
+        "text_en": "“Back then everyone was busy getting me out of the rubble. Honestly, I never thought another part of me would start complaining years later.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「骨折区域的排列改变了。你现在为了保持身体平衡，需要持续使用其他肌群代偿。影像和症状都提示它已经影响正常生活。」",
+        "text_en": "“The alignment around the fracture changed. To stay balanced, you now have to keep compensating with other muscles. The images and symptoms show that it's affecting daily life.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我知道。站一会儿还好，走久了就难受。以前我会安慰自己，能重新走路就已经不错了。」",
+        "text_en": "“I know. Standing for a while is fine, but walking far hurts. I used to tell myself that being able to walk again was already enough.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「我们可以讨论手术矫形。不是为了把 X 光拍得更漂亮，而是为了改善疼痛和躯干稳定性。」",
+        "text_en": "“We can discuss corrective surgery. The goal isn't a prettier X-ray; it's to improve pain and trunk stability.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「你说的手术规模有多大？」",
+        "text_en": "“How extensive would the surgery be?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「需要后背较长的切口，暴露多个胸腰椎节段。我们会先植入固定螺钉，保护神经，然后切除一部分已经严重变形的椎骨结构。」",
+        "text_en": "“It needs a fairly long incision along your back and exposure across several thoracolumbar levels. We'll place fixation screws first, protect the nerves, then remove part of the severely deformed vertebral structure.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……等一下。是真的把脊椎骨切掉？」",
+        "text_en": "“...Wait. You mean actually cut out part of a vertebra?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「是。缺失的支撑会由专门的融合装置和连接棒重建。矫形不是靠用力把你掰直，而是通过截骨和逐步复位完成。」",
+        "text_en": "“Yes. A fusion device and rods will rebuild the missing support. We won't force your back straight; we'll correct it through bone resection and gradual realignment.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我本来以为自己已经经历过最麻烦的治疗了。原来还有这一项。」",
+        "text_en": "“I thought I'd already been through the most troublesome treatment. Apparently there's another item on the list.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「风险主要集中在椎体切除、神经保护和最终矫正阶段。我们会安排两名外科助手、扩大器械和巡回团队，并持续进行神经监测。」",
+        "text_en": "“The greatest risks are during vertebral resection, nerve protection, and final correction. We'll assign two surgical assistants, expand the instrument and circulating teams, and monitor nerve function throughout.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「你们真的会在我睡着的时候，给我的背里放进去这么多东西？」",
+        "text_en": "“You're really going to put all of that into my back while I'm asleep?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「你接受固定全身麻醉。手术中不需要清醒配合，醒来以后我们再逐步检查神经功能和伤口状况。」",
+        "text_en": "“You'll have general anesthesia throughout. You won't need to cooperate while awake. After you wake, we'll assess nerve function and the wound step by step.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「听上去比给一台机体换零件还复杂。……抱歉，这个比喻可能不太恰当。」",
+        "text_en": "“That sounds more complicated than replacing parts on a mobile suit. ...Sorry, that might be a bad comparison.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「倒也有一点相似。只是人体的神经和血供必须格外谨慎。」",
+        "text_en": "“There's a little resemblance. But human nerves and blood supply demand particular care.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我原本以为，你会直接说一点都不像。」",
+        "text_en": "“I thought you'd say there was no resemblance at all.”"
+      },
+      {
+        "speaker": "narrator",
+        "text": "佩特拉勉强笑了一下，低头重新翻到影像报告的第一张。",
+        "text_en": "Petra manages a faint smile and turns back to the first page of the imaging report."
+      },
+      {
+        "speaker": "patient",
+        "text": "「如果不做，会怎样？」",
+        "text_en": "“What happens if I don't have it?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「现在不是急诊，但现有疼痛和失衡不会因为忍耐就自行纠正。继续保守治疗还是手术，可以根据你的症状和影像一起判断。」",
+        "text_en": "“This isn't an emergency, but endurance alone won't correct the pain or imbalance. We can weigh continued conservative treatment against surgery using your symptoms and imaging.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……那就做吧。我希望以后出去旅行时，考虑的是目的地，不是还要走多少路。」",
+        "text_en": "“...Then let's do it. When I travel again, I want to think about where I'm going, not how much farther I have to walk.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「我会把术式和风险再逐项向你确认。你听完以后再签署手术同意书。」",
+        "text_en": "“I'll go through the procedure and risks with you again, item by item. Sign the consent form after you've heard them.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「可以。不过等你们确定手术时间，我得先告诉劳达。」",
+        "text_en": "“All right. But once you've set a date, I need to tell Lauda first.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「他会陪你来吗？」",
+        "text_en": "“Will he come with you?”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「会的。他大概比我还紧张。我希望这次至少别让他在走廊里来回踱步一整天。」",
+        "text_en": "“He will. He's probably more nervous than I am. This time I'd at least like to keep him from pacing the corridor all day.”"
+      },
+      {
+        "speaker": "narrator",
+        "text": "佩特拉看着同意书上那行漫长的手术名称，认真听完补充说明，确认后签名。",
+        "text_en": "Petra studies the long name of the operation on the consent form, listens carefully to the additional explanation, confirms it, and signs."
+      },
+      {
+        "speaker": "patient",
+        "text": "「好了。剩下的，就交给你们了。」",
+        "text_en": "“All right. The rest is in your hands.”"
+      },
+      {
+        "speaker": "narrator",
+        "text": "画面转入该病例的专科风险提示及 Grand OR 编组。此时尚未开始 Day 2，也不在本场插入术中剧情。",
+        "text_en": "The scene shifts to this case's specialty risk notice and Grand OR team assignment. Day 2 has not begun, and no intraoperative story is inserted here."
+      }
+    ]
+  },
+  "day3": {
+    "title": "这次我会慢慢走",
+    "title_en": "This Time I'll Walk Slowly",
+    "background": "ward",
+    "portrait": "postop",
+    "lines": [
+      {
+        "speaker": "narrator",
+        "text": "病房里，佩特拉睁开眼睛，先看了看天花板，又用目光寻找床边熟悉的物品。",
+        "text_en": "In the ward, Petra opens her eyes, looks at the ceiling, then searches for familiar things at her bedside."
+      },
+      {
+        "speaker": "patient",
+        "text": "「……结束了？」",
+        "text_en": "“...Is it over?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「结束了。矫形和固定已经完成。接下来还要观察神经功能、伤口和恢复情况。」",
+        "text_en": "“It's over. The correction and fixation are complete. We still need to watch your nerve function, wound, and recovery.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「这么大的手术，我居然一点过程都不知道。」",
+        "text_en": "“Such a big operation, and I don't know a thing about what happened during it.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「全身麻醉就是这样。对你来说像一觉醒来，手术团队已经忙完了整个上午和下午。」",
+        "text_en": "“That's general anesthesia. For you it feels like waking from sleep; the surgical team has already worked through the morning and afternoon.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「听起来很不公平。你们工作一整天，我只负责睡觉。」",
+        "text_en": "“That doesn't sound fair. You all worked the whole day, and my job was just to sleep.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「你之后还有康复训练。那部分不能由我们替你完成。」",
+        "text_en": "“You still have rehabilitation ahead. We can't do that part for you.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……是啊。这件事我已经很有经验了。」",
+        "text_en": "“...Right. I have plenty of experience with that.”"
+      },
+      {
+        "speaker": "narrator",
+        "text": "她想换个姿势，刚动了一下便停住。坂口提醒她先不要自行扭转身体，并调整好枕垫。",
+        "text_en": "She starts to change position, then stops. Sakaguchi reminds her not to twist on her own yet and adjusts the cushions."
+      },
+      {
+        "speaker": "patient",
+        "text": "「我知道，刚开完刀不能乱来。只是醒来以后，还是很想确认身体真的在这里。」",
+        "text_en": "“I know I shouldn't move around right after surgery. I just wanted to make sure my body was really here when I woke up.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「目前的早期检查令人鼓舞。不过最终恢复要慢慢观察，不能今天就下结论。」",
+        "text_en": "“The early checks are encouraging. But recovery will take time to assess; we can't draw a final conclusion today.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「嗯。你们已经做完最难的部分，剩下的我会自己好好练习。」",
+        "text_en": "“Mm. You've done the hardest part. I'll practice properly from here on.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「劳达在等你的消息。他会在病房允许探视时进来。」",
+        "text_en": "“Lauda is waiting for news. He can come in when the ward allows visitors.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……请先告诉他我醒了。不然他又要在走廊里来回走到地板磨出坑。」",
+        "text_en": "“...Please tell him I'm awake first. Otherwise he'll pace the corridor until he wears a hole in the floor.”"
+      },
+      {
+        "speaker": "narrator",
+        "text": "佩特拉低头看了看盖在身上的被单，露出有些疲惫却轻松的笑容。",
+        "text_en": "Petra glances down at the blanket covering her and smiles, tired but relieved."
+      },
+      {
+        "speaker": "patient",
+        "text": "「等我真的能走很远的时候，我就不再把医院算进旅行目的地了。」",
+        "text_en": "“When I can really walk a long way, I'll stop counting the hospital as a travel destination.”"
+      },
+      {
+        "speaker": "narrator",
+        "text": "进入既有高级手术 Day 3 成功结算。",
+        "text_en": "Proceed to the existing Advanced Surgery Day 3 success results."
+      }
+    ]
+  }
+}

@@ -1,0 +1,2356 @@
+{
+  "schema": "hoshimi_megumin_content_handoff_v2",
+  "status": "content_ready_engine_binding_unverified",
+  "actor_canonical_name": "惠惠",
+  "intro_content_id": "megumin_intro_front_desk",
+  "intro_trigger": {
+    "mode": "auto_on_scheduled_workday_09",
+    "required_prerequisite": "水城阿库娅正式相识事件完整完成",
+    "first_due": "first_monday_09_after_aqua_completion",
+    "on_conflict": "next_active_workday_09_until_success",
+    "no_first_click_fallback": true,
+    "completed_only_after_full_vn": true,
+    "intro_day_blocks_daily_micro": true,
+    "intro_day_blocks_first_jk": true
+  },
+  "shared_cameo_gate": "formal_intro_completed_AND_currently_present_AND_not_busy",
+  "afterwork_reward_policy": "zero_stats_zero_affection_zero_relationship_zero_date",
+  "note": "Content IDs are document keys, not presumed project actor IDs or save flags.",
+  "totals": {
+    "regular_micro": 48,
+    "calendar_micro": 22,
+    "ambient_barks": 30,
+    "total_content_items": 100
+  },
+  "events": [
+    {
+      "content_id": "megumin_r01",
+      "source_id": "R01",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "地图与笔记（导诊）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r02",
+      "source_id": "R02",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "最难处理的申请（行政）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r03",
+      "source_id": "R03",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "叫号机的抗议（设备）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r04",
+      "source_id": "R04",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "遗失物柜的哲学（小物）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r05",
+      "source_id": "R05",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "真正的表扬（温暖）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r06",
+      "source_id": "R06",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "工作与学习的边界（自律）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r07",
+      "source_id": "R07",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "公告栏之战（观察）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r08",
+      "source_id": "R08",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "名字的重量（接待）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r09",
+      "source_id": "R09",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "地下室的零（怪谈，基础）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r10",
+      "source_id": "R10",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "自己开门的电梯（怪谈，基础）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r11",
+      "source_id": "R11",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "第三手术室的红光（错觉）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r12",
+      "source_id": "R12",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "十二点的脚步声（声音）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r13",
+      "source_id": "R13",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "失踪的白板笔（喜剧）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r14",
+      "source_id": "R14",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "旧手术台的传言（怪谈；不揭谜底）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "旧手术台怪谈已自然引入；若无独立标记，等武見正式相识"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r15",
+      "source_id": "R15",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "七大不可思议的进度（自嘲）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r16",
+      "source_id": "R16",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "阿库娅的推荐理由（阿库娅；已相识时）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "水城阿库娅"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r17",
+      "source_id": "R17",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "医生还是护士（阿库娅；已相识时，温暖）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "水城阿库娅"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r18",
+      "source_id": "R18",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "签字的分量（神宮寺成美；已相识时）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "神宮寺成美"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r19",
+      "source_id": "R19",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "最舒服的问路方式（七瀬恋；已相识时）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "七瀬恋"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r20",
+      "source_id": "R20",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "危险的商品名（飯村真奈美；已相识时）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "飯村真奈美"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r21",
+      "source_id": "R21",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "院长的宣传语（城宮明日香；已相识时）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "城宮明日香"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r22",
+      "source_id": "R22",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "地下室的回话（武見妙；仅已正式相识后）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "武見妙"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "武見妙正式相识且研究室路线可公开"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r23",
+      "source_id": "R23",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "护士长与帽子（石神千鹤；已相识时）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "石神千鹤"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r24",
+      "source_id": "R24",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "过分正式的名片（氷上冴子；入职后且已相识）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "氷上冴子"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "氷上冴子已入职"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r25",
+      "source_id": "R25",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "五点前的变身（限接近下班时，双造型）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "afterwork_micro",
+      "trigger_semantics": "megumin_departure_opportunity",
+      "theme": "study_and_budget",
+      "selection_group": "school_uniform_followup",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "global_afterwork_cooldown_workdays": 8,
+      "requires_first_school_uniform_reveal": true
+    },
+    {
+      "content_id": "megumin_r26",
+      "source_id": "R26",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "储蓄计划（个人生活，克制）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r27",
+      "source_id": "R27",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "一道不会爆炸的难题（学习）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_r28",
+      "source_id": "R28",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "还没填的志愿（安静收尾）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m01",
+      "source_id": "M01",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《迷路者的救援统计》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m02",
+      "source_id": "M02",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《白帽子的权威误会》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m03",
+      "source_id": "M03",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《自动门的臣服步速》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m04",
+      "source_id": "M04",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《天书字迹破译班》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m05",
+      "source_id": "M05",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《医师与护士长的分岔路》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m06",
+      "source_id": "M06",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《月末的半价决战》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "weekday": "friday",
+      "time_context": "late_afternoon_before_school"
+    },
+    {
+      "content_id": "megumin_m07",
+      "source_id": "M07",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《五点钟的第二套制服》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "afterwork_micro",
+      "trigger_semantics": "megumin_departure_opportunity",
+      "theme": "study_and_budget",
+      "selection_group": "first_school_uniform",
+      "repeat_policy": "once_game",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "time_context": "first_school_uniform_reveal"
+    },
+    {
+      "content_id": "megumin_m08",
+      "source_id": "M08",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "《地下室的深夜金属声》（带武見妙前置条件分流）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "hospital_rumor",
+      "selection_group": "hospital_rumor",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "高级文本仅武見妙正式相识且地下研究室传闻已可公开时；否则只播放默认文本"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "conditional_dialogue": "default_before_formal_takemi;advanced_after_formal_takemi"
+    },
+    {
+      "content_id": "megumin_m09",
+      "source_id": "M09",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 水城阿库娅：《最高机密的楼层图》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "水城阿库娅"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m10",
+      "source_id": "M10",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 城宮明日香：《院长大人的神秘包裹》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "城宮明日香"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m11",
+      "source_id": "M11",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 深山佳織：《青色疾风的传说》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "深山佳織"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m12",
+      "source_id": "M12",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 遥凑：《遗失的记忆任务》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "遥凑"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "遥凑周日特殊初见已完成；仅在她和惠惠能自然同场时播放，否则休眠"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7,
+      "time_context": "morning"
+    },
+    {
+      "content_id": "megumin_m13",
+      "source_id": "M13",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 石神千鹤：《绝对零度的背后灵》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "石神千鹤"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m14",
+      "source_id": "M14",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 飯村真奈美：《药剂部的招生办主任》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "飯村真奈美"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m15",
+      "source_id": "M15",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 本庄萌恵：《错位的前辈气场》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "本庄萌恵"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m16",
+      "source_id": "M16",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 折川皐月：《黑框眼镜的封印传说》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "折川皐月"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m17",
+      "source_id": "M17",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 南条小夜香：《保健室老师的课外辅导》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "南条小夜香"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m18",
+      "source_id": "M18",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 御堂江美子 ＆ 阿尔托莉雅：《双王过境的低气压》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "御堂江美子",
+        "阿尔托莉雅"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m19",
+      "source_id": "M19",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 七瀬恋 ＆ 神宮寺成美：《五点钟的领结与模拟考》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "afterwork_micro",
+      "trigger_semantics": "megumin_departure_opportunity",
+      "theme": "staff_cameo",
+      "selection_group": "school_uniform_assist",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "七瀬恋",
+        "神宮寺成美"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "global_afterwork_cooldown_workdays": 8,
+      "requires_first_school_uniform_reveal": true
+    },
+    {
+      "content_id": "megumin_m20",
+      "source_id": "M20",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "× 狩谷惠：《此惠非彼惠的省钱同盟》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "daily_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "staff_cameo",
+      "selection_group": "staff_cameo",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [
+        "狩谷惠"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m21",
+      "source_id": "M21",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【春季 · 4月樱花季】《飘进大厅的绯色战帖》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "seasonal_with_cooldown",
+      "window": {
+        "months": [
+          4
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m22",
+      "source_id": "M22",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【初夏 · 6月梅雨季】《伞架与五点钟的雨中护送》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "afterwork_micro",
+      "trigger_semantics": "megumin_departure_opportunity",
+      "theme": "calendar",
+      "selection_group": "rain_school_escort",
+      "repeat_policy": "repeatable_with_cooldown",
+      "window": {
+        "months": [
+          6
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "global_afterwork_cooldown_workdays": 8,
+      "requires_first_school_uniform_reveal": true,
+      "weather_context": "rainy_june_afterwork"
+    },
+    {
+      "content_id": "megumin_m23",
+      "source_id": "M23",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【盛夏 · 7–8月七夕与酷暑】《冷气结界与七夕短册》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "tanabata",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "07-01",
+        "end_mmdd": "07-07"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "tanabata",
+      "required_cast_known_only": [
+        "水城阿库娅"
+      ]
+    },
+    {
+      "content_id": "megumin_m24",
+      "source_id": "M24",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【初秋 · 9月期中备考季】《解剖图谱与世界史的混战》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "seasonal_with_cooldown",
+      "window": {
+        "months": [
+          9
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_m25",
+      "source_id": "M25",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【医院祭筹备期】《正统派接待制服的骄傲》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "festival_preparation",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "semantic": "hospital_festival_preparation"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "医院祭筹备状态已出现；不是固定10月"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "festival_preparation"
+    },
+    {
+      "content_id": "megumin_m26",
+      "source_id": "M26",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【秋季 · 10月底万圣节】《不给糖就导诊去院长室》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "halloween",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "10-25",
+        "end_mmdd": "10-31"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "halloween"
+    },
+    {
+      "content_id": "megumin_m27",
+      "source_id": "M27",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【冬季 · 12月年末圣诞季】《五点钟的红色围巾》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "afterwork_micro",
+      "trigger_semantics": "megumin_departure_opportunity",
+      "theme": "calendar",
+      "selection_group": "christmas_school_scarf",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "12-20",
+        "end_mmdd": "12-25"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "global_afterwork_cooldown_workdays": 8,
+      "annual_group": "christmas_afterwork",
+      "requires_first_school_uniform_reveal": true
+    },
+    {
+      "content_id": "megumin_m28",
+      "source_id": "M28",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【冬季 · 1月新年伊始】《学业大吉的绝对预言》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "new_year",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "01-01",
+        "end_mmdd": "01-15"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "new_year"
+    },
+    {
+      "content_id": "megumin_m29",
+      "source_id": "M29",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【冬季 · 2月情人节期间】《义理巧克力的公平配给制》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "valentine",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "02-10",
+        "end_mmdd": "02-15"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "valentine"
+    },
+    {
+      "content_id": "megumin_m30",
+      "source_id": "M30",
+      "source_document": "HOSHIMI_MEGUMIN_INTRO_AND_30_MICRO_EVENTS_CN_V1.md",
+      "title": "【早春 · 3月学年末】《通往下一学年的成绩单》",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "school_year_end_main",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "03-10",
+        "end_mmdd": "03-31"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "school_year_end_main"
+    },
+    {
+      "content_id": "megumin_s01",
+      "source_id": "S01",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "四月·新学期与新工作",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "seasonal_with_cooldown",
+      "window": {
+        "months": [
+          4
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_s02",
+      "source_id": "S02",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "黄金周·另一种假期",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "04-28",
+        "end_mmdd": "05-07"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "golden_week"
+    },
+    {
+      "content_id": "megumin_s03",
+      "source_id": "S03",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "梅雨·伞的命运",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "seasonal_with_cooldown",
+      "window": {
+        "months": [
+          6
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_s04",
+      "source_id": "S04",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "七夕·愿望名单（阿库娅联动可选）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "tanabata",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "07-01",
+        "end_mmdd": "07-07"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [
+        "水城阿库娅"
+      ],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "optional_cast_formal_intros_complete_to_show_lines": true,
+      "optional_cast_available_in_scene_to_show_lines": true,
+      "cooldown_workdays": 7,
+      "annual_group": "tanabata",
+      "conditional_dialogue": "optional_aqua_two_lines"
+    },
+    {
+      "content_id": "megumin_s05",
+      "source_id": "S05",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "八月·夏日医院活动",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "seasonal_with_cooldown",
+      "window": {
+        "months": [
+          8
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_s06",
+      "source_id": "S06",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "九月·新学期的重启",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "seasonal_with_cooldown",
+      "window": {
+        "months": [
+          9
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7
+    },
+    {
+      "content_id": "megumin_s07",
+      "source_id": "S07",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "万圣节·前台的怪谈营业",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "halloween",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "10-25",
+        "end_mmdd": "10-31"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "halloween"
+    },
+    {
+      "content_id": "megumin_s08",
+      "source_id": "S08",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "医院祭·最重要的岗位",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "hospital_festival",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "semantic": "hospital_festival_active"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "医院祭正式进行且惠惠负责入口接待"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "hospital_festival"
+    },
+    {
+      "content_id": "megumin_s09",
+      "source_id": "S09",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "十二月·圣诞节的前台铃（七瀬恋联动可选）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "12-20",
+        "end_mmdd": "12-25"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [
+        "七瀬恋"
+      ],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "optional_cast_formal_intros_complete_to_show_lines": true,
+      "optional_cast_available_in_scene_to_show_lines": true,
+      "cooldown_workdays": 7,
+      "annual_group": "christmas_daytime",
+      "conditional_dialogue": "ren_if_available_else_sakaguchi"
+    },
+    {
+      "content_id": "megumin_s10",
+      "source_id": "S10",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "一月·新年第一份工作",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "new_year",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "01-01",
+        "end_mmdd": "01-15"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "new_year"
+    },
+    {
+      "content_id": "megumin_s11",
+      "source_id": "S11",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "二月·义理巧克力（阿库娅联动可选）",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "valentine",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "02-10",
+        "end_mmdd": "02-15"
+      },
+      "required_cast_canonical_names": [
+        "水城阿库娅"
+      ],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "required_cast_formal_intros_complete": true,
+      "required_cast_available_in_scene": true,
+      "cooldown_workdays": 7,
+      "annual_group": "valentine"
+    },
+    {
+      "content_id": "megumin_s12",
+      "source_id": "S12",
+      "source_document": "HOSHIMI_MEGUMIN_RECEPTION_INTRO_AND_AMBIENT_CN_REVIEW_V1.md",
+      "title": "三月·这一年的成绩",
+      "content_file": "03_MICRO_EVENTS_CN.md",
+      "kind": "calendar_micro",
+      "trigger_semantics": "front_desk_first_talk",
+      "theme": "calendar",
+      "selection_group": "school_year_end_followup",
+      "repeat_policy": "once_per_year",
+      "window": {
+        "start_mmdd": "03-10",
+        "end_mmdd": "03-31"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [
+        "M30此前至少一工作日已播放；避开最后不可操作日"
+      ],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "cooldown_workdays": 7,
+      "annual_group": "school_year_end_followup"
+    },
+    {
+      "content_id": "megumin_l01",
+      "source_id": "L01",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "镇守正门的结界",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l02",
+      "source_id": "L02",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "印章的落点美学",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l03",
+      "source_id": "L03",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "电话总机的指挥官",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l04",
+      "source_id": "L04",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "圆珠笔的神秘失踪",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l05",
+      "source_id": "L05",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "消毒水与红茶香",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l06",
+      "source_id": "L06",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "导诊台的声量控制",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l07",
+      "source_id": "L07",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "病历袋的厚度侦测",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l08",
+      "source_id": "L08",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "午休后的困意阻击战",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "time_context": "afternoon_14_15_or_nearest_existing_afternoon_slot",
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l09",
+      "source_id": "L09",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "宣传册的对称强迫症",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l10",
+      "source_id": "L10",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "电梯门的礼仪",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "front_desk_work",
+      "selection_group": "front_desk_work",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l11",
+      "source_id": "L11",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "可乐饼的预算哲学",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l12",
+      "source_id": "L12",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "医学术语的帅气度排行",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l13",
+      "source_id": "L13",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "夜校的挑灯夜战",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l14",
+      "source_id": "L14",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "白大褂与护士帽的天平",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l15",
+      "source_id": "L15",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "参考书的二手淘金",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l16",
+      "source_id": "L16",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "时薪换算的动力",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l17",
+      "source_id": "L17",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "五点钟的准时变身",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "afterwork_bark",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "requires_first_school_uniform_reveal": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l18",
+      "source_id": "L18",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "一条街外的第二战场",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "afterwork_bark",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "requires_first_school_uniform_reveal": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l19",
+      "source_id": "L19",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "书包里的分量",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "afterwork_bark",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "requires_first_school_uniform_reveal": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l20",
+      "source_id": "L20",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "明日再见的预告",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "afterwork_bark",
+      "theme": "study_and_budget",
+      "selection_group": "study_and_budget",
+      "repeat_policy": "repeatable",
+      "window": {
+        "semantic": "on_shift"
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "requires_first_school_uniform_reveal": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l21",
+      "source_id": "L21",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【春季 · 4–5月】春风与花粉的攻防战",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          4,
+          5
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l22",
+      "source_id": "L22",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【初夏 · 6月梅雨季】地板上的防滑警示",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          6
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l23",
+      "source_id": "L23",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【盛夏 · 7月】医院冷气的救赎",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          7
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l24",
+      "source_id": "L24",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【晚夏 · 8月】台风天与夏日祭的怨念",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          8
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l25",
+      "source_id": "L25",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【早秋 · 9月】秋高气爽的食欲危机",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          9
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "time_context": "afternoon_around_15",
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l26",
+      "source_id": "L26",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【深秋 · 10–11月】银杏落叶与毛衣季节",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          10,
+          11
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l27",
+      "source_id": "L27",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【初冬 · 12月上旬】前台的暖风口特权",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          12
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l28",
+      "source_id": "L28",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【隆冬 · 12月下旬–1月】热玉米浓汤的诱惑",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          12,
+          1
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l29",
+      "source_id": "L29",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【晚冬 · 2月】倒春寒与备考冲刺",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          2
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    },
+    {
+      "content_id": "megumin_l30",
+      "source_id": "L30",
+      "source_document": "HOSHIMI_MEGUMIN_AMBIENT_DIALOGUE_POOL_CN_V1.md",
+      "title": "【早春 · 3月】学年交替的微风",
+      "content_file": "04_AMBIENT_BARKS_CN.md",
+      "kind": "ambient_bark",
+      "trigger_semantics": "ambient_click",
+      "theme": "calendar",
+      "selection_group": "calendar",
+      "repeat_policy": "repeatable",
+      "window": {
+        "months": [
+          3
+        ]
+      },
+      "required_cast_canonical_names": [],
+      "optional_cast_canonical_names": [],
+      "extra_semantic_gates": [],
+      "no_stats_or_relation_rewards": true,
+      "minor_non_romance_only": true,
+      "bark_recent_exclusion": 5,
+      "two_beat_optional": true
+    }
+  ]
+}

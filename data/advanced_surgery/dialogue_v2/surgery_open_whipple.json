@@ -1,0 +1,396 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_open_whipple",
+  "stages": {
+    "W01": {
+      "before_action": [
+        {
+          "id": "W01_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "切口线和上腹部牵开方向核对过了，我负责保持腹壁张力。",
+          "text_en": "The incision line and upper abdominal retraction are confirmed. I'll maintain the abdominal wall tension."
+        },
+        {
+          "id": "W01_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "圆刀片、吸引头和电刀，按进入层次依次递。",
+          "text_en": "Scalpel, suction tip, and cautery. I'll pass them as each layer is opened."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W01_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "腹壁层次已经打开，先别急着深牵，下面还有可能贴着肠袢。",
+          "text_en": "The abdominal wall is open. Hold the deep retraction; bowel loops may be adherent underneath."
+        }
+      ]
+    },
+    "W02": {
+      "before_action": [
+        {
+          "id": "W02_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "先沿十二指肠和胰头建立空间，肠袢向安全方向轻轻移开。",
+          "text_en": "Establish the plane around the duodenum and pancreatic head first. Move bowel loops aside gently."
+        },
+        {
+          "id": "W02_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "宽牵开片和湿纱布在这里，深部吸引也已接好。",
+          "text_en": "The broad retractors and moist pads are here. Deep suction is connected as well."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W02_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "主要区域看清了，我继续维持肝下和肠系膜一侧的暴露。",
+          "text_en": "The key area is exposed. I'll maintain the subhepatic and mesenteric-side view."
+        },
+        {
+          "id": "W02_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "进入深部操作了，我会持续复核体温和循环趋势。",
+          "text_en": "We're moving deeper. I'll keep reviewing temperature and hemodynamic trends."
+        }
+      ]
+    },
+    "W03": {
+      "before_action": [
+        {
+          "id": "W03_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "这层黏连牵着肠浆膜，先让牵拉停在分离面以外。",
+          "text_en": "These adhesions pull on the bowel serosa. Keep traction away from the dissection plane."
+        },
+        {
+          "id": "W03_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "Metzenbaum 剪、无创镊和细吸引，换这一组。",
+          "text_en": "Metzenbaum scissors, atraumatic forceps, and fine suction. Switching to this set."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W03_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "已松开的肠袢逐段检查浆膜，不能把小裂口带进后续重建。",
+          "text_en": "Inspect the released loops for serosal injuries before carrying them into reconstruction."
+        },
+        {
+          "id": "W03_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "精细分离器械仍需保留在台上，备用吸引管已经备好。",
+          "text_en": "Keep the fine dissection set available. A spare suction line is ready."
+        }
+      ]
+    },
+    "W04": {
+      "before_action": [
+        {
+          "id": "W04_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "门静脉和肠系膜上静脉附近的关系，决定我们接下来需要多少暴露。",
+          "text_en": "The anatomy around the portal and superior mesenteric veins determines how much exposure we need."
+        },
+        {
+          "id": "W04_V2_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "我能维持目前这条视线；如果扩大暴露，会重新调整肠系膜牵拉。",
+          "text_en": "I can maintain this view. If exposure is extended, I'll readjust mesenteric retraction."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W04_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的路径继续，任何血管边界不清楚就立即停下来重新确认。",
+          "text_en": "We'll follow the selected route. Stop and reassess whenever a vascular boundary is unclear."
+        },
+        {
+          "id": "W04_V2_POST02",
+          "speaker_role": "scrub_primary",
+          "text": "血管环、直角钳和细分离器已放在待递位置。",
+          "text_en": "Vessel loops, a right-angle clamp, and fine dissectors are ready to pass."
+        }
+      ]
+    },
+    "W05": {
+      "before_action": [
+        {
+          "id": "W05_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "这里紧贴门静脉，先找到血管外膜面，不要拿瘢痕当成安全层。",
+          "text_en": "We're close to the portal vein. Identify the adventitial plane; scar tissue is not a safe landmark."
+        },
+        {
+          "id": "W05_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "血管剥离子和湿纱布，夹闭器械留作需要时备用。",
+          "text_en": "Vascular dissector and moist pads. Clamps remain on standby if needed."
+        },
+        {
+          "id": "W05_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "我从静脉另一侧保持轻牵拉，深部一旦看不清就收回来。",
+          "text_en": "I'll apply gentle countertraction from the opposite side of the vein and release it if the deep view is lost."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W05_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我继续保护血管侧，胰头深部的牵拉角度可以重新调整。",
+          "text_en": "I'll keep protecting the vascular side. We can now readjust traction on the deep pancreatic head."
+        },
+        {
+          "id": "W05_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "这一段靠近大血管，我会密切跟踪失血和灌注变化。",
+          "text_en": "This dissection is close to major vessels. I'll track blood loss and perfusion changes closely."
+        }
+      ]
+    },
+    "W06": {
+      "before_action": [
+        {
+          "id": "W06_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "胰头深部的组织分界很薄，我把牵开力量再降一点。",
+          "text_en": "The deep pancreatic planes are delicate. I'll reduce retraction force a little."
+        },
+        {
+          "id": "W06_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "双极电凝、细剪和替换吸引头已经放到无菌台前侧。",
+          "text_en": "Bipolar cautery, fine scissors, and replacement suction tips are at the front of the sterile table."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W06_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "深部切离面已经形成，再复核一次血管侧，才能处理标本。",
+          "text_en": "The deep division plane is established. Recheck the vascular side before handling the specimen."
+        },
+        {
+          "id": "W06_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "标本容器和方向标识已经核对，等你们确认切除范围。",
+          "text_en": "The specimen container and orientation labels are checked. We're waiting for confirmation of the resection extent."
+        }
+      ]
+    },
+    "W07": {
+      "before_action": [
+        {
+          "id": "W07_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "标本取出时别带动血管蒂，我来保持深面的视野。",
+          "text_en": "Avoid traction on the vascular pedicle during specimen removal. I'll maintain the deep view."
+        },
+        {
+          "id": "W07_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "标本托盘和湿纱布，准备接收切除组织。",
+          "text_en": "Specimen tray and moist pads, ready to receive the resected tissue."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W07_V2_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "标本方向已经随容器登记，交接会按病理流程核对。",
+          "text_en": "Specimen orientation is logged with the container. The pathology handoff will be verified."
+        },
+        {
+          "id": "W07_V2_POST02",
+          "speaker_role": "assistant_2",
+          "text": "切除床现在看得清楚，重建前再清理边缘的积液。",
+          "text_en": "The resection bed is visible. I'll clear residual fluid before reconstruction."
+        }
+      ]
+    },
+    "W08": {
+      "before_action": [
+        {
+          "id": "W08_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "胰腺断端和空肠要自然靠拢，先看胰管位置和组织厚度。",
+          "text_en": "Bring the pancreatic remnant and jejunum together without tension. Check duct position and tissue thickness."
+        },
+        {
+          "id": "W08_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胰肠吻合用细针线和小持针器，按顺序上台。",
+          "text_en": "Fine pancreatic anastomotic sutures and the small needle holder, ready in order."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W08_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "我保留肠袢的松弛度，别让后面的吻合把这一处拉紧。",
+          "text_en": "I'll preserve slack in the jejunal limb so the next anastomosis does not pull on this one."
+        },
+        {
+          "id": "W08_V2_POST02",
+          "speaker_role": "scrub_secondary",
+          "text": "这一组细针已单独登记，备用线还留在无菌台。",
+          "text_en": "These fine needles are counted separately. Spare sutures remain on the sterile table."
+        }
+      ]
+    },
+    "W09": {
+      "before_action": [
+        {
+          "id": "W09_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "胆管断端就在这里，先确认空肠袢不会扭转。",
+          "text_en": "Here's the bile duct stump. First confirm that the jejunal limb is not twisted."
+        },
+        {
+          "id": "W09_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胆肠吻合细针线、无创镊和小吸引。",
+          "text_en": "Fine biliary anastomotic sutures, atraumatic forceps, and small suction."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W09_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "吻合线周围再看一圈，下一步移动胃肠段时要护住它。",
+          "text_en": "Inspect the full suture line. Protect it while repositioning the gastric and jejunal segments."
+        },
+        {
+          "id": "W09_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "重建已经进行到后半段，我继续复核保温与循环支持。",
+          "text_en": "Reconstruction is well underway. I'll continue reviewing warming and circulatory support."
+        }
+      ]
+    },
+    "W10": {
+      "before_action": [
+        {
+          "id": "W10_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "胃端和空肠的方向要摆顺，别让新通路出现不必要的张力。",
+          "text_en": "Align the gastric remnant and jejunum without unnecessary tension on the new passage."
+        },
+        {
+          "id": "W10_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "胃肠吻合器械与备用缝线已切换，牵开片先留着。",
+          "text_en": "The gastrojejunal anastomosis set and spare sutures are ready. Keep the retractors in place."
+        },
+        {
+          "id": "W10_V2_PRE03",
+          "speaker_role": "assistant_2",
+          "text": "我托住空肠袢，胃端移动时不会牵动前面两处重建。",
+          "text_en": "I'll support the jejunal limb so moving the gastric stump doesn't pull on the first two reconstructions."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W10_V2_POST01",
+          "speaker_role": "assistant_2",
+          "text": "三处重建彼此的距离再核对一遍，接下来重点看扭曲与渗漏。",
+          "text_en": "Recheck the spacing among the three reconstructions. Next, focus on torsion and leakage."
+        },
+        {
+          "id": "W10_V2_POST02",
+          "speaker_role": "anesthesia",
+          "text": "这一关口我会重点复核生理趋势，需要暂停会立即报告。",
+          "text_en": "I'll review the physiological trends at this checkpoint and call for a pause if needed."
+        }
+      ]
+    },
+    "W11": {
+      "before_action": [
+        {
+          "id": "W11_V2_PRE01",
+          "speaker_role": "assistant_1",
+          "text": "胰肠、胆肠和胃肠三个区域分开复核，不能只看表面干不干净。",
+          "text_en": "Check the pancreatic, biliary, and gastric anastomoses separately, not just whether the field looks clean."
+        },
+        {
+          "id": "W11_V2_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "冲洗液、止血材料和替换纱布都准备好了。",
+          "text_en": "Irrigation, hemostatic materials, and replacement pads are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W11_V2_POST01",
+          "speaker_role": "lead_surgeon",
+          "text": "按照所选复核方案完成检查，发现可疑渗出就先处理再关闭。",
+          "text_en": "Complete the review according to the selected plan. Address any suspicious leakage before closure."
+        },
+        {
+          "id": "W11_V2_POST02",
+          "speaker_role": "circulating_primary",
+          "text": "重建用的线材与止血耗材已经归入本台记录，数量会按实核对。",
+          "text_en": "Reconstruction sutures and hemostatic supplies are logged. Quantities will be verified against actual use."
+        }
+      ]
+    },
+    "W12": {
+      "before_action": [
+        {
+          "id": "W12_V2_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "我从胰周一直看到胃肠吻合区，再做最后一次术野巡视。",
+          "text_en": "I'll survey the field from the pancreatic bed through the gastrojejunal anastomosis."
+        },
+        {
+          "id": "W12_V2_PRE02",
+          "speaker_role": "circulating_primary",
+          "text": "开始最终清点，纱布、针和器械分别核对。",
+          "text_en": "Starting final counts: sponges, needles, and instruments will be checked separately."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W12_V2_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "无菌台上的清点项目已逐项回读，关闭器械可以更换。",
+          "text_en": "The sterile-table count has been read back item by item. We can switch to closure instruments."
+        }
+      ]
+    },
+    "W13": {
+      "before_action": [
+        {
+          "id": "W13_V2_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "最后确认引流位置，关闭时不要把任何管路压在深层缝线下。",
+          "text_en": "Confirm drain placement. Do not trap any tubing beneath the deep closure."
+        },
+        {
+          "id": "W13_V2_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "筋膜缝线、皮下缝线和关闭器械，已按层次排好。",
+          "text_en": "Fascial and subcutaneous sutures and closure instruments are arranged by layer."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "W13_V2_POST01",
+          "speaker_role": "assistant_1",
+          "text": "腹壁分层关闭结束，体位转换前再核对管路固定。",
+          "text_en": "Layered abdominal closure is complete. Recheck all lines before repositioning."
+        },
+        {
+          "id": "W13_V2_POST02",
+          "speaker_role": "circulating_secondary",
+          "text": "术后转运所需设备和交接单已准备，等麻醉团队确认。",
+          "text_en": "Transport equipment and handoff documents are ready, pending anesthesia clearance."
+        }
+      ]
+    }
+  }
+}

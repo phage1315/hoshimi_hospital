@@ -60,10 +60,8 @@ assets/characters/<patient_id>_v1/<patient_id>/
 │   ├── tense.png
 │   ├── afraid.png
 │   └── anesthetized.png
-├── splash/
-│   └── general_anesthesia.png
-└── examination/
-    └── shy.png
+└── splash/
+    └── general_anesthesia.png
 
 assets/characters/intraoperative_portraits_v1/<patient_id>/
 ├── tense.png
@@ -72,7 +70,7 @@ assets/characters/intraoperative_portraits_v1/<patient_id>/
 └── anesthetized.png
 ```
 
-标准患者当前需要 **21 个核心状态映射和21张图片**，包括四张普通仰卧手术台图与四张截石位手术台图。硬膜外麻醉、术前诱导等特殊节点可以在此基础上增加状态。不要用术中麻醉头像代替全麻 splash。
+标准患者当前需要 **20 个 SFW 核心状态映射和20张图片**，包括四张普通仰卧手术台图、四张截石位手术台图和独立的全麻 splash。`examination/shy` 属于作者后续提供的 NSFW 素材，另行登记与接入，不计入 SFW 清单。硬膜外麻醉、术前诱导等特殊节点可以在此基础上增加状态。不要用术中麻醉头像代替全麻 splash。
 
 ## 三、美术素材矩阵
 
@@ -164,7 +162,7 @@ intraoperative/anesthetized
 - 侧发和长发收入手术帽，保留适量标志性刘海。
 - 画面不得透明，不得出现黑色或白色空背景。
 
-### 6. 检查立绘
+### 6. 作者提供的检查立绘（不计入 SFW 清单）
 
 - 键：`examination/shy`
 - 必须是透明 PNG。
@@ -279,7 +277,7 @@ outpatient_lines
 - `personality.primary + secondary` 的组合必须在患者池中唯一。
 - `stress_response` 使用现有枚举：`becomes_quiet`、`seeks_reassurance`、`becomes_irritable`、`asks_for_details`、`bravado_then_embarrassment`、`embarrassed_apologetic`。
 - `traits` 和 `fear_profile` 数值范围均为0—100。
-- `visuals.portraits` 至少填入前述21个核心键；路径从项目根目录开始，不加 `res://`。
+- `visuals.portraits` 至少填入前述20个 SFW 核心键；`examination/shy` 由作者另行提供并按检查入口接入。路径从项目根目录开始，不加 `res://`。
 
 loader 会从 `data/patients/templates/encounter.json` 与 `preop.json` 自动生成 `visit_<short_id>` 和 `preop_<short_id>`。患者专属的完全脱衣查体对白、术前阶段提示和旧下刀回应保存在数据包中，并覆盖共用模板。
 
@@ -449,19 +447,20 @@ docs/<patient_id>_asset_record.md
 
 - [ ] 成年年龄、姓名、ID和背景明确。
 - [ ] 原始参考图已保存。
-- [ ] 17个立绘／CG状态都有独立有效文件。
+- [ ] 20 个 SFW 立绘／CG 状态都有独立有效文件；作者提供的 `examination/shy` 另行登记，不计入此数。
 - [ ] 病房与术中切图具有真实 Alpha，画布四角透明。
-- [ ] 手术台四张图构图、尺寸和身体位置一致。
+- [ ] 普通仰卧与截石位两组手术台各四张图，组内构图、尺寸和身体位置一致。
 - [ ] 患者刘海自然保留，侧发和长发收入手术帽。
 - [ ] 全麻 splash 为带面罩和呼吸管的独立横向场景。
 - [ ] `pain` 与 `near_collapse` 明显不同且仍像原角色。
-- [ ] `patient.json` 数据包字段和17个图片键完整，并已加入 `patients/index.json`。
+- [ ] `patient.json` 数据包字段和 20 个 SFW 图片键完整，并已加入 `patients/index.json`。
 - [ ] 28条 `reaction_lines` 齐全且互不重复；`incision_ready` 明确是下刀前惊恐，且与下刀后的三种 `incise_*` 反应分开。
 - [ ] 13组 `reaction_variants` 齐全，每组2—3条。
 - [ ] 4条 `outpatient_lines` 齐全，且保留需要的 `{line}` 占位符。
 - [ ] `diagnosis_reactions` 覆盖五种 `site_group`。
 - [ ] 完全脱衣查体对白、术前阶段提示和回退数据完整。
 - [ ] `patient_bundle_test.gd` 能生成对应 encounter 与 preop。
+- [ ] `godot --headless --path . --script res://tools/patient_sfw_asset_test.gd -- --kind ordinary --id <patient_id>` 通过；该测试逐键检查 20 项 SFW 映射与 Godot 纹理加载，不检查作者提供的 NSFW 立绘。全项目既有缺口可用 `--all --inventory` 列出。
 - [ ] `validate_data.py` 通过。
 - [ ] Godot 导入、portrait、clinic、preop 和 smoke 测试通过，或已记录无法运行的环境限制。
 - [ ] 实机完成至少一次随机疾病、全麻和无麻醉路线。

@@ -1,0 +1,490 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_adv_posttraumatic_thoracolumbar_kyphosis_correction",
+  "stages": {
+    "T01": {
+      "before_action": [
+        {
+          "id": "T01_B1",
+          "speaker_role": "assistant_1",
+          "text": "胸腰段标记与影像已经核对。先把体位和受压点确认完。",
+          "text_en": "The thoracolumbar markings and images match. Let's confirm positioning and pressure points first."
+        },
+        {
+          "id": "T01_B2",
+          "speaker_role": "anesthesia",
+          "text": "全麻已建立。残存肌群的监测基线正在复核，体位调整我会同步通报。",
+          "text_en": "General anesthesia is established. I'm rechecking the monitoring baseline in the remaining muscle groups and will report during repositioning."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T01_A1",
+          "speaker_role": "assistant_2",
+          "text": "胸腹支垫的位置合适，手术区可以开始准备。",
+          "text_en": "The chest and abdominal supports are correctly placed. We can prepare the operative site."
+        },
+        {
+          "id": "T01_A2",
+          "speaker_role": "circulating_primary",
+          "text": "透视设备、备用支垫和本台植入物清单已经核对。",
+          "text_en": "The imaging equipment, spare supports, and implant list have all been checked."
+        }
+      ]
+    },
+    "T02": {
+      "before_action": [
+        {
+          "id": "T02_B1",
+          "speaker_role": "assistant_1",
+          "text": "旧骨折区的骨性标志有偏移。每暴露一节，都重新对照定位。",
+          "text_en": "The bony landmarks have shifted around the old fracture. Reconfirm localization at every level we expose."
+        },
+        {
+          "id": "T02_B2",
+          "speaker_role": "scrub_primary",
+          "text": "电刀、骨膜剥离器和深部牵开器。",
+          "text_en": "Cautery, periosteal elevator, and deep retractors."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T02_A1",
+          "speaker_role": "assistant_2",
+          "text": "两侧椎旁肌已按计划牵开。右侧还要保护好节段血管。",
+          "text_en": "Both paraspinal muscle groups are retracted as planned. We still need to protect the segmental vessels on the right."
+        },
+        {
+          "id": "T02_A2",
+          "speaker_role": "circulating_secondary",
+          "text": "导航屏幕的位置调好了，需要进一步透视时可以直接呼叫。",
+          "text_en": "The navigation screen is positioned; call for more imaging whenever you need it."
+        }
+      ]
+    },
+    "T03": {
+      "before_action": [
+        {
+          "id": "T03_B1",
+          "speaker_role": "assistant_1",
+          "text": "这里的椎弓根方向和普通解剖不完全一样。先确认入点，别让探针偏向椎管。",
+          "text_en": "The pedicle angles here aren't entirely normal. Confirm the entry point before the probe goes anywhere near the canal."
+        },
+        {
+          "id": "T03_B2",
+          "speaker_role": "scrub_primary",
+          "text": "椎弓根探针、球头探针。下一规格的螺钉放在右侧无菌台。",
+          "text_en": "Pedicle probe and ball-tip probe. The next screw size is on the right sterile table."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T03_A1",
+          "speaker_role": "assistant_2",
+          "text": "我继续稳住外侧暴露。相邻节段的锚点也需要逐一复核。",
+          "text_en": "I'll keep the lateral exposure steady. We also need to verify the adjacent anchors one by one."
+        },
+        {
+          "id": "T03_A2",
+          "speaker_role": "scrub_secondary",
+          "text": "备用螺钉和锁紧帽数量已核对，接下来可以切换到减压器械。",
+          "text_en": "The spare screws and locking caps have been counted. We can switch to decompression instruments next."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T03_F1",
+          "speaker_role": "assistant_1",
+          "text": "通道方向不够可靠，别硬推。先重新确认椎弓根的内侧边界。",
+          "text_en": "The channel direction isn't reliable. Don't force it. Recheck the medial pedicle boundary."
+        },
+        {
+          "id": "T03_F2",
+          "speaker_role": "scrub_primary",
+          "text": "备用探针在这里，螺钉先不要继续进。",
+          "text_en": "Here's the spare probe. Hold the screw for now."
+        }
+      ]
+    },
+    "T04": {
+      "before_action": [
+        {
+          "id": "T04_B1",
+          "speaker_role": "assistant_1",
+          "text": "截骨前必须把神经周围的限制点看清。临时稳定方案也该现在定下来。",
+          "text_en": "Before osteotomy, we need to see the constraints around the nerves. This is also the time to settle the temporary fixation plan."
+        },
+        {
+          "id": "T04_B2",
+          "speaker_role": "assistant_2",
+          "text": "左侧空间够用；如果再扩大显露，就要重新检查对侧牵拉。",
+          "text_en": "There's enough room on the left; if we widen exposure, recheck traction on the other side."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T04_A1",
+          "speaker_role": "lead_surgeon",
+          "text": "按选定的分侧步骤推进。每次交换固定前，先确认另一侧仍在承重。",
+          "text_en": "Proceed with the chosen alternating-side sequence. Before exchanging fixation, confirm the other side is still bearing load."
+        },
+        {
+          "id": "T04_A2",
+          "speaker_role": "scrub_primary",
+          "text": "临时连接棒、持棒器和锁紧帽已备好。",
+          "text_en": "Temporary rod, rod holder, and locking caps are ready."
+        }
+      ]
+    },
+    "T05": {
+      "before_action": [
+        {
+          "id": "T05_B1",
+          "speaker_role": "assistant_1",
+          "text": "旧瘢痕贴得很紧。找到确实存在的分离平面后再向前走。",
+          "text_en": "The old scar is tightly attached. Find a real dissection plane before advancing."
+        },
+        {
+          "id": "T05_B2",
+          "speaker_role": "scrub_primary",
+          "text": "Kerrison 咬骨钳和精细神经剥离子。",
+          "text_en": "Kerrison rongeur and fine neural dissector."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T05_A1",
+          "speaker_role": "assistant_2",
+          "text": "我把吸引口移到骨面外侧，避免它碰到硬膜。",
+          "text_en": "I'll move the suction tip outside the bone surface so it doesn't touch the dura."
+        },
+        {
+          "id": "T05_A2",
+          "speaker_role": "anesthesia",
+          "text": "神经监测会持续跟进；下一步牵拉或截骨前请提前告诉我。",
+          "text_en": "Neuromonitoring will continue. Tell me before the next traction or osteotomy step."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T05_F1",
+          "speaker_role": "assistant_2",
+          "text": "硬膜边缘被牵到了。先放松牵开，再找分离面。",
+          "text_en": "The dural edge has been pulled. Ease the retractor and find the plane again."
+        },
+        {
+          "id": "T05_F2",
+          "speaker_role": "assistant_1",
+          "text": "这一小段不能盲剥，必须重新辨认神经外侧。",
+          "text_en": "Don't dissect this part blindly. Identify the lateral side of the nerve again."
+        }
+      ]
+    },
+    "T06": {
+      "before_action": [
+        {
+          "id": "T06_B1",
+          "speaker_role": "assistant_1",
+          "text": "在真正切除椎体以前，必须保证剩余脊柱始终有一侧可靠固定。",
+          "text_en": "Before we actually remove the vertebral body, the remaining spine must always have reliable fixation on one side."
+        },
+        {
+          "id": "T06_B2",
+          "speaker_role": "scrub_secondary",
+          "text": "临时棒的长度和锁紧件核对过了，备用规格就在旁边。",
+          "text_en": "The temporary rod length and locking parts are checked; a spare size is close by."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T06_A1",
+          "speaker_role": "assistant_2",
+          "text": "我守着对侧固定点。下一步操作时不会放开这个支撑。",
+          "text_en": "I'll hold the opposite anchor. I won't release this support during the next step."
+        },
+        {
+          "id": "T06_A2",
+          "speaker_role": "circulating_primary",
+          "text": "新增使用的植入物规格已经记录，备用连接棒也已送到手术间。",
+          "text_en": "The newly used implant specifications are recorded, and a spare rod has been brought into the room."
+        }
+      ]
+    },
+    "T07": {
+      "before_action": [
+        {
+          "id": "T07_B1",
+          "speaker_role": "assistant_1",
+          "text": "先处理病变椎体内部，后壁临近硬膜的部分必须留到暴露足够时再分离。",
+          "text_en": "Work inside the diseased vertebral body first. Leave the posterior wall by the dura until exposure is sufficient for separation."
+        },
+        {
+          "id": "T07_B2",
+          "speaker_role": "scrub_primary",
+          "text": "高速磨钻、咬骨钳。止血材料已放到手边。",
+          "text_en": "High-speed drill and rongeur. Hemostatic materials are at hand."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T07_A1",
+          "speaker_role": "assistant_2",
+          "text": "临时支撑还在位。后壁附近要再检查一遍，不能留下游离骨片。",
+          "text_en": "The temporary support remains in place. Recheck by the posterior wall for loose bone fragments."
+        },
+        {
+          "id": "T07_A2",
+          "speaker_role": "anesthesia",
+          "text": "这段操作的出血与灌注变化我会重点跟进，需要调整时直接喊我。",
+          "text_en": "I'll watch bleeding and perfusion closely during this step. Call me if anything needs adjusting."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T07_F1",
+          "speaker_role": "assistant_1",
+          "text": "后壁处理不够干净。先确保临时稳定，再修整骨缘。",
+          "text_en": "The posterior wall hasn't been cleared well enough. Secure temporary stability before refining the bone edge."
+        },
+        {
+          "id": "T07_F2",
+          "speaker_role": "scrub_primary",
+          "text": "止血材料和更细的咬骨钳已经换上。",
+          "text_en": "I've switched to hemostatic materials and a finer rongeur."
+        }
+      ],
+      "crisis": [
+        {
+          "id": "T07_C1",
+          "speaker_role": "assistant_2",
+          "text": "术野吸引量明显变了，我先把出血点完全显露出来。",
+          "text_en": "Suction has increased sharply. I'll fully expose the bleeding point first."
+        },
+        {
+          "id": "T07_C2",
+          "speaker_role": "scrub_primary",
+          "text": "双极、电凝和止血材料。",
+          "text_en": "Bipolar cautery, electrocautery, and hemostatic materials."
+        },
+        {
+          "id": "T07_C3",
+          "speaker_role": "anesthesia",
+          "text": "我正在处理循环变化，先把这段操作稳住。",
+          "text_en": "I'm managing the circulatory change. Hold this step steady for now."
+        }
+      ]
+    },
+    "T08": {
+      "before_action": [
+        {
+          "id": "T08_B1",
+          "speaker_role": "assistant_1",
+          "text": "截骨空间已经有了，但不能把矫形理解成把两端拼命拉近。",
+          "text_en": "We have space from the resection, but correction doesn't mean pulling the two ends together with force."
+        },
+        {
+          "id": "T08_B2",
+          "speaker_role": "assistant_2",
+          "text": "上下终板的位置需要复核。前柱的支撑高度决定后面的棒能不能顺利就位。",
+          "text_en": "Recheck the upper and lower endplates. Anterior support height will determine whether the rods seat properly."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T08_A1",
+          "speaker_role": "lead_surgeon",
+          "text": "按刚确定的目标分段复位。先建立支撑，再逐步处理后方连接。",
+          "text_en": "Restore alignment in stages toward the agreed target. Establish support first, then work on the posterior connection."
+        },
+        {
+          "id": "T08_A2",
+          "speaker_role": "scrub_primary",
+          "text": "融合笼的备选规格和植骨材料都在无菌台。",
+          "text_en": "The alternative cage sizes and bone graft are on the sterile table."
+        }
+      ]
+    },
+    "T09": {
+      "before_action": [
+        {
+          "id": "T09_B1",
+          "speaker_role": "assistant_1",
+          "text": "先看清支撑面，不能让融合笼压到不可靠的终板边缘。",
+          "text_en": "See the support surface clearly. The cage must not press onto an unreliable endplate edge."
+        },
+        {
+          "id": "T09_B2",
+          "speaker_role": "scrub_primary",
+          "text": "融合笼置入器、试模和准备好的植骨材料。",
+          "text_en": "Cage inserter, trials, and prepared bone graft."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T09_A1",
+          "speaker_role": "assistant_2",
+          "text": "我继续保护神经侧的空间。请再检查装置有没有接触到不该碰的组织。",
+          "text_en": "I'll keep the neural side protected. Check again that the device isn't touching tissue it shouldn't."
+        },
+        {
+          "id": "T09_A2",
+          "speaker_role": "circulating_secondary",
+          "text": "备用规格已核对；植入物识别信息会随手术记录一并留存。",
+          "text_en": "The backup sizes are checked; implant identifiers will go into the operation record."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T09_F1",
+          "speaker_role": "assistant_2",
+          "text": "融合笼的接触面不理想，先退出一点，不要靠力量压进去。",
+          "text_en": "The cage contact surface isn't right. Back it out a little; don't force it in."
+        },
+        {
+          "id": "T09_F2",
+          "speaker_role": "assistant_1",
+          "text": "终板受力不均，需要重新确认大小和角度。",
+          "text_en": "The endplate load is uneven. Recheck the size and angle."
+        }
+      ]
+    },
+    "T10": {
+      "before_action": [
+        {
+          "id": "T10_B1",
+          "speaker_role": "assistant_1",
+          "text": "先让连接棒逐段进入锚点。每一小段矫正后都要核对神经和固定状态。",
+          "text_en": "Seat the rod in the anchors one segment at a time. After each small correction, check the nerves and fixation."
+        },
+        {
+          "id": "T10_B2",
+          "speaker_role": "scrub_primary",
+          "text": "持棒器、复位器和锁紧帽。下一个长度也准备好了。",
+          "text_en": "Rod holder, reducer, and locking caps. The next length is ready too."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T10_A1",
+          "speaker_role": "assistant_2",
+          "text": "两侧张力需要重新平衡，别只看正中的排列。",
+          "text_en": "We need to rebalance tension on both sides, not just look at the midline."
+        },
+        {
+          "id": "T10_A2",
+          "speaker_role": "anesthesia",
+          "text": "矫形后的神经监测结果正在复核；如果有变化，我会立即通知。",
+          "text_en": "I'm reviewing the neuromonitoring after correction. I'll report any change at once."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T10_F1",
+          "speaker_role": "assistant_1",
+          "text": "刚才这一步张力增长太快，暂停矫形，核对监测。",
+          "text_en": "Tension rose too quickly on that step. Pause correction and check monitoring."
+        },
+        {
+          "id": "T10_F2",
+          "speaker_role": "anesthesia",
+          "text": "我正在复核变化是否来自血压、麻醉或真正的神经信号问题。",
+          "text_en": "I'm checking whether the change comes from blood pressure, anesthesia, or a real nerve signal."
+        }
+      ],
+      "crisis": [
+        {
+          "id": "T10_C1",
+          "speaker_role": "anesthesia",
+          "text": "监测出现需要复核的变化，先暂停继续矫形。",
+          "text_en": "Monitoring shows a change that needs review. Pause further correction."
+        },
+        {
+          "id": "T10_C2",
+          "speaker_role": "assistant_1",
+          "text": "保持现有支撑，先检查是不是牵拉或骨性压迫造成的。",
+          "text_en": "Maintain the current support. Check whether traction or bony pressure caused it."
+        },
+        {
+          "id": "T10_C3",
+          "speaker_role": "assistant_2",
+          "text": "我维持暴露，等监测团队确认后再继续。",
+          "text_en": "I'll keep the field exposed until the monitoring team confirms the findings."
+        }
+      ]
+    },
+    "T11": {
+      "before_action": [
+        {
+          "id": "T11_B1",
+          "speaker_role": "assistant_1",
+          "text": "最后逐节复核固定点、连接棒和神经周围的空间；不能只看矫形后的外形。",
+          "text_en": "Finally, recheck every anchor, rod, and space around the nerves; don't judge only by the corrected shape."
+        },
+        {
+          "id": "T11_B2",
+          "speaker_role": "scrub_primary",
+          "text": "限扭起子、骨移植材料和冲洗液。",
+          "text_en": "Torque-limiting driver, bone graft, and irrigation."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T11_A1",
+          "speaker_role": "assistant_2",
+          "text": "两侧融合床已经整理。关闭前再看一遍所有可能的出血点。",
+          "text_en": "Both fusion beds are prepared. Check every possible bleeding point once more before closure."
+        },
+        {
+          "id": "T11_A2",
+          "speaker_role": "circulating_primary",
+          "text": "已使用的植入物型号与数量按实物记录，纱布和器械准备进入最终清点。",
+          "text_en": "The actual implant models and counts are recorded. We're preparing the final sponge and instrument count."
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "T11_F1",
+          "speaker_role": "assistant_2",
+          "text": "这个固定点复核没过，关闭前必须重新处理。",
+          "text_en": "This anchor failed its check. It needs correction before closure."
+        },
+        {
+          "id": "T11_F2",
+          "speaker_role": "scrub_primary",
+          "text": "备用锁紧件和限扭器已经递上。",
+          "text_en": "The spare locking part and torque limiter are here."
+        }
+      ]
+    },
+    "T12": {
+      "before_action": [
+        {
+          "id": "T12_B1",
+          "speaker_role": "assistant_1",
+          "text": "深部止血和引流位置需要再核对。把这段背部切口安全地关好。",
+          "text_en": "Recheck deep hemostasis and drain position. Let's close this back incision safely."
+        },
+        {
+          "id": "T12_B2",
+          "speaker_role": "scrub_secondary",
+          "text": "关闭缝线、皮下器械和最终清点单准备好了。",
+          "text_en": "Closure sutures, subcutaneous instruments, and final count sheet are ready."
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "T12_A1",
+          "speaker_role": "circulating_primary",
+          "text": "器械、针和纱布完成终末核对，术后交接资料已备齐。",
+          "text_en": "Instruments, needles, and sponges have been reconciled, and the postoperative handoff is ready."
+        },
+        {
+          "id": "T12_A2",
+          "speaker_role": "anesthesia",
+          "text": "我来安排后续体位转换和复苏监测。神经功能评估重点已经交接。",
+          "text_en": "I'll arrange repositioning and recovery monitoring. The priorities for neurological assessment have been handed over."
+        }
+      ]
+    }
+  }
+}

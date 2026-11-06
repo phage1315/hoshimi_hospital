@@ -204,11 +204,14 @@ func start_operation() -> bool:
 	if def.is_empty(): return false
 	var seed_value := randi() # Operation random state exists only in this running process.
 	session = Session.new(def, values(a.team, def.id), seed_value, game.staff, a.team, dev and fixture_mode)
+	session.suppress_operative_dialogue = dev and fixture_mode
 	var completed_count := 0
 	for result in state().completed:
 		if result.procedure_id == def.id: completed_count += 1
 	session.operative_dialogue = preload("res://godot/systems/advanced_operative_dialogue.gd").new(str(def.id), completed_count)
 	if not (dev and fixture_mode):
+		if session.operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2":
+			session.sweat_break = preload("res://godot/systems/advanced_or_sweat_break.gd").new(seed_value, a.team)
 		session.splash_pending = true
 		session.patient_ready_pending = true
 		session.team_intro_index = 0

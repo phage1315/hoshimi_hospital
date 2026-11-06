@@ -16,10 +16,12 @@ var pending_rescue := false
 var awaiting_ack := false
 var variant := false
 var hp_only := false
+var suppress_operative_dialogue := false # Numerical fixture mode only.
 var splash_pending := false
 var patient_ready_pending := false # Presentation only; never saved.
 var team_intro_index := -1 # Presentation only; never saved.
 var operative_dialogue: RefCounted
+var sweat_break: RefCounted # Presentation state stays in this running session only.
 var rng := RandomNumberGenerator.new()
 var physiology: RefCounted
 var last_result: Dictionary = {}
@@ -49,6 +51,7 @@ func strategy_options() -> Array:
 
 func act(who: int = 0, option_id: String = "") -> bool:
 	if finished or awaiting_ack or pending_rescue or in_crisis() or splash_pending or patient_ready_pending or team_intro_index >= 0: return false
+	if operative_dialogue != null and operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2" and not operative_dialogue.current(self, suppress_operative_dialogue).is_empty(): return false
 	check_failure()
 	if finished: return false
 	var step := current()
@@ -128,10 +131,12 @@ func finish_action() -> void:
 
 func resolve_crisis(option_id: String) -> bool:
 	if finished or not in_crisis(): return false
+	if operative_dialogue != null and operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2" and not operative_dialogue.current(self, suppress_operative_dialogue).is_empty(): return false
 	if not physiology.apply_crisis_rescue(option_id, rng.randi_range(0, 9999)): return false
 	if physiology.surgery_aborted:
 		finished = true
 		success = false
+		_consume_terminal_sweat_break()
 	elif bool(physiology.active_crisis.get("resolved", false)):
 		physiology.clear_resolved_crisis()
 	check_failure()
@@ -143,9 +148,15 @@ func check_failure() -> void:
 		hp = maxi(0, hp)
 		finished = true
 		success = false
+		_consume_terminal_sweat_break()
+
+func _consume_terminal_sweat_break() -> void:
+	if sweat_break != null and physiology != null:
+		sweat_break.on_transition(float(physiology.procedure_state.elapsed_time), false)
 
 func acknowledge() -> bool:
 	if finished or not awaiting_ack or pending_rescue or in_crisis(): return false
+	if operative_dialogue != null and operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2" and not operative_dialogue.current(self, suppress_operative_dialogue).is_empty() and not bool(last_result.get("failed", false)): return false
 	check_failure()
 	if finished: return false
 	awaiting_ack = false
@@ -153,4 +164,6 @@ func acknowledge() -> bool:
 	if index >= definition.steps.size():
 		finished = true
 		success = hp > 0 and (physiology == null or physiology.completed())
+	if sweat_break != null and physiology != null:
+		sweat_break.on_transition(float(physiology.procedure_state.elapsed_time), not finished)
 	return true

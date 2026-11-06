@@ -394,15 +394,9 @@ func load_all(requested_locale: String = "") -> bool:
 	protagonist = localizer.localize_tree(protagonist, "protagonist")
 	for key in collections.keys():
 		collections[key] = localizer.localize_tree(collections[key], "collections." + str(key))
-	if localizer.locale == "en":
-		normalize_english_staff_metadata()
 	dialogue = localizer.localize_tree(dialogue, "dialogue")
+	errors.append_array(localizer.errors)
 	return errors.is_empty()
-
-func normalize_english_staff_metadata() -> void:
-	for person in collections.get("staff", []):
-		var profession: String = str(person.get("profession", ""))
-		person["rank"] = "Head of Nursing" if str(person.get("id", "")) == "nurse_ishigami" else {"doctor": "Physician", "nurse": "Nurse", "pharmacist": "Pharmacist", "researcher": "Visiting Researcher"}.get(profession, "Hospital Staff")
 
 func find_record(collection: String, id: String) -> Dictionary:
 	for record in collections.get(collection, []):

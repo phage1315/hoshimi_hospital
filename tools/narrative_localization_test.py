@@ -57,6 +57,10 @@ def walk(value: object, path: str, rows: list[tuple[str, str]]) -> None:
 def main() -> int:
     failures: list[str] = []
     checked = 0
+    from megumin_source_audit import audit as audit_megumin
+    npc_checks, npc_failures = audit_megumin()
+    checked += npc_checks
+    failures.extend(npc_failures)
     manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
     staff_collections, _bundles = load_staff_bundles(ROOT / "data", manifest["staff_bundles"])
     for collection, path in {**TARGETS, "staff": None}.items():
@@ -83,7 +87,9 @@ def main() -> int:
                 failures.append(f"Chinese remains: {key}")
             elif FORMAT.findall(source) != FORMAT.findall(translated):
                 failures.append(f"placeholder mismatch: {key}")
-    for path in sorted((ROOT / "data/advanced_surgery/dialogue").glob("*.json")):
+    advanced_dialogue_paths = list((ROOT / "data/advanced_surgery/dialogue").glob("*.json"))
+    advanced_dialogue_paths += list((ROOT / "data/advanced_surgery/dialogue_v2").glob("*.json"))
+    for path in sorted(advanced_dialogue_paths):
         pack = json.loads(path.read_text(encoding="utf-8"))
         if isinstance(pack, dict) and pack.get("schema_version") == "advanced_staff_dialogues_v1":
             lines = [{**row, "id": f"{row['character_id']}:{row['trigger']}:{row['role']}"} for row in pack["lines"]]
@@ -94,6 +100,15 @@ def main() -> int:
             text = row.get("text_en", "")
             if not text.strip() or HAN.search(text) or FORMAT.findall(row["text"]) != FORMAT.findall(text):
                 failures.append(f"invalid advanced dialogue English: {path.name}/{row['id']}")
+    for path in sorted((ROOT / "data/advanced_surgery/advanced_or_ambient").glob("*.json")):
+        pack = json.loads(path.read_text(encoding="utf-8"))
+        for variants in pack.get("variants", {}).values():
+            for variant in variants:
+                for row in variant["lines"]:
+                    checked += 1
+                    translated = row.get("text_en", "")
+                    if not translated.strip() or HAN.search(translated) or FORMAT.findall(row["text"]) != FORMAT.findall(translated):
+                        failures.append(f"invalid advanced ambient English: {path.name}/{row['id']}")
     for path in sorted((ROOT / "data/advanced_surgery/stories").glob("*.json")):
         pack = json.loads(path.read_text(encoding="utf-8"))
         pairs = [(pack["patient"][key], pack["patient"].get(key + "_en", "")) for key in ("name", "diagnosis")]

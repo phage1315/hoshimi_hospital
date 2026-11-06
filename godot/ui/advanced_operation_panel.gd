@@ -7,6 +7,8 @@ var last_session := 0
 var previous: Dictionary = {}
 var changes: Dictionary = {}
 var changed_at := 0
+var dialogue_toolbar: PanelContainer
+var toolbar_buttons: Dictionary = {}
 const INK = Color("f0f4ef")
 const MUTED = Color("a3bcb9")
 const GOOD = Color("92dec2")
@@ -157,11 +159,11 @@ func monitor(parent: Node, s: RefCounted) -> void:
 		var l:=text(b,tx("roles.first_assistant" if who==1 else "roles.second_assistant")+" · "+tx("remaining" if is_precision else "remaining_max")%left,15,MUTED)
 		l.mouse_filter=Control.MOUSE_FILTER_PASS;l.tooltip_text=tx("help_uses")
 
-func card(parent: Node, id: String, title: String, main: String, detail: String, callback: Callable, enabled: bool=true) -> Button:
+func card(parent: Node, id: String, title: String, main: String, detail: String, callback: Callable, enabled: bool=true, height: float=135) -> Button:
 	var button:=Button.new()
 	button.name=id
 	button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-	button.custom_minimum_size=Vector2(0,135)
+	button.custom_minimum_size=Vector2(0,height)
 	button.disabled=not enabled
 	button.add_theme_stylebox_override("normal",view.host.panel_style(Color("153b44f5"),Color("678c91")))
 	button.add_theme_stylebox_override("hover",view.host.panel_style(Color("24515bf5"),Color("abe0cf")))
@@ -179,17 +181,111 @@ func card(parent: Node, id: String, title: String, main: String, detail: String,
 	button.tooltip_text=title+"\n"+main+"\n"+detail
 	button.pressed.connect(callback)
 	return button
+
+func compact_button(parent: Node, id: String, caption: String, width: float, primary: bool, callback: Callable) -> Button:
+	var button := Button.new()
+	button.name = id
+	button.text = caption
+	button.custom_minimum_size = Vector2(width, 42 if primary else 36)
+	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	button.add_theme_font_size_override("font_size", 18 if primary else 16)
+	button.add_theme_stylebox_override("normal", view.host.panel_style(Color("1b6864") if primary else Color("19383df5"), Color("a5e3d8") if primary else Color("688d90")))
+	button.add_theme_stylebox_override("hover", view.host.panel_style(Color("297a74") if primary else Color("24515bf5"), Color("c4f2de")))
+	button.add_theme_stylebox_override("disabled", view.host.panel_style(Color("16282bd9"), Color("344b50")))
+	parent.add_child(button)
+	button.pressed.connect(callback)
+	return button
+
+func ensure_dialogue_toolbar() -> void:
+	if is_instance_valid(dialogue_toolbar): return
+	dialogue_toolbar = PanelContainer.new()
+	dialogue_toolbar.name = "AdvancedDialogueToolbar"
+	dialogue_toolbar.mouse_filter = Control.MOUSE_FILTER_STOP
+	dialogue_toolbar.add_theme_stylebox_override("panel", view.host.panel_style(Color("102e35f5"), Color("5e9291")))
+	view.add_child(dialogue_toolbar)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 14)
+	dialogue_toolbar.add_child(row)
+	toolbar_buttons.auto = compact_button(row, "dialogue_auto", tx("operative_auto_off"), 155, false, func():
+		view.operative_auto = not view.operative_auto
+		view.render())
+	toolbar_buttons.auto.toggle_mode = true
+	toolbar_buttons.skip = compact_button(row, "dialogue_skip", tx("operative_skip_compact"), 90, false, func():
+		var session: RefCounted = view.controller.session
+		if session != null and session.operative_dialogue.skip_sequence(session) > 0: view.render())
+	toolbar_buttons.log = compact_button(row, "dialogue_log", tx("operative_log"), 145, false, func():
+		if view.controller.session != null: view.show_operative_log(view.controller.session))
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(spacer)
+	toolbar_buttons.next = compact_button(row, "dialogue_next", tx("continue"), 120, true, func():
+		var session: RefCounted = view.controller.session
+		if session == null: return
+		if session.finished:
+			view.controller.finish_operation(); view.render()
+		elif acknowledgement_ready(session):
+			if session.acknowledge(): view.render()
+		elif session.operative_dialogue.advance_sequence(session): view.render())
+
+func hide_dialogue_toolbar() -> void:
+	if is_instance_valid(dialogue_toolbar): dialogue_toolbar.hide()
+	view.scroll.offset_bottom = 0
+
+func dialogue_line_ready(s: RefCounted) -> bool:
+	if s.finished or s.operative_dialogue == null or s.operative_dialogue.data.get("schema_version") != "advanced_day2_dialogue_v2": return false
+	if s.pending_rescue or (s.awaiting_ack and bool(s.last_result.get("failed", false))): return false
+	return not s.operative_dialogue.current(s, s.suppress_operative_dialogue).is_empty()
+
+func acknowledgement_ready(s: RefCounted) -> bool:
+	if s.finished or not s.awaiting_ack or s.pending_rescue or s.in_crisis(): return false
+	return bool(s.last_result.get("failed", false)) or s.operative_dialogue.current(s).is_empty()
+
+func sync_dialogue_toolbar(s: RefCounted) -> bool:
+	if s.operative_dialogue == null or s.operative_dialogue.data.get("schema_version") != "advanced_day2_dialogue_v2": return false
+	ensure_dialogue_toolbar()
+	dialogue_toolbar.position = Vector2(0, view.size.y - 58)
+	dialogue_toolbar.size = Vector2(760, 54)
+	dialogue_toolbar.show()
+	view.scroll.offset_bottom = -62
+	var playable := dialogue_line_ready(s)
+	var result_ready: bool = acknowledgement_ready(s) and not playable
+	var finish_ready: bool = s.finished
+	toolbar_buttons.next.name = "finish" if finish_ready else "continue" if result_ready else "dialogue_next"
+	toolbar_buttons.next.text = tx("continue")
+	toolbar_buttons.skip.text = tx("operative_skip_compact")
+	toolbar_buttons.log.text = tx("operative_log")
+	toolbar_buttons.next.visible = playable or result_ready or finish_ready
+	toolbar_buttons.next.disabled = not (playable or result_ready or finish_ready)
+	toolbar_buttons.skip.disabled = not playable
+	toolbar_buttons.auto.text = tx("operative_auto_on" if view.operative_auto else "operative_auto_off")
+	toolbar_buttons.auto.button_pressed = view.operative_auto
+	return playable or result_ready or finish_ready
 func effects_text(e: Dictionary) -> String:
 	var parts:=PackedStringArray()
 	for key in ["elapsed_time","visibility","bleeding","blood_loss","stability"]:
 		if int(e.get(key,0))!=0:parts.append(tx("metric."+key)+" %+d"%int(e[key]))
 	return " · ".join(parts)
 func actions(s: RefCounted) -> void:
+	if sync_dialogue_toolbar(s):
+		if s.finished or acknowledgement_ready(s):
+			var summary := tx("stage_result") + " · " + (tx("success" if s.success else "aborted") if s.finished else tx("result") % [s.last_result.cost, tx("fail" if s.last_result.failed else "pass")])
+			var result := text(view.body, summary, 18)
+			result.name = "AdvancedActionResult"
+			result.autowrap_mode = TextServer.AUTOWRAP_OFF
+		return
 	var row:=HBoxContainer.new();row.name="AdvancedActionCards"
+	row.custom_minimum_size.x = 760
 	row.add_theme_constant_override("separation",10)
 	view.body.add_child(row)
 	if s.finished:
-		card(row,"finish",tx("stage_result"),tx("success" if s.success else "aborted"),"",func():view.controller.finish_operation();view.render())
+		# The toolbar is 760 wide with 22 px of right content padding.
+		row.custom_minimum_size.x = 738
+		row.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		var status := text(row,tx("stage_result")+" · "+tx("success" if s.success else "aborted"),18)
+		status.custom_minimum_size.x = 560
+		status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		status.autowrap_mode = TextServer.AUTOWRAP_OFF
+		compact_button(row,"finish",tx("continue"),140,true,func():view.controller.finish_operation();view.render())
 		return
 	var step:Dictionary=s.current()
 	if s.in_crisis():
@@ -198,7 +294,13 @@ func actions(s: RefCounted) -> void:
 			card(row,str(choice.id),tx("chance")%chance,str(choice.label),tx("minutes_short")%choice.minutes,func():s.resolve_crisis(str(choice.id));view.render())
 		return
 	if s.awaiting_ack and not s.pending_rescue:
-		card(row,"continue",tx("stage_result"),tx("result")%[s.last_result.cost,tx("fail" if s.last_result.failed else "pass")],tx("continue"),func():s.acknowledge();view.render())
+		row.custom_minimum_size.x = 738
+		row.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		var status := text(row,tx("stage_result")+" · "+tx("result")%[s.last_result.cost,tx("fail" if s.last_result.failed else "pass")],18)
+		status.custom_minimum_size.x = 560
+		status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		status.autowrap_mode = TextServer.AUTOWRAP_OFF
+		compact_button(row,"continue",tx("continue"),120,true,func():s.acknowledge();view.render())
 		return
 	if s.pending_rescue or step.kind=="P":
 		for who in range(3):
@@ -224,4 +326,4 @@ func actions(s: RefCounted) -> void:
 			var b:=card(row,"strategy_"+str(choice.id),tx("operation_S"),title,effects_text(choice.get("strategic_effects",{})),func():s.act(0,str(choice.id));view.render())
 			b.tooltip_text+= "\n"+str(choice.get("description_en" if view.english else "description",""))
 	else:
-		card(row,"standard" if step.kind=="S" else "continue",tx("operation_"+str(step.kind)),tx("complete_step"),"",func():s.act();view.render())
+		card(row,"standard" if step.kind=="S" else "continue",tx("operation_"+str(step.kind)),tx("complete_step"),"",func():s.act();view.render(),true,64)

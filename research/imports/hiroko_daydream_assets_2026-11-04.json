@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-04",
+  "event_id": "FANTASY_HIROKO_EMIKO_OR_01",
+  "author_supplied_assets": [
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-08918ebe-39a5-439a-ba9f-0a9a4c5beb4f.png",
+      "target": "assets/events/daydream_v1/hiroko_forced_into_or.png",
+      "node": "F01_013",
+      "mapping": "Hiroko is carried from the nurses' station into Operating Room One",
+      "dimensions": "1536x1024",
+      "sha256": "6440b03158fd58352df4437b1c8a2203e6c3abe3b96d1056b431a43e21a18981",
+      "processing": "byte-for-byte copy"
+    },
+    {
+      "source": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-65178a3f-7e76-47b5-9122-38420dc08915.png",
+      "target": "assets/events/daydream_v1/hiroko_or_laparotomy_open.png",
+      "node": "F01_042",
+      "mapping": "Peritoneum opened and retractors fully expose the abdominal and pelvic cavity",
+      "dimensions": "1536x1024",
+      "sha256": "c6db8efbbdbff669abe745590bea49d167caa6bfbebdb723aaaafd2ca92281a3",
+      "processing": "byte-for-byte copy"
+    },
+    {
+      "source": "/Users/ningye/Downloads/image-Picsart-BackgroundRemover.png",
+      "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/nervous.png",
+      "mapping": "Operating-room neutral/nervous seed portrait",
+      "dimensions": "704x640",
+      "sha256": "9319add8c0ca1d174ce0205a659c50aa5f60164198006daa2228869b09b62178",
+      "processing": "byte-for-byte copy"
+    }
+  ],
+  "generated_expression_variants": {
+    "source": "/Users/ningye/Downloads/image-Picsart-BackgroundRemover.png",
+    "service": "built-in imagegen",
+    "shared_constraints": "Expression-only edit. Preserve adult character identity, hair, eyes, surgical cap, bare shoulders, crop, proportions, line art, lighting, palette and transparent background. No new objects or pose/camera changes.",
+    "postprocess": "Mechanical resize to 704x640 to match the seed portrait; no crop.",
+    "assets": [
+      {"key": "panic", "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/panic.png", "sha256": "dc20554ff16a12ce38cb7f40afa3faf67d39a310b2f12eaf606be4cf388b3f5c", "expression": "wide-eyed panic and startled protest"},
+      {"key": "indignant", "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/indignant.png", "sha256": "0f8021b6e01196ec3697b09b172b35125cada938f63a27aa241c302fe5b6f8f9", "expression": "embarrassed indignation"},
+      {"key": "crying", "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/crying.png", "sha256": "df5c5987a48ae4d0f0522aabd6ae56ef496c041faa0b495c3472a400a1efc9ab", "expression": "hurt, pleading tears"},
+      {"key": "terrified", "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/terrified.png", "sha256": "8c7cf089be50a51d0d52d0968515aae47c5d67f34c76a3969fa7e23038fe4f74", "expression": "fear before incision"},
+      {"key": "pain_scream", "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/pain_scream.png", "sha256": "4fe86ffe7ab92bd1373d57e51584541fdfe67f61ba2b6b9aafb816f724f0c986", "expression": "acute pain scream"},
+      {"key": "overwhelmed", "target": "assets/characters/relationship_patient_v1/nurse_hiroko/operating_patient/overwhelmed.png", "sha256": "9b62a48f981c0af3607cdac351f68a9352230a00cd5f8391760d5f64fc383760", "expression": "tearful, exhausted and overwhelmed"}
+    ]
+  }
+}

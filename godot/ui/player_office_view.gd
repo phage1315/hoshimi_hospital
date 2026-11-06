@@ -43,6 +43,7 @@ static func render_main(app: Control) -> void:
 		career_button.text = app.tx("ui.office.actions_sunday", "周日不安排职业行动")
 		career_button.disabled = true
 	app.button_at(app.tx("ui.office.collection", "收藏与纪念物  →"), Vector2(850, 325), Vector2(340, 58), app.show_office_collection).name = "OfficeCollection"
+	app.button_at(app.tx("ui.daydream.title", "白日梦"), Vector2(850, 405), Vector2(340, 58), app.show_daydreams).name = "OfficeDaydream"
 	app.scrollable_text_at(app.tx("ui.office.note", "查看资料不消耗时间。职业行动是主动投资，不会成为每日强制作业。"), Vector2(850, 485), Vector2(340, 92), 18, Color("c2d2cc"), "OfficeUsageNote")
 	var booking_label: String = app.free_h_booking_label()
 	if not booking_label.is_empty():

@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HAN = re.compile(r"[\u3400-\u9fff]")
+BRACE_PLACEHOLDER = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*\}")
 sys.path.insert(0, str(ROOT / "tools"))
 import patient_bundles
 
@@ -26,6 +27,8 @@ def walk(value: object, path: str, strings: dict[str, str], failures: list[str])
         translated = strings.get(path, value)
         if HAN.search(translated):
             failures.append(path)
+        elif sorted(BRACE_PLACEHOLDER.findall(value)) != sorted(BRACE_PLACEHOLDER.findall(translated)):
+            failures.append(path + " (placeholder mismatch)")
 
 
 def main() -> int:
