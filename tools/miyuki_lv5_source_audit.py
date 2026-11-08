@@ -32,8 +32,32 @@ for event in events:
             failures.append(nid + " English speaker drift")
         if len(node["choices"]) != (2 if nid in imp.CHOICES and piece_index == len(imp.fragments(cn[nid], en[nid], nid)) - 1 else 1):
             failures.append(nid + " choice count drift")
+        if nid in imp.CHOICES and piece_index == len(imp.fragments(cn[nid], en[nid], nid)) - 1:
+            expected = imp.CHOICES[nid]
+            for choice, (suffix, cn_label, en_label, target) in zip(node["choices"], expected):
+                if choice.get("label") != cn_label or choice.get("next") != "n" + target.lower():
+                    failures.append(nid + suffix + " Chinese choice/target drift")
+                loc_key = prefix + ".nodes." + node["id"] + ".choices." + choice["id"] + ".label"
+                if strings.get(loc_key) != en_label:
+                    failures.append(nid + suffix + " English choice drift")
 if seen != list(cn) or seen != list(en):
     failures.append("node order drift")
+expected_runtime_pages = {
+    "miyuki_lv5_chie_operation": 87,
+    "miyuki_lv5_my_turn_on_the_table": 83,
+    "miyuki_lv5_capable_do_more": 23,
+}
+for event in events:
+    if len(event.get("nodes", [])) != expected_runtime_pages[event["id"]]:
+        failures.append(event["id"] + " runtime page count drift")
+    if event["id"] == "miyuki_lv5_my_turn_on_the_table":
+        for node in event.get("nodes", []):
+            nid = str(node.get("id", ""))[1:].split("_s")[0].upper()
+            expected_cg = imp.part_b_cg(nid)
+            if node.get("cg_path", "") != expected_cg:
+                failures.append(str(node.get("id", "")) + " Part B CG mapping drift")
+            if expected_cg and not (ROOT / expected_cg).is_file():
+                failures.append(str(node.get("id", "")) + " Part B CG file missing")
 print("MIYUKI LV5 SOURCE AUDIT:", len(seen), "ordered bilingual nodes;", len(failures), "failures")
 for failure in failures:
     print(failure)

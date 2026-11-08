@@ -36,8 +36,9 @@ static func render(app: Control, visit: RefCounted) -> void:
 		panel(app, Vector2(60, 182), Vector2(655, 52))
 		app.label_at(line.summary, Vector2(80, 195), 19, Color("e8cfaa"), 620)
 	if visit.completed():
-		app.label_at(app.tx("ui.clinic.admitted", "✓ 已收住院"), Vector2(65, 275), 32, Color("f4f0e6"), 610)
-		app.label_at(app.tx("ui.clinic.summary", "用时 %s 分钟 · 判断修正 %s 次") % [visit.minutes, visit.mistakes], Vector2(65, 332), 20, Color("dce5e3"), 620)
+		panel(app, Vector2(60, 252), Vector2(655, 134))
+		app.label_at(app.tx("ui.clinic.admitted", "✓ 已收住院"), Vector2(82, 275), 32, Color("f4f0e6"), 610)
+		app.label_at(app.tx("ui.clinic.summary", "用时 %s 分钟 · 判断修正 %s 次") % [visit.minutes, visit.mistakes], Vector2(82, 332), 20, Color("dce5e3"), 610)
 		if app.game.can_end_day_after_admission(str(visit.definition.id)):
 			var end_day_button: Button = app.button_at(app.tx("ui.clinic.admission_end_day", "交接患者休息，结束今日工作 →"), Vector2(60, 409), Vector2(655, 54), app.finish_admission_day.bind(str(visit.definition.id)))
 			end_day_button.name = "AdmissionEndDay"
@@ -67,7 +68,12 @@ static func render(app: Control, visit: RefCounted) -> void:
 	var dialogue_text := str(line.text)
 	var dialogue_font_size := 19 if dialogue_text.length() > 180 else 21 if dialogue_text.length() > 100 else 23
 	app.scrollable_text_at(dialogue_text, Vector2(82, 612), Vector2(1100, 78), dialogue_font_size, Color("f4f0e6"), "ClinicDialogue")
-	app.button_at(app.tx("ui.common.save", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
+	var save_button: Button = app.button_at(app.tx("ui.common.save", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
+	if app.screen not in ["map", "sunday_menu"] or not app.game.can_save_progress():
+		save_button.disabled = true
+		save_button.tooltip_text = app.game.save_block_reason() if not app.game.can_save_progress() else app.tx("ui.save.disabled_location", "存档只在医院导览或星期日安排界面可用。")
+		save_button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
+		save_button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 	app.button_at(app.tx("ui.common.load", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
 	var support: Dictionary = app.game.staff_record(app.game.resolve_outpatient_support_actor())
 	if not support.get("personal_nurse", {}).get("dialogue", {}).get("clinic_support", []).is_empty():
@@ -92,12 +98,15 @@ static func panel(app: Control, position: Vector2, dimensions: Vector2) -> Panel
 	return box
 
 static func render_record(app: Control, visit: RefCounted, patient: Dictionary) -> void:
-	panel(app, Vector2(755, 178), Vector2(466, 361))
-	app.label_at(app.tx("ui.clinic.record_title", "病历 / %s") % patient.name, Vector2(778, 196), 23, Color("e8cfaa"), 410)
+	var portrait := app.page.get_node_or_null("CharacterPortrait") as CanvasItem
+	if portrait != null:
+		portrait.visible = false
+	panel(app, Vector2(745, 168), Vector2(476, 376))
+	app.label_at(app.tx("ui.clinic.record_title", "病历 / %s") % patient.name, Vector2(768, 186), 23, Color("e8cfaa"), 425)
 	var scroll := ScrollContainer.new()
 	scroll.name = "MedicalRecord"
-	scroll.position = Vector2(775, 241)
-	scroll.size = Vector2(423, 278)
+	scroll.position = Vector2(768, 232)
+	scroll.size = Vector2(432, 294)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	app.page.add_child(scroll)
 	var record := Label.new()

@@ -18,6 +18,13 @@ func run():
   expect(app.event_dialogue_presentation({"speaker":"narrator","speaker_label":"NPC"},{"text":"unquoted inner thought","quote_index":-1},"NPC","Actor").speaker=="NPC","Explicit inner-speech label overwritten")
   expect(app.event_dialogue_presentation({"speaker":"narrator","speaker_label":"NPC"},{"text":"“Speech”","quote_index":0},"NPC","Actor").speaker=="NPC","NPC replaced by event principal")
   expect(app.event_dialogue_presentation({"speaker":"narrator"},{"text":"Narration","quote_index":-1},narrator,"Actor").speaker==narrator,"Narration changed to actor")
+  app.base("Portrait alignment","Landscape avatar fixture")
+  preload("res://godot/ui/character_stage.gd").portraits(app,{"event_portraits":[{"id":"alignment_probe","path":"assets/characters/patient_chihaya_second_surgery_v1/intraoperative/tense.png","x":1030,"bottom":540,"width":410,"height":500}]})
+  var probe:TextureRect=app.page.get_node("EventPortrait_alignment_probe")
+  var source_size:=Vector2(float(probe.texture.get_width()),float(probe.texture.get_height()))
+  var fit_scale:=minf(probe.size.x/source_size.x,probe.size.y/source_size.y)
+  var fitted_height:=source_size.y*fit_scale
+  expect(absf(probe.position.y+(probe.size.y+fitted_height)/2.0-540.0)<0.75,"Landscape avatar visible bottom missed authored anchor")
   var counter={"value":0}
   app.base("Input regression","Isolated UI fixture");app.screen="character_event"
   var b=app.button_at("Continue",Vector2(60,480),Vector2(655,54),func():counter.value+=1)

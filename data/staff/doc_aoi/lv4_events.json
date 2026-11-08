@@ -1,0 +1,3770 @@
+[
+  {
+    "id": "narumi_lv4_after_work",
+    "actor_id": "doc_aoi",
+    "completion_story_flags": [
+      "narumi_lv4_complete"
+    ],
+    "title": "下班以后",
+    "teaser": "褪去白大褂后的成年人狩猎与真情",
+    "chapter": 4,
+    "location_id": "shared_doctors_office",
+    "trigger_mode": "sunday",
+    "consumes_sunday": true,
+    "date_location_id": "jazz_bar",
+    "background_id": "date_jazz_bar",
+    "outfit": "casual",
+    "minutes": 0,
+    "time_start": 1140,
+    "time_end": 1200,
+    "priority": 125,
+    "category": "rank_up",
+    "target_level": 4,
+    "benefit_id": "unlock_intimacy_events",
+    "cinematic": true,
+    "locks_saving": true,
+    "hide_calendar_header": true,
+    "hide_completion_portrait": true,
+    "completion_day_offset": 1,
+    "completion_absolute_clock": 780,
+    "completion_display_clock": 780,
+    "gallery": {
+      "cg_id": "narumi_lv4_after_work",
+      "caption": "下班以后",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 55,
+      "required_events": [
+        "narumi_ren_shared_lv3_settled_accounts"
+      ],
+      "days_after_required_events": 3,
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "skill",
+          "minimum": 65
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "leadership",
+          "minimum": 50
+        },
+        {
+          "type": "player_attribute",
+          "attribute": "presence",
+          "minimum": 15
+        },
+        {
+          "type": "progress_counter",
+          "actor_id": "doc_aoi",
+          "counter_id": "completed_sunday_dates",
+          "minimum": 1
+        }
+      ]
+    },
+    "start": "nar4_001",
+    "nodes": [
+      {
+        "id": "nar4_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "木格窗外下着淅淅沥沥的夜雨，暖黄的纸灯笼将居酒屋半包厢里的桌面照得格外柔和。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_001",
+            "label": "继续",
+            "next": "nar4_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "烤鸡肉串与盐烤银杏的香气混着温热的清酒气息，在狭小的木桌间缓缓氤氲开来。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_002",
+            "label": "继续",
+            "next": "nar4_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美今天没有戴医院里那副偶尔用来看文献的平光镜，也脱去了严谨的白大褂。深酒红色的贴身针织裙勾勒出她成熟的身段，她单手支着脸颊，微醺的眼波在灯下流转着平日诊室里难得一见的慵懒。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_003",
+            "label": "继续",
+            "next": "nar4_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「来，坂口主刀，这一杯算我敬你。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_004",
+            "label": "继续",
+            "next": "nar4_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她执起温酒壶，慢条斯理地替坂口隆司斟满浅口酒盅，指尖状似无意地擦过他的手背。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_005",
+            "label": "继续",
+            "next": "nar4_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司端起酒杯",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_006",
+            "label": "继续",
+            "next": "nar4_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「怎么突然这么客气？今天不是说好只是普通地出来吃顿晚饭吗？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_007",
+            "label": "继续",
+            "next": "nar4_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_008",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美轻轻抿了一口酒，唇瓣在瓷杯边缘留下一道浅浅的水泽。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_008",
+            "label": "继续",
+            "next": "nar4_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「在医院里叫了你一整个礼拜的『坂口医生』，难得周日晚上不用看病历、也不用听阿库娅念叨她的数据模型，我当然得好好犒劳一下自己。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_009",
+            "label": "继续",
+            "next": "nar4_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_010",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她眼尾微挑，似笑非笑地打量着他：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_010",
+            "label": "继续",
+            "next": "nar4_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「还是说……坂口医生习惯了看我穿刷手服的样子，换件衣服就不认识我了？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_011",
+            "label": "继续",
+            "next": "nar4_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_012",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「只是觉得你穿这一身，比在外科办公室里还要让人移不开眼。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_012",
+            "label": "继续",
+            "next": "nar4_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美扑哧一笑，身体微微前倾，领口随之拉出一道优美的弧度。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_013",
+            "label": "继续",
+            "next": "nar4_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_014",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「嘴这么甜？看来海外进修的课程里，不止教了怎么拿手术刀嘛。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_014",
+            "label": "继续",
+            "next": "nar4_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_015",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "两人就着几碟下酒小菜闲聊起来。从最近门诊遇到的奇葩家属，聊到阿库娅那台差点被三明治蛋黄酱毁掉的笔记本电脑，气氛松弛而熟稔。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_015",
+            "label": "继续",
+            "next": "nar4_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "酒过三巡，坂口隆司想起白天在排班表上看到的名字，随口问了一句：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_016",
+            "label": "继续",
+            "next": "nar4_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_017",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「说起来，今天周日，七瀬护士好像也没排班？我还以为你们两个周末休息的时候会经常约在一起。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_017",
+            "label": "继续",
+            "next": "nar4_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "话音刚落，对面成美脸上的笑意忽然收敛了。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_018",
+            "label": "继续",
+            "next": "nar4_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她放下手里的酒盅，微微眯起那双漂亮的长眸，故意瞪了坂口一眼，语气里带着几分佯装的不悦：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_019",
+            "label": "继续",
+            "next": "nar4_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「怎么，在和女人约会的时候，还要谈别的女人？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_020",
+            "label": "继续",
+            "next": "nar4_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_021",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司微微一怔",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_021",
+            "label": "继续",
+            "next": "nar4_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「我只是顺口——」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_022",
+            "label": "继续",
+            "next": "nar4_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "看着他一瞬间卡壳的模样，成美没绷住满眼的促狭，「噗」地笑出声来，伸手用指尖轻轻点了点桌面。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_023",
+            "label": "继续",
+            "next": "nar4_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「骗你的，开个玩笑而已。看把你紧张的。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_024",
+            "label": "继续",
+            "next": "nar4_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_025",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她重新端起酒杯，指腹摩挲着温热的杯壁，神色渐渐多了一分真实的温和与关切。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_025",
+            "label": "继续",
+            "next": "nar4_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「恋今天跟护理部的几个小姑娘去逛商业街了。那孩子呀……虽然表面上看起来总是一副温柔听话的样子，上次在谈判桌上你也见识过了，真到了该拿主意的时候，她心里比谁都有主见。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_026",
+            "label": "继续",
+            "next": "nar4_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_027",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司点了点头",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_027",
+            "label": "继续",
+            "next": "nar4_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_028",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「那天她亲口对那个人说出『是我自己的决定』的时候，确实很让人佩服。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_028",
+            "label": "继续",
+            "next": "nar4_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_029",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美轻轻叹了口气，眼底带着一点像姐姐、又像老搭档般的关切：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_029",
+            "label": "继续",
+            "next": "nar4_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「是啊，她早就不是需要我替她拿主意的小丫头了。不过就算知道她能独立做决定，这么多年过来，那孩子还是总让我放心不下。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_030",
+            "label": "继续",
+            "next": "nar4_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_031",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "说到这里，成美忽然抬起眼帘，直直地望进坂口隆司的眼睛里。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_031",
+            "label": "继续",
+            "next": "nar4_032",
+            "next_if_relationship_level": {
+              "actor_id": "nurse_haru",
+              "minimum": 4,
+              "next": "nar4_033"
+            },
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_032",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「所以呢，坂口医生，有句话我可得提前放在这儿——以后你如果真要追恋的话，那是你们两个人的自由；但你要是敢不好好对她、或者让她掉半滴眼泪，我可不会放过你。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_032",
+            "label": "继续",
+            "next": "nar4_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「所以呢，坂口医生，有句话我可得当面放在这儿——恋现在既然选了你，那是她自己的决定；但你要是敢不好好对她、或者让她掉半滴眼泪，我可不会放过你。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_033",
+            "label": "继续",
+            "next": "nar4_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_034",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "那副语气平静得像是在谈论天气，却让人丝毫不怀疑她真能说到做到。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "choice_nar4_034_a",
+            "label": "（略显局促地握紧酒杯）「……我刚才真的只是随口问问她的近况。」",
+            "next": "nar4_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choice_nar4_034_b",
+            "label": "（迎着她的目光失笑）「上次在院长室见识过神宮寺医生谈判的手腕，这句警告我可不敢当耳旁风。」",
+            "next": "nar4_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司下意识地握紧了酒杯",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_035",
+            "label": "继续",
+            "next": "nar4_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_036",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「……我刚才真的只是随口问问她的近况。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_036",
+            "label": "继续",
+            "next": "nar4_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_037",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美盯着他看了两秒，眼底的认真瞬间化作戏谑的笑意。她一手掩唇，笑得肩膀轻轻颤动起来：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_037",
+            "label": "继续",
+            "next": "nar4_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「怎么一逗就紧张？真可爱。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_038",
+            "label": "继续",
+            "next": "nar4_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司迎着她的视线，无奈地失笑",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_039",
+            "label": "继续",
+            "next": "nar4_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_040",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「上次在院长室见识过神宮寺医生谈判的手腕，这句警告我可不敢当耳旁风。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_040",
+            "label": "继续",
+            "next": "nar4_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_041",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美见他刚才那一瞬间的绷紧，眉眼弯弯地笑了起来：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_041",
+            "label": "继续",
+            "next": "nar4_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_042",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「明明刚才脸色都认真起来了，还嘴硬。怎么一逗就紧张？真可爱。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_042",
+            "label": "继续",
+            "next": "nar4_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_043",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "成美将杯中最后一口清酒一饮而尽，双颊染上了一层浅浅的绯色。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_043",
+            "label": "继续",
+            "next": "nar4_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_044",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她放下酒杯，隔着小桌用脚尖在桌下轻轻碰了碰坂口的小腿，目光直接地锁住他：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_044",
+            "label": "继续",
+            "next": "nar4_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_045",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「好了，别人的话题到此为止。今晚剩下的时间，坂口医生打算怎么陪我？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_jazz_bar",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_045",
+            "label": "继续",
+            "next": "nar4_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_046",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "走出居酒屋时，外面的雨已经停了。潮湿的晚风吹过霓虹闪烁的街角，带着几分微凉的夜意。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_046",
+            "label": "继续",
+            "next": "nar4_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_047",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "两人并肩走到十字路口，坂口隆司停下脚步，正准备开口询问送她回公寓的方向，身旁的成美却主动伸出手，自然地挽住了他的小臂。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_047",
+            "label": "继续",
+            "next": "nar4_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_048",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "温软的胸口隔着薄薄的针织衫贴在他的臂弯上，一阵混合着玫瑰香与淡淡清酒香的气息随之靠近。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_048",
+            "label": "继续",
+            "next": "nar4_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_049",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美抬头望向不远处一栋灯光幽静的精品酒店，唇角勾起一抹笑意：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_049",
+            "label": "继续",
+            "next": "nar4_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_050",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「坂口医生，今晚我不太想回自己那个冷清的房间呢。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_050",
+            "label": "继续",
+            "next": "nar4_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_051",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她转过脸，微醺却清醒的眸子近距离地凝视着他，声音压得很低：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_051",
+            "label": "继续",
+            "next": "nar4_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_052",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「陪我去那边坐坐，好吗？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_052",
+            "label": "继续",
+            "next": "nar4_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_053",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着她近在咫尺的唇瓣",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_053",
+            "label": "继续",
+            "next": "nar4_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_054",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「神宮寺医生，你喝醉了？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_054",
+            "label": "继续",
+            "next": "nar4_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_055",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美轻笑一声，手指顺着他的小臂缓缓滑下，十指相扣地握住他的手掌：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_055",
+            "label": "继续",
+            "next": "nar4_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_056",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「两合清酒可灌不醉我。我很清醒，坂口隆司——你呢？敢不敢跟我走？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_056",
+            "label": "继续",
+            "next": "nar4_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_057",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司没有再多问半句，反手握紧她温热的手指，带着她转身走进了酒店大门。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_057",
+            "label": "继续",
+            "next": "nar4_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_058",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "房门合拢并落锁的轻响，在安静的玄关里显得格外清晰。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_058",
+            "label": "继续",
+            "next": "nar4_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_059",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "还没等坂口伸手去开客房的主灯，只留着一盏昏黄壁灯的走廊边，成美已经转过身，主动抬起双臂环住了他的脖颈。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_059",
+            "label": "继续",
+            "next": "nar4_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_060",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "温热而柔软的唇瓣带着清酒的余韵覆了上来。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_060",
+            "label": "继续",
+            "next": "nar4_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_061",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她吻得既熟练又从容——舌尖轻巧地撬开他的齿关，鼻息间溢出一声微不可闻的轻哼：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_061",
+            "label": "继续",
+            "next": "nar4_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「唔……从刚才在居酒屋看着你喝酒的时候，我就一直在想这么做了……」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_062",
+            "label": "继续",
+            "next": "nar4_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_063",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司一手揽住她的腰肢，将她抵在床沿，想要加深这个吻；然而成美却在两人呼吸交错的瞬间轻轻偏开头，修长的手指抵在他胸口，顺势一推，便让坂口仰面坐倒在了宽大的床垫上。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_063",
+            "label": "继续",
+            "next": "nar4_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_064",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美居高临下地看着他，眼波流转间满是促狭的笑意：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_064",
+            "label": "继续",
+            "next": "nar4_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_065",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「别急呀，坂口医生。平时你主刀的时候，我可是很配合你的指挥呢。今晚是不是该轮到我做主了？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_065",
+            "label": "继续",
+            "next": "nar4_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_066",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她慢条斯理地抬起手，抓住深酒红色针织连衣裙的下摆，顺着腰臀曲线一点点向上褪去。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_066",
+            "label": "继续",
+            "next": "nar4_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_067",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "昏暗的壁灯光影下，白皙丰腴的肌肤与黑色蕾丝内衣映入眼帘。她毫不扭捏地迎着坂口灼热的视线，解开最后的束缚，分开修长的双腿，直接跨坐在了坂口隆司的腰间。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_067",
+            "label": "继续",
+            "next": "nar4_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_068",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司呼吸微沉，双手扶住她温热的大腿根部",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_068",
+            "label": "继续",
+            "next": "nar4_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_069",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「成美……」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_069",
+            "label": "继续",
+            "next": "nar4_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_070",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美俯下身，长发垂落在他的胸膛两侧。她用一只手按住他的肩膀，另一只手自然地探向两人交合的滚烫之处，指尖轻巧地引导着他，贴在他耳边低语：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_070",
+            "label": "继续",
+            "next": "nar4_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_071",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「心率跳得这么快……可别动哦，让我来……」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_071",
+            "label": "继续",
+            "next": "nar4_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_072",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "随着她腰肢缓缓下沉，滚烫而紧致的包裹感瞬间吞没了彼此。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_072",
+            "label": "继续",
+            "next": "nar4_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_073",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美仰起修长的脖颈，喉咙深处溢出一声压抑不住的、带着颤音的叹息：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_073",
+            "label": "继续",
+            "next": "nar4_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_074",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「嗯……っ、哈啊……比我想象的……还要深呢……」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_074",
+            "label": "继续",
+            "next": "nar4_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_075",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "即便在结合的最初一秒因为强烈的充实感而指尖微颤，她依然牢牢掌控着上方的节奏。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_075",
+            "label": "继续",
+            "next": "nar4_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_076",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她双手撑在坂口健硕的胸膛上，借着腰臀柔韧而充满力量的起伏，主导着每一次深浅交替的研磨与吞吐。起初她还能带着几分笑意低头观察坂口的表情，用指尖摩挲他的喉结与嘴唇；可随着坂口扶在她臀侧的大手猛地收紧、自下而上地配合着顶弄起来，成美脸上那副游刃有余的从容终于一点点化作真实的迷乱与潮红。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_076",
+            "label": "继续",
+            "next": "nar4_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_077",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「啊……嗯、等一下……隆司，那里……太深了……っ！」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_077",
+            "label": "继续",
+            "next": "nar4_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_078",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司托住她汗湿的后腰",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_078",
+            "label": "继续",
+            "next": "nar4_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_079",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「不是说好今晚由你做主吗？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_079",
+            "label": "继续",
+            "next": "nar4_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_080",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美咬住水润的下唇，眼尾泛起一层红晕，非但没有退缩，反而俯下身紧紧抱住他的脖颈，将滚烫的胸口贴紧他的胸膛，更加大胆而急促地摆动起腰肢：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_080",
+            "label": "继续",
+            "next": "nar4_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_081",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「哈啊……我可没说、准你反客为主……嗯啊……看着我，隆司……只准看着我……！」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_081",
+            "label": "继续",
+            "next": "nar4_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_082",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "急促的喘息、肌肤相贴的水泽声与低沉的闷哼在灯光下交织攀升，直到两人在极致紧绷的战栗中同时抵达顶峰，她才浑身脱力般地软倒在他怀里，将发烫的脸颊埋进他的颈窝，久久平复着紊乱的呼吸。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_082",
+            "label": "继续",
+            "next": "nar4_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_083",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "夜色渐深，床头只留着一盏微弱的暖光。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_083",
+            "label": "继续",
+            "next": "nar4_084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_084",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "薄被半掩着两人交叠的身体。神宮寺成美懒洋洋地侧躺在坂口隆司身旁，一条白皙的长腿还随意地搭在他的腿上，手指有一搭没一搭地在他的胸口画着圈。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_084",
+            "label": "继续",
+            "next": "nar4_085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_085",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司揽着她光滑的肩头，低头看了看她慵懒惬意的神情。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_085",
+            "label": "继续",
+            "next": "nar4_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_086",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "察觉到他的视线，成美抬起眼皮，嘴角弯起一抹了然的弧度。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_086",
+            "label": "继续",
+            "next": "nar4_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_087",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「你在想什么，我猜猜看？是不是在想——是不是因为之前你在比良坂的事情上帮了忙，所以我今晚才特意请你喝酒、还主动带你来酒店？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_087",
+            "label": "继续",
+            "next": "nar4_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_088",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司没有否认",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_088",
+            "label": "继续",
+            "next": "nar4_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_089",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「毕竟我们一起经历了那么多事，很难不让人多想一点。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_089",
+            "label": "继续",
+            "next": "nar4_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_090",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美轻轻哼笑了一声，撑起手肘半坐起身，看着他的眼睛，神情认真而坦率：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_090",
+            "label": "继续",
+            "next": "nar4_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_091",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「那你可就太小看我了，坂口医生。如果我只是想报答你在谈判桌上帮过我，我大可以在医院里多替你分担几台麻烦的手术，或者在新课题上给你挂个名——我神宮寺成美算了一辈子的账，还不至于分不清人情债和床单的区别。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_091",
+            "label": "继续",
+            "next": "nar4_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_092",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她低下头，在坂口的嘴唇上轻轻啄了一下，眼底漾开纯粹的笑意：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_092",
+            "label": "继续",
+            "next": "nar4_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_093",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「所以，可别觉得我是在报恩。我只是单纯地喜欢你。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_093",
+            "label": "继续",
+            "next": "nar4_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_094",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司怔了一瞬，随即握住她搭在胸口的手掌",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_094",
+            "label": "继续",
+            "next": "nar4_095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_095",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「……就这么简单？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_095",
+            "label": "继续",
+            "next": "nar4_096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_096",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美重新窝回他的怀里，找了个最舒服的姿势闭上眼睛，声音慵懒而笃定：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_096",
+            "label": "继续",
+            "next": "nar4_097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_097",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「就这么简单。我看上了你这个人，想抱你，所以就抱了——怎么，坂口主刀对这个理由不满意？」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_097",
+            "label": "继续",
+            "next": "nar4_098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_098",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司失笑，收紧手臂将她揽入怀中",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_098",
+            "label": "继续",
+            "next": "nar4_099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_099",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「不，再满意不过了。」",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "date_hotel",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_099",
+            "label": "继续",
+            "next": "nar4_100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_100",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "周一清晨的星见医院，一如既往地忙碌而有序。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_100",
+            "label": "继续",
+            "next": "nar4_101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_101",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司结束早交班回到外科办公室时，神宮寺成美已经坐在自己的办公桌前，戴着平光镜，正神色专注地审阅着下午那台腹壁疝修补术的术前评估单。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_101",
+            "label": "继续",
+            "next": "nar4_102",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_102",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她身上的白大褂扣得一丝不苟，长发利落地束在脑后，连昨晚脖颈间残留的一点浅淡红痕都被衬衫领口严严实实地遮住了。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_102",
+            "label": "继续",
+            "next": "nar4_103",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_103",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司走到她桌旁",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_103",
+            "label": "继续",
+            "next": "nar4_104",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_104",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「早上好，神宮寺医生。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_104",
+            "label": "继续",
+            "next": "nar4_105",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_105",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美抬起头，目光平静而自然地与他对视了一眼，露出标准的职业微笑：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_105",
+            "label": "继续",
+            "next": "nar4_106",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_106",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「早上好，坂口医生。正好，下午三床那位患者的凝血功能复查结果刚出来，你过来看一下。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_106",
+            "label": "继续",
+            "next": "nar4_107",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_107",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "没有暧昧的眼神拉丝，也没有任何刚成为亲密恋人后的羞涩或特殊优待。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_107",
+            "label": "继续",
+            "next": "nar4_108",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_108",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她拿起红蓝铅笔，干脆利落地指着化验单与术前方案上的两处细节：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_108",
+            "label": "继续",
+            "next": "nar4_109",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_109",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「患者昨晚停用抗凝药的时间比原计划晚了两个小时。虽然现在的 INR 数值勉强在安全线内，但你昨天写的术前预案里，对腹膜前间隙渗血的备选止血材料只列了常规明胶海绵——以稳妥起见，我建议让器械护士台前多备一组双极电凝和可吸收止血纱。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_109",
+            "label": "继续",
+            "next": "nar4_110",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_110",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司低头核对了一眼数据",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_110",
+            "label": "继续",
+            "next": "nar4_111",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_111",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「确实，这里是我疏忽了，按你说的补上。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_111",
+            "label": "继续",
+            "next": "nar4_112",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_112",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美点了点头，将签好复核意见的病历夹合上递还给他：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_112",
+            "label": "继续",
+            "next": "nar4_113",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_113",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「其他部分没有问题。那我先去一趟住院部查房，下午手术室见。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_113",
+            "label": "继续",
+            "next": "nar4_114",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_114",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "看着她抱着病历夹从容干练地走出办公室的背影，坂口隆司站在原地，心里不禁升起一丝微妙的困惑。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_114",
+            "label": "继续",
+            "next": "nar4_115",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_115",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她显然没有生气，更没有半点故意疏远或冷落他的意思；可比起昨晚在酒店床上那个主动伏在他耳边说「我只是单纯地喜欢你」的女人，眼前的神宮寺医生实在是公事公办得有些过分了。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_115",
+            "label": "继续",
+            "next": "nar4_116",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_116",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "直到中午十二点半，刚吃完午饭的坂口在走廊拐角再次遇上了成美。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_116",
+            "label": "继续",
+            "next": "nar4_117",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_117",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "成美手里拿着两罐温热的黑咖啡，趁着四下无人，将其中一罐顺手塞进他手里，压低声音留下一句：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_117",
+            "label": "继续",
+            "next": "nar4_118",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_118",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「上面风挺舒服的。有空的话，来天台陪我喝杯咖啡吧。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "narumi_office",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_118",
+            "label": "继续",
+            "next": "nar4_119",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_119",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "午后的阳光洒在空旷的医院天台上，微风吹拂着铁丝网护栏，带来远处街区的喧嚣。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_119",
+            "label": "继续",
+            "next": "nar4_120",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_120",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美倚靠在天台护栏边，拉开易拉罐拉环，轻轻喝了一口温咖啡。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_120",
+            "label": "继续",
+            "next": "nar4_121",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_121",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "听见身后天台铁门推开的声响，她转过头，眼底终于浮现出昨晚那种带着几分戏谑与亲昵的笑意。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_121",
+            "label": "继续",
+            "next": "nar4_122",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_122",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「怎么，坂口主刀，今天一整个上午都在偷偷看我的脸色——是不是在怀疑自己昨晚只是做了一场春梦？」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "choice_nar4_122_a",
+            "label": "「春梦倒不至于，只是没想到神宮寺医生穿上白大褂之后，切换得比手术刀还快。」",
+            "next": "nar4_123",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choice_nar4_122_b",
+            "label": "「看你上午挑我术前方案毛病的时候那么狠，我还以为自己昨晚哪里表现不合格。」",
+            "next": "nar4_127",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_123",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司走到她身旁靠住栏杆",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_123",
+            "label": "继续",
+            "next": "nar4_124",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_124",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「春梦倒不至于，只是没想到神宮寺医生穿上白大褂之后，切换得比手术刀还快。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_124",
+            "label": "继续",
+            "next": "nar4_125",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_125",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美轻笑出声，横了他一眼",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_125",
+            "label": "继续",
+            "next": "nar4_126",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_126",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「要是我在外科办公室里还像昨晚那样看着你，不出半天，全院的护士都要知道我们两个的事了。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_126",
+            "label": "继续",
+            "next": "nar4_131",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_127",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司走到她身旁靠住栏杆",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_127",
+            "label": "继续",
+            "next": "nar4_128",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_128",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「看你上午挑我术前方案毛病的时候那么狠，我还以为自己昨晚哪里表现不合格。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_128",
+            "label": "继续",
+            "next": "nar4_129",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_129",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美扑哧一笑，压低声音促狭地回敬道",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_129",
+            "label": "继续",
+            "next": "nar4_130",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_130",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「放心吧，昨晚的表现要是打分的话，我早就给你满分了。至于上午挑你的毛病，那是因为你本来就漏写了止血预案嘛。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_130",
+            "label": "继续",
+            "next": "nar4_131",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_131",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "笑闹过后，成美转过身，双手握着温热的咖啡罐，目光望向天台下方明亮整洁的医院庭院。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_131",
+            "label": "继续",
+            "next": "nar4_132",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_132",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "微风吹起她颊边的几缕碎发，她的声音平静而认真：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_132",
+            "label": "继续",
+            "next": "nar4_133",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_133",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「隆司，上午在办公室里那样对你，不是故意要跟你端架子。只是只要还在工作时间里、身上还穿着这件白大褂，我就想认认真真地做一名好医生。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_133",
+            "label": "继续",
+            "next": "nar4_134",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_134",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她顿了顿，眼神里多了一分真诚的温度：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_134",
+            "label": "继续",
+            "next": "nar4_135",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_135",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「当初我和恋离开上一家医院的时候，名声和处境有多难看，我自己心里最清楚。明日香明明知道我过去不是什么省油的灯，却还是顶着外面的非议把我们招进了星见，给了我一张干干净净的办公桌和手术台……这份信任，我不想辜负。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_135",
+            "label": "继续",
+            "next": "nar4_136",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_136",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司安静地听着，轻轻颔首",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_136",
+            "label": "继续",
+            "next": "nar4_137",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_137",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「我明白。在工作时间里，我们首先是搭档和同行。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_137",
+            "label": "继续",
+            "next": "nar4_138",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_138",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美转过头看向他，唇角弯起一抹柔和的弧度：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_138",
+            "label": "继续",
+            "next": "nar4_139",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_139",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「嗯。至于我们两个私底下的亲热……留到工作以外的时间，不是更有意思吗？」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_139",
+            "label": "继续",
+            "next": "nar4_140",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_140",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "她迈出半步，凑近到坂口隆司面前。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_140",
+            "label": "继续",
+            "next": "nar4_141",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_141",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "两人之间的距离瞬间拉近到呼吸可闻的程度。成美微微仰起脸，静静地注视着他，轻声说道：",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_141",
+            "label": "继续",
+            "next": "nar4_142",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_142",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「而且你也完全不用因为昨晚的事觉得有什么负担。其实我对你真的没有什么想要的，你有空陪陪我就好。如果我真想向你要什么，可就不是这么轻松自在的了。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_142",
+            "label": "继续",
+            "next": "nar4_143",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_143",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "最后半句话说得又轻又慢，听似带着几分玩笑与暧昧，底子里却透着一丝不动声色的锋芒与危险余味。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_143",
+            "label": "继续",
+            "next": "nar4_144",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_144",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着她近在咫尺的笑颜，不闪不避地回应道",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_144",
+            "label": "继续",
+            "next": "nar4_145",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_145",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "player",
+        "speaker_label": "坂口隆司",
+        "text": "「那我可得庆幸，神宮寺医生现在还只是想让我陪你喝咖啡。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_145",
+            "label": "继续",
+            "next": "nar4_146",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_146",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "神宮寺成美满意地眯起眼睛，伸出纤长的食指，在他的白大褂领口上轻轻点了一下。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_nar4_146",
+            "label": "继续",
+            "next": "nar4_147",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "nar4_147",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_aoi",
+        "speaker_label": "神宮寺成美",
+        "text": "「知道就好。午休快结束了，下午的手术台见——要是待会儿在台上分心，我照样不会给你留面子哦，坂口医生。」",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_nar4_147",
+            "label": "继续",
+            "next": "nar4_148",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_aoi",
+            "path": "assets/characters/portrait_pack_v1/doc_aoi/white_coat/serious.png",
+            "x": 1030,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "nar4_148",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "",
+        "speaker_label": "旁白",
+        "text": "丢下这句俏皮的叮嘱，她随手将空咖啡罐投进门边的回收桶，转身推开天台铁门，踩着从容的步伐消失在了楼梯口。",
+        "expression": "serious",
+        "outfit": "white_coat",
+        "background_id": "rooftop",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "finish_nar4_148",
+            "label": "结束",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

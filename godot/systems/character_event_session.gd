@@ -46,7 +46,7 @@ func _init(data: Dictionary) -> void:
 func current() -> Dictionary:
 	return nodes.get(node_id, {})
 
-func apply(choice_id: String) -> bool:
+func apply(choice_id: String, relationship_levels: Dictionary = {}) -> bool:
 	last_error = "这个选项当前不可用。"
 	if completed or current().is_empty():
 		return false
@@ -62,6 +62,11 @@ func apply(choice_id: String) -> bool:
 	var conditional: Dictionary = selected.get("next_if_choice", {})
 	if not conditional.is_empty() and choices.has(str(conditional.choice_id)):
 		target = str(conditional.next)
+	var relationship_conditional: Dictionary = selected.get("next_if_relationship_level", {})
+	if not relationship_conditional.is_empty():
+		var actor_id := str(relationship_conditional.get("actor_id", ""))
+		if int(relationship_levels.get(actor_id, 0)) >= int(relationship_conditional.get("minimum", 0)):
+			target = str(relationship_conditional.get("next", target))
 	if target != "@end" and not nodes.has(target):
 		return false
 	choices.append(choice_id)

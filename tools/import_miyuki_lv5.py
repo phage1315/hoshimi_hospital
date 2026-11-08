@@ -5,17 +5,17 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CN = ROOT / "research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_LV5_MY_TURN_ON_THE_TABLE_CN_CODEX_READY_V4.md"
+CN = ROOT / "research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_LV5_MY_TURN_ON_THE_TABLE_CN_CODEX_READY_V5_2.md"
 EN = ROOT / "research/translations/miyuki_lv5_en_working.md"
 OUT = ROOT / "data/staff/nurse_yui/lv5_events.json"
 LOC = ROOT / "data/localization/en.json"
 CHOICES = {
     "030": [("A", "朝倉，你不是说今天准备了安抚方案吗？", "Asakura, didn't you say you had a way to reassure her today?", "031A"),
             ("B", "现在后悔加麻醉还不算丢人，相模大野小姐。", "It's no disgrace to change your mind about anesthesia now, Miss Sagamiono.", "031B")],
-    "108": [("A", "不怕我真把腕带扣紧了？", "Aren't you afraid I'll really tighten the wrist straps?", "109A"),
-            ("B", "今天怎么突然想通要换位置了？", "What made you decide to switch places today?", "109B")],
-    "143": [("A", "真上了手术台，到时候求饶可没用。", "Once you're really on the operating table, begging for mercy won't help.", "144A"),
-            ("B", "这不是闹着玩的，之后我们按正式流程好好商量术式。", "This isn't a game. We'll discuss the procedure properly through the formal process later.", "144B")],
+    "106": [("A", "不怕我真把腿架固定带扣紧了？", "Aren't you afraid I'll really tighten the leg-support straps?", "107A"),
+            ("B", "今天怎么突然想通要换位置了？", "What made you suddenly decide to switch places today?", "107B")],
+    "144": [("A", "行啊，到时候在台上可别向我求饶。", "All right. But don't beg me for mercy once you're on the table.", "145A"),
+            ("B", "连挨刀都要争，真是拿你没办法。", "You even have to compete over getting cut open. There's no handling you.", "145B")],
 }
 SPEAKERS = {
     "朝倉美幸": ("nurse_yui", "Miyuki Asakura"),
@@ -35,16 +35,17 @@ PART_A_CG_RANGES = (
     (70, 72, "assets/events/character_events/miyuki/lv5_story/cg/chie_postop_controller_recovery_sfw_v3.png"),
 )
 PART_B_CG_RANGES = (
-    (91, 95, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b1_or_door_invitation_sfw_v1.png"),
-    (102, 108, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b2_patient_view_demonstration_sfw_v1.png"),
-    (109, 126, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b3_surgical_lamp_confession_sfw_v1.png"),
-    (131, 145, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b5_true_surgery_request_sfw_v1.png"),
-    (146, 149, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b6_departure_promise_sfw_v1.png"),
+    (93, 97, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b1_or_invitation_sfw_v1.png"),
+    (100, 104, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b2_table_edge_nsfw_v1.png"),
+    (105, 128, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b3_lithotomy_nsfw_v1.png"),
+    (129, 135, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b4_oral_nsfw_v1.png"),
+    (137, 149, "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b5_next_patient_promise_sfw_v1.png"),
 )
 MIXED_ACTORS = {
     "025": "nurse_yui", "032B": "chie", "033B": "nurse_yui",
-    "127": "nurse_yui", "141": "player", "143": "nurse_yui",
-    "145A": "nurse_yui", "145B": "nurse_yui", "149": "nurse_yui",
+    "104": "nurse_yui", "127": "nurse_yui", "132": "nurse_yui",
+    "139": "player", "142": "player", "145B": "player",
+    "146A": "nurse_yui", "146B": "nurse_yui", "147": "player", "149": "nurse_yui",
     "165": "nurse_yui", "168": "nurse_yui", "169": "player",
 }
 
@@ -131,7 +132,7 @@ def main():
             "chapter": 5, "location_id": "station" if trigger != "day_start" else "or",
             "trigger_mode": trigger, "background_id": bg, "outfit": "sterile" if start == "001" else "uniform",
             "minutes": minutes, "time_start": 540 if trigger != "after_work" else 1020,
-            "time_end": 540 if trigger == "day_start" else (1320 if trigger == "after_work" else 1020),
+            "time_end": 840 if trigger == "day_start" else (1320 if trigger == "after_work" else 1020),
             "priority": priority, "category": category, "auto_start": trigger != "location",
             "target_level": 5, "benefit_id": "unlock_clinical_practice_patient" if category == "rank_up" else "",
             "chain_followup": category == "rank_up", "cinematic": True,
@@ -151,8 +152,8 @@ def main():
             scene_bg = "or_entrance" if start == "082" and int(nid[:3]) <= 94 else bg
             next_id = "@end" if nid == end else "n" + part_ids[i + 1].lower()
             if nid.endswith("A") or nid.endswith("B"):
-                if nid[:3] in ("033", "111", "145"):
-                    next_id = "n" + {"033": "034", "111": "112", "145": "146"}[nid[:3]]
+                if nid[:3] in ("033", "109", "146"):
+                    next_id = "n" + {"033": "034", "109": "110", "146": "147"}[nid[:3]]
             for piece_index, (actor, label, label_en, cn, en) in enumerate(pieces):
                 node_id = "n" + nid.lower() + ("_s" + str(piece_index + 1) if piece_index else "")
                 piece_next = "n" + nid.lower() + "_s" + str(piece_index + 2) if piece_index < len(pieces) - 1 else next_id
@@ -170,16 +171,20 @@ def main():
                     node["young_nurse_cast"] = True
                 elif actor == "nurse_yui":
                     node["expression"] = "warm" if start == "001" else "neutral"
-                if start == "001":
-                    cg_path = part_a_cg(nid)
-                    if cg_path:
-                        node["cg_path"] = cg_path
-                        node["cg_fit"] = "cover"
-                elif start == "082":
-                    cg_path = part_b_cg(nid)
-                    if cg_path:
-                        node["cg_path"] = cg_path
-                        node["cg_fit"] = "cover"
+                if start == "082" and 100 <= int(nid[:3]) <= 135:
+                    # V5.2 intentionally removes the uniform before the table sequence.
+                    # Until replacement art is authored, hide the conflicting uniform portrait.
+                    node["hide_portrait"] = True
+                cg_path = part_a_cg(nid) if start == "001" else (part_b_cg(nid) if start == "082" else "")
+                if cg_path:
+                    # A full-frame CG replaces the character layer; keeping a hidden or
+                    # explicit portrait here is an invalid, contradictory presentation.
+                    node.pop("portrait_path", None)
+                    node.pop("hide_portrait", None)
+                    node["cg_path"] = cg_path
+                    # The supplied B2-B4 art is 3:2; preserve the complete author image
+                    # rather than cropping it to the game's 16:9 viewport.
+                    node["cg_fit"] = "inset" if start == "082" and 100 <= int(nid[:3]) <= 135 else "cover"
                 if nid in CHOICES and piece_index == len(pieces) - 1:
                     for suffix, cn_label, en_label, target in CHOICES[nid]:
                         cid = "choose_" + nid.lower() + suffix.lower()

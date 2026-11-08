@@ -1,9 +1,9 @@
 extends "res://tools/miyuki_lv3_retest.gd"
-## Reuses the native mouse driver; all story advances use actual GUI input.
+## Reuses the native mouse driver; story advancement uses actual GUI input.
 
 const IDS := ["ren_lv1_night_ward_1", "narumi_lv1_beyond_the_resume"]
 const ACTORS := ["nurse_haru", "doc_aoi"]
-const COUNTS := [243, 202]
+const COUNTS := [220, 198]
 var output := ""
 var pages_seen := 0
 var story_nodes_seen := 0
@@ -22,6 +22,19 @@ func shot(name: String) -> void:
 	await RenderingServer.frame_post_draw
 	expect(root.get_texture().get_image().save_png(output + "/" + name + ".png") == OK, "Saved screenshot " + name)
 
+func gui_advance(button: Button) -> void:
+	var mode := pages_seen % 3
+	if mode == 0 or button != app.dialogue_default_button:
+		await click(button)
+		input_counts.mouse += 1
+	elif mode == 1:
+		await key_advance(KEY_SPACE)
+		input_counts.space += 1
+	else:
+		await key_advance(KEY_ENTER)
+		input_counts.enter += 1
+	pages_seen += 1
+
 func play_one(index: int, locale: String) -> void:
 	var id: String = IDS[index]
 	var actor: String = ACTORS[index]
@@ -36,65 +49,76 @@ func play_one(index: int, locale: String) -> void:
 		return
 	var session = g.character_events[id]
 	var definition: Dictionary = g.character_event_definitions[id]
+	expect(definition.nodes.size() == COUNTS[index], "Revised source node count " + id)
+	var by_id := {}
+	for entry in definition.nodes:
+		by_id[str(entry.id)] = entry
+	var branch_mask := 0 if locale == "zh_CN" else 3
+	var branch_choice_number := 0
+	var visited := {}
 	var before_surgeries: int = g.completed_surgeries_total
 	var previous_background := ""
 	var actor_shot_backgrounds: Array[String] = []
-	for i in range(COUNTS[index]):
-		if session.completed or app.screen != "character_event":
-			break
+	var guard := 0
+	while not session.completed and guard <= COUNTS[index] + 4:
+		guard += 1
 		var node: Dictionary = session.current()
-		var expected: Dictionary = definition.nodes[i]
-		expect(node.id == expected.id, "Ordered node " + id + ":" + str(i))
-		expect(g.relationship_level(actor) == 0 and not g.can_save_progress(), "No mid-event settlement/save " + str(node.id))
+		var node_id := str(node.id)
+		expect(by_id.has(node_id), "Registered source node " + id + ":" + node_id)
+		expect(not visited.has(node_id), "No GUI route cycle " + id + ":" + node_id)
+		visited[node_id] = true
+		expect(g.relationship_level(actor) == 0 and not g.can_save_progress(), "No mid-event settlement/save " + node_id)
 		var page_texts: Array = app.authored_dialogue_pages(str(node.text))
 		for page_index in range(page_texts.size()):
 			await process_frame
 			var body = app.page.get_node_or_null("CharacterEventDialogue")
-			expect(body != null and body.text == str(page_texts[page_index]), "Rendered text " + str(node.id))
+			expect(body != null and body.text == str(page_texts[page_index]), "Rendered text " + node_id)
 			if body != null:
-				expect(body.get_content_height() <= body.size.y or body.scroll_active, "Dialogue fits or scrolls " + str(node.id))
+				expect(body.get_content_height() <= body.size.y or body.scroll_active, "Dialogue fits or scrolls " + node_id)
 			var names: Array = app.page.find_children("*", "Label", true, false)
-			expect(names.any(func(label): return label.text == str(node.speaker_label)), "Rendered speaker " + str(node.id))
+			expect(names.any(func(label): return label.text == str(node.speaker_label)), "Rendered speaker " + node_id)
 			var portrait = app.page.get_node_or_null("CharacterPortrait")
 			if bool(node.hide_portrait):
-				expect(portrait == null, "No borrowed portrait " + str(node.id))
+				expect(portrait == null, "No borrowed portrait " + node_id)
 			else:
-				expect(portrait != null and portrait.texture != null, "Actor portrait present " + str(node.id))
+				expect(portrait != null and portrait.texture != null, "Actor portrait present " + node_id)
 				if portrait != null and portrait.texture != null:
 					var profile: Dictionary = app.content.find_record("staff", actor)
 					var portrait_path := str(profile.visuals.portraits.get(str(node.outfit) + "/" + str(node.expression), ""))
-					expect(portrait.texture.resource_path == "res://" + portrait_path, "Exact actor costume portrait " + str(node.id))
+					expect(portrait.texture.resource_path == "res://" + portrait_path, "Exact actor costume portrait " + node_id)
 			var background = app.page.get_node_or_null("SceneBackground")
-			expect(background != null and background.texture != null and background.texture.resource_path == "res://" + app.background_path(str(node.background_id)), "Loaded scene background " + str(node.id))
+			expect(background != null and background.texture != null and background.texture.resource_path == "res://" + app.background_path(str(node.background_id)), "Loaded scene background " + node_id)
 			if index == 0:
 				expect(not app.page.get_node("CalendarHeader").visible, "Night scene uses manuscript time")
-			if (i == 0 or (str(node.background_id) != previous_background) or i in ([80, 160, 242] if index == 0 else [65, 130, 201])) and page_index == 0:
-				await shot(locale + "_" + str(node.id))
+			if (visited.size() == 1 or str(node.background_id) != previous_background or node.choices.size() == 2 or visited.size() % 60 == 0) and page_index == 0:
+				await shot(locale + "_" + node_id)
 			if not bool(node.hide_portrait) and str(node.background_id) not in actor_shot_backgrounds and page_index == 0:
 				actor_shot_backgrounds.append(str(node.background_id))
-				await shot(locale + "_actor_" + str(node.id))
+				await shot(locale + "_actor_" + node_id)
 			previous_background = str(node.background_id)
 			if failures:
 				return
-			var mode := pages_seen % 3
-			if mode == 0:
-				await click(app.dialogue_default_button)
-				input_counts.mouse += 1
-			elif mode == 1:
-				await key_advance(KEY_SPACE)
-				input_counts.space += 1
-			else:
-				await key_advance(KEY_ENTER)
-				input_counts.enter += 1
-			pages_seen += 1
+
+			var choice_index := 0
+			if page_index + 1 == page_texts.size() and node.choices.size() == 2:
+				choice_index = (branch_mask >> branch_choice_number) & 1
+				branch_choice_number += 1
+			var selected: Dictionary = node.choices[choice_index]
+			var button: Button = app.dialogue_default_button
+			if page_index + 1 == page_texts.size() and node.choices.size() == 2:
+				button = app.page.get_node_or_null("EventChoice_" + str(selected.id))
+			await gui_advance(button)
 			if page_index + 1 < page_texts.size():
-				expect(session.current().id == node.id and app.current_dialogue_text() == str(page_texts[page_index + 1]), "One page per input " + str(node.id))
-			elif i + 1 < COUNTS[index]:
-				expect(session.current().id == definition.nodes[i + 1].id, "One node per input " + str(node.id))
+				expect(session.current().id == node.id and app.current_dialogue_text() == str(page_texts[page_index + 1]), "One page per input " + node_id)
+			elif str(selected.next) == "@end":
+				expect(session.completed, "Final GUI choice settles " + node_id)
+			else:
+				expect(str(session.current().id) == str(selected.next), "Authored branch target " + node_id)
 			if failures:
 				return
 		story_nodes_seen += 1
-	expect(session.completed and story_nodes_seen >= COUNTS[index], "Complete GUI playback " + id)
+	expect(guard <= COUNTS[index] + 4 and session.completed, "Complete GUI playback " + id)
+	expect(branch_choice_number == 2, "Both authored choices displayed " + id)
 	expect(g.relationship_level(actor) == 1 and session.settled_minutes == int(definition.minutes), "Only final rank/time settlement " + id)
 	expect(g.completed_surgeries_total == before_surgeries and not g.active_surgery_in_progress(), "No Surgery Runner case " + id)
 	if index == 0:
@@ -132,7 +156,7 @@ func run() -> void:
 				break
 		if failures:
 			break
-	var report := {"native": native, "checks": checks, "failures": failures, "nodes": story_nodes_seen, "pages": pages_seen, "inputs": input_counts, "languages": ["zh_CN", "en"], "scope": "isolated in-memory prerequisites; natural departure/location entry; full real-GUI playback and safe return"}
+	var report := {"native": native, "checks": checks, "failures": failures, "nodes": story_nodes_seen, "pages": pages_seen, "inputs": input_counts, "languages": ["zh_CN", "en"], "routes": {"zh_CN": "A/A", "en": "B/B"}, "scope": "isolated in-memory prerequisites; natural departure/location entry; real GUI input; revised authored branches; safe return"}
 	var file := FileAccess.open(output + "/native.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "\t"))
 	file.close()

@@ -5,10 +5,12 @@ var rendered := 0
 var input_counts := {"mouse": 0, "space": 0, "enter": 0}
 const SCREENSHOT_NODES := [
 	"n003", "n025_s2", "n037", "n081", "n082",
-	"n091", "n102", "n112", "n127_s2", "n131", "n146", "n149",
+	"n091", "n093", "n100", "n102", "n105", "n112", "n127_s2",
+	"n129", "n131", "n137", "n146", "n149",
 	"n150", "n165_s2",
 ]
-const PART_B_NO_CG_NODES := ["n127", "n127_s2", "n128", "n129", "n130"]
+const PART_B_NO_CG_NODES := ["n098", "n099", "n136"]
+const PAGINATION_SCREENSHOT_NODES := ["n100", "n129"]
 
 func click_native(button: Button) -> void:
 	expect(button != null and is_instance_valid(button) and button.is_visible_in_tree() and not button.disabled, "Native button available")
@@ -65,7 +67,7 @@ func native_play(event_id: String, locale: String) -> void:
 		var cg := app.page.get_node_or_null("CharacterEventCG") as TextureRect
 		if cg_path.is_empty():
 			if str(node.id) in PART_B_NO_CG_NODES:
-				expect(cg == null, "%s %s B4 remains CG-free" % [locale, node.id])
+				expect(cg == null, "%s %s V5.2 transition remains CG-free" % [locale, node.id])
 		else:
 			expect(cg != null, "%s %s CG widget exists" % [locale, node.id])
 			if cg != null:
@@ -90,6 +92,8 @@ func native_play(event_id: String, locale: String) -> void:
 			else:
 				await click_native(button)
 			pages += 1
+			if source_id in PAGINATION_SCREENSHOT_NODES and not event.completed and str(event.current().id) == source_id:
+				await screenshot(locale, event_id, source_id + "_page_%02d" % [pages + 1])
 		expect(pages < 16, "Node advances " + source_id)
 		visited += 1
 		rendered += 1
@@ -166,7 +170,9 @@ func run() -> void:
 				await process_frame
 	var report := {"checks": checks, "failures": failures, "rendered_pages": rendered,
 		"native": DisplayServer.get_name() != "headless", "input_counts": input_counts,
-		"languages": ["zh_CN", "en"]}
+		"languages": ["zh_CN", "en"],
+		"part_b_version": "V5.2",
+		"part_b_cg_anchors": ["n093", "n100", "n105", "n129", "n137"]}
 	var f := FileAccess.open(qa + "/report.json", FileAccess.WRITE)
 	f.store_string(JSON.stringify(report, "\t"))
 	f.close()

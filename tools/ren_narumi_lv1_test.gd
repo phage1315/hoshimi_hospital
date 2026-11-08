@@ -1,9 +1,9 @@
 extends SceneTree
-## Isolated runtime regression for the two authored fixed-VN Lv1 events.
+## Isolated runtime regression for the revised branching Ren/Narumi Lv1 events.
 
 const IDS := ["ren_lv1_night_ward_1", "narumi_lv1_beyond_the_resume"]
 const ACTORS := ["nurse_haru", "doc_aoi"]
-const COUNTS := [243, 202]
+const COUNTS := [220, 198]
 var app
 var checks := 0
 var failures := 0
@@ -30,17 +30,10 @@ func no_inner(value: Variant) -> bool:
 				return false
 	return true
 
-func test_event(index: int, locale: String) -> void:
+func test_prerequisites(index: int, definition: Dictionary) -> void:
 	var id: String = IDS[index]
 	var actor_id: String = ACTORS[index]
 	var g = app.game
-	var definition: Dictionary = g.character_event_definitions.get(id, {})
-	expect(not definition.is_empty(), "Registered event " + id)
-	if definition.is_empty():
-		return
-	expect(definition.category == "bond" and definition.target_level == 1, "Only Lv1 relationship reward " + id)
-	expect(definition.nodes.size() == COUNTS[index], "Complete node count " + id)
-	expect(definition.trigger_mode == ("after_work" if index == 0 else "location"), "Natural entry mode " + id)
 	g.reset()
 	expect(not g.character_event_available(definition), "Unmet actor blocked " + id)
 	g.meet_staff(actor_id)
@@ -48,6 +41,21 @@ func test_event(index: int, locale: String) -> void:
 	expect(not g.character_event_available(definition), "Familiarity 9 blocked " + id)
 	g.relation_for(actor_id).familiarity = 10
 	expect(g.character_event_available(definition), "Familiarity 10 allowed " + id)
+
+func test_route(index: int, locale: String, branch_mask: int, coverage: Dictionary) -> void:
+	var id: String = IDS[index]
+	var actor_id: String = ACTORS[index]
+	var g = app.game
+	var definition: Dictionary = g.character_event_definitions.get(id, {})
+	expect(not definition.is_empty(), "Registered event " + id)
+	if definition.is_empty():
+		return
+	if branch_mask == 0:
+		expect(definition.category == "bond" and definition.target_level == 1, "Only Lv1 relationship reward " + id)
+		expect(definition.nodes.size() == COUNTS[index], "Complete node count " + id)
+		expect(definition.trigger_mode == ("after_work" if index == 0 else "location"), "Natural entry mode " + id)
+		test_prerequisites(index, definition)
+
 	expect(g.prepare_character_event_test_save(id), "In-memory test fixture " + id)
 	expect(g.character_event_available(definition), "Fixture eligible " + id)
 	if index == 0:
@@ -66,28 +74,42 @@ func test_event(index: int, locale: String) -> void:
 	if event == null:
 		return
 	expect(g.active_character_event_id == id and app.screen == "character_event", "Natural UI entry " + id)
-	for i in range(definition.nodes.size()):
+
+	var visited := {}
+	var choice_number := 0
+	var guard := 0
+	while not event.completed and guard <= definition.nodes.size() + 4:
+		guard += 1
 		var node: Dictionary = event.current()
-		var expected: Dictionary = definition.nodes[i]
-		expect(str(node.id) == str(expected.id), "Sequential node %s %s" % [id, i])
-		expect(g.relationship_level(actor_id) == 0, "No early Lv1 settlement %s %s" % [id, i])
-		expect(not g.can_save_progress() and g.snapshot().is_empty(), "No event save %s %s" % [id, i])
+		var node_id := str(node.id)
+		expect(not visited.has(node_id), "No route cycle %s mask %s node %s" % [id, branch_mask, node_id])
+		visited[node_id] = true
+		coverage[node_id] = true
+		expect(g.relationship_level(actor_id) == 0, "No early Lv1 settlement %s %s" % [id, node_id])
+		expect(not g.can_save_progress() and g.snapshot().is_empty(), "No event save %s %s" % [id, node_id])
 		if locale == "en":
-			expect(not str(node.text).contains("「") and not str(node.text).contains("【七") and not str(node.text).contains("【神"), "English loaded %s %s" % [id, i])
+			expect(not str(node.text).contains("「") and not str(node.text).contains("【七") and not str(node.text).contains("【神"), "English loaded %s %s" % [id, node_id])
 		app.show_character_event()
 		var background = app.page.get_node_or_null("SceneBackground")
-		expect(background != null and background.texture != null, "Background loaded %s %s" % [id, i])
+		expect(background != null and background.texture != null, "Background loaded %s %s" % [id, node_id])
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
 		if bool(node.hide_portrait):
-			expect(portrait == null, "Narrator/other actor has no borrowed portrait %s %s" % [id, i])
+			expect(portrait == null, "Narrator/other actor has no borrowed portrait %s %s" % [id, node_id])
 		else:
-			expect(portrait != null and portrait.texture != null, "Speaking actor portrait %s %s" % [id, i])
+			expect(portrait != null and portrait.texture != null, "Speaking actor portrait %s %s" % [id, node_id])
 		if index == 0:
 			expect(not app.page.get_node("CalendarHeader").visible, "Night scene hides compressed shift clock")
-		if i + 1 == definition.nodes.size():
-			app.choose_character_event(str(node.choices[0].id))
+		var option_index := 0
+		if node.choices.size() == 2:
+			option_index = (branch_mask >> choice_number) & 1
+			choice_number += 1
+		var choice_id := str(node.choices[option_index].id)
+		if str(node.choices[option_index].next) == "@end":
+			app.choose_character_event(choice_id)
 		else:
-			expect(g.choose_character_event(str(node.choices[0].id)), "Advance %s %s" % [id, i])
+			expect(g.choose_character_event(choice_id), "Advance %s %s" % [id, node_id])
+	expect(guard <= definition.nodes.size() + 4, "Route terminates " + id)
+	expect(choice_number == 2, "Both authored choices visited %s mask %s" % [id, branch_mask])
 	expect(event.completed and g.relationship_level(actor_id) == 1, "Lv1 settled once at end " + id)
 	expect(g.relation_for(actor_id).rank_history.count(id) == 1, "One Lv1 rank fact " + id)
 	expect(event.settled_minutes == int(definition.minutes), "Exact historical event duration " + id)
@@ -101,13 +123,14 @@ func test_event(index: int, locale: String) -> void:
 		expect(app.screen == "map", "Night event returns to hospital map")
 	else:
 		expect(app.screen == "character_event_complete", "Completion screen " + id)
-	app.show_map()
+		app.show_map()
 	expect(g.can_save_progress(), "Save only after map boundary " + id)
 	var save: Dictionary = g.snapshot()
 	expect(not save.is_empty() and no_inner(save), "No inner state in boundary save " + id)
 	var settled_elapsed: int = g.elapsed()
 	expect(g.restore(JSON.parse_string(JSON.stringify(save))), "Boundary load " + id)
 	expect(g.elapsed() == settled_elapsed and g.relationship_level(actor_id) == 1 and not g.character_event_available(definition), "No replay after load " + id)
+	app.show_map()
 
 func run() -> void:
 	app = load("res://godot/scenes/main.tscn").instantiate()
@@ -118,6 +141,9 @@ func run() -> void:
 		expect(app.content.load_all(locale), "Content loads " + locale)
 		app.configure_game_content()
 		for index in range(IDS.size()):
-			test_event(index, locale)
+			var coverage := {}
+			for branch_mask in range(4):
+				test_route(index, locale, branch_mask, coverage)
+			expect(coverage.size() == COUNTS[index], "All authored branch nodes covered %s %s/%s" % [IDS[index], coverage.size(), COUNTS[index]])
 	print("REN NARUMI LV1: %s checks, %s failures" % [checks, failures])
 	quit(1 if failures else 0)

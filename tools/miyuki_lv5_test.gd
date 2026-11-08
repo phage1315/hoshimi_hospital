@@ -58,16 +58,18 @@ func verify_part_a_cgs(g) -> void:
 		expect(actual_path == expected_path, "Part A CG mapping " + str(node.get("id", "")))
 		if not actual_path.is_empty():
 			cg_nodes += 1
+			expect(not node.has("portrait_path"), "Part A CG replaces explicit portrait " + str(node.get("id", "")))
+			expect(not node.has("hide_portrait"), "Part A CG does not combine with hidden portrait " + str(node.get("id", "")))
 			expect(ResourceLoader.exists("res://" + actual_path), "Part A CG loads " + actual_path)
 	expect(cg_nodes == 32, "All 32 Part A CG-backed runtime pages mapped")
 
 func verify_part_b_cgs(g) -> void:
 	var expected_ranges := [
-		{"start": 91, "end": 95, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b1_or_door_invitation_sfw_v1.png"},
-		{"start": 102, "end": 108, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b2_patient_view_demonstration_sfw_v1.png"},
-		{"start": 109, "end": 126, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b3_surgical_lamp_confession_sfw_v1.png"},
-		{"start": 131, "end": 145, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b5_true_surgery_request_sfw_v1.png"},
-		{"start": 146, "end": 149, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_b6_departure_promise_sfw_v1.png"},
+		{"start": 93, "end": 97, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b1_or_invitation_sfw_v1.png"},
+		{"start": 100, "end": 104, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b2_table_edge_nsfw_v1.png"},
+		{"start": 105, "end": 128, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b3_lithotomy_nsfw_v1.png"},
+		{"start": 129, "end": 135, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b4_oral_nsfw_v1.png"},
+		{"start": 137, "end": 149, "path": "assets/events/character_events/miyuki/lv5_story/cg/miyuki_v52_b5_next_patient_promise_sfw_v1.png"},
 	]
 	var definition: Dictionary = g.character_event_definitions[Flow.B]
 	var cg_nodes := 0
@@ -79,12 +81,17 @@ func verify_part_b_cgs(g) -> void:
 				expected_path = str(entry.path)
 				break
 		var actual_path := str(node.get("cg_path", ""))
-		expect(actual_path == expected_path, "Part B CG mapping " + str(node.get("id", "")))
+		expect(actual_path == expected_path, "V5.2 Part B CG mapping " + str(node.get("id", "")))
 		if not actual_path.is_empty():
 			cg_nodes += 1
+			expect(not node.has("portrait_path"), "Part B CG replaces explicit portrait " + str(node.get("id", "")))
+			expect(not node.has("hide_portrait"), "Part B CG replaces hidden portrait " + str(node.get("id", "")))
 			expect(ResourceLoader.exists("res://" + actual_path), "Part B CG loads " + actual_path)
-	# The authored B4 fade-to-black block (127-130) intentionally has no SFW CG.
-	expect(cg_nodes == 59, "All 59 Part B SFW CG-backed runtime pages mapped")
+			var expected_fit := "inset" if number >= 100 and number <= 135 else "cover"
+			expect(str(node.get("cg_fit", "")) == expected_fit, "Part B CG fit preserves supplied frame " + str(node.get("id", "")))
+		if number >= 100 and number <= 135 and actual_path.is_empty():
+			expect(bool(node.get("hide_portrait", false)), "V5.2 hides conflicting uniform portrait " + str(node.get("id", "")))
+	expect(cg_nodes == 69, "All 69 Part B CG-backed runtime pages mapped")
 
 func run() -> void:
 	var g = new_game()

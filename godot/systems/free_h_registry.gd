@@ -54,6 +54,24 @@ const ACTORS := {
 		"bodymap": "res://data/h/nurse_yui/h_bodymap.json",
 		"context": "res://data/staff/nurse_yui/h_context_v1.json",
 	},
+	"doc_aoi": {
+		"content_status": "pending_assets",
+		"location_id": "hotel",
+		"fixed_location": true,
+		"location_label_key": "ui.free_h.location.doc_aoi_hotel",
+		"location_label": "精品酒店",
+		"booking_response_key": "ui.free_h.doc_aoi.booking_response",
+		"booking_response": "坂口医生，今晚我不太想回自己那个冷清的房间呢。",
+		"completion_event": "narumi_lv4_after_work",
+		"completion_flag": "",
+		"adapter": "authored_v1_3",
+		"profile": "res://data/staff/doc_aoi/h_profile_v1_3_5.json",
+		"flow": "res://data/staff/doc_aoi/h_flow_v1_3_4.json",
+		"finish_labels": "res://data/h_finish_button_labels_v1_3_4.json",
+		"finish_actor": "",
+		"bodymap": "res://data/h/doc_aoi/h_bodymap.json",
+		"context": "res://data/staff/doc_aoi/h_context_v1.json",
+	},
 }
 
 static func definition(actor_id: String) -> Dictionary:

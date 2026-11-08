@@ -460,6 +460,31 @@
           ],
           "additionalProperties": false
         },
+        "next_if_relationship_level": {
+          "description": "Override next when the named relationship has reached the required level.",
+          "type": "object",
+          "properties": {
+            "actor_id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "next": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "actor_id",
+            "minimum",
+            "next"
+          ],
+          "additionalProperties": false
+        },
         "id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -923,6 +948,41 @@
         "actor_id": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "relationship_actor_ids": {
+          "description": "Relationship records jointly gated and atomically settled by this single event.",
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "completion_story_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "completion_day_offset": {
+          "description": "Settle an atomic multi-day VN to a later safe boundary only after its final node.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30
+        },
+        "completion_absolute_clock": {
+          "type": "integer",
+          "minimum": 540,
+          "maximum": 1019
+        },
+        "completion_display_clock": {
+          "description": "Presentation-only clock used by the closing day-transition screen; it never expands the persistent work-ledger or save boundary.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1439
         },
         "title": {
           "type": "string",

@@ -12,7 +12,15 @@ static func portraits(app, node: Dictionary) -> void:
 		art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		art.size = Vector2(float(item.get("width", 390)), float(item.get("height", 390)))
-		art.position = Vector2(float(item.x), float(item.get("bottom", 550))) - Vector2(art.size.x / 2.0, art.size.y)
+		# `bottom` describes the visible, aspect-fitted artwork rather than the
+		# TextureRect container.  Landscape dialogue avatars often live in a tall
+		# staging rectangle; centering them without compensating for that vertical
+		# letterbox leaves shoulders floating well above the dialogue frame.
+		var source_size := Vector2(float(texture.get_width()), float(texture.get_height()))
+		var fit_scale := minf(art.size.x / source_size.x, art.size.y / source_size.y)
+		var fitted_height := source_size.y * fit_scale
+		var lower_letterbox := maxf(0.0, (art.size.y - fitted_height) / 2.0)
+		art.position = Vector2(float(item.x) - art.size.x / 2.0, float(item.get("bottom", 550)) - art.size.y + lower_letterbox)
 		art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		app.page.add_child(art)
 

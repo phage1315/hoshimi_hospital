@@ -46,7 +46,7 @@
 
 ## 4. 当前代码层缺口与验收
 
-2026-11-03 晚间收到 Lv5 中文 V4 原稿与相模大野千惠的五张参考图。用户确认千惠在本项目中为 **22 岁**，并授权用参考图生成 SFW 立绘及由 Codex 翻译英文。原稿已原样保存于 `research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_LV5_MY_TURN_ON_THE_TABLE_CN_CODEX_READY_V4.md`。逐节点英文工作稿见 `research/translations/miyuki_lv5_en_working.md`，覆盖原稿 177 个节点、标题、说话人及三组选项；尚未接入运行时或完成英文实机审计。千惠病房半身短袖患者袍（保留腰侧系带）和无枕头、裸肩的术中紧张／羞耻／剧痛头像已作为**待验收草稿**保存于 `assets/characters/patient_sagamiono_chie_lv5_v1/`；来源与校验和见 `research/imports/patient_sagamiono_chie_lv5_2026-11-03.json`。四张图尚未绑定事件节点，不代表千惠其余手术画面已齐全。原稿 Part A 的全裸转运与手术场景不能用病房患者袍图静默代替；对应用户素材仍待指定。
+当前正式原稿为中文 V5.2；已原样保存于 `research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_LV5_MY_TURN_ON_THE_TABLE_CN_CODEX_READY_V5_2.md`，被否定的 V4 已按用户要求删除。用户确认千惠在本项目中为 **22 岁**，并授权用参考图生成 SFW 立绘及由 Codex 翻译英文。逐节点英文工作稿见 `research/translations/miyuki_lv5_en_working.md`，覆盖原稿 177 个节点、标题、说话人及三组选项；V5.2 已通过逐句导入审计，尚未进行新版本原生窗口英文验收。千惠病房半身短袖患者袍（保留腰侧系带）和无枕头、裸肩的术中紧张／羞耻／剧痛头像保存于 `assets/characters/patient_sagamiono_chie_lv5_v1/`；来源与校验和见 `research/imports/patient_sagamiono_chie_lv5_2026-11-03.json`。原稿 Part A 的全裸转运与手术场景不能用病房患者袍图静默代替。
 
 2026-11-03 先前四张图入库并由 Godot 导入后，`tools/staff_patient_lv5_readiness_test.gd` 为 **1403 项、0 失败**，朝仓仍为 `ready=false`，缺 `staff_patient_profile`。之后根据患者矩阵补齐本轮 14 张 v2 图，并把 `operating_table/*` 与 `intraoperative/*` 分开。Godot 4.5.1 headless 编辑器导入成功；独立 Godot 纹理加载检查中，14/14 张均返回预期尺寸；10 张透明立绘角点 alpha 均为 0。现在另补齐截石位手术台四态，来源和 SHA-256 见 `research/imports/nurse_yui_staff_patient_lithotomy_sfw_2026-11-03.json`；Godot 导入成功，统一测试 `tools/patient_sfw_asset_test.gd -- --kind staff --id nurse_yui` 检查 **23 项、0 缺失**。这些 headless 检查不等于患者开放或可见窗口验收。病房准备全裸图仍由用户提供，另列 NSFW 缺口。`tools/staff_patient_lv5_readiness.gd` 已增加麻醉 splash 强制检查。全项目 `tools/validate_data.py` 仍因现有背景、事件 schema 等其他错误退出，详见 `/private/tmp/miyuki_patient_v2_validate_data.log`。
 
@@ -56,7 +56,7 @@
 
 ## 5. 2026-11-03 实装后状态与剩余素材
 
-- **Lv5 已开放：** `miyuki_lv5_chie_operation`、`miyuki_lv5_my_turn_on_the_table`、`miyuki_lv5_capable_do_more` 三段已接入。原稿 177 个编号节点按原顺序对应 189 个运行页；12 个同时含旁白和角色发言的编号拆成相邻显示页，原文字句未改。Part B 完成才结算 Lv5 和患者资格；Part C 不重复结算。
+- **Lv5 已开放：** `miyuki_lv5_chie_operation`、`miyuki_lv5_my_turn_on_the_table`、`miyuki_lv5_capable_do_more` 三段已接入。V5.2 原稿 177 个编号节点按原顺序对应 193 个运行页；16 个同时含旁白和角色发言的编号拆成相邻显示页，原文字句未改。Part B 完成才结算 Lv5 和患者资格；Part C 不重复结算。
 - **患者入口已开放：** `data/staff_patient_profiles.json` 已注册 `nurse_yui`，由真实 Lv5 完成事实与全局批准 flag 控制。共享 `staff_patient_view.gd` 显示邀请按钮，`can_invite_staff_patient()` 和 `invite_staff_patient()` 在测试中实际通过；沿用共享术前、手术与重复练习逻辑。
 - **患者双语台词已安装：** 用户原件保存在 `research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_STAFF_AS_PATIENT_DIALOGUES_CN_EN_V1.md`；3 条普通邀请、已核实术式 ID 的专属邀请、28 条反应、13 组双变体、50 个交互池的 106 条动作回应及术前详细说明提问均按原文映射。两个住院台词仅保存在档案中，未强行挂到错误阶段。
 - **第 50 池已核实接通：** 原稿把 `strain_pain_traction_02` 暂缓，是因为当时无部位限制的原按钮写了“放松腹部”；当前共享按钮已经是跨部位的“放松紧绷的部位”，故可安全接入原稿完整患者文案。导入器检查该按钮不会退回腹部限定措辞。
@@ -68,14 +68,12 @@
 千惠 Part A 已按原稿节点接入六组 CG：入室转运 `n002-n005`、控制器展示 `n034-n045`、交接特写 `n046`、首刀 `n055-n056`、开腹坚持 `n058-n067`、术毕回收 `n070-n072`。运行映射、来源、尺寸和 SHA-256 见 `research/imports/miyuki_lv5_part_a_cg_2026-11-04.json`。本次只增加 `cg_path`／`cg_fit`，未修改剧情正文、说话人、选项或顺序；Godot 自动回归通过后仍需原生窗口视觉验收。
 - **用户指定 NSFW 已接入：** 朝仓 `ward_preparation/shy` 病房准备图和高级手术 `chest.png` 胸部台面图已按附件原样导入并映射；旧 SFW 胸部图保留为 `sfw_reference`。来源、尺寸与 SHA-256 见 `research/imports/miyuki_staff_patient_nsfw_2026-11-03.json`。其他可选 NSFW 画面仍由用户按需指定，不计入当前患者素材必需矩阵。
 - **体位映射补齐：** 7 个当前 `runtime_ready` 的高级术式现均有显式台面体位：复杂腹部重建用 `abdominal`、降胸主动脉置换用 `lateral`、佩特拉胸腰椎矫正用 `prone`；这些只复用既有图，不另造角色素材。朝仓必需的 23 项 SFW 基础资源和本次两张指定图均已能由 Godot 加载；实际全程构图仍以可见窗口验收为准。
-- **原生显示验证：** 可见 Godot 窗口依次通过中文版、英文版 A→B→C 共 356 个显示页及 2,117 次断言，并实际点击朝仓档案的患者邀请按钮、检查邀请弹窗；走廊、手术室和护士制服映射已在实际截图核对。证据为 `reports/native/miyuki_lv5_2026_11_03/`。本次实际选择了每处分支的首选项；其他选项已在 1,475 次 headless 断言中走通，尚未逐一作可见窗口验收。患者正式手术的成功、失败和重复预约分支亦待单独原生验收。
+- **原生显示验证：** `reports/native/miyuki_lv5_2026_11_03/` 是旧 V4 的历史证据，只能继续证明未改动的 Part A／Part C 与患者邀请入口；V5.2 Part B 已替换正文与分支，旧版 Part B 截图不再作为验收证据。新 Part B 当前完成逐句审计和自动回归后，仍须另做中英文可见窗口验收。患者正式手术的成功、失败和重复预约分支亦待单独原生验收。
 
 ### 2026-11-04 患者路径补充验收
 
 使用可见 Godot 窗口及隔离内存前置，分别以中文、英文走通朝仓的患者邀请→病房→普通阑尾手术→成功结果→返回，以及高级病例板→团队确认→术前咨询→夜间段落→全麻过场→胸部运行图→Ebstein 全 13 阶段→术后返回。驱动脚本为 `tools/miyuki_patient_native_routes_test.gd`；[截图和报告](qa/miyuki_patient_native_2026_11_03/report.json)记录 871 项检查、0 失败、366 次合成鼠标输入。两种语言的胸部台面均断言加载 `advanced_staff_patient_v1/nurse_yui/chest.png`。测试采用可见窗口的合成 GUI 输入，团队角色选择由隔离夹具准备；不写入玩家存档。普通手术失败、患者再次预约及高级手术失败尚未在本轮可见窗口逐条验收，自动回归另有覆盖。
 
-## 2026-11-05 Part B SFW CG 接入
+## 2026-11-05 Part B V5.2 重置
 
-经用户明确授权，Part B 已生成并接入五组 SFW CG：手术室门口邀请 `n091-n095`、完整护士服躺台演示 `n102-n108`、无影灯下的患者视角谈话 `n109A-n126`、整理衣着后的正式手术请求 `n131-n145B`、挽臂离开 `n146-n149`。因分支和混合旁白拆页，共覆盖 59 个运行页。B4 `n127-n130` 不在本次 SFW 生成授权内，继续使用原稿指定的淡黑演出，未生成或接入替代 CG。
-
-五张成图统一为 1672×941 PNG；生成提示摘要、引用素材、节点范围、文件大小及 SHA-256 见 `research/imports/miyuki_lv5_part_b_cg_2026-11-05.json`。本轮只新增 CG 路径、显示适配和自动测试，不改正文、选项、说话人、顺序或结算。
+用户确认旧 Part B 及其五张 SFW CG 均不再符合正式创意。旧 V4 原稿、五张 Part B CG、Godot 导入旁车与旧 CG manifest 已删除；V5.2 的 83 个运行页当前均不挂 CG。节点 `100`–`135` 在新美术尚未制作时隐藏冲突的护士制服头像，不用旧图或 SFW 占位静默替换。新 CG 的制作与节点映射将在 V5.2 剧本、英文、导入器和自动测试稳定后另行处理。

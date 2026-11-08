@@ -290,11 +290,11 @@ static func render_relationships(app: Control) -> void:
 	var scroll := ScrollContainer.new()
 	scroll.name = "OfficeRelationshipScroll"
 	scroll.position = Vector2(45, 165)
-	scroll.size = Vector2(1190, 500)
+	scroll.size = Vector2(1190, 482)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	app.page.add_child(scroll)
 	var content := Control.new()
-	content.custom_minimum_size = Vector2(1160, max(500, app.content.collections.staff.size() * 120 + 20))
+	content.custom_minimum_size = Vector2(1160, max(482, app.content.collections.staff.size() * 120 + 20))
 	scroll.add_child(content)
 	for i in range(app.content.collections.staff.size()):
 		var person: Dictionary = app.content.collections.staff[i]
@@ -383,18 +383,42 @@ static func render_cases(app: Control) -> void:
 	app.screen = "office_cases"
 	app.base(app.tx("ui.case.title", "患者病例"), app.tx("ui.case.subtitle", "只收录已经发生的诊疗记录"), false, "player_office")
 	panel(app, Vector2(45, 165), Vector2(1190, 500))
-	var row := 0
+	var recorded_patients: Array[Dictionary] = []
 	for patient in app.content.collections.patients:
 		var patient_id := str(patient.id)
 		if visit_for_patient(app, patient_id) == null and app.game.referral_doctor(patient_id).is_empty() and preparation_for_patient(app, patient_id) == null:
 			continue
-		var case_data: Dictionary = app.game.patient_case(patient_id)
-		var caption := "%s　/　%s　/　%s" % [patient.name, str(case_data.get("title", app.tx("ui.case.undetermined", "未定病例"))), case_status(app, patient_id)]
-		var button: Button = app.button_at(caption, Vector2(75, 205 + row * 70), Vector2(1080, 55), app.show_office_case.bind(patient_id))
-		button.name = "OfficeCase_" + patient_id
-		row += 1
-	if row == 0:
+		recorded_patients.append(patient)
+	if recorded_patients.is_empty():
 		app.label_at(app.tx("ui.case.empty", "还没有可以归档的患者记录。完成接诊后，病例会自动出现在这里。"), Vector2(75, 230), 22, Color("f4f0e6"), 1000)
+	elif recorded_patients.size() <= 6:
+		for row in range(recorded_patients.size()):
+			var patient: Dictionary = recorded_patients[row]
+			var patient_id := str(patient.id)
+			var case_data: Dictionary = app.game.patient_case(patient_id)
+			var caption := "%s　/　%s　/　%s" % [patient.name, str(case_data.get("title", app.tx("ui.case.undetermined", "未定病例"))), case_status(app, patient_id)]
+			var button: Button = app.button_at(caption, Vector2(75, 205 + row * 70), Vector2(1080, 55), app.show_office_case.bind(patient_id))
+			button.name = "OfficeCase_" + patient_id
+	else:
+		var scroll := ScrollContainer.new()
+		scroll.name = "OfficeCaseScroll"
+		scroll.position = Vector2(55, 185)
+		scroll.size = Vector2(1170, 460)
+		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		app.page.add_child(scroll)
+		var content := Control.new()
+		content.custom_minimum_size = Vector2(1140, max(460, recorded_patients.size() * 72 + 12))
+		scroll.add_child(content)
+		for row in range(recorded_patients.size()):
+			var patient: Dictionary = recorded_patients[row]
+			var patient_id := str(patient.id)
+			var case_data: Dictionary = app.game.patient_case(patient_id)
+			var caption := "%s　/　%s　/　%s" % [patient.name, str(case_data.get("title", app.tx("ui.case.undetermined", "未定病例"))), case_status(app, patient_id)]
+			var button: Button = app.button_at(caption, Vector2.ZERO, Vector2(1080, 56), app.show_office_case.bind(patient_id))
+			button.name = "OfficeCase_" + patient_id
+			app.page.remove_child(button)
+			content.add_child(button)
+			button.position = Vector2(20, 10 + row * 72)
 	return_button(app)
 
 static func patient_grade(app: Control, preparation) -> String:

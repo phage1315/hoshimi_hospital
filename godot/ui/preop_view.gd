@@ -468,9 +468,11 @@ static func render(app: Control, prep: RefCounted) -> void:
 	text = prep.surgery_display_text(text)
 	app.scrollable_text_at(text.replace("{patient}", patient.name), Vector2(82, 600), Vector2(1100, 90), record_font_size, Color("f4f0e6"), record_name)
 	var save_button: Button = app.button_at(app.tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
-	if not app.game.can_save_progress():
+	if app.screen not in ["map", "sunday_menu"] or not app.game.can_save_progress():
 		save_button.disabled = true
-		save_button.tooltip_text = app.game.save_block_reason()
+		save_button.tooltip_text = app.game.save_block_reason() if not app.game.can_save_progress() else app.tx("ui.save.disabled_location", "存档只在医院导览或星期日安排界面可用。")
+		save_button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
+		save_button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 	app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
 	app.label_at(app.tx("ui.auto.dc0675ddad6a", "场景占位 · 本段用时 %s 分钟") % prep.minutes, Vector2(795, 723), 16, Color("c2d2cc"), 420)
 
@@ -632,9 +634,11 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 	complete_button.name = "AnesthesiaTestComplete" if sensory_test else "PalpationComplete"
 	if story == null:
 		var save_button: Button = app.button_at(app.tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(990, 650), Vector2(105, 42), app.save_progress)
-		if not app.game.can_save_progress():
+		if app.screen not in ["map", "sunday_menu"] or not app.game.can_save_progress():
 			save_button.disabled = true
-			save_button.tooltip_text = app.game.save_block_reason()
+			save_button.tooltip_text = app.game.save_block_reason() if not app.game.can_save_progress() else app.tx("ui.save.disabled_location", "存档只在医院导览或星期日安排界面可用。")
+			save_button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
+			save_button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 		app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(1110, 650), Vector2(105, 42), app.request_load)
 	elif story.replay:
 		app.button_at(app.tx("ui.gallery.exit_replay", "退出回想"), Vector2(990, 650), Vector2(230, 42), story.exit_replay)

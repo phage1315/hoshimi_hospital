@@ -1391,9 +1391,30 @@ func rank_ready(actor_id: String) -> bool:
 	if not staff_is_met(actor_id) or relationship_level(actor_id) >= relationship_max_level(actor_id):
 		return false
 	for definition in character_event_definitions.values():
-		if str(definition.get("actor_id", "")) == actor_id and str(definition.get("category", "")) in ["bond", "rank_up"] and character_event_available(definition):
+		if actor_id in character_event_relationship_actor_ids(definition) and str(definition.get("category", "")) in ["bond", "rank_up"] and character_event_available(definition):
 			return true
 	return false
+
+func character_event_relationship_actor_ids(definition: Dictionary) -> Array[String]:
+	var result: Array[String] = []
+	for value in definition.get("relationship_actor_ids", [str(definition.get("actor_id", ""))]):
+		var actor_id := str(value)
+		if not actor_id.is_empty() and actor_id not in result:
+			result.append(actor_id)
+	return result
+
+func complete_character_event_rank_up(definition: Dictionary, event_id: String) -> bool:
+	var actor_ids := character_event_relationship_actor_ids(definition)
+	var target_level := int(definition.get("target_level", 1))
+	# Validate the complete shared milestone before mutating either relationship.
+	# This keeps a two-person event atomic even if a malformed save reaches it.
+	for actor_id in actor_ids:
+		var relation := relation_for(actor_id)
+		if relation.is_empty() or target_level != int(relation.get("level", 0)) + 1 or target_level > relationship_max_level(actor_id):
+			return false
+	for actor_id in actor_ids:
+		complete_rank_up(actor_id, event_id, target_level, str(definition.get("benefit_id", "")))
+	return true
 
 func next_rank_slot(actor_id: String) -> Dictionary:
 	var relation := relation_for(actor_id)
@@ -1804,7 +1825,7 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if preload("res://godot/systems/serika_radiology.gd").owns(str(definition.id)) and not preload("res://godot/systems/serika_radiology.gd").eligible(self, str(definition.id)):
 		return false
-	if not active_staff_patient.is_empty() and str(definition.get("actor_id", "")) == str(active_staff_patient.staff_id):
+	if not active_staff_patient.is_empty() and str(active_staff_patient.staff_id) in character_event_relationship_actor_ids(definition):
 		return false
 	var event_id := str(definition.get("id", ""))
 	if preload("res://godot/systems/takemi_introduction.gd").owns(event_id) and not preload("res://godot/systems/takemi_introduction.gd").eligible(self, definition):
@@ -1877,32 +1898,37 @@ func character_event_available(definition: Dictionary) -> bool:
 	if character_event_done(definition.id):
 		return false
 	var relation: Dictionary = relation_for(definition.actor_id)
-	if relation.is_empty() or event_day < int(definition.conditions.min_day):
+	var relationship_actor_ids := character_event_relationship_actor_ids(definition)
+	if relation.is_empty() or relationship_actor_ids.is_empty() or event_day < int(definition.conditions.min_day):
 		return false
 	if definition.conditions.has("max_day") and event_day > int(definition.conditions.max_day):
 		return false
 	if definition.category == "introduction" and bool(relation.get("met", false)) and not definition.has("introduction_actor_ids"):
 		return false
-	if definition.category != "introduction" and not bool(relation.get("met", false)) and not bool(definition.get("allow_unmet_actor", false)):
-		return false
-	if definition.category == "bond" and (int(relation.get("level", 0)) != 0 or int(definition.get("target_level", 1)) != 1):
-		return false
-	if definition.category == "rank_up" and int(definition.get("target_level", 1)) != int(relation.level) + 1:
-		return false
-	if str(definition.id) != preload("res://godot/systems/miyuki_lv3.gd").B and relationship_rank_gate_applies_to_event(str(definition.actor_id), int(definition.get("target_level", 1)), str(definition.id)) and not relationship_rank_gate_met(str(definition.actor_id), int(definition.get("target_level", 1))):
-		return false
-	if definition.category in ["bond", "rank_up"] and not bool(definition.get("chain_followup", false)) and not relation.get("rank_history", []).is_empty():
-		var milestone_gap := maxi(int(Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS), int(definition.conditions.get("days_after_required_events", 0)))
-		var latest_milestone_day := 0
-		for rank_event_id in relation.rank_history:
-			var completed_event = character_events.get(str(rank_event_id))
-			if completed_event != null:
-				latest_milestone_day = maxi(latest_milestone_day, int(completed_event.completed_day))
-		if latest_milestone_day > 0 and event_day < latest_milestone_day + milestone_gap:
+	for relationship_actor_id in relationship_actor_ids:
+		var participant_relation := relation_for(relationship_actor_id)
+		if participant_relation.is_empty():
 			return false
-	for metric in ["affection", "familiarity"]:
-		if int(relation.get(metric, 0)) < int(definition.conditions.get("min_" + metric, 0)):
+		if definition.category != "introduction" and not bool(participant_relation.get("met", false)) and not bool(definition.get("allow_unmet_actor", false)):
 			return false
+		if definition.category == "bond" and (int(participant_relation.get("level", 0)) != 0 or int(definition.get("target_level", 1)) != 1):
+			return false
+		if definition.category == "rank_up" and int(definition.get("target_level", 1)) != int(participant_relation.get("level", 0)) + 1:
+			return false
+		if str(definition.id) != preload("res://godot/systems/miyuki_lv3.gd").B and relationship_rank_gate_applies_to_event(relationship_actor_id, int(definition.get("target_level", 1)), str(definition.id)) and not relationship_rank_gate_met(relationship_actor_id, int(definition.get("target_level", 1))):
+			return false
+		if definition.category in ["bond", "rank_up"] and not bool(definition.get("chain_followup", false)) and not participant_relation.get("rank_history", []).is_empty():
+			var milestone_gap := maxi(int(Progression.RELATIONSHIP_DEFAULT_COOLDOWN_DAYS), int(definition.conditions.get("days_after_required_events", 0)))
+			var latest_milestone_day := 0
+			for rank_event_id in participant_relation.rank_history:
+				var completed_event = character_events.get(str(rank_event_id))
+				if completed_event != null:
+					latest_milestone_day = maxi(latest_milestone_day, int(completed_event.completed_day))
+			if latest_milestone_day > 0 and event_day < latest_milestone_day + milestone_gap:
+				return false
+		for metric in ["affection", "familiarity"]:
+			if int(participant_relation.get(metric, 0)) < int(definition.conditions.get("min_" + metric, 0)):
+				return false
 	for required in definition.conditions.required_events:
 		if not character_event_done(required):
 			return false
@@ -1922,7 +1948,7 @@ func character_event_available(definition: Dictionary) -> bool:
 func character_events_for(actor_id: String) -> Array:
 	var result: Array = []
 	for definition in character_event_definitions.values():
-		if definition.actor_id == actor_id and character_event_available(definition):
+		if actor_id in character_event_relationship_actor_ids(definition) and character_event_available(definition):
 			result.append(definition)
 	result.sort_custom(func(a: Dictionary, b: Dictionary): return int(a.chapter) < int(b.chapter))
 	return result
@@ -2137,7 +2163,13 @@ func reserve_sunday_character_event(event_id: String) -> bool:
 	var definition: Dictionary = character_event_definitions[event_id]
 	if character_event_trigger_mode(definition) != "sunday" or not character_event_available(definition):
 		return false
-	sunday_history.append({"day": day_number(), "activity_id": "sayaka_lv4_date", "actor_id": "doc_sayaka", "location_id": "hotel"})
+	var activity_id := "sayaka_lv4_date" if event_id == "sayaka_lv4_hotel_date" else event_id
+	sunday_history.append({
+		"day": day_number(),
+		"activity_id": activity_id,
+		"actor_id": str(definition.get("actor_id", "")),
+		"location_id": str(definition.get("date_location_id", "")),
+	})
 	return true
 
 func settle_sayaka_lv4_hotel_event() -> bool:
@@ -2246,7 +2278,10 @@ func choose_character_event(choice_id: String) -> bool:
 		return false
 	var event = character_events[active_character_event_id]
 	var event_day := int(display_schedule().day)
-	if not event.apply(choice_id):
+	var relationship_levels := {}
+	for actor_id in relationships:
+		relationship_levels[actor_id] = int(relationships[actor_id].get("level", 0))
+	if not event.apply(choice_id, relationship_levels):
 		return false
 	var relation: Dictionary = relationships[event.definition.actor_id]
 	apply_relationship_choice(relation, event.last_choice)
@@ -2256,7 +2291,10 @@ func choose_character_event(choice_id: String) -> bool:
 		relation.route = chosen_route
 	if event.completed and not relation.event_history.has(event.definition.id):
 		event.completed_day = event_day
-		relation.event_history.append(event.definition.id)
+		for relationship_actor_id in character_event_relationship_actor_ids(event.definition):
+			var participant_relation := relation_for(relationship_actor_id)
+			if not participant_relation.event_history.has(event.definition.id):
+				participant_relation.event_history.append(event.definition.id)
 		if str(event.definition.id) == "aqua_intro_exam_chair":
 			preload("res://godot/systems/megumin.gd").record_aqua(self)
 		if preload("res://godot/systems/miyuki_lv5.gd").owns(str(event.definition.id)):
@@ -2274,11 +2312,13 @@ func choose_character_event(choice_id: String) -> bool:
 			if str(event.definition.id) == "intro_satsuki_new_nurse":
 				set_story_flag("satsuki_lv0_complete")
 		elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, relation):
-			complete_rank_up(str(event.definition.actor_id), str(event.definition.id), int(event.definition.target_level), str(event.definition.get("benefit_id", "")))
+			complete_character_event_rank_up(event.definition, str(event.definition.id))
 			if str(event.definition.id) == preload("res://godot/systems/miyuki_lv3.gd").B:
 				preload("res://godot/systems/miyuki_lv3.gd").completed(self)
 			if str(event.definition.id) == preload("res://godot/systems/serika_lv3.gd").ID:
 				preload("res://godot/systems/serika_lv3.gd").completed(self)
+		for flag in event.definition.get("completion_story_flags", []):
+			set_story_flag(str(flag), true)
 	elif event.completed:
 		event.completed_day = event_day
 	if event.completed and test_save_target_character_event_id() == str(event.definition.id):
@@ -3172,30 +3212,33 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 	for required_id in conditions.get("required_events", []):
 		var required_definition: Dictionary = character_event_definitions.get(str(required_id), {})
 		target_day = maxi(target_day, int(required_definition.get("conditions", {}).get("min_day", 1)) + required_gap)
+	if character_event_trigger_mode(definition) == "sunday":
+		while target_day < GAME_DURATION_DAYS and str(calendar_date(target_day).weekday_id) != "sun":
+			target_day += 1
 	for required_id in conditions.get("required_events", []):
 		_complete_character_event_for_test(str(required_id), maxi(1, target_day - required_gap))
-	var actor_id := str(definition.get("actor_id", ""))
-	var relation := relation_for(actor_id)
-	if relation.is_empty():
-		return false
 	var category := str(definition.get("category", "contextual"))
-	relation.met = category != "introduction"
-	if category == "bond":
-		relation.level = 0
-	elif category == "rank_up":
-		relation.level = maxi(0, int(definition.get("target_level", 1)) - 1)
-	relation.affection = maxi(int(relation.get("affection", 0)), int(conditions.get("min_affection", 0)))
-	relation.familiarity = maxi(int(relation.get("familiarity", 0)), int(conditions.get("min_familiarity", 0)))
 	var target_level := int(definition.get("target_level", 0))
-	if relationship_rank_gate_applies_to_event(actor_id, target_level, event_id):
-		var slot := relationship_rank_slot(actor_id, target_level)
-		relation.familiarity = maxi(int(relation.familiarity), int(slot.get("min_familiarity", 0)))
-		for requirement in slot.get("special_requirements", []):
-			if requirement is Dictionary:
-				_apply_test_event_requirement(requirement, target_day, actor_id)
+	for actor_id in character_event_relationship_actor_ids(definition):
+		var relation := relation_for(actor_id)
+		if relation.is_empty():
+			return false
+		relation.met = category != "introduction"
+		if category == "bond":
+			relation.level = 0
+		elif category == "rank_up":
+			relation.level = maxi(0, target_level - 1)
+		relation.affection = maxi(int(relation.get("affection", 0)), int(conditions.get("min_affection", 0)))
+		relation.familiarity = maxi(int(relation.get("familiarity", 0)), int(conditions.get("min_familiarity", 0)))
+		if relationship_rank_gate_applies_to_event(actor_id, target_level, event_id):
+			var slot := relationship_rank_slot(actor_id, target_level)
+			relation.familiarity = maxi(int(relation.familiarity), int(slot.get("min_familiarity", 0)))
+			for requirement in slot.get("special_requirements", []):
+				if requirement is Dictionary:
+					_apply_test_event_requirement(requirement, target_day, actor_id)
 	for requirement in conditions.get("special_requirements", []):
 		if requirement is Dictionary:
-			_apply_test_event_requirement(requirement, target_day, actor_id)
+			_apply_test_event_requirement(requirement, target_day, str(definition.get("actor_id", "")))
 	set_story_flag("__test_save_target_character_event__" + event_id, true)
 	var test_clock := clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1)
 	set_test_time(target_day, test_clock)

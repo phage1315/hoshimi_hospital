@@ -1,7 +1,7 @@
 # Asakura Miyuki Lv5 — My Turn on the Table (English working translation)
 
 Status: complete node-by-node draft; not connected to runtime and not yet audited in-game.
-Source: `research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_LV5_MY_TURN_ON_THE_TABLE_CN_CODEX_READY_V4.md`.
+Source: `research/source_scripts/HOSHIMI_ASAKURA_MIYUKI_LV5_MY_TURN_ON_THE_TABLE_CN_CODEX_READY_V5_2.md`.
 Node identifiers follow the Chinese source. This file is not a substitute for the source.
 
 ## Event titles and choice labels
@@ -11,10 +11,10 @@ Node identifiers follow the Chinese source. This file is not a substitute for th
 - Part C title: **The Capable Do More** (`能者多劳`).
 - Choice after [030], A: **"Asakura, didn't you say you had a way to reassure her today?"**
 - Choice after [030], B: **"It's no disgrace to change your mind about anesthesia now, Miss Sagamiono."**
-- Choice after [108], A: **"Aren't you afraid I'll really tighten the wrist straps?"**
-- Choice after [108], B: **"What made you decide to switch places today?"**
-- Choice after [143], A: **"Once you're really on the operating table, begging for mercy won't help."**
-- Choice after [143], B: **"This isn't a game. We'll discuss the procedure properly through the formal process later."**
+- Choice after [106], A: **"Aren't you afraid I'll really tighten the leg-support straps?"**
+- Choice after [106], B: **"What made you suddenly decide to switch places today?"**
+- Choice after [144], A: **"All right. But don't beg me for mercy once you're on the table."**
+- Choice after [144], B: **"You even have to compete over getting cut open. There's no handling you."**
 - Speaker labels: `旁白` = **Narrator**; `坂口隆司` = **Ryuji Sakaguchi**; `朝倉美幸` = **Miyuki Asakura**; `相模大野千惠` = **Chie Sagamiono**; `石神千鹤` = **Chizuru Ishigami**; `年轻护士` = **Young Nurse** until the cast lock resolves to Megumi Kariya, Shiori Yoneda, or Moe Honjo.
 
 ## Part A — Chie's Major Surgery Without Anesthesia
@@ -359,10 +359,10 @@ Miyuki Asakura:
 The sensor door chimed softly and slid open. Miyuki took Ryuji by the wrist and stepped into the dim, quiet operating room.
 
 **[096]**
-The sensor door closed behind them, shutting out the last sounds of the corridor.
+The sensor door closed behind them again, shutting out the last sounds of the corridor.
 
 **[097]**
-The room, its main lights still off, carried a faint disinfectant smell. A clean pale-green sterile sheet covered the operating table in the center, while every monitor around it sat in dark standby.
+With the main lighting still off, only the faint perimeter lights illuminated the operating room. A clean pale-green sterile sheet covered the operating table at its center, with leg supports for positioning a patient's lower limbs installed on both sides. Every monitor around it remained in dark standby.
 
 **[098]**
 Ryuji Sakaguchi:
@@ -373,72 +373,72 @@ Miyuki Asakura:
 "Don't worry. Nurse Manager Ishigami went to the administration building for the monthly safety meeting half an hour ago. I checked her route before I came to intercept you."
 
 **[100]**
-Miyuki released Ryuji's hand and walked lightly to the operating table. She tapped the lighting panel by the wall, switching on only the surgical lights directly above it.
+Miyuki released Ryuji's hand and turned beside the operating table. Rather than merely posing in her clothes as she would for ordinary role-play, she raised her hands and unbuttoned her nurse's uniform, briskly removing her white uniform, underwear, shoes, and socks one by one before folding them on the counter nearby.
 
 **[101]**
-A cool, brilliant column of light poured down, revealing every detail of the table while making the rest of the room seem darker and more private.
+In the cool air, Miyuki stood without a stitch of clothing. Her fair, well-proportioned body looked especially striking in the dim perimeter light.
 
 **[102]**
-Instead of taking her usual place as a scrub or circulating nurse, Miyuki braced her hands on the table's edge, hopped up, removed her white nursing shoes, and lay back in its center.
+Ryuji paused, taken aback as he looked at her completely naked body.
 
 **[103]**
-Ryuji paused in surprise, then walked to the table's side and looked down at her.
+Ryuji Sakaguchi:
+"...Miyuki? You're serious? You took everything off?"
 
 **[104]**
-Ryuji Sakaguchi:
-"...What are you doing?"
+Still naked, Miyuki lightly perched on the edge of the operating table, then smoothly lay back in its cold center and smiled up at Ryuji:
+"If I'm going to experience being a patient in a real operating room, what would be the point of lying here fully dressed and pretending? I'm not playing the nurse today. It's my turn to be your patient."
 
 **[105]**
-Miyuki tucked her hands behind her head. As she lay flat, the skirt of her white nurse's uniform slid up slightly, showing a little of her well-shaped fair calves. She tipped her face up and smiled at Ryuji through the glare of the surgical lights.
+Lying on her back, she breathed out softly and voluntarily spread her long, fair legs to either side, gesturing toward the leg supports beside the table.
 
 **[106]**
 Miyuki Asakura:
-"Can't you tell? I'm not playing the nurse today. It's my turn to be your patient."
+"Come on, surgeon. I'm always the one positioning female patients and securing their legs in the supports... Today, you can fasten both of mine first, then switch on the surgical lights above me."
 
-**[107]**
-Miyuki brought her hands down from behind her head and laid them on the armboards, deliberately slipping her wrists beneath the soft nylon positioning straps.
+**[107A]**
+Ryuji Sakaguchi:
+"Aren't you afraid I'll really tighten the straps on those leg supports? You won't even be able to close your legs afterward."
 
-**[108]**
-Miyuki Asakura:
-"Come on, surgeon. I'm always the one positioning your female patients and fastening their wrist straps. Why don't you try fastening mine today?"
+**[108A]**
+Miyuki raised an eyebrow. Instead of withdrawing her legs, she deliberately shifted them closer to the supports.
 
 **[109A]**
-Ryuji Sakaguchi:
-"Aren't you afraid I'll really tighten them? You won't be able to get down if you change your mind."
-
-**[110A]**
-Miyuki raised an eyebrow. Instead of drawing her wrist back, she lifted it a little higher.
-
-**[111A]**
 Miyuki Asakura:
-"My, Dr. Sakaguchi sounds so imposing. But you know you'd release me whenever I said stop, don't you?"
+"My, Dr. Sakaguchi sounds so imposing. But you already know you'd release me whenever I asked you to stop, don't you?"
 
-**[109B]**
+**[107B]**
 Ryuji Sakaguchi:
-"What made you decide to switch places today? At that off-site club last time, you were still the one holding the examination form and directing me."
+"What made you suddenly decide to switch places today? At that off-site club last time, you were still the one holding the examination form and directing me."
 
-**[110B]**
+**[108B]**
 Miyuki blinked, a sly curve forming at the corner of her mouth.
 
-**[111B]**
+**[109B]**
 Miyuki Asakura:
-"Even a surgeon gets tired of playing the same way every time. Besides, I can't just talk about it without ever trying it."
+"A surgeon gets tired of playing the same way every time, too. Besides, I can't just talk about it without ever trying it."
+
+**[110]**
+Ryuji laughed and stepped forward. Holding her cool calves and ankles, he placed each of her legs into the supports on either side of the operating table and fastened the positioning straps, while leaving enough room to release them whenever she asked.
+
+**[111]**
+Even though they both knew she could stop at any time, Miyuki's shoulders gave an almost imperceptible tremble when her naked body was placed in that defenseless patient position, her legs spread and secured in the supports.
 
 **[112]**
-Ryuji laughed. Taking her slender wrists in his hands, he fastened the broad nylon straps on either side only loosely, leaving enough room for her to pull free whenever she wished.
+Once her legs were secured, Ryuji reached out and pressed the switch for the surgical lights directly above the table.
 
 **[113]**
-Even so, at the faint click of the metal buckles, Miyuki's shoulders gave an almost imperceptible tremble.
+A cool, dazzling column of light poured down, revealing every detail of Miyuki's naked body and restrained legs on the table, while making the rest of the room feel even darker and more private.
 
 **[114]**
-She looked up at the great disk of surgical lights overhead. Her breathing grew a shade quicker, and a faint blush rose in her cheeks.
+Miyuki raised her gaze toward the enormous disk of surgical lights overhead. Her breathing quickened slightly, and a faint blush rose across her fair cheeks and chest.
 
 **[115]**
 Miyuki Asakura:
-"...So this is how dazzling that light looks from below."
+"...So this is how dazzling it is to lie here naked, with your legs secured, and look up at that light from below."
 
 **[116]**
-Ryuji planted his hands on the table's edge and leaned into her view, blocking the harshest beam from above.
+Ryuji stood in the surgeon's position and looked down at her, his body blocking the harshest beam of overhead light.
 
 **[117]**
 Ryuji Sakaguchi:
@@ -452,11 +452,11 @@ Miyuki Asakura:
 "My heart is beating a little faster. But... after being the S for so long, I've wanted to know what being the M feels like."
 
 **[120]**
-Miyuki tipped her head slightly. With her fingers loosely held on the armboard, she gave the hem of Ryuji's coat a light tug.
+Miyuki tipped her head slightly, feeling the unfamiliar constraint of her legs held in the supports, and spoke with her usual frank, teasing tone.
 
 **[121]**
 Miyuki Asakura:
-"Come to think of it, nearly every day I undress other girls in the ward, prepare them, and bring them to this table. I watch them blush and tremble under the surgical lights... And yet I've never tried lying here myself."
+"Come to think of it, I put other female patients on the operating table every day, but I've never lain on one myself."
 
 **[122]**
 Ryuji Sakaguchi:
@@ -467,105 +467,103 @@ Miyuki immediately shot him a look and protested with perfect conviction.
 
 **[124]**
 Miyuki Asakura:
-"Of course not! What would be the point of lying alone on this cold metal table? I'd be doing performance art like Dr. Miyama!"
+"Of course not! What would be the point of lying alone on this cold metal table?"
 
 **[125]**
-She paused, her voice softening with a playful cunning she showed only to her lover.
+She paused, her voice softening with a playful sweetness and cunning she showed only to her lover.
 
 **[126]**
 Miyuki Asakura:
 "I only dared to get up here today because I brought you with me. If anything happens, I can use you as my shield."
 
 **[127]**
-Miyuki raised one leg slightly, brushing her knee almost imperceptibly against Ryuji's side. An undisguised invitation spread through her eyes.
-"Since I'm already lying here... Ryuji, aren't you going to give me a thorough 'preoperative examination' tonight?"
+After quietly experiencing that passive position beneath the surgical lights for a while, with control completely surrendered, Miyuki winked at Ryuji:
+"All right, that's enough of the operating-table experience for now—surgeon, hurry and release my legs. If I stay spread out under that big light much longer, I really will get embarrassed."
 
 **[128]**
-Ryuji did not banter back. He unfastened the loose nylon straps around her wrists, bent down, and kissed the lips that so loved to tease him.
+Ryuji stepped forward and unfastened the straps on both leg supports. He cradled her calves as he lowered them back onto the table, then placed an arm around her waist and helped her naked body down.
 
 **[129]**
-Miyuki gave a muffled little sound. Her arms rose from the armboards and wrapped around Ryuji's neck with practiced warmth and urgency.
+The instant her feet touched the operating-room floor, Miyuki did not turn toward the uniform she had left nearby. Instead, she pressed a hand to Ryuji's chest and gently pushed him against the edge of the table, a teasing, heated gleam in her eyes.
 
 **[130]**
-[Image slowly fades to black / action suggested offscreen]
-In the quiet operating room, the surgical lights cast their cool glow over a stethoscope set aside and the slightly disordered collar of a white nurse's uniform. Miyuki, usually so effortless in setting the pace, gradually lost control of her breathing on the narrow operating table. Biting her lip, she could only watch the man above her from the corner of her flushed eyes as she yielded, little by little, to a position both familiar and unfamiliar...
+Miyuki Asakura:
+"You were so cooperative about securing me and letting me experience being the patient just now... Fair is fair. Before I get dressed, I should take care of my surgeon first."
 
 **[131]**
-[Image fades back in]
-A little later, the operating room was quiet again.
+Without waiting for his answer, the completely naked Miyuki knelt in front of him. Her slender, nimble fingers expertly opened his belt buckle and pulled down his trouser zipper.
 
 **[132]**
-Miyuki leaned against Ryuji, the flush not yet gone from her cheeks. She slowly buttoned the last two buttons at the collar of her nurse's uniform and smoothed her slightly disheveled hair.
+Miyuki lifted her face to glance at him and lightly ran the tip of her tongue over her lips:
+"Keep quiet, Ryuji. I'll use my mouth and finish you quickly..."
 
 **[133]**
-Miyuki Asakura:
-"Phew... Fooling around on a real operating table does make my heart race much more than that themed place outside."
+The next moment, she lowered her head and took him fully between her warm, wet lips and tongue.
 
 **[134]**
-Sitting on the edge of the table, she swung her calves and recovered her usual sweet, slightly mischievous smile. But there was a faint note of jealousy in the look she gave Ryuji.
+[Side-description sequence]
+The quiet operating room held only stifled breathing and soft, wet sounds. The residual glow of the surgical lights fell across Miyuki's bare, fair shoulders and back. Ryuji instinctively placed a hand against the back of her head and hair, but instead of drawing away, she quickened the rhythm of her lips and tongue. At last, with a muffled sound in her throat, she accepted all of his release in her mouth...
 
 **[135]**
-Miyuki Asakura:
-"But speaking of that, Ryuji... I've heard that other women on the hospital staff have actually been wheeled here naked from the ward, just like Miss Sagamiono, and lain on this table for you to operate on."
+A moment later, Miyuki stood with one hand braced on Ryuji's knee. She drew a tissue from the nursing cart, leisurely wiped the damp redness from the corner of her mouth, then pulled up his zipper and refastened his belt for him.
 
 **[136]**
-Ryuji Sakaguchi:
-"Those were clinical surgery training cases formally approved by the director—"
+Only then did she return to the table and put her underwear, white nurse's uniform, and nursing shoes back on one by one. As she fastened the final two buttons at her collar, her usual sweet, slightly wicked smile returned.
 
 **[137]**
-Miyuki held a finger against Ryuji's lips, smiling as she interrupted his serious explanation.
+Once her uniform was tidy, Miyuki walked up to Ryuji, lightly hooked a finger around the lapel of his white coat, and smiled up at him.
 
 **[138]**
 Miyuki Asakura:
-"I didn't say I was going to report you. Why are you in such a hurry?"
+"Speaking of which, Ryuji... I heard you've been operating on other women on the hospital staff."
 
 **[139]**
-She withdrew her hand and leaned back on her palms against the green drape behind her. Tilting her head slightly, she fixed Ryuji with a direct, earnest gaze.
+Ryuji laughed at her mock-accusing expression:
+"So word of that reached you too?"
 
 **[140]**
-Miyuki Asakura:
-"What I want to ask is... next time, would you operate on me too?"
+Miyuki traced a small circle over his chest with her index finger. Her gaze shifted, and her tone was three parts coy and seven parts teasing.
 
 **[141]**
-Ryuji paused in surprise.
-"...Are you serious? You don't mean role-playing with your clothes on, like tonight?"
+Miyuki Asakura:
+"I'm a little jealous. Operate on me next time, all right?"
 
 **[142]**
-Miyuki Asakura:
-"Of course I'm serious. Ever since I watched you finish Miss Sagamiono's major open abdominal operation without anesthesia, I've kept thinking about it."
+Ryuji raised an eyebrow and caught the mischievous finger in his hand:
+"Most people who get jealous ask for a date or a present. You get jealous and want to lie on an operating table for me to cut open?"
 
 **[143]**
-Her fingertips tapped lightly on the operating table beneath her. Her voice held both the clear judgment of a veteran nurse and her own distinctive bold curiosity.
-"Being undressed completely in the ward, fully prepared and wheeled here, then entrusting my body to you to cut open while I'm wide awake without anesthesia... I don't want to leave that ultimate act of surrendering control and trust to someone else for other people alone to experience."
+Miyuki laughed and moved another half-step closer into his arms.
 
-**[144A]**
-Ryuji Sakaguchi:
-"Don't be too confident. When the time comes, if we start with ward preparation, follow the rules, and have you sign the consent form and lie here, my scalpel won't stop even if you cry and clutch the sheet and beg for mercy."
+**[144]**
+Miyuki Asakura:
+"Of course I want dates and presents too. But you look so attractive with a scalpel in your hand, and I don't want other women to have all the fun of being your surgical practice patient. When it's my turn to lie on the table, I want to find out what it's like without anesthesia too~"
 
 **[145A]**
-Miyuki's cheeks warmed, but her eyes sparkled as she smiled. "Then I'll have to see whether your hand is steadier—or whether you'll feel sorry for me first."
-
-**[144B]**
 Ryuji Sakaguchi:
-"This isn't like tonight's play. If you really want to try it, we'll follow the hospital's formal process and discuss the procedure, anesthesia, and preoperative preparation one by one."
+"All right. If Nurse Asakura is volunteering so eagerly, don't expect begging for mercy to help once you're really on the table."
+
+**[146A]**
+Miyuki's eyes curved with her smile. "Hee-hee. Then I'll have to see whether your hand stays steadier—or whether you start feeling sorry for me first."
 
 **[145B]**
-Miyuki nodded with a smile. "As you say, surgeon. I wasn't planning to have you operate on me empty-handed tonight."
+Ryuji laughed and gently pinched her cheek:
+"You even have to compete over getting cut open. There's no handling you."
 
-**[146]**
-Ryuji put an arm around her waist and lifted her safely down from the operating table.
+**[146B]**
+Miyuki nuzzled into his palm and smiled. "That's because you're the surgeon. I have no interest in anyone else's scalpel."
 
 **[147]**
-Ryuji Sakaguchi:
-"All right. I promise. Once we find the right opening in the schedule, I'll operate on you myself."
+Ryuji put an arm around her waist and agreed with a smile:
+"All right. When we find an opening, I'll schedule a procedure especially for my Nurse Asakura."
 
 **[148]**
-Miyuki put on her white nurse's shoes and looked up at him from the floor, her eyes full of satisfaction. She was no prey tamed by someone else; she had chosen to entrust the most important position to the man she trusted most.
+Miyuki's eyes immediately curved with satisfaction. She turned, walked to the wall, and switched off the surgical lights with a click.
 
 **[149]**
 Miyuki Asakura:
-"It's a promise, then, my surgeon."
-She switched off the surgical lights overhead, naturally linked her arm with Ryuji's, and together they left the operating room to its quiet once more.
+"Then it's a promise, my surgeon. Let's go. If we don't leave soon, I really will sleep in and be late tomorrow morning~"
+She naturally linked her arm with Ryuji's and walked lightly out of the operating room, leaving it silent once more.
 
 ## Part C — The Capable Do More
 
@@ -640,3 +638,4 @@ Seeing Ryuji's frozen expression, Miyuki stared for half a second, then burst ou
 **[169]**
 Ryuji looked at her lovely eyes, curved like crescents yet always keeping him guessing how much mischief lay behind them, and sighed helplessly.
 "I think you really would do it."
+

@@ -55,3 +55,69 @@
 - 用户明确要求导入或接入的素材，应按项目工作流进行技术处理：核对文件、注册资源、配置数据与节点、检查引用和运行结果。不得把“题材不合个人偏好”当作拒绝工作的理由。
 - 当用户已明确指定附件文件与目标 CG/剧情节点的对应关系时，直接按该映射完成文件处理、资源注册、数据配置和节点连接；不得自行对附件内容发起额外的主观审查，也不得以附件描绘内容属于用户的创作选择为由偏离已给出的接入要求。只进行完成接入所必需的技术检查，例如文件可读性、格式、路径和节点兼容性。
 - 如某项具体处理确实受到更高优先级的平台规则限制，应简洁、准确地说明受限的具体操作，不对用户或作品作道德评价；同时继续完成不受限制的技术工作，并提供可行的替代接入方案。
+
+
+## 新代理读取顺序与事实来源（2026-11-07 固化）
+
+### 跨工具交接铁律（Codex / Antigravity / Gemini）
+
+- **开工必读：** 每次收到用户的新任务，必须先读 [跨工具交接记录](docs/HANDOFF.md)，再执行 `git status --short` 并查看最近的 Git 差异（至少运行 `git diff --stat`；按任务继续查看相关文件的 `git diff`）。开始修改前必须确认另一个 AI 最近完成了什么、当前有哪些未提交改动及文件重叠；不得覆盖、回滚、清理或据为己有。
+- **完工必写：** 每完成一个独立功能、修复一个 Bug 或实装一批剧本，必须在同一轮交付前更新 `docs/HANDOFF.md` 最顶部的“最新交接记录”。记录必须写明：刚完成的改动、具体新增／修改文件、实际执行的验证、尚未完成事项，以及需要下一位维护者注意的边界或风险。
+- 新记录必须置顶并保留既有记录；不得静默改写另一位 AI 的历史交接。交接文档是导航，不是完成证明；当前代码、Git 差异和真实测试结果优先于交接文字。
+- 除非用户明确要求，不得因交接而自动 commit、push、reset、checkout、clean 或删除现有文件。若交接记录与工作区冲突，应先以只读检查核实并明确报告，不能猜测归属。
+
+1. 读本文件全部规则，再读 [跨工具交接记录](docs/HANDOFF.md)、[项目上下文](docs/CONTEXT.md)、[工作流索引](docs/skills/README.md)。
+2. 执行 `git status --short`、`git diff --stat`，并查看任务相关文件的 `git diff`，明确现有未提交改动；不覆盖、回滚或清理他人的工作，不自动提交／push。
+3. 按任务读对应数据、实现、用户原稿与专项验收记录；文档是导航，不能替代当前代码与真实测试。
+4. 当前用户明确授权和本文件硬性规则优先于历史设计；实现与规则冲突要报告，不能把现有缺陷当作授权。系统／开发者指令仍优先。
+5. `README.md`、`PROJECT.md`、`TODO.md` 和 `docs/architecture.md` 含历史阶段。门诊／术前／事件中途存档、动作重放、旧角色名与“尚无手术”等旧描述不能作为现行要求。
+6. 本次仅固化可见会话、仓库和已有个人 Skills；不声称拥有未提供的旧聊天。未知的授权、最终剧本版本和分支决定必须查证，不能补造记忆。
+
+## 核心架构与目录职责
+
+- 根 `project.godot` 定义 `res://` 根；Godot 4.5.1 标准版、GDScript、Compatibility、1280×800 逻辑画布，入口 `godot/scenes/main.tscn`。
+- `data/manifest.json` → `godot/scripts/content_loader.gd`：只读 JSON、索引和分包合并。`data/schemas/` 与 `tools/validate_data.py` 负责开发期字段和跨文件引用检查。加载失败应显式报错，不制造空内容掩盖错误。
+- `data/staff/<id>/`：医护／关系角色资料、relationship、剧情、岗位与亲密内容；`bundle.json` 通过 `data/staff/index.json` 登记。目录里的文件不一定已被加载，必须核对 bundle。
+- `data/patients/`：随机患者包、共用门诊／术前模板、性格对白。`data/cases/`、`data/surgeries/`、`data/teams/`：病例、术式、互动和岗位定义。不得手写一份平行患者流程。
+- `data/events/`、`data/daydreams/`、`data/advanced_surgery/`：事件索引、白日梦、高级手术与跨日内容；`data/localization/`：中英本地化；`data/backgrounds.json`：稳定背景 ID 到资源映射。
+- `godot/systems/`：GameState 调度日历、关系、队列、解锁与结算；各 `*_session.gd` 管运行期间流程；registry 管生产注册与资格；model/rules/facts 拆分运算、条件与持久业务事实。
+- `godot/ui/`：显示与输入；`app.gd` 编排页面，`character_stage.gd` 管演出。UI 不得新增病例答案、角色业务分支、概率或奖励算法，调用状态层完成动作。
+- `assets/`：运行素材；`research/source_scripts/`：作者原稿；`research/translations/`：译稿；`research/imports/`：导入记录。原稿、翻译、运行数据互不替代；不批量重跑导入脚本覆盖手工修订。
+- `docs/`：设计、契约、实现记录；`docs/qa/`、`reports/`：有日期的测试证据；`tools/`：导入、审计和回归；`skills/`：已有患者技能；`docs/skills/`：可移植工作流说明与个人技能快照。
+
+## 数据、会话、存档的边界
+
+- 内容定义只读，运行值深拷贝；不向 JSON／场景节点写玩家进度。角色、病例、术式、事件 ID 稳定，不因显示名、翻译、服装或表情变更而换身份。
+- `GameState.snapshot()` → `BoundarySave.capture()` → `SaveStore` 是持久入口；当前版本 37，格式 `boundary_facts_v1`，八槽原子替换。`runtime_snapshot()` 只用于内存，绝不能存成测试档或玩家档。
+- `boundary_save.gd` 使用事实白名单；增加字段必须说明业务意义、迁移与测试，不把完整 Dictionary／Session 作为新契约。详情见 [v37 存档](docs/save_boundary_v37.md)。
+- 固定剧情、重复亲密 Runner、普通手术、高级手术分别有自己的入口；不能为接入内容偷偷互相替代。高级手术复用公共医护、日历、生理与结算接口，但有独立 Model/Session。
+- 关系 `met`、level、familiarity、隐藏 affection、route、已完成事件和权益分别判断。设置等级、开发入口可启动、文件存在均不能证明生产开放。
+- 普通立绘标准见 `docs/portrait_import_standard.md`；新制作默认 1024×1536 透明 PNG，头至腰／髋构图；用户已有素材按用户映射保留，不以标准擅自裁切。
+
+## 修改与验收铁律
+
+- 开始前找出实际加载链、稳定 ID、原稿版本与受影响测试；优先复用现有接口，避免复制角色专用流程。
+- 原稿逐句 audit、中文可玩、英文覆盖、资源可加载、原生显示和正式入口验收分别报告；任何一项通过都不能替代另一项。
+- 不用别的角色测试证明目标角色可用；不以 headless 通过声称原生窗口已验收，不以自动驱动声称人工点击。
+- 测试只用独立临时文件／内存 fixture；不打开或覆盖玩家槽位，不在实际玩家目录生成测试档。旧测试可能带过期存档预期，运行前检查参数与写入路径。
+- 纯文档工作检查链接、事实来源和 diff，不为通过文档交付而修业务。代码工作按影响范围执行下表，不无差别重跑全部测试。
+
+### 检查命令
+
+在仓库根运行。`godot` 不在 PATH 时先检查本机安装（例如 `/Applications/Godot.app/Contents/MacOS/Godot`），确认存在再使用。每次引擎测试用独立 `--log-file /private/tmp/<unique>.log`；写存档的脚本先阅读其参数约定，传独立临时路径。
+
+| 范围 | 命令／脚本 |
+|---|---|
+| 内容结构与引用 | `.venv/bin/python tools/validate_data.py`（依赖见 `tools/requirements.txt`；无 venv 时用具备依赖的 `python3`） |
+| 所有剧情新增／修改必跑 | `python3 tools/narrative_localization_test.py`、`python3 tools/localization_audit.py` |
+| 医护／患者本地化 | `python3 tools/staff_localization_test.py`、`python3 tools/patient_bundle_localization_test.py` |
+| 脚本导入与冒烟 | `godot --headless --path . --log-file /private/tmp/hoshimi-import.log --editor --import --quit`；`godot --headless --path . --log-file /private/tmp/hoshimi-smoke.log --script res://tools/smoke_test.gd` |
+| 运行时语言 | `tools/localization_test.gd` |
+| 存档变更 | `tools/boundary_save_test.gd`、`tools/narrative_save_lock_test.gd`、`tools/event_rendering_save_boundary_test.gd`、`tools/surgery_history_save_test.gd`、`tools/save_store_test.gd` |
+| 关系与事件 | `tools/relationship_system_test.gd`、目标 `*_source_audit.py`、目标 `*_test.gd` |
+| 自由 H 预约 | `tools/free_h_scheduling_test.gd`，另加目标角色加载、热区与窗口测试 |
+| 医护患者 | `tools/staff_patient_lv5_readiness_test.gd`、`tools/patient_sfw_asset_test.gd`（参数见工作流）、`tools/advanced_staff_patient_test.gd` |
+| 高级手术 | `tools/advanced_surgery_test.gd`、`tools/advanced_referral_test.gd`，按改动加生理／对白／UI 专项 |
+| 原生剧情演出 | 按 `docs/skills/hoshimi-native-playtest/SKILL.md` 执行，记录实际 GUI 输入、分支、语言、截图与日志 |
+
+表中 `.gd` 通用运行方式：`godot --headless --path . --log-file /private/tmp/<unique>.log --script res://tools/<name>.gd`；原生测试去掉 `--headless`，并遵循具体驱动说明。这些是检查入口，非本次执行通过声明。交付必须列出实际执行命令、结果和未测范围。

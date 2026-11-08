@@ -896,7 +896,7 @@ func show_event_test_hub() -> void:
 	var event_scroll := ScrollContainer.new()
 	event_scroll.name = "EventTestScroll"
 	event_scroll.position = Vector2(45, 271)
-	event_scroll.size = Vector2(1190, 394)
+	event_scroll.size = Vector2(1190, 434)
 	event_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	page.add_child(event_scroll)
 	var event_content := Control.new()
@@ -1832,7 +1832,7 @@ func add_portrait(person: Dictionary, expression: String = "neutral", requested_
 	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	portrait.position = Vector2(755, 165)
-	portrait.size = Vector2(410, 355 if screen == "dialogue" else 420)
+	portrait.size = Vector2(410, 315 if screen == "dialogue" else 420)
 	portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(portrait)
 
@@ -1848,26 +1848,26 @@ func show_dialogue() -> void:
 		add_portrait(person, node.get("expression", "neutral"))
 	var box := Panel.new()
 	box.name = "PrologueDialogueBox"
-	box.position = Vector2(55, 490)
-	box.size = Vector2(1170, 240)
+	box.position = Vector2(55, 480)
+	box.size = Vector2(1170, 222)
 	box.add_theme_stylebox_override("panel", panel_style(Color(0.06, 0.15, 0.20, 0.96), Color("c6b999")))
 	page.add_child(box)
-	label_at(person.get("name", tx("ui.common.narrator", "旁白")), Vector2(82, 510), 22, Color("e8cfaa"))
+	label_at(person.get("name", tx("ui.common.narrator", "旁白")), Vector2(82, 498), 22, Color("e8cfaa"))
 	# Chinese prose has no spaces between words. WORD_SMART can treat a long
 	# sentence as one unbreakable run, so force character-level wrapping and
 	# keep a generous inset from the dialogue frame.
-	var prologue_text := scrollable_text_at(str(dialogue.text), Vector2(82, 553), Vector2(1100, 110), 21, Color("f4f0e6"), "PrologueText")
+	var prologue_text := scrollable_text_at(str(dialogue.text), Vector2(82, 538), Vector2(1100, 102), 21, Color("f4f0e6"), "PrologueText")
 	prologue_text.scroll_active = bool(dialogue.allow_scroll)
 	if bool(dialogue.has_more):
-		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 676), Vector2(160, 46), advance_dialogue_page.bind(show_dialogue))
+		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 646), Vector2(160, 44), advance_dialogue_page.bind(show_dialogue))
 		continue_button.name = "PrologueDialogueContinue"
 		register_dialogue_continue(continue_button, str(dialogue.text))
 	elif node.has("choices"):
 		pause_dialogue_for_choice()
 		for i in range(node.choices.size()):
-			button_at(node.choices[i].label, Vector2(75 + i * 365, 676), Vector2(345, 46), advance.bind(i))
+			button_at(node.choices[i].label, Vector2(75 + i * 365, 646), Vector2(345, 44), advance.bind(i))
 	else:
-		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 676), Vector2(160, 46), advance.bind(-1))
+		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1040, 646), Vector2(160, 44), advance.bind(-1))
 		continue_button.name = "PrologueDialogueContinue"
 		register_dialogue_continue(continue_button, str(dialogue.text), 0.5)
 	add_dialogue_playback_controls()
@@ -1959,11 +1959,11 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 		var sunday_ids := ["ward", "station", "imaging", "or", "lounge", "rooftop", "player_office", "shared_doctors_office"]
 		map_locations = map_locations.filter(func(location: Dictionary): return str(location.id) in sunday_ids or str(location.id) == "basement_research")
 	var map_row_count := ceili(float(map_locations.size()) / 4.0)
-	var map_row_spacing := minf(130.0, 525.0 / maxf(1.0, map_row_count))
-	var map_card_height := minf(110.0, map_row_spacing - 15.0)
+	var map_row_spacing := minf(126.0, 515.0 / maxf(1.0, map_row_count))
+	var map_card_height := minf(108.0, map_row_spacing - 15.0)
 	for i in range(map_locations.size()):
 		var location: Dictionary = map_locations[i]
-		var pos := Vector2(40 + (i % 4) * 305, 155 + (i / 4) * map_row_spacing)
+		var pos := Vector2(40 + (i % 4) * 305, 168 + (i / 4) * map_row_spacing)
 		var location_button := button_at("%02d   %s
 		   %s" % [i + 1, location.name, location.subtitle], pos, Vector2(285, map_card_height), show_location.bind(location.id))
 		location_button.name = "Location_" + str(location.id)
@@ -2137,7 +2137,8 @@ func start_sunday_character_event(event_id: String) -> void:
 	if not game.is_sunday() or game.sunday_activity_done() or definition.is_empty() or not bool(definition.get("consumes_sunday", false)) or game.start_character_event(event_id) == null:
 		show_notice(tx("ui.sunday.invite_unavailable", "这个邀请现在还无法进行。"))
 		return
-	if event_id == "sayaka_lv4_hotel_date" and not game.reserve_sunday_character_event(event_id):
+	var reserves_before_completion := event_id == "sayaka_lv4_hotel_date" or definition.has("completion_day_offset")
+	if reserves_before_completion and not game.reserve_sunday_character_event(event_id):
 		game.finish_character_event()
 		show_notice(tx("ui.sunday.invite_unavailable", "这个邀请现在还无法进行。"))
 		return
@@ -2365,7 +2366,9 @@ func show_micro_event() -> void:
 		var page_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_dialogue_page.bind(show_micro_event))
 		page_button.name = "MicroEventPageContinue"
 		register_dialogue_continue(page_button, str(presentation.text))
-		button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+		var page_save := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+		page_save.disabled = true
+		page_save.tooltip_text = game.save_block_reason()
 		button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 		add_dialogue_playback_controls()
 		return
@@ -2388,7 +2391,9 @@ func show_micro_event() -> void:
 			var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), advance_micro_event_opening)
 			continue_button.name = "MicroEventContinue"
 			register_dialogue_continue(continue_button, str(presentation.text))
-	button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+	var micro_save := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+	micro_save.disabled = true
+	micro_save.tooltip_text = game.save_block_reason()
 	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 	add_dialogue_playback_controls()
 
@@ -3041,13 +3046,13 @@ func show_character_event() -> void:
 	var definition: Dictionary = event.definition
 	var node: Dictionary = event.current()
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
-	var actor_name := str(definition.get("actor_alias", actor.name))
+	var actor_name := str(definition.get("actor_alias", actor.get("name", definition.actor_id)))
 	if bool(node.get("reveal_identity", false)):
 		actor_name = str(actor.name)
 	if str(definition.id) == "intro_ishigami_nurse_manager" and str(node.id) < "ishi0_010":
 		actor_name = str(definition.title)
 	var location: Dictionary = content.find_record("locations", definition.location_id)
-	var location_name := str(definition.get("location_label", location.name))
+	var location_name := str(definition.get("location_label", location.get("name", definition.location_id)))
 	var event_label := tx("ui.auto.2a5a8f45f76f", "第%s章") % definition.chapter
 	if definition.category == "introduction":
 		event_label = tx("ui.auto.c55f831ad393", "认识事件")
@@ -3298,7 +3303,13 @@ func choose_character_event(choice_id: String) -> void:
 			game.finish_character_event()
 			show_location(character_event_return_location, true)
 			return
-		game.settle_overtime(before_elapsed, int(event.definition.minutes))
+		if event.definition.has("completion_day_offset"):
+			# Long fixed-VN events may narratively cross midnight while remaining one
+			# unsaveable atomic session. Only settle the persistent clock after the
+			# final node, without invoking a day-refresh or splitting the event.
+			game.advance_story_to_day(int(event.completed_day) + int(event.definition.completion_day_offset), int(event.definition.get("completion_absolute_clock", 9 * 60)))
+		else:
+			game.settle_overtime(before_elapsed, int(event.definition.minutes))
 		if str(event.definition.id) == "manami_lv1_sneeze":
 			game.finish_character_event()
 			show_map(false)
@@ -3326,7 +3337,13 @@ func choose_character_event(choice_id: String) -> void:
 			next_view.call()
 			return
 		if game.day_number() > before_day:
-			show_day_transition(next_view)
+			var completion_display_override := {}
+			if event.definition.has("completion_display_clock"):
+				completion_display_override = {
+					"day": game.day_number(),
+					"absolute_clock": int(event.definition.completion_display_clock),
+				}
+			show_day_transition(next_view, completion_display_override)
 		else:
 			next_view.call()
 	else:
@@ -3374,6 +3391,12 @@ func show_character_event_complete() -> void:
 	screen = "character_event_complete"
 	var actor: Dictionary = content.find_record("staff", event.definition.actor_id)
 	var actor_name := str(actor.name) if str(event.definition.id) == "takemi_lv0_t6" else str(event.definition.get("actor_alias", actor.name))
+	var relationship_actor_ids := game.character_event_relationship_actor_ids(event.definition)
+	if relationship_actor_ids.size() > 1:
+		var names: Array[String] = []
+		for actor_id in relationship_actor_ids:
+			names.append(str(content.find_record("staff", actor_id).name))
+		actor_name = " × ".join(names)
 	var relation: Dictionary = game.relation_for(actor.id)
 	base(tx("ui.auto.9f66bcb3b7ff", "事件结束"), "%s / %s" % [actor_name, event.definition.title], true, event.definition.background_id)
 	if game.staff_is_met(str(actor.id)) and not bool(event.definition.get("hide_completion_portrait", false)):
@@ -3387,8 +3410,12 @@ func show_character_event_complete() -> void:
 		relation_note = tx("ui.auto.5124014a71dc", "已经建立羁绊 · 关系 Lv.1")
 	elif event.definition.category == "rank_up":
 		relation_note = tx("ui.auto.1f258526390d", "关系提升至 Lv.%s") % relation.get("level", 1)
+		if relationship_actor_ids.size() > 1:
+			relation_note = tx("ui.character_event.shared_rank_up", "双方关系同时提升至 Lv.%s") % relation.get("level", 1)
 	label_at(relation_note, Vector2(65, 325), 22, Color("e8cfaa"), 650)
-	if bool(event.definition.get("consumes_sunday", false)):
+	if bool(event.definition.get("consumes_sunday", false)) and event.definition.has("completion_day_offset"):
+		label_at(tx("ui.event.sunday_continues_next_workday", "这段剧情从星期日持续到下一个工作日。"), Vector2(65, 385), 19, Color("c2d2cc"), 650)
+	elif bool(event.definition.get("consumes_sunday", false)):
 		label_at(tx("ui.event.whole_sunday", "本次约会占用整个星期日。结束后进入下一工作日。"), Vector2(65, 385), 19, Color("c2d2cc"), 650)
 	else:
 		label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [event.definition.minutes, game.clock_text()], Vector2(65, 385), 19, Color("c2d2cc"), 650)
@@ -3401,6 +3428,8 @@ func show_character_event_complete() -> void:
 		return_preop_id = game.active_preop_id
 	if character_event_from_test:
 		button_at(tx("ui.auto.c27f998ca0c2", "返回事件测试  →"), Vector2(60, 475), Vector2(320, 54), show_character_events.bind(actor.id, character_event_return_location))
+	elif bool(event.definition.get("consumes_sunday", false)) and event.definition.has("completion_day_offset"):
+		button_at(tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(60, 475), Vector2(320, 54), finish_long_sunday_character_event)
 	elif bool(event.definition.get("consumes_sunday", false)):
 		button_at(tx("ui.auto.05194e8cf7c4", "结束星期日  →"), Vector2(60, 475), Vector2(320, 54), finish_sunday_character_event.bind(str(actor.id), str(event.definition.get("date_location_id", ""))))
 	elif not return_preop_id.is_empty():
@@ -3417,6 +3446,10 @@ func finish_sunday_character_event(actor_id: String, location_id: String) -> voi
 	if int(relation.get("level", 0)) >= 1:
 		narration = tx("ui.auto.3d8811c9d804", "和%s吃完了第一次约会的晚餐。两个人都已经知道，这不只是一顿饭。") % content.find_record("staff", actor_id).name
 	finish_sunday_activity("date", narration, actor_id, location_id)
+
+func finish_long_sunday_character_event() -> void:
+	game.finish_character_event()
+	show_map()
 
 func show_staff_role_reward(reward: Dictionary, next_action: Callable) -> void:
 	var path := str(reward.get("path", ""))
@@ -3472,11 +3505,11 @@ func show_special_events() -> void:
 		var event_scroll := ScrollContainer.new()
 		event_scroll.name = "SpecialEventScroll"
 		event_scroll.position = Vector2(45, 175)
-		event_scroll.size = Vector2(1190, 475)
+		event_scroll.size = Vector2(1190, 462)
 		event_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 		page.add_child(event_scroll)
 		var event_content := Control.new()
-		event_content.custom_minimum_size = Vector2(1170, max(475, events.size() * 92 + 20))
+		event_content.custom_minimum_size = Vector2(1170, max(462, events.size() * 92 + 20))
 		event_scroll.add_child(event_content)
 		for i in range(events.size()):
 			var definition: Dictionary = events[i]
@@ -3733,6 +3766,8 @@ func show_special_event() -> void:
 		action_buttons.append(page_button)
 		register_dialogue_continue(page_button, str(presentation.text), 0.7 if is_new_cg else 0.0)
 		var page_save_button := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+		page_save_button.disabled = true
+		page_save_button.tooltip_text = game.save_block_reason()
 		var page_load_button := button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 		action_buttons.append(page_save_button)
 		action_buttons.append(page_load_button)
@@ -3754,6 +3789,8 @@ func show_special_event() -> void:
 	else:
 		pause_dialogue_for_choice()
 	var save_button := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+	save_button.disabled = true
+	save_button.tooltip_text = game.save_block_reason()
 	var load_button := button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 	action_buttons.append(save_button)
 	action_buttons.append(load_button)
@@ -3950,7 +3987,7 @@ func show_event_gallery(return_location: String = "") -> void:
 	var gallery_scroll := ScrollContainer.new()
 	gallery_scroll.name = "EventGalleryScroll"
 	gallery_scroll.position = Vector2(45, 190)
-	gallery_scroll.size = Vector2(1190, 450)
+	gallery_scroll.size = Vector2(1190, 424)
 	gallery_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	gallery_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	page.add_child(gallery_scroll)
@@ -3964,7 +4001,7 @@ func show_event_gallery(return_location: String = "") -> void:
 	var special_definitions: Array = game.special_event_definitions.values().filter(func(item: Dictionary): return not bool(item.get("developer_only", false)) and bool(item.get("gallery_unlock", false)))
 	special_definitions.sort_custom(func(a: Dictionary, b: Dictionary): return str(a.id) < str(b.id))
 	var row_count := ceili(float(definitions.size() + special_definitions.size() + role_rewards.size()) / 2.0)
-	gallery_content.custom_minimum_size = Vector2(1170, max(450, row_count * 105 + 15))
+	gallery_content.custom_minimum_size = Vector2(1170, max(424, row_count * 105 + 15))
 	gallery_scroll.add_child(gallery_content)
 	for i in range(definitions.size()):
 		var definition: Dictionary = definitions[i]
@@ -5477,7 +5514,13 @@ func show_day_transition(next_action: Callable, display_override: Dictionary = {
 			day_transition_next = next_action
 			show_after_work_walk()
 			return
-	render_day_transition(next_action, departure)
+	var transition_context := departure
+	if transition_context.is_empty() and not display_override.is_empty():
+		transition_context = {
+			"workday": int(display_override.get("day", game.day_number())),
+			"clock": int(display_override.get("absolute_clock", game.current_absolute_clock())),
+		}
+	render_day_transition(next_action, transition_context)
 
 func render_day_transition(next_action: Callable, departure: Dictionary = {}) -> void:
 	screen = "day_transition"

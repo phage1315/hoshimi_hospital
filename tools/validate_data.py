@@ -343,7 +343,9 @@ for relation in collections['relationships']:
         special_event = by['special_events'].get(event_id, {})
         check(bool(event) or bool(special_event), prefix + 'unknown bond/rank event ' + event_id)
         if event:
-            check(event.get('actor_id') == relation['target_id'], prefix + event_id + ': event actor mismatch')
+            shared_actor_ids = event.get('relationship_actor_ids', [])
+            check(event.get('actor_id') == relation['target_id'] or relation['target_id'] in shared_actor_ids,
+                  prefix + event_id + ': event actor mismatch')
             expected_category = 'bond' if slot['target_level'] == 1 else 'rank_up'
             check(event.get('category') == expected_category, prefix + event_id + ': wrong event category')
             check(event.get('target_level') == slot['target_level'], prefix + event_id + ': target level mismatch')
@@ -1299,6 +1301,11 @@ for event in collections['character_events']:
             check((ROOT / portrait_path).is_file(), prefix + node['id'] + ': node portrait missing')
             check(png_has_alpha_channel(ROOT / portrait_path),
                   prefix + node['id'] + ': node portrait must be a transparent PNG, not an opaque splash image')
+        elif node.get('event_portraits'):
+            for staged in node['event_portraits']:
+                check((ROOT / staged['path']).is_file(), prefix + node['id'] + ': staged portrait missing')
+                check(png_has_alpha_channel(ROOT / staged['path']),
+                      prefix + node['id'] + ': staged portrait must be a transparent PNG')
         else:
             check(event['outfit'] + '/' + node['expression'] in portraits, prefix + 'missing expression portrait ' + node['expression'])
     nodes = {node['id']: node for node in event['nodes']}
@@ -1320,6 +1327,12 @@ for event in collections['character_events']:
             if conditional:
                 target = conditional['next']
                 check(target == '@end' or target in nodes, prefix + 'unknown conditional target')
+                if target != '@end': pending.append(target)
+            relationship_conditional = choice.get('next_if_relationship_level', {})
+            if relationship_conditional:
+                target = relationship_conditional['next']
+                check(relationship_conditional['actor_id'] in by['staff'], prefix + 'unknown relationship-conditional actor')
+                check(target == '@end' or target in nodes, prefix + 'unknown relationship-conditional target')
                 if target != '@end': pending.append(target)
     check(reachable == set(nodes), prefix + 'unreachable node')
     for node in event['nodes']:
