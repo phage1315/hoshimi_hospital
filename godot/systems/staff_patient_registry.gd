@@ -17,6 +17,7 @@ extends RefCounted
 const Loader = preload("res://godot/scripts/content_loader.gd")
 const PREOP_ID := "preop_staff_patient"
 const PATH := "res://data/staff_patient_profiles.json"
+const MISCHIEF_PATH := "res://data/staff_patient_mischief_dialogue.json"
 
 static func profiles() -> Dictionary:
 	var value: Variant = JSON.parse_string(FileAccess.get_file_as_string(PATH))
@@ -28,11 +29,33 @@ static func profile(actor_id: String) -> Dictionary:
 static func dialogue(actor_id: String, locale: String) -> Dictionary:
 	return profile(actor_id).get("dialogue", {}).get(locale, {})
 
+static func mischief_profiles() -> Dictionary:
+	if not FileAccess.file_exists(MISCHIEF_PATH):
+		return {}
+	var value: Variant = JSON.parse_string(FileAccess.get_file_as_string(MISCHIEF_PATH))
+	return value if value is Dictionary else {}
+
+static func mischief_dialogue(actor_id: String, locale: String) -> Dictionary:
+	return mischief_profiles().get(actor_id, {}).get("dialogue", {}).get(locale, {})
+
 static func patient_record(person: Dictionary, locale: String) -> Dictionary:
 	if person.is_empty() or profile(str(person.id)).is_empty():
 		return {}
 	var config := profile(str(person.id))
-	var lines := dialogue(str(person.id), locale)
+	var lines := dialogue(str(person.id), locale).duplicate(true)
+	var extra_mischief := mischief_dialogue(str(person.id), locale)
+	var reaction_variants: Dictionary = lines.get("reaction_variants", {}).duplicate(true)
+	for rid in extra_mischief.get("reaction_variants", {}):
+		reaction_variants[rid] = extra_mischief["reaction_variants"][rid].duplicate(true)
+	var team_overrides: Dictionary = lines.get("team_overrides", {}).duplicate(true)
+	for staff_id in extra_mischief.get("team_overrides", {}):
+		var merged_staff: Dictionary = team_overrides.get(staff_id, {}).duplicate(true)
+		var extra_staff: Dictionary = extra_mischief["team_overrides"][staff_id]
+		for action_id in extra_staff:
+			merged_staff[action_id] = extra_staff[action_id]
+		team_overrides[staff_id] = merged_staff
+	if not team_overrides.is_empty():
+		lines["team_overrides"] = team_overrides
 	var visuals: Dictionary = person.get("visuals", {}).duplicate(true)
 	var portraits: Dictionary = visuals.get("portraits", {})
 	for alias in config.get("portrait_aliases", {}):
@@ -45,7 +68,7 @@ static func patient_record(person: Dictionary, locale: String) -> Dictionary:
 		"medical_background": true, "has_prior_surgery": true,
 		"visuals": visuals, "personality": config.get("personality", {}),
 		"traits": config.get("traits", {}), "reaction_lines": lines.get("reaction_lines", {}).duplicate(true),
-		"reaction_variants": lines.get("reaction_variants", {}), "staff_patient_dialogue": lines}
+		"reaction_variants": reaction_variants, "staff_patient_dialogue": lines}
 	# Reuse the same locale-aware personality base as ordinary patients. Only
 	# explicitly authored staff reactions override it; never copy another actor.
 	var profile_id := str(config.get("dialogue_profile", ""))

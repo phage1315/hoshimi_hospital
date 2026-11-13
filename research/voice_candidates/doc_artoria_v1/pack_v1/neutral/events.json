@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYG98Rm8lkJvnW2UsAsd",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYG8p3oMV9lhoWQbuoaMiAsItfAkghr",
+      "expires_at": 1794532360,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her late twenties, speaking native standard Japanese. Clear, dignified, steadfast mid-high register with upright breath support, pure unclouded resonance, and calm leadership resolve. Formal, sincere, direct articulation with steady pacing and zero affectation.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Dignified, noble, disciplined deputy chief surgeon — Clear, resolute agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af60fb85ba48191b620c1cc5932552e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Dignified, noble, disciplined deputy chief surgeon — Clear, resolute agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はい",
+    "event_id": "event_EjYGAWPr4iX4HcIGwrMH0"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、",
+    "event_id": "event_EjYGAFfkBj0XDtzrIJoPX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "承",
+    "event_id": "event_EjYGAG1LE49nqmZPscJqK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "知",
+    "event_id": "event_EjYGBVVvbK6Uu052csSxq"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYGB9RlJ5BM6WcbtO7tW",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "しました",
+    "event_id": "event_EjYGB3Zj9LWYQv9QFFuN2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYGBFgnonqNmXvjgbPWY"
+  },
+  {
+    "event_id": "event_EjYGGDfS9ikqs7DKOffOr",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYG8p3oMV9lhoWQbuoaMiAsItfAkghr",
+      "expires_at": 1794532360,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her late twenties, speaking native standard Japanese. Clear, dignified, steadfast mid-high register with upright breath support, pure unclouded resonance, and calm leadership resolve. Formal, sincere, direct articulation with steady pacing and zero affectation.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Dignified, noble, disciplined deputy chief surgeon — Clear, resolute agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af60fb85ba48191b620c1cc5932552e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Dignified, noble, disciplined deputy chief surgeon — Clear, resolute agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

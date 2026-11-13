@@ -101,6 +101,9 @@ var pain := 0
 var dignity := 100
 var cooperation_base := 70
 # Presentation-only state, never part of the durable save contract.
+var session_flavor_salt := 0
+var base_execute_title := ""
+var base_execute_label := ""
 var assistant_anesthesia_reacted := false
 var assistant_anesthesia_pending := false
 var assistant_attitude_event := -1
@@ -294,6 +297,8 @@ func restore_state(state: Dictionary) -> bool:
 		# Rebuild presentation from the current locale, without replaying effects.
 		feedback = ""
 		feedback_speaker = str(current().speaker)
+	if not procedure_id.is_empty():
+		refresh_operative_positioning_stage()
 	last_error = ""
 	historical_replay_mode = false
 	return true
@@ -349,6 +354,9 @@ func runtime_english(value: Variant) -> Variant:
 		"体位与固定已经确认。":"Positioning and pressure-point protection are confirmed.", "继续：留置导尿":"Continue: urinary catheterization",
 		"留置导尿":"Urinary Catheterization", "导尿后的回应":"Catheterization Confirmed", "留置导尿已经完成。":"Urinary catheterization is complete.", "继续：术野消毒":"Continue: skin antisepsis",
 		"术野消毒":"Skin Antisepsis", "消毒后的回应":"Antisepsis Confirmed", "术野消毒已经完成并充分干燥。":"The operative field has been disinfected and allowed to dry.", "继续：复核切口划线":"Continue: verify incision marking",
+		"继续：铺设无菌单并复核切口划线":"Drape the field and verify incision marking", "跳过铺巾，保持全裸直接手术":"Skip draping and operate on her stark naked",
+		"跳过铺巾后的回应":"Draping Omitted", "没有铺设无菌单，患者全身赤裸地暴露在无影灯下。":"Without sterile drapes, the patient lies completely bare beneath the operating lights.",
+		"「等、等一下……不铺无菌单吗？！难道要我就这样全身赤条条地开刀？！」":"“W-wait... No sterile drapes?! Am I really going to be operated on stark naked like this?!”",
 		"切口划线":"Incision Marking", "划线后的回应":"Incision Marking Confirmed", "切口范围已经复核，接下来可以正式开始手术。":"The incision has been verified. Surgery may now begin.", "完成准备，进入开始手术":"Complete preparation and begin surgery",
 		"开始手术":"Begin Surgery", "四项术前准备已经完成。患者仍在清醒状态下明显抗拒，团队等待你的最终命令。":"All four preoperative steps are complete. The awake patient remains visibly resistant while the team awaits your final order.",
 		"坚持继续，命令：“开始手术。手术刀。”":"Insist on continuing: “Begin surgery. Scalpel.”", "你再次确认决定，随即向团队下令：「开始手术。手术刀。」":"You confirm the decision once more and order, “Begin surgery. Scalpel.”",
@@ -358,12 +366,76 @@ func runtime_english(value: Variant) -> Variant:
 		"团队托住肩、髋与四肢完成仰卧位调整，软垫和安全固定带逐一就位。患者在全身麻醉下没有意识反应。":"The team completes supine positioning and places each pad and safety strap. The patient shows no conscious response under general anesthesia.",
 		"团队依据术式改为截石位：患者的双腿同步抬起，屈髋屈膝后分别放入带软垫的腿架；护士确认骶尾部、腓骨头与足跟没有异常受压，再完成对称固定。":"The team places the patient in lithotomy, lifting both legs together into padded supports and checking the sacrum, fibular heads, and heels before symmetric fixation.",
 		"确认腿架与受压点保护，完成截石位固定":"Confirm leg supports and pressure-point protection", "团队同步托起双腿并放入腿架，逐一确认软垫、关节角度与固定带。患者在全身麻醉下没有意识反应。":"The team lifts both legs into the supports and verifies the padding, joint angles, and straps. The patient shows no conscious response under general anesthesia.",
+		"借口便于导尿观察，强行改为分腿截石位":"Force spread-leg lithotomy positioning anyway", "「等、等一下……这次明明不是下面的手术，为什么要把我的两条腿架高大大分开绑住？！」":"“W-wait... This isn't even lower-body surgery—why are you strapping both my legs up wide apart in stirrups?!”",
 		"巡回护士核对导尿用品，在保护隐私的同时显露必要范围，以无菌方式清洁并置入导尿管，供长时间手术监测尿量与膀胱引流。":"The circulating nurse verifies the supplies, exposes only the necessary area, performs sterile cleansing, and inserts a urinary catheter for drainage and output monitoring.",
 		"确认无菌操作，完成留置导尿":"Confirm sterile technique and complete catheterization", "巡回护士完成无菌清洁与置管，导尿管固定妥当。患者在全身麻醉下没有意识反应。":"The circulating nurse completes sterile preparation and secures the catheter. The patient shows no conscious response under general anesthesia.",
+		"接过导尿盘，由主刀亲手导尿并按压排空":"Take the tray to catheterize and press her bladder personally", "「既然主刀医生要亲自操作，无菌导尿盘请用，我来配合固定引流袋。」":"“Since you wish to perform it personally, Doctor, here is the sterile catheter tray—I will secure the drainage bag.”",
+		"主刀亲手导尿":"Surgeon-Performed Catheterization", "你示意巡回护士让出位置，不加遮挡地分开患者双腿间的私密褶皱，在无影灯直射下对准尿道口，亲手将润滑后的导尿管一寸寸推进膀胱。":"You wave the circulating nurse aside, part the patient's intimate folds without any modesty screen beneath the glaring lamp, and advance the lubricated catheter inch by inch into her bladder yourself.",
+		"不遮挡视野，亲手将导尿管置入膀胱":"Part her folds unshielded and insert the catheter personally",
+		"按压小腹排空膀胱":"Suprapubic Bladder Expression", "导尿管已经置入并接好集尿袋。患者正因尿道异物感而死死绷紧下身；你可以就此停手，也可以将掌心直接覆在她赤裸的耻骨上方小腹，亲手把膀胱残余尿液挤空。":"The catheter is in place and connected to the drainage bag. As the patient tenses against the foreign sensation in her urethra, you may either stop here or press your palm directly over her bare lower abdomen above the pubis to express the remaining urine yourself.",
+		"不再按压，继续：术野消毒":"Skip abdominal pressing and continue: skin antisepsis",
+		"按压耻骨上方小腹，亲手挤空膀胱残余尿液":"Press her bare lower belly to squeeze her bladder empty",
+		"「啊、不要按肚子……尿顺着管子被挤出来了，连声音都听得见……求求你快拿开手……！」":"“Ah—please don't press my belly... You're squeezing the urine right out through the tube and everyone can hear it... Please take your hand away...!”",
+		"挤压排空后的回应":"Bladder Expression Confirmed", "温热的残余尿液顺着透明导尿管汩汩流入台边的集尿袋，患者羞愤得几乎不敢抬头。":"Warm residual urine streams steadily down the clear tubing into the bedside drainage bag while the mortified patient can barely lift her head.",
+		"让巡回护士核对引流刻度并记录":"Have the circulating nurse read off and log the urine volume",
+		"「引流袋刻度 135 毫升，排空确认完毕，已经记入护理单了。」":"“135 mL in the drainage bag—bladder expression confirmed and logged on the chart.”",
 		"护士再次核对切入部位，从预定切口中心向外分区涂布消毒液；冰凉液体在皮肤上铺开，待覆盖范围完整后自然干燥。":"The nurse verifies the operative site and applies antiseptic outward from the planned incision, then allows the field to dry.",
 		"由中心向外完成消毒并等待干燥":"Apply antiseptic outward and allow it to dry", "消毒液均匀覆盖预定术野，在灯光下留下短暂的湿润光泽。患者在全身麻醉下没有意识反应。":"Antiseptic evenly covers the operative field and briefly glistens under the lights. The patient shows no conscious response under general anesthesia.",
+		"借口预防延长切口，亲自做胸至会阴扩大消毒":"Take the forceps for chest-to-perineum prep",
+		"「既然主刀要求扩大备用的无菌边界，卵圆钳和浸满碘伏的纱球请拿好。」":"“Since you want an extended sterile margin, Doctor, here are the ring forceps and povidone-iodine sponges.”",
+		"扩大消毒 · 胸部与乳晕":"Extended Antisepsis · Breasts and Nipples",
+		"你夹起吸饱冰凉碘伏的纱布球，没有停在常规切口边缘，而是顺着锁骨下方一路抹上患者赤裸柔软的双乳；湿冷药液沿着乳肉弧度淌下，钳尖夹着棉球贴住两侧乳晕与乳尖一圈圈擦拭，冷意刺激得乳头在无影灯下不受控制地挺立发硬。":"Lifting a sponge soaked in cold povidone-iodine, you sweep past the standard margin onto the patient's bare breasts; cool amber fluid trails down their curves as you circle both areolae and nipples with the sponge until the chill makes them stiffen beneath the glaring lamp.",
+		"用冰凉碘伏棉球仔细涂刷双乳与挺立乳尖":"Swab both bare breasts and stiffening nipples",
+		"「呀……为什么连乳房和乳头都要涂满冰凉的消毒水……明明被大家低头看着，那里却冻得立起来了……！」":"“Ah... why are you painting even my breasts and nipples with freezing antiseptic... Everyone is looking down, yet the chill is making them stiffen...!”",
+		"扩大消毒 · 小腹与会阴":"Extended Antisepsis · Belly and Perineum",
+		"患者赤裸的胸前已被涂得湿亮反光、随着急促呼吸剧烈起伏。你可以就此停手等待干燥，也可以重新夹起一颗浸透药液的冰凉棉球，从肚脐一路向下刷过腹股沟与剃净备皮后的外阴褶皱。":"Her bare chest already gleams wet beneath the lamp, rising and falling rapidly. You may stop here to let it dry, or take a fresh soaked sponge and swab downward from her navel across her groin and bare labial folds.",
+		"上区已涂妥，不再向下扩大并等待干燥":"Stop here and let the antiseptic dry",
+		"换湿透棉球，从肚脐一路刷过腹股沟与外阴褶皱":"Swab from navel across groin and bare vulva",
+		"「唔啊——连最私密的缝隙里都要刷进去吗？！又冰又刺激……全身上下都湿淋淋地露在灯光下了……！」":"“Gah—you're swabbing right between my most private folds too?! It's freezing and stinging... Now my whole naked body is glistening wet under the lights...!”",
+		"扩大消毒 · 自然风干":"Extended Antisepsis · Air-Drying Bare",
+		"按外科无菌原则，涂布后的碘伏严禁拿干纱布擦拭，必须敞开等待自然风干。冷气吹过患者从挺立乳尖到腿间湿亮反光的每一寸裸肤，带走大量体温，令她在无影灯下瑟瑟发抖。":"By sterile protocol, applied povidone-iodine must never be wiped off and has to air-dry completely exposed. Cool OR air blows across every gleaming amber inch from her stiffened nipples to between her thighs, leaving her shivering beneath the lamp.",
+		"按无菌规范敞开晾干，听取台上确认":"Let her air-dry bare per sterile protocol",
+		"「按无菌规范不能擦，只能这样敞着等干透——现在消毒层已经成膜干燥了。」":"“Sterile protocol forbids wiping it off, so she had to air-dry bare—the antiseptic film is dry now.”",
 		"你依据术前已经核对的定位和解剖标志，用无菌皮肤标记笔复核切口走向；笔尖在消毒后的皮肤上留下清晰而克制的线条。":"Using the verified landmarks and operative plan, you trace the incision with a sterile skin marker.",
 		"核对解剖标志，完成切口划线":"Verify landmarks and complete the incision marking", "切口线与术前计划一致，团队完成最后一次位置核对。患者在全身麻醉下没有意识反应。":"The marking matches the preoperative plan, and the team completes its final site check. The patient shows no conscious response under general anesthesia.",
+		"借口校准皮纹层次，慢速描摹切口并当众讲评体征":"Trace the cut slowly and lecture on her body",
+		"「切口走向和皮纹张力得一寸寸核准——别屏气，笔尖贴上去的时候自己听清马上要从哪儿切开。」":"“Every inch of incision alignment and skin tension needs exact calibration—don't hold your breath; feel the pen tip and hear where the blade will open you.”",
+		"切口划线 · 慢速描摹":"Incision Marking · Slow Tracing",
+		"你捏着无菌皮肤标记笔，没有一笔带过，而是用微凉的紫色笔尖抵住她紧绷的裸露皮肤，指腹贴着切口预定线一毫米一毫米地缓慢拖移，当着她的面把即将下刀切开的起止点与长度逐寸画满。":"Instead of marking in one brisk stroke, you press the cool purple tip of the sterile skin marker into her taut, bare skin, trailing your fingertips millimeter by millimeter along the planned line to draw out the exact length and endpoints of the cut right in front of her.",
+		"不再慢速描摹，按常规划线收笔":"Finish with standard incision marking",
+		"你迅速补完剩余的切口参考线，盖上无菌标记笔帽。":"You briskly complete the remaining reference line and cap the sterile marker.",
+		"用冰凉笔尖贴着紧绷裸肤，一寸寸慢速描出切口":"Drag the cold pen inch by inch along her cut",
+		"「唔……笔尖好凉……为什么画得这么慢又这么长？！一想到刀刃马上要顺着这条紫线切开，我浑身都在发抖……！」":"“Mm... the pen tip is freezing... Why are you drawing it so slowly and so long?! Thinking about the blade slicing right along this purple line has me shaking all over...!”",
+		"切口划线 · 当众体征讲评":"Incision Marking · Public Commentary",
+		"醒目的紫色切口线横亘在她急促起伏的皮肤上。无影灯直射下，恐惧与羞耻让她的心率飙升、全身泛起细密鸡皮疙瘩，连乳尖与小腹肌群都在不受控制地发硬战栗。你可以就此收笔，也可以拿着笔杆向围在台边的全组医护当众讲评她的生理反应。":"The vivid purple incision line stretches across her rapidly heaving skin. Under the glare of the shadowless lamp, fear and shame send her heart rate spiking and prickle her body with goosebumps, her nipples stiffening and belly muscles quivering involuntarily. You may cap the pen here, or use the barrel to lecture the gathered OR team aloud on her bodily reactions.",
+		"收起标记笔，不再当众点评体征":"Cap the marker without public commentary",
+		"你盖上无菌标记笔帽，没有再点破她僵硬发抖的身体反应。":"You cap the sterile marker without calling attention to her stiff, trembling body.",
+		"拿笔杆虚点她战栗泛红的敏感处，向全组当众讲评":"Point out her goosebumps and peaks to the team",
+		"「别、别拿笔指着那里当教学例子讲出来啊……！连心跳加快和胸口发硬都被大家听见看光了，求求你快停下……！」":"“D-don't point your pen there and lecture on me like a teaching specimen...! Everyone can hear my racing heart and see my chest stiffening—please stop...!”",
+		"切口划线 · 护士观察点评":"Incision Marking · Nurse's Observation",
+		"被主刀当着全手术室的面逐一点破羞耻的生理应激体征后，患者连耳根与脖颈都涨得通红，心电监护仪上的脉搏提示音也急促地滴滴作响。台旁的巡回护士瞥了一眼监护屏幕与画着紫线的术野，随口补了一句。":"Called out before the entire operating room for her involuntary physical stress signs, the patient flushes crimson to her ears and throat while the pulse oximeter beeps rapidly. Glancing from the monitor to the purple-marked field, the circulating nurse beside the table chimes in.",
+		"听取台旁护士的体征点评，准备开始手术":"Hear the nurse's remark and prepare to start",
+		"「心电监护上的心率一下子跳到一百二了呢——紫色切口线衬在泛红起栗的皮肤上倒是格外醒目，随时可以下刀。」":"“Her heart rate on the monitor just jumped to 120—though that purple incision line stands out crystal clear against her flushed, goosebumped skin. Ready whenever you are.”",
+		"缝合包扎后暂缓盖单，亲手擦洗药迹并全身检视":"Suture first, then wipe and inspect her bare",
+		"「先别急着盖转运单——手术刚缝完，身上残留的冷汗、血迹和碘伏印子得由主刀亲自擦洗复查一遍。」":"“Hold off on the transfer sheet—now that closure is done, I'll wipe off the cold sweat, blood traces, and iodine stains and inspect her myself.”",
+		"确认过床交接，完成手术结算":"Confirm stretcher handoff and conclude surgery",
+		"术后过床交接":"Stretcher Handoff",
+		"术后清理 · 温盐水赤裸擦洗":"Post-Op Cleanup · Bare Saline Wipe-Down",
+		"漫长的开刀与缝合已经把她的体力彻底榨干。她面色苍白、满头冷汗地瘫软在手术台上，连抬起一根手指的力气都没剩下，只有切口上贴着窄窄一条无菌敷料。你拧干浸过温热生理盐水的纱布，从她汗湿的锁骨一路擦过赤裸起伏的双乳、肚脐四周到大腿内侧，把干涸的琥珀色碘伏印子一点点擦洗干净。":"The grueling operation and suturing have drained every ounce of her strength. Pale and drenched in cold sweat, she lies limp on the operating table without the energy to lift a finger, covered by nothing but a narrow sterile dressing over the closed cut. Wringing out gauze soaked in warm saline, you wipe slowly from her sweat-damp collarbones across her bare heaving breasts, around her navel, and down her inner thighs to clean away the dried amber iodine stains.",
+		"简单擦净血迹，立即盖上转运白单":"Wipe traces briskly and cover her with a sheet",
+		"你迅速替虚弱的她擦净皮肤残迹，示意护士盖上干净床单准备结束手术。":"You briskly wipe her skin clean and motion for the nurse to cover her with a fresh sheet to wrap up the operation.",
+		"趁她虚脱无力，用温盐水纱布慢擦双乳与腿根碘伏":"Wipe warm saline over her breasts and thighs",
+		"「哈啊……明明刀都缝完了……我已经连手指都动不了了，为什么还要赤条条地被你擦遍全身啊……呜……」":"“Hah... the cut is already sutured... I can't even move a finger anymore—why am I still lying bare getting wiped all over by you... sob...”",
+		"术后清理 · 推下台前全身检视":"Post-Op Cleanup · Pre-Transfer Bare Inspection",
+		"温热盐水擦洗过后的裸肌泛着湿润微红，她在术后虚脱与麻药余效里轻喘着气，眼角还挂着熬过开刀的泪痕。在解开四肢固定带、推来过床平车之前，你仍不急着让护士盖单，而是沿着手腕压痕、窄敷料边缘一路端详到她双腿间仍留置着的透明导尿管。":"Freshly wiped with warm saline, her bare skin glows faintly damp and flushed as she pants shallowly in postoperative exhaustion, tear tracks from surviving the knife still clinging to the corners of her eyes. Before unbuckling her limb straps or wheeling up the transfer stretcher, you hold off the sheet a moment longer—looking unhurriedly from her strap-indented wrists past the narrow incision dressing down to the clear urinary catheter still between her thighs.",
+		"不再检视，解开固定带并盖上白单":"Unfasten her straps and cover her with a sheet",
+		"你松开固定带并拉起干净床单盖住她冰凉的身体，准备完成手术收尾。":"You unfasten the straps and pull a clean sheet over her chilled body to conclude the operation.",
+		"暂不盖单，从胸腹敷料到腿间尿管逐寸检视全身":"Inspect her bare body and tube before the sheet",
+		"「连哭的力气都没剩下了……求求你，拿块床单盖住我吧……别再盯着我看了……」":"“I don't even have the strength left to cry... Please, just cover me with a sheet... stop looking at me anymore...”",
+		"术后清理 · 盖单与过床准备":"Post-Op Cleanup · Sheet Cover and Transfer Prep",
+		"被主刀从头到脚细细擦洗又检视了一遍，原本就已经被整台手术折腾得奄奄一息的患者连最后一丝反抗的气力都耗尽了，只能闭着湿红的眼睛任人摆布。抱来温热白床单的巡回护士见你终于检视完毕，一边替她解开固定带盖单，一边随口说道。":"Wiped down and inspected head to toe after the operation had already wrung the last strength out of her, the patient lies completely spent behind damp, reddened eyelids. Stepping up with a warmed white sheet once you finally finish looking her over, the circulating nurse unfastens her straps and remarks as she covers her.",
+		"让护士盖上温热白单，准备过床结算":"Have the nurse cover her for stretcher transfer",
+		"「好啦，温热白单盖上了——刚才开刀都没晕过去，最后被坂口医生从头到脚擦洗检视这一遭，倒差点真羞晕过去了呢。」":"“There we go, warm sheet's over you—you didn't faint through the whole operation, yet getting wiped down and inspected head to toe by Dr. Sakaguchi nearly pushed you over the edge.”",
 		"病房准备 · 灌肠":"Ward Preparation · Enema", "灌肠后的回应":"Enema Complete", "按清单亲手完成灌肠":"Perform the required enema personally", "按清单跳过灌肠":"Skip enema as directed", "跳过灌肠":"Omit the required enema", "仍然执行灌肠":"Perform an unnecessary enema anyway",
 		"本次属于开腹或盆腔手术，准备清单要求灌肠。执行时，你会让患者侧卧屈膝，核对液体温度，润滑管端后缓慢置入并分次注入。":"This open abdominal or pelvic operation requires an enema. Position the patient on her side, verify the solution temperature, lubricate the tip, and administer it slowly in stages.",
 		"本次手术不涉及腹部或盆腔，准备清单没有要求灌肠。用品仍在推车上；若坚持执行，操作仍包括侧卧置管、分次注入与等待排空。":"This operation does not involve the abdomen or pelvis, so the checklist does not require an enema.",
@@ -391,6 +463,7 @@ func runtime_english(value: Variant) -> Variant:
 
 func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_data: Array = [], known_staff: Array[String] = [], restrict_known: bool = false, surgery_team_dialogue_data: Array = [], patient_interaction_data: Array = [], temporary_condition_data: Array = [], unlocked_procedures: Array[String] = [], enforce_unlocks: bool = false, palpation_profile_data: Array = [], awake_special_bark_data: Array = []) -> void:
 	definition = data
+	session_flavor_salt = randi()
 	or_table_palpation_cg_id = resolve_palpation_cg_id()
 	surgery_team_dialogue_profiles = surgery_team_dialogue_data
 	patient_interactions = patient_interaction_data
@@ -427,6 +500,10 @@ func _init(data: Dictionary, staff: Array, surgery_data: Array = [], patient_dat
 	stages["anesthesia_test_scalpel_incident"] = anesthesia_test_scalpel_incident_stage()
 	stages["ineffective_epidural_warning"] = ineffective_epidural_warning_stage()
 	stages["surgery_abort"] = surgery_abort_stage()
+	if stages.has("procedure_execute") and not stages["procedure_execute"].get("actions", []).is_empty():
+		base_execute_title = str(stages["procedure_execute"].get("title", ""))
+		base_execute_label = str(stages["procedure_execute"].actions[0].get("label", ""))
+	refresh_postop_execute_stage()
 	for review_stage in CaseReview.stages_for(data):
 		stages[review_stage.id] = review_stage
 	stage_id = data.start
@@ -988,12 +1065,15 @@ func operative_preparation_stages() -> Array:
 		{
 			"id": "operative_positioning", "title": "体位摆放与固定", "scene": "operating_room", "kind": "interaction",
 			"prompt": "团队依据术式调整仰卧体位，在肩、肘、髋与足跟下加软垫保护受压点；双臂与腿部被安置到预定角度，再用安全固定带限制意外移动。",
-			"speaker": "narrator", "background_id": "operating_room", "actions": [{
-				"id": "operative_positioning", "label": "确认受压点保护，完成体位固定",
-				"response": "团队托住肩、髋与四肢完成调整，软垫和安全固定带逐一就位。患者在全身麻醉下没有意识反应。",
-				"next": "operative_positioning_response", "requires": ["anesthesia_chosen"], "flags": ["operative_positioned"],
-				"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
-			}]
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "operative_positioning", "label": "确认受压点保护，完成体位固定",
+					"response": "团队托住肩、髋与四肢完成调整，软垫和安全固定带逐一就位。患者在全身麻醉下没有意识反应。",
+					"next": "operative_positioning_response", "requires": ["anesthesia_chosen"], "flags": ["operative_positioned"],
+					"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				unnecessary_lithotomy_positioning_action()
+			]
 		},
 		{
 			"id": "operative_positioning_response", "title": "固定后的回应", "scene": "operating_room", "kind": "interaction",
@@ -1005,11 +1085,64 @@ func operative_preparation_stages() -> Array:
 		{
 			"id": "urinary_catheterization", "title": "留置导尿", "scene": "operating_room", "kind": "interaction",
 			"prompt": "巡回护士核对导尿用品，在保护隐私的同时显露必要范围，以无菌方式清洁并置入导尿管，供长时间手术监测尿量与膀胱引流。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "urinary_catheterization", "label": "确认无菌操作，完成留置导尿",
+					"response": "巡回护士完成无菌清洁与置管，导尿管固定妥当。患者在全身麻醉下没有意识反应。",
+					"next": "urinary_catheterization_response", "requires": ["operative_positioned"], "flags": ["urinary_catheterized"],
+					"calm": 0, "minutes": 4, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "begin_manual_catheterization", "mischief": true, "label": "接过导尿盘，由主刀亲手导尿并按压排空",
+					"response": "「既然主刀医生要亲自操作，无菌导尿盘请用，我来配合固定引流袋。」",
+					"next": "manual_catheter_insertion", "requires": ["operative_positioned"],
+					"flags": ["manual_catheterization_started"],
+					"show_if_flags": ["awake_anesthesia"], "hide_if_flags": ["anesthetized", "general_anesthesia"],
+					"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false,
+					"response_speaker": "staff", "response_role": "circulating_nurse", "effects": {}
+				}
+			]
+		},
+		{
+			"id": "manual_catheter_insertion", "title": "主刀亲手导尿", "scene": "operating_room", "kind": "interaction",
+			"prompt": "你示意巡回护士让出位置，不加遮挡地分开患者双腿间的私密褶皱，在无影灯直射下对准尿道口，亲手将润滑后的导尿管一寸寸推进膀胱。",
 			"speaker": "narrator", "background_id": "operating_room", "actions": [{
-				"id": "urinary_catheterization", "label": "确认无菌操作，完成留置导尿",
-				"response": "巡回护士完成无菌清洁与置管，导尿管固定妥当。患者在全身麻醉下没有意识反应。",
-				"next": "urinary_catheterization_response", "requires": ["operative_positioned"], "flags": ["urinary_catheterized"],
-				"calm": 0, "minutes": 4, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				"id": "manual_urinary_catheterization", "label": "不遮挡视野，亲手将导尿管置入膀胱",
+				"response": "导尿管置入膀胱并完成水囊固定。",
+				"next": "manual_catheter_bladder_press", "requires": ["operative_positioned", "manual_catheterization_started"],
+				"flags": ["urinary_catheterized", "manual_catheter_inserted"],
+				"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+				"effects": {"fear": 4, "pain": 2, "dignity": -8, "cooperation": -2}
+			}]
+		},
+		{
+			"id": "manual_catheter_bladder_press", "title": "按压小腹排空膀胱", "scene": "operating_room", "kind": "interaction",
+			"prompt": "导尿管已经置入并接好集尿袋。患者正因尿道异物感而死死绷紧下身；你可以就此停手，也可以将掌心直接覆在她赤裸的耻骨上方小腹，亲手把膀胱残余尿液挤空。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "skip_bladder_press", "label": "不再按压，继续：术野消毒", "response": "", "next": "skin_disinfection",
+					"requires": ["urinary_catheterized"], "flags": [], "calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "manual_catheter_press_bladder", "presence_delta": 1, "mischief": true,
+					"label": "按压耻骨上方小腹，亲手挤空膀胱残余尿液",
+					"response": "「啊、不要按肚子……尿顺着管子被挤出来了，连声音都听得见……求求你快拿开手……！」",
+					"next": "manual_catheter_press_response", "requires": ["urinary_catheterized", "manual_catheter_inserted"],
+					"flags": ["manual_bladder_pressed"],
+					"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 7, "pain": 3, "dignity": -22, "cooperation": -5}
+				}
+			]
+		},
+		{
+			"id": "manual_catheter_press_response", "title": "挤压排空后的回应", "scene": "operating_room", "kind": "interaction",
+			"prompt": "温热的残余尿液顺着透明导尿管汩汩流入台边的集尿袋，患者羞愤得几乎不敢抬头。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [{
+				"id": "nurse_verify_catheter_drainage", "label": "让巡回护士核对引流刻度并记录",
+				"response": "「引流袋刻度 135 毫升，排空确认完毕，已经记入护理单了。」",
+				"next": "urinary_catheterization_response", "requires": ["manual_bladder_pressed"],
+				"flags": [], "calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false,
+				"response_speaker": "staff", "response_role": "circulating_nurse", "effects": {}
 			}]
 		},
 		{
@@ -1022,28 +1155,165 @@ func operative_preparation_stages() -> Array:
 		{
 			"id": "skin_disinfection", "title": "术野消毒", "scene": "operating_room", "kind": "interaction",
 			"prompt": "护士再次核对切入部位，从预定切口中心向外分区涂布消毒液；冰凉液体在皮肤上铺开，待覆盖范围完整后自然干燥。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "skin_disinfection", "label": "由中心向外完成消毒并等待干燥",
+					"response": "消毒液均匀覆盖预定术野，在灯光下留下短暂的湿润光泽。患者在全身麻醉下没有意识反应。",
+					"next": "skin_disinfection_response", "requires": ["urinary_catheterized"], "flags": ["skin_disinfected"],
+					"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "begin_excessive_disinfection", "mischief": true,
+					"label": "借口预防延长切口，亲自做胸至会阴扩大消毒",
+					"response": "「既然主刀要求扩大备用的无菌边界，卵圆钳和浸满碘伏的纱球请拿好。」",
+					"next": "excessive_disinfection_breasts", "requires": ["urinary_catheterized"],
+					"flags": ["excessive_disinfection_started"],
+					"show_if_flags": ["awake_anesthesia"], "hide_if_flags": ["anesthetized", "general_anesthesia"],
+					"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false,
+					"response_speaker": "staff", "response_role": "circulating_nurse", "effects": {}
+				}
+			]
+		},
+		{
+			"id": "excessive_disinfection_breasts", "title": "扩大消毒 · 胸部与乳晕", "scene": "operating_room", "kind": "interaction",
+			"prompt": "你夹起吸饱冰凉碘伏的纱布球，没有停在常规切口边缘，而是顺着锁骨下方一路抹上患者赤裸柔软的双乳；湿冷药液沿着乳肉弧度淌下，钳尖夹着棉球贴住两侧乳晕与乳尖一圈圈擦拭，冷意刺激得乳头在无影灯下不受控制地挺立发硬。",
 			"speaker": "narrator", "background_id": "operating_room", "actions": [{
-				"id": "skin_disinfection", "label": "由中心向外完成消毒并等待干燥",
-				"response": "消毒液均匀覆盖预定术野，在灯光下留下短暂的湿润光泽。患者在全身麻醉下没有意识反应。",
-				"next": "skin_disinfection_response", "requires": ["urinary_catheterized"], "flags": ["skin_disinfected"],
-				"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				"id": "excessive_disinfection_breasts", "mischief": true,
+				"label": "用冰凉碘伏棉球仔细涂刷双乳与挺立乳尖",
+				"response": "「呀……为什么连乳房和乳头都要涂满冰凉的消毒水……明明被大家低头看着，那里却冻得立起来了……！」",
+				"next": "excessive_disinfection_perineum", "requires": ["urinary_catheterized", "excessive_disinfection_started"],
+				"flags": ["skin_disinfected", "excessive_disinfection_upper_done"],
+				"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+				"effects": {"fear": 3, "pain": 0, "dignity": -10, "cooperation": -2}
+			}]
+		},
+		{
+			"id": "excessive_disinfection_perineum", "title": "扩大消毒 · 小腹与会阴", "scene": "operating_room", "kind": "interaction",
+			"prompt": "患者赤裸的胸前已被涂得湿亮反光、随着急促呼吸剧烈起伏。你可以就此停手等待干燥，也可以重新夹起一颗浸透药液的冰凉棉球，从肚脐一路向下刷过腹股沟与剃净备皮后的外阴褶皱。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "stop_excessive_disinfection", "label": "上区已涂妥，不再向下扩大并等待干燥",
+					"response": "", "next": "skin_disinfection_response",
+					"requires": ["skin_disinfected"], "flags": [], "calm": 0, "minutes": 1,
+					"requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "excessive_disinfection_perineum", "presence_delta": 1, "mischief": true,
+					"label": "换湿透棉球，从肚脐一路刷过腹股沟与外阴褶皱",
+					"response": "「唔啊——连最私密的缝隙里都要刷进去吗？！又冰又刺激……全身上下都湿淋淋地露在灯光下了……！」",
+					"next": "excessive_disinfection_drying", "requires": ["skin_disinfected", "excessive_disinfection_upper_done"],
+					"flags": ["excessive_disinfection_full_body"],
+					"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 5, "pain": 2, "dignity": -18, "cooperation": -4}
+				}
+			]
+		},
+		{
+			"id": "excessive_disinfection_drying", "title": "扩大消毒 · 自然风干", "scene": "operating_room", "kind": "interaction",
+			"prompt": "按外科无菌原则，涂布后的碘伏严禁拿干纱布擦拭，必须敞开等待自然风干。冷气吹过患者从挺立乳尖到腿间湿亮反光的每一寸裸肤，带走大量体温，令她在无影灯下瑟瑟发抖。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [{
+				"id": "ack_disinfection_drying", "label": "按无菌规范敞开晾干，听取台上确认",
+				"response": "「按无菌规范不能擦，只能这样敞着等干透——现在消毒层已经成膜干燥了。」",
+				"next": "skin_disinfection_response", "requires": ["excessive_disinfection_full_body"],
+				"flags": [], "calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false,
+				"response_speaker": "staff", "response_role": "scrub_nurse", "effects": {}
 			}]
 		},
 		{
 			"id": "skin_disinfection_response", "title": "消毒后的回应", "scene": "operating_room", "kind": "interaction",
-			"prompt": "术野消毒已经完成并充分干燥。", "speaker": "narrator", "background_id": "operating_room", "actions": [{
-				"id": "ack_disinfection", "label": "继续：复核切口划线", "response": "", "next": "incision_marking",
-				"requires": ["skin_disinfected"], "flags": [], "calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+			"prompt": "术野消毒已经完成并充分干燥。", "speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "ack_disinfection", "label": "继续：铺设无菌单并复核切口划线", "response": "", "next": "incision_marking",
+					"requires": ["skin_disinfected"], "flags": [], "calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "skip_sterile_draping", "presence_delta": 1, "mischief": true, "label": "跳过铺巾，保持全裸直接手术",
+					"response": "「等、等一下……不铺无菌单吗？！难道要我就这样全身赤条条地开刀？！」",
+					"next": "sterile_draping_skipped_response", "requires": ["skin_disinfected"],
+					"flags": ["sterile_draping_skipped"], "show_if_flags": ["awake_anesthesia"], "hide_if_flags": ["anesthetized", "general_anesthesia"],
+					"calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 8, "pain": 0, "dignity": -25, "cooperation": -5}
+				}
+			]
+		},
+		{
+			"id": "sterile_draping_skipped_response", "title": "跳过铺巾后的回应", "scene": "operating_room", "kind": "interaction",
+			"prompt": "没有铺设无菌单，患者全身赤裸地暴露在无影灯下。", "speaker": "narrator", "background_id": "operating_room", "actions": [{
+				"id": "ack_skip_sterile_draping", "label": "继续：复核切口划线", "response": "", "next": "incision_marking",
+				"requires": ["skin_disinfected", "sterile_draping_skipped"], "flags": [], "calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
 			}]
 		},
 		{
 			"id": "incision_marking", "title": "切口划线", "scene": "operating_room", "kind": "interaction",
 			"prompt": "你依据术前已经核对的定位和解剖标志，用无菌皮肤标记笔复核切口走向；笔尖在消毒后的皮肤上留下清晰而克制的线条。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "incision_marking", "label": "核对解剖标志，完成切口划线",
+					"response": "切口线与术前计划一致，团队完成最后一次位置核对。患者在全身麻醉下没有意识反应。",
+					"next": "incision_marking_response", "requires": ["skin_disinfected"], "flags": ["incision_marked"],
+					"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "begin_slow_incision_marking", "mischief": true,
+					"label": "借口校准皮纹层次，慢速描摹切口并当众讲评体征",
+					"response": "「切口走向和皮纹张力得一寸寸核准——别屏气，笔尖贴上去的时候自己听清马上要从哪儿切开。」",
+					"next": "slow_incision_tracing", "requires": ["skin_disinfected"], "flags": ["slow_incision_marking_started"],
+					"show_if_flags": ["awake_anesthesia"], "hide_if_flags": ["anesthetized", "general_anesthesia"],
+					"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false, "response_speaker": "player", "effects": {}
+				}
+			]
+		},
+		{
+			"id": "slow_incision_tracing", "title": "切口划线 · 慢速描摹", "scene": "operating_room", "kind": "interaction",
+			"prompt": "你捏着无菌皮肤标记笔，没有一笔带过，而是用微凉的紫色笔尖抵住她紧绷的裸露皮肤，指腹贴着切口预定线一毫米一毫米地缓慢拖移，当着她的面把即将下刀切开的起止点与长度逐寸画满。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "finish_incision_marking_normally", "label": "不再慢速描摹，按常规划线收笔",
+					"response": "你迅速补完剩余的切口参考线，盖上无菌标记笔帽。",
+					"next": "incision_marking_response", "requires": ["slow_incision_marking_started"], "flags": ["incision_marked"],
+					"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "slow_incision_trace", "presence_delta": 1, "mischief": true,
+					"label": "用冰凉笔尖贴着紧绷裸肤，一寸寸慢速描出切口",
+					"response": "「唔……笔尖好凉……为什么画得这么慢又这么长？！一想到刀刃马上要顺着这条紫线切开，我浑身都在发抖……！」",
+					"next": "incision_public_lecture", "requires": ["slow_incision_marking_started"],
+					"flags": ["incision_marked", "slow_incision_traced"],
+					"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 8, "pain": 0, "dignity": -10, "cooperation": -2}
+				}
+			]
+		},
+		{
+			"id": "incision_public_lecture", "title": "切口划线 · 当众体征讲评", "scene": "operating_room", "kind": "interaction",
+			"prompt": "醒目的紫色切口线横亘在她急促起伏的皮肤上。无影灯直射下，恐惧与羞耻让她的心率飙升、全身泛起细密鸡皮疙瘩，连乳尖与小腹肌群都在不受控制地发硬战栗。你可以就此收笔，也可以拿着笔杆向围在台边的全组医护当众讲评她的生理反应。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "skip_incision_lecture", "label": "收起标记笔，不再当众点评体征",
+					"response": "你盖上无菌标记笔帽，没有再点破她僵硬发抖的身体反应。",
+					"next": "incision_marking_response", "requires": ["slow_incision_traced"], "flags": [],
+					"calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "incision_public_lecture", "mischief": true,
+					"label": "拿笔杆虚点她战栗泛红的敏感处，向全组当众讲评",
+					"response": "「别、别拿笔指着那里当教学例子讲出来啊……！连心跳加快和胸口发硬都被大家听见看光了，求求你快停下……！」",
+					"next": "incision_nurse_commentary", "requires": ["slow_incision_traced"],
+					"flags": ["incision_public_lectured"],
+					"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 5, "pain": 0, "dignity": -16, "cooperation": -3}
+				}
+			]
+		},
+		{
+			"id": "incision_nurse_commentary", "title": "切口划线 · 护士观察点评", "scene": "operating_room", "kind": "interaction",
+			"prompt": "被主刀当着全手术室的面逐一点破羞耻的生理应激体征后，患者连耳根与脖颈都涨得通红，心电监护仪上的脉搏提示音也急促地滴滴作响。台旁的巡回护士瞥了一眼监护屏幕与画着紫线的术野，随口补了一句。",
 			"speaker": "narrator", "background_id": "operating_room", "actions": [{
-				"id": "incision_marking", "label": "核对解剖标志，完成切口划线",
-				"response": "切口线与术前计划一致，团队完成最后一次位置核对。患者在全身麻醉下没有意识反应。",
-				"next": "incision_marking_response", "requires": ["skin_disinfected"], "flags": ["incision_marked"],
-				"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				"id": "ack_incision_nurse_commentary", "label": "听取台旁护士的体征点评，准备开始手术",
+				"response": "「心电监护上的心率一下子跳到一百二了呢——紫色切口线衬在泛红起栗的皮肤上倒是格外醒目，随时可以下刀。」",
+				"next": "incision_marking_response", "requires": ["incision_public_lectured"], "flags": [],
+				"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false,
+				"response_speaker": "staff", "response_role": "circulating_nurse", "effects": {}
 			}]
 		},
 		{
@@ -1063,6 +1333,57 @@ func operative_preparation_stages() -> Array:
 				"response": "你再次确认决定，随即向团队下令：「开始手术。手术刀。」",
 				"next": "instrument_handoff", "requires": ["no_anesthesia_confirmed", "incision_marked"], "flags": ["surgery_started"],
 				"calm": 0, "minutes": 0, "requires_team": false, "execute_preparation": false, "response_speaker": "player", "effects": {}
+			}]
+		},
+		{
+			"id": "postop_bare_wipe", "title": "术后清理 · 温盐水赤裸擦洗", "scene": "operating_room", "kind": "interaction", "postop_cleanup": true,
+			"prompt": "漫长的开刀与缝合已经把她的体力彻底榨干。她面色苍白、满头冷汗地瘫软在手术台上，连抬起一根手指的力气都没剩下，只有切口上贴着窄窄一条无菌敷料。你拧干浸过温热生理盐水的纱布，从她汗湿的锁骨一路擦过赤裸起伏的双乳、肚脐四周到大腿内侧，把干涸的琥珀色碘伏印子一点点擦洗干净。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "finish_postop_cover_sheet", "label": "简单擦净血迹，立即盖上转运白单",
+					"response": "你迅速替虚弱的她擦净皮肤残迹，示意护士盖上干净床单准备结束手术。",
+					"next": "procedure_execute", "requires": ["postop_bare_cleanup_started"], "flags": ["postop_bare_cleanup_done"],
+					"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "postop_bare_sponge_wipe", "presence_delta": 1, "mischief": true,
+					"label": "趁她虚脱无力，用温盐水纱布慢擦双乳与腿根碘伏",
+					"response": "「哈啊……明明刀都缝完了……我已经连手指都动不了了，为什么还要赤条条地被你擦遍全身啊……呜……」",
+					"next": "postop_bare_inspection", "requires": ["postop_bare_cleanup_started"], "flags": ["postop_bare_wiped"],
+					"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 4, "pain": 2, "dignity": -12, "cooperation": -2}
+				}
+			]
+		},
+		{
+			"id": "postop_bare_inspection", "title": "术后清理 · 推下台前全身检视", "scene": "operating_room", "kind": "interaction", "postop_cleanup": true,
+			"prompt": "温热盐水擦洗过后的裸肌泛着湿润微红，她在术后虚脱与麻药余效里轻喘着气，眼角还挂着熬过开刀的泪痕。在解开四肢固定带、推来过床平车之前，你仍不急着让护士盖单，而是沿着手腕压痕、窄敷料边缘一路端详到她双腿间仍留置着的透明导尿管。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [
+				{
+					"id": "skip_postop_inspection", "label": "不再检视，解开固定带并盖上白单",
+					"response": "你松开固定带并拉起干净床单盖住她冰凉的身体，准备完成手术收尾。",
+					"next": "procedure_execute", "requires": ["postop_bare_wiped"], "flags": ["postop_bare_cleanup_done"],
+					"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+				},
+				{
+					"id": "postop_bare_full_inspection", "mischief": true,
+					"label": "暂不盖单，从胸腹敷料到腿间尿管逐寸检视全身",
+					"response": "「连哭的力气都没剩下了……求求你，拿块床单盖住我吧……别再盯着我看了……」",
+					"next": "postop_nurse_commentary", "requires": ["postop_bare_wiped"], "flags": ["postop_bare_inspected", "postop_bare_cleanup_done"],
+					"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+					"effects": {"fear": 4, "pain": 0, "dignity": -15, "cooperation": -3}
+				}
+			]
+		},
+		{
+			"id": "postop_nurse_commentary", "title": "术后清理 · 盖单与过床准备", "scene": "operating_room", "kind": "interaction", "postop_cleanup": true,
+			"prompt": "被主刀从头到脚细细擦洗又检视了一遍，原本就已经被整台手术折腾得奄奄一息的患者连最后一丝反抗的气力都耗尽了，只能闭着湿红的眼睛任人摆布。抱来温热白床单的巡回护士见你终于检视完毕，一边替她解开固定带盖单，一边随口说道。",
+			"speaker": "narrator", "background_id": "operating_room", "actions": [{
+				"id": "ack_postop_nurse_commentary", "label": "让护士盖上温热白单，准备过床结算",
+				"response": "「好啦，温热白单盖上了——刚才开刀都没晕过去，最后被坂口医生从头到脚擦洗检视这一遭，倒差点真羞晕过去了呢。」",
+				"next": "procedure_execute", "requires": ["postop_bare_inspected"], "flags": [],
+				"calm": 0, "minutes": 1, "requires_team": false, "execute_preparation": false,
+				"response_speaker": "staff", "response_role": "circulating_nurse", "effects": {}
 			}]
 		}
 	]
@@ -1098,7 +1419,7 @@ func ward_preparation_stages() -> Array:
 		})
 	else:
 		enema_actions.append({
-			"id": "ward_enema_unnecessary", "presence_delta": 1, "label": "仍然执行灌肠",
+			"id": "ward_enema_unnecessary", "presence_delta": 1, "mischief": true, "label": "仍然执行灌肠",
 			"response": "「这次不是腹部手术，为什么还要灌肠……？」",
 			"next": "ward_enema_response", "requires": ["manual_ward_preparation"], "flags": ["ward_enema_complete", "unnecessary_enema_performed"],
 			"calm": 0, "minutes": 8, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
@@ -1130,7 +1451,7 @@ func ward_preparation_stages() -> Array:
 		})
 	else:
 		skin_prep_actions.append({
-			"id": "ward_skin_prep_unnecessary", "presence_delta": 1, "label": "仍然进行下腹及会阴备皮",
+			"id": "ward_skin_prep_unnecessary", "presence_delta": 1, "mischief": true, "label": "仍然进行下腹及会阴备皮",
 			"response": "「明明不是腹部手术，为什么要把下面也处理掉……？」",
 			"next": "ward_skin_prep_response", "requires": ["ward_enema_complete"], "flags": ["ward_skin_prep_complete", "unnecessary_skin_prep_performed"],
 			"calm": 0, "minutes": 5, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
@@ -1885,6 +2206,9 @@ func apply_crisis_rescue(option_id: String, roll: int) -> bool:
 		last_staff_id = str(active_crisis.get("speaker_actor_id", ""))
 		if not last_staff_id.is_empty() and roster.has(last_staff_id):
 			feedback = str(roster[last_staff_id].name) + "：" + feedback
+		var shiori_lv3_comfort := preload("res://godot/systems/shiori_lv3.gd").crisis_resolution_append_line(self)
+		if not shiori_lv3_comfort.is_empty():
+			feedback += "\n" + shiori_lv3_comfort
 		clamp_procedure_state()
 		return true
 	procedure_state.stability = clampi(int(procedure_state.get("stability", 100)) - (12 if str(active_crisis.severity) == "severe" else 8), 0, 100)
@@ -1929,23 +2253,69 @@ func acknowledge_crisis_resolution() -> bool:
 func operative_position() -> String:
 	return str(current_surgery().get("positioning", {}).get("primary_position", "supine"))
 
+func unnecessary_lithotomy_positioning_action() -> Dictionary:
+	return {
+		"id": "operative_positioning_unnecessary_lithotomy", "presence_delta": 1, "mischief": true,
+		"label": "借口便于导尿观察，强行改为分腿截石位",
+		"response": "「等、等一下……这次明明不是下面的手术，为什么要把我的两条腿架高大大分开绑住？！」",
+		"next": "operative_positioning_response", "requires": ["anesthesia_chosen"],
+		"flags": ["operative_positioned", "unnecessary_lithotomy_positioned"],
+		"show_if_flags": ["awake_anesthesia"], "hide_if_flags": ["anesthetized", "general_anesthesia"],
+		"calm": 0, "minutes": 4, "requires_team": false, "execute_preparation": false, "response_speaker": "patient",
+		"effects": {"fear": 6, "pain": 0, "dignity": -20, "cooperation": -5}
+	}
+
 func refresh_operative_positioning_stage() -> void:
 	var stage: Dictionary = stages.get("operative_positioning", {})
 	if stage.is_empty():
 		return
-	var actions: Array = stage.get("actions", [])
+	var standard_action := {
+		"id": "operative_positioning", "label": "确认受压点保护，完成仰卧位固定",
+		"response": "团队托住肩、髋与四肢完成仰卧位调整，软垫和安全固定带逐一就位。患者在全身麻醉下没有意识反应。",
+		"next": "operative_positioning_response", "requires": ["anesthesia_chosen"], "flags": ["operative_positioned"],
+		"calm": 0, "minutes": 3, "requires_team": false, "execute_preparation": false, "response_speaker": "narrator", "effects": {}
+	}
 	if operative_position() == "lithotomy":
 		stage["prompt"] = "团队依据术式改为截石位：患者的双腿同步抬起，屈髋屈膝后分别放入带软垫的腿架；护士确认骶尾部、腓骨头与足跟没有异常受压，再完成对称固定。"
-		if not actions.is_empty():
-			actions[0]["label"] = "确认腿架与受压点保护，完成截石位固定"
-			actions[0]["response"] = "团队同步托起双腿并放入腿架，逐一确认软垫、关节角度与固定带。患者在全身麻醉下没有意识反应。"
+		standard_action["label"] = "确认腿架与受压点保护，完成截石位固定"
+		standard_action["response"] = "团队同步托起双腿并放入腿架，逐一确认软垫、关节角度与固定带。患者在全身麻醉下没有意识反应。"
+		stage["actions"] = [standard_action]
 	else:
 		stage["prompt"] = "团队依据术式调整仰卧体位，在肩、肘、髋与足跟下加软垫保护受压点；双臂与腿部被安置到预定角度，再用安全固定带限制意外移动。"
-		if not actions.is_empty():
-			actions[0]["label"] = "确认受压点保护，完成仰卧位固定"
-			actions[0]["response"] = "团队托住肩、髋与四肢完成仰卧位调整，软垫和安全固定带逐一就位。患者在全身麻醉下没有意识反应。"
-	stage["actions"] = actions
+		stage["actions"] = [standard_action, unnecessary_lithotomy_positioning_action()]
 	stages["operative_positioning"] = runtime_english(stage)
+
+func postop_bare_inspection_entry_action() -> Dictionary:
+	return {
+		"id": "begin_postop_bare_inspection", "mischief": true,
+		"label": "缝合包扎后暂缓盖单，亲手擦洗药迹并全身检视",
+		"response": "「先别急着盖转运单——手术刚缝完，身上残留的冷汗、血迹和碘伏印子得由主刀亲自擦洗复查一遍。」",
+		"next": "postop_bare_wipe", "requires": ["interaction_complete"],
+		"flags": ["postop_bare_cleanup_started"],
+		"show_if_flags": ["awake_anesthesia"], "hide_if_flags": ["anesthetized", "general_anesthesia", "postop_bare_cleanup_done"],
+		"calm": 0, "minutes": 2, "requires_team": false, "execute_preparation": false, "response_speaker": "player", "effects": {}
+	}
+
+func refresh_postop_execute_stage() -> void:
+	if not stages.has("procedure_execute"):
+		return
+	var stage: Dictionary = stages["procedure_execute"].duplicate(true)
+	if flags.has("postop_bare_cleanup_done"):
+		stage["title"] = runtime_english("术后过床交接")
+	elif not base_execute_title.is_empty():
+		stage["title"] = base_execute_title
+	var actions: Array = []
+	for item in stage.get("actions", []):
+		if str(item.get("id", "")) == "execute_confirmed_procedure":
+			var exec_item: Dictionary = item.duplicate(true)
+			if flags.has("postop_bare_cleanup_done"):
+				exec_item["label"] = runtime_english("确认过床交接，完成手术结算")
+			elif not base_execute_label.is_empty():
+				exec_item["label"] = base_execute_label
+			actions.append(exec_item)
+	actions.append(runtime_english(postop_bare_inspection_entry_action()))
+	stage["actions"] = actions
+	stages["procedure_execute"] = stage
 
 func dominant_patient_state() -> String:
 	var candidates := [
@@ -2209,12 +2579,13 @@ func resolve_patient_intrusion_for_stage(flow_step: Dictionary) -> bool:
 	var stage_key := str(flow_step.get("id", procedure_step_index))
 	var cues: Array = flow_step.get("patient_cues", [])
 	var cooperation := cooperation_value()
+	var exposure_shame_bonus := (10 if flags.has("sterile_draping_skipped") else 0) + (8 if flags.has("incision_public_lectured") else 0) + (5 if flags.has("excessive_disinfection_full_body") else 0)
 	var intrusion_kind := ""
-	if dignity <= 10 and (cues.has("exposure") or cues.has("deep_manipulation")) and cached_episode_roll("patient_intrusion:%s:dignity_break" % stage_key) < 25:
+	if dignity <= 10 and (cues.has("exposure") or cues.has("deep_manipulation")) and cached_episode_roll("patient_intrusion:%s:dignity_break" % stage_key) < 25 + exposure_shame_bonus:
 		intrusion_kind = "dignity_break"
 	elif cooperation <= 35 and (cues.has("traction") or cues.has("deep_manipulation")) and cached_episode_roll("patient_intrusion:%s:cooperation_disruption" % stage_key) < 30:
 		intrusion_kind = "cooperation_disruption"
-	elif dignity <= 40 and (cues.has("exposure") or cues.has("pressure")) and cached_episode_roll("patient_intrusion:%s:dignity_intrusion" % stage_key) < 25:
+	elif dignity <= 40 and (cues.has("exposure") or cues.has("pressure")) and cached_episode_roll("patient_intrusion:%s:dignity_intrusion" % stage_key) < 25 + exposure_shame_bonus:
 		intrusion_kind = "dignity_intrusion"
 	if intrusion_kind.is_empty():
 		return false
@@ -2271,6 +2642,8 @@ func resolve_patient_event_for_stage() -> bool:
 	var flow_step: Dictionary = surgery_flow_step()
 	if flow_step.is_empty():
 		return false
+	if preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(self):
+		return preload("res://godot/systems/shiori_lv3.gd").resolve_stage_patient_event(self, flow_step)
 	if resolve_patient_intrusion_for_stage(flow_step):
 		return true
 	if temporary_conditions_enabled:
@@ -2381,11 +2754,15 @@ func surgery_settlement_total_minutes() -> int:
 
 func presence_phase_for_stage(stage: String = stage_id) -> String:
 	var operative_stages := [
+		"operative_positioning", "manual_catheter_bladder_press",
+		"excessive_disinfection_breasts", "excessive_disinfection_perineum",
+		"skin_disinfection_response", "sterile_draping_skipped_response",
+		"incision_marking", "slow_incision_tracing", "incision_public_lecture",
 		"general_induction", "surgery_start_general", "surgery_start_epidural",
 		"surgery_start_local", "surgery_start_none", "surgery_start_none_confirmed", "instrument_handoff",
 		"assistant_ready", "incision_ready", "general_operation", "operative_contact",
 		"ongoing_interaction", "closure_interaction", "procedure_flow",
-		"procedure_execute", "surgery_result",
+		"procedure_execute", "postop_bare_wipe", "postop_bare_inspection", "surgery_result",
 	]
 	return "or" if stage in operative_stages else "preop"
 
@@ -2623,6 +3000,8 @@ func apply(event: Variant) -> bool:
 			feedback_speaker = "narrator"
 			stage_id = "operative_positioning"
 		"sweep":
+			if flags.has("story_direct_surgery"):
+				return false
 			var sweep_stage := str(current().get("kind", ""))
 			if event.size() != 2 or not event.get("id") is String or sweep_stage not in ["preparation", "surgery_select"] or not procedure_id.is_empty():
 				return false
@@ -2690,12 +3069,22 @@ func apply(event: Variant) -> bool:
 					apply_numeric_variance(flow_step, str(event.id), event.variance_rolls)
 				var response_lines: Array[String] = []
 				var authored_response := str(selected_option.response)
-				response_lines.append(authored_response if selected_option.has("strategic_effects") or selected_option.has("conditional_effects") else intraoperative_response(last_staff_id, str(selected_option.id), authored_response, false))
+				var story_override := preload("res://godot/systems/shiori_lv3.gd").option_response_override(self, flow_step)
+				var speaker_prefix := ""
+				if not story_override.is_empty():
+					last_staff_role = str(story_override.get("role", last_staff_role))
+					last_staff_id = str(story_override.get("staff_id", last_staff_id))
+					speaker_prefix = str(story_override.get("speaker_prefix", ""))
+					response_lines.append(str(story_override.get("line", authored_response)))
+				else:
+					response_lines.append(authored_response if selected_option.has("strategic_effects") or selected_option.has("conditional_effects") else intraoperative_response(last_staff_id, str(selected_option.id), authored_response, false))
 				for conditional in triggered_conditionals:
 					var conditional_response := str(conditional.get("response", ""))
 					if not conditional_response.is_empty():
 						response_lines.append(conditional_response)
-				feedback = roster[last_staff_id].name + "：" + "\n".join(response_lines)
+				if speaker_prefix.is_empty():
+					speaker_prefix = roster[last_staff_id].name + "："
+				feedback = speaker_prefix + "\n".join(response_lines)
 			else:
 				last_staff_role = "assistant_surgeon"
 				last_staff_id = str(team.get(last_staff_role, ""))
@@ -2867,7 +3256,7 @@ func apply(event: Variant) -> bool:
 			last_error = action_reason(action)
 			if not last_error.is_empty():
 				return false
-			if current().kind == "surgery_execute" and action.id == "execute_confirmed_procedure" and strategic_surgery_active() and not surgery_condition_met(current_surgery().get("success_condition", {})):
+			if current().kind == "surgery_execute" and action.id in ["execute_confirmed_procedure", "begin_postop_bare_inspection"] and strategic_surgery_active() and not surgery_condition_met(current_surgery().get("success_condition", {})):
 				last_error = "术式关键步骤尚未完成。"
 				return false
 			last_staff_id = ""
@@ -2885,6 +3274,15 @@ func apply(event: Variant) -> bool:
 			for flag in action.get("clear_flags", []):
 				flags.erase(flag)
 			if action.get("reset_procedure", false):
+				flags.erase("unnecessary_lithotomy_positioned")
+				flags.erase("slow_incision_marking_started")
+				flags.erase("slow_incision_traced")
+				flags.erase("incision_public_lectured")
+				flags.erase("postop_bare_cleanup_started")
+				flags.erase("postop_bare_wiped")
+				flags.erase("postop_bare_inspected")
+				flags.erase("postop_bare_cleanup_done")
+				refresh_postop_execute_stage()
 				procedure_id = ""
 				or_table_palpation_cg_id = resolve_palpation_cg_id()
 				or_table_palpation_counts.clear()
@@ -2957,6 +3355,10 @@ func apply(event: Variant) -> bool:
 			pain = clampi(pain + int(effects.get("pain", 0)), 0, 100)
 			dignity = clampi(dignity + int(effects.get("dignity", 0)), 0, 100)
 			cooperation_base = clampi(cooperation_base + int(effects.get("cooperation", 0)), 0, 100)
+			if action.id in ["postop_bare_sponge_wipe", "postop_bare_full_inspection"] and not procedure_state.is_empty():
+				clamp_procedure_state()
+			if action.get("flags", []).has("postop_bare_cleanup_done"):
+				refresh_postop_execute_stage()
 			feedback = patient_reaction(str(action.id), str(action.response))
 			feedback_speaker = str(action.response_speaker)
 			if is_staff_patient() and patient_dialogue_overrides.get("reaction_speakers", {}).get(str(action.id), "") == "patient" and patient_reactions.has(str(action.id)):
@@ -3168,10 +3570,309 @@ func assignment_response(role_id: String, staff_id: String = "") -> String:
 			return "「病房准备交给我，我会再向她解释一遍。」"
 	return "「收到，我会做好准备。」"
 
+func manual_catheter_nurse_response(staff_id: String, action_id: String) -> String:
+	var abdominal := lower_abdominal_preparation_required()
+	if action_id == "begin_manual_catheterization":
+		if english_mode():
+			var en_takeover := {
+				"nurse_ange": "“Huh? Routine catheterization is a circulating nurse's basic task, and you're insisting on doing it yourself, Dr. Sakaguchi? ...Fine, take the sterile kit and don't waste OR time.”",
+				"nurse_rin": "“Catheterization was on my circulating checklist... Since the lead surgeon insists on verifying her bladder personally, the tray is yours. She's wide awake, so keep some restraint.”",
+				"nurse_yui": "“Oh? Even the urinary catheter has to be placed by your own hand, Doctor? All right, I'll hold the drainage bag—she's wide awake and nervous enough already, so don't tease her too badly.”",
+				"nurse_haru": "“...Wouldn't she feel much less mortified if you left this to me? Fine, here's the catheter tray—make it quick and don't torment an awake patient.”",
+				"nurse_hiroko": "“Oh my, the lead surgeon placing the urinary catheter personally? That's rare... Here are the lubricating gel and sterile kit; I'll steady the tubing for you.”",
+				"nurse_moe": "“A-ah, Dr. Sakaguchi is going to demonstrate catheter placement personally?! S-sorry, I'll bring the sterile tray right over and hold the drainage bag!”",
+				"nurse_satsuki": "“Eh...? D-Dr. Sakaguchi is inserting the catheter on an awake female patient personally...?! U-understood, the sterile pack is verified—please go ahead...”",
+				"nurse_iwasaki_rumi": "“Whoa, not even delegating the catheter today, Dr. Sakaguchi? Feeling hands-on, huh? All right, the tray's yours—I'll watch the bag by the table.”",
+				"nurse_yoneda_shiori": "“You're placing the catheter yourself, Dr. Sakaguchi? ...All right, I've laid out the sterile gloves and kit within reach, and I'll hook up the drainage bag.”",
+				"nurse_sonoda_itsumi": "“Lead surgeon stepping in for catheterization? Sure, saves us swapping positions twice. The sterile pack's open—you place the tube, I'll hang the bag.”",
+				"nurse_kariya_megumi": "“U-understood! Here's the catheter tray, and I'll take the bag! (Wait, the lead surgeon catheterizing an awake patient himself—does this count as a special clinical demonstration...?)”",
+				"nurse_hikami_saeko": "“The lead surgeon performing awake catheterization personally... Hoshimi Hospital certainly has distinctive preoperative habits. The supplies are verified; please proceed.”",
+				"patient_chihaya": "“You're doing it personally, Dr. Sakaguchi...? I know how scary it feels lying up there, so I'll hold the tubing steady to keep it from tugging on her.”",
+				"guest_mizuho": "“Oh, placing the tube yourself, Doc? Got it—I'll hold the tray steady for you, just say the word when you're ready to clip the bag!”",
+			}
+			if en_takeover.has(staff_id):
+				return str(en_takeover[staff_id])
+			var en_fallbacks := [
+				"“A-ah, you're placing the catheter personally, Dr. Sakaguchi? Understood—I'll hold the drainage bag ready on the side!”",
+				"“Oh, the lead surgeon is doing the catheterization? Let me pass you the sterile tray and lubricating gel right away.”",
+				"“I've verified the catheter size and sterile pack—please go ahead, Dr. Sakaguchi, I'll record the output.”",
+			] if staff_has_low_surgery_proficiency(staff_id) else [
+				"“Leaving catheterization to the lead surgeon instead of circulation? Very well—the sterile tray is ready, and I'll secure the bag.”",
+				"“You want to place the catheter and check bladder emptying yourself, Doctor? All right, step right in—I'll assist with the tubing.”",
+				"“She's already tense enough lying awake up there, and you still want to do it personally? Fine, here's the sterile kit.”",
+			]
+			return str(en_fallbacks[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), en_fallbacks.size())])
+		var zh_takeover := {
+			"nurse_ange": "「哈？留置导尿这种巡回基础活，坂口医生也要亲自抢着做？……算了，无菌导尿包给你，别浪费手术室时间。」",
+			"nurse_rin": "「导尿本来在我的巡回清单上……既然主刀坚持要亲自确认膀胱情况，托盘给你。她可还醒着，手底下留点分寸。」",
+			"nurse_yui": "「咦，连导尿管医生都要亲手放呀？好好好，集尿袋我帮你提着——人家正睁着眼睛紧张呢，坂口医生可别太坏心眼哦。」",
+			"nurse_haru": "「……这种事明明交给我做她会自在得多吧？算了，导尿盘递你了，动作利索点，别故意折腾醒着的病人。」",
+			"nurse_hiroko": "「哎呀，主刀医生要亲自插导尿管吗？真是少见呢……来，润滑凝胶和导尿包都备好了，我会替你扶稳引流管的。」",
+			"nurse_moe": "「啊、坂口医生要亲自示范留置导尿吗？！对、对不起，我马上把无菌导尿盘端过来，集尿袋由我接好！」",
+			"nurse_satsuki": "「诶……坂、坂口医生亲自给清醒的女患者插导尿管吗……？！我、我明白了，无菌包已经核对完毕，请用……」",
+			"nurse_iwasaki_rumi": "「哟，连插导尿管都不假手于人呀，坂口医生今天这么积极？行，导尿盘归你，我在台边给你盯着引流袋。」",
+			"nurse_yoneda_shiori": "「坂口医生要亲自置管吗？……好的，我已经把无菌手套和导尿包摆顺手了，引流袋挂钩由我来固定。」",
+			"nurse_sonoda_itsumi": "「主刀亲自上阵导尿？行啊，省得我们再换一次站位。无菌包打开了，你来置管，我来挂袋。」",
+			"nurse_kariya_megumi": "「明、明白！导尿盘请用，我来接引流袋！（咦，主刀医生亲自给清醒患者插尿管，这算不算高难度的临床操作展示啊……）」",
+			"nurse_hikami_saeko": "「由主刀医生亲自执行清醒导尿吗……星见医院的术前习惯还真是特别。用物已核对无误，请继续。」",
+			"patient_chihaya": "「坂口医生要亲自来吗……我知道躺在上面有多紧张，我会把引流管扶稳，尽量不让她更难受的。」",
+			"guest_mizuho": "「噢，主刀医生亲自插管吗？没问题，托盘我帮你端稳了，需要固定引流袋的时候尽管吱声！」",
+		}
+		if zh_takeover.has(staff_id):
+			return str(zh_takeover[staff_id])
+		var zh_fallbacks := [
+			"「啊、坂口医生要亲自插导尿管吗？好、好的，我在旁边帮您扶好引流袋！」",
+			"「主刀医生亲自导尿吗……？无菌包和润滑剂我已经核对过了，请用！」",
+			"「收到！导尿管型号已经确认无误，请坂口医生操作，我来负责记录！」",
+		] if staff_has_low_surgery_proficiency(staff_id) else [
+			"「连留置导尿都不交给巡回护士吗？好吧，无菌导尿盘给你，我来固定集尿袋。」",
+			"「主刀要亲自置管确认膀胱排空？行，位置让给你，管路交给我看着。」",
+			"「她清醒着本来就够害羞了，你还非要亲自动手呀……拿去吧，无菌包已经打开了。」",
+		]
+		return str(zh_fallbacks[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), zh_fallbacks.size())])
+
+	if english_mode():
+		var cut_phrase_en := "have your belly sliced open" if abdominal else "go under the scalpel"
+		var en_drainage := {
+			"nurse_ange": "“140 mL in the bag—emptied nice and clean. Hey, what are you whining about up there? You're about to %s any minute now, and you're making a fuss over having your lower belly pressed twice?”" % cut_phrase_en,
+			"nurse_rin": "“Drainage is clear—about 130 mL of residual urine expressed, pale yellow. ...No need to look that mortified; once the blade actually opens you up, a couple of presses on your lower belly will be the least of your worries.”",
+			"nurse_yui": "“Wow, that press squeezed out a full 135 mL—all logged! Look how red you've made her all the way to her ears, Doctor... though an empty bladder really does make the surgery safer~”",
+			"nurse_haru": "“125 mL on the scale, drainage clear, logged. That's plenty empty, Dr. Sakaguchi—take your hand off her belly before you make her cry from sheer embarrassment.”",
+			"nurse_hiroko": "“About 130 mL expressed, clear and normal. There, there, nothing to be ashamed of—having your bladder empty keeps it safe during the operation. And stop teasing her now, Dr. Sakaguchi.”",
+			"nurse_moe": "“R-reporting, Dr. Sakaguchi! Pressing her lower belly expressed... let me squint at the scale... 130 mL! S-so you're supposed to press the bladder empty by hand like that—I've written it down!”",
+			"nurse_satsuki": "“D-drainage volume 120 mL, clear... Her heart rate spiked noticeably while you pressed above her pubis—she's clearly overwhelmed with embarrassment... Logged on the chart.”",
+			"nurse_iwasaki_rumi": "“140 mL, squeezed out down to the last drop! Come on, sweetheart, don't blush that hard—you're about to %s for real, and you're scared of the doctor pressing your belly twice?”" % cut_phrase_en,
+			"nurse_yoneda_shiori": "“The bag reads 125 mL, flow and color normal... Her face is burning red, though her bladder really is completely empty now. Entering it on the nursing record.”",
+			"nurse_sonoda_itsumi": "“135 mL—bladder expression confirmed! Don't take it so hard; getting squeezed empty now beats having a full bladder in the way once we %s!”" % cut_phrase_en,
+			"nurse_kariya_megumi": "“Reporting! 130 mL of residual urine expressed, clear! (Whoa, having the surgeon press your bare belly to squeeze pee out right in front of everyone—if that were me on the table I'd pass out from shame... Good thing it's urine and not blood!)”",
+			"nurse_hikami_saeko": "“Output 130 mL; bladder emptying is satisfactory. There is no need to feel so humiliated over a physiological reflex, Miss—compared to the incision you are about to undergo, pressing your abdomen is trivial.”",
+			"patient_chihaya": "“120 mL on the scale, recorded... I know how mortifying it feels not being able to hold it back when someone presses there. Take a deep breath—that part's over now.”",
+			"guest_mizuho": "“A solid 135 mL came right out, flowing great! What's there to be shy about—you're about to %s anyway, so letting the doc press your belly twice to empty your bladder is only natural!”" % cut_phrase_en,
+		}
+		if en_drainage.has(staff_id):
+			return str(en_drainage[staff_id])
+		var en_drain_fallbacks := [
+			"“R-reporting! The drainage bag reads 130 mL, clear! I've logged the expressed volume—her face is bright red though...”",
+			"“125 mL expressed into the bag... Um, bladder emptying is confirmed and recorded on the chart!”",
+			"“Scale verified at 135 mL! S-she looks ready to faint from embarrassment, Dr. Sakaguchi, should we move on to antisepsis?”",
+		] if staff_has_low_surgery_proficiency(staff_id) else [
+			"“135 mL on the scale, emptied clean. Honestly, why the tears? You're about to %s—are you really afraid of having your belly pressed twice?”" % cut_phrase_en,
+			"“Drainage clear at 130 mL, logged. Bladder decompression is confirmed, Doctor—you can take your hand off her abdomen now.”",
+			"“140 mL expressed into the bag. Look how mortified she is... well, at least the operative field won't have a full bladder in the way.”",
+		]
+		return str(en_drain_fallbacks[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), en_drain_fallbacks.size())])
+
+	var cut_phrase_zh := "把肚子切开了" if abdominal else "动刀切开了"
+	var zh_drainage := {
+		"nurse_ange": "「哼，引流袋刻度 140 毫升，排空得很彻底嘛。喂，躺着的那位叫什么呀——马上就要%s，还怕小腹被按两下吗？」" % cut_phrase_zh,
+		"nurse_rin": "「引流通畅，残余尿排出约 130 毫升，颜色清亮。……至于委屈成这样吗？待会儿真刀真枪%s的时候，可比被按两下肚子难熬多了。」" % ("切开肚子" if abdominal else "下刀切开"),
+		"nurse_yui": "「哇，刚才这一下足足按出来 135 毫升呢，已经记好啦。你看你把人家羞得耳根都红透了——不过膀胱排空干净，等下手术确实更安全嘛～」",
+		"nurse_haru": "「刻度 125 毫升，引流正常，记上了。坂口医生，排空确认完就快把手拿开吧，再按下去她真要羞得哭出来了。」",
+		"nurse_hiroko": "「排空约 130 毫升，颜色很清亮哦。好啦好啦，别难为情，膀胱排干净了手术才安全——坂口医生也别再故意按着人家了。」",
+		"nurse_moe": "「报、报告坂口医生！刚才按压小腹一共排出了……我凑近看看刻度……130 毫升！原、原来还要这样亲手按肚子挤干净吗，我认真记下来了！」",
+		"nurse_satsuki": "「引、引流量 120 毫升，性状清亮……刚才您按压她耻骨上方的时候，监护上的心率一下子飙高了，看得出羞耻得厉害……已经记录完毕。」",
+		"nurse_iwasaki_rumi": "「140 毫升，一滴不剩全给你按出来啦。哎呀，台上的妹妹也别羞成这样嘛——马上就要%s，还怕肚子被医生按两下吗？」" % cut_phrase_zh,
+		"nurse_yoneda_shiori": "「引流袋刻度停在 125 毫升，流速和颜色都正常……她的脸红得好厉害，不过膀胱确实已经彻底排空了，我这就写进护理记录。」",
+		"nurse_sonoda_itsumi": "「135 毫升，排空确认完毕！你也别太害臊啦，现在挤干净总比待会儿%s的时候膀胱鼓着碍事强多啦！」" % ("切开肚子" if abdominal else "正式下刀"),
+		"nurse_kariya_megumi": "「报告！按压后排出残余尿 130 毫升，清亮无异常！（哇，当着一屋子人被医生按着肚子硬把尿挤出来，换我躺上面肯定羞得想死……还好是尿不是血！）」",
+		"nurse_hikami_saeko": "「引流量 130 毫升，膀胱排空良好。患者小姐，不必为这种生理排泄如此难堪——相比接下来要正式切开的手术本身，按两下小腹只是例行公事。」",
+		"patient_chihaya": "「刻度 120 毫升，已经排空记好了……我懂那种被人按着小腹控制不住流出来的羞耻感，深呼吸，这一步已经过去啦。」",
+		"guest_mizuho": "「一共出来 135 毫升，通畅得很！害羞啥呀，一会儿都要%s，让医生按两下肚子把尿排干净不是天经地义嘛！」" % cut_phrase_zh,
+	}
+	if zh_drainage.has(staff_id):
+		return str(zh_drainage[staff_id])
+	var zh_drain_fallbacks := [
+		"「报、报告！引流袋刻度 130 毫升，颜色清亮！排空量已经记好了……她的脸红得好厉害呀……」",
+		"「引流出 125 毫升残余尿……呃，膀胱排空已经确认并登记进护理单了！」",
+		"「刻度核对完毕，135 毫升！坂、坂口医生，她好像快羞晕过去了，我们快进入消毒吧？」",
+	] if staff_has_low_surgery_proficiency(staff_id) else [
+		"「引流刻度 135 毫升，排得很干净。别一副快哭出来的表情嘛——马上就要%s，还怕肚子被按两下吗？」" % cut_phrase_zh,
+		"「引流通畅，排出 130 毫升，已经记上护理单了。膀胱确认排空了就松手吧，坂口医生。」",
+		"「140 毫升残余尿全进引流袋了。看把人家羞成什么样了……不过术前排空彻底倒确实省心。」",
+	]
+	return str(zh_drain_fallbacks[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), zh_drain_fallbacks.size())])
+
+func excessive_disinfection_nurse_response(staff_id: String, action_id: String) -> String:
+	if action_id == "begin_excessive_disinfection":
+		if english_mode():
+			var en_start := {
+				"nurse_ange": "“Extending the antiseptic field from chest to perineum 'just in case'? ...Fine, here are the ring forceps and soaked sponges—don't drip povidone-iodine all over the table.”",
+				"nurse_rin": "“Preparing that wide a margin is rarely necessary for a standard incision... Since the lead surgeon insists, here is the antiseptic bowl. Warn her before the cold sponge touches her.”",
+				"nurse_yui": "“Oh my, extending the disinfection all the way up and down? These sponges are icy cold, Dr. Sakaguchi—here are the forceps, try not to make her jump~”",
+				"nurse_haru": "“...Swabbing from her chest all the way down there while she's wide awake? She's going to freeze and blush to pieces. Here's the tray—make it quick.”",
+				"nurse_hiroko": "“Preparing an extra-wide sterile margin personally? Here are the ring forceps and soaked gauze balls—the solution is chilly, so go gently.”",
+				"nurse_moe": "“A-ah, we need to disinfect all the way from her chest down to her perineum in case the incision extends?! U-understood, I'll hold the sponge bowl right beside you!”",
+				"nurse_satsuki": "“Eh...? Swabbing her entire bare torso and perineum while she's conscious...?! T-the povidone-iodine sponges are ready, Dr. Sakaguchi...”",
+				"nurse_iwasaki_rumi": "“Whoa, going for full top-to-bottom antisepsis yourself, Doc? Sure thing, forceps and soaked sponges are all yours!”",
+				"nurse_yoneda_shiori": "“An extended antiseptic field? Understood—I've soaked plenty of sterile sponges for you, Dr. Sakaguchi.”",
+				"nurse_sonoda_itsumi": "“Prepping a wide backup margin yourself? Got it! Forceps and extra iodine sponges are ready to go.”",
+				"nurse_kariya_megumi": "“R-right away! Here are the forceps and antiseptic bowl! (Wait, painting her with cold iodine from breasts to groin while she's wide awake—my skin is getting goosebumps just watching!)”",
+				"nurse_hikami_saeko": "“Requesting a chest-to-perineum contingency margin... Thorough, if decidedly unconventional. The ring forceps and sponges are ready.”",
+				"patient_chihaya": "“That cold solution is going to make her shiver all over... Here are the sponges, Dr. Sakaguchi, please be gentle.”",
+				"guest_mizuho": "“Prepping the whole front from top to bottom just in case? Gotcha, Doc—here's a full bowl of soaked sponges!”",
+			}
+			if en_start.has(staff_id):
+				return str(en_start[staff_id])
+			var en_fb := [
+				"“U-understood! Here are the ring forceps and extra povidone-iodine sponges, Dr. Sakaguchi!”",
+				"“An extended sterile margin? Right away—I've prepared plenty of soaked gauze balls for you!”",
+			] if staff_has_low_surgery_proficiency(staff_id) else [
+				"“Insisting on swabbing a full chest-to-perineum margin yourself? Very well—here are the forceps and soaked sponges.”",
+				"“That's a remarkably wide antiseptic field, Doctor... Here is the sponge bowl; she's wide awake, so mind the chill.”",
+			]
+			return str(en_fb[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), en_fb.size())])
+		var zh_start := {
+			"nurse_ange": "「借口预防延长切口，要从胸口一路刷到会阴？……算了，卵圆钳和浸饱的碘伏球给你，别滴得满台面都是。」",
+			"nurse_rin": "「常规切口很少需要扩到这么大范围……既然主刀坚持备足无菌边界，弯盘给你。药水很凉，下钳前先提醒她一声。」",
+			"nurse_yui": "「咦～消毒范围要从上面一直扩到最下面呀？碘伏棉球冰冰凉凉的哦，坂口医生拿好钳子慢慢刷吧～」",
+			"nurse_haru": "「……趁她醒着从胸口一路刷到那种地方，她肯定又要冻得发抖又要羞死了。弯盘递你了，动作快一点。」",
+			"nurse_hiroko": "「主刀要亲自做扩大范围消毒吗？来，卵圆钳和浸满药液的纱球都备好了，药水偏凉，下手轻一点哦。」",
+			"nurse_moe": "「啊、为了防备延长切口，要从胸部一直刷到会阴才够无菌吗？！明、明白，我端好碘伏弯盘在旁边配合！」",
+			"nurse_satsuki": "「诶……趁患者清醒着把胸口到私密处全都刷一遍碘伏吗……？！纱、纱球已经浸好了，请坂口医生取用……」",
+			"nurse_iwasaki_rumi": "「哟，这回连涂碘伏都要从上到下亲自包办呀？行，钳子和吸饱药水的棉球全归你！」",
+			"nurse_yoneda_shiori": "「要做扩大范围的术野消毒吗？好的，我已经替坂口医生多浸了几颗无菌纱球。」",
+			"nurse_sonoda_itsumi": "「主刀亲自刷大范围备用术野？没问题，卵圆钳和足量碘伏球都给你备齐了！」",
+			"nurse_kariya_megumi": "「明、明白！卵圆钳请拿好！（哇，清醒着从胸口一路被冰凉碘伏涂到最下面，光是看着我都起鸡皮疙瘩了……）」",
+			"nurse_hikami_saeko": "「连胸部至会阴都纳入备用消毒边界吗……真是格外彻底的做法。卵圆钳与纱球已核对无误。」",
+			"patient_chihaya": "「冰凉的消毒水一下子涂满全身会很冷很害羞的……纱球给您，坂口医生请尽量轻一点。」",
+			"guest_mizuho": "「预防万一干脆从上到下全刷一遍是吧？没问题，整碗吸饱碘伏的棉球我都给你端稳了！」",
+		}
+		if zh_start.has(staff_id):
+			return str(zh_start[staff_id])
+		var zh_fb := [
+			"「好、好的！卵圆钳和加量的碘伏纱球都已经准备好了，请坂口医生操作！」",
+			"「要做全身扩大消毒吗？明白，我在旁边替您端稳消毒弯盘！」",
+		] if staff_has_low_surgery_proficiency(staff_id) else [
+			"「连胸口到会阴都要主刀亲自刷一遍？好吧，卵圆钳和碘伏纱球给你。」",
+			"「这备用消毒边界扩得可真够大的……弯盘拿好，她还醒着，当心冷药水激得她乱动。」",
+		]
+		return str(zh_fb[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), zh_fb.size())])
+
+	if english_mode():
+		var en_dry := {
+			"nurse_ange": "“Sterile rules forbid wiping wet iodine—just lie still and air-dry. Painted gleaming amber from nipples to groin like an anatomical specimen, at least you're thoroughly sterile now.”",
+			"nurse_rin": "“Wiping would break antisepsis, so it had to dry naturally. The film from chest to perineum has set now—we can proceed.”",
+			"nurse_yui": "“Look at her shivering with her whole bare front glistening under the lamp~ Too bad sterile rules say we can't blot it dry, but it's finally set now!”",
+			"nurse_haru": "“The antiseptic film has finally dried... Poor thing was left glistening and freezing in the open air the whole time. Let's move on quickly.”",
+			"nurse_hiroko": "“Evaporating iodine takes a lot of warmth with it, doesn't it? Good job holding still—the antiseptic layer has dried properly now.”",
+			"nurse_moe": "“R-reporting! We didn't touch it with dry gauze at all—the povidone-iodine from her chest down to her perineum has air-dried into a clean film!”",
+			"nurse_satsuki": "“N-natural drying confirmed... Leaving her glistening bare under the AC gave her goosebumps all over, though the sterile film is intact...”",
+			"nurse_iwasaki_rumi": "“All air-dried and shiny from top to bottom! Can't wipe iodine off by rule, sweetheart, so enduring that chilly breeze was the only way.”",
+			"nurse_yoneda_shiori": "“The antiseptic layer across her chest, abdomen, and perineum has completely air-dried now, Dr. Sakaguchi.”",
+			"nurse_sonoda_itsumi": "“Air-drying complete! Freezing as that full-front coat looked, the sterile film is rock-solid now.”",
+			"nurse_kariya_megumi": "“Confirmed dry! (Left lying stark naked and dripping wet with cold iodine under the AC without being allowed to wipe it... I'd be shivering twice as hard!)”",
+			"nurse_hikami_saeko": "“Natural evaporation complete; the povidone-iodine film is uniform across the entire extended field.”",
+			"patient_chihaya": "“It's finally dry... Having cold antiseptic evaporate off bare skin feels endlessly long when you're lying up there.”",
+			"guest_mizuho": "“Dried clean from chest to groin! Rules say no wiping, so airing it out bare did the trick!”",
+		}
+		if en_dry.has(staff_id):
+			return str(en_dry[staff_id])
+		var en_dry_fb := [
+			"“Air-drying confirmed! The antiseptic film across her entire bare front has set cleanly!”",
+			"“We waited without wiping as instructed—the povidone-iodine layer is dry now, Dr. Sakaguchi!”",
+		] if staff_has_low_surgery_proficiency(staff_id) else [
+			"“Sterile protocol forbids blotting it dry, so she had to air-dry bare—the antiseptic film has set now.”",
+			"“The extended povidone-iodine coat has dried evenly under the lights. Ready for the next step.”",
+		]
+		return str(en_dry_fb[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), en_dry_fb.size())])
+
+	var zh_dry := {
+		"nurse_ange": "「按无菌规矩没干透之前本来就不许拿纱布擦，老实敞着晾干吧——从乳尖到腿间涂得跟标本似的，这下总算彻底成膜无菌了。」",
+		"nurse_rin": "「拿干纱布擦拭会破坏杀菌膜，只能这样敞在冷气里自然风干。现在从胸口到会阴都已经干透了，继续下一步吧。」",
+		"nurse_yui": "「哇，全身亮晶晶地在无影灯下发抖呢～偏偏按规定又不能替她擦干，不过现在总算成膜干透啦！」",
+		"nurse_haru": "「消毒液总算自然干透了……全身湿淋淋地晾在手术室冷风里这么久，看把她冻得和羞得。快往下走吧。」",
+		"nurse_hiroko": "「药水在裸露皮肤上挥发最带走体温了呢……真乖，一直忍着没乱动，现在消毒膜已经干好啦。」",
+		"nurse_moe": "「报、报告！严格遵守没有擦拭——患者从胸口到最下面的碘伏已经全部自然风干成膜了！」",
+		"nurse_satsuki": "「自、自然干燥确认完毕……全身湿亮地敞在空调冷风下，她身上全都起鸡皮疙瘩了……不过无菌膜很完整。」",
+		"nurse_iwasaki_rumi": "「从上到下全晾干啦！碘伏按规矩不能擦，妹妹你也别委屈，吹会儿冷风总算干利索了。」",
+		"nurse_yoneda_shiori": "「坂口医生，患者胸部、腹部到会阴的消毒液都已经自然干燥了，可以进入下一步。」",
+		"nurse_sonoda_itsumi": "「自然风干确认完毕！虽然全身湿着吹冷气看着就哆嗦，不过无菌膜已经结结实实干透啦！」",
+		"nurse_kariya_megumi": "「报告，已经干透了！（全身赤裸着涂满冰碘伏还不准擦、硬生生在冷气底下晾干……换作是我早就羞得缩成虾米了！）」",
+		"nurse_hikami_saeko": "「自然挥发干燥已完成，扩大区域的碘伏成膜均匀，符合无菌要求。」",
+		"patient_chihaya": "「总算干透了……躺在台上一动不能动地等冰凉药水自己挥发，每一秒都像被拉得好长呢。」",
+		"guest_mizuho": "「从胸口到腿间全都晾干啦！规矩说不让擦，这么敞着吹干果然最快！」",
+	}
+	if zh_dry.has(staff_id):
+		return str(zh_dry[staff_id])
+	var zh_dry_fb := [
+		"「报告！没有用纱布擦拭，全身扩大涂布的碘伏已经自然风干了！」",
+		"「已经按规范敞开晾干成膜了，请坂口医生继续下一步！」",
+	] if staff_has_low_surgery_proficiency(staff_id) else [
+		"「按无菌规范不能擦拭，只能这样敞着晾干——现在整片消毒膜已经干透了。」",
+		"「从胸部到会阴的碘伏层已经在灯光下自然干燥，随时可以继续。」",
+	]
+	return str(zh_dry_fb[posmod(hash("%s:%s:%s" % [staff_id, patient_name, event_count]), zh_dry_fb.size())])
+
+func incision_lecture_nurse_commentary(staff_id: String) -> String:
+	var en_pool := [
+		"“Her heart rate on the monitor just jumped to 120—though that purple incision line stands out crystal clear against her flushed, goosebumped skin. Ready whenever you are.”",
+		"“With the chief surgeon lecturing over every inch like that, the pulse tone is practically blurring together. Try not to tense up so hard—you can't flinch once the blade goes in.”",
+		"“Talk about textbook sympathetic arousal—the skin on both sides of the purple line is quivering with every breath... Still, the landmarks couldn't be clearer.”",
+		"“Look how flushed she is from her neck right down her chest, and her blood pressure ticked up a notch too—still well within safe limits to operate, though.”",
+		"“It's still just a felt marker and she's already covered in goosebumps... Take heart—the more exact the line, the cleaner the cut will be.”",
+		"“The monitor doesn't lie—every spot Dr. Sakaguchi pointed out bumped her heart rate another five or six beats. I'll just chart 'marked awake preoperative stress response.'”",
+		"“Shivering like that makes the purple incision line look almost alive on her skin... Slow your breathing down; we're about to begin for real.”",
+		"“She's seconds away from being opened up along that line, yet she seems more mortified about being lectured in front of us than scared of the knife... Vitals verified; ready for the scalpel.”",
+		"“Between the chill and nerves her skin is pulled taut, so the marker ink didn't bleed a bit. Vitals are within safe bounds whenever you're ready, Dr. Sakaguchi.”",
+		"“SpO2 is 99%, though her chest and belly won't stop heaving—catch your breath before the blade touches down, because there's no dodging once we start.”",
+	]
+	var zh_pool := [
+		"「心电监护上的心率一下子跳到一百二了呢——紫色切口线衬在泛红起栗的皮肤上倒是格外醒目，随时可以下刀。」",
+		"「主刀这么一寸寸讲评下来，脉搏提示音都快连成一片了。别绷太紧呀，等会儿真动起刀来可更不能乱动。」",
+		"「交感神经兴奋得这么明显，连切口线两边的皮肤都在跟着呼吸一颤一颤的……不过解剖标志确实核对得很清楚了。」",
+		"「看把患者羞得，脖子根到胸口全红透了，血压也跟着往上窜了一截——但在可承受范围内，不影响开刀。」",
+		"「笔尖还没换成手术刀呢，全身鸡皮疙瘩就先起来一层了……放心吧，划线越精细，待会儿切开得越利落。」",
+		"「监护仪可不会撒谎哦，坂口医生每点一处，心率就往上蹦五六下。记录单上我就写‘术前清醒应激反应显著’啦。」",
+		"「画着紫色切口线还抖得这么厉害，整条线看起来都像活的一样……呼吸放慢一点，马上就要正式开始了。」",
+		"「明明马上就要顺着这条线切开了，结果比起怕疼好像更怕被大家盯着讲评呢……生命体征核对完毕，可以请刀了。」",
+		"「冷气加上紧张，皮肤缩得这么紧，标记墨水倒是半点都没晕开。体征在安全线内，坂口医生随时可以开始。」",
+		"「血氧99%，就是呼吸急促得胸口和肚子一直晃——趁还没下刀赶紧平复一下，待会儿刀刃贴上去可不兴躲哦。」",
+	]
+	var pool := en_pool if english_mode() else zh_pool
+	var idx := posmod(hash("%s:%s:%s:%s:%s" % [session_flavor_salt, staff_id, patient_name, procedure_id, event_count]), pool.size())
+	return str(pool[idx])
+
+func postop_cleanup_nurse_commentary(staff_id: String) -> String:
+	var en_pool := [
+		"“There we go, warm sheet's over you—you didn't faint through the whole operation, yet getting wiped down and inspected head to toe by Dr. Sakaguchi nearly pushed you over the edge.”",
+		"“Wrist straps are off now. Look at her—not an ounce of strength left even to lift a finger... At least you're finally under a warm sheet heading back to the ward.”",
+		"“The chief surgeon wiped every trace of iodine and cold sweat spotless, though it left her blushing from throat to instep... The transfer stretcher is waiting right outside.”",
+		"“Even after closure she still had to lie bare under the lights for a full wipe-down and check... No wonder her eyes are damp. Here—tucked in nice and warm now.”",
+		"“Her pulse is finally coming down a little, though her breathing is still exhausted. I've hooked the catheter bag onto the stretcher rail—ready for transfer.”",
+		"“Surviving awake surgery only to face one final personal inspection from the surgeon... Good job holding on—nobody can see a thing under the sheet now, so close your eyes and rest.”",
+		"“Even the catheter line checked personally by the lead surgeon—talk about thorough postoperative review... Poor thing looks like her soul nearly floated right out of her.”",
+		"“Between the warm saline wipe and the chilly OR air, her skin's gone ice-cold. You're wrapped up in a warmed sheet now—leave the rest to us.”",
+		"“Too spent even to raise a hand while Dr. Sakaguchi wiped and checked every inch of her... Vitals are stable; ready to slide her onto the stretcher.”",
+		"“Dressing dry and intact, drainage clear, pressure points checked. Relieved to finally have a sheet over you? We'll wheel you back to your room right away.”",
+	]
+	var zh_pool := [
+		"「好啦，温热白单盖上了——刚才开刀都没晕过去，最后被坂口医生从头到脚擦洗检视这一遭，倒差点真羞晕过去了呢。」",
+		"「手腕上的固定带解开喽。看她一点力气都没剩下、连手指头都抬不起来的样子……总算能盖上被单回病房睡一觉了。」",
+		"「碘伏印子和冷汗倒是被主刀擦得干干净净，就是把人家从脖子根一路羞红到了脚背……平车已经在门外等着了。」",
+		"「明明切口都缝好了，还要赤条条地躺在灯下被擦拭检查一遍……难怪眼角都委屈湿了。来，盖严实了，不冷啦。」",
+		"「脉搏总算慢慢降下来一点了，呼吸还是虚得很。导尿袋我已经挂到平车侧钩上了，随时可以过床交接。」",
+		"「熬过了清醒开刀，最后还得过主刀亲自检视这一关……辛苦啦，白单盖好以后谁也看不见了，安心闭眼歇会儿吧。」",
+		"「全身上下连导尿管接口都由主刀亲自查过，这术后核对可真是细致到家了……看把患者折腾得，魂儿都快飘走了。」",
+		"「擦过温盐水又吹了这么久冷风，皮肤都凉透了呢。烘热的大白单给你裹好啦，接下来交给我们推回病房吧。」",
+		"「连抬手挡一下的力气都没了，只能任由坂口医生擦了一遍又看一遍……体征确认平稳，准备移上转运平车。」",
+		"「敷料平整无渗血，引流通畅，四肢受压点也复查过了。盖上单子总算松口气了吧？马上送你回病房休息。」",
+	]
+	var pool := en_pool if english_mode() else zh_pool
+	var idx := posmod(hash("postop:%s:%s:%s:%s:%s" % [session_flavor_salt, staff_id, patient_name, procedure_id, event_count]), pool.size())
+	return str(pool[idx])
+
 func staff_action_response(staff_id: String, action_id: String, authored: String) -> String:
 	var custom_response := str(patient_dialogue_overrides.get("team_overrides", {}).get(staff_id, {}).get(action_id, ""))
 	if not custom_response.is_empty():
 		return patient_dialogue_text(custom_response)
+	if action_id in ["begin_manual_catheterization", "nurse_verify_catheter_drainage"]:
+		return manual_catheter_nurse_response(staff_id, action_id)
+	if action_id in ["begin_excessive_disinfection", "ack_disinfection_drying"]:
+		return excessive_disinfection_nurse_response(staff_id, action_id)
+	if action_id == "ack_incision_nurse_commentary":
+		return incision_lecture_nurse_commentary(staff_id)
+	if action_id == "ack_postop_nurse_commentary":
+		return postop_cleanup_nurse_commentary(staff_id)
 	# Authored work responses are bound to real actions, never the idle pool.
 	var work_key := str({"perform_preparation":"WD_09", "complete_manual_ward_preparation":"WD_07", "confirm_circulating_role":"OR_02"}.get(action_id,""))
 	if not work_key.is_empty():
@@ -3280,7 +3981,11 @@ func patient_interaction_with_overrides(source: Dictionary) -> Dictionary:
 	return result
 
 func operative_preparation_reaction_id(action_id: String) -> String:
-	if flags.has("anesthetized") or action_id not in ["operative_positioning", "urinary_catheterization", "skin_disinfection", "incision_marking"]:
+	if flags.has("anesthetized"):
+		return ""
+	if action_id == "manual_urinary_catheterization":
+		return "urinary_catheterization" + ("_none" if flags.has("no_anesthesia_confirmed") else "_awake")
+	if action_id not in ["operative_positioning", "urinary_catheterization", "skin_disinfection", "incision_marking"]:
 		return ""
 	return action_id + ("_none" if flags.has("no_anesthesia_confirmed") else "_awake")
 
@@ -3289,7 +3994,7 @@ func operative_preparation_fallback(action_id: String) -> String:
 	match action_id:
 		"operative_positioning":
 			return "“Please do not restrain my hands... Do my legs have to remain at this angle?”" if english_mode() and without_anesthesia else "“The straps are a little tight... I will try to remain still.”" if english_mode() else "「不要固定我的手……我的腿也必须保持这个角度吗？」" if without_anesthesia else "「固定带有一点紧……我会尽量保持不动。」"
-		"urinary_catheterization":
+		"urinary_catheterization", "manual_urinary_catheterization":
 			return "“That is very uncomfortable—please stop!”" if english_mode() and without_anesthesia else "“It is uncomfortable... Please go slowly. I will cooperate.”" if english_mode() else "「啊……好难受，请停一下！」" if without_anesthesia else "「有些不舒服……请慢一点，我会配合。」"
 		"skin_disinfection":
 			return "“It is cold and stinging—my skin already hurts!”" if english_mode() and without_anesthesia else "“The antiseptic is cold... I will remain still.”" if english_mode() else "「又冷又刺，皮肤已经被擦得发疼了！」" if without_anesthesia else "「消毒液很凉……我会忍住不动。」"

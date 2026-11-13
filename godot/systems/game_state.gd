@@ -677,6 +677,8 @@ func patient_spoken_line(patient_id: String, line: String, beat: String, english
 	return "“%s”" % voiced if english else "「%s」" % voiced
 
 func patient_definition(patient_id: String) -> Dictionary:
+	if patient_id == preload("res://godot/systems/shiori_lv3.gd").STORY_PATIENT_ID:
+		return preload("res://godot/systems/shiori_lv3.gd").patient_record(patient_content_locale() == "en")
 	for patient in patient_definitions:
 		if str(patient.get("id", "")) == patient_id:
 			return patient
@@ -1819,6 +1821,8 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if preload("res://godot/systems/miyuki_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/miyuki_lv3.gd").eligible(self, str(definition.id)):
 		return false
+	if preload("res://godot/systems/shiori_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/shiori_lv3.gd").eligible(self, str(definition.id)):
+		return false
 	if str(definition.id) == preload("res://godot/systems/serika_lv3.gd").ID and not preload("res://godot/systems/serika_lv3.gd").eligible(self):
 		return false
 	if str(definition.id) == preload("res://godot/systems/serika_radiology.gd").LV1 and not preload("res://godot/systems/serika_radiology.gd").lv1_entry_allowed(self):
@@ -1903,7 +1907,11 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if definition.conditions.has("max_day") and event_day > int(definition.conditions.max_day):
 		return false
-	if definition.category == "introduction" and bool(relation.get("met", false)) and not definition.has("introduction_actor_ids"):
+	# Emiko's formal office meeting is also a required story prerequisite.
+	# An earlier acquaintance must not block this unfinished event; the done
+	# guard above still prevents replay, and its skill/prerequisite gates remain.
+	var emiko_formal_meeting := event_id == "emiko_intro_rumored_hands"
+	if definition.category == "introduction" and bool(relation.get("met", false)) and not definition.has("introduction_actor_ids") and not emiko_formal_meeting:
 		return false
 	for relationship_actor_id in relationship_actor_ids:
 		var participant_relation := relation_for(relationship_actor_id)
@@ -2092,6 +2100,9 @@ func character_event_opening_node(definition: Dictionary) -> String:
 	var variants: Dictionary = definition.get("opening_variants", {})
 	if variants.is_empty():
 		return str(definition.get("start", ""))
+	if variants.has("lv3") and variants.has("lv4"):
+		var event_actor_id := str(definition.get("actor_id", ""))
+		return str(variants["lv4"] if relationship_level(event_actor_id) >= 4 else variants["lv3"])
 	var present := staff_present_at(str(definition.get("location_id", "")))
 	for actor_id in ["nurse_haru", "nurse_hiroko"]:
 
@@ -2140,6 +2151,16 @@ func start_character_event(id: String) -> RefCounted:
 		if character_events.has(id) and not character_events[id].completed:
 			character_events.erase(id)
 			character_event_order.erase(id)
+	if preload("res://godot/systems/shiori_lv3.gd").owns(id):
+		if character_events.has(id) and not character_events[id].completed:
+			character_events.erase(id)
+			character_event_order.erase(id)
+			preops.erase(preload("res://godot/systems/shiori_lv3.gd").STORY_PREOP_ID)
+			if active_character_event_id == id:
+				active_character_event_id = ""
+				active_mode = "encounter"
+		if not character_event_available(character_event_definitions[id]):
+			return null
 	if character_event_done(id):
 		return null
 	if not character_events.has(id):
@@ -2758,6 +2779,10 @@ func special_event_gallery_unlocked(id: String) -> bool:
 	return bool(special_event_definitions[id].get("gallery_unlock", false)) and special_event_done(id)
 
 func special_event_base_requirements_met(definition: Dictionary) -> bool:
+	var ayako = preload("res://godot/systems/ayako_return.gd")
+	var ayako_id := str(definition.get("id", ""))
+	if ayako.owns(ayako_id):
+		return ayako.base_requirements_met(self, ayako_id)
 	var miyuki = preload("res://godot/systems/miyuki_lv2.gd")
 	var miyuki_id := str(definition.get("id", ""))
 	if miyuki.owns(miyuki_id):
@@ -2790,6 +2815,9 @@ func special_event_base_requirements_met(definition: Dictionary) -> bool:
 	return special_requirements_met(definition.get("unlock_requirements", []))
 
 func special_event_timing_status(definition: Dictionary) -> Dictionary:
+	var ayako = preload("res://godot/systems/ayako_return.gd")
+	if ayako.owns(str(definition.get("id", ""))):
+		return ayako.timing_status(self, str(definition.id))
 	var miyuki = preload("res://godot/systems/miyuki_lv2.gd")
 	if miyuki.owns(str(definition.get("id", ""))): return miyuki.timing_status(self, str(definition.id))
 	if str(definition.get("id", "")) == preload("res://godot/systems/serika_lv4.gd").ID:
@@ -2828,8 +2856,8 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	if test_save_target_event_id() == str(definition.get("id", "")):
 		return {"status": "available", "trigger_day": trigger_day, "effective_day": planned_start}
 	for higher in special_event_definitions.values():
-		# An optional zero-time evening visit does not reserve daytime activity.
-		if str(higher.get("id", "")) == preload("res://godot/systems/miyuki_lv2.gd").A: continue
+		# Optional/short partial-day residency or ward interludes do not reserve full workdays.
+		if str(higher.get("id", "")) == preload("res://godot/systems/miyuki_lv2.gd").A or ayako.owns(str(higher.get("id", ""))): continue
 		if str(higher.get("id", "")) == str(definition.get("id", "")):
 			continue
 		if bool(higher.get("developer_only", false)) and not bool(definition.get("developer_only", false)):
@@ -2857,6 +2885,10 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	return {"status": "available", "trigger_day": trigger_day, "effective_day": planned_start}
 
 func special_event_trigger_day(definition: Dictionary) -> int:
+	var ayako = preload("res://godot/systems/ayako_return.gd")
+	if ayako.owns(str(definition.get("id", ""))):
+		var target: int = ayako.target_day(self, str(definition.id))
+		return target if target > 0 else GAME_DURATION_DAYS + 1
 	var miyuki = preload("res://godot/systems/miyuki_lv2.gd")
 	if miyuki.owns(str(definition.get("id", ""))):
 		var target: int = current_workday() if str(definition.id) == miyuki.A else miyuki.booked_day(self)
@@ -2883,6 +2915,9 @@ func special_event_trigger_day(definition: Dictionary) -> int:
 
 func special_event_available(definition: Dictionary) -> bool:
 	if preload("res://godot/systems/advanced_referral.gd").conflicts_event(self, definition): return false
+	var ayako = preload("res://godot/systems/ayako_return.gd")
+	if ayako.owns(str(definition.get("id", ""))):
+		return active_special_event_id.is_empty() and not active_surgery_in_progress() and ayako.eligible(self, str(definition.id))
 	var miyuki = preload("res://godot/systems/miyuki_lv2.gd")
 	if miyuki.owns(str(definition.get("id", ""))):
 		return active_special_event_id.is_empty() and not active_surgery_in_progress() and special_event_base_requirements_met(definition) and miyuki.eligible(self, str(definition.id))
@@ -3190,6 +3225,55 @@ func prepare_special_event_test_save(event_id: String, wait_for_one_surgery: boo
 	for requirement in definition.get("unlock_requirements", []):
 		if requirement is Dictionary:
 			_apply_test_event_requirement(requirement, target_day)
+	var ayako = preload("res://godot/systems/ayako_return.gd")
+	if ayako.owns(event_id):
+		for req_actor in ["doc_rei", "doc_shiori"]:
+			var rel := relation_for(req_actor)
+			if not rel.is_empty():
+				rel.met = true
+				rel.level = maxi(3, int(rel.level))
+		meet_staff("doc_asuka")
+		meet_staff("nurse_haru")
+		meet_staff("nurse_yui")
+		special_event_completion_counts[ayako.PREREQ_LV2] = 1
+		special_event_completion_days[ayako.PREREQ_LV2] = 10
+		set_story_flag("miyama_02_manga_artist_wrong_patient_completed", true)
+		set_story_flag("ayako_shiori_reconnected", true)
+		target_day = 192
+		if event_id != ayako.OPENING:
+			special_event_completion_counts[ayako.OPENING] = 1
+			special_event_completion_days[ayako.OPENING] = 192
+			set_story_flag("ayako_return_opening_completed", true)
+			set_story_flag("ayako_research_residency_active", true)
+			set_story_flag("ayako_ambient_pool_enabled", true)
+			target_day = 194
+		if event_id in [ayako.WEEK1, ayako.WEEK2, ayako.WEEK3, ayako.WEEK4, ayako.DEPARTURE]:
+			target_day = 197
+		if event_id in [ayako.WEEK2, ayako.WEEK3, ayako.WEEK4, ayako.DEPARTURE]:
+			special_event_completion_counts[ayako.WEEK1] = 1
+			special_event_completion_days[ayako.WEEK1] = 197
+			set_story_flag("ayako_return_week1_completed", true)
+			target_day = 204
+		if event_id in [ayako.WEEK3, ayako.WEEK4, ayako.DEPARTURE]:
+			special_event_completion_counts[ayako.WEEK2] = 1
+			special_event_completion_days[ayako.WEEK2] = 204
+			set_story_flag("ayako_return_week2_completed", true)
+			target_day = 211
+		if event_id in [ayako.WEEK4, ayako.DEPARTURE]:
+			special_event_completion_counts[ayako.WEEK3] = 1
+			special_event_completion_days[ayako.WEEK3] = 211
+			set_story_flag("ayako_return_week3_completed", true)
+			target_day = 218
+		if event_id == ayako.DEPARTURE:
+			special_event_completion_counts[ayako.WEEK4] = 1
+			special_event_completion_days[ayako.WEEK4] = 218
+			set_story_flag("ayako_return_week4_completed", true)
+			target_day = 221
+		if str(calendar_date(target_day).weekday_id) == "sun":
+			target_day += 1
+		if ayako.is_ambient(event_id):
+			for extra_actor in ayako.AMBIENT_SPECS.get(event_id, {}).get("extra_met", []):
+				meet_staff(str(extra_actor))
 	set_test_time(target_day, SHIFT_START_MINUTE)
 	if wait_for_one_surgery:
 		arm_test_save_one_surgery(event_id)
@@ -3239,6 +3323,8 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 	for requirement in conditions.get("special_requirements", []):
 		if requirement is Dictionary:
 			_apply_test_event_requirement(requirement, target_day, str(definition.get("actor_id", "")))
+	if preload("res://godot/systems/shiori_lv3.gd").owns(event_id):
+		target_day = preload("res://godot/systems/shiori_lv3.gd").prepare_test_save(self, event_id, target_day)
 	set_story_flag("__test_save_target_character_event__" + event_id, true)
 	var test_clock := clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1)
 	set_test_time(target_day, test_clock)
@@ -3475,6 +3561,27 @@ func start_special_event(id: String) -> RefCounted:
 	last_error = ""
 	return active_special_event
 
+func start_ayako_departure_event(id: String, workday: int) -> RefCounted:
+	last_error = "这个特殊活动当前无法开始。"
+	var ayako = preload("res://godot/systems/ayako_return.gd")
+	if not ayako.owns(id) or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty():
+		return null
+	if not special_event_definitions.has(id) or not ayako.eligible(self, id, true, workday):
+		return null
+	var definition: Dictionary = special_event_definitions[id]
+	var steps := {}
+	for step_id in definition.get("event_chain", []):
+		if not special_event_step_definitions.has(str(step_id)):
+			return null
+		steps[str(step_id)] = special_event_step_definitions[str(step_id)]
+	active_special_event = SpecialEvent.new(definition, steps, workday)
+	active_special_event.locals["ayako_departure_interlude"] = true
+	active_special_event_id = id
+	active_mode = "special_event"
+	normalize_special_event_position()
+	last_error = ""
+	return active_special_event
+
 func start_special_event_for_testing(id: String) -> RefCounted:
 	last_error = "测试活动当前无法开始。"
 	if not OS.is_debug_build() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or active_surgery_in_progress():
@@ -3494,6 +3601,7 @@ func start_special_event_for_testing(id: String) -> RefCounted:
 	active_special_event = SpecialEvent.new(definition, steps, event_day)
 	active_special_event_id = id
 	active_mode = "special_event"
+	normalize_special_event_position()
 	last_error = ""
 	return active_special_event
 
@@ -3591,7 +3699,16 @@ func choose_special_event(choice_id: String) -> Dictionary:
 			advance_story_to_future_day(1, SHIFT_START_MINUTE)
 	if active_special_event.completed:
 		var id := active_special_event_id
+		var ayako = preload("res://godot/systems/ayako_return.gd")
 		# Settle an atomic partial-day event exactly once, independently of nodes.
+		if ayako.owns(id):
+			var is_dep := bool(active_special_event.locals.get("ayako_departure_interlude", false))
+			special_event_completion_counts[id] = int(special_event_completion_counts.get(id, 0)) + 1
+			ayako.settle(self, id, int(active_special_event.started_day), not is_dep)
+			for flag in active_special_event.definition.get("completion_flags", []):
+				set_story_flag(str(flag), true)
+			apply_special_event_completion_effects(active_special_event.definition)
+			return result
 		if id == preload("res://godot/systems/serika_lv4.gd").ID:
 			preload("res://godot/systems/serika_lv4.gd").settle(self, active_special_event.started_day)
 		elif id == preload("res://godot/systems/mizuho_first_surgery.gd").B:
@@ -4263,12 +4380,15 @@ func finish_active_surgery() -> bool:
 	var completed_group := surgery_procedure_group(str(preparation.procedure_id))
 	if not completed_group.is_empty():
 		completed_surgeries_by_group[completed_group] = int(completed_surgeries_by_group.get(completed_group, 0)) + 1
+	var is_shiori_lv3_story_surgery: bool = preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(preparation)
 	pending_surgery_day_transition = false
 	active_preop_id = ""
 	active_mode = "encounter"
 	active_id = ""
 	pending_encounter_day_transition = false
-	if preparation.is_staff_patient():
+	if is_shiori_lv3_story_surgery:
+		preops.erase(preload("res://godot/systems/shiori_lv3.gd").STORY_PREOP_ID)
+	elif preparation.is_staff_patient():
 		retire_staff_patient(preparation)
 	else:
 		award_personal_nurse_outpatient_familiarity()
@@ -4285,12 +4405,15 @@ func finish_active_surgery_abort() -> bool:
 	if not preparation.surgery_aborted:
 		return false
 	var patient_id := str(preparation.definition.patient_id)
+	var is_shiori_lv3_story_surgery: bool = preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(preparation)
 	pending_surgery_day_transition = false
 	active_preop_id = ""
 	active_mode = "encounter"
 	active_id = ""
 	pending_encounter_day_transition = false
-	if preparation.is_staff_patient():
+	if is_shiori_lv3_story_surgery:
+		preops.erase(preload("res://godot/systems/shiori_lv3.gd").STORY_PREOP_ID)
+	elif preparation.is_staff_patient():
 		retire_staff_patient(preparation)
 	else:
 		advance_patient_rotation(patient_id)
@@ -4526,7 +4649,7 @@ func advanced_referral_timing_status(definition: Dictionary, requested_start_day
 			blocking_end = discharge
 			blocking_id = "chihaya_mizuho_joint_discharge"
 		for scheduled in special_event_definitions.values():
-			if str(scheduled.get("id", "")) == preload("res://godot/systems/miyuki_lv2.gd").A: continue
+			if str(scheduled.get("id", "")) == preload("res://godot/systems/miyuki_lv2.gd").A or preload("res://godot/systems/ayako_return.gd").owns(str(scheduled.get("id", ""))): continue
 			if bool(scheduled.get("developer_only", false)) or special_event_done(str(scheduled.get("id", ""))) or not special_event_base_requirements_met(scheduled):
 				continue
 			var timing: Dictionary = scheduled.get("timing", {})
@@ -6179,6 +6302,12 @@ func _restore_state_checked(data: Variant) -> bool:
 	return true
 
 func open_preop(id: String) -> RefCounted:
+	if id == preload("res://godot/systems/shiori_lv3.gd").STORY_PREOP_ID and preops.has(id):
+		preops[id].set_graphic_preop_explainer(resolve_preop_explainer())
+		active_id = ""
+		active_preop_id = id
+		active_mode = "preop"
+		return preops[id]
 	if preload("res://godot/systems/advanced_referral.gd").due(self): return null
 	if special_event_in_progress():
 		last_error = "特殊活动进行中，不能进入术前流程。"

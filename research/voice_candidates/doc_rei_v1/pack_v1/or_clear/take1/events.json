@@ -1,0 +1,89 @@
+[
+  {
+    "event_id": "event_EjYF6A7X06jL7vLI2fLBD",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYF6p3oMGLqE8g5tRIV7V74xBwNQ1hN",
+      "expires_at": 1794532296,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"視野は良好です、このまま進めましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Crisp intraoperative confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"視野は良好です、このまま進めましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Crisp intraoperative confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYF8typROQG2x8fvksY2",
+    "client_event_id": "line_1"
+  },
+  {
+    "event_id": "event_EjYFFLQdDL7p7cBKm52v0",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYF6p3oMGLqE8g5tRIV7V74xBwNQ1hN",
+      "expires_at": 1794532296,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"視野は良好です、このまま進めましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Crisp intraoperative confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"視野は良好です、このまま進めましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Crisp intraoperative confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

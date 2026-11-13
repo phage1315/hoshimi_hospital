@@ -1,0 +1,89 @@
+[
+  {
+    "event_id": "event_EjYMhqO5kIwTiLGcJxP7H",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYMhp3oMHF1M8EOyMKsj4A23XUNWDJ1",
+      "expires_at": 1794532767,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Clean, modest, gentle mid-to-upper register with a reserved, slightly shy intellectual sincerity. Careful, precise diction, polite restraint, and a soft earnest undertone.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Polite, genuine surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe80c92081919574b6c7e1f32d53"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Polite, genuine surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あっ",
+    "event_id": "event_EjYMiDMSgMWjmDYlIxUGF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、本",
+    "event_id": "event_EjYMiIy3aWWyfGBU5AaNE"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "当",
+    "event_id": "event_EjYMi0x17QR9OZ2YtJZ6e"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYMizx3ETTh3zU9euRCp",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "です",
+    "event_id": "event_EjYMjcgORJFJBsXqFE4HU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "か",
+    "event_id": "event_EjYMj6tRCsD3pYVbcrJKc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYMjcwYgaR8qeZPn2c88"
+  }
+]

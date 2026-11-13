@@ -1,0 +1,82 @@
+[
+  {
+    "event_id": "event_Ejbqfj4Phb5XbymjIWU4A",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_Ejbqfp3oMV9ldSrYJOVhDSU3tifAe5RA",
+      "expires_at": 1794546157,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ひゃああっ！！ そ、そんなに見つめないでよっ……頭がクラクラするわっ……！\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Loud, high-pitched startled anime yelp at the start, full open-throat projection, flustered and dizzy with emotion — NOT whispered. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ひゃああっ！！ そ、そんなに見つめないでよっ……頭がクラクラするわっ……！\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Loud, high-pitched startled anime yelp at the start, full open-throat projection, flustered and dizzy with emotion — NOT whispered. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ひゃ",
+    "event_id": "event_EjbqgjvgnifZcWf80QfAs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ああ",
+    "event_id": "event_EjbqgwLTNusGdmVQy3HhA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "っ",
+    "event_id": "event_Ejbqg8QkQ92d1OhpeXxN0"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "！！",
+    "event_id": "event_EjbqhgQMa1KCczbAeKbEM"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 1000,
+    "event_id": "event_EjbqhpNKiXtSVao6BhTxb",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "そ",
+    "event_id": "event_EjbqhZpi1eEQ7KQY5tWCS"
+  }
+]

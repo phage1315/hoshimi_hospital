@@ -1,0 +1,159 @@
+[
+  {
+    "event_id": "event_EjYK70ceQJouc6Ct3bydB",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYK7p3oMTG1RAin0voNNfGDaMbxfwjw",
+      "expires_at": 1794532607,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"待って先生、そこは一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Alert, grounded intraoperative caution, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"待って先生、そこは一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Alert, grounded intraoperative caution, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "待って",
+    "event_id": "event_EjYK8NwjyAkJAt4Tmai2b"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "先生",
+    "event_id": "event_EjYK88EKJ7lEnH50VPxYx"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYK9WR0zErvc5sbkfLvC",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、",
+    "event_id": "event_EjYK939EqvYdtWdnDH5Cy"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "そこ",
+    "event_id": "event_EjYK9jeQDwYrFGZ4qtSNU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "は",
+    "event_id": "event_EjYKAn7ZG6NIyRO4Ercjl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "一度",
+    "event_id": "event_EjYKAozJavRBoOKGOjFkd"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "確認",
+    "event_id": "event_EjYKAIYwjYDdotIoEPTMw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "しま",
+    "event_id": "event_EjYKBJKGDoPlm0jKcdt5X"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "しょう",
+    "event_id": "event_EjYKBMz0WlUPvSrGaoytm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "。",
+    "event_id": "event_EjYKBfgrbRzciRe4OX8aj"
+  },
+  {
+    "event_id": "event_EjYKFVGPBLJ1IZt8JgR15",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYK7p3oMTG1RAin0voNNfGDaMbxfwjw",
+      "expires_at": 1794532607,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"待って先生、そこは一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Alert, grounded intraoperative caution, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"待って先生、そこは一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Alert, grounded intraoperative caution, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "event_id": "event_EjYQftsLuLXew7JN7Bs1g",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYQfp3oNHfSl70gexuWo5iWt9OnqvYM",
+      "expires_at": 1794533013,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Youthful, sparkling, girlishly bright high-mid register with light, nimble vocal weight and lively clarity — distinctly young and cute-spirited rather than a heavy mature woman's voice. Playful koakuma teasing charm, crisp bouncy articulation, mischievous upward lilt at phrase endings.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、了解ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, cheerful girlish agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc3dcc88191808a8aa8deb47256"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、了解ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, cheerful girlish agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はい、",
+    "event_id": "event_EjYQgVLJr3bnKgo0rnd4Q"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "了解",
+    "event_id": "event_EjYQg3lpxNQo8JFfPI1JJ"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYQh25FQfDAve0FpmfMM",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "ですよ",
+    "event_id": "event_EjYQhV0m9S0aScBM492Hg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "。",
+    "event_id": "event_EjYQhDnFwYsitPcUyJ7bM"
+  },
+  {
+    "event_id": "event_EjYQmcvKlS8nfhBVQLUi8",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYQfp3oNHfSl70gexuWo5iWt9OnqvYM",
+      "expires_at": 1794533013,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Youthful, sparkling, girlishly bright high-mid register with light, nimble vocal weight and lively clarity — distinctly young and cute-spirited rather than a heavy mature woman's voice. Playful koakuma teasing charm, crisp bouncy articulation, mischievous upward lilt at phrase endings.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、了解ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, cheerful girlish agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc3dcc88191808a8aa8deb47256"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、了解ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, cheerful girlish agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

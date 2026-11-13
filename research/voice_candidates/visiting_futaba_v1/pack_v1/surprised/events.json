@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYNW79byyCsncaw2mpHh",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYNVp3oMV9lhT6Cel8cFczKqh5RezyQ",
+      "expires_at": 1794532818,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"おっと、それは想定外だね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Quick, lively surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おっと、それは想定外だね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Quick, lively surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おっと",
+    "event_id": "event_EjYNXQdvrlIdZrpvzLRiC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、それ",
+    "event_id": "event_EjYNXTcIIybDEhmfbNjZh"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYNX9mmE3seCrRfWzt9w",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "は想",
+    "event_id": "event_EjYNY84V3JxXSXS1dhpUl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "定",
+    "event_id": "event_EjYNYVW3ZCM6ZYwR5h6Fc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "外",
+    "event_id": "event_EjYNYrP6yuH9tIIt4tU8d"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "だね",
+    "event_id": "event_EjYNZJfC0zPJvCfzATWTG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "。",
+    "event_id": "event_EjYNZSXBHU9XXorQ3difm"
+  },
+  {
+    "event_id": "event_EjYNd1VMtHp9YtaPuZGyR",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYNVp3oMV9lhT6Cel8cFczKqh5RezyQ",
+      "expires_at": 1794532818,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"おっと、それは想定外だね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Quick, lively surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おっと、それは想定外だね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Quick, lively surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

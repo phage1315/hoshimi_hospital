@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_nishikawa_natsuki",
+    "name": "西川なつき",
+    "age": 19,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/ward/smile.png",
+        "ward/brave": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/ward/brave.png",
+        "ward/worried": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/splash/general_anesthesia.png",
+        "examination/shy": "assets/characters/patient_nishikawa_natsuki_v1/patient_nishikawa_natsuki/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "anxious",
+      "secondary": "analytical",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "anxious_analytical_detail",
+    "traits": {
+      "baseline_anxiety": 83,
+      "pain_sensitivity": 74,
+      "privacy_sensitivity": 73,
+      "trust_baseline": 46,
+      "control_need": 84,
+      "expressiveness": 72,
+      "health_literacy": 32,
+      "compliance_tendency": 78
+    },
+    "fear_profile": {
+      "pain_fear": 76,
+      "procedure_fear": 82,
+      "diagnosis_fear": 96,
+      "loss_control_fear": 81
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院……？医生，您是觉得情况很严重吗？请直接告诉我理由。我、我想先知道最坏的可能性。」",
+      "hospitalization_response": "「……好，我会住院。学校那边我自己请假。只是检查结果出来以后，请不要瞒着我，好吗？」",
+      "procedure_mismatch": "「等等！刚才说的手术跟现在不一样吧？您别以为我紧张就什么也听不懂，请先核对清楚！」",
+      "explain_plan": "「……这样我就明白了。谢谢您解释原因。结果还没出来之前，我尽量不自己乱猜。」",
+      "brief_plan": "「就一句『按流程』？医生，我来这里不是听您敷衍的。至少告诉我为什么要做这一步吧！」",
+      "last_reassure": "「我不是不信任您……我只是太怕听见坏消息了。能不能再告诉我一次，接下来谁会一直在场？」",
+      "choose_general": "「全身麻醉……醒来以前什么也不知道，是吗？……好吧。那结果出来后，请第一时间告诉我。」",
+      "choose_epidural": "「硬膜外麻醉？意识还在，身体却动不了……我理解原理，可光是想象就有点受不了。」",
+      "choose_local": "「局部麻醉……我还能说话，对吧？如果里面有明显的感觉，我会立刻报告，您也要听见啊。」",
+      "choose_none": "「完全不麻醉？！……您说真的？我每天都在努力忍耐压力，但那不等于我能忍住手术刀啊！」",
+      "induction_reassure": "「……我会数着呼吸的。考试的事先不想了……医生，拜托您，别让我带着一堆疑问睡过去。」",
+      "insist_without_anesthesia": "「疼……真的疼！我知道要配合，可您不能只让我坚持！请先听我说哪里受不了了！」",
+      "assistant_stabilize_none": "「别、别同时按住我！我知道不能动，可我还没麻醉……一想到接下来会疼，身体就自己缩起来了！」",
+      "assistant_stabilize_local": "「我会保持这个姿势……嘶，刚才牵到里面了！别说我反应太大，那里确实还有感觉！」",
+      "assistant_stabilize_epidural": "「腿真的一点也使不上劲……我知道有人在帮我固定，可这种感觉也太不安了。请先告诉我再调整。」",
+      "incision_ready": "「我都说了会配合……等、等等！刀就在那儿……不行！求您先别落下来，我真的好怕……！」",
+      "incise_epidural": "「……已经切了吗？没有想象中那种刺痛，可我知道刀正在我身上……呜，心跳怎么这么快……」",
+      "incise_local": "「嘶——！外面似乎麻了，可里面被牵住的感觉好清楚！医生，请再确认一下，这样真的可以吗？」",
+      "incise_none": "「啊——！！好疼！真的切开了！等一下、等一下！我忍不住……求您先停一下！」",
+      "contact_pause": "「……停了吗？谢谢……请让我喘口气。刚才我连自己想说什么都忘了。」",
+      "contact_command": "「知道了，不能动……我会努力！可是请别只下命令，我想知道接下来还要多久！」",
+      "contact_continue": "「还要继续啊……好。我会听您说，但如果我又喊出来，您别以为我是在故意顶嘴。」",
+      "ongoing_narrate": "「现在做到了哪一步？……谢谢。至少听见进度，我就不会一直往最坏的方向猜。」",
+      "ongoing_eye_contact": "「医生……您看着我说话，好吗？我不是想打扰，只是想确认大家都还注意着我的情况。」",
+      "ongoing_silent": "「怎么突然这么安静？是出什么问题了吗？……医生，求您回答一下，我又开始乱想了！」",
+      "closure_reassure": "「快结束了……？真的？……太好了。刚才我那么凶，抱歉。谢谢你们一直回答我的问题。」",
+      "closure_coach": "「跟着呼吸……好，一、二……我做得到。您继续说，我听着就没那么怕。」",
+      "closure_silent": "「……让我安静一会儿吧。不是生您的气……只是我终于不用一直想那些可怕的结果了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「还要灌肠……？！我知道肠道准备有必要，可要把病号服撩起来、侧躺着露出臀部……先告诉我到底要灌多少进去！」（温水哗哗灌进肚子里的时候，整张脸都烫得快冒烟了……！）",
+        "「呜……管子插进后面了……温热的液体一直在往肚子里灌，小腹越来越胀……别、别让我一边夹紧一边回答问题啊！」（肚子里咕噜噜直翻腾，还要当着大家的面死死夹紧忍住……太要命了！）",
+        "「肚子里又酸又胀，快要憋不住了……！您说还要再忍几分钟才准去厕所？！」（终于熬到去洗手间了……今天真是把一辈子的脸都丢光了。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「呜啊——医、医生！这次的术式明明不用灌肠，为什么还是让我脱下裤子灌满了一肚子药水啊？！」（白白脱了裤子撅着屁股受这一遭罪，小腹现在还胀得直发酸呢……！）",
+        "「清单上明明标着不适用……现在肚子里咕噜咕噜翻腾得好羞耻，求求你快让我去排空吧……！」（肚子里翻江倒海得根本夹不住，白受了一份大羞耻……！）"
+      ],
+      "ward_skin_prep": [
+        "「备皮……要把小腹下面的毛发也全部剃光？！请、请别用那种理所当然的语气说！先把床帘拉严实，至少告诉我剃刀会碰到哪里！」（刀片贴着最敏感的嫩肉滑过去，吓得我大气都不敢喘一下……！）",
+        "「唔……泡沫涂上来了，剃刀贴着那里刮过去的感觉好清楚……」（下面被剃得光溜溜的一片，稍微动一下都觉得凉飕飕的好怪异……）",
+        "「我没乱动！只是您手指按着大腿根、剃刀又离敏感的地方那么近，皮肤自己会起鸡皮疙瘩……求您快一点剃完盖上被子吧！」（全刮干净以后冷空气直接钻进来，羞得我双腿都不知道怎么放了……）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「咿呀——切口明明不在下面，为什么还是把我的私密处剃得光溜溜一丝不留啊？！」（明明不用剃的地方也被刮得光秃秃的，冷风一吹羞死人了……！）",
+        "「根本不用碰的地方变得光秃秃的……病号服稍微蹭到一下都又麻又害羞，我没脸见人了……！」（双腿合拢时皮肤直接贴在一起，怪异得我连路都快不会走了……！）"
+      ],
+      "ward_surgical_cap": [
+        "「把短发全部塞进手术帽里……这样就行了吗？」（连最后一缕能挡脸的头发都塞进帽子里了，真要被推去挨刀了啊……）",
+        "「连耳边的碎发也收进去了……接下来就要躺上推车了吧？」（看着推车停在床边，手心不知不觉已经全是冷汗了……）"
+      ],
+      "operative_positioning_awake": [
+        "「手腕要扣进束缚带里、双腿还要按规定分开固定……？！我知道是为了防止术中乱动，可这样被绑在手术台上，连一点遮掩的动作都做不了啊！」（手腕和脚踝全被固定带扣住了……连想稍微抬手挡一下都做不到！）",
+        "「冷气直接吹在大腿和皮肤上……在这么多医护人员眼前被摆成完全敞开的姿势，就算您说只是医疗体位，我羞得连耳根都快烧起来了！」（大家都低头围着手术台检查我的身体，羞耻得连脚趾都绷紧了……）",
+        "「等、等一下！扣紧手腕和腿架之前先说一声！我会配合，不用像防备犯人一样按着我！」（固定成这样连缩一下身子都不行了……求你们待会儿轻一点……）"
+      ],
+      "operative_positioning_none": [
+        "「一丁点麻醉都不给，就要把我的手脚牢牢绑在手术台上？！……我知道不固定没法开刀，可等下活生生切开的时候，我连蜷缩一下身体都做不到吗？！」（一滴麻药都不给就先把我四肢绑死……待会儿挨刀连挣扎都不行吗？！）",
+        "「皮带扣紧手腕的声音太可怕了……大腿和膝盖都在不受控制地发抖，一想到要保持这个完全暴露的姿势挨刀，眼泪就自己涌上来了……」（没有麻药保护还要被绑成这样敞开着……我到底能不能撑过去啊……！）",
+        "「请、请把束缚带再检查一遍！我不是想逃跑，我是怕等下刀刃割进肉里的时候，我会疼得把自己的手腕挣破……！」（还没下刀呢，全身肌肉就已经因为怕痛绷成石头了……！）"
+      ],
+      "urinary_catheterization_awake": [
+        "「要在清醒的时候插导尿管？！等、等一下，那不就是要把双腿分开，让您在最私密的地方插管子吗……虽然知道是手术常规，可这也太羞耻了！」（还没开刀就要在无影灯下张开腿让人插导尿管……眼泪都快羞出来了！）",
+        "「呀……！冰凉的消毒棉球碰到那里了……护、护士小姐，请别让旁边的人盯着看！细管往尿道里推的时候又酸又刺，身体根本没法像您说的那样放松啊……！」（温热的尿液顺着透明管子流出去，偏偏脑子还清醒得要命……！）",
+        "「呜、哈啊……已经插进膀胱里了吗？水囊充起来以后，里面一直有股胀胀的异物感，好像随时都要漏出来一样……」（听着管路里的动静，我只能死死咬着嘴唇别开脸，恨不得钻进地缝里！）"
+      ],
+      "urinary_catheterization_none": [
+        "「连一点麻醉都没有，就要直接把导尿管插进去……？！唔啊……！刚才那一下又涩又刺，尿道里面像被撑开一样难受……！」（不打麻药就直接往尿道里硬塞……火辣辣的刺痛差点让我当场叫出声！）",
+        "「别、别催我放松大腿！双腿被分开晾在冷空气里，下面还插着一根通往体内的软管……想到待会儿还要清醒着挨刀，我浑身都在发抖了！」（管子卡在里面火辣辣地抽痛，我连屁股都不敢乱动一下……！）",
+        "「导尿管固定在大腿内侧了吗……？只是插一根管子就已经让我羞耻得想哭了，接下来真正的手术刀落下来时，我到底该怎么撑过去……」（死死抠紧身下的台垫才没哭出声，这无麻导尿比想象中还可怕……！）"
+      ],
+      "skin_disinfection_awake": [
+        "「嘶——好冰！蘸满消毒液的棉球直接涂在裸露的皮肤上，从切口中心一圈圈往外擦……凉意渗进毛孔里，连小腹都跟着缩紧了。」（消毒药水好冰！一圈圈涂在光裸的皮肤上，刀锋马上就要落下来了……）",
+        "「消毒的范围居然要涂得这么大……胸部和肚子湿淋淋地暴露在无影灯下，被大家低头注视着，感觉自己就像实验台上等待解剖的标本一样。」（药水在皮肤上挥发带走体温，冷得我控制不住地轻轻打哆嗦……）"
+      ],
+      "skin_disinfection_none": [
+        "「等一下！冰凉的消毒水已经涂满整个术野了……这就意味着没有任何麻醉，马上就要直接用手术刀切开这里了吗？！」（连冰凉药水擦过去都这么清楚，一会儿不打麻药直接切开得有多痛啊！）",
+        "「皮肤上湿冷刺骨，我的呼吸已经乱得数不清了……明知道现在只是消毒棉球擦过去，我却已经幻想到刀锋划破皮肉的剧痛了！」（看着医生的手移向器械盘，我吓得恨不得立刻从台上逃下去……！）",
+        "「医、医生，擦完消毒液以后请别突然沉默！我被绑在这里一动也不能动，求您下刀前一定再跟我说句话，我真的快吓疯了……！」（一点麻药都没有……求你下刀前至少让我深呼吸一口气……！）"
+      ],
+      "incision_marking_awake": [
+        "「笔尖划过皮肤的触感好清楚……那条紫色的标记线，就是待会儿要把我的身体切开的位置吧？」（画线笔划过去的触感好清楚，一想到刀锋马上要顺着这儿切开就心慌……）",
+        "「我知道您已经核对过解剖标志了……可看着那条线画在自己身上，原本背熟的医学名词一下子全都变成了要见血的现实。」（切口线比想象中还要长……求求你待会儿下刀的时候千万轻一点……）"
+      ],
+      "incision_marking_none": [
+        "「一滴麻药都没有……您就要沿着刚才画在我皮肤上的这条线，活生生把我的肉切开吗？！……我不敢低头看了，求您别让我看那把刀！」（在没打麻药的肉上画出切口线……下一秒真刀就要活生生割开这里了吗？！）",
+        "「别、别这么快把手术刀拿过来！标记线贴在皮肤上像一道判决书一样……我明明告诉自己要冷静，可牙齿已经抖得合不拢了！」（看到护士把手术刀递过去了……求你给我三秒钟喘口气，我真的好怕！）",
+        "「医生，我最后确认一次……刀尖碰到那条线之前，您一定会先出声提醒我，绝不会一句话不说就直接划下去，对吧？！」（救命，刀尖已经悬在线上方了……心脏跳得像要当场炸开一样！）"
+      ],
+      "skip_sterile_draping": [
+        "「等、等一下！为什么不盖手术布？！医生，我要这样全裸赤条条地开刀吗？！」（连最后一块遮羞布都省掉了，全身上下在无影灯下被看得一清二楚！）",
+        "「不、不要这样……胸口和剃光的地方全都露在外面，怎么能就这样被你们围着动刀啊……！」（手脚被固定着合不拢，只能这样赤条条地被所有人低头俯视着开刀……！）"
+      ],
+      "operative_positioning_unnecessary_lithotomy": [
+        "「等、等一下！我今天做的明明不是妇科手术，为什么要把我的两条腿架高大大分开绑在支架上？！」（说什么预留操作空间，结果让我摆出跟妇科内诊一样羞人的姿势……！）",
+        "「不要借口观察导尿就把我绑成这样啊……下面全都敞开着合不拢，求求你让我把腿放下来……！」（冷空气直往大腿根里钻，整场手术都要保持这么羞人的姿势吗……？！）"
+      ],
+      "manual_catheter_press_bladder": [
+        "「咿呀——不、不要按我的小腹啊医生！尿顺着导尿管被你硬挤出来了……！」（明明拼命想夹紧却一点用都没有，手掌一压就哗哗流进管子里了……！）",
+        "「呜呜……流进集尿袋的水声大家都听见了……明明拼命想夹紧却一点都止不住，求求你快停下……！」（连流进尿袋里的水声都被旁边的人听见了……求求你快把手拿开吧！）"
+      ],
+      "excessive_disinfection_breasts": [
+        "「咿呀——好冰！医、医生等一下，为什么连胸部和乳头都要涂满碘伏啊？！」（明明切口没那么大，干嘛连两边胸口和乳晕都涂得湿亮亮的呀……！）",
+        "「预防延长切口也不用把整个胸口刷得湿淋淋发亮吧……太羞耻了……！」（别再拿棉球绕着乳尖擦第二遍了啦，越擦那里立得越明显了……！）"
+      ],
+      "excessive_disinfection_perineum": [
+        "「呜啊——不、不要连腹股沟和外阴褶皱里面也拿冰棉球刷啊！又冷又刺……！」（那里根本不在手术范围里吧，干嘛拿湿棉球一路擦到下面去呀……！）",
+        "「全身湿透了还不许拿纱布擦干……吹着手术室冷气晾在这里，我真的快羞晕过去了……！」（按规矩不能擦，就得这么光着身子敞在冷风里等它自然干透吗……？！）"
+      ],
+      "slow_incision_trace": [
+        "「嘶……好冰！医、医生等一下，为什么标记笔要在皮肤上一毫米一毫米画得这么慢啊……？！」（干嘛画得这么慢呀，每一寸移动都在提醒我待会儿肉要怎么被剖开……！）",
+        "「切口线有这么长吗……求求你快点画完吧，越慢描我越害怕得牙齿打颤……！」（还拿手指在切口线旁边反复比划深浅，我的呼吸都要被你吓乱了……！）"
+      ],
+      "incision_public_lecture": [
+        "「咿呀——不、不要拿笔杆指着我的胸口和小腹给全手术室做体征讲评啊！！」（把全手术室的视线都引到我发抖的身体上，又怕挨刀又丢人得想哭……！）",
+        "「监护仪别再响那么急了……全屋医护都听见看见我又怕又丢脸的样子了，呜呜……！」（心电监护滴滴响个不停，连我有多慌多害臊都被全屋子人听见了……！）"
+      ],
+      "postop_bare_sponge_wipe": [
+        "「呜呜……医、医生……刀都已经开完了，我已经痛得又怕得只剩一口气了……为什么还不盖床单，要拿湿纱布擦我的胸口和大腿根啊……」",
+        "「全身瘫软得连动一下脚趾都做不到……以为缝完针终于脱离苦海了，没想到奄奄一息还要再受一遍这种羞耻折磨……」"
+      ],
+      "postop_bare_full_inspection": [
+        "「不要再从伤口敷料一直看到双腿间的导尿管了……连最后一点力气都被抽空，这样光着身子被检视真的好绝望……」",
+        "「求求你……快拿白单把我整个人盖住吧……我连哭的力气都没剩下了……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，我本来还想等这周的课程结束再来……但身体不舒服的情况是：{line}",
+      "primary": "我按时间顺序说，最明显的问题是：{line}。请您认真听一下，我没有夸大。",
+      "secondary": "还有一件事不能漏掉：{line}。我知道自己很紧张，可我怕漏掉细节会影响判断。",
+      "background": "我叫西川なつき，在竞争很激烈的升学预备学校备考，周末也经常整天学习。最近只要身体有一点不对劲，我就会想到最严重的结果……甚至做过被告知患了癌症的噩梦。医生，请别把我的不舒服都归结成考试压力。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "西川なつき的门诊检查",
+    "full_undress": {
+      "prompt": "「这次基础查体……要把衣服全部脱光？连胸罩和内裤都不许留吗？！」（虽然做过查体的心理准备，可让我脱得一丝不挂也说得太顺口了吧。）",
+      "responses": {
+        "abandon_full_undress": "「暂时不做全脱查体？……呼，我松了一口气。可如果真的关系到重大疾病的鉴别，请不要因为我害羞就漏掉关键检查。」（虽然逃过了当众赤身裸体的尴尬，可病历上留着未确认项，回去以后我肯定又要胡思乱想了……）",
+        "authoritative_full_undress": "「知、知道了，既然是标准查体的硬性规定，我配合就是了！但是医生，看够了就请尽快给出结论，别让我白白难堪！」（语气这么强硬，我要是再犹豫，大概会被当成无理取闹的学生吧。可自己解开内衣背扣的时候，指尖还是抖得厉害……）她咬着嘴唇解开红色制服外套与马甲，将白衬衫、蓝色领结连同贴身内衣裤一并脱下叠放进托盘；赤裸的少女躯体暴露在微凉的诊室空气中，她耳根通红地站到诊察灯下，僵硬地配合你完成了全身视诊与触诊。",
+        "gentle_full_undress": "「谢谢您先把查体的顺序和原因解释清楚……既然是为了排除最坏的病情，那我照着做。」（道理我都听懂了，可真正要把最后一件内衣也脱下来的时候，心脏还是跳得快要炸开了。连护士小姐也在旁边看着记录……好丢人。）她深吸一口气，按照你的提示逐件脱去制服与衬衣，最后别开滚烫的脸颊褪下胸罩与内裤，双手局促地护在身前又依言放下，在明亮的诊察灯下红着眼圈完成了全裸基础查体。",
+        "threaten_full_undress": "「您、您怎么能拿停诊来威胁患者？！……我从来没说不配合检查，我脱就是了！」（太过分了……明知道我最怕耽误诊断、最怕真的是绝症，却用这种方式逼我当场脱光。可到了这一步，我也只能咬牙照做了。）她眼眶发红地一把扯下领结，手指发颤地脱光全身衣物与内衣裤扔进托盘，赤身裸体地站在你面前，羞愤又无助地浑身轻颤着承受完了全套基础查体。"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "西川なつき的术前安排",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「坂口医生……今天就要做手术了吧？我已经向预备学校请好假了。您能再把手术安排从头到尾说清楚吗？……不是要刁难您，我怕自己漏听了最关键的风险。」",
+      "graphic_preop_question": "「我想问得更具体一点。待会儿换下衣服、推进手术室以后，从剃毛、插管、绑在手术台上消毒，一直到手术刀真正切开皮肤，每一步具体会怎么对我做？……要是只拿一句『睡一觉就好』敷衍我，我反而会一直往最可怕的方向想。」",
+      "graphic_preop_dialogue": "なつき起初像在预备校记考前重点一样，挺直脊背努力记下每一项术前说明。然而当听到要在病房接受灌肠与私密处备皮、随后赤身躺上冰冷的手术台被束缚带固定四肢、在无影灯下插上导尿管并由手术刀切开皮肉时，她急促追问的声音一点点低了下去。那些原本只存在于讲义和搜索页面上的冰冷词汇，马上就要一寸寸落在她自己的身体上；她死死攥紧被角，指节泛白，连呼吸都变得短促起来。",
+      "team": "坂口医生将担任西川なつき本次手术的主刀。请挑选与主刀配合的协助医生、器械护士与巡回护士。",
+      "preparation": "西川なつき正坐在病床上紧张地反复默背刚才听到的步骤。请指派一位病房准备护士（或由坂口医生亲手执行），完成必要的术前身体准备，并可安排最多两项额外安抚照护。",
+      "prepared": "「术前准备这就全部做完了……？唔，身体里面和下面都还残留着奇怪的感觉……我明明一向擅长提前预习，可这种羞耻又害怕的事，根本没有任何参考书教我怎么应付啊。」",
+      "changing": "病房这边的准备已经就绪。你与手术团队前往更衣室换上无菌手术服，在感应水池前完成外科刷手与穿戴，随后推门步入手术室。",
+      "operating_room": "「无影灯也太亮了……躺在这个台子上往上看，连躲避视线的地方都没有。医生，我知道不该乱看，可器械台上那一排发亮的刀和钳子，真的全都要用在我身上吗？」",
+      "team_confirmations": "手术开始前，团队成员围绕手术台依次核对西川なつき的姓名、手术部位、拟行术式与各自职责。躺在台面上的なつき努力跟上每一句确认，报出自己名字时嗓音却明显发颤。",
+      "procedure_select": "核对西川なつき当前病例的诊断结果与术前评估，确认本次手术要执行的术式。",
+      "procedure_mismatch": "「等一下！刚才在病房里跟我说明的根本不是这个部位的手术吧？！您别以为我躺在手术台上吓得发抖就什么都听不出来，请立刻核对病历！」",
+      "ready": "西川なつき已完成术前病房准备并躺在手术台上等待。请确认本次手术采用的麻醉方式与正式开始条件。",
+      "general_induction": "「……好，我会照您说的数着呼吸。不管是切下来的检查结果、还是手术顺不顺利……等我醒过来的时候，请您一定第一时间如实告诉我，好吗……」",
+      "surgery_start_general": "麻药经面罩与静脉迅速起效，西川なつき紧蹙的眉头渐渐舒展，彻底沉入全身麻醉的无意识睡眠中。监护仪波形平稳，坂口医生抬眼示意团队开始手术。",
+      "surgery_start_epidural": "「我还能清楚地听见器械碰撞和大家说话的声音……可是下半身像灌了铅一样完全动不了了。医生，刀尖碰到我之前，请千万先提醒我一声！」",
+      "surgery_start_local": "「局部麻醉已经打完了吗？……好，我会咬紧牙关不乱动的。可如果切开深处还有牵扯或者疼的感觉，我会马上说出来，您可别嫌我多嘴啊。」",
+      "surgery_start_none": "「真的一点麻药都不给吗……？！我刚才嘴上说能忍，可现在手脚被绑在台子上、眼睁睁看着那把手术刀递过来，我已经吓得连气都喘不上来了……！」",
+      "instrument_handoff": "坂口医生伸出手发出简短指令，器械护士立即将第一把闪着寒光的手术刀稳稳拍入主刀掌心。",
+      "assistant_ready": "协助医生双手就位，用无菌纱布在切口两侧维持恰当的皮肤张力，等待坂口医生落刀。",
+      "incision_ready": "无影灯聚焦在裸露的术野中央。锋利的手术刀尖停在西川なつき皮肤的紫色标记线上方，距离切开仅剩毫厘。",
+      "general_operation": "在全身麻醉的深沉睡眠中，西川なつき对刀锋的切开毫无知觉。坂口医生与团队默契配合，逐层分离组织、完成关键病灶处理，监护屏幕上跳动着平稳的生命体征。",
+      "operative_contact": "手术刀切入皮肉的瞬间，清醒的西川なつき浑身剧烈一颤，呼吸与挣扎反应骤然加剧。坂口医生需要决定如何应对她的即时反应。",
+      "ongoing_interaction": "器械在切口深处继续分离与牵拉。清醒的西川なつき死死咬着唇，一边承受着身体被打开的恐惧与不适，一边急促地追问进度，试图从坂口医生的回应里抓住一点安心感。",
+      "closure_interaction": "最核心的术中操作已经完成，手术进入止血与缝合收尾阶段。面对筋疲力尽、眼角含泪的西川なつき，坂口医生准备如何结束这次术中交流？",
+      "procedure_flow": "切口充分暴露后，手术团队进入当前术式最关键的解剖与操作阶段。",
+      "procedure_execute": "核心病变部位的处理已经顺利完成，术野止血彻底、确认无误。接下来可以关闭切口并完成缝合。",
+      "surgery_result": "最后一针缝合完毕并覆上无菌敷料，器械护士与巡回护士完成纱布及器械清点，西川なつき的手术顺利结束。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切了吗？没有想象中那种刺痛，可我知道刀正在我身上……呜，心跳怎么这么快……」",
+      "incise_local": "「嘶——！外面似乎麻了，可里面被牵住的感觉好清楚！医生，请再确认一下，这样真的可以吗？」",
+      "incise_none": "「啊——！！好疼！真的切开了！等一下、等一下！我忍不住……求您先停一下！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_nishikawa_natsuki",
+        "label": "西川なつき · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/ward_skin_prep.png"
+        ],
+        "caption": "西川なつき · 剃毛"
+      },
+      {
+        "id": "ward_enema_patient_nishikawa_natsuki",
+        "label": "西川なつき · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/ward_enema.png"
+        ],
+        "caption": "西川なつき · 灌肠"
+      },
+      {
+        "id": "ward_surgical_cap_patient_nishikawa_natsuki",
+        "label": "西川なつき · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/ward_surgical_cap.png"
+        ],
+        "caption": "西川なつき · 戴手术帽"
+      },
+      {
+        "id": "stretcher_transfer_patient_nishikawa_natsuki",
+        "label": "西川なつき · 担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/stretcher_transfer.png"
+        ],
+        "caption": "西川なつき · 担架车"
+      },
+      {
+        "id": "urinary_catheterization_patient_nishikawa_natsuki",
+        "label": "西川なつき · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/urinary_catheterization.png"
+        ],
+        "caption": "西川なつき · 导尿"
+      },
+      {
+        "id": "skin_disinfection_patient_nishikawa_natsuki",
+        "label": "西川なつき · 消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/skin_disinfection.png"
+        ],
+        "caption": "西川なつき · 消毒"
+      },
+      {
+        "id": "operative_positioning_patient_nishikawa_natsuki",
+        "label": "西川なつき · 固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/operative_positioning.png"
+        ],
+        "caption": "西川なつき · 固定"
+      },
+      {
+        "id": "sterile_draping_patient_nishikawa_natsuki",
+        "label": "西川なつき · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/sterile_draping.png"
+        ],
+        "caption": "西川なつき · 铺巾"
+      },
+      {
+        "id": "incision_ready_patient_nishikawa_natsuki",
+        "label": "西川なつき · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_nishikawa_natsuki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_nishikawa_natsuki/incision_ready.png"
+        ],
+        "caption": "西川なつき · 下刀前"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_natsuki_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "light_h",
+        "body_awareness",
+        "catastrophic_thinking",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「……要切开我的胸部？！」",
+        "她下意识地用双臂护住胸前，脸色刷地白了。",
+        "「等、等一下！果然是乳腺的恶性肿瘤吗？！我就知道……要把整边乳房都切掉吗？！」",
+        "「不是全切……只是局部手术？可、可那也要在手术台上把胸口完全露出来，用刀切开里面啊……」",
+        "她耳根通红地咬住嘴唇。\n「我还在为大学入学考拼命，怎么会突然变成要被人切开胸部的患者啊……」"
+      ]
+    },
+    {
+      "id": "diagnosis_natsuki_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "catastrophic_thinking",
+        "body_image",
+        "anxiety"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「腹部手术……医生，您跟我说实话，是不是胃癌或者腹腔里的恶性肿瘤？！」",
+        "她隔着制服按住自己的小腹，指尖冰凉。",
+        "「不是癌症……？那、那也是要把肚皮活生生切开，把里面的内脏翻出来处理吧……」",
+        "「而且肚皮上留下一道疤的话，以后穿泳衣或者去温泉旅行的时候，不就全被看见了吗……」",
+        "她猛地摇了摇头，脸颊发烫。\n「不对，我现在应该先担心性命和考试才对，怎么会在意起肚皮好不好看啊！」"
+      ]
+    },
+    {
+      "id": "diagnosis_natsuki_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "embarrassment",
+        "light_h",
+        "body_privacy",
+        "fear"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "她的声音一下子卡在喉咙里，整张脸从脸颊一直红到了脖子根。",
+        "「妇、妇科和盆腔那边的手术……？！也就是说，要让我把腿分开架在那种台子上，把最私密的地方完全露给你们看吗？！」",
+        "「我、我连男朋友都还没有交过，每天除了去预备校上课就是回家做题……」",
+        "「结果第一次在别人面前张开双腿露出那里，居然是在手术室里被医生用器械和刀子伸进去检查处理……」",
+        "她羞得把脸埋进手心里。\n「呜……哪怕您说是正规治疗，这种事也太超过十九岁备考生的心理承受极限了！」"
+      ]
+    },
+    {
+      "id": "diagnosis_natsuki_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "catastrophic_thinking",
+        "forced_composure"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「胸腔……？！那不是紧贴着心脏和肺的地方吗？！」",
+        "她倒吸一口冷气，手死死抓住桌沿。",
+        "「要是手术刀稍微偏一毫米，或者麻醉出了什么差错，我不就再也醒不过来了吗？！」",
+        "「我连第一志愿的考场都还没进过，模拟考的错题本也才整理到一半……」",
+        "她强忍着眼眶里的泪水抬起头。\n「医生，请把成功率、风险和每一步预案全部告诉我……我绝不接受糊里糊涂地躺上手术台！」"
+      ]
+    },
+    {
+      "id": "diagnosis_natsuki_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "first_surgery_realization",
+        "catastrophic_thinking"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「真的……非做手术不可吗？」",
+        "她低头看着自己交握在膝上的双手，声音有些发抖。",
+        "「之前每次觉得身体不舒服，我都安慰自己只是备考熬夜太累了……」",
+        "「可一听到『开刀』两个字，脑子里就全是脱光衣服、被绑在手术台上切开皮肤的画面……」",
+        "她深吸一口气，勉强抬起琥珀色的眼睛看着你。\n「……我不会逃跑的。只要您不瞒着我，不管多可怕我都会配合到底。」"
+      ]
+    }
+  ]
+}

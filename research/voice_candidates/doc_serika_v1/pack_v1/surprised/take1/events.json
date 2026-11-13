@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYKcQ5aUrRWI3FU3OJGI",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYKbp3oNHfS3DdI37is25xI9G8XJS4I",
+      "expires_at": 1794532637,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Naturally slender, delicate, crystal-light higher-mid timbre with a youthful, pure clarity, yet delivered with a deliberately cool, guarded, detached restraint. Crisp, concise phrasing and controlled flat intonation that masks a subtle, fragile softness underneath.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Brief, unguarded youthful surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56cc1bee08191ba00ac51cd0a142f"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Brief, unguarded youthful surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "えっ",
+    "event_id": "event_EjYKcIW7Op8YMfdE7K6bw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、そう",
+    "event_id": "event_EjYKculpDwJJPYvsrl4yA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "なん",
+    "event_id": "event_EjYKdWaD56hlDSGIncC3r"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "です",
+    "event_id": "event_EjYKd4pujqrBQqZkOGXAn"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYKdfr9JeQCSZ8zlOHkT",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "か",
+    "event_id": "event_EjYKdU6EyAJUo1MbgqJdh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "。",
+    "event_id": "event_EjYKdk4FuFbpXeZQbX9tf"
+  },
+  {
+    "event_id": "event_EjYKjPgczGiggdxTwLuy2",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYKbp3oNHfS3DdI37is25xI9G8XJS4I",
+      "expires_at": 1794532637,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Naturally slender, delicate, crystal-light higher-mid timbre with a youthful, pure clarity, yet delivered with a deliberately cool, guarded, detached restraint. Crisp, concise phrasing and controlled flat intonation that masks a subtle, fragile softness underneath.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Brief, unguarded youthful surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56cc1bee08191ba00ac51cd0a142f"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Brief, unguarded youthful surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

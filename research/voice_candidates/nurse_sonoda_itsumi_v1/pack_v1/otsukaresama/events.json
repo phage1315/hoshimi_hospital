@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYVXYjPRD0bU3NEulvtt",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYVXp3oMHF1b0Tw9Ug9opkOfAQyMF9M",
+      "expires_at": 1794533315,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Sweet, bright, spirited girlish higher-mid timbre with clean rounded clarity and cheerful poise. Brisk, friendly conversational rhythm that stays crisp and clear when reporting clinical work.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, friendly after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0eb2088191aee39286838b9cb4"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, friendly after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYVYNpInoSbAdo8LnMME"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYVYsGWJ0wXHfqXuspZz"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "です",
+    "event_id": "event_EjYVYOGwPAS92WZaFKWqT"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、",
+    "event_id": "event_EjYVZS2hdt0IeGHjR14mg"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYVZWqdx4HUG9crqloB7",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "坂",
+    "event_id": "event_EjYVZvLKqjlDCCVDpsjjx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "口",
+    "event_id": "event_EjYVZZnwBFg4Miix2rcJf"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "先生",
+    "event_id": "event_EjYVZwp28reKnl0MgGt1M"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYValsDb4Xq0moEyaOZv"
+  },
+  {
+    "event_id": "event_EjYVepHN9SmlJSaARZ3FS",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYVXp3oMHF1b0Tw9Ug9opkOfAQyMF9M",
+      "expires_at": 1794533315,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Sweet, bright, spirited girlish higher-mid timbre with clean rounded clarity and cheerful poise. Brisk, friendly conversational rhythm that stays crisp and clear when reporting clinical work.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, friendly after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0eb2088191aee39286838b9cb4"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, friendly after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

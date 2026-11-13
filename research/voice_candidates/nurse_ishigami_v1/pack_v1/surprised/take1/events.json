@@ -1,0 +1,110 @@
+[
+  {
+    "event_id": "event_EjYaOhWgSMMem4nqlaQ6l",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYaNp3oMTBhwwxnv7a8KEgf5xS4XUFz",
+      "expires_at": 1794533615,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age thirty, speaking native standard Japanese. Cool, poised, glacially calm low-mid register with smooth austere elegance and effortless quiet authority. Concise, unhurried, low-inflection phrasing that commands discipline without ever raising volume.\nSpeak immediately in Japanese. Say exactly this line once: \"ほう、それは興味深いですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, composed, understated and authoritative Director of Nursing — Cool, composed surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3207ec8191b65bdc344787a0f1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ほう、それは興味深いですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, composed, understated and authoritative Director of Nursing — Cool, composed surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ほう",
+    "event_id": "event_EjYaPLHwup4pHvKJ6oBUg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、それ",
+    "event_id": "event_EjYaPruSp319tqd3sbGOs"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYaPDitl07dK3xqR0lkg",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "は",
+    "event_id": "event_EjYaPiMCPiKkIFT7VW9yf"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "興",
+    "event_id": "event_EjYaQkAkHj3MxN3bq7hJG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "味",
+    "event_id": "event_EjYaQpA0WVpwy6GL2bphS"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "深",
+    "event_id": "event_EjYaQ1ykeHwRxTSxYwLuc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "い",
+    "event_id": "event_EjYaQkGnhSqoe5aViC4Nh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "ですね",
+    "event_id": "event_EjYaQeDaFUQbNIwggVKKn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYaRqz985hMgeXId1F6A"
+  }
+]

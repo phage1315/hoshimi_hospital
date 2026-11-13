@@ -1,0 +1,187 @@
+[
+  {
+    "event_id": "event_EjYOC6dt3OVjCESzcQO3c",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYOCp3oMTG1l0zX3hyVxnXCdLl6gpsj",
+      "expires_at": 1794532860,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Clear, resonant, close-mic'd lower-mid register with strong, full-bodied vocal presence and crisp clinical diction. Cool, composed, matter-of-fact authority spoken firmly at full conversational studio volume — never whispered, airy, or distant.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、今日の麻酔記録を締めますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Quiet, composed exhale at clear volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619d1ed5481919081e4f0593203f2"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、今日の麻酔記録を締めますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Quiet, composed exhale at clear volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふう",
+    "event_id": "event_EjYODju7TQrNu2zaedjkR"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、",
+    "event_id": "event_EjYOEaSJfDOlrnV4noBAG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "今日",
+    "event_id": "event_EjYOEEloKFRVBWIEZvFHd"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYOEAusSh03uZzkX7e3U",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "の",
+    "event_id": "event_EjYOEuerEx0UVeulh4R9X"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "麻",
+    "event_id": "event_EjYOEPRGAljr2VdexQyrx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "酔",
+    "event_id": "event_EjYOEtXtAdJGLNohmHdcC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "記",
+    "event_id": "event_EjYOFr7xB106H0CDpXL9v"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "録",
+    "event_id": "event_EjYOFGRLOKyfEZolLhYX2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "を",
+    "event_id": "event_EjYOFWyeZxUJF0sTlzTl2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "締",
+    "event_id": "event_EjYOFuLIonlt5Aue21LuF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "め",
+    "event_id": "event_EjYOFIr7hzdOqA98dOlcO"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "ます",
+    "event_id": "event_EjYOGPLmtFZV7Beplkie1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "ね",
+    "event_id": "event_EjYOGhFVpPogq0a4zMydW"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "。",
+    "event_id": "event_EjYOGOD8ohi71TOgn8mWo"
+  },
+  {
+    "event_id": "event_EjYOL9LY5AHIdeFUhgGoq",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYOCp3oMTG1l0zX3hyVxnXCdLl6gpsj",
+      "expires_at": 1794532860,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Clear, resonant, close-mic'd lower-mid register with strong, full-bodied vocal presence and crisp clinical diction. Cool, composed, matter-of-fact authority spoken firmly at full conversational studio volume — never whispered, airy, or distant.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、今日の麻酔記録を締めますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Quiet, composed exhale at clear volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619d1ed5481919081e4f0593203f2"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、今日の麻酔記録を締めますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Quiet, composed exhale at clear volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

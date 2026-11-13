@@ -55,7 +55,7 @@ const ACTORS := {
 		"context": "res://data/staff/nurse_yui/h_context_v1.json",
 	},
 	"doc_aoi": {
-		"content_status": "pending_assets",
+		"content_status": "ready",
 		"location_id": "hotel",
 		"fixed_location": true,
 		"location_label_key": "ui.free_h.location.doc_aoi_hotel",

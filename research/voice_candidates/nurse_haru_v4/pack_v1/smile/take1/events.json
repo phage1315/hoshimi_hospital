@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYPyuRCveBeyIYZLn8Yc",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYPyp3oMTBhsCv5yTVtra2iB9ZZHypN",
+      "expires_at": 1794532970,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"えへへ、今日もいい調子ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Dewy, honey-sweet smiling girlish voice. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えへへ、今日もいい調子ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Dewy, honey-sweet smiling girlish voice. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "えへ",
+    "event_id": "event_EjYPz7VziTNWFzl3PMq6b"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "へ、",
+    "event_id": "event_EjYPz0VXS6mVZH8gmdrAI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "今日",
+    "event_id": "event_EjYPzDYNYQd1ymtj0Qsv4"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYPzuZuDV6TP6UIdYf49",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "もいい",
+    "event_id": "event_EjYQ07mbJDHh23oa3MERG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "調",
+    "event_id": "event_EjYQ0Il7QPYoorcb3bivb"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "子ですね",
+    "event_id": "event_EjYQ0CtUgAVOWPWShEA64"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYQ16rvOKJybntIMnLk1"
+  },
+  {
+    "event_id": "event_EjYQ6aP2fqMICkDJpqJV8",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYPyp3oMTBhsCv5yTVtra2iB9ZZHypN",
+      "expires_at": 1794532970,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"えへへ、今日もいい調子ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Dewy, honey-sweet smiling girlish voice. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えへへ、今日もいい調子ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Dewy, honey-sweet smiling girlish voice. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

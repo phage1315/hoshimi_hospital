@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYNnl6hFda4FAKJp6o3L",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYNmp3oMV9lA0A4x2WiDIqYj5PqTnKN",
+      "expires_at": 1794532834,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"ストップ、今の数値もう一回見よう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Sharp, alert intraoperative caution, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ストップ、今の数値もう一回見よう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Sharp, alert intraoperative caution, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ストップ",
+    "event_id": "event_EjYNoAbPO52c8YQ6smKOd"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、",
+    "event_id": "event_EjYNojAdLlJ1haLc1NTYf"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "今",
+    "event_id": "event_EjYNoRhb8ZO7AgTCTCD6X"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYNot8noW2G3uEBmTWQC",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "の",
+    "event_id": "event_EjYNoCJLPpgNmVsy3sE2B"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "数",
+    "event_id": "event_EjYNp65pJNaIJpu7tCfU0"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "値",
+    "event_id": "event_EjYNpTd21J43rd8AjtqrI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "もう",
+    "event_id": "event_EjYNpQkJHlnduivHLANJ6"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "一",
+    "event_id": "event_EjYNpOBF2ObhvxVpURd6h"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "回",
+    "event_id": "event_EjYNp7zobQckUFpgMzibw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "見",
+    "event_id": "event_EjYNqZmgEwQlwH1xAT4RG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "よう",
+    "event_id": "event_EjYNqIqkvKheKQloGqlTt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYNqmgQNslIoehvbhhAd"
+  }
+]

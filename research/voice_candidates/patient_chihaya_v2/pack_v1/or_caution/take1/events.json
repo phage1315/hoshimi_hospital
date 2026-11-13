@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYYGWky8fbLZmfFomoep",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYYFp3oM9qYWBu3ymo7jDhQ4Kp6W4LZ",
+      "expires_at": 1794533483,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Bright, bubbly, high-pitched cute girlish soprano with sparkling clarity, light bouncy vocal weight, and cheerful, eager youthful energy. Sweet, lively, upbeat anime-girl cadence full of innocent enthusiasm.\nSpeak immediately in Japanese. Say exactly this line once: \"先生、待ってください、確認させてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, bubbly, high-pitched cute girlish nursing helper — Earnest, alert OR helper caution, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a45c8148191bacd0b7cf01ad2d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"先生、待ってください、確認させてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, bubbly, high-pitched cute girlish nursing helper — Earnest, alert OR helper caution, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "先生、",
+    "event_id": "event_EjYYH3l7dKmsl70rf6Jn1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "待って",
+    "event_id": "event_EjYYHXJnTk8hMcvGcZimU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "ください",
+    "event_id": "event_EjYYHqLp2yV4Bmp6ysuLY"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYYHeGUWXTA6BlOdE2yJ",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、確認",
+    "event_id": "event_EjYYIJDTBwxNaJHIqNbk2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "さ",
+    "event_id": "event_EjYYIoySp7Xcm8bmylVvO"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "せて",
+    "event_id": "event_EjYYIbwXFwgHT38Ke5OQr"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "ください",
+    "event_id": "event_EjYYJLbcb7XhDofhG20fM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYYJZTO7Vs4cHXdyDHg3"
+  },
+  {
+    "event_id": "event_EjYYO5enIKVwLJ4qbQIyC",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYYFp3oM9qYWBu3ymo7jDhQ4Kp6W4LZ",
+      "expires_at": 1794533483,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Bright, bubbly, high-pitched cute girlish soprano with sparkling clarity, light bouncy vocal weight, and cheerful, eager youthful energy. Sweet, lively, upbeat anime-girl cadence full of innocent enthusiasm.\nSpeak immediately in Japanese. Say exactly this line once: \"先生、待ってください、確認させてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, bubbly, high-pitched cute girlish nursing helper — Earnest, alert OR helper caution, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a45c8148191bacd0b7cf01ad2d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"先生、待ってください、確認させてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, bubbly, high-pitched cute girlish nursing helper — Earnest, alert OR helper caution, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "event_id": "event_EjIl8bXtF7xGA6dDb98vu",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjIl7p3oMR1ynbKCbGLxD1njD5PLYUca",
+      "expires_at": 1794472777,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness. Speak immediately in Japanese. Say exactly 「おはようございます。」 once, with a composed, mature tone and a subtle teasing smile. Say no other words, then remain silent.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly 「おはようございます。」 once, with a composed, mature tone and a subtle teasing smile. Say no other words, then remain silent."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjIl8YYWeBYryoQYeQPgo"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ようございます",
+    "event_id": "event_EjIl9vmRRKvMOTSmgfM4y"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "。",
+    "event_id": "event_EjIl9UocZQ0hQlUrQfpOE"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjIl9X6RR9UAlUWvOpI04",
+    "client_event_id": "greeting_1"
+  },
+  {
+    "type": "session.usage.updated",
+    "usage": {
+      "seconds": 15.0
+    },
+    "context_window": {
+      "usage_ratio": 0.013234375
+    },
+    "event_id": "event_EjIlMVm4RUNsIubbWrVnb"
+  },
+  {
+    "event_id": "event_EjIlOqOSr1i79CeuYTXdG",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjIl7p3oMR1ynbKCbGLxD1njD5PLYUca",
+      "expires_at": 1794472777,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness. Speak immediately in Japanese. Say exactly 「おはようございます。」 once, with a composed, mature tone and a subtle teasing smile. Say no other words, then remain silent.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly 「おはようございます。」 once, with a composed, mature tone and a subtle teasing smile. Say no other words, then remain silent."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 15.0
+    }
+  }
+]

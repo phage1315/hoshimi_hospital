@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYYTecpo7KLIdLOUt9JK",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYYTp3oN8rczSkhBgJYO5L29I1kJL5h",
+      "expires_at": 1794533497,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Sunny, energetic, sporty girlish high-mid register with bright open resonance, light vocal weight, and refreshing candor. Cheerful, straightforward, upbeat tempo without hesitation.\nSpeak immediately in Japanese. Say exactly this line once: \"うん、任せてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Energetic, frank, sporty cheerful 18yo nursing helper — Frank, upbeat agreement at clear volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fde8d1388191af18103d98c0f6cc"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"うん、任せてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Energetic, frank, sporty cheerful 18yo nursing helper — Frank, upbeat agreement at clear volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "うん",
+    "event_id": "event_EjYYUPiKJg5DHjE0iOjlL"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、任",
+    "event_id": "event_EjYYUZXH4Wkr0WzkUG5WP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "せ",
+    "event_id": "event_EjYYUrvX5kQNPO9EoBkfq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "て",
+    "event_id": "event_EjYYUmUkSbniv2pX7g2jl"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYYU5L8enmUx4hb360St",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "ください",
+    "event_id": "event_EjYYUlWa31e2oot2NbDIj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYYVwBqRn5EVoEyHSBik"
+  },
+  {
+    "event_id": "event_EjYYaFhkKJsv8JCWbhU3X",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYYTp3oN8rczSkhBgJYO5L29I1kJL5h",
+      "expires_at": 1794533497,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Sunny, energetic, sporty girlish high-mid register with bright open resonance, light vocal weight, and refreshing candor. Cheerful, straightforward, upbeat tempo without hesitation.\nSpeak immediately in Japanese. Say exactly this line once: \"うん、任せてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Energetic, frank, sporty cheerful 18yo nursing helper — Frank, upbeat agreement at clear volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fde8d1388191af18103d98c0f6cc"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"うん、任せてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Energetic, frank, sporty cheerful 18yo nursing helper — Frank, upbeat agreement at clear volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

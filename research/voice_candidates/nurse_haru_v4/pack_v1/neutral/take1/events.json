@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYPo4brFb8wrNAMTXpJq",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYPop3oMTBhQ4CPUwWCGX7bxh3aB8Ok",
+      "expires_at": 1794532960,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Neat, sweet girlish agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Neat, sweet girlish agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はい、",
+    "event_id": "event_EjYPpzhRu6ZyLN8usuvYx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "承",
+    "event_id": "event_EjYPqwqaQZ40IbzxnChEr"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "知",
+    "event_id": "event_EjYPqcoqsZ0B84a9umFo4"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "しました",
+    "event_id": "event_EjYPqLHAocQxEVLjICf1D"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYPqU4wF0oSkJRCBLYsW",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "。",
+    "event_id": "event_EjYPq62yW1xZMUSeqU4Ek"
+  },
+  {
+    "event_id": "event_EjYPwsREsWKQTHX79h6sr",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYPop3oMTBhQ4CPUwWCGX7bxh3aB8Ok",
+      "expires_at": 1794532960,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Neat, sweet girlish agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、承知しました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Neat, sweet girlish agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -107,17 +107,24 @@ static func render_personal_nurse(app: Control) -> void:
 		app.add_portrait(current)
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
 		if portrait != null:
-			portrait.position = Vector2(850, 260)
-			portrait.size = Vector2(320, 360)
+			portrait.position = Vector2(875, 260)
+			portrait.size = Vector2(310, 360)
 	var candidates: Array[String] = app.game.personal_nurse_candidates()
+	var row_stride := 58 if candidates.size() > 8 else 68
+	var start_y := 296 if candidates.size() > 8 else 310
 	for i in range(candidates.size()):
 		var actor_id: String = candidates[i]
 		var person: Dictionary = app.content.find_record("staff", actor_id)
 		var relation: Dictionary = app.game.relation_for(actor_id)
 		var selected: bool = actor_id == current_id
-		var label: String = "%s　·　Lv%s　·　%s %s　·　%s" % [person.name, relation.get("level", 0), app.tx("ui.personal_nurse.familiarity", "熟悉度"), relation.get("familiarity", 0), app.tx("ui.personal_nurse.selected", "当前") if selected else app.tx("ui.personal_nurse.assign", "指定")]
-		var button: Button = app.button_at(label, Vector2(75 + (i % 2) * 380, 310 + (i / 2) * 72), Vector2(350, 54), app.choose_personal_nurse.bind(actor_id))
+		var label: String = "%s · Lv%s · %s %s · %s" % [person.name, relation.get("level", 0), app.tx("ui.personal_nurse.familiarity", "熟悉度"), relation.get("familiarity", 0), app.tx("ui.personal_nurse.selected", "当前") if selected else app.tx("ui.personal_nurse.assign", "指定")]
+		var row_pos := Vector2(60 + (i % 2) * 404, start_y + (i / 2) * row_stride)
+		app.add_staff_chibi_slot(app.page, actor_id, row_pos, 50.0, true, "PersonalNurseAvatar_" + actor_id)
+		var button: Button = app.button_at(label, row_pos + Vector2(56, 0), Vector2(336, 50), app.choose_personal_nurse.bind(actor_id))
 		button.name = "PersonalNurse_" + actor_id
+		button.add_theme_font_size_override("font_size", 17)
+		button.clip_text = true
+		button.size = Vector2(336, 50)
 		button.disabled = selected
 	return_button(app)
 
@@ -305,10 +312,11 @@ static func render_relationships(app: Control) -> void:
 		box.size = Vector2(1120, 102)
 		box.color = Color(0.035, 0.12, 0.145, 0.91)
 		content.add_child(box)
-		var title: Label = app.label_at(str(person.name) if met else "？？？", Vector2.ZERO, 23, Color("e8cfaa"), 260)
+		app.add_staff_chibi_slot(content, str(person.id), Vector2(24, 27 + i * 120), 68.0, met, "OfficeRelationshipAvatar_" + str(person.id))
+		var title: Label = app.label_at(str(person.name) if met else "？？？", Vector2.ZERO, 22, Color("e8cfaa"), 155)
 		app.page.remove_child(title)
 		content.add_child(title)
-		title.position = Vector2(30, 30 + i * 120)
+		title.position = Vector2(104, 43 + i * 120)
 		if not met:
 			continue
 		var last_event: String = app.tx("ui.relationship.no_event", "尚无重要事件")

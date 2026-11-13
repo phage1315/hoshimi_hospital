@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYEcD6498nKogvs59s1G",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYEbp3oMHF1dzWQNmNuMPfibbMdRKCU",
+      "expires_at": 1794532265,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Composed, brisk after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Composed, brisk after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYEc1La2QpuiwQIJlmhL"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYEdPazT9jA0d7XOqEBJ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "です",
+    "event_id": "event_EjYEdGHZg6tl2HEMwi43c"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、",
+    "event_id": "event_EjYEdeBxj71UkyuEC6S8S"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYEdoJ7qghVmHrWKllwI",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "坂",
+    "event_id": "event_EjYEdSs4lhYdFk6oH9X1N"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "口",
+    "event_id": "event_EjYEdKaW4Cngqdf78NT1v"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "先生",
+    "event_id": "event_EjYEeVXTI3SPNAbk5mJ7O"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYEebB5QREP6Pyzg4ugq"
+  },
+  {
+    "event_id": "event_EjYEjgVmOZObrhyU9tVMw",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYEbp3oMHF1dzWQNmNuMPfibbMdRKCU",
+      "expires_at": 1794532265,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Composed, brisk after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Composed, brisk after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

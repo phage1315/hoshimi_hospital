@@ -1,0 +1,187 @@
+[
+  {
+    "event_id": "event_EjYPddNbgrSyAheDyfVa1",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYPcp3oMV9lmXUXXZYs2uezEtHHXnz8",
+      "expires_at": 1794532948,
+      "model": "gpt-live-1",
+      "instructions": "An original eighteen-year-old young adult Japanese female voice, speaking native standard Japanese. High-pitched, petite, sugary-bright cute girlish soprano with sparkling forward resonance, feather-light nimble vocal weight, and peppy, spirited Japanese anime-girl energy. Crisp, bouncy, smiling articulation with pure youthful brightness.\nSpeak immediately in Japanese. Say exactly this line once: \"手元の準備も順調です、どうぞ続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, petite, peppy sugary-bright cute girlish nurse — Clear, supportive OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af642b963888191a8598cef5c298f11"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"手元の準備も順調です、どうぞ続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, petite, peppy sugary-bright cute girlish nurse — Clear, supportive OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "手元",
+    "event_id": "event_EjYPe2i0ZLmJiiZRwOznH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "の準",
+    "event_id": "event_EjYPe2WcC7A2R88Oz3GMt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "備",
+    "event_id": "event_EjYPeDqscgu91ZOa2FRId"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "も",
+    "event_id": "event_EjYPemleCAcYITFa2neq3"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYPegST89jWHCnwYj05t",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "順",
+    "event_id": "event_EjYPeCfuRPyWylVL9QtRs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "調",
+    "event_id": "event_EjYPesbHto9ii9KgQAqxg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "です",
+    "event_id": "event_EjYPfFHCOdqvQO0905aUP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "、",
+    "event_id": "event_EjYPfFvbBIetuD4jIXn6a"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "どう",
+    "event_id": "event_EjYPflAiocW52fgsNhRB0"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "ぞ",
+    "event_id": "event_EjYPgclRYK6ual4EPnGJ9"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "続",
+    "event_id": "event_EjYPgxQo9v4vcGWcXxzza"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "け",
+    "event_id": "event_EjYPgmCSZFlyXxNVGm0AF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "てください",
+    "event_id": "event_EjYPgHrLOzUKBDJZKMMxw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3400,
+    "end_ms": 3600,
+    "delta": "。",
+    "event_id": "event_EjYPhFWVbIzDJlTEIWU9v"
+  },
+  {
+    "event_id": "event_EjYPlku4KaW08ENvFrGpk",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYPcp3oMV9lmXUXXZYs2uezEtHHXnz8",
+      "expires_at": 1794532948,
+      "model": "gpt-live-1",
+      "instructions": "An original eighteen-year-old young adult Japanese female voice, speaking native standard Japanese. High-pitched, petite, sugary-bright cute girlish soprano with sparkling forward resonance, feather-light nimble vocal weight, and peppy, spirited Japanese anime-girl energy. Crisp, bouncy, smiling articulation with pure youthful brightness.\nSpeak immediately in Japanese. Say exactly this line once: \"手元の準備も順調です、どうぞ続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, petite, peppy sugary-bright cute girlish nurse — Clear, supportive OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af642b963888191a8598cef5c298f11"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"手元の準備も順調です、どうぞ続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, petite, peppy sugary-bright cute girlish nurse — Clear, supportive OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

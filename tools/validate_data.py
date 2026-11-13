@@ -598,7 +598,7 @@ for event in collections['character_events']:
     check(isinstance(requirements, list), event['id'] + ': special requirement placeholder missing')
     for requirement in requirements or []:
         requirement_type = requirement.get('type')
-        check(requirement_type in {'player_attribute', 'career_progress_any', 'completed_surgeries', 'completed_surgeries_in_group', 'progress_counter', 'story_flag', 'flag', 'special_event_completed', 'character_event_completed', 'relationship_level', 'relationship_familiarity', 'staff_unlocked', 'days_after_character_event', 'days_after_special_event', 'day_number', 'month', 'date', 'date_range', 'weekday', 'day_type'},
+        check(requirement_type in {'player_attribute', 'career_progress_any', 'completed_surgeries', 'completed_surgeries_in_group', 'progress_counter', 'story_flag', 'flag', 'special_event_completed', 'character_event_completed', 'relationship_level', 'relationship_familiarity', 'staff_unlocked', 'days_after_character_event', 'days_after_special_event', 'day_number', 'month', 'month_number', 'date', 'calendar_date', 'date_range', 'calendar_range', 'weekday', 'day_type'},
               event['id'] + ': unknown special requirement type')
         if requirement_type == 'player_attribute':
             check(requirement.get('attribute') in {'skill', 'leadership', 'charm', 'reputation', 'presence'},
@@ -722,16 +722,15 @@ for step in collections['special_event_steps']:
         known_actors = {**by['staff'], **by['cameo_patients']}
         if node['speaker'] == 'actor':
             voice_only = (not actor_id and node.get('presentation') == 'authored' and
-                          node.get('hide_portrait') is True and node.get('event_portraits') == [] and
+                          node.get('hide_portrait') is True and node.get('event_portraits', []) == [] and
                           bool(node.get('speaker_label')) and not node.get('portrait_path') and not node.get('secondary_actor_id'))
             # Authored story-only guests can speak with their own explicitly
             # supplied sprite without becoming staff or a real patient Bundle.
             guest_portraits = node.get('event_portraits', [])
             named_visual_guest = (not actor_id and node.get('presentation') == 'authored' and
                                   bool(node.get('speaker_label')) and not node.get('hide_portrait') and
-                                  len(guest_portraits) == 1 and
-                                  guest_portraits[0].get('id', '').startswith('story_guest_') and
-                                  bool(guest_portraits[0].get('path')) and
+                                  any(p.get('id', '').startswith('story_guest_') and bool(p.get('path'))
+                                      for p in guest_portraits) and
                                   not node.get('secondary_actor_id'))
             check(actor_id in known_actors or voice_only or named_visual_guest,
                   prefix + node['id'] + ': actor needs known identity or explicitly named guest staging')
@@ -812,9 +811,15 @@ required_preparation_reaction_variants = {
 	'ward_skin_prep', 'ward_skin_prep_unnecessary',
 	'ward_surgical_cap',
     'operative_positioning_awake', 'operative_positioning_none',
+    'operative_positioning_unnecessary_lithotomy',
     'urinary_catheterization_awake', 'urinary_catheterization_none',
+    'manual_catheter_press_bladder',
     'skin_disinfection_awake', 'skin_disinfection_none',
+    'excessive_disinfection_breasts', 'excessive_disinfection_perineum',
+    'skip_sterile_draping',
     'incision_marking_awake', 'incision_marking_none',
+    'slow_incision_trace', 'incision_public_lecture',
+    'postop_bare_sponge_wipe', 'postop_bare_full_inspection',
 }
 personality_pairs = {}
 for patient in collections['patients']:
@@ -1418,11 +1423,11 @@ required_miyama_flags = {
 check(required_miyama_flags <= set(miyama_ayako.get('completion_flags', [])),
       'miyama_02: authored completion flags are incomplete')
 miyama_step = by['special_event_steps'].get('miyama_02_manga_artist_wrong_patient_main', {})
-check(len(miyama_step.get('nodes', [])) >= 500 and
-      miyama_step.get('start') == 'lv1_callback' and
+check(len(miyama_step.get('nodes', [])) == 563 and
+      miyama_step.get('start') == 's01_001' and
       all(any(node.get('id') == node_id for node in miyama_step.get('nodes', []))
-          for node_id in ['s01_001', 's34_001', 'lv2_asuka_private', 'lv2_doctor']),
-      'miyama_02: complete V8 sequence or new relationship bridges are missing')
+          for node_id in ['s01_001', 's01_014', 's01_023', 's24_006', 's25_015', 's25b_003', 's25b_014', 's25b_020', 's32_016', 's34_001']),
+      'miyama_02: complete V9.1 563-node sequence, Lv1 callback, Scene 25B Asuka talk, or Lv3 OR God seed is missing')
 
 miyama_lv1 = by['special_events'].get('miyama_01_safety_pin', {})
 miyama_lv1_step = by['special_event_steps'].get('miyama_01_safety_pin_main', {})
@@ -1431,9 +1436,27 @@ check(miyama_lv1.get('prerequisite_events') == ['intro_doc_rei'] and
           'actor_id': 'doc_rei', 'target_level': 1,
           'benefit_id': '', 'allow_level_skip': False}],
       'miyama_01: introduction prerequisite or Lv1 reward is incomplete')
-check(any(node.get('id') == 'palpation_placeholder' and len(node.get('choices', [])) == 1
+check(len(miyama_lv1_step.get('nodes', [])) == 308 and
+      miyama_lv1_step.get('start') == 'klv1_001' and
+      'or_table_palpation_unlocked' not in miyama_lv1.get('completion_flags', []) and
+      any(node.get('id') == 'klv1_157' and len(node.get('choices', [])) == 2
+          for node in miyama_lv1_step.get('nodes', [])) and
+      any(node.get('id') == 'klv1_293' and len(node.get('choices', [])) == 3
           for node in miyama_lv1_step.get('nodes', [])),
-      'miyama_01: one-click OR-table palpation placeholder is missing')
+      'miyama_01: V2.3 308-beat sequence, choice nodes, or palpation decoupling is incomplete')
+for path in [
+        'assets/events/character_events/rei/lv1/cg_kita_or_palpation.png',
+        'assets/events/character_events/rei/lv1/cg_kita_shaving_prep.png',
+        'assets/events/character_events/rei/lv1/cg_kita_skin_disinfection.png',
+        'assets/characters/story_guest_kita_v1/casual/smile.png',
+        'assets/characters/story_guest_kita_v1/casual/shocked.png',
+        'assets/characters/story_guest_kita_v1/ward/pout.png',
+        'assets/characters/story_guest_kita_v1/ward/smile.png',
+        'assets/characters/story_guest_kita_v1/operating_table/tense.png',
+        'assets/characters/story_guest_kita_v1/operating_table/panic.png',
+        'assets/characters/story_guest_kita_v1/intraoperative/tense.png',
+        'assets/characters/story_guest_kita_v1/intraoperative/panic.png']:
+    check((ROOT / path).is_file(), 'miyama_01: missing Kita V2.3 asset ' + path)
 
 miyama_lv3 = by['special_events'].get('miyama_03_or_god', {})
 miyama_lv3_step = by['special_event_steps'].get('miyama_03_or_god_main', {})

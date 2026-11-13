@@ -1,0 +1,96 @@
+[
+  {
+    "event_id": "event_EjYG1daDYGZARkRZUZfSi",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYG0p3oMhK9Sw5E3RKFmvxv3R1fVkLe",
+      "expires_at": 1794532352,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her late twenties, speaking native standard Japanese. Clear, dignified, steadfast mid-high register with upright breath support, pure unclouded resonance, and calm leadership resolve. Formal, sincere, direct articulation with steady pacing and zero affectation.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Dignified, noble, disciplined deputy chief surgeon — Dignified, upright morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af60fb85ba48191b620c1cc5932552e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Dignified, noble, disciplined deputy chief surgeon — Dignified, upright morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjYG26qQ93xIvgCVw9RMw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ようございます",
+    "event_id": "event_EjYG2Cbhz7rNMzG2Vlc9r"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYG2L7EE0qmXPyhTGU5Y",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、",
+    "event_id": "event_EjYG2dzipUYJbvuXE8z9p"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "坂",
+    "event_id": "event_EjYG3pZT5UBCgteDHjIKN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "口",
+    "event_id": "event_EjYG361pKhrkqSHmotjwa"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "先生",
+    "event_id": "event_EjYG3wFuf1R6qQ8ep9t9D"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYG4nJLGro3FzYitJw1S"
+  }
+]

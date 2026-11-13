@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYWxpIPh1QF0tH0bv0Wx",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYWwp3oMV9lcNKxoLlmmPVI8gr8DJpF",
+      "expires_at": 1794533402,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Clean, cool-toned, youthful mid-high register with slender, unclouded clarity — fresh and young without husky aging. Polite, observant, composed, and quietly inquisitive articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、かしこまりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Neat, polite agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe18b43881919dc6b19311809c10"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、かしこまりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Neat, polite agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はい、",
+    "event_id": "event_EjYWxm4oMlQSG9DNKRWQb"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "か",
+    "event_id": "event_EjYWyNaCjbG4tvjR7Oi2Y"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "し",
+    "event_id": "event_EjYWyn91sA6VcIIOzM0i2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "こ",
+    "event_id": "event_EjYWyQrWMr21rjko246qx"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYWynXEySUFIU6hTopzN",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "まり",
+    "event_id": "event_EjYWy9ixUcjj2mDr6KRo4"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "ました",
+    "event_id": "event_EjYWysnVPLeD2DZ9ofimC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjYWzMUGvTVJRw4lP5B7G"
+  },
+  {
+    "event_id": "event_EjYX4bGltAfUjNwqToC8F",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYWwp3oMV9lcNKxoLlmmPVI8gr8DJpF",
+      "expires_at": 1794533402,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Clean, cool-toned, youthful mid-high register with slender, unclouded clarity — fresh and young without husky aging. Polite, observant, composed, and quietly inquisitive articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、かしこまりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Neat, polite agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe18b43881919dc6b19311809c10"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、かしこまりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Neat, polite agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

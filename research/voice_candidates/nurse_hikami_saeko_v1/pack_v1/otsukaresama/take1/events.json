@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYWwKPjrtV4FV22gWza6",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYWwp3oM9qY2sCQiuGntH2q8TcVf9h2",
+      "expires_at": 1794533402,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Clean, cool-toned, youthful mid-high register with slender, unclouded clarity — fresh and young without husky aging. Polite, observant, composed, and quietly inquisitive articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Courteous, composed after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe18b43881919dc6b19311809c10"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Courteous, composed after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYWxsXBHFu19vq3oFc2H"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYWxIMoPbgdJsrKcNRmB"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "です",
+    "event_id": "event_EjYWylPZkJa5lkjtaQcKx"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYWyY9EZZObl8B3pzPUb",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、",
+    "event_id": "event_EjYWyZ7kgqfXruwzI7JEr"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "坂口",
+    "event_id": "event_EjYWyllRHshdVVsjUsqjl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "先生",
+    "event_id": "event_EjYWzBcGK5XqHWajC1uAb"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "。",
+    "event_id": "event_EjYWzhXhMRRrMQi4hkQmG"
+  },
+  {
+    "event_id": "event_EjYX4Om4zI7X8P80rc2fT",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYWwp3oM9qY2sCQiuGntH2q8TcVf9h2",
+      "expires_at": 1794533402,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Clean, cool-toned, youthful mid-high register with slender, unclouded clarity — fresh and young without husky aging. Polite, observant, composed, and quietly inquisitive articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Courteous, composed after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe18b43881919dc6b19311809c10"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Courteous, composed after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

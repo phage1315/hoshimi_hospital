@@ -1,0 +1,117 @@
+[
+  {
+    "event_id": "event_EjYRoPIGOSCqSGV2etVZE",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYRnp3oMV9lqUHUh4yIxhtRbOtswovD",
+      "expires_at": 1794533083,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Clear, easygoing, gently poised mid-to-upper register that sounds fresh and twenty-something rather than heavy. Relaxed, perceptive, dependable tone with a subtle hint of wry warmth.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe286fd48191814c726a7d11fe4e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あら",
+    "event_id": "event_EjYRp3AnUvFAoTrgFCPkJ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、そう",
+    "event_id": "event_EjYRp6hUPvONqDtGYydIe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "だったん",
+    "event_id": "event_EjYRpJFLNry7uRgMH4iE8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ですね",
+    "event_id": "event_EjYRqPlJEUE78jZDaZv5O"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYRqbAxEgJeXmPcq2Hik",
+    "client_event_id": "line_1"
+  },
+  {
+    "event_id": "event_EjYRvy0FCzqqXRfiD7a44",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYRnp3oMV9lqUHUh4yIxhtRbOtswovD",
+      "expires_at": 1794533083,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Clear, easygoing, gently poised mid-to-upper register that sounds fresh and twenty-something rather than heavy. Relaxed, perceptive, dependable tone with a subtle hint of wry warmth.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe286fd48191814c726a7d11fe4e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

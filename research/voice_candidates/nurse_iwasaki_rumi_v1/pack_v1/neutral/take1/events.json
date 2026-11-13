@@ -1,0 +1,117 @@
+[
+  {
+    "event_id": "event_EjYTzddqFD4WaKew3Q8Bx",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYTyp3oMTG1faCyXWyFWvv4Iomn0H26",
+      "expires_at": 1794533218,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Crisp, sunny, lively girlish upper-mid register with light, springy vocal weight and friendly teasing sociability. Fast, clear, upbeat tempo of an approachable twenty-year-old nurse who brightens the ward.\nSpeak immediately in Japanese. Say exactly this line once: \"はあい、了解です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cheerful, outgoing, briskly friendly 20yo nurse — Brisk, cheerful agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0ac3f48191a8666c1c44fd88d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はあい、了解です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cheerful, outgoing, briskly friendly 20yo nurse — Brisk, cheerful agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はあ",
+    "event_id": "event_EjYTzNcYzEYrMN6gsyrpi"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "い、",
+    "event_id": "event_EjYTz7MZi7VcINJterM2H"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "了解です",
+    "event_id": "event_EjYU0h3wj7fOuu667Kxny"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "。",
+    "event_id": "event_EjYU02xA7IBmKhK9WUt6R"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYU03slDeZw2B0g8PAGj",
+    "client_event_id": "line_1"
+  },
+  {
+    "event_id": "event_EjYU6VZzIptCwb9A64TpD",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYTyp3oMTG1faCyXWyFWvv4Iomn0H26",
+      "expires_at": 1794533218,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Crisp, sunny, lively girlish upper-mid register with light, springy vocal weight and friendly teasing sociability. Fast, clear, upbeat tempo of an approachable twenty-year-old nurse who brightens the ward.\nSpeak immediately in Japanese. Say exactly this line once: \"はあい、了解です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cheerful, outgoing, briskly friendly 20yo nurse — Brisk, cheerful agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0ac3f48191a8666c1c44fd88d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はあい、了解です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cheerful, outgoing, briskly friendly 20yo nurse — Brisk, cheerful agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -1,0 +1,173 @@
+[
+  {
+    "event_id": "event_EjYW5Ke3HBvSpDSs1TbVL",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYW5p3oMTBhsat6Ftur9Y8JDlEmgb7M",
+      "expires_at": 1794533349,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Sweet, bright, spirited girlish higher-mid timbre with clean rounded clarity and cheerful poise. Brisk, friendly conversational rhythm that stays crisp and clear when reporting clinical work.\nSpeak immediately in Japanese. Say exactly this line once: \"手元も記録もクリアです、続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Brisk, clear OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0eb2088191aee39286838b9cb4"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"手元も記録もクリアです、続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Brisk, clear OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "手元",
+    "event_id": "event_EjYW6UF5Zu1adAW5yZcaI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "も",
+    "event_id": "event_EjYW6ndkBucIL90QWRfC8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "記",
+    "event_id": "event_EjYW7t2hiwyf6tdL9nctK"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYW74pGuPYeobd6cB3IO",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "録",
+    "event_id": "event_EjYW75f5qImu6Wnt0xYYH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "も",
+    "event_id": "event_EjYW7s1CinqSe4kVNeb4E"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "クリ",
+    "event_id": "event_EjYW7hUrCwnngmtKJ1StM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ア",
+    "event_id": "event_EjYW8yZlNvpxQ9j4VeVqN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "です",
+    "event_id": "event_EjYW8iJJm5C11FGrClYGK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "、続",
+    "event_id": "event_EjYW8sYOrx30Sv4JRZYAW"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "けて",
+    "event_id": "event_EjYW9sHa7wH4g4qEj16fK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "ください",
+    "event_id": "event_EjYW9S7zfZyFs3aMkYX3M"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "。",
+    "event_id": "event_EjYW9znLNjta8Ywcn63Hd"
+  },
+  {
+    "event_id": "event_EjYWEeavtqiVDLORAA2pg",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYW5p3oMTBhsat6Ftur9Y8JDlEmgb7M",
+      "expires_at": 1794533349,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Sweet, bright, spirited girlish higher-mid timbre with clean rounded clarity and cheerful poise. Brisk, friendly conversational rhythm that stays crisp and clear when reporting clinical work.\nSpeak immediately in Japanese. Say exactly this line once: \"手元も記録もクリアです、続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Brisk, clear OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0eb2088191aee39286838b9cb4"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"手元も記録もクリアです、続けてください。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Brisk, clear OR nurse confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

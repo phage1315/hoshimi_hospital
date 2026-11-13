@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYaOMinWR67NL4GLgZFv",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYaOp3oMbU5FXcQhyjJ1lU2q2PwHNSr",
+      "expires_at": 1794533616,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Quiet, refined, bookish girlish higher-mid timbre with slender, delicate vocal weight and bashful breathy modesty. Polite keigo articulation with a slight shy flutter, yet observant and sincere.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly shy youthful morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe039b6c81918f206a41a22ab045"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly shy youthful morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjYaPpxNZcR6NLkaAuxeF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ようございます",
+    "event_id": "event_EjYaPZoRX0B1qT8kqsZJ9"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYaQfUkPGMzIknPoK4rd",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、",
+    "event_id": "event_EjYaQ0RGpykLDITdWEyfP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "坂",
+    "event_id": "event_EjYaQm0OrjsAlsb6alJSl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "口",
+    "event_id": "event_EjYaQ94Kb9YWQF5Xmvss3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "先生",
+    "event_id": "event_EjYaRN3VcRAVmyG9Y2CrF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYaRhbp6xgn267KTZuE5"
+  },
+  {
+    "event_id": "event_EjYaXstmm1nb040F2oldi",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYaOp3oMbU5FXcQhyjJ1lU2q2PwHNSr",
+      "expires_at": 1794533616,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Quiet, refined, bookish girlish higher-mid timbre with slender, delicate vocal weight and bashful breathy modesty. Polite keigo articulation with a slight shy flutter, yet observant and sincere.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly shy youthful morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe039b6c81918f206a41a22ab045"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly shy youthful morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

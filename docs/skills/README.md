@@ -5,8 +5,14 @@
 ## 通用工作流
 
 - [剧情、双语和已有素材接入](narrative-integration.md)：原稿版本、逐句审计、素材映射、测试与交付。
+- [角色与患者立绘生成、差分及本地透明化](hoshimi-portrait-pipeline/SKILL.md)：SFW 基础图确认→绘图工具整图出表情差分→本地 `tools/portrait_matting.py`（`BiRefNet-ToonOut` ONNX）离线去背景；用户提供的非透明 NSFW 立绘本地离线去背景；仅在绘图工具拒处理（如 NSFW 差分）时才回退本地面部修改。同步镜像于 `.agents/skills/hoshimi-portrait-pipeline/`。
 - [存档边界修改](save-boundary.md)：事实设计、迁移、隔离验证与时间／奖励稳定性。
 - [原生窗口测试](hoshimi-native-playtest/SKILL.md)：独立存档、实际 GUI 输入、中英演出、日志与证据分级。
+
+## 角色语音生成
+
+- [OpenAI 角色语音](openai-character-voice/SKILL.md)：创建原创 Voice ID、复用已有角色声线生成对白、保留音频与来源、核对台词和用量。附跨agent可执行的Python脚本及离线行为测试；本目录是可移植维护源，本机 `~/.codex/skills/openai-character-voice/` 为安装副本，工作区 `.agents/skills/openai-character-voice/` 提供 Antigravity 自动发现镜像。仓库内联网执行统一走固定前缀入口 [`tools/voice_runner/hoshimi-voice`](../../tools/voice_runner/README.md)（`tools/voice_runner/hoshimi-voice run <job.json>`），一次 Always Allow 即可避免每次临时脚本重复弹窗。
+- Codex 可调用 `$openai-character-voice`；其他工具直接读取该 `SKILL.md`，按相对路径运行脚本即可，不依赖本次聊天或Codex专属工具。复制整个skill目录时保留scripts、references及agents相对结构；不携带密钥。
 
 ## 按角色推进
 

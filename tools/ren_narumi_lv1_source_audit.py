@@ -116,8 +116,10 @@ def main() -> None:
         choice_en_index = 0
         for raw, node, translated_line in zip(source, nodes, translated):
             node_id = node["id"]
-            for key in ("id", "speaker", "actor_id", "speaker_label", "text", "background_id", "outfit", "hide_portrait"):
+            for key in ("id", "speaker", "actor_id", "speaker_label", "text", "background_id", "outfit"):
                 check(node[key] == raw[key], f"Source mismatch {event_id}:{node_id}:{key}")
+            expected_hide_portrait = False if node.get("cg_path") else raw["hide_portrait"]
+            check(node["hide_portrait"] == expected_hide_portrait, f"Visual mode mismatch {event_id}:{node_id}:hide_portrait")
             check(node["choices"] == raw["choices"], f"Authored branch wiring mismatch {event_id}:{node_id}")
             check(len(node["choices"]) in (1, 2), f"Invalid choice count {event_id}:{node_id}")
             stem = f"{prefix}.nodes.{node_id}"
@@ -133,7 +135,7 @@ def main() -> None:
                     expected_label = "Finish" if choice["next"] == "@end" else "Continue"
                 check(english.get(stem + f".choices.{choice['id']}.label") == expected_label, f"English choice missing {event_id}:{node_id}:{choice['id']}")
             check((ROOT / backgrounds[node["background_id"]]).is_file(), f"Background missing {event_id}:{node_id}")
-            if not node["hide_portrait"]:
+            if not node["hide_portrait"] and not node.get("cg_path"):
                 portrait = portraits.get(node["outfit"] + "/" + node["expression"])
                 check(portrait is not None and (ROOT / portrait).is_file(), f"Portrait missing {event_id}:{node_id}")
         check(choice_en_index == 4, f"English A/B choice count drift: {event_id}")

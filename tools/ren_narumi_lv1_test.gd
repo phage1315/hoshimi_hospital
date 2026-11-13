@@ -4,6 +4,11 @@ extends SceneTree
 const IDS := ["ren_lv1_night_ward_1", "narumi_lv1_beyond_the_resume"]
 const ACTORS := ["nurse_haru", "doc_aoi"]
 const COUNTS := [220, 198]
+const CG_PATHS := [
+	"assets/events/character_events/narumi_ren/ren_lv1_half_sandwich_call.png",
+	"assets/events/character_events/narumi_ren/narumi_lv1_two_teas_manuscript.png",
+]
+const CG_WINDOWS := [Vector2i(201, 208), Vector2i(142, 151)]
 var app
 var checks := 0
 var failures := 0
@@ -54,6 +59,18 @@ func test_route(index: int, locale: String, branch_mask: int, coverage: Dictiona
 		expect(definition.category == "bond" and definition.target_level == 1, "Only Lv1 relationship reward " + id)
 		expect(definition.nodes.size() == COUNTS[index], "Complete node count " + id)
 		expect(definition.trigger_mode == ("after_work" if index == 0 else "location"), "Natural entry mode " + id)
+		var gallery: Dictionary = definition.get("gallery", {})
+		expect(str(gallery.get("path", "")) == CG_PATHS[index] and bool(gallery.get("show_on_complete", false)), "Gallery CG registered " + id)
+		expect(ResourceLoader.exists("res://" + CG_PATHS[index]), "CG resource imported " + id)
+		var cg_nodes: Array = definition.nodes.filter(func(candidate: Dictionary) -> bool:
+			return str(candidate.get("cg_path", "")) == CG_PATHS[index]
+		)
+		var expected_cg_count: int = CG_WINDOWS[index].y - CG_WINDOWS[index].x + 1
+		expect(cg_nodes.size() == expected_cg_count, "Exact CG window " + id)
+		for cg_node in cg_nodes:
+			var suffix := int(str(cg_node.get("id", "")).get_slice("_", 1))
+			expect(suffix >= CG_WINDOWS[index].x and suffix <= CG_WINDOWS[index].y, "CG node in authored scene " + str(cg_node.get("id", "")))
+			expect(str(cg_node.get("cg_fit", "")) == "cover", "CG uses cover fit " + str(cg_node.get("id", "")))
 		test_prerequisites(index, definition)
 
 	expect(g.prepare_character_event_test_save(id), "In-memory test fixture " + id)
@@ -92,8 +109,12 @@ func test_route(index: int, locale: String, branch_mask: int, coverage: Dictiona
 		app.show_character_event()
 		var background = app.page.get_node_or_null("SceneBackground")
 		expect(background != null and background.texture != null, "Background loaded %s %s" % [id, node_id])
+		var cg = app.page.get_node_or_null("CharacterEventCG")
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
-		if bool(node.hide_portrait):
+		if not str(node.get("cg_path", "")).is_empty():
+			expect(cg != null and cg.texture != null, "CG rendered %s %s" % [id, node_id])
+			expect(portrait == null, "Full-screen CG suppresses portrait %s %s" % [id, node_id])
+		elif bool(node.hide_portrait):
 			expect(portrait == null, "Narrator/other actor has no borrowed portrait %s %s" % [id, node_id])
 		else:
 			expect(portrait != null and portrait.texture != null, "Speaking actor portrait %s %s" % [id, node_id])
@@ -122,7 +143,14 @@ func test_route(index: int, locale: String, branch_mask: int, coverage: Dictiona
 		app.continue_after_day_transition()
 		expect(app.screen == "map", "Night event returns to hospital map")
 	else:
-		expect(app.screen == "character_event_complete", "Completion screen " + id)
+		expect(app.screen == "character_event_reward", "CG reward screen " + id)
+		var reward_cg = app.page.get_node_or_null("EventRewardCG")
+		expect(reward_cg != null and reward_cg.texture != null, "CG reward texture " + id)
+		var reward_continue = app.page.get_node_or_null("EventRewardContinue")
+		expect(reward_continue != null, "CG reward continue control " + id)
+		if reward_continue != null:
+			reward_continue.pressed.emit()
+		expect(app.screen == "character_event_complete", "Completion screen after CG reward " + id)
 		app.show_map()
 	expect(g.can_save_progress(), "Save only after map boundary " + id)
 	var save: Dictionary = g.snapshot()

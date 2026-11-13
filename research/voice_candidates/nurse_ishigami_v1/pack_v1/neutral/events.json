@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYa3MTJ03sqP8uXQ6vJB",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYa2p3oM9qYYWQXlGLCOPnRA6drKOid",
+      "expires_at": 1794533595,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age thirty, speaking native standard Japanese. Cool, poised, glacially calm low-mid register with smooth austere elegance and effortless quiet authority. Concise, unhurried, low-inflection phrasing that commands discipline without ever raising volume.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、把握しています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, composed, understated and authoritative Director of Nursing — Brief, composed agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3207ec8191b65bdc344787a0f1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、把握しています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, composed, understated and authoritative Director of Nursing — Brief, composed agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ええ",
+    "event_id": "event_EjYa4PVwnQ9uFJzCbVqg5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、把",
+    "event_id": "event_EjYa4BVjl95HV6mdY989Y"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "握",
+    "event_id": "event_EjYa4vtPz5mNaGIL2D9Hq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "しています",
+    "event_id": "event_EjYa4fIMZf807xxpnxDSH"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYa46UowUq3NBSbuSUaS",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYa5L8HKnlSRl1PeCMel"
+  },
+  {
+    "event_id": "event_EjYaAiX9kMmckkH7i7E6O",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYa2p3oM9qYYWQXlGLCOPnRA6drKOid",
+      "expires_at": 1794533595,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age thirty, speaking native standard Japanese. Cool, poised, glacially calm low-mid register with smooth austere elegance and effortless quiet authority. Concise, unhurried, low-inflection phrasing that commands discipline without ever raising volume.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、把握しています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, composed, understated and authoritative Director of Nursing — Brief, composed agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3207ec8191b65bdc344787a0f1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、把握しています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, composed, understated and authoritative Director of Nursing — Brief, composed agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

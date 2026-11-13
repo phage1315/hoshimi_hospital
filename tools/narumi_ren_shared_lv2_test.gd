@@ -4,6 +4,13 @@ extends SceneTree
 const ID := "narumi_ren_shared_lv2_sign_here"
 const ACTORS := ["doc_aoi", "nurse_haru"]
 const NODE_COUNT := 294
+const ENDING_CG_PATH := "assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mutual_resolve.png"
+const CG_WINDOWS := {
+	"assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mika_table_restraint.png": ["nr2_130", "nr2_131", "nr2_132"],
+	"assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mika_preop_draping.png": ["nr2_133", "nr2_134", "nr2_135", "nr2_136", "nr2_137", "nr2_138", "nr2_139", "nr2_140", "nr2_141", "nr2_142"],
+	"assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mika_scalpel_contact.png": ["nr2_146", "nr2_147", "nr2_148", "nr2_149"],
+	ENDING_CG_PATH: ["nr2_287", "nr2_288", "nr2_289", "nr2_290", "nr2_291", "nr2_292", "nr2_293", "nr2_294"],
+}
 var app
 var checks := 0
 var failures := 0
@@ -29,6 +36,12 @@ func no_inner(value: Variant) -> bool:
 			if not no_inner(item):
 				return false
 	return true
+
+func expected_cg_path(node_id: String) -> String:
+	for cg_path in CG_WINDOWS:
+		if node_id in CG_WINDOWS[cg_path]:
+			return str(cg_path)
+	return ""
 
 func test_atomic_settlement(definition: Dictionary) -> void:
 	var g = app.game
@@ -89,7 +102,17 @@ func test_route(locale: String, branch_mask: int, coverage: Dictionary) -> void:
 		var background = app.page.get_node_or_null("SceneBackground")
 		expect(background != null and background.texture != null, "Background loaded " + node_id)
 		var portraits: Array[Node] = app.page.find_children("EventPortrait_*", "TextureRect", true, false)
-		if bool(node.hide_portrait):
+		var cg := app.page.get_node_or_null("CharacterEventCG") as TextureRect
+		var expected_cg := expected_cg_path(node_id)
+		if not expected_cg.is_empty():
+			expect(cg != null and cg.texture != null and cg.texture.resource_path == "res://" + expected_cg, "Approved CG loaded " + node_id)
+			expect(cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_COVERED, "Approved CG uses cover fit " + node_id)
+			expect(portraits.is_empty(), "Approved CG suppresses portrait overlays " + node_id)
+		else:
+			expect(cg == null, "CG does not leak outside its authored window " + node_id)
+		if not expected_cg.is_empty():
+			pass
+		elif bool(node.hide_portrait):
 			expect(portraits.is_empty(), "Narrator has no borrowed portrait " + node_id)
 		else:
 			var expected_portraits: Array = node.get("event_portraits", [])
@@ -138,6 +161,9 @@ func run() -> void:
 		app.configure_game_content()
 		var definition: Dictionary = app.game.character_event_definitions.get(ID, {})
 		expect(not definition.is_empty() and definition.nodes.size() == NODE_COUNT, "Registered 294-page event " + locale)
+		expect(str(definition.get("gallery", {}).get("path", "")) == ENDING_CG_PATH and bool(definition.get("gallery", {}).get("show_on_complete", false)), "Approved Lv2 ending CG registered in gallery " + locale)
+		for cg_path in CG_WINDOWS:
+			expect(ResourceLoader.exists("res://" + str(cg_path)), "Approved Lv2 CG resource exists %s/%s" % [locale, cg_path])
 		if locale == "zh_CN":
 			test_atomic_settlement(definition)
 			test_gate(definition)

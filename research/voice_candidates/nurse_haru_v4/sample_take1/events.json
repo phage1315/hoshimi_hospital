@@ -1,0 +1,208 @@
+[
+  {
+    "event_id": "event_EjVKlPHBfXrEOafXZfmUt",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjVKkp3oNLcfvI3vBnkvaP0tDHOuknmU",
+      "expires_at": 1794521114,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。えへへ、今日も一日よろしくお願いしますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, cute, crystal-sweet girlish soprano voice with a bright affectionate smile, spoken clearly at strong close-mic studio volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。えへへ、今日も一日よろしくお願いしますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, cute, crystal-sweet girlish soprano voice with a bright affectionate smile, spoken clearly at strong close-mic studio volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjVKm9q17M8DU0OzXjzpm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ようございます",
+    "event_id": "event_EjVKmpThxV5lH8tqugsNB"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjVKmdYRYiKTtOdPnY4MG",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "、",
+    "event_id": "event_EjVKnl2IGVpKkcNbA5haR"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "坂",
+    "event_id": "event_EjVKntm9jPTTx1JS3EVey"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "口",
+    "event_id": "event_EjVKnsD4TEhffbdZ45NMj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "先生",
+    "event_id": "event_EjVKnbofUrA6OMourTP2a"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "。",
+    "event_id": "event_EjVKoG3edf5kzwtU4djHK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "えへ",
+    "event_id": "event_EjVKog2thT3wJwi3L10BQ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "へ",
+    "event_id": "event_EjVKoLpR2DAiconbY0xDj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "、",
+    "event_id": "event_EjVKoKTC89ianwDzBFDUt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3000,
+    "end_ms": 3200,
+    "delta": "今日",
+    "event_id": "event_EjVKpjd9C7ZxYcRMi0Cqj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "も",
+    "event_id": "event_EjVKplI17eytGHzDvBXlc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3400,
+    "end_ms": 3600,
+    "delta": "一",
+    "event_id": "event_EjVKphapHavcP0PgQeo8V"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3600,
+    "end_ms": 3800,
+    "delta": "日よろしく",
+    "event_id": "event_EjVKpFzoOwodpQP5m2aG8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4200,
+    "end_ms": 4400,
+    "delta": "お願いします",
+    "event_id": "event_EjVKq1I5E0y3B376WBub6"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 5000,
+    "end_ms": 5200,
+    "delta": "ね",
+    "event_id": "event_EjVKrRfi8Ey4rWVMls1ui"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 5200,
+    "end_ms": 5400,
+    "delta": "。",
+    "event_id": "event_EjVKr83IuVn6SyqE9L1mD"
+  },
+  {
+    "event_id": "event_EjVKzUCrlFUVg5QdIuwHn",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjVKkp3oNLcfvI3vBnkvaP0tDHOuknmU",
+      "expires_at": 1794521114,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。えへへ、今日も一日よろしくお願いしますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, cute, crystal-sweet girlish soprano voice with a bright affectionate smile, spoken clearly at strong close-mic studio volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。えへへ、今日も一日よろしくお願いしますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: High-pitched, cute, crystal-sweet girlish soprano voice with a bright affectionate smile, spoken clearly at strong close-mic studio volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 13.0
+    }
+  }
+]

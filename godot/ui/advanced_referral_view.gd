@@ -303,8 +303,12 @@ func render_fixture_team() -> void:
 				var skill_id: String = controller.game.role_training_skill(role)
 				var suffix := " · %s" % controller.game.staff_skill_value(person.id, skill_id) if not skill_id.is_empty() else ""
 				picker.add_item(actor_name(person.id) + suffix)
-				picker.set_item_metadata(picker.item_count - 1, person.id)
-				if selected.get(role, "") == person.id: picker.select(picker.item_count - 1)
+				var item_idx := picker.item_count - 1
+				picker.set_item_metadata(item_idx, person.id)
+				var small_tex: Texture2D = host.staff_chibi_small_texture(str(person.id))
+				if small_tex != null:
+					picker.set_item_icon(item_idx, small_tex)
+				if selected.get(role, "") == person.id: picker.select(item_idx)
 			picker.item_selected.connect(func(index): selected[role] = picker.get_item_metadata(index); update_preview(); show_assignment(role))
 			body.add_child(picker)
 	risk_label = label(tr_key("preview_ready"))
@@ -420,7 +424,7 @@ func render_booking() -> void:
 			button("jump", func(): controller.demo_day = int(a.operation_day); render())
 		button("start", func(): controller.error = ""; controller.start_operation(); render(), controller.day() == int(a.operation_day))
 	else:
-		label(tr_key("review"), true)
+		if controller.day() >= int(a.review_day): label(tr_key("review"), true)
 		label(tr_key("success" if controller.state().outcome.success else "aborted"))
 		show_summary()
 		button("settle", func(): controller.settle(); render(), controller.day() >= int(a.review_day))

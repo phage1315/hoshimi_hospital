@@ -9,6 +9,7 @@ static func portraits(app, node: Dictionary) -> void:
 		var art := TextureRect.new()
 		art.name = "EventPortrait_" + str(item.id)
 		art.texture = texture
+		art.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
 		art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		art.size = Vector2(float(item.get("width", 390)), float(item.get("height", 390)))

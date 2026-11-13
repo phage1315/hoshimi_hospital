@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYHQHmVtAq6qtu9ZfgDG",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYHPp3oMHF1acxMl41lKGu7BUcgTuhu",
+      "expires_at": 1794532439,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. High-pitched, petite, sweet girlish soprano with delicate, sugary-clear bell resonance and pure maidenly charm. Polite, soft-hearted, adorable ojou-sama inflection that sounds genuinely young and girlish while staying articulate and bright.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Light, youthful surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a1cb64481919bf6644851968f95"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Light, youthful surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あっ",
+    "event_id": "event_EjYHRoi1X7ZK4tAlzocUD"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、そう",
+    "event_id": "event_EjYHRpIblVtCAahFXTVAI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "なんです",
+    "event_id": "event_EjYHRbSdMUkw3RnwR3UP5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "か",
+    "event_id": "event_EjYHRQoErmhRxZz04ecFb"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYHRg2ybtxfkjWfdN9Ay",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "。",
+    "event_id": "event_EjYHRc2oxtHtvq3iHDiQR"
+  },
+  {
+    "event_id": "event_EjYHXhB6hlzOzxik3ur10",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYHPp3oMHF1acxMl41lKGu7BUcgTuhu",
+      "expires_at": 1794532439,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. High-pitched, petite, sweet girlish soprano with delicate, sugary-clear bell resonance and pure maidenly charm. Polite, soft-hearted, adorable ojou-sama inflection that sounds genuinely young and girlish while staying articulate and bright.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Light, youthful surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a1cb64481919bf6644851968f95"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Light, youthful surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

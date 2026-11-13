@@ -7,8 +7,10 @@ var event: RefCounted
 var replay := false
 var prep: RefCounted
 
-static func owns(session: RefCounted) -> bool:
-	return session != null and not session.completed and str(session.definition.id) == "miyama_01_safety_pin" and str(session.current().id) == "palpation_placeholder"
+static func owns(_session: RefCounted) -> bool:
+	# V2.3 decoupling: miyama_01_safety_pin plays Kaori's 3-round OR palpation as
+	# authored VN dialogue and no longer intercepts into the free palpation UI.
+	return false
 
 static func open_if_needed(host: Control, session: RefCounted, is_replay: bool) -> bool:
 	if not owns(session):

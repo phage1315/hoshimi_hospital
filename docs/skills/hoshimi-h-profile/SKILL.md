@@ -22,9 +22,9 @@ description: 为《星见医院》新角色或现有角色整理 H profile 技�
 
 ## 作者必须提供的NSFW基础图片
 
-明确向作者列出四类交付：**触摸底图（body_map）、第二阶段sex图（scene_cg）、事后CG（aftercare_cg）、六种头像中的neutral基准图（portrait_neutral）**。优先复用作者已提供并指定的文件，不重复索取。
+明确向作者列出四类交付：**触摸底图（body_map）、第二阶段sex图（scene_cg）、事后CG（aftercare_cg）、六种头像中的neutral基准图（portrait_neutral）**。优先复用作者已提供并指定的文件，不重复索取。若作者提供的 NSFW 立绘／头像为非透明原图，直接调用本地离线 `.venv/bin/python tools/portrait_matting.py --resize-mode keep`（见 [立绘与本地透明化管线](../hoshimi-portrait-pipeline/SKILL.md)）完成神经网络去背景，严禁外传云端或使用颜色阈值脚本硬抠。
 
-另外五种头像为annoyed、pleased、flustered、delighted、peak。经用户授权、且请求可由imagegen处理时，可以以neutral为基准制作差分；若imagegen无法生成，则明确列出缺失表情，交由作者提供。保持作者确认的构图，不为继续生成擅自裁切或更换构图。最终仍须六种头像齐全才算素材完成。
+另外五种头像为annoyed、pleased、flustered、delighted、peak。经用户授权后：若请求可由绘图工具（imagegen）正常处理，优先由绘图工具直接生成完整表情差分并经 `tools/portrait_matting.py` 本地透明化；**若绘图工具拒绝处理（如 NSFW 立绘差分）**，则在已透明化的 `neutral` 基准图上采用本地局部面部修改／合成方案制作差分（或按用户决定交由作者提供）。保持作者确认的构图，不为继续生成擅自裁切或更换构图。最终仍须六种头像齐全才算素材完成。
 
 ## 关键边界
 

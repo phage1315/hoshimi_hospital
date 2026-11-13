@@ -9,7 +9,12 @@ static func naturally_present(g: RefCounted) -> bool:
   return false
  var key := "serika_imaging_present:%s" % g.day_number()
  if not g.story_flags.has(key):
-  g.set_story_flag(key, absi(hash("%s:serika_imaging:%s" % [g.campaign_seed, g.day_number()])) % 100 < 70)
+  # Adjacent date strings have correlated hashes. Use the hash only to seed
+  # a local PRNG, so absence does not cluster into whole runs of calendar days.
+  # Keep already settled daily facts, including false values from older saves.
+  var rng := RandomNumberGenerator.new()
+  rng.seed = hash("%s:serika_imaging:%s" % [g.campaign_seed, g.day_number()])
+  g.set_story_flag(key, rng.randi_range(0, 99) < 70)
  return g.story_flag(key)
 static func lv1_entry_allowed(g: RefCounted) -> bool:
  # Remaining rank/intro requirements use the shared character-event gate.

@@ -1,0 +1,159 @@
+[
+  {
+    "event_id": "event_EjYR7m3RMrvDfk7x4ASvj",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYR6p3oMTBhOimNqpo7t6zIXTlvun4o",
+      "expires_at": 1794533041,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Youthful, sparkling, girlishly bright high-mid register with light, nimble vocal weight and lively clarity — distinctly young and cute-spirited rather than a heavy mature woman's voice. Playful koakuma teasing charm, crisp bouncy articulation, mischievous upward lilt at phrase endings.\nSpeak immediately in Japanese. Say exactly this line once: \"看護ポジション、いつでもいけますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, steady surgical nurse timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc3dcc88191808a8aa8deb47256"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"看護ポジション、いつでもいけますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, steady surgical nurse timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "看護",
+    "event_id": "event_EjYR8HQgbADOpd1Tl2yRg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ポジ",
+    "event_id": "event_EjYR8FwgDiyzr6OPFwDU5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "ション",
+    "event_id": "event_EjYR8DtcheoVLFrLKof8k"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、",
+    "event_id": "event_EjYR8m2iNSJR9ntVPUawr"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYR8eYfaxWKXsCQPJrIv",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "いつ",
+    "event_id": "event_EjYR8VSpKhGPEcZKbcouC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "でも",
+    "event_id": "event_EjYR9l2UQhvV6KWnC9p0H"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "いけ",
+    "event_id": "event_EjYR9KSmxw7lzq7aaxQgq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "ます",
+    "event_id": "event_EjYR9vwkF1NZ8XGKyxG6Q"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "よ",
+    "event_id": "event_EjYRArnsN7HjTgpeqZcAu"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYRATRXYVTlHLqvtQZfC"
+  },
+  {
+    "event_id": "event_EjYRFhxT3W2AlVhjxBsNK",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYR6p3oMTBhOimNqpo7t6zIXTlvun4o",
+      "expires_at": 1794533041,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Youthful, sparkling, girlishly bright high-mid register with light, nimble vocal weight and lively clarity — distinctly young and cute-spirited rather than a heavy mature woman's voice. Playful koakuma teasing charm, crisp bouncy articulation, mischievous upward lilt at phrase endings.\nSpeak immediately in Japanese. Say exactly this line once: \"看護ポジション、いつでもいけますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, steady surgical nurse timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc3dcc88191808a8aa8deb47256"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"看護ポジション、いつでもいけますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Crisp, steady surgical nurse timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

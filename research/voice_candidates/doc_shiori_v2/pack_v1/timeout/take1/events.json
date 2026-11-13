@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYI6c1ozAjlh0OlXTEzi",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYI6p3oN8rcSgOelIWEGOznxszoqLEi",
+      "expires_at": 1794532482,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"助手側、準備は整っています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Poised surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"助手側、準備は整っています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Poised surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "助手側",
+    "event_id": "event_EjYI7mlLrHfxyH4Q7Szwm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、",
+    "event_id": "event_EjYI8wpIOuOo88hl8sncW"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "準",
+    "event_id": "event_EjYI8AwjB4yW3QqrOemxh"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYI8y2Dgg3D6Ln2Eg3j1",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "備",
+    "event_id": "event_EjYI8rI9cEtSQST8UKGK1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "は",
+    "event_id": "event_EjYI8N8UPohadEnYrk9K6"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "整",
+    "event_id": "event_EjYI8mo0h0Bc1txRpfvB1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "っています",
+    "event_id": "event_EjYI9mWTt8vpH57oocvsv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYI9anwh0dOpYaZuMj7s"
+  },
+  {
+    "event_id": "event_EjYIDIjLGYUAeSdXr1Bb1",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYI6p3oN8rcSgOelIWEGOznxszoqLEi",
+      "expires_at": 1794532482,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"助手側、準備は整っています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Poised surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"助手側、準備は整っています。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Poised surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

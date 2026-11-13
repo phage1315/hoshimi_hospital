@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYLNMOgtJKqV5wOYBZvL",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYLNp3oNHfSdP3HEhrwzqt6MzK5YkP8",
+      "expires_at": 1794532685,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Soft, unhurried, breezy mid register with easygoing caring warmth and a touch of endearing absentminded relaxation, distinct from heavy seductiveness. Natural, soothing, approachable cadence.\nSpeak immediately in Japanese. Say exactly this line once: \"おや、それは驚いたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Mild, warm surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe7e72f48191b6d66e9aebda8f5a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おや、それは驚いたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Mild, warm surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おや",
+    "event_id": "event_EjYLOu0eieofZdQkPme0S"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、それ",
+    "event_id": "event_EjYLOvdfW4F2GLGx8eLZZ"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYLOk0Rv0NIGEnnzmKif",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "は",
+    "event_id": "event_EjYLPwqlcz6k0183vaAFl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "驚",
+    "event_id": "event_EjYLPSEBgUFcWLp72MbnF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "いた",
+    "event_id": "event_EjYLPuDYfNBF1vmsZi8aD"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "ね",
+    "event_id": "event_EjYLPcDsx4PS2Bdkt9plF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYLQFjWwCs09Fg0oCxW6"
+  },
+  {
+    "event_id": "event_EjYLWAW9B7oBZftBGq7SL",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYLNp3oNHfSdP3HEhrwzqt6MzK5YkP8",
+      "expires_at": 1794532685,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Soft, unhurried, breezy mid register with easygoing caring warmth and a touch of endearing absentminded relaxation, distinct from heavy seductiveness. Natural, soothing, approachable cadence.\nSpeak immediately in Japanese. Say exactly this line once: \"おや、それは驚いたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Mild, warm surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe7e72f48191b6d66e9aebda8f5a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おや、それは驚いたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Mild, warm surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 8.0
+    }
+  }
+]

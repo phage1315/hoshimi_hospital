@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYEwNG2dllePPZuEYAbb",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYEvp3oMbU5RACRXWxnT8JYq6GhKgEP",
+      "expires_at": 1794532285,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Brief, genuine surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Brief, genuine surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "えっ",
+    "event_id": "event_EjYExYX8ZdfYJoTgYnsfL"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、本当",
+    "event_id": "event_EjYEx8Xia9UGJ4Xf2twum"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "ですか",
+    "event_id": "event_EjYExEZzKA1jrz7JQTAjQ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "。",
+    "event_id": "event_EjYExBBfTIN8lg7xBaIni"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYExWZZRcdjAIS9mAJ4X",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 5800,
+    "end_ms": 6000,
+    "delta": "一緒",
+    "event_id": "event_EjYF2d0fAiJZ7Gi6U5mBv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 6000,
+    "end_ms": 6200,
+    "delta": "に吹",
+    "event_id": "event_EjYF28jfr3rLNIH1sJsKl"
+  },
+  {
+    "event_id": "event_EjYF3zwshvBshoDPrPUDL",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYEvp3oMbU5RACRXWxnT8JYq6GhKgEP",
+      "expires_at": 1794532285,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Brief, genuine surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Brief, genuine surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjZh4HWuF6R9CIIsnZC9v",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjZh4p3oMTPvEjLCynqXmwgswiRVg40O",
+      "expires_at": 1794537874,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"オペしたそうな目よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, knowing, playful deadpan punchline with a faint smile in her eyes. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"オペしたそうな目よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, knowing, playful deadpan punchline with a faint smile in her eyes. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "オペ",
+    "event_id": "event_EjZh55xnAc0t9EaBqzsUc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "した",
+    "event_id": "event_EjZh59CdZj8TPxPEJYtz2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "そう",
+    "event_id": "event_EjZh5KtJ4gvbL5miqk5Gj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "な",
+    "event_id": "event_EjZh6wM1pkZ31qpgPjqxz"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjZh6JQsxty2igDB9msgO",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "目",
+    "event_id": "event_EjZh6ZPw6o9qCmniwrEAa"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "よ",
+    "event_id": "event_EjZh6vUzRQCOvssTYZxPP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjZh6hUKggJC308A1lRmb"
+  },
+  {
+    "event_id": "event_EjZhAjqeLCw7Eh90QxXb8",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjZh4p3oMTPvEjLCynqXmwgswiRVg40O",
+      "expires_at": 1794537874,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"オペしたそうな目よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, knowing, playful deadpan punchline with a faint smile in her eyes. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"オペしたそうな目よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, knowing, playful deadpan punchline with a faint smile in her eyes. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 4.0
+    }
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYO2HQrNP1vngKvZpYhU",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYO2p3oMhK9dvcc513KKXSfqDZSdizp",
+      "expires_at": 1794532850,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Clear, resonant, close-mic'd lower-mid register with strong, full-bodied vocal presence and crisp clinical diction. Cool, composed, matter-of-fact authority spoken firmly at full conversational studio volume — never whispered, airy, or distant.\nSpeak immediately in Japanese. Say exactly this line once: \"ふっ、悪くない手際ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Subtle, dryly approving faint smile at clear volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619d1ed5481919081e4f0593203f2"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふっ、悪くない手際ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Subtle, dryly approving faint smile at clear volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふっ",
+    "event_id": "event_EjYO3c06akbGF9vJxGXm3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、悪",
+    "event_id": "event_EjYO36DuHKEgTRmNXCN8c"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "く",
+    "event_id": "event_EjYO4Bo367nQDpase3IqN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ない",
+    "event_id": "event_EjYO48gu1vOtHk8cb7MYJ"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYO4hGLErrKSUoW3e6qD",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "手",
+    "event_id": "event_EjYO40dq2s9VkDAFw44el"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "際",
+    "event_id": "event_EjYO46kwGzdWm8781wU8s"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "ですね",
+    "event_id": "event_EjYO4P61JEeRmRExcojOC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYO5wJYGxr81IGozMMXm"
+  },
+  {
+    "event_id": "event_EjYO9FMq7DsW4GlzwvCz1",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYO2p3oMhK9dvcc513KKXSfqDZSdizp",
+      "expires_at": 1794532850,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Clear, resonant, close-mic'd lower-mid register with strong, full-bodied vocal presence and crisp clinical diction. Cool, composed, matter-of-fact authority spoken firmly at full conversational studio volume — never whispered, airy, or distant.\nSpeak immediately in Japanese. Say exactly this line once: \"ふっ、悪くない手際ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Subtle, dryly approving faint smile at clear volume. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619d1ed5481919081e4f0593203f2"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふっ、悪くない手際ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Calm, concise, clear-projected anesthesiologist with dry composure — Subtle, dryly approving faint smile at clear volume. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

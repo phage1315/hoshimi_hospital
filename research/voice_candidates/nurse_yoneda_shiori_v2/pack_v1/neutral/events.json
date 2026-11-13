@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYUrQzFlOS6xvvj6avVO",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYUqp3oMTPvaO1uaamTh1s2IlZvMPaU",
+      "expires_at": 1794533273,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, sweet girlish agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, sweet girlish agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はい",
+    "event_id": "event_EjYUsl2EBY9kbnQZGhPaS"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、",
+    "event_id": "event_EjYUtwAe52tGw2SXL3b3n"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYUt6Q2nTlaljBRTE1W7",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "わか",
+    "event_id": "event_EjYUtg0PO2z27Ej4A3MuW"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "りました",
+    "event_id": "event_EjYUtt3Rd0zHIdtRO4YFR"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYUtw9V1veLErPz8W0sa"
+  },
+  {
+    "event_id": "event_EjYUy3R1GESevD7yRW7YE",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYUqp3oMTPvaO1uaamTh1s2IlZvMPaU",
+      "expires_at": 1794533273,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, sweet girlish agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, sweet girlish agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "event_id": "event_EjYXncO2QiGBUr3GJtdCo",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYXmp3oMV9lROLpimln1pBosm5YigPl",
+      "expires_at": 1794533454,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Bright, bubbly, high-pitched cute girlish soprano with sparkling clarity, light bouncy vocal weight, and cheerful, eager youthful energy. Sweet, lively, upbeat anime-girl cadence full of innocent enthusiasm.\nSpeak immediately in Japanese. Say exactly this line once: \"はい、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, bubbly, high-pitched cute girlish nursing helper — Earnest, bright girlish agreement. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a45c8148191bacd0b7cf01ad2d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はい、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, bubbly, high-pitched cute girlish nursing helper — Earnest, bright girlish agreement. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はい、",
+    "event_id": "event_EjYXoaaxtQl3PiA6nZk1o"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "わ",
+    "event_id": "event_EjYXonnigp5rRdCr6fAdt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "か",
+    "event_id": "event_EjYXoAfmhG22QjT6N3ZvP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "りました",
+    "event_id": "event_EjYXp10TTiYhQ4sG9Q6X5"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYXp0gtHDFnXh8xeRAOc",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYXpn53pSs8Po2N4Zis3"
+  }
+]

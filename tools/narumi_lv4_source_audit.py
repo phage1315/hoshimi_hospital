@@ -31,8 +31,10 @@ for index, source in enumerate(expected):
     if index >= len(actual):
         break
     node = actual[index]
-    for field in ["id", "speaker", "actor_id", "speaker_label", "text", "background_id", "hide_portrait", "choices"]:
+    for field in ["id", "speaker", "actor_id", "speaker_label", "text", "background_id", "choices"]:
         require(node.get(field) == source.get(field), f"{source['id']} source drift in {field}")
+    expected_hide_portrait = False if node.get("cg_path") else source.get("hide_portrait")
+    require(node.get("hide_portrait") == expected_hide_portrait, f"{source['id']} visual mode drift in hide_portrait")
     require("**" not in str(node.get("text", "")), f"{source['id']} leaked Markdown markup")
     require(not (node.get("speaker") == "narrator" and node.get("event_portraits")), f"{source['id']} narrator borrowed a portrait")
 
@@ -69,7 +71,18 @@ conditions = event.get("conditions", {})
 require(conditions.get("required_events") == ["narumi_ren_shared_lv3_settled_accounts"], "shared Lv3 prerequisite drift")
 require(conditions.get("days_after_required_events") == 3, "cooldown drift")
 require(conditions.get("min_familiarity") == 55, "familiarity gate drift")
-require(event.get("gallery", {}).get("show_on_complete") is False and not event.get("gallery", {}).get("path"), "Lv4 must not invent a CG")
+gallery = event.get("gallery", {})
+require(
+    gallery.get("show_on_complete") is True and gallery.get("path") == event_import.CG_PATH,
+    "approved Lv4 rooftop CG gallery registration drift",
+)
+cg_nodes = [node for node in actual if node.get("cg_path") == event_import.CG_PATH]
+require(
+    {node.get("id") for node in cg_nodes} == event_import.CG_NODE_IDS,
+    "approved Lv4 rooftop CG node window drift",
+)
+require(all(node.get("cg_fit") == "cover" for node in cg_nodes), "approved Lv4 rooftop CG fit drift")
+require((ROOT / event_import.CG_PATH).is_file(), "approved Lv4 rooftop CG asset missing")
 
 strings = json.loads(event_import.LOCALIZATION.read_text(encoding="utf-8"))["strings"]
 prefix = f"collections.character_events.{event_import.EVENT_ID}"
@@ -97,9 +110,16 @@ profile = json.loads(h_import.PROFILE.read_text(encoding="utf-8"))
 flow = json.loads(h_import.FLOW.read_text(encoding="utf-8"))
 context = json.loads(h_import.CONTEXT.read_text(encoding="utf-8"))
 translation = json.loads(h_import.TRANSLATIONS.read_text(encoding="utf-8"))
+bodymap = json.loads((ROOT / "data/h/doc_aoi/h_bodymap.json").read_text(encoding="utf-8"))
 expected_pools = h_import.expected_translation_keys(profile)
-require(context.get("content_status") == "pending_assets", "Context must remain pending assets")
-require(context.get("layout_status") == "pending_hotspot_calibration", "body-map calibration status drift")
+require(context.get("content_status") == "ready", "Context must expose the completed Free H assets")
+require(context.get("layout_status") == "final_hotspots_calibrated", "body-map calibration status drift")
+require(bodymap.get("status") == "final", "body-map data must be final after calibration")
+require(
+    bodymap.get("image_width") == 1024 and bodymap.get("image_height") == 1536,
+    "body-map dimensions drift",
+)
+require(set(bodymap.get("hotspots", {})) == {"lips", "cheeks", "neck", "breasts", "nipples", "navel", "torso_other", "genitals", "thighs"}, "body-map zone coverage drift")
 for key, count in expected_pools.items():
     pool = translation.get("dialogue", {}).get(key, [])
     require(len(pool) == count and all(str(line).strip() and not cjk.search(str(line)) for line in pool), f"English pool invalid: {key}")
@@ -119,7 +139,7 @@ require(len(slots) == 1 and slots[0].get("event_id") == event_import.EVENT_ID an
 bundle = json.loads((ROOT / "data/staff/doc_aoi/bundle.json").read_text(encoding="utf-8"))
 require("lv4_events.json" in bundle.get("additional_character_event_files", []), "Lv4 event file not registered")
 registry = (ROOT / "godot/systems/free_h_registry.gd").read_text(encoding="utf-8")
-require('"doc_aoi"' in registry and '"content_status": "pending_assets"' in registry, "pending Free H registration missing")
+require('"doc_aoi"' in registry and '"content_status": "ready"' in registry, "ready Free H registration missing")
 for key in ["ui.free_h.location.doc_aoi_hotel", "ui.free_h.doc_aoi.booking_response"]:
     zh = json.loads((ROOT / "data/localization/zh_CN.json").read_text(encoding="utf-8"))["strings"].get(key, "")
     en = json.loads((ROOT / "data/localization/en.json").read_text(encoding="utf-8"))["strings"].get(key, "")

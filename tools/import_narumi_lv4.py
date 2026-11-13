@@ -19,6 +19,8 @@ TRANSLATIONS = ROOT / "research/translations/narumi_lv4_en.json"
 LOCALIZATION = ROOT / "data/localization/en.json"
 EVENT_ID = "narumi_lv4_after_work"
 PREFIX = "nar4"
+CG_PATH = "assets/events/character_events/narumi_ren/narumi_lv4_rooftop_coffee.png"
+CG_NODE_IDS = {f"nar4_{number:03d}" for number in range(119, 131)}
 
 SPEAKERS = {
     "坂口隆司": ("player", "Ryuji Sakaguchi"),
@@ -240,6 +242,16 @@ def parse_beats() -> list[dict]:
 
 def main() -> None:
     beats = parse_beats()
+    available_node_ids = {str(beat["id"]) for beat in beats}
+    if not CG_NODE_IDS.issubset(available_node_ids):
+        raise ValueError(f"CG window drifted from source beats: {sorted(CG_NODE_IDS - available_node_ids)}")
+    for beat in beats:
+        if str(beat["id"]) in CG_NODE_IDS:
+            beat["cg_path"] = CG_PATH
+            beat["cg_fit"] = "cover"
+            # Full-screen CG rendering suppresses portraits before the regular
+            # portrait branch; keep this false to satisfy the event art schema.
+            beat["hide_portrait"] = False
     if not TRANSLATIONS.exists():
         template: dict[str, str] = {beat["id"]: "" for beat in beats}
         for beat in beats:
@@ -278,7 +290,7 @@ def main() -> None:
         "completion_day_offset": 1,
         "completion_absolute_clock": 780,
         "completion_display_clock": 780,
-        "gallery": {"cg_id": EVENT_ID, "caption": "下班以后", "path": "", "show_on_complete": False},
+        "gallery": {"cg_id": EVENT_ID, "caption": "下班以后", "path": CG_PATH, "show_on_complete": True},
         "conditions": {
             "min_day": 1,
             "min_affection": 0,

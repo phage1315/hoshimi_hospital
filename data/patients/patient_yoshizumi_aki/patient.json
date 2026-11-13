@@ -1,0 +1,506 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_yoshizumi_aki",
+    "name": "吉住亜紀",
+    "age": 23,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/ward/smile.png",
+        "ward/brave": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/ward/brave.png",
+        "ward/worried": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/splash/general_anesthesia.png",
+        "examination/shy": "assets/characters/patient_yoshizumi_aki_v1/patient_yoshizumi_aki/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "direct",
+    "personality": {
+      "primary": "playful_optimist",
+      "secondary": "independent_defiant",
+      "stress_response": "asks_for_details"
+    },
+    "dialogue_profile": "playful_defiant_detail",
+    "traits": {
+      "baseline_anxiety": 62,
+      "pain_sensitivity": 72,
+      "privacy_sensitivity": 78,
+      "trust_baseline": 54,
+      "control_need": 76,
+      "expressiveness": 84,
+      "health_literacy": 42,
+      "compliance_tendency": 68
+    },
+    "fear_profile": {
+      "pain_fear": 74,
+      "procedure_fear": 78,
+      "diagnosis_fear": 82,
+      "loss_control_fear": 85
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「住院……？喂喂，医生，我这身黄色队服都还没来得及回休息室换呢！今天在赛道上痛到蹲下确实丢死人了，可真严重到非住不可吗？」",
+      "hospitalization_response": "「好吧好吧，要是再在维修区痛晕过去，车队里那几个等着看我笑话的女人可要乐疯了。我配合住院，但检查结果你得原原本本告诉我。」",
+      "procedure_mismatch": "「等一下，医生！刚才在病房里说的手术部位跟现在对不上吧？我虽然不是学医的，但自己身体要切哪里还是听得懂的！」",
+      "explain_plan": "「……嗯，这样讲我就清楚多了。谢啦医生，我还以为你会拿两句套话打发我呢。」",
+      "brief_plan": "「就一句『按常规流程』？医生，我好歹是把自己的身体交到你手上耶，别像应付赞助商例会一样敷衍我嘛。」",
+      "last_reassure": "「平时在无数长焦镜头前面我都没怯过场，可躺在手术台上完全是另一码事啊……医生，待会儿你可会一直盯着我的情况吧？」",
+      "choose_general": "「全身麻醉啊……也好，一觉睡过去，至少不用清醒着听刀子划开肚皮的声音。醒来以后记得第一个跟我说话哦。」",
+      "choose_epidural": "「硬膜外麻醉？下半身没知觉动不了，脑子却完全清醒……听起来就像在赛道边被人绑在椅子上看自己挨刀一样吓人呢。」",
+      "choose_local": "「局部麻醉……也就是说我全程都能跟你聊天啰？要是里面牵扯着痛起来，我可不会装淑女替你忍着啊。」",
+      "choose_none": "「完全不麻醉？！医生，你该不会觉得赛车女郎连大夏天穿高跟鞋站一天都能忍，就扛得住活生生挨刀吧？！」",
+      "induction_reassure": "「好……深呼吸是吧。呵，面罩扣上来的时候还真有点紧张呢……医生，我这一身辛苦保养的身材就托付给你了……」",
+      "insist_without_anesthesia": "「痛……真的好痛啊！医生，不是开玩笑的，再这样硬切下去我真的要撑不住叫出来了！」",
+      "assistant_stabilize_none": "「别、别那么死死按着我！还没有打麻药呢，谁看着刀子往自己身上落能忍住不缩一下啊！」",
+      "assistant_stabilize_local": "「我没乱动！是里面刚才被拉钩扯得又酸又痛，身体自己弹了一下……你们轻一点啦！」",
+      "assistant_stabilize_epidural": "「明明腿一点力气都使不上，却还能感觉到有人在摆弄我的下半身……这种身体不属于自己的感觉太可怕了。」",
+      "incision_ready": "「等、等一下！我刚才嘴上开玩笑说不怕，可真看到手术刀悬在皮肤上面……手心全湿透了，求你先告诉我一声再下刀！」",
+      "incise_epidural": "「……已经切开了？虽然没有刺痛，可明显感觉到有什么东西划开了皮肤、还在往两边拉……呜，心跳快得要命……」",
+      "incise_local": "「嘶——！表皮是麻了，可往深处切的时候还是又胀又扯！医生，这麻药真的够量吗？！」",
+      "incise_none": "「啊——！！好痛！刀子真的直接割进肉里了！等一下、快停一下，我受不了这个……！」",
+      "contact_pause": "「哈啊、哈啊……谢、谢谢你先停手……让我缓一口气，刚才痛得眼前都发白了……」",
+      "contact_command": "「我知道不能乱动……！可你光用命令的口气凶我有什么用，至少告诉我这一步还要痛多久啊！」",
+      "contact_continue": "「还要继续往里做……？好，我咬着牙配合你就是了，要是叫出声你可不许笑话我！」",
+      "ongoing_narrate": "「现在做到哪一步了？……嗯，听着你的声音，我才觉得自己不是一块被扔在台子上的肉。」",
+      "ongoing_eye_contact": "「医生……再看看我的眼睛跟我说句话吧。平躺在这里连你们手上的动作都看不见，只能盯着头顶刺眼的灯，我心里实在太慌了。」",
+      "ongoing_silent": "「喂……怎么突然所有人都不出声了？该不会是里面发现什么不好的东西了吧？！医生，快回我一句话啊！」",
+      "closure_reassure": "「终于要缝合收尾了……？呼……太好了。刚才我要是说了什么任性的话，你就当没听见吧，谢啦。」",
+      "closure_coach": "「吸气……呼气……好，我跟着你的节奏来。平时做体态训练都没这么累过……」",
+      "closure_silent": "「……总算熬过来了。让我安静躺会儿吧，我现在连扯出一个营业微笑的力气都没剩下了。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「灌、灌肠……？！喂，医生，就算我是做赛车女郎的，也不代表能面不改色地在病床上撅着屁股让人往后面插管子啊！」（温水哗哗灌进肚子里的时候，整张脸都烫得快冒烟了……！）",
+        "「呜……肚子里越灌越胀了……平时为了穿露脐制服，我每天都很注意排毒和身材管理，哪受过被人按着灌满一肚子水还要夹紧忍耐的罪啊……！」（肚子里咕噜噜直翻腾，还要当着大家的面死死夹紧忍住……太要命了！）",
+        "「等一下，还要再憋几分钟才能去洗手间？！我、我已经快到极限了，别站在床边盯着我看啦！」（终于熬到去洗手间了……今天真是把一辈子的脸都丢光了。）"
+      ],
+      "ward_enema_unnecessary": [
+        "「等一下，这台手术本来根本不需要灌肠吧？！可你已经让我脱了裤子灌了一肚子温水……医生，你这是借着术前准备故意看我出丑吗？！」（白白脱了裤子撅着屁股受这一遭罪，小腹现在还胀得直发酸呢……！）",
+        "「呼……嘴上说是多做一步保险，结果受罪和丢脸的全是我。平时在车队里应付那些难缠的赞助商都没这么狼狈过……」（肚子里翻江倒海得根本夹不住，白受了一份大羞耻……！）"
+      ],
+      "ward_skin_prep": [
+        "「备皮……连小腹下面最私密的地方也要剃光？！医生，我穿高叉赛车服都只是修整边缘，从来没在男人面前把双腿张开剃得一干二净啊！」（刀片贴着最敏感的嫩肉滑过去，吓得我大气都不敢喘一下……！）",
+        "「唔……刀片刮过那里皮肤的声音太清楚了……别、别拨开那里仔细检查还有没有漏掉的毛发啊！」（下面被剃得光溜溜的一片，稍微动一下都觉得凉飕飕的好怪异……）",
+        "「好凉……全都剃光以后，稍微动一下大腿都能感觉到空气直接贴在最敏感的地方……」（全刮干净以后冷空气直接钻进来，羞得我双腿都不知道怎么放了……）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「喂，医生！这片私密部位明明不在手术切口附近吧？你都已经把我下面剃得光溜溜了才说不是必需的，存心欺负人是不是？！」（明明不用剃的地方也被刮得光秃秃的，冷风一吹羞死人了……！）",
+        "「这下好了，等出院以后好几个星期都没法穿高叉队服上赛道了……医生，你可得对我光溜溜的下身负责啊。」（双腿合拢时皮肤直接贴在一起，怪异得我连路都快不会走了……！）"
+      ],
+      "ward_surgical_cap": [
+        "「连我每天花一个小时认真护理的紫蓝色长发，都要全部塞进这顶扁扁的无菌帽里啊……」（连最后一缕能挡脸的头发都塞进帽子里了，真要被推去挨刀了啊……）",
+        "「把额头和耳朵全露出来以后，还真有点不好意思呢。算啦，今天本来也不是去站在镜头前领奖的。」（看着推车停在床边，手心不知不觉已经全是冷汗了……）"
+      ],
+      "operative_positioning_awake": [
+        "「手腕和脚踝都要扣进固定带里？呵……平时在赛道上被人围拍，至少姿势是我自己摆的；现在被绑在手术台上，可真是彻头彻尾任人摆布了呢。」（手腕和脚踝全被固定带扣住了……连想稍微抬手挡一下都做不到！）",
+        "「无影灯照在裸露的皮肤上好刺眼……医生，把我摆成这么毫无防备的姿势固定好，你们满意了吧？」（大家都低头围着手术台检查我的身体，羞耻得连脚趾都绷紧了……）"
+      ],
+      "operative_positioning_none": [
+        "「一滴麻药都不打，就先把我的手脚死死绑在手术台上……？！医生，这不是开玩笑的吧，等会儿刀子割下来的时候我连躲一下都不行吗？！」（一滴麻药都不给就先把我四肢绑死……待会儿挨刀连挣扎都不行吗？！）",
+        "「别、别把皮带勒得那么紧！我现在还没挨刀呢，手腕和膝盖就已经抖得停不下来了……」（没有麻药保护还要被绑成这样敞开着……我到底能不能撑过去啊……！）"
+      ],
+      "urinary_catheterization_awake": [
+        "「在清醒的状态下从尿道插导尿管……？！等、等一下，要把两条腿分得这么开，在无影灯底下直接往那里塞管子吗？！」（还没开刀就要在无影灯下张开腿让人插导尿管……眼泪都快羞出来了！）",
+        "「呀啊……！管子顶进去了……里面又酸又胀，像有一根细棍在最娇嫩的地方往里钻……别让我这时候放松啊，根本放松不了！」（温热的尿液顺着透明管子流出去，偏偏脑子还清醒得要命……！）",
+        "「哈啊……已经固定好了吗？下面一直插着根管子导出尿液，偏偏脑子还清醒得要命……」（听着管路里的动静，我只能死死咬着嘴唇别开脸，恨不得钻进地缝里！）"
+      ],
+      "urinary_catheterization_none": [
+        "「一点麻醉都没有就要硬插导尿管？！唔啊——！好痛、好酸！尿道像要被撑裂了一样，慢一点、求你慢一点啊！」（不打麻药就直接往尿道里硬塞……火辣辣的刺痛差点让我当场叫出声！）",
+        "「呜……眼泪都给逼出来了……管子在里面每动一下都像针扎一样清楚，我连屁股都不敢乱动一下！」（管子卡在里面火辣辣地抽痛，我连屁股都不敢乱动一下……！）"
+      ],
+      "skin_disinfection_awake": [
+        "「嘶——好冰！消毒棉球这么冰，贴上来之前好歹先提醒一声嘛……从切口中心一圈圈往外涂，连胸口和大腿根都沾湿了。」（消毒药水好冰！一圈圈涂在光裸的皮肤上，刀锋马上就要落下来了……）",
+        "「看着自己的肚皮和下身被涂得湿淋淋一片，真有种要被当成手术台上的解剖材料处理的感觉呢……」（药水在皮肤上挥发带走体温，冷得我控制不住地轻轻打哆嗦……）"
+      ],
+      "skin_disinfection_none": [
+        "「冷得我打了个哆嗦……医生，连消毒棉球擦过去都这么清楚，一会儿不打麻药直接拿手术刀切开，我到底要怎么熬过去啊？！」（连冰凉药水擦过去都这么清楚，一会儿不打麻药直接切开得有多痛啊！）",
+        "「别、别擦完消毒水就一句话不说去拿刀啊！我还完全清醒着呢，求你下刀前先跟我说一声！」（看着医生的手移向器械盘，我吓得恨不得立刻从台上逃下去……！）"
+      ],
+      "incision_marking_awake": [
+        "「画线笔在肚皮上划过去痒痒的……不过一想到这条紫线就是待会儿要切开的刀口，作为靠身材吃饭的赛车女郎，心里还是直发毛啊。」（画线笔划过去的触感好清楚，一想到刀锋马上要顺着这儿切开就心慌……）",
+        "「医生，切口线画得这么长吗……？待会儿下刀的时候可得切漂亮点，别在我身上留下太难看的疤啊。」（切口线比想象中还要长……求求你待会儿下刀的时候千万轻一点……）"
+      ],
+      "incision_marking_none": [
+        "「在完全没打麻药的皮肤上画下切口线……也就是说下一秒，真刀真枪的手术刀就要顺着这条线活生生割开我的肉了吗？！」（在没打麻药的肉上画出切口线……下一秒真刀就要活生生割开这里了吗？！）",
+        "「等、等一下！我看到护士把手术刀递给你了……求你给我三秒钟深呼吸，我真的还没准备好清醒着挨这一刀啊！」（看到护士把手术刀递过去了……求你给我三秒钟喘口气，我真的好怕！）"
+      ],
+      "skip_sterile_draping": [
+        "「等、等一下医生！！不盖无菌手术布吗？！我要这样全裸赤条条地开刀？！」（连最后一块遮羞布都省掉了，全身上下在无影灯下被看得一清二楚！）",
+        "「喂，你们手术室不是有那种绿色洞巾吗？！省掉那一步，不就等于让我全身光溜溜地给你们所有人看现场直播吗……！」（手脚被固定着合不拢，只能这样赤条条地被所有人低头俯视着开刀……！）"
+      ],
+      "operative_positioning_unnecessary_lithotomy": [
+        "「等、等一下医生！！我今天开的又不是妇科，干嘛把我的两条腿架到那种高架子上大大劈开绑住啊？！」（说什么预留操作空间，结果让我摆出跟妇科内诊一样羞人的姿势……！）",
+        "「嘴上说是方便导尿和术中观察，结果把我刚剃得光溜溜的私密处正对着台尾大敞开……医生你也太坏了吧……！」（冷空气直往大腿根里钻，整场手术都要保持这么羞人的姿势吗……？！）"
+      ],
+      "manual_catheter_press_bladder": [
+        "「呀啊——等、等一下医生！！别按我的小肚子啊，尿、尿顺着管子全被你挤出来了……！」（明明拼命想夹紧却一点用都没有，手掌一压就哗哗流进管子里了……！）",
+        "「快拿开手啦……！透明管子就在腿间汩汩往袋子里淌，连水声都被全手术室听光了，叫我以后还怎么做人啊……！」（连流进尿袋里的水声都被旁边的人听见了……求求你快把手拿开吧！）"
+      ],
+      "excessive_disinfection_breasts": [
+        "「呀啊——冰死我了！！等一下医生，干嘛拿碘伏棉球把我的双乳和乳尖全都刷得湿亮反光啊？！」（明明切口没那么大，干嘛连两边胸口和乳晕都涂得湿亮亮的呀……！）",
+        "「别绕着乳晕一圈圈慢悠悠地擦啦……胸前挂满棕黄药水一颤一颤的，职业笑容都彻底破功了……！」（别再拿棉球绕着乳尖擦第二遍了啦，越擦那里立得越明显了……！）"
+      ],
+      "excessive_disinfection_perineum": [
+        "「唔啊——连小腹底下和刚剃光的外阴缝隙里也要刷透吗？！又冰又麻太刺激了……！」（那里根本不在手术范围里吧，干嘛拿湿棉球一路擦到下面去呀……！）",
+        "「按无菌规矩还不准擦干，要我全身湿亮地敞在冷空调底下自然风干吗……？！」（按规矩不能擦，就得这么光着身子敞在冷风里等它自然干透吗……？！）"
+      ],
+      "slow_incision_trace": [
+        "「嘶——笔尖好凉！！等一下医生，画切口线干嘛贴着我的皮肤一寸寸慢悠悠拖过去啊？！」（干嘛画得这么慢呀，每一寸移动都在提醒我待会儿肉要怎么被剖开……！）",
+        "「这条紫线画得太慢太清楚了……手指压着紧绷的肉一点点比划，吓得我连营业笑容都僵住了……！」（还拿手指在切口线旁边反复比划深浅，我的呼吸都要被你吓乱了……！）"
+      ],
+      "incision_public_lecture": [
+        "「呀啊——别拿笔杆指着我发硬的乳尖和起鸡皮疙瘩的肚子向全手术室现场讲评啊！！」（把全手术室的视线都引到我发抖的身体上，又怕挨刀又丢人得想哭……！）",
+        "「心电监护滴滴滴响个不停全被听光了……求你快收笔吧医生，我的脸和胸口都要烧熟了……！」（心电监护滴滴响个不停，连我有多慌多害臊都被全屋子人听见了……！）"
+      ],
+      "postop_bare_sponge_wipe": [
+        "「哈啊……医、医生……切口都缝合包扎完了，我已经被整台手术折腾得半死不活了……为什么还不盖单子，要亲手拿温纱布擦我的双乳和大腿根啊……」",
+        "「拍通宵外景都没这么虚脱过……连抬手挡住乳尖的一丁点力气都被榨干了，瘫软在灯下任你擦洗，心里只剩绝望了……」"
+      ],
+      "postop_bare_full_inspection": [
+        "「碘伏印子擦干净了还不拉上白单……从窄敷料一直端详到双腿间的透明导尿管，连奄奄一息的狼狈样都要检视个彻底吗……」",
+        "「求你了医生……我已经连睁开湿眼睛的力气都没了，快让护士盖上床单送我下台吧……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生，真是不好意思，穿着这身黄色赛车女郎制服就直接被抬进来了……我今天在赛道上突然发作的情况是：{line}",
+      "primary": "其实这毛病已经折腾我好一阵子了，最主要的不适是：{line}。今天更是在发车区痛得直接蹲在地上起不来，还是车队的车手开车把我急送到医院来的。",
+      "secondary": "另外还有个挺难为情的情况：{line}。之前我还特意去查过，医生说并不是痔疮；而且我以前得过一次胃溃疡，小时候家里怀疑有遗传性肠道病也做过肠道检查。",
+      "background": "我叫吉住亜紀，职业是赛车女郎。别看我们在镜头前穿着清凉、笑得光鲜亮丽，到了赛季跟着车队到处奔波，睡眠全乱了套，车队里女孩子之间明争暗斗的压力更是大得要命。我本来以为只是老胃病加上职场压力，可这次痛成这样，大概真没法靠吃营养品硬撑过去了。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "吉住亜紀的门诊检查",
+    "full_undress": {
+      "prompt": "「等一下，医生！基础查体要把这身赛车服连同里面的胸罩、内裤全部脱光？！你该不会觉得我是穿惯了露脐装的赛车女郎，在诊室里脱成全裸也无所谓吧？」（穿露脐队服和在陌生男人面前脱得一丝不挂根本是两码事啊！）",
+      "responses": {
+        "abandon_full_undress": "「唔，先不用全脱了？算你懂得体谅女孩子的自尊心啦。不过医生，我这反复腹痛和便血的毛病，你可得用别的办法给我查清楚哦。」（呼……总算保住了最后一点底线，不用在门诊室里连内衣裤都剥光让人从头看到脚了。）",
+        "authoritative_full_undress": "「好啦好啦，知道你是按医疗规矩办事，别摆出那么严肃的院长脸嘛！我脱就是了……不过你的眼睛可只准看和病情有关的地方哦。」（嘴上还能勉强开两句玩笑撑场面，可真正伸手去解胸罩扣子、把低腰内裤顺着大腿褪下来的时候，指尖还是羞得发颤……）亜紀深吸一口气，将黄色露脐赛车上衣、短裤连同贴身胸罩与内裤一并脱下放进托盘；平日里精心保养的修长赤裸胴体完全暴露在诊察灯下，她耳根绯红地站在你面前，配合完成了全身基础查体。",
+        "gentle_full_undress": "「谢啦，你这么耐心地把检查原因讲明白，我听着就舒服多了。既然是为了查清病根，那本小姐就大方配合你一次啰。」（话是这么说，可当最后那点遮羞的内衣裤也离开身体、在刺眼的白光下一丝不挂地敞开给医生和护士看时，脸颊还是烫得厉害。）亜紀按照你的温和引导逐件褪去黄色赛车女郎制服与贴身内衣裤，双手先是下意识护在胸前与腿间，随后又红着脸放下手臂，在诊察灯下配合你做完了全裸查体。",
+        "threaten_full_undress": "「喂，拿拒诊和病历记录来压我？医生，你平时哄女孩子也这么不讲武德吗……行，我脱！我现在可没法带着这身病回赛道让人看笑话！」（明明心里又气又委屈，可一想到要是被赶出医院、车队里的位置就要被别人顶替，还是只能咬着牙当众把自己剥得精光……）亜紀敛去脸上的笑意，咬住下唇将黄色制服与内衣裤一件不留地脱下扔进托盘，赤身裸体地站在诊察灯下，在羞耻与紧绷中任由你完成了全身查体。"
+      },
+      "visual_pool_id": "full_undress_basic_exam_patient_yoshizumi_aki"
+    }
+  },
+  "preop": {
+    "title": "吉住亜紀的术前安排",
+    "initial_anxiety": 2,
+    "initial_interaction": {
+      "fear": 32,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 78
+    },
+    "stage_prompts": {
+      "ward_visit": "「哟，坂口医生，你来啦。车队那边我已经拜托那个送我来的车手帮忙请好假了……来吧，今天这台手术到底要怎么收拾我，你直说就行。」",
+      "graphic_preop_question": "「不过医生，我这人最讨厌被人蒙在鼓里。待会儿从在病房里脱衣服准备，到推上手术台绑起来、插管、消毒再到动刀，每一步具体会怎么弄，你能原原本本讲给我听吗？」",
+      "graphic_preop_dialogue": "亜紀起初还支着下巴，带着几分职业性的从容微笑听你讲解。可当听到一会儿要在病床上脱光接受灌肠与私密处剃毛、随后赤裸着躺上手术台被扣紧四肢、在无影灯下分开双腿插进导尿管并由锋利的手术刀切开腹部或躯体时，她嘴角的笑意一点点僵住了。平时引以为傲、每天精心涂抹乳液与按摩保养的身体，马上就要毫无尊严地敞开在手术刀下；她不自觉地收紧双腿，抓着病号服衣角的手指微微发白。",
+      "team": "坂口医生将担任吉住亜紀本次手术的主刀。请挑选与主刀搭档的协助医生、器械护士与巡回护士。",
+      "preparation": "吉住亜紀正坐在病床边深呼吸，试图维持平时的开朗神色。请指派一位病房准备护士（或由坂口医生亲手执行），完成必要的术前身体准备，并可安排最多两项额外安抚照护。",
+      "prepared": "「哈啊……所谓的术前准备，对女孩子的自尊心杀伤力也太大了吧……我现在浑身上下都怪怪的，连开玩笑的力气都快被你们折腾光了。」",
+      "changing": "病房这边的准备已经全部完成。你与手术团队前往更衣室换上无菌刷手服，在感应水池前彻底刷手消毒，随后推门步入手术室。",
+      "operating_room": "「哇……这无影灯比赛道发布会的聚光灯还要刺眼十倍呢。只不过平时被聚光灯照着是在领奖，今天躺在这张冷冰冰的铁台子上，可真是连逃跑的地方都没有啊。」",
+      "team_confirmations": "手术开始前，团队成员围在手术台旁依次核对吉住亜紀的姓名、手术部位、拟行术式与各自职责。躺在台上的亜紀努力用轻快的声音应答，尾音却掩饰不住一丝紧绷的颤抖。",
+      "procedure_select": "核对吉住亜紀的病历记录与术前查体结论，最终确认本次手术拟采用的术式与入路方案。",
+      "procedure_mismatch": "「等一下，医生！刚才跟我讲的明明不是这个地方的手术吧？我人还清醒着呢，你可别搞错切口位置啊！」",
+      "ready": "吉住亜紀已完成术前病房准备并躺在手术台上等待。请确认本次手术采用的麻醉方式与正式开始条件。",
+      "general_induction": "「好，我跟着你的口令数数……一、二……医生，别把我切得太难看啊，我还想早点好起来回赛道呢……」",
+      "surgery_start_general": "吉住亜紀已在全身麻醉下陷入沉睡，紫蓝色的额发安静地贴在无菌帽边缘，胸口随呼吸机平稳起伏，无影灯下的躯体彻底交由手术团队处置。",
+      "surgery_start_epidural": "「下半身真的完全麻木动不了了……明明还能听见你们拿器械的声音，身体却像断了线一样，这种感觉实在太让人心慌了。」",
+      "surgery_start_local": "「局部麻醉打好了是吧？行，我尽量忍着不乱动……不过要是深处扯着痛了，我可会直接喊出来的哦。」",
+      "surgery_start_none": "「真的一点麻药都不给就开刀吗……？！医生，我平时再怎么能忍痛也只是硬撑而已，看着那把手术刀递过来，我腿都吓软了……！」",
+      "instrument_handoff": "坂口医生伸出手发出简短指令，器械护士立即将第一把闪着冷光的手术刀稳稳递入主刀掌心。",
+      "assistant_ready": "协助医生双手就位，用无菌纱布在切口两侧拉紧皮肤维持暴露，等待坂口医生落刀。",
+      "incision_ready": "无影灯聚焦在裸露的术野中央。锋利的手术刀尖悬停在吉住亜紀皮肤的紫色切口线上方，即将切入皮肉。",
+      "general_operation": "全身麻醉下的亜紀毫无知觉，监护仪规律的滴答声与金属器械的轻响在手术室里交织，主刀与助手按步骤向深部术野推进。",
+      "operative_contact": "锋刃切开皮肤、拉钩牵开组织的震动直接传遍全身。平时习惯在镜头前保持完美姿态的亜紀呼吸骤然绷紧，每一个细微反应都牵动着术野。",
+      "ongoing_interaction": "术中操作向深处持续推进。清醒的亜紀听着耳畔的器械交接与吸引声，平时爱开玩笑的游刃有余早已消失不见，只能在不断累积的牵拉与疼痛中迫切等待主刀的回应。",
+      "closure_interaction": "核心病变处理完毕，手术进入止血、清点与逐层缝合阶段。漫长的紧绷与消耗让清醒的亜紀汗湿了额发，只等着听见真正结束的那句话。",
+      "procedure_flow": "切口暴露稳固，手术正式进入预定术式的核心解剖、游离与病灶处理阶段。",
+      "procedure_execute": "核心病变部位的处理已经顺利完成，术野止血彻底、确认无误。接下来可以关闭切口并完成逐层缝合。",
+      "surgery_result": "最后一针缝合完毕并贴妥无菌敷料，器械与纱布清点无误，吉住亜紀的手术顺利结束。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经切开了？虽然没有刺痛，可明显感觉到有什么东西划开了皮肤、还在往两边拉……呜，心跳快得要命……」",
+      "incise_local": "「嘶——！表皮是麻了，可往深处切的时候还是又胀又扯！医生，这麻药真的够量吗？！」",
+      "incise_none": "「啊——！！好痛！刀子真的直接割进肉里了！等一下、快停一下，我受不了这个……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [
+      {
+        "id": "full_undress_basic_exam_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 诊室全裸查体",
+        "test_ids": [],
+        "surgery_ids": [],
+        "paths": [
+          "assets/examinations/patient_yoshizumi_aki/full_undress_basic_exam.png"
+        ],
+        "caption": "吉住亜紀在诊察室脱去黄色赛车女郎制服与贴身内衣裤，抱住双臂等待全裸基础查体。"
+      }
+    ],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/ward_skin_prep.png"
+        ],
+        "caption": "吉住亜紀 · 剃毛"
+      },
+      {
+        "id": "ward_surgical_cap_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/ward_surgical_cap.png"
+        ],
+        "caption": "吉住亜紀 · 戴手术帽"
+      },
+      {
+        "id": "ward_enema_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/ward_enema.png"
+        ],
+        "caption": "吉住亜紀 · 灌肠"
+      },
+      {
+        "id": "stretcher_transfer_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/stretcher_transfer.png"
+        ],
+        "caption": "吉住亜紀 · 担架车"
+      },
+      {
+        "id": "urinary_catheterization_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/urinary_catheterization.png"
+        ],
+        "caption": "吉住亜紀 · 导尿"
+      },
+      {
+        "id": "skin_disinfection_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/skin_disinfection.png"
+        ],
+        "caption": "吉住亜紀 · 消毒"
+      },
+      {
+        "id": "operative_positioning_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/operative_positioning.png"
+        ],
+        "caption": "吉住亜紀 · 固定"
+      },
+      {
+        "id": "sterile_draping_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/sterile_draping.png"
+        ],
+        "caption": "吉住亜紀 · 铺巾"
+      },
+      {
+        "id": "incision_ready_patient_yoshizumi_aki",
+        "label": "吉住亜紀 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_yoshizumi_aki"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizumi_aki/incision_ready.png"
+        ],
+        "caption": "吉住亜紀 · 下刀前"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_aki_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "light_h",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「……要在我的胸部上动刀？！」",
+        "亜紀猛地低头按住黄色赛车服紧裹的胸口，原本从容的笑意瞬间凝固在脸上。",
+        "「等等，医生！我是赛车女郎耶，身材和胸口就是我在镜头前吃饭的本钱啊！」",
+        "「不仅要在手术室的无影灯下把上身剥得精光让一屋子人盯着看，还要拿手术刀切开乳房留下疤痕……」",
+        "她咬住发白的嘴唇，手指死死抓紧胸前的布料。\n「一想到要赤裸着胸口躺在手术台上挨刀，我连站在镜头前的自信都快崩塌了……」"
+      ]
+    },
+    {
+      "id": "diagnosis_aki_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "embarrassment",
+        "body_image",
+        "light_h",
+        "fear"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「腹部手术……要把我的肚子切开吗？！」",
+        "亜紀下意识地抚摸着黄色露脐装下平坦紧致的小腹，指尖一阵发凉。",
+        "「为了穿这身露脐的赛车女郎队服，我每天做仰卧起坐、涂保养油，才维持住一点赘肉都没有的腰腹……」",
+        "「结果现在要把小腹和下面的毛发剃干净，赤裸着肚皮躺在手术台上，让锋利的手术刀一层层剖开肌肉、把里面的肠子露出来……」",
+        "她倒吸了一口气，眼圈微微发红。\n「要是肚皮上留下一道长长的刀疤，车队里那些女人不知道会在背后怎么笑话我……医生，求你切口一定得尽量小一点啊。」"
+      ]
+    },
+    {
+      "id": "diagnosis_aki_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "light_h",
+        "fear",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "亜紀整个人僵在椅子上，绯红从脸颊一路烧到了耳根与锁骨。",
+        "「妇、妇科和盆腔的手术……？！那不是要把下半身脱得一丝不挂，还要把两条腿大张着绑在那种分腿架上吗？！」",
+        "「别人总以为做赛车女郎的什么大场面都见过，可我在镜头前最多也就穿个高叉热裤，哪试过把最私密的地方剃得光溜溜、在无影灯下完全敞开给医生看啊！」",
+        "「还要先往尿道里插导尿管，再把冰冷的器械伸进身体最深处操作……」",
+        "她羞得用双手捂住发烫的脸颊。\n「呜……这种姿势要是躺在手术台上，我引以为傲的自尊心真要被你们拆得一点不剩了……」"
+      ]
+    },
+    {
+      "id": "diagnosis_aki_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "body_privacy",
+        "soft_erotic"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「胸腔手术……？！那不是要切开胸口、直接碰到心脏和大血管附近吗？！」",
+        "亜紀脸上的血色刷地一下褪了下去，呼吸顿时变得急促。",
+        "「要把上半身脱得一丝不挂绑在手术台上，在胸前划开切口、用金属器械撑开肋骨……」",
+        "「平时在赛道上听着引擎轰鸣都没觉得怕过，可一想到自己的胸膛要在手术台上被打开，腿都快站不稳了。」",
+        "她强迫自己深吸一口气，抬头看向你。\n「医生……我这条命和这副身体，这次可真真正正全都押在你手上了。」"
+      ]
+    },
+    {
+      "id": "diagnosis_aki_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "shock"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「原来不是普通的胃痛或压力过劳……真的非动手术把身体切开不可吗？」",
+        "亜紀低头看着自己涂着亮泽护甲油的双手，苦笑了一下。",
+        "「平时在赛场和镜头前，不管多累我都能装出一副游刃有余的样子；可一旦换上病号服躺上手术台，就只能全身赤裸地任人摆布了……」",
+        "「要被剃毛、灌肠、插导尿管、绑住四肢，再等着手术刀割开皮肤……」",
+        "她轻轻呼出一口气，重新抬起紫红色的眼眸看向你。\n「……好吧，逃也逃不掉。医生，既然要做，就拜托你让我漂漂亮亮、平平安安地走下手术台吧。」"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYNKPkbHcCie4nNtzZX0",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYNJp3oMHF1Crurw6T5RHbGENK75X4u",
+      "expires_at": 1794532805,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"うん、オッケーだよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Snappy, casual agreement. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"うん、オッケーだよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Snappy, casual agreement. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "うん",
+    "event_id": "event_EjYNL9ekTXA5HY2YfBJcD"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、オ",
+    "event_id": "event_EjYNLH4CMnBdClqJAvtoj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "ッケ",
+    "event_id": "event_EjYNLtIa9JsCUL3Vpo3sU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ー",
+    "event_id": "event_EjYNMHfoTJZyM7K4CUv2d"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYNMYATNT0vhLOGyyW23",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "だよ",
+    "event_id": "event_EjYNMqIwCNguFpEeLL28B"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "。",
+    "event_id": "event_EjYNMg8FvUaoP1Ii3eEgf"
+  },
+  {
+    "event_id": "event_EjYNTZ94rUAZKBmNLGUQF",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYNJp3oMHF1Crurw6T5RHbGENK75X4u",
+      "expires_at": 1794532805,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"うん、オッケーだよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Snappy, casual agreement. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"うん、オッケーだよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Snappy, casual agreement. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 8.0
+    }
+  }
+]

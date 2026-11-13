@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYRy18VgL5DCRDWYqeEP",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYRyp3oNHfSY6SWFEmyOfsIvDL3S4WA",
+      "expires_at": 1794533094,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Clear, easygoing, gently poised mid-to-upper register that sounds fresh and twenty-something rather than heavy. Relaxed, perceptive, dependable tone with a subtle hint of wry warmth.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe286fd48191814c726a7d11fe4e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あら",
+    "event_id": "event_EjYRzjcxBMSDQdSlOuQFK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、そう",
+    "event_id": "event_EjYRzerpWOKvcfMbMCeru"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "だった",
+    "event_id": "event_EjYRzjnTbqaIXWBk1gBNL"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYRzGBjG8byZSOz7uTpq",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "んですね",
+    "event_id": "event_EjYS0lve4BXuIism5jJUs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYS0ou79DzlsX0SOzK6N"
+  },
+  {
+    "event_id": "event_EjYS74OQ5N5vYgh4V97yA",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYRyp3oNHfSY6SWFEmyOfsIvDL3S4WA",
+      "expires_at": 1794533094,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Clear, easygoing, gently poised mid-to-upper register that sounds fresh and twenty-something rather than heavy. Relaxed, perceptive, dependable tone with a subtle hint of wry warmth.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe286fd48191814c726a7d11fe4e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Composed, natural, reliable mature-young veteran nurse — Calm, natural surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 8.0
+    }
+  }
+]

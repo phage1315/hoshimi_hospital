@@ -119,7 +119,7 @@ static func developer(app) -> void:
 		list.add_child(button)
 
 static func settings(app) -> void:
-	var dialog := modal(app, app.tx("ui.title.settings", "设置"), Vector2i(570,300))
+	var dialog := modal(app, app.tx("ui.title.settings", "设置"), Vector2i(570,420))
 	dialog.name = "TitleSettingsDialog"
 	var list := VBoxContainer.new()
 	list.add_theme_constant_override("separation", 20)
@@ -143,6 +143,18 @@ static func settings(app) -> void:
 	speed.select(app.dialogue_auto_speed_index)
 	speed.item_selected.connect(func(index: int): app.dialogue_auto_speed_index = index; app.content.localizer.save_dialogue_auto_speed(index))
 	list.add_child(speed)
+	var music_label := Label.new()
+	music_label.text = "BGM volume" if app.content.localizer.locale == "en" else "背景音乐音量" # localization-invariant
+	list.add_child(music_label)
+	var music_volume := HSlider.new()
+	music_volume.name = "MusicVolumeSetting"
+	music_volume.min_value = 0
+	music_volume.max_value = 100
+	music_volume.step = 1
+	music_volume.value = app.music.volume * 100.0
+	music_volume.custom_minimum_size = Vector2(480, 32)
+	music_volume.value_changed.connect(func(value: float): app.music.set_volume(value / 100.0, true))
+	list.add_child(music_volume)
 
 static func startup(app) -> void:
 	if not app.title_notice_enabled: return

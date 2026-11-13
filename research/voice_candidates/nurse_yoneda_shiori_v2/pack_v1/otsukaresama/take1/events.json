@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYUnc3c6kH1TV3OzAUWt",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYUnp3oMbU5M2LWsnplqUu3kROR6Sau",
+      "expires_at": 1794533269,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, sweet, trusting after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, sweet, trusting after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYUoMus1XefLfeLpapaw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYUomVZeYtP8w5vf43jG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "です",
+    "event_id": "event_EjYUohDWCLKEQ9AN9rUN7"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、坂",
+    "event_id": "event_EjYUoPYyai8eeDTG0Z3fU"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYUo3hXcYSGSWkSwNoOI",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "口",
+    "event_id": "event_EjYUp6U82ZheeSoocBcTl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "先生",
+    "event_id": "event_EjYUpIMHWnTeJn8HcqmCe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjYUpQSUYkwh1Tk5fg5MB"
+  },
+  {
+    "event_id": "event_EjYUumrbx4bR9b8olv62y",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYUnp3oMbU5M2LWsnplqUu3kROR6Sau",
+      "expires_at": 1794533269,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, sweet, trusting after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, sweet, trusting after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

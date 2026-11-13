@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYR0w2fnUA0nExXlcipM",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYR0p3oMTG1yg0Dt72PfGvEiAotalyR",
+      "expires_at": 1794533034,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Youthful, sparkling, girlishly bright high-mid register with light, nimble vocal weight and lively clarity — distinctly young and cute-spirited rather than a heavy mature woman's voice. Playful koakuma teasing charm, crisp bouncy articulation, mischievous upward lilt at phrase endings.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、ちょっと予想外ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Lively, cute girlish surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc3dcc88191808a8aa8deb47256"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、ちょっと予想外ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Lively, cute girlish surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "えっ",
+    "event_id": "event_EjYR1u2QfEISIjmcjjpdz"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、",
+    "event_id": "event_EjYR18MTExJ6fjknSqfaJ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ち",
+    "event_id": "event_EjYR1gJWgHM084kQXAuJp"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYR1kjNQBS7rKycAMCxx",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "ょっと",
+    "event_id": "event_EjYR2lfO7UG5yflD0kd4b"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "予",
+    "event_id": "event_EjYR2X6oSuE42siL6V8ze"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "想外",
+    "event_id": "event_EjYR2j90YJdSTnQzKUnB7"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ですよ",
+    "event_id": "event_EjYR2b2LKGzQvxoBHiX5N"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYR3j5p9xLb8lKnc7kt9"
+  },
+  {
+    "event_id": "event_EjYR7ZTUDEyEPa7FnTfro",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYR0p3oMTG1yg0Dt72PfGvEiAotalyR",
+      "expires_at": 1794533034,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Youthful, sparkling, girlishly bright high-mid register with light, nimble vocal weight and lively clarity — distinctly young and cute-spirited rather than a heavy mature woman's voice. Playful koakuma teasing charm, crisp bouncy articulation, mischievous upward lilt at phrase endings.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、ちょっと予想外ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Lively, cute girlish surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc3dcc88191808a8aa8deb47256"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、ちょっと予想外ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Bright, youthful, playfully cute koakuma nurse, steady on duty — Lively, cute girlish surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYKHhJfQdtCQWKWL4tr4",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYKGp3oMbU5jni6YbrlOkB9Cvpzw1ZR",
+      "expires_at": 1794532616,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Naturally slender, delicate, crystal-light higher-mid timbre with a youthful, pure clarity, yet delivered with a deliberately cool, guarded, detached restraint. Crisp, concise phrasing and controlled flat intonation that masks a subtle, fragile softness underneath.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Reserved, neat after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56cc1bee08191ba00ac51cd0a142f"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Reserved, neat after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYKHai9HzojrplF7eB6g"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYKHcAHOLS4KiJZRtljG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "です",
+    "event_id": "event_EjYKIT04IgMJxn1s7ioQE"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYKIdbVEbA22euZqNiJj",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "、",
+    "event_id": "event_EjYKIgWq5elkjWhBpeoyN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "坂",
+    "event_id": "event_EjYKIxFzSYYF2jt1zjt8o"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "口",
+    "event_id": "event_EjYKIUunOKoBHCtuV5kYa"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "先生",
+    "event_id": "event_EjYKJAydh3NRc8ETHDE1r"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYKJTOYoEedpwFZtLDwp"
+  },
+  {
+    "event_id": "event_EjYKOjN7EXfcKzMs1ucz0",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYKGp3oMbU5jni6YbrlOkB9Cvpzw1ZR",
+      "expires_at": 1794532616,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Naturally slender, delicate, crystal-light higher-mid timbre with a youthful, pure clarity, yet delivered with a deliberately cool, guarded, detached restraint. Crisp, concise phrasing and controlled flat intonation that masks a subtle, fragile softness underneath.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Reserved, neat after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56cc1bee08191ba00ac51cd0a142f"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Reserved, neat after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

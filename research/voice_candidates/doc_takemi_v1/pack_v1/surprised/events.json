@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYM1cCIeBw03Qj7WIoth",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYM0p3oMHF1Gp2pzmxJcKVPSdtI8Al7",
+      "expires_at": 1794532724,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Sultry, smoky, low-pitched contralto with a cool, languid, slightly sardonic allure and dry wit. Unhurried, effortless delivery with a subtle teasing edge and sharp underlying clinical intelligence.\nSpeak immediately in Japanese. Say exactly this line once: \"ほう、やるじゃないの。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, intrigued surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5feaa62448191be4162dbce2a12ea"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ほう、やるじゃないの。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, intrigued surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ほう",
+    "event_id": "event_EjYM2Z7Y6vvv2Ql7szJFe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、や",
+    "event_id": "event_EjYM2QZN0TdZjtde8oc1p"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "るじゃ",
+    "event_id": "event_EjYM2lJ7NaovwT76a3XsS"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ないの",
+    "event_id": "event_EjYM3iAnNCX01R3op42u0"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYM3wwjeSCA6jTLWeYP2",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "。",
+    "event_id": "event_EjYM31de4MMNfDYn62pNo"
+  },
+  {
+    "event_id": "event_EjYM8r3jyuHd52rxGxKmg",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYM0p3oMHF1Gp2pzmxJcKVPSdtI8Al7",
+      "expires_at": 1794532724,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Sultry, smoky, low-pitched contralto with a cool, languid, slightly sardonic allure and dry wit. Unhurried, effortless delivery with a subtle teasing edge and sharp underlying clinical intelligence.\nSpeak immediately in Japanese. Say exactly this line once: \"ほう、やるじゃないの。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, intrigued surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5feaa62448191be4162dbce2a12ea"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ほう、やるじゃないの。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, intrigued surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

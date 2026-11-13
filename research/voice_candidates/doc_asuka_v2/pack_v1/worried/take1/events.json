@@ -1,0 +1,187 @@
+[
+  {
+    "event_id": "event_EjYHIMJ54Uz1qqGduZH5d",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYHHp3oMTPvs5lwfdG2Pn8wKpKp6juN",
+      "expires_at": 1794532431,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. High-pitched, petite, sweet girlish soprano with delicate, sugary-clear bell resonance and pure maidenly charm. Polite, soft-hearted, adorable ojou-sama inflection that sounds genuinely young and girlish while staying articulate and bright.\nSpeak immediately in Japanese. Say exactly this line once: \"あの、少し様子を見た方がいいかもしれません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Gentle, attentive clinical concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a1cb64481919bf6644851968f95"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あの、少し様子を見た方がいいかもしれません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Gentle, attentive clinical concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あの",
+    "event_id": "event_EjYHJoDYM3aTyVtDIW5uh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、少",
+    "event_id": "event_EjYHJ5eXoaw3pc0Bzu8s2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "し",
+    "event_id": "event_EjYHJGJQzqzIK1igfn6te"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "様",
+    "event_id": "event_EjYHJhj1ASx0cUvi5tWvo"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYHJ4THgEWqxxb6i9ktW",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "子",
+    "event_id": "event_EjYHK7Pb4dbelBNii7vdn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "を見",
+    "event_id": "event_EjYHKKV8vXQIBNWXjIUTh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "た",
+    "event_id": "event_EjYHKyyyG7UpT5nSWhhhw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "方",
+    "event_id": "event_EjYHKWmp4PlRQxqzfoXor"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "がいい",
+    "event_id": "event_EjYHLz9opyWXIZrs9Gual"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "か",
+    "event_id": "event_EjYHLVUbZqVFLmMYsVNzp"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "もし",
+    "event_id": "event_EjYHLgBnbkJZzrNqPEudz"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "れ",
+    "event_id": "event_EjYHLJ944WAKe0PuxnM3v"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "ません",
+    "event_id": "event_EjYHLRbMvZTxO0BfjTqeL"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3000,
+    "end_ms": 3200,
+    "delta": "。",
+    "event_id": "event_EjYHMvM4CknAD8sgLdi2w"
+  },
+  {
+    "event_id": "event_EjYHQllpqLKmrStO10ltl",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYHHp3oMTPvs5lwfdG2Pn8wKpKp6juN",
+      "expires_at": 1794532431,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. High-pitched, petite, sweet girlish soprano with delicate, sugary-clear bell resonance and pure maidenly charm. Polite, soft-hearted, adorable ojou-sama inflection that sounds genuinely young and girlish while staying articulate and bright.\nSpeak immediately in Japanese. Say exactly this line once: \"あの、少し様子を見た方がいいかもしれません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Gentle, attentive clinical concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a1cb64481919bf6644851968f95"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あの、少し様子を見た方がいいかもしれません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Gentle, attentive clinical concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

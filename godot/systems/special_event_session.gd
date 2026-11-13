@@ -47,7 +47,7 @@ func presentation_schedule(fallback: Dictionary) -> Dictionary:
 	if scene.is_empty():
 		return fallback
 	var result := fallback.duplicate(true)
-	var anchor_day := started_day if str(definition.id) == "serika_lv4_stay" else int(fallback.day)
+	var anchor_day := started_day if str(definition.id) == "serika_lv4_stay" or preload("res://godot/systems/ayako_return.gd").owns(str(definition.id)) else int(fallback.day)
 	result.day = anchor_day + int(scene.get("day_offset", 0))
 	result.absolute_clock = int(scene.clock)
 	return result

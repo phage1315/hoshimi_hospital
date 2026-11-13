@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYPz6Z1BfnlAfJ9huoHa",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYPyp3oN8rcwAGAd09wwazwVcKFVBRY",
+      "expires_at": 1794532970,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"少し顔色が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Attentive, gentle girlish concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"少し顔色が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Attentive, gentle girlish concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "少し",
+    "event_id": "event_EjYPz7W2WSAmKjE5EPpg8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "顔",
+    "event_id": "event_EjYQ0gwGSbuK66LL66OFL"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "色",
+    "event_id": "event_EjYQ0JBo2H0cIT0Zst64Y"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "が",
+    "event_id": "event_EjYQ01NSneJqwrEXwfqyo"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYQ06avp88QNDeifsEko",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "気",
+    "event_id": "event_EjYQ0QgDJOyjB8QmKejR7"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "になります",
+    "event_id": "event_EjYQ0Co8j1aZyA1tJBLuA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "ね",
+    "event_id": "event_EjYQ1MRWtz8ccUg30BadA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYQ1kPSFTKO8XF6m4m2o"
+  },
+  {
+    "event_id": "event_EjYQ6JhxeFec9bkNXgTsT",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYPyp3oN8rcwAGAd09wwazwVcKFVBRY",
+      "expires_at": 1794532970,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"少し顔色が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Attentive, gentle girlish concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"少し顔色が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Attentive, gentle girlish concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

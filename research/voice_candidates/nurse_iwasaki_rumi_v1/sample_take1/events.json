@@ -1,0 +1,47 @@
+[
+  {
+    "event_id": "event_EjTLA17jio2e36P6Wrzk0",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjTL9p3oMjDGpiuLs0fpcVgLvtnDr1nf",
+      "expires_at": 1794513451,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Crisp, sunny, lively girlish upper-mid register with light, springy vocal weight and friendly teasing sociability. Fast, clear, upbeat tempo of an approachable twenty-year-old nurse who brightens the ward.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、先生。今日もナースステーションは元気いっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Lively, fast-paced, sunny twenty-year-old girlish voice with friendly smiling energy. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0ac3f48191a8666c1c44fd88d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、先生。今日もナースステーションは元気いっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Lively, fast-paced, sunny twenty-year-old girlish voice with friendly smiling energy. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjTLAJQrupuTzhpNAp6Qk"
+  }
+]

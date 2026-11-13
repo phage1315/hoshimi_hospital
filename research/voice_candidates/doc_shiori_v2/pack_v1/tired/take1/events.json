@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYI2umWHV522CMa2AdLI",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYI2p3oMbU5WVufBe5M2IsQ4hnh76Q0",
+      "expires_at": 1794532478,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、少しお茶でも淹れましょうか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Gentle, poised sigh after work. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、少しお茶でも淹れましょうか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Gentle, poised sigh after work. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふう",
+    "event_id": "event_EjYI3NWV7271xbma9jXVy"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、少",
+    "event_id": "event_EjYI4h2tF9dyvt7EKIvUP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "し",
+    "event_id": "event_EjYI4QheGE0f2csdLB3Bf"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "お",
+    "event_id": "event_EjYI4ci7qNagSywi72RfF"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYI4OerWdnw49aMLcNa6",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "茶",
+    "event_id": "event_EjYI4iPVwBeOgSmX5OlEt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "でも",
+    "event_id": "event_EjYI4akhM5Hmf4pb8gFNQ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "淹",
+    "event_id": "event_EjYI4JBo26csFRNw9GCBq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "れま",
+    "event_id": "event_EjYI5KvNLOpulURrDHIIG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "しょう",
+    "event_id": "event_EjYI56FXsVGTZddZw1oPs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "か",
+    "event_id": "event_EjYI5wKVBBGYyCbscsxpc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "。",
+    "event_id": "event_EjYI5IVr46EckBLd1IL6e"
+  }
+]

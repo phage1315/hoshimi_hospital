@@ -41,6 +41,9 @@ static func render(app: Control, id: String, from_location: String, expression: 
 	if not variants.has(expression):
 		expression = "neutral"
 	app.base(person.name, app.tx("ui.staff.header", "%s / %s岁") % [person.specialty, person.get("public_age_label", person.age)], true, app.background_for_location(from_location))
+	app.page.set_meta("voice_staff_id", id)
+	app.page.set_meta("voice_staff_outfit", outfit)
+	app.page.set_meta("voice_staff_expression", expression)
 	app.add_portrait(person, expression, outfit)
 	if app.game.can_book_free_h(id, from_location):
 		var booked: bool = str(app.game.free_h_booking.get("actor_id", "")) == id

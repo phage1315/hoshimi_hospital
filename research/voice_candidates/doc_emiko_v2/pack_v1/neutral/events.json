@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYFS2RLvbtiE7sPdl9yr",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYFRp3oMHF1mpNbsSsGq6SZ6vDniaf3",
+      "expires_at": 1794532317,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、構わないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, low-register, authoritative surgical chief — Crisp, authoritative agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、構わないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, low-register, authoritative surgical chief — Crisp, authoritative agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ええ",
+    "event_id": "event_EjYFTmd7c4e5c2gnyFbHh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、構",
+    "event_id": "event_EjYFTOsXBrLZ5e4mHlwRg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "わない",
+    "event_id": "event_EjYFTVHcaUwUKbhKpRvz1"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYFTTy8nxCAiOWwcXg1k",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "わ",
+    "event_id": "event_EjYFTjy2j8vIZCFNXfLV8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "。",
+    "event_id": "event_EjYFUALGURO50uM2UkeRT"
+  },
+  {
+    "event_id": "event_EjYFZQ2apxgk5QbstcfYF",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYFRp3oMHF1mpNbsSsGq6SZ6vDniaf3",
+      "expires_at": 1794532317,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、構わないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, low-register, authoritative surgical chief — Crisp, authoritative agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、構わないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, low-register, authoritative surgical chief — Crisp, authoritative agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

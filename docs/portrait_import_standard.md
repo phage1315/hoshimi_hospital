@@ -22,3 +22,11 @@
 - 在游戏固定立绘框内检查人物大小，确保视觉比例与现有半身立绘一致。
 - `focused` 等状态若暂时复用 `neutral`，只需替换其共同指向的源文件。
 
+## 制作、表情差分与本地透明化工作流
+
+详见 [hoshimi-portrait-pipeline](skills/hoshimi-portrait-pipeline/SKILL.md)：
+
+- **SFW 立绘**：先由绘图工具生成干净实心对比底色的非透明基础图（如 `neutral`），交用户确认无误后，再以基础图为参考**由绘图工具直接生成完整表情差分整图**（避免本地面部蒙版拼贴带来的眼睛／刘海错位；切表情时的轻微像素浮动可接受），最后统一调用本地离线 `.venv/bin/python tools/portrait_matting.py`（默认 `BiRefNet-ToonOut` ONNX）去背景并输出 `1024×1536` RGBA PNG（开启 Godot `.import` 的 `mipmaps/generate=true`）。严禁使用颜色阈值／泛洪硬抠脚本。
+- **NSFW 及用户提供立绘**：非透明 NSFW 原图由用户提供，助手仅在本地离线调用 `.venv/bin/python tools/portrait_matting.py --resize-mode keep`（或目标槽位尺寸）去背景，严禁上传云端或主动进行主观图像审查。
+- **本地修改兜底边界**：仅当绘图工具拒绝处理（例如 NSFW 立绘的表情差分）且用户明确要求制作差分时，才采用本地局部面部修改／合成方案。
+

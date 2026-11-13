@@ -1,0 +1,110 @@
+[
+  {
+    "event_id": "event_EjbIaOc4QnZpANZpk1eks",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjbIZp3oNHfS2KEyJfFIiWoPdiS8pgOT",
+      "expires_at": 1794544043,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ……どうしてあなたの方が緊張してるの?\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, amused, affectionate late-night chuckle, close-mic relaxed adult female voice gently teasing someone who looks nervous. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ……どうしてあなたの方が緊張してるの?\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, amused, affectionate late-night chuckle, close-mic relaxed adult female voice gently teasing someone who looks nervous. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふふ",
+    "event_id": "event_EjbIbp0blniSQ2coXtHir"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "……",
+    "event_id": "event_EjbIbiC4CnDY31GZkvtDt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "どう",
+    "event_id": "event_EjbIb7u3sqytBPD8q3Vg0"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "して",
+    "event_id": "event_EjbIcC4aOuBaWMWp3e62n"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjbIchHKCs4ZDyMJMSqcH",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "あなた",
+    "event_id": "event_EjbIc7Ms4mcQW6Wz70Ctx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "の",
+    "event_id": "event_EjbIcdugxq1EFlcsklcXr"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "方",
+    "event_id": "event_EjbIcP0LVlWpjbiimSSgl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "が",
+    "event_id": "event_EjbIdLufV3WLgp3cABnXe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "緊",
+    "event_id": "event_EjbIdJVFODMT43boZFgFt"
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYV1rS2r0djJc0Zm4WnC",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYV1p3oMTPveG7saXWX65gF8kyeGzUi",
+      "expires_at": 1794533283,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"あの、少し心配ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, delicate girlish concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あの、少し心配ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, delicate girlish concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あの",
+    "event_id": "event_EjYV2eWb3RZdxYd15HkkY"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、少",
+    "event_id": "event_EjYV23lC7cT1LMfE0MbyM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "し",
+    "event_id": "event_EjYV2GmxnZeCJzQyZOhh2"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYV2QZ5vnxbd8yfN6nbS",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "心",
+    "event_id": "event_EjYV3bLPzdsNly240iSMt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "配",
+    "event_id": "event_EjYV3sEZFSJLtxby4X3zm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ですね",
+    "event_id": "event_EjYV3HCHyt8iIMmrb5m5Z"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYV432Q94Dp17cwpY4fH"
+  },
+  {
+    "event_id": "event_EjYV8P9Lo5Zl0fPSvkX8N",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYV1p3oMTPveG7saXWX65gF8kyeGzUi",
+      "expires_at": 1794533283,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"あの、少し心配ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, delicate girlish concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あの、少し心配ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Soft, delicate girlish concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

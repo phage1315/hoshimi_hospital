@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjJE0Q1od1eUGdNfDDgPn",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjJDzp3oMWGElxRpgZIkbMJ0aRfVEXUs",
+      "expires_at": 1794474567,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"はぁ、やれやれね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: A soft, natural exhaled sigh after a long shift, followed by a gentle, wryly amused murmur. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はぁ、やれやれね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: A soft, natural exhaled sigh after a long shift, followed by a gentle, wryly amused murmur. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はぁ",
+    "event_id": "event_EjJE0T2EoOqDPGzTNLRhV"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、",
+    "event_id": "event_EjJE1Oj8zYws5rWxO0Bhg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "や",
+    "event_id": "event_EjJE14GzKvZP1Q10FIzm3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "れ",
+    "event_id": "event_EjJE13IQ1aq3DmPeDQhUI"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjJE1ogLShuhl9iXnoMiQ",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "や",
+    "event_id": "event_EjJE12YiXuPdsqlg5yU0H"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "れ",
+    "event_id": "event_EjJE1IwKFGJn4qi7iUlit"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "ね",
+    "event_id": "event_EjJE2QHN85MdqVb7Pq5OR"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjJE2keWL1hjev2gtFxOy"
+  },
+  {
+    "event_id": "event_EjJE9nmfWFYi98g2OaIxc",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjJDzp3oMWGElxRpgZIkbMJ0aRfVEXUs",
+      "expires_at": 1794474567,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"はぁ、やれやれね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: A soft, natural exhaled sigh after a long shift, followed by a gentle, wryly amused murmur. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はぁ、やれやれね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: A soft, natural exhaled sigh after a long shift, followed by a gentle, wryly amused murmur. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

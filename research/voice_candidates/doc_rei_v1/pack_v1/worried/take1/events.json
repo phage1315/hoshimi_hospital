@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYEmBvbqGsbnBY95B8yC",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYElp3oM9qYTTsEoROayjV2I6n0yoYV",
+      "expires_at": 1794532275,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"少し数値が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Calm but attentive concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"少し数値が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Calm but attentive concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "少し",
+    "event_id": "event_EjYEngtlOqFkfCfNGO3jV"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "数",
+    "event_id": "event_EjYEngWUxkzEVdqQj9Szt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "値が",
+    "event_id": "event_EjYEn2mJHQgbrQFim8QPQ"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYEnkYi1quLnWiynIbtR",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "気",
+    "event_id": "event_EjYEoLzneZ8DktXLZcDzz"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "になります",
+    "event_id": "event_EjYEoZaSvtenKDcb7XeZR"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "ね",
+    "event_id": "event_EjYEo38GKHA6av6tSoVNb"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYEpXmyHXWK8nJsDJ2Vq"
+  },
+  {
+    "event_id": "event_EjYEt2FjVVfubbP5er2rb",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYElp3oM9qYTTsEoROayjV2I6n0yoYV",
+      "expires_at": 1794532275,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"少し数値が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Calm but attentive concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"少し数値が気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Calm but attentive concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

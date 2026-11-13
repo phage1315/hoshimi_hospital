@@ -1,0 +1,194 @@
+[
+  {
+    "event_id": "event_EjUXiqaAp7YwKjYg8lonH",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjUXhp3oNFTYHmYvpor88DvIWKDT3QZ5",
+      "expires_at": 1794518073,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Crisp, sunny, lively girlish upper-mid register with light, springy vocal weight and friendly teasing sociability. Fast, clear, upbeat tempo of an approachable twenty-year-old nurse who brightens the ward.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、先生。今日もナースステーションは元気いっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Lively, fast-paced, sunny twenty-year-old girlish voice with friendly smiling energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0ac3f48191a8666c1c44fd88d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、先生。今日もナースステーションは元気いっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Lively, fast-paced, sunny twenty-year-old girlish voice with friendly smiling energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjUXi7gTNlv79FrUneB1q"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ようございます",
+    "event_id": "event_EjUXj0avqAug1H2n28Har"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、",
+    "event_id": "event_EjUXjCVimuCUZhHlp9MHc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "先生",
+    "event_id": "event_EjUXjZTGZTBDwkvV8tgjT"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjUXjoW3DgmD4HCZjUJI7",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjUXktaArTvf94NjU2O5p"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "今日",
+    "event_id": "event_EjUXkeRKeNGUSVKiiffTp"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "も",
+    "event_id": "event_EjUXkdds7kyQ4wgWZK611"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "ナース",
+    "event_id": "event_EjUXkKUwPYW5JeoQpFOdH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "ステ",
+    "event_id": "event_EjUXlE0OMTLdvOCFgr02O"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "ーション",
+    "event_id": "event_EjUXlRaP6uGZgUCswrYbI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "は",
+    "event_id": "event_EjUXlvb8MkfYJrjrNQIYU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "元気",
+    "event_id": "event_EjUXl2US8ihv8lyb3TVmU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3600,
+    "end_ms": 3800,
+    "delta": "いっぱい",
+    "event_id": "event_EjUXmv7ordXkwks7T43L8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4000,
+    "end_ms": 4200,
+    "delta": "ですよ",
+    "event_id": "event_EjUXm0MY9lVSb6IvyJFIn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4400,
+    "end_ms": 4600,
+    "delta": "。",
+    "event_id": "event_EjUXnk1Ku5k36qbjiospo"
+  },
+  {
+    "event_id": "event_EjUXv75UK1ihjms2gSapL",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjUXhp3oNFTYHmYvpor88DvIWKDT3QZ5",
+      "expires_at": 1794518073,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Crisp, sunny, lively girlish upper-mid register with light, springy vocal weight and friendly teasing sociability. Fast, clear, upbeat tempo of an approachable twenty-year-old nurse who brightens the ward.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、先生。今日もナースステーションは元気いっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Lively, fast-paced, sunny twenty-year-old girlish voice with friendly smiling energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0ac3f48191a8666c1c44fd88d1"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、先生。今日もナースステーションは元気いっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Lively, fast-paced, sunny twenty-year-old girlish voice with friendly smiling energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 13.0
+    }
+  }
+]

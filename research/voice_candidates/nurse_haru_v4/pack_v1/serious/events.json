@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYQ9ScRUENdhsNAQ07Da",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYQ9p3oMbU5E6WfcPSrcBwjuPImxMpo",
+      "expires_at": 1794532981,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"安全確認だけは、絶対に譲れません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Firm, earnest young nurse resolve. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"安全確認だけは、絶対に譲れません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Firm, earnest young nurse resolve. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "安全確認",
+    "event_id": "event_EjYQAI1LyYRP58vqOBxd5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "だけは",
+    "event_id": "event_EjYQAH8RC5EPRUbF6GWDn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、絶",
+    "event_id": "event_EjYQBNIaJgdZ3ii9cN1xC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "対に",
+    "event_id": "event_EjYQBc9QDBi5UDPRyepUy"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYQBOgSzLCxwhvTqYd9V",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "譲",
+    "event_id": "event_EjYQBVosAQSQqqvLCZtUk"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "れません",
+    "event_id": "event_EjYQBlxNSkV9DFGtw7RFi"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYQBpvVe6YysDpAJNKpX"
+  },
+  {
+    "event_id": "event_EjYQKGBN6sr8ecm59C2G7",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYQ9p3oMbU5E6WfcPSrcBwjuPImxMpo",
+      "expires_at": 1794532981,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"安全確認だけは、絶対に譲れません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Firm, earnest young nurse resolve. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"安全確認だけは、絶対に譲れません。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Firm, earnest young nurse resolve. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

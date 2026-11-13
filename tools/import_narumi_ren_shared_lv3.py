@@ -13,6 +13,14 @@ TRANSLATIONS = ROOT / "research/translations/narumi_ren_shared_lv3_en.json"
 LOCALIZATION = ROOT / "data/localization/en.json"
 EVENT_ID = "narumi_ren_shared_lv3_settled_accounts"
 PREFIX = "nr3"
+CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_strategy_alliance.png"
+CG_NODE_IDS = {f"nr3_{number:03d}" for number in range(387, 393)}
+OR_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_yayoi_awake_or.png"
+OR_CG_NODE_IDS = {f"nr3_{number:03d}" for number in range(184, 190)}
+PELVIC_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_yayoi_pelvic_field.png"
+PELVIC_CG_NODE_IDS = {f"nr3_{number:03d}" for number in range(192, 209)}
+PRESERVATION_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_yayoi_ovary_preserved.png"
+PRESERVATION_CG_NODE_IDS = {f"nr3_{number:03d}" for number in range(209, 218)}
 
 SPEAKERS = {
     "坂口隆司": ("player", "Ryuji Sakaguchi"),
@@ -236,6 +244,30 @@ def parse_beats() -> list[dict]:
 
     if awaiting_merge or last["A"] is not None or last["B"] is not None:
         raise ValueError("Unclosed branch")
+    available_node_ids = {str(node["id"]) for node in nodes}
+    required_cg_nodes = CG_NODE_IDS | OR_CG_NODE_IDS | PELVIC_CG_NODE_IDS | PRESERVATION_CG_NODE_IDS
+    if not required_cg_nodes.issubset(available_node_ids):
+        raise ValueError(f"CG window drifted from source beats: {sorted(required_cg_nodes - available_node_ids)}")
+    for node in nodes:
+        node_id = str(node["id"])
+        if node_id in CG_NODE_IDS:
+            node["cg_path"] = CG_PATH
+            node["cg_fit"] = "cover"
+            # Full-screen CG rendering returns before the portrait branch.
+            node["hide_portrait"] = False
+        elif node_id in OR_CG_NODE_IDS:
+            node["cg_path"] = OR_CG_PATH
+            node["cg_fit"] = "cover"
+            node["hide_portrait"] = False
+        elif node_id in PELVIC_CG_NODE_IDS:
+            node["cg_path"] = PELVIC_CG_PATH
+            # Keep the supplied 3:2 frame and corner face splash fully visible.
+            node["cg_fit"] = "contain"
+            node["hide_portrait"] = False
+        elif node_id in PRESERVATION_CG_NODE_IDS:
+            node["cg_path"] = PRESERVATION_CG_PATH
+            node["cg_fit"] = "cover"
+            node["hide_portrait"] = False
     if sum(1 for node in nodes if len(node["choices"]) == 2) != 3:
         raise ValueError("Expected exactly three authored choices")
     nodes[-1]["choices"] = [{
@@ -273,7 +305,7 @@ def main() -> None:
         "completion_day_offset": 7,
         "completion_absolute_clock": 1019,
         "completion_display_clock": 1080,
-        "gallery": {"cg_id": EVENT_ID, "caption": "两清", "path": "", "show_on_complete": False},
+        "gallery": {"cg_id": EVENT_ID, "caption": "两清", "path": CG_PATH, "show_on_complete": True},
         "conditions": {
             "min_day": 1,
             "min_affection": 0,

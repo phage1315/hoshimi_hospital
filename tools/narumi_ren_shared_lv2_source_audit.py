@@ -58,7 +58,18 @@ require(event.get("relationship_actor_ids") == ["doc_aoi", "nurse_haru"], "share
 require(event.get("completion_story_flags") == ["narumi_ren_hirasaka_informed", "narumi_ren_shared_lv2_complete"], "completion flags drift")
 require(event.get("completion_day_offset") == 1 and event.get("completion_absolute_clock") == 540, "cross-day safe-boundary settlement drift")
 require(event.get("time_start") == 870 and event.get("time_end") == 900, "natural lobby trigger window must begin at 14:30")
-require(event.get("gallery", {}).get("show_on_complete") is False and not event.get("gallery", {}).get("path"), "event must not invent a CG")
+require(event.get("gallery", {}).get("show_on_complete") is True and event.get("gallery", {}).get("path") == imp.ENDING_CG_PATH,
+        "approved ending CG gallery registration drift")
+for cg_path, expected_node_ids in imp.CG_WINDOWS.items():
+    require((ROOT / cg_path).is_file(), f"missing approved CG: {cg_path}")
+    mapped_cg_nodes = {str(node.get("id", "")) for node in actual if str(node.get("cg_path", "")) == cg_path}
+    require(mapped_cg_nodes == expected_node_ids, f"approved CG window drift for {cg_path}: {sorted(mapped_cg_nodes)}")
+    require(all(node.get("cg_fit") == "cover" for node in actual if str(node.get("id", "")) in expected_node_ids),
+            f"approved CG must use cover fit: {cg_path}")
+require(not any(str(node.get("cg_path", "")) for node in actual if 143 <= int(str(node.get("id", "nr2_000")).split("_")[-1]) <= 145),
+        "scalpel handoff and tension buildup must remain clear before the contact CG")
+require(not any(str(node.get("cg_path", "")) for node in actual if 150 <= int(str(node.get("id", "nr2_000")).split("_")[-1]) <= 175),
+        "scalpel contact CG must clear immediately after Mika's confession")
 require(not any(key in event for key in ["runner", "surgery", "rewards", "patient_id"]), "event leaked into a clinical runner")
 
 expected_mika_portraits = {

@@ -29,6 +29,8 @@ EVENTS = (
             "Then please go and bring the doctor back.",
             "I'm lucky to have a partner who dares to point out the surgeon's mistakes.",
         ),
+        "cg_path": "assets/events/character_events/narumi_ren/ren_lv1_half_sandwich_call.png",
+        "cg_window": (201, 208),
     },
     {
         "id": "narumi_lv1_beyond_the_resume", "actor": "doc_aoi",
@@ -46,6 +48,8 @@ EVENTS = (
             "Then I'll give Dr. Jinguji an evaluation too—you are an excellent first assistant, but you must also be a formidable lead surgeon.",
             "Now that I've passed the first assessment, how about you operate next time and let me match your rhythm?",
         ),
+        "cg_path": "assets/events/character_events/narumi_ren/narumi_lv1_two_teas_manuscript.png",
+        "cg_window": (142, 151),
     },
 )
 
@@ -197,6 +201,19 @@ def main() -> None:
     strings: dict = localized["strings"]
     for spec in EVENTS:
         beats = source_beats(spec)
+        cg_start, cg_end = spec["cg_window"]
+        cg_node_ids = {f"{spec['prefix']}_{number:03d}" for number in range(cg_start, cg_end + 1)}
+        available_node_ids = {str(beat["id"]) for beat in beats}
+        if not cg_node_ids.issubset(available_node_ids):
+            raise ValueError(f"CG window drifted from source beats: {spec['id']} {sorted(cg_node_ids - available_node_ids)}")
+        for beat in beats:
+            if str(beat["id"]) in cg_node_ids:
+                beat["cg_path"] = spec["cg_path"]
+                beat["cg_fit"] = "cover"
+                # A CG is character art in the event schema.  It suppresses the
+                # portrait by returning early in add_character_event_visual(),
+                # so it must not also be marked as an art-free hidden node.
+                beat["hide_portrait"] = False
         legacy = legacy_translations.get(spec["id"], {})
         revised = revised_translations.get(spec["id"], {})
         translated = [revised.get(beat["text"], legacy.get(beat["text"], "")) for beat in beats]
@@ -210,7 +227,12 @@ def main() -> None:
             "time_start": spec["time_start"], "time_end": spec["time_end"], "priority": 95,
             "category": "bond", "target_level": 1, "benefit_id": "", "cinematic": True,
             "auto_start": spec["trigger"] == "after_work", "hide_calendar_header": spec["id"] == "ren_lv1_night_ward_1",
-            "gallery": {"cg_id": spec["id"], "caption": spec["title"], "path": "", "show_on_complete": False},
+            "gallery": {
+                "cg_id": spec["id"],
+                "caption": spec["title"],
+                "path": spec["cg_path"],
+                "show_on_complete": True,
+            },
             "conditions": {"min_day": 1, "min_affection": 0, "min_familiarity": 10, "required_events": [],
                            "special_requirements": [], "days_after_required_events": 0},
             "start": beats[0]["id"], "nodes": beats,

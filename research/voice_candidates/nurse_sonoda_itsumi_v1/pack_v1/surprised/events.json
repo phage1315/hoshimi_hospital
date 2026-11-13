@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYW0xbqlegpkBHSphPvS",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYVzp3oMTPv0MAQ9hr0huzTJ4kLXiuK",
+      "expires_at": 1794533343,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Sweet, bright, spirited girlish higher-mid timbre with clean rounded clarity and cheerful poise. Brisk, friendly conversational rhythm that stays crisp and clear when reporting clinical work.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, natural surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0eb2088191aee39286838b9cb4"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, natural surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "えっ",
+    "event_id": "event_EjYW0E7dptSWQGTnYvziI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、そう",
+    "event_id": "event_EjYW1uVFqUabdc04PfOSP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "だった",
+    "event_id": "event_EjYW1Wr7r6Rksv1WNXkr8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ん",
+    "event_id": "event_EjYW1cdeMMBLGfMSBYMEe"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYW1hDeaRjBabpQj5bh8",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "です",
+    "event_id": "event_EjYW1XUIF3Ln757SzVkz9"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "か",
+    "event_id": "event_EjYW2GNoUvdEFvNVbsmRy"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYW2a18eualBchrXYOJv"
+  },
+  {
+    "event_id": "event_EjYW7CPV0E4NAYsoYgtjK",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYVzp3oMTPv0MAQ9hr0huzTJ4kLXiuK",
+      "expires_at": 1794533343,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Sweet, bright, spirited girlish higher-mid timbre with clean rounded clarity and cheerful poise. Brisk, friendly conversational rhythm that stays crisp and clear when reporting clinical work.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, natural surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe0eb2088191aee39286838b9cb4"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sunny, brisk, energetic and personable 20yo nurse — Bright, natural surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -14,9 +14,10 @@
 
 1. `HOSHIMI_PROJECT_WRITING_RULE_MEDICAL_NO_SELF_CENSORSHIP.md`：项目医疗剧情与对白的最高优先级写作规范；除平台规则外，禁止擅自淡化、跳过或含混处理作者明确要求的临床过程与反应。
 2. `HOSHIMI_HOSPITAL_TONE_WORLDVIEW_FESTIVAL_GUIDE.md`：最高层世界观与情绪规范；定义“青春社团感”、高戏剧性低致死性、专业底线、失败转化为内容、成人反差、医院祭及一年期归属感。
-3. `HOSPITAL_SANDBOX_DESIGN.md`：沙箱产品定位、循环、属性、角色、患者、手术、关系、结局与内容包架构。
-4. `HOSPITAL_SANDBOX_DIALOGUE_GUIDE.md`：角色语气、关系阶段差异、手术室和患者对白的写作标准。
-5. `HOSPITAL_SANDBOX_MEDICAL_FLIRT_GUIDE.md`：成年角色之间、随关系阶段变化的医疗身份调情规范。
+3. [`HOSHIMI_1995_2005_OR_PERIOPERATIVE_WORLDVIEW_V1_2.md`](HOSHIMI_1995_2005_OR_PERIOPERATIVE_WORLDVIEW_V1_2.md)：1995—2005 年日本围术期与手术室世界观规范 V1.2（A 历史原型 ＋ B 星见特有院内制度双层结构）；确立择期术晨全裸化与薄单担架转运（含少数特殊剧情全裸步行入室例外）、全择期统一前夜＋术晨双重甘油灌肠与目视验收（无口服泻药）、手工剃刀备皮、游戏化硬膜外清醒无痛定义、适用妇科/盆腔术式正式手术前举宫器置入与测试、急诊台旁更衣例外，以及既有个人事件 Concept Lock 与现行 Surgery Runner 代码边界保护。
+4. `HOSPITAL_SANDBOX_DESIGN.md`：沙箱产品定位、循环、属性、角色、患者、手术、关系、结局与内容包架构。
+5. `HOSPITAL_SANDBOX_DIALOGUE_GUIDE.md`：角色语气、关系阶段差异、手术室和患者对白的写作标准。
+6. `HOSPITAL_SANDBOX_MEDICAL_FLIRT_GUIDE.md`：成年角色之间、随关系阶段变化的医疗身份调情规范。
 
 第一版优先级是：稳定探索与时间循环、数据驱动的角色／患者／病例、关系发展、可重复手术、职业养成、多轴结算，以及能够持续添加的新内容包。单周目不要求收集全部内容。
 
@@ -71,6 +72,7 @@
 - `HOSHIMI_H_SYSTEM_V0_1.md`：`c18268c1e96fabdd57ebf218a10b3046dc1017a6ce266a9baa783b7db39c2c0d`
 - `HOSHIMI_PROJECT_WRITING_RULE_MEDICAL_NO_SELF_CENSORSHIP.md`：`bb6c60951f08e2ee52d0546365fdb1dcb8d300361f5dfdc7ed2d16021e663513`
 - `HOSHIMI_SATSUKI_LV3_WRONG_PATIENT_APPENDectomy_V3_FORMATTED.md`：`3b8b209cdf17b03986fdb50a2f325797fabad4d84705bb5ca17b7b1a1ed37d59`
+- `HOSHIMI_1995_2005_OR_PERIOPERATIVE_WORLDVIEW_V1_2.md`：`9d1d57fdaa7be6ff6ce17d05ebe745c9854b3f736d71f750e87068c0674d93f9`
 
 - `HOSHIMI_SATSUKI_LV1_REAL_PATIENT_TEST_V1.md`：折川皐月 Lv1《真人测试》正式事件稿；运行时实现与可选 CG 缺口见 `../satsuki_lv1_real_patient_test.md`。
 - `HOSHIMI_ORIKAWA_SATSUKI_LV2_PATIENT_TRANSPORT_EVENT.md`：折川皐月 Lv2《陪我去一次》正式事件稿；运行时实现、固定患者资料与素材缺口见 `../satsuki_lv2_patient_transport.md`。

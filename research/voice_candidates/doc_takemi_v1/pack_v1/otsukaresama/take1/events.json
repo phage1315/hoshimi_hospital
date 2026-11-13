@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYLgZmYPI6DDt25gU82R",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYLfp3oMhK9TDjxXk4c7xHm3IxSDkUX",
+      "expires_at": 1794532703,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Sultry, smoky, low-pitched contralto with a cool, languid, slightly sardonic allure and dry wit. Unhurried, effortless delivery with a subtle teasing edge and sharp underlying clinical intelligence.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Dry, relaxed after-hours greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5feaa62448191be4162dbce2a12ea"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Dry, relaxed after-hours greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYLh1SUm2oYHfvfKicBJ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYLh9rNIlGbuCY4NZELz"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、坂",
+    "event_id": "event_EjYLhWzYTP35Ee8K78XN8"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYLhRknvUqknQmkjbQlL",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "口",
+    "event_id": "event_EjYLhnlzf8xKabM8ITav3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "先生",
+    "event_id": "event_EjYLikGCNRKpPy5zbElDU"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjYLi3xzMIEPzdyjGpkBj"
+  },
+  {
+    "event_id": "event_EjYLneuyoTGRcNvn3Kd6l",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYLfp3oMhK9TDjxXk4c7xHm3IxSDkUX",
+      "expires_at": 1794532703,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Sultry, smoky, low-pitched contralto with a cool, languid, slightly sardonic allure and dry wit. Unhurried, effortless delivery with a subtle teasing edge and sharp underlying clinical intelligence.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Dry, relaxed after-hours greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5feaa62448191be4162dbce2a12ea"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Dry, relaxed after-hours greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

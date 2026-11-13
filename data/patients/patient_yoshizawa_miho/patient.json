@@ -1,0 +1,500 @@
+{
+  "schema_version": 1,
+  "patient": {
+    "id": "patient_yoshizawa_miho",
+    "name": "吉沢美帆",
+    "age": 26,
+    "medical_background": false,
+    "has_prior_surgery": false,
+    "case_id": "case_abdomen",
+    "visuals": {
+      "state": "outpatient",
+      "portraits": {
+        "outpatient/neutral": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/outpatient/neutral.png",
+        "ward/neutral": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/ward/neutral.png",
+        "ward/smile": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/ward/smile.png",
+        "ward/brave": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/ward/brave.png",
+        "ward/worried": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/ward/worried.png",
+        "ward/afraid": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/ward/afraid.png",
+        "ward/crying": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/ward/crying.png",
+        "operating_table/awake": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table/awake.png",
+        "operating_table/tense": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table/tense.png",
+        "operating_table/afraid": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table/afraid.png",
+        "operating_table/anesthetized": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table/anesthetized.png",
+        "operating_table_lithotomy/awake": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table_lithotomy/awake.png",
+        "operating_table_lithotomy/tense": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table_lithotomy/tense.png",
+        "operating_table_lithotomy/afraid": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table_lithotomy/afraid.png",
+        "operating_table_lithotomy/anesthetized": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/operating_table_lithotomy/anesthetized.png",
+        "intraoperative/tense": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/intraoperative/tense.png",
+        "intraoperative/pain": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/intraoperative/pain.png",
+        "intraoperative/near_collapse": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/intraoperative/near_collapse.png",
+        "intraoperative/anesthetized": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/intraoperative/anesthetized.png",
+        "splash/general_anesthesia": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/splash/general_anesthesia.png",
+        "examination/shy": "assets/characters/patient_yoshizawa_miho_v1/patient_yoshizawa_miho/examination/shy.png"
+      }
+    },
+    "admission_status": "outpatient",
+    "voice_style": "soft",
+    "personality": {
+      "primary": "shy",
+      "secondary": "caring",
+      "stress_response": "becomes_quiet"
+    },
+    "dialogue_profile": "shy_reassurance_quiet",
+    "traits": {
+      "baseline_anxiety": 68,
+      "pain_sensitivity": 72,
+      "privacy_sensitivity": 88,
+      "trust_baseline": 48,
+      "control_need": 43,
+      "expressiveness": 30,
+      "health_literacy": 23,
+      "compliance_tendency": 91
+    },
+    "fear_profile": {
+      "pain_fear": 77,
+      "procedure_fear": 76,
+      "diagnosis_fear": 62,
+      "loss_control_fear": 83
+    },
+    "reaction_lines": {
+      "hospitalization_question": "「要住院……是吗？我会听从安排的。只是……能否告诉我大概要住多久？家里的事情需要先交代。」",
+      "hospitalization_response": "「明白了，我会住下。画家先生那边我会自己说明……请不用替我费心。」",
+      "procedure_mismatch": "「对不起，我想确认一件事……刚才说明的手术，与现在说的名字似乎不同。是我听错了吗？」",
+      "explain_plan": "「谢谢您说得这么清楚。只要知道接下来会发生什么，我就不必一直猜了。」",
+      "brief_plan": "「是……我会配合。那个，恕我多问一句，下一步是检查，还是已经要开始手术了呢？」",
+      "last_reassure": "「医生，我会努力保持镇定的……如果我一时答不上来，请您再问我一次，好吗？」",
+      "choose_general": "「全身麻醉……睡着以后就什么都不知道了吧。醒来时若能有人告诉我已经结束，我会安心很多。」",
+      "choose_epidural": "「硬膜外麻醉……我会醒着，身体却有一部分不能动，是吗？……明白了，我会尽量不慌张。」",
+      "choose_local": "「局部麻醉的话，我还能说话吧？若是里面不舒服……我会尽力告诉您，不再忍着不说。」",
+      "choose_none": "「不使用麻醉……？对不起，我原本以为自己应该答应的……可是，直接开刀这件事，我真的很害怕。」",
+      "induction_reassure": "「……谢谢。那我闭上眼睛了。余下的事情，拜托各位……」",
+      "insist_without_anesthesia": "「呜……疼……！请等一下……我不是故意不配合，真的、真的没办法继续忍着……！」",
+      "assistant_stabilize_none": "「对不起，我一直在发抖……请不要突然抓住我。您先说一声，我会尽力照做的。」",
+      "assistant_stabilize_local": "「我知道需要保持这个姿势……只是刚才那阵牵扯让我不自觉缩了一下。请再给我一点时间。」",
+      "assistant_stabilize_epidural": "「……原来真的动不了。若要替我调整位置，能不能先告诉我？看不见时有点害怕。」",
+      "incision_ready": "「我会配合……啊、等一下！那把刀……已经到我身上方了……求您，先不要落下……！」",
+      "incise_epidural": "「……已经开始了吗？没有想象中那种尖锐的痛，可是那股压力……我知道是在切开自己，心里还是发冷……」",
+      "incise_local": "「呜……！表面好像麻了，可里面刚才那一下……医生，我还能感觉到，请听我说……！」",
+      "incise_none": "「啊——！好疼……！对不起，求您停一下！真的好疼……我没办法安静地躺着了……！」",
+      "contact_pause": "「停下来了……谢谢您。我想先把气喘匀……刚才连求助的话都说不完整。」",
+      "contact_command": "「是，我听见了，要保持不动……可我身体一直抖。请您别生气，我真的在努力……！」",
+      "contact_continue": "「……又要继续了吗？请您先告诉我一声，我想再做一次深呼吸。」",
+      "ongoing_narrate": "「谢谢您告诉我进度。只听见器械声的时候，我总会以为是不是出了什么事……」",
+      "ongoing_eye_contact": "「……护士小姐，您是在看我有没有不舒服吗？能否再留在这里一会儿……？」",
+      "ongoing_silent": "「……医生？怎么突然听不到说话声了……是、是还顺利吗？」",
+      "closure_reassure": "「真的快结束了……？太好了……谢谢您，一直耐心地告诉我发生了什么。」",
+      "closure_coach": "「好……吸气、慢慢吐气。我会跟着您的声音做，不会再一个人胡乱忍耐了。」",
+      "closure_silent": "「……我已经没有力气说很多话了。请您继续……结束的时候，轻轻叫我一声就好。」"
+    },
+    "reaction_variants": {
+      "ward_enema": [
+        "「还要灌肠……？！我知道是术前肠道准备，可要把病号服撩起来侧躺着露出臀部……请、请先把帘子拉严实！」（居然要在病床上脱了裤子让人插管……羞得我想把脸埋进枕头里！）",
+        "「呜……管子插进后面了……温热的药水一直在往肚子里灌，小腹越来越胀……我、我会努力夹紧的！」（求求你别站在床边计时啦，再盯下去我真要憋不住了……！）",
+        "「肚子里又酸又胀，快要忍到极限了……！还要再保持几分钟才能去厕所吗……？！」（要是这时候在床上漏出来，我干脆一头撞晕过去算了……！）"
+      ],
+      "ward_enema_unnecessary": [
+        "「呀啊……医、医生，原来这次手术本来不用灌肠的吗……？！可美帆已经脱下内裤被您灌满一肚子温水了……」（明明不是必需步骤却白白灌满一肚子温水……医生绝对是故意的吧！）",
+        "「明明可以省掉的准备却还是亲手做完了……肚子里好胀好难为情，美帆快憋不住了……」（白白丢这么大的人，我现在连抬头看医生的脸都不敢了……）"
+      ],
+      "ward_skin_prep": [
+        "「备皮……要把小腹下面的毛发也剃干净吗？！我明白是为了消毒无菌，可把那里露出来让人剃毛，实在太害羞了……」（连最私密的地方都要张开腿让人拿剃刀刮……羞得脚趾都蜷紧了！）",
+        "「唔……温热的泡沫涂上来了，剃刀贴着皮肤刮过去的感觉好明显……请、请慢一点！」（光裸的皮肤直接贴着床单，又凉又敏感得让人心慌……）",
+        "「我没有躲……只是您手指按着那里固定皮肤的时候，身体自己会紧张得发颤……拜托请快一点剃完吧。」（全刮干净以后冷空气直接钻进来，羞得我双腿都不知道怎么放了……）"
+      ],
+      "ward_skin_prep_unnecessary": [
+        "「呜……切口明明不在下面，为什么连美帆最私密处的毛发也被您剃得干干净净了呀……？」（切口明明不在下面，却白白张开双腿让人剃了个精光……太欺负人了！）",
+        "「不需要备皮的地方也变得光溜溜的……双腿合拢时皮肤贴在一起的感觉太羞人了……」（揪着病号服下摆都不敢乱动，这下真是彻彻底底被看光剃光了……）"
+      ],
+      "ward_surgical_cap": [
+        "「要把头发全部塞进无菌帽里……好，这样戴妥了吗？」（把耳朵和额头全露出来以后，连假装镇定都变得好难……）",
+        "「连耳边的碎发都收进去了……戴上这顶帽子，就真的只是一名马上要挨刀的患者了呢。」（连发梢都收得严严实实的，真的只剩手术台上的病人这一重身份了……）"
+      ],
+      "operative_positioning_awake": [
+        "「手臂要扣进束缚带、双腿还要分开固定在支架上……？！我知道是手术体位要求，可这样被绑在台子上，连遮一下身体都做不到啊！」（皮带扣紧的咔哒声太吓人了，这下真是彻头彻尾任人摆布了……）",
+        "「手术室的冷气直接吹在裸露的大腿和皮肤上……在这么多医护人员面前摆出这种完全敞开的姿势，脸都快烧起来了……」（冷冰冰的台垫贴着后背，连每一次紧张的喘息都被看得一清二楚……）",
+        "「等一下，扣紧手腕和腿架前先提醒我一声！我不会乱动的……」（固定成这样连缩一下身子都不行了……求你们待会儿轻一点……）"
+      ],
+      "operative_positioning_none": [
+        "「一丁点麻醉都没有，就要把我的手腕和双腿牢牢绑在手术台上吗……？！要是等下切开时疼得受不了，我连动一下都做不到啊！」（固定带勒紧手腕的瞬间，要被活生生剖开的恐惧差点把我逼疯！）",
+        "「束缚带勒在手腕上的感觉好可怕……一想到要保持这个完全暴露的姿势活生生挨刀，腿就已经抖得停不下来了……」（冷汗顺着鬓角往下淌，只能祈祷这条皮带能帮我熬过第一刀了……）",
+        "「请、请把固定带确认好……我不是想挣脱，我是怕一会儿真刀割下来的时候，身体会本能地乱挣扎……！」（还没下刀呢，全身肌肉就已经因为怕痛绷成石头了……！）"
+      ],
+      "urinary_catheterization_awake": [
+        "「要在清醒的状态下插导尿管……？！那不就是要把双腿分开，让您在最私密的地方插管子吗……这也太难为情了！」（最私密的地方被拨开擦拭再塞进管子，这辈子都没这么难堪过……！）",
+        "「呀……！冰凉的消毒棉球碰到那里了……细管往尿道里推的时候又酸又刺，身体根本没法像您说的那样放松啊……！」（下面一直插着根管子导出液体，羞得我真想把眼睛永远闭上算了……）",
+        "「呜、哈啊……已经放进膀胱里了吗？水囊鼓起来以后，里面一直有股胀胀的尿意，好像随时都会漏出来一样……」（听着管路里的动静，我只能死死咬着嘴唇别开脸，恨不得钻进地缝里！）"
+      ],
+      "urinary_catheterization_none": [
+        "「连麻醉都没有，就要直接把导尿管插进去……？！唔啊……！刚才那一下又涩又刺，里面像被强行撑开一样难受……！」（眼泪一下子就被逼出来了，下面像被针扎一样每动一下都痛得发抖！）",
+        "「双腿被分开晾在冷空气里，下面还插着一根通往膀胱的管子……想到后面还有不打麻药的手术刀，我全身都在发抖了……！」（稍微喘口气都能感觉到管壁在最敏感的地方摩擦，又痛又羞耻……！）",
+        "「导尿管已经贴在大腿内侧固定好了吗……？只是插管就已经这么难受了，等下真正的刀刃落下来时，我到底该怎么办……」（死死抠紧身下的台垫才没哭出声，这无麻导尿比想象中还可怕……！）"
+      ],
+      "skin_disinfection_awake": [
+        "「嘶——好冰！蘸满消毒液的棉球直接擦在裸露的皮肤上，从切口中心一圈圈往外涂……凉意一下子渗进骨头里了。」（湿淋淋的褐黄药水涂满术野，连呼吸都跟着一起绷紧了……）",
+        "「消毒的范围比想象中还要大……胸腹和私密处周围湿淋淋地暴露在无影灯下，被大家低头注视着，真像等待解剖一样无助。」（听着监护仪滴滴的快节奏，再怎么想装镇定也瞒不过去了……）"
+      ],
+      "skin_disinfection_none": [
+        "「等一下！冰凉的消毒液已经涂满术野了……这就意味着没有任何麻醉，下一步就要直接拿刀切开这里了吗？！」（冷得我打了个寒颤，一想到接下来要活生生挨刀就浑身发麻……！）",
+        "「只是消毒棉球擦过皮肤，我就已经吓得直打哆嗦了……一想到待会儿真刀割开皮肉的剧痛，连气都喘不上来了！」（心电监护的警报声越来越急，全手术室都听见我有多害怕了……！）",
+        "「医、医生，擦完消毒水以后请别不说话！我被绑在这里动弹不得，下刀前求您再跟我说句话……！」（一点麻药都没有……求你下刀前至少让我深呼吸一口气……！）"
+      ],
+      "incision_marking_awake": [
+        "「笔尖划过皮肤的触感好清楚……那条紫色的标记线，就是待会儿要把我的身体切开的位置吧？」（虽然只是画线还不痛，可这就是待会儿要被剖开见血的地方啊……）",
+        "「看到那条线画在自己身上，才真正意识到这具身体马上就要被手术刀打开了……」（只要能平安熬过去就好……深呼吸，别在这个时候吓哭出来……）"
+      ],
+      "incision_marking_none": [
+        "「一滴麻药都没有……您就要沿着刚才画在我身上的这条线，活生生把我的皮肉切开吗？！……我不敢往下看了！」（连画线都感觉得到每一寸摩擦，待会儿真刀切下去我怎么可能忍得住啊！）",
+        "「别、别这么快把手术刀递过来！看到皮肤上那条标记线，我的牙齿已经抖得合不拢了……！」（死死闭上眼睛咬紧牙关，只求第一刀落下来的时候别让我痛昏过去……！）",
+        "「医生，求您答应我……刀尖碰到那条标记线之前，一定要先出声告诉我，千万别突然划下来……！」（救命，刀尖已经悬在线上方了……心脏跳得像要当场炸开一样！）"
+      ],
+      "skip_sterile_draping": [
+        "「诶……医、医生，不替我盖上无菌铺巾吗？！美帆要这样全裸赤条条地开刀吗……？！」（我还指望盖上绿布总算能遮一遮，居然要我一丝不挂地直接挨刀吗？！）",
+        "「连胸口和下面都不遮一下就直接下刀吗……这样赤裸着身体任大家低头看着，实在太羞人了……」（连一块小洞巾都不肯给，今天真是把一辈子的羞耻都在这张台上受尽了！）"
+      ],
+      "operative_positioning_unnecessary_lithotomy": [
+        "「诶……医、医生，这次手术明明不在下面，为什么要把美帆的双腿抬到腿架上分得这么开……？！」（明明不是妇科手术却硬把我的腿架高分开……医生绝对是在捉弄我吧！）",
+        "「说是为了方便导尿和术中观察……可下面完完全全敞在灯光底下合不拢，实在羞人得快要晕过去了……」（既不是下面的手术还要大敞着腿挨刀，这位主刀的心眼也太坏了……！）"
+      ],
+      "manual_catheter_press_bladder": [
+        "「呀啊……医、医生请别按美帆的小腹……！尿液不受控制地顺着管子涌出来了……！」（呜哇，当着一屋子人的面被医生按着小腹挤出尿来……我想死的心都有了！）",
+        "「完全憋不住……温热地一直流进袋子里，求您别再往下压了，美帆快羞晕过去了……」（小腹在手套底下又酸又软地发抖，羞得我连哭都不敢哭出声来……）"
+      ],
+      "excessive_disinfection_breasts": [
+        "「呀啊……医、医生，连美帆的乳房和乳尖也要全部涂满冰凉的消毒水吗……？！」（冰凉棉球一碰，乳尖自己就不听话地立起来了……羞死人了啦！）",
+        "「胸前湿漉漉地泛着琥珀色水光……连害羞发抖的样子都被大家看清了……」（冻得胸口一阵阵发紧起栗，偏偏大家的视线全都在这上面……！）"
+      ],
+      "excessive_disinfection_perineum": [
+        "「呜……连小腹下面和最私密的阴唇褶皱里也要刷透吗……又冰又刺，美帆快受不了了……！」（连刚剃光的腿根和最私密的缝隙里都刷进去了……又冰又羞人！）",
+        "「按规矩不能擦拭、要这样湿淋淋地在冷风里等干透吗……又冷又羞人，美帆连脚尖都在抖了……」（下面凉飕飕地反着光，连眼睛都羞得不敢睁开了……快点干吧呜呜！）"
+      ],
+      "slow_incision_trace": [
+        "「呀……笔尖好冰……医、医生，切口线要在美帆身上画得这么慢又这么长吗……？」（笔尖贴着皮肤一毫米一毫米慢慢蹭过去……简直像在拿钝刀子提前折磨人！）",
+        "「对不起，美帆不是故意发抖的……只是感觉到笔尖走过的地方马上要挨刀，害怕得快喘不过气了……」（明明只是记号笔，后背却已经惊出一层冷汗，连声音都在发颤了……）"
+      ],
+      "incision_public_lecture": [
+        "「呜啊……医、医生，请不要拿笔杆指着美帆发硬的胸口和发抖的小腹讲给大家听呀……！」（居然拿笔杆指着我的乳尖和鸡皮疙瘩当众讲评……我真的要羞死在台上了！）",
+        "「滴滴滴的声音响得好快……被大家低头看着又怕又难为情的样子，美帆连头都抬不起来了……」（被一屋子医护顺着笔尖围观失态的样子，耳根连着锁骨全都烧透了……！）"
+      ],
+      "postop_bare_sponge_wipe": [
+        "「呜……医、医生……切口明明已经缝好了，美帆还以为终于熬到头了……为什么还要赤裸着被您拿温纱布擦洗双乳和腿根呀……」",
+        "「刚才开刀已经把美帆折腾得奄奄一息了……连抬起手指遮羞的力气都没剩下，只能流着泪任您一寸寸擦遍全身，好绝望……」"
+      ],
+      "postop_bare_full_inspection": [
+        "「连窄窄的敷料边和双腿间的导尿管都要不盖单子检视完吗……美帆已经虚软得像快化掉了一样，什么都反抗不了了……」",
+        "「求求您……快让护士把温热白单盖在美帆身上吧……再这样敞着看下去，美帆真的要羞晕过去了……」"
+      ]
+    },
+    "outpatient_lines": {
+      "complaint": "医生……我不太擅长说明自己的事情。今天身体不舒服的情况是：{line}",
+      "primary": "最明显的问题……应该是这个：{line}。我说得不够清楚的话，请您再问我。",
+      "secondary": "另外……还有一件事也请记下：{line}。对不起，我想了很久才决定说。",
+      "background": "我叫吉沢美帆。小时候被一位年长的画家先生收留，成年后一直在他家做女仆。平时几乎只在家里工作，也很少有机会和外人来往……独自来医院，多少有些紧张。"
+    }
+  },
+  "fallback": {
+    "case_id": "case_abdomen",
+    "surgery_id": "surgery_appendix"
+  },
+  "encounter": {
+    "title": "吉沢美帆的门诊检查",
+    "full_undress": {
+      "prompt": "「……基础查体要把衣服全部脱光？连胸罩和内裤也不能留着吗……？我会配合的，只是……能先告诉我要检查哪些部位吗？」（平时都是我服侍别人更衣，今天却要在医生面前把自己脱得一丝不挂……）",
+      "responses": {
+        "abandon_full_undress": "「这项全脱查体先不做……是吗？……我松了一口气。不过，如果确实关系到手术诊断，请不要因为我害羞就省略检查。」（暂时不用当众脱光内衣了，可病历上留着未完成项，总觉得自己给医生添了麻烦……）",
+        "authoritative_full_undress": "「是……既然是完整查体的规定，我明白了。请、请先把帘子拉好，我马上照做……」（医生用不容置疑的口气下达了命令，身为女仆的我习惯了服从指示，可亲手解开自己内衣扣的时候，指尖还是羞得直发抖。）她低垂着眼帘，顺从却颤抖地解开女仆围裙、深色长裙与贴身内衣裤，将最后一件贴身内裤也叠好放进托盘；赤裸的柔嫩身躯暴露在诊察灯下，她双腿并拢、耳根通红地承受完了全套视诊与触诊。",
+        "gentle_full_undress": "「谢谢您先温柔地说明原因……那我会按您说的慢慢脱下来。如果不小心太紧张，还请您再提醒我一下。」（医生的声音很温和，可要脱到一丝不挂的事实并没有改变。护士小姐也在旁边看着记录……脸烫得快要抬不起头了。）她轻咬着唇，依言逐件褪下女仆围裙、深色长裙与贴身内衣裤，双臂本能地护住裸露的胸口与小腹，又在你的轻声提示下乖巧放下，羞怯地配合完成了全裸基础查体。",
+        "threaten_full_undress": "「请、请不要说停诊那样的话……！我没有想违抗您……我现在就把衣服全部脱掉，求您继续为我诊治吧。」（被用拒绝治疗严厉警告了……明明怕得要命，现在也只能流着泪把自己剥得一干二净了。）她眼眶泛红地慌忙解开女仆围裙、深色长裙与贴身内衣裤，连贴身内衣也颤抖着褪下放进托盘，赤身裸体地站在诊察台前，羞耻又温顺地任由你完成了全部查体。"
+      },
+      "visual_pool_id": ""
+    }
+  },
+  "preop": {
+    "title": "吉沢美帆的术前准备",
+    "initial_anxiety": 3,
+    "initial_interaction": {
+      "fear": 40,
+      "pain": 0,
+      "dignity": 100,
+      "cooperation": 75
+    },
+    "stage_prompts": {
+      "ward_visit": "「坂口医生……今天真的要做手术了吗？我已经把家里的事情交代好了。能否请您再告诉我，接下来会怎样安排？」",
+      "graphic_preop_question": "「那个……我能再问得详细一些吗？一会儿上手术台以后，从摆姿势、消毒到真正切开，会先做哪一步……？我怕自己不敢开口。」",
+      "graphic_preop_dialogue": "美帆起初努力保持镇定，认真听取每一项术前说明。然而当听到要在病房脱下衣物接受灌肠与私密处备皮剃毛、随后赤身躺上冰冷的手术台被束缚带固定四肢、在无影灯下分开双腿插上导尿管并由手术刀直接切开皮肉时，她的呼吸明显乱了节奏。那些原本听起来像例行公事的医疗步骤，马上就要一寸寸落在她毫无遮掩的身体上；她不由自主地抓紧被角，眼底浮现出难以掩饰的羞耻与恐惧。",
+      "team": "坂口医生将担任吉沢美帆本次手术的主刀。请挑选与主刀配合的协助医生、器械护士与巡回护士。",
+      "preparation": "吉沢美帆正留在病房里等待术前处理。请指派一位病房准备护士（或由坂口医生亲手执行），完成灌肠、备皮等必要的身体准备，并可安排最多两项额外安抚照护。",
+      "prepared": "「准备已经完成了吗……？谢谢各位。明明什么都照着做了，我却还是一直在发抖……」",
+      "changing": "病房这边的准备已经就绪。你与手术团队前往更衣室换上无菌手术服，在感应水池前完成外科刷手与穿戴，随后推门步入手术室。",
+      "operating_room": "「……这里比我想象中还亮。大家都已经准备好了……那我，只要躺好就可以了吗？」",
+      "team_confirmations": "手术开始前，团队成员围绕手术台依次核对吉沢美帆的姓名、手术部位、拟行术式与各自职责。躺在冰冷台面上的美帆听着器械清点的声音，回答自己名字时嗓音微微发紧。",
+      "procedure_select": "核对吉沢美帆当前病例的诊断结果与术前评估，确认本次手术要执行的术式。",
+      "procedure_mismatch": "「……请等一下。刚才跟我说明的，好像不是这个手术……是我记错了吗？能否再确认一次？」",
+      "ready": "吉沢美帆已完成术前病房准备并躺在手术台上等待。请确认本次手术采用的麻醉方式与正式开始条件。",
+      "general_induction": "「我会闭上眼睛……醒来的时候，请您告诉我已经结束了。拜托了……」",
+      "surgery_start_general": "麻药经面罩与静脉迅速起效，吉沢美帆的眼帘缓缓合拢，彻底沉入全身麻醉的无意识睡眠中。监护仪波形平稳，坂口医生抬眼示意团队开始手术。",
+      "surgery_start_epidural": "「我还醒着……可是身体下面已经不太听使唤了。请您有动作时先叫我一声，好吗？」",
+      "surgery_start_local": "「局部麻醉……是。我会配合的。若是还有感觉，我可以直接告诉您吧……？」",
+      "surgery_start_none": "「……真的一点麻醉都没有。医生……我知道刚才已经说明过，可现在看到器械，我又开始害怕了……」",
+      "instrument_handoff": "坂口医生伸出手发出简短指令，器械护士立即将第一把闪着寒光的手术刀稳稳拍入主刀掌心。",
+      "assistant_ready": "协助医生双手就位，用无菌纱布在切口两侧维持恰当的皮肤张力，等待坂口医生落刀。",
+      "incision_ready": "无影灯聚焦在裸露的术野中央。锋利的手术刀尖停在吉沢美帆皮肤的紫色标记线上方，距离切开仅剩毫厘。",
+      "general_operation": "在全身麻醉的深沉睡眠中，吉沢美帆对刀锋的切开毫无知觉。坂口医生与团队默契配合，逐层分离组织、完成关键病灶处理，监护屏幕上跳动着平稳的生命体征。",
+      "operative_contact": "手术刀切入皮肉的瞬间，清醒的吉沢美帆浑身剧烈一颤，呼吸与身体反应骤然加剧。坂口医生需要决定如何应对她的即时反应。",
+      "ongoing_interaction": "器械在切口深处继续分离与牵拉。清醒的吉沢美帆承受着身体被打开的恐惧、牵扯与痛楚，呼吸急促地等待着坂口医生的下一步回应。",
+      "closure_interaction": "最核心的术中操作已经完成，手术进入止血与缝合收尾阶段。面对筋疲力尽、浑身被冷汗浸湿的吉沢美帆，坂口医生准备如何结束这次术中交流？",
+      "procedure_flow": "切口充分暴露后，手术团队进入当前术式最关键的解剖与操作阶段。",
+      "procedure_execute": "核心病变部位的处理已经顺利完成，术野止血彻底、确认无误。接下来可以关闭切口并完成缝合。",
+      "surgery_result": "最后一针缝合完毕并覆上无菌敷料，器械护士与巡回护士完成纱布及器械清点，吉沢美帆的手术顺利结束。"
+    },
+    "incision_responses": {
+      "incise_epidural": "「……已经开始了吗？没有想象中那种尖锐的痛，可是那股压力……我知道是在切开自己，心里还是发冷……」",
+      "incise_local": "「呜……！表面好像麻了，可里面刚才那一下……医生，我还能感觉到，请听我说……！」",
+      "incise_none": "「啊——！好疼……！对不起，求您停一下！真的好疼……我没办法安静地躺着了……！」"
+    }
+  },
+  "exclusive_cg_pools": {
+    "examination": [],
+    "ward_preparation": [
+      {
+        "id": "ward_skin_prep_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 剃毛",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_skin_prep",
+          "ward_skin_prep_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/ward_skin_prep.png"
+        ],
+        "caption": "吉沢美帆 · 剃毛"
+      },
+      {
+        "id": "ward_enema_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 灌肠",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_enema",
+          "ward_enema_unnecessary"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/ward_enema.png"
+        ],
+        "caption": "吉沢美帆 · 灌肠"
+      },
+      {
+        "id": "ward_surgical_cap_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 戴手术帽",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ward_surgical_cap"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/ward_surgical_cap.png"
+        ],
+        "caption": "吉沢美帆 · 戴手术帽"
+      },
+      {
+        "id": "stretcher_transfer_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 担架车",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "complete_manual_ward_preparation"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/stretcher_transfer.png"
+        ],
+        "caption": "吉沢美帆 · 担架车"
+      },
+      {
+        "id": "urinary_catheterization_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 导尿",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "urinary_catheterization"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/urinary_catheterization.png"
+        ],
+        "caption": "吉沢美帆 · 导尿"
+      },
+      {
+        "id": "operative_positioning_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 固定",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "operative_positioning"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/operative_positioning.png"
+        ],
+        "caption": "吉沢美帆 · 固定"
+      },
+      {
+        "id": "skin_disinfection_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 消毒",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "skin_disinfection"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/skin_disinfection.png"
+        ],
+        "caption": "吉沢美帆 · 消毒"
+      },
+      {
+        "id": "sterile_draping_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 铺巾",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "ack_disinfection"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/sterile_draping.png"
+        ],
+        "caption": "吉沢美帆 · 铺巾"
+      },
+      {
+        "id": "incision_ready_patient_yoshizawa_miho",
+        "label": "吉沢美帆 · 下刀前",
+        "priority": 100,
+        "presentation": "fullscreen",
+        "action_ids": [
+          "request_scalpel"
+        ],
+        "patient_ids": [
+          "patient_yoshizawa_miho"
+        ],
+        "paths": [
+          "assets/events/ward_preparation_v1/patient_yoshizawa_miho/incision_ready.png"
+        ],
+        "caption": "吉沢美帆 · 下刀前"
+      }
+    ],
+    "surgery": []
+  },
+  "diagnosis_reactions": [
+    {
+      "id": "diagnosis_yoshizawa_miho_breast",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "breast",
+      "tags": [
+        "fear",
+        "light_h",
+        "body_awareness",
+        "embarrassment"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「……要切开我的胸部？！」",
+        "美帆下意识地拢紧衣襟护住胸前，脸颊瞬间涨得通红。",
+        "「意思是要在手术室的无影灯下把上半身完全剥光，用手术刀直接切开乳房吗……？！」",
+        "「不仅要被所有人盯着胸口看，刀子割下去以后还会留下疤痕吧……」",
+        "她咬住发颤的嘴唇，手指死死揪紧了胸口的布料。\n「只要想到自己光着胸口躺在手术台上任人动刀的样子，心脏就快要跳出来了……」"
+      ]
+    },
+    {
+      "id": "diagnosis_yoshizawa_miho_abdominal",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "abdominal",
+      "tags": [
+        "fear",
+        "body_image",
+        "anxiety"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「腹部手术……要把我的肚皮切开吗？」",
+        "美帆低头按住自己平坦的小腹，指尖一阵发凉。",
+        "「平时隔着衣服摸起来只是软软的肚子，待会儿却要用锋利的刀片一层层划开皮肤和肌肉，把里面的内脏露出来……」",
+        "「而且切开之前还要把小腹和下面的毛发处理干净、在手术台上敞开肚皮消毒吧……」",
+        "她深吸一口气，声音有些发虚。\n「光是在脑海里想一下肚皮被拉钩撑开的画面，腿就已经开始发软了……」"
+      ]
+    },
+    {
+      "id": "diagnosis_yoshizawa_miho_gynecology",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "gynecology_pelvic",
+      "tags": [
+        "embarrassment",
+        "light_h",
+        "body_privacy",
+        "fear"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "美帆整个人僵在原地，红晕从脸颊一路蔓延到了耳根与脖颈。",
+        "「妇、妇科和盆腔部位的手术……？！那不就是要让我脱光下面、把双腿分开架在那种腿架上吗？！」",
+        "「平时连自己洗澡时都不好意思多看的地方，居然要在明亮的无影灯下完全敞开给医生和护士看……」",
+        "「还要先剃掉那里的毛发、插进导尿管，再把冰冷的器械伸进身体最深处……」",
+        "她羞耻得几乎抬不起头来。\n「呜……就算知道是为了治病，要把女孩子最私密的地方那样摆在手术台上，也实在太残忍了……」"
+      ]
+    },
+    {
+      "id": "diagnosis_yoshizawa_miho_thoracic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "thoracic_cardiac",
+      "tags": [
+        "fear",
+        "forced_composure"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「胸腔手术……？！那不是紧贴着心脏和大血管的位置吗？！」",
+        "美帆倒吸一口凉气，脸色肉眼可见地苍白了几分。",
+        "「要把整个上身赤裸着固定在手术台上，沿着胸口切开，甚至连肋骨和胸腔深处都要打开……」",
+        "「躺在台子上的时候，我连自己还能不能活着醒过来都完全交在医生手里了。」",
+        "她勉强稳住发抖的呼吸，抬眼看向你。\n「医生……既然非开刀不可，请一定让我平安下手术台。」"
+      ]
+    },
+    {
+      "id": "diagnosis_yoshizawa_miho_generic",
+      "event_type": "first_surgery_diagnosis_shock",
+      "site_group": "generic",
+      "tags": [
+        "fear",
+        "first_surgery_realization"
+      ],
+      "weight": 1.0,
+      "lines": [
+        "「真的……必须做手术切开身体吗？」",
+        "美帆低头看着自己的双手，呼吸渐渐变得急促。",
+        "「平时作为女仆总是习惯自己掌控局面，可一旦换上病号服躺上手术台，就只能赤条条地任人摆布了……」",
+        "「剃毛、插尿管、被束缚带绑住手脚，最后看着手术刀落在自己皮肤上……」",
+        "她攥紧衣角，深吸了一口气。\n「……我明白了。虽然害怕得要命，但我会配合您完成手术的。」"
+      ]
+    }
+  ]
+}

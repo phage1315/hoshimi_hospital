@@ -68,7 +68,8 @@ func run() -> void:
 	expect(game.special_event_available(lv1), "Kaori Lv1 did not unlock after her introduction")
 	var lv1_nodes := {}
 	expect(complete_special_event(game, lv1.id, lv1_nodes), "Kaori Lv1 did not traverse to completion")
-	expect(lv1_nodes.has("palpation_placeholder") and lv1_nodes.has("negative") and lv1_nodes.has("rank"), "Kaori Lv1 missed the one-click palpation placeholder or its operative outcome")
+	expect(lv1_nodes.has("klv1_062") and lv1_nodes.has("klv1_196") and lv1_nodes.has("klv1_233") and lv1_nodes.has("klv1_308"), "Kaori Lv1 missed key V2.3 safety-pin, disinfection CG, or negative laparotomy beats")
+	expect(not game.story_flag("or_table_palpation_unlocked"), "Kaori Lv1 should no longer gate or set legacy or_table_palpation_unlocked")
 	expect(game.relationship_level("doc_rei") == 1, "Kaori Lv1 did not raise her relationship to Lv1")
 	expect(game.procedure_unlocked("surgery_exploratory_laparotomy"), "Kaori Lv1 did not unlock exploratory laparotomy")
 	for flag in ["miyama_01_safety_pin_completed", "safety_pin_patient_safe", "miyama_negative_exploration_memory"]:
@@ -84,7 +85,8 @@ func run() -> void:
 	expect(game.special_event_available(lv2), "Kaori Lv2 did not honor the formal Lv1/Lv2 prerequisites")
 	var lv2_nodes := {}
 	expect(complete_special_event(game, lv2.id, lv2_nodes), "Kaori Lv2 did not traverse its complete script")
-	expect(lv2_nodes.has("lv1_callback") and lv2_nodes.has("s34_001") and lv2_nodes.has("lv2_asuka_private"), "Kaori Lv2 missed the new Lv1 callback or private Asuka epilogue")
+	expect(lv2_nodes.size() == 563 and lv2_nodes.has("s01_014") and lv2_nodes.has("s01_023") and lv2_nodes.has("s24_006") and lv2_nodes.has("s25b_003") and lv2_nodes.has("s25b_014") and lv2_nodes.has("s25b_020") and lv2_nodes.has("s32_016") and lv2_nodes.has("s34_001"), "Kaori Lv2 V9.1 missed Scene 01 Kita callback, Scene 25B private Asuka talk, or Scene 32 OR God foreshadowing")
+	expect(not lv2_nodes.has("lv1_callback") and not lv2_nodes.has("lv2_asuka_private") and not lv2_nodes.has("lv2_doctor"), "Kaori Lv2 still contained obsolete synthetic bridge nodes")
 	expect(game.relationship_level("doc_rei") == 2, "Kaori Lv2 did not raise her relationship to Lv2")
 
 	game.meet_staff("nurse_moe")

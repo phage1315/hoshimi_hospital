@@ -106,14 +106,18 @@ func date_blocked(target: int) -> bool:
 
 func schedule() -> Dictionary:
 	if dev: return {"intake_day": day(), "operation_day": day() + 1, "review_day": day() + 2}
-	if not game.is_routine_workday(day()) or game.current_absolute_clock() > 960 or date_blocked(day()): return {}
-	# Stop rather than skipping a protected story window in the three-day episode.
-	var dates: Array = [day()]
-	for candidate in range(day() + 1, mini(game.FINAL_WEEK_START_DAY, day() + 15)):
-		if date_blocked(candidate): return {}
-		if game.is_routine_workday(candidate): dates.append(candidate)
-		if dates.size() == 3: return {"intake_day": dates[0], "operation_day": dates[1], "review_day": dates[2]}
-	return {}
+	return continuous_schedule()
+
+func continuous_schedule() -> Dictionary:
+	var intake := day()
+	if str(game.calendar_date(intake).weekday_id) not in ["mon", "tue", "wed", "thu"]: return {}
+	if not game.is_routine_workday(intake) or game.current_absolute_clock() > 960: return {}
+	if not game.is_routine_workday(intake + 1): return {}
+	# Saturday permits review. Never stretch the episode across closed days.
+	if game.is_hospital_closed_day(intake + 2): return {}
+	for target in range(intake, intake + 3):
+		if date_blocked(target): return {}
+	return {"intake_day": intake, "operation_day": intake + 1, "review_day": intake + 2}
 
 func candidates(role: String, operation_day: int) -> Array:
 	var result: Array = []
@@ -229,7 +233,8 @@ func finish_operation() -> bool:
 	last_summary = {"hp": session.hp, "precision_failures": session.precision_failures, "rescue_attempts": session.rescue_attempts, "crises": session.crisis_count}
 	if dev: demo_day = int(a.review_day)
 	else:
-		game.advance_story_to_day(int(a.operation_day) + 1, game.SHIFT_START_MINUTE)
+		# Preserve the booked review date, including older nonconsecutive bookings.
+		game.advance_story_to_day(int(a.review_day), game.SHIFT_START_MINUTE)
 		game.advanced_runtime = null
 		game.active_mode = "encounter"
 	session = null

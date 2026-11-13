@@ -132,7 +132,8 @@ static func render(app: Control, prep: RefCounted) -> void:
 			add_operative_field_hud(app, prep)
 		else:
 			add_operative_field_overlay(app, prep)
-	var map_action: Callable = app.finish_aborted_surgery_and_return if prep.surgery_aborted else app.finish_surgery_and_return if prep.surgery_success else app.show_map
+	var story_retry_on_abort: bool = prep.surgery_aborted and preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(prep)
+	var map_action: Callable = app.retry_shiori_lv3_yuko_surgery if story_retry_on_abort else app.finish_aborted_surgery_and_return if prep.surgery_aborted else app.finish_surgery_and_return if prep.surgery_success else app.show_map
 	var map_button: Button = app.button_at(app.tx("ui.auto.53c4c7fe6bb3", "← 医院导览"), Vector2(1040, 88), Vector2(180, 44), map_action)
 	if prep.surgery_committed() or prep.graphic_preop_dialogue_locked():
 		map_button.disabled = true
@@ -153,7 +154,8 @@ static func render(app: Control, prep: RefCounted) -> void:
 		art.anxiety = prep.anxiety
 		art.changed = prep.flags.has("changed")
 		app.page.add_child(art)
-	var show_staff_portrait: bool = not speaking_staff.is_empty() and (not operative_scene or (stage.kind == "surgery_flow" and (prep.awaiting_flow_acknowledgement or prep.awaiting_patient_acknowledgement or not prep.active_crisis.is_empty())))
+	var postop_cleanup_staff: bool = bool(stage.get("postop_cleanup", false)) or (str(stage.get("id", "")) == "procedure_execute" and prep.flags.has("postop_bare_cleanup_done"))
+	var show_staff_portrait: bool = not speaking_staff.is_empty() and (not operative_scene or postop_cleanup_staff or (stage.kind == "surgery_flow" and (prep.awaiting_flow_acknowledgement or prep.awaiting_patient_acknowledgement or not prep.active_crisis.is_empty())))
 	var show_intraoperative_patient: bool = operative_scene and speaking_staff.is_empty() and (stage.kind != "surgery_flow" or prep.awaiting_patient_choice or prep.awaiting_patient_acknowledgement)
 	if show_staff_portrait:
 		if art != null:
@@ -393,7 +395,10 @@ static func render(app: Control, prep: RefCounted) -> void:
 			app.label_at(str(stage.prompt), Vector2(65, 265), 21, Color("e1e4db"), 650)
 			var abort_summary: String = app.tx("ui.crisis.abort_summary", "本次术式不计完成次数，不获得手术经验或解锁进度。患者存活并转入后续稳定与观察。")
 			app.label_at(abort_summary, Vector2(65, 355), 19, Color("c2d2cc"), 650)
-			app.button_at(app.tx("ui.crisis.abort_return", "结束本次手术并返回医院  →"), Vector2(60, 455), Vector2(655, 54), app.finish_aborted_surgery_and_return).name = "SurgeryAbortReturn"
+			if preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(prep):
+				app.button_at(app.tx("ui.crisis.story_retry", "重新进行本台手术  →"), Vector2(60, 455), Vector2(655, 54), app.retry_shiori_lv3_yuko_surgery).name = "SurgeryAbortReturn"
+			else:
+				app.button_at(app.tx("ui.crisis.abort_return", "结束本次手术并返回医院  →"), Vector2(60, 455), Vector2(655, 54), app.finish_aborted_surgery_and_return).name = "SurgeryAbortReturn"
 			action_y = 900
 		_:
 			if prep.flags.has("patient_prepared") and stage.scene == "ward":
@@ -760,7 +765,7 @@ static func operating_table_outfit(prep: RefCounted, patient: Dictionary, expres
 	# CGs. Missing expressions deliberately fall back to the existing supine set
 	# so patient bundles can be upgraded one complete set at a time.
 	var positioning: Dictionary = prep.current_surgery().get("positioning", {})
-	if str(positioning.get("primary_position", "supine")) == "lithotomy":
+	if str(positioning.get("primary_position", "supine")) == "lithotomy" or prep.flags.has("unnecessary_lithotomy_positioned"):
 		var lithotomy_outfit := "operating_table_lithotomy"
 		var portraits: Dictionary = patient.get("visuals", {}).get("portraits", {})
 		if portraits.has(lithotomy_outfit + "/" + expression):
@@ -768,8 +773,12 @@ static func operating_table_outfit(prep: RefCounted, patient: Dictionary, expres
 	return "operating_table"
 
 static func intraoperative_patient_expression(prep: RefCounted) -> String:
+	if preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(prep):
+		return preload("res://godot/systems/shiori_lv3.gd").intraoperative_expression(prep)
 	if prep.flags.has("anesthetized"):
 		return "anesthetized"
+	if bool(prep.current().get("postop_cleanup", false)):
+		return "near_collapse"
 	if prep.flags.has("no_anesthesia_confirmed") or prep.anesthesia == "未麻醉": # localization-invariant: authored state ID
 		var flow: Array = prep.surgery_flow_steps()
 		var collapse_from_step := maxi(1, flow.size() - 2)
@@ -844,22 +853,52 @@ static func role_skill_description(app: Control, person: Dictionary, role: Dicti
 		return app.tx("ui.team.skill_trained", "　熟练")
 	return app.tx("ui.team.skill_experienced", "　经验丰富")
 
+static func staff_chibi_icon_path(person: Dictionary) -> String:
+	var staff_id := str(person.get("id", ""))
+	if staff_id.is_empty():
+		return ""
+	var portraits: Dictionary = person.get("visuals", {}).get("portraits", {})
+	if portraits.has("chibi_icon/neutral"):
+		var registered_path := "res://" + str(portraits["chibi_icon/neutral"]).trim_prefix("res://")
+		if ResourceLoader.exists(registered_path):
+			return registered_path
+	var default_path := "res://assets/characters/chibi_icons_v1/%s.png" % staff_id
+	if ResourceLoader.exists(default_path):
+		return default_path
+	return ""
+
+static func staff_chibi_small_icon_path(person: Dictionary) -> String:
+	var staff_id := str(person.get("id", ""))
+	if staff_id.is_empty():
+		return ""
+	var small_path := "res://assets/characters/chibi_icons_v1/%s_small.png" % staff_id
+	if ResourceLoader.exists(small_path):
+		return small_path
+	return staff_chibi_icon_path(person)
+
 static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int) -> void:
-	app.label_at(role.label, Vector2(65, y + 10), 20, Color("e8cfaa"), 190)
+	app.label_at(role.label, Vector2(65, y + 10), 20, Color("e8cfaa"), 175)
 	var picker := OptionButton.new()
 	picker.name = "Role_" + role.id
-	picker.position = Vector2(250, y)
-	picker.size = Vector2(464, 50)
+	picker.position = Vector2(308, y)
+	picker.size = Vector2(412, 50)
 	picker.add_item(app.tx("ui.auto.3d372174482a", "请选择（尚未指派）"))
 	var people: Array = prep.candidates(role.id)
 	var selected_index := 0
+	var selected_person: Dictionary = {}
 	for i in range(people.size()):
 		var person: Dictionary = people[i]
 		var description := role_skill_description(app, person, role)
 		picker.add_item("%s · %s %d%s" % [prep.staff_display_name(person.name), person.specialty, int(person.skills[role.skill]), description])
+		var small_icon_path := staff_chibi_small_icon_path(person)
+		if not small_icon_path.is_empty():
+			var small_tex := load(small_icon_path) as Texture2D
+			if small_tex != null:
+				picker.set_item_icon(i + 1, small_tex)
 		var selected: bool = prep.team.get(role.id) == person.id
 		if selected:
 			selected_index = i + 1
+			selected_person = person
 		elif prep.team.values().has(person.id):
 			picker.set_item_disabled(i + 1, true)
 	# Keep the placeholder enabled while the list is populated. If it is disabled
@@ -867,8 +906,40 @@ static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int
 	# member for the first assignment then emits no selection change and skips the
 	# role-CG unlock path. Once a real assignment exists, disable the placeholder.
 	picker.select(selected_index)
+	# Keep the 38x38 icons inside the PopupMenu list while letting the dedicated
+	# 56x56 avatar frame on the left represent the currently selected staff member.
+	picker.icon = null
 	if selected_index > 0:
 		picker.set_item_disabled(0, true)
+	var avatar_slot := Panel.new()
+	avatar_slot.name = "RoleAvatarSlot_" + str(role.id)
+	avatar_slot.position = Vector2(244, y - 3)
+	avatar_slot.size = Vector2(56, 56)
+	var slot_border_color := Color("e8cfaa") if not selected_person.is_empty() else Color("5f7e82")
+	avatar_slot.add_theme_stylebox_override("panel", app.panel_style(Color("162b32"), slot_border_color))
+	app.page.add_child(avatar_slot)
+	var avatar_path := staff_chibi_icon_path(selected_person)
+	if not avatar_path.is_empty():
+		var avatar_rect := TextureRect.new()
+		avatar_rect.name = "RoleAvatar_" + str(role.id)
+		avatar_rect.texture = load(avatar_path) as Texture2D
+		avatar_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		avatar_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		avatar_rect.position = Vector2(2, 2)
+		avatar_rect.size = Vector2(52, 52)
+		avatar_rect.tooltip_text = prep.staff_display_name(str(selected_person.get("name", "")))
+		avatar_slot.add_child(avatar_rect)
+	else:
+		var placeholder := Label.new()
+		placeholder.name = "RoleAvatarPlaceholder_" + str(role.id)
+		placeholder.text = "？" if selected_person.is_empty() else str(selected_person.get("name", "")).left(1)
+		placeholder.position = Vector2(0, 0)
+		placeholder.size = Vector2(56, 56)
+		placeholder.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		placeholder.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		placeholder.add_theme_font_size_override("font_size", 22)
+		placeholder.add_theme_color_override("font_color", Color("7a989b") if selected_person.is_empty() else Color("e8cfaa"))
+		avatar_slot.add_child(placeholder)
 	picker.item_selected.connect(func(index: int):
 		if index > 0:
 			app.preop_event({"kind": "assign", "role": role.id, "staff_id": people[index - 1].id}))

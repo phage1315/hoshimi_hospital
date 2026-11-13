@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjJEb3dmpouTnDaoWkkwe",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjJEbp3oMjDGwh6oi7UK2IU8iyBtp0I6",
+      "expires_at": 1794474605,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"待って、もう一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Firm, composed intraoperative intervention from a first assistant stopping an unsafe step, subtle surgical-mask muffling, urgent yet controlled, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"待って、もう一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Firm, composed intraoperative intervention from a first assistant stopping an unsafe step, subtle surgical-mask muffling, urgent yet controlled, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "待って",
+    "event_id": "event_EjJEcwMPoxQVXyq8zCPac"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、もう",
+    "event_id": "event_EjJEcUmdUVhYCi6ckpHCv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "一",
+    "event_id": "event_EjJEc1bVjfMDWJGXqaqhn"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjJEcUi3hyQVJR0d5pgEo",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "度確認",
+    "event_id": "event_EjJEdbK7wcmgRA5eBVtKH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "しま",
+    "event_id": "event_EjJEduXart0YUs1qP1KKh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "しょう",
+    "event_id": "event_EjJEdLZ6mhTZDQPqm01Yx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjJEeBTJ3WLPftQOqrOfk"
+  },
+  {
+    "event_id": "event_EjJElidch77VnVPl2YK5I",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjJEbp3oMjDGwh6oi7UK2IU8iyBtp0I6",
+      "expires_at": 1794474605,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"待って、もう一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Firm, composed intraoperative intervention from a first assistant stopping an unsafe step, subtle surgical-mask muffling, urgent yet controlled, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"待って、もう一度確認しましょう。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Firm, composed intraoperative intervention from a first assistant stopping an unsafe step, subtle surgical-mask muffling, urgent yet controlled, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

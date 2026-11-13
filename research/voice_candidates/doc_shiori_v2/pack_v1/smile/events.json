@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYHrCj4nnhPzAxNjY3Nv",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYHqp3oMHF1f1aRomH9XSof4qf2Zj60",
+      "expires_at": 1794532467,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、今日は息が合っていますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Refined, warm smile with subtle playful pride. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、今日は息が合っていますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Refined, warm smile with subtle playful pride. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふふ",
+    "event_id": "event_EjYHsSPYUd0aodkkLL8Cg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、今日は",
+    "event_id": "event_EjYHsdLmdQJvYI5HQ33r2"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYHtNymJzNNdgjNIsRxy",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "息",
+    "event_id": "event_EjYHtnqjPD5bnqfNWZl2h"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "が",
+    "event_id": "event_EjYHtJSsEnPSkNyGxL702"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "合",
+    "event_id": "event_EjYHuKmOKWpVqoMx5ExCN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "っています",
+    "event_id": "event_EjYHupKaUwAuchE82zh6S"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "ね",
+    "event_id": "event_EjYHuacfeqeRd6LwXT7o8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYHu9PvLorIHTeofi98R"
+  },
+  {
+    "event_id": "event_EjYHzXa0WzMS4XxTR9LUy",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYHqp3oMHF1f1aRomH9XSof4qf2Zj60",
+      "expires_at": 1794532467,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、今日は息が合っていますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Refined, warm smile with subtle playful pride. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、今日は息が合っていますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Refined, warm smile with subtle playful pride. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

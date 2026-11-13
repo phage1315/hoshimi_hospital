@@ -1,0 +1,103 @@
+[
+  {
+    "event_id": "event_EjYZXnfbTGrsivVE3R1om",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYZWp3oMGLqbHd4TjdYrzdVfQrZINRP",
+      "expires_at": 1794533562,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Warm, caring after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Warm, caring after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYZYu8mLOse2dp1DE0zF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYZYOdYpT61e2hj74fFD"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "です",
+    "event_id": "event_EjYZY0XoBoCWanqQQm7en"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYZYnPs5k0XSdm5jnqaa",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "、",
+    "event_id": "event_EjYZYDu3nEwF0zT4eHKYP"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "坂",
+    "event_id": "event_EjYZZ5goSwj9f5j4uET2j"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "口",
+    "event_id": "event_EjYZZZX5DoiM6IgSSsSKs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "先生",
+    "event_id": "event_EjYZZRcx8ccuJH8opEW3B"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "。",
+    "event_id": "event_EjYZZigj8raYIqCmhs409"
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYZqbZ8xf8WQOXVqzo3A",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYZpp3oMTBhYO7KcCydB2KaZ3JmCAn9",
+      "expires_at": 1794533581,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"飲み合わせが少し気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Careful, attentive concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"飲み合わせが少し気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Careful, attentive concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "飲み",
+    "event_id": "event_EjYZrS1g5CZ5RLzdf8W2F"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "合わせ",
+    "event_id": "event_EjYZrhlVNrhSHY1b7uZYG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "が",
+    "event_id": "event_EjYZrsdVdBLBdDUHrJ0et"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYZrpRi6sZu1693UbLeo",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "少",
+    "event_id": "event_EjYZscsxwIjdz0BH8LhzH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "し",
+    "event_id": "event_EjYZsUKMs4N6f1uAxjyZM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "気になります",
+    "event_id": "event_EjYZsPEWGZTdqfXER5zNX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "ね",
+    "event_id": "event_EjYZtZiDy4NXHVaE0hVru"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "。",
+    "event_id": "event_EjYZt8eqGaPEgbv9gsEqH"
+  },
+  {
+    "event_id": "event_EjYZysryUqxhNlFCVEB7h",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYZpp3oMTBhYO7KcCydB2KaZ3JmCAn9",
+      "expires_at": 1794533581,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"飲み合わせが少し気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Careful, attentive concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"飲み合わせが少し気になりますね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Careful, attentive concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

@@ -4,6 +4,14 @@ extends SceneTree
 const ID := "narumi_ren_shared_lv3_settled_accounts"
 const ACTORS := ["doc_aoi", "nurse_haru"]
 const NODE_COUNT := 478
+const CG_PATH := "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_strategy_alliance.png"
+const CG_NODE_IDS := ["nr3_387", "nr3_388", "nr3_389", "nr3_390", "nr3_391", "nr3_392"]
+const OR_CG_PATH := "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_yayoi_awake_or.png"
+const OR_CG_NODE_IDS := ["nr3_184", "nr3_185", "nr3_186", "nr3_187", "nr3_188", "nr3_189"]
+const PELVIC_CG_PATH := "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_yayoi_pelvic_field.png"
+const PELVIC_CG_NODE_IDS := ["nr3_192", "nr3_193", "nr3_194", "nr3_195", "nr3_196", "nr3_197", "nr3_198", "nr3_199", "nr3_200", "nr3_201", "nr3_202", "nr3_203", "nr3_204", "nr3_205", "nr3_206", "nr3_207", "nr3_208"]
+const PRESERVATION_CG_PATH := "assets/events/character_events/narumi_ren/narumi_ren_shared_lv3_yayoi_ovary_preserved.png"
+const PRESERVATION_CG_NODE_IDS := ["nr3_209", "nr3_210", "nr3_211", "nr3_212", "nr3_213", "nr3_214", "nr3_215", "nr3_216", "nr3_217"]
 var app
 var checks := 0
 var failures := 0
@@ -92,7 +100,28 @@ func test_route(locale: String, branch_mask: int, coverage: Dictionary, render_a
 			var background = app.page.get_node_or_null("SceneBackground")
 			expect(background != null and background.texture != null, "Background loaded " + node_id)
 			var portraits: Array[Node] = app.page.find_children("EventPortrait_*", "TextureRect", true, false)
-			if bool(node.hide_portrait):
+			var cg := app.page.get_node_or_null("CharacterEventCG") as TextureRect
+			if node_id in CG_NODE_IDS:
+				expect(cg != null and cg.texture != null and cg.texture.resource_path == "res://" + CG_PATH, "Approved strategy CG loaded " + node_id)
+				expect(cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_COVERED, "Approved strategy CG uses cover fit " + node_id)
+				expect(portraits.is_empty(), "Approved strategy CG suppresses portrait overlays " + node_id)
+			elif node_id in OR_CG_NODE_IDS:
+				expect(cg != null and cg.texture != null and cg.texture.resource_path == "res://" + OR_CG_PATH, "Approved awake OR CG loaded " + node_id)
+				expect(cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_COVERED, "Approved awake OR CG uses cover fit " + node_id)
+				expect(portraits.is_empty(), "Approved awake OR CG suppresses portrait overlays " + node_id)
+			elif node_id in PELVIC_CG_NODE_IDS:
+				expect(cg != null and cg.texture != null and cg.texture.resource_path == "res://" + PELVIC_CG_PATH, "Supplied pelvic-field CG loaded " + node_id)
+				expect(cg != null and cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_CENTERED, "Supplied pelvic-field CG preserves the full frame " + node_id)
+				expect(portraits.is_empty(), "Supplied pelvic-field CG suppresses portrait overlays " + node_id)
+			elif node_id in PRESERVATION_CG_NODE_IDS:
+				expect(cg != null and cg.texture != null and cg.texture.resource_path == "res://" + PRESERVATION_CG_PATH, "Approved ovary-preservation CG loaded " + node_id)
+				expect(cg.stretch_mode == TextureRect.STRETCH_KEEP_ASPECT_COVERED, "Approved ovary-preservation CG uses cover fit " + node_id)
+				expect(portraits.is_empty(), "Approved ovary-preservation CG suppresses portrait overlays " + node_id)
+			else:
+				expect(cg == null, "Authored CG does not leak before or after its window " + node_id)
+			if node_id in CG_NODE_IDS or node_id in OR_CG_NODE_IDS or node_id in PELVIC_CG_NODE_IDS or node_id in PRESERVATION_CG_NODE_IDS:
+				pass
+			elif bool(node.hide_portrait):
 				expect(portraits.is_empty(), "Narrator has no borrowed portrait " + node_id)
 			else:
 				var expected_portraits: Array = node.get("event_portraits", [])
@@ -144,6 +173,11 @@ func run() -> void:
 		app.configure_game_content()
 		var definition: Dictionary = app.game.character_event_definitions.get(ID, {})
 		expect(not definition.is_empty() and definition.nodes.size() == NODE_COUNT, "Registered 478-page event " + locale)
+		expect(str(definition.get("gallery", {}).get("path", "")) == CG_PATH and bool(definition.get("gallery", {}).get("show_on_complete", false)), "Approved Lv3 strategy CG registered in gallery " + locale)
+		expect(ResourceLoader.exists("res://" + CG_PATH), "Approved Lv3 strategy CG resource exists " + locale)
+		expect(ResourceLoader.exists("res://" + OR_CG_PATH), "Approved Lv3 awake OR CG resource exists " + locale)
+		expect(ResourceLoader.exists("res://" + PELVIC_CG_PATH), "Supplied Lv3 pelvic-field CG resource exists " + locale)
+		expect(ResourceLoader.exists("res://" + PRESERVATION_CG_PATH), "Approved Lv3 ovary-preservation CG resource exists " + locale)
 		if locale == "zh_CN":
 			test_atomic_settlement(definition)
 			test_gate(definition)

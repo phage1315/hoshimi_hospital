@@ -14,6 +14,20 @@ TRANSLATIONS = ROOT / "research/translations/narumi_ren_shared_lv2_en.json"
 LOCALIZATION = ROOT / "data/localization/en.json"
 EVENT_ID = "narumi_ren_shared_lv2_sign_here"
 PREFIX = "nr2"
+ENDING_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mutual_resolve.png"
+RESTRAINT_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mika_table_restraint.png"
+PREOP_DRAPING_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mika_preop_draping.png"
+SCALPEL_CONTACT_CG_PATH = "assets/events/character_events/narumi_ren/narumi_ren_shared_lv2_mika_scalpel_contact.png"
+ENDING_CG_NODE_IDS = {f"nr2_{number:03d}" for number in range(287, 295)}
+RESTRAINT_CG_NODE_IDS = {f"nr2_{number:03d}" for number in range(130, 133)}
+PREOP_DRAPING_CG_NODE_IDS = {f"nr2_{number:03d}" for number in range(133, 143)}
+SCALPEL_CONTACT_CG_NODE_IDS = {f"nr2_{number:03d}" for number in range(146, 150)}
+CG_WINDOWS = {
+    RESTRAINT_CG_PATH: RESTRAINT_CG_NODE_IDS,
+    PREOP_DRAPING_CG_PATH: PREOP_DRAPING_CG_NODE_IDS,
+    SCALPEL_CONTACT_CG_PATH: SCALPEL_CONTACT_CG_NODE_IDS,
+    ENDING_CG_PATH: ENDING_CG_NODE_IDS,
+}
 
 SPEAKERS = {
     "前台接待员": ("receptionist", "Receptionist"),
@@ -243,6 +257,18 @@ def parse_beats(source: Path = SOURCE) -> list[dict]:
 
     if awaiting_merge or last["A"] is not None or last["B"] is not None:
         raise ValueError("Unclosed branch")
+    available_node_ids = {str(node["id"]) for node in nodes}
+    all_cg_node_ids = set().union(*CG_WINDOWS.values())
+    if not all_cg_node_ids.issubset(available_node_ids):
+        raise ValueError(f"CG window drifted from source beats: {sorted(all_cg_node_ids - available_node_ids)}")
+    for node in nodes:
+        for cg_path, node_ids in CG_WINDOWS.items():
+            if str(node["id"]) in node_ids:
+                node["cg_path"] = cg_path
+                node["cg_fit"] = "cover"
+                # Full-screen CG rendering returns before the portrait branch.
+                node["hide_portrait"] = False
+                break
     if sum(1 for node in nodes if len(node["choices"]) == 2) != 2:
         raise ValueError("Expected exactly two authored choices")
     nodes[-1]["choices"] = [{"id": "finish_" + nodes[-1]["id"], "label": "结束", "next": "@end",
@@ -261,7 +287,7 @@ def main() -> None:
         "category": "rank_up", "target_level": 2, "benefit_id": "", "cinematic": True,
         "locks_saving": True, "hide_calendar_header": True, "hide_completion_portrait": True,
         "completion_day_offset": 1, "completion_absolute_clock": 540,
-        "gallery": {"cg_id": EVENT_ID, "caption": "请在这里签字", "path": "", "show_on_complete": False},
+        "gallery": {"cg_id": EVENT_ID, "caption": "请在这里签字", "path": ENDING_CG_PATH, "show_on_complete": True},
         "conditions": {"min_day": 1, "min_affection": 0, "min_familiarity": 25,
                        "required_events": ["narumi_lv1_beyond_the_resume", "ren_lv1_night_ward_1"],
                        "days_after_required_events": 3, "special_requirements": []},

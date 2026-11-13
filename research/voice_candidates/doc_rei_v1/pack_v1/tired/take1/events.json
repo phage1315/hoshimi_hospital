@@ -1,0 +1,173 @@
+[
+  {
+    "event_id": "event_EjYEwP8GDTRMzHin6PeHZ",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYEvp3oMTPvz0ADl1qNLFxJuesfVxmP",
+      "expires_at": 1794532285,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、さすがに少し疲れましたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Quiet, composed exhale after long duty. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、さすがに少し疲れましたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Quiet, composed exhale after long duty. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふう",
+    "event_id": "event_EjYEwzvM1MECyYCSZnN9C"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、",
+    "event_id": "event_EjYExA10cTyNKeXrXTMUV"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "さ",
+    "event_id": "event_EjYEx1xhzpsViOkFDvzWE"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYExCSdIkJ4E2qEQN8sY",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "す",
+    "event_id": "event_EjYExNOrba926YWDIIzUE"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "がに",
+    "event_id": "event_EjYEyADUeUCosXhFPiTWp"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "少",
+    "event_id": "event_EjYEyv1ObpXyjUN71mHDA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "し",
+    "event_id": "event_EjYEycsoOyU2RS7BLi3GK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "疲",
+    "event_id": "event_EjYEyMGhO3n4UXuKVmgDd"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "れ",
+    "event_id": "event_EjYEyxmeHb05COGjxRFSM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "ました",
+    "event_id": "event_EjYEz7o75V5k1RAtKHxdA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "ね",
+    "event_id": "event_EjYEzvR5rceJKyDBQrtkH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "。",
+    "event_id": "event_EjYEzPJorRak1HdJfGXMJ"
+  },
+  {
+    "event_id": "event_EjYF4WV1pcNJ6aXWVE3E2",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYEvp3oMTPvz0ADl1qNLFxJuesfVxmP",
+      "expires_at": 1794532285,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Crisp, bright, athletic mid-high register with youthful sharpness and refreshing directness — clearly a driven young woman in her early twenties rather than a deep older voice. Decisive, brisk, no-nonsense articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、さすがに少し疲れましたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Quiet, composed exhale after long duty. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe3ab56881918658ffb98e70df05"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、さすがに少し疲れましたね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, brisk, decisive young female surgeon — Quiet, composed exhale after long duty. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

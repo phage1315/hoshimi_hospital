@@ -1,5 +1,56 @@
 # Bug Backlog
 
+## 2026-11-11 槽位4：白日梦后顶栏周一00:20、门诊称周日（已审计，异常触发未复现）
+
+- 用户截图顶栏DAY231 / 2025-11-17周一00:20，门诊正文称周日休诊；补充“好像是白日梦事件以后时钟就出现异常”。附件 `clinic_slot_4.json` 实际为v37、elapsed109920、DAY230 / 2025-11-16周日09:00，槽位元数据一致。只读恢复后 `display_schedule()` 与业务日历均为周日09:00，pending departure为空，无活动剧情。11-17本身为普通工作日，不是节假日或人为设定的休诊日。
+- 当前源码白日梦使用独立内存Session，不调用GameState耗时／日历结算；退出仅保留事件级已阅ID。日历顶栏允许演出时钟跨午夜显示下一自然日，而门诊规则使用已结算日历；这是需要继续追踪的显示差异路径，但**尚未找到此次截图的实际污染来源**。没有凭推测清空加班上下文或改动门诊日历，也没有把测试通过记为修复完成。存档有意不保存演出内部状态，无法单靠此文件倒推截图时的临时场景时间。
+- 新增 `tools/daydream_calendar_regression_test.gd`：通过实际SaveStore只读加载附件；中英正式入口分别完整播放弘子／御堂50节点、千早46节点，以及各自在第一节点后退出；逐步验证顶栏、显示时钟、pending departure、返回办公室／门诊、持久事实（只允许已阅ID变化）。该档瑞穗白日梦未解锁，明确跳过，不强设前置或声称已播放。最后正常结束周日活动，核实DAY231周一09:00恢复候诊患者。
+- 执行：`Godot --headless --path . --log-file /private/tmp/daydream_calendar_slot4_20261111.log --script res://tools/daydream_calendar_regression_test.gd -- /Users/ningye/Downloads/clinic_slot_4.json`，**682项0失败，退出0**，输出 `/private/tmp/daydream_calendar_slot4_20261111.txt`。仅隔离临时偏好路径和内存状态，无真实玩家槽位读写；源SHA256前后均为 `de921a2e41b6eae75139091abc1b36dfa63eccb431936c62d64ed44d38335653`。保留macOS CA及字体环境提示；没有原生窗口或玩家Windows导出包测试。
+- 本轮只新增回归和更新交接／backlog，未修改业务、对白、本地化数据或附件，因此未重跑剧情／全量数据静态审计。仍待具体白日梦标题、进入前活动和玩家包版本来复现截图异常；已询问用户。当前源码读此档可恢复一致的周日日期，不能据此认定旧包也已修复。
+
+## 2026-11-11 高级手术三日排期与提前显示结算页（已修复）
+
+- 截图接诊DAY213=2025-10-30周四、手术DAY214=10-31周五；原排期要求复盘也为普通工作日，跳过DAY215周六、DAY216周日和DAY217文化之日，实际预约DAY218=11-04周二。术后却仅推进到手术次日，UI未到预约日仍显示“Day 3”；按钮禁用是未到期，并非已到期结算失败。还确认原普通高级转诊入口没有排除周五接诊。
+- `advanced_referral.gd` 新预约与改期改为周一至周四、连续三日，手术日须为普通工作日，周六可复盘；闭院日／预约／受保护剧情冲突拒绝整组排期，不再跳日。`advanced_staff_patient.gd` 复用该规则。旧预约不改日期，`finish_operation()` 向前推进到已预约复盘日；`advanced_referral_view.gd` 到期前不显示Day3标题，中英文共用判定，原“预约尚未到日”提示保留。同步更新内容检查清单，未改作者对白或存档格式。
+- 附件 `clinic_slot_2 (1).json` 实为DAY227=2025-11-13；截图病例 `advanced_replay_30_surgery_adv_sleeve_lobectomy` 已在DAY218成功结算一次，无待完成预约。实际SaveStore只读加载成功，再次内存边界恢复保持时间、手术经验和高级手术历史不变。原文件SHA256前后一致：`6a56e24f7eabeaa7c062beeba63265dc35f778dbff05c1e06d34dcec3d4a4e49`；不改档、不操作真实玩家槽位。
+- 新增 `tools/advanced_calendar_regression_test.gd`，headless **72项0失败**：两种控制器的周一至周四连续排期、周五／周末／节假日拒绝、预约冲突、16:00截止、旧预约推进与边界恢复、双语等待页、实际周四接诊→周五手术→周六结算及重复结算拒绝、附件历史核验。执行 `Godot --headless --path . --log-file /private/tmp/advanced_calendar_after_20261111.log --script res://tools/advanced_calendar_regression_test.gd -- '/Users/ningye/Downloads/clinic_slot_2 (1).json'`；输出同前缀 `.txt`，退出0。
+- 相关headless回归同样以 `Godot --headless --path . --log-file /private/tmp/<脚本名>_20261111.log --script res://tools/<脚本名>.gd` 执行：`advanced_surgery_test` **6454/0**、`advanced_staff_patient_test` **1847/0**、`advanced_referral_rules_v2_test` **418/0**，均退出0，输出同前缀 `.txt`。保留macOS系统CA环境提示；没有原生窗口／导出包验收。
+- 静态：`python3 tools/narrative_localization_test.py` **44102/0**；`python3 tools/localization_audit.py` **67938条、UI800/800通过**；`python3 tools/validate_data.py` 退出1，仍有本轮未修改的背景schema、事件优先级、image_fit字段、隐藏立绘冲突及时间窗等错误。日志 `/private/tmp/advanced_calendar_<脚本名>_20261111.txt`。相关diff空白检查通过。
+- 测试夹具说明／剩余问题：最初旧预约fixture的空团队和零手术分钟不合法，修正后另发现调试 `set_test_time(214,540)` 把全部过去时间填入 `story_time_advance_minutes`，超过现有导入上限100000，故最终夹具以过去临床耗时模拟既往天数；未放宽存档校验。继承的简化手术驱动每阶段只翻5句，无法覆盖本轮病例，新增驱动按当前对白接口消费完整序列后再操作。原有story累计耗时导入上限是否应随总游戏时长调整留待独立审计；用户附件未触发此上限。旧预约仍以其原定复盘日为准，更新导出包才会获得本次修复。
+
+## 2026-11-10 槽位6确认芹香缺席原因（只读验证，沿用出勤修复）
+
+- 用户新附件 `clinic_slot_6.json`，SHA256 `8e49a738de4ae92312891e1c3bffc92b54c0df91b881cbb0dc0ab34a2c81f5c8`；实际恢复为DAY297 / 2026-01-22 09:00、芹香已相识Lv5／熟悉度100、`active_staff_patient={}`。Lv5在DAY288完成，首次医护患者手术DAY289完成，术后回访DAY290完成。没有残留住院，也不是未完成Lv5或回访锁住角色。
+- 存档的出勤false记录在DAY290、294、296、297；使用实际GameState恢复后的整型campaign_seed1013681534复算旧算法，这些日期对应78、82、84、85，均≥70。旧算法DAY290–297的连续结果为78–85，未存出勤记录的中间日期也落在缺席区间。精确日期结论以这次实际恢复的整型seed为准，不用此前直接将JSON浮点数格式化的临时探针结果推断日期。
+- 使用当前已修正的代码，保持原档事实并只在内存向前推进：DAY297缺席、298缺席、299（2026-01-24）出席、300出席、301缺席、302出席、303缺席、304缺席，中英一致。只在内存将DAY297单个出勤flag改true即能使她出现在影像科，再恢复原快照验证所有持久事实恢复一致；这只是定位对照，没有改玩家档。说明旧档当天false保留及次日正常随机缺席，会使玩家误以为修复未生效。
+- Godot headless：`Godot --headless --path . --log-file /private/tmp/serika_slot6_audit_20261110.log --script /private/tmp/serika_slot6_audit_20261110.gd`，中英48项0失败、退出0，输出同前缀 `.txt`。只读原附件、不读真实槽位、不写任何新存档；原附件校验和未变。保留macOS系统CA提示；未做原生窗口测试。此次只更新backlog和交接，没有新的业务修改；需运行包含上一轮PRNG修复的新包，旧导出包不会自动获得源代码修复。
+
+## 2026-11-10 芹香连续多日缺席（每日出勤抽取已修复）
+
+- 用户反馈Lv5后多天在医院找不到芹香。定位到 `serika_radiology.gd::naturally_present()` 直接把日期字符串的 `hash()` 对100取余，相邻日期的哈希高度相关，导致缺席集中成串；不是Lv5结算删除角色。此前附件种子1013681534的旧算法可连续缺席10天；16个固定种子×365日样本出勤率69.47%，但相邻日状态相同比例高达93.49%。Lv5完成后没有后续可用地点事件把她放入影像科时，日常出勤问题尤其显眼。
+- 修复：原哈希仅作局部 `RandomNumberGenerator` 的seed，再抽0–99并按原70%门槛判断。保持同一周目／日期稳定、同日不重抽；既有 `serika_imaging_present:<day>` true/false持久事实不覆写，未抽取日期采用新算法。不改变Lv5剧情、等级、存档格式、仅影像科出场规则或住院排除条件，不增加保底出勤。旧档某个已经记录为缺席的当天仍缺席；随机机制仍可能自然连续缺席。
+- 新增 `tools/serika_presence_regression_test.gd`：固定5840日样本统计＋真实播放Lv5整条选项0路线，中英各验证其后30天查询、未抽取／已缓存的边界快照恢复、同日重复进入、Lv5完成事实、旧true/false保留，以及未相识／已住院不出勤。修复前920项1失败（相邻日相关性）；修复后同920项0失败，出勤率69.16%、相邻日相同58.00%。真实Lv5播放后无残留住院状态，之后可正常在影像科遇见。
+- Godot4.5.1 headless执行：`Godot --headless --path . --log-file /private/tmp/serika_presence_after_20261110.log --script res://tools/serika_presence_regression_test.gd`，退出0，输出同前缀 `.txt`。另执行 `tools/serika_radiology_test.gd` 的临时隔离副本 `/private/tmp/serika_radiology_isolated_20261110.gd`（仅在add_child前将app.saves.path改到独立/tmp，测试断言未改），2648项0失败；日志 `/private/tmp/serika_radiology_regression_20261110.log`。两轮保留macOS系统CA环境提示，无玩家存档写入。
+- 静态：`python3 tools/narrative_localization_test.py` 40,366项0失败；`python3 tools/localization_audit.py` 59,137条／UI800/800通过；`python3 tools/validate_data.py`仍因未修改的背景schema、特殊事件字段／优先级、隐藏图冲突与时间窗等全量问题失败，日志 `/private/tmp/serika_presence_validate_20261110.txt`。未改剧情／翻译／美术，未做原生窗口或导出包测试。
+- 范围说明：此前用户附件的芹香尚为Lv3，未取得本次Lv5后消失的实际存档；本轮已复现并修复出勤算法缺陷，未声称排除该玩家当前档还存在其他状态问题。若更新后仍长期缺席，需要当前存档检查实际住院事实和日期标记。
+
+## 2026-11-09 御堂正式相识补触发（已修复）
+
+- 对应下方同日审计中的御堂死锁：仅对 `emiko_intro_rumored_hands` 放宽“met=true即拒绝introduction”的通用过滤。事件完成检查仍先执行，技术70、明日香正式相识前置、办公室地点与既有时段保持原样；其他角色的introduction规则未放宽。不修改存档、关系数值、剧情文本或事件完成事实，也不伪造介绍链。
+- 修改 `godot/systems/game_state.gd`；新增 `tools/emiko_introduction_reentry_test.gd`，双语覆盖陌生／已相识两种入口、技术69被拒／70可用、缺明日香前置被拒、地点约束、其他相识事件不放宽、资格查询不改变持久事实、实际完成与重复启动拒绝、内存边界快照恢复后不重播，以及御堂Lv1/Lv2三天间隔与结算。
+- 原附件通过可选命令行路径只读加载：实际播放御堂正式介绍 → 明日香转介 → 阿尔托莉雅相识后，折川Lv2开放；御堂Lv1/Lv2也可按既有间隔完成。源文件SHA256保持 `b9a546e2c2a85ad9822df13bb07faa397ca40f88734c54d284ca9e110fa6c5f8`，未读取／写入真实玩家槽。修复前最终基线74项中10项失败；修复后134项0失败（原先阻断的链条继续执行，断言数增加）。最初夹具缺明日香met且误用17:00边界，已在记录最终基线前修正；未为通过测试更改时间逻辑。
+- 执行：`Godot --headless --path . --log-file /private/tmp/hoshimi_emiko_after_20261109.log --script res://tools/emiko_introduction_reentry_test.gd -- /Users/ningye/Downloads/clinic_slot_2.json`，退出0；完整输出 `/private/tmp/hoshimi_emiko_after_20261109.txt`。保留macOS系统CA环境提示。`python3 tools/narrative_localization_test.py` 40,366项0失败；`python3 tools/localization_audit.py` 58,292条、UI799/799通过。
+- `.venv/bin/python` 不存在，改用 `python3 tools/validate_data.py`；全量校验仍失败，报其他背景schema、特殊事件优先级／字段、隐藏立绘与人物图冲突、时间窗等问题，输出无御堂条目，本轮未改数据文件。日志 `/private/tmp/hoshimi_emiko_validate_20261109.txt`。未执行原生窗口测试或重新导出，用户导出包须更新才能获得修复。56/70解锁提示差异仍待处理；朝仓前置计数未改。
+
+## 2026-11-09 玩家槽位2解锁审计（已定位，未修复）
+
+- 原档：用户附件 `clinic_slot_2.json`，v37，DAY256 / 2025-12-12 10:00；SHA256 `b9a546e2c2a85ad9822df13bb07faa397ca40f88734c54d284ca9e110fa6c5f8`，只读前后相同。使用当前工作区内容与实际 SaveStore / GameState，在中英两种语言下恢复到内存；未操作真实玩家槽位。
+- **御堂是入口死锁：** `doc_emiko` 已相识、Lv0、熟悉度100、技术85（要求70），但只完成 `emiko_office_denied`，未完成 `emiko_intro_rumored_hands`。`character_event_available()` 对已相识角色拒绝 introduction，Lv1又要求该正式相识事件完成，Lv2继续依赖Lv1。仅在内存将御堂 met 改为false，正式相识立即可用，证明其余条件已满足；此对照不是修档方案。原始 met=true 由哪个历史版本／路径写入，单靠当前存档不能确定。建议游戏入口兼容已相识但未完成正式介绍的状态，保留既有关系与完成事实，不伪造完成记录。
+- **折川受同一死锁间接影响：** Lv1、熟悉度100、临床气场-200，Lv2要求熟悉度25、气场≤0、冷却3天，均已满足；唯一缺失的必需出场角色是 `doc_artoria`。仅在内存设阿尔托莉雅已相识，`satsuki_lv2_patient_transport` 即可用。正常链为御堂正式相识 → `asuka_mentions_artoria_rival` → `intro_doc_artoria_deputy_office` → 折川Lv2；本档前面三项均未完成。不能仅建议玩家继续刷熟悉度。
+- **朝仓是前置不足：** `nurse_yui` 当前Lv2、熟悉度100。Lv3的 `outpatient_forced_undress` 记录为0/5；仅补到5的内存对照能开放当前12月的 `miyuki_lv3_locker_room_shiori` 前奏。该计数实际来自朝仓协助门诊时成功执行 `authoritative_full_undress` / `threaten_full_undress`，不是普通共同手术次数。后续Lv4的 `assisted_player_ward_preparation` 为3/5。Lv5的技术85/70、无麻醉共同经历6/1及医护患者计划授权已满足，但不能跳过Lv3/Lv4；仅将内存关系设为Lv4后Lv5A可用。计数0仅表示存档没有记录，不能据此断言玩家在旧版本从未执行过该行为。
+- **附带提示缺陷：** `app.gd` 的 `ui.unlock.emiko` / `ui.unlock.artoria_emiko` 中文提示及 `en.json` 英文仍写技术56，实际事件要求70；此次仅记录，未改文案。
+- 验证：Godot 4.5.1 headless，双语合计20项断言0失败、退出0；临时只读审计脚本 `/private/tmp/hoshimi_unlock_audit_20261109.gd`，运行命令 `Godot --headless --path . --log-file /private/tmp/hoshimi_unlock_audit_20261109_verified.log --script /private/tmp/hoshimi_unlock_audit_20261109.gd`，完整输出 `/private/tmp/hoshimi_unlock_audit_20261109_verified.txt`。保留macOS系统CA读取环境提示；未做原生窗口或玩家导出包复现，不宣称已修复。没有剧情／翻译／运行逻辑变动，未运行全量本地化或数据回归。
+
 记录日期：2026-11-05
 
 截图中的文字是用户提供的复现证据，不视为对剧情原文的改写授权。用户已授权统一修复，当前状态以本节为准；后面的初始记录保留为排查历史。

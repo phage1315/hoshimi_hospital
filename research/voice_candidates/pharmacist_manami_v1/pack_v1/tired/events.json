@@ -1,0 +1,180 @@
+[
+  {
+    "event_id": "event_EjYZstlo1GfeCLNMHxcNK",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYZrp3oN8rcTBJsrtjsiOBaPW56x4RA",
+      "expires_at": 1794533583,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、調剤室もようやく一段落です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Gentle, relieved tired breath. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、調剤室もようやく一段落です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Gentle, relieved tired breath. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふう",
+    "event_id": "event_EjYZt6TWBPvGA8QPuUVEG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、調",
+    "event_id": "event_EjYZtrdLKBImWguvkA0Fd"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYZtaweBTp5djKVY9GNc",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "剤",
+    "event_id": "event_EjYZtCRMDq0OBXq6dIL10"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "室",
+    "event_id": "event_EjYZtc2OVuHukRR7YXHla"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "も",
+    "event_id": "event_EjYZubP9czMzoUqzBrRWX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "よう",
+    "event_id": "event_EjYZuXcBa3sJQe1quTLgY"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "や",
+    "event_id": "event_EjYZuypUEaUy2jhBJcdVl"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "く",
+    "event_id": "event_EjYZuYoNuLqOMsdk1yzKi"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "一",
+    "event_id": "event_EjYZuudlcG2RAmgU7uxTZ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "段",
+    "event_id": "event_EjYZvZJ0qmYE57AQvCL2o"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "落",
+    "event_id": "event_EjYZvlNe2V1JrPMMTk9T3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "です",
+    "event_id": "event_EjYZv9jOCPkuRJzhcxrAq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3000,
+    "end_ms": 3200,
+    "delta": "。",
+    "event_id": "event_EjYZvyvo1NEnRR5iGMY3g"
+  },
+  {
+    "event_id": "event_EjYa0JFFmJepaZlOA2i16",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYZrp3oN8rcTBJsrtjsiOBaPW56x4RA",
+      "expires_at": 1794533583,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"ふう、調剤室もようやく一段落です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Gentle, relieved tired breath. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふう、調剤室もようやく一段落です。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Gentle, relieved tired breath. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

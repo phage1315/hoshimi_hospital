@@ -1,0 +1,152 @@
+[
+  {
+    "event_id": "event_EjYMTXiT3KveIHsiqnd3V",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYMTp3oMTPviIfr9Z47u8wG3fmUNJaz",
+      "expires_at": 1794532753,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Clean, modest, gentle mid-to-upper register with a reserved, slightly shy intellectual sincerity. Careful, precise diction, polite restraint, and a soft earnest undertone.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、順調でほっとしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Gentle, modest relieved smile. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe80c92081919574b6c7e1f32d53"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、順調でほっとしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Gentle, modest relieved smile. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふふ",
+    "event_id": "event_EjYMUqe0xiJDIFTNXSSUQ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、",
+    "event_id": "event_EjYMUa27LiTyPDCxgVB6l"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "順",
+    "event_id": "event_EjYMVOfSx7Jg5J2LscavG"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYMVOhzXJ1fu1wcYLXNq",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "調",
+    "event_id": "event_EjYMVgvsyZDhVN5fCoGJY"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "で",
+    "event_id": "event_EjYMV3Nvb0TiwPlGT93bb"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ほ",
+    "event_id": "event_EjYMW8W4lXeSwxOhz6Uac"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "っと",
+    "event_id": "event_EjYMWke6Eukc6B7QFomVX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "しました",
+    "event_id": "event_EjYMWLxNVIVy00gjIRkWu"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYMX5bdHDTKIYawGpfdw"
+  },
+  {
+    "event_id": "event_EjYMbrdw6o7NTZGcsCWT4",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYMTp3oMTPviIfr9Z47u8wG3fmUNJaz",
+      "expires_at": 1794532753,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Clean, modest, gentle mid-to-upper register with a reserved, slightly shy intellectual sincerity. Careful, precise diction, polite restraint, and a soft earnest undertone.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、順調でほっとしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Gentle, modest relieved smile. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe80c92081919574b6c7e1f32d53"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、順調でほっとしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Gentle, modest relieved smile. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

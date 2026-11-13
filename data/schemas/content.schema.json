@@ -643,7 +643,8 @@
         "action": {
           "description": "Existing UI handoff hook for an authored event node.",
           "enum": [
-            "launch_sayaka_lv4_h"
+            "launch_sayaka_lv4_h",
+            "launch_shiori_lv3_yuko_surgery"
           ]
         },
         "sunday_clock": {
@@ -717,6 +718,11 @@
             "contain",
             "inset"
           ]
+        },
+        "cg_dialogue_delay_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
         },
         "cg_portrait_overlay": {
           "description": "When true, render the event portrait over the CG instead of letting the CG replace the portrait layer.",
@@ -824,7 +830,7 @@
               "bottom": {
                 "type": "number",
                 "minimum": 100,
-                "maximum": 600
+                "maximum": 720
               },
               "width": {
                 "type": "number",
@@ -935,6 +941,9 @@
           }
         },
         "hide_completion_portrait": {
+          "type": "boolean"
+        },
+        "hide_calendar_header": {
           "type": "boolean"
         },
         "cinematic": {
@@ -5159,6 +5168,9 @@
           "type": "integer",
           "minimum": -100,
           "maximum": 100
+        },
+        "mischief": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -5492,6 +5504,9 @@
           "type": "integer",
           "minimum": -100,
           "maximum": 100
+        },
+        "mischief": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -6103,6 +6118,9 @@
           "type": "integer",
           "minimum": -100,
           "maximum": 100
+        },
+        "mischief": {
+          "type": "boolean"
         }
       },
       "required": [

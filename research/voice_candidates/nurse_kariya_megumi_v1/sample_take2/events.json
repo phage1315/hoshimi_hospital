@@ -1,0 +1,208 @@
+[
+  {
+    "event_id": "event_EjUX4hZA9ahmro8P23idk",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjUX4p3oNQ3iKgfHIrkH4XWsTt4dHDMD",
+      "expires_at": 1794518034,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Fresh, natural, bright girl-next-door higher-mid register with light, nimble vocal weight and candid, down-to-earth youthful energy. Earnest, brisk trainee-nurse delivery with lively everyday charm.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。本日のバイタル確認、もう終わっていますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Fresh, cheerful, natural girl-next-door youthful voice, brisk and earnest trainee energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fde4eb208191883574baa130a07d"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。本日のバイタル確認、もう終わっていますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Fresh, cheerful, natural girl-next-door youthful voice, brisk and earnest trainee energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjUX5TqIgZxrQts8nuIOm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "ようございます",
+    "event_id": "event_EjUX6bmdRk3mwO9AGT4TU"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjUX6hPnMfCO68EkCCMXj",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、坂",
+    "event_id": "event_EjUX6Oic5cj2cG9y9cjhy"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "口",
+    "event_id": "event_EjUX764yGdhp3yVgIts6G"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "先生",
+    "event_id": "event_EjUX7X2ak6hxlj9IgIg8D"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "。本",
+    "event_id": "event_EjUX782w6O5ps2Gs7mQ0e"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "日の",
+    "event_id": "event_EjUX8QxXxAQA14ey4tPMj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3000,
+    "end_ms": 3200,
+    "delta": "バ",
+    "event_id": "event_EjUX8rAY8Kb8GFeMZoX9j"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "イ",
+    "event_id": "event_EjUX8CCOhD7XKqb5cR7fo"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3400,
+    "end_ms": 3600,
+    "delta": "タル",
+    "event_id": "event_EjUX9VKVCdMiOq9qVtaVj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3600,
+    "end_ms": 3800,
+    "delta": "確認",
+    "event_id": "event_EjUX9bXe6R7V8BiCHUaJe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4000,
+    "end_ms": 4200,
+    "delta": "、",
+    "event_id": "event_EjUX9TUqo9DulUaH84LAk"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4200,
+    "end_ms": 4400,
+    "delta": "もう",
+    "event_id": "event_EjUX9DkBK2QPNaeDDlSNw"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4600,
+    "end_ms": 4800,
+    "delta": "終",
+    "event_id": "event_EjUXAo4QXrYG4PPcdIGPm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 4800,
+    "end_ms": 5000,
+    "delta": "わっています",
+    "event_id": "event_EjUXArt5ug5IzAcleRTuE"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 5400,
+    "end_ms": 5600,
+    "delta": "よ",
+    "event_id": "event_EjUXBMyEFBsiAKgnWKm1c"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 5600,
+    "end_ms": 5800,
+    "delta": "。",
+    "event_id": "event_EjUXB7PTzfonLhx3dB3GL"
+  },
+  {
+    "event_id": "event_EjUXIiZIRXNWRbsHkpSgP",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjUX4p3oNQ3iKgfHIrkH4XWsTt4dHDMD",
+      "expires_at": 1794518034,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Fresh, natural, bright girl-next-door higher-mid register with light, nimble vocal weight and candid, down-to-earth youthful energy. Earnest, brisk trainee-nurse delivery with lively everyday charm.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。本日のバイタル確認、もう終わっていますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Fresh, cheerful, natural girl-next-door youthful voice, brisk and earnest trainee energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fde4eb208191883574baa130a07d"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。本日のバイタル確認、もう終わっていますよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Fresh, cheerful, natural girl-next-door youthful voice, brisk and earnest trainee energy. No music or background noise. Speak the entire Japanese sentence clearly and remain silent right after."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 13.0
+    }
+  }
+]

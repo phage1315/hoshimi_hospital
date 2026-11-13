@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYZtEQTRLdQyhr2lvYAx",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYZsp3oMhK96AdYdESWWyheJgIc0RI6",
+      "expires_at": 1794533585,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Soft, clear surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Soft, clear surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYZu9nYcCdNTiaMeKlFI",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "あら",
+    "event_id": "event_EjYZvjgdne41xuKzID2FH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "、そう",
+    "event_id": "event_EjYZvPGVni7iZJKtlC0wS"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "だった",
+    "event_id": "event_EjYZvo4eWlE9xiSC6GUGf"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "ん",
+    "event_id": "event_EjYZwjVcZi4No3lERUaK5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "です",
+    "event_id": "event_EjYZwBRsKvciG2xAJXyvx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "か",
+    "event_id": "event_EjYZwhwvDvHh9BLlkhNBX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYZwTOtOOBS1IgqOqLMY"
+  },
+  {
+    "event_id": "event_EjYa0B4STZdfTE7Wm0jFB",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYZsp3oMhK96AdYdESWWyheJgIc0RI6",
+      "expires_at": 1794533585,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early twenties, speaking native standard Japanese. Pure, gentle, youthful higher-mid register with light, neat vocal weight and conscientious earnest clarity. Soft, polite demeanor backed by quiet moral conviction and careful precision.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Soft, clear surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe374ed081918d076d3e42b3dc7b"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、そうだったんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Gentle, conscientious, warm young female pharmacist — Soft, clear surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

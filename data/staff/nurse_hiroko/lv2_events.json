@@ -1,0 +1,5629 @@
+[
+  {
+    "id": "hiroko_lv2_on_time_off_work",
+    "actor_id": "nurse_hiroko",
+    "title": "难得准时下班",
+    "teaser": "下午最后一台手术顺利结束，弘子在护士站前认真研究着商店街的美食地图。",
+    "chapter": 2,
+    "location_id": "or",
+    "trigger_mode": "after_work",
+    "background_id": "operating_room",
+    "outfit": "casual",
+    "minutes": 230,
+    "time_start": 960,
+    "time_end": 1320,
+    "priority": 115,
+    "category": "rank_up",
+    "target_level": 2,
+    "benefit_id": "",
+    "auto_start": true,
+    "cinematic": true,
+    "locks_saving": true,
+    "hide_calendar_header": true,
+    "hide_completion_portrait": true,
+    "gallery": {
+      "cg_id": "hiroko_lv2_on_time_off_work",
+      "caption": "难得准时下班",
+      "path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_smile.png",
+      "show_on_complete": true
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 25,
+      "required_events": [
+        "hiroko_lv1_worth_it"
+      ],
+      "days_after_required_events": 3,
+      "special_requirements": []
+    },
+    "start": "hlv2_001",
+    "nodes": [
+      {
+        "id": "hlv2_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "下午四点十分，二号手术室的主无影灯已经关掉，只留着柔和的照明顶灯。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "operating_room",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_001",
+            "label": "继续",
+            "next": "hlv2_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "当天最后一台计划内的手术刚刚顺利结束，患者已经被护送前往恢复室。杉村弘子站在器械台旁，动作麻利地清点完最后一组止血钳与缝针，将核对无误的签字单推到记录台边。",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_002",
+            "label": "继续",
+            "next": "hlv2_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司摘下无菌手套扔进医疗废品桶，刚走到记录台前拿起笔，还没来得及开口，弘子已经将另一份文件夹翻到了对应的页码，稳稳递到他手边。",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_003",
+            "label": "继续",
+            "next": "hlv2_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_004",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「术后医嘱确认单在这里，另外这是明天上午两台手术的特殊器械预备表，我都已经按您的习惯标好重点了。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_004",
+            "label": "继续",
+            "next": "hlv2_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司接过文件夹的手指顿了一下，不由得抬起头看向她。",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_005",
+            "label": "继续",
+            "next": "hlv2_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_006",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「你怎么连我接下来要问什么都知道？」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_006",
+            "label": "继续",
+            "next": "hlv2_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_007",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子眉眼弯起，露出一抹温和又带点小得意的微笑。",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_007",
+            "label": "继续",
+            "next": "hlv2_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「呵呵。和医生一起工作这么久，总会有点经验嘛。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_008",
+            "label": "继续",
+            "next": "hlv2_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司一边在术后记录上签字，一边随口问道：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_009",
+            "label": "继续",
+            "next": "hlv2_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_010",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「我有这么容易猜吗？」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_010",
+            "label": "继续",
+            "next": "hlv2_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_011",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子歪了歪头，手指轻轻点着下巴：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_011",
+            "label": "继续",
+            "next": "hlv2_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「这个嘛……」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_012",
+            "label": "继续",
+            "next": "hlv2_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_013",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司停下笔看向她：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_013",
+            "label": "继续",
+            "next": "hlv2_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「……」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_014",
+            "label": "继续",
+            "next": "hlv2_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_015",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子扑哧一笑，眼睛弯成了好看的月牙：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_015",
+            "label": "继续",
+            "next": "hlv2_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_016",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「呵呵。保密。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_016",
+            "label": "继续",
+            "next": "hlv2_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_017",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "就在这时，手术室的外侧联络内线响了一声，一名病房护士在门口探头汇报道：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_017",
+            "label": "继续",
+            "next": "hlv2_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "病房护士",
+        "text": "「打扰了，坂口医生、杉村护士。住院部那边刚打来电话询问——原定排在明天上午第二台的四十二床腹股沟疝修补术患者，家属看今天下午手术结束得早，问能不能干脆提前到今天傍晚把手术做了？」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_018",
+            "label": "继续",
+            "next": "hlv2_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看了一眼墙上的挂钟。现在刚过四点十分，对于已经办妥住院手续的患者，院内制度上原本就允许根据实际情况将手术安排到晚间甚至深夜。",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_019",
+            "label": "继续",
+            "next": "hlv2_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_020",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司调出四十二床的电子病历看了一眼：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_020",
+            "label": "继续",
+            "next": "hlv2_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_021",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「四十二床是已住院患者，各项术前检查今天下午都已经出齐了。只要再跟病房确认一下禁食情况与麻醉等准备条件，单纯性腹股沟斜疝修补在今晚临时加台，从医疗上倒是具有可行性……」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_021",
+            "label": "继续",
+            "next": "hlv2_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_022",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "他转过头，习惯性地征询身旁搭档的意见：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_022",
+            "label": "继续",
+            "next": "hlv2_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_023",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「弘子，手术室排班这边你觉得呢？」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_023",
+            "label": "继续",
+            "next": "hlv2_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子脸上的轻松笑意收敛了几分，目光认真地扫过排班板与器械周转表，条理清晰地开口：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_024",
+            "label": "继续",
+            "next": "hlv2_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「从医疗条件和手术时间上看确实可以考虑。不过坂口医生，今天下午我们已经连着做了三台手术，同批次的常规手术器械包刚才已经全部送去集中清洗灭菌了；而且今晚夜班原本就有一名护士轮休，在岗的夜班护士人手非常紧。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_025",
+            "label": "继续",
+            "next": "hlv2_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_026",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她伸出手指，在排班表下方的器械周转与交接栏上轻轻点了点：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_026",
+            "label": "继续",
+            "next": "hlv2_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「这位患者没有任何嵌顿或急诊指征。如果现在临时加台并顺延到五点交班之后，不仅要动用今晚唯一的急诊备用器械包和备用手术间，夜班护理团队的器械周转与术后监护也会捉襟见肘——万一夜间真的来一台急诊手术，手术室的备用资源就会非常被动。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_027",
+            "label": "继续",
+            "next": "hlv2_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_028",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子迎着他的目光，语气依旧温和而笃定：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_028",
+            "label": "继续",
+            "next": "hlv2_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_029",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「既然四十二床是标准的择期手术，我认为还是维持原来的安排，明天上午等白班人手和常规器械包全部就位后再做，对患者和手术室团队都更稳妥。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_029",
+            "label": "继续",
+            "next": "hlv2_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_030",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司略一思索，毫不犹豫地合上排班夹，点了点头：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_030",
+            "label": "继续",
+            "next": "hlv2_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_031",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「你说得有道理。医疗上虽然具备今晚加台的可行性，但不能为了临时提早一台择期手术，把今晚夜班的人手和急诊备用资源挤占掉。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_031",
+            "label": "继续",
+            "next": "hlv2_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/focused.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_032",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "他转向门口的病房护士，干脆地下达了决定：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_032",
+            "label": "继续",
+            "next": "hlv2_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_033",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「麻烦转告四十二床患者和家属，为了保证最佳的手术室准备状态和术后照护，手术维持原计划，明天上午准时进行。稍后我会去病房跟他们当面解释。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_033",
+            "label": "继续",
+            "next": "hlv2_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_034",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "病房护士",
+        "text": "「明白了，坂口医生！」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_034",
+            "label": "继续",
+            "next": "hlv2_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_035",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "等病房护士离开后，弘子轻轻舒了一口气，抬头看向坂口：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_035",
+            "label": "继续",
+            "next": "hlv2_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_036",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「对不起，医生。刚才在病房护士面前直接反驳您的提议，可能说得有点太直了……不过，听到您愿意重新考虑排班，我真的松了一口气。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_036",
+            "label": "继续",
+            "next": "hlv2_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_037",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司失笑：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_037",
+            "label": "继续",
+            "next": "hlv2_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_038",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「道什么歉？你帮我把关了夜班周转和备用资源，我谢你还来不及。要是手术室的护士什么都顺着主刀说，那才叫麻烦呢。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_038",
+            "label": "继续",
+            "next": "hlv2_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子眼里闪过一丝欣喜的光亮，嘴角柔和地扬起：",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_039",
+            "label": "继续",
+            "next": "hlv2_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_040",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「谢谢医生愿意听我的意见。那我去把最后的交接记录确认一下，今天我们居然真的能五点准时下班了呢。」",
+        "expression": "neutral",
+        "outfit": "scrubs",
+        "background_id": "operating_room",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_040",
+            "label": "继续",
+            "next": "hlv2_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_041",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "去病房向四十二床家属简短说明情况后，坂口隆司回到更衣室换好了常服。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_041",
+            "label": "继续",
+            "next": "hlv2_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_042",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "时针刚指向下午五点十分。难得不用加班写病历，也不用留守夜班，坂口一身轻松地走出医生通道，准备离开医院。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_042",
+            "label": "继续",
+            "next": "hlv2_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_043",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "经过外科护士站外侧的走廊时，他的脚步忽然停了下来。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_043",
+            "label": "继续",
+            "next": "hlv2_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_044",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "只见同样已经换好一身米杏色针织开衫常服的杉村弘子，并没有往大门方向走，而是独自站在护士站侧边的台子前。她低着头，双手捧着一本翻开的折页册子，秀气的眉头微微蹙起，眼神专注得像是在研究什么棘手的疑难病例。",
+        "expression": "worried",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_044",
+            "label": "继续",
+            "next": "hlv2_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_045",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司走上前去：",
+        "expression": "worried",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_045",
+            "label": "继续",
+            "next": "hlv2_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_046",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「弘子？怎么还没走，是交接记录还有什么地方没对上吗？」",
+        "expression": "worried",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_046",
+            "label": "继续",
+            "next": "hlv2_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_047",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子吓了一跳，猛地抬起头：",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_047",
+            "label": "继续",
+            "next": "hlv2_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_048",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「啊，坂口医生！」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_048",
+            "label": "继续",
+            "next": "hlv2_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_049",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "看见坂口一脸关切地望着自己手里的册子，弘子白皙的脸颊微微一红，有些不好意思地把那张印着彩色照片的宣传折页转了过来。",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_049",
+            "label": "继续",
+            "next": "hlv2_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_050",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "折页上根本不是什么医疗表格，而是满满当当的铜锣烧、蛋包饭与季节限定圣代照片。",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_050",
+            "label": "继续",
+            "next": "hlv2_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「不、不是工作啦！交接十分钟前就已经全部做完了……我只是在认真研究，今天晚上到底该去商店街的哪家店吃东西。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_051",
+            "label": "继续",
+            "next": "hlv2_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_052",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着那张花花绿绿的商店街美食地图，顿时有些无语：",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_052",
+            "label": "继续",
+            "next": "hlv2_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_053",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「……你刚才表情那么严肃，我还以为明天哪台手术的器械包出问题了呢。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_053",
+            "label": "继续",
+            "next": "hlv2_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_054",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子噗哧一声笑了出来，把折页抱在胸前，俏皮地眨了眨眼睛调侃道：",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_054",
+            "label": "继续",
+            "next": "hlv2_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_055",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「呵呵，难道在坂口医生眼里，我就算脱了护士服，脑子里也只能装着止血钳和消毒纱布吗？难得今天能五点准时下班，晚饭吃什么可是头等大事呀。」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_055",
+            "label": "继续",
+            "next": "hlv2_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_056",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司无奈地笑了笑：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_056",
+            "label": "继续",
+            "next": "hlv2_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_057",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「倒也是。那你研究出结果了吗？」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_057",
+            "label": "继续",
+            "next": "hlv2_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_058",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子指了指折页角落里一家画着暖黄色小灯笼的店铺，眼神里多了一点跃跃欲试的期待：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_058",
+            "label": "继续",
+            "next": "hlv2_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_059",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「其实商店街那边有一家做和风洋食和现烤点心的小店，我之前听同事提过好几次，一直想去尝尝看，只是平时下班太晚总是赶不上。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_059",
+            "label": "继续",
+            "next": "hlv2_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_060",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "说到这里，她抬起眼帘看向坂口隆司，自然地发出了邀请：",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_060",
+            "label": "继续",
+            "next": "hlv2_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_061",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「坂口医生今天难得也准时下班，如果晚上没有别的安排……要不要一起去试试看？」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_061",
+            "label": "继续",
+            "next": "hlv2_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_062",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司微微一怔：",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_062",
+            "label": "继续",
+            "next": "hlv2_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_063",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「我和你一起去？」",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_063",
+            "label": "继续",
+            "next": "hlv2_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_064",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子笑着点了点头：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_064",
+            "label": "继续",
+            "next": "hlv2_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_065",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「嗯。刚才在手术室里，医生不是还说要谢我帮您把关排班吗？正好那家店的双人套餐还能多选两样小菜，一个人去吃太可惜了。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_065",
+            "label": "继续",
+            "next": "hlv2_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_066",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司欣然点头：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_066",
+            "label": "继续",
+            "next": "hlv2_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_067",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「既然杉村护士都把话说到这份上了，我当然奉陪。走吧，正好我也饿了。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_067",
+            "label": "继续",
+            "next": "hlv2_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_068",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子眼睛一亮，开心地拎起小包：",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_068",
+            "label": "继续",
+            "next": "hlv2_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_069",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「太好了！那我们快走吧，这会儿过去肯定不用排队！」",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "nurses_station",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_069",
+            "label": "继续",
+            "next": "hlv2_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_070",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "傍晚的商店街亮起了成排的暖色街灯，下班路过的行人、买菜的主妇与放学的学生让街道显得格外热闹。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_070",
+            "label": "继续",
+            "next": "hlv2_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_071",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "弘子带路的这家小馆藏在商店街中段的转角处，木质桌椅擦得干净透亮，空气中飘着浓郁的黄油炖牛肉与红豆烘焙的甜香。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_071",
+            "label": "继续",
+            "next": "hlv2_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_072",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "端上桌的是热气腾腾的汉堡排定食与金黄松软的厚烧蛋卷，旁边还摆着弘子特意加点的栗子抹茶巴菲。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_072",
+            "label": "继续",
+            "next": "hlv2_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_073",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子双手合十说了声「我开动了」，夹起一小块厚烧蛋卷放进嘴里，满足地眯起了眼睛：",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_073",
+            "label": "继续",
+            "next": "hlv2_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_074",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「唔……高汤和甜味的平衡刚刚好！难怪大家都推荐这家店，今天真是来对了。」",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_074",
+            "label": "继续",
+            "next": "hlv2_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_075",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她用公筷夹起一块蛋卷放到坂口隆司的碟子里，笑着催促道：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_075",
+            "label": "继续",
+            "next": "hlv2_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_076",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「坂口医生也快尝尝看！比医院食堂周三供应的那种还要嫩好多哦。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_076",
+            "label": "继续",
+            "next": "hlv2_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_077",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司尝了一口：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_077",
+            "label": "继续",
+            "next": "hlv2_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_078",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「确实很好吃。没想到你对商店街的小店这么熟。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_078",
+            "label": "继续",
+            "next": "hlv2_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_079",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子托着脸颊笑了笑：",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_079",
+            "label": "继续",
+            "next": "hlv2_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_080",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「平时上班虽然忙，但每次路过商店街，我都会把看起来好吃的店偷偷记在手机备忘录里。倒是坂口医生——刚才看菜单的时候，你不到十秒钟就决定了汉堡排定食，点菜的速度简直跟在手术台上叫器械一样干脆呢。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_080",
+            "label": "继续",
+            "next": "hlv2_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_081",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「平时一个人吃饭惯了，看着顺眼就点了，没怎么挑过。」",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_081",
+            "label": "继续",
+            "next": "hlv2_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_082",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子促狭地看了他一眼：",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_082",
+            "label": "继续",
+            "next": "hlv2_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_083",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「我就猜是这样。医生平时自己在家的时候，该不会都是用速食咖喱或者便利店便当随便打发晚饭吧？」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "choice_hlv2_083_1",
+            "label": "「被你说中了。偶尔能跟着美食专家出来改善伙食，确实不错。」",
+            "next": "hlv2_084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          },
+          {
+            "id": "choice_hlv2_083_2",
+            "label": "「你今天晚上的话，好像比平时在医院里多了不少。」",
+            "next": "hlv2_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_084",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司笑道：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_084",
+            "label": "继续",
+            "next": "hlv2_085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_085",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「被你说中了。偶尔能跟着美食专家出来改善伙食，确实不错。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_085",
+            "label": "继续",
+            "next": "hlv2_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_086",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子舀了一勺抹茶巴菲，得意地弯起眉眼：",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_086",
+            "label": "继续",
+            "next": "hlv2_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_087",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「呵呵，那以后要是再碰上准时下班的日子，我就大发慈悲带坂口医生把备忘录上的店一家家吃过来吧。」",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_087",
+            "label": "继续",
+            "next": "hlv2_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_088",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着她明朗的笑脸：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_088",
+            "label": "继续",
+            "next": "hlv2_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_089",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「你今天晚上的话，好像比平时在医院里多了不少。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_089",
+            "label": "继续",
+            "next": "hlv2_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_090",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子挖着冰淇淋的手停了一下，俏皮地眨了眨眼：",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_090",
+            "label": "继续",
+            "next": "hlv2_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_091",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「因为在医院里我是要替大家把关的杉村护士呀。现在已经打卡下班了，在饭桌上当然不用再端着护士的架子啦。」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_091",
+            "label": "继续",
+            "next": "hlv2_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_092",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "两人一边吃着热腾腾的晚餐，一边聊起各自喜欢的口味、最近看过的电影和休息日的习惯。她会在吃到微酸的腌菜时轻轻皱一下鼻子，也会在讲到好笑的事情时直接笑出声来。",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_092",
+            "label": "继续",
+            "next": "hlv2_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_093",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "结账的时候，店主大叔笑眯眯地递过来三张印着红字的纸券：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_093",
+            "label": "继续",
+            "next": "hlv2_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_094",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "店主",
+        "text": "「多谢惠顾！这两天商店街正在搞周末前的福引摇奖活动，消费满额送三次抽奖机会，出门往右走五十米就是抽奖亭，两位去试试手气吧！」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_094",
+            "label": "继续",
+            "next": "hlv2_095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_095",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子接过那三张抽奖券，眼睛顿时亮了起来。",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_yoshoku_sweet_cafe",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_095",
+            "label": "继续",
+            "next": "hlv2_096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_096",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "商店街中心的小广场上搭着一座挂满红白彩旗的抽奖亭，桌上摆着一台八角形的木制摇铃抽奖机。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_096",
+            "label": "继续",
+            "next": "hlv2_097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_097",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "奖品架的最上层摆着一只圆滚滚的商店街白猫吉祥物抱枕，正憨态可掬地朝路人招手。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_097",
+            "label": "继续",
+            "next": "hlv2_098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "hlv2_098",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子站在摊位前，目光一下子就被那只白猫抱枕吸引住了。",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_098",
+            "label": "继续",
+            "next": "hlv2_099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_099",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「哇……坂口医生，你看上面那只猫咪抱枕，毛茸茸的好可爱！」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_099",
+            "label": "继续",
+            "next": "hlv2_100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_100",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司把三张奖券全都递给她：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_100",
+            "label": "继续",
+            "next": "hlv2_101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_101",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「三张券都在这儿，你去摇吧，说不定一发就中了。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_101",
+            "label": "继续",
+            "next": "hlv2_102",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_102",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子开心地接过奖券交给摊位大叔，深吸一口气，挽起针织开衫的袖口握住摇柄：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_102",
+            "label": "继续",
+            "next": "hlv2_103",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_103",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「那我就不客气了！看我的——」",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_103",
+            "label": "继续",
+            "next": "hlv2_104",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_104",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "木制转盘咕噜噜转了一圈，「啪嗒」一声，掉出一颗纯白色的木球。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_104",
+            "label": "继续",
+            "next": "hlv2_105",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_105",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "摊位店员摇了摇小铜铃：",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_105",
+            "label": "继续",
+            "next": "hlv2_106",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_106",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "摊位店员",
+        "text": "「恭喜！末等奖，袖珍面纸一包！」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_106",
+            "label": "继续",
+            "next": "hlv2_107",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_107",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子愣了一下，接过面纸：",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_107",
+            "label": "继续",
+            "next": "hlv2_108",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_108",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「……咦？居然是白球。」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_108",
+            "label": "继续",
+            "next": "hlv2_109",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_109",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她不甘心地捏了捏手指，再次握住摇柄：",
+        "expression": "worried",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_109",
+            "label": "继续",
+            "next": "hlv2_110",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_110",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「刚才那一下转得太快了，这次我慢一点摇！」",
+        "expression": "worried",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_110",
+            "label": "继续",
+            "next": "hlv2_111",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_111",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "咕噜噜——「啪嗒」。",
+        "expression": "worried",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_111",
+            "label": "继续",
+            "next": "hlv2_112",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/worried.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_112",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "又是一颗毫无悬念的白球滚进托盘里。",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_112",
+            "label": "继续",
+            "next": "hlv2_113",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_113",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "摊位店员笑眯眯地递上第二包面纸：",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_113",
+            "label": "继续",
+            "next": "hlv2_114",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_114",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "摊位店员",
+        "text": "「又是末等奖，面纸一包！」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_114",
+            "label": "继续",
+            "next": "hlv2_115",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_115",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子看着手里整整齐齐的两包纸巾，安静了两秒，眼神渐渐认真起来。",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_115",
+            "label": "继续",
+            "next": "hlv2_116",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_116",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她盯着那台八角形木箱，秀气的眉毛微微挑起，认真地分析道：",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_116",
+            "label": "继续",
+            "next": "hlv2_117",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_117",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「好奇怪……刚才转第二圈的时候，我明明听见里面有重心不太一样的彩球碰撞声。只要控制好反转的角度，下一次肯定能把彩球晃出来！」",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_117",
+            "label": "继续",
+            "next": "hlv2_118",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_118",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司在旁边看得忍俊不禁：",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_118",
+            "label": "继续",
+            "next": "hlv2_119",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_119",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「弘子，这种摇奖机里面的球重量都是一样的，没什么角度规律。最后一张券要是再不中，我们也差不多该撤了。」",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_119",
+            "label": "继续",
+            "next": "hlv2_120",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_120",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子转过头，微微鼓起脸颊：",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_120",
+            "label": "继续",
+            "next": "hlv2_121",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/pout.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_121",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「才不呢！事不过三，我已经摸清它的手感了！而且刚才旁边杂货店买两盒润喉糖还能再送一张券——要是这一下没中，我还要再去换一张试一次！」",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_121",
+            "label": "继续",
+            "next": "hlv2_122",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/pout.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_122",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司哭笑不得：",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_122",
+            "label": "继续",
+            "next": "hlv2_123",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/pout.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_123",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「怎么平时在手术室里那么讲科学的人，一到抽奖摊前就跟木箱子较上劲了？」",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_123",
+            "label": "继续",
+            "next": "hlv2_124",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/pout.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_124",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子哼了一声：",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_124",
+            "label": "继续",
+            "next": "hlv2_125",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_125",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「工作是工作，抽奖是气势的问题嘛！看好了哦，医生！」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_125",
+            "label": "继续",
+            "next": "hlv2_126",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_126",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她屏住呼吸，全神贯注地握住把手，不疾不徐地转了半圈再轻轻一回拨——",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_126",
+            "label": "继续",
+            "next": "hlv2_127",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_127",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "「啪嗒！」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_127",
+            "label": "继续",
+            "next": "hlv2_128",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_128",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "一颗亮黄色的木球顺着槽口滚了出来。",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_128",
+            "label": "继续",
+            "next": "hlv2_129",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_129",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "摊位店员用力摇响手里的铜铃：",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_129",
+            "label": "继续",
+            "next": "hlv2_130",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_130",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "摊位店员",
+        "text": "「当当当！恭喜这位小姐，抽中四等奖——商店街白猫吉祥物迷你钥匙扣一个！」",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_130",
+            "label": "继续",
+            "next": "hlv2_131",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/surprised.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_131",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "虽然不是最顶层那个大抱枕，但拿到那枚做成白猫招手造型的小巧金属钥匙扣时，弘子还是眼睛发亮地欢呼了一声：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_131",
+            "label": "继续",
+            "next": "hlv2_132",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_smile.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_132",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「太好了！你看，坂口医生，我就说只要找准手感一定能摇出彩球吧！」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_132",
+            "label": "继续",
+            "next": "hlv2_133",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_smile.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_133",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她把那枚小钥匙扣举到坂口面前晃了晃，眼睛弯得像月牙一样。",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_133",
+            "label": "继续",
+            "next": "hlv2_134",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_smile.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_134",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着她手里那枚指头大小的钥匙扣，又看了看旁边杂货店橱窗里明码标价的同款周边，忍不住老实说道：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_134",
+            "label": "继续",
+            "next": "hlv2_135",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_smile.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_135",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「抽中了确实厉害……不过弘子，那家杂货店里同款的钥匙扣好像只要三百日元，直接买一个可能比凑单抽奖还更便宜一点。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_135",
+            "label": "继续",
+            "next": "hlv2_136",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_smile.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_136",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子脸上的得意笑容顿时僵住了。",
+        "expression": "surprised",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_136",
+            "label": "继续",
+            "next": "hlv2_137",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_pout.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_137",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "她放下手里的钥匙扣，气鼓鼓地瞪了坂口隆司一眼，忍不住抱怨道：",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_137",
+            "label": "继续",
+            "next": "hlv2_138",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_pout.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_138",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「讨厌！医生真是不懂浪漫！」",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_138",
+            "label": "继续",
+            "next": "hlv2_139",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_pout.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_139",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司一怔，随即失笑举手投降：",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_139",
+            "label": "继续",
+            "next": "hlv2_140",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_pout.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_140",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「是我失言了。亲手摇出来的战利品，确实比直接买的有意义得多。」",
+        "expression": "pout",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_140",
+            "label": "继续",
+            "next": "hlv2_141",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/character_events/hiroko/hiroko_lv2_fukubiki_keychain_pout.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "hlv2_141",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子轻轻哼了一声，把那枚白猫钥匙扣小心地扣在自己的通勤包拉链上，又把刚才抽到的两包纸巾塞了一包到坂口手里：",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_141",
+            "label": "继续",
+            "next": "hlv2_142",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_142",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「这包分给你，当成陪我摇奖的纪念品。不许嫌弃它便宜哦！」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_142",
+            "label": "继续",
+            "next": "hlv2_143",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_143",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司笑着把纸巾收进外套口袋：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_143",
+            "label": "继续",
+            "next": "hlv2_144",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_144",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「放心，一定随身带着。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "hiroko_lv2_shopping_street_fukubiki",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_144",
+            "label": "继续",
+            "next": "hlv2_145",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_145",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "走出热闹的商店街，两人沿着安静的步道一路聊着天，不知不觉已经走到了车站前的街口。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_145",
+            "label": "继续",
+            "next": "hlv2_146",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true
+      },
+      {
+        "id": "hlv2_146",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "夜晚的微风吹过行道树的枝叶，带来几分舒适的凉意。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_hlv2_146",
+            "label": "继续",
+            "next": "hlv2_147",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true
+      },
+      {
+        "id": "hlv2_147",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子在通往站台的台阶前停下脚步，转过身面向坂口隆司，路灯柔和的光晕落在她带笑的眉眼间。",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_147",
+            "label": "继续",
+            "next": "hlv2_148",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_148",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「今天晚上麻烦医生一路送我到这里了。好久没有在下班以后这么痛快地吃东西、逛街了，我今天真的很开心。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_148",
+            "label": "继续",
+            "next": "hlv2_149",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_149",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「我也是。多亏你带路，不仅吃到了那么地道的店，还见识了一回杉村护士在抽奖机前的身手。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_149",
+            "label": "继续",
+            "next": "hlv2_150",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_150",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子脸颊微红，手指轻轻拨弄了一下包上的白猫钥匙扣，抬起眼望着他笑道：",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_150",
+            "label": "继续",
+            "next": "hlv2_151",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_151",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「说起来，我今天也发现了一件很新鲜的事呢——以前只在手术室和病房里跟您配合，总觉得坂口医生是个不管什么时候都很冷静严肃的人。没想到下班以后一起出来，医生其实也是个挺有意思的人。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_151",
+            "label": "继续",
+            "next": "hlv2_152",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_152",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司挑了挑眉：",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_152",
+            "label": "继续",
+            "next": "hlv2_153",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_153",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「『挺有意思的人』？这是什么意思？」",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_153",
+            "label": "继续",
+            "next": "hlv2_154",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_154",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子看着他追问的模样，嘴角弯起一抹俏皮的弧度，故意逗他道：",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_154",
+            "label": "继续",
+            "next": "hlv2_155",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_155",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「呵呵。夸奖哦。」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_155",
+            "label": "继续",
+            "next": "hlv2_156",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_156",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「听着怎么不像？」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_156",
+            "label": "继续",
+            "next": "hlv2_157",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_157",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子笑吟吟地歪了歪头：",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_157",
+            "label": "继续",
+            "next": "hlv2_158",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_158",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「真的啦。」",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_158",
+            "label": "继续",
+            "next": "hlv2_159",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_159",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "两人站在路灯下对视了片刻，晚风轻轻拂过安静的街口。",
+        "expression": "calm",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_159",
+            "label": "继续",
+            "next": "hlv2_160",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/calm.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_160",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子轻轻吸了一口气，主动开口道：",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_160",
+            "label": "继续",
+            "next": "hlv2_161",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_161",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「刚才在店里看的那张美食地图上，还有好几家店没去试过呢。以后如果还能像今天这样碰上准时下班……我们再一起出来走走吧，坂口医生。」",
+        "expression": "shy",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_161",
+            "label": "继续",
+            "next": "hlv2_162",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/shy.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_162",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "坂口隆司微笑着点头：",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_162",
+            "label": "继续",
+            "next": "hlv2_163",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_163",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「好，随时奉陪。」",
+        "expression": "smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_163",
+            "label": "继续",
+            "next": "hlv2_164",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_164",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "杉村弘子往前迈上两级台阶，像是突然想起了什么似的，转过身眨了眨眼睛，带着几分促狭地捉弄道：",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_164",
+            "label": "继续",
+            "next": "hlv2_165",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_165",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「不过，下次可不一定有这么好的机会哦？」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_165",
+            "label": "继续",
+            "next": "hlv2_166",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_166",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "坂口隆司",
+        "text": "「……」",
+        "expression": "playful",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_166",
+            "label": "继续",
+            "next": "hlv2_167",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/playful.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_167",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "看着坂口微怔的表情，杉村弘子终于忍不住掩唇轻笑出声，朝他轻轻挥了挥手：",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_167",
+            "label": "继续",
+            "next": "hlv2_168",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_168",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "杉村弘子",
+        "text": "「呵呵。开玩笑的。明天见！」",
+        "expression": "closed_eye_smile",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_hlv2_168",
+            "label": "继续",
+            "next": "hlv2_169",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "seasonal_street": true,
+        "event_portraits": [
+          {
+            "id": "nurse_hiroko",
+            "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/casual/closed_eye_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "hlv2_169",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "nurse_hiroko",
+        "speaker_label": "旁白",
+        "text": "丢下这句轻快的告别，她转过身，裙摆随着轻盈的步伐微微扬起，汇入了车站明亮的灯火之中。",
+        "expression": "neutral",
+        "outfit": "casual",
+        "background_id": "after_work_street_spring_night",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "finish_hiroko_lv2",
+            "label": "目送弘子走进车站",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "hiroko_lv2_complete",
+              "hiroko_on_time_dinner_shared",
+              "hiroko_white_cat_keychain_won"
+            ]
+          }
+        ],
+        "seasonal_street": true
+      }
+    ]
+  }
+]

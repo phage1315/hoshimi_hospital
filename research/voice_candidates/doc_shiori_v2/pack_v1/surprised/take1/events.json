@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYI6xRnvDz7hN98myTX1",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYI6p3oMV9lFyVQpggXHpIWTQaIrjQ8",
+      "expires_at": 1794532482,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、それは意外ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Graceful, clear surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、それは意外ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Graceful, clear surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あら",
+    "event_id": "event_EjYI7G7tu5kHa9IMkHeRM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、それ",
+    "event_id": "event_EjYI7120jouR73fFSy8pv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "は",
+    "event_id": "event_EjYI8KDQcygPNlO0NRr2V"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYI8CYNWEFZaHsRQUC5C",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "意",
+    "event_id": "event_EjYI8EVl4xifNjQazLuv5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "外",
+    "event_id": "event_EjYI8GsOuOPdcra6QmUbC"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "ですね",
+    "event_id": "event_EjYI8P360XDBvm8z1Usc6"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYI9G4OtWhYOqmPd6bct"
+  },
+  {
+    "event_id": "event_EjYIEA2VfZAKbN1SOlUT6",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYI6p3oMV9lFyVQpggXHpIWTQaIrjQ8",
+      "expires_at": 1794532482,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Distinctive silky-velvet, gently breathy lyric soprano-mezzo with pearlescent clarity and a memorable, melodic cadence. Soft, airy vowel onsets, refined ojou-sama elegance, and a charmingly confident, subtly teasing upward lilt at the end of phrases.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、それは意外ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Graceful, clear surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a0d40c4819192761ee5920d9611"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、それは意外ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Graceful, poised, articulate young female physician with subtle warmth — Graceful, clear surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYafntLbCguR53GUMH65",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYafp3oM9qY48NTdkXFkf4hbVypYJU6",
+      "expires_at": 1794533633,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Quiet, refined, bookish girlish higher-mid timbre with slender, delicate vocal weight and bashful breathy modesty. Polite keigo articulation with a slight shy flutter, yet observant and sincere.\nSpeak immediately in Japanese. Say exactly this line once: \"は、はい、承知いたしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly bashful earnest agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe039b6c81918f206a41a22ab045"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"は、はい、承知いたしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly bashful earnest agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "は、",
+    "event_id": "event_EjYahBlwdjTVdeMXhUsdQ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "はい、",
+    "event_id": "event_EjYahLrqD4HMlLM7869lI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "承知",
+    "event_id": "event_EjYahQcKbpOe7768jvxY2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "いたしました",
+    "event_id": "event_EjYahw6Zw3sH7ePQJ5U6V"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYahjSg4wR7ySgF5MoZK",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "。",
+    "event_id": "event_EjYahJDFJRy8PMx4QSW2K"
+  },
+  {
+    "event_id": "event_EjYamqAqFXjifYay78LJK",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYafp3oM9qY48NTdkXFkf4hbVypYJU6",
+      "expires_at": 1794533633,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. Quiet, refined, bookish girlish higher-mid timbre with slender, delicate vocal weight and bashful breathy modesty. Polite keigo articulation with a slight shy flutter, yet observant and sincere.\nSpeak immediately in Japanese. Say exactly this line once: \"は、はい、承知いたしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly bashful earnest agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe039b6c81918f206a41a22ab045"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"は、はい、承知いたしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, bookish, slightly shy yet observant 20yo ward nurse — Polite, slightly bashful earnest agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 5.0
+    }
+  }
+]

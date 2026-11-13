@@ -1,0 +1,68 @@
+[
+  {
+    "event_id": "event_EjYFcSr1yaCFYcVGe0sJp",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYFcp3oMbU5z4jwSJ2vy4I9UxkFVEBN",
+      "expires_at": 1794532328,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、なかなかやるじゃない。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, low-register, authoritative surgical chief — Rare, faintly pleased cool smile. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、なかなかやるじゃない。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, low-register, authoritative surgical chief — Rare, faintly pleased cool smile. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふふ",
+    "event_id": "event_EjYFdq18xofrhvumeYj4q"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、な",
+    "event_id": "event_EjYFd7PiHI4EA0b1Up6Uq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "かなか",
+    "event_id": "event_EjYFdN0EJLA0iKykQdBS8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "やる",
+    "event_id": "event_EjYFeLdSYlmDZJLnjZsy7"
+  }
+]

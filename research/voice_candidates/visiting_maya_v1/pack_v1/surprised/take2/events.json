@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYMk4efDJBaFKgqq6NCs",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYMkp3oN8rcSGmyCQk8EgCyyvTRFOu7",
+      "expires_at": 1794532770,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Clean, modest, gentle mid-to-upper register with a reserved, slightly shy intellectual sincerity. Careful, precise diction, polite restraint, and a soft earnest undertone.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Polite, genuine surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe80c92081919574b6c7e1f32d53"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Polite, genuine surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あっ",
+    "event_id": "event_EjYMlcXCf3NY2XjxRhSF1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、本",
+    "event_id": "event_EjYMl9CfQdRlv1BdMjCOt"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYMmzRw6pBwyjMGzsIuu",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "当",
+    "event_id": "event_EjYMmKYAPdoPHKQmceecD"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "です",
+    "event_id": "event_EjYMm3eAg6LCgbDeAGtX1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "か",
+    "event_id": "event_EjYMmpAdEJ8MHqAETbAMT"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYMnB6BeYAw9byrlTI4b"
+  },
+  {
+    "event_id": "event_EjYMtWyK0heTh7dh2BtAg",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYMkp3oN8rcSGmyCQk8EgCyyvTRFOu7",
+      "expires_at": 1794532770,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Clean, modest, gentle mid-to-upper register with a reserved, slightly shy intellectual sincerity. Careful, precise diction, polite restraint, and a soft earnest undertone.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Polite, genuine surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe80c92081919574b6c7e1f32d53"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, earnest, meticulous visiting researcher physician — Polite, genuine surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 8.0
+    }
+  }
+]

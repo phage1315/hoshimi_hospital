@@ -176,6 +176,16 @@ def strict_staff_patient_dialogue_failures() -> list[str]:
         if not source.get("reaction_lines") and not profile.get("dialogue_profile"):
             failures.append(f"staff patient reactions/profile missing: {actor}")
         compare(source, translated, actor)
+    mischief_path = ROOT / "data/staff_patient_mischief_dialogue.json"
+    if mischief_path.exists():
+        mischief_profiles = json.loads(mischief_path.read_text(encoding="utf-8"))
+        for actor, profile in mischief_profiles.items():
+            dialogue = profile.get("dialogue", {})
+            source, translated = dialogue.get("zh_CN"), dialogue.get("en")
+            if not isinstance(source, dict) or not isinstance(translated, dict):
+                failures.append(f"staff patient mischief locale missing: {actor}")
+                continue
+            compare(source, translated, f"mischief.{actor}")
     return failures
 
 

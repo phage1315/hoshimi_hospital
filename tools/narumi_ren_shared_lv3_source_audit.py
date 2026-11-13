@@ -65,7 +65,36 @@ require(conditions.get("required_events") == ["narumi_ren_shared_lv2_sign_here"]
 require(conditions.get("days_after_required_events") == 3, "relationship cooldown drift")
 require(conditions.get("min_familiarity") == 40, "familiarity gate drift")
 require(conditions.get("special_requirements") == [{"type": "player_attribute", "attribute": "skill", "minimum": 60}], "skill gate drift")
-require(event.get("gallery", {}).get("show_on_complete") is False and not event.get("gallery", {}).get("path"), "event must not invent a CG")
+require(event.get("gallery", {}).get("show_on_complete") is True and event.get("gallery", {}).get("path") == imp.CG_PATH,
+        "approved strategy CG gallery registration drift")
+require((ROOT / imp.CG_PATH).is_file(), f"missing approved strategy CG: {imp.CG_PATH}")
+mapped_cg_nodes = {str(node.get("id", "")) for node in actual if str(node.get("cg_path", "")) == imp.CG_PATH}
+require(mapped_cg_nodes == imp.CG_NODE_IDS, f"approved strategy CG window drift: {sorted(mapped_cg_nodes)}")
+require(all(node.get("cg_fit") == "cover" for node in actual if str(node.get("id", "")) in imp.CG_NODE_IDS),
+        "approved strategy CG must use cover fit")
+require((ROOT / imp.OR_CG_PATH).is_file(), f"missing approved awake OR CG: {imp.OR_CG_PATH}")
+mapped_or_cg_nodes = {str(node.get("id", "")) for node in actual if str(node.get("cg_path", "")) == imp.OR_CG_PATH}
+require(mapped_or_cg_nodes == imp.OR_CG_NODE_IDS, f"approved awake OR CG window drift: {sorted(mapped_or_cg_nodes)}")
+require(all(node.get("cg_fit") == "cover" for node in actual if str(node.get("id", "")) in imp.OR_CG_NODE_IDS),
+        "approved awake OR CG must use cover fit")
+require((ROOT / imp.PELVIC_CG_PATH).is_file(), f"missing supplied pelvic-field CG: {imp.PELVIC_CG_PATH}")
+mapped_pelvic_cg_nodes = {
+    str(node.get("id", "")) for node in actual
+    if str(node.get("cg_path", "")) == imp.PELVIC_CG_PATH
+}
+require(mapped_pelvic_cg_nodes == imp.PELVIC_CG_NODE_IDS,
+        f"supplied pelvic-field CG window drift: {sorted(mapped_pelvic_cg_nodes)}")
+require(all(node.get("cg_fit") == "contain" for node in actual if str(node.get("id", "")) in imp.PELVIC_CG_NODE_IDS),
+        "supplied pelvic-field CG must preserve the full frame")
+require((ROOT / imp.PRESERVATION_CG_PATH).is_file(), f"missing approved ovary-preservation CG: {imp.PRESERVATION_CG_PATH}")
+mapped_preservation_cg_nodes = {
+    str(node.get("id", "")) for node in actual
+    if str(node.get("cg_path", "")) == imp.PRESERVATION_CG_PATH
+}
+require(mapped_preservation_cg_nodes == imp.PRESERVATION_CG_NODE_IDS,
+        f"approved ovary-preservation CG window drift: {sorted(mapped_preservation_cg_nodes)}")
+require(all(node.get("cg_fit") == "cover" for node in actual if str(node.get("id", "")) in imp.PRESERVATION_CG_NODE_IDS),
+        "approved ovary-preservation CG must use cover fit")
 require(not any(key in event for key in ["runner", "surgery", "rewards", "patient_id"]), "event leaked into a clinical runner")
 
 expected_yayoi_assets = {

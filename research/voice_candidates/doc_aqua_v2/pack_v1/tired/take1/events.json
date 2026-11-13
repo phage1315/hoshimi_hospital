@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYIh6W8Y5Y53KNPUH4uP",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYIhp3oMTPvU1CIN5xyaFbGyPi3DGHC",
+      "expires_at": 1794532519,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Sparkling, crystal-bright, high-pitched Japanese anime-heroine soprano with glossy, ultra-clear resonance and bouncy, energetic charm. Vivid anime-style expressiveness, crisp upbeat rhythm, and cheerful, playfully boastful brightness.\nSpeak immediately in Japanese. Say exactly this line once: \"うう、今日はもう頭がいっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sparkling, crystal-bright, expressive anime-heroine OB/GYN chief — Expressive, cute tired groan. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619e436fc819195bbbcc09c6540e5"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"うう、今日はもう頭がいっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sparkling, crystal-bright, expressive anime-heroine OB/GYN chief — Expressive, cute tired groan. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "うう",
+    "event_id": "event_EjYIilJtoH5fZyOe4e32S"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、今日は",
+    "event_id": "event_EjYIiADGfTmUghbxHfhu6"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYIj4CJgxUJbGoCuf8HA",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "もう",
+    "event_id": "event_EjYIj7BsnN1XH1uWtrjEs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "頭",
+    "event_id": "event_EjYIjC5nXAyTtO9HKcT4R"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "がいっぱい",
+    "event_id": "event_EjYIjkDpDiSQB4JI2hfOm"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "ですよ",
+    "event_id": "event_EjYIk4hKvz8UhtZ2sARkp"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "。",
+    "event_id": "event_EjYIkyqnLoQrS0yuTjkkc"
+  },
+  {
+    "event_id": "event_EjYIpzd9qBWmELlF7GEey",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYIhp3oMTPvU1CIN5xyaFbGyPi3DGHC",
+      "expires_at": 1794532519,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Sparkling, crystal-bright, high-pitched Japanese anime-heroine soprano with glossy, ultra-clear resonance and bouncy, energetic charm. Vivid anime-style expressiveness, crisp upbeat rhythm, and cheerful, playfully boastful brightness.\nSpeak immediately in Japanese. Say exactly this line once: \"うう、今日はもう頭がいっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sparkling, crystal-bright, expressive anime-heroine OB/GYN chief — Expressive, cute tired groan. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619e436fc819195bbbcc09c6540e5"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"うう、今日はもう頭がいっぱいですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sparkling, crystal-bright, expressive anime-heroine OB/GYN chief — Expressive, cute tired groan. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

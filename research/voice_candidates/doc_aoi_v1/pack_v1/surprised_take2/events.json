@@ -1,0 +1,117 @@
+[
+  {
+    "event_id": "event_EjJECsqRjNcUL1BLCpioB",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjJECp3oMWGEH8uqKkZsJOnL6t1vj03C",
+      "expires_at": 1794474580,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、意外ね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Restrained, poised adult surprise with a faint intrigued lift in tone, never shrill or exaggerated. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、意外ね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Restrained, poised adult surprise with a faint intrigued lift in tone, never shrill or exaggerated. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あら",
+    "event_id": "event_EjJEDSpUDrHQTFNZr1AeD"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、意",
+    "event_id": "event_EjJEDrVGscFCemFufv2cK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "外ね",
+    "event_id": "event_EjJEDuGIzyZ3WG4UlxIel"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "。",
+    "event_id": "event_EjJEDZ1NIW8j9vfnilict"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjJEDGNtvfzlXNxSSb6dO",
+    "client_event_id": "line_1"
+  },
+  {
+    "event_id": "event_EjJEMotxpiH2jp5DCC3nd",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjJECp3oMWGEH8uqKkZsJOnL6t1vj03C",
+      "expires_at": 1794474580,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"あら、意外ね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Restrained, poised adult surprise with a faint intrigued lift in tone, never shrill or exaggerated. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あら、意外ね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Restrained, poised adult surprise with a faint intrigued lift in tone, never shrill or exaggerated. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

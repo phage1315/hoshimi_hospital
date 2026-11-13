@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYKgiaVK55Ers6hvshHr",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYKgp3oNHfStURCBnM81xaKZQl0Mu1C",
+      "expires_at": 1794532642,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Naturally slender, delicate, crystal-light higher-mid timbre with a youthful, pure clarity, yet delivered with a deliberately cool, guarded, detached restraint. Crisp, concise phrasing and controlled flat intonation that masks a subtle, fragile softness underneath.\nSpeak immediately in Japanese. Say exactly this line once: \"助手位置、確認済みです。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Clean, concise surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56cc1bee08191ba00ac51cd0a142f"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"助手位置、確認済みです。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Clean, concise surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "助手位置",
+    "event_id": "event_EjYKhvZoUVWQWJsFwaWfn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、",
+    "event_id": "event_EjYKi7bpGF672Ac5A7AEV"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "確認",
+    "event_id": "event_EjYKix04ZifE20R4Og54f"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYKiCQcLbwkCs7QLDsyd",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "済み",
+    "event_id": "event_EjYKiaZR4XMcMLKZ2psyL"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "です",
+    "event_id": "event_EjYKjVtPqZiAHPyjRyy2Y"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYKj73ZpQIMUom4O3vSa"
+  },
+  {
+    "event_id": "event_EjYKqCWOvZdFFsTWu1Jr3",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYKgp3oNHfStURCBnM81xaKZQl0Mu1C",
+      "expires_at": 1794532642,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Naturally slender, delicate, crystal-light higher-mid timbre with a youthful, pure clarity, yet delivered with a deliberately cool, guarded, detached restraint. Crisp, concise phrasing and controlled flat intonation that masks a subtle, fragile softness underneath.\nSpeak immediately in Japanese. Say exactly this line once: \"助手位置、確認済みです。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Clean, concise surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56cc1bee08191ba00ac51cd0a142f"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"助手位置、確認済みです。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Guarded, cool-toned yet clear youthful female radiologist — Clean, concise surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 8.0
+    }
+  }
+]

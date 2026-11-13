@@ -1,0 +1,152 @@
+[
+  {
+    "event_id": "event_EjJDnv0UWib3fQ4bo0v6i",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjJDnp3oMjDG8ZKCQmuTmhzidSFIdMrW",
+      "expires_at": 1794474555,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"少し気をつけた方がいいわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quietly concerned, lowered warm register, attentive and protective without panic. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"少し気をつけた方がいいわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quietly concerned, lowered warm register, attentive and protective without panic. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "少し",
+    "event_id": "event_EjJDom1vKm2gN3EosfLJH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "気",
+    "event_id": "event_EjJDotkKF7SvtJl8KIXsM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "をつ",
+    "event_id": "event_EjJDoVBwAEmRq26u0ubVb"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "けた",
+    "event_id": "event_EjJDpfPaVr3Ex3sov2au0"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjJDpJJmfvgcNukWD7xpu",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "方",
+    "event_id": "event_EjJDp2YUWzFC3rpKB2d50"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "が",
+    "event_id": "event_EjJDpBaERq4voSRvWGCx3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "いい",
+    "event_id": "event_EjJDpDr6wNVqvaoVTbovF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "わね",
+    "event_id": "event_EjJDpbKNv4lucxBxdN3V3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjJDqCmnSvqpAVNA8Sp6O"
+  },
+  {
+    "event_id": "event_EjJDxt8ZbZMxeCsHZCUX9",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjJDnp3oMjDG8ZKCQmuTmhzidSFIdMrW",
+      "expires_at": 1794474555,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"少し気をつけた方がいいわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quietly concerned, lowered warm register, attentive and protective without panic. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"少し気をつけた方がいいわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quietly concerned, lowered warm register, attentive and protective without panic. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

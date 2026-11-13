@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjJDO0i2YoCrIU49C99Sg",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjJDOp3oMOXHmpn35j22KXhfAE3tYMVD",
+      "expires_at": 1794474530,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、悪くないわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, understated mature chuckle followed by warm, slightly playful approval, gentle chest resonance. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、悪くないわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, understated mature chuckle followed by warm, slightly playful approval, gentle chest resonance. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふふ",
+    "event_id": "event_EjJDP4C6gbsy2aaOrDX5R"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、悪",
+    "event_id": "event_EjJDPVOj6ejXLCeQnG9OY"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjJDQaD2jVCYS92XpIOqB",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "く",
+    "event_id": "event_EjJDQdGbb54BTPkLKv52r"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "ない",
+    "event_id": "event_EjJDQo8p2BDz5vV20NYCu"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "わ",
+    "event_id": "event_EjJDQJPooWOtK2QvS74FG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ね",
+    "event_id": "event_EjJDQ3GlP5N7LzM8zPlaI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjJDQh0FWWBOYnkURROiH"
+  },
+  {
+    "event_id": "event_EjJDYoEZ3u4wSOponQONn",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjJDOp3oMOXHmpn35j22KXhfAE3tYMVD",
+      "expires_at": 1794474530,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her early thirties, speaking native standard Japanese. A mature, rich, magnetic lower-mid register, with gentle chest resonance and a subtle velvety husk. Composed, confident and steady, with a faint playful, teasing smile underneath her professionalism. Natural conversational pacing, clear Japanese articulation, restrained expressiveness.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、悪くないわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, understated mature chuckle followed by warm, slightly playful approval, gentle chest resonance. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af55eeacd408191b54e9993e95cc0ce"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、悪くないわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, understated mature chuckle followed by warm, slightly playful approval, gentle chest resonance. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjbInIlyxre6qog4ZZM2d",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjbImp3oMTPv6o8YfrpiXlQkdCZETius",
+      "expires_at": 1794544057,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"もう……からかってばかりなんだから。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Playfully exasperated, light scolding sigh with affectionate warmth, close-mic conversational delivery. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"もう……からかってばかりなんだから。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Playfully exasperated, light scolding sigh with affectionate warmth, close-mic conversational delivery. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": " もう",
+    "event_id": "event_EjbIoZVipeX8k4HqaEE4z"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "……から",
+    "event_id": "event_EjbIoUjQGn6MlmZwriDt4"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "かって",
+    "event_id": "event_EjbIoXlWVhoInJxirnpQ3"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "ばか",
+    "event_id": "event_EjbIoJZkkrRg9mWIApom8"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjbIogWxrDnFC1eQUejku",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "りなん",
+    "event_id": "event_EjbIphYKBYnnp6XOQe4he"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "だから。",
+    "event_id": "event_EjbIpipoF1rZpKlgQIYxQ"
+  },
+  {
+    "event_id": "event_EjbIwdsElbGLygIsNxGtM",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjbImp3oMTPv6o8YfrpiXlQkdCZETius",
+      "expires_at": 1794544057,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"もう……からかってばかりなんだから。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Playfully exasperated, light scolding sigh with affectionate warmth, close-mic conversational delivery. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"もう……からかってばかりなんだから。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Playfully exasperated, light scolding sigh with affectionate warmth, close-mic conversational delivery. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 9.0
+    }
+  }
+]

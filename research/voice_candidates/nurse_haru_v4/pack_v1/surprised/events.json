@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYQ9zSNWeTiV2dmPywMs",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYQ8p3oMTBh4milsbfGKazNiHwGvXKq",
+      "expires_at": 1794532981,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Clear, cute girlish surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Clear, cute girlish surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "えっ",
+    "event_id": "event_EjYQA8dqZZRDkuLw8aYpx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、本",
+    "event_id": "event_EjYQA1Gh9JQanrNNW2BTb"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYQBhjSucCTjkoX83WcR",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "当",
+    "event_id": "event_EjYQBWyMLfms0aGApx9Sd"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "です",
+    "event_id": "event_EjYQBxOh5cznVVwMjhhfy"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "か",
+    "event_id": "event_EjYQBr9V3S1YnMcx2m18P"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjYQBfW9Qcn80J9m7mQy8"
+  },
+  {
+    "event_id": "event_EjYQGIYAezytcF94qwlhA",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYQ8p3oMTBh4milsbfGKazNiHwGvXKq",
+      "expires_at": 1794532981,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, cute, sugary-clear girlish soprano with bright, sparkling forward resonance, petite light vocal weight, and pure, honey-sweet maidenly charm. Gentle, affectionate, smiling clarity that sounds unmistakably young, sweet, and lovely.\nSpeak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Clear, cute girlish surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61bf99f2c8191b97b1062370ca368"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"えっ、本当ですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sweet, pure, high-pitched cute girlish nurse — Clear, cute girlish surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

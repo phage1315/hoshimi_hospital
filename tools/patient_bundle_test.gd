@@ -22,7 +22,7 @@ func _initialize() -> void:
 		ids.append(str(patient.id))
 		expect(patient.visuals.portraits.size() >= 17, "Patient bundle exposes fewer than 17 required portrait slots: " + patient.id)
 		expect(patient.reaction_lines.size() == 27, "Patient bundle does not expose 27 core reactions: " + patient.id)
-		expect(patient.reaction_variants.size() == 13, "Patient bundle does not expose 13 reaction groups: " + patient.id)
+		expect(patient.reaction_variants.size() == 22, "Patient bundle does not expose 22 reaction groups: " + patient.id)
 		for portrait_path in patient.visuals.portraits.values():
 			var resource_path := "res://" + str(portrait_path)
 			expect(ResourceLoader.exists(resource_path), "Patient-bundle portrait is missing: " + resource_path)

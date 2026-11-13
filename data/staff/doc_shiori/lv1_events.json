@@ -1,0 +1,3219 @@
+[
+  {
+    "id": "shiori_lv1_doctors_worry",
+    "actor_id": "doc_shiori",
+    "title": "藤崎医生的烦恼",
+    "teaser": "午后门诊刚告一段落，职员休息室靠窗的小圆桌旁，藤崎詩織正捧着热红茶露出一丝微妙的哭笑不得。",
+    "chapter": 1,
+    "location_id": "lounge",
+    "trigger_mode": "location",
+    "background_id": "staff_lounge",
+    "outfit": "white_coat",
+    "minutes": 15,
+    "time_start": 540,
+    "time_end": 1020,
+    "priority": 92,
+    "category": "bond",
+    "target_level": 1,
+    "benefit_id": "",
+    "auto_start": false,
+    "cinematic": true,
+    "locks_saving": true,
+    "hide_calendar_header": false,
+    "hide_completion_portrait": false,
+    "gallery": {
+      "cg_id": "shiori_lv1_doctors_worry",
+      "caption": "在午后休息室听藤崎詩織聊起门诊的插曲与旧同学。",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [],
+      "special_requirements": []
+    },
+    "start": "slv1_001",
+    "nodes": [
+      {
+        "id": "slv1_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "下午门诊刚刚告一段落。坂口隆司推开医护休息室的门走进来准备倒杯咖啡，看见藤崎詩織正独自坐在靠窗的小圆桌旁，手里捧着一杯刚泡好的热红茶。",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "continue_slv1_001",
+            "label": "继续",
+            "next": "slv1_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "slv1_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她没有翻看手边的资料，只是低头看着茶杯里浮沉的茶包，眉眼间带着一点微妙的哭笑不得。",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_002",
+            "label": "继续",
+            "next": "slv1_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_003",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「下午好，藤崎医生。今天门诊结束得挺准时？」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_003",
+            "label": "继续",
+            "next": "slv1_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她听见声音抬起头，端正地放平茶杯。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_004",
+            "label": "继续",
+            "next": "slv1_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「啊，坂口医生，下午好。今天预约的复诊患者都很配合，刚刚把最后一位送走，过来歇五分钟。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_005",
+            "label": "继续",
+            "next": "slv1_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口走到吧台边接了一杯黑咖啡，转过身时注意到她眼角还没完全收回去的笑意。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_006",
+            "label": "继续",
+            "next": "slv1_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「看你刚才对着茶杯出神的样子，是遇到什么好笑的事了？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_007",
+            "label": "继续",
+            "next": "slv1_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_008",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她轻轻抿了一下唇角，抬手用指尖碰了碰杯沿。",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_008",
+            "label": "继续",
+            "next": "slv1_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_009",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「……被坂口医生看见了吗？其实也不是什么大事，就是刚才最后那位来拆线复查的年轻女患者，临出门前突然把诊室门掩上了一半。」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_009",
+            "label": "继续",
+            "next": "slv1_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_010",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「还有悄悄话要补问？」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_010",
+            "label": "继续",
+            "next": "slv1_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_011",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「我也以为她还有术后护理的顾虑，结果正准备重新打开病历夹的时候，她突然从包里拿出手机，很小声地问我——能不能和她拍一张合照。」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_011",
+            "label": "继续",
+            "next": "slv1_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_012",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「合照？」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_012",
+            "label": "继续",
+            "next": "slv1_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「嗯。她说上次回去跟家里的妹妹提起主治医生，妹妹怎么都不肯信，非说她是在编故事，所以今天特意想拍张照片回去作证。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_013",
+            "label": "继续",
+            "next": "slv1_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_014",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「听起来倒是很实在的理由。不过诊室里确实不太方便拍照。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_014",
+            "label": "继续",
+            "next": "slv1_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_015",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「是呀，我就按医院的规定礼貌地跟她解释，请她体谅一下工作场合的纪律。那位小姐人其实很好，听完立刻就把手机收起来道歉了……只是紧接着，她又从钱包夹层里抽出了自己的门诊诊察券，连签字笔都拔开笔帽递到了我面前。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_015",
+            "label": "继续",
+            "next": "slv1_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口端着咖啡杯的动作顿了半秒。",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_016",
+            "label": "继续",
+            "next": "slv1_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_017",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「……让你签在诊察券上？」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_017",
+            "label": "继续",
+            "next": "slv1_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她轻轻点了一下头，语气里透着几分不知如何是好的荒唐感。",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_018",
+            "label": "继续",
+            "next": "slv1_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「她特别诚恳地指着诊察券背面那块空白栏，问不能拍照的话，能不能至少签个名字留作出院纪念。我坐在诊桌后面愣了好几秒，完全不知道手里的笔该往哪里放。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_019",
+            "label": "继续",
+            "next": "slv1_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_020",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「最后没签吧？」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_020",
+            "label": "继续",
+            "next": "slv1_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「当然没有签啦。我只好半开玩笑地跟她说，要是我真在诊察券背面签上大名，下次她拿去一楼窗口挂号的时候，导诊台的护士大概会以为是某种从来没见过的特殊转诊暗号。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_021",
+            "label": "继续",
+            "next": "slv1_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_022",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口拉开圆桌对面的椅子坐下，嘴角微扬。",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_022",
+            "label": "继续",
+            "next": "slv1_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_023",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「拒绝得挺明智。不然下礼拜一楼大厅说不定就会传出『持有藤崎医生亲笔签名诊察券可以优先加号』的医院怪谈了。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_023",
+            "label": "继续",
+            "next": "slv1_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她轻轻睨了坂口一眼，握着茶杯微叹了口气。",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_024",
+            "label": "继续",
+            "next": "slv1_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_025",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「坂口医生……怎么连你也跟着拿我寻开心。当时人家患者一脸认真地举着卡片，我为了不让她觉得难堪，可是很努力才忍住没在诊室里笑出来的。」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_025",
+            "label": "继续",
+            "next": "slv1_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_026",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「抱歉，主要是画面感太强了。毕竟在医院这种地方，医生郑重其事给患者签字的文件，十有八九都是手术同意书或者诊断证明——能让人开开心心讨签名的场合可不多见。」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_026",
+            "label": "继续",
+            "next": "slv1_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_027",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「这么想的话倒也是。她原本前两周还因为担心留疤紧张得睡不好觉，今天复查完有心情开这种玩笑，作为主治医生确实该替她高兴才对。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_027",
+            "label": "继续",
+            "next": "slv1_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_028",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "休息室窗外吹过一阵轻缓的穿堂风。坂口喝了一口黑咖啡，自然地顺着刚才的话题聊下去。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_028",
+            "label": "继续",
+            "next": "slv1_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_029",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「能把患者照顾到愿意拿着诊察券留念，说明你的门诊气氛一向很让人放松。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_029",
+            "label": "继续",
+            "next": "slv1_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_030",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她垂眸看着红茶澄澈的茶汤，轻轻摇了摇头。",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_030",
+            "label": "继续",
+            "next": "slv1_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_031",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「复诊过几次的患者确实会比较亲近。不过……偶尔遇到第一次挂号进来的新患者，情况有时候就会完全反过来了。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_031",
+            "label": "继续",
+            "next": "slv1_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_032",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「反过来？」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_032",
+            "label": "继续",
+            "next": "slv1_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「比如上礼拜三下午，有一位从外院转过来的中年患者，病程拖得比较久。他推门进来看到坐在诊桌后面的人是我，在门口愣了两秒，甚至还退后半步抬头确认了一眼诊室门牌，才半信半疑地转头问护士——『今天坐诊的真是主治医生本人，不是请来拍宣传照的吗？』」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_033",
+            "label": "继续",
+            "next": "slv1_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_034",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「把你当成拍宣传照的门面医生了？」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_034",
+            "label": "继续",
+            "next": "slv1_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「大概就是那个意思吧。落座以后眼神也还是不太放心，盯着我的脸看了好一会儿，才委婉地问自己的旧片子比较复杂，要不要另外请科室里更资深的主治医生过来一起看。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_035",
+            "label": "继续",
+            "next": "slv1_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_036",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口没有急着替她打抱不平，只是平静地看着她追问。",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_036",
+            "label": "继续",
+            "next": "slv1_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_037",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「遇到这种先入为主的患者，你一般怎么处理？」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_037",
+            "label": "继续",
+            "next": "slv1_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_038",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她坐姿端正，语气平稳而温和，听不出半点赌气或委屈。",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_038",
+            "label": "继续",
+            "next": "slv1_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_039",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「其实也不用特意去争辩什么。患者跑了好几家医院都没查明白，心里焦虑是很正常的。我就先请他坐下，把他带来的厚厚一沓旧检查单按时间顺序理清楚，再把之前几轮用药为什么没起效、接下来需要排查哪两个指标，一条一条画在纸上讲给他听。」",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_039",
+            "label": "继续",
+            "next": "slv1_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_040",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「讲完之后呢？」",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_040",
+            "label": "继续",
+            "next": "slv1_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_041",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「大概听到第三分钟的时候，他自己就把一直抱在胸前的胳膊放下来了。临走前还主动问我下周复诊能不能继续挂同一个号。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_041",
+            "label": "继续",
+            "next": "slv1_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_042",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「意料之中。真把病历摊开讲清楚了，比解释什么资历都管用。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_042",
+            "label": "继续",
+            "next": "slv1_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_043",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她双手轻轻拢着温热的茶杯，目光落在桌面浅色的木纹上，声音比刚才放轻了一点。",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_043",
+            "label": "继续",
+            "next": "slv1_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「嗯，看诊的时候我倒不会被这种小事影响判断。只是偶尔把门诊日志合上、屋子里安静下来的时候，心里还是会有一点微妙的感觉。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_044",
+            "label": "继续",
+            "next": "slv1_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_045",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「微妙的感觉？」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_045",
+            "label": "继续",
+            "next": "slv1_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_046",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「该怎么说呢……明明大家穿的是同一件白大褂，每天做的也是同一份医生该做的工作，可在真正拿起听诊器、开口分析病情之前，别人最先注意到的，好像总是这些以外的东西。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_046",
+            "label": "继续",
+            "next": "slv1_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_047",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「不管是觉得新鲜想找我签名也好，还是进门先怀疑我够不够格看病也好——仔细想想，好像都是一眼先看见了『外表』，然后才轮到『医生』本身呢。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_047",
+            "label": "继续",
+            "next": "slv1_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_048",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口安静地听她说完，既没有顺口夸赞她的容貌，也没有搬出大道理安慰，只是像聊起日常查房一样平实地开口。",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_048",
+            "label": "继续",
+            "next": "slv1_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_049",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「别人进门就能直接看病历，你却得先多花三分钟把对方的注意力拉回病情本身——平白多出一道工序，换谁都会觉得有点无奈。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_049",
+            "label": "继续",
+            "next": "slv1_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_050",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她似乎没料到坂口会从这个角度接话，眨了一下眼睛，眼底那点淡淡的无奈随之化开，眉眼柔和地弯了起来。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_050",
+            "label": "继续",
+            "next": "slv1_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_051",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「……『多出一道工序』吗？被坂口医生这么一说，听起来倒真像是日常问诊的一部分，没那么让人介意了呢。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_051",
+            "label": "继续",
+            "next": "slv1_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_052",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "藤崎詩織心情轻松地端起茶杯喝了一口，顺手将摊在圆桌一角的一册近期医学期刊往自己手边拢了拢，准备夹上书签。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_052",
+            "label": "继续",
+            "next": "slv1_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_053",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口隆司的视线自然掠过摊开的那一页，上面印着一篇探讨细胞修复机制的前沿研究论文，配着几组相当大胆的实验模型图。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_053",
+            "label": "继续",
+            "next": "slv1_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_054",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「你在看最新一期的医学研究专刊？」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_054",
+            "label": "继续",
+            "next": "slv1_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_055",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她低头看了一眼书页，手指轻轻停在作者署名栏旁边。",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_055",
+            "label": "继续",
+            "next": "slv1_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_056",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「嗯，上午刚送到图书角的新刊，趁休息翻了几页。写这篇论文的第一作者，刚好是我以前念书时的旧同学。」",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_056",
+            "label": "继续",
+            "next": "slv1_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_057",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口顺着她的指尖看了一眼署名栏上的汉字。",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_057",
+            "label": "继续",
+            "next": "slv1_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_058",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「『紐緒結奈』……很少见的姓氏。在这个年纪就能在核心刊物上以第一作者发表这种分量的研究，相当厉害啊。」",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_058",
+            "label": "继续",
+            "next": "slv1_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_059",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "提起这个名字，她的神情自然放松下来，带着发自内心的欣赏。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_059",
+            "label": "继续",
+            "next": "slv1_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_060",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「结奈从学生时代起就是这样的人了。不管是多冷门棘手的课题，到了她手里，总能找出别人根本想不到的切入角度。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_060",
+            "label": "继续",
+            "next": "slv1_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_061",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「比藤崎医生还厉害？」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_061",
+            "label": "继续",
+            "next": "slv1_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「嗯。单论原创性的医学研究，我确实不及她。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_062",
+            "label": "继续",
+            "next": "slv1_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_063",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「你倒是说得很干脆。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_063",
+            "label": "继续",
+            "next": "slv1_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_064",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "没有半分勉强或自卑，语气坦率得近乎轻快。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_064",
+            "label": "继续",
+            "next": "slv1_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_065",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「因为我真的很佩服她呀。如果是在现有的医学体系里做临床判断、给患者制定稳妥的治疗方案，我有自信不会输给别人；但在推翻既有定论、开拓未知领域这件事上，结奈是那种天生就站在最前沿的人。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_065",
+            "label": "继续",
+            "next": "slv1_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_066",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「天生站在最前沿？」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_066",
+            "label": "继续",
+            "next": "slv1_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_067",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「普通人看到实验数据和现成教材对不上的时候，第一反应往往是检查自己哪一步操作做错了；可是结奈看到反常数据的第一反应，眼睛一下子就会亮起来，怀疑是不是现有的主流理论本身就漏掉了什么。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_067",
+            "label": "继续",
+            "next": "slv1_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_068",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "说到旧友当年的模样，藤崎詩織眼底浮起一点想起来就觉得好笑的怀念。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_068",
+            "label": "继续",
+            "next": "slv1_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_069",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「一旦让她抓到一点新假说的苗头，她能连着好几天泡在资料堆和实验台前，谁去叫她休息都听不见。在研究这件事上，她比谁都自信，也比谁都大胆。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_069",
+            "label": "继续",
+            "next": "slv1_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_070",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「敢直接质疑主流理论确实需要魄力。你们以前一起做实验的时候，也是这种风格？」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_070",
+            "label": "继续",
+            "next": "slv1_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_071",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她轻轻合上期刊，手指搭在封面上，像是想起了学生时代实验室里的光景。",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_071",
+            "label": "继续",
+            "next": "slv1_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_072",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「是呀，平时相处明明很投缘，可只要一碰到实验推进的方向，我们就经常谁也说服不了谁。记得有一次同组做课题，我们在样本里测出了一组偏离预期的异常数据——结奈看完记录，当场就想立刻扩大实验条件，顺着新方向去探清背后的反应机制。」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_072",
+            "label": "继续",
+            "next": "slv1_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_073",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「你主张先停下来验证？」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_073",
+            "label": "继续",
+            "next": "slv1_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_074",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「嗯。我坚持先把正常组织对照和重复验证补齐，确认那组结果真的可靠、把潜在的损伤风险也摸清楚了再往下推。结果她拿着记录板站在实验台对面，半步都不肯让，反过来问我——『刚摸到新机制的门槛，就把精力全压在反复求稳上，万一真正的突破口就在犹豫的时候错过了怎么办？』」",
+        "expression": "wry_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_074",
+            "label": "继续",
+            "next": "slv1_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/wry_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_075",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「那次我们争到最后，谁也没能说服对方轻易让步……直到今天翻看她的论文，读到那些一抓到异常苗头就果断往深处推进的设计，我心里一边佩服她的敏锐，一边还是会下意识先去找她的对照数据和风险边界。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_075",
+            "label": "继续",
+            "next": "slv1_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_076",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「先确认验证和风险边界，很符合藤崎医生的习惯。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_076",
+            "label": "继续",
+            "next": "slv1_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_077",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口看了一眼那本期刊封面，随口补了一句。",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_077",
+            "label": "继续",
+            "next": "slv1_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_078",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「不过有这么一位研究天才当老同学，要是以后我们在星见真遇上常规方案束手无策的疑难病例，说不定还真有向这位紐緒博士请教的一天。」",
+        "expression": "pensive",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_078",
+            "label": "继续",
+            "next": "slv1_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/pensive.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_079",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「如果真有需要请结奈出马的那一天，那病例本身恐怕一定相当棘手了……不过要是她的话，说不定真的能拿出谁都想不到的思路，只是到时候我们大概又免不了要争上几句了。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_079",
+            "label": "继续",
+            "next": "slv1_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_080",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "走廊远处隐约传来下午病房交接班的脚步声，休息室墙上的挂钟指针轻轻跳向了三点半。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_080",
+            "label": "继续",
+            "next": "slv1_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_081",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她抬起手腕看了一眼时间，连忙端正地站起身来。",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_081",
+            "label": "继续",
+            "next": "slv1_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_082",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「啊……不知不觉都已经三点半了。真是不好意思，坂口医生，你难得来休息室清静一会儿，结果全听我一个人聊门诊的琐事和旧同学了。」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_082",
+            "label": "继续",
+            "next": "slv1_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_083",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "坂口隆司也跟着站起身，端起空咖啡杯走向清洗槽，神态自然而松弛。",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_083",
+            "label": "继续",
+            "next": "slv1_084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_084",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「用不着道歉，这十几分钟比我自己对着排班表喝闷咖啡有意思多了。何况难得听见藤崎医生聊起诊室外面的一面，挺新鲜的。」",
+        "expression": "shy_reproach",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_084",
+            "label": "继续",
+            "next": "slv1_085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/shy_reproach.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_085",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她拿起自己的茶杯走到吧台旁冲洗干净，偏过头看了坂口一眼。",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_085",
+            "label": "继续",
+            "next": "slv1_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_086",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「新鲜……是指我平时在医院里看起来很无聊吗？」",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_086",
+            "label": "继续",
+            "next": "slv1_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_087",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「只是平时在医院见你什么事都处理得滴水不漏，还以为不太好随便开玩笑——没想到碰到患者拿诊察券讨签名也会犯难。」",
+        "expression": "professional",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_087",
+            "label": "继续",
+            "next": "slv1_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/professional.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_088",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她擦干手指的动作停了一下，随即轻轻笑出了声——不再是诊室里一板一眼的礼貌客套，连肩头的线条都显得轻松自然了许多。",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_088",
+            "label": "继续",
+            "next": "slv1_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_089",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「……原来我在坂口医生眼里，平时是那么难以接近的形象呀。不过，诊察券那件事还请务必替我保密——要是传到急诊或者外科那边去，我大概好几个礼拜都要被大家拿来打趣了。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_089",
+            "label": "继续",
+            "next": "slv1_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_090",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「放心，守口如瓶。」",
+        "expression": "neutral",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_090",
+            "label": "继续",
+            "next": "slv1_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/neutral.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_091",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "她将那本医学期刊整齐地放回图书角的书架原位，转过身朝坂口隆司微微颔首。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_091",
+            "label": "继续",
+            "next": "slv1_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_092",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_shiori",
+        "speaker_label": "藤崎詩織",
+        "text": "「今天谢谢你愿意听我说这些，坂口医生。那我先回病房看一眼下午的复查结果——待会儿工作加油。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_092",
+            "label": "继续",
+            "next": "slv1_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_093",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_shiori",
+        "speaker_label": "坂口隆司",
+        "text": "「嗯，待会儿见，藤崎医生。」",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": false,
+        "choices": [
+          {
+            "id": "continue_slv1_093",
+            "label": "继续",
+            "next": "slv1_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_shiori",
+            "path": "assets/characters/portrait_pack_v17/doc_shiori/white_coat/gentle_smile.png",
+            "x": 985,
+            "bottom": 540,
+            "width": 410,
+            "height": 500
+          }
+        ]
+      },
+      {
+        "id": "slv1_094",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_shiori",
+        "speaker_label": "旁白",
+        "text": "藤崎詩織带着温和从容的神情推门走向走廊。休息室里留下一缕淡淡的红茶余香，两人之间原本属于普通同事的客气距离，在不知不觉间悄然拉近了一小步。",
+        "expression": "gentle_smile",
+        "outfit": "white_coat",
+        "background_id": "staff_lounge",
+        "hide_portrait": true,
+        "choices": [
+          {
+            "id": "finish_slv1_094",
+            "label": "结束",
+            "next": "@end",
+            "effects": {
+              "affection": 2,
+              "familiarity": 2
+            },
+            "flags": [
+              "shiori_lv1_himoo_mentioned"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYX1E2R1qCwbLi5xdSs2",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYX1p3oMhK9cJ9uPUYUTz5a3scgNyak",
+      "expires_at": 1794533407,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Clean, cool-toned, youthful mid-high register with slender, unclouded clarity — fresh and young without husky aging. Polite, observant, composed, and quietly inquisitive articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、丁寧なお仕事ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Calm, gentle, observant smile. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe18b43881919dc6b19311809c10"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、丁寧なお仕事ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Calm, gentle, observant smile. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ふふ",
+    "event_id": "event_EjYX2HTtK0gtaqfsfT5jo"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、丁",
+    "event_id": "event_EjYX22YO6Q4Q8y9yhDqGX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "寧",
+    "event_id": "event_EjYX26k5B0ih1ScJfXPdS"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "なお",
+    "event_id": "event_EjYX3Bh654WFfSLdNwRn5"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYX30ZfLMgfc3ATYsVrE",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "仕事",
+    "event_id": "event_EjYX3maxTsDdqNiX5e2F0"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ですね",
+    "event_id": "event_EjYX3xBqytIPiH8seXXOG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "。",
+    "event_id": "event_EjYX4FB7SjwfZxVcG5Y70"
+  },
+  {
+    "event_id": "event_EjYX9B3466tM1kJUxaPDO",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYX1p3oMhK9cJ9uPUYUTz5a3scgNyak",
+      "expires_at": 1794533407,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her early-to-mid twenties, speaking native standard Japanese. Clean, cool-toned, youthful mid-high register with slender, unclouded clarity — fresh and young without husky aging. Polite, observant, composed, and quietly inquisitive articulation.\nSpeak immediately in Japanese. Say exactly this line once: \"ふふ、丁寧なお仕事ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Calm, gentle, observant smile. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe18b43881919dc6b19311809c10"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ふふ、丁寧なお仕事ですね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Polite, calm, observant and reliable 24yo nurse — Calm, gentle, observant smile. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

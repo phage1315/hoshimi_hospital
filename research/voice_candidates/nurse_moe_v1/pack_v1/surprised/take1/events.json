@@ -1,0 +1,138 @@
+[
+  {
+    "event_id": "event_EjYTNAq1hdm8yZIOtZxyi",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYTNp3oNHfS78g3VDmSgv807DNdH4iq",
+      "expires_at": 1794533181,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Soft, sweet, high-pitched fluffy girlish timbre with delicate, airy vocal weight and innocent earnest charm. Polite, eager-to-please rookie cadence with gentle breathiness and adorable youthful softness.\nSpeak immediately in Japanese. Say exactly this line once: \"ひゃっ、びっくりしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Adorable, startled high-pitched surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc5fd208191b605f1ccd5399efe"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ひゃっ、びっくりしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Adorable, startled high-pitched surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ひゃ",
+    "event_id": "event_EjYTOubLiJK3FH3zueuFA"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "っ",
+    "event_id": "event_EjYTOIkLg5zsEDRHGk93p"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "、",
+    "event_id": "event_EjYTPfWUlNsWycX9gIBVE"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "びっ",
+    "event_id": "event_EjYTPtvS5L9PUc6Fr4o9m"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYTP8lV3kRH4LufDK3hq",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "く",
+    "event_id": "event_EjYTPXAAgzxUNaB1ujdSp"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "りしました",
+    "event_id": "event_EjYTPj2n5GrtTE0XpNGgO"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYTQ7G4Nkw2LGIThdT0R"
+  },
+  {
+    "event_id": "event_EjYTVyfCuf3uPs73g1B5r",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYTNp3oNHfS78g3VDmSgv807DNdH4iq",
+      "expires_at": 1794533181,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Soft, sweet, high-pitched fluffy girlish timbre with delicate, airy vocal weight and innocent earnest charm. Polite, eager-to-please rookie cadence with gentle breathiness and adorable youthful softness.\nSpeak immediately in Japanese. Say exactly this line once: \"ひゃっ、びっくりしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Adorable, startled high-pitched surprise. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc5fd208191b605f1ccd5399efe"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ひゃっ、びっくりしました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Adorable, startled high-pitched surprise. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -1,0 +1,187 @@
+[
+  {
+    "event_id": "event_EjYb6ufgu36giMNNvGTDF",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYb5p3oMHF1JhrVPOXZdrVkQxoTlumF",
+      "expires_at": 1794533659,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Vibrant, sunny, expressively animated mid-high register brimming with cheerful artistic spirit and friendly charm. Lively melodic inflection, warm smiling resonance, and outgoing energy.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、先生。取材は順調ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Expressive, cheerful, warm-spirited 25yo manga artist guest — Lively, friendly greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe6ba988819188c8b3b65d7eda99"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、先生。取材は順調ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Expressive, cheerful, warm-spirited 25yo manga artist guest — Lively, friendly greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYb6wJEhFyhuswQdyBRn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ",
+    "event_id": "event_EjYb6gQkn6daBkfgHBzBF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "様",
+    "event_id": "event_EjYb7d21GADWxhh5KWwOF"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "です",
+    "event_id": "event_EjYb7wNTmItxdciAGu0NS"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYb7uC76EmEZH97xm8nv",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "、",
+    "event_id": "event_EjYb7n7iMR6Ii82hETsE6"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "先生",
+    "event_id": "event_EjYb7EEl66mIJisZjI61v"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYb8HhNd9XyvxR8H1POc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "取",
+    "event_id": "event_EjYb8uIxe31yTIYKWcVey"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "材",
+    "event_id": "event_EjYb8XPN5aqgeYim24Euk"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "は",
+    "event_id": "event_EjYb90urb8poknWUoWvuK"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "順",
+    "event_id": "event_EjYb9LJz5uAMogOsmYYE5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "調",
+    "event_id": "event_EjYb9dIL4cR8LL3AAU0Ww"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "ですよ",
+    "event_id": "event_EjYb9NdOKqEUZjrBDLIHQ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3600,
+    "end_ms": 3800,
+    "delta": "。",
+    "event_id": "event_EjYbAnYBZzKxEAjidzkww"
+  },
+  {
+    "event_id": "event_EjYbEkHJLHwp4w1UBgODz",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYb5p3oMHF1JhrVPOXZdrVkQxoTlumF",
+      "expires_at": 1794533659,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Vibrant, sunny, expressively animated mid-high register brimming with cheerful artistic spirit and friendly charm. Lively melodic inflection, warm smiling resonance, and outgoing energy.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、先生。取材は順調ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Expressive, cheerful, warm-spirited 25yo manga artist guest — Lively, friendly greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe6ba988819188c8b3b65d7eda99"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、先生。取材は順調ですよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Expressive, cheerful, warm-spirited 25yo manga artist guest — Lively, friendly greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYLNdChdDmRVZzANcZKN",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYLNp3oM9qYuolPQWTOcObGZ2UgTh2T",
+      "expires_at": 1794532685,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Soft, unhurried, breezy mid register with easygoing caring warmth and a touch of endearing absentminded relaxation, distinct from heavy seductiveness. Natural, soothing, approachable cadence.\nSpeak immediately in Japanese. Say exactly this line once: \"助手席、いつでもいけるよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Calm, dependable surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe7e72f48191b6d66e9aebda8f5a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"助手席、いつでもいけるよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Calm, dependable surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "助手席",
+    "event_id": "event_EjYLOomwMidr4DoMB0O8W"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、",
+    "event_id": "event_EjYLO60p6wEuVgaNW5aiz"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYLOZLDJ13180qt9qql8",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "いつ",
+    "event_id": "event_EjYLPTxHb5ozpMFzsuMjj"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "でも",
+    "event_id": "event_EjYLPA2PiUUiIXfaheiv5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "い",
+    "event_id": "event_EjYLQhx9fyegGVfnrqpXh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "ける",
+    "event_id": "event_EjYLQbPUmyWAcPGBdntBG"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "よ",
+    "event_id": "event_EjYLQNES3X2pF3eEZtT5C"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYLQlqYPaPP7Ow1zmOwF"
+  },
+  {
+    "event_id": "event_EjYLUaOeP0djTFzoV5CsG",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYLNp3oM9qYuolPQWTOcObGZ2UgTh2T",
+      "expires_at": 1794532685,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Soft, unhurried, breezy mid register with easygoing caring warmth and a touch of endearing absentminded relaxation, distinct from heavy seductiveness. Natural, soothing, approachable cadence.\nSpeak immediately in Japanese. Say exactly this line once: \"助手席、いつでもいけるよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Calm, dependable surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe7e72f48191b6d66e9aebda8f5a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"助手席、いつでもいけるよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm-hearted senior female surgeon, rock-steady in surgery — Calm, dependable surgical timeout confirmation, subtle surgical-mask muffling, fully intelligible. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

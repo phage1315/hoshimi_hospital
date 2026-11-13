@@ -1,0 +1,89 @@
+[
+  {
+    "event_id": "event_EjZfKNIPd4G19CraLU7DZ",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjZfKp3oMV9llp94YTRlIlbm12ObEuWR",
+      "expires_at": 1794537766,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"先に送って。私が採点してあげるから。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Playful, confident, teasingly superior adult charm after exchanging phone numbers; light amused smile in the voice. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"先に送って。私が採点してあげるから。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Playful, confident, teasingly superior adult charm after exchanging phone numbers; light amused smile in the voice. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "先に",
+    "event_id": "event_EjZfL7uQ2cqvchYvlfoMW"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "送",
+    "event_id": "event_EjZfLt5Vz8V1b9vv0jG81"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "って",
+    "event_id": "event_EjZfLw4OndzoqxmuKVvsg"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjZfLapCylBWM2RHASrfM",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "。私",
+    "event_id": "event_EjZfM47IL7fy7AdqkdvIx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "が",
+    "event_id": "event_EjZfMMfOTMrqC5xddjJqN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "採",
+    "event_id": "event_EjZfNekERZ6f0l4YJTNRM"
+  }
+]

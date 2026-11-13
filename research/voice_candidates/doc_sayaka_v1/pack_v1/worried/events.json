@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYJkculB3gYrjoMgVDr8",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYJkp3oMhK98v3zgAvKa2whnS6NpQoy",
+      "expires_at": 1794532584,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ねえ、少し無理してないかしら。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Gentle, caring concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ねえ、少し無理してないかしら。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Gentle, caring concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ねえ",
+    "event_id": "event_EjYJlkTTheTnV817y1QYN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、少",
+    "event_id": "event_EjYJlIRw5IRQEtdYPrbyu"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "し無",
+    "event_id": "event_EjYJmrheLOtnry95RaxFX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "理して",
+    "event_id": "event_EjYJmPlLag5z4oylqMz3K"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYJmLUvAbWh2zUFE6T92",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "ない",
+    "event_id": "event_EjYJm2K0D8NAia35huYMz"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "かし",
+    "event_id": "event_EjYJmZJHXP5rqQ4EqBO2M"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "ら",
+    "event_id": "event_EjYJmijJju0lLjFVAQ05O"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjYJmIiYIA9Of589VDOlR"
+  },
+  {
+    "event_id": "event_EjYJsy85WCkSNp64vzlI4",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYJkp3oMhK98v3zgAvKa2whnS6NpQoy",
+      "expires_at": 1794532584,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ねえ、少し無理してないかしら。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Gentle, caring concern. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ねえ、少し無理してないかしら。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Radiant, honeyed, playfully teasing young woman, crisp when serious — Gentle, caring concern. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

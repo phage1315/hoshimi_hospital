@@ -43,12 +43,7 @@ func date_blocked(target: int) -> bool:
 
 func schedule() -> Dictionary:
 	if episode_active: return local_facts.appointment.duplicate(true)
-	if not game.is_routine_workday(day()) or game.current_absolute_clock() > 960 or date_blocked(day()): return {}
-	if not game.is_routine_workday(day() + 1) or date_blocked(day() + 1): return {}
-	for target in range(day() + 2, mini(game.FINAL_WEEK_START_DAY, day() + 15)):
-		if date_blocked(target): return {}
-		if game.is_routine_workday(target): return {"intake_day": day(), "operation_day": day()+1, "review_day": target}
-	return {}
+	return continuous_schedule()
 
 func candidates(role: String, operation_day: int) -> Array:
 	return super.candidates(role, operation_day).filter(func(p): return str(p.id) != actor_id)

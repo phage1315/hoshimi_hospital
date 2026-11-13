@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYN0vENSYXKTTcZV07OK",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYMzp3oMHF1nOP9Qt51clrQqTAU0jac",
+      "expires_at": 1794532785,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"おはよう、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Brisk, quirky, casual-bright morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはよう、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Brisk, quirky, casual-bright morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjYN1KvE8QtP0zjzhE7to"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "よう、",
+    "event_id": "event_EjYN1GlsWlgJbpoD7vs25"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "坂",
+    "event_id": "event_EjYN10TreNmYYrZHIRUra"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYN1fVFV69tO2yp4S0Kz",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "口先生",
+    "event_id": "event_EjYN1cIFYDqcan05IeISs"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYN2Es0jD03xm8wREnzr"
+  },
+  {
+    "event_id": "event_EjYN74heAqKKdRkY8OhIL",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYMzp3oMHF1nOP9Qt51clrQqTAU0jac",
+      "expires_at": 1794532785,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice in her mid-twenties, speaking native standard Japanese. Light, high-pitched, quirky girlish timbre with nimble vocal weight and playful geeky sparkle. Quick, expressive, slightly mischievous cadence full of curiosity and clever wit.\nSpeak immediately in Japanese. Say exactly this line once: \"おはよう、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Brisk, quirky, casual-bright morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fe5a704c8191b53bbd06e47a824a"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはよう、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Quirky, bright, sharp-witted genius MD-scientist with playful geeky energy — Brisk, quirky, casual-bright morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

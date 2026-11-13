@@ -1,0 +1,947 @@
+[
+  {
+    "id": "ayako_return_00_opening",
+    "title": "她真的又来了",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 25,
+    "cg_dialogue_delay_seconds": 1.0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "announcement": "半年前误入手术台的漫画家片桐彩子，正式向星见医院递交了三十天驻院取材申请。",
+    "completion_hint": "片桐彩子已在星见医院开启为期 30 天的漫画取材驻留（Day 1 / 30）。后续每周固定取材事件与院内短偶遇将随日程自然推进。",
+    "unlock_requirements": [
+      {
+        "type": "special_event_completed",
+        "event_id": "miyama_02_manga_artist_wrong_patient"
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "miyama_02_manga_artist_wrong_patient",
+        "days": 180
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_shiori_reconnected",
+        "value": true
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_rei",
+        "minimum": 3
+      },
+      {
+        "type": "relationship_level",
+        "actor_id": "doc_shiori",
+        "minimum": 3
+      },
+      {
+        "type": "calendar_range",
+        "start_date": "2025-04-01",
+        "end_date": "2026-02-01"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_shiori",
+      "doc_asuka"
+    ],
+    "prerequisite_events": [
+      "miyama_02_manga_artist_wrong_patient"
+    ],
+    "event_chain": [
+      "ayako_return_00_opening_main"
+    ],
+    "completion_flags": [
+      "ayako_return_opening_completed",
+      "ayako_research_residency_active",
+      "ayako_ambient_pool_enabled"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_return_00_opening",
+      "title": "星见医院物语·她真的又来了",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 185,
+      "priority": 80,
+      "final_week_allowed": false,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_return_01_week1_nurses",
+    "title": "真正的护士工作",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 20,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "location_id": "station",
+    "completion_hint": "片桐彩子完成了第一周的病栋护理跟班见学（Week 1 / 4）。",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "ayako_return_00_opening",
+        "days": 5
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "nurse_haru",
+      "nurse_yui"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_return_01_week1_nurses_main"
+    ],
+    "completion_flags": [
+      "ayako_return_week1_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_return_01_week1_nurses",
+      "title": "星见医院物语·真正的护士工作",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 190,
+      "priority": 80,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_return_02_week2_sketches",
+    "title": "你们医院的人都很奇怪",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 25,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "after_work",
+    "completion_hint": "片桐彩子的全院角色设定草图引发了一场外科双王抓包骚动，驻留取材推进至后半程（Week 2 / 4）。",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "special_event_completed",
+        "event_id": "ayako_return_01_week1_nurses"
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "ayako_return_00_opening",
+        "days": 12
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_shiori"
+    ],
+    "prerequisite_events": [
+      "ayako_return_01_week1_nurses"
+    ],
+    "event_chain": [
+      "ayako_return_02_week2_sketches_main"
+    ],
+    "completion_flags": [
+      "ayako_return_week2_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_return_02_week2_sketches",
+      "title": "星见医院物语·你们医院的人都很奇怪",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 197,
+      "priority": 80,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_return_03_week3_shiori",
+    "title": "诗织，以前也是这样吗？",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 20,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "after_work",
+    "completion_hint": "傍晚中庭的一壶红茶，映照出藤崎詩織与学生时代截然不同的松弛变化（Week 3 / 4）。",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "special_event_completed",
+        "event_id": "ayako_return_02_week2_sketches"
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "ayako_return_00_opening",
+        "days": 19
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_shiori"
+    ],
+    "prerequisite_events": [
+      "ayako_return_02_week2_sketches"
+    ],
+    "event_chain": [
+      "ayako_return_03_week3_shiori_main"
+    ],
+    "completion_flags": [
+      "ayako_return_week3_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_return_03_week3_shiori",
+      "title": "星见医院物语·诗织，以前也是这样吗？",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 204,
+      "priority": 80,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_return_04_week4_storyboard",
+    "title": "星见医院物语",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 25,
+    "cg_dialogue_delay_seconds": 1.0,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "after_work",
+    "completion_hint": "片桐彩子完成了《星见医院物语》第一话三十二页分镜初稿（Week 4 / 4）。三十天驻留即将迎来尾声。",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "special_event_completed",
+        "event_id": "ayako_return_03_week3_shiori"
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "ayako_return_00_opening",
+        "days": 26
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_shiori"
+    ],
+    "prerequisite_events": [
+      "ayako_return_03_week3_shiori"
+    ],
+    "event_chain": [
+      "ayako_return_04_week4_storyboard_main"
+    ],
+    "completion_flags": [
+      "ayako_return_week4_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_return_04_week4_storyboard",
+      "title": "星见医院物语·第一话分镜",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 211,
+      "priority": 80,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_return_05_departure",
+    "title": "留作纪念的胸牌",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 20,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": true,
+    "mandatory_auto_start": true,
+    "trigger_mode": "day_start",
+    "announcement": "片桐彩子为期三十天的驻院取材期已满，今天她带着洗净熨平的护士制服前来院长室道别。",
+    "completion_hint": "片桐彩子带着获赠留念的护士制服与特制大胸牌圆满离院，《星见医院物语》正式进入连载筹备阶段。",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "special_event_completed",
+        "event_id": "ayako_return_04_week4_storyboard"
+      },
+      {
+        "type": "days_after_special_event",
+        "event_id": "ayako_return_00_opening",
+        "days": 29
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_shiori",
+      "doc_asuka"
+    ],
+    "prerequisite_events": [
+      "ayako_return_04_week4_storyboard"
+    ],
+    "event_chain": [
+      "ayako_return_05_departure_main"
+    ],
+    "completion_flags": [
+      "ayako_return_departure_completed",
+      "ayako_return_hoshimi_manga_completed",
+      "ayako_research_residency_completed",
+      "ayako_hospital_manga_project_started",
+      "ayako_nurse_uniform_gifted",
+      "ayako_research_badge_gifted",
+      "ayako_finale_party_eligible"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_return_05_departure",
+      "title": "星见医院物语·留作纪念的胸牌",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 214,
+      "priority": 80,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_amb_01_badge_reflex",
+    "title": "胸牌的标准使用方法",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      }
+    ],
+    "required_characters": [
+      "PLAYER"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_01_badge_reflex_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_01_badge_reflex_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_01_badge_reflex",
+      "title": "取材随笔·胸牌的标准使用方法",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "ward"
+  },
+  {
+    "id": "ayako_amb_02_gyn_danger_sense",
+    "title": "妇科走廊的危险直觉",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "doc_aqua"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_aqua"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_02_gyn_danger_sense_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_02_gyn_danger_sense_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_02_gyn_danger_sense",
+      "title": "取材随笔·妇科走廊的危险直觉",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "gynecology_exam"
+  },
+  {
+    "id": "ayako_amb_03_postop_vending_sketch",
+    "title": "下台五分钟的灵魂速写",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_03_postop_vending_sketch_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_03_postop_vending_sketch_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_03_postop_vending_sketch",
+      "title": "取材随笔·下台五分钟的灵魂速写",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_amb_04_lightning_corridor",
+    "title": "自带背景闪电的走廊",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "doc_emiko"
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "doc_artoria"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_emiko",
+      "doc_artoria"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_04_lightning_corridor_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_04_lightning_corridor_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_04_lightning_corridor",
+      "title": "取材随笔·自带背景闪电的走廊",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "ward"
+  },
+  {
+    "id": "ayako_amb_05_cool_drug_name",
+    "title": "听起来很厉害的药名",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "after_work",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "pharmacist_manami"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "pharmacist_manami"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_05_cool_drug_name_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_05_cool_drug_name_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_05_cool_drug_name",
+      "title": "取材随笔·听起来很厉害的药名",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    }
+  },
+  {
+    "id": "ayako_amb_06_two_thick_notebooks",
+    "title": "两本写满的笔记本",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "nurse_moe"
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "nurse_hiroko"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "nurse_moe",
+      "nurse_hiroko"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_06_two_thick_notebooks_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_06_two_thick_notebooks_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_06_two_thick_notebooks",
+      "title": "取材随笔·两本写满的笔记本",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "station"
+  },
+  {
+    "id": "ayako_amb_07_dynamic_uniform_folds",
+    "title": "动态衣褶的最佳模特",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "nurse_iwasaki_rumi"
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "nurse_yoneda_shiori"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "nurse_iwasaki_rumi",
+      "nurse_yoneda_shiori"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_07_dynamic_uniform_folds_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_07_dynamic_uniform_folds_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_07_dynamic_uniform_folds",
+      "title": "取材随笔·动态衣褶的最佳模特",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "ward"
+  },
+  {
+    "id": "ayako_amb_08_observed_observer",
+    "title": "逃不过法眼的观察者",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "doc_aoi"
+      },
+      {
+        "type": "staff_unlocked",
+        "actor_id": "doc_sayaka"
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_aoi",
+      "doc_sayaka"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_08_observed_observer_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_08_observed_observer_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_08_observed_observer",
+      "title": "取材随笔·逃不过法眼的观察者",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "lounge"
+  },
+  {
+    "id": "ayako_amb_09_director_uniform_audit",
+    "title": "院长大人的版型抽查",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_asuka"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_09_director_uniform_audit_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_09_director_uniform_audit_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_09_director_uniform_audit",
+      "title": "取材随笔·院长大人的版型抽查",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "lobby"
+  },
+  {
+    "id": "ayako_amb_10_yellow_line_honor_student",
+    "title": "四楼黄线外的模范生",
+    "category": "story_special_event",
+    "duration_days": 1,
+    "consumes_full_day": false,
+    "settled_minutes": 15,
+    "repeatable": false,
+    "developer_only": false,
+    "auto_schedule": false,
+    "mandatory_auto_start": false,
+    "trigger_mode": "location",
+    "unlock_requirements": [
+      {
+        "type": "story_flag",
+        "flag": "ayako_research_residency_active",
+        "value": true
+      },
+      {
+        "type": "story_flag",
+        "flag": "ayako_ambient_pool_enabled",
+        "value": true
+      }
+    ],
+    "required_characters": [
+      "PLAYER",
+      "doc_rei",
+      "doc_shiori"
+    ],
+    "prerequisite_events": [
+      "ayako_return_00_opening"
+    ],
+    "event_chain": [
+      "ayako_amb_10_yellow_line_honor_student_main"
+    ],
+    "completion_flags": [
+      "ayako_amb_10_yellow_line_honor_student_completed"
+    ],
+    "gallery_unlock": true,
+    "gallery_entry": {
+      "id": "ayako_amb_10_yellow_line_honor_student",
+      "title": "取材随笔·四楼黄线外的模范生",
+      "chapters": [
+        "完整回放"
+      ]
+    },
+    "timing": {
+      "trigger_day": 186,
+      "priority": 75,
+      "final_week_allowed": true,
+      "sunday_start_allowed": false
+    },
+    "location_id": "or"
+  }
+]

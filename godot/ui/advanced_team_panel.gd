@@ -8,6 +8,7 @@ var definition: Dictionary
 var dates: Dictionary
 var summaries: Dictionary = {}
 var pickers: Dictionary = {}
+var avatar_slots: Dictionary = {}
 var assessment: Label
 var coverage: Label
 var confirm: Button
@@ -54,21 +55,28 @@ func draw() -> void:
 			text(card, view.tr_key("player_speaker"), Rect2(12,28,294,36),20)
 			text(card, view.tr_key("team_skill_surgery")+" · "+str(view.controller.demo_player_skill if view.controller.dev else view.controller.game.surgery_level()), Rect2(12,68,294,30),16)
 			continue
+		var avatar_slot: Panel = view.host.add_staff_chibi_slot(card, str(view.selected.get(role, "")), Vector2(10, 30), 36.0, not str(view.selected.get(role, "")).is_empty(), "TeamAvatarSlot_" + role)
+		avatar_slots[role] = avatar_slot
 		var picker := OptionButton.new()
 		picker.name = "Team_"+role
-		picker.position = Vector2(10,32)
-		picker.size = Vector2(298,32)
+		picker.position = Vector2(52,32)
+		picker.size = Vector2(256,32)
 		picker.fit_to_longest_item = false
 		picker.add_theme_font_size_override("font_size",16)
 		picker.add_item(view.tr_key("pick")); picker.set_item_metadata(0, "")
 		for person in view.controller.candidates(role, int(dates.get("operation_day", view.controller.day()+1))):
 			picker.add_item(view.actor_name(person.id))
-			picker.set_item_metadata(picker.item_count-1, person.id)
-			if view.selected.get(role, "")==person.id: picker.select(picker.item_count-1)
+			var item_idx := picker.item_count - 1
+			picker.set_item_metadata(item_idx, person.id)
+			var small_tex: Texture2D = view.host.staff_chibi_small_texture(str(person.id))
+			if small_tex != null:
+				picker.set_item_icon(item_idx, small_tex)
+			if view.selected.get(role, "")==person.id: picker.select(item_idx)
+		picker.icon = null
 		picker.item_selected.connect(func(i): view.selected[role]=picker.get_item_metadata(i); refresh())
 		card.add_child(picker)
 		pickers[role]=picker
-		summaries[role]=text(card,"",Rect2(12,64,294,40),12)
+		summaries[role]=text(card,"",Rect2(12,68,294,36),12)
 	var patient: Dictionary = Presentation.patient(view.record,view.controller.game,view.english)
 	var patient_panel := panel(root,"TeamCase",Rect2(670,0,510,186))
 	text(patient_panel,view.tr_key("team_case"),Rect2(14,8,340,24),16)
@@ -133,6 +141,13 @@ func refresh() -> void:
 			var occupied: bool=id in view.selected.values() and view.selected.get(role,"")!=id
 			picker.set_item_disabled(i,occupied)
 		var id: String=str(view.selected.get(role,""))
+		picker.icon = null
+		if avatar_slots.has(role) and is_instance_valid(avatar_slots[role]):
+			var old_slot: Panel = avatar_slots[role]
+			var card_parent: Control = old_slot.get_parent() as Control
+			old_slot.queue_free()
+			if card_parent != null:
+				avatar_slots[role] = view.host.add_staff_chibi_slot(card_parent, id, Vector2(10, 30), 36.0, not id.is_empty(), "TeamAvatarSlot_" + role)
 		var label: Label=summaries[role]
 		if id.is_empty(): label.text=view.tr_key("pick"); continue
 		var skill: String=view.controller.game.role_training_skill(role)

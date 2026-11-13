@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYGrzcaknFbuQniuFNoG",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYGrp3oMhK9SnXPNepDCd7DdrRVasDm",
+      "expires_at": 1794532405,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. High-pitched, petite, sweet girlish soprano with delicate, sugary-clear bell resonance and pure maidenly charm. Polite, soft-hearted, adorable ojou-sama inflection that sounds genuinely young and girlish while staying articulate and bright.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Bright, polite, gentle youthful morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a1cb64481919bf6644851968f95"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Bright, polite, gentle youthful morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "おは",
+    "event_id": "event_EjYGsxV6e2m6rlBudQELZ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "よう",
+    "event_id": "event_EjYGsdV67aK6Jj7fBEgOg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "ございます",
+    "event_id": "event_EjYGseo8VomEWI6AX5rNL"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYGsHUFnqF4wFylYIV9Z",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "、",
+    "event_id": "event_EjYGtEaMfcwS2P9GvRLH5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "坂",
+    "event_id": "event_EjYGtPO4EY94IlnDEIpxW"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "口",
+    "event_id": "event_EjYGtjAADjVpJZNBfY7LH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1800,
+    "end_ms": 2000,
+    "delta": "先生",
+    "event_id": "event_EjYGuiqnvOo7AriQjA7i8"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "。",
+    "event_id": "event_EjYGuLmO7hWvS3Xmejwyl"
+  },
+  {
+    "event_id": "event_EjYGzfIbJb6vZvsmSVvy2",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYGrp3oMhK9SnXPNepDCd7DdrRVasDm",
+      "expires_at": 1794532405,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age twenty, speaking native standard Japanese. High-pitched, petite, sweet girlish soprano with delicate, sugary-clear bell resonance and pure maidenly charm. Polite, soft-hearted, adorable ojou-sama inflection that sounds genuinely young and girlish while staying articulate and bright.\nSpeak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Bright, polite, gentle youthful morning greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a1cb64481919bf6644851968f95"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"おはようございます、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Youthful, gentle, polite yet resolute young female surgeon — Bright, polite, gentle youthful morning greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 7.0
+    }
+  }
+]

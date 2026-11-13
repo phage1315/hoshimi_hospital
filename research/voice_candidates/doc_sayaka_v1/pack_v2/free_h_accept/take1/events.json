@@ -1,0 +1,187 @@
+[
+  {
+    "event_id": "event_EjZeTcLHrUI4so0ppoYdA",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjZeSp3oMV9lvm9E5UpP5slBKhpAY656",
+      "expires_at": 1794537712,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"いいわよ……じゃあ今夜、楽しみにしてるわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Intimate, honey-warm low voice accepting an after-work overnight date; relaxed, affectionate, quietly anticipatory. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"いいわよ……じゃあ今夜、楽しみにしてるわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Intimate, honey-warm low voice accepting an after-work overnight date; relaxed, affectionate, quietly anticipatory. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "いいわ",
+    "event_id": "event_EjZeTC3ghGqaHJZuN6nem"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "よ",
+    "event_id": "event_EjZeUH2pTV3bHU55cYoKO"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "……",
+    "event_id": "event_EjZeUTO1Y8buxuvKEzv1S"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "じゃ",
+    "event_id": "event_EjZeUe6f7ylJmx6YVjDpo"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "あ",
+    "event_id": "event_EjZeUQCfrWoRGFwrfYgul"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 1000,
+    "event_id": "event_EjZeUFcLBq6VIrvM8ze5Y",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "今",
+    "event_id": "event_EjZeUMh7zkBXrd9tfZrGo"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "夜",
+    "event_id": "event_EjZeV0Jp1tLOfxzGTOAd2"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "、",
+    "event_id": "event_EjZeV4idWryaKGKPcfuaH"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "楽し",
+    "event_id": "event_EjZeVYMPx3JIPj9BtpST9"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2000,
+    "end_ms": 2200,
+    "delta": "みに",
+    "event_id": "event_EjZeVwi5O6lCGVVNSITRc"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2200,
+    "end_ms": 2400,
+    "delta": "して",
+    "event_id": "event_EjZeWpnuYmhyR23NEGwiu"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2600,
+    "end_ms": 2800,
+    "delta": "るわ",
+    "event_id": "event_EjZeWSMiBTD47WUpTGq0w"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "ね",
+    "event_id": "event_EjZeWDBhiRLGAo26LHEn5"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3000,
+    "end_ms": 3200,
+    "delta": "。",
+    "event_id": "event_EjZeWiEThofb9GH6Z5Rtg"
+  },
+  {
+    "event_id": "event_EjZeZM4mJEyvz6ldU4ZOY",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjZeSp3oMV9lvm9E5UpP5slBKhpAY656",
+      "expires_at": 1794537712,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"いいわよ……じゃあ今夜、楽しみにしてるわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Intimate, honey-warm low voice accepting an after-work overnight date; relaxed, affectionate, quietly anticipatory. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"いいわよ……じゃあ今夜、楽しみにしてるわね。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Intimate, honey-warm low voice accepting an after-work overnight date; relaxed, affectionate, quietly anticipatory. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 5.0
+    }
+  }
+]

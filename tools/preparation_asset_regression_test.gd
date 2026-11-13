@@ -26,6 +26,10 @@ const EXPECTED_OR_POOLS := {
 	"patient_shimizu_iraiza": ["ward_skin_prep", "ward_enema", "stretcher_transfer", "urinary_catheterization", "sterile_draping", "incision_ready"],
 	"patient_yuko_asou": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "sterile_draping", "incision_ready"],
 	"patient_lust_actress": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "operative_positioning", "sterile_draping", "skin_disinfection", "incision_ready"],
+	"patient_chuatury_panlunch": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "operative_positioning", "skin_disinfection", "sterile_draping", "incision_ready"],
+	"patient_yoshizawa_miho": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "operative_positioning", "skin_disinfection", "sterile_draping", "incision_ready"],
+	"patient_nishikawa_natsuki": ["ward_skin_prep", "ward_enema", "ward_surgical_cap", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "operative_positioning", "sterile_draping", "incision_ready"],
+	"patient_yoshizumi_aki": ["ward_skin_prep", "ward_surgical_cap", "ward_enema", "stretcher_transfer", "urinary_catheterization", "skin_disinfection", "operative_positioning", "sterile_draping", "incision_ready"],
 }
 var checks := 0
 var failures := 0

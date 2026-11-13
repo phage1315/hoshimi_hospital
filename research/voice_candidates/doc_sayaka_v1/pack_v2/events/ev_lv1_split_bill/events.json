@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjZfNjigIcyIA2CCYs6Om",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjZfMp3oN8rcXghq9X0GWNgYaIxYKwON",
+      "expires_at": 1794537768,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ここは割り勘よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Crisp, breezy, playfully firm with a warm adult smile while holding the check at dinner. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ここは割り勘よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Crisp, breezy, playfully firm with a warm adult smile while holding the check at dinner. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ここは",
+    "event_id": "event_EjZfOLRc8aKEOWYj0NGVe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "割り",
+    "event_id": "event_EjZfO9wCpOldZpKS9ERDe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "勘",
+    "event_id": "event_EjZfOU3DtXmhFe1MV15Tv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "よ",
+    "event_id": "event_EjZfOW1B8rlZUFmsXqPTf"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjZfONlLgmxsm5k6stWgW",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "。",
+    "event_id": "event_EjZfOlaOJddvi192ZGWcg"
+  },
+  {
+    "event_id": "event_EjZfTD5TSudmrYSPPKJD2",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjZfMp3oN8rcXghq9X0GWNgYaIxYKwON",
+      "expires_at": 1794537768,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ここは割り勘よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Crisp, breezy, playfully firm with a warm adult smile while holding the check at dinner. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ここは割り勘よ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Crisp, breezy, playfully firm with a warm adult smile while holding the check at dinner. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 4.0
+    }
+  }
+]

@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjZeKz3yLQ2PSBu3eOBxF",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjZeJp3oMhK96gp31Ib8R8Qckz4j9cfY",
+      "expires_at": 1794537703,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm, honey-smooth adult conversational acknowledgement, calm and effortlessly poised. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm, honey-smooth adult conversational acknowledgement, calm and effortlessly poised. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ええ",
+    "event_id": "event_EjZeLgl3sM189iFEgSW0g"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、いい",
+    "event_id": "event_EjZeL6AgrPbkTxxXVJB3B"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjZeLLqNQomEbkAVR0DlD",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "わ",
+    "event_id": "event_EjZeM2sr7tilIOoUyZiol"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "よ",
+    "event_id": "event_EjZeMR3cXOMd1Ojiqcl0l"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "。",
+    "event_id": "event_EjZeM0YBRBwLLItFES4Ap"
+  },
+  {
+    "event_id": "event_EjZeQbkSLxf8NaUa2TyPp",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjZeJp3oMhK96gp31Ib8R8Qckz4j9cfY",
+      "expires_at": 1794537703,
+      "model": "gpt-live-1",
+      "instructions": "An original adult female voice in her mid-twenties, speaking native standard Japanese. Radiant, glamorous, honey-warm mid register with a relaxed, languid, affectionately coaxing drawl. Lush and silky timbre, unhurried tempo, softly elongated vowels and a breathy, playful sweet-spoiled lilt at the ends of phrases, effortlessly charming and at ease.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm, honey-smooth adult conversational acknowledgement, calm and effortlessly poised. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af56ca280988191ba228faa5add48c0"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Relaxed, warm, honey-smooth adult conversational acknowledgement, calm and effortlessly poised. Stop completely silent immediately after the final syllable; no trailing breath, sigh, hum, or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 4.0
+    }
+  }
+]

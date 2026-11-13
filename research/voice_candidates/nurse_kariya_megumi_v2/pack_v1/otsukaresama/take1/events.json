@@ -1,0 +1,145 @@
+[
+  {
+    "event_id": "event_EjYWGQktJfpKa1pcsAjlh",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYWGp3oMGLq9mY2tXADfk67Fp5bCFXx",
+      "expires_at": 1794533360,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Cute, high-pitched, peppy girlish soprano with bright, crisp forward resonance, petite vocal weight, and cheeky, spirited anime-girl liveliness. Expressive, upbeat, youthful rhythm full of fresh charm.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cute, high-pitched, peppy and candid 18yo trainee nurse — Upbeat, candid girlish after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a65632881919c52286756e7ba81"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cute, high-pitched, peppy and candid 18yo trainee nurse — Upbeat, candid girlish after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "お疲",
+    "event_id": "event_EjYWHN5ZPVqVSGCafSbZN"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "れ様",
+    "event_id": "event_EjYWHXW2VTAiD0jkqYrby"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "です",
+    "event_id": "event_EjYWH8Ri52OfSWpQKw561"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "、",
+    "event_id": "event_EjYWIauDdQMmzQiRxBCS4"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYWIZFlbZYlHP5HfHHao",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "坂",
+    "event_id": "event_EjYWIFarQmh50fXHvEN5Y"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "口",
+    "event_id": "event_EjYWIigyuAhuAZJV5fsZ6"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "先生",
+    "event_id": "event_EjYWIAx63XmiszBZSNwRx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "。",
+    "event_id": "event_EjYWJjGwu8pt7zKfDjqtb"
+  },
+  {
+    "event_id": "event_EjYWOyCTNH9LZCeg4QoCW",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYWGp3oMGLq9mY2tXADfk67Fp5bCFXx",
+      "expires_at": 1794533360,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Cute, high-pitched, peppy girlish soprano with bright, crisp forward resonance, petite vocal weight, and cheeky, spirited anime-girl liveliness. Expressive, upbeat, youthful rhythm full of fresh charm.\nSpeak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cute, high-pitched, peppy and candid 18yo trainee nurse — Upbeat, candid girlish after-work greeting. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61a65632881919c52286756e7ba81"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"お疲れ様です、坂口先生。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cute, high-pitched, peppy and candid 18yo trainee nurse — Upbeat, candid girlish after-work greeting. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

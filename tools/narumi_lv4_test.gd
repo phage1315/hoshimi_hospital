@@ -1,8 +1,9 @@
 extends SceneTree
-## Runtime regression for Narumi Lv4, its Ren relationship conditional, and pending Free H registration.
+## Runtime regression for Narumi Lv4, its Ren relationship conditional, and production Free H registration.
 
 const ID := "narumi_lv4_after_work"
 const NODE_COUNT := 148
+const CG_PATH := "assets/events/character_events/narumi_ren/narumi_lv4_rooftop_coffee.png"
 const Registry = preload("res://godot/systems/free_h_registry.gd")
 const EventSession = preload("res://godot/systems/character_event_session.gd")
 var app
@@ -57,15 +58,27 @@ func run() -> void:
 		app.configure_game_content()
 		var definition: Dictionary = app.game.character_event_definitions.get(ID, {})
 		expect(not definition.is_empty() and definition.get("nodes", []).size() == NODE_COUNT, "registered 148-page Lv4 " + locale)
+		var gallery: Dictionary = definition.get("gallery", {})
+		expect(str(gallery.get("path", "")) == CG_PATH and bool(gallery.get("show_on_complete", false)), "gallery CG registered " + locale)
+		expect(ResourceLoader.exists("res://" + CG_PATH), "rooftop CG imported " + locale)
+		var cg_nodes: Array = definition.get("nodes", []).filter(func(candidate: Dictionary) -> bool:
+			return str(candidate.get("cg_path", "")) == CG_PATH
+		)
+		expect(cg_nodes.size() == 12, "exact rooftop CG window " + locale)
+		for cg_node in cg_nodes:
+			var suffix := int(str(cg_node.get("id", "")).get_slice("_", 1))
+			expect(suffix >= 119 and suffix <= 130, "rooftop CG only in authored coffee scene " + str(cg_node.get("id", "")))
+			expect(str(cg_node.get("cg_fit", "")) == "cover", "rooftop CG uses cover fit " + str(cg_node.get("id", "")))
 		var all_coverage := {}
 		for ren_level in [3, 4]:
 			for branch_mask in range(4):
 				test_route(definition, locale, branch_mask, ren_level, all_coverage)
 		expect(all_coverage.size() == NODE_COUNT, "all pages covered %s: %s/%s" % [locale, all_coverage.size(), NODE_COUNT])
 	var config := Registry.definition("doc_aoi")
-	expect(not config.is_empty() and str(config.get("content_status", "")) == "pending_assets", "Narumi has explicit pending registration")
+	expect(not config.is_empty() and str(config.get("content_status", "")) == "ready", "Narumi has explicit ready registration")
 	expect(str(config.get("completion_event", "")) == ID and str(config.get("location_id", "")) == "hotel", "Narumi registration points to Lv4 and hotel")
-	expect(Registry.load_bundle("doc_aoi").has("error"), "pending assets cannot load a production bundle")
+	expect(not Registry.load_bundle("doc_aoi").has("error"), "complete assets load a production bundle")
+	expect(not Registry.load_bundle("doc_aoi", "en").has("error"), "complete assets load an English production bundle")
 	expect(app.game.prepare_character_event_test_save(ID), "isolated Lv4 fixture")
 	expect(app.game.is_sunday(), "Sunday-trigger fixture starts on Sunday")
 	var start_day: int = app.game.day_number()
@@ -89,6 +102,6 @@ func run() -> void:
 	await process_frame
 	expect(app.game.active_character_event_id.is_empty() and app.game.sunday_history.size() == 1, "returning to the hospital neither resumes nor double-consumes Sunday")
 	expect(app.game.free_h_relationship_qualified("doc_aoi"), "relationship facts qualify independently")
-	expect(not app.game.free_h_unlocked("doc_aoi"), "pending content cannot open the Free H route")
+	expect(app.game.free_h_unlocked("doc_aoi"), "completed Lv4 and ready assets open the Free H route")
 	print("NARUMI LV4/H: %s checks, %s failures" % [checks, failures])
 	quit(1 if failures else 0)

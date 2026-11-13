@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_EjYVLqEGW2cFtUHjmtfe3",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYVKp3oM9qYCxkqlzkkVVPhXgu45G1L",
+      "expires_at": 1794533303,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, cute high-pitched surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, cute high-pitched surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あっ",
+    "event_id": "event_EjYVMyv8fnwB9jAH6dEQB"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、そう",
+    "event_id": "event_EjYVMyh301JQ2K4YHk04Q"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "なん",
+    "event_id": "event_EjYVNWoNVNYRGDQuXakum"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYVNq992T1Mmp0U6iHkA",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 800,
+    "end_ms": 1000,
+    "delta": "です",
+    "event_id": "event_EjYVN0Pu1XP6atChuToNi"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "か",
+    "event_id": "event_EjYVNbg4zWiorwceNs02m"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EjYVNUGW1QZ2zUBucLJVE"
+  },
+  {
+    "event_id": "event_EjYVUJ2Bpp6pajrGO3RpQ",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYVKp3oM9qYCxkqlzkkVVPhXgu45G1L",
+      "expires_at": 1794533303,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. High-pitched, petite, sugary-sweet girlish soprano with light, delicate forward resonance and adorable, affectionate younger-sister charm. Bright, cute, soft-sweet melodic inflection.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, cute high-pitched surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af61c247c848191892d55aaa0b6a05e"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ、そうなんですか。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Petite, sugary-sweet, affectionate high-pitched 18yo nurse — Delicate, cute high-pitched surprise. No music or background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 8.0
+    }
+  }
+]

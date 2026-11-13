@@ -1,0 +1,117 @@
+[
+  {
+    "event_id": "event_EjYLiXtV7JOC45clkK90n",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYLip3oMhK9sFj7ingbhKD0wpgU4zuE",
+      "expires_at": 1794532706,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Sultry, smoky, low-pitched contralto with a cool, languid, slightly sardonic allure and dry wit. Unhurried, effortless delivery with a subtle teasing edge and sharp underlying clinical intelligence.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, unhurried agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5feaa62448191be4162dbce2a12ea"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, unhurried agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "ええ",
+    "event_id": "event_EjYLjRoviLazdueveJelv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、いい",
+    "event_id": "event_EjYLjfsqF8LOXUncXJJgB"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "わよ",
+    "event_id": "event_EjYLk3Vr3yv3ImiuBmcZv"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "。",
+    "event_id": "event_EjYLkvYN73FYwBgER6rUv"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYLkb92gW77Pmaaukl2e",
+    "client_event_id": "line_1"
+  },
+  {
+    "event_id": "event_EjYLqZKJEDvlA009QiHCa",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYLip3oMhK9sFj7ingbhKD0wpgU4zuE",
+      "expires_at": 1794532706,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice around age twenty-nine, speaking native standard Japanese. Sultry, smoky, low-pitched contralto with a cool, languid, slightly sardonic allure and dry wit. Unhurried, effortless delivery with a subtle teasing edge and sharp underlying clinical intelligence.\nSpeak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, unhurried agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5feaa62448191be4162dbce2a12ea"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"ええ、いいわよ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Cool, languid, dryly teasing clinician who turns razor-sharp in crisis — Cool, unhurried agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -95,6 +95,17 @@ static func inspect_actor(game, actor: String, texts: Dictionary, assets: Dictio
 		missing.append("staff_patient_profile")
 	else:
 		missing.append_array(validate_dialogue(profile))
+		var mischief: Dictionary = Registry.mischief_profiles().get(actor, {})
+		if not mischief.is_empty():
+			var han := RegEx.new()
+			han.compile("[一-鿿]")
+			var placeholders := RegEx.new()
+			placeholders.compile("\\{[A-Za-z_][A-Za-z0-9_]*\\}|%(?:0?\\d+)?[sdif]")
+			var md: Dictionary = mischief.get("dialogue", {})
+			if not md.get("zh_CN") is Dictionary or not md.get("en") is Dictionary:
+				missing.append("mischief_dialogue:zh_CN/en")
+			else:
+				_compare_dialogue(md.zh_CN, md.en, "mischief", missing, han, placeholders)
 	# Inventory existing assets even before a future patient's profile is registered.
 	portraits = person.get("visuals", {}).get("portraits", {}).duplicate()
 	var free_registry = preload("res://godot/systems/free_h_registry.gd")

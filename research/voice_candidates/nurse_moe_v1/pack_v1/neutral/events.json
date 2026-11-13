@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "event_EjYT2OXMCS6zgkYAXzZRO",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EjYT2p3oMbU5kAPTObxoW2nV6zp2tcuB",
+      "expires_at": 1794533160,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Soft, sweet, high-pitched fluffy girlish timbre with delicate, airy vocal weight and innocent earnest charm. Polite, eager-to-please rookie cadence with gentle breathiness and adorable youthful softness.\nSpeak immediately in Japanese. Say exactly this line once: \"はいっ、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Eager, earnest rookie agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc5fd208191b605f1ccd5399efe"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はいっ、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Eager, earnest rookie agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "はいっ",
+    "event_id": "event_EjYT3O8dhvkIgcDU3yl5r"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "、",
+    "event_id": "event_EjYT3kNvPRInfhAX3CpDt"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "わか",
+    "event_id": "event_EjYT3B5hhuwZyMmsrIEFg"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "りました",
+    "event_id": "event_EjYT4KbM8gT0y7bGS0fHG"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EjYT4f9wWF92nD5DWC7dH",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "。",
+    "event_id": "event_EjYT4o2l8KXVDHD35qVq2"
+  },
+  {
+    "event_id": "event_EjYT97XghOBpAbs5j3sfn",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EjYT2p3oMbU5kAPTObxoW2nV6zp2tcuB",
+      "expires_at": 1794533160,
+      "model": "gpt-live-1",
+      "instructions": "An original young adult Japanese female voice around age nineteen, speaking native standard Japanese. Soft, sweet, high-pitched fluffy girlish timbre with delicate, airy vocal weight and innocent earnest charm. Polite, eager-to-please rookie cadence with gentle breathiness and adorable youthful softness.\nSpeak immediately in Japanese. Say exactly this line once: \"はいっ、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Eager, earnest rookie agreement. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af5fdc5fd208191b605f1ccd5399efe"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"はいっ、わかりました。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Soft, sweet, high-pitched fluffy earnest rookie nurse — Eager, earnest rookie agreement. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 6.0
+    }
+  }
+]

@@ -87,7 +87,7 @@ def build_context(profile: dict, flow: dict) -> dict:
         "schema_version": "1.0",
         "actor_id": "doc_aoi",
         "entry_random_one": True,
-        "content_status": "pending_assets",
+        "content_status": "ready",
         "base": {
             "dialogue": {"en": dialogue},
             "assets": {
@@ -102,7 +102,7 @@ def build_context(profile: dict, flow: dict) -> dict:
         },
         "locations": locations,
         "events": {},
-        "layout_status": "pending_hotspot_calibration",
+        "layout_status": "final_hotspots_calibrated",
     }
 
 
