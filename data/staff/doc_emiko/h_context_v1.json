@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.0",
+  "actor_id": "doc_emiko",
+  "entry_random_one": true,
+  "content_status": "ready",
+  "layout_status": "final_hotspots_calibrated",
+  "base": {
+    "assets": {
+      "body_map": {
+        "path": "res://assets/h/doc_emiko/body_map.png",
+        "layout_id": "doc_emiko_or_bodymap_v1",
+        "width": 1024,
+        "height": 1536
+      },
+      "h_stage": {
+        "path": "res://assets/h/doc_emiko/scene_cg.png"
+      },
+      "after_cg": {
+        "path": "res://assets/h/doc_emiko/aftercare_cg.png"
+      },
+      "background": {
+        "id": "operating_room"
+      }
+    },
+    "dialogue": {
+      "en": {
+        "reaction.tier_fallback:low": [
+          "...Sakaguchi, whose patience are you testing? If you're going to touch me, do it properly.",
+          "Tch... You call this halfhearted teasing worthy of my Operating Room Two?",
+          "...Don't try to humor me with tricks meant for naive girls, Dr. Sakaguchi.",
+          "...Keep fooling around so clumsily and I'll throw you right out of this operating room."
+        ],
+        "reaction.tier_fallback:mild": [
+          "...Mm. Not bad at all—at least you know how to pace yourself.",
+          "Being touched like this by a colleague inside an operating room... Hmph, it isn't unpleasant.",
+          "...Your breathing is awfully close, Sakaguchi. Don't think I haven't noticed you testing me.",
+          "...Just the right pressure. Since you've started, don't stop halfway."
+        ],
+        "reaction.tier_fallback:strong": [
+          "Ngh... Slow down, Sakaguchi... If any sound leaks out into the corridor, we're in trouble...",
+          "Haa... This is supposed to be my operating room, yet my body's burning up...",
+          "Mm—! How do you know right where to press even off the surgical table...",
+          "...Stop watching my reactions, Sakaguchi... You're throwing even my breathing off..."
+        ],
+        "reaction.tier_fallback:favorite": [
+          "Haa... ah—! Sakaguchi... I have no defense at all when you do that...!",
+          "Mmh—! Reducing me to this on an operating table... That's playing dirty, Sakaguchi...",
+          "Ah... haa... Don't stop, Sakaguchi... You can make it even firmer...!",
+          "Nngh—! You're draining all the strength... right out of my operating hands...!"
+        ],
+        "reaction.zone_tier:lips|favorite": [
+          "Mm... My lips are tingling... The moment the door shuts, you turn this bold, Sakaguchi...",
+          "Haa... Even your timing for silencing me is spot-on... Don't pull away..."
+        ],
+        "reaction.zone_tier:cheeks|mild": [
+          "...Why touch my cheek? I'm not so easily rattled that this alone will fluster me.",
+          "...The warmth isn't bad. Having my face held by a colleague just feels oddly intimate."
+        ],
+        "reaction.zone_tier:neck|strong": [
+          "Ngh... My neck is too sensitive... If it leaves a mark, my coat collar won't hide it...",
+          "Haa... Stop lingering at my neck... You can tell just how fast my pulse is racing..."
+        ],
+        "reaction.zone_tier:breasts|favorite": [
+          "Ah... mm—! My chest hasn't even calmed down yet... Don't work it over like that...",
+          "Haa—! The theater air is so cool, yet you're setting my whole chest on fire...!"
+        ],
+        "reaction.zone_tier:nipples|strong": [
+          "Ah—mm! Going straight for the most sensitive tip... You're doing that on purpose, Sakaguchi...",
+          "Nngh—! The instant you touch there, my spine shivers right against the table pad..."
+        ],
+        "reaction.zone_tier:navel|low": [
+          "...What's touching around my navel supposed to accomplish besides tickling? Focus, Sakaguchi.",
+          "Tch... Quit dawdling around my belly. You're never this hesitant at the operating table."
+        ],
+        "reaction.zone_tier:torso_other|mild": [
+          "...The theater air runs cold, so that warmth against my skin actually feels nice.",
+          "Mm... Taking your time along my body? I didn't know Dr. Sakaguchi was this patient."
+        ],
+        "reaction.zone_tier:genitals|strong": [
+          "Haa—! Being touched there with just one door between us and the hall... How shameless...",
+          "Mmh... Don't get so close down there... Now you know just how wet I am...!"
+        ],
+        "reaction.zone_tier:thighs|strong": [
+          "Ngh... With my thighs resting on this cold table edge, touching me there makes them weak...",
+          "Haa... Stop pressing further up my inner thighs... I can't hold my breath steady, Sakaguchi..."
+        ],
+        "reaction.combo:kiss|lips": [
+          "Mm... ngh... On duty we keep strictly to our roles, yet you kiss this fiercely... haa...",
+          "Haa... Sakaguchi... Kiss me deeper... Room Two's inner door is locked anyway..."
+        ],
+        "reaction.combo:kiss|neck": [
+          "Ah... Your hot breath is right against my carotid... Sakaguchi, my pulse won't slow down...!",
+          "Mm... haa... Kissing all the way down my neck... Are you trying to make me surrender..."
+        ],
+        "reaction.combo:light_bite|neck": [
+          "Ngh—ah! How can my lab coat hide a bite above my collarbone... You did that intentionally...!",
+          "Haa... When your teeth graze my neck, a shiver shoots down my spine... Don't stop, Sakaguchi...!"
+        ],
+        "reaction.combo:caress|breasts": [
+          "Mmh—! Burning just like after a major operation... Your hands kneading there make it unstoppable...!",
+          "Haa... Sakaguchi... Hands so steady with a scalpel, yet kneading my breasts this rough...!"
+        ],
+        "reaction.combo:caress|genitals": [
+          "Ah... haa! Touching me there with your fingers... feels ten times sharper than doing it alone...!",
+          "Nngh—! Don't slow your fingers just to tease me... My voice will reach the hall, Sakaguchi...!"
+        ],
+        "reaction.combo:lick|nipples": [
+          "Kyaa—! Swirling your tongue around the tip... Haa, my hips are slipping off the table edge...!",
+          "Mm—ah! Stop flicking that hot tongue across the peak... My mind's going completely blank, Sakaguchi...!"
+        ],
+        "reaction.combo:caress|thighs": [
+          "Ngh... Sliding your palm up my inner thigh... This table's too narrow to even retreat...",
+          "Haa... Your hand is scorching hot, making my thighs go weak... Slow down, Sakaguchi..."
+        ],
+        "reaction.combo:kiss|breasts": [
+          "Mm... Pressing your lips right where my chest heaves... I can't hide how ragged my breath is...",
+          "Haa... Having a colleague kiss my breasts beneath switched-off surgical lamps... How absurd..."
+        ],
+        "reaction.combo:light_bite|nipples": [
+          "Ngh—! Since when is nipping the tip fair play... It's tingling hot—let go, Sakaguchi...!",
+          "Ah... Stop grazing the tip with your teeth... I can barely bite back my voice...!"
+        ],
+        "reaction.combo:caress|torso_other": [
+          "Ngh... Tracing your fingers across my heated skin... You're pulling my whole breathing rhythm off...",
+          "Haa... Usually we operate in sterile gowns, yet now your hands are roaming my bare skin..."
+        ],
+        "reaction.combo:lick|cheeks": [
+          "...Why are you licking my cheek? Drop the silly pranks, Dr. Sakaguchi—I'm not amused.",
+          "Tch... Getting my cheek all wet like that—do you think you're playing with a pet?"
+        ],
+        "reaction.combo:lick|navel": [
+          "...Licking my navel does nothing except tickle awkwardly. Where did your usual precision go?",
+          "Hey, Sakaguchi... Quit fooling around my navel. If you're continuing, move somewhere that counts."
+        ],
+        "reaction.combo:light_bite|cheeks": [
+          "...Ow—why bite my cheek? How old are you to be pulling stunts like that, Sakaguchi?",
+          "How would I make rounds with teeth marks on my face? Think first, Dr. Sakaguchi."
+        ],
+        "reaction.combo:light_bite|lips": [
+          "Ngh... Tch, that stung my lip. Kiss properly instead of nipping so carelessly.",
+          "...A swollen lip will show the second we step out. Watch your strength, Sakaguchi."
+        ],
+        "reaction.combo:light_bite|genitals": [
+          "...—! Hey, Sakaguchi, is that any place to use your teeth?! Know your limits!",
+          "Tch... Have some sense! It's far too delicate there—no biting, use your fingers or tongue."
+        ],
+        "reaction.combo:caress|lips": [
+          "Mm... Just brushing your thumb over my lips burns... Want me to part them for you, Sakaguchi...",
+          "Haa... Those needle-holder fingertips tracing my lips... That alone makes my chest tighten..."
+        ],
+        "reaction.combo:lick|lips": [
+          "Nngh... Coaxing my lips apart with your tongue... Haa, you're stealing all my breath...",
+          "Haa... Stop teasing just the edge of my lips... Kiss me all the way, Sakaguchi...!"
+        ],
+        "reaction.combo:caress|cheeks": [
+          "...Steady hand, as usual. What, is seeing the surgery chief blush really that fascinating?",
+          "Mm... Warm fingertips. Not bad—just stop looking at me like you can read every thought."
+        ],
+        "reaction.combo:kiss|cheeks": [
+          "...Just a kiss on the cheek? Knowing your nerve, I didn't expect such restraint, Dr. Sakaguchi.",
+          "...Hmph, gentler than how you act at the table. Once in a while, I don't mind it."
+        ],
+        "reaction.combo:caress|neck": [
+          "Ngh... Sliding your fingers down the side of my neck sends chills down my back...",
+          "Haa... Don't smile while feeling my pulse... You're the reason it's racing like this..."
+        ],
+        "reaction.combo:lick|neck": [
+          "Ah... Licking up my neck with that hot tongue... I can barely hold my head steady, Sakaguchi...",
+          "Mm... haa... Licking the hollow of my throat isn't fair... I nearly let a sound slip..."
+        ],
+        "reaction.combo:lick|breasts": [
+          "Ah—! Licking all the way up the curve of my breast... My fingers are curling tight...!",
+          "Haa... Sakaguchi... Leaving my chest this wet makes the cool air sting with pleasure...!"
+        ],
+        "reaction.combo:light_bite|breasts": [
+          "Mm... A light nip on my breast? Hmph, at least my scrubs will hide it under the collar.",
+          "...A slight tingle, nothing painful. Since you kept it gentle, I'll let it slide this time."
+        ],
+        "reaction.combo:caress|nipples": [
+          "Nngh—! It hardened the second your fingers rolled it... Don't tease me for reacting fast, Sakaguchi...",
+          "Haa... Those microsurgery fingers of yours graze the tip with maddening precision..."
+        ],
+        "reaction.combo:kiss|nipples": [
+          "Ah... Just pressing your lips against the tip... sends a tremor right through my chest...",
+          "Mm... Don't kiss the tip once and pull back... Leaving me hanging like that isn't fair, Sakaguchi..."
+        ],
+        "reaction.combo:caress|navel": [
+          "...What good is circling my navel? You're far more decisive finding tissue planes, Dr. Sakaguchi.",
+          "Tch... That merely tickles my stomach. Don't expect something so tame to shake my breathing."
+        ],
+        "reaction.combo:kiss|navel": [
+          "...Kissing my navel? Barely registers. Are you stalling our 'debrief' on purpose?",
+          "...Stop hovering in no-man's-land, Sakaguchi. Either move higher, or commit and go lower."
+        ],
+        "reaction.combo:light_bite|navel": [
+          "Mm... Made my stomach tense up. Grazing my belly with your teeth feels strangely provocative.",
+          "...Hmph, slightly better than just touching my navel. Still, your real target isn't here, right?"
+        ],
+        "reaction.combo:kiss|torso_other": [
+          "Mm... Warm kisses pressed along my skin chase away even the chill of this operating table.",
+          "...Methodical, kissing inch by inch. Keep moving further along and I won't mind at all."
+        ],
+        "reaction.combo:lick|torso_other": [
+          "Mm... Your tongue leaves a hot-and-cool trail across my skin—you know how to build tension.",
+          "...Trailing your tongue slowly along my skin—that patient buildup isn't bad at all, Sakaguchi."
+        ],
+        "reaction.combo:light_bite|torso_other": [
+          "Mm... Just enough bite to pull my nerves taut without actually hurting.",
+          "...Leaving faint marks where clothes cover them seems right in character for Dr. Sakaguchi."
+        ],
+        "reaction.combo:kiss|genitals": [
+          "Ah—! Burying your face between my legs to kiss there... I'm the surgery chief, Sakaguchi...!",
+          "Haa... The instant your warm lips pressed there, my hips nearly arched off the table..."
+        ],
+        "reaction.combo:lick|genitals": [
+          "Ngh—ah! Don't lick me like that on the table... Every wet sound echoes in this quiet room...!",
+          "Haa... Your tongue is relentless, Sakaguchi... Keep licking and I'll lose my grip on the table...!"
+        ],
+        "reaction.combo:kiss|thighs": [
+          "Ngh... Kissing up my inner thigh inch by inch... My heart is pounding in my throat...",
+          "Haa... Pressing kisses right up the crease of my thigh... My legs won't stay closed..."
+        ],
+        "reaction.combo:lick|thighs": [
+          "Ah... Leaving a wet trail up my inner thigh... It's so shameless my toes are curling...",
+          "Mm... You haven't even touched the center yet, and licking my thighs already has me trembling..."
+        ],
+        "reaction.combo:light_bite|thighs": [
+          "Mm... A light nip on my inner thigh? So long as it doesn't bruise, suit yourself.",
+          "...Sent a neat little tingle through my thigh. What's your next move going to be, Sakaguchi?"
+        ],
+        "scene.start": [
+          "Mm... haa... Joining together right on Room Two's operating table... You're so hot inside, Sakaguchi...",
+          "Nngh... Hold my waist steady... On a table this narrow, there isn't an inch between us...",
+          "Haa... Usually I stand here giving you orders, yet now you have me breathless on the table..."
+        ],
+        "scene.middle": [
+          "Ah—mmh! Every thrust hits the exact spot... I can barely keep my voice down anymore...!",
+          "Haa... Sakaguchi... Cool padding against my back, while deep inside you're melting me completely...!",
+          "Ngh—ah! Don't let go, hold me tight... I can't stay composed inside your rhythm anymore...!"
+        ],
+        "scene.finish": [
+          "Haa... haa... My head's still spinning... I nearly slipped right off the operating table...",
+          "Mm... Let me lean on you two more seconds, Sakaguchi... That finish was overwhelming...",
+          "Phew... Good thing Room Two's door is locked... Otherwise that sound would've carried outside..."
+        ],
+        "max_prompt": [
+          "Haa... Enough foreplay, Sakaguchi... You've already got me burning up on this operating table—stop teasing and come take me."
+        ],
+        "style.opening.gentle": [
+          "Mm... Lacing your fingers this tight with mine... Even on this narrow operating table, your embrace feels remarkably safe..."
+        ],
+        "style.opening.intense": [
+          "Ah—! Driving this deep right from the start... This is my theater, yet you've stolen total control from me...!"
+        ],
+        "style.midpoint.gentle": [
+          "Haa... Sakaguchi... Even our breathing matches just like when we operate together... Hold me closer, leave no space..."
+        ],
+        "style.midpoint.intense": [
+          "Mmh—haa! Too hard, Sakaguchi... If you weren't gripping my waist, you'd push me right off this operating table...!"
+        ],
+        "finish.responses": [
+          "Ah... nngh—! I'm at my limit, Sakaguchi... Together... ah—!",
+          "Haa... I can't hold back... Everything's going white... Hold me tight, Sakaguchi...!",
+          "Mmh—! Right on the operating table... you've undone me completely... ah—!",
+          "Ngh—ah! So hot, Sakaguchi... I feel all of you rushing deep inside...!"
+        ],
+        "aftercare": [
+          "...Phew. Staying behind to 'debrief' with you leaves my legs weaker than back-to-back major surgeries... Hand me a tissue, Sakaguchi.",
+          "Check my scrub collar for me. ...Hmph, our teamwork tonight wasn't half bad—keep that same standard on duty tomorrow."
+        ],
+        "finish.labels": [
+          "I'm coming!",
+          "It's coming...!",
+          "I can't hold back...!",
+          "Right now!",
+          "Let's come together!"
+        ]
+      }
+    }
+  },
+  "locations": {
+    "operating_room": {
+      "dialogue": {
+        "en": {
+          "entry": [
+            "...The inner lock is set. By day I give every order in Room Two, yet after hours I keep you here... Don't dawdle. Come here.",
+            "...Once the surgical lamps are switched off, this theater is far quieter than during the day. No one's outside anymore, Sakaguchi.",
+            "Standing across the table as colleagues all day, only to end up like this once Room Two's door slides shut... utterly reckless.",
+            "...Don't look at me like you're sizing up an operative field. Since I asked you to stay for a 'post-op debrief,' this time is yours."
+          ]
+        }
+      }
+    }
+  },
+  "events": {}
+}

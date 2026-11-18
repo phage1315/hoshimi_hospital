@@ -12,7 +12,7 @@
 | 朝倉美幸 | `nurse_yui` | OpenAI／原创描述生成 | `voice_6af5fdc3dcc88191808a8aa8deb47256` | v2（已接入） | 日语 | 用户认可 v2 少女感小恶魔基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
 | 南条小夜香 | `doc_sayaka` | OpenAI／原创描述生成 | `voice_6af56ca280988191ba228faa5add48c0` | v1（已接入＋`pack_v2` 审计扩充） | 日语 | 用户认可 v1 基础声线；共 31 条（11 条通用＋5 条人设情绪／系统互动＋15 条剧情关键台词）已本地接入 |
 | 御園芹香 | `doc_serika` | OpenAI／原创描述生成 | `voice_6af56cc1bee08191ba00ac51cd0a142f` | v1（已接入） | 日语 | 用户认可 v1 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
-| 御堂江美子 | `doc_emiko` | OpenAI／原创描述生成 | `voice_6af619a5457c8191956e57ae510364fb` | v2（已接入） | 日语 | 用户认可 v2 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
+| 御堂江美子 | `doc_emiko` | OpenAI／原创描述生成 | `voice_6af619a5457c8191956e57ae510364fb` | v2（已接入＋`pack_v2` 事件与H全套扩充） | 日语 | 用户认可 v2 基础声线；共 52 条（11 条通用问候／情绪／手术语音＋1 条 Free H 预约回应＋15 条 Lv0–Lv4 事件关键句＋25 条手术室 H Runner 全套语音）已本地接入 |
 | 樱花 | `doc_sakura_anesthesiology` | OpenAI／原创描述生成 | `voice_6af619d1ed5481919081e4f0593203f2` | v2（已接入） | 日语 | 用户认可 v2 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
 | 水城阿库娅 | `doc_aqua` | OpenAI／原创描述生成 | `voice_6af619e436fc819195bbbcc09c6540e5` | v2（已接入） | 日语 | 用户认可 v2 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
 | 藤崎詩織 | `doc_shiori` | OpenAI／原创描述生成 | `voice_6af61a0d40c4819192761ee5920d9611` | v2（已接入） | 日语 | 用户认可 v2 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
@@ -35,7 +35,7 @@
 | 片桐彩子 | `guest_ayako` | OpenAI／原创描述生成 | `voice_6af5fe6ba988819188c8b3b65d7eda99` | v1（已接入） | 日语 | 用户认可 v1 基础声线；共 8 条通用问候／情绪语音已本地接入 |
 | 遥湊 | `doc_minato` | OpenAI／原创描述生成 | `voice_6af5fe7e72f48191b6d66e9aebda8f5a` | v1（已接入） | 日语 | 用户认可 v1 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
 | 伊吹摩耶 | `visiting_maya` | OpenAI／原创描述生成 | `voice_6af5fe80c92081919574b6c7e1f32d53` | v1（已接入） | 日语 | 用户认可 v1 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
-| 阿尔托莉雅·潘德拉贡 | `doc_artoria` | OpenAI／原创描述生成 | `voice_6af60fb85ba48191b620c1cc5932552e` | v1（已接入） | 日语 | 用户认可 v1 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
+| 阿尔托莉雅·潘德拉贡 | `doc_artoria` | OpenAI／原创描述生成 | `voice_6af60fb85ba48191b620c1cc5932552e` | v1（已接入＋`pack_v2` 事件与H全套扩充） | 日语 | 用户认可 v1 基础声线；共 64 条（11 条通用问候／情绪／手术语音＋1 条细粒度害羞差分＋2 条周日偏好约会＋1 条 Free H 预约回应＋22 条 Lv0–Lv4 事件关键句＋27 条自宅 H Runner 全套语音）已本地接入 |
 | 武見妙 | `doc_takemi` | OpenAI／原创描述生成 | `voice_6af5feaa62448191be4162dbce2a12ea` | v1（已接入） | 日语 | 用户认可 v1 基础声线；共 11 条通用问候／情绪／手术语音已本地接入 |
 | 杉村弘子 | `nurse_hiroko` | OpenAI／原创描述生成 | `voice_6af642b7f32881919dcd33904ec17d1c` | v9（历史归档） | 日语 | 柔甜轻泡并行候选（346Hz），用户对比后确认采用更亮的 v10，归档保留 |
 | 杉村弘子 | `nurse_hiroko` | OpenAI／原创描述生成 | `voice_6af6422dccc88191bd11f70d06818e9d` | v8（历史归档） | 日语 | 含 sunny/friendly 词根致 600–1500Hz 亮频段仅 6.0%，已由 v10 替代 |
@@ -150,6 +150,7 @@
 - [试听音频](../research/voice_candidates/doc_emiko_v2/audition.wav)／[原始音频](../research/voice_candidates/doc_emiko_v2/audition_raw.wav)。
 - [API 返回的声线身份](../research/voice_candidates/doc_emiko_v2/voice.json)／[原始声线描述](../research/voice_candidates/doc_emiko_v2/request.json)。
 - [试听会话配置](../research/voice_candidates/doc_emiko_v2/sample_request.json)／[生成结果与校验和](../research/voice_candidates/doc_emiko_v2/sample_result.json)／[制作记录](../research/voice_candidates/doc_emiko_v2/README.md)。
+- **Lv0–Lv4 事件关键句与手术室 H Runner 专属语音包 `pack_v2`（2026-11-15）**：复用同一 v2 Voice ID `voice_6af619a5457c8191956e57ae510364fb`（未新建声线），通过 `tools/voice_runner/hoshimi-voice` 渲染并本地接入 **41 条**日语短句（1 条白天 Free H 手术室“复盘”答应语音 `free_h_accept.wav`、15 条 Lv0～Lv4 关键剧情／CG 节点语音、25 条手术室 H Runner 全流程语音）；完整台词、声学指标与 SHA-256 见 [`pack_v2` 归档说明](../research/voice_candidates/doc_emiko_v2/pack_v2/README.md)与[导入清单](../research/imports/voice_doc_emiko_pack_v2_2026-11-15.json)。主观听感待用户实机试听确认。
 
 ## 樱花 v2（当前认可）
 
@@ -357,6 +358,7 @@
 - [试听音频](../research/voice_candidates/doc_artoria_v1/audition.wav)／[原始音频](../research/voice_candidates/doc_artoria_v1/audition_raw.wav)。
 - [API 返回的声线身份](../research/voice_candidates/doc_artoria_v1/voice.json)／[原始声线描述](../research/voice_candidates/doc_artoria_v1/request.json)。
 - [试听会话配置](../research/voice_candidates/doc_artoria_v1/sample_request.json)／[生成结果与校验和](../research/voice_candidates/doc_artoria_v1/sample_result.json)／[制作记录](../research/voice_candidates/doc_artoria_v1/README.md)。
+- **Lv0–Lv4 事件关键句、周日偏好约会与自宅 H Runner 专属语音包 `pack_v2`（2026-11-17）**：复用同一 v1 Voice ID `voice_6af60fb85ba48191b620c1cc5932552e`（未新建声线），通过 `tools/voice_runner/hoshimi-voice` 渲染并本地接入 **53 条**日语短句（1 条细粒度微赧槽位 `shy.wav`、2 条周日偏好约会结算 `date_restaurant.wav`／`date_ski.wav`、1 条白天自宅红茶邀约答应 `free_h_accept.wav`、22 条 Lv0～Lv4 关键剧情／CG 节点语音、27 条自宅 H Runner 全流程语音）；完整台词、声学指标与 SHA-256 见 [`pack_v2` 归档说明](../research/voice_candidates/doc_artoria_v1/pack_v2/README.md)与[导入清单](../research/imports/voice_doc_artoria_pack_v2_2026-11-17.json)。主观听感待用户实机试听确认。
 
 ## 武見妙 v1（当前认可）
 

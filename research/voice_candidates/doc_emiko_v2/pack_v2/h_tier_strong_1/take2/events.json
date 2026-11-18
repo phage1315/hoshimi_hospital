@@ -1,0 +1,107 @@
+[
+  {
+    "event_id": "event_EkjbQH9jCUVxTApIgBI10",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EkjbQp3oNQHv20sziUSbj2N3Q69dSuOe",
+      "expires_at": 1794814292,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ……ま、待ちなさい……そんなところ、急にっ……！\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sudden sharp anime gasp of surprise and flustered vulnerability, icy facade cracking! Clear loud projection, no background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ……ま、待ちなさい……そんなところ、急にっ……！\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sudden sharp anime gasp of surprise and flustered vulnerability, icy facade cracking! Clear loud projection, no background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.usage.updated",
+    "usage": {
+      "seconds": 0.0
+    },
+    "event_id": "event_EkjbfepRt24kVUXn0DfFq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "あっ",
+    "event_id": "event_EkjbgriGCZzqL3Rk5aZtr"
+  },
+  {
+    "type": "error",
+    "event_id": "event_EkjbgrJ4jLSgMcdPlJGIz",
+    "error": {
+      "type": "server_error",
+      "code": "context_injection_incomplete",
+      "message": "The session closed before the estimated context injection completed.",
+      "param": null,
+      "client_event_id": "line_1"
+    }
+  },
+  {
+    "event_id": "event_EkjbhuAjOE4t8CoHoIj0w",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EkjbQp3oNQHv20sziUSbj2N3Q69dSuOe",
+      "expires_at": 1794814292,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"あっ……ま、待ちなさい……そんなところ、急にっ……！\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sudden sharp anime gasp of surprise and flustered vulnerability, icy facade cracking! Clear loud projection, no background noise. Enunciate every syllable clearly and remain silent immediately after finishing.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"あっ……ま、待ちなさい……そんなところ、急にっ……！\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Sudden sharp anime gasp of surprise and flustered vulnerability, icy facade cracking! Clear loud projection, no background noise. Enunciate every syllable clearly and remain silent immediately after finishing."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 0.0
+    }
+  }
+]

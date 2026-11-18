@@ -116,7 +116,9 @@ func run() -> void:
 	expect(game.staff_skill_value("nurse_moe", "patient_care") == ward_nurse_start + 1, "Ward nurse caring for the patient did not gain patient-care skill")
 	game.surgery_xp = game.surgery_xp_for_level(60)
 	expect(game.surgery_level() == 60 and game.surgery_xp_award_for(appendix) == 0, "Appendectomy exceeded its training ceiling")
-	expect(game.unlock_procedure("surgery_cabg") and game.procedure_unlocked("surgery_cabg"), "Clinical unlock API did not unlock CABG")
+	expect(game.unlock_procedure("surgery_open_whipple") and game.procedure_unlocked("surgery_open_whipple"), "Clinical unlock API did not unlock ordinary locked procedure")
+	expect(game.unlock_procedure("surgery_cabg") and not game.procedure_unlocked("surgery_cabg"), "Teaching-gated CABG unlocked without Emiko Lv3 teaching flag")
+	expect(game.unlock_procedure("surgery_open_major_liver_resection") and not game.procedure_unlocked("surgery_open_major_liver_resection"), "Teaching-gated major liver resection unlocked without Artoria teaching flag")
 
 	var snapshot: Dictionary = game.snapshot()
 	var clone = Game.new()

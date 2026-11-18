@@ -28,9 +28,9 @@ static func history_label(app, record: Dictionary) -> String:
 	if id.begins_with("surgery_reputation_"):
 		var profile: Dictionary = app.game.surgery_reputation_profile(surgery_id)
 		var difficulty: String = app.tx("ui.profile.difficulty." + str(profile.get("tier", "standard")), str(profile.get("label", "")))
-		return app.tx("ui.profile.history.reputation", "%s · %s术式声望 +%s") % [title, difficulty, str(record.get("effects", {}).get("reputation", 0))]
+		return app.tx("ui.profile.history.reputation", "%s · %s术式声望 +%s") % [title, difficulty, str(int(round(float(record.get("effects", {}).get("reputation", 0)))))]
 	if id.begins_with("surgery_penalty_"):
-		return app.tx("ui.profile.history.surgery_penalty", "%s · 手术处置影响 %s") % [title, str(record.get("effects", {}).get("reputation", 0))]
+		return app.tx("ui.profile.history.surgery_penalty", "%s · 手术处置影响 %s") % [title, str(int(round(float(record.get("effects", {}).get("reputation", 0)))))]
 	if id.begins_with("special_event_"):
 		var event_id := id.trim_prefix("special_event_").trim_suffix("_reputation")
 		title = str(app.game.special_event_definitions.get(event_id, {}).get("title", title))

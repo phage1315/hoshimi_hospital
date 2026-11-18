@@ -31,29 +31,29 @@ func save_preference() -> bool:
 	config.set_value("localization", "locale", locale)
 	return config.save(SETTINGS_PATH) == OK
 
-func preferred_intraoperative_crisis_enabled() -> bool:
+func preferred_intraoperative_crisis_enabled(settings_path: String = SETTINGS_PATH) -> bool:
 	var config: ConfigFile = ConfigFile.new()
-	if config.load(SETTINGS_PATH) != OK:
+	if config.load(settings_path) != OK:
 		return true
 	return bool(config.get_value("gameplay", "intraoperative_crisis_enabled", true))
 
-func save_intraoperative_crisis_preference(enabled: bool) -> bool:
+func save_intraoperative_crisis_preference(enabled: bool, settings_path: String = SETTINGS_PATH) -> bool:
 	var config: ConfigFile = ConfigFile.new()
-	config.load(SETTINGS_PATH)
+	config.load(settings_path)
 	config.set_value("gameplay", "intraoperative_crisis_enabled", enabled)
-	return config.save(SETTINGS_PATH) == OK
+	return config.save(settings_path) == OK
 
-func preferred_operative_field_hud_enabled() -> bool:
+func preferred_operative_field_hud_enabled(settings_path: String = SETTINGS_PATH) -> bool:
 	var config: ConfigFile = ConfigFile.new()
-	if config.load(SETTINGS_PATH) != OK:
+	if config.load(settings_path) != OK:
 		return true
 	return bool(config.get_value("gameplay", "operative_field_hud_enabled", true))
 
-func save_operative_field_hud_preference(enabled: bool) -> bool:
+func save_operative_field_hud_preference(enabled: bool, settings_path: String = SETTINGS_PATH) -> bool:
 	var config: ConfigFile = ConfigFile.new()
-	config.load(SETTINGS_PATH)
+	config.load(settings_path)
 	config.set_value("gameplay", "operative_field_hud_enabled", enabled)
-	return config.save(SETTINGS_PATH) == OK
+	return config.save(settings_path) == OK
 
 func preferred_dialogue_auto_speed(settings_path: String = SETTINGS_PATH) -> int:
 	var config: ConfigFile = ConfigFile.new()

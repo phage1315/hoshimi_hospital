@@ -321,22 +321,25 @@ clamp(
 
 ## Gate Matrix
 
-| 阶段 | Familiarity | 其他 Gate | 冷却 | Month Gate |
-|---|---:|---|---:|---|
-| Intro | 0 | 相识事件《传闻中的手》 | — | 无 |
-| Lv1 | 10 | Surgery ≥75 | ≥3天 | 无 |
-| Lv2 | 25 | Lv1 complete | ≥3天 | 无 |
-| Lv3 | 40 | Clinical Presence ≥ +20 | ≥3天 | 无 |
-| Lv4 | 55 | Clinical Presence ≥ +30 | ≥3天 | 无 |
-| Lv5 | 75 | Surgery ≥90 | ≥3天 | 无 |
+| 阶段 | Familiarity | 其他 Gate | 冷却 | Month Gate | 里程碑奖励 / 解锁 |
+|---|---:|---|---:|---|---|
+| Intro | 0 | 明日香相识完成 + Surgery ≥70（相识事件《传闻中的手》） | — | 无 | 相识（Lv0）；尚不可编入玩家常规手术团队 |
+| Lv1 | 0（无） | Intro complete + Surgery ≥75 | ≥3天 | 无 | 固定 Familiarity +10（不乘 ×0.5 倍率） |
+| Lv2 | 0（无） | Lv1 complete + Surgery ≥80 | ≥3天 | 无 | 固定 Familiarity +10（不乘 ×0.5 倍率）+ 解锁进入玩家常规（普通/高级）手术团队编组资格 |
+| Lv3 | 40 | Lv2 complete + `met_artoria == true` + Clinical Presence ≥ +20 | ≥3天 | 无 | 解锁普通病例池《开胸心脏搭桥术》（`surgery_cabg`） |
+| Lv4 | 55 | Clinical Presence ≥ +30 | ≥3天 | 无 | 解锁亲密事件 |
+| Lv5 | 75 | Surgery ≥90 | ≥3天 | 无 | 解锁临床实践患者 |
 
 Intro→Lv1同样使用固定3天最短冷却；指定手术测试只决定事件内容与其他前置，不改变关系冷却。
+在 Lv2 完成前，玩家不能在普通或高级手术界面主动编入御堂，但医院互动、剧情会议及御堂本人的 Lv1/Lv2 专属剧情手术不受影响。
 
 ## Lv1 — Professional Recognition
 
 ```text
-Familiarity >=10
+Familiarity: 无要求 (0)
+Intro complete
 Surgery >=75
+>=3 days
 ```
 
 主题：
@@ -346,19 +349,24 @@ Surgery >=75
 坂口第一助手
 ```
 
+完成奖励：
+
+```text
+首次完成时固定获得御堂 Familiarity +10（固定 milestone 奖励，不乘 ×0.5 成长倍率）
+```
+
 含义：
 
 > 她确认坂口有资格让自己认真看。
 
-`Surgery 75` 足够，不提高到80。
+`Surgery 75` 足够，不提高到80；Lv1 尚不开放玩家常规手术团队编组，也不是 Advanced 资格认证。
 
-Lv1不是 Advanced 资格认证。
-
-## Lv2 — Position Reversal
+## Lv2 — Position Reversal & Team Unlock
 
 ```text
-Familiarity >=25
+Familiarity: 无要求 (0)
 Lv1 complete
+Surgery >=80
 >=3 days
 ```
 
@@ -369,31 +377,48 @@ Lv1 complete
 御堂第一助手
 ```
 
-不重复再收一次 Surgery hard gate。
+完成奖励与解锁：
+
+```text
+首次完成时固定获得御堂 Familiarity +10（固定 milestone 奖励，不乘 ×0.5 成长倍率）
+解锁御堂进入玩家常规手术团队（普通手术与高级手术）的编组资格（unlock_emiko_surgical_team）
+```
 
 含义：
 
-> 她愿意暂时放下主导权，并接受坂口的手术节奏。
+> 她愿意暂时放下主导权，接受坂口的手术节奏，并正式进入坂口可主动编组的外科助手名单。
 
-## Lv3 — Clinical Authority Affinity
+## Lv3 — Clinical Authority Affinity（《今天我主刀》）
 
 ```text
 Familiarity >=40
+Lv2 complete
+met_artoria == true
 Clinical Presence >= +20
+>=3 days（周一至周五下班跨夜触发，次日非休诊日且无未完成住院患者/次日高级转诊排程冲突）
 ```
 
-粗略事件方向：
+专属术式教学解锁（与阿尔托莉雅特殊术式锁定对齐）：
 
 ```text
-一名情绪激动、哭闹的患者无法安静。
+御堂专属教学术式：开胸心脏搭桥术（surgery_cabg / template_cabg）
+→ 初始锁定，不进入随机门诊病例池；在 Lv3 第三幕 CABG 手术完成时写入 emiko_cabg_teaching_complete 解锁。
 
-患者：
-“怎么可能安静下来，我可能会死啊。”
+阿尔托莉雅专属教学术式：开腹肝叶切除术（surgery_open_major_liver_resection / template_liver_resection）
+→ 同样初始锁定，不进入随机门诊病例池，需对应教学剧情写入 artoria_major_liver_resection_teaching_complete 后解锁。
 
-御堂冷冷回答：
+旧存档兼容：若旧档此前已完成并解锁上述术式的扫荡记录（completed_surgeries_by_procedure / surgical_quality_records），读档保留历史记录；未完成对应教学剧情前暂不在新病例中刷出或扫荡，完成教学剧情后重新开放并可直接恢复扫荡资格。
+```
 
-“今天我主刀。”
-“你绝对不会死。”
+核心场景：
+
+```text
+深夜寿司店吧台偶遇（含 S/O/G 一助试探与外科主任竞争正面表态）
+→ 次日清晨第一手术室开胸冠状动脉旁路移植术（御堂主刀、坂口第一助手）：
+   患者：“万一……万一停下来之后，再也跳不起来了怎么办……我会死在这张床上的……”
+   御堂：“看着我。”“今天我主刀。你绝对不会死。”
+→ 术后关闭的手术室大门（Lv4 秘密伏笔）
+→ 午后医生共同办公室私人搭桥手札相赠（“今天不打分。”“你已经不是来考试的人了。”）
 ```
 
 Lv3 让玩家真正看到：
@@ -2660,6 +2685,8 @@ past_disclosure: permanently unavailable
 关系意义：“这位医生允许我不懂，也愿意认真教我。”永久保留原稿的器械移位、体贴解释回调，不把这节课在后续事件重教一遍。
 
 ### Lv2《原来是熟客》— 肉店兼职事件粗稿
+
+> 2026-11-16 实装归属更新：下述肉店误会构想已迁移为狩谷惠 Lv1《昨天卖肉的姑娘》（`kariya_lv1_butcher_shop_girl`，作者 V1.0）。本段仅保留为历史草稿，不再作为本庄萌惠 Lv2 的实装依据；萌惠 Lv2 替代剧本尚待作者提供。
 
 2026-10-04 已确认放在Lv2，取代此前的处罚误会占位。保留Fam25与原有Gate，不添加新属性条件；完整演出及其他护士互动仍待细化。
 

@@ -3,7 +3,7 @@ extends "res://tools/event_batch_native_qa.gd"
 func run():
  app=load("res://godot/scenes/main.tscn").instantiate();app.saves.path="/tmp/hoshimi_repro_unused_"+str(OS.get_process_id())+".json";root.add_child(app);await process_frame
  observations=FileAccess.open(QA+"miyama_lv3_source_reproduction_pages.jsonl",FileAccess.WRITE)
- var targets=[["miyama_03_or_god","why",true]]
+ var targets=[["miyama_03_or_god","s05_022",true]]
  for locale in ["zh_CN","en"]:
   app.content.load_all(locale);app.configure_game_content()
   for target in targets:
@@ -12,7 +12,7 @@ func run():
     var d=(g.special_event_definitions if target[2] else g.character_event_definitions)[target[0]]
     var session
     if target[2]:
-     session=Special.new(d,g.special_event_step_definitions,1);session.node_id=target[1]
+     session=Special.new(d,g.special_event_step_definitions,1);session.step_index=1;session.node_id=target[1]
      if replay:g.special_event_completion_counts[d.id]=1;app.special_event_gallery_replay=session;app.special_event_replay_last_cg_path="";app.show_special_gallery_replay()
      else:g.active_special_event=session;g.active_special_event_id=d.id;g.active_mode="special_event";app.special_event_last_cg_path="";app.show_special_event()
     else:

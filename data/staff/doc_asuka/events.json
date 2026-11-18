@@ -506,5 +506,1300 @@
         ]
       }
     ]
+  },
+  {
+    "id": "asuka_lv1_director_surgeon_preop",
+    "actor_id": "doc_asuka",
+    "title": "院长也是外科医生·刷手池前",
+    "chapter": 1,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "preop_stage_id": "changing",
+    "preop_required_flags": [
+      "hands_ready"
+    ],
+    "background_id": "scrub_area",
+    "outfit": "scrubs",
+    "minutes": 6,
+    "teaser": "四楼手术部刷手池前，担任第一助手的明日香已经先一步开始刷手了。",
+    "time_start": 0,
+    "time_end": 1439,
+    "priority": 180,
+    "category": "contextual",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "",
+    "gallery": {
+      "cg_id": "asuka_lv1_director_surgeon_preop",
+      "caption": "术前刷手池边，明日香举着沾满泡沫的小臂向主刀坂口轻快问候。",
+      "path": "",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [
+        "intro_doc_asuka_director_office"
+      ],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 10
+        }
+      ]
+    },
+    "start": "al1a_001",
+    "nodes": [
+      {
+        "id": "al1a_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "text": "距离预定的划刀时间还有十分钟。坂口隆司核对完手头的术前同意书，刚拐进四楼刷手区，就听见最里侧的感应水龙头已经传来了哗哗的水声。",
+        "choices": [
+          {
+            "id": "continue_al1a_001",
+            "label": "继续",
+            "next": "al1a_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "al1a_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "masked_smile",
+        "text": "城宮明日香早就站在水池前了。平时散在肩头的长发已经被她利落地尽数收进手术帽里，露出光洁饱满的额角与一双神采奕奕的眼睛。见坂口走近，她弯起眉眼，举着沾满细腻泡沫的小臂朝他晃了晃手肘权当招呼。",
+        "choices": [
+          {
+            "id": "continue_al1a_002",
+            "label": "继续",
+            "next": "al1a_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_003",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "masked_smile",
+        "text": "「来得正好呀，坂口医生。患者刚刚已经接进手术间核对信息了，器械台那边也清点得很顺利哦。」",
+        "choices": [
+          {
+            "id": "continue_al1a_003",
+            "label": "继续",
+            "next": "al1a_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "masked_bright",
+        "text": "坂口隆司走到相邻的水池前踩开踏板，挤出刷手液，看着身旁动作熟稔的年轻院长，忍不住笑了一下。",
+        "choices": [
+          {
+            "id": "continue_al1a_004",
+            "label": "继续",
+            "next": "al1a_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_bright.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_005",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "masked_bright",
+        "text": "「明明今天是我主动勾了你的名字请你来搭把手……怎么算上今天这回，每次请你上台当助手，你不仅答应得比谁都痛快，来刷手池报到的速度比我这个主刀还要早？」",
+        "choices": [
+          {
+            "id": "continue_al1a_005",
+            "label": "继续",
+            "next": "al1a_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_bright.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "masked_smile",
+        "text": "「因为收到主刀医生的正式点名，当然要拿出合格第一助手的职业态度呀。」",
+        "choices": [
+          {
+            "id": "continue_al1a_006",
+            "label": "继续",
+            "next": "al1a_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "masked_bright",
+        "text": "「话是这么说……院长，你办公桌上那些财务报表和排班签批，今天不用管了？」",
+        "choices": [
+          {
+            "id": "continue_al1a_007",
+            "label": "继续",
+            "next": "al1a_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_bright.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "masked_smile",
+        "text": "「哼哼，小看人了吧？急着要签的文件我今天一早八点前就全部批完发回行政科了，眼下这段时间，日历上可是堂堂正正标着『临床外勤』四个大字的。」",
+        "choices": [
+          {
+            "id": "continue_al1a_008",
+            "label": "继续",
+            "next": "al1a_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "masked_bright",
+        "text": "温水冲净指缝与前臂的泡沫，明日香保持着双手高举过肘的标准无菌姿势，侧过脸看向坂口，口罩上方那双明亮的眸子里透着几分藏不住的轻快。",
+        "choices": [
+          {
+            "id": "continue_al1a_009",
+            "label": "继续",
+            "next": "al1a_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_bright.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "masked_bright",
+        "text": "「再说了，母亲把星见交给我的时候，可没规定当了院长就得把自己锁在办公桌后面天天盖章。我本来就是正经考出执业资格的外科医生嘛——比起对着一摞干巴巴的耗材预算表发呆，还是站在这里听见水声和监护仪的声音更让人精神百倍。」",
+        "choices": [
+          {
+            "id": "continue_al1a_010",
+            "label": "继续",
+            "next": "al1a_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_bright.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "masked_bright",
+        "text": "「看来我们医院的院长，是真心喜欢待在手术室里。」",
+        "choices": [
+          {
+            "id": "continue_al1a_011",
+            "label": "继续",
+            "next": "al1a_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_bright.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1a_012",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "masked_smile",
+        "text": "「那当然啦。干净、有序、所有人都在专心做好同一件事，全院上下哪有比手术室更让人安心的地方？走吧，坂口主刀，别让里面的护士和患者等急了——今天第一助手的位置，请多指教咯。」",
+        "choices": [
+          {
+            "id": "finish_al1a_012",
+            "label": "与明日香一同推门进入手术间",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": [
+              "asuka_lv1_preop_seen"
+            ]
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/masked_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "asuka_lv1_director_surgeon_postop",
+    "actor_id": "doc_asuka",
+    "title": "院长也是外科医生",
+    "chapter": 1,
+    "location_id": "or",
+    "trigger_mode": "preop_stage",
+    "preop_stage_id": "post_surgery_return",
+    "background_id": "or_entrance",
+    "outfit": "scrubs",
+    "minutes": 10,
+    "teaser": "手术顺利结束后，在退更缓冲通道里与明日香聊起她对手术室与无菌服的执着。",
+    "time_start": 0,
+    "time_end": 1439,
+    "priority": 220,
+    "category": "bond",
+    "auto_start": true,
+    "target_level": 1,
+    "benefit_id": "unlock_asuka_surgical_team",
+    "completion_story_flags": [
+      "asuka_lv1_complete",
+      "asuka_lv1_director_surgeon_complete"
+    ],
+    "gallery": {
+      "cg_id": "asuka_lv1_director_surgeon_postop",
+      "caption": "同台手术结束后的缓冲通道里，摘下手术帽的明日香微笑着请坂口私下不必总叫她院长。",
+      "path": "assets/events/asuka_maki_supplement_v1/asuka_lv1_call_me_asuka.png",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 10,
+      "required_events": [
+        "intro_doc_asuka_director_office",
+        "asuka_lv1_director_surgeon_preop"
+      ],
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 10
+        }
+      ]
+    },
+    "start": "al1b_001",
+    "nodes": [
+      {
+        "id": "al1b_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "neutral",
+        "text": "随着手术间的自动门在身后轻轻合拢，最后一针缝合收尾的紧绷感也跟着松弛了下来。",
+        "choices": [
+          {
+            "id": "continue_al1b_001",
+            "label": "继续",
+            "next": "al1b_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "hide_portrait": true
+      },
+      {
+        "id": "al1b_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_smile",
+        "text": "坂口隆司把脱下的乳胶手套丢进医疗回收桶，解开脑后的口罩系带，看了一眼身旁正把换下来的墨绿色无菌手术袍利落地反折收拢、准备放进布草回收袋里的城宮明日香。",
+        "choices": [
+          {
+            "id": "continue_al1b_002",
+            "label": "继续",
+            "next": "al1b_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_smile",
+        "text": "哪怕刚在无影灯底下稳稳举了近一个钟头的拉钩，她的额角也只渗出一层极薄的细汗，神情非但不见疲惫，反而比早上在行政走廊里撞见时还要神采飞扬。",
+        "choices": [
+          {
+            "id": "continue_al1b_003",
+            "label": "继续",
+            "next": "al1b_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_004",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "cap_smile",
+        "text": "「今天视野给得非常舒服，省了我不少工夫。不过我还是有点好奇——明明已经是管着整座医院的院长了，就算不去临床也没人会挑你的理，怎么还这么喜欢亲自跑来跟台？」",
+        "choices": [
+          {
+            "id": "continue_al1b_004",
+            "label": "继续",
+            "next": "al1b_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_005",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_smile",
+        "text": "明日香把折整齐的旧手术袍放进回收袋里，拍了拍手，转过身迎上坂口的目光，理所当然地弯起唇角笑了笑。",
+        "choices": [
+          {
+            "id": "continue_al1b_005",
+            "label": "继续",
+            "next": "al1b_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_006",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_smile",
+        "text": "「因为就是单纯地喜欢呀。」",
+        "choices": [
+          {
+            "id": "continue_al1b_006",
+            "label": "继续",
+            "next": "al1b_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "cap_smile",
+        "text": "「我还以为你会借机跟我讲上一段『深入临床一线有助于优化医院管理决策』之类的院长发言。」",
+        "choices": [
+          {
+            "id": "continue_al1b_007",
+            "label": "继续",
+            "next": "al1b_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_smile",
+        "text": "「要是去市医师会做年度汇报，我肯定会那么写进稿子里的——了解一线确实很重要嘛。不过在刚一起下台的搭档面前，哪用得着把自己的喜好包装得那么伟大？我就只是喜欢手术室里的空气，喜欢看一台手术干干净净地做成而已。」",
+        "choices": [
+          {
+            "id": "continue_al1b_008",
+            "label": "继续",
+            "next": "al1b_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_critique",
+        "text": "说到这里，明日香低头看了一眼布草袋里那件刚脱下来的院内标准款无菌手术袍，秀气的眉头忽然微不可察地蹙了一下，抬起手指在自己的肩侧与后腰位置比划了半寸。",
+        "choices": [
+          {
+            "id": "continue_al1b_009",
+            "label": "继续",
+            "next": "al1b_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_critique.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_critique",
+        "text": "「就是有一点我一直想说……坂口医生刚才抬手打结的时候，有没有觉得这批标准手术袍的袖笼裁得稍微偏低了一点？而且后背第二根系带的位置也比理想比例往下掉了一寸，系紧以后整件袍子的肩背线条就显得松松垮垮的，不够利落。」",
+        "choices": [
+          {
+            "id": "continue_al1b_010",
+            "label": "继续",
+            "next": "al1b_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_critique.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_011",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_critique",
+        "text": "坂口隆司愣了两秒，低头看了看自己刚才同样穿了半天、却压根没留心过长成什么样的回收布草袋。",
+        "choices": [
+          {
+            "id": "continue_al1b_011",
+            "label": "继续",
+            "next": "al1b_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_critique.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_012",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "cap_critique",
+        "text": "「……无菌手术袍只要不透水、不掉絮、尺寸合身不就行了？你刚在台上拉钩的时候，居然还有工夫注意手术袍的肩线和系带比例？」",
+        "choices": [
+          {
+            "id": "continue_al1b_012",
+            "label": "继续",
+            "next": "al1b_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_critique.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_critique",
+        "text": "「什么叫『居然』呀！外科医生一上台少说也要穿一两个钟头，剪裁合不合身、抬手臂顺不顺畅，还有穿在身上整个人看起来专不专业、好不好看，本来就全都是正经学问好不好？」",
+        "choices": [
+          {
+            "id": "continue_al1b_013",
+            "label": "继续",
+            "next": "al1b_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_critique.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_critique",
+        "text": "她微扬起下巴，一本正经地替自己的审美标准辩护了两句，完全不觉得研究无菌服版型有什么稀奇。",
+        "choices": [
+          {
+            "id": "continue_al1b_014",
+            "label": "继续",
+            "next": "al1b_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_critique.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_015",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "cap_smile",
+        "text": "「好好，算我外行了，院长。」",
+        "choices": [
+          {
+            "id": "continue_al1b_015",
+            "label": "继续",
+            "next": "al1b_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "cap_shy",
+        "text": "听到最后那两个字，正准备抬手摘手术帽的明日香动作忽然停了一下。她偏过头打量了坂口一眼，语气比刚才放轻了几分，带着一点年轻人特有的坦率与小小的别扭。",
+        "choices": [
+          {
+            "id": "continue_al1b_016",
+            "label": "继续",
+            "next": "al1b_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_shy",
+        "text": "「……那个，坂口医生。」",
+        "choices": [
+          {
+            "id": "continue_al1b_017",
+            "label": "继续",
+            "next": "al1b_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_018",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "cap_shy",
+        "text": "「嗯？还有哪台排班要交代？」",
+        "choices": [
+          {
+            "id": "continue_al1b_018",
+            "label": "继续",
+            "next": "al1b_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_019",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_shy",
+        "text": "「不是排班的事啦。就是……我们好歹也一起站过手术台、配合得这么熟了，私底下聊天的时候，你能不能别老是一口一个『院长』地叫我？」",
+        "choices": [
+          {
+            "id": "continue_al1b_019",
+            "label": "继续",
+            "next": "al1b_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_020",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "cap_shy",
+        "text": "「不叫院长？」",
+        "choices": [
+          {
+            "id": "continue_al1b_020",
+            "label": "继续",
+            "next": "al1b_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_021",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "cap_shy",
+        "text": "「嗯。在全院大会或者外院来访的时候叫『院长』当然没办法，可平时连走个走廊、洗个手都听熟悉的人这么叫，总觉得像在跟长辈说话一样，我到现在都还有点不太习惯呢。」",
+        "choices": [
+          {
+            "id": "continue_al1b_021",
+            "label": "继续",
+            "next": "al1b_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/cap_shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_022",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "hair_down_smile",
+        "text": "她把手术帽摘下来，轻轻抖开柔顺的长发，眉眼明朗地看着坂口说道：",
+        "choices": [
+          {
+            "id": "continue_al1b_022",
+            "label": "继续",
+            "next": "al1b_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv1_call_me_asuka.png",
+        "cg_fit": "contain",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "al1b_023",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "hair_down_smile",
+        "text": "「没外人办公事的时候，你像医局里的前辈平辈那样叫我『城宮君』，或者干脆直接叫我『明日香』都可以哦。」",
+        "choices": [
+          {
+            "id": "continue_al1b_023",
+            "label": "继续",
+            "next": "al1b_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv1_call_me_asuka.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al1b_024",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "hair_down_smile",
+        "text": "坂口隆司微微一怔，随即失笑点了点头。",
+        "choices": [
+          {
+            "id": "continue_al1b_024",
+            "label": "继续",
+            "next": "al1b_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv1_call_me_asuka.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al1b_025",
+        "presentation": "authored",
+        "speaker": "player",
+        "speaker_label": "坂口隆司",
+        "expression": "hair_down_smile",
+        "text": "「明白了。私底下我尽量改口叫『明日香』或者『城宮君』——不过平时在科室里听大家都这么喊惯了，万一哪天嘴快又顺口叫成了『院长』，你可别见怪。」",
+        "choices": [
+          {
+            "id": "continue_al1b_025",
+            "label": "继续",
+            "next": "al1b_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv1_call_me_asuka.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al1b_026",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "hair_down_smile",
+        "text": "「噗，那有什么好计较的，本来也不是给你下行政规定嘛。你叫得顺口就好，工作场合照旧叫院长也完全没问题！」",
+        "choices": [
+          {
+            "id": "continue_al1b_026",
+            "label": "继续",
+            "next": "al1b_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv1_call_me_asuka.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al1b_027",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "speaker_label": "旁白",
+        "expression": "hair_down_wave",
+        "text": "她把用过的手术帽丢进回收桶，脚步轻快地朝女更衣室的方向退开两步，回过头朝坂口挥了挥手，笑容干净而明快。",
+        "choices": [
+          {
+            "id": "continue_al1b_027",
+            "label": "继续",
+            "next": "al1b_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_wave.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al1b_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "speaker_label": "城宮明日香",
+        "expression": "hair_down_wave",
+        "text": "「我去换回白大褂继续批剩下的件啦。下次有合适的手术需要第一助手，还记得叫我哦——回见啦，坂口君！」",
+        "choices": [
+          {
+            "id": "finish_al1b_028",
+            "label": "目送明日香轻快离开",
+            "next": "@end",
+            "effects": {
+              "affection": 2,
+              "familiarity": 0
+            },
+            "flags": [
+              "asuka_lv1_complete",
+              "asuka_lv1_gown_tailoring_hint",
+              "asuka_private_first_name_ok"
+            ]
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv1_v1/doc_asuka/scrubs/hair_down_wave.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      }
+    ]
   }
 ]

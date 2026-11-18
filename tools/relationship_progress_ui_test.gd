@@ -29,13 +29,11 @@ func run() -> void:
 	expect(not bool(unknown.known) and unknown.gate.is_empty(), "Unknown staff exposed relationship-gate details")
 	game.meet_staff("doc_emiko")
 	var relation: Dictionary = game.relation_for("doc_emiko")
-	relation.familiarity = 9
+	relation.familiarity = 0
+	game.set_test_player_attribute("skill", 74)
 	var progress: Dictionary = game.relationship_progress("doc_emiko")
 	expect(progress.target_level == 1 and progress.has_slot and progress.event_authored, "Emiko Lv1 progress metadata is incomplete")
-	expect(progress.gate.familiarity_current == 9 and progress.gate.familiarity_required == 10 and not progress.gate.familiarity_met, "Familiarity progress was not exposed accurately")
-	relation.familiarity = 10
-	game.set_test_player_attribute("skill", 74)
-	progress = game.relationship_progress("doc_emiko")
+	expect(progress.gate.familiarity_current == 0 and progress.gate.familiarity_required == 0 and progress.gate.familiarity_met, "Emiko Lv1 zero-familiarity requirement was not exposed accurately")
 	expect(progress.gate.familiarity_met and not progress.gate.requirements.met, "Non-familiarity requirements were not separated from familiarity")
 	game.set_test_player_attribute("skill", 75)
 	progress = game.relationship_progress("doc_emiko")

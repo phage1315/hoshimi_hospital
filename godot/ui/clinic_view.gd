@@ -8,7 +8,8 @@ static func render(app: Control, visit: RefCounted) -> void:
 	var speaker_id := str(line.speaker)
 	if speaker_id == "outpatient_support":
 		speaker_id = app.game.resolve_outpatient_support_actor()
-	app.base(visit.definition.title, app.tx("ui.clinic.patient_header", "%s · %s岁    /    %s") % [patient.name, patient.age, stage.title], false, stage.background_id)
+	var header_title: String = app.outpatient_visit_display_title(visit)
+	app.base(header_title, app.tx("ui.clinic.patient_header", "%s · %s岁    /    %s") % [patient.name, int(patient.age), stage.title], false, stage.background_id)
 	app.button_at(app.tx("ui.common.return_map", "← 医院导览"), Vector2(1040, 88), Vector2(180, 44), app.show_map)
 	var person: Dictionary = app.content.find_record("staff", speaker_id)
 	var speaker_name: String = app.protagonist_name() if speaker_id == "player" else patient.name if speaker_id == patient.id else person.get("name", app.tx("ui.common.narrator", "旁白"))
@@ -16,8 +17,8 @@ static func render(app: Control, visit: RefCounted) -> void:
 		app.add_portrait(person)
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
 		if portrait != null:
-			portrait.position = Vector2(745, 165)
-			portrait.size = Vector2(450, 389)
+			portrait.position = Vector2(745, 162)
+			portrait.size = Vector2(450, 354)
 	else:
 		var undressed_exam := false
 		for action_id in ["authoritative_full_undress", "gentle_full_undress", "threaten_full_undress"]:
@@ -27,47 +28,48 @@ static func render(app: Control, visit: RefCounted) -> void:
 		app.add_portrait(patient, "shy", "examination" if undressed_exam else "outpatient")
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
 		if portrait != null:
-			portrait.position = Vector2(745, 165)
-			portrait.size = Vector2(450, 389)
+			portrait.position = Vector2(745, 162)
+			portrait.size = Vector2(450, 354)
 		else:
-			app.label_at(patient.name, Vector2(880, 331), 32, Color("f4f0e6"), 280)
-			app.label_at(app.tx("ui.clinic.outpatient", "门诊患者"), Vector2(884, 380), 17, Color("dce5e3"), 240)
+			app.label_at(patient.name, Vector2(880, 315), 32, Color("f4f0e6"), 280)
+			app.label_at(app.tx("ui.clinic.outpatient", "门诊患者"), Vector2(884, 364), 17, Color("dce5e3"), 240)
 	if not line.summary.is_empty():
-		panel(app, Vector2(60, 182), Vector2(655, 52))
-		app.label_at(line.summary, Vector2(80, 195), 19, Color("e8cfaa"), 620)
+		panel(app, Vector2(60, 178), Vector2(655, 50))
+		app.label_at(line.summary, Vector2(80, 190), 19, Color("e8cfaa"), 620)
 	if visit.completed():
-		panel(app, Vector2(60, 252), Vector2(655, 134))
-		app.label_at(app.tx("ui.clinic.admitted", "✓ 已收住院"), Vector2(82, 275), 32, Color("f4f0e6"), 610)
-		app.label_at(app.tx("ui.clinic.summary", "用时 %s 分钟 · 判断修正 %s 次") % [visit.minutes, visit.mistakes], Vector2(82, 332), 20, Color("dce5e3"), 610)
+		panel(app, Vector2(60, 244), Vector2(655, 134))
+		app.label_at(app.tx("ui.clinic.admitted", "✓ 已收住院"), Vector2(82, 267), 32, Color("f4f0e6"), 610)
+		app.label_at(app.tx("ui.clinic.summary", "用时 %s 分钟 · 判断修正 %s 次") % [int(visit.minutes), int(visit.mistakes)], Vector2(82, 324), 20, Color("dce5e3"), 610)
 		if app.game.can_end_day_after_admission(str(visit.definition.id)):
-			var end_day_button: Button = app.button_at(app.tx("ui.clinic.admission_end_day", "交接患者休息，结束今日工作 →"), Vector2(60, 409), Vector2(655, 54), app.finish_admission_day.bind(str(visit.definition.id)))
+			var end_day_button: Button = app.button_at(app.tx("ui.clinic.admission_end_day", "交接患者休息，结束今日工作 →"), Vector2(60, 400), Vector2(655, 54), app.finish_admission_day.bind(str(visit.definition.id)))
 			end_day_button.name = "AdmissionEndDay"
 		else:
-			var ward_button: Button = app.button_at(app.tx("ui.clinic.go_ward", "前往病房 →"), Vector2(60, 409), Vector2(400, 54), app.show_location.bind("ward"))
+			var ward_button: Button = app.button_at(app.tx("ui.clinic.go_ward", "前往病房 →"), Vector2(60, 400), Vector2(400, 54), app.show_location.bind("ward"))
 			ward_button.name = "AdmissionGoWard"
 	else:
 		var choices: Array = visit.ui_actions()
 		for i in range(choices.size()):
 			var action: Dictionary = choices[i]
 			var reason: String = "" if action.has("actions") else visit.blocked_reason(action)
-			var button: Button = app.button_at(action.label, Vector2(60, 250 + i * 67), Vector2(655, 54), app.choose_clinic_action.bind(action.id))
+			var button: Button = app.button_at(action.label, Vector2(60, 238 + i * 62), Vector2(655, 52), app.choose_clinic_action.bind(action.id))
 			button.name = "Action_" + action.id
 			button.disabled = not reason.is_empty()
 			button.tooltip_text = reason
 			button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
 			button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
+			var action_minutes := int(action.get("minutes", 0))
 			if not reason.is_empty():
-				app.label_at(app.tx("ui.clinic.missing_clues", "待补齐线索"), Vector2(555, 266 + i * 67), 16, Color("a0b1b5"), 140)
-			elif action.get("minutes", 0) > 0 and PresenceHint.Progression.action_presence_delta(action) == 0:
-				app.label_at(app.tx("ui.common.minutes", "%s 分钟") % action.minutes, Vector2(590, 266 + i * 67), 16, Color("b9cecb"), 110)
-			if action.get("minutes", 0) > 0:
-				button.tooltip_text += ("\n" if not button.tooltip_text.is_empty() else "") + app.tx("ui.common.minutes", "%s 分钟") % action.minutes
+				app.label_at(app.tx("ui.clinic.missing_clues", "待补齐线索"), Vector2(555, 253 + i * 62), 16, Color("a0b1b5"), 140)
+			elif action_minutes > 0 and PresenceHint.Progression.action_presence_delta(action) == 0:
+				app.label_at(app.tx("ui.common.minutes", "%s 分钟") % action_minutes, Vector2(590, 253 + i * 62), 16, Color("b9cecb"), 110)
+			if action_minutes > 0:
+				button.tooltip_text += ("\n" if not button.tooltip_text.is_empty() else "") + app.tx("ui.common.minutes", "%s 分钟") % action_minutes
 			PresenceHint.decorate(app, button, action, "encounter")
-	panel(app, Vector2(55, 558), Vector2(1170, 142))
-	app.label_at(speaker_name, Vector2(82, 576), 22, Color("e8cfaa"), 1100)
+	panel(app, Vector2(55, 524), Vector2(1170, 176))
+	app.label_at(speaker_name, Vector2(82, 538), 22, Color("e8cfaa"), 1100)
 	var dialogue_text := str(line.text)
-	var dialogue_font_size := 19 if dialogue_text.length() > 180 else 21 if dialogue_text.length() > 100 else 23
-	app.scrollable_text_at(dialogue_text, Vector2(82, 612), Vector2(1100, 78), dialogue_font_size, Color("f4f0e6"), "ClinicDialogue")
+	var dialogue_font_size := 19 if dialogue_text.length() > 180 else 21 if dialogue_text.length() > 100 else 22
+	app.scrollable_text_at(dialogue_text, Vector2(82, 570), Vector2(1100, 120), dialogue_font_size, Color("f4f0e6"), "ClinicDialogue")
 	var save_button: Button = app.button_at(app.tx("ui.common.save", "保存"), Vector2(60, 713), Vector2(120, 40), app.save_progress)
 	if app.screen not in ["map", "sunday_menu"] or not app.game.can_save_progress():
 		save_button.disabled = true
@@ -101,12 +103,12 @@ static func render_record(app: Control, visit: RefCounted, patient: Dictionary) 
 	var portrait := app.page.get_node_or_null("CharacterPortrait") as CanvasItem
 	if portrait != null:
 		portrait.visible = false
-	panel(app, Vector2(745, 168), Vector2(476, 376))
-	app.label_at(app.tx("ui.clinic.record_title", "病历 / %s") % patient.name, Vector2(768, 186), 23, Color("e8cfaa"), 425)
+	panel(app, Vector2(745, 165), Vector2(476, 350))
+	app.label_at(app.tx("ui.clinic.record_title", "病历 / %s") % patient.name, Vector2(768, 182), 23, Color("e8cfaa"), 425)
 	var scroll := ScrollContainer.new()
 	scroll.name = "MedicalRecord"
-	scroll.position = Vector2(768, 232)
-	scroll.size = Vector2(432, 294)
+	scroll.position = Vector2(768, 226)
+	scroll.size = Vector2(432, 274)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	app.page.add_child(scroll)
 	var record := Label.new()
@@ -117,6 +119,6 @@ static func render_record(app: Control, visit: RefCounted, patient: Dictionary) 
 	record.add_theme_color_override("font_color", Color("e1e4db"))
 	var lines: Array[String] = []
 	for entry in visit.notes.values():
-		lines.append("【%s】\n%s" % [entry.section, entry.text])
+		lines.append(app.tx("ui.clinic.record_section", "【%s】\n%s") % [entry.section, entry.text])
 	record.text = app.tx("ui.clinic.no_records", "还没有记录。") if lines.is_empty() else "\n\n".join(lines)
 	scroll.add_child(record)

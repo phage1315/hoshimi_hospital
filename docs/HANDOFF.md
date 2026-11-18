@@ -1,3 +1,95 @@
+## 2026-11-17 — Codex：远坂葵患者种子图两张
+
+- 按用户三张官方参考制作病房病号服立绘、戴帽肩部以上术中头像，归档于 `research/generated_candidates/aoi_patient_seed_v1/`，附 prompts.json、manifest.json、references/ 和 .gdignore。
+- 逐图目视检查；Pillow 完整解码并记录尺寸/模式/SHA256。病房 1024×1536，术中 1448×1086，均灰底种子；无表情差分、未抠透明、未注册角色或接入游戏。
+- 原始生成输出保留；等待用户评审种子后再开展差分与透明化。未改动其他 AI 的业务/语音/文档改动，未 commit/push。
+
+## 2026-11-17 — Antigravity — 根目录 `README.md` 全面更新（对齐现行双语、31 角色、双层手术、日语语音与 v37 安全边界存档架构）
+
+- **执行内容**：
+  - 审查并重写严重停留在早期 `0.7` 原型阶段的根目录 `README.md`：移除已废止的“仅中文原型”“无音频依赖”“2 名医生／3 名护士／4 名文字占位患者”“20 种躯干手术未开放”以及违反现行红线的“门诊／术前／事件进行中可存档”等过时描述；
+  - 对照仓库真实数据与现行实现更新核心特性、目录职责、启动说明、开发／审计命令与协作文档索引（准确反映 Godot 4.5.1、`zh_CN`/`en` 双语 `90,000+` 词条、31 个角色包、36 个随机患者包＋8 名客串患者、32 种普通术式、7 席位高级手术与跨日转诊、Lv5 医护患者、Free H V1.3.4、白日梦鉴赏、全员 31 人 470 条日语语音＋动态响度／BGM 闪避，以及 v37 `boundary_facts_v1` 医院导览／周日安全边界事实存档规则）。
+- **新增／修改文件**：
+  - 修改：`README.md`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - 脚本自动校验 `README.md` 内全部 Markdown 相对链接与示例 `tools/*` 脚本路径 `100%` 真实存在；核对 `git diff README.md`，未触碰任何业务代码、数据或存档。
+- **尚未完成与注意事项**：
+  - `PROJECT.md`、`TODO.md` 等早期阶段性记录文件按 `AGENTS.md` 说明保持历史存档参考，未擅自删除或改写；未 commit/push。
+
+## 2026-11-17 — Antigravity — 阿尔托莉雅（`doc_artoria`）Lv0–Lv4 事件高光关键句、周日偏好约会与自宅 H Runner 专属日语语音包（`pack_v2`，53 条）全量实装
+
+- **执行内容**：
+  1. **复用定稿 Voice ID 生成并导入 53 条 24kHz 单声道 16-bit WAV（零新建声线）**：
+     - 复用用户已确认的 `doc_artoria` v1 原创声线 `voice_6af60fb85ba48191b620c1cc5932552e`（`research/voice_candidates/doc_artoria_v1/voice.json`），经固定前缀执行器 `tools/voice_runner/hoshimi-voice run` 调用 `gpt-live-1` 渲染并归档于 `research/voice_candidates/doc_artoria_v1/pack_v2/`（含 `.gdignore`、原始流 `raw.wav`、非音频事件与 SHA-256 清单 `research/imports/voice_doc_artoria_pack_v2_2026-11-17.json`）；
+  2. **三类运行场景零侵入全覆盖（不改任何剧本 JSON、不污染 v37 存档）**：
+     - **人物档案／周日偏好约会／Free H 邀约（4 条）**：`assets/audio/voice/doc_artoria/{shy,date_restaurant,date_ski,free_h_accept}.wav`，并在 `godot/ui/voice_director.gd` 补齐 `serious_blush -> shy`、`sparkle -> smile` 细粒度表情语音映射；
+     - **Lv0–Lv4 全部至今事件关键转折与发声 CG 节点（22 条）**：`assets/audio/voice/doc_artoria/events/*.wav`，通过 `data/audio/event_voice_cues.json` 挂载覆盖 Lv0《外科副部长的办公室》（2 条）、Lv1《谁站在哪个位置》（2 条）、Lv2《留下来的部分》（4 条，含病房安抚大河、术中超声带口罩指令、术后搭档认可、红茶空腹微赧）、Lv3《不是一个人的手术》（5 条，含故人病房、术中萌恵止血指令、领导者信条、眼花扶稳、加点炸牛肉饼三明治）、Lv4《只是阿尔托莉雅》（9 条，含竹叶亭可乐饼、河岸挽留、邀约回家、“只是阿尔托莉雅”、改称“坂口君”、靠拢告白、枕边晚安、清晨厨房“现场完全安全”与晨光餐桌回味）；
+     - **自宅 H Runner 全流程（27 条）**：`assets/audio/voice/doc_artoria/h/*.wav`，同时驱动 Lv4 第五幕首次自宅 H 与日常可重复自宅 Free H，涵盖 4 句自宅进场词 1:1 全覆盖（`h_entry_1..4`）、前戏四档各 2 条、满兴奋提示 1 条、`gentle`/`intense` 开场与中段、二阶段递进、四向高潮完成全开喉尖叫 4 条（`h_finish_1..4`）及日常事后 2 条；
+     - **三档动态响度分层均衡**：按 schema v2 活跃语音帧 RMS（`> -48 dBFS`）计算新增 53 条增益写入 `data/audio/voice_gain_trim.json`（全院注册语音合计 `470` 条：耳语 `-16.5 dBFS`／常规 `-15.5 dBFS`／尖叫爆发 `-13.0 dBFS` + `Voice` 总线 `-0.5 dBFS` 硬件限幅器防削波），同步更新 `docs/character_voice_ids.md`。
+- **新增／修改文件**：
+  - 新增：`assets/audio/voice/doc_artoria/{shy,date_restaurant,date_ski,free_h_accept}.wav`、`assets/audio/voice/doc_artoria/events/*.wav`（22 条）、`assets/audio/voice/doc_artoria/h/*.wav`（27 条）及对应 `.import`、`research/voice_candidates/doc_artoria_v1/pack_v2/**`、`research/imports/voice_doc_artoria_pack_v2_2026-11-17.json`。
+  - 修改：`data/audio/event_voice_cues.json`、`data/audio/voice_gain_trim.json`、`godot/ui/voice_director.gd`、`tools/voice_integration_test.gd`、`docs/character_voice_ids.md`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - Godot 资源导入与专项测试：`--headless --editor --import --quit` 退出码 `0`；`voice_integration_test.gd`（`781 checks, 0 failures`，全量 470 条 `AudioStreamWAV` 加载及阿尔托莉雅事件／约会／档案／Free H／Milestone H Runner 全链路断言通过）、`artoria_h_profile_test.gd`（`325/0`）、`artoria_lv4_test.gd`（`6100/0`）、`boundary_save_test.gd`（`1020/0`）、`localization_test.gd`（`33/0`）；
+  - 原生 `1280×800` Metal 窗口合成 GUI 实机验收：`artoria_free_h_e2e_test.gd`（`352 checks; 0 failures; display=macOS; inputs=246`）；静态本地化回归 `narrative_localization_test.py`（`54962/0`）与 `localization_audit.py`（`90366` 条全覆盖）全部通过。
+- **尚未完成与注意事项**：
+  - 本批语音的最终主观听感与情绪演绎待用户实玩试听确认；Lv5 医护作为患者与高级手术剧情尚未开启；未做人工物理键鼠手点与 Windows 导出包重打包，未触碰玩家真实存档，未 commit/push。
+
+## 2026-11-17 — Antigravity — 阿尔托莉雅（`doc_artoria`）H Runner 全量实装、两张局域网 CG 接入、6 张透明 H 表情差分制作及自宅 Free H（`"ready"`）正式开放
+
+- **执行内容**：
+  1. **原稿归档与中英双语 H Profile 全量生成（100% 逐字对齐）**：
+     - 将用户交付的 `HOSHIMI_ARTORIA_H_PROFILE_DELIVERY_V1_0.json` 原样归档于 `research/source_scripts/artoria_h_profile_source_v1.json`；
+     - 新增 `tools/import_artoria_h_profile.py` 与 `tools/artoria_h_profile_source_audit.py`，生成 `data/staff/doc_artoria/{h_profile_v1,h_flow_v1,h_context_v1}.json`（含 `4×9 = 36` 组中英双语动作×部位组合池、9 组 `zone_tier`、4 档 `tier_fallback`、4 句自宅进场词、二阶段温柔／粗暴分支与 4 句手动冲刺回应、2 句自由 H 事后词，绑定 `width: 682, height: 1024` 热区尺寸与 `artoria_home_bedroom_night` 背景），并同步更新 `data/localization/{zh_CN,en}.json` 的 `ui.free_h.doc_artoria.booking_response`；
+  2. **两张用户指定局域网 CG 与 6 张透明 RGBA H 表情差分接入（`mipmaps/generate=true`）**：
+     - 从局域网地址完整下载并校验二阶段 CG `assets/h/doc_artoria/scene_cg.png`（`1536×1024` PNG RGBA，`1,578,291` bytes，SHA-256 前缀 `0e60ac2f4d1b3dc8`）与事后 CG `assets/h/doc_artoria/aftercare_cg.png`（`1536×1024` PNG RGBA，`2,104,915` bytes，SHA-256 前缀 `3d7bc0a4da34bead`），严格遵守素材边界仅做解码／尺寸／导入／资源加载技术检查；
+     - 基于用户确认的头像种子制作并经本地 `BiRefNet-ToonOut` 离线抠图生成全部 6 张 `612×646` 透明 RGBA H 表情差分：`assets/h/doc_artoria/portrait_{neutral,annoyed,pleased,flustered,delighted,peak}.png`（原始候选与 SHA-256 归档于 `research/generated_candidates/artoria_h_portraits_v1/`，含 `.gdignore`）；
+     - 在保留 Codex 五张 Lv4 SFW CG 记录的前提下更新 `data/staff/doc_artoria/assets_manifest.json` 与 `research/imports/artoria_h_profile_2026-11-16.json`；
+  3. **Lv4 里程碑真 H Runner 衔接与自宅 Free H（`home`）生产开放**：
+     - 将 `godot/systems/free_h_registry.gd` 中 `doc_artoria` 的 `content_status` 切换为 `"ready"`，更新 `booking_response` 原文；
+     - Lv4 第五幕末尾 `ar4_s5_1_26`（`launch_artoria_lv4_h`）现自动进入真实 `doc_artoria` H Runner（`milestone` 模式跳过通用进场／事后词），完成后无缝接回 `ar4_s5_2_01` 夜间余韵与第六幕清晨厨房早餐，绝不提前结算；Lv4 完成后医护档案正式开放 `FreeHBooking`（固定唯一地点 `"home"`／`"阿尔托莉雅自宅"`）。
+- **新增／修改文件**：
+  - 新增：`research/source_scripts/artoria_h_profile_source_v1.json`、`research/imports/artoria_h_profile_2026-11-16.json`、`research/generated_candidates/artoria_h_portraits_v1/*`、`assets/h/doc_artoria/{scene_cg,aftercare_cg,portrait_neutral,portrait_annoyed,portrait_pleased,portrait_flustered,portrait_delighted,portrait_peak}.png`（及 `.import`）、`data/staff/doc_artoria/{h_profile_v1,h_flow_v1,h_context_v1}.json`、`tools/{import_artoria_h_profile,artoria_h_profile_source_audit}.py`、`tools/{artoria_h_profile_test,artoria_free_h_e2e_test}.gd`。
+  - 修改：`data/staff/doc_artoria/assets_manifest.json`、`data/localization/{zh_CN,en}.json`、`godot/systems/free_h_registry.gd`、`tools/{free_h_scheduling_test,artoria_lv4_test,artoria_lv4_preview_capture}.gd`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - 原文与本地化静态审计：`.venv/bin/python tools/artoria_h_profile_source_audit.py`（`260/0`）、`python3 tools/narrative_localization_test.py`（`54962/0`）、`python3 tools/localization_audit.py`（`90366` 条全覆盖，`UI 845/845`，`0` 硬编码中文）、`python3 tools/staff_localization_test.py`（`1209` 行通过）、`tools/validate_data.py` 过滤 `artoria|ar2_|ar3_|ar4_`（`0` 报错）；
+  - Godot Headless 专项与回归：`artoria_h_profile_test.gd`（`325/0`）、`free_h_scheduling_test.gd`（`110/0`）、`artoria_lv4_test.gd`（`6100/0`，含真 Milestone H Runner -> `ar4_s5_2_01` 续接与 Codex 5 张 Lv4 CG 奖励页及档案 `FreeHBooking` 实测）、`boundary_save_test.gd`（`1020/0`）、`narrative_save_lock_test.gd`（`6/0`）、`localization_test.gd`（`33/0`）、`smoke_test.gd`（`0` 失败）；
+  - 原生 `1280×800` Metal 窗口合成 GUI 实机验收：`artoria_free_h_e2e_test.gd`（不带 `--headless`，经正式医护页邀约 -> `16:00` 下班离院触发自宅 Free H -> 9 部位热区真点击 -> 6 表情切换 -> 温柔／粗暴双风格二阶段 `scene_cg` -> 手动冲刺 -> `aftercare_cg` 2 句事后词 -> 次日 `09:00` 安全边界返回，中英双语全跑通）→ `352 checks; 0 failures; display=macOS; inputs=246`（零持久数值污染，零存档文件写入）。
+- **尚未完成与注意事项**：
+  - 阿尔托莉雅 Lv1–Lv4 与自宅 Free H 的剧本、立绘、背景、CG 与 H Runner 现已全部闭环；角色短语音 WAV 与 Lv5 医护作为患者／高级手术线待后续规划时推进；未做人工物理键鼠手点与 Windows 导出包重打包，未触碰玩家真实存档，未 commit/push。
+
+## 2026-11-16 — Antigravity — 阿尔托莉雅（`doc_artoria`）H 热点原图（`body_map.png`）与 9 热区 `h_bodymap.json` 标定接入
+
+- **执行内容**：
+  - 按用户指示将上传的 `682×1024`（`2:3`）原图逐字节无损复制至 `assets/h/doc_artoria/body_map.png`（SHA-256 `6eda4c085d026a2e47e7b66027810a1b195e5a2090a342edb5838f487b59a0e3`），导入 Godot 并开启 `mipmaps/generate=true`；
+  - 新增 `data/h/doc_artoria/h_bodymap.json`（`image_width: 682`、`image_height: 1024`、`coordinate_space: "normalized_uv_0_1"`），对照 `0.05` UV 网格逐部位标定全部 9 个标准热区（`lips`、`cheeks`、`neck`、`nipples`、`breasts`、`navel`、`genitals`、`torso_other`、`thighs`），并在 `data/staff/doc_artoria/assets_manifest.json` 与 `research/imports/artoria_h_bodymap_2026-11-16.json` 登记来源与校验和；
+  - `godot/systems/free_h_registry.gd` 已指向 `res://data/h/doc_artoria/h_bodymap.json`，待后续导入 `h_profile_v1.json`、`h_flow_v1.json`、`h_context_v1.json`（注意 `base.assets.body_map` 宽高填 `width: 682, height: 1024`）及 `scene_cg`、`aftercare_cg`、6 张 H 表情差分后即可将 `content_status` 切为 `"ready"`。
+- **实际验证**：
+  - 原图与 `assets/h/doc_artoria/body_map.png` 逐字节 `cmp -s` 一致；Godot `--headless --editor --import --quit` 通过；
+  - Godot 运行时 `HProfileSession.hit_test()` 12 点探针实测通过（9 部位中心点 + 胸骨沟槽归 `torso_other` + 右侧乳头优先归 `nipples` + 枕角空白返回 `""`）；`free_h_scheduling_test.gd`（`110/0`）与 `artoria_lv4_test.gd`（`6048/0`）回归通过。
+- **尚未完成与注意事项**：
+  - 当前仅完成 `body_map` 原图与热区多边形标定；其余 H Profile JSON 与 `scene_cg`／`aftercare_cg`／6 表情素材待用户继续提供后接入，在此之前 `free_h_registry.gd` 保持 `"pending_assets"`，未触碰玩家存档，未 commit/push。
+
+## 2026-11-16 — Codex：Saber Lv4 五张获批 SFW CG 已接入
+
+- 新增 `assets/events/artoria_lv4_cg_v1/` 五张 PNG 及导入配置；河岸/客厅选 v2，其余选 v1。修改 `data/staff/doc_artoria/{cg_mapping,lv4_events,assets_manifest}.json`，22 节点接图，客厅 v2 为画廊封面；通过现有 apply_cg_mapping 保留重导入映射。
+- `tools/artoria_lv4_test.gd` 更新为检查 CG 奖励页、纹理加载和继续完成页。新增 `research/imports/artoria_lv4_cg_2026-11-16.json` 和 `docs/qa/artoria_lv4_cg_2026-11-16/` 证据。
+- 实测：原文审计 24929/0、叙事本地化 54962/0、本地化覆盖通过、Godot 导入 exit 0、Lv4 headless 6048/0；五资源/22节点/封面静态核对通过，全部非 CG 节点字段未变。
+- 全项目 validate_data 仍失败（完整日志见 QA，目标无 artoria/ar4 标记错误），未修无关内容。导入有环境证书和 editor settings 写入警告，测试有 ObjectDB 退出警告。未做本轮原生窗口视觉验收；未动玩家存档、未 commit/push。
+
+## 2026-11-16 — Codex：Saber Lv4 河岸与客厅 CG 五官修正版候选
+
+- 用户指出两张 CG 面部漂移并补充官方设定图，授权重绘。新增 `research/generated_candidates/artoria_lv4_cg_v2/` 两张 PNG、prompts.json、manifest.json、references/ 与 .gdignore；原 v1 保留。
+- 修正紧凑脸型、睁开的眼型、眉眼与简化鼻影/发束高光，保留场景、衣服和剧情构图；客厅仍为披发。
+- 实际验证：两张已目视检查，Pillow 完整解码，均 1536×1024；SHA256 与原始生成路径归档。未接入游戏、未运行游戏测试、未修改剧情或其他工作区资源。
+
+## 2026-11-16 — Codex：Saber Lv4 五张 SFW CG 候选完成（尚未接入）
+
+- 按用户授权制作早餐翻车、河岸告白、客厅“只是阿尔托莉雅”、晨光餐桌、竹叶亭可乐饼五张 CG。
+- 新增 `research/generated_candidates/artoria_lv4_cg_v1/`：五张 1536×1024 PNG、`.gdignore`、`prompts.json`、`manifest.json`（原始输出路径、参考图、SHA256、建议节点）。生成原件保留。
+- 使用已确认江美子样图作为画风参考，人物与服装使用当前 Lv4 立绘；大河使用常服种子。已逐图目视检查，Pillow 解码与尺寸检查五张通过。
+- 此轮仅制作候选，未修改事件文本、运行资源映射、画廊或其他人的未提交文件；未进行游戏运行测试。用户确认后再接入，关键餐具/厨房道具可能需全屏展示以免对白框遮挡。
+
 # 跨工具交接记录
 
 本文件供 Codex 与 Antigravity／Gemini 在同一工作区内交接。每次开工必须先读本文件并核对当前 `git status`／`git diff`；每完成一个独立功能、Bug 修复或一批剧本，必须将新记录放在“最新交接记录”最顶部，并把原记录完整移入“历史交接记录”。
@@ -5,6 +97,824 @@
 交接文字只用于快速定位。当前代码、用户原稿、Git 差异和实际测试结果始终是事实来源。未经用户明确要求，不得自动 commit、push、reset、checkout、clean 或删除他人的未提交内容。
 
 ## 最新交接记录
+
+### 2026-11-16 — Antigravity — 阿尔托莉雅·潘德拉贡（`doc_artoria`）Lv4《只是阿尔托莉雅》（V1.1）实装、19 张透明立绘与 8 张专属背景制作、自宅 H Runner／CG 占位接线及原生验收
+
+- **执行内容**：
+  1. **原稿归档、获授权服装词微调与中英双语实装（`artoria_lv4_just_artoria`，V1.1）**：
+     - 将用户提供的 V1.1 剧本原样归档于 `research/source_scripts/HOSHIMI_ARTORIA_LV4_JUST_ARTORIA_V1_1.md`；按用户明确授权仅定点微调 2 处服装词以对齐 Codex 常服种子图（第二幕 `宽松的衬衫外套` → `宽松的开衫外套`；第三幕 `穿着浅色针织长衫的` → `穿着深酒红色长袖上衣与白色长裙的`），其余全篇对白、旁白、标点与说话人 100% 原样保留；
+     - 编写完整英文译稿 `research/translations/artoria_lv4_en.json`（标题 `"Just Artoria"`，241 个节拍节点 + 9 个选项全覆盖，保留院外 `Dr. Artoria` / `Dr. Sakaguchi` → 自宅 `Artoria` / `Sakaguchi-kun` 称呼递进，0 CJK 残留，0 `Saber`／`Maiya` 内部代号泄露），通过 `tools/import_artoria_lv4.py` 生成 `data/staff/doc_artoria/lv4_events.json`（244 节点）并更新 `bundle.json`、`relationship.json`（`target_level: 4` → `"authored"`，`benefit_id: "unlock_intimacy_events"`）及 `data/localization/{zh_CN,en}.json`。
+  2. **19 张 `1024×1536` 透明 RGBA 立绘 + 8 张 `1376×768` 专属背景（本地 `BiRefNet-ToonOut` 离线抠图 + `mipmaps/generate=true`）**：
+     - 阿尔托莉雅 Lv4 四套专属着装（14 张，`assets/characters/artoria_lv4_v1/doc_artoria/`）：`lv4_outing/{neutral,smile,sparkle,shy}`（浅驼薄风衣＋米白针织衫＋深蓝裙）、`lv4_home/{neutral,smile,shy,soft}`（自宅晚间长发披散居家态）、`lv4_apron/{serious_blush,embarrassed}`（清晨素白围裙＋锅铲轻喜剧态）、`lv4_morning/{neutral,sparkle,serious,smile}`（解下围裙早餐态），在 `staff_view.gd` 中设为完成 Lv4 后方可在医护档案衣柜浏览；
+     - 返场患者院外常服（5 张，基于 Codex `taiga_irisviel_casual_v1` 种子抠图与差分，仅剧情出场不入随机池）：`taiga_fujimura/casual/{smile,laugh,grateful}`、`irisviel/casual/{smile,warm}`；
+     - 新增 8 张早年日式 PC VN 赛璐璐风格空景背景（`assets/backgrounds/artoria_lv4_v1/`）并注册 `data/backgrounds.json`：车站钟塔街角、藤村剑道场外廊、竹叶亭定食屋、城郊庭园茶室、星见川傍晚河岸、阿尔托莉雅自宅客厅（夜）、自宅卧室（夜，兼供后续自宅 Free H 复用）、自宅厨房与窗边餐桌（晨）。
+  3. **周日邀约入口、自宅 H Runner 占位、CG 映射占位与周一 `09:00` 原子结算**：
+     - 新增 `godot/systems/artoria_lv4.gd` 并接入 `game_state.gd`、`app.gd`、`free_h_registry.gd`、`data/schemas/content.schema.json`：采用 `trigger_mode: "sunday"` + `consumes_sunday: true`（前置 `artoria_lv3_not_a_solo_operation`、`Familiarity >= 55`、`Leadership >= 85`、冷却 `>= 3` 天、无月份锁、`max_day: 363`）；
+     - 第五幕末尾 `ar4_s5_1_26`（`action = "launch_artoria_lv4_h"`）优先尝试 `FreeHRegistry.load_bundle("doc_artoria", locale)`，当前走禁存档开发占位页 `artoria_lv4_h_placeholder` 后无缝接回 `ar4_s5_2_01` 夜间专属余韵与第六幕清晨厨房早餐，绝不提前结算；6.2 结束 `@end` 才原子执行 `Lv3 → Lv4`、`artoria_lv4_complete = true` 并推进至周一 `09:00`（不消耗周一行动时间，不触碰外科主任竞选让位或久宇舞弥旗标）；
+     - `free_h_registry.gd` 预登记 `doc_artoria`（唯一固定地点 `home` / `"阿尔托莉雅自宅"`，`content_status: "pending_assets"`），档案页安全显示禁用态 `"亲密事件已解锁 · 素材待补"`；
+     - **供 Codex 接力制作 CG 的占位契约**：已在 `data/staff/doc_artoria/cg_mapping.json` 的 `artoria_lv4_just_artoria.planned_placeholders_for_codex` 及 `assets_manifest.json` 写明推荐节点区间（高优先级第 6.1 幕清晨厨房冒烟 CG：`ar4_s6_1_07..13`；可选第 2 幕可乐饼发光：`ar4_s2_16..19`；可选第 5.1 幕客厅散发表白吻前：`ar4_s5_1_20..26`），并更新 `tools/artoria_cg_mapping.py` 支持空 `cover`/`scenes` 与后续一键挂载。
+- **新增／修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_ARTORIA_LV4_JUST_ARTORIA_V1_1.md`、`research/translations/artoria_lv4_en.json`、`research/imports/artoria_lv4_2026-11-16.json`、`research/generated_candidates/artoria_lv4_v1/*`、`assets/characters/artoria_lv4_v1/**`（19 张 PNG + `.import`）、`assets/backgrounds/artoria_lv4_v1/*`（8 张 PNG + `.import`）、`data/staff/doc_artoria/lv4_events.json`、`godot/systems/artoria_lv4.gd`、`tools/{import_artoria_lv4,artoria_lv4_source_audit}.py`、`tools/{artoria_lv4_test,artoria_lv4_preview_capture}.gd`、`docs/qa/artoria_lv4_2026-11-16/{.gdignore,REPORT.md,engine.log,*.png}`（40 张实机截图）。
+  - 修改：`data/backgrounds.json`、`data/schemas/content.schema.json`、`data/staff/doc_artoria/{profile,assets_manifest,bundle,relationship,cg_mapping}.json`、`data/localization/{zh_CN,en}.json`、`godot/systems/{game_state,free_h_registry}.gd`、`godot/ui/{app,staff_view}.gd`、`tools/{artoria_cg_mapping,validate_data}.py`、`tools/free_h_scheduling_test.gd`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - **原文与静态本地化审计**：`.venv/bin/python tools/artoria_lv4_source_audit.py` → `24929 checks; 0 failure(s)`（穷举 27 条选项组合路径）；`python3 tools/narrative_localization_test.py` → `54962 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `90366 translations; UI 845/845; 0 hard-coded Chinese candidates`；`python3 tools/staff_localization_test.py` → `1209 lines` 通过；`tools/validate_data.py` 过滤 `artoria|taiga|irisviel|ar2_|ar3_|ar4_` → `0` 报错；
+  - **Godot Headless 专项与回归**：`artoria_lv4_test.gd`（`6044/0`）、`free_h_scheduling_test.gd`（`110/0`）、`artoria_lv3_test.gd`（`8236/0`）、`relationship_gate_matrix_test.gd`（`66/0`）、`boundary_save_test.gd`（`1020/0`）、`narrative_save_lock_test.gd`（`6/0`）、`localization_test.gd`（`33/0`）、`smoke_test.gd`（`0` 失败）；
+  - **原生 `1280×800` Metal 窗口合成 GUI 实机验收**：`artoria_lv4_preview_capture.gd`（不带 `--headless`，经周日邀约正式按钮进入、跑通中英双语与 A/B/C 分支、H 占位过渡、周一 `09:00` 完成页及医护档案禁用态 Free H 按钮）→ `5651 checks; 0 failure(s); 1228 GUI clicks; 40 screenshots`。
+- **尚未完成与下一位维护者（Codex）注意事项**：
+  - **CG 制作接力**：用户指定由 Codex 制作 Lv4 事件 CG（高优先级为第 6.1 幕清晨厨房素白围裙＋锅铲＋黑炭培根＋冒烟吐司机轻喜剧 CG，推荐挂接节点 `ar4_s6_1_07..ar4_s6_1_13`）；生成并经用户确认后，只需填入 `data/staff/doc_artoria/cg_mapping.json` 的 `artoria_lv4_just_artoria.cover` 与 `scenes` 并调用 `apply_cg_mapping` 即可无缝生效；
+  - **自宅 H Profile 与语音**：`doc_artoria` 的专属 H Profile／自宅 H CG 尚未制作（当前 `free_h_registry.gd` 为 `"pending_assets"`，第五幕走禁存档占位页），角色语音 WAV 亦待后续统一生成；未做人工物理键鼠手点与 Windows 导出包重打包，未 commit/push。
+
+### 2026-11-16 — Codex — 大河与爱丽丝菲尔常服立绘种子
+
+- 用户要求为以后故事制作两名患者常服。以各自已确认病号服种子锁定脸型，结合用户原作常服参考和已确认赛璐璐美术基准，经内置 image_gen 生成两张1024×1536灰底种子。
+- 新增 `research/generated_candidates/taiga_irisviel_casual_v1/taiga_casual_seed.png`（青绿开衫、黄底条纹衫、深色长裤）、`irisviel_casual_seed.png`（酒红上衣黑领结、白裙）；同目录 prompts.json、manifest.json 保存提示词、来源、尺寸与SHA，.gdignore隔离候选。
+- 已查看生成结果并验证PNG解码。尚未制作透明版、差分或绑定未来剧情节点；无运行代码改动，未跑游戏测试。此前CG接入及其他AI改动保留，未commit/push。
+
+### 2026-11-16 — Codex — 阿尔托莉雅 Lv2–3 八张 CG 正式接入
+
+- 用户确认全部图并授权接入。逐字节复制到 `assets/events/artoria_lv2_lv3_cg_v1/`（8 PNG及Godot import），`data/staff/doc_artoria/lv2_events.json`／`lv3_events.json` 按 `cg_mapping.json` 接入八段连续剧情；contain 完整构图、首次2秒无对白展示、区段结束恢复立绘。Lv2封面为超声图，Lv3为团队用餐图。未改变对白、选项、说话人或结算。
+- 新增 `tools/artoria_cg_mapping.py`，两章导入器写出前调用稳定映射；未重跑整个导入器。既有两章 native 驱动增加 CG 分支资源断言，避免误要求 CG 上叠加立绘。新增 `tools/artoria_cg_preview.gd` 复用既有原生驱动的GUI点击与日历前置，仅在内存跳至美术检查点，不保存事件内部状态。
+- 验证：两事件schema通过；原稿逐句审计Lv2 19182/0、Lv3 62679/0；`narrative_localization_test.py` 54224/0、`localization_audit.py` 88850条全覆盖；8原图/运行图字节一致与映射幂等通过。Godot重新导入；`artoria_lv2_test.gd` 5086/0、`artoria_lv3_test.gd` 8236/0。
+- 原生窗口中英各8图：110检查、0失败、20次合成GUI点击、16截图。实际经 OfficeEndWorkday 正式入口，随后内存美术检查点验证加载、无立绘叠加、延迟后对白出现、继续按钮、离开图区恢复立绘和存档锁。并非本轮全文逐句GUI通关；未人工OS点击或Windows导出。截图/log位于 `docs/qa/artoria_cg_2026-11-16/`，已查看汇总图；文字框覆盖部分下缘道具，首次完整图展示保留其可见性。
+- headless环境仍见CA读取及退出ObjectDB泄漏警告；无专项失败。未commit/push，其他AI工作保留。
+
+### 2026-11-16 — Codex — 阿尔托莉雅 Lv2–3 八张 SFW CG 候选
+
+- 用户授权制作前述六张优先 CG 与两张扩展 CG，使用内置 image_gen 和 `docs/skills/hoshimi-cg-art-direction/SKILL.md`；已查看确认风格样图及角色立绘，以样图约束线稿、硬边阴影和色调，以各角色资源约束身份。
+- 新增 `research/generated_candidates/artoria_lv2_lv3_cg_v1/`：Lv2 `lv2_ultrasound.png`、`lv2_cold_tea.png`、`lv2_taiga_reassurance.png`；Lv3 `lv3_old_friend.png`、`lv3_moe_report.png`、`lv3_moe_blocks_door.png`、`lv3_team_lunch.png`、`lv3_supported.png`。同目录 prompts.json、manifest.json 保存提示词、参考路径、输出来源、SHA及建议节点；.gdignore 隔离候选。
+- 已逐张查看生成结果；8张 PNG 均解码成功，1536×1024。手术画面采用系带口罩、帽内收发与遮蔽术野；主角不露脸。图片为待用户审阅候选，尚未制作可选表情差分，未改事件/画廊路径、未声称接入或原生显示验收。
+- 后续接入注意：超声图呈举起探头观察屏幕的瞬间，具体挂接须匹配动作；病房图的肝脏简图是生成示意而非经医学绘图校验的图谱。对话框遮挡仍须在实际窗口校验。
+- 无运行代码变更，未跑游戏测试，保留其他 AI 的 Lv2/Lv3 实装及当前工作区改动；未 commit/push。
+
+### 2026-11-16 — Antigravity — 阿尔托莉雅·潘德拉贡（`doc_artoria`）Lv3《不是一个人的手术》（V1.1）实装、爱丽丝菲尔与 Saber 微赧立绘透明化及双层御堂跨路线连续性验收
+
+- **执行内容**：
+  1. **原稿归档与中英双语实装（`artoria_lv3_not_a_solo_operation`，V1.1）**：
+     - 将用户提供的 V1.1 定点修订稿原样保存于 `research/source_scripts/HOSHIMI_ARTORIA_LV3_NOT_A_SOLO_OPERATION_V1_1.md`，编写完整英文译稿 `research/translations/artoria_lv3_en.json`（标题 `"Not a One-Person Operation"`，294 个节点正文 + 9 个选项全量覆盖，0 CJK 残留，零 `Saber`／`Maiya` 代号或后期保留角色泄露），通过 `tools/import_artoria_lv3.py` 生成 `data/staff/doc_artoria/lv3_events.json`（297 节点，3 处三选一零数值／零旗标偏移选项）并更新 `bundle.json`、`relationship.json`（`target_level: 3` → `"authored"`）与 `data/localization/{zh_CN,en}.json`。
+  2. **6 张透明 RGBA 立绘制作与离线神经抠图（`mipmaps/generate=true`）**：
+     - 基于 Codex 种子图（`irisviel_patient_seed_v1/{ward_seed,intraoperative_seed}.png`）与 `portrait_pack_v16/doc_artoria/`，生成表情差分并经 `tools/portrait_matting.py`（本地 `BiRefNet-ToonOut`）透明化：
+       - 爱丽丝菲尔·冯·爱因兹贝伦（成年女性患者，仅剧情出场，不入随机池）：`assets/characters/artoria_lv3_v1/irisviel/ward/{smile,relieved}.png`（`1024×1536` RGBA）与 `or_cap/{calm,smile,drowsy}.png`（`1448×1086` RGBA，置于 `bottom=480` 避开对话框与按钮）；
+       - 阿尔托莉雅补充表情：`assets/characters/artoria_lv3_v1/doc_artoria/white_coat/shy.png`（`1024×1536` RGBA，第五幕被年轻护士拦门按在沙发上时罕见无措微赧差分），同步登记 `profile.json` 与 `assets_manifest.json`；原始候选与 SHA 归档于 `research/generated_candidates/artoria_lv3_v1/`（含 `.gdignore`）。
+  3. **第一幕双层御堂跨路线只读连续性、门禁与原子结算**：
+     - 新增 `godot/systems/artoria_lv3.gd` 并接入 `godot/systems/game_state.gd`、`godot/systems/advanced_referral.gd`、`godot/ui/app.gd`：限定周一至周五普通工作日 `16:00–22:00` 下班离院（`OfficeEndWorkday`）触发（要求 `artoria_lv2_what_remains` 已完成、`Familiarity >= 40`、`Leadership >= 80`、冷却 `>= 3` 天；不新增 `Surgery`／御堂 Lv1／高级转诊硬锁），阻断周六／周日、次日休诊日、未完成住院患者、次日高级转诊排程冲突及最后两天（`max_day: 363`）；
+     - `ArtoriaLv3.cast_definition()` 纯只读路由第一幕两处跨路线分支（不新增持久字段）：御堂 Lv3 已完成走 CABG 追忆分支（`ar3_s1_em3a_01`），未完成走日常普外印象分支（`ar3_s1_em3b_01`）；【选择 1】选 A 时，御堂 Lv1 已完成走亲自同台子分支（`ar3_c1a_1_01`），未完成走日常观察子分支（`ar3_c1a_2_01`）；
+     - 第五幕 `@end` 原子结算 `doc_artoria` `Lv2 -> Lv3`、`artoria_lv3_complete = true`，时钟推进至次日 `15:00`；公务配台护士 `nurse_hiroko`、`nurse_moe`、`nurse_ange` 关系与熟悉度零改动，不解锁额外术式，不触碰外科主任竞选旗标。
+- **新增／修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_ARTORIA_LV3_NOT_A_SOLO_OPERATION_V1_1.md`、`research/translations/artoria_lv3_en.json`、`research/imports/artoria_lv3_2026-11-16.json`、`research/generated_candidates/artoria_lv3_v1/*`、`assets/characters/artoria_lv3_v1/{irisviel,doc_artoria}/**`（6 张 PNG + `.import`）、`data/staff/doc_artoria/lv3_events.json`、`godot/systems/artoria_lv3.gd`、`tools/{import_artoria_lv3,artoria_lv3_source_audit}.py`、`tools/{artoria_lv3_test,artoria_lv3_preview_capture}.gd`、`docs/qa/artoria_lv3_2026-11-16/{.gdignore,REPORT.md,engine.log,*.png}`（31 张实机截图）。
+  - 修改：`data/staff/doc_artoria/{profile,assets_manifest,bundle,relationship}.json`、`data/localization/{zh_CN,en}.json`、`godot/systems/{game_state,advanced_referral}.gd`、`godot/ui/app.gd`、`tools/validate_data.py`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - **原文与静态本地化审计**：`.venv/bin/python tools/artoria_lv3_source_audit.py` → `62679 checks; 0 failure(s)`（穷举 108 条跨路线＋选项组合路径）；`python3 tools/narrative_localization_test.py` → `54224 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `88850 translations; UI 841/841; 0 hard-coded Chinese candidates`；`python3 tools/staff_localization_test.py` → `1209 lines` 通过；`tools/validate_data.py` 过滤 `artoria`/`taiga`/`irisviel`/`ar2_`/`ar3_` → `0` 报错；
+  - **Godot Headless 专项与回归**：`artoria_lv3_test.gd`（`8236/0`）、`artoria_lv2_test.gd`（`5086/0`）、`boundary_save_test.gd`（`1020/0`）、`voice_integration_test.gd`（`651/0`）、`relationship_gate_matrix_test.gd`（`66/0`）、`localization_test.gd`（`33/0`）、`narrative_save_lock_test.gd`（`6/0`）；
+  - **原生 `1280×800` Metal 窗口合成 GUI 实机验收**：`artoria_lv3_preview_capture.gd`（不带 `--headless`，`root.push_input()` 真实点击覆盖御堂未完成／已完成两种状态及中英双语 A/B/C 共 7 轮通关）→ `12914 checks; 0 failure(s); 2074 GUI clicks; 31 screenshots`。
+- **尚未完成与注意事项**：
+  - 本事件暂未生成角色语音 WAV 及可选第五幕投喂 CG；未做人工 OS 级键鼠点击、自动播放计时实测与 Windows 导出包重打包；未读写玩家真实存档槽位，未 commit/push。
+
+### 2026-11-16 — Codex — 爱丽丝菲尔患者种子图
+
+- 按用户四张参考使用内置 image_gen 制作两张种子图：`research/generated_candidates/irisviel_patient_seed_v1/ward_seed.png`（浅蓝病号服、银白长发）与 `intraoperative_seed.png`（长发收进手术帽、裸肩锁骨以上头像）。同目录 prompts.json、manifest.json 保存提示词、来源、尺寸与 SHA，.gdignore 隔离候选。
+- 已查看生成结果并验证两张 PNG 可解码。当前为实心灰底种子，尚未透明化、制作差分或注册到运行事件；未运行游戏测试（无运行资源改动）。
+- 已阅读最新 Antigravity 大河／阿尔托莉雅 Lv2 交接；该批既有改动保持原样。未 commit/push。
+
+### 2026-11-16 — Antigravity — 阿尔托莉雅·潘德拉贡（`doc_artoria`）Lv2《留下来的部分》实装、藤村大河与 Saber 补充立绘透明化及开腹肝叶切除教学解锁验收
+
+- **执行内容**：
+  1. **原稿归档与中英双语实装（`artoria_lv2_what_remains`，V1.0）**：
+     - 将用户上传的审阅定稿原样按字节归档至 `research/source_scripts/HOSHIMI_ARTORIA_LV2_THE_PART_THAT_REMAINS_V1_0.md`（SHA-256 `c3a5a8022a17be26e24774f5cd441fa021748cd67f3eba2660d085e7a92c6813`），编写高准确度肝胆外科英文译稿 `research/translations/artoria_lv2_en.json`（标题 `"The Part That Remains"`，224 个节点正文 + 9 个选项全覆盖，0 CJK 残留，无 `Saber` 内部代号泄露），通过 `tools/import_artoria_lv2.py` 生成 `data/staff/doc_artoria/lv2_events.json`（227 节点，3 处三选一零数值／零旗标偏移选项）并登记 `bundle.json`、`relationship.json`（`target_level: 2` → `"authored"`）及 `data/localization/{zh_CN,en}.json`。
+  2. **10 张透明 RGBA 立绘制作与离线神经抠图（`mipmaps/generate=true`）**：
+     - 基于已获确认的 Codex 种子图（`taiga_patient_seed_v1/{ward_seed,intraoperative_seed}.png`）与 `portrait_pack_v16/doc_artoria/`，生成表情差分并经 `tools/portrait_matting.py`（本地 `BiRefNet-ToonOut`）透明化：
+       - 藤村大河（25 岁成年患者，仅剧情出场，不入随机池）：`assets/characters/artoria_lv2_v1/taiga_fujimura/ward/{smile,laugh,worried}.png`（`1024×1536` RGBA）与 `or_cap/{tense,drowsy,relieved}.png`（`1448×1086` RGBA，置于 `bottom=480` 避开对话框与按钮）；
+       - 阿尔托莉雅补充立绘：`assets/characters/artoria_lv2_v1/doc_artoria/white_coat/{smile,embarrassed}.png`（`1024×1536` RGBA，替换原 `white_coat/smile` 别名并新增忘吃午饭微红耳廓差分）与 `scrubs_masked/{neutral,focused}.png`（`1024×1536` RGBA，海军蓝短袖刷手服、空口袋、手术帽、系带外科口罩、无菌乳胶手套），同步登记 `profile.json` 与 `assets_manifest.json`；候选原图、提示词与 SHA 清单归档于 `research/generated_candidates/artoria_lv2_v1/`（含 `.gdignore`）。
+  3. **门禁、日历冲突防护与《开腹肝叶切除》原子解锁**：
+     - 新增 `godot/systems/artoria_lv2.gd` 并接入 `godot/systems/game_state.gd`、`godot/systems/advanced_referral.gd`、`godot/ui/app.gd`：限定周一至周五普通工作日 `16:00–22:00` 下班触发（`Familiarity >= 25`、`Leadership >= 70`、Lv1 完成后冷却 `>= 3` 天），阻断周六／周日、次日休诊节假日、未完成住院患者、次日高级转诊 `operation_day`/`review_day` 冲突及最后两天（`max_day: 363`、`workday <= GAME_DURATION_DAYS - 2`，避免安琪离院窗口冲突）；
+     - 第五幕 `@end` 原子推进 `doc_artoria` `Lv1 -> Lv2`、写入 `artoria_lv2_complete` 与 `artoria_major_liver_resection_teaching_complete`、解锁普通手术池《开腹肝叶切除》（`surgery_open_major_liver_resection` / `template_liver_resection`）并结算至次日 `14:00`；公务配台护士 `nurse_yui`、`nurse_ange` 关系与熟悉度保持零改动；顺手修复 `godot/ui/app.gd` `rank_up` 事件副标题 `Lv.2.0` 浮点尾巴为整型 `Lv.2`。
+- **新增／修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_ARTORIA_LV2_THE_PART_THAT_REMAINS_V1_0.md`、`research/translations/artoria_lv2_en.json`、`research/imports/artoria_lv2_2026-11-16.json`、`research/generated_candidates/artoria_lv2_v1/*`、`assets/characters/artoria_lv2_v1/{taiga_fujimura,doc_artoria}/**`（10 张 PNG + `.import`）、`data/staff/doc_artoria/lv2_events.json`、`godot/systems/artoria_lv2.gd`、`tools/{import_artoria_lv2,artoria_lv2_source_audit}.py`、`tools/{artoria_lv2_test,artoria_lv2_preview_capture}.gd`、`docs/qa/artoria_lv2_2026-11-16/{.gdignore,REPORT.md,engine.log,*.png}`（27 张实机截图）。
+  - 修改：`data/staff/doc_artoria/{profile,assets_manifest,bundle,relationship}.json`、`data/localization/{zh_CN,en}.json`、`godot/systems/{game_state,advanced_referral}.gd`、`godot/ui/app.gd`、`tools/validate_data.py`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - **原文与静态本地化审计**：`.venv/bin/python tools/artoria_lv2_source_audit.py` → `19182 checks; 0 failure(s)`（27 条分支路径逐句审计）；`python3 tools/narrative_localization_test.py` → `53328 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `87056 translations; UI 841/841; 0 hard-coded Chinese candidates`；`python3 tools/staff_localization_test.py` → `1209 lines` 通过；`tools/validate_data.py` 过滤 `artoria`/`taiga`/`ar2_`/`liver_resection` → `0` 报错；
+  - **Godot Headless 专项与回归**：`artoria_lv2_test.gd`（`5086/0`）、`emiko_lv3_test.gd`（`2453/0`）、`boundary_save_test.gd`（`1020/0`）、`voice_integration_test.gd`（`651/0`）、`relationship_gate_matrix_test.gd`（`66/0`）、`advanced_calendar_regression_test.gd`（`64/0`）、`localization_test.gd`（`33/0`）、`narrative_save_lock_test.gd`（`6/0`）；
+  - **原生 `1280×800` Metal 窗口合成 GUI 实机验收**：`artoria_lv2_preview_capture.gd`（不带 `--headless`，`root.push_input()` 真实点击 `OfficeEndWorkday`、逐页对话、三处选项 A/B/C 及完成页返回导览，覆盖中英双语全部 6 轮）→ `8556 checks; 0 failure(s); 1439 GUI clicks; 27 screenshots`，人工目视抽检截图确认 `Lv.2` 标题、立绘边缘、对话框排版与头肩像避让全部正常。
+- **尚未完成与注意事项**：
+  - 本事件暂未生成角色语音 WAV；未做人工 OS 级键鼠点击、自动播放计时测试与 Windows 导出包重打包；未读写玩家真实存档槽位，未 commit/push，保留工作区其他既有改动。
+
+### 2026-11-16 — Codex — 藤村大河患者种子图
+
+- 按用户提供的四张角色参考，以内置 image_gen 制作病号服与术中头肩两张独立种子图，保存于 `research/generated_candidates/taiga_patient_seed_v1/ward_seed.png`、`intraoperative_seed.png`；同目录 prompts.json、manifest.json 保存提示词／生成来源／SHA，.gdignore 隔离候选。
+- 已查看两张生成结果；病号服为浅蓝交叠系带款，头像为手术帽、裸肩锁骨以上构图。当前为实心灰底待用户审阅种子；未制作差分、未透明化、未注册患者或接入 Saber 事件，未更改剧情数据。未运行游戏测试（仅候选美术）。
+- 保留已有工作区改动，未 commit/push。
+
+### 2026-11-16 — Codex — 惠 Lv1 用户指定 CG 原样替换
+
+- 用户附件 `codex-clipboard-79d0ad85-5a9e-40a8-a448-a52ffbf9b417.png` 按字节替换 `assets/events/kariya_lv1_v1/butcher_misunderstanding.png`；1536×1024 RGBA，SHA256 `aa46c9d82f356c286b21b6d87885770ab0927e7963cdd07b0846e42b98c78fd7`。未裁切、重绘、改写剧情或上传素材。
+- `research/imports/kariya_lv1_user_cg_2026-11-16/` 保存 source.png、previous_runtime.png、manifest.json、.gdignore；原运行图备份保留。更新 `tools/import_kariya_lv1.py` 的复制来源及 `research/generated_candidates/kariya_lv1_makoto_v1/runtime_assets.json` 的运行素材哈希，未重跑导入器。
+- 验证：附件／归档／运行文件 SHA 一致；`python3 tools/kariya_lv1_source_audit.py` PASS；确认五个剧情节点与画廊共用原稳定路径。Godot headless editor import 完成该图重新导入；临时 `/private/tmp/kariya_usercg_load.gd` 实际加载 Texture2D 并断言1536×1024 PASS。
+- 环境日志仍有 macOS CA 读取错误及沙箱外 editor_settings 无法保存提示，不影响上述素材导入／加载。未重新进行原生窗口剧情播放；未 commit/push。其余既有工作区改动保持原样。
+
+### 2026-11-16 — Codex — 真琴 CG 头身比例修订 V3
+
+- 按用户反馈用内置 image_gen 缩小左侧真琴头部／头发／手术帽并调整颈肩连接，保留病号服、惠、思考气泡和整体场景。已查看生成结果。
+- 候选 `research/generated_candidates/kariya_lv1_makoto_v1/cg_v3_head_proportions.png`，同目录 prompt／generation 保存提示词与 SHA。V2 与正式运行 CG 均保留，本次未替换游戏资源或剧本文字，未 commit/push。
+
+### 2026-11-16 — Codex — 惠 Lv1 CG 比例／病号服／思考气泡修订候选
+
+- 按用户要求用内置 image_gen 修订双人 CG：右侧惠头部缩小，真琴改穿浅蓝病号服、毯子移至腿部，新增连向真琴的吊挂卡通猪思考气泡。
+- 新图 `research/generated_candidates/kariya_lv1_makoto_v1/cg_v2_gown_thought.png`；同目录 `cg_v2_prompt.txt`、`cg_v2_generation.json` 保存提示词与 SHA。已查看生成结果。
+- 仅交付新版候选图，尚未替换运行 CG，原图及剧本原文保留；未 commit/push。
+
+### 2026-11-16 — Codex — 狩谷惠 Lv1《昨天卖肉的姑娘》与真琴素材实装
+
+- 用户已确认真琴裸肩以上头像。完成四张 1448×1086 RGBA 患者头像、惠两张 1024×1536 补充表情、双人事件 CG；原始生成、提示词、SHA 在 `research/generated_candidates/kariya_lv1_makoto_v1/`，运行资源在 `assets/characters/kariya_lv1_v1/` 与 `assets/events/kariya_lv1_v1/`。
+- 新增 `data/staff/nurse_kariya_megumi/lv1_events.json`（133 节点、3 分支），更新同目录 bundle／relationship／profile／assets_manifest、双语 localization；`game_state.gd` 仅新增目标事件上午／无占用入口防护，未改岗位或存档格式。原稿、译稿、导入清单分别位于 research/source_scripts、research/translations/kariya_lv1_en.txt、research/imports/kariya_lv1_2026-11-16.json；新增 import/source_audit/headless/native 四个 kariya_lv1 工具。
+- Gate：Lv0 完成、熟悉度 10、6/1–11/30 普通工作日 09:00–11:59；沿用原 3 天里程碑冷却，不对介绍额外加等待。正文 8:45 保留不倒拨时钟，30 分钟一次结算，末尾 Lv1。三选项零差异，不写弘子关系、不建普通手术队列、不发手术奖励。惠台词“器械台没资格”按用户解释保留，玩法组队不限制。
+- 原稿全文与选项逐字／三分支审计通过；目标 Schema 通过；叙事本地化 52642/0；全局本地化 85682 keys PASS；医护本地化 1209 lines PASS；headless 3610/0；原生中英 A/B/C 全程合成 GUI 点击 5448/0，18 张最终截图，安全边界／读档后时间与结算验证通过。全库 validate_data 仍有其他事件既有问题，未冒称全库通过；资源 import 的编辑器设置权限日志不影响原生加载。
+- 证据 `docs/qa/kariya_lv1_2026-11-16/README.md` 与日志／截图。第一轮头像按钮遮挡已上移缩小并完整复测。萌惠旧肉店 Lv2 在 gate matrix 增加历史迁移提示，未删除原草稿。未重打导出包，未从新游戏自然解锁六月，未测试键盘／自动播放；未读写玩家存档，未 commit/push，保留其他代理改动。
+
+### 2026-11-16 — Codex — 真琴患者头像新构图完成
+
+- 用户改为仅裸肩以上、不画毯子的头像构图；内置 image_gen 成功生成 `research/generated_candidates/kariya_lv1_makoto_v1/head_shoulders_raw.png`，同目录保存 prompt 与 SHA 记录。已查看生成结果，保留原基础图。
+- 新图为头颈／肩顶特写，待基础图确认后制作表情差分与透明化；未接运行数据，事件中英文接入仍待完成。未 commit/push。
+
+### 2026-11-16 — Codex — 真琴患者基础图裸肩修订未生成
+
+- 用户要求将真琴白毯患者基础图改为裸肩；尝试内置 image_gen 编辑，保留高位毯沿遮住胸部和躯干。
+- 工具在输出审核返回 HTTP 400 `moderation_blocked`（sexual），request ID `39aee9d7-6dfa-448c-b9fb-972dbfbf1689`。没有得到新图，没有覆盖 `research/generated_candidates/kariya_lv1_makoto_v1/neutral_raw.png`，没有变更运行素材或剧情。
+- 该记录仅表示本次工具失败，不代表裸肩患者素材一概不能制作或不能本地接入。未绕过审核重试，未 commit/push。
+
+### 2026-11-16 — Codex — 狩谷惠 Lv1 真琴患者基础图候选
+
+- 用户已确认：正文 8:45 保留，不倒拨游戏时钟；惠的器械岗位资格台词属剧情背景，不限制游戏自由组队。授权制作 Lv1 素材与事件。
+- 通过内置 image_gen 制作 22 岁成年 AU 真琴手术帽／白毯患者基础图，保存 `research/generated_candidates/kariya_lv1_makoto_v1/neutral_raw.png`，同目录提示词、SHA 与来源记录；已查看生成结果。尚非透明正式资源。
+- 按 `.agents/skills/hoshimi-portrait-pipeline/SKILL.md` 基础图确认门槛，待用户确认脸型与基础造型后制作差分及依赖 CG。尚未修改剧情运行数据；中英文接入、透明化、源稿审计与运行验收均待做。未 commit/push，保留其他代理工作区改动。
+
+### 2026-11-16 — Antigravity — 巡检 P0／P1 全量修复、主线与高级转诊绿点引导、设置弹窗集中化及 UX 1/3/4/5 与可读性升级
+
+- **执行内容**：
+  - 按用户明确指定范围完成全部 **P0（7 项）**、**P1（12 项）**、**UX 反馈 1／3／4／5**、**主线／高级转诊绿点引导** 与 **可读性／设置集中化升级**（按用户指示**保留 UX-2** `preop_view.gd` 术式列表原顺序，支持给患者动错手术的玩法设计；严格遵守剧本原文零改写与 v37 `boundary_save.gd` 存档边界铁律）：
+  - **P0 全部 7 项修复**：
+    1. **个人页服装门槛与双语补齐**（`godot/ui/staff_view.gd`、`data/localization/{zh_CN,en}.json`）：默认个人页排除 `intraoperative_avatar`／`splash`／`chibi_icon` 内部槽位，按 `free_h_relationship_qualified()` 门控 `adult_nude`，按 `staff_patient_unlocked()` 门控病房／手术台患者服装（显式传参的画廊布局回归保持兼容）；补齐全部 31 套服装、97 种表情、5 项技能双语键。
+    2. **槽位 4 双时钟软锁死与加班跨日彻底根治**（`godot/systems/game_state.gd`、`godot/ui/app.gd`）：`can_save_progress()`／`save_block_reason()` 拦截 `pending_departure_context`、`pending_encounter_day_transition`、`pending_surgery_day_transition`；`outpatient_closed()` 与 `can_end_workday()` 改为基于 `current_workday()` 与 `display_schedule().absolute_clock`；`after_work` 事件统一传入 `{"day": current_workday()}` 校验星期／月份（新增 `month_number(for_day)`），并在完成后清理离院挂起上下文经 `render_day_transition` 正常结算跨日；周日医院闲聊跨日新增 `settle_sunday_hospital_visit_rollover()` 写入 `sunday_history` 而不误进平日下班事件。
+    3. **小夜香首周换号防死锁**（`data/staff/doc_sayaka/events.json`）：仅将 `sayaka_week1_phone_exchange.conditions.max_day` 由 `5` 扩至 `365`，不触碰任何台词。
+    4. **触诊／麻醉测试页弹窗鼠标恢复**（`godot/ui/app.gd`）：`_process()` 在 `or_table_palpation` 检测到任意模态 `Window` 打开时自动隐藏虚拟工具光标并切回 `MOUSE_MODE_VISIBLE`，关闭后恢复。
+    5. **标题页直通导览锁与测试按钮守卫**（`godot/ui/title_view.gd`、`godot/ui/staff_view.gd`）：未完成序章（`not staff_is_met("doc_aoi")`）时禁用 `TitleDirectory`；`事件测试 →` 加上 `OS.is_debug_build()` 守卫。
+    6. **节假日门诊与周日顶栏防重叠**（`godot/ui/app.gd`）：修复昭和之日等平日节假日门诊双休诊文案叠印与“首位患者候诊”误导描述；收拢周日医院顶栏按钮消除重叠。
+    7. **设置弹窗集中化与角色语音音量滑条**（`godot/ui/title_view.gd`、`godot/ui/voice_director.gd`、`godot/ui/app.gd`）：为 `"Voice"` 音频总线新增持久化音量控制并联动未麻醉切皮视频音量；将顶栏／标题「设置」扩展为 `620×560` 集中面板，收纳全屏、自动播放速度、BGM 音量、**角色语音音量**、**术中危机事件开关** 与 **术野显示模式切换**（术中切换即时刷新视图，偏好仅写 `ConfigFile` 不入玩家存档）。
+  - **P1 全部 12 项修复**：
+    - 全库 23 处 JSON 数值 `.0` 尾巴转整型显示（`staff_view.gd`、`app.gd`、`clinic_view.gd`、`preop_view.gd`、`player_office_view.gd`、`player_profile_text.gd`）；
+    - 修复英文转诊 `岁` 残留、英文特殊活动 4 类标题缺键、中文 `hotel`／`min`／`Low training value`／`ADVANCED SURGERY` 混排；
+    - 修复专属护士页未指派误显成美、中文按钮截断为 `指` 及英文头部压头像／溢出（改为双列 `ScrollContainer`）；
+    - 上移手术室长立绘名牌至 `y = 526` 避开底部对话框；修复英文触诊说明与 `Standard` 截断；修复 `role_picker` 撑宽；
+    - 高级手术对白记录弹窗改为挂载 `host` 的可滚动面板并拦截弹窗下 `Space/Enter` 穿透；全屏 CG 隐藏顶部 `PageSettings`；
+    - 新增金边高亮 `style_selected_button()` 消除选中按钮与禁用按钮同色隐形；
+    - 普通门诊转诊过滤麻醉科／放射科／访问学者（`NON_RECEIVING_REFERRAL_DOCTOR_IDS`）；周日闭院日屏蔽芹香放射科随机出勤；修复扫荡 `reward_scale = 0.75` 时 `train_surgery_team()` 截断为 `0`；修正 `backgrounds.json` `miyuki_private_clinic` `"label"` 与 `content.schema.json` 同步字段。
+  - **主线／高级转诊绿点 + UX 1/3/4/5 + 可读性升级**：
+    - **绿点引导（`ClinicalTaskBadge`）**：导览 `02 门诊诊室`／`03 住院病房`／`07 手术室` 随患者所处临床环节自动显示绿点；顶栏 `高级转诊` 在有到期任务或可接新病例时显示绿点；英文导览卡片去除重复英文副标题。
+    - **UX-1 非剧透主诉标题**：未确诊前门诊列表与接诊顶栏显示主诉症状（`CASE_PRESENTING_TITLES`），确诊／收住院后切换为真实病名。
+    - **UX-3 随机病例平滑**：`random_patient_cases()` 与 `archive_and_reset_patient()` 按 `surgery_level() + 16` 门控高难随机病例，并在完成 `miyama_01_safety_pin` 前屏蔽难度 85 剖腹探查。
+    - **UX-4 关系门槛提示升级**：办公室关系详情提前标明 `planned`／`unavailable` 后续剧情未实装提示、去重“下一等级”前缀、补充非剧透条件线索，并让 Lv0→Lv1 与 `special_events` 里程碑同步触发就绪标记。
+    - **UX-5 高级组队与事件鉴赏筛选**：高级手术 7 人下拉框展示技能分与 `[专科标签]`，Day 1 简介支持返回重选，事件鉴赏补齐 `全部 / 人物事件 / 特殊活动 / 岗位CG` 分类与 `仅看已解锁` 开关。
+    - **可读性**：亮窗场景顶栏加柔和渐变底衬（`HeaderReadabilityScrim`），门诊 `ClinicDialogue` 高度由 `78px` 增至 `120px`，更衣室右侧 `PreopStageArt` 升级为半透明临床状态卡。
+- **新增／修改文件**：
+  - 新增：`docs/qa/fixes_2026-11-16/.gdignore`、`docs/qa/fixes_2026-11-16/*.png`（17 张原生 SFW 核验截图）。
+  - 修改：`godot/systems/{game_state,localization,serika_radiology}.gd`、`godot/ui/{app,staff_view,title_view,voice_director,clinic_view,preop_stage_art,preop_view,player_office_view,player_profile_text,daydream_view,advanced_referral_view,advanced_team_panel}.gd`、`data/staff/doc_sayaka/events.json`、`data/advanced_surgery/ui_text.json`、`data/backgrounds.json`、`data/schemas/content.schema.json`、`data/localization/{zh_CN,en}.json`、`tools/{smoke_test,relationship_gate_matrix_test}.gd`、`docs/{bug_backlog,HANDOFF}.md`。
+- **实际验证**：
+  - **Godot 原生 `1280×800` Metal 窗口**：全链路中英双语核验通过（`2096 checks; 0 failure(s)`，隔离临时存档／偏好路径，并人工目视抽检 SFW 截图确认无叠字截断）；
+  - **Python 静态审计**：`python3 tools/narrative_localization_test.py` → `52239 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `84876 translations; UI 841/841; 0 hard-coded Chinese candidates`；`python3 tools/staff_localization_test.py` → `1209 lines; 0 failures`；`python3 tools/patient_bundle_localization_test.py` → `6052 entries; 0 failure(s)`；
+  - **Godot Headless 专项与回归（19 套全部 0 失败）**：`boundary_save_test.gd`（`1020/0`）、`event_rendering_save_boundary_test.gd`（`8230/0`）、`surgery_history_save_test.gd`（`1064/0`）、`narrative_save_lock_test.gd`（`6/0`）、`save_store_test.gd`（`19/0`）、`sayaka_v2_test.gd`（`7122/0`）、`advanced_surgery_test.gd`（`6454/0`）、`kaori_lv1_test.gd`（`2870/0`）、`voice_integration_test.gd`（`651/0`）、`team_skill_description_test.gd`（`148/0`）、`free_h_scheduling_test.gd`（`109/0`）、`dialogue_playback_test.gd`（`70/0`）、`relationship_gate_matrix_test.gd`（`66/0`）、`aqua_character_test.gd`（`64/0`）、`title_screen_ui_test.gd`（`42/0`）、`localization_test.gd`（`33/0`）、`relationship_progress_ui_test.gd`（`23/0`）、`referral_selection_test.gd`（`9/0`）、`smoke_test.gd`（`0` 失败）。
+- **尚未完成与注意事项**：
+  - **UX-2 刻意保留**：按用户确认，`preop_view.gd` 术式列表保持原顺序，允许玩家给患者动错手术；
+  - `tools/validate_data.py` 中涉及其他既有作者剧本（时间窗、事件优先级、既有 `image_fit` 等）的历史告警未触碰，遵守“不擅自改写既有作者剧本数据”规则；
+  - 未做完整人工手点通关与 Windows 导出包重打包，未读写真实玩家存档槽位，未 commit/push。
+
+### 2026-11-16 — Antigravity — 全模块实机自由游玩、槽位 4 时钟悬案复现与全量 Bug／UX 巡检报告归档（只读实测，零业务改动）
+
+- **执行内容**：
+  - 按用户要求先归档前期试玩反馈，并在隔离临时存档环境下完成多轮 `1280×800` 原生 Metal 窗口（`root.push_input()` 合成 GUI 输入）自由游玩与全模块交叉只读审计，覆盖序章、首日探索、全麻／局麻／清醒互动／术中危机／一键扫荡／患者转诊临床闭环、周日约会与医院串门、节假日门诊、全 31 名角色个人页与关系进度展开、专属护士、高级转诊病例板与 7 人组队、事件鉴赏、白日梦、惠惠前台及中英双语界面。
+  - **新增证据与报告**：`docs/qa/free_playtest_2026-11-16/`（含 `.gdignore`、16 张 SFW 实机证据截图与分级报告 `REPORT.md`）；同步在 `docs/bug_backlog.md` 顶部登记 7 项 P0 缺陷、12 类 P1 缺陷与 8 项核心 UX 建议（含精确文件行号与复现步骤）。
+  - **关键定位亮点**：
+    1. 完整定位并实机复现 `docs/bug_backlog.md` 2026-11-11 槽位 4「顶栏周一 00:20、门诊称周日休诊」悬案根因（跨 `17:00` 后 `after_work` 事件／中途退出漏清 `pending_day_exit_workday` + `can_save_progress()` 漏拦截，附带发现 `next_after_work_character_event()` 误按次日判星期吞周五／周六加班事件）；
+    2. 抓出 `staff_view.gd` 服装下拉框在 Lv0 无门槛暴露 `doc_rei` `adult_nude` 与多名角色 Lv5 手术台立绘、英文报 `[MISSING TRANSLATION]`、中文裸露英文技能键名与全库 23 处 `.0` 浮点尾巴；
+    3. 抓出标题页「医院导览」跳过序章致初始同事未相识、触诊页弹窗鼠标消失、节假日门诊标签叠印、周日医院顶栏按钮重叠、小夜香首周事件过期死锁、设置缺语音音量滑条等问题。
+- **新增／修改文件**：
+  - 新增：`docs/qa/free_playtest_2026-11-16/.gdignore`、`docs/qa/free_playtest_2026-11-16/REPORT.md`、`docs/qa/free_playtest_2026-11-16/*.png`（16 张）。
+  - 修改：`docs/bug_backlog.md`、`docs/HANDOFF.md`（**未修改任何 `.gd`／`.py`／`data/` 业务或剧本文件**）。
+- **实际验证**：
+  - 原生 `1280×800` Metal 窗口：5 轮隔离实机游玩与专项复现脚本全部退出 `0`；
+  - Headless 回归：`boundary_save_test.gd`（`1020/0`）、`asuka_lv1_test.gd`（`1468/0`）、`asuka_lv2_test.gd`（`3695/0`）、`asuka_lv3_test.gd`（`2273/0`）、`maki_lv0_test.gd`（`3838/0`）、`kaori_lv3_test.gd`（`3738/0`）；另记录既有 `relationship_gate_matrix_test.gd`（`66/5`）与 `smoke_test.gd`（`15` 处旧断言）现状；
+  - Python 静态审计：`narrative_localization_test.py`（`52239/0`）、`localization_audit.py`（`84482` 条通过）、`staff_localization_test.py`（`1209` 条通过）、`patient_bundle_localization_test.py`（`6052/0`）、`validate_data.py`（归并 `1733` 行既有 Schema/数据告警）。
+- **边界说明**：本轮严格只测只记、零业务代码改动，待用户按优先级挑选后再分批修复；未读写玩家真实存档，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv3 CG 节点冗余字段与测试断言收尾清零
+
+- **修复内容**：
+  1. 移除 `data/staff/doc_emiko/lv3_events.json` 中 3 个已挂载 `lv3_cabg_overview.png` 全屏 CG 节点（`em3_s3_18`、`em3_s3_21`、`em3_s3_22`）上冲突遗留的 `"hide_portrait": true` 字段，使 `.venv/bin/python tools/validate_data.py` 中 `doc_emiko` / `emiko_*` 全线告警清零；
+  2. 更新 `tools/emiko_lv3_test.gd` 中 `em3_s2_16` 节点的 UI 断言，使其校验挂载后的全屏 CG `res://assets/events/emiko_lv1_3_cg_v1/lv3_reassurance.png`（其余 `em3_s2_03/25/28/32` 继续校验 27 岁 CABG 患者立绘）。
+- **验证结果**：`.venv/bin/python tools/emiko_lv3_source_audit.py` → `24231 checks; 0 failure(s)`；`tools/validate_data.py` 过滤 `emiko` → 0 条报错；`tools/emiko_lv3_test.gd`（Headless）→ `2453 checks, 0 failure(s)`。自此御堂 `early_gate`、`Lv0`～`Lv4`、`H Profile`、`Free H` 与 `voice` 全系脚本与引擎测试 **100% 零失败、零告警**。未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv0–Lv4 事件关键句与手术室 H Runner 全套 41 条日语语音包（`pack_v2`）生成与运行接入
+
+- **实装范围与核心机制**：
+  - 严格复用御堂江美子已认可 v2 原创声线 `voice_6af619a5457c8191956e57ae510364fb`（`research/voice_candidates/doc_emiko_v2/voice.json`，零新建声线），通过固定前缀入口 `tools/voice_runner/hoshimi-voice run`（`gpt-live-1`，24kHz 单声道 16-bit PCM WAV）批量渲染并通过技术核验 **41 条**日语语音，完整留档于 `research/voice_candidates/doc_emiko_v2/pack_v2/` 及 `research/imports/voice_doc_emiko_pack_v2_2026-11-15.json`：
+    1. **Free H 白天预约回应（1 条）**：`assets/audio/voice/doc_emiko/free_h_accept.wav`，在人物页发起四楼手术室“复盘”邀约时自动播放；
+    2. **Lv0～Lv4 全部新事件关键句／CG 高光台词（15 条）**：`assets/audio/voice/doc_emiko/events/*.wav`，通过 `data/audio/event_voice_cues.json` 零侵入挂载（覆盖 `emiko_intro_rumored_hands/em0_040`、`emiko_lv1_first_operation/{em1_202,em1_204}`、`emiko_lv2_follow_my_lead/{em2_244,em2_251}`、`emiko_lv3_today_i_lead/{em3_s1_44,em3_s2_16,em3_s6_11,em3_s6r_02}`、`emiko_lv4_emikos_secret/{em4_s1_13,em4_s1_20,em4_s3r_15,em4_s5_30,em4_s6_1_22,em4_s6_2_26}`，不改任何剧本 JSON）；
+    3. **手术室 H Runner 全流程语音（25 条）**：`assets/audio/voice/doc_emiko/h/*.wav`，完整覆盖入场 2 条、前戏四档（`low`/`mild`/`strong`/`favorite`）各 2 条、满兴奋提示 1 条、`gentle`/`intense` 开场 2 条、Phase 2 六步递进 6 条、四向高潮完成全开喉尖叫 4 条与日常事后 2 条，并按 schema v2 动态分层活跃语音 RMS 计算响度补偿写入 `data/audio/voice_gain_trim.json`（全库合计 `417` 条）。
+  - **多角色 H Runner 语音路由泛化**：更新 `godot/ui/voice_director.gd`，将里程碑 Phase 2 的 `+3` 句插播偏移收敛为 `is_event and actor_id == "doc_sayaka"`，使御堂 Lv4 里程碑 H Runner 完整按 `offset = 0` 同步播放全部 6 步 Phase 2 语音；同时让入场池与完成池优先按当前角色本地化对白池真实索引匹配（中英同效，并顺手消除 `voice_director.gd` 原有的 5 条 `localization_audit.py` 候选告警）。
+- **新增／修改文件**：
+  - 新增：`research/voice_candidates/doc_emiko_v2/pack_v2/`（41 个子目录及 `.gdignore`、`README.md`）、`research/imports/voice_doc_emiko_pack_v2_2026-11-15.json`、`assets/audio/voice/doc_emiko/free_h_accept.wav`、`assets/audio/voice/doc_emiko/events/*.wav`（15 条）、`assets/audio/voice/doc_emiko/h/*.wav`（25 条，均含 `.import`）。
+  - 修改：`data/audio/event_voice_cues.json`、`data/audio/voice_gain_trim.json`、`godot/ui/voice_director.gd`、`tools/voice_integration_test.gd`、`docs/character_voice_ids.md`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - Godot Headless：`tools/voice_integration_test.gd` → `651 checks, 0 failures`（覆盖全部 417 条资源加载、御堂 Free H 预约语音、Lv0–Lv4 事件节点触发、手术室 Free H 与 Lv4 里程碑双模 H Runner 全流程语音及 v37 存档零语音状态污染）；`tools/bgm_integration_test.gd` → `291 checks; 0 failure(s)`。
+  - Python 审计：`python3 tools/narrative_localization_test.py` → `52239 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `84482 translations; all active authored and UI keys translated`（0 告警通过）。
+  - Godot 原生 `1280×800` Metal 窗口：`tools/emiko_free_h_e2e_test.gd` → `390 checks; 0 failures; display=macOS; inputs=246`。
+- **边界说明**：本次完成 API 转写、声学指标与引擎集成验证，主观听音质感待用户实机试听确认；未读写玩家真实存档，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv4 第一幕推门撞破秘密双差分 NSFW CG 正式接入与 `/_staging/` 清空
+
+- **实装范围与核心机制**：
+  - 按用户确认，将 `_staging/00065-124 (3).png` 原样复制为 `assets/events/emiko_lv4_cg_v1/lv4_or_secret_immersed.png`（`1536×1024` RGBA，SHA-256: `4d95f806fedd4a7eb298b90c20adce76c6953229889b30f7837eee60c746c317`），将 `_staging/00003-4099420445.png` 原样复制为 `assets/events/emiko_lv4_cg_v1/lv4_or_secret_startled.png`（`1536×1024` RGB，SHA-256: `165c547f2423a18e0c3dae78e71584ee0516acea17c742aa1f846f048826a7fd`），完成 Godot `.import` 注册。
+  - 更新 `tools/import_emiko_lv4.py` 并重新生成 `data/staff/doc_emiko/lv4_events.json`：
+    - `em4_s1_09`～`em4_s1_15` 挂载 `lv4_or_secret_immersed.png`（`cg_fit: "contain"`, `cg_dialogue_delay_seconds: 2.0`，移除冲突的 `hide_portrait` 字段以符合 `validate_data.py` 规范）；
+    - `em4_s1_16`～`em4_s1_18` 挂载同底零位移差分 `lv4_or_secret_startled.png`（`cg_fit: "contain"`, `cg_dialogue_delay_seconds: 2.0`）；
+    - `gallery.path` 指向 `assets/events/emiko_lv4_cg_v1/lv4_or_secret_immersed.png`。自此御堂江美子 **Lv0–Lv4 全部事件 CG（SFW + NSFW）及 H Runner 100% 齐备，无任何待补插图缺口**。
+  - 按用户要求核对全部入库文件 SHA-256 一致后，已清空 `/_staging/` 内已导入图片（仅保留 `_staging/.gdignore`）。
+- **新增／修改文件**：
+  - 新增：`assets/events/emiko_lv4_cg_v1/{lv4_or_secret_immersed,lv4_or_secret_startled}.png`（及 `.import`）、`docs/qa/emiko_lv4_2026-11-15/{03_zh_scene1_or_secret_cg_immersed,03b_zh_scene1_or_secret_cg_startled}.png`。
+  - 修改：`tools/import_emiko_lv4.py`、`data/staff/doc_emiko/lv4_events.json`、`research/imports/emiko_lv4_2026-11-15.json`、`tools/emiko_lv4_source_audit.py`、`tools/emiko_lv4_test.gd`、`tools/emiko_lv4_preview_capture.gd`、`docs/characters/doc_emiko.md`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - Python 审计：`.venv/bin/python tools/emiko_lv4_source_audit.py` → `2345 checks; 0 failure(s)`（含两张第一幕 CG SHA-256、尺寸、节点区间与原稿 100% 逐句一致性校验）；`python3 tools/narrative_localization_test.py` → `52239 checks; 0 failure(s)`；`.venv/bin/python tools/validate_data.py` → `emiko_lv4` 0 报错。
+  - Godot Headless：`tools/emiko_lv4_test.gd` → `5491 checks, 0 failure(s)`（验证 `CharacterEventCG` 在 `zh_CN` 与 `en` 均准确加载并切换两张第一幕 CG）。
+  - Godot 原生 `1280×800` Metal 窗口：`tools/emiko_lv4_preview_capture.gd` → `121 checks; 0 failure(s)`。
+- **边界说明**：未做人工手点与导出包测试，未读写玩家真实存档，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）二阶段／事后 CG 原样导入、H Runner 双模式正式启用（`content_status: "ready"`）与原生 `Window.push_input` 全链路验收
+
+- **实装范围与核心机制**：
+  - **二阶段与事后 CG 原样无损导入**：按用户指定对应关系，将 `_staging/00041-654548775.png` 原样复制为 `assets/h/doc_emiko/scene_cg.png`（`1536×1024` RGBA，SHA-256: `33855b309a85d13e7fe6a98a9259e812a7bd0c7b8b14b016c68c1e8c9d76267b`），将 `_staging/00035-1477984867.png` 原样复制为 `assets/h/doc_emiko/aftercare_cg.png`（`1536×1024` RGBA，SHA-256: `2696d019fc40c67b88c61d50c555f4941812a06f68326786fbde5f577878c8b3`），完成 Godot `.import` 注册并通过 `docs/skills/hoshimi-h-profile/scripts/inventory.py` 零报错核验（全部 10 槽位资源就绪、9 区 14 多边形热区齐全）。
+  - **小夜香里程碑插播守卫修复**：排查发现 `godot/ui/app.gd` `_choose_sayaka_h_entry_style()` 此前仅判断 `if h_profile_event_mode:` 即向 Phase 2 插入小夜香专属 3 句内射对白；现补齐 `and h_profile_test_session.actor_id == "doc_sayaka"` 守卫，确保御堂 Lv4 里程碑 H Runner 纯净播放御堂专属 6 句 Phase 2 台词。
+  - **正式开启生产开关（`content_status: "ready"`）**：同步将 `godot/systems/free_h_registry.gd`（配置 `presentation_clock: 21 * 60` 即 `21:00` 夜间手术室显示时钟）与 `data/staff/doc_emiko/h_context_v1.json` 的 `content_status` 切换为 `"ready"`。自此：
+    1. **Lv4《御堂江美子的秘密》第 6.1 幕末句（`em4_s6_1_24` `launch_emiko_lv4_h`）**自动进入御堂真实交互式 H Runner（`milestone` 模式跳过日常入场词与通用 2 句事后词，结束后无缝回接 `em4_s6_2_01..34` 首次专属事后剧情）；
+    2. **完成 Lv4 后日常可重复手术室 Free H 全面开放**（白天人物界面显示可用预约按钮 → 锁定四楼手术室并弹出专属回应 → `16:00` 下班进入 `21:00` 二号手术室完整交互 → 次日 `09:00` 安全边界返回）。
+- **新增／修改文件**：
+  - 新增：`assets/h/doc_emiko/{scene_cg,aftercare_cg}.png`（及 `.import`）、`tools/emiko_free_h_e2e_test.gd`、`docs/qa/emiko_free_h_2026-11-15/`（`.gdignore`、26 张原生截图、`results.json`、`REPORT.md`）。
+  - 修改：`godot/systems/free_h_registry.gd`、`data/staff/doc_emiko/h_context_v1.json`、`godot/ui/app.gd`、`tools/emiko_h_profile_test.gd`、`tools/free_h_scheduling_test.gd`、`tools/emiko_lv4_test.gd`、`tools/emiko_lv4_preview_capture.gd`、`docs/characters/doc_emiko.md`、`docs/qa/emiko_lv4_2026-11-15/`（更新实机截图）、`docs/HANDOFF.md`。
+- **实际验证**：
+  - Python 静态与原稿审计：`emiko_h_profile_source_audit.py` → `244 checks; 0 failure(s)`；`emiko_lv4_source_audit.py` → `2327 checks; 0 failure(s)`；`narrative_localization_test.py` → `52239 checks; 0 failure(s)`；`localization_audit.py` → `authored coverage 60603/60603, UI 807/807`；`validate_data.py` → `doc_emiko` 0 报错。
+  - Godot Headless：`emiko_h_profile_test.gd` → `307/0`；`emiko_free_h_bodymap_test.gd` → `94/0`；`free_h_scheduling_test.gd` → `109/0`；`emiko_lv4_test.gd` → `5489/0`（含真实里程碑 H Runner 全流程与 v37 存档纯洁性）；`boundary_save_test.gd` → `1020/0`；`narrative_save_lock_test.gd` → `6/0`；`localization_test.gd` → `33/0`。
+  - Godot 原生 `1280×800` Metal 窗口：`tools/emiko_free_h_e2e_test.gd` → `390 checks; 0 failures; display=macOS; inputs=246`（真实 `Window.push_input` 跑通中英双语白天邀约、21:00 手术室入场、6 态头像切换、9 区热区点击、`gentle`/`intense` Phase 2、手动完成、2 句事后与次日 `09:00` 零污染返回）；`tools/emiko_lv4_preview_capture.gd` → `118 checks; 0 failure(s)`。
+- **边界与后续提醒**：
+  - Lv4《御堂江美子的秘密》第一幕（`em4_s1_11..14`）专属偷窥秘密 NSFW CG 仍为预留待补槽位（不影响全流程游玩）；H Profile 五张本地生成表情差分待用户结合预览单做最终审美定夺。未做人工手点与导出包测试，未读写玩家真实存档，未 commit/push。
+
+### 2026-11-15 — Antigravity — 建立根级本地素材收件目录 `/_staging/`
+
+- 按用户确认，新建 `/Users/ningye/Documents/Codex/2026-09-20/wo/outputs/hoshimi-hospital/_staging/` 并配置 `_staging/.gdignore`（Godot 不扫描）与 `.gitignore`（`/_staging/` 不纳入 Git），同时将 `assets/h/doc_emiko/` 中已完成映射的临时文件名原图移回 `_staging/` 并清理多余 `.import`，保持 `assets/h/doc_emiko/` 仅存规范运行文件。后续用户交付的未压缩图片／文稿可直接放入 `_staging/` 由代理规范导入。未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）H Profile 六态表情透明立绘制作与全量中英双语台词原样导入
+
+- **实装范围与核心机制**：
+  - **六态独立表情立绘齐全**：按用户确认将原图映射为 `portrait_flustered.png`（`566×552` RGBA），经用户授权以内置 `image-generator` 生成其余五态（`neutral`、`annoyed`、`pleased`、`delighted` 迷离沉沦修订版、`peak`），原稿留档 `research/generated_candidates/emiko_h_portraits_v1/`，全部通过本地离线 `tools/portrait_matting.py`（`BiRefNet-ToonOut`）抠出 `1024×1024` 真透明 RGBA PNG 入库 `assets/h/doc_emiko/portrait_<id>.png`（四角全透明、无白边，已生成预览单等待用户最终审美拍板）。
+  - **全量中英双语 H Profile 台词原样导入**：将用户提供的 JSON 原稿字节一致归档至 `research/source_scripts/HOSHIMI_MIDO_EMIKO_H_PROFILE_DIALOGUE_V1.json`，通过 `tools/import_emiko_h_profile.py` 原样灌入 `data/staff/doc_emiko/{h_profile_v1,h_flow_v1,h_context_v1}.json` 及 `data/localization/{zh_CN,en}.json`（含全 36 组 `4×9` `combo` 池、9 组 `zone_tier` 池、4 组 `tier_fallback` 池、4 句手术室入场词、Phase 2 全流程与日常 Free H 事后 2 句，零占位残留）。
+- **新增／修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_MIDO_EMIKO_H_PROFILE_DIALOGUE_V1.json`、`research/imports/emiko_h_profile_2026-11-15.json`、`research/generated_candidates/emiko_h_portraits_v1/`、`assets/h/doc_emiko/portrait_{neutral,annoyed,pleased,flustered,delighted,peak}.png`（及 `.import`）、`tools/import_emiko_h_profile.py`、`tools/emiko_h_profile_source_audit.py`。
+  - 修改：`data/staff/doc_emiko/{h_profile_v1,h_flow_v1,h_context_v1}.json`、`data/localization/{zh_CN,en}.json`、`tools/emiko_h_profile_test.gd`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - `.venv/bin/python tools/emiko_h_profile_source_audit.py` → `244 checks; 0 failure(s)`（100% 逐句原样一致、零占位符、中英 36 组 combo 1:1 对齐且英文零中文泄漏）；`python3 tools/narrative_localization_test.py` → `52239 checks; 0 failure(s)`。
+  - Godot Headless：`tools/emiko_h_profile_test.gd` → `307 checks; 0 failure(s)`；`tools/emiko_free_h_bodymap_test.gd` → `94 checks; 0 failure(s)`；`tools/free_h_scheduling_test.gd` → `110 checks; 0 failures`。
+  - `docs/skills/hoshimi-h-profile/scripts/inventory.py` 只读盘点：整个御堂 H Profile 目前**仅剩 2 张图片待补**（`assets/h/doc_emiko/scene_cg.png` 与 `assets/h/doc_emiko/aftercare_cg.png`），因此生产开关仍严格保持 `content_status: "pending_assets"`。未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）`1024×1536` 触摸底图导入与九区 14 多边形热区标定验证
+
+- **实装范围与核心机制**：
+  - 核验用户拷入 `assets/h/doc_emiko/` 的未压缩原图：`body_map.png`（`1024×1536` RGBA，SHA-256: `54bac0dd3f04d2d225d240a8bb8e38d98ea7fdea568b31e941b7ceb41c6135a4`）与头肩透明表情图 `image-Picsart-BackgroundRemover (8).png`（`566×552` RGBA，SHA-256: `cdd3bcc64eea0e4fd542a4bb49f1a1b8a2a81a27834989b00426aa645930c33b`，待用户确认槽位归属与差分生成授权前保留原文件名未改动）。
+  - 完成 `data/h/doc_emiko/h_bodymap.json` 九大逻辑热区共 **14 个归一化多边形**像素级标定（含 `lips`、`nipples`、`genitals`、`navel` 高优先级精区与双侧 `cheeks`、`breasts`、`thighs`、`torso_other`、`neck`），同步将 `data/staff/doc_emiko/h_context_v1.json` 的 `layout_status` 更新为 `"final_hotspots_calibrated"`。
+- **新增／修改文件**：`assets/h/doc_emiko/body_map.png`（及 `.import`）、`assets/h/doc_emiko/image-Picsart-BackgroundRemover (8).png`（及 `.import`）、`data/h/doc_emiko/h_bodymap.json`、`data/staff/doc_emiko/h_context_v1.json`、`tools/emiko_h_profile_test.gd`、`tools/emiko_free_h_bodymap_test.gd`、`docs/HANDOFF.md`。
+- **实际验证**：Godot Headless 资源导入通过；`tools/emiko_free_h_bodymap_test.gd` → `94 checks; 0 failure(s)`（验证 `340×510` 实际 UI `gui_input` 点击在全部 9 区精准路由、手术台垫与地面非交互区拒绝命中）；`tools/emiko_h_profile_test.gd` → `307 checks; 0 failure(s)`。未 commit/push。
+
+### 2026-11-15 — Antigravity — 归档御堂江美子（`doc_emiko`）H Profile 双语台词写作委托书
+
+- **新增文件**：`research/character_intake/HOSHIMI_MIDO_EMIKO_H_PROFILE_AUTHORING_BRIEF_V1.md`，将御堂角色设定、称呼规则、二号手术室禁忌羞耻感＋第一主刀被同科同事掌控反转的双核心兴奋点、定稿 `4×9` 偏好矩阵、单句 UI 字数规范及与 `data/staff/doc_emiko/{h_profile_v1,h_flow_v1,h_context_v1}.json` 1:1 对应的中英 JSON 输出模板整理为可直接投喂写作 LLM 的委托书。纯文档新增，未改运行代码，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）H Profile 1.3 / Flow 1.3.4 / Context 1.0 技术框架、4×9 偏好矩阵与 Lv4／Free H 双模 Runner 接线
+
+- **实装范围与核心机制**：
+  - 按用户确认的御堂角色设定与偏好方案，新建完整 `authored_v1_3` 数据包：`data/staff/doc_emiko/h_profile_v1.json`（`schema_version: "1.3"`, `adult_confirmed: true`，完整六独立头像＋底图＋`scene_cg`＋`aftercare_cg` 资源路径映射、定稿 `4×9` 部位默认与动作组合覆盖偏好矩阵，以及手术室反差基调的中英 4 句 `location_entry.operating_room` 入场词）、`data/staff/doc_emiko/h_flow_v1.json`（`patch_version: "1.3.4"`）、`data/staff/doc_emiko/h_context_v1.json`（`schema_version: "1.0"`, `entry_random_one: true`, `background.id: "operating_room"`, `content_status: "pending_assets"`, `layout_status: "pending_body_map"`）及草稿热区 `data/h/doc_emiko/h_bodymap.json`（`status: "draft"`，不填假坐标）。
+  - 因直接生成露骨成人反应／第二阶段台词触发当前模型输出安全过滤，按 `AGENTS.md` 与 `docs/skills/hoshimi-h-profile/SKILL.md` 边界，将待作者提供的成人台词槽位标记为结构化中性占位 `[PENDING_AUTHOR_TEXT: ...]`，保持生产开关 `content_status: "pending_assets"`，绝不伪造就绪状态。
+  - **双模 Runner 与白天预约回应接线**：补齐 `godot/systems/free_h_registry.gd` 中 `doc_emiko` 的完整 `authored_v1_3` 路径与中英白天预约回应（`ui.free_h.doc_emiko.booking_response`）；泛化 `godot/ui/app.gd` 的 `_begin_h_profile_session`、`_h_profile_title`、小夜香专属说话人守卫与 `begin_emiko_lv4_first_h()`，使 `emiko_lv4_emikos_secret` 第 6.1 幕末句在 `content_status == "ready"` 时自动启动御堂真实里程碑 H Runner 并在结束后回接第 6.2 幕事后对话，在 `pending_assets` 期间继续平滑回退至占位界面。
+- **新增／修改文件**：
+  - 新增：`data/staff/doc_emiko/h_profile_v1.json`、`data/staff/doc_emiko/h_flow_v1.json`、`data/staff/doc_emiko/h_context_v1.json`、`data/h/doc_emiko/h_bodymap.json`、`tools/emiko_h_profile_test.gd`。
+  - 修改：`godot/systems/free_h_registry.gd`、`godot/ui/app.gd`、`tools/import_emiko_lv4.py`、`data/localization/{zh_CN,en}.json`、`research/imports/emiko_lv4_2026-11-15.json`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - Godot Headless：`tools/emiko_h_profile_test.gd`（`307 checks; 0 failure(s)`，验证 1.3/1.3.4/1.0 规范化、36 组 `4×9` 偏好命中、5 档反应表情可达性、Phase 2 六步无放回播放与手动完成流程）、`tools/free_h_scheduling_test.gd`（`110 checks; 0 failures`）、`tools/emiko_lv4_test.gd`（`5440 checks, 0 failure(s)`）。
+  - Python 审计：`emiko_lv4_source_audit.py`（`2327/0`）、`narrative_localization_test.py`（`52239/0`）、`docs/skills/hoshimi-h-profile/scripts/inventory.py`（准确枚举 9 张待补图片与 9 区待标定热区）。
+- **尚未完成与后续衔接**：待用户提供（1）成人反应／Phase 2 台词原稿替换 `[PENDING_AUTHOR_TEXT: ...]` 槽位，（2）四类 NSFW 基础图（`body_map.png`、`scene_cg.png`、`aftercare_cg.png`、`portrait_neutral.png` 及五种表情差分）并标定 `h_bodymap.json` 后，将 `content_status` 设为 `"ready"` 即可同时接通 Lv4 首次 H 与日常手术室 Free H。未读写玩家存档，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv4《御堂江美子的秘密》四处授权文本微调与最后两天非结局期拦截收敛
+
+- **实装范围与核心机制**：
+  - **四处用户明确授权文本中英同步修订**（其余全部字句、说话人、标点与顺序保持不变，更新原稿 SHA-256 为 `e8080bb45477d56bea8bdde4f3842ffb483b82810c4847848d9efab69f8ddca9`）：
+    1. `em4_s2_02`：`她的长发依旧挽得利落端正` → **`她的长发依旧理得利落端正`**（EN: `Her long hair was still smoothed into neat, poised order`）。
+    2. `em4_s2_10`：`原本周四上午有一台粘连较重的腹部再次手术` → **`原本隔天上午有一台粘连较重的腹部再次手术`**（EN: `The following morning had a redo laparotomy scheduled with dense adhesions`）。
+    3. `em4_s5_21`：`那双冷冽的乌眸里依然浮起了` → **`那双冷冽的眼眸里依然浮起了`**（EN: `those cool, piercing eyes of hers swam with`）。
+    4. `em4_s6_2_24`：`那双乌黑的眼眸里重新燃起了` → **`那双冷冽的眼眸里重新燃起了`**（EN: `and in those cool eyes burned once more`）。
+  - **移除安琪特判兜底并对齐最后两天非结局边界**：按用户确认“安琪离院是游戏最后两天，任何非结局事件在那两天都不可以触发，无需对安琪做特别处理”，移除 `godot/systems/emiko_lv4.gd` 与 `godot/systems/game_state.gd` 中的 `nurse_ange` → `nurse_moe` 替换逻辑，并在 `lv4_events.json`（`conditions.max_day: 363`）与 `emiko_lv4.gd`（`workday <= GAME_DURATION_DAYS - 2`）双层拦截游戏最后两天（`Day 364–365`）。
+- **修改文件**：`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV4_EMIKOS_SECRET_V1_1.md`、`research/translations/emiko_lv4_en.json`、`research/imports/emiko_lv4_2026-11-15.json`、`data/staff/doc_emiko/lv4_events.json`、`data/localization/{zh_CN,en}.json`、`godot/systems/emiko_lv4.gd`、`godot/systems/game_state.gd`、`tools/import_emiko_lv4.py`、`tools/emiko_lv4_source_audit.py`、`tools/emiko_lv4_test.gd`、`docs/characters/doc_emiko.md`、`docs/qa/emiko_lv4_2026-11-15/`（34 张重截实机图与 `REPORT.md`）、`docs/HANDOFF.md`。
+- **实际验证**：
+  - `.venv/bin/python tools/emiko_lv4_source_audit.py` → `2327 checks; 0 failure(s)`（含 4 处旧词禁入与新词防回退断言）；`python3 tools/narrative_localization_test.py` → `52239 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `authored coverage 60603/60603, UI 807/807`；`.venv/bin/python tools/validate_data.py` → `emiko_lv4` / `doc_emiko` 0 报错。
+  - Godot Headless：`tools/emiko_lv4_test.gd` → `5440 checks, 0 failure(s)`（含 `Day 361` 允许、`Day 364–365` 严格拦截测试）；`tools/localization_test.gd` → `33 checks; 0 failure(s)`。
+  - Godot 原生 `1280×800` Metal 窗口：`tools/emiko_lv4_preview_capture.gd` → `118 checks; 0 failure(s)`。
+- **边界说明**：第一幕专属 NSFW CG 与第六幕／日常手术室 H Profile 素材仍为预留待补状态；未做人工手点与导出包测试，未读写玩家真实存档，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv4《御堂江美子的秘密》（V1.1）剧本审阅与全量中英接线（含手术台首次亲密占位 H Runner 与手术室 Free H 待补素材登记）
+
+- **实装范围与核心机制**：
+  - 原样归档用户上传原稿至 `research/source_scripts/HOSHIMI_MIDO_EMIKO_LV4_EMIKOS_SECRET_V1_1.md`（SHA-256: `2dcb5a6b953303cd64eed05a59a57d44381e865ccd8c08c9a95405d3a8167b45`），独立写入 `data/staff/doc_emiko/lv4_events.json`（事件 ID `emiko_lv4_emikos_secret`，共 269 个节点：267 个正文节拍＋2 处三选一选项节点，全 9 条路径逐字对齐原稿，仅剥离 `em4_s1_11`、`em4_s1_12` 两段首尾非剧情 Markdown `**` 星号），完全未改动 Codex 刚接好 CG 的 `events.json` 与 `lv3_events.json`。
+  - **入口门槛与日历边界**：对齐 `HOSHIMI_CHARACTER_RELATIONSHIP_GATE_MATRIX.md` 与 `data/staff/doc_emiko/relationship.json` `target_level: 4`，要求完成 `emiko_lv3_today_i_lead`、`level == 3`、`Familiarity >= 55`、`Clinical Presence >= +30` 及 3 天冷却（无额外 `Surgery >= 90` 或 `Charm` 门槛）；限定周一至周五常规工作日下班（`after_work` `16:00–22:00`）且次日非休诊日、无未完成住院患者、无次日高级转诊排程冲突时触发，全流程 `locks_saving: true`，不在系统层面冻结御堂日常手术编组或跨多天跳跃全局日历。
+  - **第五幕实装患者与护士兜底**：第五幕开腹胆囊摘除术清醒收尾互动采用已注册 27 岁女警患者 `patient_sakurai_mayumi` 的透明通道 `intraoperative/tense.png`（RGBA）与御堂／利根川安琪组成无按钮遮挡双人同屏；`godot/systems/emiko_lv4.gd` 内置安琪离院（`nurse_ange_departed_overseas` 或档案缺失）时平滑回退至常驻手术室护士本庄萌恵（`nurse_moe`）的防御兜底。
+  - **占位 H Runner 与第 6.2 幕原子结算**：在 `data/schemas/content.schema.json` 注册 `launch_emiko_lv4_h` 动作钩子并挂载于第 6.1 幕末句 `em4_s6_1_24`；`godot/ui/app.gd` 实现双语占位界面 `emiko_lv4_h_placeholder`（背景锁定 `operating_room`，期间保持 `can_save_progress() == false` 且关系等级仍为 Lv3），点击完成后无缝切入第 6.2 幕 `em4_s6_2_01..34` 首次专属事后谈话与不让位外科主任声明，仅在 `@end` 原子性升至 Lv4（写入 `emiko_lv4_complete`、`unlock_intimacy_events`，推进至次日 `09:00`，不写任何退出主任竞争旗标）。
+  - **日常 Free H 待补素材状态登记**：在 `godot/systems/free_h_registry.gd` 登记 `doc_emiko`（`content_status: "pending_assets"`, `location_id: "operating_room"`, `fixed_location: true`, `completion_event: "emiko_lv4_emikos_secret"`, `completion_flag: "emiko_lv4_complete"`），Lv4 完成后人物页自动显示禁用态按钮「亲密事件已解锁 · 素材待补」／`Intimacy unlocked · Art pending`。
+- **新增／修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV4_EMIKOS_SECRET_V1_1.md`、`research/translations/emiko_lv4_en.json`、`research/imports/emiko_lv4_2026-11-15.json`、`data/staff/doc_emiko/lv4_events.json`、`godot/systems/emiko_lv4.gd`（及 `.uid`）、`tools/import_emiko_lv4.py`、`tools/emiko_lv4_source_audit.py`、`tools/emiko_lv4_test.gd`（及 `.uid`）、`tools/emiko_lv4_preview_capture.gd`（及 `.uid`）、`docs/qa/emiko_lv4_2026-11-15/`（34 张原生截图与 `REPORT.md`）。
+  - 修改：`data/staff/doc_emiko/bundle.json`、`data/staff/doc_emiko/relationship.json`、`data/schemas/content.schema.json`、`data/localization/zh_CN.json`、`data/localization/en.json`、`godot/systems/game_state.gd`、`godot/systems/advanced_referral.gd`、`godot/systems/free_h_registry.gd`、`godot/ui/app.gd`、`tools/free_h_scheduling_test.gd`、`tools/relationship_gate_matrix_test.gd`、`tools/validate_data.py`、`docs/characters/doc_emiko.md`、`docs/HANDOFF.md`。
+- **实际验证**：
+  - `.venv/bin/python tools/emiko_lv4_source_audit.py` → `2319 checks; 0 failure(s)`。
+  - `python3 tools/narrative_localization_test.py` → `52239 checks; 0 failure(s)`；`python3 tools/localization_audit.py` → `authored coverage 60603/60603, UI 807/807`（仅既有 `voice_director.gd` 5 处硬编码退出 1）；`.venv/bin/python tools/validate_data.py` → `emiko_lv4` / `doc_emiko` 0 报错。
+  - Godot Headless：`tools/emiko_lv4_test.gd`（`5436 checks, 0 failure(s)`）、`tools/free_h_scheduling_test.gd`（`110 checks; 0 failures`）、`tools/boundary_save_test.gd`（`1020 checks; 0 failures`）、`tools/narrative_save_lock_test.gd`（`6 checks; 0 failure(s)`）、`tools/save_store_test.gd`（`19 checks; 0 failure(s)`）、`tools/localization_test.gd`（`33 checks; 0 failure(s)`）。
+  - Godot 原生 `1280×800` Metal 窗口：`tools/emiko_lv4_preview_capture.gd` → `118 checks; 0 failure(s)`（中英双语全流程＋占位 H Runner＋人物页待补素材按钮截图留档 `docs/qa/emiko_lv4_2026-11-15/`）。
+- **尚未完成与交接边界**：
+  - 第一幕二号手术室撞破段（`em4_s1_08..22`）当前使用 `hide_portrait: true` 预留给用户后续提供的第一幕专属 NSFW CG；第六幕手术台首次 H 与日常手术室 Free H 待后续制作御堂专属 H Profile 与互动 CG 后将 `free_h_registry.gd` 的 `content_status` 切换为 `"ready"` 并替换 `show_emiko_lv4_h_placeholder`。
+  - 原稿中存在 3 处旧发色／瞳色习惯描写（`em4_s2_02`「挽得利落端正」、`em4_s5_21`「乌眸」、`em4_s6_2_24`「乌黑的眼眸」）与 1 处固定星期词（`em4_s2_10`「周四上午」），按规则均已 100% 原字保留，待用户确认是否授权定点微调。未做人工手点通关与导出包测试，未读写玩家真实存档，未 commit/push。
+
+### 2026-11-15 — Codex — CABG 全景 V3 正式接入
+
+- 按用户确认，将 `research/generated_candidates/emiko_cabg_overview_v1/overview_v3.png` 原样复制到 `assets/events/emiko_lv1_3_cg_v1/lv3_cabg_overview.png`；`data/staff/doc_emiko/lv3_events.json` 的 `em3_s3_17..22` 建立体外循环段落接图，追加 `research/imports/emiko_lv1_3_cg_mapping.json`。现有画廊自动收录，私人手札封面保留。仅改六节点 CG 视觉字段，无对白／说话人／岗位变更。
+- 验证：V3 字节一致；Lv3 原稿 audit 24231/0，叙事本地化 51427/0；原生中英检查点及画廊 GUI 翻页 23/0，四张截图。`localization_audit.py` 仍因既有 voice_director.gd 五处中文硬编码退出 1；资源导入完成但沙箱外编辑器设置保存报权限错误，随后原生加载通过。
+- 证据和测试脚本：`docs/qa/emiko_cabg_cg_2026-11-15/README.md`、`preview.gd` 及截图。这是渲染检查点，不是完整剧情通关；没有读写玩家存档，没有 commit/push，保留其他工作区改动。
+
+### 2026-11-15 — Codex — CABG 全景发根颜色 V3
+
+- 用户要求三处颜色微调，用内置 image_gen 将左上巡回帽沿发根改浅绿色、左下器械改明显蓝色、右侧灌注改更亮栗色。保存 `research/generated_candidates/emiko_cabg_overview_v1/overview_v3.png`，V1/V2 保留；提示词／SHA 同目录归档。
+- 视觉检查与 1536×1024 PNG 解码通过，保留其余人物和原构图。尚未接剧情或改角色身份数据，未 commit/push。
+
+### 2026-11-15 — Codex — CABG 全景三处人物细节修订
+
+- 用户标记修订已用内置 image_gen 完成：左中御堂发根紫灰色；麻醉屏障后人物女性化并改为容积更大的手术帽，按用户意图暗示石神；右侧体外循环操作者女性化、栗色发根暗示诗织。六人站位与设备构图保留。
+- 新候选 `research/generated_candidates/emiko_cabg_overview_v1/overview_v2.png`，原 `overview.png` 保留；提示词及 SHA 同目录。视觉及 1536×1024 PNG 解码检查完成。仅美术修订，未改通用麻醉／灌注说话人或角色岗位数据，未接剧情，未 commit/push。
+
+### 2026-11-15 — Codex — CABG 六人团队斜俯视全景候选
+
+- 按用户要求以低人物辨识度、患者面部由头侧屏障遮挡为核心，用内置 image_gen 制作 `research/generated_candidates/emiko_cabg_overview_v1/overview.png`。参考已确认 CG 样图的线稿与色调，六个岗位齐备：主刀／一助／器械／巡回／麻醉／灌注；不展示可辨认创口。
+- PNG 解码、1536×1024 尺寸与视觉检查完成；提示词／SHA 同目录留档。当前为用户试看的候选，未接入事件，不声称医学设备工程精度验收。未改剧情、未 commit/push。
+
+### 2026-11-15 — Codex — 江美子 Lv1–3 七张 CG 剧情与画廊接入
+
+- 修改 `data/staff/doc_emiko/{events,lv3_events}.json`，按 `research/imports/emiko_lv1_3_cg_mapping.json` 将七张 CG 接至 105 个视觉节点；寿司店微妙在意图覆盖 S/O/G 及 Choice 1 回应，患者安抚使用已修正上下系带／空口袋版。安抚之后恢复患者三态与原麻醉演出；手札作 Lv3 画廊封面。复用现有多图画廊，首次 CG 两秒完整展示，contain 不裁图。
+- 原文与业务字段结构比较一致。Lv1/Lv2/Lv3 source audit 分别 31274/0、37641/0、24231/0；narrative_localization_test 51427/0。原生 `tools/emiko_cg_preview.gd` 双语七图与 GUI 注入画廊翻页 113 checks / 0 failures、退出 0。28 张截图、验收边界见 `docs/qa/emiko_cg_2026-11-15/REPORT.md`。
+- localization_audit 仍因既有 voice_director.gd 五行中文硬编码退出 1；validate_data 仍有其他内容既有错误，无 emiko 报错。图片导入完成但编辑器设置写安装目录受沙箱限制，已用原生实际资源加载验证。不声称全局通过。
+- 本轮原生为渲染检查点和画廊 GUI 自动输入，不是完整正式入口通关或人工点击；未测导出包。未改剧情文本／存档／数值／生成图，未 commit/push；保留其他 AI 改动。未来重跑剧情导入器时需保留本映射 CG 字段。
+
+### 2026-11-15 — Codex — 江美子床边安抚 CG 口罩系带与口袋修正
+
+- 按用户标记用内置 image_gen 将 `assets/events/emiko_lv1_3_cg_v1/lv3_reassurance.png` 的挂耳口罩改为脑后／颈后上下两组系带，并移除刷手服口袋两支笔。保留构图、表情及手部动作。修订原图 `research/generated_candidates/emiko_lv1_3_cg_v1/lv3_reassurance_ties_v2.png`，旧版同目录 `lv3_reassurance.png` 留档，generation.json 更新最终 SHA。
+- 视觉检查及 1536×1024 PNG 解码通过，服装要求同步到 CG skill。尚未接剧情节点；未改原文，未 commit/push。
+
+### 2026-11-15 — Codex — 江美子 Lv1–3 六场景 CG 与寿司店差分制作
+
+- 按用户截图清单及已确认 CG skill，用内置 image_gen 新绘 Lv1 摘口罩、Lv2 走廊递记录夹、Lv3 寿司店／床边安抚／自动门合拢；手札图沿用已认可样图。寿司店另制微妙在意同构图差分，共 7 张 1536×1024 PNG，保存 `assets/events/emiko_lv1_3_cg_v1/`。
+- 提示词、最终原图、SHA 与两次记录夹局部修订过程留档 `research/generated_candidates/emiko_lv1_3_cg_v1/`。Lv2 原生成错误沿用了血管图，首次修订出现无关英文病历，最终修订为不可读记录笔迹与两处签名；正式使用 `lv2_next_operation.png`。
+- 逐图视觉检查、PNG 解码、7 张尺寸验证通过。原文与数据未改；本轮只完成美术，尚未接事件／画廊，也未做引擎或对白框遮挡验收。没有新增可选 CABG 术中第七场景，用户本次选择的是截图中的六场景。未 commit/push。
+
+### 2026-11-15 — Codex — 用户确认 CG 审美并固化项目制作 skill
+
+- 用户确认江美子手札样图“画风，人物和五官都很好！就按照这个标准”。新增 `docs/skills/hoshimi-cg-art-direction/SKILL.md` 与 `references/originals.md`，并加入 `docs/skills/README.md` 通用工作流索引；基准覆盖原作人物身份、清晰线稿、两三层赛璐璐阴影、局部光色与 UI 构图检查。
+- 五张原作参考从临时附件保留到 `research/generated_candidates/emiko_cg_style_pilot_v1/original_references/`，原样图 `generation.json` 标为用户已认可审美、尚未接入。没有替换旧 CG、改剧情或开始批量生成。
+- 已检查 frontmatter 必需字段、5 张参考存在和 SKILL.md 相对链接。官方 quick_validate 在系统 python3 与项目 venv 均因缺 PyYAML 无法运行，未声称通过官方校验。此次为项目文档 skill，未安装全局或修改受保护的 .agents 目录；由项目工作流索引导航。未 commit/push。
+
+### 2026-11-15 — Codex — 江美子 Lv3 手札 CG 画风试样
+
+- 用户要求先查看新 CG 效果，再决定是否作为未来 skill 基准；以内置 image_gen 参考用户原作截图制作“今天不打分／交出私人手札”。保存 `research/generated_candidates/emiko_cg_style_pilot_v1/lv3_private_notes.png`，提示词与 SHA 见同目录 `prompt.txt`、`generation.json`。
+- 1536×1024 PNG 解码与视觉检查完成。当前仅为待用户审美评审的样张，尚未接入剧情或固化 skill；无游戏数据改动，未 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv3《今天我主刀》两处银紫长发与常服细节中英同步定点修正
+
+- **实装范围与核心机制**：
+  - 按用户明确授权，仅对 `emiko_lv3_today_i_lead` 两处与御堂已定稿银紫色披散长发及暗红修身上衣立绘不符的描写做中英同步定点替换（其余任何字句、说话人、标点与顺序一字未改）：
+    1. 第一幕寿司店开场 `em3_s1_04`（原稿第 52 行）：`乌黑利落的长发挽在脑后，深色修身衬衫外搭着一件剪裁干练的薄风衣，背脊即使在没有靠背的高脚木凳上也挺得笔直。` → **`银紫色的长发利落地垂在肩后，暗红修身上衣旁搭着一件剪裁干练的薄风衣，背脊即使在没有靠背的高脚木凳上也挺得笔直。`**（英文同步改为 `"Long silver-violet hair falling cleanly past her shoulders, a tailored thin trench coat resting beside her dark crimson top, her spine held ramrod straight even on a backless high wooden stool."`，同时贴合春夏／秋冬常服与幕末「站起身拿起风衣」）。
+    2. 第五幕办公室返回 `em3_s5_06`（原稿第 600 行）：`长发重新束得一丝不苟` → **`长发重新理得一丝不苟`**（英文同步改为 `her long hair smoothed into flawless order once more`）。
+  - 同步更新 `HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md`（新 SHA-256: `54e959f0de88af4a382303b8779eff2ba94bc9bc9ad379c398168dac5426e71f`）并在 `tools/emiko_lv3_source_audit.py` 中新增防回退断言。
+- **修改文件**：
+  - `research/source_scripts/HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md`、`research/translations/emiko_lv3_en.json`、`research/imports/emiko_lv3_2026-11-15.json`、`data/staff/doc_emiko/lv3_events.json`、`data/localization/{zh_CN,en}.json`、`tools/emiko_lv3_source_audit.py`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `emiko_lv3_source_audit.py` → **PASS（`24231 checks; 0 failure(s)`）**；`narrative_localization_test.py` → **PASS（`51427 checks; 0 failure(s)`）**；`localization_audit.py` 叙事覆盖 **`59791/59791`**、UI **`803/803`**（既有 `voice_director.gd` 5 行中文未变动）；Headless `emiko_lv3_test.gd` → **PASS（`2453 checks, 0 failure(s)`）**。
+- **未完成事项与边界注意**：
+  - 本次仅做两句纯文本与中英本地化替换，未改动任何节点结构或美术坐标，无需重抓静态截图（尚未执行人工运行时英文点击复测）；保留工作区全部既有未提交改动，未执行 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv3《今天我主刀》27 岁女患者（贝尔摩得造型）三态手术台立绘接入、年龄中英同步修订与原生窗口复验
+
+- **实装范围与核心机制**：
+  - **1. 27 岁女患者（贝尔摩得造型）两阶段生成与离线 BiRefNet 透明化（`assets/characters/emiko_lv3_v1/cabg_patient/or_cap/`）**：
+    - 按 `hoshimi-portrait-pipeline` 两阶段门禁，以用户提供的 5 张贝尔摩得种子图先生成 Stage 1 非透明对比底基础图并获用户确认，随后生成 Stage 2 整图表情差分并经本地离线 `tools/portrait_matting.py`（`birefnet-toonout-fp16.onnx`, `--target-size 1448x1086 --resize-mode cover`）输出手术台卧姿三态立绘：
+      - `panicked.png`（SHA-256: `3667409b870e467ed14e94b1d7bc162107fbcb50ba15c4ee51f88376fc19d4fd`）
+      - `relieved.png`（SHA-256: `88c5b49be02caa153df5434c6aa0338ac227e8469b2cf7c1f53d397a8a6705aa`）
+      - `mask_drowsy.png`（SHA-256: `df1b733a38993f15cef68145d672aef19ea5853ca9f507d5e8d1e29ddbd2a8a8`）
+    - 三张均为 `1448×1086` RGBA PNG，四角透明，三色底边缘 QA 无白边，`.png.import` 开启 `mipmaps/generate=true`；原始非透明候选归档于 `research/generated_candidates/emiko_lv3_patient_v1/`（含 `.gdignore`）。
+  - **2. 第二幕诱导前演出接线与 27 岁年龄定点修订（零越界改词）**：
+    - 严格按用户明确授权仅将剧本中的患者年龄由 `52` 岁改为 **`27` 岁**：`em3_s2_03`（`五十二岁的女患者` → `二十七岁的女患者` / `twenty-seven-year-old female patient`）、`em3_s2_28`（`患者身份、五十二岁女性` → `患者身份、二十七岁女性` / `twenty-seven-year-old female`）及原稿 `HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md`（新 SHA-256: `65ba41c92f62d393d21de463c7db3f7ee440575f3cdfb907896f8b913667c847`）说明段，说话人标签保留 `患者` / `Patient`，其余任何字句、标点与顺序未作改动。
+    - 在 `em3_s2_03`–`em3_s2_32` 接入 `event_portraits`（`em3_s2_03..16` `panicked` → `em3_s2_17..31` `relieved` → `em3_s2_32` 透明麻醉面罩静脉诱导 `mask_drowsy` → `em3_s2_33` 全麻插管后恢复无菌主刀／器械演出），双人同框坐标（患者 `x=875, 384×288`，医护 `x=1135, 288×432`）经真实 `1280×800` 窗口校准与「继续 ▷」按钮零重叠。
+- **新增与修改文件**：
+  - 新增：`assets/characters/emiko_lv3_v1/cabg_patient/or_cap/{panicked,relieved,mask_drowsy}.png`（及 `.import`）、`research/generated_candidates/emiko_lv3_patient_v1/{.gdignore,or_cap_*_raw.jpg}`、`docs/qa/emiko_lv3_2026-11-15/{10a_*,10b_*,11b_*,11c_*,12b_*,26b_*,26c_*}.png`；
+  - 修改：`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md`、`research/translations/emiko_lv3_en.json`、`research/imports/emiko_lv3_2026-11-15.json`、`data/staff/doc_emiko/lv3_events.json`、`data/localization/{zh_CN,en}.json`、`tools/{import_emiko_lv3.py,emiko_lv3_source_audit.py,emiko_lv3_test.gd,emiko_lv3_preview_capture.gd}`、`docs/qa/emiko_lv3_2026-11-15/REPORT.md`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `emiko_lv3_source_audit.py` → **PASS（`24224 checks; 0 failure(s)`）**；`narrative_localization_test.py` → **PASS（`51427 checks; 0 failure(s)`）**；`localization_audit.py` 叙事覆盖 **`59791/59791`**、UI **`803/803`**（既有 `voice_director.gd` 5 行中文未变动）；`validate_data.py` 中 `emiko / cabg_patient` **`0` 错误**；
+  - Godot `--headless --editor --import --quit` 退出 0；Headless `emiko_lv3_test.gd`（`2453 checks, 0 failure(s)`）、`localization_test.gd`（`33/0`）、`boundary_save_test.gd`（`1020/0`）全部退出 0；
+  - 原生非 Headless `1280×800` Metal 窗口抓帧 `emiko_lv3_preview_capture.gd` → **PASS（`129 checks; 0 failure(s)`，共 36 张中英窗口截图）**。
+- **未完成事项与边界注意**：
+  - 该 27 岁女患者仅为御堂 Lv3 第二幕诱导前剧情角色（`story_guest_cabg_patient`），不新建常驻医护或随机池患者包，不写入任何持久存档字段；
+  - 原生窗口验收为脚本驱动真实窗口渲染抓帧，尚未执行人工鼠标逐拍点击；保留工作区全部既有未提交改动，未读写玩家真实槽位，未执行 commit/push。
+
+### 2026-11-15 — Antigravity — 御堂江美子（`doc_emiko`）Lv3《今天我主刀》V1.1 剧本实装、跨夜双段结算、双教学术式锁定与旧档扫荡兼容、配套美术接入及原生窗口验收
+
+- **实装范围与核心机制**：
+  - **1. Lv3 V1.1 逐句原稿实装、S/O/G 只读动态分支与跨夜双段结算（`data/staff/doc_emiko/lv3_events.json` + `godot/systems/emiko_lv3.gd`）**：
+    - 按用户审定稿 `research/source_scripts/HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md` 完整实装 `emiko_lv3_today_i_lead`（在 `data/staff/doc_emiko/bundle.json` 登记为独立分包 `lv3_events.json`），共 `314` 个节点（`311` 个 `presentation: "authored"` 正文拍 + `3` 个 `presentation: "choice"` 宽幅交互节点 `em3_choice_c1 / em3_choice_c2 / em3_choice_c3`），零孤儿节点，统一汇合至 `em3_s6r_07 -> @end`。
+    - 原文审计仅保留维持节点运行所必需的纯格式处理：36 处 `叙事动作前缀：「角色台词」` 按原句 `：` 拆分为紧邻的 `旁白` 原文动作拍 + 对应角色姓名牌的 `「...」` 原文台词拍（一字未增删），9 条选项剥离作者 `- **选项 X：...**` 包装头，O 分支 `[最近非御堂一助医生]` 转为稳定占位符 `{recent_assistant_doctor}`；其余正文、说话人、标点与顺序 100% 逐字一致。
+    - 运行门槛严格对齐用户确认方案：`required_events: ["emiko_lv2_follow_my_lead"]` + `days_after_required_events: 3` + `min_familiarity: 40` + `Clinical Presence >= +20` + 已正式认识阿尔托莉雅（`{"type": "staff_unlocked", "actor_id": "doc_artoria"}`，未认识阿尔托莉雅前关系进度页显示不剧透提示「推进相关院内经历」，认识后明确显示阿尔托莉雅条件）；在周一至周五常规工作日下班时段（`trigger_mode: "after_work"`, `time_start: 960`, `time_end: 1320` 兼容晚间加班离院）触发，且阻断周六／周日、次日休诊日、未完成住院患者以及与次日 `advanced_referral_facts.appointment`（`operation_day / review_day`）冲突的日程（同步登记 `advanced_referral.gd` `conflicts_event` 占用 2 天）。
+    - `S / O / G` 一助试探与 Choice 1A 条件句完全基于现有 v37 边界事实（`character_progress_counters`、`recent_patient_ids`、`preops`）只读解析，不新增任何持久字段或事件内部状态；第一幕根据当月自动切换春夏 `casual` 与秋冬 `casual_winter` 立绘，跨夜播放期间隐藏顶部静态旧日期（`hide_calendar_header: true`）并锁定存档（`locks_saving: true`）。
+    - 双段结算：第三幕末尾 `em3_s3r_16` 的继续动作 `em3_cabg_teaching_complete` 即时写入 `emiko_cabg_teaching_complete = true` 并调用 `unlock_procedure("surgery_cabg")` 解锁《开胸心脏搭桥术》，此时关系仍保持 `Lv2`；第六幕结束抵达 `@end` 时才将 `doc_emiko` 升至 `Lv3`、写入 `emiko_lv3_complete`、清理晚间加班 `pending_day_exit_workday` 并推进时钟至次日午后 `14:00`（`completion_day_offset: 1`, `completion_absolute_clock: 840`），完成结算卡显示 `shared_doctors_office` 背景与 `white_coat/warm` 立绘；全程不写入任何外科主任退让类 flag，不改变 `nurse_hiroko`／`nurse_moe` 的 `met`／关系等级。
+  - **2. 御堂 CABG 与阿尔托莉雅肝叶切除双教学术式锁定及旧档扫荡记录兼容（`godot/systems/game_state.gd`）**：
+    - 在 `procedure_unlock_requirement_flag()` 集中登记双教学门控：`surgery_cabg`（`template_cabg`）绑定 `"emiko_cabg_teaching_complete"`，`surgery_open_major_liver_resection`（`template_liver_resection`）绑定 `"artoria_major_liver_resection_teaching_complete"`。
+    - 未取得对应剧情教学 flag 前，两项术式均不进入随机门诊病例池（`case_template_available == false`）、不能在新病例中主动选用或扫荡（`procedure_unlocked == false`, `procedure_sweep_unlocked == false`）。
+    - 旧存档兼容：若旧档此前已完成并解锁两项术式的快速扫荡（`completed_surgeries_by_procedure`、`surgical_quality_records.quick_surgery_unlocked`、`unlocked_procedure_ids`），读档正常通过且历史完成次数与 S 级扫荡记录完整保留；队列中尚未接诊的预骰锁定病例重掷为当前可用病例，已接诊／已住院进行中的患者保留原病例不损坏；待后续经历对应教学剧情获得 flag 后，术式立即重回病例池且**直接恢复原有扫荡资格**。
+  - **3. 用户审定版 Stage 1 配套美术与完整中英双语本地化**：
+    - 基于 Codex 最新落地的 `assets/characters/emiko_sterile_v2/focused.png` 制作并经本地 `birefnet` 透明化接入御堂有口罩刷手服立绘 `assets/characters/emiko_lv3_v1/doc_emiko/scrubs_masked/{neutral,focused}.png`（`1024×1536` RGBA，`.png.import` 开启 mipmaps），接入深夜寿司店吧台背景 `assets/backgrounds/emiko_lv3_v1/sushi_bar_counter_night.png`（`1376×768` RGB，背景 ID `emiko_lv3_sushi_bar_night`）；原始生成候选归档于 `research/generated_candidates/emiko_lv3_v1/`（含 `.gdignore`）。
+    - 新增 `949` 条 `zh_CN` 与 `949` 条外科／体外循环专业英文译文（`research/translations/emiko_lv3_en.json` → `data/localization/{zh_CN,en}.json`），覆盖标题 `"Today, I Lead the Table"`、背景标签、9 位说话人标签、9 条宽幅选项及全部 311 个正文拍（含 `{recent_assistant_doctor}` 双语占位符对齐，零中文残留）。
+- **新增与修改文件**：
+  - 新增：`assets/backgrounds/emiko_lv3_v1/sushi_bar_counter_night.png`（及 `.import`）、`assets/characters/emiko_lv3_v1/doc_emiko/scrubs_masked/{neutral,focused}.png`（及 `.import`）、`research/generated_candidates/emiko_lv3_v1/`、`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md`、`research/translations/emiko_lv3_en.json`、`research/imports/emiko_lv3_2026-11-15.json`、`data/staff/doc_emiko/lv3_events.json`、`godot/systems/emiko_lv3.gd`（及 `.uid`）、`tools/{import_emiko_lv3.py,emiko_lv3_source_audit.py,emiko_lv3_test.gd,emiko_lv3_preview_capture.gd}`（及 `.uid`）、`docs/qa/emiko_lv3_2026-11-15/{REPORT.md,*.png,.gdignore}`；
+  - 修改：`data/backgrounds.json`、`data/staff/doc_emiko/{profile.json,relationship.json,bundle.json}`、`data/localization/{zh_CN,en}.json`、`godot/systems/{game_state.gd,advanced_referral.gd}`、`godot/ui/app.gd`、`tools/{validate_data.py,emiko_early_gate_test.gd,relationship_gate_matrix_test.gd,surgery_progression_test.gd}`、`docs/characters/doc_emiko.md`、`docs/design/HOSHIMI_CHARACTER_RELATIONSHIP_GATE_MATRIX.md`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - 静态与原稿／本地化审计：`emiko_lv3_source_audit.py` → **PASS（`24208 checks; 0 failure(s)`）**；`emiko_lv2_source_audit.py`（`37641/0`）、`emiko_lv1_source_audit.py`（`31274/0`）、`emiko_lv0_source_audit.py`（`1178/0`）全部 **PASS**；`narrative_localization_test.py` → **PASS（`51427 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`59791/59791`**、UI **`803/803`**（仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_emiko / doc_artoria / surgery_cabg / surgery_open_major_liver_resection` **`0` 错误**；
+  - Headless Godot 专项与关联回归：`emiko_lv3_test.gd`（`2431 checks, 0 failure(s)`）、`emiko_early_gate_test.gd`（`236/0`）、`emiko_lv2_test.gd`（`1625/0`）、`emiko_lv1_test.gd`（`1433/0`）、`emiko_lv0_test.gd`（`2764/0`）、`emiko_introduction_reentry_test.gd`（`102/0`）、`relationship_progress_ui_test.gd`（`23/0`）、`surgery_history_save_test.gd`（`1064/0`）、`patient_recycle_clock_test.gd`（`716/0`）、`boundary_save_test.gd`（`1020/0`）、`narrative_save_lock_test.gd`（`6/0`）、`localization_test.gd`（`33/0`）全部退出 0；`relationship_gate_matrix_test.gd` 与 `surgery_progression_test.gd` 中本次新增／修改的 `doc_emiko`、`surgery_cabg`、`surgery_open_major_liver_resection` 断言全部通过；
+  - 原生非 Headless `1280×800` Metal 窗口抓帧验收：`tools/emiko_lv3_preview_capture.gd` → **PASS（`108 checks; 0 failure(s)`，29 张中英窗口截图与报告见 `docs/qa/emiko_lv3_2026-11-15/REPORT.md`）**；`--editor --import --quit` 退出 0。
+- **未完成事项与边界注意**：
+  - 阿尔托莉雅的 `"artoria_major_liver_resection_teaching_complete"` 已在底层锁定与旧档扫荡兼容层就位，待后续实装阿尔托莉雅对应教学剧情时在结算点写入该 flag 即可无缝开放《开腹肝叶切除术》；
+  - 原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未执行人工鼠标逐拍点击；完整保留工作区全部既有未提交改动（含 Codex 的 `emiko_sterile_v2` 等），未读写玩家真实槽位，未执行 commit/push。
+
+### 2026-11-14 — Codex — 江美子无菌手术服 V2 透明差分与运行替换
+
+- 用户确认并授权替换后，以内置 image_gen 制作 focused／worried／warm 整图差分，连同已确认 neutral 经本地 BiRefNet ONNX 透明化。四张 1024×1536 RGBA 已替换 `assets/characters/portrait_pack_v14/doc_emiko/sterile/` 同名 PNG，四份 `.png.import` 开启 mipmaps；稳定路径覆盖普通流程与 Lv1/Lv2 显式引用，未改剧本／JSON／独立 HUD 头像。
+- 新成品另存 `assets/characters/emiko_sterile_v2/`，原始图与提示词在 `research/generated_candidates/emiko_sterile_v2/`；旧图片保留 `previous_runtime/`，SHA／本地抠图报告见 `integration.json`。
+- 四图尺寸、RGBA、四角透明检查通过；三色底边缘 QA 通过；Godot 原生真实 main 场景四种立绘渲染检查点通过，退出 0，截图与日志见 `docs/qa/emiko_sterile_v2/REPORT.md`。Lv1 source audit 31274/0，Lv2 37641/0。
+- 导入完成但编辑器设置写安装目录受沙箱限制；二进制 git diff 的 LFS clean 写临时对象受沙箱限制，已准确记录，不影响已核实运行图片。未测完整剧情通关或导出包；没有 commit/push，保留其他 AI 修改。
+
+### 2026-11-14 — Codex — 御堂江美子新版无菌手术服基础候选
+
+- 按用户三张参考，以常服图身份／赛璐璐画风为主、其他手术图服装与整理手套姿势为辅，内置 image_gen 生成浅蓝帽／口罩／长袖袍／乳白手套基础图。保存 `research/generated_candidates/emiko_sterile_v2/base_raw.png`，提示词 `prompt.txt`，尺寸／模式／SHA 在 `generation.json`。
+- PNG 解码与 1024×1536 尺寸核对，视觉核对完成；本轮为实心背景基础候选，尚未制作差分、去背景或改运行引用。原 portrait_pack_v14 和近期 Antigravity 的江美子 Lv0–2 数据保持原状。按立绘 skill 待用户选定基础图再做差分与本地透明化；未 commit/push。
+
+### 2026-11-14 — Antigravity — 御堂江美子（`doc_emiko`）Lv2《这一次听你的》V2.1 剧本实装、双语本地化、常规手术编组解锁闭环与原生显示验收
+
+- **实装范围与核心机制**：
+  - **1. Lv2 V2.1 逐句原稿实装与七幕专属固定 VN 演出（`data/staff/doc_emiko/events.json`）**：
+    - 按用户审定稿 `research/source_scripts/HOSHIMI_MIDO_EMIKO_LV2_FOLLOW_MY_LEAD_V2_1.md`（SHA-256: `f972a30e2401dd836fd7275417bd4d0c489b928f8a14fcac6eb59d614dc7f660`）完整替换 `emiko_lv2_follow_my_lead`，共 257 个节点（254 个 `presentation: "authored"` 正文拍 `em2_001..em2_254` + 3 个 `presentation: "choice"` 宽幅交互节点 `em2_choice_b1 / em2_choice_d2 / em2_choice_f3`），$3 \times 3 \times 3 = 27$ 条分支路径零孤儿节点，全部汇合至 `em2_254 -> @end`。
+    - 彻底消除旧版 14 节点原型稿开场「至少一周后」与 3 天冷却的字面冲突；完整落地 V2.1 全部定点修订（Scene D 吻合前双方均认同安全复核、聚焦隔离屏障稳定 vs 卸除人为托举确认自然顺位的专业分歧；远端对系膜缘斜向修整自然措辞；温盐水小纱布球拭净黏膜边缘与严密护端下核对直小血管搏动；Choice 3A 切皮前未提前交底顺序的扣分理由；Scene A–F `operating_room` 无菌立绘 → Scene F 末尾撤巾脱袍旁白／巡回转场避免无口罩刷手服穿帮 → Scene G `or_entrance` 走廊切换冷静 `white_coat/neutral` & `serious` 日常白大褂，零术后异常兴奋特写）。
+    - 原文审计仅保留维持节点运行所必需的纯格式处理：23 处 `叙事动作前缀：「角色台词」` 按原句 `：` 拆分为紧邻的 `旁白` 原文动作拍 + 对应角色姓名牌的 `「...」` 原文台词拍（一字未增删），9 条选项剥离作者 `- **选项 X：...**` 包装头；其余正文、说话人、标点与顺序 100% 逐字一致。
+    - 运行门槛与唯一结算点严格对齐：`required_events: ["emiko_lv1_first_operation"]` + `days_after_required_events: 3` + `skill >= 80` + `min_familiarity: 0`（零普通同台手术要求），工作日 `or` `09:00–16:59`（`100` 分钟，`locks_saving: true`）；纯固定 VN 不调用 Surgery Runner、不递增 `completed_surgeries_total`、不改变 `nurse_hiroko`／`nurse_moe` 的 `met`／关系等级；仅在 `Scene G` 末拍 `em2_254 -> @end` 一次性原子结算 `Lv1 -> Lv2`、固定 `Familiarity +10`（`completion_familiarity_bonus: 10`）、写入 `emiko_lv2_complete` 与 `emiko_reliable_surgical_partner`，并发放 `unlock_emiko_surgical_team` 正式开放御堂进入普通／高级手术团队编组资格。
+  - **2. 完整双语本地化（`research/translations/emiko_lv2_en.json` + `data/localization/{zh_CN,en}.json`）**：
+    - 清理旧版 14 节点残留键，新增 `777` 条 `zh_CN` 与 `777` 条外科手术室英文译文（覆盖标题 `"This Time, I'll Follow Your Lead"`、6 位说话人标签、9 个交互选项及 254 个正文拍，零中文残留）。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV2_FOLLOW_MY_LEAD_V2_1.md`、`research/translations/emiko_lv2_en.json`、`research/imports/emiko_lv2_2026-11-14.json`、`tools/{import_emiko_lv2.py,emiko_lv2_source_audit.py,emiko_lv2_test.gd,emiko_lv2_preview_capture.gd}`（及 `.uid`）、`docs/qa/emiko_lv2_2026-11-14/{REPORT.md,*.png,.gdignore}`；
+  - 修改：`data/staff/doc_emiko/events.json`、`data/localization/{zh_CN,en}.json`、`tools/emiko_early_gate_test.gd`、`docs/characters/doc_emiko.md`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/emiko_lv2_source_audit.py` → **PASS（`37641 checks; 0 failure(s)`）**；`emiko_lv1_source_audit.py` → **PASS（`31274/0`）**；`emiko_lv0_source_audit.py` → **PASS（`1178/0`）**；`narrative_localization_test.py` → **PASS（`50479 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`58842/58842`**、UI **`803/803`**（仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_emiko` **`0` 错误**（全仓仍因既有其他历史项退出 1）；
+  - Headless Godot 专项与关联回归：`emiko_lv2_test.gd`（`1625 checks, 0 failure(s)`）、`emiko_early_gate_test.gd`（`234/0`）、`emiko_introduction_reentry_test.gd`（`102/0`）、`emiko_lv1_test.gd`（`1433/0`）、`emiko_lv0_test.gd`（`2776/0`）、`boundary_save_test.gd`（`1020/0`）、`narrative_save_lock_test.gd`（`6/0`）、`localization_test.gd`（`33/0`）全部退出 0，`character_event_test.gd` 与 `relationship_gate_matrix_test.gd` 中 `doc_emiko` 断言 **`0` 失败**；
+  - 原生非 Headless 窗口抓帧验收 `tools/emiko_lv2_preview_capture.gd` → **PASS（`93 checks; 0 failure(s)`，28 张中英窗口截图与报告见 `docs/qa/emiko_lv2_2026-11-14/REPORT.md`）**。
+- **未完成事项与边界注意**：
+  - 御堂 `Lv0–Lv2`（V1.2 / V2.2 / V2.1）三阶段新 Gate 与完整正式剧本现已全部闭环对齐；原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未执行人工鼠标逐拍点击；完整保留工作区全部既有未提交改动，未读写玩家真实槽位，未执行 commit/push。
+
+### 2026-11-14 — Antigravity — 御堂江美子（`doc_emiko`）Lv1《她的手术》V2.2 剧本实装、双语本地化与原生显示验收
+
+- **实装范围与核心机制**：
+  - **1. Lv1 V2.2 逐句原稿实装与六幕专属固定 VN 演出（`data/staff/doc_emiko/events.json`）**：
+    - 按用户审定稿 `research/source_scripts/HOSHIMI_MIDO_EMIKO_LV1_HER_SURGERY_V2_2.md`（SHA-256: `b1364ddf58d799bcdda710e774b72936c39c9dfad7fb608e86430ed865de694a`）完整替换 `emiko_lv1_first_operation`，共 213 个节点（210 个 `presentation: "authored"` 正文拍 `em1_001..em1_210` + 3 个 `presentation: "choice"` 宽幅交互节点 `em1_choice_b1 / em1_choice_c1 / em1_choice_e1`），$3 \times 3 \times 3 = 27$ 条分支路径零孤儿节点，全部汇合至 `em1_210 -> @end`。
+    - 彻底消除旧版 Lv1 原型稿与 Lv0／3 天冷却的时间冲突（开场改为「那场简短而锋利的办公室会面过去一段时间后」）；实装 V2.2 全部 4 项医学与演出修正（Scene F `em1_186..em1_192` 摘外科口罩前使用 `hide_portrait: true`、`em1_193` 摘下后切入无口罩 `scrubs/warm` 亮眼特写；Scene E `em1_156` 无菌手套手部动作；`em1_165..171` 关腹前／缝皮后两次清点；Scene C `em1_098..102` 胆囊颈管与胆囊动脉双人交叉核对）。
+    - 原文审计仅保留维持节点运行所必需的纯格式拆分／标记清理：2 处说话人括号舞台动作与 8 处叙事动作前缀＋引号对白按 `：` 拆分为相邻原句旁白拍＋原说话人台词拍（零增删字词），2 处旁白 `**...**` 移除粗体星号，9 条选项移除作者 `- **选项 X（标签）：**` 包装头；其余正文、说话人、标点与顺序 100% 逐字一致。
+    - 运行门槛与结算边界保持精确一致：`required_events: ["emiko_intro_rumored_hands"]`（严格检查持久事件完成记录，单纯 `met == true` 不解锁）+ `days_after_required_events: 3` + `skill >= 75` + `min_familiarity: 0`，工作日 `or` `09:00–16:59`（`90` 分钟，`locks_saving: true`）；纯固定 VN 不调用 Surgery Runner、不递增 `completed_surgeries_total`、不改变 `nurse_hiroko`／`nurse_moe` 的 `met`／关系等级；`@end` 原子性结算 `Lv0 -> Lv1`、固定 `Familiarity +10`（`completion_familiarity_bonus: 10`，不乘 `×0.5` 倍率）、写入 `emiko_lv1_complete` 与 `emiko_postop_excitement_hint`，保持常规手术团队编组资格锁定至 `Lv2`。
+  - **2. 完整双语本地化（`research/translations/emiko_lv1_en.json` + `data/localization/{zh_CN,en}.json`）**：
+    - 清理旧版 14 节点残留键，新增 `645` 条 `zh_CN` 与 `645` 条地道医学／外科手术室英文译文（覆盖标题 `"Her Kind of Surgery"`、6 位说话人标签、9 个交互选项及 210 个正文拍，零中文残留）。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV1_HER_SURGERY_V2_2.md`、`research/translations/emiko_lv1_en.json`、`research/imports/emiko_lv1_2026-11-14.json`、`tools/{import_emiko_lv1.py,emiko_lv1_source_audit.py,emiko_lv1_test.gd,emiko_lv1_preview_capture.gd}`（及 `.uid`）、`docs/qa/emiko_lv1_2026-11-14/{REPORT.md,*.png,.gdignore}`；
+  - 修改：`data/staff/doc_emiko/events.json`、`data/localization/{zh_CN,en}.json`、`tools/emiko_early_gate_test.gd`、`docs/characters/doc_emiko.md`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/emiko_lv1_source_audit.py` → **PASS（`31274 checks; 0 failure(s)`）**；`emiko_lv0_source_audit.py` → **PASS（`1178 checks; 0 failure(s)`）**；`narrative_localization_test.py` → **PASS（`49739 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`58102/58102`**、UI **`803/803`**（仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_emiko` **`0` 错误**（全仓仍因既有其他历史项退出 1）；
+  - Headless Godot 专项与关联回归：`emiko_lv1_test.gd`（`1433 checks, 0 failure(s)`）、`emiko_early_gate_test.gd`（`234/0`）、`emiko_lv0_test.gd`（`2776/0`）、`emiko_introduction_reentry_test.gd`（`102/0`）、`boundary_save_test.gd`（`1020/0`）、`narrative_save_lock_test.gd`（`6/0`）、`localization_test.gd`（`33/0`）全部退出 0，`character_event_test.gd` 中 `doc_emiko` 断言 **`0` 失败**；
+  - 原生非 Headless 窗口抓帧验收 `tools/emiko_lv1_preview_capture.gd` → **PASS（`82 checks; 0 failure(s)`，25 张中英窗口截图与报告见 `docs/qa/emiko_lv1_2026-11-14/REPORT.md`）**。
+- **未完成事项与边界注意**：
+  - `emiko_lv2_follow_my_lead`（Lv2《这一次听你的》）仍为 14 节点旧原型稿（开场文案「至少一周后」与 3 天冷却存在字面差异），待用户后续提供 Lv2 终审稿再跟进；原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未执行人工鼠标逐拍点击；完整保留工作区全部既有未提交改动，未读写玩家真实槽位，未执行 commit/push。
+
+### 2026-11-14 — Antigravity — 御堂江美子（`doc_emiko`）Lv0《传闻中的手》V1.2 剧本实装、移除次日强制排程与 Surgery 70 UI 提示修复
+
+- **实装范围与核心机制**：
+  - **1. Lv0 V1.2 逐字原稿实装与三选一汇合（`data/staff/doc_emiko/events.json`）**：
+    - 按用户审定稿 `research/source_scripts/HOSHIMI_MIDO_EMIKO_LV0_RUMORED_HANDS_V1_2.md`（SHA-256: `479d4b22ba55d59c29895683572a9a6617f1186b624c231cd1bab1fc2fd5a294`）完整替换 `emiko_intro_rumored_hands`，共 45 个 `presentation: "authored"` 节点（主干 `em0_001..em0_030`、Beat 31 三选一 `choice_em0_face / choice_em0_resume / choice_em0_table` 分别进入 `em0_a_01..03` / `em0_b_01` / `em0_c_01..02`，统一汇合至 `em0_032..em0_040 -> @end`），**100% 逐字保留原稿正文、说话人、标点与顺序（0 处改写）**。
+    - 保留用户确认的运行时门槛：`intro_doc_asuka_director_office` 已完成 + 坂口 `Surgery >= 70`（`skill >= 70`），低医术拒见事件 `emiko_office_denied` 原样保留。
+    - 移除旧版 `auto_follow_up`（取消强制跳转排程），开启播放期存档锁 `locks_saving: true`；三条选项分支均为零属性差 RP 分支，抵达 `@end` 统一结算 `met = true, level = 0, familiarity = 0, emiko_intro_complete` 及当日 `+25` 分钟，不提前解锁常规手术团队编组资格。
+  - **2. 双语本地化与 UI 解锁提示修复（`godot/ui/app.gd` + `data/localization/{zh_CN,en}.json`）**：
+    - 新增完整英文译稿 `research/translations/emiko_lv0_en.json` 并同步写入 `zh_CN.json`／`en.json`，清理旧版 6 节点残留键。
+    - 修复 `app.gd`（`introduce_staff_at_location`）与中英本地化中残留的旧版 `56` 提示：`ui.unlock.emiko` 与 `ui.unlock.artoria_emiko` 统一更新为 `70`，且在尚未完成 `intro_doc_asuka_director_office` 时点击御堂优先提示先在院长室与明日香正式相识。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_MIDO_EMIKO_LV0_RUMORED_HANDS_V1_2.md`、`research/translations/emiko_lv0_en.json`、`research/imports/emiko_lv0_2026-11-14.json`、`tools/{import_emiko_lv0.py,emiko_lv0_source_audit.py,emiko_lv0_test.gd,emiko_lv0_preview_capture.gd}`、`docs/qa/emiko_lv0_2026-11-14/{REPORT.md,*.png,.gdignore}`；
+  - 修改：`data/staff/doc_emiko/events.json`、`data/localization/{zh_CN,en}.json`、`godot/ui/app.gd`、`tools/{validate_data.py,emiko_early_gate_test.gd}`、`docs/characters/doc_emiko.md`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/emiko_lv0_source_audit.py` → **PASS（`1178 checks; 0 failure(s)`，100% 原稿逐句匹配）**；`narrative_localization_test.py` → **PASS（`49131 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`57494/57494`**、UI **`803/803`**（仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_emiko` **`0` 错误**（全仓因既有其他历史项退出 1）；
+  - Headless Godot 专项与关联回归：`emiko_lv0_test.gd`（`2776 checks; 0 failure(s)`）、`emiko_early_gate_test.gd`（`234/0`）、`emiko_introduction_reentry_test.gd`（`102/0`）、`boundary_save_test.gd`（`1020/0`）、`narrative_save_lock_test.gd`（`6/0`）、`localization_test.gd`（`33/0`）全部退出 0，`character_event_test.gd` 中 `doc_emiko` 断言 **`0` 失败**；
+  - 原生非 Headless `1280×800` 窗口抓帧验收 `tools/emiko_lv0_preview_capture.gd` → **PASS（`36 checks; 0 failure(s)`，截图与报告见 `docs/qa/emiko_lv0_2026-11-14/REPORT.md`）**。
+- **未完成事项与边界注意**：
+  - `emiko_lv1_first_operation`（Lv1《她的手术》）按用户指示暂未改动，待用户提供修订稿后跟进检查与实装；原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未执行人工鼠标逐拍点击；完整保留工作区全部既有未提交改动，未读写玩家真实槽位，未执行 commit/push。
+
+### 2026-11-14 — Antigravity — 御堂江美子（`doc_emiko`）Lv1/Lv2 新 Relationship Gate、固定 Familiarity +10 结算与 Lv2 手术团队编组解锁实装
+
+- **实装范围与核心机制**：
+  - **1. 新早期 Relationship Gate（`data/staff/doc_emiko/relationship.json` + `data/staff/doc_emiko/events.json`）**：
+    - `Lv0`（`emiko_intro_rumored_hands`）保持 `intro_doc_asuka_director_office` + 坂口 `Surgery >= 70` 及相识后 3 天冷却不变；`app.gd` 的 `auto_follow_up` 新增 `game.can_auto_follow_up_character_event()` 前置门禁检查，避免玩家在 `Surgery 70–74` 完成 `Lv0` 时白白消耗 3 个日历日。
+    - `Lv1《她的手术》`（`emiko_lv1_first_operation`）：前置 `emiko_intro_rumored_hands` + 3 天冷却 + 坂口 `Surgery >= 75`，`min_familiarity = 0`，不再提前发放 `unlock_emiko_surgical_team`。
+    - `Lv2《这一次听你的》`（`emiko_lv2_follow_my_lead`）：前置 `emiko_lv1_first_operation` + 至少 3 天冷却 + 坂口 `Surgery >= 80`，`min_familiarity = 0`；全部完成后发放 `unlock_emiko_surgical_team`。
+    - `Lv3–Lv5` 原定门槛（`Lv3: Familiarity >= 40, Clinical Presence >= +20`；`Lv4: Familiarity >= 55, Clinical Presence >= +30`；`Lv5: Familiarity >= 75, Surgery >= 90`）与 `0.50` 日常熟悉度基础倍率及 Surgery/Presence 适性加成保持原样。
+  - **2. 固定 Familiarity `+10` 单次里程碑结算（`data/schemas/content.schema.json` + `godot/systems/game_state.gd`）**：
+    - `character_event` schema 新增可选整数 `completion_familiarity_bonus`；`Lv1`、`Lv2` 均设为 `10` 并清零事件内部各分支的零散 `effects.familiarity`，仅在 `choose_character_event()` 首次抵达 `@end`（`not relation.event_history.has(id)`）时通过 `add_familiarity()` 发放固定 `+10`（不乘 `×0.5` 倍率，读档、重复检查或画廊回想绝不重复发放）。`Lv1`/`Lv2` 属纯角色 VN 事件，不触发普通手术合作熟悉度结算；`Lv2` 解锁后的常规手术仍按原有规则结算合作熟悉度。
+  - **3. 团队编组资格收口与旧存档无损兼容（`game_state.gd` + `preop_session.gd` + `advanced_referral.gd`）**：
+    - `GameState.staff_can_join_surgery_team("doc_emiko")` 统一通过 `emiko_surgical_team_unlocked()` 要求 `level >= 2` 且存在可靠的 `emiko_lv2_follow_my_lead` 完成记录，同步覆盖普通手术（`known_staff_ids() -> PreopSession`）与高级手术／高级医护患者（`AdvancedReferral.candidates/valid_team/accept/rebook`）；不影响医院日常驻场、明日香 Lv2 面试、阿尔托莉雅引荐／登场及御堂本人 Lv1/Lv2 剧情手术。
+    - `restore()` 自动为已完成 `Lv2` 的旧档补齐 `unlock_emiko_surgical_team`、为仅完成 `Lv1` 的旧档移除旧版残留 `unlock_emiko_surgical_team`（不重发熟悉度），并对缺少 `Lv2` 事件完成记录却标有 `level >= 2` 的异常档记录 `restore_warnings`（绝不凭熟悉度猜测）；`PreopSession.team_ready/sweep_team_ready` 与 `AdvancedReferral.start_operation -> valid_booked_team` 允许旧档已预设／已预约的在途团队正常完赛，下次主动编组／改期严格执行新 Gate。
+- **新增与修改文件**：
+  - 新增：`tools/emiko_early_gate_test.gd`（及 `.uid`）；
+  - 修改：`data/schemas/content.schema.json`、`data/staff/doc_emiko/{relationship.json,events.json}`、`godot/systems/{game_state.gd,preop_session.gd,advanced_referral.gd}`、`godot/ui/app.gd`、`docs/design/HOSHIMI_CHARACTER_RELATIONSHIP_GATE_MATRIX.md`、`tools/{validate_data.py,relationship_gate_matrix_test.gd,relationship_progress_ui_test.gd,emiko_introduction_reentry_test.gd,character_event_test.gd,role_cg_asset_test.gd}`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/narrative_localization_test.py` → **PASS（`49008 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`validate_data.py` 中 `doc_emiko` 及新增 schema 字段 **`0` 错误**（全仓仍因既有其他角色历史项退出非 0）；`localization_audit.py` 叙事覆盖 **`57371/57371`**、UI **`803/803`**（仍因既有 `voice_director.gd` 5 行中文退出非 0）；
+  - 专项 `tools/emiko_early_gate_test.gd` → **PASS（`232 checks; 0 failure(s)`，覆盖中英双语全部 10 项回归与 4 类旧档场景）**；关联回归 `relationship_progress_ui_test.gd`（`23/0`）、`emiko_introduction_reentry_test.gd`（`102/0`）、`familiarity_matrix_test.gd`（`473/0`）、`asuka_lv2_test.gd`（`3697/0`）、`advanced_surgery_test.gd`（`6453/0`）、`advanced_calendar_regression_test.gd`（`68/0`）、`boundary_save_test.gd`（`1020/0`）全部 **`0 failure(s)`**；`relationship_gate_matrix_test.gd`、`character_event_test.gd`、`role_cg_asset_test.gd` 中所有 `doc_emiko` 断言均 **`0` 失败**。
+- **未修改冲突记录与边界注意**：
+  - 未改动御堂 `Lv0–Lv2` 任何对白／旁白／选项文本；已记录 `Lv0/Lv1` 台词「明天下午／第二天下午」与运行时 3 天冷却＋`Surgery 75` 门槛的字面时间差、`Lv2` 开场「至少一周后」与 3 天冷却的字面差异，以及 `app.gd`／`docs/characters/doc_emiko.md` 旧版 `56` 提示文案供后续 Script Editor 处理。完整保留 Codex 与工作区既有未提交改动，未读写玩家真实槽位，未执行 commit/push。
+
+### 2026-11-14 — Codex — 明日香 Lv1/2/3 与麻纪入职 7 张 CG 正式接线
+
+- 用户授权接入本轮全部 CG。修改 `data/staff/doc_asuka/{events,lv2_events,lv3_events}.json` 与 `data/staff/doc_maki/lv0_events.json`：称呼明日香、去镜版系带 V2、弘子样衣检查、咖啡馆甜点、Lv3 情绪特写、复盘笔记、黄昏排班表。准确节点映射在 `research/imports/asuka_maki_supplement_cg_mapping.json`。保留 Lv3 原穿衣镜 CG 与封面；旧系带图不接线。
+- `godot/ui/app.gd` 仅本轮新增 character_gallery_paths 及画廊多图循环翻页，按事件完成解锁；未引入存档状态。每组新 CG 首次出现完整展示 2 秒，然后恢复原对白，contain 不裁切。原文、说话人、选项、顺序与业务字段未改，已与本轮修改前四份内容备份对比。
+- 四项 source audit：502 / 3292 / 3603 / 4221 checks 全通过；narrative_localization_test 49008 checks 全通过。原生 `tools/asuka_maki_cg_preview.gd` 中英 7 个检查点与实际 GUI 注入画廊翻页 89 checks / 0 failures。两秒展示与对白截图共 28 张位于 `docs/qa/asuka_maki_cg_2026-11-14/`，验证细节见 REPORT.md；属于检查点渲染，不是正式入口全流程或人工点击。
+- 全局 localization_audit 仍因既有 voice_director.gd 5 行中文硬编码未通过；validate_data 仍有其他内容的既有错误（背景 label/name、priority、ward CG image_fit、芹香隐藏立绘、武见时间窗等），无 Asuka/Maki 报错。未冒充全局验收通过，未改这些无关内容。初次 headless 导入有安装目录 editor_settings 写入限制，实际原生资源加载已通过。
+- 保留其他 AI 未提交修改，未 commit/push；未改原始美术。重跑事件导入器时需保留本次映射的视觉字段。未重跑完整业务流程回归；本轮只接入 CG 与画廊展示。
+
+### 2026-11-14 — Codex — 雾蓝样衣系带CG去镜修订
+
+- 按用户反馈用内置ImageGen移除右侧整面镜子及重复人物，补为墙面/样品柜；明日香主体与系带双手保留。新图 `assets/events/asuka_maki_supplement_v1/asuka_lv2_gown_ties_v2.png`，后续接线优先采用此版，旧版保留。
+- 视觉核对、PNG解码与1536×1024尺寸检查通过；来源与SHA记录 `research/generated_candidates/asuka_maki_event_cgs_v1/gown_ties_v2.json`。未改剧情节点、未做引擎验收、未commit/push。
+
+### 2026-11-14 — Codex — 明日香Lv1/2/3与麻纪入职7张补充CG制作
+
+- 用户授权全部7张SFW CG；内置ImageGen以现有角色对应服装立绘为参考生成，最终保存 `assets/events/asuka_maki_supplement_v1/`：`asuka_lv1_call_me_asuka.png`、`asuka_lv2_gown_ties.png`、`asuka_lv2_hiroko_sample_review.png`、`asuka_lv3_earnest_closeup.png`、`asuka_lv3_cafe_dessert.png`、`maki_lv0_roster_evening.png`、`maki_lv0_review_notebook.png`。
+- 7张均1536×1024完整背景；主角不露脸，系带图仅主角双手。Lv3新构图情绪特写保留旧镜前CG，不覆盖。麻纪白板修正为无固定日期、保留两人姓名；复盘笔记修正为局部层次/牵引示意，原始误生肝胆图仅留研究归档。
+- 提示词/原始7图/两次局部修订/文件SHA记录在 `research/generated_candidates/asuka_maki_event_cgs_v1/{prompts,edits,sources,generation}.json` 与PNG，设.gdignore。逐张视觉检查及7图PNG解码/尺寸通过。
+- 本轮为CG制作交付，**尚未接剧情节点/画廊，未做Godot或原生显示验收**；不可声称已在事件中播放。既有剧情/原文/美术保持不变；未commit/push。后续可按上轮建议节点接线，注意对话框会遮下部手部/道具，接入时需实际显示验收。
+
+
+### 2026-11-14 — Antigravity — 城宮明日香 Lv3《本院长不接受反驳哦》周日约会与院史资料室剧情、8 张新服装透明立绘、全屏穿衣镜试穿 CG 与双开场自动分流实装
+
+- **实装范围与核心机制**：
+  - **1. 七幕周日专属里程碑 VN 与 Scene A 双开场自动分流（`data/staff/doc_asuka/lv3_events.json` + `godot/systems/asuka_lv3.gd`）**：按用户 V1.1 定稿 `research/source_scripts/HOSHIMI_ASUKA_LV3_NO_OBJECTIONS_V1_1.md`（单次体验 166 拍，含 `A-1`／`A-2` 双开场全图共 177 个节点，零死亡字眼、零 Lv4 继父／再婚剧透）实装 `asuka_lv3_no_objections`：
+    - 仅限周日外出邀请列表（`sunday_invites`）主动选择 `doc_asuka` 触发（工作日或周日 `director_office` 绝不触发）；门槛为 `met`、`level == 2`、`asuka_lv2_right_person_right_gown` 已完成、`familiarity >= 40`、`charm >= 50` 及默认 3 日里程碑冷却，**无月份锁**且**与 `maki_lv0_onboarding` 互相独立**（麻纪入职前后均可正常触发）。满足条件时自动置顶进周日前 5 候选并挂载故事徽章，点击邀请直接进入 Lv3 剧情（跳过普通约会婉拒 RNG）。
+    - 读取既有 v37 边界事实 `completed_sunday_dates` / `sunday_history`（零新增存档字段）自动在 `first_sunday_date`（`al3_a1_001..011`）与 `prior_sunday_date`（`al3_a2_001..011`）间分流，并于 `al3_012` 合流。
+    - 原文审计仅保留两处维持节点运行所必需的非剧情格式清理：`al3_067` 移除作者非角色可见美术括号说明 `（仅在身前展示比划，并未换穿）`，`al3_075` 移除 `**奶白色**` 的 Markdown 星号；其余正文、说话人、标点与顺序 100% 逐字一致。
+  - **2. 8 张 `1024×1536` RGBA 透明立绘 + 1 张全屏穿衣镜 CG + 2 张专属场景背景**：
+    - 新增 `date_cardigan`（浅杏色针织开衫约会私服 5 差分：`smile, playful, nostalgic, laugh, shy`）与 `vintage_cream_gown`（1970 年代奶白色厚棉布手术袍＋全包发圆顶布帽＋双系带厚布口罩 3 差分：`expectant, shy_earnest, blushing_happy`）共 8 张透明立绘（本地离线 `BiRefNet-ToonOut` 抠图，`.import` 开启 `mipmaps/generate=true`），登记至 `doc_asuka/profile.json`；
+    - 新增 Scene F 全屏试穿 CG `assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png`（`1376×768`，登记画廊 `cg_asuka_lv3_vintage_cream_gown_mirror`）及两张 `1376×768` 背景 `asuka_lv3_cafe_exterior_day`、`asuka_lv3_archive_room_afternoon`。
+  - **3. 抵达 `@end` 原子结算、零双重约会收益与 v37 存档边界**：
+    - 播放期间全程锁存档（`locks_saving: true`）、隐藏顶部时钟栏（`hide_calendar_header: true`）；抵达 `@end` 原子升至 `Lv3`、写入 `asuka_lv3_complete`，并以独立台账项 `"asuka_lv3_date"` 消耗当次周日推进至周一 `09:00`（不重复发放普通约会熟悉度、`魅力 +1` 或 `completed_sunday_dates`）；后续周日恢复普通约会。`BoundarySave` v37 存读档零内部节点持久化且对内部节点重构保持幂等恢复。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_ASUKA_LV3_NO_OBJECTIONS_V1_1.md`、`research/translations/asuka_lv3_en.json`、`research/imports/asuka_lv3_2026-11-14.json`、`research/generated_candidates/asuka_lv3_v1/`（含 `.gdignore` 与 `generation.json`）、`assets/characters/asuka_lv3_v1/doc_asuka/{date_cardigan,vintage_cream_gown}/*.png`（及 `.import`）、`assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png`（及 `.import`）、`assets/backgrounds/asuka_lv3_v1/*.png`（及 `.import`）、`data/staff/doc_asuka/lv3_events.json`、`godot/systems/asuka_lv3.gd`（及 `.uid`）、`tools/import_asuka_lv3.py`、`tools/asuka_lv3_source_audit.py`、`tools/asuka_lv3_test.gd`（及 `.uid`）、`tools/asuka_lv3_preview_capture.gd`（及 `.uid`）、`docs/qa/asuka_lv3_2026-11-14/{REPORT.md,01..20_*.png,.gdignore}`；
+  - 修改：`data/backgrounds.json`、`data/staff/doc_asuka/{bundle.json,profile.json,relationship.json}`、`data/localization/{zh_CN.json,en.json}`、`godot/systems/game_state.gd`、`godot/ui/app.gd`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/asuka_lv3_source_audit.py` → **PASS（`3603 checks; 0 failure(s)`）**；`asuka_lv2_source_audit.py`（`3292/0`）、`asuka_lv1_source_audit.py`（`502/0`）、`maki_lv0_source_audit.py`（`4221/0`） → **全部 PASS**；`narrative_localization_test.py` → **PASS（`49008 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`57371/57371`**、UI 键 **`803/803`**（全仓仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_asuka`／`lv3_events` **`0` 错误**（全仓因既有其他积压项退出 1）；
+  - Godot `--editor --import --quit` → **PASS**；专项 `tools/asuka_lv3_test.gd` → **PASS（`2275 checks, 0 failure(s)`）**；并行兼容回归 `asuka_lv2_test.gd`（`3697/0`）、`asuka_lv1_test.gd`（`1468/0`）、`maki_lv0_test.gd`（`3840/0`）、`maki_staff_test.gd`（`84/0`）、`boundary_save_test.gd`（`1020/0`）、`event_rendering_save_boundary_test.gd`（`8223/0`）、`narrative_save_lock_test.gd`（`6/0`）、`surgery_history_save_test.gd`（`1064/0`）、`localization_test.gd`（`33/0`）全部退出 0；
+  - 原生非 Headless `1280×800` 窗口抓帧验收 `tools/asuka_lv3_preview_capture.gd` → **PASS（`67 checks, 0 failure(s)`，20 张中英文实机截图见 [QA 报告](qa/asuka_lv3_2026-11-14/REPORT.md)）**。
+- **未完成事项与边界注意**：
+  - 原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未进行人工鼠标逐拍手动点击游玩；明日香 Lv4–Lv5 升阶剧本属后续独立内容；完整保留 Codex 与本工作区全部既有未提交改动；未读写真实玩家槽位，未执行 commit/push/clean。
+
+
+### 2026-11-13 — Antigravity — 相泽麻纪 Lv0《排班表上的名字》五幕入职相识事件、双语本地化与助手／日程／约会原子解锁实装
+
+- **实装范围与核心机制**：
+  - **1. 五幕全天纯 VN 入职剧本与双选 RP 分支（`data/staff/doc_maki/lv0_events.json` + `godot/systems/maki_lv0.gd`）**：按用户 V1.1 定稿 `research/source_scripts/HOSHIMI_AIZAWA_MAKI_LV0_NAME_ON_ROSTER_V1_1.md`（正文 158 拍 + Choice D1 共 2 个选项，100% 原字原句保留，零剧透）实装 `maki_lv0_onboarding`：
+    - 触发条件：完成明日香 Lv2 `asuka_lv2_right_person_right_gown`（`maki_aizawa_offer_accepted == true`）且到达面试日后约一个月门槛 `AsukaLv2.ready_for_onboarding_event()`，无任何额外魅力／手术／声望／关系属性门槛；于此后首个非休院开放工作日（周一至周六，自动跨过周日与节假日）清晨 `09:00`（`trigger_mode: "day_start"`, `time_start: 540, time_end: 719`）在医院导览（含前一日跨日 `continue_after_day_transition() -> show_map(false)` 落地时）自动启动，遇到未完结门诊／术前准备／手术／特殊事件自动顺延至下一空闲开放工作日。
+    - Scene C 二号手术间腹股沟斜疝修补术为 **100% 纯固定 VN**，绝不进入 Surgery Runner、危机 RNG 或增加 `completed_surgeries_total`；配角 `nurse_hiroko`／`doc_asuka` 通过 `event_portraits` 与 `speaker_label` 登场，不要求配角提前相识且不改配角 `met`。
+    - Choice D1（`mk0_choice_d1`）为 `presentation: "choice"` 宽幅按钮零属性差分支，两条路径终局状态完全一致。
+  - **2. 零新增美术复用与 Codex `doc_maki` 数据无损兼容**：
+    - 完整复用 Codex 已就绪的 `doc_maki` 白大褂／无菌手术服／常服透明立绘及 `doc_asuka`、`nurse_hiroko` 既有立绘；
+    - 通过 `data/staff/doc_maki/bundle.json` 的 `additional_character_event_files: ["lv0_events.json"]` 加载，**保持 `data/staff/doc_maki/{events,profile,relationship,date_profiles,time_events,role_rewards}.json` 100% 未改动**（`events.json` 仍为 `[]`，确保 `maki_source_audit.py` 与 `maki_v1_3_source_audit.py` 原样通过）。
+  - **3. 抵达 `@end` 原子解锁与 v37 跨日结算边界**：
+    - 播放期间全程锁定存档（`locks_saving: true`）、隐藏顶部固定时钟栏（`hide_calendar_header: true`），未达 `@end` 前 `staff_is_met("doc_maki")` 恒为 `false`；
+    - 抵达 `@end` 原子标记 `maki_lv0_onboarding` 完成、写入 `maki_lv0_complete` 与 `maki_aizawa_onboarded`、并将 `doc_maki` 设为 `met = true`（`level = 0, colleague`），一次性开放常规手术 `assistant_surgeon`（`primary_surgeon` 仍锁定）、高级手术一／二助、`lounge` 固定交流、`rooftop` 随机偶遇及 `familiarity >= 10` 周日约会资格；
+    - 通过 `completion_day_offset: 1, completion_absolute_clock: 540, completion_display_clock: 1070` 结算至次日 `09:00` 安全边界（周六入职跨入周日清晨时安全进入 `sunday_menu`），并为全天跨日完成卡补齐双语键 `ui.event.workday_continues_next_day`；`BoundarySave` v37 存读档零演出内部节点持久化。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_AIZAWA_MAKI_LV0_NAME_ON_ROSTER_V1_1.md`、`research/translations/maki_lv0_en.json`、`research/imports/maki_lv0_2026-11-13.json`、`data/staff/doc_maki/lv0_events.json`、`godot/systems/maki_lv0.gd`（及 `.uid`）、`tools/import_maki_lv0.py`、`tools/maki_lv0_source_audit.py`、`tools/maki_lv0_test.gd`（及 `.uid`）、`tools/maki_lv0_preview_capture.gd`（及 `.uid`）、`docs/qa/maki_lv0_2026-11-13/{REPORT.md,01..20_*.png,.gdignore}`；
+  - 修改：`data/staff/doc_maki/bundle.json`、`data/localization/{zh_CN.json,en.json}`、`godot/systems/game_state.gd`、`godot/ui/app.gd`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/maki_lv0_source_audit.py` → **PASS（`4221 checks; 0 failure(s)`）**；`maki_source_audit.py`、`maki_v1_3_source_audit.py`、`asuka_lv2_source_audit.py`（`3292/0`） → **全部 PASS**；`narrative_localization_test.py` → **PASS（`48474 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`56835/56835`**、UI 键 **`802/802`**（全仓仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_maki`／`doc_asuka`／`lv0_events` **`0` 错误**（全仓因既有其他积压项退出 1）；
+  - Godot `--editor --import --quit` → **PASS**；专项 `tools/maki_lv0_test.gd` → **PASS（`3840 checks, 0 failure(s)`）**；并行兼容回归 `maki_staff_test.gd`（`84/0`）、`asuka_lv2_test.gd`（`3697/0`）、`boundary_save_test.gd`（`1020/0`）、`event_rendering_save_boundary_test.gd`（`8223/0`）、`narrative_save_lock_test.gd`（`6/0`）、`surgery_history_save_test.gd`（`1064/0`）、`localization_test.gd`（`33/0`）全部退出 0；
+  - 原生非 Headless `16:10` 窗口抓帧验收 `tools/maki_lv0_preview_capture.gd` → **PASS（`71 checks, 0 failure(s)`，18 张中英文实机截图见 [QA 报告](qa/maki_lv0_2026-11-13/REPORT.md)）**。
+- **未完成事项与边界注意**：
+  - 原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未进行人工鼠标逐拍手动点击游玩；`doc_maki` 的 Lv1–Lv5 升阶剧本及地点列表像素小人图标属后续独立内容；完整保留 Codex 与本工作区全部既有未提交改动；未读写真实玩家槽位，未执行 commit/push/clean。
+
+
+### 2026-11-13 — Antigravity — 城宮明日香 Lv2《合适的人，合适的手术袍》三幕招聘与样衣评审剧情、3 张四号样衣透明立绘及相泽麻纪延期报到契约实装
+
+- **实装范围与核心机制**：
+  - **1. 三幕院内剧情演出与双选 RP 分支（`data/staff/doc_asuka/lv2_events.json` + `godot/systems/asuka_lv2.gd`）**：按用户原稿 `research/source_scripts/HOSHIMI_ASUKA_LV2_RIGHT_PERSON_RIGHT_GOWN_V1_1.md`（正文 214 拍 + Choice B1／Choice C1 共 4 个选项，100% 原字原句保留，零剧透）与已确认的下午开放窗口方案实装 `asuka_lv2_right_person_right_gown`：
+    - 触发条件：`doc_asuka` 已相识（`met`）、`Lv1`、`asuka_lv1_director_surgeon_postop` 已完成、`familiarity >= 25`、主角 `charm >= 25`、3 日里程碑冷却、周一至周六非休院工作日 `12:00–16:00`（`720–960`）、无活动手术／术前准备／特殊事件冲突；入口为 `director_office`（院长室），结算耗时 `125` 分钟，原子升至 `Lv2` 并写入全局稳定 flag `asuka_lv2_complete` 与 `maki_aizawa_offer_accepted`。
+    - 配角客串隔离：`doc_emiko`、`doc_artoria`、`doc_aoi`、`nurse_hiroko` 与 `doc_maki` 均通过 `event_portraits` 与 `speaker_label` 登场，不要求配角提前 `met == true`，亦不改动任何配角的 `met` 状态。
+    - Choice B1（`al2_choice_b1`）与 Choice C1（`al2_choice_c1`）均采用 `presentation: "choice"` 宽幅按钮节点且零数值差，四条路径终局状态完全等价。
+  - **2. 复用 Codex 麻纪面试立绘 + 新增 3 张明日香四号样衣透明立绘**：
+    - Scene B 直接引用 Codex 已定稿的 `assets/characters/maki_original_style_v1/doc_maki/interview/{neutral,focused,worried,relieved}.png`，**未修改 `data/staff/doc_maki/*` 任何文件，未重跑 `tools/import_maki_staff.py`**。
+    - Scene C 新增生成并经本地离线 `BiRefNet-ToonOut` 抠图（`1024×1536` RGBA，`mipmaps/generate=true`）注册 `assets/characters/asuka_lv2_v1/doc_asuka/sample_gown/{smile,proud,reluctant_cuff}.png`，同步登记至 `doc_asuka/profile.json`（`sample_gown` 服装组）。
+  - **3. 相泽麻纪延期约一个月报到契约与 v37 存档边界**：
+    - 利用 `BoundarySave` v37 既有白名单字段 `character_completions[].completed_day` 持久记录面试日 `interview_day`（零新增持久字段、零演出内部节点持久化）；
+    - 完成明日香 Lv2 后，`doc_maki` 严格保持 `met == false` 且 `maki_lv0_onboarding` 未完成，不会进入 `known_staff_ids()`、常规手术助手池、高级手术一／二助池、周日约会或医院导览地图；`asuka_lv2.gd` 暴露 `offer_accepted()`、`interview_day()`、`onboarding_earliest_day()`（`interview_day + 30`）、`onboarding_ready_workday()` 与 `ready_for_onboarding_event()` 供后续独立 `maki_lv0_onboarding` 直接对接。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_ASUKA_LV2_RIGHT_PERSON_RIGHT_GOWN_V1_1.md`、`research/translations/asuka_lv2_en.json`、`research/imports/asuka_lv2_2026-11-13.json`、`research/generated_candidates/asuka_lv2_portraits_v1/`（含 `.gdignore`）、`assets/characters/asuka_lv2_v1/doc_asuka/sample_gown/{smile,proud,reluctant_cuff}.png`（及 `.import`）、`data/staff/doc_asuka/lv2_events.json`、`godot/systems/asuka_lv2.gd`（及 `.uid`）、`tools/import_asuka_lv2.py`、`tools/asuka_lv2_source_audit.py`、`tools/asuka_lv2_test.gd`、`tools/asuka_lv2_preview_capture.gd`、`docs/qa/asuka_lv2_2026-11-13/{REPORT.md,01..20_*.png,.gdignore}`；
+  - 修改：`data/staff/doc_asuka/{bundle.json,profile.json,relationship.json}`、`data/localization/{zh_CN.json,en.json}`、`godot/systems/game_state.gd`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/asuka_lv2_source_audit.py` → **PASS（`3292 checks; 0 failure(s)`）**；`maki_source_audit.py` 与 `maki_v1_3_source_audit.py` → **PASS**；`narrative_localization_test.py` → **PASS（`47994 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1209/1209`）**；`localization_audit.py` 叙事覆盖 **`56355/56355`**、UI 键 **`801/801`**（全仓仍因既有 `voice_director.gd` 5 行中文退出 1）；`validate_data.py` 中 `doc_asuka`／`doc_maki`／`lv2_events` **`0` 错误**（全仓因既有其他积压项退出 1）；
+  - Godot `--editor --import --quit` → **PASS**；专项 `tools/asuka_lv2_test.gd` → **PASS（`3697 checks, 0 failure(s)`）**；并行兼容回归 `maki_staff_test.gd`（`84/0`）、`asuka_lv1_test.gd`（`1468/0`）、`boundary_save_test.gd`（`1020/0`）、`event_rendering_save_boundary_test.gd`（`8223/0`）、`narrative_save_lock_test.gd`（`6/0`）、`surgery_history_save_test.gd`（`1064/0`）、`localization_test.gd`（`33/0`）全部退出 0；
+  - 原生非 Headless `16:10` 窗口抓帧验收 `tools/asuka_lv2_preview_capture.gd` → **PASS（`71 checks, 0 failure(s)`，20 张中英文实机截图见 [QA 报告](qa/asuka_lv2_2026-11-13/REPORT.md)）**。
+- **未完成事项与边界注意**：
+  - 原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未进行人工鼠标逐拍手动点击游玩；`maki_lv0_onboarding` 正式入职剧本属后续独立开发事项；完整保留 Codex 的 `doc_maki` V1.1–V1.3、小夜香 H 英文补齐、高级手术 10:00 门槛等全部未提交改动；未读写真实玩家槽位，未执行 commit/push/clean。
+
+
+### 2026-11-13 — Codex — 麻纪V1.3约会与术中纠正回应接入
+
+- 原稿原样归档 `research/source_scripts/HOSHIMI_AIZAWA_MAKI_DOCTOR_DATA_AND_DIALOGUE_SCHEMA_V1_3.md`；新增 `data/staff/doc_maki/date_profiles.json`，更新bundle/profile及中英locale。5组约会原文、专属intraoperative_correction逐字接入；古寺备选仅留原稿。
+- 约会Lv0/熟悉度10，书店+温室，casual；接受率Lv0/1=60、Lv2=80、Lv3=92、Lv4/5=100，无额外熟悉度概率加成。hotel_unlock_level=4仅兼容遗留必填字段，当前GDScript无读取方，未开亲密功能。现有UI拒绝为notice无立绘，接受/满意为casual neutral，作者portrait_hint保留原稿，不宣称实现worried拒绝演出。
+- `game_state.gd::sunday_date_eligible`增加统一staff_is_met检查，防止仅met越过staff_unlock_event；未来真实maki_lv0_onboarding完成+met后，助手与约会接口可用，当前生产Lv0仍未写。
+- 新增定向导入 `tools/import_maki_v1_3.py`、逐句审计 `tools/maki_v1_3_source_audit.py`，扩展 `tools/maki_staff_test.gd`，记录 `research/imports/maki_staff_v1_3.json`。不要重跑旧import_maki_staff.py覆盖V1.3（如需重建须随后执行V1.3导入）。
+- 实测两版source audit通过；Godot headless中英84检查0失败（岗位、解锁、概率、约会分地点文本、纠正回应、素材）；叙事本地化47345检查0失败，staff本地化1209条通过。validate_data仍全仓失败但无maki错误；localization_audit仍因voice_director既存5行中文失败，覆盖55706/55706。未做原生窗口或真实Lv0流程验收；宿主证书错误仍见日志。未改作者原文，未读写玩家存档，保留其他AI改动，未commit/push。
+
+
+### 2026-11-13 — Codex — 麻纪独立术中HUD头像
+
+- 内置ImageGen以已确认sterile/neutral为身份参考、明日香HUD为构图参考，生成透明头肩图，原始1448×1086 RGBA及alpha保留，无裁切重绘后处理。运行资源 `assets/characters/intraoperative_staff_avatars_v1/doc_maki/neutral.png`，注册profile的 `intraoperative_avatar/neutral`，status=ready；兼容现有4:3 HUD。
+- 原图/提示词归档 `research/generated_candidates/maki_hud_v1/`，来源哈希 `research/imports/maki_hud_v1.json`；`tools/import_maki_staff.py`更新为保留已存在HUD资源登记。未改台词、约会和事件。
+- 视觉核对身份/眼镜/口罩/帽子/头肩构图；PNG解码、RGBA与顶部角透明通过；Godot import退出0，maki_staff_test中英58检查0失败（含新头像Texture2D加载）。宿主证书日志错误仍存在；未做原生HUD显示验收，不声称完整实机通过。
+- V1.2已审阅并补有中英纠正原文，但尚未接入；约会资料由用户准备，Lv0–5事件仍缺。保留所有其他未提交改动，未commit/push。
+
+
+### 2026-11-13 — Codex — 麻纪V1.1基础医生注册／解锁接口（待补稿，未完整验收）
+
+- 新增 `data/staff/doc_maki/{bundle,profile,relationship,time_events,role_rewards,events}.json`，更新staff/index与双语localization；新增CG原样副本 `assets/events/staff_surgery_v1/doc_maki/assistant_confirmation.png`。14既有透明图登记，HUD独立图needed。21岁/六维原文、limited、初始好感0/colleague，可攻略但无Lv0–5剧本。
+- `game_state.gd::staff_is_met`允许staff_unlock_event匹配角色事件或special事件完成事实，仍需met。预留maki_lv0_onboarding，正常新游戏保持锁定；完成+相识后可普通助手及高级一/二助。关系planned空事件、标准冷却和未激活Lv4/5权益占位；relationship_activity_placeholders仅补未来资格，不解锁功能。
+- 原稿原样存 `research/source_scripts/HOSHIMI_AIZAWA_MAKI_DOCTOR_DATA_AND_DIALOGUE_SCHEMA_V1_1.md`；新增 `tools/import_maki_staff.py`、`tools/maki_source_audit.py`、`tools/maki_staff_test.gd`、`research/imports/maki_staff_v1_1.json`，详情 `research/character_intake/doc_maki/INTEGRATION_V1_1.md`。以后不要盲目重跑导入覆盖人工扩写。
+- 实测source audit通过，Godot中英56检查0失败（内存完成fixture，未制作假生产事件、未写玩家槽位），14图+CG实际加载、普通/高级资格和首次CG单次奖励通过。叙事本地化47340检查0失败，staff本地化1208条通过，diff-check通过。Godot import退出0但有宿主证书/editor settings沙箱日志问题。未做原生显示/真实Lv0流程/存读档验收。
+- **未完成**：validate_data对麻纪仍报缺date profile、limited专属intraoperative_correction。用户选择自己补中英纠正回应，必须等原文，不补写、不登记通用回应冒充。date profile也未提供。全仓validate另有既存错误；localization_audit因voice_director.gd既存5行中文失败。不得声称“Lv0–5以外全部齐备”或完整完成。未commit/push，保留其他AI修改。
+
+
+### 2026-11-13 — Codex — 麻纪医生数据／台词V1只读接入审阅
+
+- 原样归档用户 `HOSHIMI_AIZAWA_MAKI_DOCTOR_DATA_AND_DIALOGUE_SCHEMA_V1.md` 至 `research/character_intake/doc_maki/`；新增 `DIALOGUE_V1_REVIEW.md`、`dialogue_v1_review.json`。2段JSON解析、作者schema0错误，2条工作回应／6条闲谈／CG与事件外围元信息双语齐。
+- 发现具体术野回应不宜作为全步骤通用句、闲谈时间和近期手术假设未受现有随机池约束；需作者通用版或明确情境调度，未改台词。高级候选池复用普通助手资格，必须另接排除高级助手门槛。surgery_proficiency、affection、presence／姓名方案待定，profile显示文本英文仍需补；独立HUD头像可回退，scrubs非当前路径硬缺。
+- 当前doc_maki未注册；未运行引擎／全仓本地化，未改运行数据、数值或作者原文。报告区分作者文件声称的确认与当前可见授权；没有自动commit/push。
+
+
+### 2026-11-13 — Codex — 麻纪14张透明立绘／差分与写作LLM交付Schema
+
+- 用户批准四套立绘并授权透明化／差分。新增 `assets/characters/maki_original_style_v1/doc_maki/{casual,interview,white_coat,sterile}/` 共14张1024×1536 RGBA与.import（mipmaps=true）；`assets/events/maki_first_assistant_v1/assistant_confirmation.png` 原样保留CG背景。
+- 内置image_gen新增10张差分，原图及提示词在 `research/generated_candidates/maki_original_style_v1/` 的`*_raw.png`、`variants.json`；本地BiRefNet-ToonOut处理全部14图。更新generation.json、intake的asset_plan/README，新增ready_assets.json映射和SHA。
+- 新增 `research/character_intake/doc_maki/writing/{WRITER_HANDOFF.md,dialogue_delivery.schema.json,dialogue_delivery.template.json}` 与 `maki_writer_packet_v1.zip`：作者交付格式涵盖工作回应、日常交流、首次助手CG元信息和Lv0逐句／分支；不是运行schema，不补写剧情。21岁已定、六维建议未审定；生日、恋爱路线、患者路线不设为首批必填。
+- 验证：14图解码／RGBA／尺寸／透明角通过，抽查边缘和全套预览；Godot两轮import退出0，专项实际Texture2D加载14图＋CG通过。日志含宿主证书与editor_settings沙箱写入错误，详见 `docs/qa/maki_portraits_2026-11-13/REPORT.md`，不是无错误全仓验收。Schema／空白模板校验、zip完整性、mipmap14项通过；diff空白检查通过。
+- 尚未注册doc_maki生产角色／台词／事件／编队入口，未做原生显示测试，未运行剧情本地化（没有新增运行剧情）。没有单独scrubs刷手服或医护HUD头像。保留其他AI已有修改，未commit/push、未读写玩家存档。
+
+
+### 2026-11-13 — Codex — 麻纪21岁确认、六维建议与原作画风五张候选
+
+- 用户指定比深山／明日香小2岁，核对两者当前均23岁，麻纪档案草案记录21岁。建议手术48／诊断65／配合72／照护68／器械56／冷静45，明确未审定，不新增成长倍率／主刀权限。
+- 新增 `research/generated_candidates/maki_original_style_v1/` 四套1024×1536基础立绘（常服、面试服、白大褂、无菌手术服）及1536×1024首次助手CG，含prompts.json、generation.json、.gdignore。原作两张种子图为参考；手术服袖口已修正。旧面试图保留但用户否定画风。
+- 更新 `research/character_intake/doc_maki/{profile_draft.json,asset_plan.json,README.md}`；Bible附件原文不改。五图实际解码／尺寸检查通过，记录SHA-256；JSON解析和diff空白检查。生成首批一次输出审核拦截，后续独立生成完成。
+- 基础候选待用户确认；未生成差分／透明化／注册运行，未做Godot测试。未新增剧本、未commit/push，保留并行现有修改。
+
+
+### 2026-11-13 — Codex — 相澤麻紀新人外科医生接入资料包（未注册运行）
+
+- 新增 `research/character_intake/doc_maki/`：Bible 原文、两张原作种子图、`source_manifest.json`、`profile_draft.json`、`asset_plan.json`、`README.md`、`.gdignore`。整理已定事实、未定字段、最小美术与工程接线／验收清单；建议 ID `doc_maki`，未新增生产数据或代码。
+- 核对已有明日香 Lv2 V1.1 原稿及面试服候选；独立 Lv0 brief／正式正文未取得。保留录用后约一个月报到、Lv0 完成才入助手池、入职手术仅 VN 的契约。精确年龄、能力和关系数值未擅自填入。
+- 实测：三份附件复制 SHA-256 完全一致；4 个 JSON 可解析；README 相对链接存在；限定文件 diff 空白检查通过。未运行引擎／剧情本地化（本轮仅资料准备），未宣称角色生产可用。
+- 注意：草案 null 不符合运行 profile，不能直接登记；现有 staff_unlock_event 检查 special_event_done，未来若用 character event 必须校准完成事实类型。保留 Antigravity 明日香 Lv1 和其他现有修改；未 commit/push、上传或修改原始附件。
+
+
+### 2026-11-13 — Antigravity — 城宮明日香 Lv1《院长也是外科医生》三段式常规手术联动剧情与 7 张刷手服透明立绘实装
+
+- **实装范围与核心机制**：
+  - **1. 三段式常规手术耦合流程（`godot/systems/asuka_lv1.gd` + `doc_asuka/events.json`）**：按用户原稿 `research/source_scripts/HOSHIMI_ASUKA_LV1_DIRECTOR_IS_ALSO_A_SURGEON_V1.md` 与已确认的 **1A 全天触发方案** 实装 `doc_asuka` `Lv0` → `Lv1` 升阶事件：
+    - **Scene 1（`asuka_lv1_director_surgeon_preop`）**：12 拍线性演出（`scrub_area`），工作日任意常规手术选定 `doc_asuka` 为 `assistant_surgeon` 且满足 `Lv1` 门槛（`met`、`intro_doc_asuka_director_office` 已完成、`Lv0`、`familiarity >= 10`、`charm >= 10`、3 日里程碑冷却）时，在 `preop_stage_id: "changing"`（`preop_required_flags: ["hands_ready"]`，`priority: 180`）自动触发；按用户授权仅最小泛化 `al1a_003`、`al1a_008`、`al1b_028` 共 3 处早间字眼，其余台词／旁白／标点 100% 逐字保留，同步补齐 `research/translations/asuka_lv1_en.json` 与 `zh_CN.json`／`en.json`。
+    - **Scene 2（常规手术实战 Runner）**：当台手术 100% 抑制术中生理危机（`disable_intraop_crisis = true`），并按暴露／止血／缝合阶段注入原稿专属 3 句一助短台词（`01_exposure`、`02_hemostasis`、`03_closure`，中英双语）。
+    - **Scene 3（`asuka_lv1_director_surgeon_postop`）**：28 拍线性演出（`or_entrance`，`category: "bond"`，`target_level: 1`，`priority: 220`），于常规手术结算后 `post_surgery_return` 自动触发（含周六下午手术跨过 17:00 加班结算使 `day_number()` 推进至周日的边界保护），原子将 `doc_asuka` 升至 `Lv1`。
+  - **2. 扫荡临时拦截与中断／存档边界保护**：当 `doc_asuka` 为一助且本台将触发或已进入 Lv1 流程时，`preparation` 与 `procedure_select` 两阶段禁用「一键扫荡」按钮并附中英双语提示，`GameState.sweep_active_surgery()` 同步拦截，升至 `Lv1` 后自动恢复；若手术在 Scene 3 完成前中止或读档恢复发现孤立前置事件完成记录，自动回滚 `asuka_lv1_director_surgeon_preop` 完成态并保持 `Lv0`，下次选一助可完整重走；`BoundarySave` v37 零新增内部演出字段。
+  - **3. 7 张 `1024×1536` RGBA 刷手服透明立绘生成、BiRefNet-ToonOut 离线抠图与 Mipmap 导入**：生成并注册 `assets/characters/asuka_lv1_v1/doc_asuka/scrubs/{masked_bright,masked_smile,cap_smile,cap_critique,cap_shy,hair_down_smile,hair_down_wave}.png`（并将 `scrubs/smile` 默认键指向 `hair_down_smile`）。
+- **新增与修改文件**：
+  - 新增：`research/source_scripts/HOSHIMI_ASUKA_LV1_DIRECTOR_IS_ALSO_A_SURGEON_V1.md`、`research/translations/asuka_lv1_en.json`、`research/imports/asuka_lv1_2026-11-13.json`、`research/generated_candidates/asuka_lv1_scrubs_v1/`（含 `.gdignore`）、`assets/characters/asuka_lv1_v1/doc_asuka/scrubs/*.png`（及 `.import`）、`godot/systems/asuka_lv1.gd`、`tools/import_asuka_lv1.py`、`tools/asuka_lv1_source_audit.py`、`tools/asuka_lv1_test.gd`、`tools/asuka_lv1_preview_capture.gd`、`docs/qa/asuka_lv1_2026-11-13/{REPORT.md,01..18_*.png,.gdignore}`；
+  - 修改：`data/staff/doc_asuka/{profile.json,relationship.json,events.json}`、`data/localization/{zh_CN.json,en.json}`、`godot/systems/{game_state.gd,preop_session.gd}`、`godot/ui/{preop_view.gd,app.gd}`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/asuka_lv1_source_audit.py` → **PASS（`502 checks; 0 failure(s)`）**；`narrative_localization_test.py` → **PASS（`47332 checks; 0 failure(s)`）**；`staff_localization_test.py` → **PASS（`1200/1200`）**；`localization_audit.py` 叙事覆盖 **`55682/55682`**、UI 键 **`801/801`**（全仓库仍因既有 `voice_director.gd` 5 处中文退出 1）；`validate_data.py` 中 `doc_asuka`/`asuka_lv1` **`0` 错误**（全仓库因既有其他角色积压项退出 1）；
+  - Godot `--editor --import --quit` → **PASS**；专项回归 `tools/asuka_lv1_test.gd` → **PASS（`1458 checks, 0 failure(s)`）**；v37 与语言回归 `boundary_save_test.gd`（`998/0`）、`event_rendering_save_boundary_test.gd`（`8203/0`）、`narrative_save_lock_test.gd`（`6/0`）、`surgery_history_save_test.gd`（`1044/0`）、`localization_test.gd`（`33/0`）全部退出 0；
+  - 原生 `1280×800` 非 Headless 窗口截图验收 `tools/asuka_lv1_preview_capture.gd` → **PASS（`133 checks; 0 failure(s)`，18 张中英文实机截图见 [QA 报告](qa/asuka_lv1_2026-11-13/REPORT.md)）**。
+- **未完成事项与边界注意**：
+  - 原生窗口验收为脚本自动驱动真实窗口渲染抓帧，尚未进行真人鼠标逐句手动点击游玩；完整保留 Codex 的小夜香 H Runner 英文补齐、高级手术 10:00 接诊门槛等并行未提交改动；未读写真实玩家槽位，未执行 commit/push/clean。
+
+### 2026-11-13 — Codex — 小夜香 H Runner 第二阶段英文覆盖补齐
+
+- 定位 `doc_sayaka/h_context_overrides_v1.json` 原英文只有一条中段对白，其他第二阶段文本回退中文。补24条，现11组25条，覆盖MAX、两风格、场景池（含保留finish池）、结束按钮／回应、普通事后；只新增英文context，中文、已有译文、ID、玩法／存档和作者Lv4脚本未改。
+- 修改 `data/staff/doc_sayaka/h_context_overrides_v1.json`；新增 `tools/sayaka_phase2_localization_test.gd`；更新 `docs/bug_backlog.md`、本交接。其余已存在的排期、PACU／深山Lv3等工作原样保留。
+- 实测：专项Godot headless **902/0**（全池、6地点、普通／测试／Lv4的两风格UI文本）；既有系统 **61/0**、隔离路径后的既有UI流程 **54/0**，均退出0。独立临时saves/title_preferences路径，不读写玩家槽位。日志 `/private/tmp/sayaka_phase2_{after,system,ui}_20261113.{log,txt}`；命令详见backlog。只证明逻辑和UI树，不是原生显示／人工点击／自然解锁／完整Lv4通关。
+- 叙事本地化 **47206/0**；全量localization_audit仍因voice_director的5行中文退出1，validate_data仍因其他数据问题退出1；不是全仓库绿灯。逐条对照原文且JSON对比确认仅新增英文池；diff空白检查通过。
+- 第一阶段入场与互动回应仍有独立英文缺口，尚未修复。未改作者文本、图片、共享Runner，不需要存档迁移；未导出／commit／push。首次诊断夹具Lv4返回后访问失效Label的中断与修正记录在backlog，不算通过轮。
+
+### 2026-11-13 — Codex — 高级手术10:00新接诊门槛、入口提示与佩特拉编组诊断
+
+- 佩特拉截图团队七人合法；周六不支持接诊。附件实际9月3日周三，9月4日被未完成的 `chihaya_mizuho_nurse_return` 占用，日程错误曾误显示为编组未完成。只读附件校验和未变；未强制完成事件／改玩家进度。
+- 按用户最新决定，正式新接诊只在周一至周四10:00及以前开放；其余时段在术式列表前显示中英提示，已有预约／手术／结算保持可访问。普通与医护患者使用同一个状态层时间原因接口，日程冲突与编组错误分开提示。
+- 修改：`godot/systems/advanced_referral.gd`、`godot/ui/advanced_referral_view.gd`、`godot/ui/advanced_team_panel.gd`、`data/advanced_surgery/ui_text.json`、`tools/advanced_calendar_regression_test.gd`、`tools/advanced_surgery_test.gd`、`docs/advanced_surgery_content_checklist_v1.md`、`docs/bug_backlog.md`、本交接。新增：`tools/advanced_team_calendar_test.gd`、`docs/qa/advanced_intake_2026-11-13/`（报告、8张最终截图、被启动声明遮挡的初轮截图、.gdignore）。
+- 实测：headless专项200/0、主回归6455/0、排期68/0；原生窗口自动显示检查209/0，抽查中英时段提示及英文编组页，无新提示裁切；没有人工点击／完整三日GUI通关／导出包验收。叙事本地化47206/0。命令、日志、原生失败轮记录见 [QA](qa/advanced_intake_2026-11-13/REPORT.md)。
+- 未通过且未扩大处理：团队UI助手卡片第二行12项裁切；旧转诊门槛fixture缺教程完成计数2项失败；localization_audit因voice_director5行中文退出1；validate_data当前其他schema／内容错误。不可将本轮称全量绿灯。原13:00接诊测试fixture已改09:00以符合最新要求，保留原测试目的。
+- 保留Antigravity的PACU、深山Lv3、麻生华澄等既有修改；未commit/push、未读写真实玩家槽位、未改存档格式或作者原文。下次维护以10:00截止为准，旧交接中16:00描述是历史。返场事件未完成会继续挡排期，不能建议玩家仅跳到下周即可解决。
+
+### 2026-11-13 — Antigravity — 新增公共手术区「术后麻醉恢复室（`pacu_recovery`）」16:9 背景并接入深山佳織 Lv3 Scene 11 复苏交接段
+
+- **实装范围与核心机制**：
+  - 按用户建议生成并注册高亮度冷白日光灯、无外窗无机感、带不锈钢双开自动移门直通手术室走廊与隔帘复苏推床／多参数监护仪的 **术后麻醉恢复室（PACU）** 公共背景 `pacu_recovery`（`assets/backgrounds/pacu_recovery_v1/pacu_recovery.png`，`1376×768` RGB），补充至 `data/backgrounds.json` 及中英双语键 `collections.backgrounds.pacu_recovery.label`（`术后麻醉恢复室` / `Post-Anesthesia Care Unit (PACU)`）。
+  - 将 `miyama_03_or_god_main` Scene 11 前半段复苏床交接节点（`s11_001`–`s11_013`）由普通夜间住院病房 `ward_night` 切换为 `pacu_recovery`，使深山刚下台尚未换衣、身着无菌手术袍与麻生华澄对戏的场景在临床动线与视觉质感上完全自洽；同步重截更新 `docs/qa/kaori_lv3_v1_2_2026-11-13/REPORT.md` 与中英验收图 `07b`／`14`。
+- **新增与修改文件**：
+  - 新增：`assets/backgrounds/pacu_recovery_v1/pacu_recovery.png`（及 `.import`）、`research/generated_candidates/pacu_recovery_v1/{pacu_recovery_raw.png,generation.json,.gdignore}`；
+  - 修改：`data/backgrounds.json`、`data/staff/doc_rei/special_event_steps.json`、`data/localization/zh_CN.json`、`data/localization/en.json`、`research/imports/miyama_lv3_v1_2_2026-11-13.json`、`tools/import_kaori_lv3.py`、`tools/kaori_lv3_source_audit.py`、`tools/kaori_lv3_test.gd`、`docs/qa/kaori_lv3_v1_2_2026-11-13/{REPORT.md,07b_zh_kasumi_ward_confused.png,14_en_kasumi_ward_confused.png}`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/kaori_lv3_source_audit.py` → **PASS（`4052 checks; 0 failure(s)`）**；`validate_data.py` 中 `pacu_recovery`／`doc_rei`／`kasumi` 相关 **0 errors**；`narrative_localization_test.py` → **PASS（`47206 checks; 0 failure(s)`）**；`localization_audit.py` 叙事覆盖 **`55556/55556`**、UI 英文键 **`801/801`**；
+  - Godot `--editor --import --quit` → **PASS**；`tools/kaori_lv3_test.gd` → **PASS（`3738 checks; 0 failure(s)`）**；原生窗口全流程 25 图截图验收 `tools/kaori_lv3_preview_capture.gd` → **PASS（`718 checks; 0 failure(s)`，已目检中英文 PACU 恢复室实机截图）**。
+- **未完成事项与边界注意**：
+  - `pacu_recovery` 已作为通用公共背景登记在 `data/backgrounds.json`，后续其他角色手术或高级转诊术后苏醒戏均可直接复用；尚未进行真人手动逐句点击游玩；未触碰玩家存档槽位，未执行 commit/push/clean。
+
+
+### 2026-11-13 — Antigravity — 深山佳織 Lv3《手术室之神》急诊女患者正式替换为 23 岁麻生华澄（`guest_kasumi_asou`）并接入 7 张手术帽／病号服透明立绘
+
+- **实装范围与核心机制**：
+  - **1. 客串患者注册与中英文本对齐**：按用户明确授权，在 `data/patients/cameo_patients.json` 注册 `guest_kasumi_asou`（`麻生华澄` / `Asou Kasumi`，23 岁，《心跳回忆2》客串患者，`debut_event_id: "miyama_03_or_god"`），仅在已获授权的 5 处年龄／称谓节点（`s07_003`、`s07_013`、`s07_015`、`s10a_004`、`s11_011`）及患者对白说话人标签（`麻生华澄` / `Kasumi Asou`）完成精准替换，其余 353 节点原文与临床流程一字未改，同步更新 `research/translations/miyama_lv3_en.json`、`data/localization/zh_CN.json` 与 `data/localization/en.json`。
+  - **2. 7 张透明 RGBA 患者立绘生成、BiRefNet-ToonOut 离线抠图与 Godot Mipmap 导入**：基于用户确认的最新手术帽无耳钉原图（`exec-8d66f658-bc65-4d23-9eca-9f20970f90d3.png`）与浅蓝病号服原图（`exec-7b2466f4-590b-496e-b20b-fe11ef48ac45.png`）离线透明化基础图并生成 5 张表情差分：
+    - `assets/characters/kasumi_asou_patient_v1/guest_kasumi_asou/or_cap/{tense,shocked_feverish,mask_drowsy,anesthetized}.png`（`1448×1086` RGBA，4 张，挂载至 Scene 7 二号手术室过床 `s07_013`、全屏 CG 后的头侧安抚 `s07_020`–`s07_021`、氧气面罩全麻迷糊嘟囔 `s07_022`–`s07_023` 与平稳全麻沉睡 `s07_024`，统一置于右侧 `x=955` 避开左侧“继续”按钮遮挡）；
+    - `assets/characters/kasumi_asou_patient_v1/guest_kasumi_asou/ward/{neutral,drowsy_relieved,confused}.png`（`1024×1536` RGBA，3 张，挂载至 Scene 11 夜间复苏病房 `ward_night` `s11_001`–`s11_013` 与深山无菌袍端正扑克脸 `sterile/focused` 同框对戏）；
+    - 同步将 `p_stand` 立绘底边对齐调整为 `bottom: 650`（顶边 `y=145`），彻底消除英文标题长文本与高发冠立绘的重叠。原始差分候选归档于 `research/generated_candidates/kasumi_asou_lv3_variants_v1/`（保留 Codex 的 `kasumi_asou_base_v1/` 与 `kasumi_asou_patient_v1/` 未改动）。
+- **新增与修改文件**：
+  - 新增：`assets/characters/kasumi_asou_patient_v1/guest_kasumi_asou/or_cap/*.png`（4 张及 `.import`）、`assets/characters/kasumi_asou_patient_v1/guest_kasumi_asou/ward/*.png`（3 张及 `.import`）、`research/generated_candidates/kasumi_asou_lv3_variants_v1/`（含 `.gdignore`）、`docs/qa/kaori_lv3_v1_2_2026-11-13/REPORT.md`、`docs/qa/kaori_lv3_v1_2_2026-11-13/.gdignore` 及同目录全部 **25 张** `1280×800` 中英原生窗口验收截图；
+  - 修改：`data/patients/cameo_patients.json`、`data/staff/doc_rei/special_event_steps.json`、`data/localization/zh_CN.json`、`data/localization/en.json`、`research/translations/miyama_lv3_en.json`、`research/imports/miyama_lv3_v1_2_2026-11-13.json`、`tools/import_kaori_lv3.py`、`tools/kaori_lv3_source_audit.py`、`tools/kaori_lv3_test.gd`、`tools/kaori_lv3_preview_capture.gd`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - `.venv/bin/python tools/kaori_lv3_source_audit.py` → **PASS（`4036 checks; 0 failure(s)`，19 张新增透明立绘全覆盖，零 `四十二岁`／`急诊女患者` 残留）**；
+  - `.venv/bin/python tools/validate_data.py` 中 `rei`／`miyama`／`kasumi` 相关 **0 errors**；`narrative_localization_test.py` → **PASS（`47206 checks; 0 failure(s)`）**；`localization_audit.py` 叙事覆盖 **`55555/55555`**、UI 英文键 **`801/801`**；
+  - Godot 导入与测试：`--editor --import --quit` → **PASS**；`tools/kaori_lv3_test.gd` → **PASS（`3737 checks; 0 failure(s)`）**；`tools/event_rendering_save_boundary_test.gd` → **PASS（`8203 checks; 0 failures`）**；`tools/localization_test.gd` → **PASS（`33 checks; 0 failure(s)`）**；原生窗口全流程 25 图截图验收 `tools/kaori_lv3_preview_capture.gd` → **PASS（`718 checks; 0 failure(s)`，覆盖 Day 1–2 共 12 幕、麻生华澄手术帽／面罩／夜间复苏病房、两张全屏 CG、春夏／冬季私服与双章节鉴赏卡片，详见 `docs/qa/kaori_lv3_v1_2_2026-11-13/REPORT.md`）**。
+- **未完成事项与边界注意**：
+  - 麻生华澄仅作为剧情客串患者注册于 `cameo_patients.json`，未放入随机患者池；原生窗口验证为自动脚本推进截图，尚未进行真人手点全流程游玩。未触碰玩家存档槽位，保留工作区全部其他未提交改动，未执行 commit/push/clean。
+
+
+### 2026-11-13 — Codex — 麻生華澄病号服与术中患者头像基础候选
+
+- 用户已确认日常服装形象，更新 kasumi_asou_base_v1/generation.json 确认状态。新增 research/generated_candidates/kasumi_asou_patient_v1/：ward_neutral_raw.png（1024×1536）、intraoperative_tense_raw.png（1448×1086）、保留首稿、prompts.json、generation.json、.gdignore。
+- 内置 image_gen 沿用已确认脸型与画风，病号服按标准浅蓝交领系带；术中长发全收手术帽，肩部以上构图，修订去除生成的耳钉。Pillow 完整解码与视觉检查通过，均 RGB，SHA256 已记录。
+- 按立绘技能等待两种新服装／构图基础确认，再做各自差分与离线透明化；尚未接入角色／患者数据或深山 Lv3。未运行业务测试，未 commit/push，其他工作保留。
+
+
+### 2026-11-13 — Codex — 麻生華澄日常服装立绘基础候选
+
+- 按用户三张种子图，通过内置 image_gen 制作深绿长发、紫色套装与浅薄荷领巾的头至髋部基础立绘。新增 research/generated_candidates/kasumi_asou_base_v1/（daily_base_raw.png、prompt.txt、generation.json、三张原样 references/seed_*.png 与 .gdignore）。
+- Pillow 解码与视觉检查通过，1024×1536 RGB，SHA256 已记录。按立绘流程待用户确认后再做差分／本地透明化。
+- 用户目前考虑作为深山 Lv3 患者，尚未替换事件身份、文本或运行资产；未注册随机患者、未做 Godot／本地化回归。保留 Antigravity 最新深山 Lv3 V1.2 与其他修改，未 commit/push。
+
+
+### 2026-11-13 — Antigravity — 深山佳織 Lv3《手术室之神》V1.2 全卷重构实装与手术帽／患者术中／私服微笑差分接入
+
+- **实装范围与核心机制**：
+  - **1. 剧本全卷重构（`miyama_03_or_god` V1.2，12 幕 2 日连贯事件链）**：按用户原稿 `research/source_scripts/HOSHIMI_MIYAMA_KAORI_LV3_OR_GOD_REVISED_V1_2.md` 与明确授权重构 `data/staff/doc_rei/special_events.json` 及 `data/staff/doc_rei/special_event_steps.json`，替换旧版 47 节点压缩 JSON；拆分为跨 2 个连续医院营业日的双链 `["miyama_03_or_god_day1", "miyama_03_or_god_main"]`（Day 1 共 28 节点，Day 2 共 325 节点，合计 **353 节点 + 4 处共 10 个交互选项**）。
+  - **2. 排程门禁、跨周日顺延与终局原子结算**：`miyama_02_manga_artist_wrong_patient` 完成后 `>= 5` 天（`min_familiarity: 40`、`cooldown_days: 3`，不设 `skill >= 65` 硬锁，角色门禁维持 `["PLAYER", "doc_rei", "doc_asuka", "nurse_moe", "nurse_ange"]` 不锁弘子／小夜香）；新增 `avoid_sunday_span: true`（`godot/systems/game_state.gd`），使周六不会拆断 Day 1 与 Day 2 而顺延至周一连续两日触发；Scene 12 结束后一次性原子结算 `Relationship Lv3`、`completed_surgery_id: "surgery_open_cholecystectomy"`、`surgery_xp_bonus: 12`、`reputation: 2` 及全部 4 个稳定完成 flags（完全兼容 `BoundarySave` v37 边界存档契约，不持久化任何事件内部步骤）。
+  - **3. 季节自适应街道背景与私服（`seasonal_street` / `seasonal_casual`）**：在 `godot/ui/app.gd` 与 `data/schemas/content.schema.json` 为 `special_event_node` 新增 `seasonal_street`（按当前日程自动解析春夏秋樱花／夏夜／银杏／冬雪夜街）与 `seasonal_casual`（按当前工作日自动切换 `casual` 春夏私服或 `casual_winter` 秋冬私服），与用户批准的季节泛化台词一致。
+  - **4. 12 张透明 RGBA 新立绘生成、BiRefNet-ToonOut 离线抠图与 Godot 导入**：基于用户指定手术帽基础原图 `/Users/ningye/.codex/generated_images/01a1d2cc-6056-71b0-babe-e7acb7d9f78d/exec-b1ac95cc-c881-49fd-9d07-15b39764b2d2.png` 及现有春夏／秋冬私服原图生成并接入：
+    - `assets/characters/miyama_lv3_v1/doc_rei/or_cap/{asleep,drowsy,masked_hesitant,masked_focused}.png`（`1448×1086` RGBA，4 张，Lv3 手术帽苏醒与洗手池口罩差分）；
+    - `assets/characters/intraoperative_portraits_v1/doc_rei/{tense,pain,near_collapse,anesthetized,embarrassed,relieved}.png`（`1448×1086` RGBA，6 张，同步满足 Lv3 裸肩手术帽差分与未来深山佳織作为真实患者的术中表情差分）；
+    - `assets/characters/spring_summer_casual_v1/doc_rei/small_smile.png` 与 `assets/characters/winter_casual_v1/doc_rei/small_smile.png`（`1024×1536` RGBA，2 张，春夏／秋冬私服浅笑差分）；
+    - 原始候选与元数据归档于 `research/generated_candidates/doc_rei_lv3_variants_v1/` 与 `research/imports/miyama_lv3_v1_2_2026-11-13.json`（保留 Codex 同日创建的 `research/generated_candidates/kaori_intraoperative_v1/` 未改动）。
+  - **5. 100% 中英双语覆盖**：完整译稿归档于 `research/translations/miyama_lv3_en.json`，同步写入 `data/localization/zh_CN.json` 与 `data/localization/en.json`（覆盖全部 353 节点正文、10 个选项、事件标题、公告、完成提示、2 个画廊章节与说话人标签）。
+- **新增与修改文件**：
+  - 新增：`assets/characters/intraoperative_portraits_v1/doc_rei/*.png`（6 张及 `.import`）、`assets/characters/miyama_lv3_v1/doc_rei/or_cap/*.png`（4 张及 `.import`）、`assets/characters/spring_summer_casual_v1/doc_rei/small_smile.png`（及 `.import`）、`assets/characters/winter_casual_v1/doc_rei/small_smile.png`（及 `.import`）、`research/generated_candidates/doc_rei_lv3_variants_v1/`（含 `.gdignore`）、`research/imports/miyama_lv3_v1_2_2026-11-13.json`、`research/source_scripts/HOSHIMI_MIYAMA_KAORI_LV3_OR_GOD_REVISED_V1_2.md`、`research/translations/miyama_lv3_en.json`、`tools/import_kaori_lv3.py`、`tools/kaori_lv3_source_audit.py`、`tools/kaori_lv3_test.gd`、`tools/kaori_lv3_preview_capture.gd`、`docs/qa/kaori_lv3_v1_2_2026-11-13/*.png`（12 张中英原生窗口截图）；
+  - 修改：`data/schemas/content.schema.json`、`data/staff/doc_rei/profile.json`、`data/staff/doc_rei/assets_manifest.json`、`data/staff/doc_rei/special_events.json`、`data/staff/doc_rei/special_event_steps.json`、`data/localization/zh_CN.json`、`data/localization/en.json`、`godot/systems/game_state.gd`、`godot/ui/app.gd`、`tools/validate_data.py`、`tools/miyama_ayako_event_test.gd`、`tools/event_batch_native_qa.gd`、`tools/event_rendering_save_boundary_test.gd`、`tools/experience_cap_test.gd`、`tools/event_rendering_max_skill_repro.gd`、`tools/event_batch_miyama_lv3_source_repro.gd`、`docs/HANDOFF.md`。
+- **实际执行验证**：
+  - 原稿逐句与授权变更审计：`.venv/bin/python tools/kaori_lv3_source_audit.py` → **PASS（`3993 checks; 0 failure(s)`）**；
+  - Schema 与本地化审计：`.venv/bin/python tools/validate_data.py` 中 `doc_rei`／`miyama_03_or_god` 相关 **0 errors**（工作区既有 `miyuki_lv3`、`serika_lv3/lv5`、`takemi_lv1/lv2`、`backgrounds[77]` 报错与本任务无关）；`python3 tools/narrative_localization_test.py` → **PASS（`47206 checks; 0 failure(s)`）**；`python3 tools/staff_localization_test.py` → **PASS（`1200 isolated staff dialogue lines translated`）**；`python3 tools/localization_audit.py` 叙事字段 **`55552/55552`**、UI 英文键 **`801/801`**（仍仅因未触碰的 `godot/ui/voice_director.gd` 既有 5 行硬编码退出 1）；
+  - Godot 导入与无头回归（`/Users/ningye/Documents/Codex/2026-09-20/wo/work/godot-runtime/Godot.app/Contents/MacOS/Godot`）：`--editor --import --quit` → **PASS**；`tools/kaori_lv3_test.gd` → **PASS（`3730 checks; 0 failure(s)`）**；`tools/miyama_ayako_event_test.gd` → **PASS（`37 checks; 0 failure(s)`）**；`tools/event_rendering_save_boundary_test.gd` → **PASS（`8203 checks; 0 failures; no files written`）**；`tools/experience_cap_test.gd` → **PASS（`1049 checks; 0 failures; no save files written`）**；`tools/boundary_save_test.gd` → **PASS（`998 checks; 0 failures`）**；`tools/narrative_save_lock_test.gd` → **PASS（`6 checks; 0 failure(s)`）**；`tools/localization_test.gd` → **PASS（`33 checks; 0 failure(s)`）**；`tools/staff_patient_lv5_readiness_test.gd` → **PASS（`1415 checks; 0 failures`）**；
+  - 原生窗口渲染与截图抽检（非 headless）：`tools/kaori_lv3_preview_capture.gd` → **PASS（`695 checks; 0 failure(s)`，生成并目检 12 张中英春夏／冬季街道、裸肩手术帽、洗手池口罩选项与两张全屏 CG 截图）**。
+- **未完成事项与边界注意**：
+  - 本轮原生窗口验证为脚本自动驱动截图（`kaori_lv3_preview_capture.gd`），尚未进行真人手点全流程游玩；`doc_rei` 新增的 `intraoperative/*` 6 张患者术中差分已完成导入与 `profile.json` 注册，供后续 Lv4／Lv5 真实患者手术剧本直接消费（若与 Codex 同日生成的 `kaori_intraoperative_v1/tense_base_raw.png` 候选合并取舍，请注意两者目录已独立隔离）。未触碰任何玩家存档槽位，保留工作区其他未提交改动，未执行 commit/push/clean。
+
+
+### 2026-11-13 — Codex — 深山佳織患者术中头像紧张基础候选
+
+- 新增 research/generated_candidates/kaori_intraoperative_v1/：tense_base_raw.png、prompt.txt、generation.json、.gdignore。使用当前 portrait_pack_v20 白大褂脸型、source_closeup_purple 原作脸部与高卷杏术中头像构图参考，通过内置 image_gen 生成紫红眼、紫发全收入手术帽的正面肩部以上紧张头像。年龄按 profile 为 23。
+- Pillow 解码通过：1448×1086 RGB；SHA256 与来源已记录，生成图视觉检查。按 hoshimi-portrait-pipeline 两阶段流程等待基础图确认，再生成 pain / near_collapse / anesthetized 并统一离线透明化。
+- 未接入运行数据、未替换旧患者素材；不运行 Godot／本地化回归。本轮未 commit/push，保留工作区其他修改。
+
 
 ### 2026-11-12 — Codex — 诗织 Lv3 下篇三张用户认可 CG 正式接入
 

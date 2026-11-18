@@ -177,9 +177,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 		var tall_staff_portrait: bool = stage.scene == "operating_room" and not (field_visual_visible and app.operative_field_hud_enabled)
 		if portrait != null:
 			portrait.name = "StaffInteractionPortrait"
-			portrait.position = Vector2(760, 348) if field_visual_visible and app.operative_field_hud_enabled else Vector2(835, 145) if tall_staff_portrait else Vector2(760, 185)
-			portrait.size = Vector2(450, 172) if field_visual_visible and app.operative_field_hud_enabled else Vector2(300, 450) if tall_staff_portrait else Vector2(450, 310)
-		var staff_label_y: float = 525 if field_visual_visible and app.operative_field_hud_enabled else 600 if tall_staff_portrait else 508
+			portrait.position = Vector2(760, 348) if field_visual_visible and app.operative_field_hud_enabled else Vector2(835, 138) if tall_staff_portrait else Vector2(760, 185)
+			portrait.size = Vector2(450, 172) if field_visual_visible and app.operative_field_hud_enabled else Vector2(300, 382) if tall_staff_portrait else Vector2(450, 310)
+		var staff_label_y: float = 525 if field_visual_visible and app.operative_field_hud_enabled else 526 if tall_staff_portrait else 508
 		app.label_at("%s · %s" % [prep.staff_display_name(speaking_staff.name), prep.presentation_staff_role()], Vector2(785, staff_label_y), 18, Color("f4f0e6"), 410)
 	elif show_intraoperative_patient:
 		var intraoperative_expression := intraoperative_patient_expression(prep)
@@ -232,7 +232,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 				var item: Dictionary = prep.definition.preparations[i]
 				var check := CheckButton.new()
 				check.name = "Preparation_" + item.id
-				check.text = app.tx("ui.auto.5650688f06db", "%s  ·  %s 分钟") % [item.label, item.minutes]
+				check.text = app.tx("ui.auto.5650688f06db", "%s  ·  %s 分钟") % [item.label, int(item.minutes)]
 				check.position = Vector2(60, 299 + i * 48)
 				check.size = Vector2(650, 43)
 				check.button_pressed = prep.selected_preparations.has(item.id)
@@ -240,7 +240,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 				check.toggled.connect(func(_pressed: bool): app.preop_event({"kind": "toggle", "id": item.id}))
 				app.page.add_child(check)
 				PresenceHint.decorate(app, check, item, "preop")
-			var instruction: String = app.tx("ui.auto.d3195ea0e42b", "额外照顾 %s / %s · 选择由护士完成，或由你亲手执行") % [prep.selected_preparations.size(), prep.definition.max_optional_preparations]
+			var instruction: String = app.tx("ui.auto.d3195ea0e42b", "额外照顾 %s / %s · 选择由护士完成，或由你亲手执行") % [prep.selected_preparations.size(), int(prep.definition.max_optional_preparations)]
 			if not prep.team.has(prep.definition.ward_role.id):
 				instruction = app.tx("ui.auto.7fb2f6e70921", "请先在上方指派病房准备护士，才能执行准备。")
 			var preparation_instruction_font_size := 15 if app.content.localizer.locale == "en" else 17
@@ -273,9 +273,11 @@ static func render(app: Control, prep: RefCounted) -> void:
 				var can_sweep: bool = unlocked and str(surgery.id) == str(prep.definition.surgery_id) and app.game.procedure_sweep_unlocked(str(surgery.id))
 				var prefix := "" if unlocked else "🔒 "
 				var recommendation_marker := "★ " if correct_procedure else ""
-				procedure_button.text = app.tx("ui.auto.46e12e48717d", "%s%s　·　%s　·　推荐技术 %s") % [prefix, recommendation_marker + surgery.name, prep.duration_text(int(surgery.duration_minutes)), surgery.recommended_surgery]
+				procedure_button.text = app.tx("ui.auto.46e12e48717d", "%s%s　·　%s　·　推荐技术 %s") % [prefix, recommendation_marker + surgery.name, prep.duration_text(int(surgery.duration_minutes)), int(surgery.recommended_surgery)]
 				procedure_button.custom_minimum_size = Vector2(457 if can_sweep else 625, 50)
+				procedure_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 				procedure_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				app.style_action_button(procedure_button)
 				procedure_button.pressed.connect(app.preop_event.bind({"kind": "procedure", "id": surgery.id}))
 				procedure_button.name = "Procedure_" + surgery.id
 				procedure_button.disabled = not unlocked
@@ -296,7 +298,12 @@ static func render(app: Control, prep: RefCounted) -> void:
 					sweep_button.name = "ProcedureSweep_" + str(surgery.id)
 					sweep_button.text = app.tx("ui.surgery.sweep", "一键扫荡")
 					sweep_button.custom_minimum_size = Vector2(160, 50)
-					sweep_button.tooltip_text = app.tx("ui.surgery.sweep_hint", "立即完成已成功做过的术式，并获得经验、声望与团队熟悉度。")
+					app.style_action_button(sweep_button)
+					var asuka_lv1_blocks_sweep: bool = preload("res://godot/systems/asuka_lv1.gd").blocks_sweep(app.game, prep)
+					sweep_button.disabled = asuka_lv1_blocks_sweep
+					sweep_button.tooltip_text = preload("res://godot/systems/asuka_lv1.gd").sweep_block_tooltip(app.content.localizer.locale == "en") if asuka_lv1_blocks_sweep else app.tx("ui.surgery.sweep_hint", "立即完成已成功做过的术式，并获得经验、声望与团队熟悉度。")
+					sweep_button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
+					sweep_button.add_theme_color_override("font_disabled_color", Color("84969a"))
 					sweep_button.pressed.connect(app.sweep_surgery.bind(str(surgery.id)))
 					procedure_row.add_child(sweep_button)
 			action_y = 900
@@ -405,9 +412,10 @@ static func render(app: Control, prep: RefCounted) -> void:
 				var lines: Array[String] = []
 				for id in prep.selected_preparations:
 					lines.append(prep.preparation(id).response)
-				app.label_at("\n".join(lines), Vector2(65, 195), 20, Color("e8cfaa"), 645)
-				app.label_at(app.tx("ui.auto.7a75052c625e", "下一步：更衣 → 刷手 → 进入手术室"), Vector2(65, 280), 22, Color("e8cfaa"), 645)
-				action_y = 340
+				var prep_summary: Label = app.label_at("\n".join(lines), Vector2(65, 192), 19, Color("e8cfaa"), 645)
+				var next_step_y := maxf(278.0, 198.0 + prep_summary.get_minimum_size().y + 12.0)
+				app.label_at(app.tx("ui.auto.7a75052c625e", "下一步：更衣 → 刷手 → 进入手术室"), Vector2(65, next_step_y), 21, Color("e8cfaa"), 645)
+				action_y = int(next_step_y + 44.0)
 	var action_index := 0
 	for action in stage.actions:
 		if not prep.action_visible(action):
@@ -442,8 +450,9 @@ static func render(app: Control, prep: RefCounted) -> void:
 	if not preparation_sweep_id.is_empty():
 		var early_sweep_button: Button = app.button_at(app.tx("ui.surgery.sweep", "一键扫荡"), Vector2(500, action_y), Vector2(215, 54), app.sweep_surgery.bind(preparation_sweep_id))
 		early_sweep_button.name = "ProcedureSweep_" + preparation_sweep_id
-		early_sweep_button.disabled = not prep.sweep_team_ready()
-		early_sweep_button.tooltip_text = app.tx("ui.surgery.sweep_ready_hint", "选齐手术团队和病房准备护士后，立即完成已成功做过的术式。")
+		var asuka_lv1_blocks_early_sweep: bool = preload("res://godot/systems/asuka_lv1.gd").blocks_sweep(app.game, prep)
+		early_sweep_button.disabled = not prep.sweep_team_ready() or asuka_lv1_blocks_early_sweep
+		early_sweep_button.tooltip_text = preload("res://godot/systems/asuka_lv1.gd").sweep_block_tooltip(app.content.localizer.locale == "en") if asuka_lv1_blocks_early_sweep else app.tx("ui.surgery.sweep_ready_hint", "选齐手术团队和病房准备护士后，立即完成已成功做过的术式。")
 		early_sweep_button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
 		early_sweep_button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 	UI.panel(app, Vector2(55, 558), Vector2(1170, 142))
@@ -464,10 +473,14 @@ static func render(app: Control, prep: RefCounted) -> void:
 		text = str(flow_step.get("transition_text", "")).strip_edges()
 	else:
 		text = default_prompt if prep.feedback.is_empty() else prep.feedback
-	if not prep.showing_ward_care_penalty() and not speaking_staff.is_empty() and text.begins_with(speaking_staff.name + "："):
-		text = text.substr((speaking_staff.name + "：").length())
+	var speaker_sep: String = ": " if app.content.localizer.locale == "en" else "："
+	if not prep.showing_ward_care_penalty() and not speaking_staff.is_empty():
+		for sep in ["：", ": "]:
+			if text.begins_with(speaking_staff.name + sep):
+				text = text.substr((speaking_staff.name + sep).length())
+				break
 	elif not prep.feedback.is_empty() and prep.feedback_speaker == "player" and stage.kind != "case_review":
-		text = app.protagonist_name() + "：" + text
+		text = app.protagonist_name() + speaker_sep + text
 	var record_font_size := 18 if text.length() > 110 else 20 if text.length() > 65 else 22
 	var record_name := "GraphicPreopDialogueText" if stage.kind == "graphic_preop_dialogue" else "PreopRecordText"
 	text = prep.surgery_display_text(text)
@@ -479,7 +492,7 @@ static func render(app: Control, prep: RefCounted) -> void:
 		save_button.add_theme_stylebox_override("disabled", app.panel_style(Color("24343b")))
 		save_button.add_theme_color_override("font_disabled_color", Color("a0b1b5"))
 	app.button_at(app.tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), app.request_load)
-	app.label_at(app.tx("ui.auto.dc0675ddad6a", "场景占位 · 本段用时 %s 分钟") % prep.minutes, Vector2(795, 723), 16, Color("c2d2cc"), 420)
+	app.label_at(app.tx("ui.preop.stage_elapsed", "本段用时 %s 分钟") % int(prep.minutes), Vector2(795, 723), 16, Color("c2d2cc"), 420)
 
 static func render_or_table_palpation(app: Control, prep: RefCounted, patient: Dictionary, story: RefCounted = null) -> void:
 	app.screen = "or_table_palpation"
@@ -522,18 +535,21 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 		instruction = str(app.tx("ui.or_palpation.instruction", "选择工具和力度，再点击身体区域。\n触诊可以跳过；每次操作会累积患者反应。"))
 	if story != null:
 		instruction = app.tx("ui.miyama_palpation.instruction", "点击身体区域进行触诊，也可以直接继续剧情。")
-	app.label_at(instruction, Vector2(55, 158), 17, Color("e1e4db"), 245)
-	app.label_at(app.tx("ui.or_palpation.tools", "检查工具"), Vector2(55, 235), 20, Color("e8cfaa"), 245)
+	var palpation_instr_font := 15 if app.content.localizer.locale == "en" else 17
+	var instr_label: Label = app.label_at(instruction, Vector2(55, 148), palpation_instr_font, Color("e1e4db"), 255)
+	var tools_top_y := maxf(248.0, 154.0 + instr_label.get_minimum_size().y + 10.0)
+	app.label_at(app.tx("ui.or_palpation.tools", "检查工具"), Vector2(55, tools_top_y), 20, Color("e8cfaa"), 245)
 	var tools: Array = [
 		{"id": "palpation", "label": app.tx("ui.or_palpation.hand", "手"), "icon": app.OR_TABLE_HAND_CURSOR_PATH},
 		{"id": "needle", "label": app.tx("ui.or_palpation.needle", "针"), "icon": app.OR_TABLE_NEEDLE_CURSOR_PATH},
 		{"id": "scalpel", "label": app.tx("ui.or_palpation.scalpel", "手术刀"), "icon": app.OR_TABLE_SCALPEL_CURSOR_PATH},
 	]
+	var tools_base_y := tools_top_y + 32.0
 	for i in range(tools.size()):
 		var tool: Dictionary = tools[i]
 		var selected: bool = str(app.or_table_palpation_tool) == str(tool.id)
 		var prefix: String = "●  " if selected else "○  "
-		var tool_button: Button = app.button_at(prefix + str(tool.label), Vector2(55, 270 + i * 58), Vector2(245, 50), (app.set_or_table_palpation_tool if story == null else story.select_tool).bind(str(tool.id)))
+		var tool_button: Button = app.button_at(prefix + str(tool.label), Vector2(55, tools_base_y + i * 55), Vector2(245, 48), (app.set_or_table_palpation_tool if story == null else story.select_tool).bind(str(tool.id)))
 		tool_button.name = "PalpationTool_" + ("hand" if str(tool.id) == "palpation" else str(tool.id))
 		tool_button.disabled = story != null and str(tool.id) != "palpation"
 		tool_button.icon = load(str(tool.icon))
@@ -545,8 +561,9 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 			var selected_color := Color("653d43") if str(tool.id) == "scalpel" else Color("365963")
 			tool_button.add_theme_stylebox_override("normal", app.panel_style(selected_color, Color("e8cfaa")))
 
+	var strength_top_y := tools_base_y + 174.0
 	if str(app.or_table_palpation_tool) == "palpation" and not sensory_test:
-		app.label_at(app.tx("ui.or_palpation.strength", "触诊力度"), Vector2(55, 452), 20, Color("e8cfaa"), 245)
+		app.label_at(app.tx("ui.or_palpation.strength", "触诊力度"), Vector2(55, strength_top_y), 20, Color("e8cfaa"), 245)
 		var intensities: Array = [
 			{"id": "light", "label": app.tx("ui.or_palpation.light", "轻触")},
 			{"id": "standard", "label": app.tx("ui.or_palpation.standard", "常规")},
@@ -555,19 +572,21 @@ static func render_or_table_palpation(app: Control, prep: RefCounted, patient: D
 		for i in range(intensities.size()):
 			var intensity: Dictionary = intensities[i]
 			var selected: bool = str(app.or_table_palpation_intensity) == str(intensity.id)
-			var prefix: String = "● " if selected else "○ "
-			var strength_button: Button = app.button_at(prefix + str(intensity.label), Vector2(55 + i * 82, 487), Vector2(78, 48), (app.set_or_table_palpation_intensity if story == null else story.select_intensity).bind(str(intensity.id)))
+			var prefix: String = ("●" if selected else "○") if app.content.localizer.locale == "en" else ("● " if selected else "○ ")
+			var strength_button: Button = app.button_at(prefix + str(intensity.label), Vector2(52 + i * 85, strength_top_y + 34.0), Vector2(82, 46), (app.set_or_table_palpation_intensity if story == null else story.select_intensity).bind(str(intensity.id)))
 			strength_button.name = "PalpationStrength_" + str(intensity.id)
-			strength_button.add_theme_font_size_override("font_size", 16)
+			strength_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+			strength_button.clip_text = true
+			strength_button.add_theme_font_size_override("font_size", 13 if app.content.localizer.locale == "en" else 16)
 			for style_name in ["normal", "hover", "focus", "pressed"]:
 				var strength_style: StyleBoxFlat = app.panel_style(Color("203e48"))
-				strength_style.content_margin_left = 5
-				strength_style.content_margin_right = 5
+				strength_style.content_margin_left = 4
+				strength_style.content_margin_right = 4
 				strength_button.add_theme_stylebox_override(style_name, strength_style)
 			if selected:
 				var selected_strength_style: StyleBoxFlat = app.panel_style(Color("365963"), Color("e8cfaa"))
-				selected_strength_style.content_margin_left = 5
-				selected_strength_style.content_margin_right = 5
+				selected_strength_style.content_margin_left = 4
+				selected_strength_style.content_margin_right = 4
 				strength_button.add_theme_stylebox_override("normal", selected_strength_style)
 	elif str(app.or_table_palpation_tool) == "needle":
 		var needle_note: String
@@ -882,6 +901,9 @@ static func role_picker(app: Control, prep: RefCounted, role: Dictionary, y: int
 	picker.name = "Role_" + role.id
 	picker.position = Vector2(308, y)
 	picker.size = Vector2(412, 50)
+	picker.fit_to_longest_item = false
+	picker.clip_text = true
+	app.style_action_button(picker)
 	picker.add_item(app.tx("ui.auto.3d372174482a", "请选择（尚未指派）"))
 	var people: Array = prep.candidates(role.id)
 	var selected_index := 0

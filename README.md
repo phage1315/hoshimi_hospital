@@ -1,123 +1,140 @@
-# 星见医院 · 春日序章
+# 星见医院 · 春日序章 (Hoshimi Hospital: Spring Prologue)
 
-日式 2D 医院生活模拟 × Visual Novel × 成人向角色关系沙箱，中文开发原型。当前对外试玩版本为 **v0.1.0**（内部功能里程碑 0.7：医护人物事件）。第一版专注自由、可扩展和高重复游玩的医院沙箱；未来的 CORE 医学伦理悬疑 VN 已独立保存，不作为当前隐藏主线。当前包含问诊、住院、术前至手术结算，以及长期医护角色的首批个人事件。
+日式 2D 医院生活模拟 × Visual Novel × 成人向角色关系沙箱。
 
-## 启动
+基于 **Godot 4.5.1 标准版（GDScript）** 构建，支持 **简体中文（`zh_CN`）与英文（`en`）双语实时切换**。本作以 **365 天医院日常与人物羁绊**本身作为核心体验（表面像热闹的青春社团，走上手术台则是严谨可靠的 1995–2005 年代日式围术期医院）；独立归档的医学伦理悬疑企划 *CORE* 不作为本作的隐藏主线。
 
-1. 使用标准版 Godot **4.5.1**（GDScript，不需要 .NET）。
-2. 在项目管理器导入本目录的 `project.godot`。
-3. 按 F6 运行当前主场景，或 F5 运行工程。
-4. 点击「开始游戏」阅读短篇入职对话，选择分支后进入医院导览。也可直接从标题页进入导览。
-5. 医院导览 → 门诊诊室，接诊本轮随机排到的患者；也可选择一名医生将她转诊并切换到下一位。
-6. 「基础问诊」「基础查体」会一次整理必要线索；选择检查、判断诊断、沟通并收住院。
-7. 病历默认收起，点击右下角查看；诊断时自动展开，可滚动阅读。底部支持保存、读档。
-8. 住院病房 → 探视 / 继续术前安排：说明安排、组队、指派护士、选择准备项目。
-9. 护士执行准备 → 更衣 → 刷手 → 进入手术室 → 选择术式与麻醉 → 命令开台、递刀、固定切口 → 下刀与术中互动 → 缝合结算与手术 CG。
-10. 在门诊或术前页面都可使用 8 个独立位置保存／读档，原单槽存档自动保留在位置 1。
-11. 人物事件会按日期、时段、地点、关系值与前置章节自然出现在医院场景中；人物档案里的「事件测试」可无副作用检查全部分支。
-12. 医院导览底部的「事件鉴赏」收录正式完成的事件，可以回想分支，并预留专属CG槽位。
+> *注：`project.godot` 中的内部应用版本号仍保留早期标记 `0.1.0`，实际工程已演进至包含 31 名医护／关系角色、普通与 7 席位高级手术、Lv1–Lv5 角色长篇剧情、全员日语短语音、白日梦鉴赏及 v37 安全边界存档的完整沙箱架构。*
 
-命令行：`godot --path /你的路径/hoshimi-hospital`。
+---
 
-界面使用 macOS 的苹方字体；其他平台需要系统提供中文字体。当前包含七名角色的第三方本地占位素材；出处及状态见 docs/asset_sources.md。无音频依赖。
+## 核心特性
 
-## 已实现
+### 1. 门诊、住院与双层手术系统
+- **门诊接诊（`EncounterSession`）**：基于 **36 个随机患者包**、**8 名剧情客串患者**与 **31 套术式病例模板**生成接诊流程，涵盖问诊、查体、辅助检查、诊断／鉴别诊断、医患沟通、收治住院与同科转诊。
+- **术前准备与普通手术（`PreopSession`，32 种术式）**：病房探视、护理准备、手术团队编成（需先在院内结识对应医护）、更衣刷手、麻醉与术式确认、术前触诊、分步术野操作、术中生理危机处理、助手／器械／巡回三岗位纠错及术后成长结算。
+- **7 席位高级手术与跨日转诊（`data/advanced_surgery/`，7 台大型术式）**：独立生理与排程模型，支持第一／第二助手、主／副器械护士、主／副巡回护士与麻醉科医生的 **7 人完整手术室点名（Timeout）**、病例板评估、跨日排期与专项剧情联动。
+- **医护作为患者（Lv5 `StaffPatientRegistry`）**：独立于随机门诊池的医护患者流程，在复用通用临床／术前管线的同时保留专属角色定制台词与称呼上下文（如普通患者称「医生」、亲近医护按关系称呼名字）。
+- **主角五维成长**：随临床与剧情推进结算技术（Skill）、领导力（Leadership）、魅力（Charm）、声望（Reputation）与临床气场（Clinical Presence），逐步解锁高阶术式与关键剧情门禁。
 
-- 标题页、5 个对话节点、2 个分支选项、7 个导航地点。
-- 2 位女医生、3 位成年护士、4 位成年患者的 JSON 占位档案。
-- 四名患者具有稳定的主／副性格、压力反应、八项特质与四类恐惧倾向；宣布住院手术、病房、麻醉、下刀和术中互动使用人物专属对白，但不改变医疗结果。
-- 新游戏随机排列患者顺序；本轮顺序和转诊记录随存档保存。尚未住院的当前患者可转诊给一名医生并切换到下一位。
-- 人物档案和静态关系初值展示；可替换的几何背景、两位人物图片及其余角色剪影。
-- 内容加载、JSON Schema、跨文件引用和岗位校验。
-- 首位患者：接诊、问诊、查体、检查、诊断反馈、沟通及住院交接。
-- 人物立绘配底部短对白，检查结果用简短提示；病历按需展开，只显示已获得线索。
-- 基础问诊、查体合并操作；重复操作不重复计时，0.3 存档仍可继续。
-- 可选额外检查消耗时间；错误诊断有反馈，允许修正。
-- 8 槽手动存档，显示游戏日期、当前候诊患者、完成手术数与保存时间，并恢复病例、病历、关系、事件和日历状态。
-- 术前团队：主刀固定玩家，三位手术同事和一位独立病房护士。
-- 最多两项额外照顾、患者情绪、人物回应、更衣／刷手及入室条件。
-- 病床、更衣区、手术台患者的原生二维占位画面；下刀后从6张女性手术团队CG中稳定随机一张作为全屏背景，读档保持不变。
-- 25种术式可结算排班耗时并标记成功；其中新增20种开放式躯干手术，具体操作仍未开放。
-- 25条术式病例模板：每条包含患者口述、1–5项症状、查体、相应检查、诊断和鉴别诊断，可供后续随机患者与问诊流程生成。
-- 跨越17:00的手术在当晚完成，次日仍从09:00开始；日期切换显示医院夜景转场。
-- 神宮寺成美与七瀬恋各4章人物事件，共8个短篇、24个首层选择分支；选择会改变隐藏好感、熟悉度和剧情记忆旗标。
-- 七瀬恋与朝倉美幸各10个日常微事件，共20个事件、60个轻选择；已接入看诊后、手术后和地点访问调度。每篇保留一个选择点，并以逐句推进的多轮对话铺垫和收束。
-- 人物事件支持前置章节、日期与关系条件，进行中和已完成分支均可存读档。
-- 八个事件已配置医院时段与地点情境入口；事件节点按情绪转折切换真实存在的立绘差分。
-- 事件鉴赏按完成记录解锁，回想不消耗时间或重复改变关系；CG图片路径可后续逐项填充。
-- 医护关系 v1：认识与正式羁绊分离、独立的 Lv1 建立事件、熟悉度驱动的 Lv2–Lv5、隐藏好感倾向、每人五个羁绊／升级槽、固定岗位与午休随机在场、无关系收益的闲谈，以及“认识后才能组队”的手术候选规则。
-- 飯村真奈美保留药剂师职业显示，但按医生团队类别参与组队；经验不足者仍可受邀，并在组队与术中使用警告和差异对白。
+### 2. 人物羁绊、医院日常与多线演出
+- **31 个医护／关系角色分包（`data/staff/`）**：覆盖外科、内科、妇科、麻醉科、放射科、药剂科、门诊／病房／手术室护理团队及访问研究医。
+- **相识与五阶羁绊分离**：首次结识（`met`）与 `Lv1–Lv5` 羁绊等级独立判断；熟悉度（`0–100`）、隐藏好感、属性门槛与冷却天数共同驱动作者编写的个人章节、跨日特殊事件与日常微事件，不靠刷熟悉度自动满级。
+- **丰富的院内外日程（19 个院内／街区地点 + 17 个周日约会地点）**：包含分时段在场调度、工作间隙闲谈、**专属护士（Personal Nurse）**、**下班同行（After-Work Walk）**、**周日普通约会**与**周日全天长篇角色事件**。
+- **鉴赏与回想系统**：内置**事件与 CG 鉴赏回想**（零耗时、不重复结算属性或奖励）以及独立的**白日梦模式（`data/daydreams/`）**。
+- **亲密事件与日常预约（`FreeHRegistry` + `HProfileSession` V1.3.4）**：支持 Lv4 里程碑亲密演出无缝衔接剧情余韵，以及满足前置条件后的日间邀约与下班赴约（每位开放角色绑定唯一固定地点、归一化多边形部位热区、6 档表情差分、双进入风格、手动冲刺与事后演出）。
 
-## 目录
+### 3. 双语本地化、早年 PC VN 赛璐璐美术与日语语音
+- **中英双语全覆盖**：`data/localization/zh_CN.json` 与 `en.json` 覆盖超过 **90,000 条**文本（含全部活跃剧情节点、说话人、选项与 UI 词条），支持运行时无损切换语言。
+- **视觉规格**：`1280×800` 逻辑画布（默认窗口 `1152×720`），采用 2000 年代初日式 PC 视觉小说赛璐璐上色风格，配备多服装／多表情透明立绘（含术中刷手服、无菌手术衣与系带口罩差分）、**103 张场景背景**及角色专属事件 CG。
+- **BGM 与 31 角色日语语音系统**：独立 `BGM` 与 `Voice` 音频总线；本地集成全员 31 位角色共 **470 条** 24 kHz 日语语音（涵盖分时段问候、档案表情、普通 3 席／高级 7 席手术 Timeout、术中危机与推进反馈、关键剧情节点及 H Runner 全流程），具备三档活跃语音 RMS 动态响度均衡（`data/audio/voice_gain_trim.json`）、`-0.5 dBFS` 硬件防爆音限幅器与 `-9.5 dB` BGM 平滑自动闪避（Ducking）。
+
+### 4. 安全边界事实存档（v37 `boundary_facts_v1`）
+- **8 个独立手动槽位 + 原子写入**（`godot/systems/boundary_save.gd`、`save_store.gd`）。
+- **严格安全边界限制**：仅允许在**医院导览界面**与**周日菜单界面**存档；门诊、术前、手术中、剧情事件与亲密演出期间严格锁定存档。
+- **纯业务事实持久化**：存档只写入已结算的日历分钟、数值、关系等级、稳定全局旗标、已完成事件 ID 与跨日预约等业务事实，**绝不持久化任何剧本内部节点 ID、对白页码或临时会话状态**——即使后续增删对白或重排演出节点，旧档依然稳定可读。详见 [v37 存档边界契约](docs/save_boundary_v37.md)。
+
+---
+
+## 快速启动
+
+### 环境要求
+- **Godot Engine 4.5.1 标准版**（GDScript，`GL Compatibility` 渲染器，无需 .NET 版）。
+- 玩家直接运行游戏**不需要**安装 Python（Python 仅用于开发期数据校验、导入与本地化审计脚本）。
+
+### 运行方式
+1. 打开 Godot 4.5.1 项目管理器，导入仓库根目录下的 [`project.godot`](project.godot)。
+2. 按 `F5` 运行主工程（入口场景为 `res://godot/scenes/main.tscn`）。
+3. 或通过命令行直接启动：
+   ```sh
+   # macOS 示例（请替换为本机 Godot 可执行文件路径）
+   /Applications/Godot.app/Contents/MacOS/Godot --path /path/to/hoshimi-hospital
+   ```
+
+---
+
+## 仓库目录结构
 
 ```text
-project.godot          Godot 工程入口（资源根目录）
-data/                 与引擎独立的 JSON 内容
-  schemas/            JSON Schema Draft 2020-12
-  staff/              每位医护一个隔离目录（资料、关系、事件、约会、岗位CG）
-  characters/ patients/ cases/
-  surgeries/ teams/ dialogue/ encounters/ preop/ events/
-assets/               后续美术、音频、动画
-godot/               引擎代码（见下方，不含内容定义）
-  scenes/             主场景入口
-  scripts/            JSON 加载器
-  systems/            对话、病例会话、游戏进度及存读档
-  ui/                 界面和占位图形
-docs/                架构、美术、数据与手术设计
-  design/             沙箱正式规格、对白规范与未来 CORE Story Bible
-tools/               内容校验、引擎冒烟测试
-research/vndb/       研究资料预留，与游戏内容分离
+project.godot                 Godot 4.5.1 工程配置（res:// 根目录，1280×800 逻辑画布）
+AGENTS.md                     项目最高优先级协作规范、存档红线、剧情原文与本地化门禁
+data/                         只读 JSON 游戏内容与 Schema（运行时深拷贝，不回写进度）
+  manifest.json               内容总索引
+  schemas/                    JSON Schema Draft 2020-12 校验定义
+  staff/<id>/                 31 个角色独立内容包（profile/relationship/events/h_* 等）
+  patients/                   36 个随机患者包、客串患者、门诊／术前共用模板与性格对白
+  cases/ & surgeries/         病例模板、32 种普通术式、触诊与清醒患者术中互动池
+  advanced_surgery/           7 席位高级手术术式、专科、排程与术中对白数据
+  events/ & daydreams/        全局事件索引、约会地点与白日梦目录
+  audio/                      事件／H Runner 语音映射（event_voice_cues.json）与响度均衡表
+  localization/               中英双语词典（zh_CN.json / en.json）
+assets/                       运行美术与音频资源（characters / backgrounds / events / h / audio）
+godot/                        GDScript 引擎运行代码
+  scenes/                     主场景入口（main.tscn）
+  scripts/                    ContentLoader 只读分包加载与合并
+  systems/                    GameState、各流程 Session、Registry、高级手术模型与 v37 BoundarySave
+  ui/                         页面编排（app.gd）、角色舞台（character_stage.gd）、BGM 与语音导演
+docs/                         架构、上下文、设计规范、QA 报告与可移植工作流文档
+  CONTEXT.md                  项目全局上下文与模块地图
+  HANDOFF.md                  跨 AI 工具实时交接记录
+  design/                     世界观、1995–2005 围术期规范、角色门禁矩阵与设计文档
+  skills/                     立绘抠图、CG 方向、角色配音与原生窗口验收工作流说明
+research/                     作者剧本原稿（source_scripts）、英文译稿（translations）与候选归档
+tools/                        Schema 校验、双语审计、剧本导入器、语音执行器及 Godot 自动化测试集
 ```
 
-## 验证
+---
 
+## 开发与校验命令
+
+在仓库根目录执行。**注意：任何会读写存档的测试脚本必须传入独立的 `/private/tmp/...` 临时路径，严禁指向或覆盖玩家真实存档目录。**
+
+### 1. Python 静态数据与双语本地化审计
 ```sh
-python3 tools/localization_audit.py
-python3 tools/staff_localization_test.py
-python3 tools/dialogue_layout_audit.py
 python3 -m venv .venv
 .venv/bin/pip install -r tools/requirements.txt
+
+# JSON Schema 与跨文件引用校验
 .venv/bin/python tools/validate_data.py
-godot --headless --path . --editor --import --quit
-godot --headless --path . --script res://tools/smoke_test.gd
-godot --headless --path . --script res://tools/localization_test.gd
-# 测试文件路径必须是独立临时路径，会覆盖该文件；不要指向实际玩家存档。
-godot --headless --path . --script res://tools/clinic_test.gd -- /tmp/hoshimi-clinic-test.json
-godot --headless --path . --script res://tools/save_store_test.gd -- /tmp/hoshimi-save-store-test.json
-godot --headless --path . --script res://tools/test_save_generator_test.gd
-godot --headless --path . --script res://tools/preop_test.gd -- /tmp/hoshimi-preop-test.json
-godot --headless --path . --script res://tools/surgery_crisis_test.gd
-godot --headless --path . --script res://tools/or_table_palpation_test.gd
-godot --headless --path . --script res://tools/surgery_progression_test.gd
-godot --headless --path . --script res://tools/surgery_phase1c_test.gd
-godot --headless --path . --script res://tools/character_event_test.gd
-godot --headless --path . --script res://tools/ange_relationship_test.gd
-godot --headless --path . --script res://tools/micro_event_test.gd
-godot --headless --path . --script res://tools/relationship_system_test.gd
-godot --headless --path . --script res://tools/personal_nurse_system_test.gd
-godot --headless --path . --script res://tools/adult_intimacy_system_test.gd
-godot --headless --path . --script res://tools/maya_character_test.gd
-godot --headless --path . --script res://tools/futaba_character_test.gd
-godot --headless --path . --script res://tools/text_overflow_test.gd
-godot --headless --path . --script res://tools/dialogue_playback_test.gd
+
+# 叙事文本与全局 UI 中英双语完整性审计（新增／修改剧情必跑）
+python3 tools/narrative_localization_test.py
+python3 tools/localization_audit.py
+python3 tools/staff_localization_test.py
+python3 tools/patient_bundle_localization_test.py
 ```
 
-内容校验使用独立 Python 工具；玩家运行游戏不需要 Python。
+### 2. Godot 导入与核心 Headless 回归测试
+```sh
+# 扫描并导入新增美术／音频资源
+godot --headless --path . --log-file /private/tmp/hoshimi-import.log --editor --import --quit
 
-## 新增医护角色
+# 基础冒烟与运行时双语加载测试
+godot --headless --path . --log-file /private/tmp/hoshimi-smoke.log --script res://tools/smoke_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-loc.log --script res://tools/localization_test.gd
 
-医护内容采用 `data/staff/<角色ID>/` 隔离目录。新增人物时复制一个相近角色目录，至少提供 `profile.json`、`relationship.json` 和引用它们的 `bundle.json`，再把该 `bundle.json` 加入 `data/staff/index.json`。个人事件、特殊事件、约会配置、地点闲谈、日常微事件和首次岗位 CG 分别使用可选的 `events.json`、`special_events.json`、`special_event_steps.json`、`date_profiles.json`、`time_events.json`、`micro_events.json` 与 `role_rewards.json`，并在角色自己的 `bundle.json` 登记。运行时会将角色包合并为原有集合，角色 ID、事件 ID 和存档结构不变。
+# v37 安全边界存档与事件禁存锁测试
+godot --headless --path . --log-file /private/tmp/hoshimi-bsave.log --script res://tools/boundary_save_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-savelock.log --script res://tools/narrative_save_lock_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-store.log --script res://tools/save_store_test.gd -- /private/tmp/hoshimi-save-store-test.json
 
-## 限制与下一步
+# 关系门禁、手术推进、高级手术、Free H 预约与语音集成测试
+godot --headless --path . --log-file /private/tmp/hoshimi-rel.log --script res://tools/relationship_system_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-surg.log --script res://tools/surgery_progression_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-adv.log --script res://tools/advanced_surgery_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-freeh.log --script res://tools/free_h_scheduling_test.gd
+godot --headless --path . --log-file /private/tmp/hoshimi-voice.log --script res://tools/voice_integration_test.gd
+```
 
-首个病例使用简化的剧情线索与固定报告，无真实医学操作或个体化治疗建议。检查在本原型中即时返回报告，并累计院内时间；不需要现实等待。患者仍为文字占位，背景仍为通用走廊。
+---
 
-存档覆盖门诊、术前和人物事件进度，不保存入职对话的逐句位置、地点页位置或 UI 滚动位置；没有自动存档。新游戏只清空当前内存进度，已有文件在再次保存时才被替换。8 个手动位置互不覆盖。
+## 扩展与协作文档导航
 
-已有一段接在术前确认后的手术室互动骨架，包含四种麻醉状态、无麻醉时的一次反悔机会、护士递刀、助手固定切口、下刀反应、恐惧／痛苦／尊严／配合四项反馈、患者性格对白与表情切换，以及缝合后的 CG 与结果结算。现有 25 种术式均有数据驱动的术野确认、团队交流、关键判断和完成复核；错误判断会由助手纠正。清醒患者互动池现有 47 条内容，覆盖六种有效主题、七个术式类别、六台代表性术式的一次性专属互动，以及恶心和嗜睡临时状态；同优先级对白按确定顺序防重复轮换。患者性格目前只改变既有反应文字和视觉表达，不改变数值与手术结果。它目前不包含具体手术执行器、术后关系变化或失败结局。
-
-互动树与扩展方式见 [手术室互动骨架](docs/surgery_interaction_skeleton.md)。下一里程碑为三台 7／12／17–18 步代表性术式垂直切片。
-
-详细玩法与存档约定见 [门诊里程碑](docs/clinic_milestone.md)。
-
-术前玩法与当前范围见 [术前里程碑](docs/preop_milestone.md)；美术需求见 [术前素材清单](docs/preop_art_requests.md)。
+- **协作规则与红线**：[AGENTS.md](AGENTS.md)
+- **项目上下文与角色索引**：[docs/CONTEXT.md](docs/CONTEXT.md)
+- **最新开发交接记录**：[docs/HANDOFF.md](docs/HANDOFF.md)
+- **v37 安全边界存档契约**：[docs/save_boundary_v37.md](docs/save_boundary_v37.md)
+- **多语言本地化架构**：[docs/localization.md](docs/localization.md)
+- **角色声线与语音登记表**：[docs/character_voice_ids.md](docs/character_voice_ids.md)
+- **新增随机患者指南**：[docs/adding_random_patient.md](docs/adding_random_patient.md)
+- **立绘／CG／配音／原生实机验收工作流**：[docs/skills/README.md](docs/skills/README.md)

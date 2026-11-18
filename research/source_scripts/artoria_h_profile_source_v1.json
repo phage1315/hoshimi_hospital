@@ -1,0 +1,555 @@
+{
+  "actor_id": "doc_artoria",
+  "version": "1.0",
+  "adult_confirmed": true,
+  "free_h_location": "home",
+  "preferences": {
+    "zone_defaults": {
+      "lips": "favorite",
+      "cheeks": "mild",
+      "neck": "favorite",
+      "breasts": "strong",
+      "nipples": "strong",
+      "navel": "low",
+      "torso_other": "mild",
+      "genitals": "strong",
+      "thighs": "mild"
+    },
+    "action_overrides": {
+      "light_bite": "mild"
+    },
+    "combo_overrides": {
+      "kiss:lips": "favorite",
+      "kiss:neck": "favorite",
+      "caress:cheeks": "favorite",
+      "caress:breasts": "favorite",
+      "caress:genitals": "favorite",
+      "kiss:nipples": "favorite",
+      "lick:nipples": "favorite",
+      "lick:genitals": "favorite",
+      "caress:torso_other": "strong",
+      "caress:thighs": "strong",
+      "kiss:thighs": "strong",
+      "lick:cheeks": "low",
+      "light_bite:cheeks": "low",
+      "light_bite:lips": "low",
+      "light_bite:genitals": "low"
+    }
+  },
+  "booking_response": {
+    "zh_CN": "……今晚我没有排班。下班后如果方便，来我家里吧，坂口医生……我泡好红茶等你。",
+    "en": "...I have no late duties tonight. If you're free after hours, come to my place, Dr. Sakaguchi... I'll have tea waiting."
+  },
+  "profile_dialogue_zh": {
+    "location_entry": {
+      "home": [
+        "……门锁好了。进了这扇门就没有副部长了……过来坐吧，坂口君。",
+        "红茶刚泡好，不过……看你的眼神，好像想先做别的事呢，坂口君。",
+        "……把发带解开以后，总觉得连防备都一起卸下来了。今晚也拜托你了，坂口君。",
+        "在医院里忙了一整天，只有回到这里靠着你的时候，心才会彻底静下来。"
+      ]
+    },
+    "tier_fallback": {
+      "low": [
+        "……坂口君，那样碰除了有点痒，实在让人不知该如何回应。",
+        "唔……如果只是想捉弄我的话，请稍微适可而止一点。",
+        "……这种不上不下的试探，实在有点让人困扰啊，坂口君。",
+        "……别闹了，坂口君。你明明知道怎样做才会让我安心。"
+      ],
+      "mild": [
+        "……嗯。很温和的感觉，连紧绷的肩膀都慢慢松开了。",
+        "被你这么耐心地对待……总觉得有点不好意思，坂口君。",
+        "……不讨厌这样。只是离得太近，心跳声好像瞒不住了。",
+        "唔……像这样慢慢靠近的话，我也能跟上你的节奏。"
+      ],
+      "strong": [
+        "唔……っ、坂口君……呼吸一下子乱掉了，请稍微等我缓一缓……",
+        "哈啊……明明想保持镇定的，身体却先一步热起来了……",
+        "嗯……っ！别一直盯着我的脸看……现在的表情一定很不像样……",
+        "啊……坂口君，再这样下去……我真的要撑不住平时的样子了……"
+      ],
+      "favorite": [
+        "哈啊……っ、坂口君……被你碰到那里，连思考的力气都没了……！",
+        "嗯啊……っ！太犯规了……偏偏只有对你，我一点防备都留不住……",
+        "啊……っ、请别停下，坂口君……今晚我不想再忍耐了……！",
+        "唔嗯……っ！整个人都快化在你怀里了……抱紧我，坂口君……！"
+      ]
+    },
+    "zone_tier": {
+      "lips:favorite": [
+        "嗯……っ、嘴唇好烫……只要贴上你的气息，心口就软得一塌糊涂……",
+        "哈啊……别急着退开，坂口君……我还想再靠近一点……"
+      ],
+      "cheeks:mild": [
+        "……脸颊很烫吧？被你这么认真地碰着脸，实在很难不害羞。",
+        "嗯……很安心的温度。只有在坂口君面前，我才会露出这种神情。"
+      ],
+      "neck:favorite": [
+        "啊……っ、把头发散开以后，颈侧根本遮不住……太敏锐了，坂口君……！",
+        "哈啊……っ！脖子一热起来，连后背都跟着一阵阵发麻……"
+      ],
+      "breasts:strong": [
+        "唔……っ、胸口跳得好快……这样会被你听出我有多紧张的……",
+        "哈啊……别一直欺负胸前……连呼吸都提不上来了，坂口君……"
+      ],
+      "nipples:strong": [
+        "呀……っ、嗯！尖端太敏锐了……身体自己颤了一下，好难为情……",
+        "唔嗯……っ！专挑最羞人的地方……坂口君，稍微轻一点……"
+      ],
+      "navel:low": [
+        "……唔，肚脐附近只会觉得发痒而已，坂口君。",
+        "……一直停在小腹这儿的话，我实在不知道该摆出什么表情才好。"
+      ],
+      "torso_other:mild": [
+        "嗯……贴在身上的温度很暖和，让人忍不住想往你怀里靠。",
+        "……平时总是我挺直后背撑着，现在这样放松交给你的感觉真好。"
+      ],
+      "genitals:strong": [
+        "哈啊……っ！那里太羞人了……坂口君，别靠得那么近看我……",
+        "嗯啊……っ、身体自己在发抖……明明想忍住声音的……！"
+      ],
+      "thighs:mild": [
+        "唔……大腿被你的温度贴着，连腿上都快使不上劲了……",
+        "……靠得这么近碰大腿的话，想躲也没地方躲了啊，坂口君。"
+      ]
+    },
+    "combo": {
+      "kiss:lips": [
+        "嗯……っ、唔……接吻得这么深，连脑子里的杂念都被你吻空了……",
+        "哈啊……っ、坂口君……再吻我一下……现在我只想感受你的气息……"
+      ],
+      "kiss:neck": [
+        "啊……っ、温热的嘴唇落在散开的金发下面……脖子好烫，坂口君……！",
+        "嗯……っ、哈啊……顺着颈侧一路往下吻……我真的要站不稳了……"
+      ],
+      "caress:cheeks": [
+        "嗯……被你这样温柔地捧着脸颊，总觉得自己真的被好好珍惜着……",
+        "……坂口君的手掌好暖和。看着你的眼睛，我就什么都不用逞强了。"
+      ],
+      "caress:breasts": [
+        "嗯啊……っ！手掌贴着胸口慢慢揉开……心跳快得根本藏不住了……！",
+        "哈啊……っ、坂口君……被你的手这样包住胸前，身体热得厉害……！"
+      ],
+      "caress:genitals": [
+        "啊……っ、哈啊！手指太温柔又太准了……坂口君，腰要软下来了……！",
+        "唔嗯……っ！别一边摸那里一边叫我的名字……声音真的忍不住了……！"
+      ],
+      "kiss:nipples": [
+        "呀……っ！嘴唇轻轻印在尖端上的瞬间……整颗心都跟着缩紧了……！",
+        "哈啊……っ、坂口君……被你这么珍重地亲吻胸前，羞得快睁不开眼了……"
+      ],
+      "lick:nipples": [
+        "啊……っ、嗯啊！舌尖绕着乳尖打转……太刺激了，坂口君……！",
+        "哈啊……っ！别用温热的舌头反复挑那里……背脊都在发麻了……！"
+      ],
+      "lick:genitals": [
+        "呀啊……っ！坂口君，别用舌头碰那种地方……呜，手指抓不稳床单了……！",
+        "哈啊……っ、太羞人了……舌尖每划过一下，脑子里就一片空白……！"
+      ],
+      "caress:torso_other": [
+        "唔……っ、手掌顺着肌肤一路滑过去……连呼吸都被你的手带乱了……",
+        "哈啊……被你稳稳揽在怀里抚摸着，整个人都卸下力气任你摆布了……"
+      ],
+      "caress:thighs": [
+        "唔……っ、掌心贴着大腿内侧慢慢往上……坂口君，腿真的在发抖了……",
+        "哈啊……你的手好烫，摩挲得大腿根一阵阵发酸……慢一点……"
+      ],
+      "kiss:thighs": [
+        "啊……っ、嘴唇一寸寸吻在大腿内侧……这种地方太让人难为情了……",
+        "哈啊……温热的呼吸洒在腿根边上，连膝盖都绷不住力气了……"
+      ],
+      "lick:cheeks": [
+        "……唔？！舔、舔脸颊算什么呀，坂口君……请不要像逗小动物一样闹我。",
+        "……脸都湿了。明明平时那么稳重的人，怎么私底下会做这种恶作剧。"
+      ],
+      "light_bite:cheeks": [
+        "……嘶，轻轻咬脸颊做什么呀？就算不疼，也实在太孩子气了，坂口君。",
+        "……要是脸上留下印子，明天去医院可怎么见人。请稍微克制一点。"
+      ],
+      "light_bite:lips": [
+        "唔……牙齿磕到嘴唇了。坂口君，想接吻的话，请好好地吻我。",
+        "……嘴唇要是肿起来就瞒不住大家了。力道再放轻一点好吗？"
+      ],
+      "light_bite:genitals": [
+        "……っ！等一下，坂口君！那里太娇嫩了，绝对不可以拿牙齿碰……！",
+        "唔……别闹了，那种地方怎么能轻咬呢……换用手或者亲吻好不好？"
+      ],
+      "caress:lips": [
+        "嗯……指腹轻轻摩挲着嘴唇，痒痒的又很安心……是在等我主动张口吗？",
+        "哈啊……光是嘴唇被你的指尖擦过，呼吸就不由自主热起来了……"
+      ],
+      "lick:lips": [
+        "唔嗯……っ、舌尖顺着唇缝探进来……哈啊，完全没法拒绝你……",
+        "哈啊……っ、别只舔湿嘴唇就停住……再深入一点也没关系，坂口君……"
+      ],
+      "kiss:cheeks": [
+        "……嗯。落在脸颊上的吻好轻……总觉得心口像被羽毛拂过一样发软。",
+        "……被你这样亲一下脸颊，反而比直接接吻还要让人害羞呢，坂口君。"
+      ],
+      "caress:neck": [
+        "唔……っ、手指顺着颈侧滑下来的时候，连耳根都跟着烧起来了……",
+        "哈啊……散着头发被你抚摸脖子，好像连最后一点克制都被看穿了……"
+      ],
+      "lick:neck": [
+        "呀……っ、湿热的舌尖贴着脖子往上舔……身体忍不住往你怀里缩了……！",
+        "嗯……っ、哈啊……颈窝那里太敏锐了……声音差点漏出来了，坂口君……"
+      ],
+      "light_bite:neck": [
+        "唔……っ、在领口下面的脖子轻咬一口……你是算准了衣服能遮住吗，坂口君。",
+        "……有一点点刺麻，倒是不讨厌……只是别咬出太深的印子来哦。"
+      ],
+      "kiss:breasts": [
+        "嗯……っ、滚烫的嘴唇贴在胸口上……连心跳乱成什么样都瞒不过你了……",
+        "哈啊……一低头就看见你在亲吻胸前……羞得我都不敢往下看了……"
+      ],
+      "lick:breasts": [
+        "啊……っ、舌尖顺着胸口弧度滑过去，湿漉漉的触感太鲜明了……",
+        "哈啊……っ、别绕着胸前慢慢舔……越等越让人心慌意乱了，坂口君……"
+      ],
+      "light_bite:breasts": [
+        "唔……牙齿轻轻蹭在胸口软肉上，稍微吓了一跳……力道倒是很温柔。",
+        "……有点微麻的感觉。坂口君偶尔也会有点小小的坏心眼呢。"
+      ],
+      "caress:nipples": [
+        "唔嗯……っ！指腹刚拢住尖端，身体就不听使唤地绷紧了……",
+        "哈啊……别用指尖那样轻轻捻……太敏锐了，呼吸都乱了，坂口君……"
+      ],
+      "light_bite:nipples": [
+        "呀……っ、拿齿尖轻轻含住那里……只要不咬重，我、我还能忍住……",
+        "唔……又麻又痒的，坂口君……别一直拿牙齿逗弄那里呀……"
+      ],
+      "caress:navel": [
+        "……唔，手指绕着肚脐打转实在太痒了，我忍不住想缩腰呀，坂口君。",
+        "……小腹这边没有什么特别的感觉，不用在这里花太多心思啦。"
+      ],
+      "kiss:navel": [
+        "……亲吻肚脐周围？虽然很温柔，但总觉得怪痒的，让人静不下心来。",
+        "……坂口君，一直停在肚脐这儿的话，我真不知道手该往哪里放了。"
+      ],
+      "lick:navel": [
+        "唔……！舌尖碰到肚脐太痒了，坂口君，快停一下……",
+        "……那里湿答答的实在有点奇怪，还是换个地方抱我吧，好不好？"
+      ],
+      "light_bite:navel": [
+        "唔……牙齿轻轻磕在小腹上，腰一下子绷紧了……稍微有点微妙呢。",
+        "……倒是不疼，就是冷不防被你吓了一跳。别总拿我寻开心呀。"
+      ],
+      "kiss:torso_other": [
+        "嗯……温热的吻一寸寸落在肌肤上，连心底最后一点疲惫都散开了。",
+        "……被你这么虔诚地一路亲吻着，总觉得身体都变得轻飘飘的了。"
+      ],
+      "lick:torso_other": [
+        "唔……舌尖划过肌肤的时候微凉又温热，呼吸都不自觉放轻了。",
+        "……这么有耐心地顺着身体慢慢舔过，你是在故意等我先心急吗，坂口君？"
+      ],
+      "light_bite:torso_other": [
+        "嗯……轻轻咬在衣服能遮住的肌肤上，有一点点酥麻的暖意。",
+        "……这种克制着分寸的轻咬，倒很像坂口君一贯体贴的作风呢。"
+      ],
+      "kiss:genitals": [
+        "呀……っ！怎么连那种地方都用嘴唇去亲……坂口君，太羞人了……！",
+        "哈啊……っ、温热的吐息贴在双腿之间……我真的要遮不住脸了……！"
+      ],
+      "lick:thighs": [
+        "唔……舌尖顺着大腿滑过去，微热又发痒，让人有点不知所措呢……",
+        "……大腿被你舔得热乎乎的，心跳也跟着一点点快起来了，坂口君。"
+      ],
+      "light_bite:thighs": [
+        "唔……在大腿内侧轻轻咬了一下？只要不留痕迹，就随坂口君喜欢吧。",
+        "……腿侧微微麻了一下，虽然有点害羞，但你的分寸一直让我很安心。"
+      ]
+    },
+    "scene": {
+      "start": [
+        "嗯……っ、哈啊……真的和坂口君连在一起了……胸口又烫又满……",
+        "唔嗯……っ、散开的头发压在枕边……请再抱紧我一点，坂口君……",
+        "哈啊……不用再考虑任何职责，只作为阿尔托莉雅被你拥抱……感觉好奇妙……"
+      ],
+      "middle": [
+        "啊……っ、嗯啊！每一下都撞在最深的地方……声音快藏不住了，坂口君……！",
+        "哈啊……っ、手指抓紧你的背也没关系吧……我已经不知道该怎么克制了……！",
+        "唔……っ、啊！看着我的眼睛，坂口君……我想清楚记住你现在的样子……！"
+      ],
+      "finish": [
+        "哈啊……哈啊……心跳还是好快……先别松开手，再抱我一会儿……",
+        "嗯……全身都暖洋洋的，连一根手指都不想动了，坂口君……",
+        "呼……原来把所有防备都交出去之后，会这么安心啊……"
+      ]
+    }
+  },
+  "flow_dialogue_zh": {
+    "excitement_max_line": "哈啊……っ、坂口君……我已经准备好了。今晚不用再替我顾虑什么……请抱我吧。",
+    "openings": {
+      "gentle": "嗯……っ、十指相扣的温度好让人安心……在这个房间里，我可以把一切都交给坂口君了……",
+      "intense": "啊……っ！一进来就抱得这么深……平时所有的克制，一下子全被坂口君冲散了……！"
+    },
+    "midpoints": {
+      "gentle": "哈啊……っ、坂口君……不用说话也没关系，就这样紧紧抱着我，别留一点距离……",
+      "intense": "嗯啊……っ、哈啊！太深了，坂口君……整个人都被你的节奏带着走，使不上力气了……！"
+    },
+    "finish_responses": [
+      "啊……っ、唔嗯……！要到了，坂口君……请和我一起……啊……！",
+      "哈啊……っ、不行了……眼前一片白光……抱紧我，坂口君……！",
+      "嗯啊……っ！全部被坂口君填满了……连心底都烫得发抖……啊……！",
+      "唔……っ、啊……！抓紧我的手，坂口君……我彻底撑不住了……！"
+    ],
+    "free_h_aftercare": [
+      "……呼。被坂口君这样拥抱过后，全身力气都像用尽了一样……不过心里特别踏实。",
+      "歇两分钟，我们去泡杯红茶、顺便弄点夜宵好吗？……咳，消耗之后补充热量很正当。"
+    ]
+  },
+  "context_dialogue_en": {
+    "home_entry": [
+      "...The door is locked. Inside this room, there is no deputy chief... Come sit beside me, Sakaguchi.",
+      "The tea is freshly brewed, though... judging by your eyes, you have something else in mind first, Sakaguchi.",
+      "...Once I undo my hair ribbon, it feels as if all my guard comes down too. Be gentle with me tonight, Sakaguchi.",
+      "After a long day at the hospital, leaning against you here is the only thing that truly quiets my mind."
+    ],
+    "base_en": {
+      "reaction.tier_fallback:low": [
+        "...Sakaguchi, touching me like that mostly tickles—I hardly know how to respond.",
+        "Mm... If you're only trying to tease me, please show a little restraint.",
+        "...Testing me so halfheartedly is honestly a bit troubling, Sakaguchi.",
+        "...Stop teasing, Sakaguchi. You already know what truly puts me at ease."
+      ],
+      "reaction.tier_fallback:mild": [
+        "...Mm. That feels gentle—even the tension in my shoulders is melting away.",
+        "Being treated with such patience... makes me a little shy, Sakaguchi.",
+        "...I don't dislike that. With you this close, though, I can't hide my heartbeat.",
+        "Mm... When you take your time like this, it's easy to follow your lead."
+      ],
+      "reaction.tier_fallback:strong": [
+        "Ngh... Sakaguchi... My breathing's come undone—give me just a second...",
+        "Haa... I meant to stay composed, yet my body's warming up ahead of me...",
+        "Mm—! Don't stare so closely at my face... I must look terribly undone right now...",
+        "Ah... Sakaguchi, if you keep going like this... I won't keep my usual poise much longer..."
+      ],
+      "reaction.tier_fallback:favorite": [
+        "Haa... Sakaguchi... When you touch me there, I can't even gather my thoughts...!",
+        "Mmh—! That isn't fair... Only with you do I lose every bit of my guard...",
+        "Ah... Please don't stop, Sakaguchi... Tonight I don't want to hold back anymore...!",
+        "Nngh—! I feel as if I'm melting in your arms... Hold me closer, Sakaguchi...!"
+      ],
+      "reaction.zone_tier:lips|favorite": [
+        "Mm... My lips are burning... One brush of your breath makes my whole chest soften...",
+        "Haa... Don't pull back so soon, Sakaguchi... Stay close a little longer..."
+      ],
+      "reaction.zone_tier:cheeks|mild": [
+        "...My cheeks must feel hot, don't they? When you touch my face so earnestly, I can't help blushing.",
+        "Mm... Such reassuring warmth. You're the only one who ever sees me with this expression, Sakaguchi."
+      ],
+      "reaction.zone_tier:neck|favorite": [
+        "Ah... With my hair let down, my neck has nowhere to hide... It's so sensitive, Sakaguchi...!",
+        "Haa—! The moment my neck warms up, a shiver runs straight down my back..."
+      ],
+      "reaction.zone_tier:breasts|strong": [
+        "Ngh... My heart is racing... You'll feel right through my chest how nervous I am...",
+        "Haa... Don't linger so much on my chest... I can barely catch my breath, Sakaguchi..."
+      ],
+      "reaction.zone_tier:nipples|strong": [
+        "Ah—mm! The tips are far too sensitive... My body trembled on its own—how embarrassing...",
+        "Nngh—! Going right for the most sensitive spot... Be a little gentler, Sakaguchi..."
+      ],
+      "reaction.zone_tier:navel|low": [
+        "...Mm, around my navel mostly just tickles, Sakaguchi.",
+        "...If you keep lingering on my stomach, I truly won't know what face to make."
+      ],
+      "reaction.zone_tier:torso_other|mild": [
+        "Mm... Your warmth against my skin makes me want to lean right into your arms.",
+        "...I'm so used to standing straight on my own—letting go in your hold feels wonderful."
+      ],
+      "reaction.zone_tier:genitals|strong": [
+        "Haa—! That place is too embarrassing... Don't look at me from so close, Sakaguchi...",
+        "Mmh... My body is trembling on its own... even though I tried to keep quiet...!"
+      ],
+      "reaction.zone_tier:thighs|mild": [
+        "Mm... With your warmth pressed against my thighs, the strength is leaving my legs...",
+        "...Touching my thighs from this close leaves me nowhere to retreat, Sakaguchi."
+      ],
+      "reaction.combo:kiss|lips": [
+        "Mm... ngh... Kissing me this deeply sweeps every stray thought out of my head...",
+        "Haa... Sakaguchi... Kiss me once more... Right now I only want to feel you..."
+      ],
+      "reaction.combo:kiss|neck": [
+        "Ah... Warm kisses beneath my loosened hair... My neck is burning up, Sakaguchi...!",
+        "Mm... haa... Kissing all the way down my neck... My knees are going weak..."
+      ],
+      "reaction.combo:caress|cheeks": [
+        "Mm... Having you cradle my cheek so gently makes me feel truly cherished...",
+        "...Your palm is so warm, Sakaguchi. Looking into your eyes, I don't have to act strong."
+      ],
+      "reaction.combo:caress|breasts": [
+        "Mmh—! Smoothing your palm slowly over my chest... I can't hide my racing heartbeat anymore...!",
+        "Haa... Sakaguchi... Cupping my breasts in your warm hands sets my whole body alight...!"
+      ],
+      "reaction.combo:caress|genitals": [
+        "Ah... haa! Your fingers are too gentle and too sure... Sakaguchi, my waist is giving out...!",
+        "Nngh—! Don't say my name while touching me there... I really won't hold my voice back...!"
+      ],
+      "reaction.combo:kiss|nipples": [
+        "Ah—! The instant your lips pressed softly to the tip... my whole chest tightened...!",
+        "Haa... Sakaguchi... Kissing my chest so tenderly makes me too shy to open my eyes..."
+      ],
+      "reaction.combo:lick|nipples": [
+        "Ah—mmh! Circling your tongue around the tip... That's overwhelming, Sakaguchi...!",
+        "Haa—! Don't flick that warm tongue over the peak again... My whole spine is tingling...!"
+      ],
+      "reaction.combo:lick|genitals": [
+        "Kyaa—! Sakaguchi, don't put your tongue somewhere like that... Mmh, I'm losing grip on the sheets...!",
+        "Haa... How shameless... Every stroke of your tongue turns my mind completely blank...!"
+      ],
+      "reaction.combo:caress|torso_other": [
+        "Ngh... Gliding your palm slowly along my skin... even my breathing is following your hand...",
+        "Haa... Held steady in your arms while you stroke me, all my strength just melts away..."
+      ],
+      "reaction.combo:caress|thighs": [
+        "Ngh... Sliding your warm palm up my inner thigh... My legs are genuinely shaking, Sakaguchi...",
+        "Haa... Your hand is so hot, leaving my inner thighs aching softly... Slow down a little..."
+      ],
+      "reaction.combo:kiss|thighs": [
+        "Ah... Pressing kisses inch by inch along my inner thigh... That spot is far too embarrassing...",
+        "Haa... Your warm breath against my thighs is taking all the strength out of my knees..."
+      ],
+      "reaction.combo:lick|cheeks": [
+        "...Mm?! L-Licking my cheek, Sakaguchi...? Please don't tease me like a little pet.",
+        "...Now my cheek is damp. For someone so composed, you play surprising pranks in private."
+      ],
+      "reaction.combo:light_bite|cheeks": [
+        "...Ow—why nip my cheek? Even if it doesn't hurt, that's awfully childish, Sakaguchi.",
+        "...If that leaves a mark on my face, how will I face everyone at the hospital tomorrow?"
+      ],
+      "reaction.combo:light_bite|lips": [
+        "Mm... Your teeth grazed my lip. If we're going to kiss, Sakaguchi, please kiss me properly.",
+        "...A swollen lip would give us away immediately. Please ease up just a little."
+      ],
+      "reaction.combo:light_bite|genitals": [
+        "...—! Wait, Sakaguchi! It's far too delicate down there—please don't use your teeth...!",
+        "Mm... Stop teasing—you can't nip a place like that... Use your fingers or a kiss instead."
+      ],
+      "reaction.combo:caress|lips": [
+        "Mm... Brushing your thumb across my lips feels warm and reassuring... Waiting for me to part them?",
+        "Haa... Just having your fingertips trace my lips makes my breath grow warmer..."
+      ],
+      "reaction.combo:lick|lips": [
+        "Nngh... Slipping your tongue softly between my lips... Haa, I could never refuse you...",
+        "Haa... Don't just wet my lips and stop... You may kiss me deeper, Sakaguchi..."
+      ],
+      "reaction.combo:kiss|cheeks": [
+        "...Mm. Such a light kiss on the cheek... It makes my heart feel brushed by a feather.",
+        "...Somehow a gentle kiss on the cheek makes me even shyer than kissing on the lips, Sakaguchi."
+      ],
+      "reaction.combo:caress|neck": [
+        "Ngh... When your fingers trail down the side of my neck, even my ears start burning...",
+        "Haa... Having you stroke my bare neck with my hair down feels as if you see right through me..."
+      ],
+      "reaction.combo:lick|neck": [
+        "Ah... Trailing your warm tongue up my neck... makes me curl right into your chest...!",
+        "Mm... haa... The hollow of my throat is too sensitive... I nearly let my voice slip, Sakaguchi..."
+      ],
+      "reaction.combo:light_bite|neck": [
+        "Mm... A light nip low on my neck... Did you calculate right where my collar covers it, Sakaguchi?",
+        "...A slight tingle, though I don't mind it... Just don't leave too deep a mark."
+      ],
+      "reaction.combo:kiss|breasts": [
+        "Mm... Your warm lips pressed over my heart... Now there's no hiding how fast it's beating...",
+        "Haa... Looking down to see you kissing my breasts... I'm too embarrassed to keep watching..."
+      ],
+      "reaction.combo:lick|breasts": [
+        "Ah... Gliding your tongue over the curve of my breast feels so vivid against my skin...",
+        "Haa... Don't circle around my chest so slowly... Waiting makes my heart race worse, Sakaguchi..."
+      ],
+      "reaction.combo:light_bite|breasts": [
+        "Mm... Grazing my breast lightly with your teeth startled me... though you kept it gentle.",
+        "...A faint little tingle. Even you have a slightly mischievous side in private, Sakaguchi."
+      ],
+      "reaction.combo:caress|nipples": [
+        "Nngh—! The moment your fingertips brushed the peak, my whole body tensed on its own...",
+        "Haa... Don't roll the tip so gently... It's too sensitive—my breathing's falling apart, Sakaguchi..."
+      ],
+      "reaction.combo:light_bite|nipples": [
+        "Ah... Holding the tip lightly between your teeth... So long as it's gentle, I-I can bear it...",
+        "Mm... It tingles and aches at once, Sakaguchi... Please don't tease there with your teeth..."
+      ],
+      "reaction.combo:caress|navel": [
+        "...Mm, circling your finger around my navel tickles too much—you're making me flinch, Sakaguchi.",
+        "...My stomach isn't particularly sensitive there; you needn't spend so much effort on it."
+      ],
+      "reaction.combo:kiss|navel": [
+        "...Kissing around my navel? It's gentle, yet mostly ticklish—hard to settle into the mood.",
+        "...Sakaguchi, if you stay right by my navel, I won't know where to put my hands."
+      ],
+      "reaction.combo:lick|navel": [
+        "Mm—! Touching my navel with your tongue tickles far too much, Sakaguchi—please pause...",
+        "...Getting my navel wet feels a bit strange. Hold me somewhere else instead, alright?"
+      ],
+      "reaction.combo:light_bite|navel": [
+        "Mm... Grazing my stomach lightly with your teeth made my waist tense... A curious sensation.",
+        "...It didn't hurt, just caught me off guard. Please don't amuse yourself at my expense."
+      ],
+      "reaction.combo:kiss|torso_other": [
+        "Mm... Warm kisses placed one by one along my skin melt away the last trace of fatigue.",
+        "...Being kissed so earnestly along my body makes me feel almost weightless in your arms."
+      ],
+      "reaction.combo:lick|torso_other": [
+        "Mm... Your tongue leaves a warm-and-cool trail across my skin, making me hold my breath.",
+        "...Tracing along my skin with such patience—are you waiting for me to grow impatient, Sakaguchi?"
+      ],
+      "reaction.combo:light_bite|torso_other": [
+        "Mm... A gentle nip where clothes will cover leaves a pleasant, tingling warmth.",
+        "...Keeping your strength so considerate even then is very much like you, Sakaguchi."
+      ],
+      "reaction.combo:kiss|genitals": [
+        "Ah—! Kissing a place like that with your lips... Sakaguchi, that's unbearably embarrassing...!",
+        "Haa... Warm breath right between my legs... My hands won't be enough to hide my blush...!"
+      ],
+      "reaction.combo:lick|thighs": [
+        "Mm... Trailing your tongue along my thigh feels warm and ticklish—I hardly know what to do...",
+        "...Warming my thighs like that is making my heartbeat pick up bit by bit, Sakaguchi."
+      ],
+      "reaction.combo:light_bite|thighs": [
+        "Mm... A light nip on my inner thigh? So long as it leaves no mark, do as you like, Sakaguchi.",
+        "...Sent a soft tingle through my thigh. Embarrassing as it is, your restraint puts me at ease."
+      ],
+      "scene.start": [
+        "Mm... haa... Truly joined together with you, Sakaguchi... My chest feels so warm and full...",
+        "Nngh... My loosened hair is spread across the pillow... Hold me closer, Sakaguchi...",
+        "Haa... Setting every duty aside and being held simply as Artoria... feels wondrous..."
+      ],
+      "scene.middle": [
+        "Ah—mmh! Every movement reaches the deepest place... I can barely keep quiet, Sakaguchi...!",
+        "Haa... You don't mind if I grip your back tight, do you... I don't know how to hold back anymore...!",
+        "Ngh—ah! Look into my eyes, Sakaguchi... I want to remember you clearly just like this...!"
+      ],
+      "scene.finish": [
+        "Haa... haa... My heart is still racing... Don't let go yet—hold me a little longer...",
+        "Mm... My whole body feels warm and heavy—I can't lift a single finger, Sakaguchi...",
+        "Phew... So this is how peaceful it feels to hand over every bit of my guard..."
+      ],
+      "max_prompt": [
+        "Haa... Sakaguchi... I'm ready. You don't need to hold back on my account anymore... Please, hold me."
+      ],
+      "style.opening.gentle": [
+        "Mm... With our fingers intertwined so warmly... inside this room, I can entrust everything to you, Sakaguchi..."
+      ],
+      "style.opening.intense": [
+        "Ah—! Holding me this deeply right from the start... All my usual restraint is melting away at once, Sakaguchi...!"
+      ],
+      "style.midpoint.gentle": [
+        "Haa... Sakaguchi... You don't need to say a word—just keep holding me close, with no distance between us..."
+      ],
+      "style.midpoint.intense": [
+        "Mmh—haa! So deep, Sakaguchi... Your rhythm is carrying me away completely—I have no strength left to resist...!"
+      ],
+      "finish.responses": [
+        "Ah... nngh—! I'm almost there, Sakaguchi... Together with me... ah—!",
+        "Haa... I can't hold on... Everything's turning bright white... Hold me tight, Sakaguchi...!",
+        "Mmh—! Filled completely by you, Sakaguchi... trembling all the way to my heart... ah—!",
+        "Ngh—ah! Hold my hand tight, Sakaguchi... I'm coming undone completely...!"
+      ],
+      "aftercare": [
+        "...Phew. After being held by you like that, all my strength feels spent... yet my heart couldn't feel calmer.",
+        "Give me two minutes, then let's brew tea and make a light late-night snack... Ahem, replenishing energy is entirely reasonable."
+      ]
+    }
+  }
+}

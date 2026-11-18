@@ -70,6 +70,7 @@ const EXPRESSION_FINE_SLOT := {
 	"shy": "shy",
 	"shy_reproach": "shy",
 	"embarrassed": "shy",
+	"serious_blush": "shy",
 	"teasing": "teasing",
 	"playful": "teasing",
 }
@@ -105,6 +106,7 @@ const EXPRESSION_TO_SLOT := {
 	"dry_smile": "smile",
 	"wry_smile": "smile",
 	"bright": "smile",
+	"sparkle": "smile",
 	"pharm_bright": "smile",
 	"pharm_smile": "smile",
 	"pharm_playful": "smile",
@@ -141,6 +143,7 @@ const EXPRESSION_TO_SLOT := {
 	"shy": "worried",
 	"shy_reproach": "worried",
 	"embarrassed": "worried",
+	"serious_blush": "worried",
 	"afraid": "worried",
 	"hurt": "worried",
 	"tearful": "worried",
@@ -190,6 +193,8 @@ var staff_view_actor := ""
 var staff_view_outfit := ""
 var staff_view_expression := ""
 var staff_visit_serial := 0
+var volume := 1.0
+var preferences_path := ""
 
 static func _build_voice_actors() -> Dictionary:
 	var result := {}
@@ -286,6 +291,27 @@ func _ready() -> void:
 	_ensure_bgm_ducker()
 	player.bus = "Voice"
 	add_child(player)
+	set_volume(volume)
+
+func configure_preferences(path: String) -> void:
+	preferences_path = path
+	var config := ConfigFile.new()
+	if config.load(path) == OK:
+		set_volume(float(config.get_value("audio", "voice_volume", 1.0)))
+
+func set_volume(value: float, persist: bool = false) -> void:
+	volume = clampf(value, 0.0, 1.0)
+	_ensure_voice_limiter()
+	var bus := AudioServer.get_bus_index("Voice")
+	if bus >= 0:
+		AudioServer.set_bus_mute(bus, volume <= 0.0001)
+		AudioServer.set_bus_volume_db(bus, linear_to_db(maxf(volume, 0.0001)))
+	if persist and not preferences_path.is_empty():
+		var config := ConfigFile.new()
+		config.load(preferences_path)
+		config.set_value("audio", "voice_volume", volume)
+		if config.save(preferences_path) != OK:
+			push_error("Could not save voice volume preference")
 
 func _exit_tree() -> void:
 	if bgm_ducker != null:
@@ -405,7 +431,11 @@ func _resolve_h_runner_cue(app) -> Dictionary:
 		if entry_pool is Array and not entry_pool.is_empty():
 			var cur_line := str(app.h_profile_test_entry_lines[entry_idx]) if entry_idx >= 0 and entry_idx < app.h_profile_test_entry_lines.size() else ""
 			var pick_idx := entry_idx
-			if entry_pool.size() >= 2 and ("紧张" in cur_line or "nervous" in cur_line.to_lower()):
+			var full_entries: Array = session.location_entry_lines(session.profile.get("location_entry", {}).get(session.location_id, []))
+			var found_entry := full_entries.find(cur_line)
+			if found_entry >= 0:
+				pick_idx = found_entry
+			elif entry_pool.size() >= 2 and ("紧张" in cur_line or "nervous" in cur_line.to_lower()): # localization-invariant
 				pick_idx = 1
 			clip = str(entry_pool[posmod(pick_idx, entry_pool.size())])
 			once_key = "h_entry:%s:%s" % [sid, entry_idx]
@@ -440,14 +470,15 @@ func _resolve_h_runner_cue(app) -> Dictionary:
 		var clip := ""
 		var once_key := ""
 		if not h_cfg.is_empty():
-			var offset := 3 if is_event else 0
+			var has_sayaka_overlay := is_event and actor_id == "doc_sayaka"
+			var offset := 3 if has_sayaka_overlay else 0
 			var stage_start: Variant = h_cfg.get("stage_start", [])
 			var midpoints: Variant = h_cfg.get("midpoints", {})
 			if idx == 0:
 				clip = str(h_cfg.get("openings", {}).get(style, ""))
-			elif is_event and idx == 1:
+			elif has_sayaka_overlay and idx == 1:
 				clip = str(h_cfg.get("event_overlay_1", ""))
-			elif is_event and idx == 3:
+			elif has_sayaka_overlay and idx == 3:
 				clip = str(h_cfg.get("event_overlay_3", ""))
 			elif idx == 1 + offset and stage_start is Array and stage_start.size() >= 1:
 				clip = str(stage_start[0])
@@ -476,16 +507,20 @@ func _resolve_h_runner_cue(app) -> Dictionary:
 			var resp := str(session.h_finish_response_line)
 			var lower := resp.to_lower()
 			var f_idx := 0
-			if finish_pool.size() >= 4:
-				if "等" in resp or "wait" in lower:
+			var resp_pool: Array = session.dialogue_pool("finish.responses", session.profile.get("flow", {}).get("finish_response_pool", []))
+			var found_resp := resp_pool.find(resp)
+			if found_resp >= 0:
+				f_idx = posmod(found_resp, finish_pool.size())
+			elif finish_pool.size() >= 4:
+				if "等" in resp or "wait" in lower: # localization-invariant
 					f_idx = 1
-				elif "厉害" in resp or "amazing" in lower or "incredible" in lower:
+				elif "厉害" in resp or "amazing" in lower or "incredible" in lower: # localization-invariant
 					f_idx = 2
-				elif "热" in resp or "hot" in lower:
+				elif "热" in resp or "hot" in lower: # localization-invariant
 					f_idx = 3
 				else:
 					f_idx = 0
-			elif finish_pool.size() >= 2 and ("厉害" in resp or "热" in resp or "amazing" in lower or "hot" in lower):
+			elif finish_pool.size() >= 2 and ("厉害" in resp or "热" in resp or "amazing" in lower or "hot" in lower): # localization-invariant
 				f_idx = 1
 			clip = str(finish_pool[f_idx])
 			once_key = "h_finish:%s" % sid

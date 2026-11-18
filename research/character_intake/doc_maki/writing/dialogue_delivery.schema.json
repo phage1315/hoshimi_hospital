@@ -1,0 +1,588 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Maki author delivery v1 — NOT runtime data",
+  "type": "object",
+  "properties": {
+    "format_version": {
+      "const": "maki_author_delivery_v1"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready_for_review"
+      ]
+    },
+    "actor_id": {
+      "const": "doc_maki"
+    },
+    "speaker_labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "zh_CN": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "en": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "zh_CN",
+          "en"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "team_dialogue": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "intraoperative": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "assignment",
+        "intraoperative"
+      ],
+      "additionalProperties": false,
+      "description": "两个独立文本槽，映射profile字符串，不是随机台词数组。"
+    },
+    "idle_chats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "location_id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "object",
+            "properties": {
+              "zh_CN": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "en": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "zh_CN",
+              "en"
+            ],
+            "additionalProperties": false
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "zh_CN": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "en": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "zh_CN",
+                "en"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 3
+          }
+        },
+        "required": [
+          "id",
+          "location_id",
+          "label",
+          "responses"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "description": "每个最终选定闲谈地点至少3条独立回应；地点与在场配置另行确认。"
+    },
+    "first_assignment_cg": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "caption": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "title",
+        "caption"
+      ],
+      "additionalProperties": false
+    },
+    "lv0": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "announcement": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "completion_hint": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "gallery_title": {
+          "type": "object",
+          "properties": {
+            "zh_CN": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "zh_CN",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "duration_minutes_proposal": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "start_scene": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "location_note": {
+                "type": "string"
+              },
+              "background_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "time_note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "cast": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 0
+              },
+              "start": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]*$"
+                    },
+                    "kind": {
+                      "enum": [
+                        "dialogue",
+                        "narration",
+                        "choice",
+                        "stage"
+                      ]
+                    },
+                    "speaker_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "text": {
+                      "type": "object",
+                      "properties": {
+                        "zh_CN": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "en": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "zh_CN",
+                        "en"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "portrait_key": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "stage_note": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "next": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "下一作者节点ID；末节点为null；这些ID不得写入持久存档。"
+                    },
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "pattern": "^[a-z][a-z0-9_]*$"
+                          },
+                          "label": {
+                            "type": "object",
+                            "properties": {
+                              "zh_CN": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "en": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "zh_CN",
+                              "en"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "next": {
+                            "type": "string",
+                            "pattern": "^[a-z][a-z0-9_]*$"
+                          },
+                          "outcome_note": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "label",
+                          "next",
+                          "outcome_note"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 0
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "kind",
+                    "speaker_id",
+                    "text",
+                    "portrait_key",
+                    "stage_note",
+                    "next",
+                    "choices"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "location_note",
+              "background_id",
+              "time_note",
+              "cast",
+              "start",
+              "nodes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "completion_facts_in_words": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "title",
+        "announcement",
+        "completion_hint",
+        "gallery_title",
+        "duration_minutes_proposal",
+        "start_scene",
+        "scenes",
+        "completion_facts_in_words",
+        "open_questions"
+      ],
+      "additionalProperties": false,
+      "description": "作者逐句稿；固定VN入职手术，不生成Runner／存档／数值字段。"
+    },
+    "asset_requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "used_at": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "used_at"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "author_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "format_version",
+    "status",
+    "actor_id",
+    "speaker_labels",
+    "team_dialogue",
+    "idle_chats",
+    "first_assignment_cg",
+    "lv0",
+    "asset_requests",
+    "author_notes"
+  ],
+  "additionalProperties": false,
+  "$comment": "Nullable fields mark drafting gaps, never authorize runtime fallback or invented text. ready_for_review is author delivery status, not user approval. Validate graph, exact text and localization separately."
+}

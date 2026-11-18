@@ -4,6 +4,8 @@
 
 ## 通用工作流
 
+- [CG 审美与制作基准](hoshimi-cg-art-direction/SKILL.md)：2026-11-15 用户确认的原作人物五官、赛璐璐线稿、色调与 CG 验收标准，以江美子 Lv3 手札样图为视觉锚点。
+
 - [剧情、双语和已有素材接入](narrative-integration.md)：原稿版本、逐句审计、素材映射、测试与交付。
 - [角色与患者立绘生成、差分及本地透明化](hoshimi-portrait-pipeline/SKILL.md)：SFW 基础图确认→绘图工具整图出表情差分→本地 `tools/portrait_matting.py`（`BiRefNet-ToonOut` ONNX）离线去背景；用户提供的非透明 NSFW 立绘本地离线去背景；仅在绘图工具拒处理（如 NSFW 差分）时才回退本地面部修改。同步镜像于 `.agents/skills/hoshimi-portrait-pipeline/`。
 - [存档边界修改](save-boundary.md)：事实设计、迁移、隔离验证与时间／奖励稳定性。

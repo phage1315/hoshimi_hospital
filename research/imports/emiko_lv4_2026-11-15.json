@@ -1,0 +1,25 @@
+{
+  "event_id": "emiko_lv4_emikos_secret",
+  "actor_id": "doc_emiko",
+  "title_zh": "御堂江美子的秘密",
+  "title_en": "Emiko Mido's Secret",
+  "version": "V1.1",
+  "source_manuscript": "research/source_scripts/HOSHIMI_MIDO_EMIKO_LV4_EMIKOS_SECRET_V1_1.md",
+  "source_manuscript_sha256": "e8080bb45477d56bea8bdde4f3842ffb483b82810c4847848d9efab69f8ddca9",
+  "en_translation": "research/translations/emiko_lv4_en.json",
+  "en_translation_sha256": "df10e95b6020f4db35012ba6d420075a2232b0b50c21f3190508ef909ab179d6",
+  "authored_beat_count": 267,
+  "choice_node_count": 2,
+  "total_node_count": 269,
+  "h_runner_handoff_node": "em4_s6_1_24",
+  "h_runner_action": "launch_emiko_lv4_h",
+  "localization_keys_written": {
+    "zh_CN": 818,
+    "en": 818
+  },
+  "formatting_adjustments": [
+    "25 mixed action+quote lines (`叙事动作前缀：「角色台词」`) split at `：` into adjacent verbatim narrator action beat + verbatim character dialogue beat so speaker nameplate displays accurately on spoken lines without adding or deleting any text.",
+    "Stripped 2 Markdown `**` emphasis pairs on `em4_s1_11` and `em4_s1_12` so Godot Label does not display literal `**` asterisks while keeping 100% of characters verbatim.",
+    "Stripped non-diegetic `- **选项 X：...**` Markdown wrapper headers on the 6 interactive choice labels."
+  ]
+}

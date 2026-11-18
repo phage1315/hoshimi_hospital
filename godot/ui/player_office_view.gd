@@ -99,33 +99,51 @@ static func render_personal_nurse(app: Control) -> void:
 	app.screen = "office_personal_nurse"
 	app.base(app.tx("ui.personal_nurse.title", "专属护士"), app.tx("ui.personal_nurse.subtitle", "选择普通门诊中的固定工作搭档"), false, "player_office")
 	panel(app, Vector2(45, 165), Vector2(1190, 500))
+	var assigned_id: String = str(app.game.personal_nurse_id)
 	var current_id: String = app.game.resolve_outpatient_support_actor()
 	var current: Dictionary = app.content.find_record("staff", current_id)
-	app.label_at(app.tx("ui.personal_nurse.current", "当前：%s") % current.get("name", "—"), Vector2(75, 195), 27, Color("e8cfaa"), 1050)
-	app.label_at(app.tx("ui.personal_nurse.description", "专属护士会陪同普通门诊、提供流程提示，并在每个完整患者周期结束时获得 1 点熟悉度。手术组队仍由你自由决定。"), Vector2(75, 240), 18, Color("c2d2cc"), 720)
+	var has_explicit_nurse: bool = not assigned_id.is_empty() and app.game.personal_nurse_candidates().has(assigned_id)
+	var current_text: String = app.tx("ui.personal_nurse.current", "当前：%s") % current.get("name", "—") if has_explicit_nurse else app.tx("ui.personal_nurse.current_unassigned", "当前：尚未指定（暂由 %s 协助门诊）") % current.get("name", "—")
+	app.label_at(current_text, Vector2(75, 190), 25, Color("e8cfaa"), 1080)
+	var desc_font := 16 if app.content.localizer.locale == "en" else 18
+	app.label_at(app.tx("ui.personal_nurse.description", "专属护士会陪同普通门诊、提供流程提示，并在每个完整患者周期结束时获得 1 点熟悉度。手术组队仍由你自由决定。"), Vector2(75, 232), desc_font, Color("c2d2cc"), 760)
 	if not current.is_empty():
 		app.add_portrait(current)
 		var portrait = app.page.get_node_or_null("CharacterPortrait")
 		if portrait != null:
-			portrait.position = Vector2(875, 260)
-			portrait.size = Vector2(310, 360)
+			portrait.position = Vector2(880, 260)
+			portrait.size = Vector2(305, 360)
 	var candidates: Array[String] = app.game.personal_nurse_candidates()
-	var row_stride := 58 if candidates.size() > 8 else 68
-	var start_y := 296 if candidates.size() > 8 else 310
+	var list_scroll := ScrollContainer.new()
+	list_scroll.name = "PersonalNurseCandidateScroll"
+	list_scroll.position = Vector2(58, 304)
+	list_scroll.size = Vector2(812, 344)
+	list_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	app.page.add_child(list_scroll)
+	var row_stride := 60
+	var row_count := ceili(float(candidates.size()) / 2.0)
+	var list_canvas := Control.new()
+	list_canvas.custom_minimum_size = Vector2(796, maxi(340, row_count * row_stride + 8))
+	list_scroll.add_child(list_canvas)
 	for i in range(candidates.size()):
 		var actor_id: String = candidates[i]
 		var person: Dictionary = app.content.find_record("staff", actor_id)
 		var relation: Dictionary = app.game.relation_for(actor_id)
-		var selected: bool = actor_id == current_id
-		var label: String = "%s · Lv%s · %s %s · %s" % [person.name, relation.get("level", 0), app.tx("ui.personal_nurse.familiarity", "熟悉度"), relation.get("familiarity", 0), app.tx("ui.personal_nurse.selected", "当前") if selected else app.tx("ui.personal_nurse.assign", "指定")]
-		var row_pos := Vector2(60 + (i % 2) * 404, start_y + (i / 2) * row_stride)
-		app.add_staff_chibi_slot(app.page, actor_id, row_pos, 50.0, true, "PersonalNurseAvatar_" + actor_id)
-		var button: Button = app.button_at(label, row_pos + Vector2(56, 0), Vector2(336, 50), app.choose_personal_nurse.bind(actor_id))
+		var selected: bool = has_explicit_nurse and actor_id == assigned_id
+		var fam_label: String = app.tx("ui.personal_nurse.familiarity_short", "熟悉")
+		var label: String = "%s · Lv%d · %s %d · %s" % [person.name, int(relation.get("level", 0)), fam_label, int(relation.get("familiarity", 0)), app.tx("ui.personal_nurse.selected", "当前") if selected else app.tx("ui.personal_nurse.assign", "指定")]
+		var row_pos := Vector2((i % 2) * 400, 4 + (i / 2) * row_stride)
+		app.add_staff_chibi_slot(list_canvas, actor_id, row_pos, 48.0, true, "PersonalNurseAvatar_" + actor_id)
+		var button: Button = app.button_at(label, Vector2.ZERO, Vector2(338, 48), app.choose_personal_nurse.bind(actor_id))
+		app.page.remove_child(button)
+		list_canvas.add_child(button)
+		button.position = row_pos + Vector2(54, 0)
 		button.name = "PersonalNurse_" + actor_id
-		button.add_theme_font_size_override("font_size", 17)
+		button.add_theme_font_size_override("font_size", 15 if app.content.localizer.locale == "en" else 16)
 		button.clip_text = true
-		button.size = Vector2(336, 50)
-		button.disabled = selected
+		button.size = Vector2(338, 48)
+		app.style_action_button(button, 10)
+		app.style_selected_button(button, selected)
 	return_button(app)
 
 static func bond_label(app: Control, familiarity: int) -> String:
@@ -148,21 +166,84 @@ static func relationship_impression(app: Control, level: int) -> String:
 	]
 	return labels[clampi(level, 0, labels.size() - 1)]
 
-static func relationship_next_hint(app: Control, progress: Dictionary) -> String:
+static func relationship_next_hint(app: Control, progress: Dictionary, actor_id: String = "") -> String:
 	if bool(progress.get("complete", false)):
 		return app.tx("ui.relationship.progress.maximum", "关系等级已达当前上限")
 	if not bool(progress.get("has_slot", false)):
 		return app.tx("ui.relationship.progress.unavailable", "下一阶段尚未开放")
 	var gate: Dictionary = progress.get("gate", {})
+	var planned_suffix: String = "" if bool(progress.get("event_authored", false)) else app.tx("ui.relationship.progress.planned_tag", "（后续剧情尚未实装）")
 	if not bool(gate.get("familiarity_met", false)):
-		return app.tx("ui.relationship.progress.familiarity", "下一等级：熟悉度 %s / %s") % [gate.get("familiarity_current", 0), gate.get("familiarity_required", 0)]
+		return app.tx("ui.relationship.progress.familiarity_compact", "熟悉度 %s / %s") % [int(gate.get("familiarity_current", 0)), int(gate.get("familiarity_required", 0))] + planned_suffix
 	if not bool(gate.get("cooldown_met", false)):
-		return app.tx("ui.relationship.progress.cooldown", "上一段重要经历后还需 %s 天") % gate.get("cooldown_remaining", 0)
+		return app.tx("ui.relationship.progress.cooldown", "上一段重要经历后还需 %s 天") % int(gate.get("cooldown_remaining", 0)) + planned_suffix
 	if not bool(gate.get("requirements", {}).get("met", false)):
-		return app.tx("ui.relationship.progress.other_requirements", "熟悉度已达；还有其他条件未满足")
+		return app.tx("ui.relationship.progress.other_requirements", "熟悉度已达；还有其他条件未满足") + planned_suffix
 	if not bool(progress.get("event_authored", false)):
 		return app.tx("ui.relationship.progress.future", "条件已满足；后续事件尚未开放")
+	var clue := authored_trigger_clue(app, actor_id, progress)
+	if not clue.is_empty():
+		return app.tx("ui.relationship.progress.ready_with_clue", "条件已满足 · %s") % clue
 	return app.tx("ui.relationship.progress.ready", "条件已满足；等待合适的时间与地点")
+
+static func authored_trigger_clue(app: Control, actor_id: String, progress: Dictionary) -> String:
+	if actor_id.is_empty() or not bool(progress.get("event_authored", false)):
+		return ""
+	var target_level := int(progress.get("target_level", 0))
+	if actor_id == "doc_asuka" and target_level == 1:
+		return app.tx("ui.relationship.clue.asuka_lv1", "邀请她担任手术助手并亲手完成一台普通手术（勿扫荡）")
+	if actor_id == "doc_serika":
+		var disc_done := 0
+		for idx in range(1, 16):
+			if app.game.character_event_done("serika_radiology_d%02d" % idx):
+				disc_done += 1
+		if target_level == 1:
+			return app.tx("ui.relationship.clue.serika_lv1", "工作日前往影像科进行读片讨论（已累计 %s / 5 次）") % disc_done
+		if target_level == 2:
+			return app.tx("ui.relationship.clue.serika_lv2", "工作日继续在影像科读片讨论（已累计 %s / 10 次）") % disc_done
+		if target_level == 3:
+			return app.tx("ui.relationship.clue.serika_lv3", "累计 15 次影像讨论后，在星期日选择「独自外出走走」（当前 %s / 15）") % disc_done
+	if actor_id == "doc_sayaka" and target_level == 1:
+		var rel: Dictionary = app.game.relation_for("doc_sayaka")
+		if not ("sayaka_phone_exchanged" in rel.get("flags", [])):
+			return app.tx("ui.relationship.clue.sayaka_phone", "先在工作日早晨完成院内换号事件，再于星期日邀约")
+		return app.tx("ui.relationship.clue.sunday_date", "可在星期日安排中邀请外出约会")
+	if actor_id == "doc_shiori" and target_level == 3:
+		var lv2_ev = app.game.character_events.get("shiori_lv2_consultation_boundary")
+		if lv2_ev != null and bool(lv2_ev.completed):
+			var gap: int = int(app.game.day_number()) - int(lv2_ev.completed_day)
+			if gap < 28:
+				return app.tx("ui.relationship.clue.shiori_lv3_wait", "距上一段内科合作还需等待 %s 天") % (28 - gap)
+	var slot: Dictionary = app.game.relationship_rank_slot(actor_id, target_level)
+	var event_id := str(slot.get("event_id", ""))
+	if event_id.is_empty():
+		return ""
+	if app.game.character_event_definitions.has(event_id):
+		var ev: Dictionary = app.game.character_event_definitions[event_id]
+		var mode: String = str(app.game.character_event_trigger_mode(ev))
+		if mode == "sunday":
+			return app.tx("ui.relationship.clue.sunday_date", "可在星期日安排中邀请外出约会")
+		if mode == "after_work":
+			return app.tx("ui.relationship.clue.after_work", "可在平日下班结算时触发（需无待术住院患者）")
+		if mode == "day_start":
+			return app.tx("ui.relationship.clue.day_start", "将在合适的工作日早晨触发")
+		if mode == "location":
+			var loc_id := str(ev.get("location_id", ""))
+			var loc: Dictionary = app.content.find_record("locations", loc_id)
+			if not loc.is_empty():
+				return app.tx("ui.relationship.clue.visit_location", "可在工作时间前往「%s」看看") % str(loc.get("name", ""))
+	if app.game.special_event_definitions.has(event_id):
+		var sev: Dictionary = app.game.special_event_definitions[event_id]
+		var smode: String = str(app.game.special_event_trigger_mode(sev))
+		if smode == "after_work":
+			return app.tx("ui.relationship.clue.after_work", "可在平日下班结算时触发（需无待术住院患者）")
+		if smode == "location":
+			var sloc_id := str(sev.get("timing", {}).get("location_id", ""))
+			var sloc: Dictionary = app.content.find_record("locations", sloc_id)
+			if not sloc.is_empty():
+				return app.tx("ui.relationship.clue.visit_location", "可在工作时间前往「%s」看看") % str(sloc.get("name", ""))
+		return app.tx("ui.relationship.clue.special_event", "可在医院导览底栏「特殊活动」或平日早晨推进")
+	return ""
 
 static func relationship_condition_mark(app: Control, met: bool) -> String:
 	return app.tx("ui.relationship.condition.met", "✓") if met else app.tx("ui.relationship.condition.unmet", "○")
@@ -224,29 +305,31 @@ static func relationship_requirement_text(app: Control, evaluation: Dictionary) 
 		return app.tx("ui.relationship.condition.related_experience", "%s 推进相关院内经历") % mark
 	var current = evaluation.get("current", 0)
 	var minimum = evaluation.get("minimum", 0)
+	var current_int := int(current) if (current is int or current is float) else 0
+	var minimum_int := int(minimum) if (minimum is int or minimum is float) else 0
 	match kind:
 		"player_attribute":
 			var attribute_caption: String = mark + " " + relationship_attribute_name(app, str(requirement.get("attribute", "")))
 			if requirement.has("maximum") and int(requirement.get("minimum", -999)) <= -999:
-				return app.tx("ui.relationship.condition.maximum", "%s %s / ≤ %s") % [attribute_caption, current, evaluation.get("maximum", 0)]
+				return app.tx("ui.relationship.condition.maximum", "%s %s / ≤ %s") % [attribute_caption, current_int, int(evaluation.get("maximum", 0))]
 			if requirement.has("maximum"):
-				return app.tx("ui.relationship.condition.range", "%s %s / %s–%s") % [attribute_caption, current, minimum, evaluation.get("maximum", 0)]
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [attribute_caption, current, minimum]
+				return app.tx("ui.relationship.condition.range", "%s %s / %s–%s") % [attribute_caption, current_int, minimum_int, int(evaluation.get("maximum", 0))]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [attribute_caption, current_int, minimum_int]
 		"staff_skill":
 			var name := known_staff_name(app, str(evaluation.get("actor_id", "")))
 			if name.is_empty():
 				return app.tx("ui.relationship.condition.related_experience", "%s 推进相关院内经历") % mark
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + name + " · " + relationship_skill_name(app, str(requirement.get("skill", ""))), current, minimum]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + name + " · " + relationship_skill_name(app, str(requirement.get("skill", ""))), current_int, minimum_int]
 		"staff_relationship_count":
 			var category: String = app.tx("ui.relationship.category.nurse", "护士") if str(requirement.get("team_category", "")) == "nurse" else app.tx("ui.relationship.category.staff", "同事")
-			var caption: String = app.tx("ui.relationship.condition.staff_count", "%s中达到 Lv%s 的人数") % [category, requirement.get("minimum_level", 0)]
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + caption, current, minimum]
+			var caption: String = app.tx("ui.relationship.condition.staff_count", "%s中达到 Lv%s 的人数") % [category, int(requirement.get("minimum_level", 0))]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + caption, current_int, minimum_int]
 		"progress_counter":
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + relationship_counter_name(app, str(evaluation.get("counter_id", ""))), current, minimum]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + relationship_counter_name(app, str(evaluation.get("counter_id", ""))), current_int, minimum_int]
 		"completed_surgeries":
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + app.tx("ui.relationship.condition.completed_surgeries", "完成手术"), current, minimum]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + app.tx("ui.relationship.condition.completed_surgeries", "完成手术"), current_int, minimum_int]
 		"completed_surgeries_in_group":
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + app.tx("ui.relationship.condition.procedure_group", "完成指定术式"), current, minimum]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + app.tx("ui.relationship.condition.procedure_group", "完成指定术式"), current_int, minimum_int]
 		"relationship_level", "relationship_familiarity", "staff_unlocked":
 			var name := known_staff_name(app, str(evaluation.get("actor_id", "")))
 			if name.is_empty():
@@ -254,32 +337,34 @@ static func relationship_requirement_text(app: Control, evaluation: Dictionary) 
 			if kind == "staff_unlocked":
 				return app.tx("ui.relationship.condition.know_staff", "%s 认识 %s") % [mark, name]
 			var metric: String = app.tx("ui.relationship.condition.level", "关系等级") if kind == "relationship_level" else app.tx("ui.personal_nurse.familiarity", "熟悉度")
-			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + name + " · " + metric, current, minimum]
+			return app.tx("ui.relationship.condition.value", "%s %s / %s") % [mark + " " + name + " · " + metric, current_int, minimum_int]
 		"flag", "story_flag", "character_event_completed", "special_event_completed", "days_after_character_event", "days_after_special_event":
 			return app.tx("ui.relationship.condition.related_experience", "%s 推进相关院内经历") % mark
 		"career_progress_any":
 			var values: Dictionary = current if current is Dictionary else {}
 			var alternatives: Array[String] = []
 			if requirement.has("minimum_completed_surgeries"):
-				alternatives.append(app.tx("ui.relationship.condition.career_surgeries", "手术 %s/%s") % [values.get("completed_surgeries", 0), requirement.minimum_completed_surgeries])
+				alternatives.append(app.tx("ui.relationship.condition.career_surgeries", "手术 %s/%s") % [int(values.get("completed_surgeries", 0)), int(requirement.minimum_completed_surgeries)])
 			if requirement.has("minimum_reputation"):
-				alternatives.append(app.tx("ui.relationship.condition.career_reputation", "声望 %s/%s") % [values.get("reputation", 0), requirement.minimum_reputation])
+				alternatives.append(app.tx("ui.relationship.condition.career_reputation", "声望 %s/%s") % [int(values.get("reputation", 0)), int(requirement.minimum_reputation)])
 			if requirement.has("minimum_day"):
-				alternatives.append(app.tx("ui.relationship.condition.career_day", "天数 %s/%s") % [values.get("day", 0), requirement.minimum_day])
+				alternatives.append(app.tx("ui.relationship.condition.career_day", "天数 %s/%s") % [int(values.get("day", 0)), int(requirement.minimum_day)])
 			return app.tx("ui.relationship.condition.career_progress_detail", "%s 职业进度（任一）：%s") % [mark, app.tx("ui.relationship.condition.or_separator", " / ").join(alternatives)]
 		_:
 			return app.tx("ui.relationship.condition.other", "%s 完成其他关系条件") % mark
 
-static func relationship_conditions_text(app: Control, progress: Dictionary) -> String:
+static func relationship_conditions_text(app: Control, progress: Dictionary, actor_id: String = "") -> String:
 	if bool(progress.get("complete", false)):
 		return app.tx("ui.relationship.progress.maximum", "关系等级已达当前上限")
 	if not bool(progress.get("has_slot", false)):
 		return app.tx("ui.relationship.progress.unavailable", "下一阶段尚未开放")
 	var gate: Dictionary = progress.get("gate", {})
 	var lines: Array[String] = []
-	lines.append(app.tx("ui.relationship.condition.familiarity", "%s 熟悉度 %s / %s") % [relationship_condition_mark(app, bool(gate.get("familiarity_met", false))), gate.get("familiarity_current", 0), gate.get("familiarity_required", 0)])
+	if not bool(progress.get("event_authored", false)):
+		lines.append(app.tx("ui.relationship.progress.planned_banner", "※ 本阶段剧情尚未在当前版本实装，无需急于刷取条件。"))
+	lines.append(app.tx("ui.relationship.condition.familiarity", "%s 熟悉度 %s / %s") % [relationship_condition_mark(app, bool(gate.get("familiarity_met", false))), int(gate.get("familiarity_current", 0)), int(gate.get("familiarity_required", 0))])
 	if int(gate.get("cooldown_required", 0)) > 0:
-		lines.append(app.tx("ui.relationship.condition.cooldown", "%s 重要经历间隔 %s / %s 天") % [relationship_condition_mark(app, bool(gate.get("cooldown_met", false))), gate.get("cooldown_current", 0), gate.get("cooldown_required", 0)])
+		lines.append(app.tx("ui.relationship.condition.cooldown", "%s 重要经历间隔 %s / %s 天") % [relationship_condition_mark(app, bool(gate.get("cooldown_met", false))), int(gate.get("cooldown_current", 0)), int(gate.get("cooldown_required", 0))])
 	var related_story_added := false
 	for evaluation in gate.get("requirements", {}).get("results", []):
 		var text := relationship_requirement_text(app, evaluation)
@@ -289,6 +374,9 @@ static func relationship_conditions_text(app: Control, progress: Dictionary) -> 
 		lines.append(text)
 		if story_like:
 			related_story_added = true
+	var clue := authored_trigger_clue(app, actor_id, progress)
+	if not clue.is_empty():
+		lines.append(app.tx("ui.relationship.clue.prefix", "提示：%s") % clue)
 	return "\n".join(lines)
 
 static func render_relationships(app: Control) -> void:
@@ -322,12 +410,12 @@ static func render_relationships(app: Control) -> void:
 		var last_event: String = app.tx("ui.relationship.no_event", "尚无重要事件")
 		var history: Array = relation.get("event_history", [])
 		if not history.is_empty() and app.game.character_event_definitions.has(history.back()):
-			last_event = "《%s》" % str(app.game.character_event_definitions[history.back()].title)
+			last_event = app.tx("ui.relationship.event_quote", "《%s》") % str(app.game.character_event_definitions[history.back()].title)
 		var count := shared_operations(app, str(person.id))
 		var familiarity := int(relation.get("familiarity", 0))
-		var line: String = app.tx("ui.relationship.detail", "%s　Lv%s　倾向：%s　熟悉度 %s / %s　共同上台 %s次") % [person.specialty, relation.level, app.affection_tendency(int(relation.get("affection", 0))), familiarity, bond_label(app, familiarity), count]
+		var line: String = app.tx("ui.relationship.detail", "%s　Lv%s　倾向：%s　熟悉度 %s / %s　共同上台 %s次") % [person.specialty, int(relation.level), app.affection_tendency(int(relation.get("affection", 0))), familiarity, bond_label(app, familiarity), count]
 		var progress: Dictionary = app.game.relationship_progress(str(person.id))
-		var details: Label = app.label_at(line + "\n" + app.tx("ui.relationship.recent_event", "最近事件：%s") % last_event + "\n" + relationship_next_hint(app, progress), Vector2.ZERO, 16, Color("f4f0e6"), 680)
+		var details: Label = app.label_at(line + "\n" + app.tx("ui.relationship.recent_event", "最近事件：%s") % last_event + "\n" + relationship_next_hint(app, progress, str(person.id)), Vector2.ZERO, 16, Color("f4f0e6"), 680)
 		app.page.remove_child(details)
 		content.add_child(details)
 		details.position = Vector2(265, 14 + i * 120)
@@ -353,12 +441,12 @@ static func render_relationship_detail(app: Control, actor_id: String, expanded:
 	var impression: String = app.tx("ui.relationship.current_impression", "当前印象：Lv%s · %s") % [level, relationship_impression(app, level)]
 	app.label_at(impression, Vector2(75, 205), 28, Color("e8cfaa"), 1060).name = "RelationshipCurrentImpression"
 	app.label_at(app.tx("ui.relationship.detail_metrics", "倾向：%s　·　熟悉度 %s（%s）　·　共同上台 %s 次") % [app.affection_tendency(int(relation.get("affection", 0))), familiarity, bond_label(app, familiarity), shared_operations(app, actor_id)], Vector2(75, 255), 19, Color("f4f0e6"), 1060)
-	app.label_at(app.tx("ui.relationship.next_level", "下一等级 Lv%s：%s") % [progress.get("target_level", level), relationship_next_hint(app, progress)], Vector2(75, 305), 21, Color("c2d2cc"), 1050).name = "RelationshipNextHint"
+	app.label_at(app.tx("ui.relationship.next_level", "下一等级 Lv%s：%s") % [int(progress.get("target_level", level)), relationship_next_hint(app, progress, actor_id)], Vector2(75, 305), 21, Color("c2d2cc"), 1050).name = "RelationshipNextHint"
 	var toggle_caption: String = app.tx("ui.relationship.collapse_conditions", "收起具体条件  ↑") if expanded else app.tx("ui.relationship.expand_conditions", "展开具体条件  ↓")
 	var toggle: Button = app.button_at(toggle_caption, Vector2(75, 360), Vector2(260, 46), app.show_office_relationship_detail.bind(actor_id, not expanded))
 	toggle.name = "RelationshipRequirementsToggle"
 	if expanded:
-		app.scrollable_text_at(relationship_conditions_text(app, progress), Vector2(75, 425), Vector2(1080, 185), 19, Color("f4f0e6"), "RelationshipRequirementsText")
+		app.scrollable_text_at(relationship_conditions_text(app, progress, actor_id), Vector2(75, 425), Vector2(1080, 185), 19, Color("f4f0e6"), "RelationshipRequirementsText")
 	else:
 		app.label_at(app.tx("ui.relationship.conditions_hint", "具体条件只显示你已经能够理解的进度；未知人物和未来剧情不会提前公开。"), Vector2(75, 435), 18, Color("b9cecb"), 1040)
 	app.button_at(app.tx("ui.relationship.return", "← 同事关系列表"), Vector2(60, 713), Vector2(220, 40), app.show_office_relationships)
@@ -444,7 +532,7 @@ static func render_case_detail(app: Control, patient_id: String) -> void:
 		render_cases(app)
 		return
 	app.screen = "office_case_detail"
-	app.base(str(patient.name) + app.tx("ui.case.file_suffix", " · 病例档案"), app.tx("ui.case.age_status", "%s岁 / %s") % [patient.age, case_status(app, patient_id)], false, "player_office")
+	app.base(str(patient.name) + app.tx("ui.case.file_suffix", " · 病例档案"), app.tx("ui.case.age_status", "%s岁 / %s") % [int(patient.age), case_status(app, patient_id)], false, "player_office")
 	panel(app, Vector2(45, 165), Vector2(1190, 500))
 	var case_data: Dictionary = app.game.patient_case(patient_id)
 	var preparation = preparation_for_patient(app, patient_id)
@@ -520,7 +608,7 @@ static func render_actions(app: Control) -> void:
 	var actions: Array = app.game.time_events_at("player_office")
 	for i in range(actions.size()):
 		var action: Dictionary = actions[i]
-		var button: Button = app.button_at(app.tx("ui.action.detail", "%s　·　%s分钟\n%s") % [action.label, action.minutes, effect_text(app, action.get("effects", {}))], Vector2(70 + (i % 2) * 575, 205 + (i / 2) * 115), Vector2(540, 88), app.perform_time_event.bind(str(action.id), "player_office"))
+		var button: Button = app.button_at(app.tx("ui.action.detail", "%s　·　%s分钟\n%s") % [action.label, int(action.minutes), effect_text(app, action.get("effects", {}))], Vector2(70 + (i % 2) * 575, 205 + (i / 2) * 115), Vector2(540, 88), app.perform_time_event.bind(str(action.id), "player_office"))
 		button.name = "OfficeAction_" + str(action.id)
 	app.label_at(app.tx("ui.action.note", "行动可能跨过下班时间；完成后按现有时间系统进入下一天。"), Vector2(75, 610), 18, Color("c2d2cc"), 980)
 	return_button(app)

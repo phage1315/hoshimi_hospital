@@ -1,0 +1,39 @@
+{
+  "source": "research/source_scripts/HOSHIMI_AIZAWA_MAKI_DOCTOR_DATA_AND_DIALOGUE_SCHEMA_V1_3.md",
+  "sha256": "efdd7dd9dacedaaef6aeb95d95f46aa4eef1d4d657ed9a01114ee86440fa105e",
+  "actor_id": "doc_maki",
+  "changes": [
+    "date profile and 5 bilingual date lines",
+    "bilingual intraoperative_correction",
+    "Sunday eligibility respects staff_is_met onboarding gate"
+  ],
+  "acceptance_percent": {
+    "0": 60,
+    "1": 60,
+    "2": 80,
+    "3": 92,
+    "4": 100,
+    "5": 100
+  },
+  "preferred_locations": [
+    "bookstore",
+    "botanical_garden"
+  ],
+  "minimum_familiarity": 10,
+  "hotel_unlock_level_note": "4 is a legacy schema compatibility value; no GDScript reader or intimacy unlock added",
+  "seasonal_option": "retained in source only",
+  "portrait_hints_note": "Existing date UI uses neutral casual; rejection is a notice without portrait. Author hints retained in source; no unsupported fields injected.",
+  "verification": {
+    "maki_staff_test": "84 checks, 0 failures, headless zh_CN/en",
+    "source_audits": "V1.1 baseline and V1.3 exact bilingual text passed",
+    "narrative_localization": "47345 checks, 0 failures",
+    "staff_localization": "1209 lines passed",
+    "validate_data": "global fail with pre-existing other-character errors; no maki errors",
+    "localization_audit": "global fail with existing 5 voice_director Chinese lines; coverage 55706/55706"
+  },
+  "untested": [
+    "native window date presentation",
+    "real Lv0 onboarding absent"
+  ],
+  "dialogue_changes": []
+}

@@ -1,69 +1,39 @@
 extends Control
-## Native vector blocking for new locations; replaceable by final scene images.
-var scene_id := "ward"
-var anxiety := 2
-var changed := false
 
-func _ready() -> void:
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
+var scene_id: String = "ward":
+	set(value):
+		scene_id = value
+		queue_redraw()
+var anxiety: int = 50:
+	set(value):
+		anxiety = value
+		queue_redraw()
+var changed: bool = false:
+	set(value):
+		changed = value
+		queue_redraw()
 
 func _draw() -> void:
-	var pale := Color("c9dfdc")
-	var dark := Color("40646c")
-	if scene_id == "changing":
-		for i in range(3):
-			draw_style_box(box(Color("90a9a9")), Rect2(10 + i * 72, 48, 63, 280))
-			draw_line(Vector2(60 + i * 72, 164), Vector2(60 + i * 72, 188), dark, 3)
-		draw_rect(Rect2(256, 183, 170, 50), pale)
-		draw_arc(Vector2(340, 183), 22, PI, TAU, 24, dark, 6)
-		draw_rect(Rect2(282, 230, 123, 96), dark)
-		if changed:
-			draw_circle(Vector2(316, 70), 32, Color("ecceba"))
-			draw_rect(Rect2(283, 37, 66, 17), Color("7ba99b"))
-			draw_rect(Rect2(288, 69, 56, 22), pale)
-			draw_colored_polygon(PackedVector2Array([Vector2(276,108),Vector2(355,108),Vector2(384,169),Vector2(345,183),Vector2(294,183),Vector2(249,165)]), Color("739f98"))
-		return
-	if scene_id == "operating_room":
-		draw_line(Vector2(216, 0), Vector2(216, 54), pale, 5)
-		draw_ellipse_placeholder(Vector2(216, 65), Vector2(80, 22), Color("e1e8d8"))
-		draw_rect(Rect2(335, 85, 102, 80), Color("18363b"))
-		draw_polyline(PackedVector2Array([Vector2(345,130),Vector2(361,130),Vector2(368,114),Vector2(376,145),Vector2(384,125),Vector2(426,125)]), Color("a6d6b0"), 2)
-		draw_rect(Rect2(112, 145, 208, 190), Color("7b979c"))
-		draw_rect(Rect2(188, 335, 56, 32), dark)
-		patient(Vector2(216, 145), true)
+	# Subtle translucent clinical status card that lets the cel-shaded room
+	# background breathe instead of drawing blocky prototype rectangles over it.
+	var outer := Rect2(Vector2(24, 38), size - Vector2(48, 76))
+	draw_rect(outer, Color(0.035, 0.105, 0.135, 0.56))
+	draw_rect(outer, Color(0.73, 0.67, 0.50, 0.52), false, 1.5)
+	var inner := outer.grow(-10.0)
+	draw_rect(inner, Color(0.44, 0.60, 0.62, 0.24), false, 1.0)
+	var center := outer.get_center() - Vector2(0, 14)
+	var accent := Color("7eb696") if changed else Color("e8cfaa")
+	draw_arc(center, 38.0, 0.0, TAU, 48, Color(accent.r, accent.g, accent.b, 0.72), 2.0, true)
+	draw_arc(center, 29.0, 0.0, TAU, 48, Color(0.76, 0.85, 0.84, 0.28), 1.0, true)
+	# Minimalist medical cross / check emblem inside the ring.
+	if changed and scene_id in ["changing", "scrub_area", "or_entrance"]:
+		draw_line(center + Vector2(-13, 1), center + Vector2(-3, 11), accent, 3.0, true)
+		draw_line(center + Vector2(-3, 11), center + Vector2(15, -9), accent, 3.0, true)
 	else:
-		draw_rect(Rect2(28, 263, 394, 69), Color("90a3a2"))
-		draw_rect(Rect2(45, 217, 360, 67), Color("dfe5dc"))
-		draw_rect(Rect2(55, 190, 101, 35), Color("f0eee3"))
-		draw_line(Vector2(33, 198), Vector2(33, 352), dark, 7)
-		draw_line(Vector2(416, 198), Vector2(416, 352), dark, 7)
-		patient(Vector2(216, 162), false)
-
-func patient(head: Vector2, on_table: bool) -> void:
-	draw_circle(head, 35, Color("e9cab4"))
-	draw_arc(head + Vector2(0, -4), 34, PI, TAU, 30, Color("695d58"), 12)
-	if on_table:
-		draw_arc(head + Vector2(0, -5), 39, PI, TAU, 30, Color("a3c5bf"), 10)
-	var color := Color("75aaa5") if on_table else Color("b1c6d1")
-	draw_colored_polygon(PackedVector2Array([head+Vector2(-40,35),head+Vector2(40,35),head+Vector2(89,158),head+Vector2(-89,158)]), color)
-	for x in [-12, 12]:
-		draw_circle(head + Vector2(x, -2), 2.5, Color("5d5550"))
-	var mouth := head + Vector2(0, 18)
-	if anxiety >= 2:
-		draw_line(mouth + Vector2(-8, 2), mouth + Vector2(0, -2), Color("8a6458"), 2)
-		draw_line(mouth + Vector2(0, -2), mouth + Vector2(8, 2), Color("8a6458"), 2)
-	else:
-		draw_arc(mouth, 8, 0, PI, 15, Color("8a6458"), 2)
-
-func box(color: Color) -> StyleBoxFlat:
-	var result := StyleBoxFlat.new()
-	result.bg_color = color
-	result.set_corner_radius_all(4)
-	return result
-
-func draw_ellipse_placeholder(center: Vector2, radius: Vector2, color: Color) -> void:
-	var points := PackedVector2Array()
-	for i in range(40):
-		var angle := TAU * i / 40
-		points.append(center + Vector2(cos(angle) * radius.x, sin(angle) * radius.y))
-	draw_colored_polygon(points, color)
+		draw_rect(Rect2(center - Vector2(4, 15), Vector2(8, 30)), Color(accent.r, accent.g, accent.b, 0.80))
+		draw_rect(Rect2(center - Vector2(15, 4), Vector2(30, 8)), Color(accent.r, accent.g, accent.b, 0.80))
+	var bar_width := outer.size.x - 88.0
+	var bar_pos := Vector2(outer.position.x + 44.0, outer.end.y - 44.0)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width, 6.0)), Color(0.14, 0.25, 0.29, 0.75))
+	var progress_ratio := 1.0 if changed else clampf(1.0 - float(anxiety) / 120.0, 0.25, 0.85)
+	draw_rect(Rect2(bar_pos, Vector2(bar_width * progress_ratio, 6.0)), Color(accent.r, accent.g, accent.b, 0.78))

@@ -1,0 +1,23 @@
+{
+  "event_id": "emiko_lv3_today_i_lead",
+  "actor_id": "doc_emiko",
+  "title_zh": "今天我主刀",
+  "title_en": "Today, I Lead the Table",
+  "version": "V1.1",
+  "source_manuscript": "research/source_scripts/HOSHIMI_MIDO_EMIKO_LV3_TODAY_I_LEAD_V1_1.md",
+  "source_manuscript_sha256": "54e959f0de88af4a382303b8779eff2ba94bc9bc9ad379c398168dac5426e71f",
+  "en_translation": "research/translations/emiko_lv3_en.json",
+  "en_translation_sha256": "8ea26f2e937ffc596e45eb037c1eda78526380f607b71f75952a3a7a37b7d8ee",
+  "authored_beat_count": 311,
+  "choice_node_count": 3,
+  "total_node_count": 314,
+  "localization_keys_written": {
+    "zh_CN": 949,
+    "en": 949
+  },
+  "formatting_adjustments": [
+    "36 mixed action+quote lines (`叙事动作前缀：「角色台词」`) split at `：` into adjacent verbatim narrator action beat + verbatim character dialogue beat so speaker nameplate displays accurately on spoken lines without adding or deleting any text.",
+    "Stripped non-diegetic `- **选项 X：...**` and `- **〈若前置为 ...〉**` Markdown wrapper headers on interactive options and conditional Branch A lines.",
+    "Mapped `[最近非御堂一助医生]` token in `em3_o_02` to `{recent_assistant_doctor}` placeholder for bilingual runtime substitution via `godot/systems/emiko_lv3.gd`."
+  ]
+}

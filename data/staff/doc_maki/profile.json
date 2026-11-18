@@ -1,0 +1,95 @@
+{
+  "name": "相澤 麻紀",
+  "age": 21,
+  "profession": "doctor",
+  "specialty": "普通外科",
+  "rank": "年轻外科医师／初期接受带教",
+  "personality": "礼貌拘谨、有责任感、有主见；对风险敏感，专业讨论清楚具体，重视术野复盘。",
+  "appearance": "灰橄榄调浅棕长发、双肩前低束发、深色方框眼镜；以原作 ASS_03 种子图为身份锚点。",
+  "skills": {
+    "surgery": 48,
+    "diagnostics": 65,
+    "teamwork": 72,
+    "patient_care": 68,
+    "instrument_handling": 56,
+    "calmness": 45
+  },
+  "dialogue_style": "礼貌、克制、具体；专业说明不口头禅式结巴。",
+  "gender": "female",
+  "team_category": "doctor",
+  "id": "doc_maki",
+  "surgical_roles": [
+    "assistant_surgeon"
+  ],
+  "allowed_team_roles": [
+    "assistant_surgeon"
+  ],
+  "surgery_proficiency": "limited",
+  "staff_unlock_event": "maki_lv0_onboarding",
+  "flags": [],
+  "event_history": [],
+  "presence": {
+    "fixed_locations": [
+      "lounge"
+    ],
+    "random_locations": [],
+    "rooftop_enabled": true
+  },
+  "familiarity_rules": {
+    "base": 1.0
+  },
+  "visuals": {
+    "color": "929071",
+    "default_outfit": "white_coat",
+    "outfits": [
+      "casual",
+      "interview",
+      "white_coat",
+      "sterile"
+    ],
+    "portraits": {
+      "casual/focused": "assets/characters/maki_original_style_v1/doc_maki/casual/focused.png",
+      "casual/neutral": "assets/characters/maki_original_style_v1/doc_maki/casual/neutral.png",
+      "casual/worried": "assets/characters/maki_original_style_v1/doc_maki/casual/worried.png",
+      "interview/focused": "assets/characters/maki_original_style_v1/doc_maki/interview/focused.png",
+      "interview/neutral": "assets/characters/maki_original_style_v1/doc_maki/interview/neutral.png",
+      "interview/relieved": "assets/characters/maki_original_style_v1/doc_maki/interview/relieved.png",
+      "interview/worried": "assets/characters/maki_original_style_v1/doc_maki/interview/worried.png",
+      "sterile/focused": "assets/characters/maki_original_style_v1/doc_maki/sterile/focused.png",
+      "sterile/neutral": "assets/characters/maki_original_style_v1/doc_maki/sterile/neutral.png",
+      "sterile/worried": "assets/characters/maki_original_style_v1/doc_maki/sterile/worried.png",
+      "white_coat/focused": "assets/characters/maki_original_style_v1/doc_maki/white_coat/focused.png",
+      "white_coat/neutral": "assets/characters/maki_original_style_v1/doc_maki/white_coat/neutral.png",
+      "white_coat/smile": "assets/characters/maki_original_style_v1/doc_maki/white_coat/smile.png",
+      "white_coat/worried": "assets/characters/maki_original_style_v1/doc_maki/white_coat/worried.png",
+      "intraoperative_avatar/neutral": "assets/characters/intraoperative_staff_avatars_v1/doc_maki/neutral.png"
+    },
+    "intraoperative_avatar": {
+      "portrait_key": "intraoperative_avatar/neutral",
+      "target_path": "assets/characters/intraoperative_staff_avatars_v1/doc_maki/neutral.png",
+      "required_for": [
+        "operative_field_hud"
+      ],
+      "status": "ready"
+    }
+  },
+  "team_dialogue": {
+    "assignment": "麻纪迅速将术前资料的页角对齐，认真抬头看向坂口：「患者的基础指标和手术入路我已经预习过了。今天助手的位置，请多指教，坂口医生。」",
+    "intraoperative": "「这边的视野已经按您的要求稳住了，坂口医生。我正盯着您的操作节奏，下一步需要调整配合角度的话，请随时告诉我。」",
+    "intraoperative_correction": "「请稍等一下，坂口医生——这一步操作好像和当前的手术步骤对不上。为安全起见，我们先停下来重新确认一下再继续，可以吗？」"
+  },
+  "authored_dialogue": {
+    "surgical_assistant_dialogue.offer_accept": [
+      {
+        "zh_CN": "麻纪迅速将术前资料的页角对齐，认真抬头看向坂口：「患者的基础指标和手术入路我已经预习过了。今天助手的位置，请多指教，坂口医生。」",
+        "en": "Maki neatly aligns the corners of the preoperative chart and looks up earnestly at Sakaguchi. \"I have reviewed the patient's baseline findings and the planned approach. I'll do my best assisting you today, Dr. Sakaguchi.\""
+      }
+    ],
+    "surgical_assistant_dialogue.routine_assist": [
+      {
+        "zh_CN": "「这边的视野已经按您的要求稳住了，坂口医生。我正盯着您的操作节奏，下一步需要调整配合角度的话，请随时告诉我。」",
+        "en": "\"I have the field steady on this side as requested, Dr. Sakaguchi. I'm following your pace closely—please let me know right away if you need me to adjust my angle for the next step.\""
+      }
+    ]
+  }
+}

@@ -19,7 +19,9 @@ func calendar_checks(g) -> void:
 	g.free_h_booking = {"workday": 215}
 	expect(c.schedule().is_empty() and staff_c.schedule().is_empty(), "Saturday review respects existing reservation")
 	g.free_h_booking.clear()
-	g.set_test_time(213, 961)
+	g.set_test_time(213, 600)
+	expect(not c.schedule().is_empty() and not staff_c.schedule().is_empty(), "10:00 remains eligible for intake")
+	g.set_test_time(213, 601)
 	expect(c.schedule().is_empty() and staff_c.schedule().is_empty(), "Insufficient intake time remains blocked")
 
 func legacy_checks(g) -> void:

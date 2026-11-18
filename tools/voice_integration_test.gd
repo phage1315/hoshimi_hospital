@@ -31,7 +31,7 @@ func run() -> void:
 	expect(app.voice.player.bus == "Voice", "Voice player uses dedicated Voice bus")
 	expect(app.voice.VOICE_ACTORS.size() == 31, "All 31 voiced characters registered")
 	expect(app.voice.SURGICAL_ACTORS.size() == 27, "All 27 surgical voiced characters registered")
-	expect(app.voice.CLIPS.size() == 376, "All 376 voice clips registered (329 base + 20 Sayaka audit/story cues + 27 Sayaka H Runner full-scream cues)")
+	expect(app.voice.CLIPS.size() == 470, "All 470 voice clips registered (329 base + 47 Sayaka + 41 Emiko + 53 Artoria event/H-Runner cues)")
 	expect(app.voice.valid_cue_manifest(app.voice.VOICE_CUE_MANIFEST, app.voice.CLIPS), "event_voice_cues.json manifest structure and clip references valid")
 	for clip_id in app.voice.CLIPS.keys():
 		var stream = load(app.voice.CLIPS[clip_id]) as AudioStreamWAV
@@ -675,6 +675,252 @@ func run() -> void:
 	app.voice.sync(app)
 	expect(app.voice.last_played_clip == "doc_sayaka_h_stage_near_1", "Lv4 shifted pre-finish (index 8) -> doc_sayaka_h_stage_near_1")
 	app._exit_sayaka_h_test()
+	app.voice.sync(app)
+
+	# 10b. Emiko Lv0-Lv4 Event Cues + Free H Acceptance + Operating Room H Runner (Free & Lv4 Milestone modes)
+	app.game.free_h_booking = {"actor_id": "doc_emiko", "day": app.game.day_number(), "location_id": "operating_room"}
+	app.screen = "free_h_response"
+	count_before = app.voice.play_count
+	app.voice.sync(app)
+	expect(app.voice.play_count == count_before + 1 and app.voice.last_played_clip == "doc_emiko_free_h_accept" and app.voice.player.playing, "Emiko Free H booking response triggers doc_emiko_free_h_accept")
+	app.game.free_h_booking.clear()
+
+	for em_pair in [
+		["emiko_intro_rumored_hands", "em0_040", "doc_emiko_ev_lv0_test_hands"],
+		["emiko_lv1_first_operation", "em1_202", "doc_emiko_ev_lv1_like_surgery"],
+		["emiko_lv2_follow_my_lead", "em2_251", "doc_emiko_ev_lv2_your_limit"],
+		["emiko_lv3_today_i_lead", "em3_s2_16", "doc_emiko_ev_lv3_today_i_lead"],
+		["emiko_lv4_emikos_secret", "em4_s1_13", "doc_emiko_ev_lv4_secret_breath"],
+		["emiko_lv4_emikos_secret", "em4_s1_20", "doc_emiko_ev_lv4_get_out"],
+		["emiko_lv4_emikos_secret", "em4_s6_1_22", "doc_emiko_ev_lv4_care_to_try"],
+		["emiko_lv4_emikos_secret", "em4_s6_2_26", "doc_emiko_ev_lv4_never_yield_chief"],
+	]:
+		var em_ev = CharEvent.new(app.game.character_event_definitions[em_pair[0]].duplicate(true))
+		em_ev.node_id = str(em_pair[1])
+		app.game.character_events[em_pair[0]] = em_ev
+		app.game.active_character_event_id = str(em_pair[0])
+		app.screen = "character_event"
+		app.dialogue_page_index = 0
+		count_before = app.voice.play_count
+		app.voice.sync(app)
+		expect(app.voice.play_count == count_before + 1 and app.voice.last_played_clip == str(em_pair[2]) and app.voice.player.playing, "Emiko event cue " + str(em_pair[0]) + "/" + str(em_pair[1]) + " -> " + str(em_pair[2]))
+		app.game.character_events.erase(em_pair[0])
+	app.game.active_character_event_id = ""
+
+	# Emiko Free H Runner (operating_room)
+	var FreeHRegistry = preload("res://godot/systems/free_h_registry.gd")
+	var em_bundle := FreeHRegistry.load_bundle("doc_emiko", "zh_CN")
+	expect(not em_bundle.has("error"), "Emiko Free H bundle loads cleanly")
+	app.h_profile_run_kind = "free"
+	expect(app._begin_h_profile_session("operating_room", "", em_bundle), "Start Emiko Free H Runner")
+	count_before = app.voice.play_count
+	app.voice.sync(app)
+	expect(app.voice.play_count == count_before + 1 and app.voice.last_played_clip in ["doc_emiko_h_entry_1", "doc_emiko_h_entry_2"], "Emiko OR entry plays matching entry voice")
+	app._advance_sayaka_h_entry()
+	app.voice.sync(app)
+	expect(app.h_profile_test_session.phase == "foreplay" and not app.voice.player.playing, "Emiko OR entry stops cleanly on foreplay")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("lick", "cheeks") # low
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_tier_low_1", "Emiko foreplay low #1 -> doc_emiko_h_tier_low_1")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("caress", "cheeks") # mild
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_tier_mild_1", "Emiko foreplay mild #1 -> doc_emiko_h_tier_mild_1")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("caress", "neck") # strong
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_tier_strong_1", "Emiko foreplay strong #1 -> doc_emiko_h_tier_strong_1")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("kiss", "lips") # favorite
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_tier_favorite_1", "Emiko foreplay favorite #1 -> doc_emiko_h_tier_favorite_1")
+
+	app.h_profile_test_session.excitement = 90
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("kiss", "lips") # hits 100
+	app.h_profile_test_max_prompt_visible = bool(app.h_profile_test_last_result.get("show_max_prompt", false))
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_max_prompt", "Emiko excitement 100 -> doc_emiko_h_max_prompt")
+
+	app._choose_sayaka_h_entry_style("gentle")
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_open_gentle", "Emiko gentle opening -> doc_emiko_h_open_gentle")
+	for want_em_stage in ["doc_emiko_h_stage_start_1", "doc_emiko_h_stage_start_2", "doc_emiko_h_stage_mid_1", "doc_emiko_h_stage_build_1", "doc_emiko_h_stage_near_1"]:
+		app._advance_sayaka_h_stage()
+		app.voice.sync(app)
+		expect(app.voice.last_played_clip == want_em_stage and app.voice.player.playing, "Emiko Free H stage -> " + want_em_stage)
+	app._advance_sayaka_h_stage() # h_finish_wait
+	app.voice.sync(app)
+	expect(app.h_profile_test_session.phase == "h_finish_wait" and not app.voice.player.playing, "Emiko finish wait stops stage voice")
+	app._choose_sayaka_h_finish()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip in ["doc_emiko_h_finish_1", "doc_emiko_h_finish_2", "doc_emiko_h_finish_3", "doc_emiko_h_finish_4"] and app.voice.player.playing, "Emiko finish response triggers full-throated scream")
+	app.h_profile_test_session.advance_h_stage()
+	app.h_profile_test_aftercare_index = 0
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_aftercare_1", "Emiko aftercare 0 -> doc_emiko_h_aftercare_1")
+	app._advance_sayaka_h_aftercare()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_aftercare_2", "Emiko aftercare 1 -> doc_emiko_h_aftercare_2")
+	app._advance_sayaka_h_aftercare()
+	app.voice.sync(app)
+
+	# Emiko Lv4 Milestone H Runner (verifying offset=0 without Sayaka overlay shift!)
+	app.begin_emiko_lv4_first_h()
+	expect(app.h_profile_event_mode and app.h_profile_test_session != null and app.h_profile_test_session.actor_id == "doc_emiko", "Emiko Lv4 milestone H Runner started")
+	app.h_profile_test_session.excitement = 100
+	app._choose_sayaka_h_entry_style("intense")
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_emiko_h_open_intense", "Emiko milestone intense opening -> doc_emiko_h_open_intense")
+	for want_ms_stage in ["doc_emiko_h_stage_start_1", "doc_emiko_h_stage_start_2", "doc_emiko_h_mid_intense", "doc_emiko_h_stage_build_1", "doc_emiko_h_stage_near_1"]:
+		app._advance_sayaka_h_stage()
+		app.voice.sync(app)
+		expect(app.voice.last_played_clip == want_ms_stage and app.voice.player.playing, "Emiko milestone Phase 2 (offset=0) -> " + want_ms_stage)
+	app.h_profile_test_session = null
+	app.h_profile_event_mode = false
+	app.h_profile_run_kind = "test"
+	app.show_event_test_hub()
+	app.voice.sync(app)
+
+	# 10c. Artoria Lv0-Lv4 Event Cues + Shy/SeriousBlush/Sparkle + Favorite Dates + Free H Acceptance + Home H Runner (Free & Lv4 Milestone modes)
+	expect(app.voice._resolve_expression_clip("doc_artoria", "shy") == "doc_artoria_shy", "Artoria shy expression resolves to doc_artoria_shy")
+	expect(app.voice._resolve_expression_clip("doc_artoria", "embarrassed") == "doc_artoria_shy", "Artoria embarrassed expression resolves to doc_artoria_shy")
+	expect(app.voice._resolve_expression_clip("doc_artoria", "serious_blush") == "doc_artoria_shy", "Artoria serious_blush expression resolves to doc_artoria_shy")
+	expect(app.voice._resolve_expression_clip("doc_artoria", "sparkle") == "doc_artoria_smile", "Artoria sparkle expression resolves to doc_artoria_smile")
+
+	app.game.free_h_booking = {"actor_id": "doc_artoria", "day": app.game.day_number(), "location_id": "home"}
+	app.screen = "free_h_response"
+	count_before = app.voice.play_count
+	app.voice.sync(app)
+	expect(app.voice.play_count == count_before + 1 and app.voice.last_played_clip == "doc_artoria_free_h_accept" and app.voice.player.playing, "Artoria Free H booking response triggers doc_artoria_free_h_accept")
+	app.game.free_h_booking.clear()
+
+	for fav_pair in [
+		["restaurant_bar", "doc_artoria_date_restaurant"],
+		["winter_ski_resort", "doc_artoria_date_ski"],
+	]:
+		expect(str(app.voice.FAVORITE_DATE_CLIPS.get("doc_artoria/" + str(fav_pair[0]), "")) == str(fav_pair[1]), "Artoria favorite date clip mapped: " + str(fav_pair[0]))
+
+	for ar_pair in [
+		["intro_doc_artoria_deputy_office", "formal_greeting", "doc_artoria_ev_lv0_greeting"],
+		["intro_doc_artoria_deputy_office", "welcome", "doc_artoria_ev_lv0_judgment"],
+		["artoria_lv1_right_position", "leadership_question", "doc_artoria_ev_lv1_work_together"],
+		["artoria_lv1_right_position", "introduction", "doc_artoria_ev_lv1_responsibility"],
+		["artoria_lv2_what_remains", "ar2_s1_22", "doc_artoria_ev_lv2_what_remains"],
+		["artoria_lv2_what_remains", "ar2_s4_20", "doc_artoria_ev_lv2_route_goal"],
+		["artoria_lv2_what_remains", "ar2_s5_19", "doc_artoria_ev_lv2_reliable_partner"],
+		["artoria_lv2_what_remains", "ar2_s5_31", "doc_artoria_ev_lv2_no_contradiction"],
+		["artoria_lv3_not_a_solo_operation", "ar3_s3_1_14", "doc_artoria_ev_lv3_trusted_companions"],
+		["artoria_lv3_not_a_solo_operation", "ar3_s3_2r_15", "doc_artoria_ev_lv3_moe_key_catch"],
+		["artoria_lv3_not_a_solo_operation", "ar3_s5_07", "doc_artoria_ev_lv3_leader_serves"],
+		["artoria_lv3_not_a_solo_operation", "ar3_s5_19", "doc_artoria_ev_lv3_dizzy_apology"],
+		["artoria_lv3_not_a_solo_operation", "ar3_s5r_10", "doc_artoria_ev_lv3_extra_sandwich"],
+		["artoria_lv4_just_artoria", "ar4_s2_23", "doc_artoria_ev_lv4_croquette_courtesy"],
+		["artoria_lv4_just_artoria", "ar4_s4_19", "doc_artoria_ev_lv4_dont_end_today"],
+		["artoria_lv4_just_artoria", "ar4_s4m_06", "doc_artoria_ev_lv4_come_home"],
+		["artoria_lv4_just_artoria", "ar4_s5_1_14", "doc_artoria_ev_lv4_just_artoria"],
+		["artoria_lv4_just_artoria", "ar4_s5_1_16", "doc_artoria_ev_lv4_call_sakaguchi_kun"],
+		["artoria_lv4_just_artoria", "ar4_s5_1_23", "doc_artoria_ev_lv4_closer_tonight"],
+		["artoria_lv4_just_artoria", "ar4_s5_2_11", "doc_artoria_ev_lv4_goodnight"],
+		["artoria_lv4_just_artoria", "ar4_s6_1_13", "doc_artoria_ev_lv4_kitchen_safe"],
+		["artoria_lv4_just_artoria", "ar4_s6_2m_09", "doc_artoria_ev_lv4_savor_breakfast"],
+	]:
+		var ar_ev = CharEvent.new(app.game.character_event_definitions[ar_pair[0]].duplicate(true))
+		ar_ev.node_id = str(ar_pair[1])
+		app.game.character_events[ar_pair[0]] = ar_ev
+		app.game.active_character_event_id = str(ar_pair[0])
+		app.screen = "character_event"
+		app.dialogue_page_index = 0
+		count_before = app.voice.play_count
+		app.voice.sync(app)
+		expect(app.voice.play_count == count_before + 1 and app.voice.last_played_clip == str(ar_pair[2]) and app.voice.player.playing, "Artoria event cue " + str(ar_pair[0]) + "/" + str(ar_pair[1]) + " -> " + str(ar_pair[2]))
+		app.game.character_events.erase(ar_pair[0])
+	app.game.active_character_event_id = ""
+
+	# Artoria Free H Runner (home)
+	var ar_bundle := FreeHRegistry.load_bundle("doc_artoria", "zh_CN")
+	expect(not ar_bundle.has("error"), "Artoria Free H bundle loads cleanly")
+	app.h_profile_run_kind = "free"
+	expect(app._begin_h_profile_session("home", "", ar_bundle), "Start Artoria Free H Runner")
+	count_before = app.voice.play_count
+	app.voice.sync(app)
+	expect(app.voice.play_count == count_before + 1 and app.voice.last_played_clip in ["doc_artoria_h_entry_1", "doc_artoria_h_entry_2", "doc_artoria_h_entry_3", "doc_artoria_h_entry_4"], "Artoria home entry plays 1-to-1 matching entry voice")
+	app._advance_sayaka_h_entry()
+	app.voice.sync(app)
+	expect(app.h_profile_test_session.phase == "foreplay" and not app.voice.player.playing, "Artoria home entry stops cleanly on foreplay")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("lick", "cheeks") # low
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_tier_low_1", "Artoria foreplay low #1 -> doc_artoria_h_tier_low_1")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("kiss", "cheeks") # mild
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_tier_mild_1", "Artoria foreplay mild #1 -> doc_artoria_h_tier_mild_1")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("kiss", "breasts") # strong
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_tier_strong_1", "Artoria foreplay strong #1 -> doc_artoria_h_tier_strong_1")
+
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("kiss", "lips") # favorite
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_tier_favorite_1", "Artoria foreplay favorite #1 -> doc_artoria_h_tier_favorite_1")
+
+	app.h_profile_test_session.excitement = 90
+	app.h_profile_test_last_result = app.h_profile_test_session.perform("kiss", "lips") # hits 100
+	app.h_profile_test_max_prompt_visible = bool(app.h_profile_test_last_result.get("show_max_prompt", false))
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_max_prompt", "Artoria excitement 100 -> doc_artoria_h_max_prompt")
+
+	app._choose_sayaka_h_entry_style("gentle")
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_open_gentle", "Artoria gentle opening -> doc_artoria_h_open_gentle")
+	for want_ar_stage in ["doc_artoria_h_stage_start_1", "doc_artoria_h_stage_start_2", "doc_artoria_h_stage_mid_1", "doc_artoria_h_stage_build_1", "doc_artoria_h_stage_near_1"]:
+		app._advance_sayaka_h_stage()
+		app.voice.sync(app)
+		expect(app.voice.last_played_clip == want_ar_stage and app.voice.player.playing, "Artoria Free H stage -> " + want_ar_stage)
+	app._advance_sayaka_h_stage() # h_finish_wait
+	app.voice.sync(app)
+	expect(app.h_profile_test_session.phase == "h_finish_wait" and not app.voice.player.playing, "Artoria finish wait stops stage voice")
+	app._choose_sayaka_h_finish()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip in ["doc_artoria_h_finish_1", "doc_artoria_h_finish_2", "doc_artoria_h_finish_3", "doc_artoria_h_finish_4"] and app.voice.player.playing, "Artoria finish response triggers full-throated scream")
+	app.h_profile_test_session.advance_h_stage()
+	app.h_profile_test_aftercare_index = 0
+	app.show_sayaka_h_profile_test()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_aftercare_1", "Artoria aftercare 0 -> doc_artoria_h_aftercare_1")
+	app._advance_sayaka_h_aftercare()
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_aftercare_2", "Artoria aftercare 1 -> doc_artoria_h_aftercare_2")
+	app._advance_sayaka_h_aftercare()
+	app.voice.sync(app)
+
+	# Artoria Lv4 Milestone H Runner (verifying offset=0 without Sayaka overlay shift!)
+	app.begin_artoria_lv4_first_h()
+	expect(app.h_profile_event_mode and app.h_profile_test_session != null and app.h_profile_test_session.actor_id == "doc_artoria", "Artoria Lv4 milestone H Runner started")
+	app.h_profile_test_session.excitement = 100
+	app._choose_sayaka_h_entry_style("intense")
+	app.voice.sync(app)
+	expect(app.voice.last_played_clip == "doc_artoria_h_open_intense", "Artoria milestone intense opening -> doc_artoria_h_open_intense")
+	for want_ar_ms_stage in ["doc_artoria_h_stage_start_1", "doc_artoria_h_stage_start_2", "doc_artoria_h_mid_intense", "doc_artoria_h_stage_build_1", "doc_artoria_h_stage_near_1"]:
+		app._advance_sayaka_h_stage()
+		app.voice.sync(app)
+		expect(app.voice.last_played_clip == want_ar_ms_stage and app.voice.player.playing, "Artoria milestone Phase 2 (offset=0) -> " + want_ar_ms_stage)
+	app.h_profile_test_session = null
+	app.h_profile_event_mode = false
+	app.h_profile_run_kind = "test"
+	app.show_event_test_hub()
 	app.voice.sync(app)
 
 	# 11. Save boundary purity check (no voice playback, cue, H-runner, or ducking state in BoundarySave v37)

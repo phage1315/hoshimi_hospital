@@ -132,11 +132,18 @@ func run() -> void:
 	emiko_game.advance_story_to_future_day(3, 780)
 	expect(emiko_game.day_number() == 4 and emiko_game.clock_text() == "13:00", "Emiko Lv1 appointment did not honor the three-day interval")
 	expect(int(emiko_game.relation_for("doc_emiko").familiarity) == 0, "Emiko fixture unexpectedly gained familiarity before Lv1")
+	emiko_game.set_test_player_attribute("skill", 74)
+	expect(not emiko_game.character_event_available(emiko_game.character_event_definitions.emiko_lv1_first_operation), "Emiko Lv1 accepted Surgery 74")
+	emiko_game.set_test_player_attribute("skill", 75)
 	expect(finish_event(emiko_game, "emiko_lv1_first_operation"), "Emiko Lv1 operation could not complete")
-	expect(emiko_game.relationship_level("doc_emiko") == 1, "Emiko Lv1 operation did not establish Lv1")
+	expect(emiko_game.relationship_level("doc_emiko") == 1 and int(emiko_game.relation_for("doc_emiko").familiarity) == 10, "Emiko Lv1 operation did not establish Lv1 with fixed +10 familiarity")
+	expect(not emiko_game.staff_can_join_surgery_team("doc_emiko"), "Emiko unlocked surgical team before Lv2")
 	expect(not emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 ignored the three-day delay")
 	emiko_game.advance_story_to_future_day(3, 780)
-	expect(emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 did not unlock after Lv1 and the three-day delay without extra familiarity")
+	emiko_game.set_test_player_attribute("skill", 79)
+	expect(not emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 accepted Surgery 79")
+	emiko_game.set_test_player_attribute("skill", 80)
+	expect(emiko_game.character_event_available(emiko_lv2), "Emiko Lv2 did not unlock after Lv1, Surgery 80, and the three-day delay without extra familiarity")
 
 	# Asuka's identity stays hidden through the scrub-sink encounter and the
 	# postoperative hint. The encounter requires career progress and the actual

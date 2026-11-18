@@ -10,6 +10,303 @@
       "runtime_connected": false,
       "trigger": null,
       "notes": "Per-character Lv5 staff-as-patient bonus CG; independent of the character-event script."
+    },
+    {
+      "id": "portrait_doc_artoria_white_coat_smile",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv2_v1/doc_artoria/white_coat/smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv2_what_remains",
+      "notes": "Artoria Lv2 gentle dignified smile portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_white_coat_embarrassed",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv2_v1/doc_artoria/white_coat/embarrassed.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv2_what_remains",
+      "notes": "Artoria Lv2 deadpan blush portrait (skipped-lunch scene)"
+    },
+    {
+      "id": "portrait_doc_artoria_scrubs_masked_neutral",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv2_v1/doc_artoria/scrubs_masked/neutral.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv2_what_remains",
+      "notes": "Artoria Lv2 pre-gown epidural anesthesia attire (tie-on mask + sterile gloves)"
+    },
+    {
+      "id": "portrait_doc_artoria_scrubs_masked_focused",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv2_v1/doc_artoria/scrubs_masked/focused.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv2_what_remains",
+      "notes": "Artoria Lv2 pre-gown epidural anesthesia focused variant"
+    },
+    {
+      "id": "portrait_doc_artoria_white_coat_shy",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv3_v1/doc_artoria/white_coat/shy.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv3_not_a_solo_operation",
+      "notes": "Artoria Lv3 caught-off-guard sheepish blush portrait (Scene 5 sofa scene)"
+    },
+    {
+      "id": "cg_doc_artoria_lv4_morning_kitchen_smoke",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv4_cg_v1/lv4_morning_kitchen_smoke.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Approved SFW CG; ar4_s6_1_10, ar4_s6_1_11, ar4_s6_1_12, ar4_s6_1_13"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_outing_neutral",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_outing/neutral.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_outing/neutral) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_outing_smile",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_outing/smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_outing/smile) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_outing_sparkle",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_outing/sparkle.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_outing/sparkle) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_outing_shy",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_outing/shy.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_outing/shy) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_home_neutral",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_home/neutral.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_home/neutral) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_home_smile",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_home/smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_home/smile) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_home_shy",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_home/shy.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_home/shy) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_home_soft",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_home/soft.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_home/soft) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_apron_serious_blush",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_apron/serious_blush.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_apron/serious_blush) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_apron_embarrassed",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_apron/embarrassed.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_apron/embarrassed) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_morning_neutral",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_morning/neutral.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_morning/neutral) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_morning_sparkle",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_morning/sparkle.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_morning/sparkle) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_morning_serious",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_morning/serious.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_morning/serious) transparent RGBA portrait"
+    },
+    {
+      "id": "portrait_doc_artoria_lv4_morning_smile",
+      "category": "character_portrait",
+      "path": "assets/characters/artoria_lv4_v1/doc_artoria/lv4_morning/smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Artoria Lv4 (lv4_morning/smile) transparent RGBA portrait"
+    },
+    {
+      "id": "cg_doc_artoria_lv4_takeyatei_croquette",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv4_cg_v1/lv4_takeyatei_croquette.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Approved SFW CG; ar4_s2_18, ar4_s2_19, ar4_s2_20, ar4_s2_21"
+    },
+    {
+      "id": "cg_doc_artoria_lv4_riverside_confession",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv4_cg_v1/lv4_riverside_confession.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Approved SFW CG; ar4_s4_17, ar4_s4_18, ar4_s4_19"
+    },
+    {
+      "id": "cg_doc_artoria_lv4_living_room_just_artoria",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv4_cg_v1/lv4_living_room_just_artoria.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Approved SFW CG; ar4_s5_1_13, ar4_s5_1_14, ar4_s5_1_15, ar4_s5_1_16, ar4_s5_1_17, ar4_s5_1_18, ar4_s5_1_19"
+    },
+    {
+      "id": "cg_doc_artoria_lv4_morning_table_smile",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv4_cg_v1/lv4_morning_table_smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "Approved SFW CG; ar4_s6_2m_06, ar4_s6_2m_07, ar4_s6_2m_08, ar4_s6_2m_09"
+    },
+    {
+      "id": "h_doc_artoria_body_map_v1",
+      "category": "h_body_map",
+      "path": "assets/h/doc_artoria/body_map.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "User-supplied 682x1024 2:3 H body_map PNG integrated verbatim with calibrated 9-zone normalized UV hotspots in data/h/doc_artoria/h_bodymap.json."
+    },
+    {
+      "id": "h_doc_artoria_scene_cg_v1",
+      "category": "h_scene_cg",
+      "path": "assets/h/doc_artoria/scene_cg.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "User-supplied 1536x1024 Phase 2 H CG integrated verbatim for Lv4 milestone H Runner and Free H (home)."
+    },
+    {
+      "id": "h_doc_artoria_aftercare_cg_v1",
+      "category": "h_aftercare_cg",
+      "path": "assets/h/doc_artoria/aftercare_cg.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "User-supplied 1536x1024 Aftercare H CG integrated verbatim for Lv4 milestone H Runner and Free H (home)."
+    },
+    {
+      "id": "h_doc_artoria_portrait_neutral",
+      "category": "h_expression_portrait",
+      "path": "assets/h/doc_artoria/portrait_neutral.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "612x646 transparent RGBA H expression portrait (neutral) matted from user-approved headshot seed."
+    },
+    {
+      "id": "h_doc_artoria_portrait_annoyed",
+      "category": "h_expression_portrait",
+      "path": "assets/h/doc_artoria/portrait_annoyed.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "612x646 transparent RGBA H expression portrait (annoyed / low tier)."
+    },
+    {
+      "id": "h_doc_artoria_portrait_pleased",
+      "category": "h_expression_portrait",
+      "path": "assets/h/doc_artoria/portrait_pleased.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "612x646 transparent RGBA H expression portrait (pleased / mild tier)."
+    },
+    {
+      "id": "h_doc_artoria_portrait_flustered",
+      "category": "h_expression_portrait",
+      "path": "assets/h/doc_artoria/portrait_flustered.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "612x646 transparent RGBA H expression portrait (flustered / strong tier)."
+    },
+    {
+      "id": "h_doc_artoria_portrait_delighted",
+      "category": "h_expression_portrait",
+      "path": "assets/h/doc_artoria/portrait_delighted.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "612x646 transparent RGBA H expression portrait (delighted / favorite tier)."
+    },
+    {
+      "id": "h_doc_artoria_portrait_peak",
+      "category": "h_expression_portrait",
+      "path": "assets/h/doc_artoria/portrait_peak.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv4_just_artoria",
+      "notes": "612x646 transparent RGBA H expression portrait (peak / excitement=100)."
     }
   ]
 }

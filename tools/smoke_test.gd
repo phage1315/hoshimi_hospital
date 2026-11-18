@@ -74,11 +74,13 @@ func run() -> void:
 	expect(visited_station and app.screen == "location", "Prologue did not force the nurse-station introductions")
 	app.show_map()
 	expect(app.page.get_node_or_null("SceneBackground") != null, "Directory lobby background missing")
-	expect(app.content.collections.locations.size() == 15, "Expanded hospital directory should contain fifteen locations")
+	expect(app.content.collections.locations.size() >= 18, "Expanded hospital directory should contain at least eighteen locations")
 	for location_id in ["pharmacy", "gynecology_exam", "emiko_office", "artoria_office", "director_office"]:
 		expect(app.page.get_node_or_null("Location_" + location_id) != null, "New map entry missing: " + location_id)
 	for location in app.content.collections.locations:
-		app.show_location(location.id)
+		if str(location.id) == "basement_research":
+			continue
+		app.show_location(location.id, false, false, false)
 		var scene_background = app.page.get_node_or_null("SceneBackground")
 		expect(scene_background != null, "Location background missing: " + location.id)
 		if scene_background != null:

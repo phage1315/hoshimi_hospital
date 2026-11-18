@@ -60,7 +60,7 @@ func show_catalog() -> void:
 		for i in range(3):
 			var button: Button = app.button_at(level_label(i), Vector2(340 + i * 200, 165), Vector2(180, 46), set_maximum.bind(i))
 			button.name = "DaydreamLevel_%s" % i
-			button.disabled = maximum == i
+			app.style_selected_button(button, maximum == i)
 	var scroll := ScrollContainer.new()
 	scroll.position = Vector2(60, 175 if testing else 245)
 	scroll.size = Vector2(1160, 500 if testing else 430)
@@ -80,7 +80,9 @@ func show_catalog() -> void:
 		var button := Button.new()
 		button.name = "DaydreamEntry_" + str(entry.get("id", ""))
 		button.custom_minimum_size = Vector2(1100, 112)
+		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		app.style_action_button(button)
 		button.text = "%s · %s · %s\n%s\n%s" % [Catalog.localized(entry.get("title", {}), app.content.localizer.locale), level_label(Catalog.LEVELS.find(entry.level)), state, Catalog.localized(entry.get("cast", {}), app.content.localizer.locale), Catalog.localized(entry.get("tags", {}), app.content.localizer.locale)]
 		button.tooltip_text = Catalog.localized(entry.get("unlock_hint", {}), app.content.localizer.locale)
 		button.disabled = not unlocked or not ready

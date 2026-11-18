@@ -1,6 +1,64 @@
 # Bug Backlog
 
-## 2026-11-11 槽位4：白日梦后顶栏周一00:20、门诊称周日（已审计，异常触发未复现）
+## 2026-11-16 巡检 P0／P1 全量修复、主线绿点导航、设置集中化与 UX 1/3/4/5 落地（已修复，原生与回归全绿）
+
+- 按用户明确确认范围完成修复（刻意保留 **UX-2** `ProcedureList` 原顺序以支持“给患者动错手术”的玩法设计，零改动任何作者剧本台词与 v37 存档契约）：
+  - **P0 全部 7 项清零**：
+    1. `staff_view.gd`：个人页 `StaffOutfitPicker` 严格过滤内部槽位（`intraoperative_avatar`／`splash`／`chibi_icon`），按 `free_h_relationship_qualified()` 门控 `adult_nude`，按 `staff_patient_unlocked()` 门控病房／手术台患者服装；补齐全部 31 套服装、97 种表情、5 项技能双语键（零 snake_case 裸露、零 `[MISSING TRANSLATION]`）。
+    2. `game_state.gd` + `app.gd`：**彻底根治 2026-11-11 槽位 4 双时钟软锁死与加班吞事件**——`can_save_progress()` 拦截 `pending_departure_context`／`pending_encounter_day_transition`／`pending_surgery_day_transition`；`outpatient_closed()` 与 `can_end_workday()` 按 `current_workday()` 与 `display_schedule().absolute_clock` 判定；`after_work` 事件统一按 `current_workday()` 判断星期／月份并经 `render_day_transition` 结算离院；周日医院闲聊跨日走 `settle_sunday_hospital_visit_rollover()`。
+    3. `data/staff/doc_sayaka/events.json`：`sayaka_week1_phone_exchange` 的 `max_day` 由 `5` 放宽至 `365`（不改一字台词），消除首周被挤占导致的永久死锁。
+    4. `app.gd`：`or_table_palpation` 打开任意原生 `Window`（设置／读档）时自动隐藏虚拟工具光标并恢复硬件 `MOUSE_MODE_VISIBLE`，关闭后自动切回。
+    5. `title_view.gd` + `staff_view.gd`：首次启动未完成序章前锁定标题页 `医院导览 →`；个人页 `事件测试 →` 补齐 `OS.is_debug_build()` 守卫。
+    6. `app.gd`：修复节假日（如 Day 29 昭和之日）门诊休诊双标签物理叠印与“首位患者候诊”误导文案，收拢周日医院顶栏按钮避免 `10px` 重叠。
+    7. `voice_director.gd` + `title_view.gd` + `app.gd`：设置弹窗新增 **角色语音音量** 滑条（接管 `"Voice"` 总线及未麻醉切皮视频音量），并同步收纳 **术中危机事件** 与 **术野显示（右上角小窗／全屏）** 开关，术中可随时调整。
+  - **P1 全部 12 项清零**：修复全库 23 处 JSON `.0` 浮点尾巴、英文转诊 `岁` 残留／特殊活动类别缺键／小夜香 `hotel` 与 `Low training value` 混排、专属护士未指派误显成美与中英裁切越界、手术室长立绘名牌遮挡、英文触诊栏重叠、高级手术记录弹窗无滚动条与 `Space/Enter` 穿透、全屏 CG 隐形 `PageSettings`、选中按钮隐形（统一升级为金边高亮 `style_selected_button`）、普通转诊过滤麻醉／放射／研究员、周日芹香误出勤、扫荡训练分 `int(1*0.75)=0` 截断及 `miyuki_private_clinic` Schema `"label"`。
+  - **主线绿点 + UX 1/3/4/5 + 可读性升级**：
+    - **绿点引导（`ClinicalTaskBadge`）**：导览 `02 门诊诊室`／`03 住院病房`／`07 手术室` 随当前患者临床阶段动态亮起绿点；顶栏 `高级转诊` 在有到期任务或可接新病例时亮起绿点。
+    - **UX-1**：门诊未确诊前隐藏剧透真病名，统一显示主诉症状（如“无痛性乳房肿块”“转移性右下腹痛”），确诊后翻转为正式病名。
+    - **UX-3**：随机病例池按 `surgery_level() + 16` 平滑筛选（开局技术 50 仅刷 `<= 66` 常规／中阶病例，完成深山回形针事件前排除难度 85 剖腹探查）。
+    - **UX-4**：办公室关系详情提前标注 `planned`／`unavailable` 后续剧情未实装提示、去重“下一等级”前缀、补充非剧透条件线索，并让 Lv0→Lv1 与 `special_events` 里程碑同步触发就绪提示。
+    - **UX-5**：高级手术 7 人组队下拉框直接显示技能值与 `[专科标签]`，Day 1 简介支持返回重选，事件鉴赏新增 `全部 / 人物事件 / 特殊活动 / 岗位CG` 分类与 `仅看已解锁` 筛选。
+    - **可读性**：亮窗场景顶栏加柔和渐变底衬（`HeaderReadabilityScrim`），门诊对话框高度由 `78px` 增至 `120px`，更衣室右侧早期几何占位图升级为半透明临床状态卡（`preop_stage_art.gd`）。
+- **验证证据**：原生 `1280×800` Metal 窗口全链路核验 **2096 checks, 0 failures**（17 张 SFW 截图见 `docs/qa/fixes_2026-11-16/`）；`narrative_localization_test.py` **52239/0**、`localization_audit.py` **84876 条（UI 841/841，0 硬编码中文）**、`staff_localization_test.py` **1209/0**、`patient_bundle_localization_test.py` **6052/0**；Headless 19 套专项与回归（含 `boundary_save_test` `1020/0`、`event_rendering_save_boundary_test` `8230/0`、`sayaka_v2_test` `7122/0`、`advanced_surgery_test` `6454/0`、`relationship_gate_matrix_test` `66/0`、`smoke_test` `0` 失败）全部通过。
+
+## 2026-11-16 全模块自由游玩与 UI／系统／角色门槛深度巡检（只读实测与记录，现已于上方条目完成修复）
+
+- 按用户要求执行只读实机自由游玩与全量 Bug／UX 登记（完整报告与 16 张原生 `1280×800` SFW 证据图见 [2026-11-16 巡检报告](qa/free_playtest_2026-11-16/REPORT.md)）。全程隔离临时存档与偏好路径，未读写玩家真实槽位，未修改业务代码或剧本。
+- **P0 高优缺陷（7 项）**：
+  1. **医护个人页服装选择器无门槛泄漏与英文缺键报错**（`staff_view.gd:35-40, 92-133`）：Day 1（Lv.0）即可在下拉框直接预览 `doc_rei` 的 `adult_nude` 及多名角色的 `operating_table_lithotomy`／`operating_patient`／`intraoperative_avatar`；中文裸露 91 处内部 snake_case ID，英文渲染 `[MISSING TRANSLATION: ui.staff.outfit.* / expression.*]`。
+  2. **完整定位并实机复现下方 2026-11-11 槽位 4「顶栏周一 00:20、门诊称周日休诊」根因**：工作日跨 `17:00` 触发 `settle_overtime()` 后账本 `day_number()` 立即变为次日（周日），内存保留 `pending_day_exit_workday`；当经 `show_day_transition` 衔接 `after_work` 角色事件（`app.gd:5842 -> 3385 -> 3487`，`before_day == day_number()` 跳过跨日结算且漏清 `pending_day_exit_workday`）或接诊／术前中途跨 `17:00` 点 `← 医院导览`（`day_transition_deferred()`）回到地图时，`show_map()` 因 `awaiting_departure` 跳过周日菜单，办公室下班又因 `is_hospital_closed_day()` 拒绝，形成软锁死；后续耗时累加 `pending_day_exit_clock > 2880` 即显示 `周一 00:20` 而门诊报 `周日休诊`，且 `can_save_progress()`（`game_state.gd:350`）漏检 `pending_day_exit_workday > 0` 允许此时看白日梦并存档。另 `next_after_work_character_event()`（`game_state.gd:2162`）误按跨日后 `day_number()` 判断星期，导致周五／周六加班吞下班事件。
+  3. **小夜香首周换号事件过期永久死锁**（`doc_sayaka/events.json`）：`sayaka_week1_phone_exchange` 限 `min_day: 2, max_day: 5`，被挤占跳过后 `sayaka_lv1_first_date` 永久锁死，办公室 UI 仍误报“条件已满足”。
+  4. **触诊／麻醉测试页（`or_table_palpation`）打开设置或读档原生 `Window` 时鼠标消失**（`preop_view.gd:503` + `app.gd:5366`，硬件鼠标 `MOUSE_MODE_HIDDEN` 而虚拟光标压在 `Window` 下方）。
+  5. **标题页「医院导览」直通跳过序章破坏初始相识状态 + 人物页暴露测试入口**：新启动点 `TitleDirectory`（`title_view.gd:43`）直接进 Day 1 地图且 `doc_aoi`／`nurse_haru` 均未相识；此二人档案页（`staff_view.gd:134`）无 `OS.is_debug_build()` 暴露 `事件测试 →`。
+  6. **法定节假日门诊双休诊标签叠印乱码 + 周日医院顶栏按钮重叠**：昭和之日（Day 29）等平日节假日门诊 `app.gd:2652`（`y=420`）与 `2689`（`y=405`）中英文均物理叠印，且顶部仍写“首位患者已经候诊”；周日医院顶栏 `医生属性`（`865..1055`）与 `返回周日安排`（`1045..1220`）重叠 `10px`。
+  7. **设置弹窗缺失角色语音音量／静音控制**（`title_view.gd:121-157`、`voice_director.gd`）：BGM 调至 0 后 417 条语音与未麻醉切皮音效仍全音量外放。
+- **P1 中优缺陷与 UX 重点（详见报告第 3–4 节）**：
+  - `staff_view.gd:19-20` 中文模式显示英文 `surgery / teamwork / calmness`；全项目 **23 处** JSON `float` 未转 `int`（`27.0岁`、`2.0 分钟`、`第1.0章`、`推荐技术 30.0`、`熟悉度 0.0` 等）；
+  - 英文转诊页残留中文 `24.0岁`（`app.gd:5196`），英文特殊活动 4 类报 `[MISSING TRANSLATION: ui.special_event.category.*]`，中文小夜香 Free H 显示 `今晚去hotel？`、门诊提示 `⚠ Low training value`；
+  - 专属护士页未指派时默认显示外科医生 `神宮寺 成美`，中文截断为 `指`，英文说明文字撞穿首排头像；
+  - 术前／术中长立绘名牌（`y=600`）被对话框（`y=558..700`）遮没；英文触诊说明压住 `Tools` 栏；高级手术对白记录无滚动条撑出屏幕且 `Space/Enter` 穿透弹窗；全屏 CG 顶部隐形 `PageSettings` 可误触；白日梦等误用 `disabled=true` 作选中态导致选中项隐形；转诊未过滤麻醉医／放射医／研究员；`backgrounds[77]` 误写 `"name"` 缺 `"label"`；
+  - 核心体验建议：隐藏确诊前的最终病名标题剧透、置顶手术室 `★` 推荐术式、平滑第 3 名患者起 `33.3%` 刷出 `68–95` 高难手术的难度断层、在办公室提前标明 `planned`/`unavailable` 未实装上限并补充隐藏前置提示。
+
+## 2026-11-13 小夜香 H Runner 第二阶段英文回退（已修复）
+
+- 原 `data/staff/doc_sayaka/h_context_overrides_v1.json` 的英文覆盖仅有 `style.midpoint.intense` 一句；共用Runner按当前locale查上下文，未命中时直接使用中文Profile／Flow，因此其他第二阶段对白和结束按钮仍显示中文。原UI测试也只断言这句英文，未覆盖其余池。
+- 仅在该角色context的 `base.dialogue.en` 补24条翻译，现11组25条：MAX提示、两种风格开场／中段、scene.start／middle／finish（含保留池）、5个结束按钮、4个结束回应、2句普通事后对白。保留已有英文一句，中文原稿／技术ID／地点／事件结构不变；没有改共用引擎、选择概率、完成条件、图片或Lv4作者剧本。两种风格按钮原UI已有英文，不重复增加未使用字段。
+- 新增 `tools/sayaka_phase2_localization_test.gd`：真实Registry加载，6地点×普通／Lv4上下文检查完整池和中文原文一致性；普通重复／开发预览／Lv4接入各两种风格，检查实际UI的第二阶段每句、结束按钮、回应、普通事后显示。直接内存前置及接口推进，未宣称自然解锁、完整Lv4通关、原生窗口／图片视觉验收。原生素材未打开或修改；实际玩家槽位未读写。
+- Godot4.5.1实际命令：`Godot --headless --path . --log-file /private/tmp/sayaka_phase2_after_20261113.log --script res://tools/sayaka_phase2_localization_test.gd` → **902/0**；同方式 `res://tools/h_profile_v1_system_test.gd`（log=`/private/tmp/sayaka_phase2_system_20261113.log`）→ **61/0**；`/private/tmp/sayaka_h_ui_isolated_20261113.gd`（仅给现有UI测试在add_child前设置临时saves/title_preferences路径，log=`/private/tmp/sayaka_phase2_ui_20261113.log`）→ **54/0**。三项退出0，同前缀txt保留输出；有macOS CA环境提示。
+- 静态：`python3 tools/narrative_localization_test.py` → **47206/0**；`python3 tools/localization_audit.py` → 退出1，55556/55556叙事、801/801 UI覆盖，仍报未修改的voice_director.gd 5行中文；`python3 tools/validate_data.py` → 退出1，现有其他背景／事件／角色schema等错误，本次小夜香context无报错。静态日志 `/private/tmp/sayaka_phase2_<脚本名>_20261113.txt`。通用叙事审计并不覆盖全部独立Profile，故新增专项不能被它替代。
+- 原文核对：diff只新增英文context字段；与修改前JSON比较，除新英文池外所有内容相同，已有译文未改。逐条译文核对原Profile／Flow／finish sidecars，保留池数量和顺序。相关diff空白检查通过。
+- 初始诊断测试已复现多项英文中文回退，但夹具在Lv4返回事件之后错误访问已消失Label而中断；终止该测试进程并将Lv4专属事后阶段留给其原事件测试，随后专项完整通过，未隐藏生产失败。
+- 剩余范围：第一阶段入场／互动反应的英文覆盖仍有缺口，本轮只修第二阶段及其MAX／普通事后衔接，不声称整套小夜香H已经全英文化。未重新导出／commit／push。
+
+## 2026-11-13 佩特拉编组误报与高级手术新接诊时段（已修改，专项通过）
+
+- 截图DAY152周六，七人编组合法，实际不能排期；附件实际DAY156 / 9月3日周三，次日被《怎么又在医院？》返场事件占用。只读加载验证 `accept` 明确因calendar拒绝，无时间扣除、病例消耗或持久事实变化；仅等到下周也不会自动完成待办返场事件。
+- 按用户新增要求，新接诊截止由16:00改为10:00（含）；周五至周日、周一至周四10:01起在术式picker之前显示双语时段提示。已有预约／手术／结算入口优先显示。普通高级转诊和医护患者共用状态层规则；编组页另将日程阻挡与缺人／重复区分，英文提示高度增加以避免裁切。
+- 修改 `advanced_referral.gd`、`advanced_referral_view.gd`、`advanced_team_panel.gd`、`data/advanced_surgery/ui_text.json`；新增 `tools/advanced_team_calendar_test.gd`，更新两项既有测试和内容检查清单。实际命令、日志与8张截图见 [本轮QA](qa/advanced_intake_2026-11-13/REPORT.md)。Headless专项200/0、主回归6455/0、排期68/0；原生自动显示检查209/0（不是人工点击／完整流程通关）。叙事本地化47206/0。
+- 未全部通过的检查：团队UI388项中12项助手卡片第二行裁切；旧转诊门槛16项中2项fixture缺教程完成计数；全量本地化因voice_director现有5行未包装中文退出1；validate_data仍报当前其他schema／内容问题。均明确保留，不删除失败测试或借本次扩大重构。初始调试失败轮与边界详见QA。
+- 用户附件SHA256不变 `c1738e4ce282697a31c8fc5ce1a3c35a07ade79fb8bcbb97bfe975cb4ca9a25f`，没有改档／真实槽位读写／导出／提交。新规则须更新运行版本；其他既有未提交工作保留。
+
+## 2026-11-11 槽位4：白日梦后顶栏周一00:20、门诊称周日（已于 2026-11-16 完整定位复现并根治）
 
 - 用户截图顶栏DAY231 / 2025-11-17周一00:20，门诊正文称周日休诊；补充“好像是白日梦事件以后时钟就出现异常”。附件 `clinic_slot_4.json` 实际为v37、elapsed109920、DAY230 / 2025-11-16周日09:00，槽位元数据一致。只读恢复后 `display_schedule()` 与业务日历均为周日09:00，pending departure为空，无活动剧情。11-17本身为普通工作日，不是节假日或人为设定的休诊日。
 - 当前源码白日梦使用独立内存Session，不调用GameState耗时／日历结算；退出仅保留事件级已阅ID。日历顶栏允许演出时钟跨午夜显示下一自然日，而门诊规则使用已结算日历；这是需要继续追踪的显示差异路径，但**尚未找到此次截图的实际污染来源**。没有凭推测清空加班上下文或改动门诊日历，也没有把测试通过记为修复完成。存档有意不保存演出内部状态，无法单靠此文件倒推截图时的临时场景时间。

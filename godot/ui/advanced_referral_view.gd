@@ -64,7 +64,9 @@ func button(key: String, callback: Callable, enabled: bool = true, custom: Strin
 	node.name = key
 	node.text = tr_key(key) if custom.is_empty() else custom
 	node.custom_minimum_size = Vector2(0, 46)
+	node.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	node.add_theme_font_size_override("font_size", 20)
+	host.style_action_button(node)
 	node.disabled = not enabled
 	if not enabled and (key.begins_with("delegate_") or key.begins_with("rescue_")): node.tooltip_text = tr_key("unavailable_action")
 	node.pressed.connect(callback)
@@ -188,10 +190,14 @@ func render() -> void:
 			return
 		label(tr_key("done"), true)
 		var summary: Dictionary = controller.last_summary
-		label(tr_key("reward") % [summary.surgery_xp, summary.leadership_xp, summary.reputation])
+		label(tr_key("reward") % [int(summary.surgery_xp), "%.1f" % float(summary.leadership_xp), int(summary.reputation)])
 		if not bool(summary.success): label(tr_key("failxp"))
 		if staff_episode(): button("back", func(): host.exit_advanced_referral())
 		else: button("new", func(): controller.last_summary.clear(); record = {}; render())
+		return
+	var intake_block: String = controller.intake_time_block_reason()
+	if not intake_block.is_empty():
+		label(tr_key(intake_block), true).name = "IntakeTimeNotice"
 		return
 	if not record.is_empty():
 		render_team()
@@ -216,7 +222,7 @@ func render() -> void:
 			var caption := "%s · %s" % [tr_key("replay" if item.replay else "first"), title_of(definition)]
 			button("case_" + str(item.id), func(): record = item.duplicate(true); selected.clear(); controller.begin_story("day1",item); render(), true, caption)
 	for id in s.cooldowns:
-		label(tr_key("cooldown") % [actor_name(str(id)), s.cooldowns[id]])
+		label(tr_key("cooldown") % [actor_name(str(id)), int(s.cooldowns[id])])
 	if controller.dev: button("next_week", func(): controller.demo_day = (int(controller.day() / 7) + 1) * 7; render())
 	label(tr_key("limitations"))
 
@@ -353,7 +359,7 @@ func accept_case() -> void:
 			dialog.dialog_text = tr_key("staff_booking_conflict") + "\n" + actor_name(conflict)
 			dialog.ok_button_text = tr_key("staff_replace")
 			dialog.cancel_button_text = tr_key("back")
-			host.page.add_child(dialog)
+			host.add_child(dialog)
 			dialog.confirmed.connect(func(): controller.replacement_actor = conflict; dialog.queue_free(); accept_case())
 			dialog.canceled.connect(func(): dialog.queue_free())
 			dialog.popup_centered(Vector2i(600,220))
@@ -416,7 +422,7 @@ func finish_day_transition() -> void:
 func render_booking() -> void:
 	var a: Dictionary = controller.state().appointment
 	label(title_of(Model.procedure(str(a.case.procedure_id))), true)
-	label(tr_key("dates") % [a.intake_day, a.operation_day, a.review_day])
+	label(tr_key("dates") % [int(a.intake_day), int(a.operation_day), int(a.review_day)])
 	if controller.state().outcome.is_empty():
 		label(tr_key("booked"))
 		button("rebook", func(): editing_booking = true; record = a.case.duplicate(true); selected = a.team.duplicate(true); render())
@@ -497,14 +503,22 @@ func queue_operative_auto(session: RefCounted) -> void:
 	if line.is_empty() or next == null or not next.visible or next.disabled: return
 	var ticket := operative_auto_ticket
 	var expected := str(line.id)
-	get_tree().create_timer(1.35).timeout.connect(func():
+	var line_text := str(line.get("text_en" if english else "text", ""))
+	var delay: float = host.dialogue_auto_delay(line_text) if host.has_method("dialogue_auto_delay") else 1.35
+	get_tree().create_timer(delay).timeout.connect(func():
 		if not is_instance_valid(self) or not operative_auto or operative_auto_ticket != ticket or controller.session != session: return
+		if host.dialogue_modal_open():
+			queue_operative_auto(session)
+			return
 		if str(session.operative_dialogue.current(session).get("id", "")) != expected: return
 		if session.operative_dialogue.advance_sequence(session): render())
 
 func show_operative_log(session: RefCounted) -> void:
+	if host.dialogue_modal_open(): return
 	var dialog := AcceptDialog.new()
+	dialog.name = "AdvancedOperativeLogDialog"
 	dialog.title = tr_key("operative_log")
+	dialog.ok_button_text = host.tx("ui.title.close", "关闭")
 	var entries := PackedStringArray()
 	var roster: Dictionary = controller.state().appointment.team
 	for item in session.operative_dialogue.history:
@@ -512,12 +526,20 @@ func show_operative_log(session: RefCounted) -> void:
 		var bound: Dictionary = Dialogue.bind_role(str(row.speaker_role), roster)
 		var speaker_name := tr_key("player_speaker") if bound.get("id", "") == "PLAYER" else actor_name(str(bound.id)) if bound.has("id") and not str(bound.id).is_empty() else tr_key("narration")
 		entries.append("%s · %s\n%s" % [item.stage, speaker_name, str(row.text_en if english else row.text)])
-	dialog.dialog_text = "\n\n".join(entries)
-	dialog.size = Vector2i(820, 500)
-	host.page.add_child(dialog)
-	dialog.visibility_changed.connect(func():
-		if not dialog.visible: dialog.queue_free())
-	dialog.popup_centered()
+	var prose := RichTextLabel.new()
+	prose.name = "AdvancedOperativeLogText"
+	prose.custom_minimum_size = Vector2(780, 420)
+	prose.text = "\n\n".join(entries)
+	prose.bbcode_enabled = false
+	prose.fit_content = false
+	prose.scroll_active = true
+	prose.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	prose.add_theme_font_size_override("normal_font_size", 18)
+	dialog.add_child(prose)
+	host.add_child(dialog)
+	dialog.confirmed.connect(dialog.queue_free)
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.popup_centered(Vector2i(820, 500))
 
 func add_team_patient_table() -> void:
 	var patient := Presentation.patient(controller.state().appointment.case, controller.game, english)
@@ -637,6 +659,12 @@ func render_first_story() -> void:
 		body.remove_child(control);cast_panel.add_child(control)
 		control.position = Vector2(990 if control==next else 770,580)
 		control.size = Vector2(210,46)
+	if controller.story_phase == "day1" and controller.state().appointment.is_empty():
+		var back_board := button("story_back", func(): controller.story_phase = ""; controller.story_index = 0; record = {}; selected.clear(); render(), true, tr_key("team_back"))
+		body.remove_child(back_board)
+		cast_panel.add_child(back_board)
+		back_board.position = Vector2(0, 580)
+		back_board.size = Vector2(220, 46)
 
 	register_story_continue(next)
 

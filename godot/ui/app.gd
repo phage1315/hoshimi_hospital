@@ -164,8 +164,63 @@ var h_profile_run_kind := "test"
 var free_h_return_action: Callable = Callable()
 var sayaka_lv4_h_handoff_complete := false
 var shiori_lv3_surgery_handoff_complete := false
+var emiko_lv4_h_handoff_complete := false
+var artoria_lv4_h_handoff_complete := false
 var sayaka_lv4_test_mode := false
 var sayaka_lv4_callback_resume: Callable = Callable()
+var event_gallery_category := "all"
+var event_gallery_unlocked_only := false
+
+const CASE_PRESENTING_TITLES := {
+	"template_appendicitis": "转移性右下腹痛", # localization-fallback-map
+	"template_breast_tumor": "无痛性乳房肿块", # localization-fallback-map
+	"template_hysterectomy": "经量增多与下腹坠胀", # localization-fallback-map
+	"template_cabg": "劳力性胸闷与心前区压迫", # localization-fallback-map
+	"template_exploratory_laparotomy": "突发性剧烈急腹痛", # localization-fallback-map
+	"template_open_cholecystectomy": "进食油腻后右上腹痛", # localization-fallback-map
+	"template_inguinal_hernia": "腹股沟可复性包块", # localization-fallback-map
+	"template_ventral_hernia": "原手术切口处隆起隐痛", # localization-fallback-map
+	"template_distal_gastrectomy": "上腹隐痛与餐后早饱", # localization-fallback-map
+	"template_total_gastrectomy": "上腹饱胀伴体重下降", # localization-fallback-map
+	"template_right_hemicolectomy": "暗红色便与乏力不适", # localization-fallback-map
+	"template_sigmoid_colectomy": "排便习惯改变伴左下腹痛", # localization-fallback-map
+	"template_abdominoperineal_resection": "便血伴肛门坠胀感", # localization-fallback-map
+	"template_whipple": "进行性黄疸伴上腹痛", # localization-fallback-map
+	"template_liver_resection": "右上腹闷胀伴影像异常", # localization-fallback-map
+	"template_splenectomy": "左上腹饱胀不适", # localization-fallback-map
+	"template_ovarian_cystectomy": "单侧下腹隐痛伴盆腔坠胀", # localization-fallback-map
+	"template_abdominal_myomectomy": "经期延长与盆腔压迫感", # localization-fallback-map
+	"template_total_mastectomy": "乳房多发结节伴皮肤牵拉", # localization-fallback-map
+	"template_lung_lobectomy": "持续刺激性干咳伴痰血", # localization-fallback-map
+	"template_pneumonectomy": "顽固咳嗽伴活动后气促", # localization-fallback-map
+	"template_esophagectomy": "进行性吞咽梗阻感", # localization-fallback-map
+	"template_radical_cystectomy": "反复无痛性肉眼血尿", # localization-fallback-map
+	"template_nephrectomy": "侧腰部钝痛伴血尿", # localization-fallback-map
+	"template_abdominal_aortic_aneurysm": "腹部搏动性包块伴腰背酸痛", # localization-fallback-map
+	"template_vaginal_hysterectomy": "久站后下腹下坠与脱出感", # localization-fallback-map
+	"template_distal_pancreatectomy": "左上腹深部隐痛伴饱胀", # localization-fallback-map
+	"template_partial_nephrectomy": "体检影像发现腰部无症状占位", # localization-fallback-map
+	"template_adrenalectomy": "难治性血压升高伴乏力", # localization-fallback-map
+	"template_left_hemicolectomy": "左侧腹痛伴排便变细", # localization-fallback-map
+	"template_low_anterior_resection": "排便不尽感伴黏液血便", # localization-fallback-map
+} # localization-fallback-map
+
+const FREE_H_LOCATION_FALLBACKS := {
+	"hotel": "酒店", # localization-fallback-map
+	"player_office": "主治医师室", # localization-fallback-map
+	"operating_room": "手术室", # localization-fallback-map
+	"home": "住处", # localization-fallback-map
+} # localization-fallback-map
+
+const SPECIAL_EVENT_CATEGORY_FALLBACKS := {
+	"story_special_event": "剧情特别活动", # localization-fallback-map
+	"hospital_training": "院内临床研修", # localization-fallback-map
+	"career_milestone": "职业里程碑", # localization-fallback-map
+	"advanced_referral_tutorial": "高级转诊导引", # localization-fallback-map
+} # localization-fallback-map
+
+func special_event_category_label(raw_category: String) -> String:
+	return tx("ui.special_event.category." + raw_category, str(SPECIAL_EVENT_CATEGORY_FALLBACKS.get(raw_category, raw_category)))
 
 const H_PROFILE_TEST_CONTENT_PATH := "res://data/staff/doc_sayaka/h_profile_v1_3_2.json"
 const H_PROFILE_TEST_FLOW_PATH := "res://data/staff/doc_sayaka/h_flow_v1_3_2.json"
@@ -221,8 +276,9 @@ func protagonist_professional_name() -> String:
 func configure_game_content() -> void:
 	game.configure(content.collections.encounters, content.collections.preops, content.collections.staff, content.collections.time_events, content.collections.surgeries, content.collections.patients, content.collections.relationships, content.collections.character_events, content.collections.case_templates, content.collections.micro_events, content.collections.examination_cg_pools, content.collections.surgery_team_dialogue_profiles, content.collections.patient_interactions, content.collections.temporary_conditions, content.collections.staff_role_cg_rewards, content.collections.special_events, content.collections.special_event_steps, content.collections.date_profiles, content.collections.date_locations, content.collections.advanced_referral_cases, content.collections.first_surgery_diagnosis_reactions, content.collections.palpation_profiles, content.collections.awake_special_barks)
 	if DisplayServer.get_name() != "headless":
-		game.set_intraoperative_crisis_enabled(content.localizer.preferred_intraoperative_crisis_enabled())
-		operative_field_hud_enabled = content.localizer.preferred_operative_field_hud_enabled()
+		var pref_path: String = title_preferences_path if not str(title_preferences_path).is_empty() and str(title_preferences_path) != "user://title_preferences.cfg" else content.localizer.SETTINGS_PATH
+		game.set_intraoperative_crisis_enabled(content.localizer.preferred_intraoperative_crisis_enabled(pref_path))
+		operative_field_hud_enabled = content.localizer.preferred_operative_field_hud_enabled(pref_path)
 		dialogue_auto_speed_index = content.localizer.preferred_dialogue_auto_speed()
 
 func switch_locale() -> void:
@@ -248,6 +304,7 @@ func _ready() -> void:
 	add_child(music)
 	add_child(voice)
 	music.configure_preferences(title_preferences_path)
+	voice.configure_preferences(title_preferences_path)
 	var font := SystemFont.new()
 	font.font_names = PackedStringArray(["PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", "sans-serif"])
 	var ui_theme := Theme.new()
@@ -269,9 +326,20 @@ func _process(_delta: float) -> void:
 	music.play_track(music.track_for(self))
 	voice.sync(self)
 	refresh_calendar_header()
+	if is_instance_valid(page):
+		var page_settings := page.get_node_or_null("PageSettings") as Button
+		if page_settings != null:
+			var hide_settings := screen in ["character_event_reward", "staff_role_reward", "examination_cg", "surgery_cg", "surgery_video", "preop_transition_video", "opening_chapter", "day_transition"] or _fullscreen_control_overlay_open() or page.get_node_or_null("EventRewardCG") != null or page.get_node_or_null("StaffRoleRewardCG") != null or page.get_node_or_null("CharacterEventCG") != null or page.get_node_or_null("SpecialEventCG") != null
+			page_settings.visible = not hide_settings
+			page_settings.disabled = hide_settings
 	if screen == "or_table_palpation" and is_instance_valid(or_table_virtual_cursor):
+		var modal_open := dialogue_modal_open()
+		or_table_virtual_cursor.visible = not modal_open
+		var desired_mode := Input.MOUSE_MODE_VISIBLE if modal_open else Input.MOUSE_MODE_HIDDEN
+		if Input.get_mouse_mode() != desired_mode:
+			Input.set_mouse_mode(desired_mode)
 		var viewport := get_viewport()
-		if viewport != null:
+		if viewport != null and not modal_open:
 			or_table_virtual_cursor.position = viewport.get_mouse_position() - or_table_virtual_cursor_hotspot
 
 func _notification(what: int) -> void:
@@ -358,6 +426,22 @@ func base(title: String, subtitle: String, portrait: bool = false, background_id
 	wash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	wash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	page.add_child(wash)
+	if lightly_shaded_screen and (not title.is_empty() or not subtitle.is_empty()):
+		var scrim_grad := Gradient.new()
+		scrim_grad.offsets = PackedFloat32Array([0.0, 0.68, 1.0])
+		scrim_grad.colors = PackedColorArray([Color(0.015, 0.05, 0.065, 0.72), Color(0.015, 0.05, 0.065, 0.44), Color(0.015, 0.05, 0.065, 0.0)])
+		var scrim_tex := GradientTexture2D.new()
+		scrim_tex.gradient = scrim_grad
+		scrim_tex.fill_from = Vector2(0.0, 0.0)
+		scrim_tex.fill_to = Vector2(0.0, 1.0)
+		var header_scrim := TextureRect.new()
+		header_scrim.name = "HeaderReadabilityScrim"
+		header_scrim.texture = scrim_tex
+		header_scrim.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		header_scrim.position = Vector2(0, 0)
+		header_scrim.size = Vector2(1280, 172)
+		header_scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		page.add_child(header_scrim)
 	label_at(tx("ui.brand", "H O S H I M I   /   星见医院"), Vector2(54, 25), 16, Color("c9d5ca"))
 	var calendar_header := label_at("", Vector2(815, 25), 15, Color("c9d5ca"), 430)
 	calendar_header.name = "CalendarHeader"
@@ -399,8 +483,8 @@ func label_at(text: String, pos: Vector2, font_size: int = 20, color: Color = Co
 	item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	item.add_theme_font_size_override("font_size", font_size)
 	item.add_theme_color_override("font_color", color)
-	item.add_theme_color_override("font_outline_color", Color(0.015, 0.04, 0.05, 0.94))
-	item.add_theme_constant_override("outline_size", 4)
+	item.add_theme_color_override("font_outline_color", Color(0.01, 0.035, 0.045, 0.96))
+	item.add_theme_constant_override("outline_size", 5)
 	page.add_child(item)
 	# Establish the wrapping width with the inherited theme before assigning text.
 	item.size.x = minf(width, 1280.0 - pos.x - 30.0)
@@ -677,16 +761,42 @@ func feedback_at(text: String, pos: Vector2, font_size: int = 21, width: float =
 	message.name = "LocationFeedbackText"
 	return message
 
+func style_action_button(button: Button, margin_x: float = 22.0) -> void:
+	button.add_theme_color_override("font_color", Color("f4f0e6"))
+	button.add_theme_color_override("font_hover_color", Color("fffaf0"))
+	button.add_theme_color_override("font_focus_color", Color("fffaf0"))
+	button.add_theme_color_override("font_disabled_color", Color("8ea3a1"))
+	var normal_style := panel_style(Color("203e48"))
+	var hover_style := panel_style(Color("365963"), Color("d1c19e"))
+	var focus_style := panel_style(Color("365963"), Color("f3dbac"))
+	var pressed_style := panel_style(Color("1a333b"), Color("e8cfaa"))
+	var disabled_style := panel_style(Color(0.09, 0.16, 0.19, 0.82), Color(0.38, 0.50, 0.52, 0.55))
+	for s in [normal_style, hover_style, focus_style, pressed_style, disabled_style]:
+		s.content_margin_left = margin_x
+		s.content_margin_right = margin_x
+	button.add_theme_stylebox_override("normal", normal_style)
+	button.add_theme_stylebox_override("hover", hover_style)
+	button.add_theme_stylebox_override("focus", focus_style)
+	button.add_theme_stylebox_override("pressed", pressed_style)
+	button.add_theme_stylebox_override("disabled", disabled_style)
+
+func style_selected_button(button: Button, selected: bool, margin_x: float = 16.0) -> void:
+	button.disabled = selected
+	if selected:
+		var active_style := panel_style(Color("2f5762"), Color("e8cfaa"))
+		active_style.set_border_width_all(2)
+		active_style.content_margin_left = margin_x
+		active_style.content_margin_right = margin_x
+		button.add_theme_stylebox_override("disabled", active_style)
+		button.add_theme_color_override("font_disabled_color", Color("fffaf0"))
+
 func button_at(text: String, pos: Vector2, dimensions: Vector2, action: Callable) -> Button:
 	var button := Button.new()
 	button.text = text
 	button.position = pos
 	button.size = dimensions
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	button.add_theme_color_override("font_color", Color("f4f0e6"))
-	button.add_theme_stylebox_override("normal", panel_style(Color("203e48")))
-	button.add_theme_stylebox_override("hover", panel_style(Color("365963"), Color("d1c19e")))
-	button.add_theme_stylebox_override("focus", panel_style(Color("365963"), Color("f3dbac")))
+	style_action_button(button)
 	button.pressed.connect(action)
 	page.add_child(button)
 	if content.localizer.locale == "en":
@@ -707,6 +817,89 @@ func add_story_event_badge(button: Button) -> void:
 	style.set_corner_radius_all(8)
 	badge.add_theme_stylebox_override("panel", style)
 	button.add_child(badge)
+
+func add_clinical_task_badge(button: Button) -> void:
+	var badge := Panel.new()
+	badge.name = "ClinicalTaskBadge"
+	var has_red := button.get_node_or_null("PendingStoryEventBadge") != null
+	badge.position = Vector2(button.size.x - (46 if has_red else 25), 8)
+	badge.size = Vector2(16, 16)
+	badge.z_index = 3
+	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color("42bf77")
+	style.border_color = Color("e8fff1")
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(8)
+	badge.add_theme_stylebox_override("panel", style)
+	button.add_child(badge)
+
+func clinical_task_location_id() -> String:
+	if sunday_hospital_browsing or game.is_hospital_closed_day(int(game.display_schedule().day)):
+		return ""
+	if not game.active_preop_id.is_empty() and game.preops.has(game.active_preop_id):
+		var active_prep = game.preops[game.active_preop_id]
+		if not bool(active_prep.surgery_success) and not bool(active_prep.surgery_aborted):
+			var scene_id := str(active_prep.current().get("scene", ""))
+			return "or" if scene_id in ["changing", "scrub_area", "or_entrance", "operating_room"] else "ward"
+	if game.unresolved_admitted_patient_exists():
+		for prep in game.preops.values():
+			if not bool(prep.surgery_success) and not bool(prep.surgery_aborted):
+				var prep_scene := str(prep.current().get("scene", ""))
+				if prep_scene in ["changing", "scrub_area", "or_entrance", "operating_room"]:
+					return "or"
+		return "ward"
+	var waiting_id := game.current_patient_id()
+	if waiting_id.is_empty():
+		return ""
+	if not game.outpatient_closed():
+		return "clinic"
+	var enc_id := encounter_for_patient(waiting_id)
+	if not enc_id.is_empty() and game.visits.has(enc_id):
+		return "clinic"
+	return ""
+
+func has_pending_advanced_referral_badge() -> bool:
+	if sunday_hospital_browsing:
+		return false
+	var AdvRef = preload("res://godot/systems/advanced_referral.gd")
+	if AdvRef.due(game):
+		return true
+	if not game.advanced_referral_eligible() or not game.advanced_referral_system_unlocked():
+		return false
+	var probe = AdvRef.new(game, false)
+	if not probe.state().appointment.is_empty():
+		return false
+	if not probe.intake_time_block_reason().is_empty():
+		return false
+	return not probe.board().is_empty() and not probe.schedule().is_empty()
+
+func outpatient_case_display_title(patient_id: String) -> String:
+	var case_data: Dictionary = game.patient_case(patient_id)
+	if case_data.is_empty():
+		var pat: Dictionary = content.find_record("patients", patient_id)
+		case_data = content.find_record("cases", str(pat.get("case_id", "")))
+	if game.admitted_patient(patient_id) or game.completed_patient(patient_id):
+		return str(case_data.get("title", ""))
+	var enc_id := encounter_for_patient(patient_id)
+	if not enc_id.is_empty() and game.visits.has(enc_id):
+		var existing_visit = game.visits[enc_id]
+		if not str(existing_visit.diagnosis).is_empty() or bool(existing_visit.admitted) or existing_visit.completed():
+			return str(case_data.get("title", ""))
+	var template_id := str(game.patient_cases.get(patient_id, case_data.get("id", "")))
+	if CASE_PRESENTING_TITLES.has(template_id):
+		return tx("ui.case.presenting." + template_id, str(CASE_PRESENTING_TITLES[template_id]))
+	var symptoms: Array = case_data.get("symptoms", [])
+	if not symptoms.is_empty():
+		return str(symptoms[0])
+	return str(case_data.get("title", ""))
+
+func outpatient_visit_display_title(visit: RefCounted) -> String:
+	if visit == null:
+		return ""
+	if not str(visit.diagnosis).is_empty() or bool(visit.admitted) or visit.completed():
+		return str(visit.definition.title)
+	return outpatient_case_display_title(str(visit.definition.patient_id))
 
 func has_pending_story_event_at(location_id: String) -> bool:
 	if not game.next_special_event_at(location_id).is_empty():
@@ -775,6 +968,13 @@ func pause_dialogue_for_choice() -> void:
 func run_dialogue_auto_timer(expected_generation: int, delay_seconds: float) -> void:
 	await get_tree().create_timer(delay_seconds).timeout
 	while dialogue_auto_enabled and expected_generation == dialogue_auto_generation:
+		if dialogue_modal_open() or _fullscreen_control_overlay_open():
+			while dialogue_auto_enabled and expected_generation == dialogue_auto_generation and (dialogue_modal_open() or _fullscreen_control_overlay_open()):
+				await get_tree().create_timer(0.2).timeout
+			if not dialogue_auto_enabled or expected_generation != dialogue_auto_generation:
+				return
+			await get_tree().create_timer(dialogue_auto_delay(current_dialogue_text(), 0.25)).timeout
+			continue
 		if dialogue_button_can_activate(dialogue_default_button) and activate_dialogue_default():
 			return
 		await get_tree().create_timer(0.2).timeout
@@ -790,10 +990,26 @@ func dialogue_modal_open() -> bool:
 	for child in get_children():
 		if child is Window and child.visible:
 			return true
+	if is_instance_valid(page):
+		for child in page.get_children():
+			if child is Window and child.visible:
+				return true
 	return false
 
+func _active_fullscreen_control_overlay() -> Control:
+	if not is_instance_valid(page):
+		return null
+	for overlay_name in ["ExaminationSplash", "WardPreparationSplash", "EpiduralAnesthesiaSplash", "GeneralAnesthesiaPreInductionSplash", "GeneralAnesthesiaSplash", "SurgeryGrowthSplash", "FreeHLocationPicker"]:
+		var node := page.get_node_or_null(overlay_name) as Control
+		if node != null and node.visible:
+			return node
+	return null
+
+func _fullscreen_control_overlay_open() -> bool:
+	return _active_fullscreen_control_overlay() != null
+
 func activate_dialogue_default() -> bool:
-	if dialogue_text_input_focused() or dialogue_modal_open() or not dialogue_button_can_activate(dialogue_default_button):
+	if dialogue_text_input_focused() or dialogue_modal_open() or _fullscreen_control_overlay_open() or not dialogue_button_can_activate(dialogue_default_button):
 		return false
 	var button := dialogue_default_button
 	# Invalidate before emitting: the action normally redraws the page and may
@@ -810,17 +1026,30 @@ func _input(event: InputEvent) -> void:
 	if screen == "special_event_blackout":
 		get_viewport().set_input_as_handled()
 		return
-	# Keep keyboard focus/shortcuts from reaching the retained clinic underneath.
+	if dialogue_modal_open():
+		return
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
+		if screen == "surgery_video":
+			get_viewport().set_input_as_handled()
+			complete_surgery_video()
+			return
+		if screen == "preop_transition_video":
+			get_viewport().set_input_as_handled()
+			complete_preop_transition_video()
+			return
+	# Keep keyboard focus/shortcuts from reaching the retained clinic/preop underneath.
 	if not event is InputEventKey or not is_instance_valid(page):
 		return
-	var splash := page.get_node_or_null("ExaminationSplash")
-	if splash == null:
+	var overlay := _active_fullscreen_control_overlay()
+	if overlay == null:
 		return
 	get_viewport().set_input_as_handled()
-	if event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
-		var continue_button := splash.find_child("ExaminationCGContinue", true, false) as Button
-		if continue_button != null and not continue_button.disabled:
-			continue_button.pressed.emit()
+	if event.pressed and not event.echo and event.keycode in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER] and overlay.name != "FreeHLocationPicker":
+		for btn_name in ["ExaminationCGContinue", "WardPreparationSplashContinue", "AnesthesiaSplashContinue", "SurgeryGrowthContinue"]:
+			var continue_button := overlay.find_child(btn_name, true, false) as Button
+			if continue_button != null and not continue_button.disabled and continue_button.visible:
+				continue_button.pressed.emit()
+				return
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo:
@@ -1013,7 +1242,7 @@ func begin_sayaka_h_profile_test(location_id: String = "hotel", event_id: String
 func _begin_h_profile_session(location_id: String, event_id: String, bundle: Dictionary = {}) -> bool:
 	if h_profile_run_kind == "free" and not event_id.is_empty():
 		return false
-	h_profile_event_mode = event_id == "sayaka_lv4_first_h"
+	h_profile_event_mode = event_id in ["sayaka_lv4_first_h", "emiko_lv4_first_h", "artoria_lv4_first_h"]
 	var runtime_profile: Dictionary = bundle.get("profile", {})
 	var source_bodymap: Dictionary = bundle.get("bodymap", {})
 	if bundle.is_empty():
@@ -1037,7 +1266,7 @@ func _begin_h_profile_session(location_id: String, event_id: String, bundle: Dic
 	h_profile_test_style = ""
 	h_profile_test_max_prompt_visible = false
 	h_profile_test_aftercare_index = 0
-	h_profile_test_entry_lines = [] if event_id == "sayaka_lv4_first_h" else h_profile_test_session.location_entry_lines(runtime_profile.get("location_entry", {}).get(location_id, []))
+	h_profile_test_entry_lines = [] if h_profile_event_mode else h_profile_test_session.location_entry_lines(runtime_profile.get("location_entry", {}).get(location_id, []))
 	if bool(runtime_profile.get("entry_random_one", false)) and h_profile_test_entry_lines.size() > 1:
 		h_profile_test_entry_lines = [h_profile_test_entry_lines.pick_random()]
 	if not h_profile_test_session.last_error.is_empty():
@@ -1051,6 +1280,8 @@ func _begin_h_profile_session(location_id: String, event_id: String, bundle: Dic
 	return true
 
 func _h_profile_title() -> String:
+	if h_profile_run_kind in ["free", "milestone"] and h_profile_test_session != null and h_profile_test_session.actor_id != "doc_sayaka":
+		return tx("ui.free_h.title", "共度时光 · %s") % _h_profile_speaker_name()
 	if h_profile_run_kind == "free" and h_profile_test_session != null:
 		return tx("ui.free_h.title", "共度时光 · %s") % _h_profile_speaker_name()
 	return "H Profile V1.3.4 · Sayaka" if str(content.localizer.locale) == "en" else "H Profile V1.3.4 · 小夜香" # localization-invariant
@@ -1134,10 +1365,16 @@ func show_sayaka_h_profile_test() -> void:
 	}
 	var phase := str(h_profile_test_session.phase)
 	if h_profile_event_mode and phase == "after_cg":
+		var finished_actor_id := str(h_profile_test_session.actor_id)
 		h_profile_test_session.finish()
 		h_profile_test_session = null
 		h_profile_event_mode = false
-		sayaka_lv4_h_handoff_complete = true
+		if finished_actor_id == "doc_emiko":
+			emiko_lv4_h_handoff_complete = true
+		elif finished_actor_id == "doc_artoria":
+			artoria_lv4_h_handoff_complete = true
+		else:
+			sayaka_lv4_h_handoff_complete = true
 		var active_event = game.character_events.get(game.active_character_event_id)
 		if active_event != null and not active_event.current().get("choices", []).is_empty():
 			choose_character_event(str(active_event.current().choices[0].id))
@@ -1168,7 +1405,7 @@ func show_sayaka_h_profile_test() -> void:
 		dialogue_box.size = Vector2(1040, 76)
 		dialogue_box.add_theme_stylebox_override("panel", panel_style(Color(0.04, 0.11, 0.15, 0.94)))
 		page.add_child(dialogue_box)
-		if h_profile_event_mode and phase == "h_stage" and h_profile_test_session.h_scene_index >= 1 and h_profile_test_session.h_scene_index <= 3:
+		if h_profile_event_mode and h_profile_test_session.actor_id == "doc_sayaka" and phase == "h_stage" and h_profile_test_session.h_scene_index >= 1 and h_profile_test_session.h_scene_index <= 3:
 			var overlay_speakers := ["南条小夜香" if not english else "Sayaka Nanjou", protagonist_name(), "南条小夜香" if not english else "Sayaka Nanjou"] # localization-invariant
 			var scripted_speaker := label_at(str(overlay_speakers[h_profile_test_session.h_scene_index - 1]), Vector2(145, 628), 16, Color("e8cfaa"), 980)
 			scripted_speaker.name = "HProfileDialogueSpeaker"
@@ -1293,7 +1530,7 @@ func _choose_sayaka_h_entry_style(style_id: String) -> void:
 		h_profile_test_style = style_id
 		h_profile_test_max_prompt_visible = false
 		h_profile_test_aftercare_index = 0
-		if h_profile_event_mode:
+		if h_profile_event_mode and h_profile_test_session.actor_id == "doc_sayaka":
 			var locale := str(content.localizer.locale)
 			var overlay := [
 				"……射在里面！我都准备好了。" if locale != "en" else "...Come inside me! I've already taken care of everything.", # localization-invariant
@@ -1395,8 +1632,8 @@ func _exit_sayaka_h_test() -> void:
 func _free_h_place_label(actor_id: String, location_id: String) -> String:
 	var config := FreeHRegistry.definition(actor_id)
 	if config.has("location_label_key"):
-		return tx(str(config.location_label_key), str(config.get("location_label", location_id)))
-	return tx("ui.free_h.location." + location_id, location_id)
+		return tx(str(config.location_label_key), str(config.get("location_label", FREE_H_LOCATION_FALLBACKS.get(location_id, location_id))))
+	return tx("ui.free_h.location." + location_id, str(FREE_H_LOCATION_FALLBACKS.get(location_id, location_id)))
 
 func free_h_booking_label() -> String:
 	game.expire_free_h_booking()
@@ -1461,7 +1698,7 @@ func show_free_h_location_picker(actor_id: String, default_location: String) -> 
 		var option_id := str(locations[index])
 		var option := Button.new()
 		option.name = "FreeHLocation_" + option_id
-		option.text = tx("ui.free_h.location." + option_id, option_id)
+		option.text = tx("ui.free_h.location." + option_id, str(FREE_H_LOCATION_FALLBACKS.get(option_id, option_id)))
 		option.position = Vector2(30, 145 + index * 58)
 		option.size = Vector2(590, 48)
 		option.alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -1956,7 +2193,9 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 			return
 		confirm_special_event(str(auto_special_event.id))
 		return
-	var day_start_character_event := game.next_day_start_character_event() if resolve_day_start_events and not awaiting_departure else {}
+	var day_start_character_event := game.next_day_start_character_event() if not awaiting_departure else {}
+	if not resolve_day_start_events and not preload("res://godot/systems/maki_lv0.gd").owns(str(day_start_character_event.get("id", ""))):
+		day_start_character_event = {}
 	if not day_start_character_event.is_empty():
 		Megumin.postpone(game)
 		start_mandatory_character_event(str(day_start_character_event.id))
@@ -1980,11 +2219,12 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 	var map_row_count := ceili(float(map_locations.size()) / 4.0)
 	var map_row_spacing := minf(126.0, 515.0 / maxf(1.0, map_row_count))
 	var map_card_height := minf(108.0, map_row_spacing - 15.0)
+	var active_clinical_loc := clinical_task_location_id()
 	for i in range(map_locations.size()):
 		var location: Dictionary = map_locations[i]
 		var pos := Vector2(40 + (i % 4) * 305, 168 + (i / 4) * map_row_spacing)
-		var location_button := button_at("%02d   %s
-		   %s" % [i + 1, location.name, location.subtitle], pos, Vector2(285, map_card_height), show_location.bind(location.id))
+		var card_caption := "%02d   %s" % [i + 1, location.name] if content.localizer.locale == "en" else "%02d   %s\n		   %s" % [i + 1, location.name, location.subtitle]
+		var location_button := button_at(card_caption, pos, Vector2(285, map_card_height), show_location.bind(location.id))
 		location_button.name = "Location_" + str(location.id)
 		# English location names are often longer than their Japanese/Chinese
 		# counterparts. Keep the two-line cards readable and leave room for the
@@ -1995,16 +2235,28 @@ func show_map(resolve_day_start_events: bool = true) -> void:
 			preload("res://godot/ui/button_text.gd").fit(location_button, Vector2(285, map_card_height), 17)
 		if has_pending_story_event_at(str(location.id)):
 			add_story_event_badge(location_button)
-	button_at("Advanced Referral" if content.localizer.locale == "en" else "高级转诊", Vector2(650, 88), Vector2(200, 44), show_advanced_referral.bind(false)).name = "AdvancedReferralEntry" # localization-invariant
-	var profile_button := button_at(tx("ui.common.doctor_profile", "医生属性"), Vector2(865, 88), Vector2(190, 44), show_player_profile)
+		if str(location.id) == active_clinical_loc:
+			add_clinical_task_badge(location_button)
+	var adv_btn := button_at("Advanced Referral" if content.localizer.locale == "en" else "高级转诊", Vector2(615 if sunday_hospital_browsing else 650, 88), Vector2(200, 44), show_advanced_referral.bind(false)) # localization-invariant
+	adv_btn.name = "AdvancedReferralEntry"
+	if has_pending_advanced_referral_badge():
+		add_clinical_task_badge(adv_btn)
+	var profile_button := button_at(tx("ui.common.doctor_profile", "医生属性"), Vector2(825 if sunday_hospital_browsing else 865, 88), Vector2(190, 44), show_player_profile)
 	profile_button.name = "PlayerProfileButton"
-	button_at(tx("ui.common.return_sunday", "返回周日安排") if sunday_hospital_browsing else tx("ui.common.return_title", "返回标题"), Vector2(1045 if sunday_hospital_browsing else 1070, 88), Vector2(175 if sunday_hospital_browsing else 150, 44), show_sunday_menu if sunday_hospital_browsing else title_screen)
-	button_at(tx("ui.common.save_progress", "保存进度"), Vector2(40, 700), Vector2(145, 43), save_progress)
-	button_at(tx("ui.common.load_game", "读取存档"), Vector2(195, 700), Vector2(145, 43), request_load)
-	button_at(tx("ui.common.time_log", "时间记录"), Vector2(350, 700), Vector2(145, 43), show_time_log)
-	var special_events_button := button_at(tx("ui.common.special_events", "特殊活动"), Vector2(505, 700), Vector2(145, 43), show_special_events)
-	special_events_button.name = "SpecialEventsButton"
-	button_at(tx("ui.common.event_gallery", "事件鉴赏"), Vector2(660, 700), Vector2(145, 43), show_event_gallery)
+	button_at(tx("ui.common.return_sunday", "返回周日安排") if sunday_hospital_browsing else tx("ui.common.return_title", "返回标题"), Vector2(1025 if sunday_hospital_browsing else 1070, 88), Vector2(195 if sunday_hospital_browsing else 150, 44), show_sunday_menu if sunday_hospital_browsing else title_screen)
+	var bottom_buttons: Array[Button] = [
+		button_at(tx("ui.common.save_progress", "保存进度"), Vector2(40, 700), Vector2(148, 43), save_progress),
+		button_at(tx("ui.common.load_game", "读取存档"), Vector2(196, 700), Vector2(148, 43), request_load),
+		button_at(tx("ui.common.time_log", "时间记录"), Vector2(352, 700), Vector2(148, 43), show_time_log),
+		button_at(tx("ui.common.special_events", "特殊活动"), Vector2(508, 700), Vector2(148, 43), show_special_events),
+		button_at(tx("ui.common.event_gallery", "事件鉴赏"), Vector2(664, 700), Vector2(148, 43), show_event_gallery),
+	]
+	bottom_buttons[3].name = "SpecialEventsButton"
+	if content.localizer.locale == "en":
+		for b in bottom_buttons:
+			style_action_button(b, 12)
+			b.alignment = HORIZONTAL_ALIGNMENT_CENTER
+			b.add_theme_font_size_override("font_size", 16)
 	if sunday_hospital_browsing:
 		button_at(tx("ui.sunday.end", "结束星期日  →"), Vector2(827, 700), Vector2(389, 43), finish_sunday_activity.bind("hospital_visit", tx("ui.sunday.hospital_result", "坂口在安静的医院里转了一圈。值班人员各自守着岗位，手术室没有安排择期手术。"))).name = "SundayHospitalEnd"
 	if not game.active_id.is_empty() and not sunday_hospital_browsing:
@@ -2120,7 +2372,7 @@ func show_sunday_invites(other_expanded: bool = false) -> void:
 			var actor_id: String = candidates[i]
 			var person: Dictionary = content.find_record("staff", actor_id)
 			var relation: Dictionary = game.relation_for(actor_id)
-			var caption := tx("ui.sunday.candidate", "%s　Lv%s　熟悉 %s") % [person.name, relation.level, relation.familiarity]
+			var caption := tx("ui.sunday.candidate", "%s　Lv%s　熟悉 %s") % [person.name, int(relation.level), int(relation.familiarity)]
 			add_staff_chibi_slot(page, actor_id, Vector2(75, 215 + i * 65), 55.0, true, "SundayCandidateAvatar_" + actor_id)
 			var invite := button_at(caption, Vector2(138, 215 + i * 65), Vector2(607, 55), attempt_sunday_invitation.bind(actor_id))
 			invite.name = "SundayCandidate_" + actor_id
@@ -2403,9 +2655,8 @@ func show_time_log(return_location: String = "") -> void:
 		var first := maxi(0, history.size() - 7)
 		for i in range(first, history.size()):
 			var event: Dictionary = history[i]
-			if event.minutes == null:
-				event.minutes = tx("ui.time_log.unknown_minutes", "未知")
-			var entry := label_at(tx("ui.time_log.entry", "DAY %02d　%s　%s　%s　·　%s 分钟") % [event.day, localized_calendar_text(int(event.day), true), event.clock, event.label, event.minutes], Vector2(70, 255 + (i - first) * 56), 20, Color("f4f0e6"), 1080)
+			var minutes_display: String = str(int(event.minutes)) if (event.minutes is int or event.minutes is float) else tx("ui.time_log.unknown_minutes", "未知")
+			var entry := label_at(tx("ui.time_log.entry", "DAY %02d　%s　%s　%s　·　%s 分钟") % [int(event.day), localized_calendar_text(int(event.day), true), event.clock, event.label, minutes_display], Vector2(70, 255 + (i - first) * 56), 20, Color("f4f0e6"), 1080)
 			entry.name = "TimeLogEntry_" + str(i)
 	label_at(tx("ui.time_log.current", "当前：%s · %s · %s　今日剩余 %s 分钟") % [game.day_text(), localized_calendar_text(), game.clock_text(), game.shift_remaining()], Vector2(65, 665), 20, Color("e8cfaa"), 850)
 	var return_action: Callable = show_location.bind(return_location, true, false) if not return_location.is_empty() else show_map
@@ -2453,7 +2704,7 @@ func show_micro_event() -> void:
 	if event.completed:
 		if event.response_finished():
 			var relation: Dictionary = game.relation_for(actor.id)
-			label_at(tx("ui.relationship.tendency_detail", "倾向：%s　熟悉 %s") % [affection_tendency(int(relation.get("affection", 0))), relation.familiarity], Vector2(65, 420), 18, Color("cbbc9c"), 650)
+			label_at(tx("ui.relationship.tendency_detail", "倾向：%s　熟悉 %s") % [affection_tendency(int(relation.get("affection", 0))), int(relation.familiarity)], Vector2(65, 420), 18, Color("cbbc9c"), 650)
 		var continue_label := tx("ui.micro_event.finish", "结束片段  ▷") if event.response_finished() else tx("ui.common.continue", "继续  ▷")
 		var continue_button := button_at(continue_label, Vector2(60, VN_SINGLE_ACTION_Y), Vector2(655, 54), continue_micro_event)
 		continue_button.name = "MicroEventContinue"
@@ -2578,7 +2829,10 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 	var location: Dictionary = content.find_record("locations", id)
 	base(location.name, location.subtitle, false, location.background_id)
 	var location_description := str(location.description)
-	if id == "clinic" and game.outpatient_closed():
+	var clinic_closed_day := game.is_hospital_closed_day(int(game.display_schedule().day))
+	if id == "clinic" and clinic_closed_day:
+		location_description = tx("ui.clinic.closed_header", "今日普通门诊休诊，诊室保持安静。")
+	elif id == "clinic" and game.outpatient_closed():
 		location_description = tx("ui.clinic.after_close", "护士：\"今天的会诊已经结束了。\"\n病房里已经接诊的患者仍可继续处理。")
 	if id == "director_office":
 		if game.staff_is_met("doc_asuka"):
@@ -2622,7 +2876,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 			var met: bool = game.staff_is_met(staff_id)
 			# Location rows are action selectors. Keep characterization on the staff
 			# profile page so long English biographies cannot overflow into Chat.
-			var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, person.get("public_age_label", person.age)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
+			var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, StaffView.format_age_value(person)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
 			var profile_action: Callable = show_staff.bind(staff_id, id) if met else introduce_staff_at_location.bind(staff_id, id)
 			var profile_pos := Vector2(60, 315 + row * 137) if id == "rooftop" else Vector2(60, 269 + row * 77)
 			var profile_size := Vector2(700, 55) if id == "rooftop" else Vector2(840, 63)
@@ -2635,13 +2889,13 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 					if chat.actor_id == staff_id:
 						var chat_pos := Vector2(60, 382 + row * 137) if id == "rooftop" else Vector2(920, 269 + row * 77)
 						var chat_size := Vector2(340, 54) if id == "rooftop" else Vector2(295, 63)
-						var chat_button: Button = button_at(tx("ui.location.chat", "闲谈 · %s 分钟") % chat.minutes, chat_pos, chat_size, perform_time_event.bind(chat.id, id))
+						var chat_button: Button = button_at(tx("ui.location.chat", "闲谈 · %s 分钟") % int(chat.minutes), chat_pos, chat_size, perform_time_event.bind(chat.id, id))
 						chat_button.name = "TimeEvent_" + chat.id
 			row += 1
 	if id == "clinic":
-		if game.is_hospital_closed_day():
-			label_at(tx("ui.clinic.closed", "今日为%s，普通门诊休诊。病房、急诊与值班工作仍在运行。") % localized_calendar_day_label(), Vector2(60, 420), 20, Color("e8cfaa"), 735)
-		var current_patient_id := "" if game.is_hospital_closed_day() else game.current_patient_id()
+		if clinic_closed_day:
+			label_at(tx("ui.clinic.closed", "今日为%s，普通门诊休诊。病房、急诊与值班工作仍在运行。") % localized_calendar_day_label(int(game.display_schedule().day)), Vector2(60, 392), 20, Color("e8cfaa"), 860)
+		var current_patient_id := "" if clinic_closed_day else game.current_patient_id()
 		if game.outpatient_closed() and not current_patient_id.is_empty():
 			var current_encounter_id := encounter_for_patient(current_patient_id)
 			if current_encounter_id.is_empty() or not game.visits.has(current_encounter_id):
@@ -2656,17 +2910,18 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 			if case_data.is_empty():
 				case_data = content.find_record("cases", patient.case_id)
 			var encounter_id := encounter_for_patient(patient.id)
-			var caption := tx("ui.clinic.waiting", "当前候诊  /  %s · %s岁   /   %s") % [patient.name, int(patient.age), case_data.title]
+			var display_case_title := outpatient_case_display_title(str(patient.id))
+			var caption := tx("ui.clinic.waiting", "当前候诊  /  %s · %s岁   /   %s") % [patient.name, int(patient.age), display_case_title]
 			var show_training_hint := not game.admitted_patient(patient.id) and not encounter_id.is_empty() and case_training_value_is_low(case_data)
-			if not encounter_id.is_empty() and (not game.is_hospital_closed_day() or game.visits.has(encounter_id)):
+			if not encounter_id.is_empty() and (not clinic_closed_day or game.visits.has(encounter_id)):
 				caption += "   /   " + (tx("ui.clinic.view_handoff", "查看住院交接") if game.admitted_patient(patient.id) else tx("ui.clinic.start_continue", "接诊 / 继续"))
 				button_at(caption, Vector2(60, patient_base_y + patient_row * 137), Vector2(1155, 60), show_encounter.bind(encounter_id))
-			elif game.is_hospital_closed_day():
+			elif clinic_closed_day:
 				label_at(caption + tx("ui.clinic.closed_suffix", "（普通门诊休诊）"), Vector2(65, patient_base_y + 15 + patient_row * 137), 21, Color("c2d2cc"), 1150)
 			else:
 				label_at(caption + tx("ui.clinic.future_suffix", "（后续开放）"), Vector2(65, patient_base_y + 15 + patient_row * 137), 21, Color("dce5e3"), 1150)
 			if show_training_hint:
-				var hint := label_at(tx("ui.clinic.training_value_low", "⚠ Low training value"), Vector2(70, patient_base_y + 61 + patient_row * 137), 17, Color("e8cfaa"), 320)
+				var hint := label_at(tx("ui.clinic.training_value_low", "⚠ 训练收益低"), Vector2(70, patient_base_y + 61 + patient_row * 137), 17, Color("e8cfaa"), 320)
 				hint.name = "LowTrainingValue"
 			var action_y: int = patient_base_y + patient_row * 137 + (88 if show_training_hint else 68)
 			var portrait_width: int = 565 if not game.admitted_patient(patient.id) else 1155
@@ -2677,7 +2932,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 				referral_button.name = "ReferPatient"
 			patient_row += 1
 		if current_patient_id.is_empty():
-			label_at(tx("ui.clinic.no_patients_closed", "休诊日没有普通候诊患者。") if game.is_hospital_closed_day() else tx("ui.clinic.no_patients", "当前没有可安排的候诊患者。"), Vector2(65, patient_base_y + 15), 21)
+			label_at(tx("ui.clinic.no_patients_closed", "休诊日没有普通候诊患者。") if clinic_closed_day else tx("ui.clinic.no_patients", "当前没有可安排的候诊患者。"), Vector2(60, 448 if clinic_closed_day else (patient_base_y + 15)), 21)
 	if id == "ward":
 		var row_index: int = preload("res://godot/ui/staff_patient_view.gd").ward_row(self, 0)
 		for patient in content.collections.patients:
@@ -2710,7 +2965,7 @@ func show_location(id: String, preserve_random: bool = false, allow_micro_event:
 		var event: Dictionary = visible_events[i]
 		var event_pos := Vector2(60, 516 + i * 66) if id == "rooftop" else Vector2(60, 300 + i * 66)
 		var event_size := Vector2(700, 54) if id == "rooftop" else Vector2(655, 54)
-		var button: Button = button_at(tx("ui.auto.a8881f334f4a", "%s　·　%s 分钟") % [event.label, event.minutes], event_pos, event_size, perform_time_event.bind(event.id, id))
+		var button: Button = button_at(tx("ui.auto.a8881f334f4a", "%s　·　%s 分钟") % [event.label, int(event.minutes)], event_pos, event_size, perform_time_event.bind(event.id, id))
 		button.name = "TimeEvent_" + event.id
 	if location_feedback_location == id and not location_feedback.is_empty():
 		feedback_at(location_feedback, Vector2(65, 650 if id == "lounge" else 450), 19 if id == "lounge" else 21, 650)
@@ -2776,7 +3031,7 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 		row_box.custom_minimum_size = Vector2(450, 58)
 		row_box.add_theme_constant_override("separation", 5)
 		list.add_child(row_box)
-		var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, person.get("public_age_label", person.age)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
+		var caption: String = tx("ui.location.staff_caption_compact", "%s   /   %s  ·  %s岁") % [person.name, person.specialty, StaffView.format_age_value(person)] if met else tx("ui.location.staff_unknown", "？？？   /   尚未认识")
 		var profile := Button.new()
 		profile.name = "LocationStaff_" + staff_id
 		profile.text = caption
@@ -2787,10 +3042,7 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 		profile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		profile.clip_text = true
 		profile.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-		profile.add_theme_color_override("font_color", Color("f4f0e6"))
-		profile.add_theme_stylebox_override("normal", panel_style(Color("203e48")))
-		profile.add_theme_stylebox_override("hover", panel_style(Color("365963"), Color("d1c19e")))
-		profile.add_theme_stylebox_override("focus", panel_style(Color("365963"), Color("f3dbac")))
+		style_action_button(profile)
 		profile.pressed.connect(show_staff.bind(staff_id, location_id) if met else introduce_staff_at_location.bind(staff_id, location_id))
 		row_box.add_child(profile)
 		if met and staff_id == "doc_serika":
@@ -2801,6 +3053,8 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 				discussion.name = "SerikaRadiologyDiscussion"
 				discussion.text = tx("ui.serika.radiology_discussion", "讨论影像／病例 · 60 分钟")
 				discussion.custom_minimum_size = Vector2(450, 42)
+				discussion.alignment = HORIZONTAL_ALIGNMENT_CENTER
+				style_action_button(discussion, 14)
 				discussion.pressed.connect(start_serika_radiology.bind(next_discussion))
 				row_box.add_child(discussion)
 			for action in chats:
@@ -2808,8 +3062,10 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 					continue
 				var action_button := Button.new()
 				action_button.name = "TimeEvent_" + str(action.id)
-				action_button.text = "%s · %s min" % [action.label, action.minutes]
+				action_button.text = tx("ui.auto.a8881f334f4a", "%s　·　%s 分钟") % [action.label, int(action.minutes)]
 				action_button.custom_minimum_size = Vector2(450, 42)
+				action_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+				style_action_button(action_button, 14)
 				action_button.pressed.connect(perform_time_event.bind(str(action.id), location_id))
 				row_box.add_child(action_button)
 			continue
@@ -2823,9 +3079,11 @@ func render_location_staff_drawer(location_id: String, present_staff: Array[Stri
 				if str(chat.actor_id) != staff_id: continue
 				var action_button := Button.new()
 				action_button.name = "TimeEvent_" + str(chat.id)
-				action_button.text = "%s · %s min" % [chat.label, chat.minutes]
-				action_button.custom_minimum_size = Vector2(450,42)
-				action_button.pressed.connect(perform_time_event.bind(str(chat.id),location_id))
+				action_button.text = tx("ui.auto.a8881f334f4a", "%s　·　%s 分钟") % [chat.label, int(chat.minutes)]
+				action_button.custom_minimum_size = Vector2(450, 42)
+				action_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+				style_action_button(action_button, 14)
+				action_button.pressed.connect(perform_time_event.bind(str(chat.id), location_id))
 				row_box.add_child(action_button)
 			continue
 		var matching_chat: Dictionary = {}
@@ -2906,13 +3164,16 @@ func introduce_staff_at_location(staff_id: String, location_id: String) -> void:
 				show_character_event()
 				return
 	if staff_id == "doc_emiko":
-		show_notice(tx("ui.unlock.emiko", "御堂江美子会在手术技术达到 56 后正式接见你。当前技术：%s。") % game.surgery_level())
+		if not game.character_event_done("intro_doc_asuka_director_office"):
+			show_notice(tx("ui.unlock.artoria_asuka", "先推进明日香的剧情，并在院长室与她正式相识。"))
+			return
+		show_notice(tx("ui.unlock.emiko", "御堂江美子会在手术技术达到 70 后正式接见你。当前技术：%s。") % game.surgery_level())
 		return
 	if staff_id == "doc_artoria":
 		if not game.character_event_done("intro_doc_asuka_director_office"):
 			show_notice(tx("ui.unlock.artoria_asuka", "先推进明日香的剧情，并在院长室与她正式相识。"))
 		elif not game.character_event_done("emiko_intro_rumored_hands"):
-			show_notice(tx("ui.unlock.artoria_emiko", "先将手术技术提升至 56，在御堂外科医长办公室与御堂正式相识。"))
+			show_notice(tx("ui.unlock.artoria_emiko", "先将手术技术提升至 70，在御堂外科医长办公室与御堂正式相识。"))
 		elif not game.character_event_done("asuka_mentions_artoria_rival"):
 			show_notice(tx("ui.unlock.artoria_referral", "回到院长室。明日香会向你介绍另一位外科主任候选人。"))
 		else:
@@ -2937,14 +3198,18 @@ func start_serika_radiology(event_id: String) -> void:
 
 var staff_chat_turn := 0
 var staff_chat_crossed_day := false
+var staff_chat_sunday_rollover_day := 0
 
 func perform_time_event(event_id: String, location_id: String) -> void:
 	var before_elapsed := game.elapsed()
 	var before_day := game.day_number()
+	var on_sunday_browsing := sunday_hospital_browsing and game.is_sunday()
 	var definition: Dictionary = content.find_record("time_events", event_id)
 	if game.spend_time(event_id):
-		game.settle_overtime(before_elapsed, int(definition.minutes))
+		if not on_sunday_browsing:
+			game.settle_overtime(before_elapsed, int(definition.minutes))
 		var crossed_day := game.day_number() > before_day
+		staff_chat_sunday_rollover_day = before_day if on_sunday_browsing and crossed_day else 0
 		if definition.actor_id != null:
 			location_feedback = ""
 			location_feedback_location = ""
@@ -2962,7 +3227,11 @@ func perform_time_event(event_id: String, location_id: String) -> void:
 	location_feedback_location = location_id
 	var next_view := show_location.bind(location_id, true)
 	if game.day_number() > before_day:
-		show_day_transition(next_view)
+		if on_sunday_browsing:
+			game.settle_sunday_hospital_visit_rollover(before_day)
+			show_sunday_activity_complete(tx("ui.sunday.hospital_result", "坂口在安静的医院里转了一圈。值班人员各自守着岗位，手术室没有安排择期手术。"))
+		else:
+			show_day_transition(next_view)
 	else:
 		next_view.call()
 
@@ -3023,7 +3292,7 @@ func show_time_event_result(event_id: String, location_id: String, crossed_day: 
 	dialogue_widgets[2].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	dialogue_widgets[2].position.y = 594
 	dialogue_widgets[2].size.y = 98
-	label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [definition.minutes, game.clock_text()], Vector2(65, 205), 19, Color("c2d2cc"), 620)
+	label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [int(definition.minutes), game.clock_text()], Vector2(65, 205), 19, Color("c2d2cc"), 620)
 	if bool(dialogue.has_more):
 		var continue_button := button_at(tx("ui.common.continue", "继续  ▷"), Vector2(1015, 713), Vector2(210, 40), advance_dialogue_page.bind(show_time_event_result.bind(event_id, location_id, crossed_day)))
 		continue_button.name = "TimeEventDialogueContinue"
@@ -3037,6 +3306,13 @@ func show_time_event_result(event_id: String, location_id: String, crossed_day: 
 func finish_time_event_result(location_id: String, crossed_day: bool) -> void:
 	if game.active_mode == "staff_chat": game.active_mode = "encounter"
 	staff_chat_turn = 0
+	if crossed_day and staff_chat_sunday_rollover_day > 0:
+		var rollover_day := staff_chat_sunday_rollover_day
+		staff_chat_sunday_rollover_day = 0
+		game.settle_sunday_hospital_visit_rollover(rollover_day)
+		show_sunday_activity_complete(tx("ui.sunday.hospital_result", "坂口在安静的医院里转了一圈。值班人员各自守着岗位，手术室没有安排择期手术。"))
+		return
+	staff_chat_sunday_rollover_day = 0
 	var next_view := show_location.bind(location_id, true)
 	if crossed_day:
 		show_day_transition(next_view)
@@ -3048,6 +3324,8 @@ func show_staff(id: String, from_location: String, expression: String = "neutral
 	StaffView.render(self, id, from_location, expression, outfit)
 
 func show_character_events(actor_id: String, from_location: String = "") -> void:
+	if not OS.is_debug_build():
+		return
 	screen = "character_events"
 	if not from_location.is_empty():
 		character_event_return_location = from_location
@@ -3067,7 +3345,7 @@ func show_character_events(actor_id: String, from_location: String = "") -> void
 		var definition: Dictionary = definitions[i]
 		var available := game.character_event_available(definition)
 		var completed := game.character_event_done(definition.id)
-		var caption := tx("ui.auto.e3296ed7fffb", "第%s章　%s　·　%s分钟　%s–%s") % [definition.chapter, definition.title, definition.minutes, clock_from_minutes(definition.time_start), clock_from_minutes(definition.time_end)]
+		var caption := tx("ui.auto.e3296ed7fffb", "第%s章　%s　·　%s分钟　%s–%s") % [int(definition.chapter), definition.title, int(definition.minutes), clock_from_minutes(int(definition.time_start)), clock_from_minutes(int(definition.time_end))]
 		if completed:
 			caption = tx("ui.auto.a99515594958", "✓ 已完成　") + caption
 		elif not available:
@@ -3077,13 +3355,13 @@ func show_character_events(actor_id: String, from_location: String = "") -> void
 		var event_button := button_at(caption, Vector2(60, 215 + i * 88), Vector2(685, 66), start_test_character_event.bind(definition.id))
 		event_button.name = "CharacterEvent_" + definition.id
 	var relation: Dictionary = game.relation_for(actor_id)
-	label_at(tx("ui.relationship.tendency_detail", "倾向：%s　熟悉 %s") % [affection_tendency(int(relation.get("affection", 0))), relation.familiarity], Vector2(65, 600), 20, Color("e8cfaa"), 680)
+	label_at(tx("ui.relationship.tendency_detail", "倾向：%s　熟悉 %s") % [affection_tendency(int(relation.get("affection", 0))), int(relation.familiarity)], Vector2(65, 600), 20, Color("e8cfaa"), 680)
 	button_at(tx("ui.auto.783d9146690e", "← 返回人物档案"), Vector2(1000, 88), Vector2(215, 44), show_staff.bind(actor_id, character_event_return_location))
 
 func start_test_character_event(event_id: String) -> void:
 	if not game.character_event_definitions.has(event_id):
 		return
-	gallery_replay_event = CharacterEvent.new(game.character_event_definitions[event_id])
+	gallery_replay_event = CharacterEvent.new(game.character_event_runtime_definition(event_id))
 	gallery_replay_is_test = true
 	gallery_replay_return_actor = gallery_replay_event.definition.actor_id
 	reset_dialogue_page()
@@ -3137,6 +3415,10 @@ func show_character_event() -> void:
 	screen = "character_event"
 	var definition: Dictionary = event.definition
 	var node: Dictionary = event.current()
+	if str(node.get("action", "")) != preload("res://godot/systems/emiko_lv4.gd").ACTION_H_PLACEHOLDER:
+		emiko_lv4_h_handoff_complete = false
+	if str(node.get("action", "")) != preload("res://godot/systems/artoria_lv4.gd").ACTION_H_PLACEHOLDER:
+		artoria_lv4_h_handoff_complete = false
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
 	var actor_name := str(definition.get("actor_alias", actor.get("name", definition.actor_id)))
 	if bool(node.get("reveal_identity", false)):
@@ -3145,7 +3427,7 @@ func show_character_event() -> void:
 		actor_name = str(definition.title)
 	var location: Dictionary = content.find_record("locations", definition.location_id)
 	var location_name := str(definition.get("location_label", location.get("name", definition.location_id)))
-	var event_label := tx("ui.auto.2a5a8f45f76f", "第%s章") % definition.chapter
+	var event_label := tx("ui.auto.2a5a8f45f76f", "第%s章") % int(definition.chapter)
 	if definition.category == "introduction":
 		event_label = tx("ui.auto.c55f831ad393", "认识事件")
 	elif definition.category == "contextual":
@@ -3155,7 +3437,7 @@ func show_character_event() -> void:
 		if node.has("presentation"):
 			event_label = tx("ui.event.bond_chapter", "羁绊事件 Lv.1")
 	elif definition.category == "rank_up":
-		event_label = tx("ui.auto.bd46ceb05a5c", "关系升级 Lv.%s") % definition.target_level
+		event_label = tx("ui.auto.bd46ceb05a5c", "关系升级 Lv.%s") % int(definition.target_level)
 	var event_background := str(node.get("background_id", definition.background_id))
 	if bool(node.get("seasonal_street", false)):
 		event_background = after_work_background_id({"phase": "result", "outcome": "completed", "workday": int(game.display_schedule().day), "variant": "night"})
@@ -3361,8 +3643,21 @@ func choose_character_event(choice_id: String) -> void:
 		return
 	if str(current_node.get("action", "")) == shiori_lv3.ACTION_SURGERY:
 		shiori_lv3_surgery_handoff_complete = false
+	var emiko_lv4 := preload("res://godot/systems/emiko_lv4.gd")
+	if str(current_node.get("action", "")) == emiko_lv4.ACTION_H_PLACEHOLDER and not emiko_lv4_h_handoff_complete:
+		begin_emiko_lv4_first_h()
+		return
+	if str(current_node.get("action", "")) == emiko_lv4.ACTION_H_PLACEHOLDER:
+		emiko_lv4_h_handoff_complete = false
+	var artoria_lv4 := preload("res://godot/systems/artoria_lv4.gd")
+	if str(current_node.get("action", "")) == artoria_lv4.ACTION_H_PLACEHOLDER and not artoria_lv4_h_handoff_complete:
+		begin_artoria_lv4_first_h()
+		return
+	if str(current_node.get("action", "")) == artoria_lv4.ACTION_H_PLACEHOLDER:
+		artoria_lv4_h_handoff_complete = false
 	var before_elapsed := game.elapsed()
 	var before_day := game.day_number()
+	var departure_snapshot := game.pending_departure_context()
 	if not game.choose_character_event(choice_id):
 		show_notice(event.last_error)
 		return
@@ -3381,6 +3676,24 @@ func choose_character_event(choice_id: String) -> void:
 		if str(event.definition.id) == preload("res://godot/systems/serika_lv3.gd").ID:
 			game.finish_character_event()
 			show_sunday_activity_complete(tx("ui.serika.lv3.complete", "【御園芹香 Relationship Lv3 达成】\n【解锁：芹香的正常周日约会】"))
+			return
+		if preload("res://godot/systems/asuka_lv3.gd").owns(str(event.definition.id)):
+			game.finish_character_event()
+			if character_event_from_test:
+				show_character_events(str(event.definition.actor_id), character_event_return_location)
+			else:
+				show_sunday_activity_complete(tx("ui.asuka.lv3.complete", "【城宮明日香 Relationship Lv3 达成】"))
+			return
+		if preload("res://godot/systems/emiko_lv3.gd").owns(str(event.definition.id)) or preload("res://godot/systems/emiko_lv4.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv2.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv3.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)):
+			game.clear_pending_departure_context()
+			game.advance_story_to_day(int(event.completed_day) + int(event.definition.get("completion_day_offset", 1)), int(event.definition.get("completion_absolute_clock", 9 * 60)))
+			if character_event_from_test:
+				game.finish_character_event()
+				show_character_events(str(event.definition.actor_id), character_event_return_location)
+			elif preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)) and character_event_reward_available(event.definition):
+				show_character_event_reward()
+			else:
+				show_character_event_complete()
 			return
 		if str(event.definition.get("id", "")) == "sayaka_lv4_hotel_date":
 			if not game.settle_sayaka_lv4_hotel_event():
@@ -3405,30 +3718,49 @@ func choose_character_event(choice_id: String) -> void:
 				show_map()
 			return
 		if preload("res://godot/systems/serika_radiology.gd").owns(str(event.definition.id)) or str(event.definition.id) == preload("res://godot/systems/serika_radiology.gd").LV1:
+			game.settle_overtime(before_elapsed, int(event.definition.get("minutes", 0)))
 			game.finish_character_event()
-			show_location("imaging", true)
+			if game.day_number() > before_day or not game.pending_departure_context().is_empty():
+				show_day_transition(show_map)
+			else:
+				show_location("imaging", true)
 			return
 		if str(event.definition.id).begins_with("serika_lv0_"):
+			game.settle_overtime(before_elapsed, int(event.definition.get("minutes", 0)))
 			game.finish_character_event()
-			show_location(character_event_return_location, true)
+			if game.day_number() > before_day or not game.pending_departure_context().is_empty():
+				show_day_transition(show_map)
+			else:
+				show_location(character_event_return_location, true)
 			return
 		if event.definition.has("completion_day_offset"):
 			# Long fixed-VN events may narratively cross midnight while remaining one
 			# unsaveable atomic session. Only settle the persistent clock after the
 			# final node, without invoking a day-refresh or splitting the event.
+			game.clear_pending_departure_context()
 			game.advance_story_to_day(int(event.completed_day) + int(event.definition.completion_day_offset), int(event.definition.get("completion_absolute_clock", 9 * 60)))
-		else:
+		elif game.character_event_trigger_mode(event.definition) != "after_work":
 			game.settle_overtime(before_elapsed, int(event.definition.minutes))
+		if str(event.definition.id) == preload("res://godot/systems/asuka_lv1.gd").PREOP_EVENT_ID and not character_event_from_test and not character_event_return_preop_id.is_empty():
+			return_to_preop_after_character_event(character_event_return_preop_id)
+			return
 		if str(event.definition.id) == "manami_lv1_sneeze":
 			game.finish_character_event()
-			show_map(false)
+			if game.day_number() > before_day or not game.pending_departure_context().is_empty():
+				show_day_transition(show_map.bind(false))
+			else:
+				show_map(false)
 			return
 		if str(event.definition.id) in ["intro_rumi_shiori_hiroko_monday_0900", "intro_satsuki_new_nurse", "intro_hikami_saeko_six_months", "miyuki_lv1_not_that_kind_of_inexperienced"]:
 			game.finish_character_event()
-			show_location("station")
+			if game.day_number() > before_day or not game.pending_departure_context().is_empty():
+				show_day_transition(show_map)
+			else:
+				show_location("station")
 			return
 		var follow_up: Dictionary = event.definition.get("auto_follow_up", {})
-		if not follow_up.is_empty():
+		if not follow_up.is_empty() and game.can_auto_follow_up_character_event(event.definition, int(event.completed_day)):
+			game.clear_pending_departure_context()
 			game.advance_story_to_day(int(event.completed_day) + int(follow_up.day_offset), int(follow_up.absolute_clock))
 			var follow_up_id := str(follow_up.event_id)
 			var follow_definition: Dictionary = game.character_event_definitions.get(follow_up_id, {})
@@ -3437,15 +3769,20 @@ func choose_character_event(choice_id: String) -> void:
 				reset_dialogue_page()
 				show_day_transition(show_character_event)
 				return
-		if game.character_event_trigger_mode(event.definition) == "after_work":
-			# Overtime settlement may already reserve the next morning. Anchor
-			# departure to the event's actual workday, not the shifted ledger day.
-			game.advance_story_to_day(int(event.completed_day) + 1, 9 * 60)
 		var next_view := show_character_event_reward if character_event_reward_available(event.definition) else show_character_event_complete
+		if game.character_event_trigger_mode(event.definition) == "after_work" and not character_event_from_test:
+			var departure_clock := int(departure_snapshot.get("clock", game.current_absolute_clock())) + int(event.definition.get("minutes", 0))
+			game.clear_pending_departure_context()
+			if not event.definition.has("completion_day_offset"):
+				# Overtime settlement may already reserve the next morning. Anchor
+				# departure to the event's actual workday, not the shifted ledger day.
+				game.advance_story_to_day(int(event.completed_day) + 1, 9 * 60)
+			render_day_transition(next_view, {"workday": int(event.completed_day), "clock": departure_clock})
+			return
 		if str(event.definition.get("preop_stage_id", "")) == "post_surgery_return":
 			next_view.call()
 			return
-		if game.day_number() > before_day:
+		if game.day_number() > before_day or not game.pending_departure_context().is_empty():
 			var completion_display_override := {}
 			if event.definition.has("completion_display_clock"):
 				completion_display_override = {
@@ -3507,9 +3844,12 @@ func show_character_event_complete() -> void:
 			names.append(str(content.find_record("staff", actor_id).name))
 		actor_name = " × ".join(names)
 	var relation: Dictionary = game.relation_for(actor.id)
-	base(tx("ui.auto.9f66bcb3b7ff", "事件结束"), "%s / %s" % [actor_name, event.definition.title], true, event.definition.background_id)
+	var completion_bg_id := str(event.definition.get("completion_background_id", event.definition.background_id))
+	var completion_outfit := str(event.definition.get("completion_outfit", event.definition.outfit))
+	var completion_expression := str(event.definition.get("completion_expression", "smile"))
+	base(tx("ui.auto.9f66bcb3b7ff", "事件结束"), "%s / %s" % [actor_name, event.definition.title], true, completion_bg_id)
 	if game.staff_is_met(str(actor.id)) and not bool(event.definition.get("hide_completion_portrait", false)):
-		add_portrait(actor, "smile", event.definition.outfit)
+		add_portrait(actor, completion_expression, completion_outfit)
 	label_at(tx("ui.auto.3092031e1556", "与%s有关的这段插曲已经结束。") % actor_name, Vector2(65, 235), 27, Color("f4f0e6"), 650)
 	var level := int(relation.get("level", 0))
 	var relation_note := tx("ui.auto.128daa344185", "尚未正式认识")
@@ -3518,16 +3858,18 @@ func show_character_event_complete() -> void:
 	if event.definition.category == "bond" and level >= int(event.definition.get("target_level", 1)):
 		relation_note = tx("ui.auto.5124014a71dc", "已经建立羁绊 · 关系 Lv.1")
 	elif event.definition.category == "rank_up":
-		relation_note = tx("ui.auto.1f258526390d", "关系提升至 Lv.%s") % relation.get("level", 1)
+		relation_note = tx("ui.auto.1f258526390d", "关系提升至 Lv.%s") % int(relation.get("level", 1))
 		if relationship_actor_ids.size() > 1:
-			relation_note = tx("ui.character_event.shared_rank_up", "双方关系同时提升至 Lv.%s") % relation.get("level", 1)
+			relation_note = tx("ui.character_event.shared_rank_up", "双方关系同时提升至 Lv.%s") % int(relation.get("level", 1))
 	label_at(relation_note, Vector2(65, 325), 22, Color("e8cfaa"), 650)
 	if bool(event.definition.get("consumes_sunday", false)) and event.definition.has("completion_day_offset"):
 		label_at(tx("ui.event.sunday_continues_next_workday", "这段剧情从星期日持续到下一个工作日。"), Vector2(65, 385), 19, Color("c2d2cc"), 650)
 	elif bool(event.definition.get("consumes_sunday", false)):
 		label_at(tx("ui.event.whole_sunday", "本次约会占用整个星期日。结束后进入下一工作日。"), Vector2(65, 385), 19, Color("c2d2cc"), 650)
+	elif event.definition.has("completion_day_offset") and int(event.definition.get("minutes", 0)) == 0:
+		label_at(tx("ui.event.workday_continues_next_day", "这段剧情持续至当日结束。现在是 %s") % game.clock_text(), Vector2(65, 385), 19, Color("c2d2cc"), 650)
 	else:
-		label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [event.definition.minutes, game.clock_text()], Vector2(65, 385), 19, Color("c2d2cc"), 650)
+		label_at(tx("ui.auto.b058dbad32f3", "耗时 %s 分钟　/　现在是 %s") % [int(event.definition.minutes), game.clock_text()], Vector2(65, 385), 19, Color("c2d2cc"), 650)
 	var return_preop_id := character_event_return_preop_id
 	if not character_event_from_test and str(event.definition.get("preop_stage_id", "")) == "post_surgery_return":
 		var return_button := button_at(tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(60, 475), Vector2(655, 54), finish_post_surgery_character_event)
@@ -3543,7 +3885,7 @@ func show_character_event_complete() -> void:
 		button_at(tx("ui.auto.05194e8cf7c4", "结束星期日  →"), Vector2(60, 475), Vector2(320, 54), finish_sunday_character_event.bind(str(actor.id), str(event.definition.get("date_location_id", ""))))
 	elif not return_preop_id.is_empty():
 		button_at(tx("ui.auto.68b3672e88ea", "继续术前流程  →"), Vector2(60, 475), Vector2(320, 54), return_to_preop_after_character_event.bind(return_preop_id))
-	elif game.is_hospital_closed_day() and character_event_return_location in ["clinic", "or"]:
+	elif game.is_hospital_closed_day() and (character_event_return_location in ["clinic", "or"] or event.definition.has("completion_day_offset")):
 		button_at(tx("ui.auto.b080ed2dfa2f", "返回医院导览"), Vector2(60, 475), Vector2(655, 54), show_map)
 		return
 	else:
@@ -3627,7 +3969,7 @@ func show_special_events() -> void:
 			var definition: Dictionary = events[i]
 			var days := int(definition.duration_days)
 			var title := special_event_localized_title(definition)
-			var category := tx("ui.special_event.category." + str(definition.get("category", "")), str(definition.get("category", "")))
+			var category := special_event_category_label(str(definition.get("category", "")))
 			var caption := tx("ui.special_event.zero_time_caption", "%s\n%s · 不消耗游戏时间") % [title, category] if not bool(definition.get("consumes_full_day", true)) else tx("ui.auto.9337056caa0d", "%s\n%s · 连续占用 %s 天") % [title, category, days]
 			if str(definition.id) == "chihaya_third_surgery_a":
 				caption = tx("ui.auto.9337056caa0d", "%s\n%s · 连续占用 %s 天") % [title, category, 3]
@@ -3732,6 +4074,8 @@ func add_special_event_visual(node: Dictionary) -> void:
 	var actor := special_event_actor(node)
 	if not actor.is_empty():
 		var outfit := str(node.get("outfit", actor.get("visuals", {}).get("default_outfit", "white_coat")))
+		if bool(node.get("seasonal_casual", false)):
+			outfit = after_work_outfit(actor, {"workday": int(game.display_schedule().day)})
 		add_character_event_visual(actor, node, outfit)
 	var secondary_path := str(node.get("secondary_portrait_path", ""))
 	if not secondary_path.is_empty() and ResourceLoader.exists("res://" + secondary_path):
@@ -3874,8 +4218,11 @@ func show_special_event() -> void:
 	if third.owns(str(definition.id)):
 		subtitle = tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [localized_step_title, [third.A, third.B, third.C].find(str(definition.id)) + 1, 3]
 	if bool(definition.get("consumes_full_day", true)):
-		subtitle = tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [localized_step_title, event.step_index + 1, definition.duration_days]
-	base(localized_title, subtitle, true, node.get("background_id", step.background_id))
+		subtitle = tx("ui.auto.437e87474468", "%s / 第 %s 天，共 %s 天") % [localized_step_title, event.step_index + 1, int(definition.duration_days)]
+	var special_bg := str(node.get("background_id", step.background_id))
+	if bool(node.get("seasonal_street", false)):
+		special_bg = after_work_background_id({"phase": "result", "outcome": "completed", "workday": int(game.display_schedule().day), "variant": "night"})
+	base(localized_title, subtitle, true, special_bg)
 	var cg_path := str(node.get("cg_path", ""))
 	var is_new_cg := not cg_path.is_empty() and cg_path != special_event_last_cg_path
 	special_event_last_cg_path = cg_path
@@ -3935,9 +4282,9 @@ func show_special_event() -> void:
 func show_advanced_referral_node(event: RefCounted, step: Dictionary, node: Dictionary) -> void:
 	screen = "special_event"
 	var presentation := str(node.get("presentation", "advanced_surgery"))
-	var heading := tx("ui.advanced_referral.day2", "ADVANCED REFERRAL — DAY 2")
+	var heading := tx("ui.advanced_referral.day2", "高级转诊 — 第 2 天")
 	if presentation == "advanced_surgery":
-		heading = tx("ui.advanced_referral.surgery", "ADVANCED SURGERY")
+		heading = tx("ui.advanced_referral.surgery", "高级手术")
 	base(heading, str(step.title), true, node.get("background_id", step.background_id))
 	pause_dialogue_for_choice()
 	var procedure := game.surgery_definition(str(node.get("procedure_id", "")))
@@ -3947,7 +4294,7 @@ func show_advanced_referral_node(event: RefCounted, step: Dictionary, node: Dict
 	var prompt_y := 220.0
 	if presentation == "advanced_surgery":
 		var stage_number := int(node.get("stage_number", 1))
-		var stage_label := label_at(tx("ui.advanced_referral.stage", "SURGICAL STAGE %s / 8") % stage_number, Vector2(60, 214), 18, Color("e8cfaa"), 1160)
+		var stage_label := label_at(tx("ui.advanced_referral.stage", "手术阶段 %s / 8") % stage_number, Vector2(60, 214), 18, Color("e8cfaa"), 1160)
 		stage_label.name = "AdvancedReferralStage"
 		prompt_y = 248.0
 	var prompt_panel := Panel.new()
@@ -3968,7 +4315,9 @@ func show_advanced_referral_node(event: RefCounted, step: Dictionary, node: Dict
 		choice_button.add_theme_font_override("font", emphasized_font(0.45))
 		choice_button.add_theme_font_size_override("font_size", 21)
 		visible_index += 1
-	button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+	var adv_save := button_at(tx("ui.auto.fadf24dbc5a9", "保存"), Vector2(60, 713), Vector2(120, 40), save_progress)
+	adv_save.disabled = true
+	adv_save.tooltip_text = game.save_block_reason()
 	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
 
 func choose_special_event(choice_id: String) -> void:
@@ -4080,7 +4429,7 @@ func show_special_event_complete() -> void:
 	screen = "special_event_complete"
 	base(tx("ui.auto.fda784039855", "特殊活动完成"), special_event_localized_title(event.definition), false, event.current_step().get("background_id", "lobby"))
 	label_at(tx("ui.auto.4a39afe64504", "活动的全部日程已经完成。"), Vector2(110, 260), 34, Color("f4f0e6"), 1060).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	var time_summary := tx("ui.special_event.zero_time_complete", "不消耗游戏时间　/　现在是 %s %s") % [game.day_text(), game.clock_text()] if not bool(event.definition.get("consumes_full_day", true)) else tx("ui.auto.4c7e14cb5767", "耗时 %s 天　/　现在是 %s %s") % [event.definition.duration_days, game.day_text(), game.clock_text()]
+	var time_summary := tx("ui.special_event.zero_time_complete", "不消耗游戏时间　/　现在是 %s %s") % [game.day_text(), game.clock_text()] if not bool(event.definition.get("consumes_full_day", true)) else tx("ui.auto.4c7e14cb5767", "耗时 %s 天　/　现在是 %s %s") % [int(event.definition.duration_days), game.day_text(), game.clock_text()]
 	if not bool(event.definition.get("consumes_full_day", true)) and int(event.definition.get("settled_minutes", 0)) > 0:
 		var now_day_label := game.day_text()
 		var now_clock_label := game.clock_text()
@@ -4118,6 +4467,14 @@ func finish_special_event_and_return() -> void:
 func clock_from_minutes(minutes: int) -> String:
 	return "%02d:%02d" % [minutes / 60, minutes % 60]
 
+func set_event_gallery_category(category_id: String, return_location: String = "") -> void:
+	event_gallery_category = category_id
+	show_event_gallery(return_location)
+
+func toggle_event_gallery_unlocked_only(return_location: String = "") -> void:
+	event_gallery_unlocked_only = not event_gallery_unlocked_only
+	show_event_gallery(return_location)
+
 func show_event_gallery(return_location: String = "") -> void:
 	screen = "event_gallery"
 	gallery_return_location = return_location
@@ -4130,15 +4487,6 @@ func show_event_gallery(return_location: String = "") -> void:
 		if a.actor_id != b.actor_id:
 			return a.actor_id < b.actor_id
 		return int(a.chapter) < int(b.chapter))
-	var gallery_scroll := ScrollContainer.new()
-	gallery_scroll.name = "EventGalleryScroll"
-	gallery_scroll.position = Vector2(45, 190)
-	gallery_scroll.size = Vector2(1190, 424)
-	gallery_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	gallery_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
-	page.add_child(gallery_scroll)
-	var gallery_content := Control.new()
-	gallery_content.name = "EventGalleryContent"
 	var role_rewards: Array = game.staff_role_cg_definitions.values()
 	role_rewards.sort_custom(func(a: Dictionary, b: Dictionary):
 		if a.staff_id != b.staff_id:
@@ -4146,50 +4494,97 @@ func show_event_gallery(return_location: String = "") -> void:
 		return a.role_id < b.role_id)
 	var special_definitions: Array = game.special_event_definitions.values().filter(func(item: Dictionary): return not bool(item.get("developer_only", false)) and bool(item.get("gallery_unlock", false)))
 	special_definitions.sort_custom(func(a: Dictionary, b: Dictionary): return str(a.id) < str(b.id))
-	var row_count := ceili(float(definitions.size() + special_definitions.size() + role_rewards.size()) / 2.0)
-	gallery_content.custom_minimum_size = Vector2(1170, max(424, row_count * 105 + 15))
+	var filter_tabs := [
+		["all", tx("ui.gallery.tab.all", "全部")],
+		["character", tx("ui.gallery.tab.character", "人物事件")],
+		["special", tx("ui.gallery.tab.special", "特殊活动")],
+		["role", tx("ui.gallery.tab.role", "岗位CG")],
+	]
+	for t_idx in range(filter_tabs.size()):
+		var tab_id: String = str(filter_tabs[t_idx][0])
+		var tab_btn := button_at(str(filter_tabs[t_idx][1]), Vector2(45 + t_idx * 172, 168), Vector2(162, 40), set_event_gallery_category.bind(tab_id, return_location))
+		tab_btn.name = "GalleryTab_" + tab_id
+		tab_btn.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		tab_btn.add_theme_font_size_override("font_size", 17)
+		style_action_button(tab_btn, 10)
+		style_selected_button(tab_btn, event_gallery_category == tab_id, 10)
+	var unlocked_toggle_label := ("✓ " if event_gallery_unlocked_only else "○ ") + tx("ui.gallery.filter_unlocked", "仅看已解锁")
+	var unlocked_btn := button_at(unlocked_toggle_label, Vector2(1015, 168), Vector2(220, 40), toggle_event_gallery_unlocked_only.bind(return_location))
+	unlocked_btn.name = "GalleryFilterUnlockedOnly"
+	unlocked_btn.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	unlocked_btn.add_theme_font_size_override("font_size", 17)
+	style_action_button(unlocked_btn, 10)
+	if event_gallery_unlocked_only:
+		unlocked_btn.add_theme_stylebox_override("normal", panel_style(Color("2f5762"), Color("e8cfaa")))
+	var gallery_scroll := ScrollContainer.new()
+	gallery_scroll.name = "EventGalleryScroll"
+	gallery_scroll.position = Vector2(45, 218)
+	gallery_scroll.size = Vector2(1190, 412)
+	gallery_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	gallery_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	page.add_child(gallery_scroll)
+	var gallery_content := Control.new()
+	gallery_content.name = "EventGalleryContent"
 	gallery_scroll.add_child(gallery_content)
-	for i in range(definitions.size()):
-		var definition: Dictionary = definitions[i]
-		var unlocked := game.character_event_done(definition.id)
-		var actor: Dictionary = content.find_record("staff", definition.actor_id)
-		var caption := "%s　%s" % [definition.get("actor_alias", actor.name), definition.title] if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
-		var column := i % 2
-		var row := i / 2
-		var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_gallery_entry.bind(definition.id))
-		page.remove_child(entry)
-		gallery_content.add_child(entry)
-		entry.position = Vector2(15 + column * 595, 15 + row * 105)
-		entry.name = "GalleryEvent_" + definition.id
-		entry.disabled = not unlocked
-	for i in range(special_definitions.size()):
-		var definition: Dictionary = special_definitions[i]
-		var unlocked := game.special_event_gallery_unlocked(str(definition.id))
-		var gallery_title := tx("collections.special_events.%s.gallery_entry.title" % str(definition.id), str(definition.gallery_entry.title))
-		var caption := tx("ui.gallery.special", "特别活动　%s") % gallery_title if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
-		var entry_index := definitions.size() + i
-		var column := entry_index % 2
-		var row := entry_index / 2
-		var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_special_gallery_entry.bind(str(definition.id)))
-		page.remove_child(entry)
-		gallery_content.add_child(entry)
-		entry.position = Vector2(15 + column * 595, 15 + row * 105)
-		entry.name = "GallerySpecial_" + str(definition.id)
-		entry.disabled = not unlocked
-	for i in range(role_rewards.size()):
-		var reward: Dictionary = role_rewards[i]
-		var unlocked := game.staff_role_cg_unlocked(str(reward.id))
-		var actor: Dictionary = content.find_record("staff", str(reward.staff_id))
-		var caption := "%s　%s" % [actor.name, reward.title] if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
-		var entry_index := definitions.size() + special_definitions.size() + i
-		var column := entry_index % 2
-		var row := entry_index / 2
-		var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_staff_role_gallery_entry.bind(str(reward.id)))
-		page.remove_child(entry)
-		gallery_content.add_child(entry)
-		entry.position = Vector2(15 + column * 595, 15 + row * 105)
-		entry.name = "GalleryRole_" + str(reward.id)
-		entry.disabled = not unlocked
+	var rendered_count := 0
+	if event_gallery_category in ["all", "character"]:
+		for i in range(definitions.size()):
+			var definition: Dictionary = definitions[i]
+			var unlocked := game.character_event_done(definition.id)
+			if event_gallery_unlocked_only and not unlocked:
+				continue
+			var actor: Dictionary = content.find_record("staff", definition.actor_id)
+			var caption := "%s　%s" % [definition.get("actor_alias", actor.name), definition.title] if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
+			var column := rendered_count % 2
+			var row := rendered_count / 2
+			var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_gallery_entry.bind(definition.id))
+			page.remove_child(entry)
+			gallery_content.add_child(entry)
+			entry.position = Vector2(15 + column * 595, 15 + row * 98)
+			entry.name = "GalleryEvent_" + definition.id
+			entry.disabled = not unlocked
+			rendered_count += 1
+	if event_gallery_category in ["all", "special"]:
+		for i in range(special_definitions.size()):
+			var definition: Dictionary = special_definitions[i]
+			var unlocked := game.special_event_gallery_unlocked(str(definition.id))
+			if event_gallery_unlocked_only and not unlocked:
+				continue
+			var gallery_title := tx("collections.special_events.%s.gallery_entry.title" % str(definition.id), str(definition.gallery_entry.title))
+			var caption := tx("ui.gallery.special", "特别活动　%s") % gallery_title if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
+			var column := rendered_count % 2
+			var row := rendered_count / 2
+			var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_special_gallery_entry.bind(str(definition.id)))
+			page.remove_child(entry)
+			gallery_content.add_child(entry)
+			entry.position = Vector2(15 + column * 595, 15 + row * 98)
+			entry.name = "GallerySpecial_" + str(definition.id)
+			entry.disabled = not unlocked
+			rendered_count += 1
+	if event_gallery_category in ["all", "role"]:
+		for i in range(role_rewards.size()):
+			var reward: Dictionary = role_rewards[i]
+			var unlocked := game.staff_role_cg_unlocked(str(reward.id))
+			if event_gallery_unlocked_only and not unlocked:
+				continue
+			var actor: Dictionary = content.find_record("staff", str(reward.staff_id))
+			var caption := "%s　%s" % [actor.name, reward.title] if unlocked else tx("ui.gallery.locked", "？？？　未解锁")
+			var column := rendered_count % 2
+			var row := rendered_count / 2
+			var entry := button_at(caption, Vector2.ZERO, Vector2(555, 78), show_staff_role_gallery_entry.bind(str(reward.id)))
+			page.remove_child(entry)
+			gallery_content.add_child(entry)
+			entry.position = Vector2(15 + column * 595, 15 + row * 98)
+			entry.name = "GalleryRole_" + str(reward.id)
+			entry.disabled = not unlocked
+			rendered_count += 1
+	var row_count := ceili(float(rendered_count) / 2.0)
+	gallery_content.custom_minimum_size = Vector2(1170, max(412, row_count * 98 + 15))
+	if rendered_count == 0:
+		var empty_note := label_at(tx("ui.gallery.empty_filtered", "当前筛选下暂无已解锁内容。"), Vector2.ZERO, 22, Color("d8d8c7"), 900)
+		page.remove_child(empty_note)
+		gallery_content.add_child(empty_note)
+		empty_note.position = Vector2(30, 40)
 	label_at(tx("ui.gallery.note", "人物事件与特殊活动在完成后收录；岗位CG在角色第一次担任对应岗位时解锁。"), Vector2(65, 650), 18, Color("d8d8c7"), 980)
 	var return_action: Callable = show_location.bind(gallery_return_location, true, false) if not gallery_return_location.is_empty() else show_map
 	button_at(tx("ui.common.return_office", "← 返回办公室") if not gallery_return_location.is_empty() else tx("ui.common.return_map", "← 医院导览"), Vector2(1015 if not gallery_return_location.is_empty() else 1030, 88), Vector2(200 if not gallery_return_location.is_empty() else 185, 44), return_action)
@@ -4237,8 +4632,8 @@ func show_special_gallery_entry(event_id: String) -> void:
 	var gallery_title := tx("collections.special_events.%s.gallery_entry.title" % event_id, str(definition.gallery_entry.title))
 	base(gallery_title, "SPECIAL EVENT MEMORY", false, "staff_lounge")
 	label_at(special_event_localized_title(definition), Vector2(80, 220), 32, Color("f4f0e6"), 1080)
-	var category := tx("ui.special_event.category." + str(definition.get("category", "")), str(definition.get("category", "")))
-	var duration_label := tx("ui.auto.df005387cfe8", "%s · %s 天") % [category, definition.duration_days]
+	var category := special_event_category_label(str(definition.get("category", "")))
+	var duration_label := tx("ui.auto.df005387cfe8", "%s · %s 天") % [category, int(definition.duration_days)]
 	if event_id == "serika_lv4_stay":
 		duration_label = tx("ui.serika_lv4.category", "人物剧情") + " · " + tx("ui.serika_lv4.span", "当晚23:00 → 三天后09:00")
 	label_at(duration_label, Vector2(80, 280), 20, Color("e8cfaa"), 1080)
@@ -4278,7 +4673,10 @@ func show_special_gallery_replay() -> void:
 	screen = "special_gallery_replay"
 	var localized_title := special_event_localized_title(event.definition)
 	var localized_step_title := tx("collections.special_event_steps.%s.title" % str(step.id), str(step.title))
-	base(tx("ui.gallery.replay_prefix", "回想 · ") + localized_title, tx("ui.gallery.special_replay_subtitle", "%s / 第 %s 章 / 不影响当前进度") % [localized_step_title, event.step_index + 1], true, node.get("background_id", step.background_id))
+	var replay_bg := str(node.get("background_id", step.background_id))
+	if bool(node.get("seasonal_street", false)):
+		replay_bg = after_work_background_id({"phase": "result", "outcome": "completed", "workday": int(game.display_schedule().day), "variant": "night"})
+	base(tx("ui.gallery.replay_prefix", "回想 · ") + localized_title, tx("ui.gallery.special_replay_subtitle", "%s / 第 %s 章 / 不影响当前进度") % [localized_step_title, event.step_index + 1], true, replay_bg)
 	var cg_path := str(node.get("cg_path", ""))
 	var is_new_cg := not cg_path.is_empty() and cg_path != special_event_replay_last_cg_path
 	special_event_replay_last_cg_path = cg_path
@@ -4335,14 +4733,29 @@ func choose_special_gallery_replay(choice_id: String) -> void:
 	else:
 		show_special_gallery_replay()
 
-func show_gallery_entry(event_id: String) -> void:
+func character_gallery_paths(definition: Dictionary) -> Array[String]:
+	var paths: Array[String] = []
+	var cover := str(definition.get("gallery", {}).get("path", ""))
+	if not cover.is_empty():
+		paths.append(cover)
+	for node in definition.get("nodes", []):
+		var path := str(node.get("cg_path", ""))
+		if not path.is_empty() and not paths.has(path):
+			paths.append(path)
+	return paths
+
+func show_gallery_entry(event_id: String, image_index: int = 0) -> void:
 	if not game.character_event_done(event_id):
 		show_notice(tx("ui.gallery.event_locked", "这个事件尚未解锁。"))
 		return
 	screen = "gallery_entry"
 	var definition: Dictionary = game.character_event_definitions[event_id]
 	var actor: Dictionary = content.find_record("staff", definition.actor_id)
-	var gallery: Dictionary = definition.gallery
+	var gallery: Dictionary = definition.gallery.duplicate(true)
+	var images := character_gallery_paths(definition)
+	if not images.is_empty():
+		image_index = posmod(image_index, images.size())
+		gallery.path = images[image_index]
 	base(definition.title, "%s / EVENT MEMORY" % definition.get("actor_alias", actor.name), true, definition.background_id)
 	if not str(gallery.path).is_empty() and ResourceLoader.exists("res://" + str(gallery.path)):
 		var cg := TextureRect.new()
@@ -4368,6 +4781,10 @@ func show_gallery_entry(event_id: String) -> void:
 		if not preload("res://godot/systems/takemi_introduction.gd").owns(event_id):
 			label_at("CG SLOT / " + str(gallery.cg_id), Vector2(65, 235), 18, Color("cbbc9c"), 570)
 			label_at(tx("ui.gallery.cg_pending", "专属CG素材待制作"), Vector2(65, 275), 30, Color("f4f0e6"), 570)
+	if images.size() > 1:
+		button_at("‹", Vector2(695, 640), Vector2(70, 42), show_gallery_entry.bind(event_id, image_index - 1)).name = "GalleryCGPrevious"
+		label_at("%s / %s" % [image_index + 1, images.size()], Vector2(860, 648), 22, Color.WHITE, 120).name = "GalleryCGCounter"
+		button_at("›", Vector2(1050, 640), Vector2(70, 42), show_gallery_entry.bind(event_id, image_index + 1)).name = "GalleryCGNext"
 	var gallery_caption := label_at(gallery.caption, Vector2(65, 320), 21, Color("e8cfaa"), 520)
 	gallery_caption.name = "GalleryCaption"
 	gallery_caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -4384,7 +4801,7 @@ func replay_gallery_entry(event_id: String) -> void:
 		return
 	if not game.character_event_done(event_id):
 		return
-	gallery_replay_event = CharacterEvent.new(game.character_event_definitions[event_id])
+	gallery_replay_event = CharacterEvent.new(game.character_event_runtime_definition(event_id))
 	gallery_replay_is_test = false
 	reset_dialogue_page()
 	show_gallery_replay()
@@ -4492,22 +4909,27 @@ func show_patient(id: String, outfit: String = "outpatient", expression: String 
 	if case_data.is_empty():
 		case_data = content.find_record("cases", patient.case_id)
 	var outfit_name: String = {"outpatient": tx("ui.auto.0fd7b6d4d8e1", "门诊着装"), "ward": tx("ui.auto.6b811b46c8fe", "病房着装"), "operating_table": tx("ui.auto.2cdcb32aefa5", "手术台 · 仰卧位"), "operating_table_lithotomy": tx("ui.auto.f2ac62080844", "手术台 · 截石位")}.get(outfit, outfit)
-	base(patient.name, tx("ui.auto.e66b8af542b3", "%s岁 / %s") % [patient.age, outfit_name], true, "clinic")
+	base(patient.name, tx("ui.auto.e66b8af542b3", "%s岁 / %s") % [int(patient.age), outfit_name], true, "clinic")
 	add_portrait(patient, expression, outfit)
 	var portrait = page.get_node_or_null("CharacterPortrait")
 	if portrait != null:
 		portrait.position = Vector2(740, 165)
 		portrait.size = Vector2(470, 500)
-	label_at(case_data.title, Vector2(65, 240), 28, Color("f4f0e6"), 640)
+	label_at(outpatient_case_display_title(id), Vector2(65, 240), 28, Color("f4f0e6"), 640)
 	var expression_names := {"neutral": tx("ui.auto.85dc6e7aed2b", "平静"), "smile": tx("ui.auto.cdd57ddef6ed", "微笑"), "brave": tx("ui.auto.884cde808c5b", "强装镇定"), "worried": tx("ui.auto.6c2f71e6fc38", "担忧"), "afraid": tx("ui.auto.8f9a55ccb3c6", "害怕"), "crying": tx("ui.auto.488ba5bc44d8", "哭泣"), "awake": tx("ui.auto.607f49da6ad3", "清醒"), "tense": tx("ui.auto.168469b0bac9", "紧张"), "anesthetized": tx("ui.auto.40153582e226", "麻醉后")}
 	label_at(outfit_name + " · " + expression_names.get(expression, expression), Vector2(65, 325), 22, Color("cbbc9c"), 640)
-	button_at(tx("ui.auto.0fd7b6d4d8e1", "门诊着装"), Vector2(65, 400), Vector2(190, 44), show_patient.bind(id, "outpatient"))
+	var out_btn := button_at(tx("ui.auto.0fd7b6d4d8e1", "门诊着装"), Vector2(65, 400), Vector2(190, 44), show_patient.bind(id, "outpatient"))
+	style_selected_button(out_btn, outfit == "outpatient")
 	if patient.visuals.portraits.has("ward/neutral"):
-		button_at(tx("ui.auto.6b811b46c8fe", "病房着装"), Vector2(275, 400), Vector2(190, 44), show_patient.bind(id, "ward"))
+		var ward_btn := button_at(tx("ui.auto.6b811b46c8fe", "病房着装"), Vector2(275, 400), Vector2(190, 44), show_patient.bind(id, "ward"))
+		style_selected_button(ward_btn, outfit == "ward")
 	if patient.visuals.portraits.has("operating_table/awake"):
-		button_at(tx("ui.auto.e123d23bbc11", "手术台"), Vector2(485, 400), Vector2(190, 44), show_patient.bind(id, "operating_table", "awake"))
+		var tbl_btn := button_at(tx("ui.auto.e123d23bbc11", "手术台"), Vector2(485, 400), Vector2(190, 44), show_patient.bind(id, "operating_table", "awake"))
+		style_selected_button(tbl_btn, outfit == "operating_table")
 	if patient.visuals.portraits.has("operating_table_lithotomy/awake"):
-		button_at(tx("ui.auto.89d6df9f4cbc", "截石位"), Vector2(65, 450), Vector2(190, 44), show_patient.bind(id, "operating_table_lithotomy", "awake")).name = "PatientOutfitLithotomy"
+		var lith_btn := button_at(tx("ui.auto.89d6df9f4cbc", "截石位"), Vector2(65, 450), Vector2(190, 44), show_patient.bind(id, "operating_table_lithotomy", "awake"))
+		lith_btn.name = "PatientOutfitLithotomy"
+		style_selected_button(lith_btn, outfit == "operating_table_lithotomy")
 	var expression_top := 515 if patient.visuals.portraits.has("operating_table_lithotomy/awake") else 465
 	var expressions: Array[String] = []
 	for key in patient.visuals.portraits:
@@ -4517,7 +4939,7 @@ func show_patient(id: String, outfit: String = "outpatient", expression: String 
 		var value := expressions[i]
 		var button := button_at(expression_names.get(value, value), Vector2(65 + (i % 3) * 205, expression_top + (i / 3) * 50), Vector2(190, 40), show_patient.bind(id, outfit, value))
 		button.name = "PatientExpression_" + value
-		button.disabled = value == expression
+		style_selected_button(button, value == expression)
 	button_at(tx("ui.auto.ee72d027cb68", "← 返回门诊"), Vector2(1020, 88), Vector2(195, 44), show_location.bind("clinic"))
 
 func encounter_for_patient(patient_id: String) -> String:
@@ -5122,7 +5544,8 @@ func show_referral(patient_id: String) -> void:
 	var patient: Dictionary = content.find_record("patients", patient_id)
 	var case_data: Dictionary = game.patient_case(patient_id)
 	screen = "referral"
-	base(tx("ui.auto.9d787e12e280", "安排转诊"), "%s · %s岁　/　%s" % [patient.name, patient.age, case_data.get("title", tx("ui.auto.7b6344d0158d", "当前病例"))], false, "clinic")
+	var referral_case_title := outpatient_case_display_title(patient_id)
+	base(tx("ui.auto.9d787e12e280", "安排转诊"), tx("ui.referral.patient_subtitle", "%s · %s岁　/　%s") % [patient.name, int(patient.age), referral_case_title if not referral_case_title.is_empty() else tx("ui.auto.7b6344d0158d", "当前病例")], false, "clinic")
 	label_at(tx("ui.auto.24f6d87be6cb", "选择一名医生接手这名患者。已完成的门诊记录会一并交接。"), Vector2(60, 205), 23, Color("f4f0e6"), 650)
 	add_portrait(patient, "neutral", "outpatient")
 	var portrait = page.get_node_or_null("CharacterPortrait")
@@ -5138,7 +5561,7 @@ func show_referral(patient_id: String) -> void:
 	doctor_picker.set_item_metadata(0, "")
 	var known_doctor_count := 0
 	for doctor in content.collections.staff:
-		if doctor.profession != "doctor" or not game.staff_is_met(str(doctor.id)):
+		if not game.can_doctor_receive_outpatient_referral(str(doctor.id)) or not game.staff_is_met(str(doctor.id)):
 			continue
 		var caption := tx("ui.referral.doctor_compact", "%s　/　%s") % [doctor.name, doctor.specialty]
 		doctor_picker.add_item(caption)
@@ -5493,7 +5916,7 @@ func show_surgery_video(video_path: String, next_action: Callable, muted: bool =
 	video.expand = true
 	video.stream = stream
 	video.speed_scale = 1.25
-	video.volume_db = -80.0 if muted else 0.0
+	video.volume_db = -80.0 if (muted or voice.volume <= 0.0001) else linear_to_db(maxf(voice.volume, 0.0001))
 	video.finished.connect(complete_surgery_video)
 	page.add_child(video)
 	var audio_note := tx("ui.auto.963ed772fae7", "静音播放 · 患者已接受麻醉") if muted else tx("ui.auto.b01099715a35", "保留现场声音 · 未麻醉")
@@ -5514,12 +5937,134 @@ func begin_shiori_lv3_yuko_surgery() -> void:
 	var prep = preload("res://godot/systems/shiori_lv3.gd").start_or_reset_story_surgery(game)
 	show_preop(str(prep.definition.id))
 
+func begin_emiko_lv4_first_h() -> void:
+	var locale := str(content.localizer.locale)
+	var bundle := FreeHRegistry.load_bundle("doc_emiko", locale)
+	if not bundle.has("error"):
+		h_profile_run_kind = "milestone"
+		if bundle.get("session") != null:
+			bundle.session.set_context("operating_room", "emiko_lv4_first_h", locale)
+		if _begin_h_profile_session("operating_room", "emiko_lv4_first_h", bundle):
+			return
+	show_emiko_lv4_h_placeholder()
+
+func show_emiko_lv4_h_placeholder() -> void:
+	pause_dialogue_for_choice()
+	screen = "emiko_lv4_h_placeholder"
+	base(
+		tx("ui.emiko_lv4.h_placeholder.title", "御堂江美子 · 首次手术台亲密（占位）"),
+		tx("ui.emiko_lv4.h_placeholder.subtitle", "四楼二号手术室 · 手术台"),
+		false,
+		"operating_room"
+	)
+	var calendar_header := page.get_node_or_null("CalendarHeader")
+	if calendar_header != null:
+		calendar_header.hide()
+	var card := Panel.new()
+	card.name = "EmikoLv4HPlaceholderCard"
+	card.position = Vector2(180, 210)
+	card.size = Vector2(920, 275)
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.08, 0.16, 0.2, 0.9)
+	style.border_color = Color("83a6ab")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(12)
+	card.add_theme_stylebox_override("panel", style)
+	page.add_child(card)
+	var body := label_at(
+		tx("ui.emiko_lv4.h_placeholder.body", "【开发占位 H Runner】\n地点：星见医院·四楼二号手术室（手术台）\n当前御堂江美子的专属 H Profile 与互动差分尚待制作确认；点击下方按钮将完成首次手术台亲密流程并衔接第 6.2 幕事后对话。"),
+		Vector2(216, 240),
+		22,
+		Color("f4f0e6"),
+		848
+	)
+	body.name = "EmikoLv4HPlaceholderBody"
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.size.y = 215
+	var continue_btn := button_at(
+		tx("ui.emiko_lv4.h_placeholder.continue", "完成亲密流程并进入事后对话  ▷"),
+		Vector2(312, 540),
+		Vector2(656, 56),
+		_finish_emiko_lv4_h_placeholder
+	)
+	continue_btn.name = "EmikoLv4HPlaceholderContinue"
+	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
+
+func _finish_emiko_lv4_h_placeholder() -> void:
+	emiko_lv4_h_handoff_complete = true
+	var active_event = game.character_events.get(game.active_character_event_id)
+	if active_event != null and not active_event.current().get("choices", []).is_empty():
+		choose_character_event(str(active_event.current().choices[0].id))
+	else:
+		show_character_event()
+
+func begin_artoria_lv4_first_h() -> void:
+	var locale := str(content.localizer.locale)
+	var bundle := FreeHRegistry.load_bundle("doc_artoria", locale)
+	if not bundle.has("error"):
+		h_profile_run_kind = "milestone"
+		if bundle.get("session") != null:
+			bundle.session.set_context("home", "artoria_lv4_first_h", locale)
+		if _begin_h_profile_session("home", "artoria_lv4_first_h", bundle):
+			return
+	show_artoria_lv4_h_placeholder()
+
+func show_artoria_lv4_h_placeholder() -> void:
+	pause_dialogue_for_choice()
+	screen = "artoria_lv4_h_placeholder"
+	base(
+		tx("ui.artoria_lv4.h_placeholder.title", "阿尔托莉雅·潘德拉贡 · 首次自宅亲密（占位）"),
+		tx("ui.artoria_lv4.h_placeholder.subtitle", "阿尔托莉雅自宅 · 卧室"),
+		false,
+		"artoria_home_bedroom_night"
+	)
+	var calendar_header := page.get_node_or_null("CalendarHeader")
+	if calendar_header != null:
+		calendar_header.hide()
+	var card := Panel.new()
+	card.name = "ArtoriaLv4HPlaceholderCard"
+	card.position = Vector2(180, 210)
+	card.size = Vector2(920, 275)
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.08, 0.16, 0.2, 0.9)
+	style.border_color = Color("83a6ab")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(12)
+	card.add_theme_stylebox_override("panel", style)
+	page.add_child(card)
+	var body := label_at(
+		tx("ui.artoria_lv4.h_placeholder.body", "【开发占位 H Runner】\n地点：阿尔托莉雅·潘德拉贡私人住所（home）\n当前阿尔托莉雅的专属 H Profile 与自宅亲密差分尚待制作确认；点击下方按钮将完成首次亲密流程并衔接 5.2 夜间专属余韵与次日清晨早餐剧情（暂不提前结算 Lv4）。"),
+		Vector2(216, 240),
+		22,
+		Color("f4f0e6"),
+		848
+	)
+	body.name = "ArtoriaLv4HPlaceholderBody"
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.size.y = 215
+	var continue_btn := button_at(
+		tx("ui.artoria_lv4.h_placeholder.continue", "完成亲密流程并进入夜间余韵  ▷"),
+		Vector2(312, 540),
+		Vector2(656, 56),
+		_finish_artoria_lv4_h_placeholder
+	)
+	continue_btn.name = "ArtoriaLv4HPlaceholderContinue"
+	button_at(tx("ui.auto.cdee65fb906e", "读档"), Vector2(194, 713), Vector2(120, 40), request_load)
+
+func _finish_artoria_lv4_h_placeholder() -> void:
+	artoria_lv4_h_handoff_complete = true
+	var active_event = game.character_events.get(game.active_character_event_id)
+	if active_event != null and not active_event.current().get("choices", []).is_empty():
+		choose_character_event(str(active_event.current().choices[0].id))
+	else:
+		show_character_event()
+
 func retry_shiori_lv3_yuko_surgery() -> void:
 	begin_shiori_lv3_yuko_surgery()
 
 func finish_surgery_and_return() -> void:
 	var active_prep = game.preops.get(game.active_preop_id)
-	if not preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(active_prep) and game.select_micro_event("after_surgery", "or") != null:
+	if not preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(active_prep) and not preload("res://godot/systems/asuka_lv1.gd").is_active_on_preop(active_prep) and game.select_micro_event("after_surgery", "or") != null:
 		show_micro_event()
 		return
 	settle_surgery_return()
@@ -5549,6 +6094,7 @@ func finish_surgery_return_destination(settled: bool) -> void:
 		return
 	var started := settled and start_character_event_from_preop_stage("post_surgery_return")
 	game.takemi_postop_opportunity = false
+	game.asuka_lv1_postop_opportunity = false
 	if started:
 		return
 	if not game.pending_departure_context().is_empty():
@@ -5746,6 +6292,17 @@ func request_end_workday() -> void:
 	if not game.active_free_h_departure.is_empty() or screen == "day_transition":
 		return
 	if not game.pending_departure_context().is_empty():
+		if game.active_surgery_in_progress() or game.active_surgery_committed():
+			show_notice(tx("ui.workday.blocked_surgery", "手术流程进行中，请先前往手术室完成当前手术。"))
+			return
+		if game.active_admission_pending() and game.can_end_day_after_admission(game.active_id):
+			game.finish_admission_for_day(game.active_id)
+		elif game.active_encounter_in_progress() or game.unresolved_admitted_patient_exists() or not game.active_preop_id.is_empty():
+			if game.unresolved_admitted_patient_exists() or not game.active_preop_id.is_empty():
+				show_notice(tx("ui.workday.blocked_inpatient", "还有住院患者等待术前或手术处理，请先前往病房或手术室完成流程。"))
+				return
+			game.active_id = ""
+			game.pending_encounter_day_transition = false
 		show_day_transition(show_map)
 		return
 	if not game.can_end_workday():

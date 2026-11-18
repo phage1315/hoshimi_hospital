@@ -59,24 +59,40 @@ func draw() -> void:
 		avatar_slots[role] = avatar_slot
 		var picker := OptionButton.new()
 		picker.name = "Team_"+role
-		picker.position = Vector2(52,32)
-		picker.size = Vector2(256,32)
+		picker.position = Vector2(52,30)
+		picker.size = Vector2(256,34)
 		picker.fit_to_longest_item = false
-		picker.add_theme_font_size_override("font_size",16)
+		picker.clip_text = true
+		picker.add_theme_font_size_override("font_size",15)
+		view.host.style_action_button(picker, 10)
 		picker.add_item(view.tr_key("pick")); picker.set_item_metadata(0, "")
+		var role_skill_id: String = "calmness" if role == "anesthesia" else view.controller.game.role_training_skill(role)
 		for person in view.controller.candidates(role, int(dates.get("operation_day", view.controller.day()+1))):
-			picker.add_item(view.actor_name(person.id))
+			var person_id := str(person.id)
+			var person_skill: int = view.controller.game.staff_skill_value(person_id, role_skill_id) if not role_skill_id.is_empty() else 0
+			var item_caption: String = "%s · %d" % [view.actor_name(person_id), person_skill]
+			if role in ["first_assistant", "second_assistant"]:
+				var cand_info := assistant(person_id)
+				var tag_names: Array[String] = []
+				if bool(cand_info.universal_expert):
+					tag_names.append(view.tr_key("universal"))
+				else:
+					for tag_id in cand_info.specialties:
+						tag_names.append(view.tr_key(str(tag_id)))
+				if not tag_names.is_empty():
+					item_caption += " [" + "/".join(tag_names) + "]"
+			picker.add_item(item_caption)
 			var item_idx := picker.item_count - 1
-			picker.set_item_metadata(item_idx, person.id)
-			var small_tex: Texture2D = view.host.staff_chibi_small_texture(str(person.id))
+			picker.set_item_metadata(item_idx, person_id)
+			var small_tex: Texture2D = view.host.staff_chibi_small_texture(person_id)
 			if small_tex != null:
 				picker.set_item_icon(item_idx, small_tex)
-			if view.selected.get(role, "")==person.id: picker.select(item_idx)
+			if view.selected.get(role, "")==person_id: picker.select(item_idx)
 		picker.icon = null
 		picker.item_selected.connect(func(i): view.selected[role]=picker.get_item_metadata(i); refresh())
 		card.add_child(picker)
 		pickers[role]=picker
-		summaries[role]=text(card,"",Rect2(12,68,294,36),12)
+		summaries[role]=text(card,"",Rect2(12,66,294,38),12)
 	var patient: Dictionary = Presentation.patient(view.record,view.controller.game,view.english)
 	var patient_panel := panel(root,"TeamCase",Rect2(670,0,510,186))
 	text(patient_panel,view.tr_key("team_case"),Rect2(14,8,340,24),16)
@@ -111,12 +127,13 @@ func draw() -> void:
 	assessment.name="TeamEstimate"
 	view.risk_label=assessment
 	text(estimate_panel,view.tr_key("team_estimate_note"),Rect2(14,92,480,52),14)
-	coverage=text(estimate_panel,"",Rect2(14,150,480,42),17)
+	coverage=text(estimate_panel,"",Rect2(14,150,480,54),17)
 	coverage.name="TeamCoverage"
-	text(estimate_panel,view.tr_key("calendar") if dates.is_empty() else view.tr_key("dates") % [dates.intake_day,dates.operation_day,dates.review_day],Rect2(14,208,480,42),14)
+	text(estimate_panel,view.tr_key("calendar") if dates.is_empty() else view.tr_key("dates") % [int(dates.intake_day),int(dates.operation_day),int(dates.review_day)],Rect2(14,208,480,42),14)
 	var footer := panel(root,"TeamFooter",Rect2(0,466,1180,74))
 	var back := Button.new()
 	back.name="new";back.position=Vector2(10,15);back.size=Vector2(210,44);back.text=view.tr_key("team_back");back.add_theme_font_size_override("font_size",18)
+	view.host.style_action_button(back, 14)
 	back.pressed.connect(func(): view.record = {};view.editing_booking=false;view.render())
 	footer.add_child(back)
 	var warning := text(footer,view.tr_key("staff_warning" if view.record.has("staff_patient_id") else "team_replay_warning" if view.record.replay else "team_first_warning"),Rect2(236,8,630,58),16)
@@ -125,6 +142,7 @@ func draw() -> void:
 	confirm.name="accept";confirm.position=Vector2(880,15);confirm.size=Vector2(290,44)
 	confirm.text=view.tr_key("team_rebook" if view.editing_booking else "team_confirm")
 	confirm.add_theme_font_size_override("font_size",18)
+	view.host.style_action_button(confirm, 14)
 	confirm.pressed.connect(view.accept_case)
 	footer.add_child(confirm)
 	refresh()
@@ -160,7 +178,7 @@ func refresh() -> void:
 			var tags: Array[String]=[]
 			for tag in a.specialties: tags.append(view.tr_key(tag))
 			for step in nodes: uses=maxi(uses,Model.remaining_uses(a,0,step))
-			label.text+=" · "+view.tr_key("team_uses")%uses
+			label.text+=" · "+(view.tr_key("team_use_single") if uses == 1 else (view.tr_key("team_uses")%uses))
 			label.text+="\n"+view.tr_key("universal" if a.universal_expert else "team_specialist" if uses==2 else "team_standard")
 			label.tooltip_text=" · ".join(tags)+"\n"+view.tr_key("help_uses")
 			label.set_meta("max_uses",uses)
@@ -168,9 +186,9 @@ func refresh() -> void:
 	var valid: bool=not dates.is_empty() and view.controller.valid_team(view.selected,int(dates.operation_day))
 	confirm.disabled=not valid
 	if not valid:
-		assessment.text=view.tr_key("team_incomplete")
+		assessment.text=view.tr_key("team_calendar_blocked" if dates.is_empty() else "team_incomplete")
 		assessment.add_theme_font_size_override("font_size",23)
-		coverage.text=view.tr_key("team_pick_hint")
+		coverage.text=view.tr_key("team_calendar_hint" if dates.is_empty() else "team_pick_hint")
 		coverage.tooltip_text=""
 		root.set_meta("estimate_key","")
 		return

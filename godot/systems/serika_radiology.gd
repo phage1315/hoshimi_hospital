@@ -5,6 +5,8 @@ const ACTOR := "doc_serika"
 const PREFIX := "serika_radiology_d"
 const LV1 := "serika_lv1_cross_out_my_name"
 static func naturally_present(g: RefCounted) -> bool:
+ if g.is_hospital_closed_day(g.current_workday()):
+  return false
  if not g.staff_is_met(ACTOR) or str(g.active_staff_patient.get("staff_id", "")) == ACTOR:
   return false
  var key := "serika_imaging_present:%s" % g.day_number()
@@ -17,6 +19,8 @@ static func naturally_present(g: RefCounted) -> bool:
   g.set_story_flag(key, rng.randi_range(0, 99) < 70)
  return g.story_flag(key)
 static func lv1_entry_allowed(g: RefCounted) -> bool:
+ if g.is_hospital_closed_day(g.current_workday()):
+  return false
  # Remaining rank/intro requirements use the shared character-event gate.
  # Do not ask staff_present_at here: personal events themselves place actors.
  if g.active_surgery_in_progress() or not g.active_character_event_id.is_empty() or not g.active_special_event_id.is_empty() or not g.active_micro_event_id.is_empty() or not g.active_preop_id.is_empty() or g.active_encounter_in_progress() or not g.active_after_work_walk.is_empty() or not g.active_free_h_departure.is_empty():
@@ -42,6 +46,8 @@ static func milestone_complete(g: RefCounted, level: int) -> bool:
   return false
  return g.character_event_done(id) or int(g.special_event_completion_counts.get(id, 0)) > 0
 static func eligible(g: RefCounted, id: String) -> bool:
+ if g.is_hospital_closed_day(g.current_workday()):
+  return false
  var i := next_index(g)
  if i > 15 or id != event_id(i) or not g.staff_is_met(ACTOR):
   return false

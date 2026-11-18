@@ -12,7 +12,7 @@ func run():
   fixture(g,d,true);g.surgery_xp=cap-headroom
   var before=g.surgery_xp;var history_before=g.surgery_xp_history.size()
   expect(g.start_special_event(d.id)!=null,"Event could not start")
-  for guard in range(100):
+  for guard in range(1000):
    if not g.special_event_in_progress():break
    expect(g.choose_special_event(g.active_special_event.current().choices[0].id).accepted,"Event choice rejected")
   g.finish_special_event();app.show_map(false)

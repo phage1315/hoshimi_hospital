@@ -1,0 +1,85 @@
+{
+  "event_id": "emiko_lv1_first_operation",
+  "actor_id": "doc_emiko",
+  "version": "V2.2",
+  "imported_on": "2026-11-14",
+  "source_manuscript": "research/source_scripts/HOSHIMI_MIDO_EMIKO_LV1_HER_SURGERY_V2_2.md",
+  "source_manuscript_sha256": "b1364ddf58d799bcdda710e774b72936c39c9dfad7fb608e86430ed865de694a",
+  "english_translation": "research/translations/emiko_lv1_en.json",
+  "english_translation_sha256": "47ccd8b38b5c3d27ba5c2465c9578f9c5668d1f4f7969586216da7b49bc869f7",
+  "output_event_file": "data/staff/doc_emiko/events.json",
+  "authored_beat_count": 210,
+  "total_node_count": 213,
+  "choice_nodes": [
+    "em1_choice_b1",
+    "em1_choice_c1",
+    "em1_choice_e1"
+  ],
+  "localization_keys_written": {
+    "zh_CN": 645,
+    "en": 645
+  },
+  "reused_cast_portraits": {
+    "doc_emiko:scrubs/focused": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/focused.png",
+      "sha256": "28a1faba998a5c8467fa28132e3c20242dcf5b5e022f8fa5f4d3b01b48d5ee38"
+    },
+    "doc_emiko:scrubs/neutral": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/neutral.png",
+      "sha256": "28a1faba998a5c8467fa28132e3c20242dcf5b5e022f8fa5f4d3b01b48d5ee38"
+    },
+    "doc_emiko:scrubs/warm": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/scrubs/warm.png",
+      "sha256": "28a1faba998a5c8467fa28132e3c20242dcf5b5e022f8fa5f4d3b01b48d5ee38"
+    },
+    "doc_emiko:sterile/focused": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/sterile/focused.png",
+      "sha256": "3b4a6a972c3ecfae73f9927b2c48693618227ba2568f90b1797ab33cc8a66dfa"
+    },
+    "doc_emiko:sterile/neutral": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/sterile/neutral.png",
+      "sha256": "3b4a6a972c3ecfae73f9927b2c48693618227ba2568f90b1797ab33cc8a66dfa"
+    },
+    "doc_emiko:sterile/warm": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/sterile/warm.png",
+      "sha256": "3b4a6a972c3ecfae73f9927b2c48693618227ba2568f90b1797ab33cc8a66dfa"
+    },
+    "doc_emiko:sterile/worried": {
+      "path": "assets/characters/portrait_pack_v14/doc_emiko/sterile/worried.png",
+      "sha256": "3b4a6a972c3ecfae73f9927b2c48693618227ba2568f90b1797ab33cc8a66dfa"
+    },
+    "nurse_hiroko:sterile/focused": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/sterile/focused.png",
+      "sha256": "e16ef04b5c9fe631dd3a4b059913b8418c2ba58e0e88e13a1ab8ef6ad0ebc522"
+    },
+    "nurse_hiroko:sterile/neutral": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/sterile/neutral.png",
+      "sha256": "e584909bd68a04d7e19c78ae99b917034567c64cd19e483eecdc6e52d3a1a12d"
+    },
+    "nurse_hiroko:sterile/warm": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/sterile/warm.png",
+      "sha256": "3c59f8475d3e6fa2171bb48fbf4227152a5350dad3fc17676b19adeddba6112e"
+    },
+    "nurse_moe:scrubs/neutral": {
+      "path": "assets/characters/moe_circulating_v1/neutral.png",
+      "sha256": "faae7ee2d6b9a78acf44c94baeec0ca9a136657f2e3587e5e77662d67544d727"
+    }
+  },
+  "gate_and_settlement": {
+    "required_events": [
+      "emiko_intro_rumored_hands"
+    ],
+    "days_after_required_events": 3,
+    "player_skill_minimum": 75,
+    "min_familiarity": 0,
+    "target_level": 1,
+    "completion_familiarity_bonus": 10,
+    "benefit_id": "",
+    "completion_flags": [
+      "emiko_lv1_complete",
+      "emiko_postop_excitement_hint"
+    ],
+    "surgical_team_remains_locked_until_lv2": true,
+    "locks_saving": true
+  }
+}

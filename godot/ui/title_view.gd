@@ -50,6 +50,9 @@ static func render(app) -> void:
 		button.add_theme_stylebox_override("normal", app.panel_style(Color(0.08,0.20,0.24,0.85),Color(0.5,0.7,0.7,0.35)))
 		button.add_theme_stylebox_override("focus", app.panel_style(Color(0.25,0.42,0.44,0.9),Color("bbdbd4")))
 		if i == 0: button.disabled = slot == 0
+		if i == 3 and not app.game.staff_is_met("doc_aoi"):
+			button.disabled = true
+			button.tooltip_text = app.tx("ui.title.directory_locked", "请先开始新游戏完成序章，或读取已有存档。")
 		if i == (0 if slot > 0 else 1): button.grab_focus()
 	var panel := Panel.new()
 	panel.position = Vector2(700,430)
@@ -119,10 +122,11 @@ static func developer(app) -> void:
 		list.add_child(button)
 
 static func settings(app) -> void:
-	var dialog := modal(app, app.tx("ui.title.settings", "设置"), Vector2i(570,420))
+	if app.dialogue_modal_open(): return
+	var dialog := modal(app, app.tx("ui.title.settings", "设置"), Vector2i(620, 560))
 	dialog.name = "TitleSettingsDialog"
 	var list := VBoxContainer.new()
-	list.add_theme_constant_override("separation", 20)
+	list.add_theme_constant_override("separation", 12)
 	dialog.add_child(list)
 	var fullscreen := CheckButton.new()
 	fullscreen.text = app.tx("ui.title.fullscreen", "全屏显示")
@@ -141,10 +145,13 @@ static func settings(app) -> void:
 	speed.name = "DialogueSpeedSetting"
 	for caption in [app.tx("ui.title.slow", "慢"), app.tx("ui.title.normal", "标准"), app.tx("ui.title.fast", "快"), app.tx("ui.title.faster", "很快"), app.tx("ui.dialogue.speed.light_speed", "光速")]: speed.add_item(caption)
 	speed.select(app.dialogue_auto_speed_index)
-	speed.item_selected.connect(func(index: int): app.dialogue_auto_speed_index = index; app.content.localizer.save_dialogue_auto_speed(index))
+	speed.item_selected.connect(func(index: int):
+		app.dialogue_auto_speed_index = index
+		app.content.localizer.save_dialogue_auto_speed(index)
+		app.refresh_dialogue_playback_controls())
 	list.add_child(speed)
 	var music_label := Label.new()
-	music_label.text = "BGM volume" if app.content.localizer.locale == "en" else "背景音乐音量" # localization-invariant
+	music_label.text = app.tx("ui.settings.bgm_volume", "背景音乐音量")
 	list.add_child(music_label)
 	var music_volume := HSlider.new()
 	music_volume.name = "MusicVolumeSetting"
@@ -152,9 +159,41 @@ static func settings(app) -> void:
 	music_volume.max_value = 100
 	music_volume.step = 1
 	music_volume.value = app.music.volume * 100.0
-	music_volume.custom_minimum_size = Vector2(480, 32)
+	music_volume.custom_minimum_size = Vector2(520, 28)
 	music_volume.value_changed.connect(func(value: float): app.music.set_volume(value / 100.0, true))
 	list.add_child(music_volume)
+	var voice_label := Label.new()
+	voice_label.text = app.tx("ui.settings.voice_volume", "角色语音音量")
+	list.add_child(voice_label)
+	var voice_volume := HSlider.new()
+	voice_volume.name = "VoiceVolumeSetting"
+	voice_volume.min_value = 0
+	voice_volume.max_value = 100
+	voice_volume.step = 1
+	voice_volume.value = app.voice.volume * 100.0
+	voice_volume.custom_minimum_size = Vector2(520, 28)
+	voice_volume.value_changed.connect(func(value: float): app.voice.set_volume(value / 100.0, true))
+	list.add_child(voice_volume)
+	var crisis_toggle := CheckButton.new()
+	crisis_toggle.name = "IntraoperativeCrisisSetting"
+	crisis_toggle.text = app.tx("ui.settings.intraop_crisis", "术中危机事件")
+	crisis_toggle.button_pressed = app.game.intraoperative_crisis_enabled
+	crisis_toggle.toggled.connect(func(enabled: bool):
+		app.game.set_intraoperative_crisis_enabled(enabled)
+		var pref_path: String = app.title_preferences_path if not str(app.title_preferences_path).is_empty() and str(app.title_preferences_path) != "user://title_preferences.cfg" else app.content.localizer.SETTINGS_PATH
+		app.content.localizer.save_intraoperative_crisis_preference(enabled, pref_path))
+	list.add_child(crisis_toggle)
+	var hud_toggle := CheckButton.new()
+	hud_toggle.name = "OperativeFieldHudSetting"
+	hud_toggle.text = app.tx("ui.settings.operative_field_hud", "术野显示：右上角小窗（关闭则为全屏术野）")
+	hud_toggle.button_pressed = app.operative_field_hud_enabled
+	hud_toggle.toggled.connect(func(enabled: bool):
+		app.operative_field_hud_enabled = enabled
+		var pref_path: String = app.title_preferences_path if not str(app.title_preferences_path).is_empty() and str(app.title_preferences_path) != "user://title_preferences.cfg" else app.content.localizer.SETTINGS_PATH
+		app.content.localizer.save_operative_field_hud_preference(enabled, pref_path)
+		if app.screen == "preop" and not app.game.active_preop_id.is_empty() and app.page.get_node_or_null("WardPreparationSplash") == null and app.page.get_node_or_null("GeneralAnesthesiaSplash") == null:
+			app.call_deferred("show_preop", app.game.active_preop_id))
+	list.add_child(hud_toggle)
 
 static func startup(app) -> void:
 	if not app.title_notice_enabled: return

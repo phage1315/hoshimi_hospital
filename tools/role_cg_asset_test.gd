@@ -27,6 +27,11 @@ func check_all_rewards(app) -> void:
 			# levels (some actors have no relationship ranks at all).
 			if "team_unlock_requires_lv1" in person.get("flags", []):
 				app.game.relation_for(str(person.id))["level"] = 1
+			if str(person.id) == "doc_emiko":
+				app.game.relation_for("doc_emiko")["level"] = 2
+				app.game.relation_for("doc_emiko")["rank_history"] = ["emiko_lv1_first_operation", "emiko_lv2_follow_my_lead"]
+				app.game.relation_for("doc_emiko")["unlocked_benefits"] = ["unlock_emiko_surgical_team"]
+				app.game._complete_character_event_for_test("emiko_lv2_follow_my_lead", 1)
 		var visit = app.game.open_visit("visit_sora")
 		expect(visit != null, locale + ": missing admission fixture")
 		if visit == null:

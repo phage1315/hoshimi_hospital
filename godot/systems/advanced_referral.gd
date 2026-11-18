@@ -108,10 +108,16 @@ func schedule() -> Dictionary:
 	if dev: return {"intake_day": day(), "operation_day": day() + 1, "review_day": day() + 2}
 	return continuous_schedule()
 
+func intake_time_block_reason() -> String:
+	if dev: return ""
+	if str(game.calendar_date(day()).weekday_id) not in ["mon", "tue", "wed", "thu"]: return "intake_weekend"
+	if game.current_absolute_clock() > 600: return "intake_too_late"
+	return ""
+
 func continuous_schedule() -> Dictionary:
 	var intake := day()
-	if str(game.calendar_date(intake).weekday_id) not in ["mon", "tue", "wed", "thu"]: return {}
-	if not game.is_routine_workday(intake) or game.current_absolute_clock() > 960: return {}
+	if not intake_time_block_reason().is_empty(): return {}
+	if not game.is_routine_workday(intake): return {}
 	if not game.is_routine_workday(intake + 1): return {}
 	# Saturday permits review. Never stretch the episode across closed days.
 	if game.is_hospital_closed_day(intake + 2): return {}
@@ -144,6 +150,26 @@ func valid_team(selected: Dictionary, operation_day: int) -> bool:
 		if not (dev and fixture_mode):
 			var ids: Array = candidates(role, operation_day).map(func(person): return str(person.id))
 			if id not in ids: return false
+		used.append(id)
+	return true
+
+func valid_booked_team(selected: Dictionary) -> bool:
+	var used: Array = []
+	for role in ROLES:
+		var id := str(selected.get(role, ""))
+		if id.is_empty() or id in used: return false
+		if not (dev and fixture_mode):
+			if id == game.active_advanced_staff_patient or id == str(game.active_staff_patient.get("staff_id", "")): return false
+			var person: Dictionary = game.staff_record(id)
+			if person.is_empty() or "or_selectable_default_false" in person.get("flags", []): return false
+			var anesthetist: bool = "anesthesiologist" in person.get("flags", [])
+			if role == "anesthesia":
+				if not anesthetist: return false
+			else:
+				if anesthetist: return false
+				var basic := str(ROLE_MAP.get(role, ""))
+				if basic not in person.get("surgical_roles", []): return false
+				if person.has("allowed_team_roles") and basic not in person.allowed_team_roles: return false
 		used.append(id)
 	return true
 
@@ -201,7 +227,7 @@ func start_operation() -> bool:
 	if not dev and game.current_absolute_clock() != game.SHIFT_START_MINUTE:
 		error = "calendar"
 		return false
-	if not valid_team(a.team, int(a.operation_day)):
+	if not valid_booked_team(a.team):
 		error = "team"
 		return false
 	var def := Model.procedure(str(a.case.procedure_id))
@@ -288,4 +314,8 @@ static func conflicts_event(g: RefCounted, definition: Dictionary) -> bool:
 	length = preload("res://godot/systems/chihaya_third_surgery.gd").occupied_days(str(definition.get("id", "")), length)
 	if str(definition.get("id", "")) == preload("res://godot/systems/serika_lv4.gd").ID: length = 4
 	if str(definition.get("id", "")) == preload("res://godot/systems/miyuki_lv2.gd").A: length = 2
+	if str(definition.get("id", "")) == preload("res://godot/systems/emiko_lv3.gd").EVENT_ID: length = 2
+	if str(definition.get("id", "")) == preload("res://godot/systems/emiko_lv4.gd").EVENT_ID: length = 2
+	if str(definition.get("id", "")) == preload("res://godot/systems/artoria_lv2.gd").EVENT_ID: length = 2
+	if str(definition.get("id", "")) == preload("res://godot/systems/artoria_lv3.gd").EVENT_ID: length = 2
 	return reserved(g, g.day_number(), g.day_number() + length - 1)

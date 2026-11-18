@@ -1040,8 +1040,10 @@ emiko_relation = by['relationships'].get('doc_emiko', {}) if 'relationships' in 
 check(not emiko_relation.get('met', True), 'doc_emiko: must remain unknown until her skill-gated introduction')
 emiko_slots = {slot['target_level']: slot for slot in emiko_relation.get('rank_slots', [])}
 check(emiko_slots.get(1, {}).get('event_id') == 'emiko_lv1_first_operation' and
-      emiko_slots.get(2, {}).get('event_id') == 'emiko_lv2_follow_my_lead',
-      'doc_emiko: Lv1 and Lv2 event slots are not linked')
+      emiko_slots.get(2, {}).get('event_id') == 'emiko_lv2_follow_my_lead' and
+      emiko_slots.get(3, {}).get('event_id') == 'emiko_lv3_today_i_lead' and
+      emiko_slots.get(4, {}).get('event_id') == 'emiko_lv4_emikos_secret',
+      'doc_emiko: Lv1-Lv4 event slots are not linked')
 check('emiko_office' in by['locations'] and 'emiko_office' in emiko.get('presence', {}).get('fixed_locations', []),
       'doc_emiko: personal office location or fixed presence is missing')
 emiko_intro = by['character_events'].get('emiko_intro_rumored_hands', {})
@@ -1051,20 +1053,43 @@ check(emiko_intro.get('conditions', {}).get('required_events') == ['intro_doc_as
       emiko_intro.get('conditions', {}).get('special_requirements') ==
       [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 70}],
       'doc_emiko: introduction must require Asuka introduction and Surgery 70')
-check(emiko_intro.get('auto_follow_up') ==
-      {'event_id': 'emiko_lv1_first_operation', 'day_offset': 3, 'absolute_clock': 780},
-      'doc_emiko: introduction must schedule Lv1 after the fixed three-day cooldown')
+check('auto_follow_up' not in emiko_intro,
+      'doc_emiko: introduction V1.2 must not force-schedule Lv1 via auto_follow_up')
 check(emiko_slots[1].get('min_familiarity') == 0 and
       emiko_slots[1].get('cooldown_days') == 3 and
+      emiko_slots[1].get('benefit_id') == '' and
       emiko_slots[1].get('special_requirements') ==
-      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 70}] and
-      emiko_lv1.get('conditions', {}).get('min_familiarity') == 0,
-      'doc_emiko: Lv1 must require Surgery 70, no familiarity and a three-day gap')
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 75}] and
+      emiko_lv1.get('conditions', {}).get('min_familiarity') == 0 and
+      emiko_lv1.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 75}] and
+      emiko_lv1.get('benefit_id') == '' and
+      emiko_lv1.get('completion_familiarity_bonus') == 10,
+      'doc_emiko: Lv1 must require Surgery 75, no familiarity, a three-day gap, and grant fixed +10 familiarity')
 check(emiko_slots[2].get('min_familiarity') == 0 and
       emiko_slots[2].get('cooldown_days') == 3 and
-      emiko_slots[2].get('special_requirements') == [] and
-      emiko_lv2.get('conditions', {}).get('min_familiarity') == 0,
-      'doc_emiko: Lv2 must require no familiarity and retain the three-day gap')
+      emiko_slots[2].get('benefit_id') == 'unlock_emiko_surgical_team' and
+      emiko_slots[2].get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 80}] and
+      emiko_lv2.get('conditions', {}).get('min_familiarity') == 0 and
+      emiko_lv2.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 80}] and
+      emiko_lv2.get('benefit_id') == 'unlock_emiko_surgical_team' and
+      emiko_lv2.get('completion_familiarity_bonus') == 10,
+      'doc_emiko: Lv2 must require Surgery 80, no familiarity, a three-day gap, grant fixed +10 familiarity, and unlock surgical team')
+emiko_lv4 = by['character_events'].get('emiko_lv4_emikos_secret', {})
+check(emiko_slots[4].get('min_familiarity') == 55 and
+      emiko_slots[4].get('cooldown_days') == 3 and
+      emiko_slots[4].get('benefit_id') == 'unlock_intimacy_events' and
+      emiko_slots[4].get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'presence', 'minimum': 30}] and
+      emiko_lv4.get('conditions', {}).get('min_familiarity') == 55 and
+      emiko_lv4.get('conditions', {}).get('required_events') == ['emiko_lv3_today_i_lead'] and
+      emiko_lv4.get('conditions', {}).get('days_after_required_events') == 3 and
+      emiko_lv4.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'presence', 'minimum': 30}] and
+      emiko_lv4.get('benefit_id') == 'unlock_intimacy_events',
+      'doc_emiko: Lv4 must require Lv3, Familiarity 55, Presence +30, a three-day gap, and unlock_intimacy_events without extra Surgery gate')
 
 asuka = by['staff'].get('doc_asuka', {})
 asuka_relation = next((relation for relation in collections['relationships']
@@ -1143,6 +1168,63 @@ check(artoria_lv1.get('gallery', {}).get('path') ==
       'assets/events/character_events/artoria/right_position.png' and
       artoria_lv1.get('gallery', {}).get('show_on_complete') is True,
       'doc_artoria: Lv1 allocation reward CG is not configured')
+artoria_lv2 = by['character_events'].get('artoria_lv2_what_remains', {})
+check(artoria_slots.get(2, {}).get('event_id') == 'artoria_lv2_what_remains' and
+      artoria_slots.get(2, {}).get('content_status') == 'authored' and
+      artoria_slots.get(2, {}).get('min_familiarity') == 25 and
+      artoria_slots.get(2, {}).get('cooldown_days') == 3 and
+      artoria_slots.get(2, {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 70}] and
+      artoria_lv2.get('trigger_mode') == 'after_work' and
+      artoria_lv2.get('target_level') == 2 and
+      artoria_lv2.get('conditions', {}).get('max_day') == 363 and
+      artoria_lv2.get('conditions', {}).get('min_familiarity') == 25 and
+      artoria_lv2.get('conditions', {}).get('required_events') == ['artoria_lv1_right_position'] and
+      artoria_lv2.get('conditions', {}).get('days_after_required_events') == 3 and
+      artoria_lv2.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 70}] and
+      set(artoria_lv2.get('completion_story_flags', [])) ==
+      {'artoria_lv2_complete', 'artoria_major_liver_resection_teaching_complete'},
+      'doc_artoria: Lv2 milestone event or liver resection teaching unlock contract mismatch')
+artoria_lv3 = by['character_events'].get('artoria_lv3_not_a_solo_operation', {})
+check(artoria_slots.get(3, {}).get('event_id') == 'artoria_lv3_not_a_solo_operation' and
+      artoria_slots.get(3, {}).get('content_status') == 'authored' and
+      artoria_slots.get(3, {}).get('min_familiarity') == 40 and
+      artoria_slots.get(3, {}).get('cooldown_days') == 3 and
+      artoria_slots.get(3, {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 80}] and
+      artoria_lv3.get('trigger_mode') == 'after_work' and
+      artoria_lv3.get('target_level') == 3 and
+      artoria_lv3.get('conditions', {}).get('max_day') == 363 and
+      artoria_lv3.get('conditions', {}).get('min_familiarity') == 40 and
+      artoria_lv3.get('conditions', {}).get('required_events') == ['artoria_lv2_what_remains'] and
+      artoria_lv3.get('conditions', {}).get('days_after_required_events') == 3 and
+      artoria_lv3.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 80}] and
+      artoria_lv3.get('completion_story_flags') == ['artoria_lv3_complete'],
+      'doc_artoria: Lv3 milestone event contract mismatch')
+artoria_lv4 = by['character_events'].get('artoria_lv4_just_artoria', {})
+check(artoria_slots.get(4, {}).get('event_id') == 'artoria_lv4_just_artoria' and
+      artoria_slots.get(4, {}).get('content_status') == 'authored' and
+      artoria_slots.get(4, {}).get('benefit_id') == 'unlock_intimacy_events' and
+      artoria_slots.get(4, {}).get('min_familiarity') == 55 and
+      artoria_slots.get(4, {}).get('cooldown_days') == 3 and
+      artoria_slots.get(4, {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 85}] and
+      artoria_lv4.get('trigger_mode') == 'sunday' and
+      artoria_lv4.get('consumes_sunday') is True and
+      artoria_lv4.get('target_level') == 4 and
+      artoria_lv4.get('benefit_id') == 'unlock_intimacy_events' and
+      artoria_lv4.get('completion_day_offset') == 1 and
+      artoria_lv4.get('completion_absolute_clock') == 540 and
+      artoria_lv4.get('conditions', {}).get('max_day') == 363 and
+      artoria_lv4.get('conditions', {}).get('min_familiarity') == 55 and
+      artoria_lv4.get('conditions', {}).get('required_events') == ['artoria_lv3_not_a_solo_operation'] and
+      artoria_lv4.get('conditions', {}).get('days_after_required_events') == 3 and
+      artoria_lv4.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 85}] and
+      artoria_lv4.get('completion_story_flags') == ['artoria_lv4_complete'],
+      'doc_artoria: Lv4 milestone event contract mismatch')
 
 shiori = by['staff'].get('doc_shiori', {})
 shiori_relation = next((relation for relation in collections['relationships']
@@ -1316,7 +1398,12 @@ for event in collections['character_events']:
     nodes = {node['id']: node for node in event['nodes']}
     check(len(nodes) == len(event['nodes']) and event['start'] in nodes, prefix + 'invalid nodes')
     choice_ids = set()
-    reachable, pending = set(), [event['start'], *event.get('opening_variants', {}).values()]
+    runtime_cast_roots = (
+        ['em3_s_01', 'em3_o_01'] if event['id'] == 'emiko_lv3_today_i_lead'
+        else ['ar3_s1_em3a_01', 'ar3_c1a_1_01'] if event['id'] == 'artoria_lv3_not_a_solo_operation'
+        else []
+    )
+    reachable, pending = set(), [event['start'], *event.get('opening_variants', {}).values(), *runtime_cast_roots]
     while pending:
         node_id = pending.pop()
         if node_id in reachable or node_id not in nodes: continue
@@ -1459,15 +1546,44 @@ for path in [
     check((ROOT / path).is_file(), 'miyama_01: missing Kita V2.3 asset ' + path)
 
 miyama_lv3 = by['special_events'].get('miyama_03_or_god', {})
+miyama_lv3_day1 = by['special_event_steps'].get('miyama_03_or_god_day1', {})
 miyama_lv3_step = by['special_event_steps'].get('miyama_03_or_god_main', {})
 check(miyama_lv3.get('prerequisite_events') == ['miyama_02_manga_artist_wrong_patient'] and
+      miyama_lv3.get('duration_days') == 2 and
+      miyama_lv3.get('event_chain') == ['miyama_03_or_god_day1', 'miyama_03_or_god_main'] and
+      miyama_lv3.get('timing', {}).get('avoid_sunday_span') is True and
+      miyama_lv3.get('unlock_requirements') == [{
+          'type': 'days_after_special_event',
+          'event_id': 'miyama_02_manga_artist_wrong_patient',
+          'days': 5}] and
       miyama_lv3.get('relationship_rewards') == [{
           'actor_id': 'doc_rei', 'target_level': 3,
           'benefit_id': '', 'allow_level_skip': False}],
-      'miyama_03: Lv2 prerequisite or sequential Lv3 reward is incomplete')
-check(all(any(node.get('id') == node_id for node in miyama_lv3_step.get('nodes', []))
-          for node_id in ['moe', 'ange', 'release', 'gown', 'cg', 'rank3']),
-      'miyama_03: Honjo restraint, Tonegawa report, or surgery transition is missing')
+      'miyama_03: V1.2 2-day chain, 5-day post-Lv2 cooldown, or sequential Lv3 reward is incomplete')
+check(len(miyama_lv3_day1.get('nodes', [])) == 28 and
+      len(miyama_lv3_step.get('nodes', [])) == 325 and
+      all(any(node.get('id') == node_id and len(node.get('choices', [])) == choice_count
+              for node in miyama_lv3_step.get('nodes', []))
+          for node_id, choice_count in [
+              ('s08_013', 3), ('s10c_002', 2), ('s10e_003', 2), ('s12_016', 3)]),
+      'miyama_03: V1.2 353-beat sequence or 4 interactive choice nodes are incomplete')
+for path in [
+        'assets/events/character_events/rei/lv3/nude_guarded.png',
+        'assets/events/character_events/rei/lv3/emergency_command_nude.png',
+        'assets/events/character_events/rei/lv3/or_god_surgery_rear.png',
+        'assets/characters/intraoperative_portraits_v1/doc_rei/tense.png',
+        'assets/characters/intraoperative_portraits_v1/doc_rei/pain.png',
+        'assets/characters/intraoperative_portraits_v1/doc_rei/near_collapse.png',
+        'assets/characters/intraoperative_portraits_v1/doc_rei/anesthetized.png',
+        'assets/characters/intraoperative_portraits_v1/doc_rei/embarrassed.png',
+        'assets/characters/intraoperative_portraits_v1/doc_rei/relieved.png',
+        'assets/characters/miyama_lv3_v1/doc_rei/or_cap/asleep.png',
+        'assets/characters/miyama_lv3_v1/doc_rei/or_cap/drowsy.png',
+        'assets/characters/miyama_lv3_v1/doc_rei/or_cap/masked_hesitant.png',
+        'assets/characters/miyama_lv3_v1/doc_rei/or_cap/masked_focused.png',
+        'assets/characters/spring_summer_casual_v1/doc_rei/small_smile.png',
+        'assets/characters/winter_casual_v1/doc_rei/small_smile.png']:
+    check((ROOT / path).is_file(), 'miyama_03: missing V1.2 asset ' + path)
 for path in [
         'assets/events/character_events/rei/ayako/cg_01_lucky.png',
         'assets/events/character_events/rei/ayako/cg_02_patient_disguise.png',

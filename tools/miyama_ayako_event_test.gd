@@ -92,14 +92,18 @@ func run() -> void:
 	game.meet_staff("nurse_moe")
 	game.meet_staff("nurse_ange")
 	game.add_familiarity("doc_rei", 15)
-	game.advance_story_to_day(12, 540)
 	var lv3: Dictionary = game.special_event_definitions["miyama_03_or_god"]
 	game.set_story_flag("__test_save_target_event__" + str(lv3.id), true)
-	expect(game.special_event_available(lv3), "Kaori Lv3 did not unlock after Lv2")
+	# Lv2 settled on day 9; V1.2 requires >= 5 days after Lv2 completion, so day 12 is still gated.
+	game.advance_story_to_day(12, 540)
+	expect(not game.special_event_available(lv3), "Kaori Lv3 unlocked before 5-day post-Lv2 cooldown elapsed")
+	# Day 14 (Monday 2025-04-14) reaches the 5-day post-Lv2 threshold with Mon-Tue open span.
+	game.advance_story_to_day(14, 540)
+	expect(game.special_event_available(lv3), "Kaori Lv3 did not unlock 5 days after Lv2")
 	var lv3_nodes := {}
-	expect(complete_special_event(game, lv3.id, lv3_nodes), "Kaori Lv3 did not traverse to completion")
-	for node_id in ["moe", "consent", "ange", "release", "gown", "cg", "rank3"]:
-		expect(lv3_nodes.has(node_id), "Kaori Lv3 missed required node: " + node_id)
+	expect(complete_special_event(game, lv3.id, lv3_nodes), "Kaori Lv3 V1.2 did not traverse both days to completion")
+	for node_id in ["s02_001", "s02_020", "s03_014", "s04_007", "s05_005", "s07_014", "s08_013", "s09_016", "s10e_018", "s11_030", "s12_043"]:
+		expect(lv3_nodes.has(node_id), "Kaori Lv3 V1.2 missed required node: " + node_id)
 	expect(game.relationship_level("doc_rei") == 3, "Kaori Lv3 did not raise her relationship to Lv3")
 	for flag in ["miyama_03_or_god_completed", "miyama_primary_surgeon_confidence_restored", "miyama_or_god_gag_known_by_inner_circle"]:
 		expect(game.story_flag(flag), "Kaori Lv3 completion flag missing: " + flag)

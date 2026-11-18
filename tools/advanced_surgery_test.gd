@@ -260,7 +260,7 @@ func edge_cases() -> void:
 	g.special_event_completion_days["advanced_referral_tutorial_chisato"] = 3
 	g.set_story_flag("advanced_referral_random_cases_enabled", true)
 	for person in g.staff: g.relation_for(person.id).met = true
-	g.special_event_definitions.clear(); g.set_test_time(15, 780)
+	g.special_event_definitions.clear(); g.set_test_time(15, 540)
 	var dates: Dictionary = c.schedule()
 	var selected := {}
 	for role in Referral.ROLES:
@@ -271,7 +271,7 @@ func edge_cases() -> void:
 	var offer: Dictionary = c.board()[0]
 	expect(not c.accept(offer, selected) and c.board().has(offer) and g.elapsed() == before, "Calendar conflict does not consume time or case")
 	g.free_h_booking.clear()
-	expect(c.accept(offer, selected) and g.elapsed() == before + 60, "Afternoon intake advances exactly one hour")
+	expect(c.accept(offer, selected) and g.elapsed() == before + 60, "Morning intake advances exactly one hour")
 	g.advance_story_to_day(dates.operation_day, 600)
 	expect(not c.start_operation(), "Late start cannot exceed full-day operating window")
 	before = g.elapsed()

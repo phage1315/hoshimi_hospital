@@ -1,0 +1,85 @@
+{
+  "status": "proposed_production_list_not_generated",
+  "identity_references": [
+    "references/seed_ass03_single.png",
+    "references/seed_ass03_sheet.png"
+  ],
+  "standing_spec": "1024x1536 RGBA PNG; head to waist/hips; local neural matting after base approval",
+  "outfits": [
+    {
+      "key": "interview_suit",
+      "purpose": "明日香 Lv2 面试",
+      "costume": "深藏青求职西装套裙",
+      "suggested_expressions": [
+        "neutral",
+        "nervous",
+        "focused",
+        "relieved"
+      ],
+      "status": "existing_raw_candidate_requires_review"
+    },
+    {
+      "key": "white_coat",
+      "purpose": "入职、办公室、查房",
+      "costume": "白大褂、浅色职业衬衣，保留眼镜与双侧低束发",
+      "suggested_expressions": [
+        "neutral",
+        "smile",
+        "focused",
+        "worried"
+      ],
+      "status": "missing"
+    },
+    {
+      "key": "scrubs",
+      "purpose": "刷手区和术后交流",
+      "costume": "刷手服、完整遮发手术帽；口罩按场景",
+      "suggested_expressions": [
+        "neutral",
+        "focused"
+      ],
+      "status": "missing"
+    },
+    {
+      "key": "sterile",
+      "purpose": "Lv0 固定 VN 手术与后续助手表现",
+      "costume": "无菌手术袍、手术帽、口罩、手套，保留眼镜",
+      "suggested_expressions": [
+        "neutral",
+        "focused"
+      ],
+      "status": "missing"
+    }
+  ],
+  "additional": [
+    {
+      "key": "intraoperative_avatar/neutral",
+      "purpose": "手术医护 HUD 头像，不是患者头像",
+      "status": "missing; match existing staff avatar specification at production"
+    },
+    {
+      "key": "chibi_icon",
+      "purpose": "编组图标",
+      "status": "optional; existing initial-character fallback"
+    },
+    {
+      "key": "notebook_cg",
+      "purpose": "术野笔记近景",
+      "status": "optional_pending_final_script"
+    }
+  ],
+  "excluded_from_minimum": [
+    "患者病号服及手术患者头像",
+    "Lv1–Lv5 CG",
+    "语音",
+    "私人约会服装"
+  ],
+  "notes": [
+    "表情为制作建议，以正式剧本需求缩减或扩展。",
+    "不从其他角色复制全部服装与患者资源。",
+    "每种新造型先确认基础图，再出差分。"
+  ],
+  "latest_candidate_manifest": "research/generated_candidates/maki_original_style_v1/generation.json",
+  "review_status": "Four sprite bases approved; 14 RGBA sprites ready; first-assistant CG copied to assets; no runtime character registration.",
+  "ready_manifest": "research/character_intake/doc_maki/ready_assets.json"
+}

@@ -59,6 +59,7 @@ var staff_training_credits: Dictionary = {}
 var successful_no_anesthesia_surgeries := 0
 # Ephemeral post-settlement opportunity. Never saved or restored.
 var takemi_postop_opportunity := false
+var asuka_lv1_postop_opportunity := false
 var reported_surgeries := 0
 var unlocked_procedure_ids: Array[String] = []
 var archived_player_effects: Dictionary = {"charm": 0, "presence": 0, "reputation": 0}
@@ -246,6 +247,7 @@ func reset() -> void:
 	restore_base_staff_skills()
 	successful_no_anesthesia_surgeries = 0
 	takemi_postop_opportunity = false
+	asuka_lv1_postop_opportunity = false
 	reported_surgeries = 0
 	unlocked_procedure_ids = starting_procedure_ids()
 	archived_player_effects = zero_player_effects()
@@ -370,6 +372,8 @@ func can_save_progress() -> bool:
 		return false
 	if active_adult_intimacy != null:
 		return false
+	if not pending_departure_context().is_empty() or pending_encounter_day_transition or pending_surgery_day_transition:
+		return false
 	return true
 
 func special_event_in_progress() -> bool:
@@ -391,6 +395,8 @@ func save_block_reason() -> String:
 		return "术前说明进行中，无法保存。请完成本段对话后再保存。"
 	if not active_after_work_walk.is_empty():
 		return "下班同行事件进行中，无法保存。请完成本段剧情后再保存。"
+	if not pending_departure_context().is_empty() or pending_encounter_day_transition or pending_surgery_day_transition:
+		return "今日下班与跨日结算尚未完成，请先结束当天后再保存。"
 	return "剧情事件进行中，无法保存。请完成本段剧情后再保存。"
 
 func shuffle_with_rng(values: Array, rng: RandomNumberGenerator) -> void:
@@ -494,8 +500,30 @@ func procedure_unlock_requirement_flag(surgery_id: String) -> String:
 			return "aqua_hysterectomy_teaching_complete"
 		"surgery_vaginal_hysterectomy":
 			return "aqua_vaginal_hysterectomy_teaching_complete"
+		"surgery_cabg":
+			return "emiko_cabg_teaching_complete"
+		"surgery_open_major_liver_resection":
+			return "artoria_major_liver_resection_teaching_complete"
 		_:
 			return ""
+
+func effective_unlocked_procedure_ids(extra_allowed_id: String = "") -> Array[String]:
+	var result: Array[String] = []
+	for surgery_id in unlocked_procedure_ids:
+		if procedure_unlocked(surgery_id) and not result.has(surgery_id):
+			result.append(surgery_id)
+	for surgery in surgery_definitions:
+		var id := str(surgery.get("id", ""))
+		if not id.is_empty() and procedure_unlocked(id) and not result.has(id):
+			result.append(id)
+	if not extra_allowed_id.is_empty() and not surgery_definition(extra_allowed_id).is_empty() and not result.has(extra_allowed_id):
+		result.append(extra_allowed_id)
+	return result
+
+func _in_flight_extra_procedure_for(preparation) -> String:
+	if preparation == null or bool(preparation.surgery_success) or bool(preparation.surgery_aborted):
+		return ""
+	return str(preparation.definition.get("surgery_id", ""))
 
 func synchronize_story_locked_procedures() -> void:
 	for surgery in surgery_definitions:
@@ -506,7 +534,13 @@ func synchronize_story_locked_procedures() -> void:
 		if not unlocked_procedure_ids.has(surgery_id):
 			unlocked_procedure_ids.append(surgery_id)
 	for preparation in preops.values():
-		preparation.set_procedure_unlocks(unlocked_procedure_ids, true)
+		preparation.set_procedure_unlocks(effective_unlocked_procedure_ids(_in_flight_extra_procedure_for(preparation)), true)
+
+func template_recommended_surgery(template_id: String) -> int:
+	if not case_templates.has(template_id):
+		return 50
+	var surgery_id := str(case_templates[template_id].get("surgery_id", ""))
+	return int(surgery_definition(surgery_id).get("recommended_surgery", 50))
 
 func case_template_available(template_id: String, saved_story_flags: Dictionary = {}, use_saved_flags: bool = false) -> bool:
 	if not case_templates.has(template_id):
@@ -515,6 +549,10 @@ func case_template_available(template_id: String, saved_story_flags: Dictionary 
 	var requirement_flag := procedure_unlock_requirement_flag(surgery_id)
 	if not requirement_flag.is_empty():
 		return bool(saved_story_flags.get(requirement_flag, false)) if use_saved_flags else story_flag(requirement_flag)
+	if surgery_id == "surgery_exploratory_laparotomy":
+		if use_saved_flags:
+			return bool(saved_story_flags.get("miyama_01_safety_pin_completed", false))
+		return story_flag("miyama_01_safety_pin_completed") or unlocked_procedure_ids.has(surgery_id)
 	# Ordinary cases are allowed to introduce their indicated procedure on
 	# admission. Only procedures with an explicit teaching gate are filtered.
 	return true
@@ -522,20 +560,37 @@ func case_template_available(template_id: String, saved_story_flags: Dictionary 
 func random_patient_cases(rng: RandomNumberGenerator = null, saved_story_flags: Dictionary = {}, use_saved_flags: bool = false) -> Dictionary:
 	var pool: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id), saved_story_flags, use_saved_flags))
 	var starting_pool: Array = pool.filter(func(template_id: Variant): return starting_procedure_ids().has(str(case_templates[template_id].surgery_id)))
+	var skill_cap := surgery_level() + 16
+	var comfortable_pool: Array = pool.filter(func(template_id: Variant): return template_recommended_surgery(str(template_id)) <= skill_cap)
+	var moderate_pool: Array = pool.filter(func(template_id: Variant): return template_recommended_surgery(str(template_id)) <= skill_cap + 10)
 	var result := {}
 	var assignment_order: Array[String] = patient_queue.duplicate()
 	if assignment_order.is_empty():
 		for patient in patient_definitions:
 			assignment_order.append(str(patient.id))
 	var guaranteed_starting := mini(2, mini(assignment_order.size(), starting_pool.size()))
+	var comfortable_limit := mini(8, assignment_order.size())
+	var moderate_limit := mini(14, assignment_order.size())
 	for i in range(assignment_order.size()):
 		if pool.is_empty():
+			pool = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id), saved_story_flags, use_saved_flags))
+			comfortable_pool = pool.filter(func(template_id: Variant): return template_recommended_surgery(str(template_id)) <= skill_cap)
+			moderate_pool = pool.filter(func(template_id: Variant): return template_recommended_surgery(str(template_id)) <= skill_cap + 10)
+		if pool.is_empty():
 			break
-		var candidates: Array = starting_pool if i < guaranteed_starting and not starting_pool.is_empty() else pool
+		var candidates: Array = pool
+		if i < guaranteed_starting and not starting_pool.is_empty():
+			candidates = starting_pool
+		elif i < comfortable_limit and not comfortable_pool.is_empty():
+			candidates = comfortable_pool
+		elif i < moderate_limit and not moderate_pool.is_empty():
+			candidates = moderate_pool
 		var selected := weighted_case_pick(candidates, rng)
 		result[assignment_order[i]] = selected
 		pool.erase(selected)
 		starting_pool.erase(selected)
+		comfortable_pool.erase(selected)
+		moderate_pool.erase(selected)
 	return result
 
 func complete_patient_queue(saved_queue: Array, rng: RandomNumberGenerator) -> Array[String]:
@@ -557,15 +612,24 @@ func complete_patient_queue(saved_queue: Array, rng: RandomNumberGenerator) -> A
 		result.append(patient_id)
 	return result
 
-func complete_patient_cases(saved_cases: Dictionary, saved_queue: Array[String], rng: RandomNumberGenerator, saved_story_flags: Dictionary) -> Dictionary:
+func _patient_has_saved_progress(patient_id: String, saved_progress: Dictionary) -> bool:
+	if saved_progress.is_empty():
+		return false
+	for blueprint in encounter_blueprints.values():
+		if str(blueprint.get("patient_id", "")) == patient_id and saved_progress.has(str(blueprint.get("id", ""))):
+			return true
+	return saved_progress.has("visit_" + patient_id.trim_prefix("patient_"))
+
+func complete_patient_cases(saved_cases: Dictionary, saved_queue: Array[String], rng: RandomNumberGenerator, saved_story_flags: Dictionary, saved_progress: Dictionary = {}) -> Dictionary:
 	var result := {}
 	var used_templates := {}
 	for patient in patient_definitions:
 		var patient_id := str(patient.id)
 		var template_id: Variant = saved_cases.get(patient_id)
 		if template_id is String and case_templates.has(template_id):
-			result[patient_id] = template_id
-			used_templates[template_id] = true
+			if _patient_has_saved_progress(patient_id, saved_progress) or case_template_available(str(template_id), saved_story_flags, true):
+				result[patient_id] = template_id
+				used_templates[template_id] = true
 	var available_templates: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id), saved_story_flags, true) and not used_templates.has(template_id))
 	var starting_templates: Array = available_templates.filter(func(template_id: Variant): return starting_procedure_ids().has(str(case_templates[template_id].surgery_id)))
 	var assignment_order: Array[String] = []
@@ -980,7 +1044,7 @@ func current_absolute_clock() -> int:
 	return int(schedule_at(elapsed()).absolute_clock)
 
 func outpatient_closed() -> bool:
-	return not is_hospital_closed_day() and current_absolute_clock() >= OUTPATIENT_CLOSE_MINUTE
+	return not is_hospital_closed_day(current_workday()) and int(display_schedule().absolute_clock) >= OUTPATIENT_CLOSE_MINUTE
 
 func unresolved_admitted_patient_exists() -> bool:
 	if not active_staff_patient.is_empty():
@@ -996,10 +1060,10 @@ func can_end_workday() -> bool:
 	last_error = ""
 	if not active_free_h_departure.is_empty() or not active_after_work_walk.is_empty():
 		return false
-	if is_hospital_closed_day():
+	if is_hospital_closed_day(current_workday()):
 		last_error = "休息日请使用星期日安排结束当天。"
 		return false
-	if current_absolute_clock() < OUTPATIENT_CLOSE_MINUTE:
+	if int(display_schedule().absolute_clock) < OUTPATIENT_CLOSE_MINUTE:
 		last_error = "16:00以后才能提前结束今天的工作。"
 		return false
 	if active_encounter_in_progress():
@@ -1027,6 +1091,24 @@ func advance_story_to_day(target_day: int, absolute_clock: int) -> void:
 	story_time_advance_minutes += maxi(0, target_total - current_total)
 	expire_free_h_booking()
 	sync_advanced_referral_calendar()
+
+func can_auto_follow_up_character_event(definition: Dictionary, completed_day: int) -> bool:
+	var follow_up: Dictionary = definition.get("auto_follow_up", {})
+	if follow_up.is_empty():
+		return false
+	var follow_up_id := str(follow_up.get("event_id", ""))
+	var follow_definition: Dictionary = character_event_definitions.get(follow_up_id, {})
+	if follow_definition.is_empty() or character_event_done(follow_up_id):
+		return false
+	var saved_advance := story_time_advance_minutes
+	var current_total := elapsed()
+	var target_day_index := maxi(0, completed_day + int(follow_up.get("day_offset", 0)) - 1)
+	var target_shift_minute := clampi(int(follow_up.get("absolute_clock", SHIFT_START_MINUTE)) - SHIFT_START_MINUTE, 0, SHIFT_MINUTES - 1)
+	var target_total := target_day_index * SHIFT_MINUTES + target_shift_minute
+	story_time_advance_minutes += maxi(0, target_total - current_total)
+	var ready := character_event_available(follow_definition)
+	story_time_advance_minutes = saved_advance
+	return ready
 
 func current_workday() -> int:
 	if not active_free_h_departure.is_empty():
@@ -1198,7 +1280,10 @@ func complete_introduction_cast(definition: Dictionary) -> void:
 
 func staff_is_met(actor_id: String) -> bool:
 	var unlock := str(staff_record(actor_id).get("staff_unlock_event", ""))
-	if not unlock.is_empty() and not special_event_done(unlock): return false
+	# Staff onboarding may be a character event or a special event. Only its
+	# settled completion fact opens availability; meeting during an interview
+	# alone must not put a future recruit on the roster.
+	if not unlock.is_empty() and not (special_event_done(unlock) or character_event_done(unlock)): return false
 	return bool(relation_for(actor_id).get("met", false))
 
 func known_staff_ids() -> Array[String]:
@@ -1208,9 +1293,19 @@ func known_staff_ids() -> Array[String]:
 			result.append(actor_id)
 	return result
 
+func emiko_surgical_team_unlocked() -> bool:
+	if relationship_level("doc_emiko") < 2:
+		return false
+	if character_event_done("emiko_lv2_follow_my_lead"):
+		return true
+	var relation := relation_for("doc_emiko")
+	return relation.get("rank_history", []).has("emiko_lv2_follow_my_lead") or relation.get("event_history", []).has("emiko_lv2_follow_my_lead")
+
 func staff_can_join_surgery_team(actor_id: String) -> bool:
 	if actor_id == active_advanced_staff_patient: return false
 	if actor_id == "doc_serika" and (relationship_level(actor_id) < 2 or not preload("res://godot/systems/serika_radiology.gd").milestone_complete(self, 2)):
+		return false
+	if actor_id == "doc_emiko" and not emiko_surgical_team_unlocked():
 		return false
 	if actor_id == str(active_staff_patient.get("staff_id", "")):
 		return false
@@ -1392,8 +1487,21 @@ func next_rank_threshold(actor_id: String) -> int:
 func rank_ready(actor_id: String) -> bool:
 	if not staff_is_met(actor_id) or relationship_level(actor_id) >= relationship_max_level(actor_id):
 		return false
+	if actor_id == preload("res://godot/systems/asuka_lv1.gd").ACTOR and preload("res://godot/systems/asuka_lv1.gd").rank_ready(self):
+		return true
+	var next_lvl := relationship_level(actor_id) + 1
 	for definition in character_event_definitions.values():
 		if actor_id in character_event_relationship_actor_ids(definition) and str(definition.get("category", "")) in ["bond", "rank_up"] and character_event_available(definition):
+			return true
+	for special_def in special_event_definitions.values():
+		if bool(special_def.get("developer_only", false)):
+			continue
+		var matches_next := false
+		for reward in special_def.get("relationship_rewards", []):
+			if str(reward.get("actor_id", "")) == actor_id and int(reward.get("target_level", 0)) == next_lvl:
+				matches_next = true
+				break
+		if matches_next and special_event_base_requirements_met(special_def):
 			return true
 	return false
 
@@ -1823,6 +1931,24 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if preload("res://godot/systems/shiori_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/shiori_lv3.gd").eligible(self, str(definition.id)):
 		return false
+	if preload("res://godot/systems/asuka_lv1.gd").owns(str(definition.id)) and not preload("res://godot/systems/asuka_lv1.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/asuka_lv2.gd").owns(str(definition.id)) and not preload("res://godot/systems/asuka_lv2.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/asuka_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/asuka_lv3.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/emiko_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/emiko_lv3.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/emiko_lv4.gd").owns(str(definition.id)) and not preload("res://godot/systems/emiko_lv4.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/artoria_lv2.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv2.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/artoria_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv3.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/artoria_lv4.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv4.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/maki_lv0.gd").owns(str(definition.id)) and not preload("res://godot/systems/maki_lv0.gd").eligible(self, str(definition.id)):
+		return false
 	if str(definition.id) == preload("res://godot/systems/serika_lv3.gd").ID and not preload("res://godot/systems/serika_lv3.gd").eligible(self):
 		return false
 	if str(definition.id) == preload("res://godot/systems/serika_radiology.gd").LV1 and not preload("res://godot/systems/serika_radiology.gd").lv1_entry_allowed(self):
@@ -1832,6 +1958,13 @@ func character_event_available(definition: Dictionary) -> bool:
 	if not active_staff_patient.is_empty() and str(active_staff_patient.staff_id) in character_event_relationship_actor_ids(definition):
 		return false
 	var event_id := str(definition.get("id", ""))
+	if event_id == "kariya_lv1_butcher_shop_girl":
+		# 08:45 belongs to the authored scene; the playable morning begins at 09:00.
+		# Enforce the same window for profile-list entry as for the ward scheduler.
+		if current_absolute_clock() < int(definition.time_start) or current_absolute_clock() > int(definition.time_end):
+			return false
+		if active_surgery_in_progress() or not active_special_event_id.is_empty() or not active_character_event_id.is_empty() or not active_micro_event_id.is_empty() or not active_preop_id.is_empty() or active_encounter_in_progress():
+			return false
 	if preload("res://godot/systems/takemi_introduction.gd").owns(event_id) and not preload("res://godot/systems/takemi_introduction.gd").eligible(self, definition):
 		return false
 	if event_id.begins_with("serika_lv0_"):
@@ -1949,7 +2082,7 @@ func character_event_available(definition: Dictionary) -> bool:
 			var required_event = character_events.get(required)
 			if required_event == null or int(required_event.completed_day) <= 0 or event_day < int(required_event.completed_day) + required_gap_days:
 				return false
-	if not requirements_met(definition.conditions.get("special_requirements", []), {"actor_id": str(definition.get("actor_id", ""))}):
+	if not requirements_met(definition.conditions.get("special_requirements", []), {"actor_id": str(definition.get("actor_id", "")), "day": event_day}):
 		return false
 	return true
 
@@ -2093,6 +2226,8 @@ func next_after_work_character_event() -> Dictionary:
 	return {} if result.is_empty() else result[0]
 
 func character_event_opening_node(definition: Dictionary) -> String:
+	if preload("res://godot/systems/asuka_lv3.gd").owns(str(definition.get("id", ""))):
+		return preload("res://godot/systems/asuka_lv3.gd").opening_node(self, definition)
 	if str(definition.id) == "intro_rumi_shiori_hiroko_monday_0900":
 		if current_absolute_clock() >= 720:
 			return "rs0_0001_later"
@@ -2109,6 +2244,18 @@ func character_event_opening_node(definition: Dictionary) -> String:
 		if actor_id in present and variants.has(actor_id):
 			return str(variants[actor_id])
 	return str(variants.get("fallback", definition.get("start", "")))
+
+func character_event_runtime_definition(id: String) -> Dictionary:
+	if not character_event_definitions.has(id):
+		return {}
+	var definition: Dictionary = character_event_definitions[id]
+	if id == "miyuki_lv5_chie_operation":
+		return preload("res://godot/systems/miyuki_lv5.gd").cast_definition(self, definition)
+	if preload("res://godot/systems/emiko_lv3.gd").owns(id):
+		return preload("res://godot/systems/emiko_lv3.gd").cast_definition(self, definition)
+	if preload("res://godot/systems/artoria_lv3.gd").owns(id):
+		return preload("res://godot/systems/artoria_lv3.gd").cast_definition(self, definition)
+	return definition
 
 func start_character_event(id: String) -> RefCounted:
 	if preload("res://godot/systems/advanced_referral.gd").due(self): return null
@@ -2161,17 +2308,30 @@ func start_character_event(id: String) -> RefCounted:
 				active_mode = "encounter"
 		if not character_event_available(character_event_definitions[id]):
 			return null
+	if id in ["emiko_lv1_first_operation", "emiko_lv2_follow_my_lead", "emiko_lv3_today_i_lead", "emiko_lv4_emikos_secret", "artoria_lv2_what_remains", "artoria_lv3_not_a_solo_operation", "artoria_lv4_just_artoria"]:
+		if character_events.has(id) and not character_events[id].completed:
+			character_events.erase(id)
+			character_event_order.erase(id)
+		if not character_event_available(character_event_definitions[id]):
+			return null
+	if preload("res://godot/systems/asuka_lv1.gd").owns(id) or preload("res://godot/systems/asuka_lv2.gd").owns(id) or preload("res://godot/systems/asuka_lv3.gd").owns(id) or preload("res://godot/systems/maki_lv0.gd").owns(id):
+		if character_events.has(id) and not character_events[id].completed:
+			character_events.erase(id)
+			character_event_order.erase(id)
+		if not character_event_available(character_event_definitions[id]):
+			return null
 	if character_event_done(id):
 		return null
 	if not character_events.has(id):
-		var definition: Dictionary = character_event_definitions[id]
-		if not character_event_available(definition):
+		var raw_definition: Dictionary = character_event_definitions[id]
+		if not character_event_available(raw_definition):
 			return null
-		if id == "miyuki_lv5_chie_operation":
-			definition = preload("res://godot/systems/miyuki_lv5.gd").cast_definition(self, definition)
+		var definition := character_event_runtime_definition(id)
 		character_events[id] = CharacterEvent.new(definition)
 		character_events[id].node_id = character_event_opening_node(definition)
 		character_event_order.append(id)
+	if id == preload("res://godot/systems/asuka_lv1.gd").PREOP_EVENT_ID:
+		preload("res://godot/systems/asuka_lv1.gd").mark_preop_active(self)
 	active_character_event_id = id
 	active_mode = "character_event"
 	if character_event_trigger_mode(character_event_definitions[id]) == "day_start":
@@ -2304,6 +2464,8 @@ func choose_character_event(choice_id: String) -> bool:
 		relationship_levels[actor_id] = int(relationships[actor_id].get("level", 0))
 	if not event.apply(choice_id, relationship_levels):
 		return false
+	if preload("res://godot/systems/emiko_lv3.gd").owns(str(event.definition.id)):
+		preload("res://godot/systems/emiko_lv3.gd").on_choice_applied(self, choice_id)
 	var relation: Dictionary = relationships[event.definition.actor_id]
 	apply_relationship_choice(relation, event.last_choice)
 	apply_related_relationship_effects(event.last_choice)
@@ -2338,6 +2500,22 @@ func choose_character_event(choice_id: String) -> bool:
 				preload("res://godot/systems/miyuki_lv3.gd").completed(self)
 			if str(event.definition.id) == preload("res://godot/systems/serika_lv3.gd").ID:
 				preload("res://godot/systems/serika_lv3.gd").completed(self)
+			if preload("res://godot/systems/asuka_lv3.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/asuka_lv3.gd").completed(self)
+			if preload("res://godot/systems/emiko_lv3.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/emiko_lv3.gd").completed(self)
+			if preload("res://godot/systems/emiko_lv4.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/emiko_lv4.gd").completed(self)
+			if preload("res://godot/systems/artoria_lv2.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/artoria_lv2.gd").completed(self)
+			if preload("res://godot/systems/artoria_lv3.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/artoria_lv3.gd").completed(self)
+			if preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/artoria_lv4.gd").completed(self)
+		var completion_familiarity := int(event.definition.get("completion_familiarity_bonus", 0))
+		if completion_familiarity > 0:
+			for relationship_actor_id in character_event_relationship_actor_ids(event.definition):
+				add_familiarity(relationship_actor_id, completion_familiarity)
 		for flag in event.definition.get("completion_story_flags", []):
 			set_story_flag(str(flag), true)
 	elif event.completed:
@@ -2376,8 +2554,8 @@ func set_story_flag(flag: String, value: bool = true) -> void:
 func story_flag(flag: String) -> bool:
 	return bool(story_flags.get(flag, false))
 
-func month_number() -> int:
-	return int(calendar_date().month)
+func month_number(for_day: int = -1) -> int:
+	return int(calendar_date(for_day).month)
 
 func contract_month_number() -> int:
 	return ((day_number() - 1) / 30) + 1
@@ -2427,6 +2605,9 @@ func stable_sunday_roll(actor_id: String, purpose: String, for_day: int = -1) ->
 	return value % 100
 
 func sunday_date_eligible(actor_id: String) -> bool:
+	# Respect onboarding completion gates as well as acquaintance.
+	if not staff_is_met(actor_id):
+		return false
 	if actor_id == "nurse_yui" and preload("res://godot/systems/miyuki_lv3.gd").pending_date(self) and day_number() > preload("res://godot/systems/miyuki_lv3.gd").prelude_day(self):
 		return preload("res://godot/systems/miyuki_lv3.gd").eligible(self, preload("res://godot/systems/miyuki_lv3.gd").B)
 	if actor_id == "doc_serika" and not preload("res://godot/systems/serika_radiology.gd").milestone_complete(self, 3):
@@ -2602,6 +2783,19 @@ func complete_sunday_activity(activity_id: String, actor_id: String = "", locati
 	advance_story_to_future_day(1, SHIFT_START_MINUTE)
 	return true
 
+func settle_sunday_hospital_visit_rollover(sunday_day: int) -> void:
+	var already_recorded := sunday_history.any(func(entry: Variant): return entry is Dictionary and int(entry.get("day", 0)) == sunday_day)
+	if not already_recorded:
+		sunday_history.append({
+			"day": sunday_day,
+			"activity_id": "hospital_visit",
+			"actor_id": "",
+			"location_id": "",
+		})
+	clear_pending_departure_context()
+	if day_number() <= sunday_day:
+		advance_story_to_day(sunday_day + 1, SHIFT_START_MINUTE)
+
 func requirement_evaluation(raw_requirement: Variant, context: Dictionary = {}) -> Dictionary:
 	var result := {
 		"type": "",
@@ -2641,7 +2835,7 @@ func requirement_evaluation(raw_requirement: Variant, context: Dictionary = {}) 
 			var actor_id := str(requirement.get("actor_id", ""))
 			var skill_id := str(requirement.get("skill", ""))
 			var person := staff_record(actor_id)
-			var current := int(person.get("skills", {}).get(skill_id, -1))
+			var current := staff_skill_value(actor_id, skill_id) if not person.is_empty() else -1
 			var minimum := int(requirement.get("minimum", 0))
 			result.merge({"valid": not person.is_empty() and not skill_id.is_empty(), "actor_id": actor_id, "current": current, "minimum": minimum, "met": not person.is_empty() and current >= minimum}, true)
 		"staff_relationship_count":
@@ -2667,8 +2861,9 @@ func requirement_evaluation(raw_requirement: Variant, context: Dictionary = {}) 
 				values.reputation = int(player_attributes().get("reputation", -1000))
 				gates.append(int(values.reputation) >= int(requirement.minimum_reputation))
 			if requirement.has("minimum_day"):
-				values.day = day_number()
-				gates.append(day_number() >= int(requirement.minimum_day))
+				var progress_day := int(context.get("day", day_number()))
+				values.day = progress_day
+				gates.append(progress_day >= int(requirement.minimum_day))
 			result.merge({"valid": not gates.is_empty(), "current": values, "met": not gates.is_empty() and gates.has(true)}, true)
 		"completed_surgeries":
 			var minimum := int(requirement.get("minimum", 0))
@@ -2713,41 +2908,47 @@ func requirement_evaluation(raw_requirement: Variant, context: Dictionary = {}) 
 			var current := special_event_done(str(requirement.get("event_id", "")))
 			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "met": current}, true)
 		"days_after_character_event":
+			var check_day := int(context.get("day", day_number()))
 			var required_event = character_events.get(str(requirement.get("event_id", "")))
 			var completed_day := int(required_event.completed_day) if required_event != null and required_event.completed else 0
-			var current := day_number() - completed_day if completed_day > 0 else -1
+			var current := check_day - completed_day if completed_day > 0 else -1
 			var minimum := int(requirement.get("days", 0))
 			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "minimum": minimum, "met": completed_day > 0 and current >= minimum}, true)
 		"days_after_special_event":
+			var check_day := int(context.get("day", day_number()))
 			var completed_day := int(special_event_completion_days.get(str(requirement.get("event_id", "")), 0))
-			var current := day_number() - completed_day if completed_day > 0 else -1
+			var current := check_day - completed_day if completed_day > 0 else -1
 			var minimum := int(requirement.get("days", 0))
 			result.merge({"valid": not str(requirement.get("event_id", "")).is_empty(), "current": current, "minimum": minimum, "met": completed_day > 0 and current >= minimum}, true)
 		"day_number":
-			var current := day_number()
+			var current := int(context.get("day", day_number()))
 			var minimum := int(requirement.get("minimum", 1))
 			var maximum := int(requirement.get("maximum", 2147483647))
 			result.merge({"valid": true, "current": current, "minimum": minimum, "maximum": maximum, "met": current >= minimum and current <= maximum}, true)
 		"month_number":
-			var current := month_number()
+			var check_day := int(context.get("day", day_number()))
+			var current := month_number(check_day)
 			var minimum := int(requirement.get("minimum", 1))
 			var maximum := int(requirement.get("maximum", 2147483647))
 			result.merge({"valid": true, "current": current, "minimum": minimum, "maximum": maximum, "met": current >= minimum and current <= maximum}, true)
 		"calendar_date":
+			var check_day := int(context.get("day", day_number()))
 			var expected := str(requirement.get("date", ""))
-			var current := calendar_iso()
+			var current := calendar_iso(check_day)
 			result.merge({"valid": not expected.is_empty(), "current": current, "expected": expected, "met": current == expected}, true)
 		"calendar_range":
 			var first := day_number_for_date(str(requirement.get("start_date", "")))
 			var last := day_number_for_date(str(requirement.get("end_date", "")))
-			var current := day_number()
+			var current := int(context.get("day", day_number()))
 			result.merge({"valid": first > 0 and last >= first, "current": current, "minimum": first, "maximum": last, "met": first > 0 and last >= first and current >= first and current <= last}, true)
 		"weekday":
-			var current := str(calendar_date().weekday_id)
+			var check_day := int(context.get("day", day_number()))
+			var current := str(calendar_date(check_day).weekday_id)
 			var allowed: Array = requirement.get("days", [])
 			result.merge({"valid": not allowed.is_empty(), "current": current, "expected": allowed, "met": allowed.has(current)}, true)
 		"day_type":
-			var current := day_type()
+			var check_day := int(context.get("day", day_number()))
+			var current := day_type(check_day)
 			var allowed: Array = requirement.get("values", [])
 			result.merge({"valid": not allowed.is_empty(), "current": current, "expected": allowed, "met": allowed.has(current)}, true)
 		_:
@@ -2812,7 +3013,8 @@ func special_event_base_requirements_met(definition: Dictionary) -> bool:
 		var target_level := int(reward.get("target_level", 0))
 		if relationship_rank_gate_applies_to_event(actor_id, target_level, str(definition.get("id", ""))) and not relationship_rank_gate_met(actor_id, target_level):
 			return false
-	return special_requirements_met(definition.get("unlock_requirements", []))
+	var eval_day := current_workday() if special_event_trigger_mode(definition) == "after_work" else day_number()
+	return requirements_met(definition.get("unlock_requirements", []), {"day": eval_day})
 
 func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	var ayako = preload("res://godot/systems/ayako_return.gd")
@@ -2842,11 +3044,15 @@ func special_event_timing_status(definition: Dictionary) -> Dictionary:
 	var trigger_day := special_event_trigger_day(definition)
 	var priority := int(timing.get("priority", 0))
 	var duration: int = third.occupied_days(str(definition.get("id", "")), maxi(1, int(definition.get("duration_days", 1))))
-	var today := day_number()
+	var today := current_workday() if special_event_trigger_mode(definition) == "after_work" else day_number()
 	if today < trigger_day:
 		return {"status": "future", "trigger_day": trigger_day, "effective_day": trigger_day}
-	if is_sunday() and not bool(timing.get("sunday_start_allowed", false)):
+	if str(calendar_date(today).weekday_id) == "sun" and not bool(timing.get("sunday_start_allowed", false)):
 		return {"status": "sunday_deferred", "trigger_day": trigger_day, "effective_day": today + 1}
+	if bool(timing.get("avoid_sunday_span", false)) and test_save_target_event_id() != str(definition.get("id", "")):
+		for span_offset in range(duration):
+			if str(calendar_date(today + span_offset).weekday_id) == "sun":
+				return {"status": "sunday_deferred", "trigger_day": trigger_day, "effective_day": today + span_offset + 1}
 	var planned_start := today
 	var planned_end := planned_start + duration - 1
 	if planned_start > GAME_DURATION_DAYS or planned_end > GAME_DURATION_DAYS:
@@ -3325,6 +3531,24 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 			_apply_test_event_requirement(requirement, target_day, str(definition.get("actor_id", "")))
 	if preload("res://godot/systems/shiori_lv3.gd").owns(event_id):
 		target_day = preload("res://godot/systems/shiori_lv3.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/asuka_lv1.gd").owns(event_id):
+		target_day = preload("res://godot/systems/asuka_lv1.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/asuka_lv2.gd").owns(event_id):
+		target_day = preload("res://godot/systems/asuka_lv2.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/asuka_lv3.gd").owns(event_id):
+		target_day = preload("res://godot/systems/asuka_lv3.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/maki_lv0.gd").owns(event_id):
+		target_day = preload("res://godot/systems/maki_lv0.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/emiko_lv3.gd").owns(event_id):
+		target_day = preload("res://godot/systems/emiko_lv3.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/emiko_lv4.gd").owns(event_id):
+		target_day = preload("res://godot/systems/emiko_lv4.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/artoria_lv2.gd").owns(event_id):
+		target_day = preload("res://godot/systems/artoria_lv2.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/artoria_lv3.gd").owns(event_id):
+		target_day = preload("res://godot/systems/artoria_lv3.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/artoria_lv4.gd").owns(event_id):
+		target_day = preload("res://godot/systems/artoria_lv4.gd").prepare_test_save(self, event_id, target_day)
 	set_story_flag("__test_save_target_character_event__" + event_id, true)
 	var test_clock := clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1)
 	set_test_time(target_day, test_clock)
@@ -4004,8 +4228,8 @@ func time_history() -> Array:
 		result.append({
 			"id": event.id,
 			"label": definition.get("label", event.id),
-			"minutes": event.get("minutes"),
-			"day": timing.day,
+			"minutes": int(event.get("minutes", 0)),
+			"day": int(timing.day),
 			"date": calendar_iso(int(timing.day)),
 			"calendar": calendar_compact_text(int(timing.day)),
 			"clock": "%02d:%02d" % [timing.absolute_clock / 60, timing.absolute_clock % 60],
@@ -4132,6 +4356,10 @@ func archive_and_reset_patient(patient_id: String) -> void:
 	first_surgery_diagnosis_shock_state.erase(patient_id)
 	if not case_templates.is_empty():
 		var choices: Array = case_templates.keys().filter(func(template_id: Variant): return case_template_available(str(template_id)))
+		var skill_cap := surgery_level() + 16
+		var comfortable_choices: Array = choices.filter(func(template_id: Variant): return template_recommended_surgery(str(template_id)) <= skill_cap)
+		if not comfortable_choices.is_empty():
+			choices = comfortable_choices
 		patient_cases[patient_id] = weighted_case_pick(choices)
 		rebuild_patient_content(patient_cases)
 
@@ -4262,19 +4490,31 @@ func award_personal_nurse_outpatient_familiarity() -> void:
 func referral_doctor(patient_id: String) -> String:
 	return str(patient_referrals.get(patient_id, ""))
 
+const NON_RECEIVING_REFERRAL_DOCTOR_IDS := [
+	"doc_sakura_anesthesiology",
+	"doc_serika",
+	"doc_takemi",
+	"visiting_futaba",
+	"visiting_maya",
+]
+
+func can_doctor_receive_outpatient_referral(doctor_id: String) -> bool:
+	if doctor_id in NON_RECEIVING_REFERRAL_DOCTOR_IDS:
+		return false
+	var person := staff_record(doctor_id)
+	if person.is_empty() or str(person.get("profession", "")) != "doctor":
+		return false
+	var flags: Array = person.get("flags", [])
+	return not ("temporary_visiting" in flags or "anesthesiologist" in flags)
+
 func refer_current_patient(doctor_id: String) -> bool:
 	last_error = "无法完成转诊。"
 	var patient_id := current_patient_id()
 	if patient_id.is_empty() or admitted_patient(patient_id) or completed_patient(patient_id):
 		last_error = "只有当前尚未住院的候诊患者可以转诊。"
 		return false
-	var doctor_exists := false
-	for person in staff:
-		if person.id == doctor_id and person.profession == "doctor":
-			doctor_exists = true
-			break
-	if not doctor_exists:
-		last_error = "请选择一名医生接收转诊。"
+	if not can_doctor_receive_outpatient_referral(doctor_id):
+		last_error = "请选择一名可接收门诊患者的临床医生。"
 		return false
 	if not staff_is_met(doctor_id):
 		last_error = "只能将患者转诊给已经认识的医生。"
@@ -4375,6 +4615,7 @@ func finish_active_surgery() -> bool:
 	takemi_postop_opportunity = not preparation.is_staff_patient() and str(preparation.anesthesia) == "未麻醉" and preparation.flags.has("no_anesthesia_confirmed") # localization-invariant: anesthesia state ID
 	if takemi_postop_opportunity:
 		successful_no_anesthesia_surgeries += 1
+	preload("res://godot/systems/asuka_lv1.gd").on_surgery_settled(self, preparation)
 	completed_surgeries_total += 1
 	completed_surgeries_by_procedure[preparation.procedure_id] = int(completed_surgeries_by_procedure.get(preparation.procedure_id, 0)) + 1
 	var completed_group := surgery_procedure_group(str(preparation.procedure_id))
@@ -4399,11 +4640,13 @@ func finish_active_surgery() -> bool:
 
 func finish_active_surgery_abort() -> bool:
 	takemi_postop_opportunity = false
+	asuka_lv1_postop_opportunity = false
 	if active_preop_id.is_empty() or not preops.has(active_preop_id):
 		return false
 	var preparation = preops[active_preop_id]
 	if not preparation.surgery_aborted:
 		return false
+	preload("res://godot/systems/asuka_lv1.gd").on_surgery_aborted(self, preparation)
 	var patient_id := str(preparation.definition.patient_id)
 	var is_shiori_lv3_story_surgery: bool = preload("res://godot/systems/shiori_lv3.gd").is_story_surgery(preparation)
 	pending_surgery_day_transition = false
@@ -4450,6 +4693,9 @@ func sweep_active_surgery(surgery_id: String) -> Dictionary:
 		return {}
 	if surgery_id != str(preparation.definition.get("surgery_id", "")):
 		last_error = "扫荡只能用于当前患者的适应术式。"
+		return {}
+	if preload("res://godot/systems/asuka_lv1.gd").blocks_sweep(self, preparation):
+		last_error = preload("res://godot/systems/asuka_lv1.gd").sweep_block_tooltip(patient_content_locale() == "en")
 		return {}
 	var before_elapsed := elapsed()
 	var before_minutes: int = preparation.minutes
@@ -4589,7 +4835,7 @@ func unlock_procedure(surgery_id: String) -> bool:
 	if not unlocked_procedure_ids.has(surgery_id):
 		unlocked_procedure_ids.append(surgery_id)
 	for preparation in preops.values():
-		preparation.set_procedure_unlocks(unlocked_procedure_ids, true)
+		preparation.set_procedure_unlocks(effective_unlocked_procedure_ids(_in_flight_extra_procedure_for(preparation)), true)
 	return true
 
 func procedure_catalog() -> Array:
@@ -4798,8 +5044,9 @@ func train_surgery_team(team: Dictionary, surgery_id: String, explicit_tier: Str
 		credits = 2
 	elif tier in ["extreme", "legendary"]:
 		credits = 3
-	credits = int(credits * reward_scale)
-	if credits <= 0: return []
+	if reward_scale <= 0.0:
+		return []
+	credits = maxi(1, int(round(float(credits) * reward_scale)))
 	var result: Array[Dictionary] = []
 	var trained := {}
 	for role_id in team:
@@ -5379,7 +5626,8 @@ func _restore_state_checked(data: Variant) -> bool:
 			return false
 		if restored_patient_cases.size() < patient_definitions.size():
 			restore_warnings.append("已按当前患者名单补齐队列与新增患者的病例分配。")
-		restored_patient_cases = complete_patient_cases(restored_patient_cases, restored_patient_queue, migration_rng, saved_story_flags_for_cases)
+		var saved_progress_for_cases: Dictionary = data.get("progress", {}) if data.get("progress", {}) is Dictionary else {}
+		restored_patient_cases = complete_patient_cases(restored_patient_cases, restored_patient_queue, migration_rng, saved_story_flags_for_cases, saved_progress_for_cases)
 	elif version >= 7 and (not data.get("patient_cases") is Dictionary or not data.patient_cases.is_empty()):
 		return false
 	var restored_patient_referrals: Dictionary = {}
@@ -5885,6 +6133,7 @@ func _restore_state_checked(data: Variant) -> bool:
 					event.completed_day = int(record.get("completed_day", 1))
 					var restored_relation: Dictionary = rebuilt_relationships[event.definition.actor_id]
 					restored_relation.event_history.append(event.definition.id)
+					add_familiarity_to(restored_relation, int(event.definition.get("completion_familiarity_bonus", 0)))
 					if event.definition.category == "introduction":
 						restored_relation.met = true
 					elif event.definition.category in ["bond", "rank_up"] and character_event_rank_up_allowed(event.definition, restored_relation):
@@ -6200,6 +6449,7 @@ func _restore_state_checked(data: Variant) -> bool:
 	staff_skill_levels = restored_staff_skill_levels
 	staff_training_credits = restored_staff_training_credits
 	takemi_postop_opportunity = false
+	asuka_lv1_postop_opportunity = false
 	successful_no_anesthesia_surgeries = restored_successful_no_anesthesia_surgeries
 	reported_surgeries = restored_reported_surgeries
 	apply_staff_skill_levels()
@@ -6210,10 +6460,20 @@ func _restore_state_checked(data: Variant) -> bool:
 	preop_definitions = restored_preop_definitions
 	time_log = rebuilt_time_log
 	relationships = rebuilt_relationships
+	character_events = rebuilt_character_events
+	if relationships.has("doc_emiko"):
+		var emiko_rel: Dictionary = relationships["doc_emiko"]
+		var emiko_benefits: Array = emiko_rel.get("unlocked_benefits", [])
+		if emiko_surgical_team_unlocked():
+			if not emiko_benefits.has("unlock_emiko_surgical_team"):
+				emiko_benefits.append("unlock_emiko_surgical_team")
+		else:
+			emiko_benefits.erase("unlock_emiko_surgical_team")
+			if int(emiko_rel.get("level", 0)) >= 2:
+				restore_warnings.append("御堂江美子缺少可靠的 Lv2 事件完成记录，未自动开放常规手术编组资格。")
 	for preparation in rebuilt_preops.values():
 		preparation.set_known_staff(known_staff_ids(), true)
 		preparation.set_procedure_unlocks(unlocked_procedure_ids, true)
-	character_events = rebuilt_character_events
 	for restored_event in character_events.values():
 		if not boundary and restored_event.completed and restored_event.definition.has("introduction_actor_ids"):
 			complete_introduction_cast(restored_event.definition)
@@ -6229,6 +6489,16 @@ func _restore_state_checked(data: Variant) -> bool:
 	daydream_read_ids = data.get("daydream_read_ids", []).duplicate()
 	daydream_active = false
 	story_flags = rebuilt_story_flags
+	if character_event_done("emiko_lv3_today_i_lead") or bool(story_flags.get("emiko_lv3_complete", false)):
+		story_flags["emiko_cabg_teaching_complete"] = true
+	if character_event_done("emiko_lv4_emikos_secret"):
+		story_flags["emiko_lv4_complete"] = true
+	if character_event_done("artoria_lv2_what_remains") or bool(story_flags.get("artoria_lv2_complete", false)):
+		story_flags["artoria_major_liver_resection_teaching_complete"] = true
+	if character_event_done("artoria_lv3_not_a_solo_operation"):
+		story_flags["artoria_lv3_complete"] = true
+	if character_event_done("artoria_lv4_just_artoria"):
+		story_flags["artoria_lv4_complete"] = true
 	synchronize_story_locked_procedures()
 	probation_complete = rebuilt_probation_complete
 	personal_nurse_system_unlocked = rebuilt_personal_nurse_system_unlocked
@@ -6248,6 +6518,7 @@ func _restore_state_checked(data: Variant) -> bool:
 	archived_clinical_minutes = restored_archived_clinical_minutes
 	settled_clock_offset = int(data.get("_runtime_clock_offset", 0))
 	if boundary:
+		preload("res://godot/systems/asuka_lv1.gd").sanitize_after_restore(self)
 		var accounted := archived_clinical_minutes + story_time_advance_minutes - discarded_overtime_minutes
 		for visit in visits.values():
 			accounted += visit.minutes
@@ -6335,11 +6606,12 @@ func open_preop(id: String) -> RefCounted:
 		var prep_patients := patient_definitions.duplicate()
 		if definition.has("staff_patient_id"):
 			prep_patients.append(patient_definition(str(definition.staff_patient_id)))
-		preops[id] = Preop.new(definition, staff, surgery_definitions, prep_patients, known_staff_ids(), true, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, unlocked_procedure_ids, true, palpation_profile_definitions, awake_special_bark_definitions)
+		var extra_in_flight := indicated_procedure_id if not definition.has("staff_patient_id") else ""
+		preops[id] = Preop.new(definition, staff, surgery_definitions, prep_patients, known_staff_ids(), true, surgery_team_dialogue_profiles, patient_interaction_definitions, temporary_condition_definitions, effective_unlocked_procedure_ids(extra_in_flight), true, palpation_profile_definitions, awake_special_bark_definitions)
 		preops[id].begin_case_review()
 	else:
 		preops[id].set_known_staff(known_staff_ids(), true)
-		preops[id].set_procedure_unlocks(unlocked_procedure_ids, true)
+		preops[id].set_procedure_unlocks(effective_unlocked_procedure_ids(_in_flight_extra_procedure_for(preops[id])), true)
 	preops[id].set_graphic_preop_explainer(resolve_preop_explainer())
 	active_id = definition.encounter_id
 	active_preop_id = id

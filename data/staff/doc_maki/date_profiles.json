@@ -1,0 +1,45 @@
+[
+  {
+    "id": "date_doc_maki",
+    "staff_id": "doc_maki",
+    "can_date": true,
+    "minimum_level": 0,
+    "minimum_familiarity": 10,
+    "casual_outfit": "casual",
+    "preferred_locations": [
+      "bookstore",
+      "botanical_garden"
+    ],
+    "disliked_locations": [],
+    "hotel_unlock_level": 4,
+    "always_accept": false,
+    "familiarity_acceptance_bonus": false,
+    "acceptance_chance_by_level": {
+      "0": 60,
+      "2": 80,
+      "3": 92,
+      "4": 100
+    },
+    "invite_rejection": {
+      "text": "「真不好意思，坂口医生，这个周日我已经定下别的安排了……下次如果方便的话，还能再约我吗？」"
+    },
+    "dialogue": {
+      "accepted": {
+        "text": "「周日吗？那天我没有排班……如果是和坂口医生一起出去走走的话，我很乐意。时间定好了请随时告诉我。」"
+      },
+      "satisfied": {
+        "text": "「今天好像一次都没有聊到排班和病历呢。出门前我还担心在医院外面不知道该和您聊什么，结果不知不觉就彻底放松下来了……谢谢您今天约我出来，坂口医生。」"
+      },
+      "favorites": [
+        {
+          "id": "bookstore",
+          "text": "「明明说好今天出来放松的，结果路过文具架和医学专柜的时候，还是没忍住挑了两本画图用的方格笔记本……不过，能和坂口医生一起安安静静逛书店，真的比我一个人查资料开心多了。」"
+        },
+        {
+          "id": "botanical_garden",
+          "text": "「温室里暖融融的，连平时在手术室冷气里绷惯了的手指都觉得舒展开了。刚才那株热带植物叶片的脉络走向好精致……能和您这样并肩慢慢看，感觉整个人都松了一口气。」"
+        }
+      ]
+    }
+  }
+]

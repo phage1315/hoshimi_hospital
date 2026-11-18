@@ -1,0 +1,6081 @@
+[
+  {
+    "id": "asuka_lv3_no_objections",
+    "actor_id": "doc_asuka",
+    "title": "本院长不接受反驳哦",
+    "teaser": "晴朗的周日午后，换上浅杏色针织开衫的明日香与坂口在街角咖啡馆相约，随后又神秘地邀他回一趟星见医院后院旧馆二楼的院史资料室，展示自己最珍视的私藏……",
+    "chapter": 3,
+    "location_id": "director_office",
+    "background_id": "asuka_lv3_cafe_exterior_day",
+    "outfit": "date_cardigan",
+    "trigger_mode": "sunday",
+    "consumes_sunday": true,
+    "date_location_id": "cafe",
+    "minutes": 0,
+    "time_start": 540,
+    "time_end": 1439,
+    "priority": 200,
+    "category": "rank_up",
+    "target_level": 3,
+    "benefit_id": "",
+    "auto_start": false,
+    "cinematic": true,
+    "locks_saving": true,
+    "hide_calendar_header": true,
+    "completion_story_flags": [
+      "asuka_lv3_complete"
+    ],
+    "gallery": {
+      "cg_id": "cg_asuka_lv3_vintage_cream_gown_mirror",
+      "caption": "在旧馆二楼院史资料室四点钟的暖金斜阳下，换上 1970 年代奶白色厚棉布手术袍站在穿衣镜旁的明日香。",
+      "path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+      "show_on_complete": false
+    },
+    "conditions": {
+      "min_day": 1,
+      "min_affection": 0,
+      "min_familiarity": 40,
+      "required_events": [
+        "asuka_lv2_right_person_right_gown"
+      ],
+      "days_after_required_events": 3,
+      "special_requirements": [
+        {
+          "type": "player_attribute",
+          "attribute": "charm",
+          "minimum": 50
+        }
+      ]
+    },
+    "start": "al3_a1_001",
+    "opening_variants": {
+      "first_sunday_date": "al3_a1_001",
+      "prior_sunday_date": "al3_a2_001"
+    },
+    "nodes": [
+      {
+        "id": "al3_a1_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "周日下午两点，晴朗的阳光穿过商业街侧巷的行道树叶，在石砖路面上投下细碎晃动的光斑。",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_001",
+            "label": "继续",
+            "next": "al3_a1_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司提前五分钟走到约好的那家街角咖啡馆门前时，老远就看见玻璃橱窗旁的绿荫底下已经站着一道明快纤秀的身影。",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_002",
+            "label": "继续",
+            "next": "al3_a1_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "大概是难得不用把长发盘进手术帽、也不用套着那件略显宽大的院长白大褂，今天换上一身浅杏色开衫与米白半裙的城宮明日香，站在午后的微风里看起来格外轻盈亮眼。察觉到坂口走近的脚步声，她转过头来，眼睛一下子弯成了好看的弧度。",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_003",
+            "label": "继续",
+            "next": "al3_a1_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香（微歪过头，眼底漾着几分狡黠又轻快的笑意）：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_004",
+            "label": "继续",
+            "next": "al3_a1_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「呵呵，我还以为因为我是院长，坂口医生到了休息日就一直不敢约我出来呢。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_005",
+            "label": "继续",
+            "next": "al3_a1_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（坦然失笑）：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_006",
+            "label": "继续",
+            "next": "al3_a1_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「老实说，最开始多少确实有一点顾虑。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_007",
+            "label": "继续",
+            "next": "al3_a1_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「我就知道！其实我已经等了好久了哦。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_008",
+            "label": "继续",
+            "next": "al3_a1_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她把双手轻轻背在身后，仰起脸看着坂口，语气坦率得让人心里一暖：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_009",
+            "label": "继续",
+            "next": "al3_a1_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「就算平时坐在办公室里批文件、开全院例会，到了周末，院长也是会期待有人主动请她出来喝杯咖啡的嘛。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_010",
+            "label": "继续",
+            "next": "al3_a1_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a1_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「那今天可得好好弥补一下之前犹豫的时间了，院长。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a1_011",
+            "label": "继续",
+            "next": "al3_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_001",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "周日下午两点，晴朗的阳光穿过商业街侧巷的行道树叶，在石砖路面上投下细碎晃动的光斑。",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_001",
+            "label": "继续",
+            "next": "al3_a2_002",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_002",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司提前五分钟走到约好的那家街角咖啡馆门前时，老远就看见玻璃橱窗旁的绿荫底下已经站着一道明快纤秀的身影。",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_002",
+            "label": "继续",
+            "next": "al3_a2_003",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_003",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "大概是难得不用把长发盘进手术帽、也不用套着那件略显宽大的院长白大褂，今天换上一身浅杏色开衫与米白半裙的城宮明日香，站在午后的微风里看起来格外轻盈亮眼。察觉到坂口走近的脚步声，她转过头来，眼睛一下子弯成了好看的弧度。",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_003",
+            "label": "继续",
+            "next": "al3_a2_004",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_004",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香（迎上前一步，眉眼明朗地笑着打量他）：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_004",
+            "label": "继续",
+            "next": "al3_a2_005",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_005",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「今天又来约我了呀，坂口医生。最开始你邀请我的时候还要斟酌半天措辞，现在倒是越来越自然了呢。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_005",
+            "label": "继续",
+            "next": "al3_a2_006",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_006",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（微微挑眉笑了笑）：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_006",
+            "label": "继续",
+            "next": "al3_a2_007",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_007",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「怎么，太自然了你不喜欢？」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_007",
+            "label": "继续",
+            "next": "al3_a2_008",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_008",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「怎么会？其实每到快周末的时候，我都会悄悄期待一下你会不会来找我的哦。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_008",
+            "label": "继续",
+            "next": "al3_a2_009",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_009",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她唇角扬起坦率而欢喜的浅弧，半点也不掩饰今天的好心情：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_009",
+            "label": "继续",
+            "next": "al3_a2_010",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_010",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「毕竟平时在医院里总是忙得脚不沾地，能像这样两个人安安静静出来走走，不管几次都很开心呀。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_010",
+            "label": "继续",
+            "next": "al3_a2_011",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_a2_011",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「能不辜负院长的期待就好。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 840,
+        "choices": [
+          {
+            "id": "c_al3_a2_011",
+            "label": "继续",
+            "next": "al3_012",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_012",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "听到最后那两个字，正准备伸手去推咖啡馆木门的明日香动作一顿，转过脸伸出一根食指轻轻点在唇边，半真半假地睨了他一眼：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 845,
+        "choices": [
+          {
+            "id": "c_al3_012",
+            "label": "继续",
+            "next": "al3_013",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_013",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「喂——今天可是周日，我们既不在四楼刷手池，也不在行政会议室里哦。刚见面就一口一个『院长』地叫，是不是太煞风景了一点？」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 845,
+        "choices": [
+          {
+            "id": "c_al3_013",
+            "label": "继续",
+            "next": "al3_014",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_014",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（从善如流地笑了笑）：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 845,
+        "choices": [
+          {
+            "id": "c_al3_014",
+            "label": "继续",
+            "next": "al3_015",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_015",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「失言了，习惯成自然。下午好，明日香——今天这一身很衬你，刚才隔着半条街差点没敢认。」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 845,
+        "choices": [
+          {
+            "id": "c_al3_015",
+            "label": "继续",
+            "next": "al3_016",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_016",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香耳廓微不可察地染上了一丝浅浅的暖意，却没有扭捏闪躲，大方地推开挂着铜铃的木门朝他偏了偏头：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 845,
+        "choices": [
+          {
+            "id": "c_al3_016",
+            "label": "继续",
+            "next": "al3_017",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_017",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「哼哼，这还差不多。走吧，坂口君，这家店烘焙豆子的香气都飘到门外来了！」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 845,
+        "choices": [
+          {
+            "id": "c_al3_017",
+            "label": "继续",
+            "next": "al3_018",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_018",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "店里的客人不算多，轻柔的弦乐在原木色的空间里低低流淌。",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 850,
+        "choices": [
+          {
+            "id": "c_al3_018",
+            "label": "继续",
+            "next": "al3_019",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_019",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "两人在靠窗的阳光卡座落座后，服务员送来了饮品单与今日限定的手写甜点牌。坂口很快点好了两杯中深烘手冲咖啡，一抬头，却发现对面的城宮明日香正双手托着腮，盯着那块黑板小立牌陷入了空前严肃的沉思。",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_019",
+            "label": "继续",
+            "next": "al3_020",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_020",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「唔……和栗蒙布朗用的是今年刚下来的新栗子，可是旁边的焦糖无花果杏仁挞看起来酥皮烤得好漂亮……坂口君，这题好难选呀。」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_020",
+            "label": "继续",
+            "next": "al3_021",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_021",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着她微蹙秀眉、如临大敌的模样，忍不住笑出了声：",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_021",
+            "label": "继续",
+            "next": "al3_022",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_022",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「我记得上回在行政会议室里，你拍板全院下季度的手术服返修方案和新人录用决定，前前后后加起来也就用了不到三分钟吧？」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_022",
+            "label": "继续",
+            "next": "al3_023",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_023",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香（理直气壮地抬起眼）：",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_023",
+            "label": "继续",
+            "next": "al3_024",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_024",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「那怎么能一样嘛！医院的排班和采购有临床标准做依据，对就是对、不合适就要改；可周日下午吃哪一块蛋糕，关系到的可是今天一整个下午的幸福感耶！」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_024",
+            "label": "继续",
+            "next": "al3_025",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_025",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "纠结了足足半分钟，她最终还是笑眯眯地点了那份焦糖无花果杏仁挞，等瓷盘端上桌时，还很大方地用小银叉分了一小块推到坂口手边的小碟里。",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_025",
+            "label": "继续",
+            "next": "al3_026",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "al3_026",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "没有待签的报表，也没有随时响起的内线电话。阳光落在白瓷杯沿上，明日香小口抿着热咖啡，整个人都透着一种平时在医院走廊里难得一见的慵懒与惬意。",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_026",
+            "label": "继续",
+            "next": "al3_027",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_027",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「难得看你这么清闲。平时没人约你的周日，你一般都在干什么？总不会在家看医疗管理期刊吧。」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_027",
+            "label": "继续",
+            "next": "al3_028",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_028",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「怎么可能那么无趣！天气好的时候我会去逛逛杂货铺和面料市场，偶尔也会在家里翻翻旧画报、整理一下自己的小收藏什么的。」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_028",
+            "label": "继续",
+            "next": "al3_029",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_029",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她用银叉轻轻切下一角酥皮，想起什么似的弯起眼睛补充道：",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_029",
+            "label": "继续",
+            "next": "al3_030",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_030",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「对了，说起来——上次你和杉村护士帮我一起试穿把关的那款晴空雾蓝色手术袍，供应商前天已经把改好腋下菱形插片和加宽后摆的定稿样衣寄给我确认过了哦，活动起来真的超级顺手！」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_030",
+            "label": "继续",
+            "next": "al3_031",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_031",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「效率真高啊。不过我从上次就一直有点好奇——不管是更早之前我们一起下台时你挑出旧袍子袖笼偏低，还是后来跟打版师讨论省道和领口包边，你对手术服的了解，好像早就超出『院长审核耗材』的范畴了吧？简直像专门研究过服装史一样。」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_031",
+            "label": "继续",
+            "next": "al3_032",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_cafe_dessert.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_032",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "听到这句话，明日香端着咖啡杯的手微微一顿，那双明亮的眼眸里忽然闪过一丝被人猜中秘密基地般的小得意。",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_032",
+            "label": "继续",
+            "next": "al3_033",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_033",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……被坂口君看出来啦？」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_033",
+            "label": "继续",
+            "next": "al3_034",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_034",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她轻轻放下瓷杯，身体微微往桌前倾了一点，压低声音笑道：",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_034",
+            "label": "继续",
+            "next": "al3_035",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_035",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「其实呢，我不只是喜欢研究现在医院里穿的新款样衣。从读医科大学那时候起，我就一直在私底下搜集不同年代、不同医院用过的老式手术袍、停产的手术帽还有旧款布口罩——有些特别少见的款式，连现在的医用纺织品目录上都找不到了哦。」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_035",
+            "label": "继续",
+            "next": "al3_036",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_036",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（有些意外地挑眉）：",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_036",
+            "label": "继续",
+            "next": "al3_037",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_037",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「连老式手术服都专门收藏？」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_037",
+            "label": "继续",
+            "next": "al3_038",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_038",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「嗯！每一件的棉布织法、系带位置还有穿在身上的轮廓都完全不一样呢！」",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_038",
+            "label": "继续",
+            "next": "al3_039",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_039",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "一聊起心头好，她的眼睛亮晶晶的，连语速都比刚才快了半分。等两人慢悠悠地喝完最后一口咖啡、结账走出店门时，午后的日头才刚偏过街角。",
+        "background_id": "date_cafe",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 870,
+        "choices": [
+          {
+            "id": "c_al3_039",
+            "label": "继续",
+            "next": "al3_040",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_040",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香站在台阶下看了一眼腕表，忽然转过身看向坂口隆司，眼里带着几分跃跃欲试的期待：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_040",
+            "label": "继续",
+            "next": "al3_041",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_041",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「呐，坂口君，喝完咖啡之后……你今天下午还有别的安排吗？」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_041",
+            "label": "继续",
+            "next": "al3_042",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_042",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「今天整个下午的时间本来就是留给你的。想去哪儿逛逛？」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_042",
+            "label": "继续",
+            "next": "al3_043",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_043",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香（开心地一拍手）：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_043",
+            "label": "继续",
+            "next": "al3_044",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_044",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「太好啦！既然刚才聊到了我的收藏，光靠嘴上比划多没意思——有几件我平时最宝贝的藏品，今天正好想亲眼拿给你看看。我们现在回一趟医院吧！」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_044",
+            "label": "继续",
+            "next": "al3_045",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_045",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司脚步微顿，表情微妙地看了她一眼：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_045",
+            "label": "继续",
+            "next": "al3_046",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_046",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「……周日约会的第二站，是回星见医院？」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_046",
+            "label": "继续",
+            "next": "al3_047",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_047",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香看着他一脸错愕的模样，「噗嗤」一声笑了出来，连忙摆了摆手：",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_047",
+            "label": "继续",
+            "next": "al3_048",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_048",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「你那是什么眼神呀！放心啦，今天绝对不是骗你回去加班看门诊的！我们不去新住院楼也不去四楼手术部，去后院旧馆二楼的『院史资料室』——对我来说，那里可比外面的博物馆有意思多啦！」",
+        "background_id": "asuka_lv3_cafe_exterior_day",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 895,
+        "choices": [
+          {
+            "id": "c_al3_048",
+            "label": "继续",
+            "next": "al3_049",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_049",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "周日下午的星见医院后院格外幽静，穿过栽满桂花树的连廊走上旧馆二楼，空气里没有新楼那种熟悉的消毒水味，反而透着一股淡淡的木头与阳光晒过纸页的干爽气息。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 915,
+        "choices": [
+          {
+            "id": "c_al3_049",
+            "label": "继续",
+            "next": "al3_050",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_050",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香从随身小包里取出登记借用的钥匙串，咔哒一声轻轻拧开了「院史资料室」的木门。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 915,
+        "choices": [
+          {
+            "id": "c_al3_050",
+            "label": "继续",
+            "next": "al3_051",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_051",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司跟着走进门内打量了一圈——房间并不算特别大，却收拾得一尘不染。外侧的玻璃柜里端正陈列着建院早期的黄铜双头听诊器、老式高压蒸汽灭菌鼓与泛黄的院史纪念册；而在靠里侧采光柔和的一隅，单独放着一组防尘衣柜与挂衣杆，十几只透气棉布衣袋按年份和色系挂得整整齐齐，旁边还有一面擦得雪亮的木框全身穿衣镜和一扇素色折屏。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 915,
+        "choices": [
+          {
+            "id": "c_al3_051",
+            "label": "继续",
+            "next": "al3_052",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_052",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「旧馆二楼这间资料室平时主要用来保存医院的历史照片和退役老器械。最里面这一小格衣柜原本一直空着，我就按行政规矩办了借用登记，把自己这几年省下零花钱淘来的历史手术服整理好放在这儿了。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_052",
+            "label": "继续",
+            "next": "al3_053",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_053",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她一边说，一边轻车熟路地拉开立柜门，还不忘回头朝坂口眨了眨眼补充一句：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_053",
+            "label": "继续",
+            "next": "al3_054",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_054",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「先声明哦，这里面全都是早就停产或者绝版的干净藏品，跟四楼手术部正在用的无菌耗材库存可是分得清清楚楚的，本院长才不会公私不分呢。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_054",
+            "label": "继续",
+            "next": "al3_055",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_055",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（走近衣架旁，看着每只衣袋外侧手写的棉签卡，不禁有些佩服）：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_055",
+            "label": "继续",
+            "next": "al3_056",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_056",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「连经纬纱支数和洗涤缩水率都手写标在吊牌上了……这整理得比科室档案室还要用心啊。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_056",
+            "label": "继续",
+            "next": "al3_057",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_057",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香略带自豪地轻轻哼了一声，先从衣架外侧取下一件深海绿色的旧款棉布长袖手术袍展开给他看。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_057",
+            "label": "继续",
+            "next": "al3_058",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_058",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「这件看起来和现在的传统棉布袍差不多，有什么特别的地方吗？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_058",
+            "label": "继续",
+            "next": "al3_059",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_059",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香（手指点向袍身两侧偏高一寸的收省拼接线，不假思索地答道）：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_059",
+            "label": "继续",
+            "next": "al3_060",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_060",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「腰线漂亮呀。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_060",
+            "label": "继续",
+            "next": "al3_061",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_061",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「……这是无菌手术袍。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_061",
+            "label": "继续",
+            "next": "al3_062",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_062",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「无菌手术袍就不能有腰线吗？只要不破坏胸前和双袖的无菌屏障，顺着背带收拢的时候多一道利落的比例，站在无影灯底下整个人都会显得挺拔好多呢！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_062",
+            "label": "继续",
+            "next": "al3_063",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_063",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "说着，她把深海绿长袍挂回原位，又兴致勃勃地从中间取出了另一个颇为少见的衣架——那是一件浅青灰色的短袖棉布连衣裙式服装，领口做成简洁端庄的小圆领，腰间没有繁琐的装饰，裙摆自然垂落到膝盖下方，侧缝处留着一排方便穿脱的平扣。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_063",
+            "label": "继续",
+            "next": "al3_064",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_064",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司仔细看了一眼：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_064",
+            "label": "继续",
+            "next": "al3_065",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_065",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「这件既不像病房护士穿的白色制服裙，也不像给患者穿的病号服……倒像是刷手服的面料？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_065",
+            "label": "继续",
+            "next": "al3_066",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_066",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「好眼力！不愧是坂口君！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_066",
+            "label": "继续",
+            "next": "al3_067",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_067",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香眼睛一亮，双手拎着衣架两端，将那件浅青灰色的棉布裙轻轻比在自己身前，让他看清整体的垂坠剪裁：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_067",
+            "label": "继续",
+            "next": "al3_068",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_068",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「在现在这种男女通用的分体式短袖上衣加长裤刷手服普及之前，过去有一些医院，曾经专门给进手术室的女性医生和手术室护士准备过这种连衣裙式的『手术内着』——也就是穿在最里面、外面再套上长袖无菌手术袍的旧式手术裙哦。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_068",
+            "label": "继续",
+            "next": "al3_069",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_069",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她低头看着衣架上柔和流畅的裙身线条，指尖轻轻抚过细密的棉布领口，语气里满是纯粹的欣赏：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_069",
+            "label": "继续",
+            "next": "al3_070",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_070",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「你看它的肩线和裙摆比例，明明半点多余的花边都没有，看起来却又干净又温柔。当然啦，站在外科医生的立场上实话实说——真要在手术台上连轴转好几个钟头、或者碰上急诊需要迈大步跑动的时候，还是现在的上衣加裤子方便利落得多。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_070",
+            "label": "继续",
+            "next": "al3_071",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_071",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她把手术裙收回衣架挂稳，偏过头朝坂口露出一抹半真半假的惋惜神色：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_071",
+            "label": "继续",
+            "next": "al3_072",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_072",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「只是偶尔拿出来看一眼的时候，我还是会忍不住想……为了方便，把这么好看的线条全都换成了千篇一律的宽松裤装，在美学上多少也算是一点点退步嘛。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_072",
+            "label": "继续",
+            "next": "al3_073",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_073",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "看着她一边老老实实承认现代裤装更适合临床干活、一边又对旧式剪裁念念不忘的可爱模样，坂口隆司眼底不禁泛起温和的笑意。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 920,
+        "choices": [
+          {
+            "id": "c_al3_073",
+            "label": "继续",
+            "next": "al3_074",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_074",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "展示完那件浅青灰色的手术裙，城宮明日香没有急着关上柜门，而是伸出手，动作格外轻柔地取下了挂在立柜最里侧、用纯白棉布防尘袋单独罩着的那一套藏品。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_074",
+            "label": "继续",
+            "next": "al3_075",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_075",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "拉开防尘袋拉链的瞬间，映入坂口眼帘的并不是医院里常见的墨绿或雾蓝色，而是一整套带着温润岁月质感的奶白色。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_075",
+            "label": "继续",
+            "next": "al3_076",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_076",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "那是一件 1970 年代风格的奶白色长袖厚棉布手术袍——未经过度漂白的厚重斜纹纯棉布料呈现出柔和的乳白光泽，袖口是厚实的双层棉布收口，衣袋里还整整齐齐地配着一顶同样厚实的奶白色圆顶棉布手术帽，以及一只上下双系带的厚棉布口罩。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_076",
+            "label": "继续",
+            "next": "al3_077",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_077",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「1970 年代风格的奶白色棉布手术袍……这套连帽子和布口罩都配齐了啊。料子摸起来比现在的混纺布厚重好多。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_077",
+            "label": "继续",
+            "next": "al3_078",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_078",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「嗯，这是我找了好几家老医用织物厂的留存库房，才好不容易淘到的一套同年代款式的全新库存品，也是整个柜子里我最宝贝的一件。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_078",
+            "label": "继续",
+            "next": "al3_079",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_079",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香双手捧着那件厚实的奶白色棉布长袍，低头看着上面朴拙而紧密的织纹，平日里总是灵动跳跃的眼眸渐渐染上了一层温暖而柔和的光彩：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_079",
+            "label": "继续",
+            "next": "al3_080",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_080",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「小时候妈妈给我看过她刚刚当外科医生时的照片。那个时候，手术袍又肥又厚，连手术帽和口罩都是厚厚的布，几乎看不清她的脸。可我当时就是觉得——妈妈真是好美好美！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_080",
+            "label": "继续",
+            "next": "al3_081",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_081",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "午后的阳光斜斜穿过资料室的高窗，落在她轻抚着奶白色衣袖的指尖与微弯的睫毛上。她的语气里没有半点沉重，满满当当全都是小女孩第一次被某种美丽事物击中时的憧憬与欢喜。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_081",
+            "label": "继续",
+            "next": "al3_082",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_082",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "站在半步外的坂口隆司静静看着她的侧脸，心头却微不可察地动了一下。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_082",
+            "label": "继续",
+            "next": "al3_083",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_083",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "来到星见医院这么久，他从未在院里见过前任院长的身影，只知道明日香才二十三岁就独自挑起了整座医院的担子。听着她用这么怀念的语气提起儿时照片里的母亲、甚至专门寻来款式相近的老式奶白色手术袍珍藏在身边，坂口在心里下意识地以为——她大概是在用这种方式，想念那位已经不在身边的母亲吧。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_083",
+            "label": "继续",
+            "next": "al3_084",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_084",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "出于成年人的体贴与分寸，坂口没有冒昧追问任何关于她母亲近况的话题；而完全不知道自己已经被对面的男人脑补了一出伤感往事的城宮明日香，正满心欢喜地抖开那件奶白色厚棉布袍的衣袖，转头迎上了他的目光。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_084",
+            "label": "继续",
+            "next": "al3_085",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_085",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "看着明日香眼底毫不掩饰的喜爱，坂口隆司唇角微扬，顺着她的话温和地问道：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 930,
+        "choices": [
+          {
+            "id": "c_al3_085",
+            "label": "继续",
+            "next": "al3_086",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_086",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「所以，你在真正成为外科医生之前，就已经盼着有一天穿上手术袍了？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_086",
+            "label": "继续",
+            "next": "al3_087",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_087",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香把那件奶白色的厚棉布袍轻轻抱在怀里，连半秒钟都没犹豫，理直气壮地仰起脸答道：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_087",
+            "label": "继续",
+            "next": "al3_088",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_088",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「当然啊，因为很漂亮嘛！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_088",
+            "label": "继续",
+            "next": "al3_089",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_089",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司怔了一下，眼底刚浮起一丝忍俊不禁的惊奇，还没来得及张口——",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_089",
+            "label": "继续",
+            "next": "al3_090",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_090",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "对面的年轻院长已经先一步微扬起下巴，像平时在会议桌上宣布最终决定那样，笑容灿烂又霸道地一锤定音：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_090",
+            "label": "继续",
+            "next": "al3_091",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_091",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「本院长不接受反驳哦！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_091",
+            "label": "继续",
+            "next": "al3_092",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_092",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（失笑举手）：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_092",
+            "label": "继续",
+            "next": "al3_093",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_093",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「冤枉啊，我还什么都没反驳呢。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_093",
+            "label": "继续",
+            "next": "al3_094",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_094",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「谁让你刚才挑了一下眉毛，脸上明明写着『居然有人因为觉得衣服漂亮就盼着进手术室』嘛！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_094",
+            "label": "继续",
+            "next": "al3_095",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_095",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她轻哼了一声，自己也跟着笑了起来，眉眼弯弯地靠在陈列桌沿上：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_095",
+            "label": "继续",
+            "next": "al3_096",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_096",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「当然啦，真正读了医科大学、跟着前辈见习之后，我比谁都清楚手术台不是穿漂亮衣服过家家的地方。可是不管学了多少枯燥的解剖和病理，小时候觉得『穿手术袍的医生真美呀』的那颗心，我可是一直好好留着呢。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_096",
+            "label": "继续",
+            "next": "al3_097",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_097",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「那后来呢？等你真正考下医师执照，第一次以外科医生的身份站进手术室、穿上属于自己的无菌手术袍时，是什么感觉？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_097",
+            "label": "继续",
+            "next": "al3_098",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_098",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "提到人生中第一次正式穿袍上台的经历，明日香的眼睛一下子亮了起来，像是连当时的心跳声都能重新听见似的：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_098",
+            "label": "继续",
+            "next": "al3_099",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_099",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「说出来坂口君可不许笑话我——那天我刷完手、举着湿淋淋的胳膊站在器械护士面前等穿袍子的时候，简直比第一次被推进手术室的患者还要紧张！脸烫得要命，心脏咚咚咚地直撞肋骨，连往袖管里伸的手指尖都在微微发抖呢。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_099",
+            "label": "继续",
+            "next": "al3_100",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_100",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「连手都在抖？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_100",
+            "label": "继续",
+            "next": "al3_101",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_101",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「只有最开始那几秒钟啦！等护士帮我把长袖无菌手术袍真正套上肩膀、后背的系带稳稳系紧，我再把无菌手套『啪』地一下拉过手腕包住袖口的那一瞬间——」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_101",
+            "label": "继续",
+            "next": "al3_102",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_102",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她张开双手比划了一下，语气里带着几分回想起少女心事的雀跃与夸张：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_102",
+            "label": "继续",
+            "next": "al3_103",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_103",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「低头看着胸前整整齐齐的无菌布料，那一秒钟里，我脑子里真的冒出了一种『现在的我简直无所不能！』的感觉哦！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_103",
+            "label": "继续",
+            "next": "al3_104",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_104",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司听得饶有兴致，顺着这股庄严高昂的气氛追问了一句：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_104",
+            "label": "继续",
+            "next": "al3_105",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_105",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「觉得自己无所不能……然后呢？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_105",
+            "label": "继续",
+            "next": "al3_106",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_106",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香眨了眨清澈的大眼睛，原本昂扬的语调忽然停顿了整整一秒钟，老老实实地吐出三个字：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_106",
+            "label": "继续",
+            "next": "al3_107",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_107",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……有点热。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_107",
+            "label": "继续",
+            "next": "al3_108",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_108",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "空气安静了半秒，坂口隆司实在没绷住，「噗」地笑出了声：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_108",
+            "label": "继续",
+            "next": "al3_109",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_109",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「就这？我还以为接下来要听一段热泪盈眶的从医誓言呢。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_109",
+            "label": "继续",
+            "next": "al3_110",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_110",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香（鼓了鼓脸颊，又忍不住跟着笑起来）：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_110",
+            "label": "继续",
+            "next": "al3_111",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_111",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「因为那天穿的是老式厚棉布袍，是真的有点闷热嘛！而且什么『无所不能』的幻觉，也就威风了不到十秒钟——等主刀老师一喊切皮，无影灯照进术野里，我的脑子就彻彻底底被拉钩角度、吸引器位置和止血结扎占满了，一整个上午忙得脚不沾地，哪里还顾得上自己穿得好不好看呀！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_111",
+            "label": "继续",
+            "next": "al3_112",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_112",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她轻轻晃了晃脚尖，声音柔和下来，透着几分让人心软的珍惜：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_112",
+            "label": "继续",
+            "next": "al3_113",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_113",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「不过那天手术顺顺利利做完、退出无菌区以后，想到自己从小盼到大的第一次穿手术袍就这么结束了，我心里还是有点舍不得马上跟那身装束告别……就趁着彻底脱下来换衣服之前，偷偷跑到更衣区角落的镜子前面，认认真真照了好几秒钟。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_113",
+            "label": "继续",
+            "next": "al3_114",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_114",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「照完总算心满意足了吧？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_114",
+            "label": "继续",
+            "next": "al3_115",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_115",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「前两秒钟确实超级满足的！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_115",
+            "label": "继续",
+            "next": "al3_116",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_116",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香竖起一根手指，嘴角忽然勾起一抹熟悉的、属于星见院长的挑剔弧度：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_116",
+            "label": "继续",
+            "next": "al3_117",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_117",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「结果到了第三秒，我看着镜子里的自己抬了抬胳膊，脑子里冒出来的结论居然是——『唔……这件袍子的肩线掉得太低，袖笼抬手的时候有点卡，后背系带的位置也不显精神……款式还有不少需要改善的地方呢。』」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_117",
+            "label": "继续",
+            "next": "al3_118",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_118",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司（啼笑皆非地摇了摇头）：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_118",
+            "label": "继续",
+            "next": "al3_119",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_119",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「合着你第一次正式穿手术袍，下台照个镜子就已经开始研究版型改良了？难怪上次在会议室里跟供应商改起图纸来那么内行。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_119",
+            "label": "继续",
+            "next": "al3_120",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_120",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「因为是真的喜欢嘛。正因为打心底里喜欢手术袍，也喜欢穿着它和大家一起站在手术台边工作的感觉，才不甘心让它只是一块勉强凑合的布料呀。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 940,
+        "choices": [
+          {
+            "id": "c_al3_120",
+            "label": "继续",
+            "next": "al3_121",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_121",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "话音落下，资料室里安静了片刻。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_121",
+            "label": "继续",
+            "next": "al3_122",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_122",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "城宮明日香低头看着臂弯里那套叠得整整齐齐的奶白色厚棉布手术袍，手指在厚实的棉布滚边上轻轻摩挲了两下。方才高谈阔论版型设计时的那股洒脱劲儿，忽然微不可察地慢了半拍。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "nostalgic",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_122",
+            "label": "继续",
+            "next": "al3_123",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/nostalgic.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_123",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她抬起眼睫看了坂口隆司一眼，脸颊边浮起一抹很浅的笑意，声音比刚才轻了一分：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_123",
+            "label": "继续",
+            "next": "al3_124",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_124",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……呐，坂口君。既然今天都特意带你来这儿了，这套奶白色的收藏品平时也难得拿出来一次……你在这里稍等我两分钟，好不好？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_124",
+            "label": "继续",
+            "next": "al3_125",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_125",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司微微一怔，随即明白了她的意思，温和地点了点头：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_125",
+            "label": "继续",
+            "next": "al3_126",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_126",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「好，我就在这边坐着，背过身去等你。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "shy",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_126",
+            "label": "继续",
+            "next": "al3_127",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/shy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_127",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「不许转过来偷看哦！」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_127",
+            "label": "继续",
+            "next": "al3_128",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_128",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她抱着那套干净的奶白色手术袍、厚布帽与布口罩，脚步轻快地绕进了角落的素色试衣折屏后面。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_128",
+            "label": "继续",
+            "next": "al3_129",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_129",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "安静的院史资料室里，只听见折屏后传来细碎而克制的棉布摩挲声，接着是长发盘拢收起、布带轻轻系紧的细微声响。下午四点钟的阳光渐渐染上了一层温润的浅金色，斜斜铺在木框全身穿衣镜前。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_129",
+            "label": "继续",
+            "next": "al3_130",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_130",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "大约过了两三分钟，折屏后传来了明日香隔着一层厚棉布、显得有些闷闷的轻声呼唤：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_130",
+            "label": "继续",
+            "next": "al3_131",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_131",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……坂口君，可以转过来啦。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_131",
+            "label": "继续",
+            "next": "al3_132",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_132",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司站起身转过来，抬眼望向穿衣镜旁——",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 955,
+        "choices": [
+          {
+            "id": "c_al3_132",
+            "label": "继续",
+            "next": "al3_133",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_133",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "走出来的城宮明日香，已经彻彻底底换了一副模样。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_133",
+            "label": "继续",
+            "next": "al3_134",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_134",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她身上穿着那件 1970 年代风格的奶白色长袖厚棉布手术袍，平日里披散在肩头的柔顺长发被同色系的厚棉布圆顶手术帽一丝不苟地全部收拢在内，鼻梁与下半张脸也规规矩矩地遮着那只老式厚棉布系带口罩，只露出一双清澈明亮的眼睛。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_134",
+            "label": "继续",
+            "next": "al3_135",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_135",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "老式棉布手术袍的剪裁确实比现代款式宽厚朴拙许多，可套在她二十三岁纤秀匀称的身形上，背后交叠的棉布系带轻轻一收，非但没有显得笨重滑稽，反而褪去了平日身为院长的干练锋芒，在暖金色的斜阳底下透出一种格外干净、端庄又带着旧时光温度的美感。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_135",
+            "label": "继续",
+            "next": "al3_136",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_136",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香站在穿衣镜斜前方，面向坂口隆司，双手有些拘谨地轻轻交叠在身前，口罩上方的那双眼睛一眨不眨地望着他，满是期待地轻声问道：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_136",
+            "label": "继续",
+            "next": "al3_137",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_137",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……怎么样？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_137",
+            "label": "继续",
+            "next": "al3_138",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_138",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司看着眼前的画面，顺着两人刚才聊了一路的收藏话题，很自然地先从这身难得的藏品本身赞叹道：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_138",
+            "label": "继续",
+            "next": "al3_139",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_139",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「保存得真好啊。这种奶白色的厚斜纹棉布比现在的蓝绿色温柔得多，连厚布帽和系带口罩搭在一起都很有那个年代的庄重质感，确实是一件非常漂亮的古董手术袍。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 960,
+        "choices": [
+          {
+            "id": "c_al3_139",
+            "label": "继续",
+            "next": "al3_140",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "cg_path": "assets/events/asuka_lv3_v1/vintage_cream_gown_mirror.png",
+        "cg_fit": "cover"
+      },
+      {
+        "id": "al3_140",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "然而，听到这番挑不出毛病的藏品鉴赏，平时只要别人夸她眼光好就会开心得眉飞色舞的城宮明日香，这次却没有顺着往下接话。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_140",
+            "label": "继续",
+            "next": "al3_141",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/expectant.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_141",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她站在原地安静了一秒钟。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "expectant",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_141",
+            "label": "继续",
+            "next": "al3_142",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/expectant.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_142",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "原本微扬的眼尾轻轻垂落了半分，她抬起右手，指尖有些不自在地轻轻捏了捏左手宽厚的奶白色棉布袖口，视线从坂口脸上微微挪开半寸，隔着厚棉布口罩传出来的声音比刚才轻柔、认真了许多：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_142",
+            "label": "继续",
+            "next": "al3_143",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain",
+        "cg_dialogue_delay_seconds": 2.0
+      },
+      {
+        "id": "al3_143",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……坂口君，我问的不是这件衣服的质地和年代啦。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_143",
+            "label": "继续",
+            "next": "al3_144",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_144",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她停顿了半拍，重新抬起眼睫直直望进坂口的眼睛里。那双清亮眼眸里，流露出一种与平日截然不同的紧张与羞怯。此刻的她，似乎只是一个期待着喜欢的男人称赞自己的普通年轻女孩：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_144",
+            "label": "继续",
+            "next": "al3_145",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_145",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「我问的是，穿着它的我，好不好看？」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_145",
+            "label": "继续",
+            "next": "al3_146",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_146",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "安静的院史资料室里，仿佛连窗外树叶摇晃的细响都远去了。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_146",
+            "label": "继续",
+            "next": "al3_147",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_147",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "坂口隆司呼吸微顿，看着她在厚棉布口罩上方微微颤动的眼睫与悄悄染上薄红的耳根，终于彻底明白了她今天带自己来这里的真正心意。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_147",
+            "label": "继续",
+            "next": "al3_148",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_148",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "他收起了所有品评服装的客套辞令，目光温和而专注地迎上她的视线，不再拿任何别的东西做挡箭牌，一字一句清晰地答道：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_148",
+            "label": "继续",
+            "next": "al3_149",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_149",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「……很好看。不是说这件衣服有多难得——我说的是穿着它的你，明日香，真的很漂亮。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "shy_earnest",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_149",
+            "label": "继续",
+            "next": "al3_150",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/shy_earnest.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_150",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "明日香整个人轻轻定在了原地。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "blushing_happy",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_150",
+            "label": "继续",
+            "next": "al3_151",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/blushing_happy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_151",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "厚实的奶白色棉布口罩遮住了她的脸颊与唇角，却遮不住瞬间从眼尾一路漫到耳尖的那抹绯红。她飞快地眨了两下眼睛，目光微微乱了一瞬，下意识低头又抚平了一下原本就毫无褶皱的棉布袖口。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "blushing_happy",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_151",
+            "label": "继续",
+            "next": "al3_152",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/blushing_happy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_152",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "足足过了三秒钟，她才重新抬起弯成月牙的眼睛看向坂口，声音里混着一丝藏不住的羞涩与小小的骄傲，轻轻回扣了刚才自己的那句话：",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "blushing_happy",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_152",
+            "label": "继续",
+            "next": "al3_153",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/blushing_happy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_153",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「……那么，这个意见，本院长就接受了。」",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "blushing_happy",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_153",
+            "label": "继续",
+            "next": "al3_154",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/blushing_happy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_154",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "斜阳的暖光静静落在全身镜的木框边沿。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "blushing_happy",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_154",
+            "label": "继续",
+            "next": "al3_155",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/blushing_happy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_155",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "这一次，明日香没有急着抛出一句俏皮玩笑去打破安静，坂口隆司也没有多说多余的话。两人隔着两步的距离相视一笑，任由那份超越了上下级与普通同事的柔和温度，在安静的旧馆房间里自然地停留了好一会儿。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "vintage_cream_gown",
+        "expression": "blushing_happy",
+        "hide_portrait": false,
+        "sunday_clock": 965,
+        "choices": [
+          {
+            "id": "c_al3_155",
+            "label": "继续",
+            "next": "al3_156",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/vintage_cream_gown/blushing_happy.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ],
+        "cg_path": "assets/events/asuka_maki_supplement_v1/asuka_lv3_earnest_closeup.png",
+        "cg_fit": "contain"
+      },
+      {
+        "id": "al3_156",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "直到窗外的日影又偏过一格，明日香才轻轻舒了一口气，眼底带着温软的笑意退回折屏后面换回了自己的浅杏色开衫与半裙，随后和坂口一起动手，将那套奶白色的棉布手术袍、帽子与口罩仔仔细细地重新叠平，收回了防尘衣袋之中。",
+        "background_id": "asuka_lv3_archive_room_afternoon",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 975,
+        "choices": [
+          {
+            "id": "c_al3_156",
+            "label": "继续",
+            "next": "al3_157",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_157",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "咔哒一声锁好院史资料室的木门，两人并肩走下旧馆安静的木楼梯，重新回到了傍晚微凉的庭院风里。",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_157",
+            "label": "继续",
+            "next": "al3_158",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      },
+      {
+        "id": "al3_158",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "桂花树的枝叶在晚风里轻轻沙沙作响。城宮明日香把资料室的钥匙收回小包，侧过头看向身旁的坂口隆司，唇边带着一抹格外舒心明朗的微笑：",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_158",
+            "label": "继续",
+            "next": "al3_159",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_159",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「今天真的谢谢你陪我耗了一整个下午，坂口君。换作别人，周日约会被我拉回医院旧馆看一堆老棉布袍子、听我唠叨什么袖笼和系带，说不定早就觉得莫名其妙了呢。」",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_159",
+            "label": "继续",
+            "next": "al3_160",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_160",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「怎么会。能看到你从小就这么珍视的东西，反而让我更明白现在的星见医院为什么会是今天这个样子了——今天下午我过得很开心，是很特别的一次约会。」",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_160",
+            "label": "继续",
+            "next": "al3_161",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/smile.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_161",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "听到「很特别的一次约会」几个字，明日香脚步轻快地往前迈出两步，在洒满晚霞余晖的庭院石阶前转过身，双手背在身后看着他，眼睛亮晶晶的：",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_161",
+            "label": "继续",
+            "next": "al3_162",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_162",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「既然坂口君今天表现这么有耐心……那以后有机会的话，我还想给你看点别的有趣东西呢。不过具体是什么，今天就先保密啦！」",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "playful",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_162",
+            "label": "继续",
+            "next": "al3_163",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/playful.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_163",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "她朝坂口轻轻挥了挥手，笑容干净、明媚又留着一丝让人期待的余韵：",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_163",
+            "label": "继续",
+            "next": "al3_164",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_164",
+        "presentation": "authored",
+        "speaker": "actor",
+        "actor_id": "doc_asuka",
+        "speaker_label": "城宮明日香",
+        "text": "「回去路上小心哦——明天医院见啦，坂口君！」",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_164",
+            "label": "继续",
+            "next": "al3_165",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_165",
+        "presentation": "authored",
+        "speaker": "player",
+        "actor_id": "doc_asuka",
+        "speaker_label": "坂口隆司",
+        "text": "「嗯，明天见，明日香。」",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "laugh",
+        "hide_portrait": false,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_165",
+            "label": "继续",
+            "next": "al3_166",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ],
+        "event_portraits": [
+          {
+            "id": "doc_asuka",
+            "path": "assets/characters/asuka_lv3_v1/doc_asuka/date_cardigan/laugh.png",
+            "x": 985,
+            "bottom": 556,
+            "width": 320,
+            "height": 480
+          }
+        ]
+      },
+      {
+        "id": "al3_166",
+        "presentation": "authored",
+        "speaker": "narrator",
+        "actor_id": "doc_asuka",
+        "speaker_label": "旁白",
+        "text": "目送着那抹浅杏色的轻盈身影穿过庭院连廊远去，坂口隆司在傍晚清朗的微风里停了片刻，想起刚才资料室里那双在奶白色厚布帽与口罩之间认真望着自己的眼睛，不由得轻轻笑了一下。",
+        "background_id": "hospital_courtyard_evening",
+        "outfit": "date_cardigan",
+        "expression": "smile",
+        "hide_portrait": true,
+        "sunday_clock": 1005,
+        "choices": [
+          {
+            "id": "c_al3_166",
+            "label": "继续",
+            "next": "@end",
+            "effects": {
+              "affection": 0,
+              "familiarity": 0
+            },
+            "flags": []
+          }
+        ]
+      }
+    ]
+  }
+]

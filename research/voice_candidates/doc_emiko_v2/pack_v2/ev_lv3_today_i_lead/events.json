@@ -1,0 +1,187 @@
+[
+  {
+    "event_id": "event_EkjZasNFdExZbMWD0620g",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_EkjZap3oNKlyjOD0qjMQ95tw37rbSFUx",
+      "expires_at": 1794814178,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"今日は私が執刀する。あなたは絶対に死なせないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Rock-steady, commanding lead surgeon reassuring a terrified patient before heart surgery, subtle surgical-mask muffling, absolute authority. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"今日は私が執刀する。あなたは絶対に死なせないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Rock-steady, commanding lead surgeon reassuring a terrified patient before heart surgery, subtle surgical-mask muffling, absolute authority. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "今日は私",
+    "event_id": "event_EkjZbsZ3FvDB5FQZPpjJM"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "が",
+    "event_id": "event_EkjZb7xZrwH5J1biYtc5h"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "執",
+    "event_id": "event_EkjZb7wraBVnd9HWJSvTZ"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 600,
+    "end_ms": 800,
+    "delta": "刀",
+    "event_id": "event_EkjZbWTNBUPmGyuzaqVal"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_EkjZbCu0t8P1f9aoYoYTh",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "する",
+    "event_id": "event_EkjZcoJvo1zbkPbJwAc7p"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1200,
+    "end_ms": 1400,
+    "delta": "。",
+    "event_id": "event_EkjZc7KJrQaHqCAkfRZEq"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "あなた",
+    "event_id": "event_EkjZcfNr7Splxbz75aHMx"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2400,
+    "end_ms": 2600,
+    "delta": "は絶",
+    "event_id": "event_EkjZdYYAwcG3qm8cYlbzX"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 2800,
+    "end_ms": 3000,
+    "delta": "対",
+    "event_id": "event_EkjZd6V2B2S798Xi0yU3D"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3000,
+    "end_ms": 3200,
+    "delta": "に",
+    "event_id": "event_EkjZetLtmMX1T5uSQfPle"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3200,
+    "end_ms": 3400,
+    "delta": "死",
+    "event_id": "event_EkjZee7Kte8TzJvflfR2q"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3400,
+    "end_ms": 3600,
+    "delta": "な",
+    "event_id": "event_EkjZeToaOYLSC5BWb8UGn"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3600,
+    "end_ms": 3800,
+    "delta": "せない",
+    "event_id": "event_EkjZe9ZUORXwKAEinof8v"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 3800,
+    "end_ms": 4000,
+    "delta": "わ。",
+    "event_id": "event_EkjZegYM3r0SUSyc7m70V"
+  },
+  {
+    "event_id": "event_EkjZoV6TXnbohkANHbEuc",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EkjZap3oNKlyjOD0qjMQ95tw37rbSFUx",
+      "expires_at": 1794814178,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"今日は私が執刀する。あなたは絶対に死なせないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Rock-steady, commanding lead surgeon reassuring a terrified patient before heart surgery, subtle surgical-mask muffling, absolute authority. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"今日は私が執刀する。あなたは絶対に死なせないわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Rock-steady, commanding lead surgeon reassuring a terrified patient before heart surgery, subtle surgical-mask muffling, absolute authority. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 13.0
+    }
+  }
+]

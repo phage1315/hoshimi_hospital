@@ -82,8 +82,17 @@ func plans(definition:Dictionary,steps:Dictionary,special:bool):
   nodes=[]
   for sid in definition.event_chain:nodes.append_array(steps[sid].nodes)
   start=str(steps[definition.event_chain[0]].start)
- var index:Dictionary={}
- for n in nodes:index[str(n.id)]=n
+ var index:Dictionary={};var step_next_start:Dictionary={}
+ if special:
+  var chain:Array=definition.get("event_chain",[])
+  for si in range(chain.size()):
+   var sid=str(chain[si])
+   var next_start="" if si+1>=chain.size() else str(steps[str(chain[si+1])].start)
+   for n in steps[sid].nodes:
+    index[str(n.id)]=n
+    step_next_start[str(n.id)]=next_start
+ else:
+  for n in nodes:index[str(n.id)]=n
  var queue:Array=[{"node":start,"path":[]}];var reached:Dictionary={};var out:Array=[[]]
  while not queue.is_empty():
   var item=queue.pop_front();var nid=str(item.node)
@@ -93,7 +102,9 @@ func plans(definition:Dictionary,steps:Dictionary,special:bool):
   for choice in n.get("choices",[]):
    var path:Array=item.path.duplicate();path.append(str(choice.id))
    if n.get("choices",[]).size()>1:out.append(path)
-   queue.append({"node":str(choice.get("next","")),"path":path})
+   var dest=str(choice.get("next",""))
+   if dest=="@day_end" and not str(step_next_start.get(nid,"")).is_empty():dest=str(step_next_start[nid])
+   queue.append({"node":dest,"path":path})
  return out
 func prepare_route(_definition:Dictionary,_special:bool,_replay:bool):pass
 func finish_route(_definition:Dictionary,_special:bool,_replay:bool,_session):pass

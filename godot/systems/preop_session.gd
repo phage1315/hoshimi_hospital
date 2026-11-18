@@ -1526,12 +1526,12 @@ func role_definition(id: String) -> Dictionary:
 			return role
 	return {}
 
-func qualified(id: String, role: Dictionary) -> bool:
+func qualified(id: String, role: Dictionary, allow_preset: bool = false) -> bool:
 	if is_staff_patient() and id == str(definition.staff_patient_id):
 		return false
 	if role.is_empty() or not roster.has(id):
 		return false
-	if restrict_to_known_staff and id not in known_staff_ids:
+	if restrict_to_known_staff and not allow_preset and id not in known_staff_ids:
 		return false
 	var person: Dictionary = roster[id]
 	# Also enforce this with an unrestricted or stale known-staff list.
@@ -2118,6 +2118,8 @@ func apply_crisis_callout_presentation() -> void:
 		feedback = crisis_callout_speaker_name() + "：" + feedback
 
 func maybe_start_physiologic_crisis(roll: int, flow_step: Dictionary) -> bool:
+	if preload("res://godot/systems/asuka_lv1.gd").crisis_disabled(self):
+		return false
 	if roll < 0 or roll > 9999:
 		return false
 	var chance := physiologic_crisis_chance(flow_step)
@@ -2795,7 +2797,7 @@ func team_ready() -> bool:
 	var used: Array = []
 	for role in definition.roles:
 		var id: String = team.get(role.id, "")
-		if not qualified(id, role) or used.has(id):
+		if not qualified(id, role, true) or used.has(id):
 			return false
 		used.append(id)
 	return true
@@ -2805,7 +2807,7 @@ func sweep_team_ready() -> bool:
 		return false
 	var ward_role: Dictionary = definition.ward_role
 	var ward_id := str(team.get(str(ward_role.id), ""))
-	if not qualified(ward_id, ward_role):
+	if not qualified(ward_id, ward_role, true):
 		return false
 	for role in definition.roles:
 		if str(team.get(str(role.id), "")) == ward_id:
@@ -3070,6 +3072,8 @@ func apply(event: Variant) -> bool:
 				var response_lines: Array[String] = []
 				var authored_response := str(selected_option.response)
 				var story_override := preload("res://godot/systems/shiori_lv3.gd").option_response_override(self, flow_step)
+				if story_override.is_empty():
+					story_override = preload("res://godot/systems/asuka_lv1.gd").option_response_override(self, flow_step)
 				var speaker_prefix := ""
 				if not story_override.is_empty():
 					last_staff_role = str(story_override.get("role", last_staff_role))

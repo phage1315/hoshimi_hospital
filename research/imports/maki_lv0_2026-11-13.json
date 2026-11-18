@@ -1,0 +1,90 @@
+{
+  "event_id": "maki_lv0_onboarding",
+  "actor_id": "doc_maki",
+  "imported_on": "2026-11-13",
+  "source_manuscript": "research/source_scripts/HOSHIMI_AIZAWA_MAKI_LV0_NAME_ON_ROSTER_V1_1.md",
+  "source_manuscript_sha256": "bbacdf2a774c2840c2c60b16de5cbe600edeb19b406af1a88b2246e1d64d1131",
+  "english_translation": "research/translations/maki_lv0_en.json",
+  "english_translation_sha256": "9bc5ef2a6bb21a6bd1fe5afa4784c0832fb5e1da588218e3c20b28475aee1616",
+  "output_event_file": "data/staff/doc_maki/lv0_events.json",
+  "authored_beat_count": 158,
+  "total_node_count": 159,
+  "rp_choice_nodes": [
+    "mk0_choice_d1"
+  ],
+  "localization_keys_written": {
+    "zh_CN": 480,
+    "en": 480
+  },
+  "reused_cast_portraits": {
+    "doc_asuka:white_coat/neutral": {
+      "path": "assets/characters/portrait_pack_v15/doc_asuka/white_coat/neutral.png",
+      "sha256": "8a5280f0d020672a79a320dbddef56713e387d95d207b796772417b6ee481572"
+    },
+    "doc_maki:casual/focused": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/casual/focused.png",
+      "sha256": "189ead60b50fd3916e57b5d88d607077313d4816b64be5ed0a9785d76e9c4e9b"
+    },
+    "doc_maki:casual/neutral": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/casual/neutral.png",
+      "sha256": "be47d14b190bbc9024a248bf3ae320771185de918bf1a839fde948d4cfdf59ed"
+    },
+    "doc_maki:casual/worried": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/casual/worried.png",
+      "sha256": "e73e579645dc69b9153eca89f56ec18fee4ec191950ec4374ce72afce1b19c13"
+    },
+    "doc_maki:sterile/focused": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/sterile/focused.png",
+      "sha256": "8261713d78a373f82ceea6faddfdceed99684a2566ceff9dff3ad7197f6516be"
+    },
+    "doc_maki:sterile/neutral": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/sterile/neutral.png",
+      "sha256": "956abac7656c66ec9f5ee515acaee5ebf3a296f8f577e673200b07da110d5aa2"
+    },
+    "doc_maki:sterile/worried": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/sterile/worried.png",
+      "sha256": "3e4b9489135ca66e60b636ca6ff0785f18c816a1562549c67e13f948fc85c046"
+    },
+    "doc_maki:white_coat/focused": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/white_coat/focused.png",
+      "sha256": "c87a0b5ed88aaaef0c75d16c9b255f56ce1a39307cc9b23ad741b4e63bcbfaf1"
+    },
+    "doc_maki:white_coat/neutral": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/white_coat/neutral.png",
+      "sha256": "5fe4a2b3d69e8105d12652b8349a2afc5395180bfd96a3f1b5ae3cfafdf0a603"
+    },
+    "doc_maki:white_coat/smile": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/white_coat/smile.png",
+      "sha256": "c37d3f3edb2a926bbaa9f2b47460c8e85e37d13d7c425be11763db9e00b74662"
+    },
+    "doc_maki:white_coat/worried": {
+      "path": "assets/characters/maki_original_style_v1/doc_maki/white_coat/worried.png",
+      "sha256": "6b75124f25b120f7e536594dfeb736c7ee3c3f15ce87f7667d1a8a1fe9364f7c"
+    },
+    "nurse_hiroko:scrubs/warm": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/scrubs/warm.png",
+      "sha256": "75ffbf084bee02742ab9f09965bb13f6c2b2a30f86dd9189c91839d62d6089ac"
+    },
+    "nurse_hiroko:sterile/focused": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/sterile/focused.png",
+      "sha256": "e16ef04b5c9fe631dd3a4b059913b8418c2ba58e0e88e13a1ab8ef6ad0ebc522"
+    },
+    "nurse_hiroko:sterile/neutral": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/sterile/neutral.png",
+      "sha256": "e584909bd68a04d7e19c78ae99b917034567c64cd19e483eecdc6e52d3a1a12d"
+    },
+    "nurse_hiroko:sterile/warm": {
+      "path": "assets/characters/hiroko_cheek_revision_v1/nurse_hiroko/sterile/warm.png",
+      "sha256": "3c59f8475d3e6fa2171bb48fbf4227152a5350dad3fc17676b19adeddba6112e"
+    }
+  },
+  "onboarding_contract": {
+    "prerequisite_event_id": "asuka_lv2_right_person_right_gown",
+    "offer_flag": "maki_aizawa_offer_accepted",
+    "minimum_delay_days": 30,
+    "calendar_month_delay": 1,
+    "trigger_mode": "day_start",
+    "pure_vn_surgery": true,
+    "unlocks_on_completion_only": true
+  }
+}

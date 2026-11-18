@@ -1,0 +1,131 @@
+[
+  {
+    "event_id": "event_Ekja6jp06RVZCTfv3CXtg",
+    "type": "session.started",
+    "session": {
+      "id": "live_u7_Ekja6p3oMzeiwjNozKwoujYjHSaQv0mP",
+      "expires_at": 1794814210,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"今日は、先に帰らなくていいわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, deliberate, quietly charged invitation after surgery, calm surface over unmistakable private intent. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"今日は、先に帰らなくていいわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, deliberate, quietly charged invitation after surgery, calm surface over unmistakable private intent. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    }
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 0,
+    "end_ms": 200,
+    "delta": "今日は、",
+    "event_id": "event_Ekja79kFUfogvzSttWvFe"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 200,
+    "end_ms": 400,
+    "delta": "先",
+    "event_id": "event_Ekja7YaVNCsoe3eNwHKXI"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 400,
+    "end_ms": 600,
+    "delta": "に帰",
+    "event_id": "event_Ekja7gsMHQdmRK740eGUl"
+  },
+  {
+    "type": "session.commentary.appended",
+    "start_ms": 600,
+    "end_ms": 800,
+    "event_id": "event_Ekja7klYCPsuMrJYLeCst",
+    "client_event_id": "line_1"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1000,
+    "end_ms": 1200,
+    "delta": "らなく",
+    "event_id": "event_Ekja8A78SQthL5w3kNbHh"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1400,
+    "end_ms": 1600,
+    "delta": "ていい",
+    "event_id": "event_Ekja8LuMgUg9TMIY1pR07"
+  },
+  {
+    "type": "session.output_transcript.delta",
+    "start_ms": 1600,
+    "end_ms": 1800,
+    "delta": "わ",
+    "event_id": "event_Ekja8fA1rYN4RwHe9115s"
+  },
+  {
+    "event_id": "event_EkjaJhfPsNt0ddKfqw81x",
+    "type": "session.closed",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_Ekja6p3oMzeiwjNozKwoujYjHSaQv0mP",
+      "expires_at": 1794814210,
+      "model": "gpt-live-1",
+      "instructions": "An original adult Japanese female voice in her late twenties, speaking native standard Japanese. Icy-cold, aloof, unsmiling low-mid contralto register with dark-crystal clarity and frosty emotional distance. Flat, tightly controlled intonation, razor-crisp clipped diction, zero cheerfulness or warmth, and cool, intimidating composure at clear close-mic studio volume.\nSpeak immediately in Japanese. Say exactly this line once: \"今日は、先に帰らなくていいわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, deliberate, quietly charged invitation after surgery, calm surface over unmistakable private intent. No music or background noise.",
+      "audio": {
+        "output": {
+          "voice": {
+            "id": "voice_6af619a5457c8191956e57ae510364fb"
+          }
+        },
+        "format": {
+          "type": "audio/pcm",
+          "rate": 24000
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "status": "active",
+      "input": [
+        {
+          "type": "message",
+          "role": "developer",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Speak immediately in Japanese. Say exactly this line once: \"今日は、先に帰らなくていいわ。\". Do not translate, paraphrase, repeat, or add words. Then remain silent. Delivery direction: Low, deliberate, quietly charged invitation after surgery, calm surface over unmistakable private intent. No music or background noise."
+            }
+          ]
+        }
+      ],
+      "store": false
+    },
+    "usage": {
+      "seconds": 12.0
+    }
+  }
+]

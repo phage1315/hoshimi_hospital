@@ -1,0 +1,22 @@
+{
+  "event_id": "emiko_intro_rumored_hands",
+  "version": "V1.2",
+  "source_manuscript": "research/source_scripts/HOSHIMI_MIDO_EMIKO_LV0_RUMORED_HANDS_V1_2.md",
+  "source_manuscript_sha256": "479d4b22ba55d59c29895683572a9a6617f1186b624c231cd1bab1fc2fd5a294",
+  "english_translation": "research/translations/emiko_lv0_en.json",
+  "english_translation_sha256": "4662550866950ffce2e13b490b056d6357509adb617f49ff8601033723e412a1",
+  "target_events_file": "data/staff/doc_emiko/events.json",
+  "node_count": 45,
+  "choice_branches": [
+    "choice_em0_face",
+    "choice_em0_resume",
+    "choice_em0_table"
+  ],
+  "gate": {
+    "required_events": [
+      "intro_doc_asuka_director_office"
+    ],
+    "skill_minimum": 70,
+    "auto_follow_up": null
+  }
+}

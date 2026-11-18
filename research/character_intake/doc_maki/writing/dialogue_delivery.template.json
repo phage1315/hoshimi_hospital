@@ -1,0 +1,145 @@
+{
+  "format_version": "maki_author_delivery_v1",
+  "status": "draft",
+  "actor_id": "doc_maki",
+  "speaker_labels": {
+    "doc_maki": {
+      "zh_CN": "相澤麻紀",
+      "en": "Maki Aizawa"
+    },
+    "player": {
+      "zh_CN": "坂口隆司",
+      "en": null
+    },
+    "narrator": {
+      "zh_CN": "旁白",
+      "en": "Narrator"
+    }
+  },
+  "team_dialogue": {
+    "assignment": {
+      "zh_CN": null,
+      "en": null
+    },
+    "intraoperative": {
+      "zh_CN": null,
+      "en": null
+    }
+  },
+  "idle_chats": [
+    {
+      "id": "maki_lounge_chat",
+      "location_id": "lounge",
+      "label": {
+        "zh_CN": null,
+        "en": null
+      },
+      "responses": [
+        {
+          "zh_CN": null,
+          "en": null
+        },
+        {
+          "zh_CN": null,
+          "en": null
+        },
+        {
+          "zh_CN": null,
+          "en": null
+        }
+      ]
+    },
+    {
+      "id": "maki_rooftop_chat",
+      "location_id": "rooftop",
+      "label": {
+        "zh_CN": null,
+        "en": null
+      },
+      "responses": [
+        {
+          "zh_CN": null,
+          "en": null
+        },
+        {
+          "zh_CN": null,
+          "en": null
+        },
+        {
+          "zh_CN": null,
+          "en": null
+        }
+      ]
+    }
+  ],
+  "first_assignment_cg": {
+    "title": {
+      "zh_CN": null,
+      "en": null
+    },
+    "caption": {
+      "zh_CN": null,
+      "en": null
+    }
+  },
+  "lv0": {
+    "title": {
+      "zh_CN": "排班表上的名字",
+      "en": null
+    },
+    "announcement": {
+      "zh_CN": null,
+      "en": null
+    },
+    "completion_hint": {
+      "zh_CN": null,
+      "en": null
+    },
+    "gallery_title": {
+      "zh_CN": null,
+      "en": null
+    },
+    "duration_minutes_proposal": null,
+    "start_scene": "scene_01",
+    "scenes": [
+      {
+        "id": "scene_01",
+        "location_note": "待作者指定",
+        "background_id": null,
+        "time_note": null,
+        "cast": [
+          "player",
+          "doc_maki"
+        ],
+        "start": "maki_001",
+        "nodes": [
+          {
+            "id": "maki_001",
+            "kind": "narration",
+            "speaker_id": "narrator",
+            "text": {
+              "zh_CN": null,
+              "en": null
+            },
+            "portrait_key": "white_coat/neutral",
+            "stage_note": null,
+            "next": null,
+            "choices": []
+          }
+        ]
+      }
+    ],
+    "completion_facts_in_words": [
+      "完成入职后开放院内常驻互动和普通手术助手资格；不授予独立主刀资格。"
+    ],
+    "open_questions": [
+      "正式Lv0 Writing Brief尚未取得；先由用户确认场次和术式。",
+      "具体工作日触发时段、耗时与常驻地点待确认。"
+    ]
+  },
+  "asset_requests": [],
+  "author_notes": [
+    "这是空白填表模板，不是已写剧情。lounge和rooftop为建议地点，需与最终presence一致。",
+    "英文可先保持null，由翻译阶段补齐；未补齐前不能生产完成。"
+  ]
+}

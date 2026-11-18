@@ -644,7 +644,9 @@
           "description": "Existing UI handoff hook for an authored event node.",
           "enum": [
             "launch_sayaka_lv4_h",
-            "launch_shiori_lv3_yuko_surgery"
+            "launch_shiori_lv3_yuko_surgery",
+            "launch_emiko_lv4_h",
+            "launch_artoria_lv4_h"
           ]
         },
         "sunday_clock": {
@@ -785,6 +787,9 @@
         "scene_caption": {
           "type": "string"
         },
+        "scene_tint": {
+          "type": "string"
+        },
         "cast_actor_ids": {
           "type": "array",
           "maxItems": 3,
@@ -820,7 +825,7 @@
               },
               "path": {
                 "type": "string",
-                "pattern": "^assets/characters/.+\\.png$"
+                "pattern": "^assets/(events|characters)/.+\\.png$"
               },
               "x": {
                 "type": "number",
@@ -942,6 +947,15 @@
         },
         "hide_completion_portrait": {
           "type": "boolean"
+        },
+        "completion_background_id": {
+          "type": "string"
+        },
+        "completion_outfit": {
+          "type": "string"
+        },
+        "completion_expression": {
+          "type": "string"
         },
         "hide_calendar_header": {
           "type": "boolean"
@@ -1240,6 +1254,12 @@
             "pattern": "^[a-z][a-z0-9_]*$"
           },
           "uniqueItems": true
+        },
+        "completion_familiarity_bonus": {
+          "description": "Fixed unscaled Familiarity bonus granted once when the event completes for the first time.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
         },
         "location_label": {
           "type": "string",
@@ -1895,6 +1915,10 @@
               "additionalProperties": {
                 "type": "object",
                 "properties": {
+                  "multiplier": {
+                    "type": "number",
+                    "minimum": 0
+                  },
                   "fixed_reward": {
                     "type": "integer",
                     "minimum": 0
@@ -5842,6 +5866,9 @@
             "fullscreen"
           ]
         },
+        "image_fit": {
+          "type": "string"
+        },
         "action_ids": {
           "type": "array",
           "minItems": 1,
@@ -7354,6 +7381,14 @@
         "hide_portrait": {
           "type": "boolean"
         },
+        "seasonal_street": {
+          "description": "Use registered seasonal evening street art for the walking scene.",
+          "type": "boolean"
+        },
+        "seasonal_casual": {
+          "description": "Resolve the actor's off-duty casual outfit by current calendar season (casual vs casual_winter).",
+          "type": "boolean"
+        },
         "allow_dialogue_scroll": {
           "description": "Exceptional opt-in for intentionally scrollable transcripts or system summaries. Ordinary VN dialogue must fit one dialogue page.",
           "type": "boolean"
@@ -7934,7 +7969,7 @@
             "priority": {
               "type": "integer",
               "minimum": 0,
-              "maximum": 1000
+              "maximum": 10000
             },
             "time_start": {
               "type": "integer",
@@ -7952,6 +7987,10 @@
             },
             "sunday_start_allowed": {
               "description": "Explicit opt-in for fixed festivals, mandatory events or major cases that may begin on Sunday. Ongoing multi-day events do not need this flag to span Sunday.",
+              "type": "boolean"
+            },
+            "avoid_sunday_span": {
+              "description": "Defer start when any occupied day of a multi-day event would fall on Sunday so every event day is an open hospital day.",
               "type": "boolean"
             },
             "exact_day_start_only": {

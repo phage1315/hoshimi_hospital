@@ -2,15 +2,17 @@ extends "res://tools/event_batch_entry_qa.gd"
 # Diagnostic facts only; no save files or restorable snapshots are written.
 func run():
  app=load("res://godot/scenes/main.tscn").instantiate();app.saves.path="/tmp/hoshimi_max_skill_unused_"+str(OS.get_process_id())+".json";root.add_child(app);await process_frame
- var g=app.game;var d=g.special_event_definitions.miyama_03_or_god;var current=g.special_event_step_definitions.miyama_03_or_god_main
+ var g=app.game;var current_def=g.special_event_definitions.miyama_03_or_god.duplicate(true);var current=g.special_event_step_definitions.miyama_03_or_god_main
+ var old_def=current_def.duplicate(true);old_def.duration_days=1;old_def.event_chain=["miyama_03_or_god_main"];old_def.unlock_requirements=[]
  var originals=JSON.parse_string(FileAccess.get_file_as_string("res://docs/qa/event_rendering_fixes_2026-10-27/special_event_steps.json.before"))
  var original:Dictionary={}
  for s in originals:
   if s.id=="miyama_03_or_god_main":original=s
- for variant in [original,current]:
-  g.special_event_step_definitions.miyama_03_or_god_main=variant;fixture(g,d,true)
+ for pair in [[old_def,original],[current_def,current]]:
+  var d=pair[0];var variant=pair[1]
+  g.special_event_definitions.miyama_03_or_god=d;g.special_event_step_definitions.miyama_03_or_god_main=variant;fixture(g,d,true)
   var before=g.surgery_xp;g.start_special_event(d.id)
-  for guard in range(100):
+  for guard in range(1000):
    if not g.special_event_in_progress():break
    g.choose_special_event(g.active_special_event.current().choices[0].id)
   g.finish_special_event();app.show_map(false)

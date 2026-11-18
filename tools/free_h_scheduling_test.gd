@@ -136,7 +136,12 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	fixture()
-	expect(Registry.definition("doc_emiko").is_empty(), "Future route was prematurely opened")
+	expect(Registry.definition("doc_asuka").is_empty(), "Future route was prematurely opened")
+	var artoria_bundle := Registry.load_bundle("doc_artoria")
+	var artoria_bundle_en := Registry.load_bundle("doc_artoria", "en")
+	expect(not artoria_bundle.has("error") and not artoria_bundle_en.has("error") and str(artoria_bundle.get("location_id", "")) == "home", "Artoria ready Free H home bundle validation: " + str(artoria_bundle.get("error", artoria_bundle_en.get("error", ""))))
+	var emiko_bundle := Registry.load_bundle("doc_emiko")
+	expect(not emiko_bundle.has("error") and str(emiko_bundle.get("location_id", "")) == "operating_room", "Emiko ready Free H bundle validation: " + str(emiko_bundle.get("error", "")))
 	var bundle := Registry.load_bundle("doc_sayaka")
 	expect(not bundle.has("error"), "Production resource validation: " + str(bundle.get("error", "")))
 	expect(str(bundle.get("location_id", "")) == "hotel", "Single registered location missing")
