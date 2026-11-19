@@ -1,0 +1,993 @@
+[
+  {
+    "id": "surgery_master_aortic_root_ascending_replacement",
+    "name": "保留主动脉瓣的主动脉根部再植入（David 术式）＋升主动脉人工血管置换",
+    "name_en": "Valve-Sparing Aortic Root Reimplantation (David Procedure) and Ascending Aortic Graft Replacement",
+    "duration_minutes": 645,
+    "base_difficulty": 99,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "implemented",
+    "physiology_tuning_status": "INITIAL_FULL_PHYSIOLOGY_REGRESSION_768_RUNS",
+    "patient_notice": "体育教师村上愛没有明显心脏症状，但影像显示主动脉根部扩张至约 5.3 厘米，升主动脉亦扩张。评估后计划实施保瓣根部重建及升主动脉置换。",
+    "patient_notice_en": "PE teacher Ai Murakami has no obvious cardiac symptoms, yet imaging shows a dilated aortic root measuring about 5.3 cm, along with ascending aortic enlargement. The team plans valve-sparing root reconstruction and ascending aortic replacement after evaluation.",
+    "steps": [
+      {
+        "id": "MR01",
+        "name": "手术核对",
+        "name_en": "Surgical Time-out",
+        "kind": "F",
+        "hp_base": 1,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "low",
+        "strategic_effects": {
+          "stability": 0,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "elapsed_time": 15
+        }
+      },
+      {
+        "id": "MR02",
+        "name": "胸骨正中切开",
+        "name_en": "Median Sternotomy",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 3,
+          "elapsed_time": 35
+        }
+      },
+      {
+        "id": "MR03",
+        "name": "心包及主动脉暴露",
+        "name_en": "Pericardial and Aortic Exposure",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "low",
+        "strategic_effects": {
+          "stability": 0,
+          "visibility": 6,
+          "bleeding": 1,
+          "blood_loss": 2,
+          "elapsed_time": 30
+        }
+      },
+      {
+        "id": "MR04",
+        "name": "建立体外循环",
+        "name_en": "Initiate Cardiopulmonary Bypass",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 88,
+        "hp_failed_extra": 12,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "elapsed_time": 40
+        }
+      },
+      {
+        "id": "MR05",
+        "name": "主动脉阻断与心肌保护",
+        "name_en": "Cross-Clamping and Myocardial Protection",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "elapsed_time": 30
+        },
+        "options": [
+          {
+            "id": "MR05_A",
+            "label": "联合心肌保护，分段复核",
+            "label_en": "Combined Protection with Staged Checks",
+            "description": "采用顺行及必要时逆行的联合保护，并分段确认心肌保护效果；耗时较长、循环储备更稳。",
+            "description_en": "Use antegrade and, when indicated, retrograde cardioplegia with staged checks; slower, with a larger physiologic margin.",
+            "hp_cost": 1,
+            "strategic_effects": {
+              "elapsed_time": 15,
+              "stability": 3,
+              "visibility": 0,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          },
+          {
+            "id": "MR05_B",
+            "label": "标准顺行保护，计划复给",
+            "label_en": "Standard Antegrade Protection",
+            "description": "按冠脉解剖采用标准顺行心肌保护和计划性复给；耗时较短，但早期循环储备较紧。",
+            "description_en": "Use anatomy-guided antegrade cardioplegia with scheduled redosing; quicker, with a narrower initial margin.",
+            "hp_cost": 0,
+            "strategic_effects": {
+              "elapsed_time": 0,
+              "stability": -2,
+              "visibility": 0,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "MR06",
+        "name": "主动脉瓣叶检查",
+        "name_en": "Aortic Valve Leaflet Assessment",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": 0,
+          "visibility": 4,
+          "bleeding": 1,
+          "blood_loss": 2,
+          "elapsed_time": 30
+        }
+      },
+      {
+        "id": "MR07",
+        "name": "冠脉钮与根部准备",
+        "name_en": "Coronary Buttons and Root Preparation",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": -3,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "elapsed_time": 45
+        }
+      },
+      {
+        "id": "MR08",
+        "name": "根部测量与人工血管选型",
+        "name_en": "Root Measurement and Graft Sizing",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 91,
+        "hp_failed_extra": 13,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -1,
+          "visibility": 3,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "elapsed_time": 45
+        }
+      },
+      {
+        "id": "MR09",
+        "name": "基底环缝线及近端固定",
+        "name_en": "Basal Sutures and Proximal Graft Fixation",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 93,
+        "hp_failed_extra": 14,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": -2,
+          "bleeding": 1,
+          "blood_loss": 3,
+          "elapsed_time": 45
+        }
+      },
+      {
+        "id": "MR10",
+        "name": "瓣交界重悬与再植入",
+        "name_en": "Commissural Resuspension and Reimplantation",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "hp_failed_extra": 16,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": -3,
+          "bleeding": 1,
+          "blood_loss": 3,
+          "elapsed_time": 50
+        }
+      },
+      {
+        "id": "MR11",
+        "name": "瓣叶对合测试",
+        "name_en": "Leaflet Coaptation Testing",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": 0,
+          "visibility": 2,
+          "bleeding": 0,
+          "blood_loss": 0,
+          "elapsed_time": 40
+        },
+        "options": [
+          {
+            "id": "MR11_A",
+            "label": "补充测量与加压对合复核",
+            "label_en": "Extended Coaptation Assessment",
+            "description": "在标准瓣叶测试外，加测对合高度与加压状态下的对称性；耗时较长、术野判断更清楚。",
+            "description_en": "Add coaptation-height measurements and pressurized symmetry checks to the standard valve test; slower, with a clearer field assessment.",
+            "hp_cost": 1,
+            "strategic_effects": {
+              "elapsed_time": 14,
+              "stability": 0,
+              "visibility": 6,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          },
+          {
+            "id": "MR11_B",
+            "label": "标准瓣叶对合测试",
+            "label_en": "Standard Leaflet Coaptation Test",
+            "description": "完成标准的瓣叶对合及漏隙测试，符合预设条件后继续；省时，但额外校验较少。",
+            "description_en": "Complete standard leaflet coaptation and leak testing, then proceed only if criteria are met; faster, with fewer supplemental checks.",
+            "hp_cost": 0,
+            "strategic_effects": {
+              "elapsed_time": 0,
+              "stability": 0,
+              "visibility": 1,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "MR12",
+        "name": "左冠状动脉再植入",
+        "name_en": "Left Coronary Button Reimplantation",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 97,
+        "hp_failed_extra": 16,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": -4,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "elapsed_time": 45
+        }
+      },
+      {
+        "id": "MR13",
+        "name": "右冠状动脉再植入",
+        "name_en": "Right Coronary Button Reimplantation",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "hp_failed_extra": 15,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": -3,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "elapsed_time": 45
+        }
+      },
+      {
+        "id": "MR14",
+        "name": "远端升主动脉吻合",
+        "name_en": "Distal Ascending Aortic Anastomosis",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 94,
+        "hp_failed_extra": 14,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": -2,
+          "bleeding": 1,
+          "blood_loss": 3,
+          "elapsed_time": 40
+        }
+      },
+      {
+        "id": "MR15",
+        "name": "排气、复灌与超声评估",
+        "name_en": "De-airing, Reperfusion, and TEE",
+        "kind": "S",
+        "hp_base": 3,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -4,
+          "visibility": 2,
+          "bleeding": -2,
+          "blood_loss": 1,
+          "elapsed_time": 35
+        },
+        "options": [
+          {
+            "id": "MR15_A",
+            "label": "分级复灌与多切面超声复核",
+            "label_en": "Staged Reperfusion and Multiview TEE",
+            "description": "完整排气后分级恢复灌注，同时多切面评估瓣膜及心室；更慢但血流动力学缓冲较大。",
+            "description_en": "After full de-airing, reperfuse in stages with multiview valve and ventricular TEE; slower, with more hemodynamic reserve.",
+            "hp_cost": 1,
+            "strategic_effects": {
+              "elapsed_time": 15,
+              "stability": 6,
+              "visibility": 0,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          },
+          {
+            "id": "MR15_B",
+            "label": "标准复灌并同步超声评估",
+            "label_en": "Standard Reperfusion with TEE",
+            "description": "同样完成排气，按常规节奏复灌并同步完成必要超声；耗时短，但短时循环压力较高。",
+            "description_en": "Fully de-air, restore flow at the standard pace, and perform the required TEE assessment; faster, with more short-term physiologic strain.",
+            "hp_cost": 0,
+            "strategic_effects": {
+              "elapsed_time": 0,
+              "stability": -3,
+              "visibility": 0,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "MR16",
+        "name": "脱离体外循环",
+        "name_en": "Weaning from Cardiopulmonary Bypass",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 97,
+        "hp_failed_extra": 16,
+        "specialty_tag": "cardiac",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": 0,
+          "bleeding": -1,
+          "blood_loss": 0,
+          "elapsed_time": 45
+        }
+      },
+      {
+        "id": "MR17",
+        "name": "止血与关胸",
+        "name_en": "Hemostasis and Sternal Closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "cardiac",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": 2,
+          "visibility": 4,
+          "bleeding": -3,
+          "blood_loss": 1,
+          "elapsed_time": 30
+        }
+      }
+    ],
+    "crisis_checkpoints": [
+      5,
+      13,
+      16
+    ],
+    "crisis_chances": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "dialogue_after_rescue": true
+  },
+  {
+    "id": "surgery_master_whipple_vascular_reconstruction",
+    "name": "复杂胰十二指肠切除联合门肠静脉重建",
+    "name_en": "Complex Pancreaticoduodenectomy with PV/SMV Reconstruction",
+    "full_name": "复杂胰十二指肠切除术（Whipple）联合门静脉／肠系膜上静脉节段切除与移植物间置重建",
+    "full_name_en": "Complex Pancreaticoduodenectomy (Whipple Procedure) with Segmental Portal–Superior Mesenteric Vein Resection and Interposition Graft Reconstruction",
+    "duration_minutes": 729,
+    "base_difficulty": 99,
+    "training_ceiling": 100,
+    "reward_tier": "advanced",
+    "status": "implemented",
+    "physiology_tuning_status": "V1_1_CONCEPT_LOCK_60K_MC_AND_GODOT_PARITY",
+    "patient_notice": "胰头约 6 cm 肿瘤，拟行整块切除，并以间置静脉移植物重建受累 PV/SMV 节段。",
+    "patient_notice_en": "Approximately 6 cm pancreatic-head tumor requiring planned en bloc resection and interposition venous-graft reconstruction of the involved PV/SMV segment.",
+    "steps": [
+      {
+        "id": "WH01",
+        "name": "手术核对与开腹",
+        "name_en": "Time-out and Open Abdominal Entry",
+        "kind": "F",
+        "hp_base": 1,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "hepatopancreatobiliary",
+        "physio_stress": "low",
+        "strategic_effects": {
+          "stability": 0,
+          "visibility": -4,
+          "bleeding": 1,
+          "blood_loss": 2,
+          "elapsed_time": 20
+        }
+      },
+      {
+        "id": "WH02",
+        "name": "探查与扩展 Kocher 游离",
+        "name_en": "Exploration and Extended Kocher Mobilization",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "hepatopancreatobiliary",
+        "physio_stress": "low",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 3,
+          "elapsed_time": 35
+        }
+      },
+      {
+        "id": "WH03",
+        "name": "肝十二指肠韧带与胆道暴露",
+        "name_en": "Hepatoduodenal Ligament and Biliary Exposure",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "hepatopancreatobiliary",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": -8,
+          "bleeding": 2,
+          "blood_loss": 4,
+          "elapsed_time": 38
+        }
+      },
+      {
+        "id": "WH04",
+        "name": "网膜囊与门肠静脉暴露",
+        "name_en": "Lesser Sac and Portomesenteric Venous Exposure",
+        "kind": "L",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "vascular",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -3,
+          "visibility": -9,
+          "bleeding": 2,
+          "blood_loss": 5,
+          "elapsed_time": 38
+        }
+      },
+      {
+        "id": "WH05",
+        "name": "切除界面与血管预控策略",
+        "name_en": "Resection Plane and Vascular Readiness Strategy",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "vascular",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": 0,
+          "bleeding": 0,
+          "blood_loss": 1,
+          "elapsed_time": 30
+        },
+        "options": [
+          {
+            "id": "WH05_A",
+            "label": "分段扩展暴露与血管预控",
+            "label_en": "Staged Exposure and Vascular Control",
+            "description": "在完成标准术前影像核对后，沿待切除静脉段两端继续分段暴露，逐段验证预控位置，减少最深处分离时的盲区。",
+            "description_en": "After standard imaging review, extend exposure in stages along both ends of the planned venous resection and confirm control sites to reduce blind dissection.",
+            "hp_cost": 1,
+            "strategic_effects": {
+              "elapsed_time": 12,
+              "stability": 0,
+              "visibility": 10,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          },
+          {
+            "id": "WH05_B",
+            "label": "标准暴露与关键点确认",
+            "label_en": "Standard Exposure and Key Checks",
+            "description": "完成充分标准暴露，按术前标记确认上下游血管控制点，避免无必要的额外分离。",
+            "description_en": "Complete standard exposure and confirm proximal and distal control sites against the preoperative map without unnecessary additional dissection.",
+            "hp_cost": 0,
+            "strategic_effects": {
+              "elapsed_time": 0,
+              "stability": 0,
+              "visibility": 1,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH06",
+        "name": "PV/SMV 精细游离及血管预控",
+        "name_en": "Precise PV/SMV Dissection and Vascular Control",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 92,
+        "hp_failed_extra": 14,
+        "specialty_tag": "vascular",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -5,
+          "visibility": -6,
+          "bleeding": 3,
+          "blood_loss": 7,
+          "elapsed_time": 50
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 75
+            },
+            "strategic_effects": {
+              "stability": -4,
+              "bleeding": 1,
+              "blood_loss": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH07",
+        "name": "胆道与胃肠断端准备",
+        "name_en": "Biliary and Gastrointestinal Division Preparation",
+        "kind": "F",
+        "hp_base": 1,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "hepatopancreatobiliary",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": 2,
+          "bleeding": -1,
+          "blood_loss": 3,
+          "elapsed_time": 37
+        }
+      },
+      {
+        "id": "WH08",
+        "name": "胰颈离断与钩突精细解剖",
+        "name_en": "Pancreatic Neck Division and Uncinate Dissection",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 95,
+        "hp_failed_extra": 15,
+        "specialty_tag": "microdissection",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -7,
+          "visibility": -6,
+          "bleeding": 3,
+          "blood_loss": 9,
+          "elapsed_time": 55
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 74
+            },
+            "strategic_effects": {
+              "stability": -5,
+              "bleeding": 1,
+              "blood_loss": 5
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH09",
+        "name": "肿瘤及受累静脉段整块切除",
+        "name_en": "En Bloc Tumor and Venous Segment Resection",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 97,
+        "hp_failed_extra": 17,
+        "specialty_tag": "vascular",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -8,
+          "visibility": -5,
+          "bleeding": 3,
+          "blood_loss": 10,
+          "elapsed_time": 60
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 68
+            },
+            "strategic_effects": {
+              "stability": -4,
+              "blood_loss": 5
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH10",
+        "name": "间置移植物测量与路径策略",
+        "name_en": "Interposition Graft Sizing and Route Strategy",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "vascular",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": 2,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "elapsed_time": 32
+        },
+        "options": [
+          {
+            "id": "WH10_A",
+            "label": "加强移植物试置及无张力复核",
+            "label_en": "Extended Graft Fit and Tension Assessment",
+            "description": "两端间距测量后，再次模拟移植物走行、吻合角度和张力，增加操作时间以换取更明确的视野。",
+            "description_en": "Reassess the graft route, alignment, and freedom from tension after measuring the defect, using more operative time for a clearer working field.",
+            "hp_cost": 1,
+            "strategic_effects": {
+              "elapsed_time": 14,
+              "stability": 0,
+              "visibility": 8,
+              "bleeding": -2,
+              "blood_loss": 0
+            }
+          },
+          {
+            "id": "WH10_B",
+            "label": "标准测量与方向标记",
+            "label_en": "Standard Graft Sizing and Orientation",
+            "description": "以已测量的缺损长度、走行和标记为依据，完成常规尺寸及方向确认，迅速进入吻合。",
+            "description_en": "Confirm standard graft length, course, and orientation from the measured defect and proceed directly to anastomosis.",
+            "hp_cost": 0,
+            "strategic_effects": {
+              "elapsed_time": 0,
+              "stability": 0,
+              "visibility": 1,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH11",
+        "name": "SMV—移植物尾端吻合",
+        "name_en": "SMV-to-Graft Caudal Anastomosis",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 97,
+        "hp_failed_extra": 17,
+        "specialty_tag": "vascular",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -7,
+          "visibility": -4,
+          "bleeding": 2,
+          "blood_loss": 8,
+          "elapsed_time": 43
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 73
+            },
+            "strategic_effects": {
+              "stability": -4,
+              "bleeding": 1,
+              "blood_loss": 5
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH12",
+        "name": "移植物—PV 头端吻合与复灌",
+        "name_en": "Graft-to-PV Cranial Anastomosis and Reperfusion",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 98,
+        "hp_failed_extra": 18,
+        "specialty_tag": "vascular",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -8,
+          "visibility": -4,
+          "bleeding": 3,
+          "blood_loss": 10,
+          "elapsed_time": 45
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 19
+            },
+            "strategic_effects": {
+              "stability": -5,
+              "blood_loss": 6
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH13",
+        "name": "消化道重建交接与断端保护",
+        "name_en": "Reconstruction Handoff and Stump Protection",
+        "kind": "F",
+        "hp_base": 1,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "reconstruction",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": 2,
+          "visibility": 5,
+          "bleeding": -3,
+          "blood_loss": 2,
+          "elapsed_time": 25
+        }
+      },
+      {
+        "id": "WH14",
+        "name": "胰肠吻合",
+        "name_en": "Pancreaticojejunostomy",
+        "kind": "P",
+        "hp_base": 5,
+        "difficulty": 96,
+        "hp_failed_extra": 16,
+        "specialty_tag": "reconstruction",
+        "physio_stress": "high",
+        "strategic_effects": {
+          "stability": -6,
+          "visibility": -5,
+          "bleeding": 2,
+          "blood_loss": 6,
+          "elapsed_time": 55
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "visibility",
+              "op": "lt",
+              "value": 61
+            },
+            "strategic_effects": {
+              "stability": -4,
+              "bleeding": 1,
+              "blood_loss": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH15",
+        "name": "胆肠吻合",
+        "name_en": "Hepaticojejunostomy",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 93,
+        "hp_failed_extra": 14,
+        "specialty_tag": "reconstruction",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -5,
+          "visibility": -3,
+          "bleeding": 1,
+          "blood_loss": 5,
+          "elapsed_time": 50
+        }
+      },
+      {
+        "id": "WH16",
+        "name": "胃肠吻合",
+        "name_en": "Gastrojejunostomy",
+        "kind": "P",
+        "hp_base": 4,
+        "difficulty": 91,
+        "hp_failed_extra": 12,
+        "specialty_tag": "reconstruction",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -5,
+          "visibility": -3,
+          "bleeding": 1,
+          "blood_loss": 4,
+          "elapsed_time": 48
+        }
+      },
+      {
+        "id": "WH17",
+        "name": "移植物血流与三吻合口最终核对",
+        "name_en": "Graft Flow and Multi-Anastomosis Final Assessment",
+        "kind": "S",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "reconstruction",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": -2,
+          "visibility": 4,
+          "bleeding": -2,
+          "blood_loss": 2,
+          "elapsed_time": 37
+        },
+        "options": [
+          {
+            "id": "WH17_A",
+            "label": "扩展血流及三吻合口复核",
+            "label_en": "Extended Flow and Anastomosis Review",
+            "description": "标准核对完成后，额外复查移植物血流与三处消化道吻合口的局部情况，增加时间和团队操作负担。",
+            "description_en": "After standard checks, extend the review of graft flow and all three digestive anastomoses at the cost of additional time and team effort.",
+            "hp_cost": 1,
+            "strategic_effects": {
+              "elapsed_time": 15,
+              "stability": 5,
+              "visibility": 0,
+              "bleeding": -2,
+              "blood_loss": 0
+            }
+          },
+          {
+            "id": "WH17_B",
+            "label": "标准血流及吻合复核",
+            "label_en": "Standard Flow and Anastomosis Review",
+            "description": "完成常规移植物通畅性与三处吻合口核对，未见异常即进入关闭准备。",
+            "description_en": "Complete the required checks of graft patency and all three anastomoses, then prepare for closure if no concern remains.",
+            "hp_cost": 0,
+            "strategic_effects": {
+              "elapsed_time": 0,
+              "stability": 1,
+              "visibility": 0,
+              "bleeding": 0,
+              "blood_loss": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "WH18",
+        "name": "清点、引流与腹壁关闭",
+        "name_en": "Counts, Drain Placement, and Abdominal Closure",
+        "kind": "F",
+        "hp_base": 2,
+        "difficulty": 0,
+        "hp_failed_extra": 0,
+        "specialty_tag": "hepatopancreatobiliary",
+        "physio_stress": "medium",
+        "strategic_effects": {
+          "stability": 1,
+          "visibility": 4,
+          "bleeding": -3,
+          "blood_loss": 1,
+          "elapsed_time": 31
+        },
+        "conditional_effects": [
+          {
+            "when": {
+              "field": "bleeding",
+              "op": "gte",
+              "value": 16
+            },
+            "strategic_effects": {
+              "stability": -4,
+              "blood_loss": 4
+            }
+          }
+        ]
+      }
+    ],
+    "crisis_checkpoints": [
+      8,
+      12,
+      17
+    ],
+    "crisis_chances": [
+      0.18,
+      0.24,
+      0.2
+    ],
+    "failure_condition": {
+      "metric": "stability",
+      "operator": "<=",
+      "value": 0
+    },
+    "success_condition": {
+      "metric": "progress",
+      "operator": ">=",
+      "value": 100
+    },
+    "dialogue_after_rescue": true
+  }
+]

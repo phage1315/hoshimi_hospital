@@ -12,6 +12,7 @@ var avatar_slots: Dictionary = {}
 var assessment: Label
 var coverage: Label
 var confirm: Button
+var forced := ""
 var specialties: Dictionary
 
 func _init(owner: Control) -> void:
@@ -41,6 +42,8 @@ func panel(parent: Control, name: String, rect: Rect2) -> Panel:
 func draw() -> void:
 	definition = Model.procedure(str(view.record.procedure_id))
 	dates = view.controller.schedule()
+	forced = view.controller.forced_assistant(view.record) if view.controller.has_method("forced_assistant") else ""
+	if not forced.is_empty(): view.selected["first_assistant"] = forced
 	specialties = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/specialties.json"))
 	root = Control.new()
 	root.name = "AdvancedTeamPanel"
@@ -69,6 +72,7 @@ func draw() -> void:
 		var role_skill_id: String = "calmness" if role == "anesthesia" else view.controller.game.role_training_skill(role)
 		for person in view.controller.candidates(role, int(dates.get("operation_day", view.controller.day()+1))):
 			var person_id := str(person.id)
+			if role == "first_assistant" and not forced.is_empty() and person_id != forced: continue
 			var person_skill: int = view.controller.game.staff_skill_value(person_id, role_skill_id) if not role_skill_id.is_empty() else 0
 			var item_caption: String = "%s · %d" % [view.actor_name(person_id), person_skill]
 			if role in ["first_assistant", "second_assistant"]:
@@ -89,6 +93,7 @@ func draw() -> void:
 				picker.set_item_icon(item_idx, small_tex)
 			if view.selected.get(role, "")==person_id: picker.select(item_idx)
 		picker.icon = null
+		if role == "first_assistant" and not forced.is_empty(): picker.disabled = true
 		picker.item_selected.connect(func(i): view.selected[role]=picker.get_item_metadata(i); refresh())
 		card.add_child(picker)
 		pickers[role]=picker
@@ -112,6 +117,7 @@ func draw() -> void:
 	for step in definition.steps:
 		if step.kind=="P" and view.tr_key(step.specialty_tag) not in tags: tags.append(view.tr_key(step.specialty_tag))
 	var tag_label := text(patient_panel," · ".join(tags),Rect2(14,139,326,42),12)
+	tag_label.clip_text = false
 	tag_label.tooltip_text=" · ".join(tags)
 	var art := TextureRect.new()
 	art.name="TeamPatientPortrait"
@@ -136,7 +142,8 @@ func draw() -> void:
 	view.host.style_action_button(back, 14)
 	back.pressed.connect(func(): view.record = {};view.editing_booking=false;view.render())
 	footer.add_child(back)
-	var warning := text(footer,view.tr_key("staff_warning" if view.record.has("staff_patient_id") else "team_replay_warning" if view.record.replay else "team_first_warning"),Rect2(236,8,630,58),16)
+	var proc_id_str := str(view.record.procedure_id)
+	var warning := text(footer,view.tr_key("staff_warning") if view.record.has("staff_patient_id") else view.tr_key("team_replay_warning") if view.record.replay else view.legendary_tr(proc_id_str, "legendary_confirm") if not forced.is_empty() else view.tr_key("team_first_warning"),Rect2(236,8,630,58),14 if not forced.is_empty() else 16)
 	warning.add_theme_color_override("font_color",Color("ffd09b"))
 	confirm=Button.new()
 	confirm.name="accept";confirm.position=Vector2(880,15);confirm.size=Vector2(290,44)
@@ -148,7 +155,7 @@ func draw() -> void:
 	refresh()
 
 func assistant(id: String) -> Dictionary:
-	return {"id":id,"skill":view.controller.game.staff_skill_value(id,"surgery"),"specialties":specialties.get(id,{}).get("tags",[]),"universal_expert":specialties.get(id,{}).get("universal_expert",false)}
+	return {"id":id,"skill":view.controller.game.staff_skill_value(id,"surgery"),"specialties":specialties.get(id,{}).get("tags",[]),"universal_expert":specialties.get(id,{}).get("universal_expert",false),"specialist_second_use":specialties.get(id,{}).get("specialist_second_use",false)}
 
 func refresh() -> void:
 	var nodes: Array=definition.steps.filter(func(step):return step.kind=="P")
@@ -160,6 +167,7 @@ func refresh() -> void:
 			picker.set_item_disabled(i,occupied)
 		var id: String=str(view.selected.get(role,""))
 		picker.icon = null
+		if role == "first_assistant" and not forced.is_empty(): picker.disabled = true
 		if avatar_slots.has(role) and is_instance_valid(avatar_slots[role]):
 			var old_slot: Panel = avatar_slots[role]
 			var card_parent: Control = old_slot.get_parent() as Control
@@ -184,9 +192,12 @@ func refresh() -> void:
 			label.set_meta("max_uses",uses)
 		label.set_meta("skill",skill_value)
 	var valid: bool=not dates.is_empty() and view.controller.valid_team(view.selected,int(dates.operation_day))
+	if valid and view.controller.has_method("valid_case_team"): valid = view.controller.valid_case_team(view.record, view.selected, int(dates.operation_day))
 	confirm.disabled=not valid
 	if not valid:
-		assessment.text=view.tr_key("team_calendar_blocked" if dates.is_empty() else "team_incomplete")
+		var mentor_missing: bool = not forced.is_empty() and not dates.is_empty() and not view.controller.candidates("first_assistant",int(dates.operation_day)).any(func(person): return person.id==forced)
+		assessment.text=view.legendary_tr(str(view.record.procedure_id), "legendary_mentor_locked") if mentor_missing else view.tr_key("team_calendar_blocked" if dates.is_empty() else "team_incomplete")
+		if mentor_missing: assessment.add_theme_font_size_override("font_size",18)
 		assessment.add_theme_font_size_override("font_size",23)
 		coverage.text=view.tr_key("team_calendar_hint" if dates.is_empty() else "team_pick_hint")
 		coverage.tooltip_text=""
@@ -205,7 +216,7 @@ func refresh() -> void:
 	for step in nodes:
 		var names: Array[String]=[]
 		for a in team.assistants:
-			if a.universal_expert or step.specialty_tag in a.specialties: names.append(view.actor_name(a.id))
+			if a.universal_expert or Model.specializes(a,step): names.append(view.actor_name(a.id))
 		if not names.is_empty(): covered+=1
 		details.append(view.title_of(step)+": "+(view.tr_key("none") if names.is_empty() else ", ".join(names)))
 	coverage.text=view.tr_key("team_coverage")%[covered,nodes.size()]

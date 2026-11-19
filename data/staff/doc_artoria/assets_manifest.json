@@ -307,6 +307,366 @@
       "runtime_connected": true,
       "trigger": "artoria_lv4_just_artoria",
       "notes": "612x646 transparent RGBA H expression portrait (peak / excitement=100)."
+    },
+    {
+      "id": "portrait_story_guest_aoi_tohsaka_ward_neutral",
+      "category": "guest_patient_portrait",
+      "path": "assets/characters/artoria_lv5_v1/aoi_tohsaka/ward/neutral.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Aoi Tohsaka ward gown neutral RGBA portrait (derived from Codex aoi_patient_seed_v1/ward_seed.png; story guest only)"
+    },
+    {
+      "id": "portrait_story_guest_aoi_tohsaka_ward_smile",
+      "category": "guest_patient_portrait",
+      "path": "assets/characters/artoria_lv5_v1/aoi_tohsaka/ward/smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Aoi Tohsaka ward gown gentle smile RGBA portrait (derived from Codex aoi_patient_seed_v1/ward_seed.png; story guest only)"
+    },
+    {
+      "id": "portrait_story_guest_aoi_tohsaka_or_cap_calm",
+      "category": "guest_patient_portrait",
+      "path": "assets/characters/artoria_lv5_v1/aoi_tohsaka/or_cap/calm.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Aoi Tohsaka intraoperative OR cap calm RGBA bust (derived from Codex aoi_patient_seed_v1/intraoperative_seed.png; story guest only)"
+    },
+    {
+      "id": "portrait_story_guest_aoi_tohsaka_or_cap_smile",
+      "category": "guest_patient_portrait",
+      "path": "assets/characters/artoria_lv5_v1/aoi_tohsaka/or_cap/smile.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Aoi Tohsaka intraoperative OR cap relieved smile RGBA bust (derived from Codex aoi_patient_seed_v1/intraoperative_seed.png; story guest only)"
+    },
+    {
+      "id": "bg_artoria_lv5_or_corridor_evening",
+      "category": "event_background",
+      "path": "assets/backgrounds/artoria_lv5_v1/or_corridor_evening.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Evening 4F surgical corridor with wide double-paned glass observation window into lit OR prep room (Act 6)"
+    },
+    {
+      "id": "cg_doc_artoria_lv5_observation_window_epilogue",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv5_cg_v1/observation_window_epilogue.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Codex SFW illustration; mapped in cg_mapping.json; 180b654dbb8e6a343ada554ae6dbdfe33c773c57c2c6389da5945a54efce4e8f"
+    },
+    {
+      "id": "cg_doc_artoria_lv5_hepp_couinaud_anastomosis",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv5_cg_v1/hepp_couinaud_anastomosis.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Codex SFW illustration; mapped in cg_mapping.json; 7a2f1aa2d1fed532b83b267adef82f37cb6728c9549af0eecd09efd468fac00b"
+    },
+    {
+      "id": "cg_doc_artoria_lv5_ange_mentorship_folder",
+      "category": "event_cg",
+      "path": "assets/events/artoria_lv5_cg_v1/ange_mentorship_folder.png",
+      "status": "integrated",
+      "runtime_connected": true,
+      "trigger": "artoria_lv5_my_position",
+      "notes": "Codex SFW illustration; mapped in cg_mapping.json; c8a921d2c2f89d195a796ea7ee83ea062bfead3a11a336c659268857bb1fc8e3"
+    },
+    {
+      "id": "patient_doc_artoria_ward_neutral",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward/neutral.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_intraoperative_tense",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/tense.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_awake",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/awake.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_splash_general_anesthesia",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/splash/general_anesthesia.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_advanced_abdominal",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/abdominal.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_advanced_chest",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/chest.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_advanced_lateral",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/lateral.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_advanced_prone",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/prone.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_ward_smile",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward/smile.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_ward_brave",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward/brave.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_ward_worried",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward/worried.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_ward_afraid",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward/afraid.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_ward_crying",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward/crying.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_intraoperative_pain",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/pain.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_intraoperative_near_collapse",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/near_collapse.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_intraoperative_anesthetized",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/anesthetized.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_lithotomy_awake",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/awake.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_tense",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/tense.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_afraid",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/afraid.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_anesthetized",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/anesthetized.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_lithotomy_tense",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/tense.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_lithotomy_afraid",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/afraid.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_operating_table_lithotomy_anesthetized",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/anesthetized.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": null,
+      "notes": "Mapped to patient portrait/advanced asset slots; patient admission remains locked pending authored bilingual patient profile."
+    },
+    {
+      "id": "patient_doc_artoria_skin_disinfection_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/skin_disinfection.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "skin_disinfection",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_sterile_draping_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/sterile_draping.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "ack_disinfection",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_scalpel_ready_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/scalpel_ready.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "request_scalpel",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver before incision."
+    },
+    {
+      "id": "patient_doc_artoria_surgical_cap_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/surgical_cap.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "ward_surgical_cap",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_stretcher_transfer_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/stretcher_transfer.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "complete_manual_ward_preparation",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_urinary_catheterization_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/urinary_catheterization.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "urinary_catheterization",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_skin_prep_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/skin_prep.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "ward_skin_prep|ward_skin_prep_unnecessary",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_enema_cg",
+      "category": "staff_patient_procedure_cg",
+      "path": "assets/events/ward_preparation_v1/doc_artoria/enema.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "ward_enema|ward_enema_unnecessary",
+      "notes": "User-supplied CG integrated verbatim through the shared ward-preparation fullscreen resolver."
+    },
+    {
+      "id": "patient_doc_artoria_ward_preparation_shy",
+      "category": "staff_patient_art",
+      "path": "assets/characters/artoria_staff_patient_v1/doc_artoria/ward_preparation/shy.png",
+      "status": "mapped",
+      "runtime_connected": true,
+      "trigger": "manual_ward_preparation",
+      "notes": "User-supplied nude standing portrait locally transparentized offline via BiRefNet (1024x1536 RGBA, sha256 fb9b8011b2ba21f3e5d8870b04adc3c362233e21dcbac9d1094bb2d926624b64); aliased to examination/shy for manual ward preparation."
     }
   ]
 }

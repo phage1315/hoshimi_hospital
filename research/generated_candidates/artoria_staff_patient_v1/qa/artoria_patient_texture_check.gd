@@ -1,0 +1,11 @@
+extends SceneTree
+func _initialize():
+	var paths = ["res://assets/characters/artoria_staff_patient_v1/doc_artoria/ward/neutral.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/tense.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/awake.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/splash/general_anesthesia.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/abdominal.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/chest.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/lateral.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/advanced/prone.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/ward/smile.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/ward/brave.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/ward/worried.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/ward/afraid.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/ward/crying.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/pain.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/near_collapse.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/intraoperative/anesthetized.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/awake.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/tense.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/afraid.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table/anesthetized.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/tense.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/afraid.png", "res://assets/characters/artoria_staff_patient_v1/doc_artoria/operating_table_lithotomy/anesthetized.png"]
+	for path in paths:
+		var tex = load(path) as Texture2D
+		if tex == null or tex.get_width() <= 0:
+			push_error(path)
+			quit(1)
+			return
+	print("ARTORIA_PATIENT_TEXTURES_OK: ", paths.size())
+	quit(0)

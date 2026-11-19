@@ -42,8 +42,7 @@ func chapter_ui() -> void:
 		var row: Dictionary = c.story_content[phase].lines[index]
 		var card = app.page.get_node("AdvancedCast")
 		var label = card.find_child("AdvancedStaffDialogue",true,false)
-		var text: String = row.text_en if view().english else row.text
-		text = text.replace("〈本次术式〉",view().title_of(Model.procedure(c.story_record.procedure_id)))
+		var text: String = Present.format_story(str(row.text_en if view().english else row.text), view().title_of(Model.procedure(c.story_record.procedure_id)))
 		expect(label.text == text and label.size.y > 20,"Actual localized VN text visible")
 		expect(card.get_meta("actor_id") == (c.actor_id if row.speaker == "patient" else "PLAYER"),"Speaker and actor match")
 		var art: TextureRect = card.get_node("AdvancedActorPortrait")

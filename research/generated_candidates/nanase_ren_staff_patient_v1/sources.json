@@ -1,0 +1,37 @@
+{
+  "character_id": "nurse_haru",
+  "generation_service_scope": "SFW references only",
+  "identity_references": [
+    "assets/characters/nurse_haru_refresh_v1/uniform/neutral.png",
+    "assets/characters/nurse_haru_refresh_v1/casual/neutral.png",
+    "research/generated_candidates/nanase_ren_staff_patient_v1/ward/neutral.png"
+  ],
+  "layout_references_used_by_successful_outputs": {
+    "intraoperative/tense": [
+      "assets/characters/relationship_patient_v1/doc_serika/intraoperative/tense.png",
+      "research/generated_candidates/nanase_ren_staff_patient_v1/previous_v1/intraoperative/tense.png"
+    ],
+    "operating_table/awake": [
+      "assets/characters/relationship_patient_v1/doc_serika/operating_table/awake.png",
+      "assets/characters/relationship_patient_v2/nurse_yui/operating_table/awake.png"
+    ],
+    "operating_table_lithotomy/awake": "research/generated_candidates/nanase_ren_staff_patient_v1/previous_v2/operating_table_lithotomy/awake.png",
+    "splash/general_anesthesia": "assets/characters/relationship_patient_v1/nurse_yui/splash/general_anesthesia.png",
+    "advanced/abdominal": [
+      "assets/characters/advanced_staff_patient_v1/doc_serika/abdominal.png",
+      "assets/characters/advanced_staff_patient_v1/nurse_yui/abdominal.png"
+    ],
+    "advanced/chest": "research/generated_candidates/nanase_ren_staff_patient_v1/author_supplied/advanced_chest.png",
+    "advanced/lateral": [
+      "assets/characters/advanced_staff_patient_v1/doc_serika/lateral.png",
+      "assets/characters/advanced_staff_patient_v1/nurse_yui/lateral.png"
+    ],
+    "advanced/prone": "research/generated_candidates/nanase_ren_staff_patient_v1/advanced/abdominal.png"
+  },
+  "notes": [
+    "Only SFW identity and layout references were sent to the image generation service.",
+    "Generated files remain research candidates pending user approval; advanced/chest is the user's supplied replacement and was not sent to the generation service.",
+    "The intraoperative portrait was precisely edited from its archived SFW first version to remove the sterile drape from the frame while preserving the approved face, cap, expression and background.",
+    "Two earlier fully draped lithotomy prompts and one fully draped prone prompt were rejected at input moderation; final successful versions used reduced SFW reference sets without changing the requested clinical goal."
+  ]
+}

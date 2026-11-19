@@ -22,6 +22,7 @@ func click(id):
  var b = view().body.find_child(id, true, false)
  check(b != null and not b.disabled,"UI button "+id)
  if b != null and not b.disabled:b.pressed.emit()
+ view().finish_day_transition()
  while not app.advanced_controller.story_phase.is_empty():
   app.advanced_controller.advance_story();view().render()
 func capture(name):
@@ -32,7 +33,7 @@ func run():
  native = "--native" in OS.get_cmdline_user_args()
  var def = M.procedure("surgery_open_whipple")
  var values = M.fixtures(def.id)[0]
- var adapter = D.new(def.id,0)
+ var adapter = D.new(def.id,0,false)
  check(D.valid(adapter.data,def),"Author sample accepted")
  var invalid = adapter.data.duplicate(true)
  invalid.stages.W03.stage_entry[0].hp_delta = 5
@@ -42,16 +43,16 @@ func run():
  invalid=adapter.data.duplicate(true);invalid.stages.W01=invalid.stages.W03;invalid.stages.erase("W03")
  check(not D.valid(invalid,def),"No precision failure on fixed stage")
  for ordinal in range(3):
-  var a = D.new(def.id,ordinal)
+  var a = D.new(def.id,ordinal,false)
   for idx in [2,4,7]:
    for trigger in ["stage_entry","precision_failed"]:
     var line = a.select(def.steps[idx].id,idx,trigger)
     check(line==a.select(def.steps[idx].id,idx,trigger),"Stable selection")
-    check(line.id!=D.new(def.id,ordinal+1).select(def.steps[idx].id,idx,trigger).id,"Next completed case rotates")
+    check(line.id!=D.new(def.id,ordinal+1,false).select(def.steps[idx].id,idx,trigger).id,"Next completed case rotates")
  for seed_value in range(80):
   var a=S.new(def,values,seed_value,[],{},true)
   var b=S.new(def,values,seed_value,[],{},true)
-  a.operative_dialogue=D.new(def.id,seed_value%3)
+  a.operative_dialogue=D.new(def.id,seed_value%3,false)
   for guard in range(100):
    if a.finished:break
    for redraw in range(3):a.operative_dialogue.current(a)
@@ -76,6 +77,10 @@ func run():
    click("accept");click("jump");click("start")
    var c=app.advanced_controller
    var s=c.session
+   s.operative_dialogue=D.new(def.id,0,false) # This legacy regression explicitly exercises V1.
+   view().finish_day_transition()
+   view().render()
+   await process_frame
    app.page.get_node("GeneralAnesthesiaSplash").find_child("AnesthesiaSplashContinue",true,false).pressed.emit()
    click("begin_timeout")
    for i in range(7):click("confirm_member")

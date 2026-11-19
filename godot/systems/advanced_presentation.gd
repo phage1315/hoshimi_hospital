@@ -20,7 +20,7 @@ static func random_patient_ids(game: RefCounted = null) -> Array:
 const DEFAULT_TEAM := {"first_assistant":"doc_emiko", "second_assistant":"doc_artoria", "primary_scrub":"nurse_haru", "secondary_scrub":"nurse_yui", "primary_circulating":"nurse_rin", "secondary_circulating":"nurse_ange", "anesthesia":"doc_sakura_anesthesiology"}
 const ROLES := ["first_assistant", "second_assistant", "primary_scrub", "secondary_scrub", "primary_circulating", "secondary_circulating", "anesthesia"]
 const BASIC_ROLES := {"first_assistant":"assistant_surgeon", "second_assistant":"assistant_surgeon", "primary_scrub":"scrub_nurse", "secondary_scrub":"scrub_nurse", "primary_circulating":"circulating_nurse", "secondary_circulating":"circulating_nurse"}
-const GROUPS := {"surgery_open_whipple":"general_abdominal", "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction":"female_pelvic", "surgery_adv_sleeve_lobectomy":"thoracic", "surgery_adv_complex_abdominal_reconstruction":"general_abdominal", "surgery_adv_open_descending_thoracic_aortic_replacement":"thoracic"}
+const GROUPS := {"surgery_master_aortic_root_ascending_replacement":"thoracic", "surgery_master_whipple_vascular_reconstruction":"general_abdominal", "surgery_open_whipple":"general_abdominal", "surgery_adv_pelvic_sidewall_tumor_vascular_reconstruction":"female_pelvic", "surgery_adv_sleeve_lobectomy":"thoracic", "surgery_adv_complex_abdominal_reconstruction":"general_abdominal", "surgery_adv_open_descending_thoracic_aortic_replacement":"thoracic"}
 var definition: Dictionary = {} # Proxy for the existing anesthesia splash renderer.
 static var staff_confirmations: Dictionary = {}
 

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "actor_id": "doc_artoria",
+  "imported_on": "2026-11-17",
+  "policy": "User-supplied PNGs archived and copied byte-for-byte; no crop, repaint, censorship, matting, or external upload.",
+  "assets": [
+    {
+      "label": "消毒",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-9426b6bd-e250-4b9d-a700-8efe4ad17430.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/skin_disinfection.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/skin_disinfection.png",
+      "pool_id": "skin_disinfection_doc_artoria",
+      "action_ids": ["skin_disinfection"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "a10d9333f978c0200aa907ff52159714447a2c34df1eee70c057669ec070142c"
+    },
+    {
+      "label": "铺巾",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-724d381b-b613-4fab-92a0-328a21cc5c7e.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/sterile_draping.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/sterile_draping.png",
+      "pool_id": "sterile_draping_doc_artoria",
+      "action_ids": ["ack_disinfection"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "7ad43288f5f1244560899daafe406c7b59fce440d9604fab6d93a13702bf1740"
+    },
+    {
+      "label": "下刀",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-e9ef0a5f-4f4d-4742-a8e8-b0253ad9f60b.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/scalpel_ready.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/scalpel_ready.png",
+      "pool_id": "scalpel_ready_doc_artoria",
+      "action_ids": ["request_scalpel"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "ff8b7b9dc06102fde7013b5e4f6aebbce0e1a2fc26f1df0660f552478e1ba1b9"
+    },
+    {
+      "label": "戴手术帽",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-0567913d-af99-4499-9da3-a8f66bf367b4.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/surgical_cap.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/surgical_cap.png",
+      "pool_id": "ward_surgical_cap_doc_artoria",
+      "action_ids": ["ward_surgical_cap"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "2081aef760368f212518f65dcc9a9d1ee91cc9379476a96990ff757cd1a3a66b"
+    },
+    {
+      "label": "担架车",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-1b7fef3d-635e-428f-a94e-b763280cf213.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/stretcher_transfer.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/stretcher_transfer.png",
+      "pool_id": "stretcher_transfer_doc_artoria",
+      "action_ids": ["complete_manual_ward_preparation"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "9a44ed3caf51e1ccccbaabc497938e708574fa66c668b2dba955b1cb1c11eebe"
+    },
+    {
+      "label": "导尿",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-13f9847d-d6fd-4a6a-aa7d-32a9047a2897.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/urinary_catheterization.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/urinary_catheterization.png",
+      "pool_id": "urinary_catheterization_doc_artoria",
+      "action_ids": ["urinary_catheterization"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "5decf11cf19ca871c6173fcad561aaf7c19cf243785247702247896161551417"
+    },
+    {
+      "label": "剃毛",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-45ed71d1-2bfc-4ee7-b96c-5b439f23ca2a.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/skin_prep.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/skin_prep.png",
+      "pool_id": "ward_skin_prep_doc_artoria",
+      "action_ids": ["ward_skin_prep", "ward_skin_prep_unnecessary"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "3e38c6cf7d840b7a7b839fb97f278ff4114b5368bdc8761edbbd0c5855e3be21"
+    },
+    {
+      "label": "灌肠",
+      "source_attachment": "/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-62b6476d-9fd2-4054-9513-d8826e266bac.png",
+      "archived_source": "research/imports/artoria_staff_patient_procedure_cg_2026-11-17/source/enema.png",
+      "runtime_path": "assets/events/ward_preparation_v1/doc_artoria/enema.png",
+      "pool_id": "ward_enema_doc_artoria",
+      "action_ids": ["ward_enema", "ward_enema_unnecessary"],
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "36f00dbd54db601b56e2e05d62ab7def729c4d75b7485a332b8529ce24a27484"
+    }
+  ]
+}

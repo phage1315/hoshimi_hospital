@@ -1,0 +1,327 @@
+{
+  "title": "把心脏交还给跑道",
+  "title_en": "Back to the Starting Line",
+  "procedure_id": "surgery_master_aortic_root_ascending_replacement",
+  "source_case_id": "MIDO_LEGENDARY_MURAKAMI_AI_V1_2",
+  "runtime_case_id": "advanced_first_surgery_master_aortic_root_ascending_replacement",
+  "patient": {
+    "id": "patient_murakami_ai",
+    "name": "村上愛",
+    "name_en": "Ai Murakami",
+    "setting": "成人；体育教师；曾为马拉松选手。星见 AU 首次专属病例。",
+    "setting_en": "An adult PE teacher and former marathon runner. An authored first case in the Hoshimi alternate universe.",
+    "diagnosis": "主动脉根部及近端升主动脉瘤（未破裂、未夹层）；三叶式主动脉瓣，瓣叶适合保留",
+    "diagnosis_en": "Aortic root and proximal ascending aortic aneurysms (unruptured, without dissection); tricuspid native aortic valve with suitable leaflets for preservation",
+    "visuals": {
+      "portraits": {
+        "ward": "assets/characters/murakami_ai_legendary_v1/ward/neutral.png",
+        "postop": "assets/characters/murakami_ai_legendary_v1/postop/neutral.png",
+        "transfer": "assets/characters/murakami_ai_legendary_v1/transfer.png",
+        "ward/serious": "assets/characters/murakami_ai_legendary_v1/ward/serious.png",
+        "ward/nervous": "assets/characters/murakami_ai_legendary_v1/ward/nervous.png",
+        "postop/smile": "assets/characters/murakami_ai_legendary_v1/postop/smile.png",
+        "postop/pain": "assets/characters/murakami_ai_legendary_v1/postop/pain.png",
+        "splash/general_anesthesia": "assets/characters/murakami_ai_legendary_v1/anesthesia.png",
+        "intraoperative/anesthetized": "assets/characters/murakami_ai_legendary_v1/intraoperative/anesthetized.png",
+        "team_confirmation": "assets/characters/murakami_ai_legendary_v1/team_confirmation.png"
+      }
+    }
+  },
+  "day1": {
+    "title": "没有症状的风险",
+    "title_en": "A Risk Without Symptoms",
+    "background": "clinic",
+    "portrait": "ward",
+    "lines": [
+      {
+        "speaker": "patient",
+        "text": "「我还以为体检室弄错了。心电图不是说没什么特别的吗？」",
+        "text_en": "“I thought the screening clinic had made a mistake. Didn't they say my ECG looked unremarkable?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「心电图和主动脉的形状，是两回事。」",
+        "text_en": "“An ECG and the shape of your aorta tell us two different things.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我以前可是跑马拉松的。现在每周还要带学生上体育课呢。」",
+        "text_en": "“I used to run marathons. I still teach PE every week.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「我们知道。所以我要你先看检查结果。」",
+        "text_en": "“We know. That's why I want you to look at the imaging first.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「主动脉根部，最大五点三厘米。上面的升主动脉也扩张了。」",
+        "text_en": "“The aortic root measures five point three centimeters at its widest. The ascending aorta above it is enlarged as well.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……可是我现在一点也不觉得心脏有什么问题啊？」",
+        "text_en": "“But I don't feel anything wrong with my heart at all.”",
+        "portrait": "ward/serious"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「所以我们才要在你出现问题之前动手术。」",
+        "text_en": "“That's exactly why we need to operate before something happens.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「这是说，我现在跑得动，不等于它就是安全的？」",
+        "text_en": "“So being able to run right now doesn't mean it's safe?”",
+        "portrait": "ward/serious"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「问题主要在承受血流压力的主动脉壁。它不一定会先给你一个疼痛的警告。」",
+        "text_en": "“The problem is in the aortic wall that bears the pressure of each heartbeat. It may not give you a warning in the form of pain.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我平时还教学生，身体不舒服一定要及时说。结果我的身体连招呼都不打。」",
+        "text_en": "“I tell my students to speak up when something feels wrong. Apparently my own body doesn't believe in giving notice.”",
+        "portrait": "ward/serious"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「方案是切除病变的主动脉根部和升主动脉，用人工血管重建。」",
+        "text_en": "“The plan is to remove the diseased aortic root and ascending aorta and reconstruct them with a graft.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「你的主动脉瓣叶条件不错。我们计划保留它。」",
+        "text_en": "“Your native aortic valve leaflets look suitable. We plan to preserve them.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「换血管，却把瓣膜留下？」",
+        "text_en": "“Replace the artery, but keep the valve?”",
+        "portrait": "ward/serious"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「是的。新的人工血管还要和两条冠状动脉的开口重新连接。」",
+        "text_en": "“Yes. We'll also have to reattach the openings of both coronary arteries to the new graft.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……听起来已经不像我以为的‘心脏修补’了。」",
+        "text_en": "“That sounds a great deal bigger than the ‘heart repair’ I had imagined.”",
+        "portrait": "ward/serious"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「正中切开胸骨，建立体外循环。重建根部时，需要暂时让心脏停搏。」",
+        "text_en": "“We'll open the sternum along the midline and establish cardiopulmonary bypass. During root reconstruction, we'll temporarily arrest the heart.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「停……停搏？是说心脏真的会停下来？」",
+        "text_en": "“Arrest... You mean my heart will actually stop?”",
+        "portrait": "ward/nervous"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「体外循环会在这段时间维持血液循环。重建完成后，再恢复心脏灌注并评估功能。」",
+        "text_en": "“The bypass circuit supports your circulation during that interval. After reconstruction, we'll restore blood flow to the heart and assess its function.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我没想到，教了这么多年人体课，最难懂的例子会是我自己。」",
+        "text_en": "“After teaching anatomy for so many years, I never expected to become the example I understand the least.”",
+        "portrait": "ward/nervous"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「你不需要背下术式名称。但我会把你要面对的过程完整告诉你。」",
+        "text_en": "“You don't need to memorize the operation's name. But I will explain the procedure you're consenting to.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「保瓣方案还要在术中再次确认。如果瓣叶条件不合适，团队会按术前说明的备选方案处理。」",
+        "text_en": "“We will assess the leaflets again during surgery. If preservation isn't appropriate, we'll use the alternative approach explained during consent.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「我知道了。那我先安排好学校的代课。还有……我需要多久不能跑？」",
+        "text_en": "“All right. I'll arrange someone to cover my classes. And... how long will I be unable to run?”",
+        "portrait": "ward/serious"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「先把手术和康复做好。关于重返跑道，我们会认真谈，但不会拿猜测给你排训练表。」",
+        "text_en": "“First, surgery and rehabilitation. We will take your return to running seriously, but we won't write a training plan based on guesses.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「这台由你主刀。我做第一助手。」",
+        "text_en": "“You'll be the lead surgeon. I'll take first assist.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「主动脉根部再植入。这一次，你打算从哪一处开始教？」",
+        "text_en": "“An aortic root reimplantation. Where do you plan to begin teaching this time?”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「从你自己说出计划开始。」",
+        "text_en": "“With you explaining the plan yourself.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「先建立体外循环和心肌保护。确认瓣叶后，准备根部和冠状动脉开口，固定人工血管，完成瓣膜与血管重建，最后复跳和脱机。」",
+        "text_en": "“Establish bypass and myocardial protection. Inspect the leaflets, prepare the root and coronary buttons, secure the graft, complete the valve and vascular reconstruction, then reperfuse and wean from bypass.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「顺序没问题。到了术野里，你得知道什么时候该停下来重看一眼。」",
+        "text_en": "“The sequence is sound. In the field, you need to know when to stop and look again.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「你会提醒我的。」",
+        "text_en": "“You'll remind me.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「我会问你问题。答案要你自己给。」",
+        "text_en": "“I'll ask questions. You'll have to provide the answers.”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「听上去比亲自主刀还严格。」",
+        "text_en": "“That sounds stricter than operating yourself.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「当然。这次握刀的人是你。」",
+        "text_en": "“Of course. This time, you're the one holding the scalpel.”"
+      }
+    ]
+  },
+  "day2": {
+    "title": "手术室门口",
+    "title_en": "At the Operating Room Door",
+    "background": "operating_room",
+    "portrait": "transfer",
+    "lines": [
+      {
+        "speaker": "patient",
+        "text": "「坂口医生，等我醒过来……它还是我的心脏吧？」",
+        "text_en": "“Dr. Sakaguchi, when I wake up... it'll still be my heart, won't it?”"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「是你的心脏。我们要修好的，是保护它的大血管。」",
+        "text_en": "“It will still be your heart. We're repairing the major vessel that carries blood from it.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「醒来以后，第一项训练不是跑步。是好好呼吸，按计划恢复。」",
+        "text_en": "“When you wake up, your first training session won't be running. It will be breathing well and following your recovery plan.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……遵命，御堂教练。」",
+        "text_en": "“...Yes, Coach Mido.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「手术结束以后，你可以再决定要不要这么叫我。」",
+        "text_en": "“After the operation, you can decide whether you still want to call me that.”"
+      }
+    ]
+  },
+  "day3": {
+    "title": "比教练更严格",
+    "title_en": "Stricter Than a Coach",
+    "background": "ward",
+    "portrait": "postop",
+    "lines": [
+      {
+        "speaker": "patient",
+        "text": "「早上好……我猜这回不能下床给你们示范热身了。」",
+        "text_en": "“Good morning... I suppose I can't get up and demonstrate a warm-up today.”",
+        "portrait": "postop/pain"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「今天的训练计划里，没有下床示范这一项。」",
+        "text_en": "“Getting up to demonstrate isn't on today's training plan.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「那就是还有训练计划了。」",
+        "text_en": "“So there is a training plan.”",
+        "portrait": "postop/smile"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「当然有。呼吸训练、止痛、逐步活动。一步都不能跳。」",
+        "text_en": "“Of course. Breathing exercises, pain control, gradual mobilization. You don't skip steps.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「御堂医生，我以后还能跑步吗？」",
+        "text_en": "“Dr. Mido, will I ever be able to run again?”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「我们做这台手术，最终不是为了让你一辈子躲着运动。」",
+        "text_en": "“We didn't do this operation so you would spend the rest of your life avoiding exercise.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「我们的目标，是让你的心脏今后还能像从前一样可靠地工作。」",
+        "text_en": "“Our goal is for your heart to keep working as reliably as it did before.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「等胸骨愈合、康复和复查都合格，我希望有一天能让你重新站上马拉松跑道。」",
+        "text_en": "“Once your sternum has healed and your rehabilitation and follow-up results are good, I hope we can get you back onto a marathon course one day.”"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「只是那时候，配速和心率要按我们商量好的计划来。不能再只靠自己的感觉。」",
+        "text_en": "“But then your pace and heart rate will have to follow the plan we agree on. You can't rely on how you feel alone.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「这可比以前教练给我的训练计划严格多了。」",
+        "text_en": "“That's even stricter than the training plans my old coach used to give me.”",
+        "portrait": "postop/smile"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「你的教练不用替你重新接上冠状动脉。」",
+        "text_en": "“Your old coach never had to reattach your coronary arteries.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「……说得也是。那我就从呼吸训练开始吧，御堂教练。」",
+        "text_en": "“...Fair enough. I'll start with the breathing exercises, then, Coach Mido.”",
+        "portrait": "postop/smile"
+      },
+      {
+        "speaker": "PLAYER",
+        "text": "「第一项：听见医生说『今天到这里』，就真的停下来。」",
+        "text_en": "“Lesson one: when the doctor says ‘that's enough for today,’ you actually stop.”"
+      },
+      {
+        "speaker": "patient",
+        "text": "「这种项目，我可能比马拉松还不擅长。」",
+        "text_en": "“I may be worse at that than I ever was at marathons.”",
+        "portrait": "postop/smile"
+      },
+      {
+        "speaker": "doc_emiko",
+        "text": "「那就练。你最不缺的，不就是耐力吗？」",
+        "text_en": "“Then practice. Endurance is the one thing you've never lacked, isn't it?”"
+      }
+    ]
+  }
+}

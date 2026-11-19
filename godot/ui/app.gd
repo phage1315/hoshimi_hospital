@@ -647,9 +647,9 @@ func authored_dialogue_pages(text: String) -> Array[String]:
 				pages.append(current)
 				current = ""
 		current += character
-	if not current.is_empty():
+	if not current.is_empty() or pages.is_empty():
 		pages.append(current)
-	return pages if not pages.is_empty() else [text]
+	return pages
 
 func dialogue_page(key: String, text: String, allow_scroll: bool = false, explicit_turn: bool = false) -> Dictionary:
 	if dialogue_page_key != key:
@@ -3684,13 +3684,13 @@ func choose_character_event(choice_id: String) -> void:
 			else:
 				show_sunday_activity_complete(tx("ui.asuka.lv3.complete", "【城宮明日香 Relationship Lv3 达成】"))
 			return
-		if preload("res://godot/systems/emiko_lv3.gd").owns(str(event.definition.id)) or preload("res://godot/systems/emiko_lv4.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv2.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv3.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)):
+		if preload("res://godot/systems/emiko_lv3.gd").owns(str(event.definition.id)) or preload("res://godot/systems/emiko_lv4.gd").owns(str(event.definition.id)) or preload("res://godot/systems/emiko_lv5.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv2.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv3.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv5.gd").owns(str(event.definition.id)):
 			game.clear_pending_departure_context()
 			game.advance_story_to_day(int(event.completed_day) + int(event.definition.get("completion_day_offset", 1)), int(event.definition.get("completion_absolute_clock", 9 * 60)))
 			if character_event_from_test:
 				game.finish_character_event()
 				show_character_events(str(event.definition.actor_id), character_event_return_location)
-			elif preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)) and character_event_reward_available(event.definition):
+			elif (preload("res://godot/systems/emiko_lv5.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)) or preload("res://godot/systems/artoria_lv5.gd").owns(str(event.definition.id))) and character_event_reward_available(event.definition):
 				show_character_event_reward()
 			else:
 				show_character_event_complete()

@@ -1,4 +1,5 @@
 extends RefCounted
+const Legendary = preload("res://godot/systems/advanced_legendary.gd")
 const Model = preload("res://godot/systems/advanced_surgery_model.gd")
 const Rules = preload("res://godot/systems/advanced_referral_rules.gd")
 const Facts = preload("res://godot/systems/advanced_referral_facts.gd")
@@ -15,6 +16,7 @@ var session: RefCounted
 var error := ""
 var last_summary: Dictionary = {}
 var fixture_index := 0
+var content_preview := false # DEV-only isolated preview of authored pending assets.
 var fixture_mode := false # Explicit numerical-fixture QA only; manual testing uses real staff.
 var demo_player_skill := 88
 var failure_dialogue_index := -1 # Runtime-only review presentation, after settlement.
@@ -46,12 +48,42 @@ func begin_story(phase: String, record: Dictionary) -> void:
 func finish_story() -> void:
 	story_phase = ""
 	# Finishing a chapter returns to the referral UI, not a save boundary.
-	if not dev and game.active_mode == "advanced_story": game.active_mode = "advanced_board"
+	if not dev and game.active_mode == "advanced_story": game.active_mode = "advanced_surgery" if session != null else "advanced_board"
+
+func story_line_index_by_id(phase: String, line_id: String) -> int:
+	var lines: Array = story_content.get(phase, {}).get("lines", [])
+	for i in range(lines.size()):
+		if str(lines[i].get("id", "")) == line_id: return i
+	return -1
+
+func choose_story_option(next_id: String) -> bool:
+	if story_phase.is_empty(): return false
+	var lines: Array = story_content[story_phase].lines
+	if story_index < 0 or story_index >= lines.size(): return false
+	var choices: Array = lines[story_index].get("choices", [])
+	if choices.is_empty() or not choices.any(func(c): return str(c.get("next", "")) == next_id): return false
+	var target := story_line_index_by_id(story_phase, next_id)
+	if target < 0: return false
+	story_index = target
+	return true
 
 func advance_story() -> void:
 	if story_phase.is_empty(): return
+	var lines: Array = story_content[story_phase].lines
+	if story_index >= 0 and story_index < lines.size():
+		var current_line: Dictionary = lines[story_index]
+		if not current_line.get("choices", []).is_empty(): return
+		var explicit_next := str(current_line.get("next", ""))
+		if not explicit_next.is_empty():
+			if explicit_next == "@end":
+				finish_story()
+				return
+			var target := story_line_index_by_id(story_phase, explicit_next)
+			if target >= 0:
+				story_index = target
+				return
 	story_index += 1
-	if story_index >= story_content[story_phase].lines.size(): finish_story()
+	if story_index >= lines.size(): finish_story()
 
 func _init(g: RefCounted, testing: bool = false) -> void:
 	game = g
@@ -91,9 +123,23 @@ func board() -> Array:
 			var patient := FirstStory.patient(record, false)
 			if not patient.is_empty(): record.patient_id = patient.id
 			result.append(record)
+	for row in Legendary.entries():
+		var id := str(row.procedure_id)
+		if Legendary.gate(game, state(), id, int(Rules.counts(state()).regular), dev and content_preview).is_empty():
+			var record := {"id": "advanced_first_" + id, "procedure_id": id, "patient_id": "placeholder_first_" + id, "replay": false}
+			var patient := FirstStory.patient(record, false)
+			if not patient.is_empty(): record.patient_id = str(patient.id)
+			result.append(record)
 	for record in state().replays:
 		if Rules.procedure_ready(str(record.get("procedure_id", ""))) and Rules.replay_compatible(record) and not completed(str(record.get("id", ""))): result.append(record.duplicate(true))
 	return result
+
+func forced_assistant(record: Dictionary) -> String:
+	return Legendary.forced_assistant(record)
+
+func valid_case_team(record: Dictionary, selected: Dictionary, operation_day: int) -> bool:
+	var forced := forced_assistant(record)
+	return (forced.is_empty() or str(selected.get("first_assistant", "")) == forced) and valid_team(selected, operation_day)
 
 func date_blocked(target: int) -> bool:
 	if dev: return false
@@ -179,7 +225,7 @@ func values(selected: Dictionary, procedure_id: String) -> Dictionary:
 	var assistants: Array = []
 	for role in ["first_assistant", "second_assistant"]:
 		var id := str(selected[role])
-		assistants.append({"id": id, "name": game.staff_record(id).name, "skill": game.staff_skill_value(id, "surgery"), "specialties": specialties.get(id, {}).get("tags", []), "universal_expert": specialties.get(id, {}).get("universal_expert", false)})
+		assistants.append({"id": id, "name": game.staff_record(id).name, "skill": game.staff_skill_value(id, "surgery"), "specialties": specialties.get(id, {}).get("tags", []), "universal_expert": specialties.get(id, {}).get("universal_expert", false), "specialist_second_use": specialties.get(id, {}).get("specialist_second_use", false)})
 	return {"player": demo_player_skill if dev else game.surgery_level(), "assistants": assistants,
 		"primary_scrub": game.staff_skill_value(selected.primary_scrub, "instrument_handling"),
 		"secondary_scrub": game.staff_skill_value(selected.secondary_scrub, "instrument_handling"),
@@ -195,7 +241,7 @@ func accept(record: Dictionary, selected: Dictionary) -> bool:
 	if dates.is_empty():
 		error = "calendar"
 		return false
-	if not valid_team(selected, int(dates.operation_day)):
+	if not valid_case_team(record, selected, int(dates.operation_day)):
 		error = "team"
 		return false
 	dates.case = record.duplicate(true)
@@ -211,7 +257,7 @@ func rebook(selected: Dictionary) -> bool:
 	var a: Dictionary = state().appointment
 	if a.is_empty() or not state().outcome.is_empty() or session != null: return false
 	var dates := schedule()
-	if dates.is_empty() or not valid_team(selected, int(dates.get("operation_day", 0))):
+	if dates.is_empty() or not valid_case_team(a.case, selected, int(dates.get("operation_day", 0))):
 		error = "calendar" if dates.is_empty() else "team"
 		return false
 	a.operation_day = dates.operation_day
@@ -223,11 +269,12 @@ func rebook(selected: Dictionary) -> bool:
 func start_operation() -> bool:
 	var a: Dictionary = state().appointment
 	if a.is_empty() or not state().outcome.is_empty() or session != null or day() != int(a.operation_day): return false
-	if not Rules.procedure_ready(str(a.case.procedure_id)) or not Rules.replay_compatible(a.case): return false
+	if (not Rules.procedure_ready(str(a.case.procedure_id)) and not (dev and content_preview)) or not Rules.replay_compatible(a.case): return false
 	if not dev and game.current_absolute_clock() != game.SHIFT_START_MINUTE:
 		error = "calendar"
 		return false
-	if not valid_booked_team(a.team):
+	var forced := forced_assistant(a.case)
+	if (not forced.is_empty() and a.team.get("first_assistant") != forced) or not valid_booked_team(a.team):
 		error = "team"
 		return false
 	var def := Model.procedure(str(a.case.procedure_id))
@@ -238,7 +285,7 @@ func start_operation() -> bool:
 	var completed_count := 0
 	for result in state().completed:
 		if result.procedure_id == def.id: completed_count += 1
-	session.operative_dialogue = preload("res://godot/systems/advanced_operative_dialogue.gd").new(str(def.id), completed_count)
+	session.operative_dialogue = preload("res://godot/systems/advanced_operative_dialogue.gd").new(str(def.id), completed_count, true, not forced.is_empty())
 	if not (dev and fixture_mode):
 		if session.operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2":
 			session.sweat_break = preload("res://godot/systems/advanced_or_sweat_break.gd").new(seed_value, a.team)
@@ -248,6 +295,7 @@ func start_operation() -> bool:
 	if not dev:
 		game.advanced_runtime = session
 		game.active_mode = "advanced_surgery"
+	begin_story("day2", a.case)
 	queue_day_transition(int(a.operation_day), int(a.intake_day))
 	for role in ["first_assistant", "second_assistant"]: state().cooldowns[str(a.team[role])] = int(a.operation_day) + 14
 	return true
@@ -292,6 +340,7 @@ func settle() -> bool:
 	s.outcome = {}
 	refresh()
 	last_summary.merge(result, true)
+	last_summary["legendary_first"] = not bool(a.case.replay) and not Legendary.entry(str(a.case.procedure_id)).is_empty()
 	if first_clear: begin_story("day3", a.case)
 	queue_day_transition(day(), int(a.intake_day))
 	return true
@@ -316,6 +365,8 @@ static func conflicts_event(g: RefCounted, definition: Dictionary) -> bool:
 	if str(definition.get("id", "")) == preload("res://godot/systems/miyuki_lv2.gd").A: length = 2
 	if str(definition.get("id", "")) == preload("res://godot/systems/emiko_lv3.gd").EVENT_ID: length = 2
 	if str(definition.get("id", "")) == preload("res://godot/systems/emiko_lv4.gd").EVENT_ID: length = 2
+	if str(definition.get("id", "")) == preload("res://godot/systems/emiko_lv5.gd").EVENT_ID: length = 2
 	if str(definition.get("id", "")) == preload("res://godot/systems/artoria_lv2.gd").EVENT_ID: length = 2
 	if str(definition.get("id", "")) == preload("res://godot/systems/artoria_lv3.gd").EVENT_ID: length = 2
+	if str(definition.get("id", "")) == preload("res://godot/systems/artoria_lv5.gd").EVENT_ID: length = 2
 	return reserved(g, g.day_number(), g.day_number() + length - 1)

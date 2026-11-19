@@ -45,6 +45,12 @@ func setup(app: Control, service: RefCounted, en: bool) -> void:
 
 func tr_key(key: String) -> String:
 	return str(strings.get(key, [key, key])[1 if english else 0])
+func legendary_tr(procedure_id: String, key: String) -> String:
+	if not staff_episode():
+		var entry: Dictionary = controller.Legendary.entry(procedure_id)
+		var overrides: Dictionary = entry.get("ui_text", {})
+		if overrides.has(key): return str(overrides[key][1 if english else 0])
+	return tr_key(key)
 func title_of(d: Dictionary) -> String:
 	return str(d.get("name_en", d.get("name", "")) if english else d.get("name", ""))
 func actor_name(id: String) -> String:
@@ -98,8 +104,8 @@ func refresh_operation_chrome() -> void:
 		subtitle.text = tr_key("dev" if controller.dev else "prod")
 	var exit_button: Button = host.page.get_node_or_null("ExitAdvancedReferral")
 	if exit_button != null:
-		exit_button.position = Vector2(1080,77) if active else Vector2(960,88)
-		exit_button.size = Vector2(160,34) if active else Vector2(270,44)
+		exit_button.position = Vector2(1010,77) if active else Vector2(960,88)
+		exit_button.size = Vector2(230,34) if active else Vector2(270,44)
 		exit_button.text = tr_key("compact_exit" if active and controller.dev else "exit" if controller.dev else "back")
 		exit_button.add_theme_font_size_override("font_size",16 if active else 20)
 	var header: Label = host.page.get_node_or_null("CalendarHeader")
@@ -127,7 +133,9 @@ func render() -> void:
 	var location := "operating_room" if controller.session != null else "ward" if not controller.state().outcome.is_empty() or controller.last_summary.has("case_id") else "player_office"
 	if staff_episode() and controller.night_choice: location = "ward_night"
 	var wash := host.page.get_node_or_null("BackgroundWash") as ColorRect
-	if wash != null: wash.color.a = 0.0 if location in ["ward", "ward_night"] or not controller.story_phase.is_empty() else 0.83
+	if wash != null:
+		wash.color.a = 0.0 if location in ["ward", "ward_night"] or not controller.story_phase.is_empty() else 0.83
+		if controller.last_summary.get("legendary_first", false) and controller.story_phase.is_empty() and controller.failure_dialogue_index < 0: wash.color.a = 0.83
 	if host.background is TextureRect:
 		host.background.modulate = Color.WHITE
 		var path: String = host.background_path(location)
@@ -188,8 +196,9 @@ func render() -> void:
 		if controller.failure_dialogue_index >= 0:
 			render_failure_dialogue()
 			return
-		label(tr_key("done"), true)
 		var summary: Dictionary = controller.last_summary
+		var summary_proc_id := str(summary.get("procedure_id", ""))
+		label(legendary_tr(summary_proc_id, "legendary_cleared" if summary.get("legendary_first", false) and summary.success else "legendary_failed") if summary.get("legendary_first", false) else tr_key("done"), true)
 		label(tr_key("reward") % [int(summary.surgery_xp), "%.1f" % float(summary.leadership_xp), int(summary.reputation)])
 		if not bool(summary.success): label(tr_key("failxp"))
 		if staff_episode(): button("back", func(): host.exit_advanced_referral())
@@ -215,11 +224,28 @@ func render() -> void:
 	var offers: Array = controller.board()
 	for replay in [false, true]:
 		label(tr_key("replay_pool" if replay else ("new_pool_dev" if controller.dev else "new_pool")), true)
-		var matching: Array = offers.filter(func(item): return bool(item.replay) == replay)
+		var matching: Array = offers.filter(func(item): return bool(item.replay) == replay and (replay or controller.Legendary.entry(str(item.procedure_id)).is_empty()))
 		if matching.is_empty(): label(tr_key("empty_pool"))
 		for item in matching:
 			var definition := Model.procedure(str(item.procedure_id))
 			var caption := "%s · %s" % [tr_key("replay" if item.replay else "first"), title_of(definition)]
+			if item.replay and controller.Legendary.entry(str(item.procedure_id)).get("ui_text", {}).has("replay_label"):
+				caption = legendary_tr(str(item.procedure_id), "replay_label")
+			button("case_" + str(item.id), func(): record = item.duplicate(true); selected.clear(); controller.begin_story("day1",item); render(), true, caption)
+	label(tr_key("legendary_pool"), true)
+	for entry in controller.Legendary.entries():
+		var id := str(entry.procedure_id)
+		var legendary_story: Dictionary = controller.FirstStory.content({"procedure_id":id})
+		var caption := legendary_tr(id, "entry_title") if entry.get("ui_text", {}).has("entry_title") else str(legendary_story.get("title_en" if english else "title", title_of(Model.procedure(id))))
+		if s.procedures.has(id): continue
+		var reason: String = controller.Legendary.gate(controller.game, s, id, int(controller.Rules.counts(s).regular), controller.dev and controller.content_preview)
+		var matching: Array = offers.filter(func(item): return item.procedure_id == id and not item.replay)
+		if matching.is_empty():
+			var notice := legendary_tr(id, reason)
+			if reason == "legendary_clears_locked": notice = notice % maxi(0,int(entry.required_regular_clears)-int(controller.Rules.counts(s).regular))
+			button("legendary_locked", func(): pass, false, caption + " · " + notice)
+		else:
+			var item: Dictionary = matching[0]
 			button("case_" + str(item.id), func(): record = item.duplicate(true); selected.clear(); controller.begin_story("day1",item); render(), true, caption)
 	for id in s.cooldowns:
 		label(tr_key("cooldown") % [actor_name(str(id)), int(s.cooldowns[id])])
@@ -616,29 +642,48 @@ func show_patient(patient: Dictionary) -> void:
 
 func render_first_story() -> void:
 	var chapter: Dictionary = controller.story_content[controller.story_phase]
-	var path: String = host.background_path(str(chapter.background))
+	var line: Dictionary = chapter.lines[controller.story_index]
+	var bg_id := str(line.get("background", chapter.background))
+	var path: String = host.background_path(bg_id)
 	if not path.is_empty(): host.background.texture = load("res://"+path)
 	var heading: Label = host.page.get_node("PageTitle")
 	heading.text = str(chapter.title_en if english else chapter.title)
 	heading.add_theme_font_size_override("font_size",26)
 	host.page.get_node("PageSubtitle").hide()
-	var line: Dictionary = chapter.lines[controller.story_index]
 	var patient: Dictionary = Presentation.patient(controller.story_record, controller.game, english)
 	var spoken: String = Presentation.format_story(str(line.text_en if english else line.text), title_of(Model.procedure(str(controller.story_record.procedure_id))))
 	if line.speaker == "patient":
 		var portraits: Dictionary = patient.get("visuals", {}).get("portraits", {})
-		var portrait_path := str(portraits.get(chapter.portrait, ""))
+		var portrait_path := str(portraits.get(str(line.get("portrait", chapter.portrait)), ""))
 		if portrait_path.is_empty() and chapter.portrait == "ward":
 			portrait_path = str(portraits.get("ward/neutral", ""))
 		make_cast(patient,portrait_path,str(patient.name),spoken,true)
+	elif str(line.speaker) not in ["PLAYER", "player", "doctor", "narrator"] and not controller.game.staff_record(str(line.speaker)).is_empty():
+		var person: Dictionary = controller.game.staff_record(str(line.speaker))
+		var staff_portraits: Dictionary = person.get("visuals", {}).get("portraits", {})
+		var or_chapter := bg_id in ["operating_room", "new_operating_room", "or_entrance", "or_holding", "scrub_area", "pacu_recovery"]
+		var default_staff_key := "scrubs/neutral" if or_chapter and staff_portraits.has("scrubs/neutral") else "white_coat/neutral"
+		var staff_key := str(line.get("staff_portrait", chapter.get("staff_portrait", default_staff_key)))
+		var portrait: String = str(staff_portraits.get(staff_key, staff_portraits.get(default_staff_key, staff_portraits.get("white_coat/neutral", ""))))
+		make_cast(person, portrait, actor_name(str(line.speaker)), spoken, true)
 	else:
-		make_cast({"id":"PLAYER"},"",tr_key("narration" if line.speaker == "narrator" else "player_speaker"),spoken,true)
+		var speaker_title := str(line.get("speaker_label_en" if english else "speaker_label", ""))
+		if speaker_title.is_empty():
+			speaker_title = tr_key("narration" if line.speaker == "narrator" else "player_speaker")
+		var scene_key := str(line.get("scene_portrait", ""))
+		var scene_path := str(patient.get("visuals", {}).get("portraits", {}).get(scene_key, "")) if not scene_key.is_empty() else ""
+		var cast_actor_id := "PLAYER" if str(line.speaker) in ["PLAYER", "player", "doctor", "narrator"] else str(line.speaker)
+		make_cast({"id":cast_actor_id},scene_path,speaker_title,spoken,true)
 	cast_panel.set_meta("story_phase",controller.story_phase)
 	cast_panel.set_meta("story_index",controller.story_index)
+	cast_panel.set_meta("story_line_id",str(line.get("id","")))
 	cast_panel.position = Vector2(40,125)
 	cast_panel.size = Vector2(1200,630)
 	var art: TextureRect = cast_panel.get_node("AdvancedActorPortrait")
 	art.position = Vector2(440,-10);art.size = Vector2(400,450)
+	var active_portrait := str(line.get("portrait", chapter.portrait)) if line.speaker == "patient" else str(line.get("scene_portrait", ""))
+	if active_portrait in ["transfer", "or_cap/calm", "anesthesia"]:
+		art.position = Vector2(150,-10);art.size = Vector2(900,450)
 	if line.speaker == "patient" and patient.get("visuals", {}).get("portrait_regions", {}).has(chapter.portrait) and art.texture != null:
 		var portrait := AtlasTexture.new()
 		portrait.atlas = art.texture
@@ -653,6 +698,41 @@ func render_first_story() -> void:
 	var box: VBoxContainer = panel.get_child(0)
 	box.size = Vector2(1176,119)
 	cast_panel.find_child("AdvancedStaffDialogue",true,false).add_theme_font_size_override("normal_font_size",22)
+	var choices: Array = line.get("choices", [])
+	if not choices.is_empty():
+		if active_portrait in ["transfer", "or_cap/calm", "anesthesia"]:
+			art.position = Vector2(270,-15);art.size = Vector2(660,308)
+		else:
+			art.position = Vector2(455,-15);art.size = Vector2(290,308)
+		panel.position = Vector2(0,296);panel.size = Vector2(1200,120)
+		box.size = Vector2(1176,104)
+		var choice_box := VBoxContainer.new()
+		choice_box.name = "StoryChoicesBox"
+		choice_box.position = Vector2(0,422)
+		choice_box.size = Vector2(1200,152)
+		choice_box.add_theme_constant_override("separation",6)
+		cast_panel.add_child(choice_box)
+		for idx in range(choices.size()):
+			var c_dict: Dictionary = choices[idx]
+			var next_id := str(c_dict.get("next", ""))
+			var c_btn := Button.new()
+			c_btn.name = "story_choice_" + str(idx)
+			c_btn.text = str(c_dict.get("label_en" if english else "label", ""))
+			c_btn.custom_minimum_size = Vector2(1200,44)
+			c_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			c_btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			c_btn.add_theme_font_size_override("font_size",18)
+			host.style_action_button(c_btn)
+			c_btn.pressed.connect(func(): controller.choose_story_option(next_id); render())
+			choice_box.add_child(c_btn)
+		var skip_only := button("story_skip",func(): controller.finish_story(); render(),true,tr_key("failure_skip"))
+		body.remove_child(skip_only);cast_panel.add_child(skip_only)
+		skip_only.position = Vector2(990,580);skip_only.size = Vector2(210,46)
+		if controller.story_phase == "day1" and controller.state().appointment.is_empty():
+			var back_board_c := button("story_back", func(): controller.story_phase = ""; controller.story_index = 0; record = {}; selected.clear(); render(), true, tr_key("team_back"))
+			body.remove_child(back_board_c);cast_panel.add_child(back_board_c)
+			back_board_c.position = Vector2(0,580);back_board_c.size = Vector2(220,46)
+		return
 	var next := button("story_next",func(): controller.advance_story(); render(),true,tr_key("continue"))
 	var skip := button("story_skip",func(): controller.finish_story(); render(),true,tr_key("failure_skip"))
 	for control in [next,skip]:

@@ -1,0 +1,783 @@
+{
+	"base_difficulty": 99.0,
+	"base_physiology": [
+		{
+			"effects": {
+				"bleeding": 0.0,
+				"blood_loss": 0.0,
+				"elapsed_time": 15.0,
+				"stability": 0.0,
+				"visibility": 0.0
+			},
+			"id": "MR01",
+			"stress": "low"
+		},
+		{
+			"effects": {
+				"bleeding": 2.0,
+				"blood_loss": 3.0,
+				"elapsed_time": 35.0,
+				"stability": -2.0,
+				"visibility": -5.0
+			},
+			"id": "MR02",
+			"stress": "medium"
+		},
+		{
+			"effects": {
+				"bleeding": 1.0,
+				"blood_loss": 2.0,
+				"elapsed_time": 30.0,
+				"stability": 0.0,
+				"visibility": 6.0
+			},
+			"id": "MR03",
+			"stress": "low"
+		},
+		{
+			"effects": {
+				"bleeding": 0.0,
+				"blood_loss": 1.0,
+				"elapsed_time": 40.0,
+				"stability": -3.0,
+				"visibility": 0.0
+			},
+			"id": "MR04",
+			"stress": "medium"
+		},
+		{
+			"effects": {
+				"bleeding": 0.0,
+				"blood_loss": 0.0,
+				"elapsed_time": 30.0,
+				"stability": -2.0,
+				"visibility": 0.0
+			},
+			"id": "MR05",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": 1.0,
+				"blood_loss": 2.0,
+				"elapsed_time": 30.0,
+				"stability": 0.0,
+				"visibility": 4.0
+			},
+			"id": "MR06",
+			"stress": "medium"
+		},
+		{
+			"effects": {
+				"bleeding": 2.0,
+				"blood_loss": 4.0,
+				"elapsed_time": 45.0,
+				"stability": -2.0,
+				"visibility": -3.0
+			},
+			"id": "MR07",
+			"stress": "medium"
+		},
+		{
+			"effects": {
+				"bleeding": 0.0,
+				"blood_loss": 1.0,
+				"elapsed_time": 45.0,
+				"stability": -1.0,
+				"visibility": 3.0
+			},
+			"id": "MR08",
+			"stress": "medium"
+		},
+		{
+			"effects": {
+				"bleeding": 1.0,
+				"blood_loss": 3.0,
+				"elapsed_time": 45.0,
+				"stability": -2.0,
+				"visibility": -2.0
+			},
+			"id": "MR09",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": 1.0,
+				"blood_loss": 3.0,
+				"elapsed_time": 50.0,
+				"stability": -3.0,
+				"visibility": -3.0
+			},
+			"id": "MR10",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": 0.0,
+				"blood_loss": 0.0,
+				"elapsed_time": 40.0,
+				"stability": 0.0,
+				"visibility": 2.0
+			},
+			"id": "MR11",
+			"stress": "medium"
+		},
+		{
+			"effects": {
+				"bleeding": 2.0,
+				"blood_loss": 4.0,
+				"elapsed_time": 45.0,
+				"stability": -3.0,
+				"visibility": -4.0
+			},
+			"id": "MR12",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": 2.0,
+				"blood_loss": 4.0,
+				"elapsed_time": 45.0,
+				"stability": -3.0,
+				"visibility": -3.0
+			},
+			"id": "MR13",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": 1.0,
+				"blood_loss": 3.0,
+				"elapsed_time": 40.0,
+				"stability": -2.0,
+				"visibility": -2.0
+			},
+			"id": "MR14",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": -2.0,
+				"blood_loss": 1.0,
+				"elapsed_time": 35.0,
+				"stability": -4.0,
+				"visibility": 2.0
+			},
+			"id": "MR15",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": -1.0,
+				"blood_loss": 0.0,
+				"elapsed_time": 45.0,
+				"stability": -3.0,
+				"visibility": 0.0
+			},
+			"id": "MR16",
+			"stress": "high"
+		},
+		{
+			"effects": {
+				"bleeding": -3.0,
+				"blood_loss": 1.0,
+				"elapsed_time": 30.0,
+				"stability": 2.0,
+				"visibility": 4.0
+			},
+			"id": "MR17",
+			"stress": "medium"
+		}
+	],
+	"baseline_hp": 54,
+	"baseline_minutes": 645,
+	"model": "full_physiology",
+	"procedure_id": "surgery_master_aortic_root_ascending_replacement",
+	"reward_tier": "advanced",
+	"samples": [
+		{
+			"actual_minutes_mean": 573.625,
+			"crises_mean": 0.3046875,
+			"planned_actors": [
+				0,
+				0,
+				1,
+				0,
+				0,
+				0,
+				1,
+				0
+			],
+			"precision_failures_mean": 3.2109375,
+			"precision_probabilities_no_variant": [
+				{
+					"emiko": 0.985,
+					"player": 0.5932,
+					"rei": 0.4252,
+					"stage": "MR04"
+				},
+				{
+					"emiko": 0.9012,
+					"player": 0.5092,
+					"rei": 0.3412,
+					"stage": "MR08"
+				},
+				{
+					"emiko": 0.8452,
+					"player": 0.4532,
+					"rei": 0.2852,
+					"stage": "MR09"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.3692,
+					"rei": 0.2012,
+					"stage": "MR10"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.3412,
+					"rei": 0.1732,
+					"stage": "MR12"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.3692,
+					"rei": 0.2012,
+					"stage": "MR13"
+				},
+				{
+					"emiko": 0.8172,
+					"player": 0.4252,
+					"rei": 0.2572,
+					"stage": "MR14"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.3412,
+					"rei": 0.1732,
+					"stage": "MR16"
+				}
+			],
+			"runs": 128,
+			"skill": 80,
+			"strategy": "A",
+			"successes": 9,
+			"team": {
+				"assistants": [
+					{
+						"id": "doc_emiko",
+						"name": "御堂 江美子",
+						"skill": 94,
+						"specialist_second_use": false,
+						"specialties": [],
+						"universal_expert": true
+					},
+					{
+						"id": "doc_rei",
+						"name": "深山 佳織",
+						"skill": 74,
+						"specialist_second_use": true,
+						"specialties": [
+							"cardiac"
+						],
+						"universal_expert": false
+					}
+				],
+				"player": 80,
+				"primary_circ": 86,
+				"primary_scrub": 85,
+				"secondary_circ": 84,
+				"secondary_scrub": 86
+			},
+			"terminal_hp_mean": 0.8125
+		},
+		{
+			"actual_minutes_mean": 548.703125,
+			"crises_mean": 0.328125,
+			"planned_actors": [
+				0,
+				0,
+				1,
+				0,
+				0,
+				0,
+				1,
+				0
+			],
+			"precision_failures_mean": 3.3671875,
+			"precision_probabilities_no_variant": [
+				{
+					"emiko": 0.985,
+					"player": 0.5932,
+					"rei": 0.4252,
+					"stage": "MR04"
+				},
+				{
+					"emiko": 0.9012,
+					"player": 0.5092,
+					"rei": 0.3412,
+					"stage": "MR08"
+				},
+				{
+					"emiko": 0.8452,
+					"player": 0.4532,
+					"rei": 0.2852,
+					"stage": "MR09"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.3692,
+					"rei": 0.2012,
+					"stage": "MR10"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.3412,
+					"rei": 0.1732,
+					"stage": "MR12"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.3692,
+					"rei": 0.2012,
+					"stage": "MR13"
+				},
+				{
+					"emiko": 0.8172,
+					"player": 0.4252,
+					"rei": 0.2572,
+					"stage": "MR14"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.3412,
+					"rei": 0.1732,
+					"stage": "MR16"
+				}
+			],
+			"runs": 128,
+			"skill": 80,
+			"strategy": "B",
+			"successes": 9,
+			"team": {
+				"assistants": [
+					{
+						"id": "doc_emiko",
+						"name": "御堂 江美子",
+						"skill": 94,
+						"specialist_second_use": false,
+						"specialties": [],
+						"universal_expert": true
+					},
+					{
+						"id": "doc_rei",
+						"name": "深山 佳織",
+						"skill": 74,
+						"specialist_second_use": true,
+						"specialties": [
+							"cardiac"
+						],
+						"universal_expert": false
+					}
+				],
+				"player": 80,
+				"primary_circ": 86,
+				"primary_scrub": 85,
+				"secondary_circ": 84,
+				"secondary_scrub": 86
+			},
+			"terminal_hp_mean": 0.75
+		},
+		{
+			"actual_minutes_mean": 658.8359375,
+			"crises_mean": 0.4296875,
+			"planned_actors": [
+				0,
+				0,
+				1,
+				0,
+				0,
+				0,
+				1,
+				0
+			],
+			"precision_failures_mean": 2.1328125,
+			"precision_probabilities_no_variant": [
+				{
+					"emiko": 0.985,
+					"player": 0.8732,
+					"rei": 0.4252,
+					"stage": "MR04"
+				},
+				{
+					"emiko": 0.9012,
+					"player": 0.7892,
+					"rei": 0.3412,
+					"stage": "MR08"
+				},
+				{
+					"emiko": 0.8452,
+					"player": 0.7332,
+					"rei": 0.2852,
+					"stage": "MR09"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.6492,
+					"rei": 0.2012,
+					"stage": "MR10"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.6212,
+					"rei": 0.1732,
+					"stage": "MR12"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.6492,
+					"rei": 0.2012,
+					"stage": "MR13"
+				},
+				{
+					"emiko": 0.8172,
+					"player": 0.7052,
+					"rei": 0.2572,
+					"stage": "MR14"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.6212,
+					"rei": 0.1732,
+					"stage": "MR16"
+				}
+			],
+			"runs": 128,
+			"skill": 90,
+			"strategy": "A",
+			"successes": 63,
+			"team": {
+				"assistants": [
+					{
+						"id": "doc_emiko",
+						"name": "御堂 江美子",
+						"skill": 94,
+						"specialist_second_use": false,
+						"specialties": [],
+						"universal_expert": true
+					},
+					{
+						"id": "doc_rei",
+						"name": "深山 佳織",
+						"skill": 74,
+						"specialist_second_use": true,
+						"specialties": [
+							"cardiac"
+						],
+						"universal_expert": false
+					}
+				],
+				"player": 90,
+				"primary_circ": 86,
+				"primary_scrub": 85,
+				"secondary_circ": 84,
+				"secondary_scrub": 86
+			},
+			"terminal_hp_mean": 7.09375
+		},
+		{
+			"actual_minutes_mean": 621.28125,
+			"crises_mean": 0.4921875,
+			"planned_actors": [
+				0,
+				0,
+				1,
+				0,
+				0,
+				0,
+				1,
+				0
+			],
+			"precision_failures_mean": 2.1484375,
+			"precision_probabilities_no_variant": [
+				{
+					"emiko": 0.985,
+					"player": 0.8732,
+					"rei": 0.4252,
+					"stage": "MR04"
+				},
+				{
+					"emiko": 0.9012,
+					"player": 0.7892,
+					"rei": 0.3412,
+					"stage": "MR08"
+				},
+				{
+					"emiko": 0.8452,
+					"player": 0.7332,
+					"rei": 0.2852,
+					"stage": "MR09"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.6492,
+					"rei": 0.2012,
+					"stage": "MR10"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.6212,
+					"rei": 0.1732,
+					"stage": "MR12"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.6492,
+					"rei": 0.2012,
+					"stage": "MR13"
+				},
+				{
+					"emiko": 0.8172,
+					"player": 0.7052,
+					"rei": 0.2572,
+					"stage": "MR14"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.6212,
+					"rei": 0.1732,
+					"stage": "MR16"
+				}
+			],
+			"runs": 128,
+			"skill": 90,
+			"strategy": "B",
+			"successes": 70,
+			"team": {
+				"assistants": [
+					{
+						"id": "doc_emiko",
+						"name": "御堂 江美子",
+						"skill": 94,
+						"specialist_second_use": false,
+						"specialties": [],
+						"universal_expert": true
+					},
+					{
+						"id": "doc_rei",
+						"name": "深山 佳織",
+						"skill": 74,
+						"specialist_second_use": true,
+						"specialties": [
+							"cardiac"
+						],
+						"universal_expert": false
+					}
+				],
+				"player": 90,
+				"primary_circ": 86,
+				"primary_scrub": 85,
+				"secondary_circ": 84,
+				"secondary_scrub": 86
+			},
+			"terminal_hp_mean": 8.109375
+		},
+		{
+			"actual_minutes_mean": 693.78125,
+			"crises_mean": 0.484375,
+			"planned_actors": [
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"precision_failures_mean": 0.4921875,
+			"precision_probabilities_no_variant": [
+				{
+					"emiko": 0.985,
+					"player": 0.985,
+					"rei": 0.4252,
+					"stage": "MR04"
+				},
+				{
+					"emiko": 0.9012,
+					"player": 0.985,
+					"rei": 0.3412,
+					"stage": "MR08"
+				},
+				{
+					"emiko": 0.8452,
+					"player": 0.985,
+					"rei": 0.2852,
+					"stage": "MR09"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.9292,
+					"rei": 0.2012,
+					"stage": "MR10"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.9012,
+					"rei": 0.1732,
+					"stage": "MR12"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.9292,
+					"rei": 0.2012,
+					"stage": "MR13"
+				},
+				{
+					"emiko": 0.8172,
+					"player": 0.985,
+					"rei": 0.2572,
+					"stage": "MR14"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.9012,
+					"rei": 0.1732,
+					"stage": "MR16"
+				}
+			],
+			"runs": 128,
+			"skill": 100,
+			"strategy": "A",
+			"successes": 123,
+			"team": {
+				"assistants": [
+					{
+						"id": "doc_emiko",
+						"name": "御堂 江美子",
+						"skill": 94,
+						"specialist_second_use": false,
+						"specialties": [],
+						"universal_expert": true
+					},
+					{
+						"id": "doc_rei",
+						"name": "深山 佳織",
+						"skill": 74,
+						"specialist_second_use": true,
+						"specialties": [
+							"cardiac"
+						],
+						"universal_expert": false
+					}
+				],
+				"player": 100,
+				"primary_circ": 86,
+				"primary_scrub": 85,
+				"secondary_circ": 84,
+				"secondary_scrub": 86
+			},
+			"terminal_hp_mean": 29.9765625
+		},
+		{
+			"actual_minutes_mean": 651.0,
+			"crises_mean": 0.546875,
+			"planned_actors": [
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"precision_failures_mean": 0.46875,
+			"precision_probabilities_no_variant": [
+				{
+					"emiko": 0.985,
+					"player": 0.985,
+					"rei": 0.4252,
+					"stage": "MR04"
+				},
+				{
+					"emiko": 0.9012,
+					"player": 0.985,
+					"rei": 0.3412,
+					"stage": "MR08"
+				},
+				{
+					"emiko": 0.8452,
+					"player": 0.985,
+					"rei": 0.2852,
+					"stage": "MR09"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.9292,
+					"rei": 0.2012,
+					"stage": "MR10"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.9012,
+					"rei": 0.1732,
+					"stage": "MR12"
+				},
+				{
+					"emiko": 0.7612,
+					"player": 0.9292,
+					"rei": 0.2012,
+					"stage": "MR13"
+				},
+				{
+					"emiko": 0.8172,
+					"player": 0.985,
+					"rei": 0.2572,
+					"stage": "MR14"
+				},
+				{
+					"emiko": 0.7332,
+					"player": 0.9012,
+					"rei": 0.1732,
+					"stage": "MR16"
+				}
+			],
+			"runs": 128,
+			"skill": 100,
+			"strategy": "B",
+			"successes": 126,
+			"team": {
+				"assistants": [
+					{
+						"id": "doc_emiko",
+						"name": "御堂 江美子",
+						"skill": 94,
+						"specialist_second_use": false,
+						"specialties": [],
+						"universal_expert": true
+					},
+					{
+						"id": "doc_rei",
+						"name": "深山 佳織",
+						"skill": 74,
+						"specialist_second_use": true,
+						"specialties": [
+							"cardiac"
+						],
+						"universal_expert": false
+					}
+				],
+				"player": 100,
+				"primary_circ": 86,
+				"primary_scrub": 85,
+				"secondary_circ": 84,
+				"secondary_scrub": 86
+			},
+			"terminal_hp_mean": 32.609375
+		}
+	],
+	"seeds": 128,
+	"training_ceiling": 100.0
+}

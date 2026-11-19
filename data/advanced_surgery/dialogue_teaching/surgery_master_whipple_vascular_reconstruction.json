@@ -1,0 +1,646 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_master_whipple_vascular_reconstruction",
+  "stages": {
+    "WH01": {
+      "before_action": [
+        {
+          "id": "WH01_PRE01",
+          "speaker_role": "circulating_primary",
+          "text": "「患者久宇舞弥，术式与影像核对完毕。静脉重建材料已确认。」",
+          "text_en": "“Patient: Maiya Hisau. Procedure and imaging verified. Venous reconstruction material confirmed.”"
+        },
+        {
+          "id": "WH01_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「今天不是单纯切除。切除边界和重建路线，一开始就要在同一张图上。」",
+          "text_en": "“This is more than a resection. We need the resection margins and reconstruction route on the same map from the start.”"
+        },
+        {
+          "id": "AS01_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「坂口君，今天由你掌握整个节奏。我在这里接住你的每一个决定。」",
+          "text_en": "“Sakaguchi, you set the pace of this entire operation. I am here to support each decision you make.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH01_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「开腹完成，牵开器固定。术野可以展开。」",
+          "text_en": "“Abdominal entry complete. Retractors secured. The field is ready.”"
+        }
+      ]
+    },
+    "WH02": {
+      "before_action": [
+        {
+          "id": "WH02_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「先做系统探查，再充分游离十二指肠。我要看到实际病灶关系。」",
+          "text_en": "“Systematic exploration first, then adequate duodenal mobilization. I want the actual relationships in view.”"
+        },
+        {
+          "id": "AS02_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「影像告诉我们应该看到什么；真正的游离，仍要由术野回答。」",
+          "text_en": "“Imaging tells us what we expect to see. The field itself must answer what can actually be mobilized.”"
+        },
+        {
+          "id": "WH02_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "「影像所见和目前触及的界面基本一致。深部还有一段需要暴露。」",
+          "text_en": "“The visible planes broadly match the imaging. We still need to expose the deeper portion.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH02_POST01",
+          "speaker_role": "scrub_secondary",
+          "text": "「Kocher 游离完成，后方界面已开放。」",
+          "text_en": "“Kocher mobilization complete. The posterior plane is exposed.”"
+        }
+      ]
+    },
+    "WH03": {
+      "before_action": [
+        {
+          "id": "WH03_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「确认肝门结构。胆道、动脉和静脉的关系不能靠印象判断。」",
+          "text_en": "“Identify the hilar anatomy. We cannot rely on assumptions about the bile duct, artery, or vein.”"
+        },
+        {
+          "id": "AS03_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「先辨明每条结构，再安排动作。这个顺序，我从不妥协。」",
+          "text_en": "“Identify every structure before planning each move. I never compromise on that order.”"
+        },
+        {
+          "id": "WH03_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「细分离器械和血管带备妥。」",
+          "text_en": "“Fine dissection instruments and vessel loops are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH03_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「胆道及邻近血管关系已经分清，下一步可以打开网膜囊。」",
+          "text_en": "“The biliary and adjacent vascular anatomy is defined. We can proceed to the lesser sac.”"
+        }
+      ]
+    },
+    "WH04": {
+      "before_action": [
+        {
+          "id": "WH04_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「沿胰颈后方找到静脉轴，先核对上下游，再谈切除长度。」",
+          "text_en": "“Identify the venous axis behind the pancreatic neck. Confirm both ends before deciding the resection length.”"
+        },
+        {
+          "id": "AS04_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「看清上下游。等走到必须阻断的那一步，你会感谢现在花的时间。」",
+          "text_en": "“Define both ends. When clamping becomes necessary, you will be glad you spent the time now.”"
+        },
+        {
+          "id": "WH04_PRE02",
+          "speaker_role": "circulating_secondary",
+          "text": "「术前血管重建图已调到对照位置。」",
+          "text_en": "“The preoperative vascular reconstruction map is on display for comparison.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH04_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「PV/SMV 两端可辨，预定间置段的位置清楚了。」",
+          "text_en": "“Both ends of the PV/SMV segment are identifiable. The planned interposition site is clear.”"
+        }
+      ]
+    },
+    "WH05": {
+      "before_action": [
+        {
+          "id": "WH05_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「现在决定暴露到什么程度。之后进入深处分离，就不能频繁换计划。」",
+          "text_en": "“We decide the extent of exposure now. Once deep dissection begins, frequent changes of plan are costly.”"
+        },
+        {
+          "id": "AS05_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「两种策略都能成立。你选哪一个，我便按那个方案配合。」",
+          "text_en": "“Both strategies are valid. Whichever you choose, I will work to that plan.”"
+        },
+        {
+          "id": "WH05_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「标准血管预控和扩展暴露两套器械都备好了。」",
+          "text_en": "“Both standard vascular-control and extended-exposure instruments are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH05_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "「血管控制计划确认，策略记录完成。」",
+          "text_en": "“The vascular-control plan is confirmed and recorded.”"
+        }
+      ]
+    },
+    "WH06": {
+      "before_action": [
+        {
+          "id": "WH06_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「这段静脉必须分离得足够清楚，但多剥一毫米也没有价值。」",
+          "text_en": "“We need a fully defined venous segment, but an extra millimeter of needless dissection gains us nothing.”"
+        },
+        {
+          "id": "AS06_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「我来维持近端视野。你只需告诉我，哪一层还不够清楚。」",
+          "text_en": "“I will maintain the proximal view. Tell me which layer still needs clarification.”"
+        },
+        {
+          "id": "WH06_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「无损伤血管夹、细线与冲洗准备完毕。」",
+          "text_en": "“Atraumatic clamps, fine sutures, and irrigation are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH06_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「静脉预控稳定，切除段已能独立辨认。」",
+          "text_en": "“Venous control is stable, and the planned resection segment is clearly defined.”"
+        },
+        {
+          "id": "AS06_S_POST",
+          "speaker_role": "assistant_1",
+          "text": "「分离干净，而且预控始终在手。很好。」",
+          "text_en": "“Clean dissection, with control maintained throughout. Well done.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH06_P_FAIL",
+          "speaker_role": "assistant_1",
+          "text": "「等一下，静脉外膜的层次偏了。先停住，重建视野。」",
+          "text_en": "“Hold. We have drifted off the venous adventitial plane. Pause and restore the view.”"
+        }
+      ]
+    },
+    "WH07": {
+      "before_action": [
+        {
+          "id": "WH07_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「先规划每个断端。切掉之后，重建不能留下靠猜的位置。」",
+          "text_en": "“Plan each division point now. Once the specimen is out, reconstruction must not depend on guesswork.”"
+        },
+        {
+          "id": "AS07_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「每个断端都是之后的责任。标记做好，后面的手术会顺得多。」",
+          "text_en": "“Every divided end becomes a responsibility later. Good marking makes the reconstruction far more orderly.”"
+        },
+        {
+          "id": "WH07_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "「断端标记、保护材料和标本袋已备齐。」",
+          "text_en": "“Stump markers, protective materials, and the specimen bag are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH07_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「胆道和胃肠断端已按计划准备，可以进入深部切除。」",
+          "text_en": "“Biliary and gastrointestinal division points are prepared as planned. Deep resection can proceed.”"
+        }
+      ]
+    },
+    "WH08": {
+      "before_action": [
+        {
+          "id": "WH08_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「胰颈之后是钩突。贴近血管的这一层，视野比速度重要。」",
+          "text_en": "“After the pancreatic neck comes the uncinate process. At the vascular interface, vision matters more than speed.”"
+        },
+        {
+          "id": "AS08_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「这一层最容易让人急躁。坂口君，宁可停住，也不要猜下一刀。」",
+          "text_en": "“This is where impatience becomes dangerous. Sakaguchi, pause if needed; never guess at the next cut.”"
+        },
+        {
+          "id": "WH08_PRE02",
+          "speaker_role": "anesthesia",
+          "text": "「循环参数可维持，目前允许继续精细分离。」",
+          "text_en": "“Hemodynamics remain supportable. Fine dissection can continue.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH08_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「胰颈及钩突界面完成，肿瘤连同静脉受累段已具备整块切除条件。」",
+          "text_en": "“The pancreatic neck and uncinate plane are complete. The tumor and involved vein are ready for en bloc resection.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH08_P_FAIL",
+          "speaker_role": "assistant_2",
+          "text": "「钩突深部的分离点没有完全显露，继续会失去参照。」",
+          "text_en": "“The deep uncinate dissection point is not fully exposed. Continuing would cost us our reference.”"
+        }
+      ]
+    },
+    "WH09": {
+      "before_action": [
+        {
+          "id": "WH09_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「按既定边界一并取出，不能为了省一步而拆开病灶与静脉界面。」",
+          "text_en": "“Remove the specimen within the planned boundaries. We cannot split the tumor from the venous interface merely to save a step.”"
+        },
+        {
+          "id": "AS09_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「舞弥不会听见我们的讨论了。但我们约定过，要把完整的选择带到这一刻。」",
+          "text_en": "“Maiya cannot hear this discussion now. But we agreed to bring a complete plan to this moment.”"
+        },
+        {
+          "id": "WH09_PRE02",
+          "speaker_role": "anesthesia",
+          "text": "「血管阻断窗口已经开始。请明确报告预计恢复血流的时间。」",
+          "text_en": "“The vascular-clamp window has begun. Please keep us informed of the expected time to reperfusion.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH09_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「整块标本已移出。两端静脉断口保护完成，立即转入重建。」",
+          "text_en": "“The en bloc specimen is out. Both venous ends are protected. Moving immediately to reconstruction.”"
+        },
+        {
+          "id": "AS09_S_POST",
+          "speaker_role": "assistant_1",
+          "text": "「标本完整取出了。下一段，我们接着做。」",
+          "text_en": "“The specimen is out intact. Let us continue to the next phase.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH09_P_FAIL",
+          "speaker_role": "assistant_1",
+          "text": "「整块切除的静脉边界没对齐。先核对夹持位置。」",
+          "text_en": "“The venous boundary of the en bloc resection is misaligned. Recheck the clamp positions.”"
+        }
+      ]
+    },
+    "WH10": {
+      "before_action": [
+        {
+          "id": "WH10_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「缺损已经确定。确认长度、方向、张力，吻合时才有余地。」",
+          "text_en": "“Now the defect is defined. Confirm length, orientation, and tension so we have room to work during anastomosis.”"
+        },
+        {
+          "id": "AS10_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「我替你托住移植物。长度、方向和张力，由你来作最后判断。」",
+          "text_en": "“I will hold the graft for you. The final judgment on length, orientation, and tension is yours.”"
+        },
+        {
+          "id": "WH10_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "「移植物与方向标记已送入无菌台。」",
+          "text_en": "“The graft and orientation marks are on the sterile field.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH10_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「移植物尺寸与走行确认完毕，可开始尾端吻合。」",
+          "text_en": "“Graft dimensions and course confirmed. Ready for the caudal anastomosis.”"
+        }
+      ]
+    },
+    "WH11": {
+      "before_action": [
+        {
+          "id": "WH11_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「先处理 SMV 端。缝合视线要始终看得到后壁。」",
+          "text_en": "“We start at the SMV end. Keep the posterior wall continuously visible during suturing.”"
+        },
+        {
+          "id": "AS11_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「我给你稳定的后壁视野。第一针怎么落，由你决定。」",
+          "text_en": "“I will keep the posterior wall steady and visible. You decide where the first stitch goes.”"
+        },
+        {
+          "id": "WH11_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「血管缝线、放大镜视野和持续湿润已经准备好。」",
+          "text_en": "“Vascular sutures, magnified view, and continuous moistening are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH11_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「尾端吻合完成。头端仍待完成，门静脉血流尚未恢复。」",
+          "text_en": "“The caudal anastomosis is complete. The cranial end remains open; portal flow has not yet been restored.”"
+        },
+        {
+          "id": "AS11_S_POST",
+          "speaker_role": "assistant_1",
+          "text": "「尾端吻合可靠。继续保持这个针距。」",
+          "text_en": "“The caudal anastomosis is sound. Keep that suture spacing.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH11_P_FAIL",
+          "speaker_role": "assistant_1",
+          "text": "「尾端吻合的后壁针距不均，先检查再继续。」",
+          "text_en": "“The caudal posterior-wall suture spacing is uneven. Check it before proceeding.”"
+        }
+      ]
+    },
+    "WH12": {
+      "before_action": [
+        {
+          "id": "WH12_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「最后一圈之前再看轴向。复灌以后，再纠正扭曲就迟了。」",
+          "text_en": "“Check the graft axis before the final stitches. Correcting a twist after reperfusion would be too late.”"
+        },
+        {
+          "id": "AS12_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「这一步以后，血流将重新经过我们共同建立的通道。准备好了就告诉我。」",
+          "text_en": "“After this step, flow will return through the channel we have built together. Tell me when you are ready.”"
+        },
+        {
+          "id": "WH12_PRE02",
+          "speaker_role": "anesthesia",
+          "text": "「准备配合放夹与循环监测。请提前报复灌时点。」",
+          "text_en": "“Ready to coordinate clamp release and hemodynamic monitoring. Call out before reperfusion.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH12_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「头端吻合与逐步复灌完成，移植物走行及血流已初步确认。」",
+          "text_en": "“The cranial anastomosis and controlled reperfusion are complete. Graft course and flow have passed the initial check.”"
+        },
+        {
+          "id": "AS12_S_POST",
+          "speaker_role": "assistant_1",
+          "text": "「血流恢复了。坂口君，先把这个结果确认下来。」",
+          "text_en": "“Flow has returned. Sakaguchi, let us verify this result before moving on.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH12_P_FAIL",
+          "speaker_role": "assistant_2",
+          "text": "「头端吻合的轴向不够理想。复灌前必须重新确认。」",
+          "text_en": "“The cranial anastomosis is not aligned well enough. We must reassess it before reperfusion.”"
+        }
+      ]
+    },
+    "WH13": {
+      "before_action": [
+        {
+          "id": "WH13_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「血流恢复不是终点。现在回到三个消化道重建断端。」",
+          "text_en": "“Restoring flow is not the finish line. We now return to the three digestive reconstruction sites.”"
+        },
+        {
+          "id": "AS13_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「最紧张的一段过去了。接下来不要急着松一口气——我们还有三处吻合。」",
+          "text_en": "“The most tense phase is behind us. Not time to relax—we still have three anastomoses.”"
+        },
+        {
+          "id": "WH13_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "「胰管、胆管和空肠断端保护完整，重建器械已更新。」",
+          "text_en": "“Pancreatic, biliary, and jejunal ends remain protected. Reconstruction instruments are set.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH13_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "「静脉段阶段已交接，消化道重建准备完成。」",
+          "text_en": "“The venous phase is handed over. Digestive reconstruction is ready.”"
+        }
+      ]
+    },
+    "WH14": {
+      "before_action": [
+        {
+          "id": "WH14_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「先看胰管口径和断面质量。这个吻合允许慢，不允许含糊。」",
+          "text_en": "“Assess the duct diameter and cut-surface quality first. We can be slow here, but we cannot be imprecise.”"
+        },
+        {
+          "id": "AS14_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「胰管很细，也足够决定一台大手术的后半程。让我把牵引调轻一些。」",
+          "text_en": "“The pancreatic duct is small, yet it can determine the second half of a major operation. I will ease the traction.”"
+        },
+        {
+          "id": "WH14_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「胰管定位和精细缝合器械就位。」",
+          "text_en": "“Duct alignment and fine anastomotic instruments are in place.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH14_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「胰肠吻合完成，局部张力和吻合口形态已检查。」",
+          "text_en": "“Pancreaticojejunostomy is complete. Local tension and anastomotic geometry have been checked.”"
+        },
+        {
+          "id": "AS14_S_POST",
+          "speaker_role": "assistant_1",
+          "text": "「胰肠吻合完成。你没有让整台手术的重量压乱这一处细节。」",
+          "text_en": "“Pancreaticojejunostomy complete. You did not let the weight of the whole operation compromise this detail.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH14_P_FAIL",
+          "speaker_role": "assistant_1",
+          "text": "「胰管与肠壁的对位偏了，不能直接把这一针收紧。」",
+          "text_en": "“The pancreatic duct and jejunal wall are slightly misaligned. Do not tighten that stitch yet.”"
+        }
+      ]
+    },
+    "WH15": {
+      "before_action": [
+        {
+          "id": "WH15_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「确认胆管壁与肠管方向。不要让前一个吻合牵扯这里的角度。」",
+          "text_en": "“Check the bile duct wall and bowel orientation. The previous anastomosis must not distort this one.”"
+        },
+        {
+          "id": "AS15_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「新的肠袢方向要再看一遍。正确的针脚，也需要正确的角度。」",
+          "text_en": "“Check the new bowel-limb orientation once more. Even the right stitch needs the right angle.”"
+        },
+        {
+          "id": "WH15_PRE02",
+          "speaker_role": "scrub_secondary",
+          "text": "「吻合口周围清洁，细线和冲洗备妥。」",
+          "text_en": "“The site is clean. Fine sutures and irrigation are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH15_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「胆肠吻合完成，管腔通畅及张力检查通过。」",
+          "text_en": "“Hepaticojejunostomy is complete. Patency and tension checks passed.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH15_P_FAIL",
+          "speaker_role": "assistant_2",
+          "text": "「胆肠吻合的边缘张力不一致，先把牵引调回来。」",
+          "text_en": "“Tension along the hepaticojejunostomy edge is uneven. Readjust the traction first.”"
+        }
+      ]
+    },
+    "WH16": {
+      "before_action": [
+        {
+          "id": "WH16_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「重建的最后一处。确认肠袢没有扭转，再决定吻合位置。」",
+          "text_en": "“The last reconstruction. Confirm that the bowel limb has no twist before choosing the anastomotic site.”"
+        },
+        {
+          "id": "AS16_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「最后一个吻合口，我们也按第一个的标准来做。」",
+          "text_en": "“We will hold the last anastomosis to the same standard as the first.”"
+        },
+        {
+          "id": "WH16_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "「输入与输出肠袢方向已重新核对。」",
+          "text_en": "“The afferent and efferent limbs have been rechecked for orientation.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH16_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「胃肠吻合完成。三处消化道重建均已建立。」",
+          "text_en": "“Gastrojejunostomy is complete. All three digestive anastomoses are in place.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "WH16_P_FAIL",
+          "speaker_role": "assistant_1",
+          "text": "「胃肠吻合口的方向出现偏差。先确认肠袢没有旋转。」",
+          "text_en": "“The gastrojejunostomy orientation has shifted. Check the bowel limb for rotation.”"
+        }
+      ]
+    },
+    "WH17": {
+      "before_action": [
+        {
+          "id": "WH17_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「现在按计划逐项核对血流和吻合口。不能因为离结束很近就省略确认。」",
+          "text_en": "“Now we check flow and every anastomosis against the plan. Being close to the finish is no reason to skip verification.”"
+        },
+        {
+          "id": "AS17_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「我知道你已想看见结束了。但现在，该由记录和术野证明我们做对了。」",
+          "text_en": "“I know you want to see the finish. Now the record and the field must prove that the work is sound.”"
+        },
+        {
+          "id": "WH17_PRE02",
+          "speaker_role": "anesthesia",
+          "text": "「全程循环记录已汇总，等待最后的复核结果。」",
+          "text_en": "“The hemodynamic record is consolidated. Awaiting the final review.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH17_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "「最终复核记录完毕，允许进入清点与关闭流程。」",
+          "text_en": "“Final verification documented. Cleared for counts and closure.”"
+        },
+        {
+          "id": "AS17_S_POST",
+          "speaker_role": "assistant_1",
+          "text": "「全部复核结束。现在，我可以安心把最后的步骤也交给你。」",
+          "text_en": "“All checks are complete. I can entrust the final steps to you with confidence.”"
+        }
+      ]
+    },
+    "WH18": {
+      "before_action": [
+        {
+          "id": "WH18_PRE01",
+          "speaker_role": "scrub_primary",
+          "text": "「器械和纱布清点开始。引流与关闭材料齐备。」",
+          "text_en": "“Instrument and sponge counts are beginning. Drains and closure materials are ready.”"
+        },
+        {
+          "id": "WH18_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「确认所有记录一致，再关腹。」",
+          "text_en": "“Match every record before abdominal closure.”"
+        },
+        {
+          "id": "AS18_S_PRE",
+          "speaker_role": "assistant_1",
+          "text": "「最后一针也由你完成。今天这台手术，应该完整地属于你的记录。」",
+          "text_en": "“The final stitch is yours as well. This operation should be complete in your own record.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "WH18_POST01",
+          "speaker_role": "circulating_secondary",
+          "text": "「最终清点一致，腹壁关闭完成。手术记录进入结算。」",
+          "text_en": "“Final counts reconcile. Abdominal closure is complete. The case is ready for settlement.”"
+        }
+      ]
+    }
+  }
+}

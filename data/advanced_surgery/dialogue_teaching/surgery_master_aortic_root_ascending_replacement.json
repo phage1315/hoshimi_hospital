@@ -1,0 +1,616 @@
+{
+  "schema_version": "advanced_day2_dialogue_v2",
+  "procedure_id": "surgery_master_aortic_root_ascending_replacement",
+  "stages": {
+    "MR01": {
+      "before_action": [
+        {
+          "id": "MR01_PRE01",
+          "speaker_role": "circulating_primary",
+          "text": "「清点记录和体外循环准备单已经备齐。」",
+          "text_en": "“The count record and bypass preparation checklist are ready.”"
+        },
+        {
+          "id": "MR01_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「先想清楚，今天究竟要保留什么。」",
+          "text_en": "“First, be clear about what we're preserving today.”"
+        },
+        {
+          "id": "MR01_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「先核对影像，确认今天重建的上下界。」",
+          "text_en": "“Let's check the imaging and confirm the proximal and distal extent of the repair.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR01_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「胸骨切开所需器械在主台。」",
+          "text_en": "“The sternotomy instruments are on the main table.”"
+        }
+      ]
+    },
+    "MR02": {
+      "before_action": [
+        {
+          "id": "MR02_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「正中入路。先把胸骨后方安全地暴露出来。」",
+          "text_en": "“Midline approach. First, expose the space behind the sternum safely.”"
+        },
+        {
+          "id": "MR02_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「入路要干净。别在真正的手术开始前浪费视野。」",
+          "text_en": "“Keep the approach clean. Don't waste exposure before the real work begins.”"
+        },
+        {
+          "id": "MR02_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「胸骨锯和止血材料在手边。」",
+          "text_en": "“The sternal saw and hemostatic supplies are at hand.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR02_POST01",
+          "speaker_role": "anesthesia",
+          "text": "「通气和循环监测继续。」",
+          "text_en": "“Ventilation and circulatory monitoring continue.”"
+        }
+      ]
+    },
+    "MR03": {
+      "before_action": [
+        {
+          "id": "MR03_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "「我来维持心包牵引，给升主动脉留足空间。」",
+          "text_en": "“I'll maintain pericardial traction and keep the ascending aorta in view.”"
+        },
+        {
+          "id": "MR03_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「你的目标在根部，眼睛也得留给正常的升主动脉。」",
+          "text_en": "“Your target is the root, but keep the healthy ascending aorta in view.”"
+        },
+        {
+          "id": "MR03_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「正常的远端段也要看清，别只盯着瘤体。」",
+          "text_en": "“We need a clear view of the healthy distal segment, not just the aneurysm.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR03_POST01",
+          "speaker_role": "scrub_secondary",
+          "text": "「下一阶段的插管和阻断器械已经分类放好。」",
+          "text_en": "“The cannulation and clamping instruments for the next stage are arranged.”"
+        }
+      ]
+    },
+    "MR04": {
+      "before_action": [
+        {
+          "id": "MR04_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "「体外循环师在位，抗凝检查正在最后核对。」",
+          "text_en": "“The perfusionist is standing by. The anticoagulation check is in its final review.”"
+        },
+        {
+          "id": "MR04_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「要上体外循环了。你判断什么条件满足以后才能转机？」",
+          "text_en": "“We're approaching bypass. What conditions must be met before going on pump?”"
+        },
+        {
+          "id": "MR04_PRE02_TEACHING",
+          "speaker_role": "lead_surgeon",
+          "text": "「抗凝达到要求、插管位置和回流路径都确认，才能安全转机。」",
+          "text_en": "“Only after anticoagulation, cannulation sites, and venous return are verified can we safely go on bypass.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR04_POST01",
+          "speaker_role": "anesthesia",
+          "text": "「体外循环已经建立，继续监测灌注和体温。」",
+          "text_en": "“Bypass is established. We'll keep monitoring perfusion and temperature.”"
+        },
+        {
+          "id": "MR04_FIRST_ASSIST_POST_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「看到了吗？交给机器的是循环，不是我们的责任。」",
+          "text_en": "“See? We hand circulation to the machine, not our responsibility.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR04_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「别硬顶。插管的角度不对，先停下来重新确认。」",
+          "text_en": "“Don't force it. The cannulation angle is wrong. Stop and reassess.”"
+        }
+      ]
+    },
+    "MR05": {
+      "before_action": [
+        {
+          "id": "MR05_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "「阻断前再核对心肌保护方案。」",
+          "text_en": "“Let's verify myocardial protection before cross-clamping.”"
+        },
+        {
+          "id": "MR05_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「停搏是争取来的时间，不是可以随便浪费的时间。」",
+          "text_en": "“Cardiac arrest gives us a window of time, not time to waste.”"
+        },
+        {
+          "id": "MR05_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「确认后阻断，按计划给予心肌保护。」",
+          "text_en": "“Once confirmed, cross-clamp and administer cardioplegia as planned.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR05_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「根部术野已充分暴露。」",
+          "text_en": "“The root is adequately exposed.”"
+        }
+      ]
+    },
+    "MR06": {
+      "before_action": [
+        {
+          "id": "MR06_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「打开病变根部，先看瓣叶。」",
+          "text_en": "“Open the diseased root and examine the leaflets first.”"
+        },
+        {
+          "id": "MR06_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「看瓣叶。别让五点三厘米这个数字替你做保瓣决定。」",
+          "text_en": "“Look at the leaflets. Don't let that five-point-three-centimeter number make the valve decision for you.”"
+        },
+        {
+          "id": "MR06_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「测量器械与细钳。」",
+          "text_en": "“Measuring instruments and fine forceps.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR06_POST01",
+          "speaker_role": "anesthesia",
+          "text": "「心肌保护依既定节奏继续维护。」",
+          "text_en": "“Myocardial protection is being maintained on schedule.”"
+        },
+        {
+          "id": "MR06_FIRST_ASSIST_POST_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「好。保瓣有条件，你没有忘。」",
+          "text_en": "“Good. You remembered that valve preservation has conditions.”"
+        }
+      ]
+    },
+    "MR07": {
+      "before_action": [
+        {
+          "id": "MR07_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "「我牵开窦壁，避免压迫冠状动脉开口。」",
+          "text_en": "“I'll retract the sinus wall without compressing the coronary ostia.”"
+        },
+        {
+          "id": "MR07_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「冠状动脉开口不能靠力气拉出来。留够活动度。」",
+          "text_en": "“You can't free a coronary ostium by force. Leave it enough mobility.”"
+        },
+        {
+          "id": "MR07_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「给冠脉钮留足组织边缘和活动余量。」",
+          "text_en": "“Preserve sufficient tissue margins and mobility for the coronary buttons.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR07_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「冠脉吻合的细线和器械已备妥。」",
+          "text_en": "“The fine sutures and instruments for coronary reimplantation are ready.”"
+        }
+      ]
+    },
+    "MR08": {
+      "before_action": [
+        {
+          "id": "MR08_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「测量瓣环和瓣交界高度，先确定几何关系。」",
+          "text_en": "“Measure the annulus and commissural heights before deciding the geometry.”"
+        },
+        {
+          "id": "MR08_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「别先选人工血管再去迎合它。尺寸要服从解剖。」",
+          "text_en": "“Don't pick a graft and force the anatomy to fit. Let the anatomy determine the size.”"
+        },
+        {
+          "id": "MR08_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "「根部外侧牵引由我保持。」",
+          "text_en": "“I'll maintain the external root exposure.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR08_POST01",
+          "speaker_role": "scrub_secondary",
+          "text": "「人工血管尺寸记录已交给主台核对。」",
+          "text_en": "“The graft sizing notes have been passed to the main table for confirmation.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR08_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「尺寸不是猜出来的。把瓣环和交界的测量重做一遍。」",
+          "text_en": "“You don't guess the size. Repeat the annular and commissural measurements.”"
+        }
+      ]
+    },
+    "MR09": {
+      "before_action": [
+        {
+          "id": "MR09_PRE01",
+          "speaker_role": "scrub_primary",
+          "text": "「基底环缝线与人工血管已经在台。」",
+          "text_en": "“The basal ring sutures and graft are on the field.”"
+        },
+        {
+          "id": "MR09_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「这一圈缝线决定整个根部稳不稳。别赶。」",
+          "text_en": "“This ring of sutures determines whether the root is secure. Don't rush.”"
+        },
+        {
+          "id": "MR09_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「这一圈按顺序走，注意不要伤到附近结构。」",
+          "text_en": "“Work around the ring in sequence, protecting the adjacent structures.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR09_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「近端牵引角度保持，准备下一步。」",
+          "text_en": "“I'll maintain the proximal exposure for the next step.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR09_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「针脚层次偏了。不能为了赶进度牺牲根部支撑。」",
+          "text_en": "“That stitch is in the wrong plane. Don't sacrifice root support to save time.”"
+        }
+      ]
+    },
+    "MR10": {
+      "before_action": [
+        {
+          "id": "MR10_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "「三个瓣交界的参照位置都能看清。」",
+          "text_en": "“All three commissural reference points are visible.”"
+        },
+        {
+          "id": "MR10_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「先看三个交界的相对高度，别只盯着某一片瓣叶。」",
+          "text_en": "“Compare all three commissural heights. Don't fixate on one leaflet.”"
+        },
+        {
+          "id": "MR10_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「先校准高度，再固定瓣叶的空间位置。」",
+          "text_en": "“Set the heights first, then secure the geometry of the leaflets.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR10_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「下一组细缝线已准备好。」",
+          "text_en": "“The next set of fine sutures is ready.”"
+        },
+        {
+          "id": "MR10_FIRST_ASSIST_POST_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「高度可以调整，盲目的自信可调整不了。」",
+          "text_en": "“Commissural heights can be adjusted. Blind confidence can't.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR10_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「交界高度没对齐。停，重新找准基准。」",
+          "text_en": "“The commissural heights aren't aligned. Stop and reset the reference.”"
+        }
+      ]
+    },
+    "MR11": {
+      "before_action": [
+        {
+          "id": "MR11_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「检查对合高度，按计划做瓣膜测试。」",
+          "text_en": "“Check the coaptation height and perform the planned valve test.”"
+        },
+        {
+          "id": "MR11_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「对合不够好，就调整。‘差不多’不是一个检查结果。」",
+          "text_en": "“If coaptation isn't good enough, adjust it. ‘Close enough’ isn't a test result.”"
+        },
+        {
+          "id": "MR11_PRE02",
+          "speaker_role": "assistant_2",
+          "text": "「我从另一侧看瓣缘位置。」",
+          "text_en": "“I'll check the leaflet edges from the opposite side.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR11_POST01",
+          "speaker_role": "anesthesia",
+          "text": "「结果先记录，复灌以后还要用超声复核。」",
+          "text_en": "“We'll document this test, then reassess with ultrasound after reperfusion.”"
+        },
+        {
+          "id": "MR11_FIRST_ASSIST_POST_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「现在你应该明白，为什么刚才那针不能省。」",
+          "text_en": "“Now you should understand why that earlier stitch couldn't be omitted.”"
+        }
+      ]
+    },
+    "MR12": {
+      "before_action": [
+        {
+          "id": "MR12_PRE01",
+          "speaker_role": "assistant_2",
+          "text": "「左冠脉钮由我托住，不施加额外牵拉。」",
+          "text_en": "“I'll support the left coronary button without additional traction.”"
+        },
+        {
+          "id": "MR12_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「左冠状动脉最怕你忽略它的方向，不怕你慢。」",
+          "text_en": "“The left coronary artery doesn't mind you taking time. It minds you ignoring its course.”"
+        },
+        {
+          "id": "MR12_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「先看血管走向，再下第一针。」",
+          "text_en": "“Check the vessel's course before placing the first stitch.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR12_POST01",
+          "speaker_role": "scrub_primary",
+          "text": "「吻合线与备用细线保持在主台。」",
+          "text_en": "“The anastomotic and spare fine sutures remain on the main table.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR12_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「左冠开口承受不了这种张力。退回来。」",
+          "text_en": "“The left coronary button can't tolerate that tension. Back up.”"
+        }
+      ]
+    },
+    "MR13": {
+      "before_action": [
+        {
+          "id": "MR13_PRE01",
+          "speaker_role": "scrub_secondary",
+          "text": "「右冠脉吻合所需细针线已经换上。」",
+          "text_en": "“The fine needles and sutures for the right coronary anastomosis are ready.”"
+        },
+        {
+          "id": "MR13_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「别只盯着针尖。退一步，看整条血管有没有扭。」",
+          "text_en": "“Don't stare only at the needle. Step back and see whether the whole vessel is twisted.”"
+        },
+        {
+          "id": "MR13_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「注意开口方向，不能留下扭曲和张力。」",
+          "text_en": "“Mind the ostial orientation. We must not leave twisting or tension.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR13_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「牵拉暂时解除，方便检查血管走向。」",
+          "text_en": "“I'll release traction so we can inspect the vessel's course.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR13_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「这次不是针线的问题。你忽略了整条血管的走向。」",
+          "text_en": "“The problem isn't the suture this time. You lost sight of the vessel's course.”"
+        }
+      ]
+    },
+    "MR14": {
+      "before_action": [
+        {
+          "id": "MR14_PRE01",
+          "speaker_role": "lead_surgeon",
+          "text": "「把人工血管和正常的远端升主动脉接起来。」",
+          "text_en": "“Anastomose the graft to the healthy distal ascending aorta.”"
+        },
+        {
+          "id": "MR14_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「远端这一接，重建的几何就定下来了。想清楚再落针。」",
+          "text_en": "“This distal anastomosis sets the final geometry. Think before placing the stitch.”"
+        },
+        {
+          "id": "MR14_PRE02",
+          "speaker_role": "scrub_primary",
+          "text": "「血管缝线和止血材料已备妥。」",
+          "text_en": "“Vascular sutures and hemostatic supplies are ready.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR14_POST01",
+          "speaker_role": "assistant_2",
+          "text": "「吻合口外观开始逐段复核。」",
+          "text_en": "“We'll inspect the completed anastomosis segment by segment.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR14_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「远端口径没接顺。再看一眼整体几何。」",
+          "text_en": "“The distal diameters aren't matched smoothly. Recheck the overall geometry.”"
+        }
+      ]
+    },
+    "MR15": {
+      "before_action": [
+        {
+          "id": "MR15_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "「排气与复灌的步骤已经和团队核对，经食道超声准备观察。」",
+          "text_en": "“The de-airing and reperfusion sequence is agreed. TEE is ready for assessment.”"
+        },
+        {
+          "id": "MR15_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「放开阻断钳之前，先说清楚排气为什么不能省。」",
+          "text_en": "“Before releasing the cross-clamp, tell me why de-airing cannot be skipped.”"
+        },
+        {
+          "id": "MR15_PRE02_TEACHING",
+          "speaker_role": "lead_surgeon",
+          "text": "「残留气体可能进入冠状动脉或体循环。排气完成，才能按步骤恢复灌注。」",
+          "text_en": "“Residual air could enter the coronaries or systemic circulation. We complete de-airing before restoring flow in sequence.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR15_POST01",
+          "speaker_role": "anesthesia",
+          "text": "「冠状动脉灌注恢复，瓣膜与心室功能继续复核。」",
+          "text_en": "“Coronary perfusion has resumed. We continue evaluating the valve and ventricular function.”"
+        },
+        {
+          "id": "MR15_FIRST_ASSIST_POST_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「别急着庆祝心脏跳起来。先看它跳得有没有效。」",
+          "text_en": "“Don't celebrate the heart beating yet. First check whether it is pumping effectively.”"
+        }
+      ]
+    },
+    "MR16": {
+      "before_action": [
+        {
+          "id": "MR16_PRE01",
+          "speaker_role": "anesthesia",
+          "text": "「节律、收缩功能与血流动力学一起评估，准备逐步降低支持。」",
+          "text_en": "“We'll assess rhythm, contractility, and hemodynamics together before reducing support.”"
+        },
+        {
+          "id": "MR16_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「我不替你说可以脱机。坂口，你自己把证据凑齐。」",
+          "text_en": "“I won't tell you it's safe to wean. Sakaguchi, assemble the evidence yourself.”"
+        },
+        {
+          "id": "MR16_PRE02_TEACHING",
+          "speaker_role": "lead_surgeon",
+          "text": "「看超声、心室收缩和节律，也看每个吻合部位有没有出血。缺一项都不能急。」",
+          "text_en": "“I need the echo, ventricular function, rhythm, and bleeding checks at every anastomosis. We don't rush if one is missing.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR16_POST01",
+          "speaker_role": "circulating_primary",
+          "text": "「后续止血与转出所需物资在台外待命。」",
+          "text_en": "“Supplies for further hemostasis and transfer are standing by outside the sterile field.”"
+        },
+        {
+          "id": "MR16_FIRST_ASSIST_POST_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「很好。你开始像真正的主刀那样，看完整台手术了。」",
+          "text_en": "“Good. You're beginning to see the whole operation the way a lead surgeon should.”"
+        }
+      ],
+      "precision_failed": [
+        {
+          "id": "MR16_FAILED_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「还不能脱机。先说哪一项证据不够。」",
+          "text_en": "“We're not ready to wean. Tell me which piece of evidence is missing.”"
+        }
+      ]
+    },
+    "MR17": {
+      "before_action": [
+        {
+          "id": "MR17_PRE01",
+          "speaker_role": "scrub_secondary",
+          "text": "「最终器械清点与巡回共同核对中。」",
+          "text_en": "“The final instrument count is being verified with the circulating nurse.”"
+        },
+        {
+          "id": "MR17_FIRST_ASSIST_PRE_TEACHING",
+          "speaker_role": "assistant_1",
+          "text": "「最后的整齐，不能靠把问题缝在里面。」",
+          "text_en": "“A tidy finish doesn't mean sewing a problem out of sight.”"
+        },
+        {
+          "id": "MR17_PRE02",
+          "speaker_role": "lead_surgeon",
+          "text": "「确认止血、引流和关胸范围，再关闭。」",
+          "text_en": "“Verify hemostasis, drains, and the closure field before closing.”"
+        }
+      ],
+      "after_resolution": [
+        {
+          "id": "MR17_POST01",
+          "speaker_role": "anesthesia",
+          "text": "「转出前的监测与支持交接开始。」",
+          "text_en": "“We're beginning the monitoring and support handoff for transfer.”"
+        }
+      ]
+    }
+  }
+}

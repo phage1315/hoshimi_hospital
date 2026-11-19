@@ -1,0 +1,20 @@
+{
+  "reason": "User reported distorted lithotomy proportions and incorrect lateral positioning.",
+  "identity_reference": "assets/characters/portrait_pack_v20/doc_rei/white_coat/neutral.png",
+  "lithotomy": {
+    "composition_references": [
+      "assets/characters/relationship_patient_v1/doc_serika/operating_table_lithotomy/awake.png",
+      "assets/characters/relationship_patient_v2/nurse_yui/operating_table_lithotomy/awake.png"
+    ],
+    "requirements": "True high overhead view, normal adult head-to-body ratio, normal torso length, hips at the short-table edge, arms beside torso, calves in leg supports, no table extension below hips."
+  },
+  "lateral": {
+    "composition_references": [
+      "assets/characters/advanced_staff_patient_v1/doc_serika/lateral.png",
+      "assets/characters/advanced_staff_patient_v1/nurse_yui/lateral.png"
+    ],
+    "requirements": "High near-overhead longitudinal full-table view, head at right and covered legs at left, genuine lateral decubitus under layered sterile drapes, one small flank window, no low side-profile pose or broad restraint straps."
+  },
+  "generation_service": "OpenAI image generation",
+  "previous_versions_preserved": true
+}

@@ -223,6 +223,14 @@ visuals.portraits 使用服装/表情作为键，对话节点可指定 expressio
 
 2026-09-28 导入用户提供的阿尔托莉雅·潘德拉贡角色设计文档与八张原作外观参考。使用内置 ImageGen 统一制作白大褂、经典私服、刷手服和无菌手术服版本；依用户确认，正式运行时文件全部裁为 1024×1536 透明头顶至髋部／大腿上缘半身立绘，全身生成图只保留为来源记录。刷手服与无菌服将辫子、侧发和呆毛完整收入手术帽。另生成 1536×960 的 SFW 初见奖励 CG `assets/events/character_events/artoria/right_position.png`，用于外科主任办公室的三台手术人员重排场景。人物数据、初始关系与独立的外科副部长办公室已经接入；办公室初见只建立 Lv0，相识后《谁站在哪个位置》作为 Lv1 事件，完成后解锁常规手术团队资格及排程板 CG。Lv2—Lv5、佐伯大型手术、助手岗位奖励和患者路线保留为后续内容。完整来源、哈希与范围见 `research/imports/doc_artoria_2026-09-28.json`。
 
+2026-11-17 按用户明确顺序原样导入阿尔托莉雅作为患者时的八张全屏准备 CG：消毒、铺巾、下刀前、戴手术帽、担架车转运、导尿、剃毛和灌肠，保存于 `assets/events/ward_preparation_v1/doc_artoria/`。分别绑定现有动作 `skin_disinfection`、`ack_disinfection`、`request_scalpel`、`ward_surgical_cap`、`complete_manual_ward_preparation`、`urinary_catheterization`、`ward_skin_prep(_unnecessary)` 与 `ward_enema(_unnecessary)`；沿用清醒准备显示和全麻后抑制规则，不改图片内容。来源副本、尺寸、SHA-256 和节点映射见 `research/imports/artoria_staff_patient_procedure_cg_2026-11-17/manifest.json`。
+
+2026-11-17 追加用户指定的阿尔托莉雅作为患者时的全裸立绘（源图 `00161-2059937800.png` 归档于 `research/generated_candidates/artoria_staff_patient_v1/author_supplied/ward_preparation_shy_00161-2059937800.png`，1024×1536，SHA-256 `cf38ded0046d0284c4e4d6fb87945fc2e14788201fcd0871bf10eb2bdb052ee6`）。按用户要求离线调用本地 BiRefNet 去背并开启 mipmap，保持原始 1024×1536 画幅输出为 `assets/characters/artoria_staff_patient_v1/doc_artoria/ward_preparation/shy.png`（RGBA，SHA-256 `fb9b8011b2ba21f3e5d8870b04adc3c362233e21dcbac9d1094bb2d926624b64`），登记为 `ward_preparation/shy` 并通过既有 `portrait_aliases` 自动映射 `examination/shy` 供手动病房术前准备阶段使用。来源与校验见 `research/imports/artoria_ward_preparation_shy_2026-11-17.json`。
+
+2026-11-18 导入深山佳织与神宫寺成美的 staff-as-patient 美术标准集，各 23 张：病房立绘 6、术中头像 4、普通手术台 4、截石位 4、全麻过场 1、高级手术体位 4。运行资源分别位于 `assets/characters/miyama_staff_patient_v1/doc_rei/` 与 `assets/characters/narumi_staff_patient_v1/doc_aoi/`；候选、作者替换件和版本追溯保留于对应 `research/generated_candidates/*_staff_patient_v1/`。成美的用户指定开胸图另保留替换前 SFW 参考于 `assets/references/advanced_staff_patient_sfw_v1/doc_aoi/chest.png`。本次仅完成美术映射；两人的患者档案与双语对白尚未提供，生产患者资格保持锁定。
+
+2026-11-18 导入七瀬恋 `nurse_haru` 的 staff-as-patient 美术标准集23张：病房立绘6、术中裸肩头像4、普通手术台4、截石位4、全麻过场1、高级手术体位4，运行资源位于 `assets/characters/nanase_ren_staff_patient_v1/nurse_haru/`。用户指定的开胸高级体位图原样作为运行资源，替换前SFW生成版保留于 `assets/references/advanced_staff_patient_sfw_v1/nurse_haru/chest.png`；完整候选、差分、来源和校验记录位于 `research/generated_candidates/nanase_ren_staff_patient_v1/`。本次仅接入美术；患者档案、双语患者对白及生产解锁仍未提供。
+
 2026-09-28 按用户反馈调整阿尔托莉雅的关系节奏：新增 `artoria_office` 独立外科副部长办公室，暂复用现有外科办公室背景；新建《外科副部长的办公室》作为无技能门槛的 Lv0 正式相识。《谁站在哪个位置》保留完整的御堂冲突、三台手术人员重排、关键选择及奖励 CG，改为相识后可触发的 Lv1 关系事件；完成 Lv1 后才开放阿尔托莉雅的常规手术团队资格。空置的 `surgery_director_office` 继续留给未来主任竞选内容。
 
 2026-09-28 根据实机截图缩短阿尔托莉雅地点显示名：地图与事件副标题统一使用“副部长办公室 / PENDRAGON OFFICE”，避免按钮溢出；完整职务仍保留在角色资料和办公室描述中。她的登场链改为严格前置：玩家必须先完成城宮明日香与御堂江美子的正式相识，随后在院长室触发明日香的《另一位主任候选》，由明日香明确说明阿尔托莉雅与御堂的主任竞争关系；完成这段介绍后，副部长办公室才开放阿尔托莉雅的 Lv0 相识事件。
@@ -916,3 +924,14 @@ Godot原生窗口专项255项0失败，中英触诊／局麻测试的七个按�
 - 用户提供 704×640 透明术中头像作为 `nervous`；按用户要求以该图为种子使用内置 imagegen 生成 `panic`、`indignant`、`crying`、`terrified`、`pain_scream`、`overwhelmed` 六态。生成只改变表情，输出机械缩放回 704×640 并保留透明背景。
 
 完整源文件、节点、生成约束和 SHA-256 见 `research/imports/hiroko_daydream_assets_2026-11-04.json`。
+
+## 阿尔托莉雅传奇术式《这一次，交给你》患者久宇舞弥与主术野资源（2026-11-18）
+
+- 主术野图：用户指定附件原样逐字节复制为 `assets/surgery/fields/saber_whipple_vascular.jpg`（1024×791 RGB，SHA-256 `f35618d8d7a47db4c81d95ef538172701dd335f9a4a5bd567289b9a682e77d6a`，源归档于 `research/generated_candidates/maiya_hisau_legendary_v1/author_supplied/saber_whipple_vascular_field.jpg`，未发送至任何生成服务）；开腹与关腹窗口按用户指示复用现有 `assets/surgeries/advanced_fields_v1/whipple_incision.png` 与 `whipple_closure.png`。
+- 久宇舞弥角色资源：基于 `_staging/maiya_hisau_patient_seed_v1/{maiya_ward_seed,maiya_operating_head_seed}.png` 两张 SFW 种子图生成并经本地 `BiRefNet-ToonOut` 离线透明化的 8 张 `RGBA` 立绘（`casual/neutral.png`、`ward/{neutral,serious,relieved}.png`、`postop/{neutral,tired,relieved}.png`、`or_cap/calm.png`）及 2 张 `RGB` 过场场景图（`transfer.png`、`anesthesia.png`），保存于 `assets/characters/maiya_hisau_legendary_v1/`。完整 SHA-256 与来源对照见 `assets/characters/maiya_hisau_legendary_v1/manifest.json` 及 `research/imports/saber_legendary_v1_1.json`。
+
+- 2026-11-18 久宇舞弥患者12图已按用户确认的 `_staging/maiya_hisau_advanced_patient_v2/` 原样替换至 `assets/characters/maiya_hisau_legendary_v1/`，独立全麻头像/过场/体位映射。旧运行图备份于 staging 的 `previous_runtime_v1/`；13条manifest含未变术野，逐条SHA核验。
+
+### 村上爱高级患者重制正式替换（2026-11-18）
+
+12张来自 `_staging/murakami_ai_advanced_patient_v2/`，运行于 `assets/characters/murakami_ai_legendary_v1/`。仰卧团队核对使用用户附件 `/var/folders/t6/9dg502qd74vdq35hjs973jf40000gn/T/codex-clipboard-4f32ff49-4d1e-466c-acde-926726a9beb1.png` 原样字节复制，未编辑/上传。其余11张采用批准重制图；13项运行manifest包括原术野，记录SHA256。旧资源及story备份在staging/previous_runtime_v1。

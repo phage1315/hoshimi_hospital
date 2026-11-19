@@ -29,7 +29,10 @@ func run() -> void:
 	expect(game.completed_surgeries_total == 0, "Advanced referral unexpectedly depends on a completed or major-surgery count")
 	expect(not game.advanced_referral_system_unlocked(), "Random advanced referrals opened before the Chisato tutorial")
 	game.set_story_flag("advanced_referral_random_cases_enabled", true)
-	expect(game.advanced_referral_system_unlocked(), "Tutorial completion flag did not unlock random advanced referrals")
+	expect(not game.advanced_referral_system_unlocked(), "Flag alone must not unlock referrals")
+	game.special_event_completion_counts["advanced_referral_tutorial_chisato"] = 1
+	game.special_event_completion_days["advanced_referral_tutorial_chisato"] = 1
+	expect(game.advanced_referral_system_unlocked(), "Settled tutorial unlocks referrals")
 
 	var referral := {
 		"id": "referral_test",

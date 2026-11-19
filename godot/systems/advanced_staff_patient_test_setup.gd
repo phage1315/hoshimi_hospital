@@ -32,7 +32,9 @@ static func fixture(g, actor: String) -> void:
 	if not str(free.get("completion_flag", "")).is_empty(): g.set_story_flag(free.completion_flag)
 	relation.unlocked_benefits.append("unlock_intimacy_events")
 	g.surgery_xp = g.surgery_xp_for_level(88)
-	g.set_test_time(g.day_number_for_date("2025-06-09"), 540)
+	var target_day: int = g.day_number_for_date("2025-06-09")
+	g.set_test_time(target_day, 540)
+	g.story_time_advance_minutes += (target_day - 1) * int(g.SHIFT_MINUTES) - g.elapsed()
 	g.active_mode = "encounter"
 
 static func team(c) -> Dictionary:

@@ -1,0 +1,11 @@
+extends SceneTree
+func _initialize():
+	var paths = ["res://assets/characters/emiko_staff_patient_v1/doc_emiko/ward/neutral.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/intraoperative/tense.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table/awake.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table_lithotomy/awake.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/splash/general_anesthesia.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/advanced/abdominal.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/advanced/chest.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/advanced/lateral.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/advanced/prone.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/ward/smile.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/ward/brave.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/ward/worried.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/ward/afraid.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/ward/crying.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/intraoperative/pain.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/intraoperative/near_collapse.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/intraoperative/anesthetized.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table/tense.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table/afraid.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table/anesthetized.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table_lithotomy/tense.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table_lithotomy/afraid.png", "res://assets/characters/emiko_staff_patient_v1/doc_emiko/operating_table_lithotomy/anesthetized.png"]
+	for path in paths:
+		var tex = load(path) as Texture2D
+		if tex == null or tex.get_width() <= 0:
+			push_error(path)
+			quit(1)
+			return
+	print("EMIKO_PATIENT_TEXTURES_OK: ", paths.size())
+	quit(0)

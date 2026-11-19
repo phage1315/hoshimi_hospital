@@ -1042,8 +1042,9 @@ emiko_slots = {slot['target_level']: slot for slot in emiko_relation.get('rank_s
 check(emiko_slots.get(1, {}).get('event_id') == 'emiko_lv1_first_operation' and
       emiko_slots.get(2, {}).get('event_id') == 'emiko_lv2_follow_my_lead' and
       emiko_slots.get(3, {}).get('event_id') == 'emiko_lv3_today_i_lead' and
-      emiko_slots.get(4, {}).get('event_id') == 'emiko_lv4_emikos_secret',
-      'doc_emiko: Lv1-Lv4 event slots are not linked')
+      emiko_slots.get(4, {}).get('event_id') == 'emiko_lv4_emikos_secret' and
+      emiko_slots.get(5, {}).get('event_id') == 'emiko_lv5_hands_of_god',
+      'doc_emiko: Lv1-Lv5 event slots are not linked')
 check('emiko_office' in by['locations'] and 'emiko_office' in emiko.get('presence', {}).get('fixed_locations', []),
       'doc_emiko: personal office location or fixed presence is missing')
 emiko_intro = by['character_events'].get('emiko_intro_rumored_hands', {})
@@ -1090,6 +1091,31 @@ check(emiko_slots[4].get('min_familiarity') == 55 and
       [{'type': 'player_attribute', 'attribute': 'presence', 'minimum': 30}] and
       emiko_lv4.get('benefit_id') == 'unlock_intimacy_events',
       'doc_emiko: Lv4 must require Lv3, Familiarity 55, Presence +30, a three-day gap, and unlock_intimacy_events without extra Surgery gate')
+emiko_lv5 = by['character_events'].get('emiko_lv5_hands_of_god', {})
+check(emiko_slots[5].get('content_status') == 'authored' and
+      emiko_slots[5].get('min_familiarity') == 75 and
+      emiko_slots[5].get('cooldown_days') == 3 and
+      emiko_slots[5].get('benefit_id') == 'unlock_clinical_practice_patient' and
+      emiko_slots[5].get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 90}] and
+      emiko_lv5.get('location_id') == 'emiko_office' and
+      emiko_lv5.get('trigger_mode') == 'after_work' and
+      emiko_lv5.get('auto_start') is True and
+      emiko_lv5.get('locks_saving') is True and
+      emiko_lv5.get('time_start') == 960 and
+      emiko_lv5.get('time_end') == 1320 and
+      emiko_lv5.get('target_level') == 5 and
+      emiko_lv5.get('benefit_id') == 'unlock_clinical_practice_patient' and
+      emiko_lv5.get('completion_day_offset') == 1 and
+      emiko_lv5.get('completion_absolute_clock') == 540 and
+      emiko_lv5.get('conditions', {}).get('max_day') == 363 and
+      emiko_lv5.get('conditions', {}).get('min_familiarity') == 75 and
+      emiko_lv5.get('conditions', {}).get('required_events') == ['emiko_lv4_emikos_secret'] and
+      emiko_lv5.get('conditions', {}).get('days_after_required_events') == 3 and
+      emiko_lv5.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'skill', 'minimum': 90}] and
+      emiko_lv5.get('completion_story_flags') == ['emiko_lv5_complete'],
+      'doc_emiko: Lv5 milestone event contract mismatch')
 
 asuka = by['staff'].get('doc_asuka', {})
 asuka_relation = next((relation for relation in collections['relationships']
@@ -1225,6 +1251,34 @@ check(artoria_slots.get(4, {}).get('event_id') == 'artoria_lv4_just_artoria' and
       [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 85}] and
       artoria_lv4.get('completion_story_flags') == ['artoria_lv4_complete'],
       'doc_artoria: Lv4 milestone event contract mismatch')
+artoria_lv5 = by['character_events'].get('artoria_lv5_my_position', {})
+check(artoria_slots.get(5, {}).get('event_id') == 'artoria_lv5_my_position' and
+      artoria_slots.get(5, {}).get('content_status') == 'authored' and
+      artoria_slots.get(5, {}).get('benefit_id') == 'unlock_clinical_practice_patient' and
+      artoria_slots.get(5, {}).get('min_familiarity') == 75 and
+      artoria_slots.get(5, {}).get('cooldown_days') == 3 and
+      artoria_slots.get(5, {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 90},
+       {'type': 'player_attribute', 'attribute': 'skill', 'minimum': 80}] and
+      artoria_lv5.get('location_id') == 'artoria_office' and
+      artoria_lv5.get('trigger_mode') == 'location' and
+      artoria_lv5.get('auto_start') is False and
+      artoria_lv5.get('locks_saving') is True and
+      artoria_lv5.get('time_start') == 540 and
+      artoria_lv5.get('time_end') == 720 and
+      artoria_lv5.get('target_level') == 5 and
+      artoria_lv5.get('benefit_id') == 'unlock_clinical_practice_patient' and
+      artoria_lv5.get('completion_day_offset') == 2 and
+      artoria_lv5.get('completion_absolute_clock') == 540 and
+      artoria_lv5.get('conditions', {}).get('max_day') == 362 and
+      artoria_lv5.get('conditions', {}).get('min_familiarity') == 75 and
+      artoria_lv5.get('conditions', {}).get('required_events') == ['artoria_lv4_just_artoria'] and
+      artoria_lv5.get('conditions', {}).get('days_after_required_events') == 3 and
+      artoria_lv5.get('conditions', {}).get('special_requirements') ==
+      [{'type': 'player_attribute', 'attribute': 'leadership', 'minimum': 90},
+       {'type': 'player_attribute', 'attribute': 'skill', 'minimum': 80}] and
+      artoria_lv5.get('completion_story_flags') == ['artoria_lv5_complete'],
+      'doc_artoria: Lv5 milestone event contract mismatch')
 
 shiori = by['staff'].get('doc_shiori', {})
 shiori_relation = next((relation for relation in collections['relationships']

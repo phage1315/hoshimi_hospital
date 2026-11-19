@@ -1941,11 +1941,15 @@ func character_event_available(definition: Dictionary) -> bool:
 		return false
 	if preload("res://godot/systems/emiko_lv4.gd").owns(str(definition.id)) and not preload("res://godot/systems/emiko_lv4.gd").eligible(self, str(definition.id)):
 		return false
+	if preload("res://godot/systems/emiko_lv5.gd").owns(str(definition.id)) and not preload("res://godot/systems/emiko_lv5.gd").eligible(self, str(definition.id)):
+		return false
 	if preload("res://godot/systems/artoria_lv2.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv2.gd").eligible(self, str(definition.id)):
 		return false
 	if preload("res://godot/systems/artoria_lv3.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv3.gd").eligible(self, str(definition.id)):
 		return false
 	if preload("res://godot/systems/artoria_lv4.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv4.gd").eligible(self, str(definition.id)):
+		return false
+	if preload("res://godot/systems/artoria_lv5.gd").owns(str(definition.id)) and not preload("res://godot/systems/artoria_lv5.gd").eligible(self, str(definition.id)):
 		return false
 	if preload("res://godot/systems/maki_lv0.gd").owns(str(definition.id)) and not preload("res://godot/systems/maki_lv0.gd").eligible(self, str(definition.id)):
 		return false
@@ -2308,7 +2312,7 @@ func start_character_event(id: String) -> RefCounted:
 				active_mode = "encounter"
 		if not character_event_available(character_event_definitions[id]):
 			return null
-	if id in ["emiko_lv1_first_operation", "emiko_lv2_follow_my_lead", "emiko_lv3_today_i_lead", "emiko_lv4_emikos_secret", "artoria_lv2_what_remains", "artoria_lv3_not_a_solo_operation", "artoria_lv4_just_artoria"]:
+	if id in ["emiko_lv1_first_operation", "emiko_lv2_follow_my_lead", "emiko_lv3_today_i_lead", "emiko_lv4_emikos_secret", "emiko_lv5_hands_of_god", "artoria_lv2_what_remains", "artoria_lv3_not_a_solo_operation", "artoria_lv4_just_artoria", "artoria_lv5_my_position"]:
 		if character_events.has(id) and not character_events[id].completed:
 			character_events.erase(id)
 			character_event_order.erase(id)
@@ -2506,12 +2510,16 @@ func choose_character_event(choice_id: String) -> bool:
 				preload("res://godot/systems/emiko_lv3.gd").completed(self)
 			if preload("res://godot/systems/emiko_lv4.gd").owns(str(event.definition.id)):
 				preload("res://godot/systems/emiko_lv4.gd").completed(self)
+			if preload("res://godot/systems/emiko_lv5.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/emiko_lv5.gd").completed(self)
 			if preload("res://godot/systems/artoria_lv2.gd").owns(str(event.definition.id)):
 				preload("res://godot/systems/artoria_lv2.gd").completed(self)
 			if preload("res://godot/systems/artoria_lv3.gd").owns(str(event.definition.id)):
 				preload("res://godot/systems/artoria_lv3.gd").completed(self)
 			if preload("res://godot/systems/artoria_lv4.gd").owns(str(event.definition.id)):
 				preload("res://godot/systems/artoria_lv4.gd").completed(self)
+			if preload("res://godot/systems/artoria_lv5.gd").owns(str(event.definition.id)):
+				preload("res://godot/systems/artoria_lv5.gd").completed(self)
 		var completion_familiarity := int(event.definition.get("completion_familiarity_bonus", 0))
 		if completion_familiarity > 0:
 			for relationship_actor_id in character_event_relationship_actor_ids(event.definition):
@@ -3543,12 +3551,16 @@ func prepare_character_event_test_save(event_id: String, wait_for_one_surgery: b
 		target_day = preload("res://godot/systems/emiko_lv3.gd").prepare_test_save(self, event_id, target_day)
 	if preload("res://godot/systems/emiko_lv4.gd").owns(event_id):
 		target_day = preload("res://godot/systems/emiko_lv4.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/emiko_lv5.gd").owns(event_id):
+		target_day = preload("res://godot/systems/emiko_lv5.gd").prepare_test_save(self, event_id, target_day)
 	if preload("res://godot/systems/artoria_lv2.gd").owns(event_id):
 		target_day = preload("res://godot/systems/artoria_lv2.gd").prepare_test_save(self, event_id, target_day)
 	if preload("res://godot/systems/artoria_lv3.gd").owns(event_id):
 		target_day = preload("res://godot/systems/artoria_lv3.gd").prepare_test_save(self, event_id, target_day)
 	if preload("res://godot/systems/artoria_lv4.gd").owns(event_id):
 		target_day = preload("res://godot/systems/artoria_lv4.gd").prepare_test_save(self, event_id, target_day)
+	if preload("res://godot/systems/artoria_lv5.gd").owns(event_id):
+		target_day = preload("res://godot/systems/artoria_lv5.gd").prepare_test_save(self, event_id, target_day)
 	set_story_flag("__test_save_target_character_event__" + event_id, true)
 	var test_clock := clampi(int(definition.get("time_start", SHIFT_START_MINUTE)), SHIFT_START_MINUTE, SHIFT_START_MINUTE + SHIFT_MINUTES - 1)
 	set_test_time(target_day, test_clock)
@@ -6499,6 +6511,8 @@ func _restore_state_checked(data: Variant) -> bool:
 		story_flags["artoria_lv3_complete"] = true
 	if character_event_done("artoria_lv4_just_artoria"):
 		story_flags["artoria_lv4_complete"] = true
+	if character_event_done("artoria_lv5_my_position"):
+		story_flags["artoria_lv5_complete"] = true
 	synchronize_story_locked_procedures()
 	probation_complete = rebuilt_probation_complete
 	personal_nurse_system_unlocked = rebuilt_personal_nurse_system_unlocked

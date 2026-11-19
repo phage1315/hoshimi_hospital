@@ -1,7 +1,14 @@
 extends RefCounted
 ## HP-only numerical model. Preview RNG never belongs to an actual operation.
 static func catalog() -> Array:
-	return JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/procedures.json"))
+	var rows: Array = JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/procedures.json"))
+	rows.append_array(JSON.parse_string(FileAccess.get_file_as_string("res://data/advanced_surgery/legendary_procedures.json")))
+	for row in rows:
+		var domain := ""
+		if row.id in ["surgery_open_whipple", "surgery_adv_complex_abdominal_reconstruction", "surgery_master_whipple_vascular_reconstruction"]: domain = "abdominal"
+		if row.id in ["surgery_adv_ebstein_cone_reconstruction", "surgery_adv_open_descending_thoracic_aortic_replacement", "surgery_master_aortic_root_ascending_replacement"]: domain = "cardiac"
+		for step in row.steps: step["specialty_domain"] = domain
+	return rows
 
 static func procedure(id: String) -> Dictionary:
 	for row in catalog():
@@ -24,8 +31,12 @@ static func probability(skill: int, step: Dictionary, team: Dictionary, variant:
 static func base_cost(skill: int, step: Dictionary) -> int:
 	return int(step.hp_base) + mini(3, ceili(maxf(0, float(step.difficulty) - skill) / 12.0))
 
+static func specializes(assistant: Dictionary, step: Dictionary) -> bool:
+	return str(step.specialty_tag) in assistant.get("specialties", []) or (not str(step.get("specialty_domain", "")).is_empty() and step.specialty_domain in assistant.get("specialties", []))
+
 static func can_use(assistant: Dictionary, used: int, step: Dictionary) -> bool:
-	return used == 0 or (used == 1 and int(assistant.skill) >= 90 and (assistant.get("universal_expert", false) or str(step.specialty_tag) in assistant.get("specialties", [])))
+	var specialist := specializes(assistant, step)
+	return used == 0 or (used == 1 and ((specialist and bool(assistant.get("specialist_second_use", false))) or (int(assistant.skill) >= 90 and (assistant.get("universal_expert", false) or specialist))))
 
 static func remaining_uses(assistant: Dictionary, used: int, step: Dictionary) -> int:
 	var remaining := 0

@@ -80,6 +80,7 @@ func act(who: int = 0, option_id: String = "") -> bool:
 				return true
 			hp -= int(step.hp_failed_extra)
 	else: hp -= int(step.hp_base)
+	hp -= maxi(0, int(selected_strategy.get("hp_cost", 0)))
 	last_result.cost = before - hp
 	finish_action()
 	return true
@@ -154,9 +155,12 @@ func _consume_terminal_sweat_break() -> void:
 	if sweat_break != null and physiology != null:
 		sweat_break.on_transition(float(physiology.procedure_state.elapsed_time), false)
 
+func successful_resolution() -> bool:
+	return not bool(last_result.get("failed", false)) or (bool(definition.get("dialogue_after_rescue", false)) and bool(last_result.get("rescue_success", false)))
+
 func acknowledge() -> bool:
 	if finished or not awaiting_ack or pending_rescue or in_crisis(): return false
-	if operative_dialogue != null and operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2" and not operative_dialogue.current(self, suppress_operative_dialogue).is_empty() and not bool(last_result.get("failed", false)): return false
+	if operative_dialogue != null and operative_dialogue.data.get("schema_version") == "advanced_day2_dialogue_v2" and not operative_dialogue.current(self, suppress_operative_dialogue).is_empty() and successful_resolution(): return false
 	check_failure()
 	if finished: return false
 	awaiting_ack = false

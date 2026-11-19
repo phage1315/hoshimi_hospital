@@ -442,5 +442,131 @@
         }
       }
     }
+  },
+  "doc_artoria": {
+    "dialogue_source": "research/source_scripts/HOSHIMI_ARTORIA_STAFF_AS_PATIENT_DIALOGUES_CN_EN_V1_1.md",
+    "dialogue_source_sha256": "755dc4706eeada398c2c00c0e4d9dac6a548a9fe54f1cb3bd78ee6df4bd371ca",
+    "dialogue": {
+      "zh_CN": {
+        "reaction_variants": {
+          "operative_positioning_unnecessary_lithotomy": [
+            "「等、等一下，坂口医生……今天的手术入路明明不需要摆截石位吧？！把双腿架在支腿架上向两侧分开什么的……哪怕在场的都是自己的下属，这个姿势也实在太羞人了……！」",
+            "「坂口医生，你确定这是为了方便术中导尿和会阴区无菌管理才摆的体位吗……？这、这样整个人毫无遮挡地朝向台尾，连脚踝都被固定住，我根本不知道该往哪里看才好了……」"
+          ],
+          "manual_catheter_press_bladder": [
+            "「呀……唔っ！坂口医生，插完导尿管之后不用亲手按压耻骨上方排空也可以的……！手掌按下来的瞬间，残余的尿液不受控制地顺着管子涌出去的感觉……全都传到脑子里了……っ！」",
+            "「唔啊……别、别再往下压小腹了……明明知道只是确认导尿管引流通畅，可被你按着膀胱一点点挤空的时候，身体还是羞耻得直发抖……」"
+          ],
+          "excessive_disinfection_breasts": [
+            "「唔……っ！坂口医生，今天的术野消毒边界，是不是往上扩得太过了……？冰凉的碘伏纱布擦过乳晕和胸口前端的时候，身体会不受控制地轻轻战栗啊……」",
+            "「连胸前最敏感的尖端都要反复涂刷两遍吗……？我、我知道无菌原则宁宽勿窄，可当着大家的面被擦得湿淋淋地挺立起来，实在太难为情了……」"
+          ],
+          "excessive_disinfection_perineum": [
+            "「啊……唔っ！那、那里不是只有在盆腔或会阴入路时才需要重点涂刷的区域吗……？冰冷的消毒棉球直接拭过软肉褶皱的时候，腰都差点软掉了……坂口医生……！」",
+            "「哈啊……连大腿根和最私密的缝隙都被碘伏浸透了……明明是严肃的术前消毒，可被你的器械夹着棉球一下下擦过那里，我的耳根已经烫得快要烧起来了……」"
+          ],
+          "skip_sterile_draping": [
+            "「……坂口医生？！不铺设无菌洞巾、就这样让我浑身赤裸地直接暴露在无影灯下开刀吗？！虽、虽然全身都已经刷过碘伏了，可一点遮挡都没有的话，大家的视线……唔……！」",
+            "「平时我在台上最强调标准铺巾，没想到轮到自己躺上来，竟然会被省略掉所有遮羞的布单……既然我已经答应在台上完全服从主刀，那我就闭上眼，任凭你处置吧……」"
+          ],
+          "slow_incision_trace": [
+            "「唔……坂口医生，你的记号笔和指腹沿着预定切口线滑得太慢了……一寸一寸摩挲着刚刚消毒完的皮肤，像是在确认待会儿从哪里把我的身体剖开一样，心跳快得要停不下来了……」",
+            "「哈啊……笔尖每停顿一下，我肚皮上的肌肉就跟着轻轻抽紧一下……坂口医生，求你别再用这种磨人的速度描摹切口了，一鼓作气画完吧……」"
+          ],
+          "incision_public_lecture": [
+            "「坂口医生……！拿我赤裸的胸腹体表标志当场给年轻医护做切口解剖教学什么的……听到大家随着你的指点一起低头端详我的皮肤，身为副部长的威严都要荡然无存了……」",
+            "「『注意观察肋弓角、腹白线与皮纹走向』……平时都是我指着教材说这句话，今天自己却成了躺在台上的活体示范标本……只、只要对大家的成长有帮助，我就忍着羞耻不乱动……」"
+          ],
+          "postop_bare_sponge_wipe": [
+            "「呼……哈啊……刚缝合完就把无菌单全部掀开、直接用温盐水纱布替我擦洗全身吗……？温热的湿纱布拭过还带着干涸碘伏与冷汗的胸口和小腹，又痒又让人使不上力气……」",
+            "「唔……谢谢你亲手帮我把皮肤上的血迹和消毒液擦干净，坂口医生……只是刚经历完一整台手术，现在连指尖都软绵绵的，被你这样寸寸擦拭着赤裸的身体，实在有点招架不住呢……」"
+          ],
+          "postop_bare_full_inspection": [
+            "「坂口医生……切口敷料不是已经贴好了吗，为什么还要从锁骨、胸前一直到小腹和双腿做全身体表复查呀……？在这么亮的灯光下被你从头到脚看个遍，比刚才挨刀还要让人脸红……」",
+            "「确认全身皮肤有无压红、电刀灼伤与导尿管固定状态……道理确实完全合乎术后护理规范，可迎着你这么专注的目光一丝不挂地躺着，我还是会害羞得想抓紧床单呀，坂口医生。」"
+          ]
+        },
+        "team_overrides": {
+          "nurse_hiroko": {
+            "nurse_verify_catheter_drainage": "「引流袋内见清亮尿液流出，导尿管球囊固定稳妥。——阿尔托莉雅医生，请放轻松，我们大家都只盯着医疗指标，不会乱看的。」",
+            "ack_disinfection_drying": "「扩大消毒区域的碘伏薄膜已经自然待干完毕。阿尔托莉雅医生连当患者配合准备的时候都这么端正，真让人佩服呢。」",
+            "ack_incision_nurse_commentary": "「切口体表定位非常清晰。坂口医生，圆刀和双极电凝都已经备在手边，随时可以下刀。」",
+            "ack_postop_nurse_commentary": "「全身皮肤温盐水清洁与受压点复查全部完成，无压疮及灼伤。我这就替副部长盖上加温毛毯。」"
+          },
+          "nurse_ange": {
+            "nurse_verify_catheter_drainage": "「报告坂口医生，导尿管引流完全通畅，残余尿已排空！那、那个，阿尔托莉雅医生，您的呼吸很平稳，请不用觉得难为情！」",
+            "ack_disinfection_drying": "「全范围碘伏涂刷已满规定时间，无菌边界核查满分！我、我的视线一直严格停留在标准无菌区内，请副部长放心！」",
+            "ack_incision_nurse_commentary": "「坂口医生刚才结合阿尔托莉雅医生体表标志讲解的切口层次，我已经全部记在脑子里了！器械核对无误，随时可以切皮！」",
+            "ack_postop_nurse_commentary": "「术后体表擦洗与引流管固定核查完毕！阿尔托莉雅医生今天在台上真的太坚强了，请好好休息！」"
+          },
+          "nurse_moe": {
+            "nurse_verify_catheter_drainage": "「引、引流很顺畅，尿袋已经挂好固定了……阿尔托莉雅医生，您抓着托手架的手心里全是汗，我帮您把额角的汗擦一擦吧……」",
+            "ack_disinfection_drying": "「消毒液已经干透了……那个，要是觉得空调风吹在身上太凉的话，阿尔托莉雅医生随时眨眨眼告诉我哦。」",
+            "ack_incision_nurse_commentary": "「看到记号笔在阿尔托莉雅医生身上画线，连我都跟着紧张得屏住呼吸了……坂口医生，监护仪数值一切稳定！」",
+            "ack_postop_nurse_commentary": "「温盐水纱布已经把身上的碘伏都擦干净了，切口也贴得整整齐齐的……阿尔托莉雅医生，辛苦您了，我马上帮您把被单盖好！」"
+          }
+        }
+      },
+      "en": {
+        "reaction_variants": {
+          "operative_positioning_unnecessary_lithotomy": [
+            "\"W-wait a moment, Dr. Sakaguchi... Today's surgical approach does not require the lithotomy position, does it?! Having my legs raised in stirrups and parted wide like this... even in front of my own staff, this posture is far too mortifying...!\"",
+            "\"Dr. Sakaguchi, are you certain this positioning is strictly for intraoperative catheter access and perineal sterile management...? L-lying completely uncovered facing the foot of the table with my ankles strapped leaves me nowhere to rest my eyes...\""
+          ],
+          "manual_catheter_press_bladder": [
+            "\"Ah... ngh! Dr. Sakaguchi, there is no need to manually press above my pubis to empty my bladder after placing the catheter...! The instant your palm pressed down, feeling the residual urine forced out through the tube... sent a shiver straight to my head...!\"",
+            "\"Ugh... p-please do not press down on my lower abdomen any harder... I know it is only to verify catheter patency, yet having you press my bladder empty bit by bit makes my whole body tremble with shame...\""
+          ],
+          "excessive_disinfection_breasts": [
+            "\"Mm...! Dr. Sakaguchi, has the upper boundary of today's skin prep not been extended a little too far...? When the cold iodine sponge brushes across my areolae and chest, my body shivers against my will...\"",
+            "\"Must even the most sensitive tips of my breasts be swabbed twice over...? I-I know sterile margins err on the side of caution, yet having them brushed wet and stiffening in front of everyone is terribly embarrassing...\""
+          ],
+          "excessive_disinfection_perineum": [
+            "\"Ah... ngh! I-is that area not normally reserved for pelvic or perineal approaches...? Having the icy antiseptic sponge wipe directly across those delicate folds nearly made my waist give out... Dr. Sakaguchi...!\"",
+            "\"Haa... Even my inner thighs and most private crease are soaked in povidone-iodine now... I know this is formal preoperative disinfection, yet feeling your sponge forceps stroke across there has my ears burning like fire...\""
+          ],
+          "skip_sterile_draping": [
+            "\"...Dr. Sakaguchi?! Are you truly going to operate without laying sterile drapes, leaving me completely bare under the shadowless lamp?! E-even if my whole body has been prepped with iodine, having no cover at all in front of everyone's eyes... ngh...!\"",
+            "\"When I stand as primary surgeon, I always insist on strict draping, yet now that I am on the table myself, every last cloth covering my modesty has been omitted... Since I promised to obey the primary surgeon completely, I will close my eyes and place myself at your mercy...\""
+          ],
+          "slow_incision_trace": [
+            "\"Mm... Dr. Sakaguchi, your marker tip and fingertips are gliding far too slowly along the planned incision line... Tracing inch by inch over my freshly prepped skin as if deciding where to open me up makes my heart race out of control...\"",
+            "\"Haa... Every time the marker tip pauses, the muscles across my abdomen twitch tightly in response... Dr. Sakaguchi, please do not tease the incision line at such a deliberate pace--draw it in one clean stroke...\""
+          ],
+          "incision_public_lecture": [
+            "\"Dr. Sakaguchi...! Using my bare chest and abdomen as a live teaching aid to lecture the junior staff on incision landmarks... Hearing everyone lean in to study my skin at your pointer leaves my dignity as Deputy Chief in tatters...\"",
+            "\"'Note the costal angle, linea alba, and Langer's lines'... I am usually the one pointing at the textbook to say those words, yet today I am the live specimen lying bare on the table... A-as long as it helps everyone learn, I will endure the embarrassment and hold still...\""
+          ],
+          "postop_bare_sponge_wipe": [
+            "\"Phew... haa... Removing all the sterile drapes right after suturing to wipe down my entire body with warm saline gauze...? Feeling the warm wet sponge glide over my chest and abdomen while my stamina is spent feels both ticklish and overwhelming...\"",
+            "\"Mm... Thank you for personally wiping the blood and dried iodine from my skin, Dr. Sakaguchi... Having just come through an entire operation, I barely have strength in my fingertips, so being wiped down inch by inch while completely bare leaves me helpless...\""
+          ],
+          "postop_bare_full_inspection": [
+            "\"Dr. Sakaguchi... The wound dressing is already in place, so why must you conduct a full-body surface inspection from my collarbones and breasts all the way down to my abdomen and thighs...? Being examined from head to toe under such bright lights makes me blush harder than the incision itself...\"",
+            "\"Checking for pressure erythema, cautery marks, and catheter fixation... The clinical rationale truly follows postoperative nursing standards, yet lying stark naked under your focused gaze still makes me want to clutch the bedsheet, Dr. Sakaguchi.\""
+          ]
+        },
+        "team_overrides": {
+          "nurse_hiroko": {
+            "nurse_verify_catheter_drainage": "\"Clear urine return confirmed in the drainage bag, and the catheter balloon is securely seated. --Dr. Artoria, please relax; all of us are looking strictly at the clinical indicators.\"",
+            "ack_disinfection_drying": "\"The povidone-iodine film across the extended prep field has dried completely. Even as a patient undergoing preparation, Dr. Artoria's composure is truly admirable.\"",
+            "ack_incision_nurse_commentary": "\"The surface landmarks for the incision are clearly defined. Dr. Sakaguchi, both the scalpel and bipolar forceps are ready at your hand whenever you wish to begin.\"",
+            "ack_postop_nurse_commentary": "\"Full-body warm saline cleansing and pressure-point inspection are complete with no erythema or burns. I will cover the Deputy Chief with a warmed blanket right away.\""
+          },
+          "nurse_ange": {
+            "nurse_verify_catheter_drainage": "\"Reporting to Dr. Sakaguchi: urinary catheter drainage is completely patent and residual urine is emptied! U-um, Dr. Artoria, your breathing is very steady, so please do not feel embarrassed!\"",
+            "ack_disinfection_drying": "\"Full-field povidone-iodine prep has reached the required drying time, and sterile boundaries are verified! M-my eyes have remained strictly within the designated sterile zone, Dr. Artoria!\"",
+            "ack_incision_nurse_commentary": "\"I have committed every word of Dr. Sakaguchi's landmark demonstration on Dr. Artoria's skin to memory! Instrument count verified--ready for skin incision at any time!\"",
+            "ack_postop_nurse_commentary": "\"Postoperative skin cleansing and drain fixation check complete! Dr. Artoria was truly incredible on the table today--please rest well!\""
+          },
+          "nurse_moe": {
+            "nurse_verify_catheter_drainage": "\"D-drainage is flowing smoothly, and the collection bag is hung and secured... Dr. Artoria, your palms gripping the armboards are covered in sweat--let me wipe your forehead for you...\"",
+            "ack_disinfection_drying": "\"The antiseptic solution has dried completely... Um, if the operating room air feels too chilly against your skin, just blink and let me know anytime, Dr. Artoria.\"",
+            "ack_incision_nurse_commentary": "\"Watching the marker line drawn across Dr. Artoria's skin made even me hold my breath in nervous anticipation... Dr. Sakaguchi, all monitor vitals are completely stable!\"",
+            "ack_postop_nurse_commentary": "\"The warm saline gauze has wiped away all the iodine, and the dressing is applied neatly... Thank you for your endurance today, Dr. Artoria--I will pull the warm sheet over you right now!\""
+          }
+        }
+      }
+    }
   }
 }

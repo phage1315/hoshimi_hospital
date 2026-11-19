@@ -8,13 +8,14 @@ var chosen: Dictionary = {} # Memory only; never part of BoundarySave.
 var sequence_cursor: Dictionary = {} # V2 presentation cursor, memory only.
 var history: Array = [] # Seen V2 lines; memory only, never persisted.
 
-func _init(procedure_id: String = "", completed_count: int = 0, prefer_v2: bool = true) -> void:
+func _init(procedure_id: String = "", completed_count: int = 0, prefer_v2: bool = true, teaching: bool = false) -> void:
 	ordinal = maxi(0, completed_count)
 	var path := "res://data/advanced_surgery/dialogue/%s.json" % procedure_id
 	var definition := Model.procedure(procedure_id)
 	var source: Variant = JSON.parse_string(FileAccess.get_file_as_string(path)) if FileAccess.file_exists(path) else {}
 	var legacy_valid := valid(source, definition)
 	var overlay_path := "res://data/advanced_surgery/dialogue_v2/%s.json" % procedure_id
+	if teaching: overlay_path = "res://data/advanced_surgery/dialogue_teaching/%s.json" % procedure_id
 	if prefer_v2 and FileAccess.file_exists(overlay_path):
 		var overlay: Variant = JSON.parse_string(FileAccess.get_file_as_string(overlay_path))
 		if valid(overlay, definition):
@@ -52,7 +53,7 @@ static func valid(source: Variant, definition: Dictionary) -> bool:
 			if trigger == "precision_failed" and matches[0].kind != "P": return false
 			if trigger == "crisis" and Model.checkpoint_index(definition, definition.steps.find(matches[0]) + 1) < 0: return false
 			var rows: Variant = groups[trigger]
-			if not rows is Array or rows.size() < (1 if version == "advanced_day2_dialogue_v2" and trigger == "after_resolution" else 2) or rows.size() > 3: return false
+			if not rows is Array or rows.size() < (1 if version == "advanced_day2_dialogue_v2" and trigger in ["after_resolution", "precision_failed"] else 2) or rows.size() > 3: return false
 			if version == "advanced_day2_dialogue_v2" and ((trigger == "crisis" and rows.size() != 3) or (trigger == "after_resolution" and rows.size() > 2)): return false
 			for row in rows:
 				if not row is Dictionary or row.size() != 4: return false
@@ -85,7 +86,7 @@ func current(session: RefCounted, quick: bool = false) -> Dictionary:
 			var crisis_rows: Array = data.get("stages", {}).get(stage_id, {}).get("crisis", [])
 			var crisis_cursor := int(sequence_cursor.get(stage_id + ":crisis", 0))
 			return crisis_rows[crisis_cursor] if crisis_cursor < crisis_rows.size() else {}
-		if session.pending_rescue or (session.awaiting_ack and bool(session.last_result.get("failed", false))):
+		if session.pending_rescue or (session.awaiting_ack and bool(session.last_result.get("failed", false)) and not session.successful_resolution()):
 			return select(stage_id, session.index, "precision_failed")
 		var phase := "after_resolution" if session.awaiting_ack else "before_action"
 		var rows: Array = data.get("stages", {}).get(stage_id, {}).get(phase, [])
@@ -107,7 +108,7 @@ func advance_sequence(session: RefCounted) -> bool:
 	if session.sweat_break != null and not session.sweat_break.current().is_empty():
 		history.append({"stage": str(session.current().get("id", "")), "phase": "sweat_break", "line": line.duplicate(true)})
 		return session.sweat_break.advance()
-	if not session.in_crisis() and (session.pending_rescue or (session.awaiting_ack and bool(session.last_result.get("failed", false)))): return false
+	if not session.in_crisis() and (session.pending_rescue or (session.awaiting_ack and bool(session.last_result.get("failed", false)) and not session.successful_resolution())): return false
 	var phase := "crisis" if session.in_crisis() else "after_resolution" if session.awaiting_ack else "before_action"
 	var key := str(session.current().id) + ":" + phase
 	history.append({"stage": str(session.current().id), "phase": phase, "line": line.duplicate(true)})

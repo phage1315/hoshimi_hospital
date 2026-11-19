@@ -233,12 +233,12 @@ func hide_dialogue_toolbar() -> void:
 
 func dialogue_line_ready(s: RefCounted) -> bool:
 	if s.finished or s.operative_dialogue == null or s.operative_dialogue.data.get("schema_version") != "advanced_day2_dialogue_v2": return false
-	if s.pending_rescue or (s.awaiting_ack and bool(s.last_result.get("failed", false))): return false
+	if s.pending_rescue or (s.awaiting_ack and bool(s.last_result.get("failed", false)) and not s.successful_resolution()): return false
 	return not s.operative_dialogue.current(s, s.suppress_operative_dialogue).is_empty()
 
 func acknowledgement_ready(s: RefCounted) -> bool:
 	if s.finished or not s.awaiting_ack or s.pending_rescue or s.in_crisis(): return false
-	return bool(s.last_result.get("failed", false)) or s.operative_dialogue.current(s).is_empty()
+	return (bool(s.last_result.get("failed", false)) and not s.successful_resolution()) or s.operative_dialogue.current(s).is_empty()
 
 func sync_dialogue_toolbar(s: RefCounted) -> bool:
 	if s.operative_dialogue == null or s.operative_dialogue.data.get("schema_version") != "advanced_day2_dialogue_v2": return false

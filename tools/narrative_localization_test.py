@@ -89,6 +89,7 @@ def main() -> int:
                 failures.append(f"placeholder mismatch: {key}")
     advanced_dialogue_paths = list((ROOT / "data/advanced_surgery/dialogue").glob("*.json"))
     advanced_dialogue_paths += list((ROOT / "data/advanced_surgery/dialogue_v2").glob("*.json"))
+    advanced_dialogue_paths += list((ROOT / "data/advanced_surgery/dialogue_teaching").glob("*.json"))
     for path in sorted(advanced_dialogue_paths):
         pack = json.loads(path.read_text(encoding="utf-8"))
         if isinstance(pack, dict) and pack.get("schema_version") == "advanced_staff_dialogues_v1":
@@ -112,14 +113,25 @@ def main() -> int:
     for path in sorted((ROOT / "data/advanced_surgery/stories").glob("*.json")):
         pack = json.loads(path.read_text(encoding="utf-8"))
         pairs = [(pack["patient"][key], pack["patient"].get(key + "_en", "")) for key in ("name", "diagnosis")]
-        for chapter in ("day1", "day3"):
+        for chapter in (key for key in ("day1", "day2", "day3") if key in pack):
             pairs.append((pack[chapter]["title"], pack[chapter].get("title_en", "")))
-            pairs.extend((row["text"], row.get("text_en", "")) for row in pack[chapter]["lines"])
+            for row in pack[chapter]["lines"]:
+                pairs.append((row["text"], row.get("text_en", "")))
+                if "speaker_label" in row:
+                    pairs.append((row["speaker_label"], row.get("speaker_label_en", "")))
+                for choice in row.get("choices", []):
+                    pairs.append((choice["label"], choice.get("label_en", "")))
         for source, translated in pairs:
             checked += 1
             if not translated.strip() or HAN.search(translated) or FORMAT.findall(source) != FORMAT.findall(translated):
                 failures.append(f"invalid advanced first-case English: {path.name}/{source}")
-    for procedure in json.loads((ROOT / "data/advanced_surgery/procedures.json").read_text(encoding="utf-8")):
+    for entry in json.loads((ROOT / "data/advanced_surgery/legendary_registry.json").read_text(encoding="utf-8")):
+        for key, pair in entry.get("ui_text", {}).items():
+            checked += 1
+            source, translated = pair[0], pair[1]
+            if not source.strip() or not translated.strip() or HAN.search(translated) or FORMAT.findall(source) != FORMAT.findall(translated):
+                failures.append(f"invalid legendary registry ui_text English: {entry['procedure_id']}/{key}")
+    for procedure in json.loads((ROOT / "data/advanced_surgery/procedures.json").read_text(encoding="utf-8")) + json.loads((ROOT / "data/advanced_surgery/legendary_procedures.json").read_text(encoding="utf-8")):
         for stage in procedure["steps"]:
             for option in stage.get("options", []):
                 for field in ("label", "description"):

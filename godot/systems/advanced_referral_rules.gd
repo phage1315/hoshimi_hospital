@@ -1,6 +1,7 @@
 extends RefCounted
 ## Business dates and case identities only. Never persist an operation's RNG or cursors.
 const Facts = preload("res://godot/systems/advanced_referral_facts.gd")
+const Legendary = preload("res://godot/systems/advanced_legendary.gd")
 const Model = preload("res://godot/systems/advanced_surgery_model.gd")
 const Calendar = preload("res://godot/systems/fixed_calendar.gd")
 const Tutorial := "advanced_referral_tutorial_chisato"
@@ -12,6 +13,8 @@ static func manifest() -> Array:
 	return rows
 
 static func category(id: String) -> String:
+	var legendary := Legendary.entry(id)
+	if not legendary.is_empty(): return str(legendary.category)
 	for row in manifest():
 		if row.procedure_id == id: return str(row.category)
 	if id in KAORI: return "ADVANCED_QUEST_KAORI"
@@ -26,6 +29,7 @@ static func ready(row: Dictionary) -> bool:
 	return bool(row.get("runtime_ready", false)) and not Model.procedure(str(row.procedure_id)).is_empty()
 
 static func procedure_ready(id: String) -> bool:
+	if not Legendary.entry(id).is_empty(): return Legendary.ready(id)
 	for row in manifest():
 		if row.procedure_id == id: return ready(row)
 	return false
@@ -88,7 +92,7 @@ static func update_pool(s: Dictionary, today: int, campaign_seed: int, patients:
 	# Keep existing slots stable; only a settled first attempt frees a slot.
 	s.new_board = s.new_board.filter(func(id): return not s.procedures.has(id))
 	var active: Dictionary = s.appointment.get("case", {})
-	if not active.is_empty() and not active.replay and not s.procedures.has(active.procedure_id) and active.procedure_id not in s.new_board:
+	if not active.is_empty() and category(str(active.procedure_id)) == "ADVANCED_REGULAR" and not active.replay and not s.procedures.has(active.procedure_id) and active.procedure_id not in s.new_board:
 		# Grandfather a pre-V2 booking without discarding it or adding a fourth slot.
 		s.new_board.push_front(active.procedure_id)
 		if s.new_board.size() > 3: s.new_board.resize(3)
@@ -109,6 +113,9 @@ static func update_pool(s: Dictionary, today: int, campaign_seed: int, patients:
 		var id := str(row.procedure_id)
 		# A Monday settlement occurs after that morning's draw, so eligibility is strict.
 		if ready(row) and s.procedures.get(id) == "CLEARED" and int(s.clear_days.get(id, 0)) > 0 and int(s.clear_days[id]) < monday: cleared.append(id)
+	for row in Legendary.entries():
+		var id := str(row.procedure_id)
+		if bool(row.get("replay_eligible", false)) and Legendary.ready(id) and s.procedures.get(id) == "CLEARED" and int(s.clear_days.get(id, 0)) > 0 and int(s.clear_days[id]) < monday: cleared.append(id)
 	if cleared.is_empty(): return
 	var random := RandomNumberGenerator.new()
 	random.seed = hash("advanced-board-v2:%s:%s" % [campaign_seed, week])
